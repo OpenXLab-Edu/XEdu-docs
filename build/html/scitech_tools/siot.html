@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MQTT库siot简介 &mdash; OpenXLabEdu  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="开源硬件库pinpong简介" href="pinpong.html" />
+    <link rel="prev" title="Web库PyWebIO简介" href="pywebio.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmedu.html">MMEdu入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basenet.html">BaseNet入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../baseml.html">BaseML入门</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../scitech_tools.html">相关科创工具</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="data_labeling.html">数据集标注工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pywebio.html">Web库PyWebIO简介</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">MQTT库siot简介</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">1.简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2.安装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">3.代码范例</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">3.1 发送消息</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">3.2 订阅消息</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">3.3 订阅多条消息</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#siot">4. 借助siot部署智联网应用</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pinpong.html">开源硬件库pinpong简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flask.html">Web库Flask简介</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../support_resources.html">学习支持和资源获取</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dl_library.html">深度学习知识库</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenXLabEdu</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../scitech_tools.html">相关科创工具</a> &raquo;</li>
+      <li>MQTT库siot简介</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/scitech_tools/siot.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mqttsiot">
+<h1>MQTT库siot简介<a class="headerlink" href="#mqttsiot" title="Permalink to this heading"></a></h1>
+<section id="id1">
+<h2>1.简介<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>MQTT是最常用的物联网协议之一。但是，MQTT的官方Python库明显不好用，前面要定义一个类，代码冗长，对初学者不够友好。siot是虚谷物联团队基于MQTT
+paho写的一个Python库，为了让初学者能够写出更加简洁、优雅的Python代码。</p>
+<p>需要强调的是，siot库同时支持MicroPython，语法完全一致。</p>
+<p>GitHub地址：<a class="reference external" href="https://github.com/vvlink/SIoT/tree/master/siot-lib">https://github.com/vvlink/SIoT/tree/master/siot-lib</a></p>
+</section>
+<section id="id2">
+<h2>2.安装<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>可以使用使用pip命令安装siot库，如：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">siot</span>
+</pre></div>
+</div>
+<p>注：MMEdu中已经内置了siot库。</p>
+</section>
+<section id="id3">
+<h2>3.代码范例<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>下面的代码以MQTT服务器软件SIoT为例。SIoT是一个一键部署的MQTT服务器，广泛应用于中小学的物联网教学中。</p>
+<section id="id4">
+<h3>3.1 发送消息<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>import siot
+import time
+
+SERVER = &quot;127.0.0.1&quot;            #MQTT服务器IP
+CLIENT_ID = &quot;&quot;                  #在SIoT上，CLIENT_ID可以留空
+IOT_pubTopic  = &#39;xzr/001&#39;       #“topic”为“项目名称/设备名称”
+IOT_UserName =&#39;siot&#39;            #用户名
+IOT_PassWord =&#39;dfrobot&#39;         #密码
+
+siot.init(CLIENT_ID, SERVER, user=IOT_UserName, password=IOT_PassWord)
+siot.connect()
+siot.loop()
+
+tick = 0
+while True:
+  siot.publish(IOT_pubTopic, &quot;value %d&quot;%tick)
+  time.sleep(1)           #隔1秒发送一次
+  tick = tick+1
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h3>3.2 订阅消息<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>import siot
+import time
+
+SERVER = &quot;127.0.0.1&quot;        #MQTT服务器IP
+CLIENT_ID = &quot;&quot;              #在SIoT上，CLIENT_ID可以留空
+IOT_pubTopic  = &#39;xzr/001&#39;   #“topic”为“项目名称/设备名称”
+IOT_UserName =&#39;siot&#39;        #用户名
+IOT_PassWord =&#39;dfrobot&#39;     #密码
+
+def sub_cb(client, userdata, msg):
+  print(&quot;\nTopic:&quot; + str(msg.topic) + &quot; Message:&quot; + str(msg.payload))
+  # msg.payload中是消息的内容，类型是bytes，需要用解码。
+  s=msg.payload.decode()
+  print(s)
+
+siot.init(CLIENT_ID, SERVER, user=IOT_UserName, password=IOT_PassWord)
+siot.connect()
+siot.subscribe(IOT_pubTopic, sub_cb)
+siot.loop()
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h3>3.3 订阅多条消息<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>import siot
+import time
+
+SERVER = &quot;127.0.0.1&quot;         # MQTT服务器IP
+CLIENT_ID = &quot;&quot;               # 在SIoT上，CLIENT_ID可以留空
+IOT_pubTopic1  = &#39;xzr/001&#39;   # “topic”为“项目名称/设备名称”
+IOT_pubTopic2  = &#39;xzr/002&#39;   # “topic”为“项目名称/设备名称”
+IOT_UserName =&#39;siot&#39;         # 用户名
+IOT_PassWord =&#39;dfrobot&#39;      # 密码
+
+def sub_cb(client, userdata, msg):  # sub_cb函数仍然只有一个，需要在参数msg.topic中对消息加以区分
+  print(&quot;\nTopic:&quot; + str(msg.topic) + &quot; Message:&quot; + str(msg.payload))
+  # msg.payload中是消息的内容，类型是bytes，需要用解码。
+  s=msg.payload.decode()
+  print(s)
+
+siot.init(CLIENT_ID, SERVER, user=IOT_UserName, password=IOT_PassWord)
+siot.connect()
+siot.set_callback(sub_cb)
+siot.getsubscribe(IOT_pubTopic1)  # 订阅消息1
+siot.getsubscribe(IOT_pubTopic2)  # 订阅消息2
+siot.loop()
+</pre></div>
+</div>
+</section>
+</section>
+<section id="siot">
+<h2>4. 借助siot部署智联网应用<a class="headerlink" href="#siot" title="Permalink to this heading"></a></h2>
+<p>当物联网遇上人工智能，就形成了智联网。当学生训练出一个AI模型，就可以通过物联网设备进行多模态交互。</p>
+<p>1）远程感知。</p>
+<p>2）远程控制。</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="pywebio.html" class="btn btn-neutral float-left" title="Web库PyWebIO简介" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pinpong.html" class="btn btn-neutral float-right" title="开源硬件库pinpong简介" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022 OpenXLabEdu.All Rights Reserved.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

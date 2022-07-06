@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web库PyWebIO简介 &mdash; OpenXLabEdu  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="MQTT库siot简介" href="siot.html" />
+    <link rel="prev" title="数据集标注工具" href="data_labeling.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmedu.html">MMEdu入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basenet.html">BaseNet入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../baseml.html">BaseML入门</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../scitech_tools.html">相关科创工具</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="data_labeling.html">数据集标注工具</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Web库PyWebIO简介</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">1.简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2. 安装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">3. 代码示例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pywebioai">4. 借助PyWebIO部署简易AI应用</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="siot.html">MQTT库siot简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pinpong.html">开源硬件库pinpong简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flask.html">Web库Flask简介</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../support_resources.html">学习支持和资源获取</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dl_library.html">深度学习知识库</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenXLabEdu</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../scitech_tools.html">相关科创工具</a> &raquo;</li>
+      <li>Web库PyWebIO简介</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/scitech_tools/pywebio.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="webpywebio">
+<h1>Web库PyWebIO简介<a class="headerlink" href="#webpywebio" title="Permalink to this heading"></a></h1>
+<section id="id1">
+<h2>1.简介<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>顾名思义，PyWebIO库是一个基于Web方式来实现输入输出（I/O）的Python库。这是北京航空航天大学在读研究生王伟民同学用业余时间写的库。目前在GitHbu上获得了高达1.6K的Star。它允许用户像编写终端脚本一样来编写Web应用或基于浏览器的GUI应用，而无需具备HTML和JS的相关知识。</p>
+<p>Github地址：<a class="reference external" href="https://github.com/wang0618/PyWebIO">https://github.com/wang0618/PyWebIO</a></p>
+</section>
+<section id="id2">
+<h2>2. 安装<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>PyWebIO可以采用pip命令安装，具体如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">PyWebIO</span>
+</pre></div>
+</div>
+<p>注：MMEdu中已经内置了PyWebIO库。</p>
+</section>
+<section id="id3">
+<h2>3. 代码示例<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>PyWebIO提供了一系列命令式的交互函数来在浏览器上获取用户输入和进行输出，相当于将浏览器变成了一个“富文本终端”。如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pywebio.input</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">pywebio.output</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="c1"># 文本输入</span>
+<span class="n">s</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;请输入你的名字：&#39;</span><span class="p">)</span>
+<span class="c1"># 输出文本</span>
+<span class="n">put_text</span><span class="p">(</span><span class="s1">&#39;欢迎你，&#39;</span> <span class="o">+</span> <span class="n">s</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>运行这段代码后，浏览器会自动打开一个本地的网址，出现这样的界面。</p>
+<figure class="align-default">
+<img alt="../_images/pywebio图1.png" src="../_images/pywebio图1.png" />
+</figure>
+<p>图1 初始网页界面</p>
+<p>输入姓名再点击“提交”按钮，网页上就会输出相应的文字。这种基于Web页面的“交互”，体验比黑乎乎的终端界面要好很多。</p>
+<p>PyWebIO支持常见的网页控件。既然PyWebI的定位就是输入和输出，那么也可以将网页控件分为这两类，部分控件的说明如表1所示。</p>
+<p>表1 PyWebIO支持的网页控件（部分）</p>
+<table class="docutils align-default"><thead><tr class="row-odd"><th class="head"><p>类别</p>
+</th><th class="head"><p>控件</p>
+</th><th class="head"><p>代码范例</p>
+</th></tr ></thead><tbody><tr class="row-even"><td rowspan="6"><p>输入</p>
+</td><td><p>文本</p>
+</td><td><p>input(“What’s your name?”)</p>
+</td></tr><tr class="row-odd"><td><p>下拉选择</p>
+</td><td><p>select(‘Select’, [‘A’, ‘B’])</p>
+</td></tr><tr class="row-even"><td><p>多选</p>
+</td><td><p>checkbox(“Checkbox”, options=[‘Check me’])</p>
+</td></tr><tr class="row-odd"><td><p>单选</p>
+</td><td><p>radio(“Radio”, options=[‘A’, ‘B’, ‘C’])</p>
+</td></tr><tr class="row-even"><td><p>多行文本</p>
+</td><td><p>textarea(‘Text’, placeholder=‘Some text’)</p>
+</td></tr><tr class="row-odd"><td><p>文件上传</p>
+</td><td><p>file_upload(“Select a file:”)</p>
+</td></tr><tr class="row-even"><td rowspan="6"><p>输出</p>
+</td><td><p>文本</p>
+</td><td><p>put_text(“Hello world!”);</p>
+</td></tr><tr class="row-odd"><td><p>表格</p>
+</td><td><p>put_table([[‘Product’, ‘Price’],[‘Apple’, ‘$5.5’], [‘Banner’, ‘$7’],]);</p>
+</td></tr><tr class="row-even"><td><p>图像</p>
+</td><td><p>put_image(open(‘python-logo.png’, ‘rb’).read());</p>
+</td></tr><tr class="row-odd"><td><p>通知消息</p>
+</td><td><p>toast(‘Awesome PyWebIO!!’);</p>
+</td></tr><tr class="row-even"><td><p>文件</p>
+</td><td><p>put_file(‘hello_word.txt’, b’hello word!’);</p>
+</td></tr><tr class="row-odd"><td><p>Html代码</p>
+</td><td><p>put_html(‘E = mc2’);</p>
+</td></tr></tbody></table><p>尤其值得称赞的是，PyWebIO还支持MarkDown语法。除了输入输出，PyWebIO还支持布局、协程、数据可视化等特性。通过和其他库的配合，可以呈现更加酷炫的网页效果，如图2所示。</p>
+<figure class="align-default">
+<img alt="../_images/pywebio图2.png" src="../_images/pywebio图2.png" />
+</figure>
+<p>图2 PyWebIO结合第三方库制作的数据可视化效果</p>
+<p>如果需要了解更多关于PyWebIO库的资源，请访问github或者官方文档。</p>
+<p>文档地址：<a class="reference external" href="https://pywebio.readthedocs.io/">https://pywebio.readthedocs.io/</a></p>
+</section>
+<section id="pywebioai">
+<h2>4. 借助PyWebIO部署简易AI应用<a class="headerlink" href="#pywebioai" title="Permalink to this heading"></a></h2>
+<p>在人工智能教学过程中，我们常常为模型的部署而烦恼。如果训练出来的模型不能有效应用于生活，或者解决一些真实问题，则很难打动学生，激发学习兴趣。</p>
+<p>PyWebIO能够将AI模型快速“变身”为Web应用，上传一张照片就能输出识别结果，极大地提高了学生的学习收获感。</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="data_labeling.html" class="btn btn-neutral float-left" title="数据集标注工具" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="siot.html" class="btn btn-neutral float-right" title="MQTT库siot简介" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022 OpenXLabEdu.All Rights Reserved.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
