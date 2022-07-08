@@ -14,7 +14,6 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="about.html" />
@@ -74,59 +73,296 @@
            <div itemprop="articleBody">
              
   <section id="openxlabedu">
-<h1>OpenXLabEdu帮助文档<a class="headerlink" href="#openxlabedu" title="Permalink to this heading"></a></h1>
+<h1>OpenXLabEdu帮助文档<a class="headerlink" href="#openxlabedu" title="Permalink to this headline"></a></h1>
 <section id="openxlabedu-xedu">
-<h2>欢迎您使用OpenXLabEdu（XEdu）！<a class="headerlink" href="#openxlabedu-xedu" title="Permalink to this heading"></a></h2>
+<h2>欢迎您使用OpenXLabEdu（XEdu）！<a class="headerlink" href="#openxlabedu-xedu" title="Permalink to this headline"></a></h2>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">目录</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="about.html">关于XEdu</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="about/story.html">XEdu的故事</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about/team.html">开发和维护团队</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about/version_update.html">版本更新记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about/story.html">XEdu的故事</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="about/story.html#mmeduxedu">1.从MMEdu到XEdu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="about/story.html#id1">2.为什么要开发XEdu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="about/story.html#id2">3.对XEdu的期望</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="about/team.html">开发和维护团队</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="about/team.html#id2">1.项目策划</a></li>
+<li class="toctree-l3"><a class="reference internal" href="about/team.html#id3">2.算法团队</a></li>
+<li class="toctree-l3"><a class="reference internal" href="about/team.html#id4">3.课程团队</a></li>
+<li class="toctree-l3"><a class="reference internal" href="about/team.html#id5">4.测试团队</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="about/version_update.html">版本更新记录</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="about/version_update.html#id2">1.正式版</a></li>
+<li class="toctree-l3"><a class="reference internal" href="about/version_update.html#id3">2.测试版</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="about/version_update.html#id4">1）0.5版</a></li>
+<li class="toctree-l4"><a class="reference internal" href="about/version_update.html#id5">2）0.7版</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="about/milestones.html">XEdu大事记</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="mmedu.html">MMEdu入门</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="mmedu/quick_start.html">MMEdu快速入门</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mmedu/installation.html">MMEdu安装和下载</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mmedu/introduction.html">MMEdu模块应用详解</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mmedu/mmclassification.html">图像分类模块：MMClassification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mmedu/mmdetection.html">物体检测模块：MMDetection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmedu/quick_start.html">MMEdu快速入门</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mmedu/quick_start.html#id1">1.MMEdu是什么？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mmedu/quick_start.html#id2">2.MMEdu安装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mmedu/quick_start.html#demo">3.体验demo代码</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mmedu/quick_start.html#id3">4.模型训练</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mmedu/quick_start.html#id4">5.模型推理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mmedu/quick_start.html#ai">6.部署AI应用</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/quick_start.html#id5">1.准备工作</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/quick_start.html#opencv">2.借助OpenCV识别摄像头画面</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/quick_start.html#pywebioweb">3.借助PyWebIO部署Web应用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/quick_start.html#id6">4.连接开源硬件开发智能作品</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mmedu/installation.html">MMEdu安装和下载</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mmedu/installation.html#id1">1.安装方式介绍</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mmedu/installation.html#id2">2.基础版安装：一键安装包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mmedu/installation.html#pip">3.标准版安装：pip安装</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/installation.html#id3">1）安装须知</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/installation.html#id4">2）安装环境</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/installation.html#id5">3）安装相关依赖库</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/installation.html#mm">4）安装mm模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/installation.html#id6">5）查看已安装的模块</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mmedu/installation.html#id7">4.标准版安装：容器镜像安装</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mmedu/introduction.html">MMEdu模块应用详解</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mmedu/introduction.html#id1">1.MMEdu是什么？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mmedu/introduction.html#mmeduai">2.MMEdu和常见AI框架的比较</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/introduction.html#mmeduopencv">1）MMEdu和OpenCV的比较</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/introduction.html#mmedumediapipe">2）MMEdu和MediaPipe的比较</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/introduction.html#mmedukeras">3）MMEdu和Keras的比较</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/introduction.html#mmedufastai">4）MMEdu和FastAI的比较</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mmedu/introduction.html#id2">3.模块概述</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mmedu/introduction.html#id3">4.内置模型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mmedu/introduction.html#id4">5.数据集支持</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/introduction.html#imagenet">1.ImageNet</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="mmedu/introduction.html#id5">第一步：整理图片</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mmedu/introduction.html#id6">第二步：划分训练集、验证集和测试集</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mmedu/introduction.html#id7">第三步：生成标签文件</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mmedu/introduction.html#id8">第四步：给数据集命名</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/introduction.html#coco">2.COCO</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="mmedu/introduction.html#id9">第一步、整理图片</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mmedu/introduction.html#id11">第二步、标注图片</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mmedu/introduction.html#id12">第三步、转换成COCO标注格式</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mmedu/introduction.html#id13">第四步、按照目录结构整理文件</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mmedu/introduction.html#id14">6.一键安装包目录详解</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/introduction.html#id15">MMEdu目录：</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/introduction.html#checkpoints">checkpoints目录：</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/introduction.html#dataset">dataset目录：</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/introduction.html#demo">demo目录：</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/introduction.html#howtostart">HowToStart目录：</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/introduction.html#tools">tools目录：</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/introduction.html#visualization">visualization目录：</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mmedu/mmclassification.html">图像分类模块：MMClassification</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mmedu/mmclassification.html#id1">简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mmedu/mmclassification.html#id2">使用说明</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/mmclassification.html#id3">1.模型推理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/mmclassification.html#id4">2.训练模型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/mmclassification.html#id5">3.继续训练</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/mmclassification.html#sota">4.SOTA模型介绍</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mmedu/mmdetection.html">物体检测模块：MMDetection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mmedu/mmdetection.html#id1">简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mmedu/mmdetection.html#id2">使用说明</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/mmdetection.html#cpu">1.直接推理（支持CPU）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/mmdetection.html#id3">2.训练模型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/mmdetection.html#id4">3.继续训练</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/mmdetection.html#sota">4.SOTA模型介绍</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="mmedu/mmediting.html">图像处理模块：MMEditing</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="basenet.html">BaseNet入门</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="basenet/quick_start.html">BaseNet快速入门</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basenet/quick_start.html">BaseNet快速入门</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="basenet/quick_start.html#id1">简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basenet/quick_start.html#id2">安装或者下载</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basenet/quick_start.html#id3">体验</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basenet/quick_start.html#id4">训练</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="basenet/quick_start.html#id5">0.引入包</a></li>
+<li class="toctree-l4"><a class="reference internal" href="basenet/quick_start.html#id6">1.声明模型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="basenet/quick_start.html#id7">2.载入数据</a></li>
+<li class="toctree-l4"><a class="reference internal" href="basenet/quick_start.html#id8">3.搭建模型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="basenet/quick_start.html#id9">4.模型训练</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="basenet/quick_start.html#id10">4.1正常训练</a></li>
+<li class="toctree-l5"><a class="reference internal" href="basenet/quick_start.html#id11">4.2 继续训练</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="basenet/quick_start.html#id12">推理</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="basenet/quick_start.html#id13">使用现有模型直接推理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="basenet/quick_start.html#id14">输出推理结果</a></li>
+<li class="toctree-l4"><a class="reference internal" href="basenet/quick_start.html#id15">模型的保存与加载</a></li>
+<li class="toctree-l4"><a class="reference internal" href="basenet/quick_start.html#id16">查看模型结构</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="basenet/quick_start.html#id17">附录</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="basenet/quick_start.html#add">1. add()详细介绍</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="basenet/installation.html">BaseNet安装或下载</a></li>
-<li class="toctree-l2"><a class="reference internal" href="basenet/introduction.html">BaseNet功能详解</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basenet/introduction.html">BaseNet功能详解</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="basenet/introduction.html#id1">0.引入包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basenet/introduction.html#id2">1.声明模型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basenet/introduction.html#id3">2.载入数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basenet/introduction.html#id4">3.搭建模型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basenet/introduction.html#id5">4.模型训练</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="basenet/introduction.html#id6">4.1正常训练</a></li>
+<li class="toctree-l4"><a class="reference internal" href="basenet/introduction.html#id7">4.2 继续训练</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="basenet/introduction.html#id8">5.使用现有模型直接推理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basenet/introduction.html#id9">6.输出推理结果</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basenet/introduction.html#id10">7.模型的保存与加载</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basenet/introduction.html#id11">8.查看模型结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basenet/introduction.html#id12">附录</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="basenet/introduction.html#add">1. add()详细介绍</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="baseml.html">BaseML入门</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="baseml/quick_start.html">BaseML快速入门</a></li>
+<li class="toctree-l2"><a class="reference internal" href="baseml/quick_start.html">BaseML快速入门</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="baseml/quick_start.html#id1">简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="baseml/quick_start.html#id2">安装或者下载</a></li>
+<li class="toctree-l3"><a class="reference internal" href="baseml/quick_start.html#id3">体验</a></li>
+<li class="toctree-l3"><a class="reference internal" href="baseml/quick_start.html#id4">训练</a></li>
+<li class="toctree-l3"><a class="reference internal" href="baseml/quick_start.html#id5">推理</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="baseml/installation.html">BaseML安装或下载</a></li>
-<li class="toctree-l2"><a class="reference internal" href="baseml/introduction.html">BaseML功能详解</a></li>
+<li class="toctree-l2"><a class="reference internal" href="baseml/introduction.html">BaseML功能详解</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="baseml/introduction.html#knn">KNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="baseml/introduction.html#svm">SVM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="baseml/introduction.html#id1">贝叶斯</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="scitech_tools.html">相关科创工具</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="scitech_tools/data_labeling.html">数据集标注工具</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scitech_tools/pywebio.html">Web库PyWebIO简介</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scitech_tools/siot.html">MQTT库siot简介</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scitech_tools/pinpong.html">开源硬件库pinpong简介</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scitech_tools/flask.html">Web库Flask简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scitech_tools/pywebio.html">Web库PyWebIO简介</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="scitech_tools/pywebio.html#id1">1.简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scitech_tools/pywebio.html#id2">2. 安装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scitech_tools/pywebio.html#id3">3. 代码示例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scitech_tools/pywebio.html#pywebioai">4. 借助PyWebIO部署简易AI应用</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="scitech_tools/siot.html">MQTT库siot简介</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="scitech_tools/siot.html#id1">1.简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scitech_tools/siot.html#id2">2.安装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scitech_tools/siot.html#id3">3.代码范例</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="scitech_tools/siot.html#id4">3.1 发送消息</a></li>
+<li class="toctree-l4"><a class="reference internal" href="scitech_tools/siot.html#id5">3.2 订阅消息</a></li>
+<li class="toctree-l4"><a class="reference internal" href="scitech_tools/siot.html#id6">3.3 订阅多条消息</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="scitech_tools/siot.html#siot">4. 借助siot部署智联网应用</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="scitech_tools/pinpong.html">开源硬件库pinpong简介</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="scitech_tools/pinpong.html#id1">1.简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scitech_tools/pinpong.html#id2">2.安装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scitech_tools/pinpong.html#id3">3.代码示例</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="scitech_tools/pinpong.html#id4">3.1 数字输出</a></li>
+<li class="toctree-l4"><a class="reference internal" href="scitech_tools/pinpong.html#id5">3.2 数字输入</a></li>
+<li class="toctree-l4"><a class="reference internal" href="scitech_tools/pinpong.html#id6">3.3 模拟输入</a></li>
+<li class="toctree-l4"><a class="reference internal" href="scitech_tools/pinpong.html#id7">3.4 模拟输出</a></li>
+<li class="toctree-l4"><a class="reference internal" href="scitech_tools/pinpong.html#id8">3.5 引脚中断</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="scitech_tools/pinpong.html#id9">4. 借助pinpong开发智能作品</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="scitech_tools/flask.html">Web库Flask简介</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="scitech_tools/flask.html#id1">1.简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scitech_tools/flask.html#id2">2.安装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scitech_tools/flask.html#id3">3.代码示例</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="scitech_tools/flask.html#web">3.1 最简Web服务器</a></li>
+<li class="toctree-l4"><a class="reference internal" href="scitech_tools/flask.html#id4">3.2 上传一个文件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="scitech_tools/flask.html#webapi">3.3 一个简单的WebAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="scitech_tools/flask.html#flask">4. 借助Flask部署智能应用</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="support_resources.html">学习支持和资源获取</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="support_resources/faq.html">常见问题解答</a></li>
-<li class="toctree-l2"><a class="reference internal" href="support_resources/resources.html">学习资源下载</a></li>
-<li class="toctree-l2"><a class="reference internal" href="support_resources/courses.html">在线学习课程</a></li>
-<li class="toctree-l2"><a class="reference internal" href="support_resources/creative_works.html">创意项目展示</a></li>
+<li class="toctree-l2"><a class="reference internal" href="support_resources/resources.html">学习资源下载</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="support_resources/resources.html#id2">数据集下载</a></li>
+<li class="toctree-l3"><a class="reference internal" href="support_resources/resources.html#id3">预训练模型和权重文件下载</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="support_resources/courses.html">在线学习课程</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="support_resources/courses/c1-shenjingwangluoyucv.html">课程：神经网络和计算机视觉实验</a></li>
+<li class="toctree-l3"><a class="reference internal" href="support_resources/courses/c2-zoujinwanwuzhilian.html">课程：走进万物智联的世界</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="support_resources/creative_works.html">创意项目展示</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="support_resources/works/p1-dianlufuhaoshibiexiaozhushou.html">项目：电路符号识别小助手</a></li>
+<li class="toctree-l3"><a class="reference internal" href="support_resources/works/p2-shitoujiandaobupeiwan.html">项目：设计“石头剪刀布”陪玩机器人</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="dl_library.html">深度学习知识库</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="dl_library/parameter_explain.html">深度学习训练参数详解</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dl_library/dataset_introduction.html">经典数据集介绍</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dl_library/network_introduction.html">经典网络模型介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dl_library/network_introduction.html">经典网络模型介绍</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dl_library/net/lenet5.html">图片分类模型LeNet-5</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dl_library/net/lenet5.html#id1">简介</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dl_library/net/lenet5.html#id2">网络结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dl_library/net/lenet5.html#id3">优点</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dl_library/net/lenet5.html#id4">适用领域</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dl_library/net/lenet5.html#id5">参考文献</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dl_library/net/mobilenet.html">图片分类模型MobileNet</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dl_library/net/mobilenet.html#id1">介绍</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dl_library/net/mobilenet.html#id2">特点：深度可分离卷积</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dl_library/net/mobilenet.html#linear-bottleneck">特点：Linear Bottleneck</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dl_library/net/mobilenet.html#id3">网络结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dl_library/net/mobilenet.html#id4">优点</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dl_library/net/mobilenet.html#id5">使用领域</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dl_library/net/mobilenet.html#id6">参考文献</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -134,7 +370,7 @@
 </section>
 </section>
 <section id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading"></a></h1>
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline"></a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>

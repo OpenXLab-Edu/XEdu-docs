@@ -14,7 +14,6 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
@@ -94,9 +93,9 @@
            <div itemprop="articleBody">
              
   <section id="mmdetection">
-<h1>物体检测模块：MMDetection<a class="headerlink" href="#mmdetection" title="Permalink to this heading"></a></h1>
+<h1>物体检测模块：MMDetection<a class="headerlink" href="#mmdetection" title="Permalink to this headline"></a></h1>
 <section id="id1">
-<h2>简介<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<h2>简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <p>MMDetection的主要功能：输出图片或视频中出现的多个对象名称，同时用方框框出对象所在方形区域。</p>
 <figure class="align-default">
 <img alt="../_images/image-20220408192155931.png" src="../_images/image-20220408192155931.png" />
@@ -104,10 +103,10 @@
 <p>其支持的SOTA模型有FasterRCNN、Yolov3等。</p>
 </section>
 <section id="id2">
-<h2>使用说明<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<h2>使用说明<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <p>MMEdu中预置了“车牌检测”数据集，并且已经预训练了权重（路径：/checkpoint/det_model/plate/latest.pth）。在demo文件夹中，还提供了一张汽车图片（含车牌）用于测试。</p>
 <section id="cpu">
-<h3>1.直接推理（支持CPU）<a class="headerlink" href="#cpu" title="Permalink to this heading"></a></h3>
+<h3>1.直接推理（支持CPU）<a class="headerlink" href="#cpu" title="Permalink to this headline"></a></h3>
 <p>如果想快速上手体验MMDetection的话，我们建议您使用我们已经预训练好的模型和权重文件进行推理，提供一张图片测试推理的准确度。</p>
 <p>执行代码如下:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">base</span> <span class="c1"># 测试版需要（发布版不需要）</span>
@@ -177,7 +176,7 @@
 <p>（最后两个参数的使用，我们将在下一部分进行详细举例解释）。</p>
 </section>
 <section id="id3">
-<h3>2.训练模型<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<h3>2.训练模型<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
 <p>使用下面的代码即可简单体验MMDetection的训练过程，我们以车牌的识别为例，为您进行详细的介绍。</p>
 <p>在运行代码之前，您需要先拥有一个数据集，这里我们为您提供车牌检测数据集。</p>
 <p>数据集文件结构如下：</p>
@@ -246,7 +245,7 @@
 <p>而在<code class="docutils literal notranslate"><span class="pre">checkpoints\det_model</span></code>文件夹中我们会发现多了两种文件，一个是<code class="docutils literal notranslate"><span class="pre">None.log.json</span></code>文件，它记录了我们模型在训练过程中的一些参数，比如说学习率<code class="docutils literal notranslate"><span class="pre">lr</span></code>，所用时间<code class="docutils literal notranslate"><span class="pre">time</span></code>，以及损失<code class="docutils literal notranslate"><span class="pre">loss</span></code>等；另一个文件是.pth文件，这个是我们在训练过程中所保存的模型。</p>
 </section>
 <section id="id4">
-<h3>3.继续训练<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<h3>3.继续训练<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
 <p>在这一步中，我们会教您加载之前训练过的模型接着训练，如果您觉得之前训练的模型epoch数不够的话或者因为一些客观原因而不得不提前结束训练，相信下面的代码会帮到您。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">det</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;FasterRCNN&#39;</span><span class="p">)</span> <span class="c1"># 初始化实例模型</span>
 <span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># 进行车牌识别，此时只有一个类别。</span>
@@ -259,7 +258,7 @@
 <p>这里我们有一个参数在之前的<a class="reference external" href="####2.训练模型">训练模型</a>过程中没有提及，那就是<code class="docutils literal notranslate"><span class="pre">train</span></code>函数中的<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>参数，这个放到这里就比较好理解，它的意思是指定需要进行再训练的模型路径，当然你也可以根据你需要训练的不同模型而调整参数。</p>
 </section>
 <section id="sota">
-<h3>4.SOTA模型介绍<a class="headerlink" href="#sota" title="Permalink to this heading"></a></h3>
+<h3>4.SOTA模型介绍<a class="headerlink" href="#sota" title="Permalink to this headline"></a></h3>
 <p>目前MMDetection支持的SOTA模型有FaterRCNN、Yolov3等，这些模型的作用和适用场景简介如下。</p>
 <ul class="simple">
 <li><p><strong>FasterRCNN</strong></p></li>
