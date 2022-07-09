@@ -87,7 +87,7 @@
           <li><a href="../mmedu.html">MMEdu入门</a> &raquo;</li>
       <li>MMEdu安装和下载</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/mmedu/installation.md.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/mmedu/installation.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -107,26 +107,48 @@
 <h2>2.基础版安装：一键安装包<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <p>为方便中小学教学，MMEdu团队提供了一键安装包。只要下载并解压MMEdu的Project文件，即可直接使用。</p>
 <p>第一步：下载MMEdu最新版文件，并解压到本地，文件夹目录结构如下图所示。</p>
-<p><img alt="avatar" src="../build/html/_static/MMEDU%E5%AE%89%E8%A3%85%E5%9B%BE1.png" /></p>
+<figure class="align-default" id="id8">
+<img alt="image" src="../_images/MMEDU安装图1.png" />
+<figcaption>
+<p><span class="caption-text">image</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
 <p>图1 目录结构图</p>
-<p>​	1）下载方式一</p>
-<p>飞书网盘： https://p6bm2if73b.feishu.cn/drive/folder/fldcnfDtXSQx0PDuUGLWZlnVO3g</p>
-<p>​	2）下载方式二</p>
-<p>百度网盘：https://pan.baidu.com/s/19lu12-T2GF_PiI3hMbtX-g?pwd=2022</p>
-<p>​       提取码：2022</p>
+<p>​ 1）下载方式一</p>
+<p>飞书网盘：
+<a class="reference external" href="https://p6bm2if73b.feishu.cn/drive/folder/fldcnfDtXSQx0PDuUGLWZlnVO3g">https://p6bm2if73b.feishu.cn/drive/folder/fldcnfDtXSQx0PDuUGLWZlnVO3g</a></p>
+<p>​ 2）下载方式二</p>
+<p>百度网盘：<a class="reference external" href="https://pan.baidu.com/s/19lu12-T2GF_PiI3hMbtX-g?pwd=2022">https://pan.baidu.com/s/19lu12-T2GF_PiI3hMbtX-g?pwd=2022</a></p>
+<p>​ 提取码：2022</p>
 <p>第二步：运行根目录的“steup.bat”文件，完成环境部署（如下图所示）。</p>
-<p><img alt="avatar" src="../build/html/_static/MMEDU%E5%AE%89%E8%A3%85%E5%9B%BE2.png" /></p>
+<figure class="align-default" id="id9">
+<img alt="image" src="../_images/MMEDU安装图2.png" />
+<figcaption>
+<p><span class="caption-text">image</span><a class="headerlink" href="#id9" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
 <p>图2 环境部署界面</p>
 <p>第三步：您可以根据个人喜好，选择自己习惯的IDE。</p>
 <p>1）使用MMEdu自带的Pyzo。</p>
 <p>Pyzo是一款好用的Python轻量级IDE。其最突出的两个特点便是是简洁性和交互性。打开根目录下的pyzo.exe文件快捷方式即可打开pyzo，其指向“Tools”中的“pyzo.exe”。使用Pyzo打开“demo”文件夹中的py文件，如“cls_demo.py”，点击“运行”的“将文件作为脚本运行”即可运行代码，界面如下图所示。</p>
-<p><img alt="avatar" src="../build/html/_static/MMEDU%E5%AE%89%E8%A3%85%E5%9B%BE3.png" /></p>
+<figure class="align-default" id="id10">
+<img alt="image" src="../_images/MMEDU安装图3.png" />
+<figcaption>
+<p><span class="caption-text">image</span><a class="headerlink" href="#id10" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
 <p>图3 Pyzo界面图</p>
 <p>2）使用MMEdu自带的Jupyter。</p>
-<p>Jupyter Notebook是基于网页的用于交互计算的应用程序。其可被应用于全过程计算：开发、文档编写、运行代码和展示结果。它相对简单，对用户也更加友好，适合初学者。打开根目录下的“run_jupyter.bat”，即自动启动浏览器并显示界面，如下图所示。</p>
-<p><img alt="avatar" src="../build/html/_static/MMEDU%E5%AE%89%E8%A3%85%E5%9B%BE4.png" />图4 jupyter界面图</p>
+<p>Jupyter
+Notebook是基于网页的用于交互计算的应用程序。其可被应用于全过程计算：开发、文档编写、运行代码和展示结果。它相对简单，对用户也更加友好，适合初学者。打开根目录下的“run_jupyter.bat”，即自动启动浏览器并显示界面，如下图所示。</p>
+<p><img alt="image" src="../_images/MMEDU安装图4.png" />图4 jupyter界面图</p>
 <p>使用常用工具栏对代码进行操作，如“运行”，可以在单元格中编写文本或者代码（如下图中写了<code class="docutils literal notranslate"><span class="pre">print(&quot;hello&quot;)</span></code>代码的位置），执行代码的结果也将会在每个单元下方呈现。可以逐个运行单元格，每点击一次，仅运行一个单元格。单元格左侧[*]内的星号变为数字，表示该单元格运行完成。此时可打开“demo”文件夹中的ipynb文件，如“cls_notebook.ipynb”。</p>
-<p><img alt="avatar" src="../build/html/_static/MMEDU%E5%AE%89%E8%A3%85%E5%9B%BE5.png" /></p>
+<figure class="align-default" id="id11">
+<img alt="image" src="../_images/MMEDU安装图5.png" />
+<figcaption>
+<p><span class="caption-text">image</span><a class="headerlink" href="#id11" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
 <p>图5 jupyter运行界面</p>
 <p>3）使用其他IDE。</p>
 <p>如果您需要使用其他IDE，那么需要您自己配置Python编译器，配置方法如下。</p>
@@ -134,8 +156,14 @@
 <li><p>配置环境路径</p></li>
 </ul>
 <p>①打开您的IDE，如PyCharm、Thonny等。</p>
-<p>②配置Python编译器，路径为解压路径下的“MMEdu”文件夹下的“mmedu”文件夹中的“python.exe”文件。 PyCharm环境路径配置如下图所示。</p>
-<p><img alt="avatar" src="../build/html/_static/MMEDU%E5%AE%89%E8%A3%85%E5%9B%BE6.png" /></p>
+<p>②配置Python编译器，路径为解压路径下的“MMEdu”文件夹下的“mmedu”文件夹中的“python.exe”文件。
+PyCharm环境路径配置如下图所示。</p>
+<figure class="align-default" id="id12">
+<img alt="image" src="../_images/MMEDU安装图6.png" />
+<figcaption>
+<p><span class="caption-text">image</span><a class="headerlink" href="#id12" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
 <p>图6 PyCharm的环境路径配置界面</p>
 <ul class="simple">
 <li><p>执行demo文件</p></li>
@@ -146,12 +174,12 @@
 <h2>3.标准版安装：pip安装<a class="headerlink" href="#pip" title="Permalink to this headline"></a></h2>
 <section id="id3">
 <h3>1）安装须知<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">python</span><span class="o">==</span><span class="m">3</span>.9.7 
-<span class="nv">numpy</span><span class="o">==</span><span class="m">1</span>.22.2 
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">python</span><span class="o">==</span><span class="m">3</span>.9.7
+<span class="nv">numpy</span><span class="o">==</span><span class="m">1</span>.22.2
 <span class="nv">torch</span><span class="o">==</span><span class="m">1</span>.8.1+cu101 <span class="c1"># cpu环境只需保证torch==1.8.1</span>
-<span class="nv">torchvision</span><span class="o">==</span><span class="m">0</span>.9.1 
+<span class="nv">torchvision</span><span class="o">==</span><span class="m">0</span>.9.1
 <span class="nv">torchaudio</span><span class="o">==</span><span class="m">0</span>.8.1
-mmcv-full<span class="o">==</span><span class="m">1</span>.4.5 
+mmcv-full<span class="o">==</span><span class="m">1</span>.4.5
 <span class="nv">mmcls</span><span class="o">=</span><span class="m">0</span>.20.1
 <span class="nv">mmdet</span><span class="o">==</span><span class="m">2</span>.21.0
 <span class="nv">mmpose</span><span class="o">==</span><span class="m">0</span>.23.0
@@ -163,12 +191,16 @@ mmcv-full<span class="o">==</span><span class="m">1</span>.4.5
 <ul class="simple">
 <li><p><strong>安装python</strong></p></li>
 </ul>
-<p>下载python，版本号3.9.7，勾选“Add Python 3.9 to PATH”将Python编辑器加入系统环境变量，完成安装。</p>
+<p>下载python，版本号3.9.7，勾选“Add Python 3.9 to
+PATH”将Python编辑器加入系统环境变量，完成安装。</p>
 <ul class="simple">
 <li><p><strong>安装anaconda</strong></p></li>
 </ul>
-<p>anaconda是一个python的发行版，包括了python和很多常见的软件库, 和一个包管理器conda，我们后续可以在conda中创建一个新的虚拟环境来方便我们后续的包管理。可在<a class="reference external" href="https://security.feishu.cn/link/safety?target=https%3A%2F%2Fmirrors.tuna.tsinghua.edu.cn%2Fanaconda%2Farchive%2F&amp;scene=ccm&amp;logParams=%7B%22location%22%3A%22ccm_drive%22%7D&amp;lang=zh-CN">清华anaconda镜像源</a>下载anaconda的安装包进行安装。</p>
-<p>安装时注意勾选“Add Anaconda to the system PATH environment variable”将安装路径自动添加系统环境变量和“Register Anaconda as the system Python3.9”默认使用python的版本。</p>
+<p>anaconda是一个python的发行版，包括了python和很多常见的软件库,
+和一个包管理器conda，我们后续可以在conda中创建一个新的虚拟环境来方便我们后续的包管理。可在<a class="reference external" href="https://security.feishu.cn/link/safety?target=https%3A%2F%2Fmirrors.tuna.tsinghua.edu.cn%2Fanaconda%2Farchive%2F&amp;scene=ccm&amp;logParams=%7B%22location%22%3A%22ccm_drive%22%7D&amp;lang=zh-CN">清华anaconda镜像源</a>下载anaconda的安装包进行安装。</p>
+<p>安装时注意勾选“Add Anaconda to the system PATH environment
+variable”将安装路径自动添加系统环境变量和“Register Anaconda as the
+system Python3.9”默认使用python的版本。</p>
 <ul class="simple">
 <li><p><strong>配置虚拟环境</strong></p></li>
 </ul>
@@ -213,16 +245,16 @@ mmcv-full<span class="o">==</span><span class="m">1</span>.4.5
 <ul class="simple">
 <li><p><strong>安装git</strong></p></li>
 </ul>
-<p>下载链接：https://git-scm.com/download/win</p>
+<p>下载链接：<a class="reference external" href="https://git-scm.com/download/win">https://git-scm.com/download/win</a></p>
 <ul class="simple">
 <li><p><strong>安装mmcls</strong></p></li>
 </ul>
 <p>新建文件夹，克隆mmclassification代码库。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="o">--</span><span class="n">branch</span> <span class="n">v0</span><span class="mf">.21.0</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="nb">open</span><span class="o">-</span><span class="n">mmlab</span><span class="o">/</span><span class="n">mmclassification</span><span class="o">.</span><span class="n">git</span> 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="o">--</span><span class="n">branch</span> <span class="n">v0</span><span class="mf">.21.0</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="nb">open</span><span class="o">-</span><span class="n">mmlab</span><span class="o">/</span><span class="n">mmclassification</span><span class="o">.</span><span class="n">git</span>
 </pre></div>
 </div>
 <p>复制克隆下来的代码文件夹路径，使用cd命令切换到文件路径。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">mmclassification</span> 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">mmclassification</span>
 </pre></div>
 </div>
 <p>安装。</p>
@@ -233,7 +265,7 @@ mmcv-full<span class="o">==</span><span class="m">1</span>.4.5
 <li><p><strong>安装mmdet</strong></p></li>
 </ul>
 <p>新建文件夹，克隆mmdetection代码库。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="o">--</span><span class="n">branch</span> <span class="n">v2</span><span class="mf">.21.0</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="nb">open</span><span class="o">-</span><span class="n">mmlab</span><span class="o">/</span><span class="n">mmdetection</span><span class="o">.</span><span class="n">git</span> 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="o">--</span><span class="n">branch</span> <span class="n">v2</span><span class="mf">.21.0</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="nb">open</span><span class="o">-</span><span class="n">mmlab</span><span class="o">/</span><span class="n">mmdetection</span><span class="o">.</span><span class="n">git</span>
 </pre></div>
 </div>
 <p>复制克隆下来的代码文件夹路径，使用cd命令切换到文件路径。</p>
@@ -246,7 +278,7 @@ mmcv-full<span class="o">==</span><span class="m">1</span>.4.5
 </div>
 <p>注：若遇“ERROR: Failed cleaning build dir for pycocotools”</p>
 <p>解决方式：安装visual studio installer（版本高于2015即可）</p>
-<p>下载地址：https://visualstudio.microsoft.com/zh-hans/thank-you-downloading-visual-studio/?sku=Community&amp;channel=Release&amp;version=VS2022&amp;source=VSLandingPage&amp;cid=2030&amp;passive=false</p>
+<p>下载地址：<a class="reference external" href="https://visualstudio.microsoft.com/zh-hans/thank-you-downloading-visual-studio/?sku=Community&amp;channel=Release&amp;version=VS2022&amp;source=VSLandingPage&amp;cid=2030&amp;passive=false">https://visualstudio.microsoft.com/zh-hans/thank-you-downloading-visual-studio/?sku=Community&amp;channel=Release&amp;version=VS2022&amp;source=VSLandingPage&amp;cid=2030&amp;passive=false</a></p>
 <p>安装时勾选工作负荷-桌面应用和移动应用-使用C++的桌面开发，安装完成后再次启动mmdet安装。</p>
 <ul class="simple">
 <li><p><strong>安装其他模块</strong></p></li>
@@ -259,7 +291,12 @@ mmcv-full<span class="o">==</span><span class="m">1</span>.4.5
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="nb">list</span>
 </pre></div>
 </div>
-<p><img alt="avatar" src="../build/html/_static/MMEDU%E5%AE%89%E8%A3%85%E5%9B%BE7.png" /></p>
+<figure class="align-default" id="id13">
+<img alt="image" src="../_images/MMEDU安装图7.png" />
+<figcaption>
+<p><span class="caption-text">image</span><a class="headerlink" href="#id13" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
 <p>图7 安装列表</p>
 </section>
 </section>
