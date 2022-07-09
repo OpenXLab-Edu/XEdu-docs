@@ -35,9 +35,7 @@ https://p6bm2if73b.feishu.cn/drive/folder/fldcnfDtXSQx0PDuUGLWZlnVO3g
 第二步：运行根目录的“steup.bat”文件，完成环境部署（如下图所示）。
 
 .. figure:: ../../build/html/_static/MMEDU安装图2.png
-   :alt: image
 
-   image
 
 图2 环境部署界面
 
