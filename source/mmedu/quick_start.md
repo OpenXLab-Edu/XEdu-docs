@@ -14,7 +14,7 @@ GitHub：https://github.com/OpenXLab-Edu/OpenMMLab-Edu
 
 第一步：下载MMEdu最新版文件，并解压到本地，文件夹目录结构如下图所示。
 
-![image](D:\XEdu-docs\build\html\_static\MMEDU安装图1.png) 
+![image](../../build/html/_static/MMEDU安装图1.png) 
 
 图1 目录结构图
 
@@ -30,7 +30,7 @@ GitHub：https://github.com/OpenXLab-Edu/OpenMMLab-Edu
 
 第二步：运行根目录的“steup.bat”文件，完成环境部署（如下图所示）。
 
-![image](D:\XEdu-docs\build\html\_static\MMEDU安装图2.png)
+![image](../../build/html/_static/MMEDU安装图2.png)
 
 图2 环境部署界面
 
