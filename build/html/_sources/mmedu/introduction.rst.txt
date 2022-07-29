@@ -334,6 +334,7 @@ COCO数据集的标注信息存储在“annotations”文件夹中的\ ``json``\
    import numpy as np
    import glob
    import PIL.Image
+   from PIL import ImageDraw
    from shapely.geometry import Polygon
 
    class labelme2coco(object):
@@ -346,7 +347,7 @@ COCO数据集的标注信息存储在“annotations”文件夹中的\ ``json``\
            self.save_json_path = save_json_path
            self.annotations = []
            self.images = []
-           self.categories = [{'supercategory': None, 'id': 1, 'name': 'plate'}]
+           self.categories = [{'supercategory': None, 'id': 1, 'name': 'cat'},{'supercategory': None, 'id': 2, 'name': 'dog'}] # 指定标注的类别
            self.label = []
            self.annID = 1
            self.height = 0
@@ -371,11 +372,13 @@ COCO数据集的标注信息存储在“annotations”文件夹中的\ ``json``\
            for num, json_file in enumerate(self.labelme_json):
                with open(json_file, 'r') as fp:
                    data = json.load(fp)  # 加载json文件
-                   self.images.append(self.image(data, num)) # 读取所有图片标注信息并加入images数组
+                   self.images.append(self.image(data, num)) # 读取所有图像标注信息并加入images数组
                    for shapes in data['shapes']:
                        label = shapes['label']
                        points = shapes['points']
-                       # print(points)
+                       shape_type = shapes['shape_type']
+                       if shape_type == 'rectangle':
+                           points = [points[0],[points[0][0],points[1][1]],points[1],[points[1][0],points[0][1]]]     
                        self.annotations.append(self.annotation(points, label, num)) # 读取所有检测框标注信息并加入annotations数组
                        self.annID += 1
            print(self.annotations)
@@ -447,8 +450,8 @@ COCO数据集的标注信息存储在“annotations”文件夹中的\ ``json``\
            # 保存json文件
            json.dump(self.data_coco, open(self.save_json_path, 'w'), indent=4)  # 写入指定路径的json文件，indent=4 更加美观显示
 
-   labelme_json = glob.glob('D:\测试数据集\det自定义/plate/*.json')  # 获取指定目录下的json格式的文件
-   labelme2coco(labelme_json, 'D:\测试数据集\det自定义/platecoco.json'
+   labelme_json = glob.glob('picture/*.json')  # 获取指定目录下的json格式的文件
+   labelme2coco(labelme_json, 'picture/new.json') # 指定生成文件路径
 
 第四步、按照目录结构整理文件
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
