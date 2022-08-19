@@ -99,7 +99,7 @@
 <h2>简介<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p>MMDetection的主要功能：输出图片或视频中出现的多个对象名称，同时用方框框出对象所在方形区域。</p>
 <figure class="align-default">
-<img alt="../_images/image-20220408192155931.png" src="../_images/image-20220408192155931.png" />
+<img alt="../build/html/_static/image-20220408192155931.png" src="../build/html/_static/image-20220408192155931.png" />
 </figure>
 <p>其支持的SOTA模型有FasterRCNN、Yolov3等。</p>
 </section>
@@ -124,7 +124,7 @@
 </div>
 <p>运行结果如图：</p>
 <figure class="align-default">
-<img alt="../_images/image-20220408191108835.png" src="../_images/image-20220408191108835.png" />
+<img alt="../build/html/_static/image-20220408191108835.png" src="../build/html/_static/image-20220408191108835.png" />
 </figure>
 <p>推理结果图片（带标签的图片）会以原本的文件名称保存在<code class="docutils literal notranslate"><span class="pre">demo</span></code>文件夹下的<code class="docutils literal notranslate"><span class="pre">det_result</span></code>文件夹下，如果在<code class="docutils literal notranslate"><span class="pre">demo</span></code>下没有发现该文件夹，不用担心，系统会自动建立。当然，您可以自己指定保存文件夹的名称。</p>
 <p>您也可以将收集的图片放在一个文件夹下，然后指定文件夹路径进行一组图片的批量推理。如在demo文件夹下新建一个det_testIMG文件夹放图片，运行下面这段代码。</p>
@@ -182,7 +182,7 @@
 <p>在运行代码之前，您需要先拥有一个数据集，这里我们为您提供车牌检测数据集。</p>
 <p>数据集文件结构如下：</p>
 <figure class="align-default">
-<img alt="../_images/image-20220408210420560.png" src="../_images/image-20220408210420560.png" />
+<img alt="../build/html/_static/image-20220408210420560.png" src="../build/html/_static/image-20220408210420560.png" />
 </figure>
 <p><strong>coco</strong>文件夹中包含两个文件夹<code class="docutils literal notranslate"><span class="pre">annotations</span></code>和<code class="docutils literal notranslate"><span class="pre">images</span></code>，分别存储标注信息以及图片数据，每个文件夹下面有<code class="docutils literal notranslate"><span class="pre">train</span></code>和<code class="docutils literal notranslate"><span class="pre">valid</span></code>两个<code class="docutils literal notranslate"><span class="pre">json</span></code>文件。</p>
 <ul class="simple">
@@ -241,7 +241,7 @@
 默认为’None’，表示在训练过程中使用初始化权重。如果使用训练得到的模型（或预训练模型），此参数传入一个模型路径，我们的训练将基于传入的模型参数继续训练。</p>
 <p>执行上述代码之后的运行结果如下图</p>
 <figure class="align-default">
-<img alt="../_images/image-20220408211213751.png" src="../_images/image-20220408211213751.png" />
+<img alt="../build/html/_static/image-20220408211213751.png" src="../build/html/_static/image-20220408211213751.png" />
 </figure>
 <p>而在<code class="docutils literal notranslate"><span class="pre">checkpoints\det_model</span></code>文件夹中我们会发现多了两种文件，一个是<code class="docutils literal notranslate"><span class="pre">None.log.json</span></code>文件，它记录了我们模型在训练过程中的一些参数，比如说学习率<code class="docutils literal notranslate"><span class="pre">lr</span></code>，所用时间<code class="docutils literal notranslate"><span class="pre">time</span></code>，以及损失<code class="docutils literal notranslate"><span class="pre">loss</span></code>等；另一个文件是.pth文件，这个是我们在训练过程中所保存的模型。</p>
 </section>

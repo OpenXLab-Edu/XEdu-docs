@@ -120,7 +120,7 @@
 </div>
 <p>运行结果如图：</p>
 <figure class="align-default">
-<img alt="../_images/cls_result.png" src="../_images/cls_result.png" />
+<img alt="../build/html/_static/cls_result.png" src="../build/html/_static/cls_result.png" />
 </figure>
 <p>推理结果图片（带标签的图片）会以原来的文件名称保存在<code class="docutils literal notranslate"><span class="pre">demo</span></code>文件夹下的<code class="docutils literal notranslate"><span class="pre">cls_result</span></code>文件夹下，如果在<code class="docutils literal notranslate"><span class="pre">demo</span></code>下没有发现该文件夹，不用担心，系统会自动建立。当然，您可以自己指定保存文件夹的名称。</p>
 <p>您也可以将收集的图片放在一个文件夹下，然后指定文件夹路径进行一组图片的批量推理。如在demo文件夹下新建一个cls_testIMG文件夹放图片，运行下面这段代码。</p>
@@ -174,7 +174,7 @@
 <p>在运行代码之前，您需要先拥有一个数据集，这里我们为您提供经典的石头剪刀布分类数据集。</p>
 <p>数据集文件结构如下:</p>
 <figure class="align-default">
-<img alt="../_images/cls_dataset.png" src="../_images/cls_dataset.png" />
+<img alt="../build/html/_static/cls_dataset.png" src="../build/html/_static/cls_dataset.png" />
 </figure>
 <p><strong>hand_gray</strong>文件夹中包含三个图片文件夹，<code class="docutils literal notranslate"><span class="pre">test_set</span></code>,<code class="docutils literal notranslate"><span class="pre">training_set</span></code>,<code class="docutils literal notranslate"><span class="pre">val_set</span></code>分别存储测试集，训练集和验证集的图片；以及三个<code class="docutils literal notranslate"><span class="pre">txt</span></code>文件，<code class="docutils literal notranslate"><span class="pre">classes.txt</span></code>记录该数据集的类别，<code class="docutils literal notranslate"><span class="pre">test.txt</span></code>和<code class="docutils literal notranslate"><span class="pre">val.txt</span></code>分别记录测试集和验证集的图片名。</p>
 <ul class="simple">
@@ -232,7 +232,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>：指定使用的模型权重文件，默认参数为<code class="docutils literal notranslate"><span class="pre">None</span></code>，如果没有指定模型权重文件，那么我们将会使用默认的模型权重文件进行推理。</p>
 <p>执行上述代码之后的运行结果如下图：</p>
 <figure class="align-default">
-<img alt="../_images/cls_train.png" src="../_images/cls_train.png" />
+<img alt="../build/html/_static/cls_train.png" src="../build/html/_static/cls_train.png" />
 </figure>
 <p>而在<code class="docutils literal notranslate"><span class="pre">checkpoints\cls_model</span></code>文件夹中我们会发现多了两种文件，一个是<code class="docutils literal notranslate"><span class="pre">None.log.json</span></code>文件，它记录了我们模型在训练过程中的一些参数，比如说学习率<code class="docutils literal notranslate"><span class="pre">lr</span></code>，所用时间<code class="docutils literal notranslate"><span class="pre">time</span></code>，以及损失<code class="docutils literal notranslate"><span class="pre">loss</span></code>等；另一个文件是.pth文件，这个是我们在训练过程中所保存的模型。</p>
 </section>
