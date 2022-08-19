@@ -3,13 +3,13 @@
 ### 0.引入包
 
 ```python
-from MMEdu.MMBase import *
+from BaseEdu.BaseNet import *
 ```
 
 ### 1.声明模型
 
 ```python
-model = MMBase()
+model = BaseNet()
 ```
 
 ### 2.载入数据

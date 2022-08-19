@@ -14,6 +14,7 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
@@ -96,15 +97,15 @@
            <div itemprop="articleBody">
              
   <section id="mmedu">
-<h1>MMEdu安装和下载<a class="headerlink" href="#mmedu" title="Permalink to this headline"></a></h1>
+<h1>MMEdu安装和下载<a class="headerlink" href="#mmedu" title="Permalink to this heading"></a></h1>
 <section id="id1">
-<h2>1.安装方式介绍<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<h2>1.安装方式介绍<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p>MMEdu有两个版本，分别是：基础版和标准版。</p>
 <p>基础版提供快捷安装，即一键安装包。本版本集成了MMClassification（图像分类）和MMDetection（物体检测）两个模块，采用CPU训练（不需要GPU环境）。</p>
 <p>标准版对算力要求较高，建议装在有英伟达显卡的电脑上，安装方式有pip安装和容器镜像安装两种。本版本集成了MMClassification（图像分类）、MMDetection（物体检测）、MMEditing（图像编辑）等模块，需要GPU环境支持。</p>
 </section>
 <section id="id2">
-<h2>2.基础版安装：一键安装包<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<h2>2.基础版安装：一键安装包<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
 <p>为方便中小学教学，MMEdu团队提供了一键安装包。只要下载并解压MMEdu的Project文件，即可直接使用。</p>
 <p>第一步：下载MMEdu最新版文件，并解压到本地，文件夹目录结构如下图所示。</p>
 <figure class="align-default">
@@ -162,9 +163,9 @@ PyCharm环境路径配置如下图所示。</p>
 <p>用IDE打开解压路径下的py文件，如“cls_demo.py”，点击“运行”。运行效果应和pyzo一样。</p>
 </section>
 <section id="pip">
-<h2>3.标准版安装：pip安装<a class="headerlink" href="#pip" title="Permalink to this headline"></a></h2>
+<h2>3.标准版安装：pip安装<a class="headerlink" href="#pip" title="Permalink to this heading"></a></h2>
 <section id="id3">
-<h3>1）安装须知<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<h3>1）安装须知<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">python</span><span class="o">==</span><span class="m">3</span>.9.7
 <span class="nv">numpy</span><span class="o">==</span><span class="m">1</span>.22.2
 <span class="nv">torch</span><span class="o">==</span><span class="m">1</span>.8.1+cu101 <span class="c1"># cpu环境只需保证torch==1.8.1</span>
@@ -178,7 +179,7 @@ mmcv-full<span class="o">==</span><span class="m">1</span>.4.5
 </div>
 </section>
 <section id="id4">
-<h3>2）安装环境<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<h3>2）安装环境<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p><strong>安装python</strong></p></li>
 </ul>
@@ -205,7 +206,7 @@ system Python3.9”默认使用python的版本。</p>
 </div>
 </section>
 <section id="id5">
-<h3>3）安装相关依赖库<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<h3>3）安装相关依赖库<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
 <p>可以使用清华源进行pip安装（可以选择在本地安装，也可以激活虚拟环境在虚拟环境中安装）。</p>
 <ul class="simple">
 <li><p><strong>安装PyTorch 和 torchvision</strong></p></li>
@@ -231,7 +232,7 @@ system Python3.9”默认使用python的版本。</p>
 </div>
 </section>
 <section id="mm">
-<h3>4）安装mm模块<a class="headerlink" href="#mm" title="Permalink to this headline"></a></h3>
+<h3>4）安装mm模块<a class="headerlink" href="#mm" title="Permalink to this heading"></a></h3>
 <p>可以从GitHub上克隆mm模块的代码库并安装（同安装相关依赖库，可以选择两种方式安装）。</p>
 <ul class="simple">
 <li><p><strong>安装git</strong></p></li>
@@ -277,7 +278,7 @@ system Python3.9”默认使用python的版本。</p>
 <p>可以使用一样的安装方法安装其他模块。</p>
 </section>
 <section id="id6">
-<h3>5）查看已安装的模块<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<h3>5）查看已安装的模块<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
 <p>可通过查看已安装的模块，确认是否安装成功，可使用如下命令。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="nb">list</span>
 </pre></div>
@@ -289,7 +290,7 @@ system Python3.9”默认使用python的版本。</p>
 </section>
 </section>
 <section id="id7">
-<h2>4.标准版安装：容器镜像安装<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h2>
+<h2>4.标准版安装：容器镜像安装<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h2>
 <p>敬请期待</p>
 </section>
 </section>

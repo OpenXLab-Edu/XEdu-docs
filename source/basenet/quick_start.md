@@ -2,7 +2,11 @@
 
 ## 简介
 
+BaseNet可以方便地逐层搭建神经网路，深入探究网络原理。
+
 ## 安装或者下载
+
+统一在BaseEdu下。
 
 ## 体验
 
@@ -13,13 +17,13 @@
 ### 0.引入包
 
 ```python
-from MMEdu.MMBase import *
+from BaseEdu.BaseNet import *
 ```
 
 ### 1.声明模型
 
 ```python
-model = MMBase()
+model = BaseNet()
 ```
 
 ### 2.载入数据
