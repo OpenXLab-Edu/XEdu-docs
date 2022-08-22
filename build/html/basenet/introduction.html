@@ -14,7 +14,6 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
@@ -100,21 +99,21 @@
            <div itemprop="articleBody">
              
   <section id="basenet">
-<h1>BaseNet功能详解<a class="headerlink" href="#basenet" title="Permalink to this heading"></a></h1>
+<h1>BaseNet功能详解<a class="headerlink" href="#basenet" title="Permalink to this headline"></a></h1>
 <section id="id1">
-<h2>0.引入包<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<h2>0.引入包<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseEdu.BaseNet</span> <span class="kn">import</span> <span class="o">*</span>
 </pre></div>
 </div>
 </section>
 <section id="id2">
-<h2>1.声明模型<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<h2>1.声明模型<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">BaseNet</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
 <section id="id3">
-<h2>2.载入数据<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<h2>2.载入数据<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
 <p>此处采用lvis鸢尾花数据集作为示例。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 训练数据</span>
 <span class="n">train_path</span> <span class="o">=</span> <span class="s1">&#39;../dataset/iris/iris_training.csv&#39;</span> 
@@ -130,7 +129,7 @@
 </div>
 </section>
 <section id="id4">
-<h2>3.搭建模型<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<h2>3.搭建模型<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
 <p>逐层添加，搭建起模型结构。注释标明了数据经过各层的尺寸变化。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1"># [120, 10]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1"># [120, 5]</span>
@@ -140,14 +139,14 @@
 <p>以上使用<code class="docutils literal notranslate"><span class="pre">add()</span></code>方法添加层，参数<code class="docutils literal notranslate"><span class="pre">layer='Linear'</span></code>表示添加的层是线性层，<code class="docutils literal notranslate"><span class="pre">size=(4,10)</span></code>表示该层输入维度为4，输出维度为10，<code class="docutils literal notranslate"><span class="pre">activation='ReLU'</span></code>表示使用ReLU激活函数。更详细<code class="docutils literal notranslate"><span class="pre">add()</span></code>方法使用可见附录1。</p>
 </section>
 <section id="id5">
-<h2>4.模型训练<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<h2>4.模型训练<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
 <p>模型训练可以采用以下函数：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>参数lr为学习率， epochs为训练轮数，checkpoint为现有模型路径，当使用checkpoint参数时，模型基于一个已有的模型继续训练，不使用checkpoint参数时，模型从零开始训练。</p>
 <section id="id6">
-<h3>4.1正常训练<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<h3>4.1正常训练<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">MMBase</span><span class="p">()</span> 
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1"># [120, 10]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1"># [120, 5]</span>
@@ -160,7 +159,7 @@
 <p>model.save_fold表示训练出的模型文件保存的文件夹。</p>
 </section>
 <section id="id7">
-<h3>4.2 继续训练<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
+<h3>4.2 继续训练<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">MMBase</span><span class="p">()</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;checkpoints&#39;</span>
@@ -171,7 +170,7 @@
 </section>
 </section>
 <section id="id8">
-<h2>5.使用现有模型直接推理<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h2>
+<h2>5.使用现有模型直接推理<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h2>
 <p>可使用以下函数进行推理：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">test_x</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">)</span>
 </pre></div>
@@ -186,7 +185,7 @@
 </div>
 </section>
 <section id="id9">
-<h2>6.输出推理结果<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h2>
+<h2>6.输出推理结果<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">test_x</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -197,7 +196,7 @@
 <p>输出结果数据类型为字典，格式为{样本编号：{预测值：x，置信度：y}}。该函数调用即输出，但也有返回值。</p>
 </section>
 <section id="id10">
-<h2>7.模型的保存与加载<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h2>
+<h2>7.模型的保存与加载<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 保存</span>
 <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;mmbase_net.pkl&quot;</span><span class="p">)</span>
 <span class="c1"># 加载</span>
@@ -208,7 +207,7 @@
 <p>注：train()，inference()函数中也可通过参数控制模型的保存与加载，但这里也列出单独保存与加载模型的方法，以确保灵活性。</p>
 </section>
 <section id="id11">
-<h2>8.查看模型结构<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h2>
+<h2>8.查看模型结构<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">print_model</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -216,9 +215,9 @@
 <p>完整测试用例可见mmbase_demo.py文件。</p>
 </section>
 <section id="id12">
-<h2>附录<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h2>
+<h2>附录<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h2>
 <section id="add">
-<h3>1. add()详细介绍<a class="headerlink" href="#add" title="Permalink to this heading"></a></h3>
+<h3>1. add()详细介绍<a class="headerlink" href="#add" title="Permalink to this headline"></a></h3>
 <p>此处以典型的LeNet5网络结构为例。注释标明了数据经过各层的尺寸变化。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Conv2D&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span><span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="c1"># [100, 3, 18, 18]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;MaxPool&#39;</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1"># [100, 3, 9, 9]</span>

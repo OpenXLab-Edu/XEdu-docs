@@ -14,7 +14,6 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -95,18 +94,18 @@
            <div itemprop="articleBody">
              
   <section id="mobilenet">
-<h1>图片分类模型MobileNet<a class="headerlink" href="#mobilenet" title="Permalink to this heading"></a></h1>
+<h1>图片分类模型MobileNet<a class="headerlink" href="#mobilenet" title="Permalink to this headline"></a></h1>
 <p><a class="reference external" href="https://arxiv.org/abs/1801.04381">MobileNetV2: Inverted Residuals and Linear
 Bottlenecks</a></p>
 <section id="id1">
-<h2>介绍<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<h2>介绍<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <p>MobileNetV2是Google对MobileNetV1提出的改良版本。MobileNets系列的本身初衷是”
 <strong>for Mobile Vision
 Applications</strong>”。也就是提出一个轻量化的卷积网络模型，可以显著减少计算量和参数量，同时保持较高的准确率来提升效率，这样的模型是如此的的轻量化甚至可以在移动模型上进行训练。
 其主要创新性是采用了<strong>深度可分离卷积</strong>的思想，也就是把标准的卷积过程拆分成<strong>深度卷积</strong>和<strong>逐层卷积</strong>两个过程，大大减少了参数量。</p>
 </section>
 <section id="id2">
-<h2>特点：深度可分离卷积<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<h2>特点：深度可分离卷积<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <p>传统的标准卷积操作在M通道图像的基础上，准备得到N个特征图，使用的基础卷积核尺寸为<span class="math notranslate nohighlight">\((W \cdot H)\)</span>。
 每一个特征图对应一个filter，需要用M个小卷积核进行卷积，即每一个filter为<span class="math notranslate nohighlight">\((W \cdot H \cdot M)\)</span>个参数，而这样的操作重复N次，就得到了N个特征图，即总参数为<span class="math notranslate nohighlight">\((W \cdot H \cdot M \cdot N)\)</span>。</p>
 <figure class="align-default">
@@ -133,7 +132,7 @@ Applications</strong>”。也就是提出一个轻量化的卷积网络模型�
 </figure>
 </section>
 <section id="linear-bottleneck">
-<h2>特点：Linear Bottleneck<a class="headerlink" href="#linear-bottleneck" title="Permalink to this heading"></a></h2>
+<h2>特点：Linear Bottleneck<a class="headerlink" href="#linear-bottleneck" title="Permalink to this headline"></a></h2>
 <p>MobileNetV1使用的激活函数为Relu，这个函数也是深度学习常用的激活函数之一。在MobileNetV2原始论文中，MobileNet团队指出，这个激活函数在较低维度无法保证信息的相对完整，会造成一定程度的丢失，下面这个例子有助于理解：
 有一条螺旋线<span class="math notranslate nohighlight">\(X\)</span>在二维空间内，我们使用某矩阵<span class="math notranslate nohighlight">\(T\)</span>将其映射到高维空间内，之后进行Relu操作，再使用某矩阵<span class="math notranslate nohighlight">\(T\)</span>的逆矩阵<span class="math notranslate nohighlight">\(T^{-1}\)</span>将其降维回二维。也就是说进行了一个：</p>
 <div class="math notranslate nohighlight">
@@ -147,7 +146,7 @@ Applications</strong>”。也就是提出一个轻量化的卷积网络模型�
 Bottleneck”。此部分的细节我们不做深入阐述，这一步的作用就是给原网络升维，从而避免了很多卷积核的死亡。</p>
 </section>
 <section id="id3">
-<h2>网络结构<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<h2>网络结构<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
 <p>至此我们给出网络结构：</p>
 <figure class="align-default">
 <img alt="build/html/_static/v2网络结构.PNG" src="build/html/_static/v2网络结构.PNG" />
@@ -156,19 +155,19 @@ Bottleneck”。此部分的细节我们不做深入阐述，这一步的作用�
 1x1）。网络结构肉眼可见的简洁和清晰，而效果也不俗。</p>
 </section>
 <section id="id4">
-<h2>优点<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<h2>优点<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
 <p>总结一下优点，最大的优点就是创新性的可分离卷积带来的大量参数减少，从而导致网络的轻量化。此外，V2比起V1，还增加了Linear
 Bottleneck机制来避免卷积核的死亡，从而提高参数利用率。</p>
 </section>
 <section id="id5">
-<h2>使用领域<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<h2>使用领域<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p>算力相对较低的移动平台的模型部署</p></li>
 <li><p>减少大型项目的运行时间同时保留较高的准确率</p></li>
 </ul>
 </section>
 <section id="id6">
-<h2>参考文献<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h2>
+<h2>参考文献<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h2>
 <div class="highlight-bibtex notranslate"><div class="highlight"><pre><span></span><span class="nc">@misc</span><span class="p">{</span><span class="nl">howard2017mobilenets</span><span class="p">,</span><span class="w"></span>
 <span class="w">      </span><span class="na">title</span><span class="p">=</span><span class="s">{MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications}</span><span class="p">,</span><span class="w"></span>
 <span class="w">      </span><span class="na">author</span><span class="p">=</span><span class="s">{Andrew G. Howard and Menglong Zhu and Bo Chen and Dmitry Kalenichenko and Weijun Wang and Tobias Weyand and Marco Andreetto and Hartwig Adam}</span><span class="p">,</span><span class="w"></span>

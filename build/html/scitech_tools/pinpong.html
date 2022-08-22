@@ -14,7 +14,6 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
@@ -96,15 +95,15 @@
            <div itemprop="articleBody">
              
   <section id="pinpong">
-<h1>开源硬件库pinpong简介<a class="headerlink" href="#pinpong" title="Permalink to this heading"></a></h1>
+<h1>开源硬件库pinpong简介<a class="headerlink" href="#pinpong" title="Permalink to this headline"></a></h1>
 <section id="id1">
-<h2>1.简介<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<h2>1.简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <p>pinpong库是一个基于Firmata协议开发的Python硬件控制库。借助于pinpong库，直接用Python代码就能给各种常见的开源硬件编程，即使该硬件并不支持Python。</p>
 <p>pinpong库的原理是给开源硬件烧录一个特定的固件，使其可以通过串口与电脑通讯，执行各种命令。pinpong库的名称由“Pin”和“Pong”组成，“Pin”指引脚，“pinpong”为“乒乓球”的谐音，指信号的往复。目前pinpong库支持Arduino、掌控板、micro:bit等开源硬件，同时支持虚谷号、树莓派和拿铁熊猫等。</p>
 <p>github地址：<a class="reference external" href="https://github.com/DFRobot/pinpong-docs">https://github.com/DFRobot/pinpong-docs</a></p>
 </section>
 <section id="id2">
-<h2>2.安装<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<h2>2.安装<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <p>可以使用使用pip命令安装pinpong库，如：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pinpong</span>
 </pre></div>
@@ -112,10 +111,10 @@
 <p>注：MMEdu中已经内置了pinpong库。</p>
 </section>
 <section id="id3">
-<h2>3.代码示例<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<h2>3.代码示例<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
 <p>示例程序以“Arduino”为例，复制粘贴代码到python编辑器中，并修改Board初始化版型参数为你使用的板子型号即可。</p>
 <section id="id4">
-<h3>3.1 数字输出<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<h3>3.1 数字输出<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
 <p>实验效果：控制arduino UNO板载LED灯一秒闪烁一次。</p>
 <p>接线：使用windows或linux电脑连接一块arduino主控板。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
@@ -141,7 +140,7 @@
 </div>
 </section>
 <section id="id5">
-<h3>3.2 数字输入<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<h3>3.2 数字输入<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
 <p>实验效果：使用按钮控制arduino UNO板载亮灭。</p>
 <p>接线：使用windows或linux电脑连接一块arduino主控板，主控板D8接一个按钮模块。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
@@ -163,7 +162,7 @@
 </div>
 </section>
 <section id="id6">
-<h3>3.3 模拟输入<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<h3>3.3 模拟输入<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
 <p>实验效果：打印UNO板A0口模拟值。</p>
 <p>接线：使用windows或linux电脑连接一块arduino主控板，主控板A0接一个旋钮模块。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
@@ -183,7 +182,7 @@
 </div>
 </section>
 <section id="id7">
-<h3>3.4 模拟输出<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
+<h3>3.4 模拟输出<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
 <p>实验效果： PWM输出实验,控制LED灯亮度变化。</p>
 <p>接线：使用windows或linux电脑连接一块arduino主板，LED灯接到D6引脚上。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
@@ -204,7 +203,7 @@
 </div>
 </section>
 <section id="id8">
-<h3>3.5 引脚中断<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
+<h3>3.5 引脚中断<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
 <p>实验效果：引脚模拟中断功能测试。</p>
 <p>接线：使用windows或linux电脑连接一块arduino主控板，主控板D8接一个按钮模块。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
@@ -239,7 +238,7 @@
 </section>
 </section>
 <section id="id9">
-<h2>4. 借助pinpong开发智能作品<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h2>
+<h2>4. 借助pinpong开发智能作品<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h2>
 <p>开源硬件是创客的神器，而pinpong进一步降低了开源硬件的编程门槛。pinpong库的设计，是为了让开发者在开发过程中不用被繁杂的硬件型号束缚，而将重点转移到软件的实现。哪怕程序编写初期用Arduino开发，部署时改成了掌控板，只要修改一下硬件的参数就能正常运行，实现了“一次编写处处运行”。</p>
 <p>当学生训练出一个AI模型，就可以通过各种硬件设备进行多模态交互。当学生训练出一个简单猫狗分类模型后，加上一个舵机，就能实现智能宠物“门禁”；加上一个马达，就能做出一个智能宠物驱逐器；加上一条快门线，就能做宠物自动拍照设备。有多少创意，就能实现多少与众不同的作品。</p>
 </section>

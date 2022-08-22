@@ -76,145 +76,163 @@ Jupyter Notebook是基于网页的用于交互计算的应用程序。其可被�
 
 ## 3.标准版安装：pip安装
 
-### 1）安装须知
+### 1.准备工作
 
-```shell
-python==3.9.7 
-numpy==1.22.2 
-torch==1.8.1+cu101 # cpu环境只需保证torch==1.8.1
-torchvision==0.9.1 
-torchaudio==0.8.1
-mmcv-full==1.4.5 
-mmcls=0.20.1
-mmdet==2.21.0
-mmpose==0.23.0
+#### 1.1安装Anaconda
+
+若您已经安装好conda，该步骤可跳过。
+
+**下载**
+
+首先打开Anaconda官网：https://www.anaconda.com/
+
+点击`Download`开始下载，下载完成后得到exe文件。
+
+**安装**
+
+双击exe文件即可开始安装（一般下载完成后会自动打开安装界面无需点击exe文件，若没有自动打开安装页面再点击此exe文件）。
+
+打开安装界面后，依次选择`Next` ->`I Agree` -> `All Users` ->`Next`->`Next` ->`Add Anaconda3 to the system PATH environment variable` -> `Install` ->`Next` ->`Next` ->`Finish`
+
+
+
+#### 1.2安装python编辑器
+
+若您已经安装好合适的python编辑器，该步骤可跳过。
+
+此处以安装Thonny为例，其他编辑器例如Pycharm，VScode等也支持，用户自行配置好Python编译器即可。
+
+**下载**
+
+首先打开Thonny官网：https://thonny.org/
+
+右上角选择合适的操作系统点击下载，此处以windows为例
+
+**安装**
+
+双击exe文件即可开始安装（一般下载完成后会自动打开安装界面无需点击exe文件，若没有自动打开安装页面再点击此exe文件）
+
+打开安装界面后，依次选择`Install for me only` -> `Next` -> `Next` ->  `Next` -> `Next` -> `Next` -> `Install` -> `Finish`
+
+**运行**
+
+在安装好Thonny之后，在第一次运行的时候，会提示选择界面语言和初始设置，选择‘Standard’模式即可。
+
+**配置Thonny的Python解释器**
+
+点击Thonny主界面右下角的Python版本号，可以选择对应的Python解释器，第一次配置点击`Configure inter preter`，弹出的窗口中，第一个下拉栏选择`可选的python3解释器或虚拟环境`， 第二个下拉栏找到自己之前安装的anaconda环境中的python解释器位置。点击确认即可使用该python解释器。
+
+
+
+### 2.Linux安装MMEdu
+
+点击鼠标右键，打开终端。
+
+终端中输入pip install MMEdu即可安装。
+
+```powershell
+$ pip install MMEdu
 ```
 
-### 2）安装环境
+注：为避免出现版本冲突，建议新建一个conda环境，并在新环境中执行以上命令（注：要求python<3.9）。
 
-- **安装python**
-
-下载python，版本号3.9.7，勾选“Add Python 3.9 to PATH”将Python编辑器加入系统环境变量，完成安装。
-
-- **安装anaconda**
-
-anaconda是一个python的发行版，包括了python和很多常见的软件库, 和一个包管理器conda，我们后续可以在conda中创建一个新的虚拟环境来方便我们后续的包管理。可在[清华anaconda镜像源](https://security.feishu.cn/link/safety?target=https%3A%2F%2Fmirrors.tuna.tsinghua.edu.cn%2Fanaconda%2Farchive%2F&scene=ccm&logParams={"location"%3A"ccm_drive"}&lang=zh-CN)下载anaconda的安装包进行安装。
-
-安装时注意勾选“Add Anaconda to the system PATH environment variable”将安装路径自动添加系统环境变量和“Register Anaconda as the system Python3.9”默认使用python的版本。
-
-- **配置虚拟环境**
-
-打开anaconda prompt后输入：
-
-```
-conda create -n openmmlab python==3.9.7
+```powershell
+$ conda create -n your_env_name python=3.8
+$ conda activate your_env_name
+$ pip install MMEdu
 ```
 
-输入yes之后等待安装完成，然后激活你的新环境开始最后的配置：
+### 3.Windows安装MMEdu
 
-```
-conda activate openmmlab
-```
+同时按下win+r，输入cmd，回车，打开一个命令行窗口。
 
-### 3）安装相关依赖库
+在命令行中使用pip安装即可。
 
-可以使用清华源进行pip安装（可以选择在本地安装，也可以激活虚拟环境在虚拟环境中安装）。
-
-- **安装PyTorch 和 torchvision**
-
-```
-pip install torch==1.8.1 torchvision==0.9.1 -i https://pypi.tuna.tsinghua.edu.cn/simple
+```powershell
+$ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/index.html
 ```
 
-- **安装mmcv-full**
+注：为避免出现版本冲突，建议新建一个conda环境，并在新环境中执行以上命令（注：要求python<3.9）。
 
-```
-pip install mmcv-full==1.4.5 -i https://pypi.tuna.tsinghua.edu.cn/simple
-```
-
-注：如果您没有GPU加速计算，那么就安装普通版本的mmcv：
-
-```
-pip install mmcv
+```powershell
+$ conda create -n your_env_name python=3.8
+$ conda activate your_env_name
+$ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/index.html
 ```
 
-- **安装numpy**
+### 4.查看MMEdu版本
+
+打开python终端，执行以下命令即可查看MMEdu版本
+
+![image](../../build/html/_static/pip安装指南3.png)
+
+注：目前版本MMEdu仅支持CPU。
+
+### 5.卸载MMEdu库
+
+如果MMEdu库出现异常情况，可以尝试使用如下命令卸载MMEdu然后再使用install命令安装。
 
 ```
-pip install numpy==1.22.2 -i https://pypi.tuna.tsinghua.edu.cn/simple
+$ pip uninstall MMEdu
 ```
 
-### 4）安装mm模块
+# 使用示例
 
-可以从GitHub上克隆mm模块的代码库并安装（同安装相关依赖库，可以选择两种方式安装）。
+推理：
 
-- **安装git**
-
-下载链接：https://git-scm.com/download/win
-
-- **安装mmcls**
-
-新建文件夹，克隆mmclassification代码库。
-
-```
-git clone --branch v0.21.0 http://github.com/open-mmlab/mmclassification.git 
+```python
+from MMEdu import MMClassification as cls
+img = './img.png'
+model = cls(backbone='ResNet18')
+checkpoint = './latest.pth'
+class_path = './classes.txt'
+result = model.inference(image=img, show=True, class_path=class_path,checkpoint = checkpoint)
+model.print_result(result)
 ```
 
-复制克隆下来的代码文件夹路径，使用cd命令切换到文件路径。
+典型训练：
 
-```
-cd mmclassification 
-```
-
-安装。
-
-```
-pip install -e .
-```
-
-- **安装mmdet**
-
-新建文件夹，克隆mmdetection代码库。
-
-```
-git clone --branch v2.21.0 https://github.com/open-mmlab/mmdetection.git 
+```python
+from MMEdu import MMClassification as cls
+model = cls(backbone='ResNet18')
+model.num_classes = 3
+model.load_dataset(path='./dataset')
+model.save_fold = './my_model'
+model.train(epochs=10, validate=True)
 ```
 
-复制克隆下来的代码文件夹路径，使用cd命令切换到文件路径。
+继续训练：
 
-```
-cd mmdetection
-```
-
-安装。
-
-```
-pip install -v -e .
-```
-
-注：若遇“ERROR: Failed cleaning build dir for pycocotools”
-
-解决方式：安装visual studio installer（版本高于2015即可）
-
-下载地址：https://visualstudio.microsoft.com/zh-hans/thank-you-downloading-visual-studio/?sku=Community&channel=Release&version=VS2022&source=VSLandingPage&cid=2030&passive=false
-
-安装时勾选工作负荷-桌面应用和移动应用-使用C++的桌面开发，安装完成后再次启动mmdet安装。
-
-- **安装其他模块**
-
-可以使用一样的安装方法安装其他模块。
-
-### 5）查看已安装的模块
-
-可通过查看已安装的模块，确认是否安装成功，可使用如下命令。
-
-```
-pip list
+```python
+from MMEdu import MMClassification as cls
+model = cls(backbone='ResNet18')
+model.num_classes = 3
+model.load_dataset(path='./dataset')
+model.save_fold = './my_model'
+checkpoint = './latest.pth'
+model.train(epochs=10, validate=True, checkpoint=checkpoint)
 ```
 
-![image](../../build/html/_static/MMEDU安装图7.png)
+# 更多示例
 
- 图7 安装列表
+> MMEdu库安装目录下有更多示例程序，可以通过如下方法找到.
+
+1. 进入Python终端，然后依次输入如下代码即可查看Python库所在的目录（site-packages）
+
+```
+import MMEdu
+print(MMEdu.__path__)
+```
+
+![image](../../build/html/_static/pip安装指南1.png)
+
+
+
+2. 打开对应路径的文件夹，其中examples文件夹下即为所有内置的示例程序
+
+![image](../../build/html/_static/pip安装指南2.png)
+
+注意：内置examples文件夹下的案例仅供参考使用，请勿直接改写其中文件。应在用户自己的工作目录下新建文件，并参考examples中的写法。
 
 ## 4.标准版安装：容器镜像安装
 

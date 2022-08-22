@@ -14,7 +14,6 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
@@ -45,6 +44,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../mmedu.html">MMEdu入门</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="quick_start.html">MMEdu快速入门</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation.html">MMEdu安装和下载</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#id6">使用示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#id7">更多示例</a></li>
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">MMEdu模块应用详解</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">图像分类模块：MMClassification</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">简介</a></li>
@@ -94,16 +95,16 @@
            <div itemprop="articleBody">
              
   <section id="mmclassification">
-<h1>图像分类模块：MMClassification<a class="headerlink" href="#mmclassification" title="Permalink to this heading"></a></h1>
+<h1>图像分类模块：MMClassification<a class="headerlink" href="#mmclassification" title="Permalink to this headline"></a></h1>
 <section id="id1">
-<h2>简介<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<h2>简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <p>MMClassifiation的主要功能是对图像进行分类。其支持的SOTA模型有LeNet、MobileNet等。</p>
 </section>
 <section id="id2">
-<h2>使用说明<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<h2>使用说明<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <p>MMEdu中预置了“石头剪刀布”三分类的数据集，并且已经预训练了权重（路径：/checkpoints/cls_model/hand_gray/latest.pth）。在demo文件夹中，还提供了一张测试图片。</p>
 <section id="id3">
-<h3>1.模型推理<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<h3>1.模型推理<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
 <p>如果想快速上手体验MMClassification的话，我们建议您使用我们已经预训练好的模型和权重文件进行推理，提供一张图片测试推理的准确度。</p>
 <p>执行代码如下:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">base</span> <span class="c1"># 测试版需要（发布版不需要）</span>
@@ -120,7 +121,7 @@
 </div>
 <p>运行结果如图：</p>
 <figure class="align-default">
-<img alt="../build/html/_static/cls_result.png" src="../build/html/_static/cls_result.png" />
+<img alt="../_images/cls_result.png" src="../_images/cls_result.png" />
 </figure>
 <p>推理结果图片（带标签的图片）会以原来的文件名称保存在<code class="docutils literal notranslate"><span class="pre">demo</span></code>文件夹下的<code class="docutils literal notranslate"><span class="pre">cls_result</span></code>文件夹下，如果在<code class="docutils literal notranslate"><span class="pre">demo</span></code>下没有发现该文件夹，不用担心，系统会自动建立。当然，您可以自己指定保存文件夹的名称。</p>
 <p>您也可以将收集的图片放在一个文件夹下，然后指定文件夹路径进行一组图片的批量推理。如在demo文件夹下新建一个cls_testIMG文件夹放图片，运行下面这段代码。</p>
@@ -169,12 +170,12 @@
 <p><code class="docutils literal notranslate"><span class="pre">save_fold</span></code>：保存的图片名，数据结构为字符串，默认参数为<code class="docutils literal notranslate"><span class="pre">'cls_result'</span></code>，用户也可以定义为自己想要的名字。</p>
 </section>
 <section id="id4">
-<h3>2.训练模型<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<h3>2.训练模型<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
 <p>使用下面的代码即可简单体验MMClassification的训练过程，我们会为您进行详细的介绍。</p>
 <p>在运行代码之前，您需要先拥有一个数据集，这里我们为您提供经典的石头剪刀布分类数据集。</p>
 <p>数据集文件结构如下:</p>
 <figure class="align-default">
-<img alt="../build/html/_static/cls_dataset.png" src="../build/html/_static/cls_dataset.png" />
+<img alt="../_images/cls_dataset.png" src="../_images/cls_dataset.png" />
 </figure>
 <p><strong>hand_gray</strong>文件夹中包含三个图片文件夹，<code class="docutils literal notranslate"><span class="pre">test_set</span></code>,<code class="docutils literal notranslate"><span class="pre">training_set</span></code>,<code class="docutils literal notranslate"><span class="pre">val_set</span></code>分别存储测试集，训练集和验证集的图片；以及三个<code class="docutils literal notranslate"><span class="pre">txt</span></code>文件，<code class="docutils literal notranslate"><span class="pre">classes.txt</span></code>记录该数据集的类别，<code class="docutils literal notranslate"><span class="pre">test.txt</span></code>和<code class="docutils literal notranslate"><span class="pre">val.txt</span></code>分别记录测试集和验证集的图片名。</p>
 <ul class="simple">
@@ -232,12 +233,12 @@
 <p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>：指定使用的模型权重文件，默认参数为<code class="docutils literal notranslate"><span class="pre">None</span></code>，如果没有指定模型权重文件，那么我们将会使用默认的模型权重文件进行推理。</p>
 <p>执行上述代码之后的运行结果如下图：</p>
 <figure class="align-default">
-<img alt="../build/html/_static/cls_train.png" src="../build/html/_static/cls_train.png" />
+<img alt="../_images/cls_train.png" src="../_images/cls_train.png" />
 </figure>
 <p>而在<code class="docutils literal notranslate"><span class="pre">checkpoints\cls_model</span></code>文件夹中我们会发现多了两种文件，一个是<code class="docutils literal notranslate"><span class="pre">None.log.json</span></code>文件，它记录了我们模型在训练过程中的一些参数，比如说学习率<code class="docutils literal notranslate"><span class="pre">lr</span></code>，所用时间<code class="docutils literal notranslate"><span class="pre">time</span></code>，以及损失<code class="docutils literal notranslate"><span class="pre">loss</span></code>等；另一个文件是.pth文件，这个是我们在训练过程中所保存的模型。</p>
 </section>
 <section id="id5">
-<h3>3.继续训练<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<h3>3.继续训练<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
 <p>在这一步中，我们会教您加载之前训练过的模型接着训练，如果您觉得之前训练的模型epoch数不够的话或者因为一些客观原因而不得不提前结束训练，相信下面的代码会帮到您。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;LeNet&#39;</span><span class="p">)</span> <span class="c1"># 初始化实例模型</span>
 <span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">3</span> <span class="c1"># 指定数据集中的类别数量</span>
@@ -251,7 +252,7 @@
 <p>这里我们有一个参数在之前的<a class="reference external" href="####2.训练模型">训练模型</a>过程中没有详细说明，那就是<code class="docutils literal notranslate"><span class="pre">train</span></code>函数中的<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>参数，这个放到这里就比较好理解，它的意思是指定需要进行再训练的模型路径，当然你也可以根据你需要训练的不同模型而调整参数。</p>
 </section>
 <section id="sota">
-<h3>4.SOTA模型介绍<a class="headerlink" href="#sota" title="Permalink to this heading"></a></h3>
+<h3>4.SOTA模型介绍<a class="headerlink" href="#sota" title="Permalink to this headline"></a></h3>
 <p>目前MMClassifiation支持的SOTA模型有LeNet、MobileNet等，这些模型的作用和适用场景简介如下。</p>
 <ul class="simple">
 <li><p><strong>LeNet</strong></p></li>
