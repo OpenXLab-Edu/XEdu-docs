@@ -24,8 +24,7 @@ GitHub：https://github.com/OpenXLab-Edu/OpenMMLab-Edu
 
  1）下载方式一
 
-飞书网盘：
-https://p6bm2if73b.feishu.cn/drive/folder/fldcnfDtXSQx0PDuUGLWZlnVO3g
+飞书网盘：https://p6bm2if73b.feishu.cn/drive/folder/fldcnfDtXSQx0PDuUGLWZlnVO3g
 
  2）下载方式二
 

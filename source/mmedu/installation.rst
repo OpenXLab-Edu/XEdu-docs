@@ -18,16 +18,12 @@ MMEdu有两个版本，分别是：基础版和标准版。
 第一步：下载MMEdu最新版文件，并解压到本地，文件夹目录结构如下图所示。
 
 .. figure:: ../../build/html/_static/MMEDU安装图1.png
-   :alt: image
-
-   image
 
 图1 目录结构图
 
  1）下载方式一
 
-飞书网盘：
-https://p6bm2if73b.feishu.cn/drive/folder/fldcnfDtXSQx0PDuUGLWZlnVO3g
+飞书网盘：https://p6bm2if73b.feishu.cn/drive/folder/fldcnfDtXSQx0PDuUGLWZlnVO3g
 
  2）下载方式二
 
