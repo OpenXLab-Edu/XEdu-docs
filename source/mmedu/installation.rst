@@ -19,11 +19,13 @@ MMEdu有两个版本，分别是：基础版和标准版。
 
 .. figure:: ../../build/html/_static/MMEDU安装图1.png
 
+
 图1 目录结构图
 
  1）下载方式一
 
-飞书网盘：https://p6bm2if73b.feishu.cn/drive/folder/fldcnfDtXSQx0PDuUGLWZlnVO3g
+飞书网盘：
+https://p6bm2if73b.feishu.cn/drive/folder/fldcnfDtXSQx0PDuUGLWZlnVO3g
 
  2）下载方式二
 
@@ -106,7 +108,7 @@ PyCharm环境路径配置如下图所示。
 
 打开安装界面后，依次选择\ ``Next`` -> ``I Agree`` -> ``All Users`` ->
 ``Next`` -> ``Next`` ->
-``Add Anaconda3 to the system PATH environment variable`` -> 
+``Add Anaconda3 to the system PATH environment variable`` ->
 ``Install`` -> ``Next`` -> ``Next`` -> ``Finish`` 
 
 1.2安装python编辑器
@@ -183,7 +185,9 @@ PyCharm环境路径配置如下图所示。
 打开python终端，执行以下命令即可查看MMEdu版本
 
 .. figure:: ../../build/html/_static/pip安装指南3.png
+   :alt: image
 
+   image
 
 注：目前版本MMEdu仅支持CPU。
 
@@ -247,12 +251,16 @@ PyCharm环境路径配置如下图所示。
    print(MMEdu.__path__)
 
 .. figure:: ../../build/html/_static/pip安装指南1.png
+   :alt: image
 
+   image
 
 2. 打开对应路径的文件夹，其中examples文件夹下即为所有内置的示例程序
 
 .. figure:: ../../build/html/_static/pip安装指南2.png
+   :alt: image
 
+   image
 
 注意：内置examples文件夹下的案例仅供参考使用，请勿直接改写其中文件。应在用户自己的工作目录下新建文件，并参考examples中的写法。
 
