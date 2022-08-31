@@ -185,9 +185,7 @@ PyCharm环境路径配置如下图所示。
 打开python终端，执行以下命令即可查看MMEdu版本
 
 .. figure:: ../../build/html/_static/pip安装指南3.png
-   :alt: image
 
-   image
 
 注：目前版本MMEdu仅支持CPU。
 
@@ -251,16 +249,12 @@ PyCharm环境路径配置如下图所示。
    print(MMEdu.__path__)
 
 .. figure:: ../../build/html/_static/pip安装指南1.png
-   :alt: image
 
-   image
 
 2. 打开对应路径的文件夹，其中examples文件夹下即为所有内置的示例程序
 
 .. figure:: ../../build/html/_static/pip安装指南2.png
-   :alt: image
 
-   image
 
 注意：内置examples文件夹下的案例仅供参考使用，请勿直接改写其中文件。应在用户自己的工作目录下新建文件，并参考examples中的写法。
 
