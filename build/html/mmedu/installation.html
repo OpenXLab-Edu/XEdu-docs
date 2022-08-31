@@ -46,19 +46,17 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">MMEdu安装和下载</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">1.安装方式介绍</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">2.基础版安装：一键安装包</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pip">3.标准版安装：pip安装</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pip">3.完整版安装：pip安装</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id3">1.准备工作</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#linuxmmedu">2.Linux安装MMEdu</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#windowsmmedu">3.Windows安装MMEdu</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id4">4.查看MMEdu版本</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id5">5.卸载MMEdu库</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">使用示例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">更多示例</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">使用示例</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id7">更多示例</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id8">4.标准版安装：容器镜像安装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">4.完整版安装：容器镜像安装</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">MMEdu模块应用详解</a></li>
@@ -111,8 +109,11 @@
 <h2>2.基础版安装：一键安装包<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <p>为方便中小学教学，MMEdu团队提供了一键安装包。只要下载并解压MMEdu的Project文件，即可直接使用。</p>
 <p>第一步：下载MMEdu最新版文件，并解压到本地，文件夹目录结构如下图所示。</p>
-<figure class="align-default">
-<img alt="../_images/MMEDU安装图1.png" src="../_images/MMEDU安装图1.png" />
+<figure class="align-default" id="id9">
+<img alt="image" src="../_images/MMEDU安装图1.png" />
+<figcaption>
+<p><span class="caption-text">image</span><a class="headerlink" href="#id9" title="Permalink to this image"></a></p>
+</figcaption>
 </figure>
 <p>图1 目录结构图</p>
 <blockquote>
@@ -166,7 +167,7 @@ PyCharm环境路径配置如下图所示。</p>
 <p>用IDE打开解压路径下的py文件，如“cls_demo.py”，点击“运行”。运行效果应和pyzo一样。</p>
 </section>
 <section id="pip">
-<h2>3.标准版安装：pip安装<a class="headerlink" href="#pip" title="Permalink to this headline"></a></h2>
+<h2>3.完整版安装：pip安装<a class="headerlink" href="#pip" title="Permalink to this headline"></a></h2>
 <section id="id3">
 <h3>1.准备工作<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
 <section id="anaconda">
@@ -244,10 +245,8 @@ PyCharm环境路径配置如下图所示。</p>
 </pre></div>
 </div>
 </section>
-</section>
-</section>
 <section id="id6">
-<h1>使用示例<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h1>
+<h3>使用示例<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
 <p>推理：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
 <span class="n">img</span> <span class="o">=</span> <span class="s1">&#39;./img.png&#39;</span>
@@ -279,7 +278,7 @@ PyCharm环境路径配置如下图所示。</p>
 </div>
 </section>
 <section id="id7">
-<h1>更多示例<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h1>
+<h3>更多示例<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
 <blockquote>
 <div><p>MMEdu库安装目录下有更多示例程序，可以通过如下方法找到.</p>
 </div></blockquote>
@@ -300,8 +299,10 @@ PyCharm环境路径配置如下图所示。</p>
 <img alt="../_images/pip安装指南2.png" src="../_images/pip安装指南2.png" />
 </figure>
 <p>注意：内置examples文件夹下的案例仅供参考使用，请勿直接改写其中文件。应在用户自己的工作目录下新建文件，并参考examples中的写法。</p>
+</section>
+</section>
 <section id="id8">
-<h2>4.标准版安装：容器镜像安装<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h2>
+<h2>4.完整版安装：容器镜像安装<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h2>
 <p>敬请期待</p>
 </section>
 </section>

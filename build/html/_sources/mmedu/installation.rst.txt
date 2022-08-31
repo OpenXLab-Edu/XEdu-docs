@@ -18,7 +18,9 @@ MMEdu有两个版本，分别是：基础版和标准版。
 第一步：下载MMEdu最新版文件，并解压到本地，文件夹目录结构如下图所示。
 
 .. figure:: ../../build/html/_static/MMEDU安装图1.png
+   :alt: image
 
+   image
 
 图1 目录结构图
 
@@ -85,7 +87,7 @@ PyCharm环境路径配置如下图所示。
 
 用IDE打开解压路径下的py文件，如“cls_demo.py”，点击“运行”。运行效果应和pyzo一样。
 
-3.标准版安装：pip安装
+3.完整版安装：pip安装
 ---------------------
 
 1.准备工作
@@ -108,8 +110,8 @@ PyCharm环境路径配置如下图所示。
 
 打开安装界面后，依次选择\ ``Next`` -> ``I Agree`` -> ``All Users`` ->
 ``Next`` -> ``Next`` ->
-``Add Anaconda3 to the system PATH environment variable`` ->
-``Install`` -> ``Next`` -> ``Next`` -> ``Finish``
+``Add Anaconda3 to the system PATH environment variable`` -> 
+``Install`` -> ``Next`` -> ``Next`` -> ``Finish`` 
 
 1.2安装python编辑器
 ^^^^^^^^^^^^^^^^^^^
@@ -199,7 +201,7 @@ PyCharm环境路径配置如下图所示。
    $ pip uninstall MMEdu
 
 使用示例
-========
+~~~~~~~~
 
 推理：
 
@@ -237,7 +239,7 @@ PyCharm环境路径配置如下图所示。
    model.train(epochs=10, validate=True, checkpoint=checkpoint)
 
 更多示例
-========
+~~~~~~~~
 
    MMEdu库安装目录下有更多示例程序，可以通过如下方法找到.
 
@@ -258,7 +260,7 @@ PyCharm环境路径配置如下图所示。
 
 注意：内置examples文件夹下的案例仅供参考使用，请勿直接改写其中文件。应在用户自己的工作目录下新建文件，并参考examples中的写法。
 
-4.标准版安装：容器镜像安装
+4.完整版安装：容器镜像安装
 --------------------------
 
 敬请期待

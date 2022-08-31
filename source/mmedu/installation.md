@@ -74,7 +74,7 @@ Jupyter Notebook是基于网页的用于交互计算的应用程序。其可被�
 
 用IDE打开解压路径下的py文件，如“cls_demo.py”，点击“运行”。运行效果应和pyzo一样。
 
-## 3.标准版安装：pip安装
+## 3.完整版安装：pip安装
 
 ### 1.准备工作
 
@@ -176,7 +176,7 @@ $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/i
 $ pip uninstall MMEdu
 ```
 
-# 使用示例
+### 使用示例
 
 推理：
 
@@ -213,7 +213,7 @@ checkpoint = './latest.pth'
 model.train(epochs=10, validate=True, checkpoint=checkpoint)
 ```
 
-# 更多示例
+### 更多示例
 
 > MMEdu库安装目录下有更多示例程序，可以通过如下方法找到.
 
@@ -234,6 +234,6 @@ print(MMEdu.__path__)
 
 注意：内置examples文件夹下的案例仅供参考使用，请勿直接改写其中文件。应在用户自己的工作目录下新建文件，并参考examples中的写法。
 
-## 4.标准版安装：容器镜像安装
+## 4.完整版安装：容器镜像安装
 
 敬请期待
