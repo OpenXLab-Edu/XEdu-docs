@@ -1,8 +1,8 @@
-# BaseNet快速入门
+# BaseNN快速入门
 
 ## 简介
 
-BaseNet可以方便地逐层搭建神经网路，深入探究网络原理。
+BaseNN可以方便地逐层搭建神经网路，深入探究网络原理。
 
 ## 安装或者下载
 
@@ -10,20 +10,20 @@ BaseNet可以方便地逐层搭建神经网路，深入探究网络原理。
 
 ## 体验
 
-运行demo/basenet_demo.py。
+运行demo/BaseNN_demo.py。
 
 ## 训练
 
 ### 0.引入包
 
 ```python
-from BaseEdu.BaseNet import *
+from BaseEdu.BaseNN import *
 ```
 
 ### 1.声明模型
 
 ```python
-model = BaseNet()
+model = BaseNN()
 ```
 
 ### 2.载入数据

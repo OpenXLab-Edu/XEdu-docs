@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BaseNet功能详解 &mdash; OpenXLabEdu  documentation</title>
+  <title>BaseNN快速入门 &mdash; OpenXLabEdu  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,8 +19,8 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="BaseML入门" href="../baseml.html" />
-    <link rel="prev" title="BaseNet安装或下载" href="installation.html" /> 
+    <link rel="next" title="BaseNN安装或下载" href="installation.html" />
+    <link rel="prev" title="BaseNN入门" href="../basenn.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,29 +42,34 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mmedu.html">MMEdu入门</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../basenet.html">BaseNet入门</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="quick_start.html">BaseNet快速入门</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation.html">BaseNet安装或下载</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">BaseNet功能详解</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">0.引入包</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">1.声明模型</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">2.载入数据</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">3.搭建模型</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">4.模型训练</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id6">4.1正常训练</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id7">4.2 继续训练</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../basenn.html">BaseNN入门</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">BaseNN快速入门</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">安装或者下载</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">体验</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">训练</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">0.引入包</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">1.声明模型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">2.载入数据</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">3.搭建模型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">4.模型训练</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">5.使用现有模型直接推理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">6.输出推理结果</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">7.模型的保存与加载</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id11">8.查看模型结构</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">附录</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id12">推理</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id13">使用现有模型直接推理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14">输出推理结果</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">模型的保存与加载</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16">查看模型结构</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">附录</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#add">1. add()详细介绍</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html">BaseNN安装或下载</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">BaseNN功能详解</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../baseml.html">BaseML入门</a></li>
@@ -87,10 +92,10 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../basenet.html">BaseNet入门</a> &raquo;</li>
-      <li>BaseNet功能详解</li>
+          <li><a href="../basenn.html">BaseNN入门</a> &raquo;</li>
+      <li>BaseNN快速入门</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/basenet/introduction.md.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/basenn/quick_start.md.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -98,22 +103,36 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="basenet">
-<h1>BaseNet功能详解<a class="headerlink" href="#basenet" title="Permalink to this headline"></a></h1>
+  <section id="basenn">
+<h1>BaseNN快速入门<a class="headerlink" href="#basenn" title="Permalink to this headline"></a></h1>
 <section id="id1">
-<h2>0.引入包<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseEdu.BaseNet</span> <span class="kn">import</span> <span class="o">*</span>
-</pre></div>
-</div>
+<h2>简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<p>BaseNN可以方便地逐层搭建神经网路，深入探究网络原理。</p>
 </section>
 <section id="id2">
-<h2>1.声明模型<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">BaseNet</span><span class="p">()</span>
+<h2>安装或者下载<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<p>统一在BaseEdu下。</p>
+</section>
+<section id="id3">
+<h2>体验<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<p>运行demo/BaseNN_demo.py。</p>
+</section>
+<section id="id4">
+<h2>训练<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
+<section id="id5">
+<h3>0.引入包<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseEdu.BaseNN</span> <span class="kn">import</span> <span class="o">*</span>
 </pre></div>
 </div>
 </section>
-<section id="id3">
-<h2>2.载入数据<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<section id="id6">
+<h3>1.声明模型<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">BaseNN</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h3>2.载入数据<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
 <p>此处采用lvis鸢尾花数据集作为示例。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 训练数据</span>
 <span class="n">train_path</span> <span class="o">=</span> <span class="s1">&#39;../dataset/iris/iris_training.csv&#39;</span> 
@@ -128,8 +147,8 @@
 </pre></div>
 </div>
 </section>
-<section id="id4">
-<h2>3.搭建模型<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
+<section id="id8">
+<h3>3.搭建模型<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
 <p>逐层添加，搭建起模型结构。注释标明了数据经过各层的尺寸变化。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1"># [120, 10]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1"># [120, 5]</span>
@@ -138,15 +157,15 @@
 </div>
 <p>以上使用<code class="docutils literal notranslate"><span class="pre">add()</span></code>方法添加层，参数<code class="docutils literal notranslate"><span class="pre">layer='Linear'</span></code>表示添加的层是线性层，<code class="docutils literal notranslate"><span class="pre">size=(4,10)</span></code>表示该层输入维度为4，输出维度为10，<code class="docutils literal notranslate"><span class="pre">activation='ReLU'</span></code>表示使用ReLU激活函数。更详细<code class="docutils literal notranslate"><span class="pre">add()</span></code>方法使用可见附录1。</p>
 </section>
-<section id="id5">
-<h2>4.模型训练<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
+<section id="id9">
+<h3>4.模型训练<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
 <p>模型训练可以采用以下函数：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>参数lr为学习率， epochs为训练轮数，checkpoint为现有模型路径，当使用checkpoint参数时，模型基于一个已有的模型继续训练，不使用checkpoint参数时，模型从零开始训练。</p>
-<section id="id6">
-<h3>4.1正常训练<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<section id="id10">
+<h4>4.1正常训练<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">MMBase</span><span class="p">()</span> 
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1"># [120, 10]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1"># [120, 5]</span>
@@ -158,8 +177,8 @@
 </div>
 <p>model.save_fold表示训练出的模型文件保存的文件夹。</p>
 </section>
-<section id="id7">
-<h3>4.2 继续训练<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<section id="id11">
+<h4>4.2 继续训练<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">MMBase</span><span class="p">()</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;checkpoints&#39;</span>
@@ -169,8 +188,11 @@
 </div>
 </section>
 </section>
-<section id="id8">
-<h2>5.使用现有模型直接推理<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h2>
+</section>
+<section id="id12">
+<h2>推理<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h2>
+<section id="id13">
+<h3>使用现有模型直接推理<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h3>
 <p>可使用以下函数进行推理：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">test_x</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">)</span>
 </pre></div>
@@ -184,8 +206,8 @@
 </pre></div>
 </div>
 </section>
-<section id="id9">
-<h2>6.输出推理结果<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h2>
+<section id="id14">
+<h3>输出推理结果<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">test_x</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -195,8 +217,8 @@
 </div>
 <p>输出结果数据类型为字典，格式为{样本编号：{预测值：x，置信度：y}}。该函数调用即输出，但也有返回值。</p>
 </section>
-<section id="id10">
-<h2>7.模型的保存与加载<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h2>
+<section id="id15">
+<h3>模型的保存与加载<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 保存</span>
 <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;mmbase_net.pkl&quot;</span><span class="p">)</span>
 <span class="c1"># 加载</span>
@@ -206,16 +228,17 @@
 <p>参数为模型保存的路径，<code class="docutils literal notranslate"><span class="pre">.pkl</span></code>文件格式可以理解为将python中的数组、列表等持久化地存储在硬盘上的一种方式。</p>
 <p>注：train()，inference()函数中也可通过参数控制模型的保存与加载，但这里也列出单独保存与加载模型的方法，以确保灵活性。</p>
 </section>
-<section id="id11">
-<h2>8.查看模型结构<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h2>
+<section id="id16">
+<h3>查看模型结构<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">print_model</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>无参数。</p>
 <p>完整测试用例可见mmbase_demo.py文件。</p>
 </section>
-<section id="id12">
-<h2>附录<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h2>
+</section>
+<section id="id17">
+<h2>附录<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h2>
 <section id="add">
 <h3>1. add()详细介绍<a class="headerlink" href="#add" title="Permalink to this headline"></a></h3>
 <p>此处以典型的LeNet5网络结构为例。注释标明了数据经过各层的尺寸变化。</p>
@@ -247,8 +270,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="installation.html" class="btn btn-neutral float-left" title="BaseNet安装或下载" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../baseml.html" class="btn btn-neutral float-right" title="BaseML入门" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../basenn.html" class="btn btn-neutral float-left" title="BaseNN入门" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="installation.html" class="btn btn-neutral float-right" title="BaseNN安装或下载" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

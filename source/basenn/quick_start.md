@@ -1,15 +1,29 @@
-# BaseNet功能详解
+# BaseNN快速入门
+
+## 简介
+
+BaseNN可以方便地逐层搭建神经网路，深入探究网络原理。
+
+## 安装或者下载
+
+统一在BaseEdu下。
+
+## 体验
+
+运行demo/BaseNN_demo.py。
+
+## 训练
 
 ### 0.引入包
 
 ```python
-from BaseEdu.BaseNet import *
+from BaseEdu.BaseNN import *
 ```
 
 ### 1.声明模型
 
 ```python
-model = BaseNet()
+model = BaseNN()
 ```
 
 ### 2.载入数据
@@ -75,9 +89,9 @@ checkpoint = 'checkpoints/mmbase_net.pkl'
 model.train(lr=0.01, epochs=1000, checkpoint=checkpoint)
 ```
 
+## 推理
 
-
-### 5.使用现有模型直接推理
+### 使用现有模型直接推理
 
 可使用以下函数进行推理：
 
@@ -98,7 +112,7 @@ model.print_result() # 输出结果
 
 
 
-### 6.输出推理结果
+### 输出推理结果
 
 ```python
 res = model.inference(test_x)
@@ -112,7 +126,7 @@ model.print_result() # 输出字典格式结果
 
 输出结果数据类型为字典，格式为{样本编号：{预测值：x，置信度：y}}。该函数调用即输出，但也有返回值。
 
-### 7.模型的保存与加载
+### 模型的保存与加载
 
 ```python
 # 保存
@@ -125,7 +139,7 @@ model.load("mmbase_net.pkl")
 
 注：train()，inference()函数中也可通过参数控制模型的保存与加载，但这里也列出单独保存与加载模型的方法，以确保灵活性。
 
-### 8.查看模型结构
+### 查看模型结构
 
 ```python
 model.print_model()

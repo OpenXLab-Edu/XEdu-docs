@@ -1,4 +1,4 @@
-# BaseNet安装或下载
+# BaseNN安装或下载
 
 统一在BaseEdu下。
 

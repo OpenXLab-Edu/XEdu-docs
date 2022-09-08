@@ -9,10 +9,10 @@ OpenXLabEdu帮助文档
 -----------
 .. toctree::
    :caption: 目录
-   
+
    about
    mmedu
-   basenet
+   basenn
    baseml
    scitech_tools
    support_resources
