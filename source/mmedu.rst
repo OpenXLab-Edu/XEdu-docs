@@ -7,4 +7,4 @@ MMEdu入门
    mmedu/introduction.md
    mmedu/mmclassification.md
    mmedu/mmdetection.md
-   mmedu/mmediting.rst
+   mmedu/mmediting.md
