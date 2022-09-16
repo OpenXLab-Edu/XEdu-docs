@@ -1,14 +1,8 @@
 # MMEdu模块应用详解
 
-## 1.MMEdu是什么？
+## 1.MMEdu和常见AI框架的比较
 
-MMEdu源于国产人工智能视觉（CV）算法集成框架OpenMMLab，是一个“开箱即用”的深度学习开发工具。在继承OpenMMLab强大功能的同时，MMEdu简化了神经网络模型搭建和训练的参数，降低了编程的难度，并实现一键部署编程环境，让初学者通过简洁的代码完成各种SOTA模型（state-of-the-art，指在该项研究任务中目前最好/最先进的模型）的训练，并能够快速搭建出AI应用系统。 
-
-GitHub：https://github.com/OpenXLab-Edu/OpenMMLab-Edu 
-
-国内镜像：https://gitee.com/openxlab-edu/OpenMMLab-Edu
-
-## 2.MMEdu和常见AI框架的比较
+MMEdu是一个计算机视觉方向的深度学习开发工具，是一个用来训练AI模型的工具。
 
 ### 1）MMEdu和OpenCV的比较
 
@@ -34,23 +28,27 @@ FastAI同样基于Pytorch，但是和OpenMMLab不同的是，FastAI只能支持G
 
 MMEdu基于OpenMMLab的基础上开发，因为面向中小学，优先选择支持CPU训练的模块。
 
-## 3.模块概述
+## 3.MMEdu的内置模块概述
 
-| 模块名称         | 简称   | 功能             |
-| ---------------- | ------ | ---------------- |
-| MMClassification | MMCLS  | 图片分类         |
+| 模块名称             | 简称     | 功能       |
+| ---------------- | ------ | -------- |
+| MMClassification | MMCLS  | 图片分类     |
 | MMDetection      | MMDET  | 图片中的物体检测 |
-| MMGeneration     | MMGEN  | GAN，风格化      |
-| MMPose           | MMPOSE | 骨架             |
-| MMEditing        |        |                  |
-| MMSegmentation   |        | 像素级识别       |
+| MMGeneration     | MMGEN  | GAN，风格化  |
+| MMPose           | MMPOSE | 骨架       |
+| MMEditing        |        |          |
+| MMSegmentation   |        | 像素级识别    |
 
-## 4.内置模型
+## 4.MMEdu的内置SOTA模型
 
-| 模块名称         | 内置模型                             | 功能             |
-| ---------------- | ------------------------------------ | ---------------- |
-| MMClassification | LeNet、ResNet18、ResNet50、MobileNet | 图片分类         |
-| MMDetection      | FastRCNN                             | 图片中的物体检测 |
+MMEdu内置了常见的SOTA模型，我们还在不断更新中。
+
+| 模块名称             | 内置模型                              | 功能       |
+| ---------------- | --------------------------------- | -------- |
+| MMClassification | LeNet、ResNet18、ResNet50、MobileNet | 图片分类     |
+| MMDetection      | FastRCNN                          | 图片中的物体检测 |
+
+注：对于这些SOTA模型的作用，请参考本文档的“深度学习知识库”部分的“经典网络模型介绍 ”。当然，通过“AI模型 + 关键词”的形式，你在很多搜索引擎中都能找到资料。
 
 ## 5.数据集支持
 
@@ -285,7 +283,7 @@ categories [{
 }]
 ```
 
-​	这里，为您提供一种自己制作COCO格式数据集的方法。
+​    这里，为您提供一种自己制作COCO格式数据集的方法。
 
 #### 第一步、整理图片
 
