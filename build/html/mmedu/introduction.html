@@ -45,23 +45,22 @@
 <li class="toctree-l2"><a class="reference internal" href="quick_start.html">MMEdu快速入门</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation.html">MMEdu安装和下载</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">MMEdu模块应用详解</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">1.MMEdu是什么？</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#mmeduai">2.MMEdu和常见AI框架的比较</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#mmeduai">1.MMEdu和常见AI框架的比较</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#mmeduopencv">1）MMEdu和OpenCV的比较</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mmedumediapipe">2）MMEdu和MediaPipe的比较</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mmedukeras">3）MMEdu和Keras的比较</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mmedufastai">4）MMEdu和FastAI的比较</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">3.模块概述</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">4.内置模型</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">5.数据集支持</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">3.MMEdu的内置模块概述</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mmedusota">4.MMEdu的内置SOTA模型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">5.数据集支持</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#imagenet">1.ImageNet</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#coco">2.COCO</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id14">6.一键安装包目录详解</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id15">MMEdu目录：</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">6.一键安装包目录详解</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id13">MMEdu目录：</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#checkpoints">checkpoints目录：</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dataset">dataset目录：</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#demo">demo目录：</a></li>
@@ -111,14 +110,9 @@
              
   <section id="mmedu">
 <h1>MMEdu模块应用详解<a class="headerlink" href="#mmedu" title="Permalink to this headline"></a></h1>
-<section id="id1">
-<h2>1.MMEdu是什么？<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
-<p>MMEdu源于国产人工智能视觉（CV）算法集成框架OpenMMLab，是一个“开箱即用”的深度学习开发工具。在继承OpenMMLab强大功能的同时，MMEdu简化了神经网络模型搭建和训练的参数，降低了编程的难度，并实现一键部署编程环境，让初学者通过简洁的代码完成各种SOTA模型（state-of-the-art，指在该项研究任务中目前最好/最先进的模型）的训练，并能够快速搭建出AI应用系统。</p>
-<p>GitHub：<a class="reference external" href="https://github.com/OpenXLab-Edu/OpenMMLab-Edu">https://github.com/OpenXLab-Edu/OpenMMLab-Edu</a></p>
-<p>国内镜像：<a class="reference external" href="https://gitee.com/openxlab-edu/OpenMMLab-Edu">https://gitee.com/openxlab-edu/OpenMMLab-Edu</a></p>
-</section>
 <section id="mmeduai">
-<h2>2.MMEdu和常见AI框架的比较<a class="headerlink" href="#mmeduai" title="Permalink to this headline"></a></h2>
+<h2>1.MMEdu和常见AI框架的比较<a class="headerlink" href="#mmeduai" title="Permalink to this headline"></a></h2>
+<p>MMEdu是一个计算机视觉方向的深度学习开发工具，是一个用来训练AI模型的工具。</p>
 <section id="mmeduopencv">
 <h3>1）MMEdu和OpenCV的比较<a class="headerlink" href="#mmeduopencv" title="Permalink to this headline"></a></h3>
 <p>OpenCV是一个开源的计算机视觉框架，MMEdu的核心模块MMCV基于OpenCV，二者联系紧密。</p>
@@ -141,8 +135,8 @@
 <p>MMEdu基于OpenMMLab的基础上开发，因为面向中小学，优先选择支持CPU训练的模块。</p>
 </section>
 </section>
-<section id="id2">
-<h2>3.模块概述<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<section id="id1">
+<h2>3.MMEdu的内置模块概述<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 42%" />
@@ -183,8 +177,9 @@
 </tbody>
 </table>
 </section>
-<section id="id3">
-<h2>4.内置模型<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<section id="mmedusota">
+<h2>4.MMEdu的内置SOTA模型<a class="headerlink" href="#mmedusota" title="Permalink to this headline"></a></h2>
+<p>MMEdu内置了常见的SOTA模型，我们还在不断更新中。</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 24%" />
@@ -208,9 +203,11 @@
 </tr>
 </tbody>
 </table>
+<p>注：对于这些SOTA模型的作用，请参考本文档的“深度学习知识库”部分的“经典网络模型介绍”。当然，通过“AI模型
++ 关键词”的形式，你在很多搜索引擎中都能找到资料。</p>
 </section>
-<section id="id4">
-<h2>5.数据集支持<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
+<section id="id2">
+<h2>5.数据集支持<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <p>MMEdu系列提供了包括分类、检测等任务的若干数据集，存储在dataset文件夹下。</p>
 <section id="imagenet">
 <h3>1.ImageNet<a class="headerlink" href="#imagenet" title="Permalink to this headline"></a></h3>
@@ -283,8 +280,8 @@ with open(&#39;D:\测试数据集\EX_dataset/val.txt&#39;, &#39;w&#39;) as f:
 </pre></div>
 </div>
 <p>至于如何从零开始制作一个ImageNet格式的数据集，可参考如下步骤。</p>
-<section id="id5">
-<h4>第一步：整理图片<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h4>
+<section id="id3">
+<h4>第一步：整理图片<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h4>
 <p>您可以用任何设备拍摄图像，也可以从视频中抽取帧图像，需要注意，这些图像可以被划分为多个类别。每个类别建立一个文件夹，文件夹名称为类别名称，将图片放在其中。</p>
 <p>接下来需要对图片进行尺寸、保存格式等的统一，可使用如下代码：</p>
 <div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>from PIL import Image
@@ -314,8 +311,8 @@ for cnt in range(len(classes)):
 </pre></div>
 </div>
 </section>
-<section id="id6">
-<h4>第二步：划分训练集、验证集和测试集<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h4>
+<section id="id4">
+<h4>第二步：划分训练集、验证集和测试集<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h4>
 <p>根据整理的数据集大小，按照一定比例拆分训练集、验证集和测试集，可使用如下代码将原始数据集按照“6:2:2”的比例拆分。</p>
 <div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>import os
 import shutil
@@ -360,12 +357,12 @@ for cnt in range(len(classes)):
 </pre></div>
 </div>
 </section>
-<section id="id7">
-<h4>第三步：生成标签文件<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h4>
+<section id="id5">
+<h4>第三步：生成标签文件<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h4>
 <p>划分完训练集、验证集和测试集，我们需要生成“classes.txt”，“val.txt”和“test.txt”，使用上文介绍的Python代码完成标签文件的程序生成标签文件。</p>
 </section>
-<section id="id8">
-<h4>第四步：给数据集命名<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h4>
+<section id="id6">
+<h4>第四步：给数据集命名<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h4>
 <p>最后，我们将这些文件放在一个文件夹中，命名为数据集的名称。这样，在训练的时候，只要通过<code class="docutils literal notranslate"><span class="pre">model.load_dataset</span></code>指定数据集的路径就可以了。</p>
 </section>
 </section>
@@ -422,20 +419,20 @@ categories [{
 </pre></div>
 </div>
 <p>​ 这里，为您提供一种自己制作COCO格式数据集的方法。</p>
-<section id="id9">
-<span id="id10"></span><h4>第一步、整理图片<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h4>
+<section id="id7">
+<span id="id8"></span><h4>第一步、整理图片<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h4>
 <p>根据需求按照自己喜欢的方式收集图片，图片中包含需要检测的信息即可，可以使用ImageNet格式数据集整理图片的方式对收集的图片进行预处理。</p>
 </section>
-<section id="id11">
-<h4>第二步、标注图片<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h4>
+<section id="id9">
+<h4>第二步、标注图片<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h4>
 <p>可使用LabelMe批量打开图片文件夹的图片，进行标注并保存为json文件。</p>
 <ul class="simple">
 <li><p>LabelMe：格式为LabelMe，提供了转VOC、COCO格式的脚本，可以标注矩形、圆形、线段、点。标注语义分割、实例分割数据集尤其推荐。</p></li>
 <li><p>LabelMe安装与打开方式：<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">labelme</span></code>安装完成后输入<code class="docutils literal notranslate"><span class="pre">labelme</span></code>即可打开。</p></li>
 </ul>
 </section>
-<section id="id12">
-<h4>第三步、转换成COCO标注格式<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h4>
+<section id="id10">
+<h4>第三步、转换成COCO标注格式<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h4>
 <p>将LabelMe格式的标注文件转换成COCO标注格式，可以使用如下代码：</p>
 <div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>import json
 import numpy as np
@@ -562,14 +559,14 @@ labelme2coco(labelme_json, &#39;picture/new.json&#39;) # 指定生成文件路�
 </pre></div>
 </div>
 </section>
-<section id="id13">
-<h4>第四步、按照目录结构整理文件<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h4>
+<section id="id11">
+<h4>第四步、按照目录结构整理文件<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h4>
 <p>创建两个文件夹“images”和“annotations”，分别用于存放图片以及标注信息。按照要求的目录结构，整理好文件夹的文件，最后将文件夹重新命名，在训练的时候，只要通过<code class="docutils literal notranslate"><span class="pre">model.load_dataset</span></code>指定数据集的路径就可以了。</p>
 </section>
 </section>
 </section>
-<section id="id14">
-<h2>6.一键安装包目录详解<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h2>
+<section id="id12">
+<h2>6.一键安装包目录详解<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h2>
 <p>MMEdu一键安装版是一个压缩包，解压后即可使用。</p>
 <p>MMEdu的根目录结构如下：</p>
 <div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>OpenMMLab-Edu
@@ -586,8 +583,8 @@ labelme2coco(labelme_json, &#39;picture/new.json&#39;) # 指定生成文件路�
 </pre></div>
 </div>
 <p>接下来对每层子目录进行介绍。</p>
-<section id="id15">
-<h3>MMEdu目录：<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h3>
+<section id="id13">
+<h3>MMEdu目录：<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h3>
 <p>存放各个模块的底层代码、算法模型文件夹“models”和封装环境文件夹“mmedu”。“models”文件夹中提供了各个模块常见的网络模型，内置模型配置文件和说明文档，说明文档提供了模型简介、特点、预训练模型下载链接和适用领域等。“mmedu”文件夹打包了MMEdu各模块运行所需的环境和中小学课程常用的库。</p>
 </section>
 <section id="checkpoints">
