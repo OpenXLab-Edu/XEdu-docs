@@ -16,10 +16,15 @@ MMEdu有多种安装方式，可以通过Pip方式安装，也可以使用一键
 
 ### 2.1访问InnoLab
 
+InnoLab为上海人工智能实验室推出的青少年AI学习平台。在“AI项目工坊 - 人工智能工坊”中，查找”MMEdu“，即可找到所有与MMEdu相关的体验项目。
 
+AI项目工坊：https://www.openinnolab.org.cn/pjLab/projects/channel
+
+![image](../iamges/mmedu/quick_start_01.png)
 
 ### 2.2 克隆项目
 
+点击项目即可查看，但是强烈建议你先“克隆”。
 
 
 ### 2.3 加载数据集
