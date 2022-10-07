@@ -20,20 +20,37 @@ InnoLab为上海人工智能实验室推出的青少年AI学习平台。在“AI
 
 AI项目工坊：https://www.openinnolab.org.cn/pjLab/projects/channel
 
-![image](../iamges/mmedu/quick_start_01.png)
+<img src="../images/mmedu/quick_start_01.png" title="" alt="image" width="568">
+
+下面以“手写体识别”为例来介绍从零开始训练一个AI模型的过程。
 
 ### 2.2 克隆项目
 
 点击项目即可查看，但是强烈建议你先“克隆”。
 
-
 ### 2.3 加载数据集
 
+ 默认情况下，“克隆”的项目中已经引用了数据集。你也可以重新“引用”一次。步骤如下：
 
+- 点击“+”，输入“mnist“，找到“mnist_sample”数据集，然后选择“☑️”；
+
+- 在数据集上方点击“右键”，选择“复制文件路径”。接下来，你就可以通过这个路径来访问你的数据集。比如，我得到的文件路径是：`/data/QX8UBM/mnist_sample`。
+
+<img title="" src="file:///Users/xiezuoru/Documents/GitHub/XEdu-docs/source/images/mmedu/quick_start_02.png" alt="" width="312">
+
+
+
+<img src="file:///Users/xiezuoru/Documents/GitHub/XEdu-docs/source/images/mmedu/quick_start_03.png" title="" alt="" width="314">
+
+**新手提问1：** 我要使用自己的数据集怎么办？为什么会这么麻烦？
+
+解答：因为项目的空间容量是有限的，同时数据集是公用的，经常在多个项目中使用。因而OpenInnoLab将数据集放在一个公用区域，和项目的文件分离。如果要使用自己的数据集，请在“我的数据集”中增加一个新的数据集，OpenInnoLab支持上传压缩包的方式来建立数据集。数据集加好后，同样需要“引用”后才能访问。
+
+如果你的数据集很小（比如100M内），那么也可以像使用正常的项目文件一下，通过浏览器上传即可。
 
 ### 2.4 训练模型
 
-典型训练：
+一个典型的模型训练代码：
 
 ```python
 from MMEdu import MMClassification as cls
@@ -44,19 +61,11 @@ model.save_fold = './my_model'
 model.train(epochs=10, validate=True)
 ```
 
-继续训练：
 
-```python
-from MMEdu import MMClassification as cls
-model = cls(backbone='LeNet')
-model.num_classes = 3
-model.load_dataset(path='./dataset')
-model.save_fold = './my_model'
-checkpoint = './latest.pth'
-model.train(epochs=10, validate=True, checkpoint=checkpoint)
-```
 
 ### 2.5 模型推理
+
+模型训练好后，就可以测试效果了。代码中img的路径就是用于测试的新图片。
 
 ```python
 from MMEdu import MMClassification as cls
@@ -68,4 +77,24 @@ result = model.inference(image=img, show=True, class_path=class_path,checkpoint 
 model.print_result(result)
 ```
 
-## 
+## 2.6 继续训练
+
+如果觉得效果不够好，请继续训练（实际上就是“迁移学习”）：
+
+```python
+from MMEdu import MMClassification as cls
+model = cls(backbone='LeNet')
+model.num_classes = 3
+model.load_dataset(path='./dataset')
+model.save_fold = './my_model'
+checkpoint = './latest.pth'
+model.train(epochs=10, validate=True, checkpoint=checkpoint)
+```
+
+**注意**：“继续训练”和“普通训练”的区别就在于model.train()函数中多了一个参数，即`checkpoint=checkpoint`。checkpoint的路径就来自之前训练的权重文件。
+
+ 
+
+# 3.MMEdu的简要总结
+
+MMEdu是针对青少年学习AI技术而设计的，其前身就是大名鼎鼎的OpenMMLab。MMEdu的语法非常简单，几句话就能完成训练和推理。如果你下载了一键安装包，还可以使用easytrain的辅助工具。有了MMEdu，你会发现AI模型训练原来这么简单。

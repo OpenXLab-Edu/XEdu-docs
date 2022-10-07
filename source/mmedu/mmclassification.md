@@ -14,8 +14,7 @@ MMEdu中预置了“石头剪刀布”三分类的数据集，并且已经预训
 
 执行代码如下:
 
-~~~python
-import base # 测试版需要（发布版不需要）
+```python
 from MMEdu import MMClassification as cls  # 导入mmcls模块
 
 img = 'testrock01-02.png' # 指定进行推理的图片路径，我们使用demo文件夹中提供的图片
@@ -25,7 +24,7 @@ class_path = '../dataset/classes/cls_classes.txt' # 指定训练集的路径
 result = model.inference(image=img, show=True, class_path=class_path, checkpoint=checkpoint) # 在CPU上进行推理
 model.print_result() # 输出结果
 # 同时您可以修改show的值来决定是否需要显示结果图片，此处默认显示结果图片
-~~~
+```
 
 运行结果如图：
 
@@ -35,7 +34,7 @@ model.print_result() # 输出结果
 
 您也可以将收集的图片放在一个文件夹下，然后指定文件夹路径进行一组图片的批量推理。如在demo文件夹下新建一个cls_testIMG文件夹放图片，运行下面这段代码。
 
-~~~python
+```python
 img = 'cls_testIMG/' # 指定进行推理的一组图片的路径
 model = cls(backbone='LeNet') # 实例化MMClassification模型
 model.checkpoint='../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的模型权重文件
@@ -43,7 +42,7 @@ class_path = '../dataset/classes/cls_classes.txt' # 指定训练集的路径
 result = model.inference(image=img, show=True, class_path=class_path, checkpoint=checkpoint) # 在CPU上进行推理
 model.print_result() # 输出结果
 # 同时您可以修改show的值来决定是否需要显示结果图片，此处默认显示结果图片
-~~~
+```
 
 您会发现当前目录下`‘cls_result’`文件夹里出现了这组图片的推理结果图，每张图片的结果与您收集的图片同名，到这个文件夹下查看推理结果。
 
@@ -51,17 +50,17 @@ model.print_result() # 输出结果
 
 - **图片准备**
 
-~~~python
+```python
 img = 'testrock01-02.png' # 指定推理图片的路径，直接在代码所在的demo文件夹中选择图片
-~~~
+```
 
 如果使用自己的图片的话，只需要修改img的路径即可（绝对路径和相对路径均可）
 
 - **实例化模型**
 
-~~~python
+```python
 model = cls(backbone='LeNet') # 实例化MMClassification模型
-~~~
+```
 
 这里对于`MMClassification`模型提供的参数进行解释，`MMClassification`支持传入的参数是`backbone`。
 
@@ -69,9 +68,9 @@ model = cls(backbone='LeNet') # 实例化MMClassification模型
 
 - **模型推理**
 
-~~~python
+```python
 model.inference(image=img, show=True, class_path=class_path, checkpoint=checkpoint) # 在cpu上进行推理
-~~~
+```
 
 将所需要推理图片的路径传入`inference`函数中即可进行推理，我们这里传入了四个参数，`image`代表的就是推理图片的路径，`show`代表是否需要显示结果图片，`class_path`代表训练集的路径，`checkpoint`代表指定使用的模型权重文件。
 
@@ -105,13 +104,13 @@ model.inference(image=img, show=True, class_path=class_path, checkpoint=checkpoi
 
 - 代码展示
 
-~~~python
+```python
 model = cls(backbone='LeNet') # 实例化模型，不指定参数即使用默认参数。
 model.num_classes = 3 # 指定数据集中的类别数量
 model.load_dataset(path='../dataset/cls/hand_gray') # 从指定数据集路径中加载数据
 model.save_fold = '../checkpoints/cls_model/hand_gray' # 设置模型的保存路径
 model.train(epochs=10, validate=True) # 设定训练的epoch次数以及是否进行评估
-~~~
+```
 
 **详细说明**
 
@@ -119,29 +118,29 @@ model.train(epochs=10, validate=True) # 设定训练的epoch次数以及是否�
 
 - **指定类别数量**
 
-~~~python
+```python
 model.num_classes = 3 # 指定数据集中的类别数量
-~~~
+```
 
 - **加载数据集**
 
-~~~python
+```python
 model.load_dataset(path='../dataset/cls/hand_gray') # 从指定数据集路径中加载数据
-~~~
+```
 
 这个函数只需要传入一个`path`参数即训练数据集的路径，函数的作用是修改模型中关于数据集路径的配置文件，从而确保我们在训练时不会找错文件。
 
 - 指定模型参数存储位置
 
-~~~python
+```python
 model.save_fold = '../checkpoints/cls_model/hand_gray'
-~~~
+```
 
 - **模型训练**
 
-~~~python
+```python
 model.train(epochs=10, validate=True) # 设定训练的epoch次数以及是否进行评估
-~~~
+```
 
 表示训练10个轮次，并在训练结束后用校验集进行评估。
 
@@ -177,12 +176,11 @@ model.train(epochs=10, validate=True) # 设定训练的epoch次数以及是否�
 
 而在`checkpoints\cls_model`文件夹中我们会发现多了两种文件，一个是`None.log.json`文件，它记录了我们模型在训练过程中的一些参数，比如说学习率`lr`，所用时间`time`，以及损失`loss`等；另一个文件是.pth文件，这个是我们在训练过程中所保存的模型。
 
-
 #### 3.继续训练
 
 在这一步中，我们会教您加载之前训练过的模型接着训练，如果您觉得之前训练的模型epoch数不够的话或者因为一些客观原因而不得不提前结束训练，相信下面的代码会帮到您。
 
-~~~python
+```python
 model = cls(backbone='LeNet') # 初始化实例模型
 model.num_classes = 3 # 指定数据集中的类别数量
 # model = cls(backbone='LeNet', num_classes = 3)
@@ -190,7 +188,7 @@ model.load_dataset(path='../dataset/cls/hand_gray') # 配置数据集路径
 model.save_fold = '../checkpoints/cls_model/hand_gray' # 设置模型的保存路径
 checkpoint = '../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的模型权重文件
 model.train(epochs=50, validate=True, checkpoint=checkpoint) # 进行再训练
-~~~
+```
 
 这里我们有一个参数在之前的[训练模型](####2.训练模型)过程中没有详细说明，那就是`train`函数中的`checkpoint`参数，这个放到这里就比较好理解，它的意思是指定需要进行再训练的模型路径，当然你也可以根据你需要训练的不同模型而调整参数。
 
