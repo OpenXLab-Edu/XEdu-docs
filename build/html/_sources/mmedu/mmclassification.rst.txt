@@ -4,7 +4,7 @@
 简介
 ----
 
-MMClassifiation的主要功能是对图像进行分类。其支持的SOTA模型有LeNet、MobileNet等。如需查看所有支持的SOTA模型，可使用`model.sota()`代码进行查看。
+MMClassifiation的主要功能是对图像进行分类。其支持的SOTA模型有LeNet、MobileNet等。如需查看所有支持的SOTA模型，可使用\ ``model.sota()``\ 代码进行查看。
 
 使用说明
 --------
@@ -20,7 +20,6 @@ MMEdu中预置了“石头剪刀布”三分类的数据集，并且已经预训
 
 .. code:: python
 
-   import base # 测试版需要（发布版不需要）
    from MMEdu import MMClassification as cls  # 导入mmcls模块
 
    img = 'testrock01-02.png' # 指定进行推理的图片路径，我们使用demo文件夹中提供的图片
@@ -180,11 +179,7 @@ MMEdu中预置了“石头剪刀布”三分类的数据集，并且已经预训
 
 执行上述代码之后的运行结果如下图：
 
-
-
 .. figure:: ../../build/html/_static/cls_train.png
-
-
 
 
 而在\ ``checkpoints\cls_model``\ 文件夹中我们会发现多了两种文件，一个是\ ``None.log.json``\ 文件，它记录了我们模型在训练过程中的一些参数，比如说学习率\ ``lr``\ ，所用时间\ ``time``\ ，以及损失\ ``loss``\ 等；另一个文件是.pth文件，这个是我们在训练过程中所保存的模型。

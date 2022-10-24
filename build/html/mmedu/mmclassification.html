@@ -96,7 +96,7 @@
 <h1>图像分类模块：MMClassification<a class="headerlink" href="#mmclassification" title="Permalink to this headline"></a></h1>
 <section id="id1">
 <h2>简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
-<p>MMClassifiation的主要功能是对图像进行分类。其支持的SOTA模型有LeNet、MobileNet等。如需查看所有支持的SOTA模型，可使用`model.sota()`代码进行查看。</p>
+<p>MMClassifiation的主要功能是对图像进行分类。其支持的SOTA模型有LeNet、MobileNet等。如需查看所有支持的SOTA模型，可使用<code class="docutils literal notranslate"><span class="pre">model.sota()</span></code>代码进行查看。</p>
 </section>
 <section id="id2">
 <h2>使用说明<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
@@ -105,8 +105,7 @@
 <h3>1.模型推理<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
 <p>如果想快速上手体验MMClassification的话，我们建议您使用我们已经预训练好的模型和权重文件进行推理，提供一张图片测试推理的准确度。</p>
 <p>执行代码如下:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">base</span> <span class="c1"># 测试版需要（发布版不需要）</span>
-<span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>  <span class="c1"># 导入mmcls模块</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>  <span class="c1"># 导入mmcls模块</span>
 
 <span class="n">img</span> <span class="o">=</span> <span class="s1">&#39;testrock01-02.png&#39;</span> <span class="c1"># 指定进行推理的图片路径，我们使用demo文件夹中提供的图片</span>
 <span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;LeNet&#39;</span><span class="p">)</span> <span class="c1"># 实例化MMClassification模型</span>
