@@ -2,7 +2,7 @@
 
 ### 简介
 
-MMClassifiation的主要功能是对图像进行分类。其支持的SOTA模型有LeNet、MobileNet等。
+MMClassifiation的主要功能是对图像进行分类。其支持的SOTA模型有LeNet、MobileNet等。如需查看所有支持的SOTA模型，可使用`model.sota()`代码进行查看。
 
 ### 使用说明
 

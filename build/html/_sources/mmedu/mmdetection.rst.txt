@@ -8,7 +8,7 @@ MMDetection的主要功能：输出图片或视频中出现的多个对象名称
 
 .. figure:: ../../build/html/_static/image-20220408192155931.png
 
-其支持的SOTA模型有FasterRCNN、Yolov3等。
+其支持的SOTA模型有FasterRCNN、Yolov3等。如需查看所有支持的SOTA模型，可使用`model.sota()`代码进行查看。
 
 使用说明
 --------
