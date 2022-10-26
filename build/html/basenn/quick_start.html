@@ -111,7 +111,7 @@
 </section>
 <section id="id2">
 <h2>安装或者下载<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
-<p>统一在BaseEdu下。</p>
+<p>pip install BaseNN</p>
 </section>
 <section id="id3">
 <h2>体验<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
@@ -121,19 +121,19 @@
 <h2>训练<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
 <section id="id5">
 <h3>0.引入包<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseEdu.BaseNN</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
 </pre></div>
 </div>
 </section>
 <section id="id6">
 <h3>1.声明模型<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">BaseNN</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
 <section id="id7">
 <h3>2.载入数据<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
-<p>此处采用lvis鸢尾花数据集作为示例。</p>
+<p>此处采用IRIS鸢尾花数据集作为示例。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 训练数据</span>
 <span class="n">train_path</span> <span class="o">=</span> <span class="s1">&#39;../dataset/iris/iris_training.csv&#39;</span> 
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">train_path</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span> <span class="c1"># 读取前四列，特征</span>
@@ -166,7 +166,7 @@
 <p>参数lr为学习率， epochs为训练轮数，checkpoint为现有模型路径，当使用checkpoint参数时，模型基于一个已有的模型继续训练，不使用checkpoint参数时，模型从零开始训练。</p>
 <section id="id10">
 <h4>4.1正常训练<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">MMBase</span><span class="p">()</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span> 
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1"># [120, 10]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1"># [120, 5]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;Softmax&#39;</span><span class="p">)</span> <span class="c1"># [120, 3]</span>
@@ -234,7 +234,7 @@
 </pre></div>
 </div>
 <p>无参数。</p>
-<p>完整测试用例可见mmbase_demo.py文件。</p>
+<p>完整测试用例可见BaseNN_demo.py文件。</p>
 </section>
 </section>
 <section id="id17">

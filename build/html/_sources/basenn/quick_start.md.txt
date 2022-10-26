@@ -6,7 +6,7 @@ BaseNN可以方便地逐层搭建神经网路，深入探究网络原理。
 
 ## 安装或者下载
 
-统一在BaseEdu下。
+pip install BaseNN
 
 ## 体验
 
@@ -17,18 +17,18 @@ BaseNN可以方便地逐层搭建神经网路，深入探究网络原理。
 ### 0.引入包
 
 ```python
-from BaseEdu.BaseNN import *
+from BaseNN import nn
 ```
 
 ### 1.声明模型
 
 ```python
-model = BaseNN()
+model = nn()
 ```
 
 ### 2.载入数据
 
-此处采用lvis鸢尾花数据集作为示例。
+此处采用IRIS鸢尾花数据集作为示例。
 
 ```python
 # 训练数据
@@ -68,7 +68,7 @@ model.train(lr=0.01, epochs=500,checkpoint=checkpoint)
 #### 4.1正常训练
 
 ```python
-model = MMBase() 
+model = nn() 
 model.add(layer='Linear',size=(4, 10),activation='ReLU') # [120, 10]
 model.add(layer='Linear',size=(10, 5), activation='ReLU') # [120, 5]
 model.add(layer='Linear', size=(5, 3), activation='Softmax') # [120, 3]
@@ -149,7 +149,7 @@ model.print_model()
 
 
 
-完整测试用例可见mmbase_demo.py文件。
+完整测试用例可见BaseNN_demo.py文件。
 
 ## 附录
 

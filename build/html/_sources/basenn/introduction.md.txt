@@ -3,13 +3,13 @@
 ### 0.引入包
 
 ```python
-from BaseEdu.BaseNN import *
+from BaseNN import nn
 ```
 
 ### 1.声明模型
 
 ```python
-model = BaseNN()
+model = nn()
 ```
 
 ### 2.载入数据
@@ -54,7 +54,7 @@ model.train(lr=0.01, epochs=500,checkpoint=checkpoint)
 #### 4.1正常训练
 
 ```python
-model = MMBase() 
+model = nn() 
 model.add(layer='Linear',size=(4, 10),activation='ReLU') # [120, 10]
 model.add(layer='Linear',size=(10, 5), activation='ReLU') # [120, 5]
 model.add(layer='Linear', size=(5, 3), activation='Softmax') # [120, 3]
@@ -68,7 +68,7 @@ model.save_fold表示训练出的模型文件保存的文件夹。
 #### 4.2 继续训练
 
 ```python
-model = MMBase()
+model = nn()
 model.load_dataset(x, y)
 model.save_fold = 'checkpoints'
 checkpoint = 'checkpoints/mmbase_net.pkl'
@@ -90,7 +90,7 @@ model.inference(data=test_x, checkpoint=checkpoint)
 checkpoint为已有模型路径，即使用现有的模型进行推理，该参数可以不传入值，即直接使用训练出的模型做推理。
 
 ```python
-model = MMBase() # 声明模型
+model = nn() # 声明模型
 checkpoint = 'checkpoints/mmbase_net.pkl' # 现有模型路径
 result = model.inference(data=test_x, checkpoint=checkpoint) # 直接推理
 model.print_result() # 输出结果
@@ -135,7 +135,7 @@ model.print_model()
 
 
 
-完整测试用例可见mmbase_demo.py文件。
+完整测试用例可见BaseNN_demo.py文件。
 
 ## 附录
 
