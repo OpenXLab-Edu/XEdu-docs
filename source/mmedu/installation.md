@@ -76,13 +76,18 @@ Jupyter Notebook是基于网页的用于交互计算的应用程序。其可被�
 
 用IDE打开解压路径下的py文件，如“cls_demo.py”，点击“运行”。运行效果应和pyzo一样。
 
-## 3.完整版安装：pip安装
+### 2.2 pip安装
 
-### 1.准备工作
+当前，我们提供的MMEdu0.0.7版本是基础版的pip安装包，可以使用如下命令安装：
+`pip install mmedu==0.0.7`或`pip install MMEdu==0.0.7`。
+
+## 3.完整版安装之pip安装
+
+### 3.1.准备工作
 
 强烈推荐你在Anaconda的基础上安装MMEdu，可以避免很多的版本冲突问题。
 
-#### 1.1安装Anaconda
+#### 3.1.1安装Anaconda
 
 若您已经安装好conda，该步骤可跳过。
 
@@ -98,7 +103,7 @@ Jupyter Notebook是基于网页的用于交互计算的应用程序。其可被�
 
 打开安装界面后，依次选择`Next` ->`I Agree` -> `All Users` ->`Next`->`Next` ->`Add Anaconda3 to the system PATH environment variable` -> `Install` ->`Next` ->`Next` ->`Finish`
 
-#### 1.2安装python编辑器
+#### 3.1.2安装python编辑器
 
 若您已经安装好合适的python编辑器，该步骤可跳过。
 
@@ -124,7 +129,8 @@ Jupyter Notebook是基于网页的用于交互计算的应用程序。其可被�
 
 点击Thonny主界面右下角的Python版本号，可以选择对应的Python解释器，第一次配置点击`Configure inter preter`，弹出的窗口中，第一个下拉栏选择`可选的python3解释器或虚拟环境`， 第二个下拉栏找到自己之前安装的anaconda环境中的python解释器位置。点击确认即可使用该python解释器。
 
-### 2.Linux安装MMEdu
+### 3.2安装MMEdu
+#### 3.2.1Linux安装MMEdu
 
 点击鼠标右键，打开终端。
 
@@ -144,7 +150,7 @@ $ pip install MMEdu
 
 注：请将命令中的“your_env_name”换成你喜欢的名称，如“mmedu”。
 
-### 3.Windows安装MMEdu
+### 3.2.2Windows安装MMEdu
 
 同时按下win+r，输入cmd，回车，打开一个命令行窗口。
 
@@ -161,8 +167,11 @@ $ conda create -n your_env_name python=3.6
 $ conda activate your_env_name
 $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/index.html
 ```
+## 4.完整版安装之docker容器镜像。
 
-### 4.查看MMEdu版本
+敬请期待
+
+## 5.查看MMEdu版本
 
 打开python终端，执行以下命令即可查看MMEdu版本。当前最新版本是0.04。
 
@@ -170,7 +179,7 @@ $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/i
 
 注：目前版本MMEdu仅支持CPU。
 
-### 5.卸载MMEdu库
+## 6.卸载MMEdu库
 
 如果MMEdu库出现异常情况，可以尝试使用如下命令卸载MMEdu然后再使用install命令安装。
 
@@ -178,7 +187,7 @@ $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/i
 $ pip uninstall MMEdu
 ```
 
-### 使用示例
+## 使用示例
 
 推理：
 
@@ -234,6 +243,4 @@ print(MMEdu.__path__)
 
 注意：内置examples文件夹下的案例仅供参考使用，请勿直接改写其中文件。应在用户自己的工作目录下新建文件，并参考examples中的写法。
 
-## 4.完整版安装：容器镜像安装
 
-敬请期待

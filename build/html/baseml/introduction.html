@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="相关科创工具" href="../scitech_tools.html" />
-    <link rel="prev" title="BaseML安装或下载" href="installation.html" /> 
+    <link rel="prev" title="BaseML安装" href="installation.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -45,20 +45,27 @@
 <li class="toctree-l1"><a class="reference internal" href="../basenn.html">BaseNN入门</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../baseml.html">BaseML入门</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="quick_start.html">BaseML快速入门</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation.html">BaseML安装或下载</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html">BaseML安装</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">BaseML功能详解</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">分类问题</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">贝叶斯分类</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">决策树</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#k">K均值</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">K近邻</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#mlp">多层感知机（MLP）</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#svc">SVC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">分类任务</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">实例化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">数据载入</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">模型训练</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">模型测试</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">回归问题</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id6">线性回归</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#svm">SVM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">回归任务</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id9">实例化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">数据载入</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">模型训练</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">模型测试</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">聚类任务</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id15">实例化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id17">数据载入</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18">模型训练</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">模型测试</a></li>
 </ul>
 </li>
 </ul>
@@ -97,35 +104,76 @@
              
   <section id="baseml">
 <h1>BaseML功能详解<a class="headerlink" href="#baseml" title="Permalink to this headline"></a></h1>
+<p>我们的传统机器学习（Mechine Learning）有很多算法，但总的来说，可以分为三大类：分类、回归和聚类。BaseML和sklearn不同之处，也就体现于此，sklearn尽管在拟合、预测等函数上对各模块做了统一，但并没有明确指出这样的三大类划分方式。这三类也有着特有的数据输入格式。</p>
 <section id="id1">
-<h2>分类问题<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<h2>分类任务<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <section id="id2">
-<h3>贝叶斯分类<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
-</section>
+<h3>实例化<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
 <section id="id3">
-<h3>决策树<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
-</section>
-<section id="k">
-<h3>K均值<a class="headerlink" href="#k" title="Permalink to this headline"></a></h3>
+<h4>贝叶斯分类<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h4>
 </section>
 <section id="id4">
-<h3>K近邻<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<h4>决策树<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h4>
 </section>
-<section id="mlp">
-<h3>多层感知机（MLP）<a class="headerlink" href="#mlp" title="Permalink to this headline"></a></h3>
+<section id="k">
+<h4>K近邻<a class="headerlink" href="#k" title="Permalink to this headline"></a></h4>
 </section>
 <section id="svc">
-<h3>SVC<a class="headerlink" href="#svc" title="Permalink to this headline"></a></h3>
+<h4>SVC<a class="headerlink" href="#svc" title="Permalink to this headline"></a></h4>
+</section>
+<section id="mlpc">
+<h4>多层感知机（MLPC）<a class="headerlink" href="#mlpc" title="Permalink to this headline"></a></h4>
 </section>
 </section>
 <section id="id5">
-<h2>回归问题<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
+<h3>数据载入<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+</section>
 <section id="id6">
-<h3>线性回归<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<h3>模型训练<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+</section>
+<section id="id7">
+<h3>模型测试<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+</section>
+</section>
+<section id="id8">
+<h2>回归任务<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h2>
+<section id="id9">
+<h3>实例化<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
+<section id="id10">
+<h4>线性回归<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h4>
 </section>
 <section id="svm">
-<h3>SVM<a class="headerlink" href="#svm" title="Permalink to this headline"></a></h3>
+<h4>SVM<a class="headerlink" href="#svm" title="Permalink to this headline"></a></h4>
 <p>…</p>
+</section>
+</section>
+<section id="id11">
+<h3>数据载入<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h3>
+</section>
+<section id="id12">
+<h3>模型训练<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h3>
+</section>
+<section id="id13">
+<h3>模型测试<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h3>
+</section>
+</section>
+<section id="id14">
+<h2>聚类任务<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h2>
+<section id="id15">
+<h3>实例化<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h3>
+<section id="id16">
+<h4>K均值<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h4>
+<p>…</p>
+</section>
+</section>
+<section id="id17">
+<h3>数据载入<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h3>
+</section>
+<section id="id18">
+<h3>模型训练<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h3>
+</section>
+<section id="id19">
+<h3>模型测试<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h3>
 </section>
 </section>
 </section>
@@ -134,7 +182,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="installation.html" class="btn btn-neutral float-left" title="BaseML安装或下载" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="installation.html" class="btn btn-neutral float-left" title="BaseML安装" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="../scitech_tools.html" class="btn btn-neutral float-right" title="相关科创工具" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

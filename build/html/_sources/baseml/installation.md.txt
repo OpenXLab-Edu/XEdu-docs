@@ -1,5 +1,5 @@
-# BaseML安装或下载
+# BaseML安装
 
-统一在BaseEdu下。
+`pip install baseml` 或 `pip install BaseML`
 
-pip install BaseEdu
+可以在命令行输入BaseML查看安装的路径，在安装路径内，可以查看提供的更多demo案例。
