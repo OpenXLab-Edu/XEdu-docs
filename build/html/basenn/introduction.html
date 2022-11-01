@@ -45,8 +45,6 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../basenn.html">BaseNN入门</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="quick_start.html">BaseNN快速入门</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation.html">BaseNN安装或下载</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#head-pip-install-basenn">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-pip install BaseNN</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">BaseNN功能详解</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">0.引入包</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">1.声明模型</a></li>
@@ -165,7 +163,7 @@ pip install BaseNN</a></li>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;checkpoints&#39;</span>
-<span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/mmbase_net.pkl&#39;</span>
+<span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/basenn.pkl&#39;</span>
 <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -180,7 +178,7 @@ pip install BaseNN</a></li>
 <p>参数data为待推理的测试数据数据，该参数必须传入值；</p>
 <p>checkpoint为已有模型路径，即使用现有的模型进行推理，该参数可以不传入值，即直接使用训练出的模型做推理。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span> <span class="c1"># 声明模型</span>
-<span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/mmbase_net.pkl&#39;</span> <span class="c1"># 现有模型路径</span>
+<span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/basenn.pkl&#39;</span> <span class="c1"># 现有模型路径</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">test_x</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">)</span> <span class="c1"># 直接推理</span>
 <span class="n">model</span><span class="o">.</span><span class="n">print_result</span><span class="p">()</span> <span class="c1"># 输出结果</span>
 </pre></div>

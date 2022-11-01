@@ -71,7 +71,7 @@ model.save_fold表示训练出的模型文件保存的文件夹。
 model = nn()
 model.load_dataset(x, y)
 model.save_fold = 'checkpoints'
-checkpoint = 'checkpoints/mmbase_net.pkl'
+checkpoint = 'checkpoints/basenn.pkl'
 model.train(lr=0.01, epochs=1000, checkpoint=checkpoint)
 ```
 
@@ -91,7 +91,7 @@ checkpoint为已有模型路径，即使用现有的模型进行推理，该参�
 
 ```python
 model = nn() # 声明模型
-checkpoint = 'checkpoints/mmbase_net.pkl' # 现有模型路径
+checkpoint = 'checkpoints/basenn.pkl' # 现有模型路径
 result = model.inference(data=test_x, checkpoint=checkpoint) # 直接推理
 model.print_result() # 输出结果
 ```
