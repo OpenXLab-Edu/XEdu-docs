@@ -82,7 +82,7 @@ model.save_fold表示训练出的模型文件保存的文件夹。
 #### 4.2 继续训练
 
 ```python
-model = MMBase()
+model = nn()
 model.load_dataset(x, y)
 model.save_fold = 'checkpoints'
 checkpoint = 'checkpoints/mmbase_net.pkl'
@@ -104,7 +104,7 @@ model.inference(data=test_x, checkpoint=checkpoint)
 checkpoint为已有模型路径，即使用现有的模型进行推理，该参数可以不传入值，即直接使用训练出的模型做推理。
 
 ```python
-model = MMBase() # 声明模型
+model = nn() # 声明模型
 checkpoint = 'checkpoints/mmbase_net.pkl' # 现有模型路径
 result = model.inference(data=test_x, checkpoint=checkpoint) # 直接推理
 model.print_result() # 输出结果
@@ -158,10 +158,10 @@ model.print_model()
 此处以典型的LeNet5网络结构为例。注释标明了数据经过各层的尺寸变化。
 
 ```python
-model.add('Conv2D', size=(1, 3),kernel_size=( 3, 3)) # [100, 3, 18, 18]
-model.add('MaxPool', kernel_size=(2,2), activation='ReLU') # [100, 3, 9, 9]
-model.add('Conv2D', size=(3, 10), kernel_size=(3, 3)) # [100, 10, 7, 7]
-model.add('AvgPool', kernel_size=(2,2), activation='ReLU') # [100, 10, 3, 3]
+model.add('Conv2D', size=(1, 3),kernel_size=( 3, 3), activation='ReLU') # [100, 3, 18, 18]
+model.add('MaxPool', kernel_size=(2,2)) # [100, 3, 9, 9]
+model.add('Conv2D', size=(3, 10), kernel_size=(3, 3), activation='ReLU') # [100, 10, 7, 7]
+model.add('AvgPool', kernel_size=(2,2)) # [100, 10, 3, 3]
 model.add('Linear', size=(90, 10), activation='ReLU') # [100, 10]
 model.add('Linear', size=(10, 2), activation='Softmax') # [100,2]
 model.add(optimizer='SGD') # 设定优化器

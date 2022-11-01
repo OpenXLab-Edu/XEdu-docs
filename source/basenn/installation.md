@@ -2,4 +2,4 @@
 
 统一在BaseEdu下。
 
-pip install BaseEdu
+pip install BaseNN

@@ -144,10 +144,10 @@ model.print_model()
 此处以典型的LeNet5网络结构为例。注释标明了数据经过各层的尺寸变化。
 
 ```python
-model.add('Conv2D', size=(1, 3),kernel_size=( 3, 3)) # [100, 3, 18, 18]
-model.add('MaxPool', kernel_size=(2,2), activation='ReLU') # [100, 3, 9, 9]
-model.add('Conv2D', size=(3, 10), kernel_size=(3, 3)) # [100, 10, 7, 7]
-model.add('AvgPool', kernel_size=(2,2), activation='ReLU') # [100, 10, 3, 3]
+model.add('Conv2D', size=(1, 3),kernel_size=( 3, 3), activation='ReLU') # [100, 3, 18, 18]
+model.add('MaxPool', kernel_size=(2,2)) # [100, 3, 9, 9]
+model.add('Conv2D', size=(3, 10), kernel_size=(3, 3), activation='ReLU') # [100, 10, 7, 7]
+model.add('AvgPool', kernel_size=(2,2)) # [100, 10, 3, 3]
 model.add('Linear', size=(90, 10), activation='ReLU') # [100, 10]
 model.add('Linear', size=(10, 2), activation='Softmax') # [100,2]
 model.add(optimizer='SGD') # 设定优化器
