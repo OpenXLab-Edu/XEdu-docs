@@ -31,7 +31,9 @@ model = nn()
 
 ### 2.载入数据
 
-此处采用IRIS鸢尾花数据集作为示例。
+此处采用lvis鸢尾花数据集和MNIST手写体数据集作为示例。
+
+读取并载入鸢尾花数据：
 
 ```python
 # 训练数据
@@ -44,6 +46,39 @@ test_x = np.loadtxt(test_path, dtype=float, delimiter=',',skiprows=1,usecols=ran
 test_y = np.loadtxt(test_path, dtype=int, delimiter=',',skiprows=1,usecols=4) # 读取第五列，标签
 # 将数据载入
 model.load_dataset(x, y)
+```
+
+读取并载入手写体数据：
+
+```python
+# 定义读取训练数据的函数
+def read_data(path):
+    data = []
+    label = []
+    dir_list = os.listdir(path)
+
+    # 将顺序读取的文件保存到该list中
+    for item in dir_list:
+        tpath = os.path.join(path,item)
+
+        # print(tpath)
+        for i in os.listdir(tpath):
+            # print(item)
+            img = cv2.imread(os.path.join(tpath,i))
+            imGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+            # print(img)
+            data.append(imGray)
+            label.append(int(item))
+    x = np.array(data)
+    y = np.array(label)
+
+    x = np.expand_dims(x, axis=1)
+    return x, y
+    
+# 读取训练数据
+train_x, train_y = read_data('../dataset/mnist/training_set')
+# 载入数据
+model.load_dataset(train_x, train_y) 
 ```
 
 ### 3.搭建模型
@@ -66,7 +101,7 @@ model.add(layer='Linear', size=(5, 3), activation='Softmax') # [120, 3]
 model.train(lr=0.01, epochs=500,checkpoint=checkpoint)
 ```
 
-参数lr为学习率， epochs为训练轮数，checkpoint为现有模型路径，当使用checkpoint参数时，模型基于一个已有的模型继续训练，不使用checkpoint参数时，模型从零开始训练。
+参数`lr`为学习率， `epochs`为训练轮数，`checkpoint`为现有模型路径，当使用`checkpoint`参数时，模型基于一个已有的模型继续训练，不使用`checkpoint`参数时，模型从零开始训练。
 
 #### 4.1正常训练
 
@@ -80,7 +115,7 @@ model.save_fold = 'checkpoints'
 model.train(lr=0.01, epochs=1000)
 ```
 
-model.save_fold表示训练出的模型文件保存的文件夹。
+`model.save_fold`表示训练出的模型文件保存的文件夹。
 
 #### 4.2 继续训练
 
@@ -88,7 +123,7 @@ model.save_fold表示训练出的模型文件保存的文件夹。
 model = nn()
 model.load_dataset(x, y)
 model.save_fold = 'checkpoints'
-checkpoint = 'checkpoints/mmbase_net.pkl'
+checkpoint = 'checkpoints/basenn.pkl'
 model.train(lr=0.01, epochs=1000, checkpoint=checkpoint)
 ```
 
@@ -102,13 +137,13 @@ model.train(lr=0.01, epochs=1000, checkpoint=checkpoint)
 model.inference(data=test_x, checkpoint=checkpoint)
 ```
 
-参数data为待推理的测试数据数据，该参数必须传入值；
+参数`data`为待推理的测试数据数据，该参数必须传入值；
 
-checkpoint为已有模型路径，即使用现有的模型进行推理，该参数可以不传入值，即直接使用训练出的模型做推理。
+`checkpoint`为已有模型路径，即使用现有的模型进行推理，该参数可以不传入值，即直接使用训练出的模型做推理。
 
 ```python
 model = nn() # 声明模型
-checkpoint = 'checkpoints/mmbase_net.pkl' # 现有模型路径
+checkpoint = 'checkpoints/basenn.pkl' # 现有模型路径
 result = model.inference(data=test_x, checkpoint=checkpoint) # 直接推理
 model.print_result() # 输出结果
 ```
@@ -121,7 +156,7 @@ model.print_result() # 输出结果
 res = model.inference(test_x)
 ```
 
-输出结果数据类型为numpy的二维数组，表示各个样本的各个特征的置信度。
+输出结果数据类型为`numpy`的二维数组，表示各个样本的各个特征的置信度。
 
 ```python
 model.print_result() # 输出字典格式结果
@@ -133,14 +168,14 @@ model.print_result() # 输出字典格式结果
 
 ```python
 # 保存
-model.save("mmbase_net.pkl")
+model.save_fold = 'mn_ckpt'
 # 加载
-model.load("mmbase_net.pkl")
+model.load("basenn.pkl")
 ```
 
-参数为模型保存的路径，`.pkl`文件格式可以理解为将python中的数组、列表等持久化地存储在硬盘上的一种方式。
+参数为模型保存的路径，模型权重文件格式为`.pkl`文件格式，此格式可以理解为将python中的数组、列表等持久化地存储在硬盘上的一种方式。
 
-注：train()，inference()函数中也可通过参数控制模型的保存与加载，但这里也列出单独保存与加载模型的方法，以确保灵活性。
+注：`train()`，`inference()`函数中也可通过参数控制模型的保存与加载，但这里也列出单独保存与加载模型的方法，以确保灵活性。
 
 ### 查看模型结构
 

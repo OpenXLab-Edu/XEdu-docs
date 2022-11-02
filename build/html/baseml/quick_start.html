@@ -48,8 +48,19 @@
 <li class="toctree-l3"><a class="reference internal" href="#id1">简介</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">安装</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">体验</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">训练</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">推理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">训练</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">0.引入包</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">1.实例化模型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">2.载入数据</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">3.模型训练</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">推理</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id10">使用现有模型直接推理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">输出推理结果</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">模型的保存与加载</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="installation.html">BaseML安装</a></li>
@@ -102,11 +113,73 @@
 </section>
 <section id="id4">
 <h2>训练<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
-<p>敬请期待。</p>
-</section>
 <section id="id5">
-<h2>推理<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
-<p>敬请期待。</p>
+<h3>0.引入包<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库，从BaseML导入分类模块，简称cls</span>
+<span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Classification</span> <span class="k">as</span> <span class="bp">cls</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h3>1.实例化模型<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择CART（Classification and Regression Trees）</span>
+<span class="n">model</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;CART&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h3>2.载入数据<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<p>从路径载入数据：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 载入数据集，并说明特征列和标签列</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;./lenses.csv&#39;</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="n">x_column</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span><span class="n">y_column</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">x_column</span></code>表示特征列，<code class="docutils literal notranslate"><span class="pre">y_column</span></code>表示标签列。</p>
+<p>从变量载入数据：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 载入数据，并说明特征列和标签列</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">train_x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">train_y</span><span class="p">,</span><span class="nb">type</span> <span class="o">=</span><span class="s1">&#39;numpy&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">X</span></code>表示数据特征，<code class="docutils literal notranslate"><span class="pre">y</span></code>表示标签。可再设置<code class="docutils literal notranslate"><span class="pre">x_column</span></code>和<code class="docutils literal notranslate"><span class="pre">y_column</span></code>参数，不设置则默认所有列。</p>
+</section>
+<section id="id8">
+<h3>3.模型训练<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型训练</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id9">
+<h2>推理<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h2>
+<section id="id10">
+<h3>使用现有模型直接推理<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;CART&#39;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;mymodel.pkl&#39;</span><span class="p">)</span>
+<span class="n">y</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">inference</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p>输出结果数据类型为<code class="docutils literal notranslate"><span class="pre">array</span></code>的一维数组。</p>
+</section>
+<section id="id11">
+<h3>输出推理结果<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">label</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;不适合佩戴&#39;</span><span class="p">,</span> <span class="s1">&#39;软材质&#39;</span><span class="p">,</span> <span class="s1">&#39;硬材质&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">label</span><span class="p">[</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>定义<code class="docutils literal notranslate"><span class="pre">label</span></code>存储标签名称，根据<code class="docutils literal notranslate"><span class="pre">label</span></code>和推理结果输出真实标签。</p>
+</section>
+<section id="id12">
+<h3>模型的保存与加载<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 保存模型</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;mymodel.pkl&#39;</span><span class="p">)</span>
+
+<span class="c1"># 加载模型</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;mymodel.pkl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>参数为模型保存的路径，<code class="docutils literal notranslate"><span class="pre">.pkl</span></code>文件格式可以理解为将python中的数组、列表等持久化地存储在硬盘上的一种方式。</p>
+</section>
 </section>
 </section>
 
