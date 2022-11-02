@@ -110,6 +110,7 @@
 <section id="id3">
 <h2>体验<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
 <p>可以在命令行输入BaseNN查看安装的路径，在安装路径内，可以查看提供的更多demo案例。</p>
+<p>此处以用决策树方法配隐形眼镜为示例。</p>
 </section>
 <section id="id4">
 <h2>训练<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
@@ -135,12 +136,6 @@
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">x_column</span></code>表示特征列，<code class="docutils literal notranslate"><span class="pre">y_column</span></code>表示标签列。</p>
-<p>从变量载入数据：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 载入数据，并说明特征列和标签列</span>
-<span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">train_x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">train_y</span><span class="p">,</span><span class="nb">type</span> <span class="o">=</span><span class="s1">&#39;numpy&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">X</span></code>表示数据特征，<code class="docutils literal notranslate"><span class="pre">y</span></code>表示标签。可再设置<code class="docutils literal notranslate"><span class="pre">x_column</span></code>和<code class="docutils literal notranslate"><span class="pre">y_column</span></code>参数，不设置则默认所有列。</p>
 </section>
 <section id="id8">
 <h3>3.模型训练<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
@@ -154,20 +149,21 @@
 <h2>推理<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h2>
 <section id="id10">
 <h3>使用现有模型直接推理<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;CART&#39;</span><span class="p">)</span>
-<span class="n">m</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;mymodel.pkl&#39;</span><span class="p">)</span>
-<span class="n">y</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">inference</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">]])</span>
+<p>对一组数据直接推理。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;CART&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;mymodel.pkl&#39;</span><span class="p">)</span>
+<span class="n">y</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">]])</span>
 </pre></div>
 </div>
 <p>输出结果数据类型为<code class="docutils literal notranslate"><span class="pre">array</span></code>的一维数组。</p>
 </section>
 <section id="id11">
 <h3>输出推理结果<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h3>
+<p>定义<code class="docutils literal notranslate"><span class="pre">label</span></code>存储标签名称，根据<code class="docutils literal notranslate"><span class="pre">label</span></code>和推理结果输出真实标签。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">label</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;不适合佩戴&#39;</span><span class="p">,</span> <span class="s1">&#39;软材质&#39;</span><span class="p">,</span> <span class="s1">&#39;硬材质&#39;</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">label</span><span class="p">[</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>定义<code class="docutils literal notranslate"><span class="pre">label</span></code>存储标签名称，根据<code class="docutils literal notranslate"><span class="pre">label</span></code>和推理结果输出真实标签。</p>
 </section>
 <section id="id12">
 <h3>模型的保存与加载<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h3>

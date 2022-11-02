@@ -12,6 +12,8 @@ BaseML提供了众多机器学习训练方法，可以快速训练和应用模�
 
 可以在命令行输入BaseNN查看安装的路径，在安装路径内，可以查看提供的更多demo案例。
 
+此处以用决策树方法配隐形眼镜为示例。
+
 ## 训练
 
 ### 0.引入包
@@ -39,15 +41,6 @@ model.load_dataset('./lenses.csv', type ='csv', x_column = [1,2,3,4],y_column=[5
 
 `x_column`表示特征列，`y_column`表示标签列。
 
-从变量载入数据：
-
-```
-# 载入数据，并说明特征列和标签列
-model.load_dataset(X=train_x, y=train_y,type ='numpy')
-```
-
-`X`表示数据特征，`y`表示标签。可再设置`x_column`和`y_column`参数，不设置则默认所有列。
-
 ### 3.模型训练
 
 ```
@@ -59,22 +52,24 @@ model.train()
 
 ### 使用现有模型直接推理
 
+对一组数据直接推理。
+
 ```
-m=cls('CART')
-m.load('mymodel.pkl')
-y=m.inference([[1,  1,  1,  1]])
+model=cls('CART')
+model.load('mymodel.pkl')
+y=model.inference([[1,  1,  1,  1]])
 ```
 
 输出结果数据类型为`array`的一维数组。
 
 ### 输出推理结果
 
+定义`label`存储标签名称，根据`label`和推理结果输出真实标签。
+
 ```
 label=['不适合佩戴', '软材质', '硬材质']
 print(label[y[0]-1])
 ```
-
-定义`label`存储标签名称，根据`label`和推理结果输出真实标签。
 
 ### 模型的保存与加载
 
