@@ -53,6 +53,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#mmedu-pip-0-0-1">4）MMEdu pip-0.0.1版</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">3.正式版更新记录</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mmedu">3.1MMEdu</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="milestones.html">XEdu大事记</a></li>
@@ -96,7 +100,10 @@
 <section id="id2">
 <h2>1.正式版<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <p>发布时间：2022年9月发布</p>
-<p>版本说明：实现以pip方式安装。</p>
+<p>开发计划：</p>
+<p>1.实现以pip方式安装。</p>
+<p>2.分MMEdu、BaseML、BaseNN三个功能模块。</p>
+<p>3.工具持续迭代。</p>
 </section>
 <section id="id3">
 <h2>2.测试版<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
@@ -108,7 +115,7 @@
 <section id="id5">
 <h3>2）0.7版<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
 <p>发布时间：2022.6</p>
-<p>版本说明：优化0.5版两个模块，新增自定义网络（MMBase）模块。</p>
+<p>版本说明：优化0.5版两个模块，新增自定义网络（BaseNN）模块。</p>
 </section>
 <section id="xedu-0-0-1">
 <h3>3）XEdu 0.0.1版<a class="headerlink" href="#xedu-0-0-1" title="Permalink to this headline"></a></h3>
@@ -119,6 +126,38 @@
 <h3>4）MMEdu pip-0.0.1版<a class="headerlink" href="#mmedu-pip-0-0-1" title="Permalink to this headline"></a></h3>
 <p>发布时间：2022.8</p>
 <p>版本说明：发布内测版pip包。</p>
+</section>
+</section>
+<section id="id6">
+<h2>3.正式版更新记录<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h2>
+<section id="mmedu">
+<h3>3.1MMEdu<a class="headerlink" href="#mmedu" title="Permalink to this headline"></a></h3>
+<section id="v0-0-9-20221104">
+<h4>V0.0.9 20221104<a class="headerlink" href="#v0-0-9-20221104" title="Permalink to this headline"></a></h4>
+<ol class="simple">
+<li><p>检测模块训练函数支持device参数。</p></li>
+<li><p>load_checkpoint()参数顺序更换。将checkpoint前置（第一个），device后置，可以只输入路径，而省略 “checkpoint=”。</p></li>
+<li><p>fast_infer错误反馈，补充错误情况，当fast_infer之前未使用load_checkpoint载入ckpt时会提示错误码305。</p></li>
+<li><p>MMEdu.__ path __ 可正常返回环境中包所在地址。</p></li>
+<li><p>修复lenet 文件夹推理问题。</p></li>
+</ol>
+</section>
+<section id="v0-0-1rc2-20221104">
+<h4>V0.0.1rc2 20221104<a class="headerlink" href="#v0-0-1rc2-20221104" title="Permalink to this headline"></a></h4>
+<p>同V0.0.9，少依赖版本</p>
+</section>
+<section id="v0-0-8-20221102">
+<h4>V0.0.8 20221102<a class="headerlink" href="#v0-0-8-20221102" title="Permalink to this headline"></a></h4>
+<p>1.加入错误反馈机制。</p>
+<p>2.增加命令行字符画和简介。</p>
+<p>3.提示目前支持的主干网络。</p>
+<p>4.支持推理opencv、PIL读入的图片。</p>
+<p>5.模型声明时允许读入配置文件，而不仅是模型名。</p>
+</section>
+<section id="v0-0-1rc1-20221102">
+<h4>V0.0.1rc1 20221102<a class="headerlink" href="#v0-0-1rc1-20221102" title="Permalink to this headline"></a></h4>
+<p>同V0.0.8，少依赖版本</p>
+</section>
 </section>
 </section>
 </section>
