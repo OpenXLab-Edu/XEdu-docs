@@ -66,6 +66,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#id18">数据载入</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id19">模型训练</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id20">模型测试</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id21">附录——快速区分分类、回归和聚类</a></li>
 </ul>
 </li>
 </ul>
@@ -111,6 +112,7 @@
 <h3>实例化<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
 <section id="id3">
 <h4>贝叶斯分类<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h4>
+<p>贝叶斯分类是基于贝叶斯定理的一种算法，即“简单”地假设每对特征之间相互独立。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择NaiveBayes</span>
 <span class="n">model</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;NaiveBayes&#39;</span><span class="p">)</span>
 </pre></div>
@@ -118,6 +120,7 @@
 </section>
 <section id="id4">
 <h4>决策树<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h4>
+<p>决策树（Decision Trees）是一种用来分类（Classification）和 回归（Regression）的算法。其目的是创建一种模型从数据特征中学习简单的决策规则来预测一个目标变量的值。优势在于便于理解和解释。树的结构可以可视化出来，训练需要的数据少。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择CART（Classification and Regression Trees）</span>
 <span class="n">model</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;CART&#39;</span><span class="p">)</span>
 </pre></div>
@@ -125,8 +128,8 @@
 </section>
 <section id="k">
 <h4>k近邻<a class="headerlink" href="#k" title="Permalink to this headline"></a></h4>
-<p>k近邻（K Nearest Neighbors）算法，简称为knn，该算法以每一个测试数据为中心，根据在特征空间中与测试数据相邻的训练数据的标签来确定测试数据的标签。给定测试样本，基于特定的某种距离度量方式找到与训练集中最接近的k个样本，然后基于这k个样本的类别进行预测。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择KNN(K-Nearest Neighbor)</span>
+<p>k近邻（K Nearest Neighbors）算法，简称为kNN，该算法以每一个测试数据为中心，根据在特征空间中与测试数据相邻的训练数据的标签来确定测试数据的标签。给定测试样本，基于特定的某种距离度量方式找到与训练集中最接近的k个样本，然后基于这k个样本的类别进行预测。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择KNN(K Nearest Neighbor)</span>
 <span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;KNN&#39;</span><span class="p">,</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -134,7 +137,8 @@
 </section>
 <section id="svm">
 <h4>SVM<a class="headerlink" href="#svm" title="Permalink to this headline"></a></h4>
-<p>使用支持向量机（SVM）完成分类任务。</p>
+<p>支持向量机（support vector machine），简称SVM，能够同时最小化经验误差与最大化几何边缘区，因此支持向量机也被称为最大边缘区分类器。可用于分类和回归。</p>
+<p>使用支持向量机（SVM）完成分类任务：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#实例化模型，模型名称选择SVM</span>
 <span class="n">model</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;SVM&#39;</span><span class="p">)</span>
 </pre></div>
@@ -142,6 +146,7 @@
 </section>
 <section id="mlp">
 <h4>多层感知机（MLP）<a class="headerlink" href="#mlp" title="Permalink to this headline"></a></h4>
+<p>感知机（perceptrons）是最简单的一种神经网络，由单个神经元构成。感知机组成的网络就是多层感知机（Multilayer Perceptron，简称MLP），多层感知机又称为前馈神经网络。神经元以层级结构组织在一起，层数一般是二三层，但是理论上层数是无限的。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择MLP（Multilayer Perceptron），n_hidden = (100,100)表示2层神经元数量为100的隐藏层</span>
 <span class="n">model</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;MLP&#39;</span><span class="p">,</span><span class="n">n_hidden</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span>
 </pre></div>
@@ -220,7 +225,7 @@
 <h3>实例化<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h3>
 <section id="id17">
 <h4>k均值<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h4>
-<p>k均值（k-means）算法,是一种基于数据间距离的聚类算法，通过分析数据之间的距离，发现数据之间的内在联系和相关性，将看似没有关联的事物聚合在一起，并将数据划分为k个集合，即k个类，方便为数据打上标签，从而进行后续的分析和处理。</p>
+<p>k均值（k-means）算法是一种基于数据间距离的聚类算法，通过分析数据之间的距离，发现数据之间的内在联系和相关性，将看似没有关联的事物聚合在一起，并将数据划分为若干个集合，方便为数据打上标签，从而进行后续的分析和处理。k代表划分的集合个数，means代表子集内数据对象的均值。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择&#39;KMeans&#39;,N_CLUSTERS设置为3</span>
 <span class="n">model</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;KMeans&#39;</span><span class="p">,</span><span class="n">N_CLUSTERS</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
@@ -245,6 +250,11 @@
 </section>
 <section id="id20">
 <h3>模型测试<a class="headerlink" href="#id20" title="Permalink to this headline"></a></h3>
+</section>
+<section id="id21">
+<h3>附录——快速区分分类、回归和聚类<a class="headerlink" href="#id21" title="Permalink to this headline"></a></h3>
+<p>如果预测任务是为了将观察值分类到有限的标签集合中，换句话说，就是给观察对象命名，那任务就被称为 <strong>分类</strong> 任务。另外，如果任务是为了预测一个连续的目标变量，那就被称为 <strong>回归</strong> 任务。</p>
+<p>所谓 **聚类 **，即根据相似性原则，将具有较高相似度的数据对象划分至同一类簇，将具有较高相异度的数据对象划分至不同类簇。聚类与分类最大的区别在于，聚类过程为无监督过程，即待处理数据对象没有任何先验知识，而分类过程为有监督过程，即存在有先验知识的训练数据集。</p>
 </section>
 </section>
 </section>
