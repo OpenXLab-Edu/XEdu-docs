@@ -22,12 +22,14 @@ model=cls('CART')
 
 #### k近邻
 
+k近邻（K Nearest Neighbors）算法，简称为knn，该算法以每一个测试数据为中心，根据在特征空间中与测试数据相邻的训练数据的标签来确定测试数据的标签。给定测试样本，基于特定的某种距离度量方式找到与训练集中最接近的k个样本，然后基于这k个样本的类别进行预测。
+
 ```
 # 实例化模型，模型名称选择KNN(K-Nearest Neighbor)
 model = cls('KNN',n_neighbors=5)
 ```
 
-k近邻算法(k-NearestNeighbor，KNN)，顾名思义，即由某样本k个邻居的类别来推断出该样本的类别。给定测试样本，基于特定的某种距离度量方式找到与训练集中最接近的k个样本，然后基于这k个样本的类别进行预测。`n_neighbors`表示k的值，参数需设置为整数，默认值为5。
+`n_neighbors`表示k的值，参数需设置为整数，默认值为5。
 
 #### SVM
 
@@ -99,6 +101,13 @@ y_pred=m.inference(test_x)
 
 #### 线性回归
 
+线性回归（Linear Regression）是一种数据分析技术，它通过使用另一个相关的已知数据值来预测未知数据的值，类似于一次函数。回归算法一般用于确定两种或两种以上变量间的定量关系。按照自变量的数量多少，可以分为一元回归和多元回归。
+
+```
+# 实例化模型，模型名称选择'LinearRegression'
+model = reg(algorithm = 'LinearRegression')
+```
+
 #### SVM
 
 ...
@@ -113,12 +122,16 @@ y_pred=m.inference(test_x)
 
 ### 实例化
 
-#### K均值
+#### k均值
+
+k均值（k-means）算法,是一种基于数据间距离的聚类算法，通过分析数据之间的距离，发现数据之间的内在联系和相关性，将看似没有关联的事物聚合在一起，并将数据划分为k个集合，即k个类，方便为数据打上标签，从而进行后续的分析和处理。
 
 ```
 # 实例化模型，模型名称选择'KMeans',N_CLUSTERS设置为3
 model=cls(algorithm='KMeans',N_CLUSTERS=3)
 ```
+
+`N_CLUSTERS`表示k的值。
 
 ...
 

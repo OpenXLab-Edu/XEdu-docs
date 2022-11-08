@@ -1,4 +1,4 @@
-图片分类模型LeNet-5
+图像分类模型LeNet-5
 ===================
 
 `Backpropagation Applied to Handwritten Zip Code

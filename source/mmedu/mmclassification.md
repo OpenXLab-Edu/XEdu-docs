@@ -194,7 +194,7 @@ model.train(epochs=50, validate=True, checkpoint=checkpoint) # 进行再训练
 
 #### 4.SOTA模型介绍
 
-目前MMClassifiation支持的SOTA模型有LeNet、MobileNet等，这些模型的作用和适用场景简介如下。
+目前MMClassifiation支持的SOTA模型有LeNet、MobileNet、ResNet等，这些模型的作用和适用场景简介如下。
 
 - **LeNet**
 

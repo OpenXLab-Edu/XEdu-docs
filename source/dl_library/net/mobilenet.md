@@ -1,4 +1,4 @@
-# 图片分类模型MobileNet
+# 图像分类模型MobileNet
 
 
 
