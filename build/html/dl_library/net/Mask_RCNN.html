@@ -95,7 +95,7 @@
           <li><a href="../network_introduction.html">经典网络模型介绍</a> &raquo;</li>
       <li>目标检测模型Mask R-CNN</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../../_sources/dl_library/net/Mask_RCNN.md.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/dl_library/net/Mask_RCNN.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -110,21 +110,28 @@
 </div></blockquote>
 <section id="id1">
 <h2>简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
-<p>Mask R-CNN由Faster R-CNN拓展而来，可以同时在一个网络中做目标检测和实例分割，特征提取采用ResNet-FPN的架构，另外多加了一个Mask预测分支，并引入了RoI Align代替Faster RCNN中的RoI Pooling。</p>
-<div align=center> <img src="https://pica.zhimg.com/v2-ea09be343cb10c6e740cf8de3d0bccec_1440w.jpg?source=172ae18b" width="60%"/> </div></section>
+<p>Mask R-CNN由Faster
+R-CNN拓展而来，可以同时在一个网络中做目标检测和实例分割，特征提取采用ResNet-FPN的架构，另外多加了一个Mask预测分支，并引入了RoI
+Align代替Faster RCNN中的RoI Pooling。</p>
+</section>
 <section id="mask">
 <h2>特点：Mask预测分支<a class="headerlink" href="#mask" title="Permalink to this headline"></a></h2>
-<p>我们知道在Faster R-CNN中，对于每个ROI（文中叫candidate object）主要有两个输出，</p>
+<p>我们知道在Faster R-CNN中，对于每个ROI（文中叫candidate
+object）主要有两个输出，</p>
 <ul class="simple">
 <li><p>一个输出是分类结果，也就是预测框的标签；</p></li>
 <li><p>一个输出是回归结果，也就是预测框的坐标offset。</p></li>
 </ul>
-<p>而Mask R-CNN则是添加了第三个输出：object mask，也就说对每个ROI都输出一个mask，该支路是通过FCN网络（如上图中的两个卷积层）来实现的。以上这三个输出支路相互之间都是平行关系，相比其他先分割再分类的实例分割算法相比，这种平行设计不仅简单而且高效。</p>
+<p>而Mask R-CNN则是添加了第三个输出：object
+mask，也就说对每个ROI都输出一个mask，该支路是通过FCN网络（如上图中的两个卷积层）来实现的。以上这三个输出支路相互之间都是平行关系，相比其他先分割再分类的实例分割算法相比，这种平行设计不仅简单而且高效。</p>
 </section>
 <section id="roialign">
 <h2>特点：RoIAlign<a class="headerlink" href="#roialign" title="Permalink to this headline"></a></h2>
-<p>RoIPool的目的是从RPN(区域候选网络)确定的ROI中导出较小的特征图(eg 7x7)，ROI的大小各不相同，但是RoIPool后都变成了7x7大小。RPN网络会提出若干RoI的坐标以[x,y,w,h]表示，然后输入RoI Pooling，输出7x7大小的特征图供分类和定位使用。</p>
-<p>问题就出在RoI Pooling的输出大小是7x7上，如果RON网络输出的RoI大小是8*8的，那么无法保证输入像素和输出像素是一一对应，首先他们包含的信息量不同（有的是1对1，有的是1对2），其次他们的坐标无法和输入对应起来。这对分类没什么影响，但是对分割却影响很大。RoIAlign的输出坐标使用插值算法得到，不再是简单的量化；每个grid中的值也不再使用max，同样使用差值算法。</p>
+<p>RoIPool的目的是从RPN(区域候选网络)确定的ROI中导出较小的特征图(eg
+7x7)，ROI的大小各不相同，但是RoIPool后都变成了7x7大小。RPN网络会提出若干RoI的坐标以[x,y,w,h]表示，然后输入RoI
+Pooling，输出7x7大小的特征图供分类和定位使用。</p>
+<p>问题就出在RoI
+Pooling的输出大小是7x7上，如果RON网络输出的RoI大小是8*8的，那么无法保证输入像素和输出像素是一一对应，首先他们包含的信息量不同（有的是1对1，有的是1对2），其次他们的坐标无法和输入对应起来。这对分类没什么影响，但是对分割却影响很大。RoIAlign的输出坐标使用插值算法得到，不再是简单的量化；每个grid中的值也不再使用max，同样使用差值算法。</p>
 </section>
 <section id="id2">
 <h2>优点<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
@@ -138,18 +145,69 @@
 <h2>适用领域<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
 <p>广泛应用于目标检测、实例分割等领域。</p>
 <ul class="simple">
-<li><p>在COCO比赛目标检测(object detection)、实例分割(instance segmentation)和行人关键点检测(person keypoint detection)任务上获得第一名</p></li>
+<li><p>在COCO比赛目标检测(object detection)、实例分割(instance
+segmentation)和行人关键点检测(person keypoint
+detection)任务上获得第一名</p></li>
 </ul>
 </section>
 <section id="id4">
 <h2>预训练模型<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
-<p>|                           Backbone                           | Mem (GB) | box AP | mask AP |                            Config                            |                           Download                           |
-| :———————————————————-: | :——: | :—-: | :—–: | :———————————————————-: | :———————————————————-: |
-|   <a class="reference external" href="./mask_rcnn_r50_fpn_mstrain-poly_3x_coco.py">R-50-FPN</a>    |   4.1    |  40.9  |  37.1   | <a class="reference external" href="https://github.com/open-mmlab/mmdetection/tree/master/configs/mask_rcnn/mask_rcnn_r50_fpn_mstrain-poly_3x_coco.py">config</a> | <a class="reference external" href="https://download.openmmlab.com/mmdetection/v2.0/mask_rcnn/mask_rcnn_r50_fpn_mstrain-poly_3x_coco/mask_rcnn_r50_fpn_mstrain-poly_3x_coco_20210524_201154-21b550bb.pth">model</a> | <a class="reference external" href="https://download.openmmlab.com/mmdetection/v2.0/mask_rcnn/mask_rcnn_r50_fpn_mstrain-poly_3x_coco/mask_rcnn_r50_fpn_mstrain-poly_3x_coco_20210524_201154.log.json">log</a> |
-|  <a class="reference external" href="./mask_rcnn_r101_fpn_mstrain-poly_3x_coco.py">R-101-FPN</a>   |   6.1    |  42.7  |  38.5   | <a class="reference external" href="https://github.com/open-mmlab/mmdetection/tree/master/configs/mask_rcnn/mask_rcnn_r101_fpn_mstrain-poly_3x_coco.py">config</a> | <a class="reference external" href="https://download.openmmlab.com/mmdetection/v2.0/mask_rcnn/mask_rcnn_r101_fpn_mstrain-poly_3x_coco/mask_rcnn_r101_fpn_mstrain-poly_3x_coco_20210524_200244-5675c317.pth">model</a> | <a class="reference external" href="https://download.openmmlab.com/mmdetection/v2.0/mask_rcnn/mask_rcnn_r101_fpn_mstrain-poly_3x_coco/mask_rcnn_r101_fpn_mstrain-poly_3x_coco_20210524_200244.log.json">log</a> |
-| <a class="reference external" href="./mask_rcnn_x101_32x4d_fpn_mstrain-poly_3x_coco.py">x101-32x4d-FPN</a> |   7.3    |  43.6  |  39.0   | <a class="reference external" href="https://github.com/open-mmlab/mmdetection/tree/master/configs/mask_rcnn/mask_rcnn_x101_32x4d_fpn_mstrain-poly_3x_coco.py">config</a> | <a class="reference external" href="https://download.openmmlab.com/mmdetection/v2.0/mask_rcnn/mask_rcnn_x101_32x4d_fpn_mstrain-poly_3x_coco/mask_rcnn_x101_32x4d_fpn_mstrain-poly_3x_coco_20210524_201410-abcd7859.pth">model</a> | <a class="reference external" href="https://download.openmmlab.com/mmdetection/v2.0/mask_rcnn/mask_rcnn_x101_32x4d_fpn_mstrain-poly_3x_coco/mask_rcnn_x101_32x4d_fpn_mstrain-poly_3x_coco_20210524_201410.log.json">log</a> |
-| <a class="reference external" href="./mask_rcnn_x101_32x8d_fpn_mstrain-poly_3x_coco.py">X-101-32x8d-FPN</a> |   10.3   |  44.3  |  39.5   | <a class="reference external" href="https://github.com/open-mmlab/mmdetection/tree/master/configs/mask_rcnn/mask_rcnn_x101_32x8d_fpn_mstrain-poly_3x_coco.py">config</a> | <a class="reference external" href="https://download.openmmlab.com/mmdetection/v2.0/mask_rcnn/mask_rcnn_x101_32x8d_fpn_mstrain-poly_3x_coco/mask_rcnn_x101_32x8d_fpn_mstrain-poly_3x_coco_20210607_161042-8bd2c639.pth">model</a> | <a class="reference external" href="https://download.openmmlab.com/mmdetection/v2.0/mask_rcnn/mask_rcnn_x101_32x8d_fpn_mstrain-poly_3x_coco/mask_rcnn_x101_32x8d_fpn_mstrain-poly_3x_coco_20210607_161042.log.json">log</a> |
-| <a class="reference external" href="./mask_rcnn_x101_64x4d_fpn_mstrain-poly_3x_coco.py">X-101-64x4d-FPN</a> |   10.4   |  44.5  |  39.7   | <a class="reference external" href="https://github.com/open-mmlab/mmdetection/tree/master/configs/mask_rcnn/mask_rcnn_x101_64x4d_fpn_mstrain-poly_3x_coco.py">config</a> | <a class="reference external" href="https://download.openmmlab.com/mmdetection/v2.0/mask_rcnn/mask_rcnn_x101_64x4d_fpn_mstrain-poly_3x_coco/mask_rcnn_x101_64x4d_fpn_mstrain-poly_3x_coco_20210526_120447-c376f129.pth">model</a> | <a class="reference external" href="https://download.openmmlab.com/mmdetection/v2.0/mask_rcnn/mask_rcnn_x101_64x4d_fpn_mstrain-poly_3x_coco/mask_rcnn_x101_64x4d_fpn_mstrain-poly_3x_coco_20210526_120447.log.json">log</a> |</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 22%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Backbone</p></th>
+<th class="head"><p>Mem (GB)</p></th>
+<th class="head"><p>box AP</p></th>
+<th class="head"><p>mask AP</p></th>
+<th class="head"><p>Config</p></th>
+<th class="head"><p>Download</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="./mask_rcnn_r50_fpn_mstrain-poly_3x_coco.py">R-50-FPN</a></p></td>
+<td><p>4.1</p></td>
+<td><p>40.9</p></td>
+<td><p>37.1</p></td>
+<td><p><a class="reference external" href="https://github.com/open-mmlab/mmdetection/tree/master/configs/mask_rcnn/mask_rcnn_r50_fpn_mstrain-poly_3x_coco.py">config</a></p></td>
+<td><p><a class="reference external" href="https://download.openmmlab.com/mmdetection/v2.0/mask_rcnn/mask_rcnn_r50_fpn_mstrain-poly_3x_coco/mask_rcnn_r50_fpn_mstrain-poly_3x_coco_20210524_201154-21b550bb.pth">model</a> | <a class="reference external" href="https://download.openmmlab.com/mmdetection/v2.0/mask_rcnn/mask_rcnn_r50_fpn_mstrain-poly_3x_coco/mask_rcnn_r50_fpn_mstrain-poly_3x_coco_20210524_201154.log.json">log</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="./mask_rcnn_r101_fpn_mstrain-poly_3x_coco.py">R-101-FPN</a></p></td>
+<td><p>6.1</p></td>
+<td><p>42.7</p></td>
+<td><p>38.5</p></td>
+<td><p><a class="reference external" href="https://github.com/open-mmlab/mmdetection/tree/master/configs/mask_rcnn/mask_rcnn_r101_fpn_mstrain-poly_3x_coco.py">config</a></p></td>
+<td><p><a class="reference external" href="https://download.openmmlab.com/mmdetection/v2.0/mask_rcnn/mask_rcnn_r101_fpn_mstrain-poly_3x_coco/mask_rcnn_r101_fpn_mstrain-poly_3x_coco_20210524_200244-5675c317.pth">model</a> | <a class="reference external" href="https://download.openmmlab.com/mmdetection/v2.0/mask_rcnn/mask_rcnn_r101_fpn_mstrain-poly_3x_coco/mask_rcnn_r101_fpn_mstrain-poly_3x_coco_20210524_200244.log.json">log</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="./mask_rcnn_x101_32x4d_fpn_mstrain-poly_3x_coco.py">x101-32x4d-FPN</a></p></td>
+<td><p>7.3</p></td>
+<td><p>43.6</p></td>
+<td><p>39.0</p></td>
+<td><p><a class="reference external" href="https://github.com/open-mmlab/mmdetection/tree/master/configs/mask_rcnn/mask_rcnn_x101_32x4d_fpn_mstrain-poly_3x_coco.py">config</a></p></td>
+<td><p><a class="reference external" href="https://download.openmmlab.com/mmdetection/v2.0/mask_rcnn/mask_rcnn_x101_32x4d_fpn_mstrain-poly_3x_coco/mask_rcnn_x101_32x4d_fpn_mstrain-poly_3x_coco_20210524_201410-abcd7859.pth">model</a> | <a class="reference external" href="https://download.openmmlab.com/mmdetection/v2.0/mask_rcnn/mask_rcnn_x101_32x4d_fpn_mstrain-poly_3x_coco/mask_rcnn_x101_32x4d_fpn_mstrain-poly_3x_coco_20210524_201410.log.json">log</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="./mask_rcnn_x101_32x8d_fpn_mstrain-poly_3x_coco.py">X-101-32x8d-FPN</a></p></td>
+<td><p>10.3</p></td>
+<td><p>44.3</p></td>
+<td><p>39.5</p></td>
+<td><p><a class="reference external" href="https://github.com/open-mmlab/mmdetection/tree/master/configs/mask_rcnn/mask_rcnn_x101_32x8d_fpn_mstrain-poly_3x_coco.py">config</a></p></td>
+<td><p><a class="reference external" href="https://download.openmmlab.com/mmdetection/v2.0/mask_rcnn/mask_rcnn_x101_32x8d_fpn_mstrain-poly_3x_coco/mask_rcnn_x101_32x8d_fpn_mstrain-poly_3x_coco_20210607_161042-8bd2c639.pth">model</a> | <a class="reference external" href="https://download.openmmlab.com/mmdetection/v2.0/mask_rcnn/mask_rcnn_x101_32x8d_fpn_mstrain-poly_3x_coco/mask_rcnn_x101_32x8d_fpn_mstrain-poly_3x_coco_20210607_161042.log.json">log</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="./mask_rcnn_x101_64x4d_fpn_mstrain-poly_3x_coco.py">X-101-64x4d-FPN</a></p></td>
+<td><p>10.4</p></td>
+<td><p>44.5</p></td>
+<td><p>39.7</p></td>
+<td><p><a class="reference external" href="https://github.com/open-mmlab/mmdetection/tree/master/configs/mask_rcnn/mask_rcnn_x101_64x4d_fpn_mstrain-poly_3x_coco.py">config</a></p></td>
+<td><p><a class="reference external" href="https://download.openmmlab.com/mmdetection/v2.0/mask_rcnn/mask_rcnn_x101_64x4d_fpn_mstrain-poly_3x_coco/mask_rcnn_x101_64x4d_fpn_mstrain-poly_3x_coco_20210526_120447-c376f129.pth">model</a> | <a class="reference external" href="https://download.openmmlab.com/mmdetection/v2.0/mask_rcnn/mask_rcnn_x101_64x4d_fpn_mstrain-poly_3x_coco/mask_rcnn_x101_64x4d_fpn_mstrain-poly_3x_coco_20210526_120447.log.json">log</a></p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="id5">
 <h2>参考文献<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
