@@ -61,7 +61,7 @@ model=cls('MLP',n_hidden = (100,100))
 
 BaseML库支持各种形式载入数据。
 
-从路径载入数据：
+1. 从路径载入数据：
 
 ```
 # 载入数据集，并说明特征列和标签列
@@ -70,14 +70,34 @@ model.load_dataset('./lenses.csv', type ='csv', x_column = [1,2,3,4],y_column=[5
 
 `x_column`表示特征列，`y_column`表示标签列。
 
-从变量载入数据：
+2. 读取图像数据转换为Numpy数组后直接从变量载入数据：
 
 ```
 # 载入数据，并说明特征列和标签列
 model.load_dataset(X=train_x, y=train_y,type ='numpy')
 ```
 
-`X`表示数据特征，`y`表示标签。可再设置`x_column`和`y_column`参数，不设置则默认所有列。
+`X`表示数据特征，`y`表示标签。可再设置`x_column`和`y_column`参数，不设置则默认所有列。同时BaseML内置了图片读取处理模块`ImageLoader`。
+
+使用示例：
+
+以读取ImageNet格式的MNIST数据集为例，
+
+```
+import IMGLoader
+# 指定数据集路径
+train_path = '/data/QX8UBM/mnist_sample/training_set'
+test_path = '/data/QX8UBM/mnist_sample/test_set'
+# 初始化图片加载器并载入数据集
+img_set = IMGLoader.ImageLoader(train_path, test_path,size=28)
+# 图像数字化处理
+X_train, y_train, X_test, y_test = img_set.get_data(method='flatten')
+```
+
+```
+# 载入数据，从变量载入
+model.load_dataset(X=X_train, y=y_train,type ='numpy')
+```
 
 ### 模型训练
 

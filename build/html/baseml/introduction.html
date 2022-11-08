@@ -157,18 +157,38 @@
 <section id="id5">
 <h3>数据载入<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
 <p>BaseML库支持各种形式载入数据。</p>
-<p>从路径载入数据：</p>
+<ol class="simple">
+<li><p>从路径载入数据：</p></li>
+</ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 载入数据集，并说明特征列和标签列</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;./lenses.csv&#39;</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="n">x_column</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span><span class="n">y_column</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">x_column</span></code>表示特征列，<code class="docutils literal notranslate"><span class="pre">y_column</span></code>表示标签列。</p>
-<p>从变量载入数据：</p>
+<ol class="simple">
+<li><p>读取图像数据转换为Numpy数组后直接从变量载入数据：</p></li>
+</ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 载入数据，并说明特征列和标签列</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">train_x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">train_y</span><span class="p">,</span><span class="nb">type</span> <span class="o">=</span><span class="s1">&#39;numpy&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">X</span></code>表示数据特征，<code class="docutils literal notranslate"><span class="pre">y</span></code>表示标签。可再设置<code class="docutils literal notranslate"><span class="pre">x_column</span></code>和<code class="docutils literal notranslate"><span class="pre">y_column</span></code>参数，不设置则默认所有列。</p>
+<p><code class="docutils literal notranslate"><span class="pre">X</span></code>表示数据特征，<code class="docutils literal notranslate"><span class="pre">y</span></code>表示标签。可再设置<code class="docutils literal notranslate"><span class="pre">x_column</span></code>和<code class="docutils literal notranslate"><span class="pre">y_column</span></code>参数，不设置则默认所有列。同时BaseML内置了图片读取处理模块<code class="docutils literal notranslate"><span class="pre">ImageLoader</span></code>。</p>
+<p>使用示例：</p>
+<p>以读取ImageNet格式的MNIST数据集为例，</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">IMGLoader</span>
+<span class="c1"># 指定数据集路径</span>
+<span class="n">train_path</span> <span class="o">=</span> <span class="s1">&#39;/data/QX8UBM/mnist_sample/training_set&#39;</span>
+<span class="n">test_path</span> <span class="o">=</span> <span class="s1">&#39;/data/QX8UBM/mnist_sample/test_set&#39;</span>
+<span class="c1"># 初始化图片加载器并载入数据集</span>
+<span class="n">img_set</span> <span class="o">=</span> <span class="n">IMGLoader</span><span class="o">.</span><span class="n">ImageLoader</span><span class="p">(</span><span class="n">train_path</span><span class="p">,</span> <span class="n">test_path</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">28</span><span class="p">)</span>
+<span class="c1"># 图像数字化处理</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">img_set</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;flatten&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 载入数据，从变量载入</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_train</span><span class="p">,</span><span class="nb">type</span> <span class="o">=</span><span class="s1">&#39;numpy&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 <section id="id6">
 <h3>模型训练<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
