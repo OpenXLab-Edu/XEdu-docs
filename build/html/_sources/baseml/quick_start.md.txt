@@ -10,7 +10,7 @@ BaseML提供了众多机器学习训练方法，可以快速训练和应用模�
 
 ## 体验
 
-可以在命令行输入BaseML查看安装的路径，在安装路径内，可以查看提供的更多demo案例。
+可以在命令行输入BaseML查看安装的路径，在安装路径内，可以查看提供的更多demo案例，同时可以查看附录。
 
 此处以用决策树方法配隐形眼镜案例为示例。
 
@@ -19,15 +19,15 @@ BaseML提供了众多机器学习训练方法，可以快速训练和应用模�
 ### 0.引入包
 
 ```
-# 导入库，从BaseML导入分类模块，简称cls
-from BaseML import Classification as cls
+# 导入库，从BaseML导入分类模块
+from BaseML import Classification
 ```
 
 ### 1.实例化模型
 
 ```
 # 实例化模型，模型名称选择CART（Classification and Regression Trees）
-model=cls('CART')
+model=Classification.cls('CART')
 ```
 
 ### 2.载入数据
@@ -55,7 +55,7 @@ model.train()
 对一组数据直接推理。
 
 ```
-model=cls('CART')
+model=Classification.cls('CART')
 model.load('mymodel.pkl')
 y=model.inference([[1,  1,  1,  1]])
 ```
@@ -82,3 +82,308 @@ model.load('mymodel.pkl')
 ```
 
 参数为模型保存的路径，`.pkl`文件格式可以理解为将python中的数组、列表等持久化地存储在硬盘上的一种方式。
+
+
+
+## 附录
+
+### 案例1.基于决策树的道路智能决策
+
+说明：案例来源于上海科教版《人工智能初步》人教地图56-58页。
+
+数据集来源：上海科教版《人工智能初步》人教地图56-58页。
+
+##### 1）模型训练
+
+```
+# 导入库，从BaseML导入分类模块
+from BaseML import Classification
+# 实例化模型，模型名称选则CART（Classification and Regression Trees）
+model=Classification.cls('CART')
+# 载入数据集，并说明特征列和标签列
+model.load_dataset('./道路是否可通行历史数据f.csv', type ='csv', x_column = [1,2],y_column=[3])
+# 模型训练
+model.train(validate = False)
+# 保存模型
+model.save('my_CART_model.pkl')
+```
+
+##### 2）模型推理
+
+```
+# 给定一组数据，推理查看效果
+y=model.inference([[1,  10]]) 
+# 输出结果
+label=['不可通行', '可通行']
+print(label[y[0]-1])
+```
+
+
+
+### 案例2.用多层感知机算法实现手写体数字分类
+
+说明：案例来源于《人工智能初步》广东教育出版社版75-80页。
+
+首先对MNIST数据集进行图像数字化处理，使用BaseML自带的IMGLoader库。
+
+```
+from BaseML import IMGLoader
+# 指定数据集路径
+train_path = '/data/QX8UBM/mnist_sample/training_set'
+test_path = '/data/QX8UBM/mnist_sample/test_set'
+# 初始化图片加载器并载入数据集
+img_set = IMGLoader.ImageLoader(train_path, test_path,size=28)
+# 图像数字化处理
+X_train, y_train, X_test, y_test = img_set.get_data(method='flatten')
+```
+
+##### 1）模型训练
+
+```
+# 导入库，从BaseML导入分类模块
+from BaseML import Classification
+# 实例化模型，模型名称选择MLP（Multilayer Perceptron），n_hidden = (100,100)表示2层神经元数量为100的隐藏层
+model=Classification.cls('MLP',n_hidden = (100,100))
+# 载入数据，从变量载入
+model.load_dataset(X=X_train, y=y_train,type ='numpy')
+# 模型训练
+model.train()
+# 保存模型
+model.save('checkpoints/mymodel.pkl')
+```
+
+##### 2）模型推理
+
+```
+# 给定一张图片，推理查看效果
+img = '/data/QX8UBM/mnist_sample/test_set/0/0.jpg' # 指定一张图片
+img_cast = img_set.pre_process(img)
+data = img_set.get_feature(img_cast,method = 'flatten')
+print(data)
+y = model.inference(data) #图片推理
+print(y)
+# 输出结果
+label=['0', '1','2', '3', '4','5', '6', '7','8', '9']
+print(label[y[0]])
+```
+
+
+
+### 案例3.用k近邻为参观者推荐场馆
+
+说明：案例来源于华东师范大学出版社《人工智能初步》56-57页。
+
+数据集来源：华东师范大学出版社《人工智能初步》 38页。
+
+首先导入库并进行文本特征数字化。
+
+```
+# 导入需要的各类库，numpy和pandas用来读入数据和处理数据，BaseML是主要的算法库
+import numpy as np
+import pandas as pd
+from BaseML import Classification
+
+# 构建字典键值对
+yesno_dict = {'是':1,'否':0}
+number_dict = {'多':1,'少':0}
+weather_dict = {'雨':-1, '阴':0, '晴':1}
+
+# 采用map进行值的映射
+df['首次参观'] = df['首次参观'].map(yesno_dict)
+df['参观人数'] = df['参观人数'].map(number_dict)
+df['天气'] = df['天气'].map(weather_dict)
+df['专业人士'] = df['专业人士'].map(yesno_dict)
+```
+
+##### 1）模型训练
+
+```
+# 实例化模型，KNN默认值为k=5
+model=Classification.cls('KNN')
+# 载入数据集，并说明特征列和标签列
+model.load_dataset(X = df, y = df, type ='pandas', x_column = [1,2,3,4],y_column=[5])
+# 开始训练
+model.train()
+# 保存模型
+model.save('mymodel.pkl')
+```
+
+##### 2）模型推理 
+
+```
+# 给定一组数据，查看模型推理结果
+test_data = [[0,1,0,1]]
+test_y = model.inference(test_data)
+print(test_y)
+print(loc.inverse_transform(test_y))
+```
+
+修改k值进行训练：
+
+```
+# # 实例化模型，设置k=3
+model1=Classification.cls(algorithm = 'KNN',n_neighbors =3)
+model1.load_dataset(X = df, y = df, type ='pandas', x_column = [1,2,3,4],y_column=[5])
+model1.train()
+# 保存模型
+model.save('mymodel2.pkl')
+```
+
+
+
+### 案例4.用线性回归预测蛋糕价格
+
+说明：案例来源于人教地图版《人工智能初步》39-41页。
+
+数据集来源：人教地图版《人工智能初步》39-41页。
+
+##### 1）模型训练
+
+```
+# 导入需要的各类库，numpy和pandas用来读入数据和处理数据，BaseML是主要的算法库
+import numpy as np
+import pandas as pd
+from BaseML import Regression
+# 实例化模型
+model = reg(algorithm = 'LinearRegression')
+# 指定数据集，需要显式指定类型
+model.load_dataset("蛋糕尺寸与价格.csv", type='csv', x_column=[0],y_column = [1])
+# 开始训练
+model.train()
+# 模型保存
+model.save('mymodel.pkl')
+```
+
+##### 2）模型推理
+
+```
+# 指定数据
+df = pd.read_csv("蛋糕尺寸与价格.csv")
+# 输出模型对于数据的预测结果
+result = model.inference(df.values[:,0].reshape(-1,1))
+
+# 可视化线性回归
+import matplotlib.pyplot as plt
+# 画真实的点
+plt.scatter(df['蛋糕尺寸/英寸'], df['价格/元'], color = 'blue')
+# 画拟合的直线
+plt.plot(df.values[:,0].reshape(-1,1), result, color = 'red', linewidth = 4)
+plt.xlabel('size')
+plt.ylabel('value')
+plt.show()
+```
+
+
+
+### 案例5.用KMeans实现集合地点的选择
+
+说明：案例来源于华东师范大学出版社《人工智能初步》53-55页。
+
+数据集来源：自动生成。
+
+```
+# 导入需要的各类库，numpy和pandas用来读入数据和处理数据，BaseML是主要的算法库
+import numpy as np
+import pandas as pd
+import Classification
+from BaseML import Cluster
+import matplotlib.pyplot as plt
+from sklearn.datasets import make_blobs
+
+# 生成自定义数据，并查看数据分布情况。随机生成1000个点，定义两个中心。
+X,y=make_blobs(n_samples=1000,n_features=2,centers=[[1,5],[5,3]],cluster_std=[0.4,0.6],random_state=9)
+plt.scatter(X[:,0],X[:,1],marker='o')
+plt.show()
+```
+
+##### 1）模型训练
+
+```
+# 实例化模型
+model = Cluster.clt(algorithm = 'Kmeans', N_CLUSTERS=2)
+# 指定数据集，需要显式指定类型
+model.load_dataset(X = X, type='numpy', x_column=[0,1])
+# 开始训练
+model.train()
+# 模型保存
+model.save('mymodel.pkl')
+```
+
+##### 2）模型推理
+
+```
+# 进行推理（无参数，输出聚类数据结果）
+model.inference()
+```
+
+```
+# 进行推理（有参数，返回聚类结果，便于可视化）
+result = model.inference(X,verbose = False)
+# 可视化最终的聚类结果
+# 聚类结果根据颜色区分
+plt.scatter(X[:,0],X[:,1], c=result, s=50, cmap='viridis')
+
+# 标出聚类序号，长方形序号的左下角为聚类中心所在位置
+centers = model.model.cluster_centers_
+for i in range(model.model.cluster_centers_.shape[0]):
+    plt.text(centers[:, 0][i]+0.03,y=centers[:, 1][i]+0.03,s=i, 
+             fontdict=dict(color='red',size=10),
+             bbox=dict(facecolor='yellow',alpha=0.5))
+```
+
+### 案例6.车辆聚类
+
+说明：案例来源于上海科技教育出版社《人工智能初步》88-89页。
+
+数据集来源：上海科技教育出版社《人工智能初步》88页。
+
+##### 1）模型训练
+
+```
+# 导入需要的各类库，numpy和pandas用来读入数据和处理数据，BaseML是主要的算法库
+import numpy as np
+import pandas as pd
+from BaseML import cls
+
+# 读取数据
+df = pd.read_csv("车辆聚类.csv")
+# 实例化模型
+model = cls(algorithm = 'Kmeans', N_CLUSTERS=2)
+# 指定数据集，需要显式指定类型
+model.load_dataset(X = df, type='pandas', x_column=[1,2])
+# 开始训练
+model.train()
+# 模型保存
+model.save('mymodel.pkl')
+```
+
+##### 2）模型推理
+
+```
+# 进行推理（无参数，输出聚类数据结果）
+model.inference()
+```
+
+```
+# 进行推理（有参数，返回聚类结果，便于可视化）
+result = model.inference(df.loc[:,['大小','颜色']].values)
+print(result)
+
+# 输出最终的车辆聚类文字结果
+for index, row in df.iterrows():
+    print('{0}号车辆属于第{1}个类别'.format(row['汽车编号'],result[index])) # 输出每一行
+# 可视化最终的车辆分类结果
+import matplotlib.pyplot as plt
+
+# 画出不同颜色的车辆点
+plt.scatter(df.iloc[:, 1], df.iloc[:, 2], c=result, s=50, cmap='viridis')
+
+# 标出聚类序号，长方形序号的左下角为聚类中心所在位置
+centers = model.model.cluster_centers_
+for i in range(model.model.cluster_centers_.shape[0]):
+    plt.text(centers[:, 0][i]+0.03,y=centers[:, 1][i]+0.03,s=i, 
+             fontdict=dict(color='red',size=10),
+             bbox=dict(facecolor='yellow',alpha=0.5),
+            zorder=-1)
+```
+

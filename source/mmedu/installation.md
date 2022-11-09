@@ -76,6 +76,8 @@ Jupyter Notebook是基于网页的用于交互计算的应用程序。其可被�
 
 用IDE打开解压路径下的py文件，如“cls_demo.py”，点击“运行”。运行效果应和pyzo一样。
 
+**在2022年11月9日后，不再维护MMEdu一键安装包，统一更新为XEdu。**
+
 ### 2.2 pip安装
 
 当前，我们提供的MMEdu0.0.7版本是基础版的pip安装包，可以使用如下命令安装：
@@ -242,5 +244,4 @@ print(MMEdu.__path__)
 ![image](../images/mmedu/pip安装指南2.png)
 
 注意：内置examples文件夹下的案例仅供参考使用，请勿直接改写其中文件。应在用户自己的工作目录下新建文件，并参考examples中的写法。
-
 

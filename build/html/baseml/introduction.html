@@ -48,25 +48,34 @@
 <li class="toctree-l2"><a class="reference internal" href="installation.html">BaseML安装</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">BaseML功能详解</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">分类任务</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">实例化</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">数据载入</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">模型训练</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id7">模型测试</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">0.引入包</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">1.实例化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">2.数据载入</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">3.模型训练</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">4.模型测试</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">5.模型的保存与加载</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">回归任务</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id9">实例化</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id12">数据载入</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id13">模型训练</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id14">模型测试</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">回归任务</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id11">0.引入包</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">1.实例化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16">2.数据载入</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id17">3.模型训练</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18">4.模型测试</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">5.模型的保存与加载</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id15">聚类任务</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id16">实例化</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id18">数据载入</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id19">模型训练</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id20">模型测试</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id21">附录——快速区分分类、回归和聚类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">聚类任务</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id21">0.引入包</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id22">1.实例化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id24">2.数据载入</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id25">3.模型训练</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id26">4.模型测试</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id27">5.模型的保存与加载</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id28">附录</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id29">1.分类、回归和聚类</a></li>
 </ul>
 </li>
 </ul>
@@ -109,20 +118,27 @@
 <section id="id1">
 <h2>分类任务<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <section id="id2">
-<h3>实例化<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
-<section id="id3">
-<h4>贝叶斯分类<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h4>
-<p>贝叶斯分类是基于贝叶斯定理的一种算法，即“简单”地假设每对特征之间相互独立。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择NaiveBayes</span>
-<span class="n">model</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;NaiveBayes&#39;</span><span class="p">)</span>
+<h3>0.引入包<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Classification</span>
 </pre></div>
 </div>
 </section>
+<section id="id3">
+<h3>1.实例化<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
 <section id="id4">
-<h4>决策树<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h4>
+<h4>贝叶斯分类<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h4>
+<p>贝叶斯分类算法常用于解决不确定问题，如人们普遍认为夜里下雨，第二天早晨草地会湿，实际到了早上草地可能就干了，也许是因为风的因素，解决这类问题往往需要根据人类已有的经验来计算某种状态出现的概率，这种方式叫做贝叶斯推理。 贝叶斯分类算法是基于贝叶斯定理的一种算法，即“简单”地假设每对特征之间相互独立。</p>
+<p>贝叶斯定理：P(A|B)表示事件B发生的条件下事件A发生的概率，P(A|B)等于事件A发生的条件下事件B发生的概率乘以事件A发生的概率P(A)，再除以事件B发生的概率P(B)。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择NaiveBayes</span>
+<span class="n">model</span><span class="o">=</span><span class="n">Classification</span><span class="o">.</span><span class="n">cls</span><span class="p">(</span><span class="s1">&#39;NaiveBayes&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h4>决策树分类<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h4>
 <p>决策树（Decision Trees）是一种用来分类（Classification）和 回归（Regression）的算法。其目的是创建一种模型从数据特征中学习简单的决策规则来预测一个目标变量的值。优势在于便于理解和解释。树的结构可以可视化出来，训练需要的数据少。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择CART（Classification and Regression Trees）</span>
-<span class="n">model</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;CART&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">=</span><span class="n">Classification</span><span class="o">.</span><span class="n">cls</span><span class="p">(</span><span class="s1">&#39;CART&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -130,7 +146,7 @@
 <h4>k近邻<a class="headerlink" href="#k" title="Permalink to this headline"></a></h4>
 <p>k近邻（K Nearest Neighbors）算法，简称为kNN，该算法以每一个测试数据为中心，根据在特征空间中与测试数据相邻的训练数据的标签来确定测试数据的标签。给定测试样本，基于特定的某种距离度量方式找到与训练集中最接近的k个样本，然后基于这k个样本的类别进行预测。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择KNN(K Nearest Neighbor)</span>
-<span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;KNN&#39;</span><span class="p">,</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Classification</span><span class="o">.</span><span class="n">cls</span><span class="p">(</span><span class="s1">&#39;KNN&#39;</span><span class="p">,</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code>表示k的值，参数需设置为整数，默认值为5。</p>
@@ -140,7 +156,7 @@
 <p>支持向量机（support vector machine），简称SVM，能够同时最小化经验误差与最大化几何边缘区，因此支持向量机也被称为最大边缘区分类器。可用于分类和回归。</p>
 <p>使用支持向量机（SVM）完成分类任务：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#实例化模型，模型名称选择SVM</span>
-<span class="n">model</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;SVM&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">=</span><span class="n">Classification</span><span class="o">.</span><span class="n">cls</span><span class="p">(</span><span class="s1">&#39;SVM&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -148,14 +164,14 @@
 <h4>多层感知机（MLP）<a class="headerlink" href="#mlp" title="Permalink to this headline"></a></h4>
 <p>感知机（perceptrons）是最简单的一种神经网络，由单个神经元构成。感知机组成的网络就是多层感知机（Multilayer Perceptron，简称MLP），多层感知机又称为前馈神经网络。神经元以层级结构组织在一起，层数一般是二三层，但是理论上层数是无限的。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择MLP（Multilayer Perceptron），n_hidden = (100,100)表示2层神经元数量为100的隐藏层</span>
-<span class="n">model</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;MLP&#39;</span><span class="p">,</span><span class="n">n_hidden</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span>
+<span class="n">model</span><span class="o">=</span><span class="n">Classification</span><span class="o">.</span><span class="n">cls</span><span class="p">(</span><span class="s1">&#39;MLP&#39;</span><span class="p">,</span><span class="n">n_hidden</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">n_hidden</span></code>表示隐藏层，参数值设置为一个元组，元组的元素数表示隐藏层数，元素的值依次表示隐藏层的神经元数</p>
 </section>
 </section>
-<section id="id5">
-<h3>数据载入<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<section id="id6">
+<h3>2.数据载入<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
 <p>BaseML库支持各种形式载入数据。</p>
 <ol class="simple">
 <li><p>从路径载入数据：</p></li>
@@ -175,7 +191,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">X</span></code>表示数据特征，<code class="docutils literal notranslate"><span class="pre">y</span></code>表示标签。可再设置<code class="docutils literal notranslate"><span class="pre">x_column</span></code>和<code class="docutils literal notranslate"><span class="pre">y_column</span></code>参数，不设置则默认所有列。同时BaseML内置了图片读取处理模块<code class="docutils literal notranslate"><span class="pre">ImageLoader</span></code>。</p>
 <p>使用示例：</p>
 <p>以读取ImageNet格式的MNIST数据集为例，</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">IMGLoader</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">IMGLoader</span>
 <span class="c1"># 指定数据集路径</span>
 <span class="n">train_path</span> <span class="o">=</span> <span class="s1">&#39;/data/QX8UBM/mnist_sample/training_set&#39;</span>
 <span class="n">test_path</span> <span class="o">=</span> <span class="s1">&#39;/data/QX8UBM/mnist_sample/test_set&#39;</span>
@@ -190,15 +206,15 @@
 </pre></div>
 </div>
 </section>
-<section id="id6">
-<h3>模型训练<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<section id="id7">
+<h3>3.模型训练<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型训练</span>
 <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
-<section id="id7">
-<h3>模型测试<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<section id="id8">
+<h3>4.模型测试<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
 <p>对一组数进行推理：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 给定一组数据，推理查看效果</span>
 <span class="n">y</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">]])</span>
@@ -211,70 +227,114 @@
 </pre></div>
 </div>
 </section>
-</section>
-<section id="id8">
-<h2>回归任务<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h2>
 <section id="id9">
-<h3>实例化<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
+<h3>5.模型的保存与加载<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 保存模型</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;my_CART_model.pkl&#39;</span><span class="p">)</span>
+<span class="c1"># 加载模型</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;my_CART_model.pkl&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>参数为模型保存的路径。</p>
+</section>
+</section>
 <section id="id10">
-<h4>线性回归<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h4>
-<p>线性回归（Linear Regression）是一种数据分析技术，它通过使用另一个相关的已知数据值来预测未知数据的值，类似于一次函数。回归算法一般用于确定两种或两种以上变量间的定量关系。按照自变量的数量多少，可以分为一元回归和多元回归。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择&#39;LinearRegression&#39;</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">reg</span><span class="p">(</span><span class="n">algorithm</span> <span class="o">=</span> <span class="s1">&#39;LinearRegression&#39;</span><span class="p">)</span>
+<h2>回归任务<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h2>
+<section id="id11">
+<h3>0.引入包<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Regression</span>
 </pre></div>
 </div>
 </section>
-<section id="id11">
-<h4>SVM<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h4>
+<section id="id12">
+<h3>1.实例化<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h3>
+<section id="id13">
+<h4>线性回归<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h4>
+<p>线性回归（Linear Regression）是一种数据分析技术，它通过使用另一个相关的已知数据值来预测未知数据的值，类似于一次函数。回归算法一般用于确定两种或两种以上变量间的定量关系。按照自变量的数量多少，可以分为一元回归和多元回归。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择&#39;LinearRegression&#39;</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Regression</span><span class="o">.</span><span class="n">reg</span><span class="p">(</span><span class="n">algorithm</span> <span class="o">=</span> <span class="s1">&#39;LinearRegression&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id14">
+<h4>决策树回归<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h4>
+<p>决策树（Decision Trees）是一种用来分类（Classification）和 回归（Regression）的算法。其目的是创建一种模型从数据特征中学习简单的决策规则来预测一个目标变量的值。优势在于便于理解和解释。树的结构可以可视化出来，训练需要的数据少。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择&#39;DecisionTree&#39;</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Regression</span><span class="o">.</span><span class="n">reg</span><span class="p">(</span><span class="n">algorithm</span> <span class="o">=</span> <span class="s1">&#39;DecisionTree&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id15">
+<h4>随机森林回归<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h4>
+<p>随机森林回归算法（Random Forest Regression）通过随机抽取样本和特征，建立多棵相互不关联的决策树，通过并行的方式获得预测结果。每棵决策树都能通过抽取的样本和特征得出一个预测结果，通过综合所有树的结果取平均值，得到整个森林的回归预测结果。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择&#39;RandomForest&#39;</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Regression</span><span class="o">.</span><span class="n">reg</span><span class="p">(</span><span class="n">algorithm</span> <span class="o">=</span> <span class="s1">&#39;RandomForest&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>…</p>
 </section>
 </section>
-<section id="id12">
-<h3>数据载入<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h3>
-</section>
-<section id="id13">
-<h3>模型训练<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h3>
-</section>
-<section id="id14">
-<h3>模型测试<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h3>
-</section>
-</section>
-<section id="id15">
-<h2>聚类任务<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h2>
 <section id="id16">
-<h3>实例化<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h3>
+<h3>2.数据载入<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h3>
+<p>与分类任务一致（见上文）。</p>
+</section>
 <section id="id17">
-<h4>k均值<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h4>
-<p>k均值（k-means）算法是一种基于数据间距离的聚类算法，通过分析数据之间的距离，发现数据之间的内在联系和相关性，将看似没有关联的事物聚合在一起，并将数据划分为若干个集合，方便为数据打上标签，从而进行后续的分析和处理。k代表划分的集合个数，means代表子集内数据对象的均值。</p>
+<h3>3.模型训练<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h3>
+<p>与分类任务一致（见上文）。</p>
+</section>
+<section id="id18">
+<h3>4.模型测试<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h3>
+<p>与分类任务一致（见上文）。</p>
+</section>
+<section id="id19">
+<h3>5.模型的保存与加载<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h3>
+<p>与分类任务一致（见上文）。</p>
+</section>
+</section>
+<section id="id20">
+<h2>聚类任务<a class="headerlink" href="#id20" title="Permalink to this headline"></a></h2>
+<section id="id21">
+<h3>0.引入包<a class="headerlink" href="#id21" title="Permalink to this headline"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Cluster</span>
+</pre></div>
+</div>
+</section>
+<section id="id22">
+<h3>1.实例化<a class="headerlink" href="#id22" title="Permalink to this headline"></a></h3>
+<section id="id23">
+<h4>k均值<a class="headerlink" href="#id23" title="Permalink to this headline"></a></h4>
+<p>k均值（k-means）算法是一种基于数据间距离迭代求解的聚类算法，通过分析数据之间的距离，发现数据之间的内在联系和相关性，将看似没有关联的事物聚合在一起，并将数据划分为若干个集合，方便为数据打上标签，从而进行后续的分析和处理。k代表划分的集合个数，means代表子集内数据对象的均值。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择&#39;KMeans&#39;,N_CLUSTERS设置为3</span>
-<span class="n">model</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;KMeans&#39;</span><span class="p">,</span><span class="n">N_CLUSTERS</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">model</span><span class="o">=</span><span class="n">Cluster</span><span class="o">.</span><span class="n">clt</span><span class="p">(</span><span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;KMeans&#39;</span><span class="p">,</span><span class="n">N_CLUSTERS</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">N_CLUSTERS</span></code>表示k的值。</p>
 <p>…</p>
 </section>
 </section>
-<section id="id18">
-<h3>数据载入<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 载入数据集，并说明特征列和标签列</span>
-<span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;./lenses.csv&#39;</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="n">x_column</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span><span class="n">y_column</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
-</pre></div>
-</div>
+<section id="id24">
+<h3>2.数据载入<a class="headerlink" href="#id24" title="Permalink to this headline"></a></h3>
+<p>与分类任务一致（见上文）。</p>
 </section>
-<section id="id19">
-<h3>模型训练<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型训练</span>
-<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
-</pre></div>
-</div>
+<section id="id25">
+<h3>3.模型训练<a class="headerlink" href="#id25" title="Permalink to this headline"></a></h3>
+<p>与分类任务一致（见上文）。</p>
 </section>
-<section id="id20">
-<h3>模型测试<a class="headerlink" href="#id20" title="Permalink to this headline"></a></h3>
+<section id="id26">
+<h3>4.模型测试<a class="headerlink" href="#id26" title="Permalink to this headline"></a></h3>
+<p>与分类任务一致（见上文）。</p>
 </section>
-<section id="id21">
-<h3>附录——快速区分分类、回归和聚类<a class="headerlink" href="#id21" title="Permalink to this headline"></a></h3>
+<section id="id27">
+<h3>5.模型的保存与加载<a class="headerlink" href="#id27" title="Permalink to this headline"></a></h3>
+<p>与分类任务一致（见上文）。</p>
+</section>
+</section>
+<section id="id28">
+<h2>附录<a class="headerlink" href="#id28" title="Permalink to this headline"></a></h2>
+<section id="id29">
+<h3>1.分类、回归和聚类<a class="headerlink" href="#id29" title="Permalink to this headline"></a></h3>
 <p>如果预测任务是为了将观察值分类到有限的标签集合中，换句话说，就是给观察对象命名，那任务就被称为 <strong>分类</strong> 任务。另外，如果任务是为了预测一个连续的目标变量，那就被称为 <strong>回归</strong> 任务。</p>
-<p>所谓 **聚类 **，即根据相似性原则，将具有较高相似度的数据对象划分至同一类簇，将具有较高相异度的数据对象划分至不同类簇。聚类与分类最大的区别在于，聚类过程为无监督过程，即待处理数据对象没有任何先验知识，而分类过程为有监督过程，即存在有先验知识的训练数据集。</p>
+<p>所谓 <strong>聚类</strong> ，即根据相似性原则，将具有较高相似度的数据对象划分至同一类簇，将具有较高相异度的数据对象划分至不同类簇。聚类与分类最大的区别在于，聚类过程为无监督过程，即待处理数据对象没有任何先验知识，而分类过程为有监督过程，即存在有先验知识的训练数据集。</p>
 </section>
 </section>
 </section>
