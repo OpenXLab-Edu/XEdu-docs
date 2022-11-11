@@ -55,10 +55,10 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#docker">4.docker容器镜像</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">5.查看XEdu各模块库的版本</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">6.卸载XEdu各模块库</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">使用示例</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id8">更多示例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">5.查看XEdu各模块库的版本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">6.卸载XEdu各模块库</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">使用示例</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id7">更多示例</a></li>
 </ul>
 </li>
 </ul>
@@ -137,14 +137,11 @@ PyCharm环境路径配置如下图所示。</p>
 </ul>
 <p>用IDE打开解压路径下的py文件，如“cls_demo.py”，点击“运行”。运行效果应和pyzo一样。</p>
 <p>第四步：“EasyTrain.bat”、“EasyInference.bat”和“EasyAPI.bat”体验。</p>
-<p>1）</p>
 </section>
 <section id="pip">
 <h2>3.pip安装<a class="headerlink" href="#pip" title="Permalink to this headline"></a></h2>
 <section id="mmedu">
 <h3>3.1MMEdu<a class="headerlink" href="#mmedu" title="Permalink to this headline"></a></h3>
-<p>当前，我们提供的MMEdu0.0.7版本是基础版的pip安装包，可以使用如下命令安装：
-<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">mmedu==0.0.7</span></code>或<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">MMEdu==0.0.7</span></code>。</p>
 <section id="id3">
 <h4>3.1.1准备工作<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h4>
 <p>强烈推荐你在Anaconda的基础上安装MMEdu，可以避免很多的版本冲突问题。</p>
@@ -156,13 +153,13 @@ PyCharm环境路径配置如下图所示。</p>
 <p>点击<code class="docutils literal notranslate"><span class="pre">Download</span></code>开始下载，下载完成后得到exe文件。</p>
 <p><strong>安装</strong></p>
 <p>双击exe文件即可开始安装（一般下载完成后会自动打开安装界面无需点击exe文件，若没有自动打开安装页面再点击此exe文件）。</p>
-<p>打开安装界面后，依次选择<code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt;``I Agree`` -&gt; <code class="docutils literal notranslate"><span class="pre">All</span> <span class="pre">Users</span></code>
--&gt;``Next``-&gt;``Next``
--&gt;``Add Anaconda3 to the system PATH environment variable`` -&gt;
-<code class="docutils literal notranslate"><span class="pre">Install</span></code> -&gt;``Next`` -&gt;``Next`` -&gt;``Finish``</p>
+<p>打开安装界面后，依次选择<code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">Agree</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">All</span> <span class="pre">Users</span></code>
+-&gt; <code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Next</span></code>
+-&gt; <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Anaconda3</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">system</span> <span class="pre">PATH</span> <span class="pre">environment</span> <span class="pre">variable</span></code> -&gt;
+<code class="docutils literal notranslate"><span class="pre">Install</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt;``Next`` -&gt; <code class="docutils literal notranslate"><span class="pre">Finish</span></code></p>
 </section>
 <section id="python">
-<h5>2）安装python编辑器<a class="headerlink" href="#python" title="Permalink to this headline"></a></h5>
+<h5>2)安装python编辑器<a class="headerlink" href="#python" title="Permalink to this headline"></a></h5>
 <p>若您已经安装好合适的python编辑器，该步骤可跳过。</p>
 <p>此处以安装Thonny为例，其他编辑器例如Pycharm，VScode等也支持，用户自行配置好Python编译器即可。</p>
 <p><strong>下载</strong></p>
@@ -180,8 +177,8 @@ PyCharm环境路径配置如下图所示。</p>
 第二个下拉栏找到自己之前安装的anaconda环境中的python解释器位置。点击确认即可使用该python解释器。</p>
 </section>
 </section>
-<section id="id4">
-<h4>3.1.2安装MMEdu<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h4>
+<section id="mmedu-cpu">
+<h4>3.1.2安装MMEdu(CPU版本)<a class="headerlink" href="#mmedu-cpu" title="Permalink to this headline"></a></h4>
 <section id="linuxmmedu">
 <h5>1）Linux安装MMEdu<a class="headerlink" href="#linuxmmedu" title="Permalink to this headline"></a></h5>
 <p>点击鼠标右键，打开终端。</p>
@@ -190,59 +187,91 @@ PyCharm环境路径配置如下图所示。</p>
 </pre></div>
 </div>
 <p>注：为避免出现版本冲突，建议新建一个conda环境，并在新环境中执行以上命令（注：要求python&lt;3.9）。</p>
-<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="p">$</span> <span class="n">conda</span> <span class="n">create</span> <span class="n">-n</span> <span class="n">your_env_name</span> <span class="n">python</span><span class="p">=</span><span class="n">3</span><span class="p">.</span><span class="n">6</span>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="p">$</span> <span class="n">conda</span> <span class="n">create</span> <span class="n">-n</span> <span class="n">your_env_name</span> <span class="n">python</span><span class="p">=</span><span class="n">3</span><span class="p">.</span><span class="n">8</span>
 <span class="p">$</span> <span class="n">conda</span> <span class="n">activate</span> <span class="n">your_env_name</span>
 <span class="p">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">MMEdu</span>
 </pre></div>
 </div>
 <p>注：请将命令中的“your_env_name”换成你喜欢的名称，如“mmedu”。</p>
 </section>
-</section>
 <section id="windowsmmedu">
-<h4>2）Windows安装MMEdu<a class="headerlink" href="#windowsmmedu" title="Permalink to this headline"></a></h4>
+<h5>2）Windows安装MMEdu<a class="headerlink" href="#windowsmmedu" title="Permalink to this headline"></a></h5>
 <p>同时按下win+r，输入cmd，回车，打开一个命令行窗口。</p>
 <p>在命令行中使用pip安装即可。</p>
 <div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="p">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">MMEdu</span> <span class="o">-f</span> <span class="n">https</span><span class="p">://</span><span class="n">download</span><span class="p">.</span><span class="n">openmmlab</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">mmcv</span><span class="p">/</span><span class="n">dist</span><span class="p">/</span><span class="n">cpu</span><span class="p">/</span><span class="n">torch1</span><span class="p">.</span><span class="n">8</span><span class="p">.</span><span class="n">0</span><span class="p">/</span><span class="n">index</span><span class="p">.</span><span class="n">html</span>
 </pre></div>
 </div>
 <p>注：为避免出现版本冲突，建议新建一个conda环境，并在新环境中执行以上命令（注：要求python&lt;3.9）。</p>
-<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="p">$</span> <span class="n">conda</span> <span class="n">create</span> <span class="n">-n</span> <span class="n">your_env_name</span> <span class="n">python</span><span class="p">=</span><span class="n">3</span><span class="p">.</span><span class="n">6</span>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="p">$</span> <span class="n">conda</span> <span class="n">create</span> <span class="n">-n</span> <span class="n">your_env_name</span> <span class="n">python</span><span class="p">=</span><span class="n">3</span><span class="p">.</span><span class="n">8</span>
 <span class="p">$</span> <span class="n">conda</span> <span class="n">activate</span> <span class="n">your_env_name</span>
 <span class="p">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">MMEdu</span> <span class="o">-f</span> <span class="n">https</span><span class="p">://</span><span class="n">download</span><span class="p">.</span><span class="n">openmmlab</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">mmcv</span><span class="p">/</span><span class="n">dist</span><span class="p">/</span><span class="n">cpu</span><span class="p">/</span><span class="n">torch1</span><span class="p">.</span><span class="n">8</span><span class="p">.</span><span class="n">0</span><span class="p">/</span><span class="n">index</span><span class="p">.</span><span class="n">html</span>
 </pre></div>
 </div>
 </section>
 </section>
+<section id="mmedu-gpu">
+<h4>3.1.3安装MMEdu(GPU版本)<a class="headerlink" href="#mmedu-gpu" title="Permalink to this headline"></a></h4>
+<section id="windows-linux">
+<h5>1）Windows，Linux<a class="headerlink" href="#windows-linux" title="Permalink to this headline"></a></h5>
+<p>首先安装对应自己cuda版本的pytorch，安装命令可在以下网址中进行查询：<a class="reference external" href="https://pytorch.org/get-started/locally/">https://pytorch.org/get-started/locally/</a></p>
+<p>可以在命令行中使用<code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code>指令查询自己的cuda版本。</p>
+<p>例如，若cuda版本为10.1，想要安装1.8.1版本的pytorch，则安装命令为：</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="p">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">torch</span><span class="p">==</span><span class="n">1</span><span class="p">.</span><span class="n">8</span><span class="p">.</span><span class="n">1</span><span class="p">+</span><span class="n">cu101</span> <span class="n">torchvision</span><span class="p">==</span><span class="n">0</span><span class="p">.</span><span class="n">9</span><span class="p">.</span><span class="n">1</span><span class="p">+</span><span class="n">cu101</span> <span class="n">torchaudio</span><span class="p">==</span><span class="n">0</span><span class="p">.</span><span class="n">8</span><span class="p">.</span><span class="n">1</span> <span class="o">-f</span> <span class="n">https</span><span class="p">://</span><span class="n">download</span><span class="p">.</span><span class="n">pytorch</span><span class="p">.</span><span class="n">org</span><span class="p">/</span><span class="n">whl</span><span class="p">/</span><span class="n">torch_stable</span><span class="p">.</span><span class="n">html</span>
+</pre></div>
+</div>
+<p>其次，根据torch版本和cuda版本安装mmcv。</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="p">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">mmcv-full</span> <span class="o">-f</span> <span class="n">https</span><span class="p">://</span><span class="n">download</span><span class="p">.</span><span class="n">openmmlab</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">mmcv</span><span class="p">/</span><span class="n">dist</span><span class="p">/{</span><span class="n">cu_version</span><span class="p">}/{</span><span class="n">torch_version</span><span class="p">}/</span><span class="n">index</span><span class="p">.</span><span class="n">html</span>
+</pre></div>
+</div>
+<p>其中 <code class="docutils literal notranslate"><span class="pre">{cu_version}</span></code> 和 <code class="docutils literal notranslate"><span class="pre">{torch_version}</span></code>
+根据自身需求替换成实际的版本号。</p>
+<p>例如想安装和 <code class="docutils literal notranslate"><span class="pre">CUDA</span> <span class="pre">10.1</span></code>、<code class="docutils literal notranslate"><span class="pre">PyTorch</span> <span class="pre">1.8.0</span></code> 兼容的
+<code class="docutils literal notranslate"><span class="pre">mmcv-full</span></code>，使用如下替换过的命令</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="p">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">mmcv-full</span><span class="p">==</span><span class="n">1</span><span class="p">.</span><span class="n">4</span><span class="p">.</span><span class="n">5</span> <span class="o">-f</span> <span class="n">https</span><span class="p">://</span><span class="n">download</span><span class="p">.</span><span class="n">openmmlab</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">mmcv</span><span class="p">/</span><span class="n">dist</span><span class="p">/</span><span class="n">cu101</span><span class="p">/</span><span class="n">torch1</span><span class="p">.</span><span class="n">8</span><span class="p">.</span><span class="n">0</span><span class="p">/</span><span class="n">index</span><span class="p">.</span><span class="n">html</span>
+</pre></div>
+</div>
+<p>最后安装MMEdu的rc版本，例如</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="p">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">MMEdu</span><span class="p">==</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1rc2</span>
+</pre></div>
+</div>
+<p>即可。</p>
+<p>可选：如有需求，可自行安装opencv-python等常用库。</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="p">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">opencv-python</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
 <section id="baseml">
 <h3>3.2BaseML<a class="headerlink" href="#baseml" title="Permalink to this headline"></a></h3>
-<p>敬请期待</p>
+<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">baseml</span></code> 或 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">BaseML</span></code></p>
 </section>
 <section id="basenn">
 <h3>3.3BaseNN<a class="headerlink" href="#basenn" title="Permalink to this headline"></a></h3>
-<p>敬请期待</p>
+<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">basenn</span></code> 或 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">BaseNN</span></code></p>
 </section>
 </section>
 <section id="docker">
 <h2>4.docker容器镜像<a class="headerlink" href="#docker" title="Permalink to this headline"></a></h2>
 <p>敬请期待</p>
 </section>
-<section id="id5">
-<h2>5.查看XEdu各模块库的版本<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
+<section id="id4">
+<h2>5.查看XEdu各模块库的版本<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
 <p>打开python终端，执行以下命令即可查看XEdu各模块库的版本。当前最新版本是0.04。</p>
 <figure class="align-default">
 <img alt="../_images/pip安装指南3.png" src="../_images/pip安装指南3.png" />
 </figure>
 <p>注：目前版本MMEdu仅支持CPU。</p>
 </section>
-<section id="id6">
-<h2>6.卸载XEdu各模块库<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h2>
+<section id="id5">
+<h2>6.卸载XEdu各模块库<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
 <p>如果MMEdu库出现异常情况，可以尝试使用如下命令卸载MMEdu然后再使用install命令安装。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip uninstall MMEdu
 </pre></div>
 </div>
 </section>
-<section id="id7">
-<h2>使用示例<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h2>
+<section id="id6">
+<h2>使用示例<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h2>
 <p>推理：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
 <span class="n">img</span> <span class="o">=</span> <span class="s1">&#39;./img.png&#39;</span>
@@ -272,8 +301,8 @@ PyCharm环境路径配置如下图所示。</p>
 <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">epochs</span><span class="o">=</span><span class="mi">10</span>\<span class="n">n</span> <span class="n">validate</span><span class="o">=</span><span class="kc">True</span>\<span class="n">n</span> <span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">)</span>
 </pre></div>
 </div>
-<section id="id8">
-<h3>更多示例<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
+<section id="id7">
+<h3>更多示例<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
 <blockquote>
 <div><p>MMEdu库安装目录下有更多示例程序，可以通过如下方法找到.</p>
 </div></blockquote>
