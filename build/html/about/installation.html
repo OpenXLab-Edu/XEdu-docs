@@ -156,10 +156,10 @@ PyCharm环境路径配置如下图所示。</p>
 <p>打开安装界面后，依次选择<code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">Agree</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">All</span> <span class="pre">Users</span></code>
 -&gt; <code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Next</span></code>
 -&gt; <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Anaconda3</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">system</span> <span class="pre">PATH</span> <span class="pre">environment</span> <span class="pre">variable</span></code> -&gt;
-<code class="docutils literal notranslate"><span class="pre">Install</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt;``Next`` -&gt; <code class="docutils literal notranslate"><span class="pre">Finish</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">Install</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Finish</span></code></p>
 </section>
 <section id="python">
-<h5>2)安装python编辑器<a class="headerlink" href="#python" title="Permalink to this headline"></a></h5>
+<h5>2）安装python编辑器<a class="headerlink" href="#python" title="Permalink to this headline"></a></h5>
 <p>若您已经安装好合适的python编辑器，该步骤可跳过。</p>
 <p>此处以安装Thonny为例，其他编辑器例如Pycharm，VScode等也支持，用户自行配置好Python编译器即可。</p>
 <p><strong>下载</strong></p>
@@ -178,7 +178,7 @@ PyCharm环境路径配置如下图所示。</p>
 </section>
 </section>
 <section id="mmedu-cpu">
-<h4>3.1.2安装MMEdu(CPU版本)<a class="headerlink" href="#mmedu-cpu" title="Permalink to this headline"></a></h4>
+<h4>3.1.1安装MMEdu(CPU版本)<a class="headerlink" href="#mmedu-cpu" title="Permalink to this headline"></a></h4>
 <section id="linuxmmedu">
 <h5>1）Linux安装MMEdu<a class="headerlink" href="#linuxmmedu" title="Permalink to this headline"></a></h5>
 <p>点击鼠标右键，打开终端。</p>
@@ -211,8 +211,6 @@ PyCharm环境路径配置如下图所示。</p>
 </section>
 <section id="mmedu-gpu">
 <h4>3.1.3安装MMEdu(GPU版本)<a class="headerlink" href="#mmedu-gpu" title="Permalink to this headline"></a></h4>
-<section id="windows-linux">
-<h5>1）Windows，Linux<a class="headerlink" href="#windows-linux" title="Permalink to this headline"></a></h5>
 <p>首先安装对应自己cuda版本的pytorch，安装命令可在以下网址中进行查询：<a class="reference external" href="https://pytorch.org/get-started/locally/">https://pytorch.org/get-started/locally/</a></p>
 <p>可以在命令行中使用<code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code>指令查询自己的cuda版本。</p>
 <p>例如，若cuda版本为10.1，想要安装1.8.1版本的pytorch，则安装命令为：</p>
@@ -231,15 +229,10 @@ PyCharm环境路径配置如下图所示。</p>
 </pre></div>
 </div>
 <p>最后安装MMEdu的rc版本，例如</p>
-<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="p">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">MMEdu</span><span class="p">==</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1rc2</span>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="p">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">MMEdu</span><span class="p">==</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">0rc0</span>
 </pre></div>
 </div>
 <p>即可。</p>
-<p>可选：如有需求，可自行安装opencv-python等常用库。</p>
-<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="p">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">opencv-python</span>
-</pre></div>
-</div>
-</section>
 </section>
 </section>
 <section id="baseml">

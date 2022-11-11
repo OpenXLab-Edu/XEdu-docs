@@ -93,7 +93,7 @@ PyCharm环境路径配置如下图所示。
 2.2 pip安装
 ~~~~~~~~~~~
 
-当前，我们提供的MMEdu0.0.7版本是基础版的pip安装包，可以使用如下命令安装：
+当前，我们提供的MMEdu0.0.7版本的安装是基础版的pip安装包，可以使用如下命令安装：
 ``pip install mmedu==0.0.7``\ 或\ ``pip install MMEdu==0.0.7``\ 。
 
 3.完整版安装之pip安装
@@ -119,7 +119,7 @@ PyCharm环境路径配置如下图所示。
 
 双击exe文件即可开始安装（一般下载完成后会自动打开安装界面无需点击exe文件，若没有自动打开安装页面再点击此exe文件）。
 
-打开安装界面后，依次选择\ ``Next`` ->``I Agree`` -> ``All Users`` 
+打开安装界面后，依次选择\ ``Next`` -> ``I Agree`` -> ``All Users`` 
 -> ``Next`` -> ``Next`` 
 -> ``Add Anaconda3 to the system PATH environment variable`` -> 
 ``Install`` -> ``Next`` -> ``Next`` -> ``Finish`` 
@@ -200,9 +200,6 @@ PyCharm环境路径配置如下图所示。
 3.3安装MMEdu(GPU版本)
 ~~~~~~~~~~~~~~~~~~~~~
 
-3.3.1Windows，Linux
-^^^^^^^^^^^^^^^^^^^
-
 首先安装对应自己cuda版本的pytorch，安装命令可在以下网址中进行查询：https://pytorch.org/get-started/locally/
 
 可以在命令行中使用\ ``nvidia-smi``\ 指令查询自己的cuda版本。
@@ -233,15 +230,9 @@ PyCharm环境路径配置如下图所示。
 
 .. code:: powershell
 
-   $ pip install MMEdu==0.0.1rc2
+   $ pip install MMEdu==0.1.0rc0
 
 即可。
-
-可选：如有需求，可自行安装opencv-python等常用库。
-
-.. code:: powershell
-
-   $ pip install opencv-python
 
 4.完整版安装之docker容器镜像。
 ------------------------------

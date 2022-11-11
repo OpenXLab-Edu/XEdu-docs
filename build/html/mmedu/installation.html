@@ -168,7 +168,7 @@ PyCharm环境路径配置如下图所示。</p>
 </section>
 <section id="pip">
 <h3>2.2 pip安装<a class="headerlink" href="#pip" title="Permalink to this headline"></a></h3>
-<p>当前，我们提供的MMEdu0.0.7版本是基础版的pip安装包，可以使用如下命令安装：
+<p>当前，我们提供的MMEdu0.0.7版本的安装是基础版的pip安装包，可以使用如下命令安装：
 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">mmedu==0.0.7</span></code>或<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">MMEdu==0.0.7</span></code>。</p>
 </section>
 </section>
@@ -185,7 +185,7 @@ PyCharm环境路径配置如下图所示。</p>
 <p>点击<code class="docutils literal notranslate"><span class="pre">Download</span></code>开始下载，下载完成后得到exe文件。</p>
 <p><strong>安装</strong></p>
 <p>双击exe文件即可开始安装（一般下载完成后会自动打开安装界面无需点击exe文件，若没有自动打开安装页面再点击此exe文件）。</p>
-<p>打开安装界面后，依次选择<code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt;``I Agree`` -&gt; <code class="docutils literal notranslate"><span class="pre">All</span> <span class="pre">Users</span></code>
+<p>打开安装界面后，依次选择<code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">Agree</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">All</span> <span class="pre">Users</span></code>
 -&gt; <code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Next</span></code>
 -&gt; <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Anaconda3</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">system</span> <span class="pre">PATH</span> <span class="pre">environment</span> <span class="pre">variable</span></code> -&gt;
 <code class="docutils literal notranslate"><span class="pre">Install</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Finish</span></code></p>
@@ -243,8 +243,6 @@ PyCharm环境路径配置如下图所示。</p>
 </section>
 <section id="mmedu-gpu">
 <h3>3.3安装MMEdu(GPU版本)<a class="headerlink" href="#mmedu-gpu" title="Permalink to this headline"></a></h3>
-<section id="windows-linux">
-<h4>3.3.1Windows，Linux<a class="headerlink" href="#windows-linux" title="Permalink to this headline"></a></h4>
 <p>首先安装对应自己cuda版本的pytorch，安装命令可在以下网址中进行查询：<a class="reference external" href="https://pytorch.org/get-started/locally/">https://pytorch.org/get-started/locally/</a></p>
 <p>可以在命令行中使用<code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code>指令查询自己的cuda版本。</p>
 <p>例如，若cuda版本为10.1，想要安装1.8.1版本的pytorch，则安装命令为：</p>
@@ -263,15 +261,10 @@ PyCharm环境路径配置如下图所示。</p>
 </pre></div>
 </div>
 <p>最后安装MMEdu的rc版本，例如</p>
-<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="p">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">MMEdu</span><span class="p">==</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1rc2</span>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="p">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">MMEdu</span><span class="p">==</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">0rc0</span>
 </pre></div>
 </div>
 <p>即可。</p>
-<p>可选：如有需求，可自行安装opencv-python等常用库。</p>
-<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="p">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">opencv-python</span>
-</pre></div>
-</div>
-</section>
 </section>
 </section>
 <section id="docker">

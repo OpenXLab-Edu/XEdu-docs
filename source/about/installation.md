@@ -86,7 +86,7 @@ Jupyter Notebook是基于网页的用于交互计算的应用程序。其可被�
 
 打开安装界面后，依次选择`Next` ->`I Agree` -> `All Users` ->`Next`->`Next` ->`Add Anaconda3 to the system PATH environment variable` -> `Install` ->`Next` ->`Next` ->`Finish`
 
-##### 2)安装python编辑器
+##### 2）安装python编辑器
 
 若您已经安装好合适的python编辑器，该步骤可跳过。
 
@@ -112,7 +112,7 @@ Jupyter Notebook是基于网页的用于交互计算的应用程序。其可被�
 
 点击Thonny主界面右下角的Python版本号，可以选择对应的Python解释器，第一次配置点击`Configure inter preter`，弹出的窗口中，第一个下拉栏选择`可选的python3解释器或虚拟环境`， 第二个下拉栏找到自己之前安装的anaconda环境中的python解释器位置。点击确认即可使用该python解释器。
 
-#### 3.1.2安装MMEdu(CPU版本)
+#### 3.1.1安装MMEdu(CPU版本)
 
 ##### 1）Linux安装MMEdu
 
@@ -154,8 +154,6 @@ $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/i
 
 #### 3.1.3安装MMEdu(GPU版本)
 
-##### 1）Windows，Linux
-
 首先安装对应自己cuda版本的pytorch，安装命令可在以下网址中进行查询：https://pytorch.org/get-started/locally/
 
 可以在命令行中使用`nvidia-smi`指令查询自己的cuda版本。
@@ -183,16 +181,10 @@ $ pip install mmcv-full==1.4.5 -f https://download.openmmlab.com/mmcv/dist/cu101
 最后安装MMEdu的rc版本，例如
 
 ```powershell
-$ pip install MMEdu==0.0.1rc2
+$ pip install MMEdu==0.1.0rc0
 ```
 
 即可。
-
-可选：如有需求，可自行安装opencv-python等常用库。
-
-```powershell
-$ pip install opencv-python
-```
 
 ### 3.2BaseML
 
