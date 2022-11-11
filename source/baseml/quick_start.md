@@ -2,7 +2,7 @@
 
 ## 简介
 
-BaseML提供了众多机器学习训练方法，可以快速训练和应用模型。
+BaseML库提供了众多机器学习训练方法，可以快速训练和应用模型。
 
 ## 安装
 
@@ -10,9 +10,9 @@ BaseML提供了众多机器学习训练方法，可以快速训练和应用模�
 
 ## 体验
 
-可以在命令行输入BaseML查看安装的路径，在安装路径内，可以查看提供的更多demo案例，同时可以查看附录。
+可以在命令行输入BaseML查看安装的路径，在安装路径内，可以查看提供的更多demo案例。
 
-此处以用决策树方法配隐形眼镜案例为示例。
+此处以用决策树方法配隐形眼镜案例为示例，想看更多案例也可以查看附录。
 
 ## 训练
 
@@ -31,8 +31,6 @@ model=Classification.cls('CART')
 ```
 
 ### 2.载入数据
-
-从路径载入数据：
 
 ```
 # 载入数据集，并说明特征列和标签列
@@ -91,6 +89,8 @@ model.load('mymodel.pkl')
 
 说明：案例来源于上海科教版《人工智能初步》人教地图56-58页。
 
+目的：了解决策树的工作原理，掌握决策树分类任务编程的流程。
+
 数据集来源：上海科教版《人工智能初步》人教地图56-58页。
 
 ##### 1）模型训练
@@ -124,6 +124,8 @@ print(label[y[0]-1])
 
 说明：案例来源于《人工智能初步》广东教育出版社版75-80页。
 
+目的：了解神经网络和多层感知机，掌握多层感知机分类任务编程的流程。
+
 首先对MNIST数据集进行图像数字化处理，使用BaseML自带的IMGLoader库。
 
 ```
@@ -143,7 +145,7 @@ X_train, y_train, X_test, y_test = img_set.get_data(method='flatten')
 # 导入库，从BaseML导入分类模块
 from BaseML import Classification
 # 实例化模型，模型名称选择MLP（Multilayer Perceptron），n_hidden = (100,100)表示2层神经元数量为100的隐藏层
-model=Classification.cls('MLP',n_hidden = (100,100))
+model=Classification.cls(algorithm = 'MLP',n_hidden = (100,100))
 # 载入数据，从变量载入
 model.load_dataset(X=X_train, y=y_train,type ='numpy')
 # 模型训练
@@ -172,6 +174,8 @@ print(label[y[0]])
 ### 案例3.用k近邻为参观者推荐场馆
 
 说明：案例来源于华东师范大学出版社《人工智能初步》56-57页。
+
+目的：了解k近邻的工作原理，掌握使用BaseML进行k近邻分类的方法。
 
 数据集来源：华东师范大学出版社《人工智能初步》 38页。
 
@@ -235,6 +239,8 @@ model.save('mymodel2.pkl')
 
 说明：案例来源于人教地图版《人工智能初步》39-41页。
 
+目的：了解线性回归的工作原理，掌握使用BaseML中的线性回归进行预测的方法。
+
 数据集来源：人教地图版《人工智能初步》39-41页。
 
 ##### 1）模型训练
@@ -245,7 +251,7 @@ import numpy as np
 import pandas as pd
 from BaseML import Regression
 # 实例化模型
-model = reg(algorithm = 'LinearRegression')
+model = Regression.reg(algorithm = 'LinearRegression')
 # 指定数据集，需要显式指定类型
 model.load_dataset("蛋糕尺寸与价格.csv", type='csv', x_column=[0],y_column = [1])
 # 开始训练
@@ -279,13 +285,14 @@ plt.show()
 
 说明：案例来源于华东师范大学出版社《人工智能初步》53-55页。
 
+目的：了解KMeans的工作原理，掌握使用BaseML进行KMeans聚类的方法。
+
 数据集来源：自动生成。
 
 ```
 # 导入需要的各类库，numpy和pandas用来读入数据和处理数据，BaseML是主要的算法库
 import numpy as np
 import pandas as pd
-import Classification
 from BaseML import Cluster
 import matplotlib.pyplot as plt
 from sklearn.datasets import make_blobs
@@ -311,18 +318,26 @@ model.save('mymodel.pkl')
 
 ##### 2）模型推理
 
+1.无参数推理，输出聚类数据结果
+
 ```
-# 进行推理（无参数，输出聚类数据结果）
+# 进行推理
 model.inference()
 ```
 
+2.有参数推理，返回聚类结果，便于可视化
+
 ```
-# 进行推理（有参数，返回聚类结果，便于可视化）
+# 进行推理（）
 result = model.inference(X,verbose = False)
-# 可视化最终的聚类结果
+```
+
+可视化聚类结果的代码：
+
+```
+import matplotlib.pyplot as plt
 # 聚类结果根据颜色区分
 plt.scatter(X[:,0],X[:,1], c=result, s=50, cmap='viridis')
-
 # 标出聚类序号，长方形序号的左下角为聚类中心所在位置
 centers = model.model.cluster_centers_
 for i in range(model.model.cluster_centers_.shape[0]):
@@ -331,9 +346,13 @@ for i in range(model.model.cluster_centers_.shape[0]):
              bbox=dict(facecolor='yellow',alpha=0.5))
 ```
 
+
+
 ### 案例6.车辆聚类
 
 说明：案例来源于上海科技教育出版社《人工智能初步》88-89页。
+
+目的：了解KMeans的工作原理，掌握使用BaseML进行KMeans聚类的方法。
 
 数据集来源：上海科技教育出版社《人工智能初步》88页。
 
@@ -343,12 +362,12 @@ for i in range(model.model.cluster_centers_.shape[0]):
 # 导入需要的各类库，numpy和pandas用来读入数据和处理数据，BaseML是主要的算法库
 import numpy as np
 import pandas as pd
-from BaseML import cls
+from BaseML import Cluster
 
 # 读取数据
 df = pd.read_csv("车辆聚类.csv")
 # 实例化模型
-model = cls(algorithm = 'Kmeans', N_CLUSTERS=2)
+model = Cluster.clt(algorithm = 'Kmeans', N_CLUSTERS=2)
 # 指定数据集，需要显式指定类型
 model.load_dataset(X = df, type='pandas', x_column=[1,2])
 # 开始训练
@@ -359,22 +378,27 @@ model.save('mymodel.pkl')
 
 ##### 2）模型推理
 
+1.无参数推理，输出聚类数据结果
+
 ```
-# 进行推理（无参数，输出聚类数据结果）
+# 进行推理
 model.inference()
 ```
 
-```
-# 进行推理（有参数，返回聚类结果，便于可视化）
-result = model.inference(df.loc[:,['大小','颜色']].values)
-print(result)
+2.有参数推理，返回聚类结果，便于可视化
 
+```
+# 进行推理
+result = model.inference(df.loc[:,['大小','颜色']].values)
 # 输出最终的车辆聚类文字结果
 for index, row in df.iterrows():
     print('{0}号车辆属于第{1}个类别'.format(row['汽车编号'],result[index])) # 输出每一行
-# 可视化最终的车辆分类结果
-import matplotlib.pyplot as plt
+```
 
+可视化聚类结果的代码：
+
+```
+import matplotlib.pyplot as plt
 # 画出不同颜色的车辆点
 plt.scatter(df.iloc[:, 1], df.iloc[:, 2], c=result, s=50, cmap='viridis')
 

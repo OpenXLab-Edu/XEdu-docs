@@ -38,16 +38,14 @@ k近邻（K Nearest Neighbors）算法，简称为kNN，该算法以每一个测
 
 ```
 # 实例化模型，模型名称选择KNN(K Nearest Neighbor)
-model = Classification.cls('KNN',n_neighbors=5)
+model = Classification.cls(algorithm = 'KNN',n_neighbors=3)
 ```
 
 `n_neighbors`表示k的值，参数需设置为整数，默认值为5。
 
 #### SVM
 
-支持向量机（support vector machine），简称SVM，能够同时最小化经验误差与最大化几何边缘区，因此支持向量机也被称为最大边缘区分类器。可用于分类和回归。
-
-使用支持向量机（SVM）完成分类任务：
+支持向量机（support vector machine），简称SVM，能够同时最小化经验误差与最大化几何边缘区，因此支持向量机也被称为最大边缘区分类器。可用于分类和回归。此处使用支持向量机（SVM）完成分类任务。
 
 ```
 #实例化模型，模型名称选择SVM
@@ -60,10 +58,31 @@ model=Classification.cls('SVM')
 
 ```
 # 实例化模型，模型名称选择MLP（Multilayer Perceptron），n_hidden = (100,100)表示2层神经元数量为100的隐藏层
-model=Classification.cls('MLP',n_hidden = (100,100))
+model=Classification.cls(algorithm = 'MLP',n_hidden = (100,100))
 ```
 
-`n_hidden`表示隐藏层，参数值设置为一个元组，元组的元素数表示隐藏层数，元素的值依次表示隐藏层的神经元数
+`n_hidden`表示隐藏层，参数值设置为一个元组，元组的元素数表示隐藏层数，元素的值依次表示隐藏层的神经元数。
+
+#### Adaboost分类
+
+AdaBoost是Adaptive Boosting的缩写，Adaptive是自适应的意思，Boosting(提升)是一族可将弱学习器提升为强学习器的算法。AdaBoost算法核心思想是针对同一个训练集训练不同的分类器（弱分类器），然后把这些弱分类器集合起来，构成一个更强的最终分类器（强分类器）。
+
+```
+# 实例化模型，模型名称选择AdaBoost（Adaptive Boosting）
+model=Classification.cls(algorithm = 'AdaBoost'，n_estimators = 50)
+```
+
+`n_estimators`表示弱学习器数量，默认值为100。
+
+...
+
+#### 查看拥有的算法以及类注释
+
+```
+Classification.cls.__doc__
+```
+
+
 
 ### 2.数据载入
 
@@ -181,6 +200,14 @@ model = Regression.reg(algorithm = 'RandomForest')
 
 ...
 
+#### 查看拥有的算法以及类注释
+
+```
+Regression.reg.__doc__
+```
+
+
+
 ### 2.数据载入
 
 与分类任务一致（见上文）。
@@ -216,9 +243,37 @@ k均值（k-means）算法是一种基于数据间距离迭代求解的聚类算
 model=Cluster.clt(algorithm='KMeans',N_CLUSTERS=3)
 ```
 
-`N_CLUSTERS`表示k的值。
+`N_CLUSTERS`表示k的值，默认值为5。
+
+#### 谱聚类
+
+谱聚类（spectral clustering）算法主要思想是把所有的数据看做空间中的点，这些点之间可以用边连接起来。将聚类问题转为图分割问题：距离较远（或者相似度较低）的两个点之间的边权重值较低，而距离较近（或者相似度较高）的两个点之间的边权重值较高，将所有数据点组成的图分割成若干个子图，让不同的子图间边权重和尽可能的低，而子图内的边权重和尽可能的高，从而达到聚类的目的。
+
+```
+# 实例化模型，模型名称选择'SpectralClustering',N_CLUSTERS设置为3
+model=Cluster.clt(algorithm='SpectralClustering',N_CLUSTERS=3)
+```
+
+`N_CLUSTERS`表示子图的数量，默认值为5。
+
+#### Agglomerative clustering
+
+Agglomerative clutsering 是一种自底而上的层次聚类方法，它能够根据指定的相似度或距离定义计算出类之间的距离。首先将每个样本都视为一个簇，然后开始按一定规则，将相似度高的簇进行合并，直到所有的元素都归为同一类。
+
+```
+# 实例化模型，模型名称选择'Agglomerative clustering',N_CLUSTERS设置为3
+model=Cluster.clt(algorithm='Agglomerative clustering',N_CLUSTERS=3)
+```
+
+`N_CLUSTERS`表示聚类的数量，默认值为5。
 
 ...
+
+#### 查看拥有的算法以及类注释
+
+```
+Cluster.clt.__doc__
+```
 
 ### 2.数据载入
 
