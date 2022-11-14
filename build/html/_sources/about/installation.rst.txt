@@ -88,66 +88,55 @@ MMEdu的根目录结构如下：
 
 接下来对每层子目录进行介绍。
 
-checkpoints目录：
-^^^^^^^^^^^^^^^^^
+**checkpoints目录：**
 
 存放各个模块的预训练模型的权重文件，分别放在以模块名称命名的文件夹下，如“cls_model”。
 
-dataset目录：
-^^^^^^^^^^^^^
+**dataset目录：**
 
 存放为各个模块任务准备的数据集，分别放在以模块名称命名的文件夹下，如“cls”。同时提供了部分数据集的说明文档，如“添加猫狗数据集.txt”，文档提供了数据集下载链接、使用说明、添加数据集流程等。
 
-demo目录：
-^^^^^^^^^^
+**demo目录：**
 
 存放各个模块的测试程序，如“cls_demo.py”，并提供了测试图片。测试程序包括\ ``py``\ 文件和\ ``ipynb``\ 文件，可支持各种“Python
 IDE”和“jupyter
 notebook”运行，可运行根目录的“pyzo编辑器.exe”和“jupyter编辑器.bat”后打开测试程序。
 
-envs目录：
-^^^^^^^^^^
+**envs目录：**
 
 存放XEdu各模块运行所需的环境和中小学课程常用的库。
 
-HowToStart目录：
-^^^^^^^^^^^^^^^^
+**HowToStart目录：**
 
 存放各个模块的使用教程文档，如“MMClassfication使用教程.md”，文档提供了代码详细说明、参数说明与使用等。同时github上此目录下还存放了OpenMMLab各个模块的开发文档供感兴趣的老师和同学参考，如“OpenMMLab_MMClassification.md”，提供了模块介绍、不同函数使用、深度魔改、添加网络等。
 
-visualization目录：
-^^^^^^^^^^^^^^^^^^^
+**visualization目录：**
 
 存放可视化界面。
 
-EasyInference.bat：
-^^^^^^^^^^^^^^^^^^^
+**EasyInference.bat：**
 
 支持无代码推理的可视化工具。
 
 主要功能包括：1）选择功能（图像分类、目标检测）；2）选择算法和权重文件；3）选择分类信息；4）选择输入图片；5）开始推理（
 出现推理原始信息和解释）；6）查看代码（查看相应的Python推理代码）。
 
-EasyTrain.bat：
-^^^^^^^^^^^^^^^
+**EasyTrain.bat：**
 
 支持无代码训练的可视化工具。
 
 主要功能包括：1）选择功能（图像分类、目标检测）；2）选择算法（列出支持的算法-如列出文件夹名称等实现方法）；3）选择数据集（分类数量之类的设置）；4）选择模型文件保存位置；5）开始训练（看到训练进度和可视化折线图，
 支持配置训练参数，支持继续训练）；6）查看代码（查看相应的Python训练代码）。
 
-jupyter编辑器.bat：
-^^^^^^^^^^^^^^^^^^^
+**jupyter编辑器.bat：**
 
 双击打开即运行jupyter notebook。
 
-pyzo编辑器.exe：
-^^^^^^^^^^^^^^^^
+**pyzo编辑器.exe：**
 
 双击打开即运行pyzo，一款轻量级Python IDE。
 
-点我初始化.bat：
-^^^^^^^^^^^^^^^^
+**点我初始化.bat：**
 
 双击完成初始化环境部署。
 
@@ -177,10 +166,10 @@ pyzo编辑器.exe：
 
 双击exe文件即可开始安装（一般下载完成后会自动打开安装界面无需点击exe文件，若没有自动打开安装页面再点击此exe文件）。
 
-打开安装界面后，依次选择\ ``Next`` ->``I Agree`` -> ``All Users``
-->``Next``->``Next``
-->``Add Anaconda3 to the system PATH environment variable`` ->
-``Install`` ->``Next`` ->``Next`` ->``Finish``
+打开安装界面后，依次选择\ ``Next`` -> ``I Agree`` -> ``All Users`` 
+-> ``Next`` -> ``Next`` 
+-> ``Add Anaconda3 to the system PATH environment variable`` -> 
+``Install`` -> ``Next`` -> ``Next`` -> ``Finish`` 
 
 2）安装python编辑器
 '''''''''''''''''''
@@ -199,8 +188,8 @@ pyzo编辑器.exe：
 
 双击exe文件即可开始安装（一般下载完成后会自动打开安装界面无需点击exe文件，若没有自动打开安装页面再点击此exe文件）
 
-打开安装界面后，依次选择\ ``Install for me only`` -> ``Next`` ->
-``Next`` -> ``Next`` -> ``Next`` -> ``Next`` -> ``Install`` ->
+打开安装界面后，依次选择\ ``Install for me only`` -> ``Next`` -> 
+``Next`` -> ``Next`` -> ``Next`` -> ``Next`` -> ``Install`` -> 
 ``Finish``
 
 **运行**
@@ -313,9 +302,7 @@ pyzo编辑器.exe：
 打开python终端，执行以下命令即可查看XEdu各模块库的版本。当前最新版本是0.04。
 
 .. figure:: ../images/mmedu/pip安装指南3.png
-   :alt: image
 
-   image
 
 注：目前版本MMEdu仅支持CPU。
 
