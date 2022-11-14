@@ -4,7 +4,7 @@ XEdu安装和下载
 1.安装方式介绍
 --------------
 
-为了满足广大中小学师生的需求，XEdu安装方式分为一键安装包安装和pip安装。一键安装包版包含MMEdu、BaseML、BaseNN三个模块的基础功能，“EasyTrain.bat”、“EasyInference.bat”和“EasyAPI.bat”这三个可视化工具，定期更新。pip安装方式需用户自己分模块安装，各模块更新同步工具开发进度。后续还将推出docker容器镜像，敬请期待。
+为了满足广大中小学师生的需求，XEdu安装方式分为一键安装包安装和pip安装。一键安装包版包含MMEdu、BaseML、BaseNN三个模块的基础功能，同时内置了一套EasyDL系列工具，分“EasyTrain.bat”、“EasyInference.bat”和“EasyAPI.bat”这三个可视化工具，定期更新。pip安装方式需用户自己分模块安装，各模块更新同步工具开发进度。后续还将推出docker容器镜像，敬请期待。
 
 2.一键安装包
 ------------
@@ -12,17 +12,17 @@ XEdu安装和下载
 2.1一键安装包下载和安装
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-下载工具：xedu v1.0.exe
+下载工具：XEdu公测版1.0.exe
 
 下载方式
 
 飞书网盘：https://p6bm2if73b.feishu.cn/drive/folder/fldcn67XTwhg8qIFCl8edJBZZQb
 
-第一步：双击运行，将自解压为xedu文件夹。
+第一步：双击运行，将自解压为XEdu文件夹。
 
 目录结构图
 
-第二步：进入xedu文件夹，双击“点我初始化.bat”完成初始化。
+第二步：进入XEdu文件夹，双击“点我初始化.bat”完成初始化。
 
 环境部署界面
 
