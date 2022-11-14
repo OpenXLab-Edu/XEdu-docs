@@ -4,7 +4,7 @@ XEdu安装和下载
 1.安装方式介绍
 --------------
 
-为了满足广大中小学师生的需求，XEdu安装方式分为一键安装包安装和pip安装。一键安装包版包含MMEdu、BaseML、BaseNN三个模块的基础功能，“EasyTrain.bat”和“EasyInference.bat”这两个可视化工具，定期更新。pip安装方式需用户自己分模块安装，各模块更新同步工具开发进度。后续还将推出docker容器镜像，敬请期待。
+为了满足广大中小学师生的需求，XEdu安装方式分为一键安装包安装和pip安装。一键安装包版包含MMEdu、BaseML、BaseNN三个模块的基础功能，“EasyTrain.bat”、“EasyInference.bat”和“EasyAPI.bat”这三个可视化工具，定期更新。pip安装方式需用户自己分模块安装，各模块更新同步工具开发进度。后续还将推出docker容器镜像，敬请期待。
 
 2.一键安装包
 ------------
@@ -80,6 +80,7 @@ MMEdu的根目录结构如下：
    ├── envs
    ├── HowToStart
    ├── visualization
+   ├── EasyAPI.bat
    ├── EasyInference.bat
    ├── EasyTrain.bat
    ├── jupyter编辑器.bat
@@ -113,6 +114,12 @@ notebook”运行，可运行根目录的“pyzo编辑器.exe”和“jupyter编
 **visualization目录：**
 
 存放可视化界面。
+
+**EasyAPI.bat：**
+
+支持无代码WebAPI部署的可视化工具。
+
+主要功能包括：1）选择功能（图像分类、目标检测）；2）选择算法和权重文件；3）选择分类信息；4）启动Web服务（生成代码）；5）提供HttpPost（基于request）的范例；6）测试。
 
 **EasyInference.bat：**
 
