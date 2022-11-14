@@ -20,7 +20,7 @@ InnoLab为上海人工智能实验室推出的青少年AI学习平台。在“AI
 
 AI项目工坊：https://www.openinnolab.org.cn/pjLab/projects/channel
 
-<img src="../images/mmedu/quick_start_01.png" title="" alt="image" width="568">
+![image](../images/mmedu/quick_start_01.png)
 
 下面以“手写体识别”为例来介绍从零开始训练一个AI模型的过程。
 
@@ -36,11 +36,9 @@ AI项目工坊：https://www.openinnolab.org.cn/pjLab/projects/channel
 
 - 在数据集上方点击“右键”，选择“复制文件路径”。接下来，你就可以通过这个路径来访问你的数据集。比如，我得到的文件路径是：`/data/QX8UBM/mnist_sample`。
 
-<img title="" src="file:///Users/xiezuoru/Documents/GitHub/XEdu-docs/source/images/mmedu/quick_start_02.png" alt="" width="312">
+![image](../images/mmedu/quick_start_02.png)
 
-
-
-<img src="file:///Users/xiezuoru/Documents/GitHub/XEdu-docs/source/images/mmedu/quick_start_03.png" title="" alt="" width="314">
+![image](../images/mmedu/quick_start_03.png)
 
 **新手提问1：** 我要使用自己的数据集怎么办？为什么会这么麻烦？
 

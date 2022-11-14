@@ -44,21 +44,20 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../mmedu.html">MMEdu入门</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">MMEdu快速入门</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">1.MMEdu是什么？</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">2.MMEdu安装</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#demo">3.体验demo代码</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">4.模型训练</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">5.模型推理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ai">6.部署AI应用</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id5">1.准备工作</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#opencv">2.借助OpenCV识别摄像头画面</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pywebioweb">3.借助PyWebIO部署Web应用</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">4.连接开源硬件开发智能作品</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2.体验MMEdu</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#innolab">2.1访问InnoLab</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">2.2 克隆项目</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">2.3 加载数据集</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">2.4 训练模型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">2.5 模型推理</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">2.6 继续训练</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">3.MMEdu的简要总结</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation.html">MMEdu安装和下载</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html">MMEdu模块应用详解</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">MMEdu功能简介和模块应用详解</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mmclassification.html">图像分类模块：MMClassification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mmdetection.html">物体检测模块：MMDetection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mmediting.html">图像处理模块：MMEditing</a></li>
@@ -101,47 +100,47 @@
 <section id="id1">
 <h2>1.MMEdu是什么？<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <p>MMEdu源于国产人工智能视觉（CV）算法集成框架OpenMMLab，是一个“开箱即用”的深度学习开发工具。在继承OpenMMLab强大功能的同时，MMEdu简化了神经网络模型搭建和训练的参数，降低了编程的难度，并实现一键部署编程环境，让初学者通过简洁的代码完成各种SOTA模型（state-of-the-art，指在该项研究任务中目前最好/最先进的模型）的训练，并能够快速搭建出AI应用系统。</p>
+<p>官方地址：<a class="reference external" href="https://www.openinnolab.org.cn/pjEdu/xedu">OpenInnoLab</a></p>
 <p>GitHub：<a class="reference external" href="https://github.com/OpenXLab-Edu/OpenMMLab-Edu">https://github.com/OpenXLab-Edu/OpenMMLab-Edu</a></p>
 <p>国内镜像：<a class="reference external" href="https://gitee.com/openxlab-edu/OpenMMLab-Edu">https://gitee.com/openxlab-edu/OpenMMLab-Edu</a></p>
 </section>
 <section id="id2">
-<h2>2.MMEdu安装<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
-<p>为方便中小学教学，MMEdu团队提供了一键安装包。只要下载并解压MMEdu的Project文件，即可直接使用。</p>
-<p>第一步：下载MMEdu最新版文件，并解压到本地，文件夹目录结构如下图所示。</p>
+<h2>2.体验MMEdu<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<p>MMEdu有多种安装方式，可以通过Pip方式安装，也可以使用一键安装包。体验MMEdu的最快速方式是通过InnoLab平台。</p>
+<section id="innolab">
+<h3>2.1访问InnoLab<a class="headerlink" href="#innolab" title="Permalink to this headline"></a></h3>
+<p>InnoLab为上海人工智能实验室推出的青少年AI学习平台。在“AI项目工坊 -
+人工智能工坊”中，查找”MMEdu“，即可找到所有与MMEdu相关的体验项目。</p>
+<p>AI项目工坊：<a class="reference external" href="https://www.openinnolab.org.cn/pjLab/projects/channel">https://www.openinnolab.org.cn/pjLab/projects/channel</a></p>
 <figure class="align-default">
-<img alt="../_images/MMEDU安装图1.png" src="../_images/MMEDU安装图1.png" />
+<img alt="../_images/quick_start_01.png" src="../_images/quick_start_01.png" />
 </figure>
-<p>图1 目录结构图</p>
-<blockquote>
-<div><p>1）下载方式一</p>
-</div></blockquote>
-<p>飞书网盘：<a class="reference external" href="https://p6bm2if73b.feishu.cn/drive/folder/fldcnfDtXSQx0PDuUGLWZlnVO3g">https://p6bm2if73b.feishu.cn/drive/folder/fldcnfDtXSQx0PDuUGLWZlnVO3g</a></p>
-<blockquote>
-<div><p>2）下载方式二</p>
-</div></blockquote>
-<p>百度网盘：<a class="reference external" href="https://pan.baidu.com/s/19lu12-T2GF_PiI3hMbtX-g?pwd=2022">https://pan.baidu.com/s/19lu12-T2GF_PiI3hMbtX-g?pwd=2022</a></p>
-<blockquote>
-<div><p>提取码：2022</p>
-</div></blockquote>
-<p>第二步：运行根目录的“steup.bat”文件，完成环境部署（如下图所示）。</p>
-<figure class="align-default">
-<img alt="../_images/MMEDU安装图2.png" src="../_images/MMEDU安装图2.png" />
-</figure>
-<p>图2 环境部署界面</p>
-<p>第三步：您可以根据个人喜好，选择自己习惯的IDE。一键安装包内置了pyzo和jupyter，您也可以使用其他您习惯使用的编辑器。</p>
-</section>
-<section id="demo">
-<h2>3.体验demo代码<a class="headerlink" href="#demo" title="Permalink to this headline"></a></h2>
-<p>1）使用默认IDE</p>
-<p>双击pyzo.exe，打开demo文件夹中的cls_demo.py，运行并体验相关功能，也可以查看其他的Demo文件。详细说明可以在HowToStart文件夹看到。</p>
-<p>2）使用第三方IDE</p>
-<p>环境支持任意的Python编辑器，如：Thonny、PyCharm、Sublime等。
-只要配置其Python解释器地址为<code class="docutils literal notranslate"><span class="pre">{你的安装目录}+{\MMEdu\mmedu\python.exe}</span></code>。</p>
-<p>体验入门Demo后，我们还准备了一系列的入门课程供您参考。将在稍晚发布。</p>
+<p>下面以“手写体识别”为例来介绍从零开始训练一个AI模型的过程。</p>
 </section>
 <section id="id3">
-<h2>4.模型训练<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
-<p>典型训练：</p>
+<h3>2.2 克隆项目<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<p>点击项目即可查看，但是强烈建议你先“克隆”。</p>
+</section>
+<section id="id4">
+<h3>2.3 加载数据集<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<p>默认情况下，“克隆”的项目中已经引用了数据集。你也可以重新“引用”一次。步骤如下：</p>
+<ul class="simple">
+<li><p>点击“+”，输入“mnist“，找到“mnist_sample”数据集，然后选择“☑️”；</p></li>
+<li><p>在数据集上方点击“右键”，选择“复制文件路径”。接下来，你就可以通过这个路径来访问你的数据集。比如，我得到的文件路径是：<code class="docutils literal notranslate"><span class="pre">/data/QX8UBM/mnist_sample</span></code>。</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../_images/quick_start_02.png" src="../_images/quick_start_02.png" />
+</figure>
+<figure class="align-default">
+<img alt="../_images/quick_start_03.png" src="../_images/quick_start_03.png" />
+</figure>
+<p><strong>新手提问1：</strong> 我要使用自己的数据集怎么办？为什么会这么麻烦？</p>
+<p>解答：因为项目的空间容量是有限的，同时数据集是公用的，经常在多个项目中使用。因而OpenInnoLab将数据集放在一个公用区域，和项目的文件分离。如果要使用自己的数据集，请在“我的数据集”中增加一个新的数据集，OpenInnoLab支持上传压缩包的方式来建立数据集。数据集加好后，同样需要“引用”后才能访问。</p>
+<p>如果你的数据集很小（比如100M内），那么也可以像使用正常的项目文件一下，通过浏览器上传即可。</p>
+</section>
+<section id="id5">
+<h3>2.4 训练模型<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<p>一个典型的模型训练代码：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
 <span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;LeNet&#39;</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">3</span>
@@ -150,19 +149,10 @@
 <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>继续训练：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
-<span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;LeNet&#39;</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;./dataset&#39;</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;./my_model&#39;</span>
-<span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;./latest.pth&#39;</span>
-<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">)</span>
-</pre></div>
-</div>
 </section>
-<section id="id4">
-<h2>5.模型推理<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
+<section id="id6">
+<h3>2.5 模型推理<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<p>模型训练好后，就可以测试效果了。代码中img的路径就是用于测试的新图片。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
 <span class="n">img</span> <span class="o">=</span> <span class="s1">&#39;./img.png&#39;</span>
 <span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;LeNet&#39;</span><span class="p">)</span>
@@ -173,72 +163,25 @@
 </pre></div>
 </div>
 </section>
-<section id="ai">
-<h2>6.部署AI应用<a class="headerlink" href="#ai" title="Permalink to this headline"></a></h2>
-<section id="id5">
-<h3>1.准备工作<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
-<p>所谓准备工作就是先训练好一个效果不错的模型。</p>
 </section>
-<section id="opencv">
-<h3>2.借助OpenCV识别摄像头画面<a class="headerlink" href="#opencv" title="Permalink to this headline"></a></h3>
-<p>1）代码编写</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
-<span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;一秒钟后开始拍照......&quot;</span><span class="p">)</span>
-<span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">ret</span><span class="p">,</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;my_hand.jpg&quot;</span><span class="p">,</span> <span class="n">frame</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span> <span class="c1"># 显示1秒（这里单位是毫秒）</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="s2">&quot;my_hand.jpg&quot;</span><span class="p">,</span> <span class="n">frame</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;成功保存 my_hand.jpg&quot;</span><span class="p">)</span>
-<span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+<section id="id7">
+<h2>2.6 继续训练<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h2>
+<p>如果觉得效果不够好，请继续训练（实际上就是“迁移学习”）：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
+<span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;LeNet&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;./dataset&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;./my_model&#39;</span>
+<span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;./latest.pth&#39;</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>2）运行效果</p>
-</section>
-<section id="pywebioweb">
-<h3>3.借助PyWebIO部署Web应用<a class="headerlink" href="#pywebioweb" title="Permalink to this headline"></a></h3>
-<p>1）编写代码</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">base</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMBase</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">pywebio.input</span> <span class="kn">import</span> <span class="nb">input</span><span class="p">,</span> <span class="n">FLOAT</span><span class="p">,</span><span class="n">input_group</span>
-<span class="kn">from</span> <span class="nn">pywebio.output</span> <span class="kn">import</span> <span class="n">put_text</span>
-
-<span class="c1"># 鸢尾花的分类</span>
-<span class="n">flower</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;iris-setosa&#39;</span><span class="p">,</span><span class="s1">&#39;iris-versicolor&#39;</span><span class="p">,</span><span class="s1">&#39;iris-virginica&#39;</span><span class="p">]</span>
-
-<span class="c1"># 声明模型</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">MMBase</span><span class="p">()</span>
-<span class="c1"># 导入模型</span>
-<span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;./checkpoints/mmbase_net.pkl&#39;</span><span class="p">)</span>
-<span class="n">info</span><span class="o">=</span><span class="n">input_group</span><span class="p">(</span><span class="s1">&#39;请输入要预测的数据&#39;</span><span class="p">,</span> <span class="p">[</span>
-    <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Sepal.Length：&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">FLOAT</span><span class="p">),</span>
-    <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Sepal.Width：&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">FLOAT</span><span class="p">),</span>
-    <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Petal.Length：&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;x3&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">FLOAT</span><span class="p">),</span>
-    <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Petal.Width：&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;x4&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">FLOAT</span><span class="p">)</span>
-<span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">info</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">info</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-<span class="n">put_text</span><span class="p">(</span><span class="s1">&#39;你输入的数据是：</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">([</span><span class="n">x</span><span class="p">])</span>
-<span class="n">r</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">print_result</span><span class="p">()</span>
-<span class="n">put_text</span><span class="p">(</span><span class="s1">&#39;模型预测的结果是：&#39;</span> <span class="o">+</span> <span class="n">flower</span><span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;预测值&#39;</span><span class="p">]])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;模型预测的结果是：&#39;</span> <span class="o">+</span><span class="n">flower</span><span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;预测值&#39;</span><span class="p">]])</span>
-</pre></div>
-</div>
-<p>2）运行效果</p>
-<figure class="align-default">
-<img alt="../_images/web运行效果.png" src="../_images/web运行效果.png" />
-</figure>
-</section>
-<section id="id6">
-<h3>4.连接开源硬件开发智能作品<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
-<p>1）</p>
+<p><strong>注意</strong>：“继续训练”和“普通训练”的区别就在于model.train()函数中多了一个参数，即<code class="docutils literal notranslate"><span class="pre">checkpoint=checkpoint</span></code>。checkpoint的路径就来自之前训练的权重文件。</p>
 </section>
 </section>
+<section id="id8">
+<h1>3.MMEdu的简要总结<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h1>
+<p>MMEdu是针对青少年学习AI技术而设计的，其前身就是大名鼎鼎的OpenMMLab。MMEdu的语法非常简单，几句话就能完成训练和推理。如果你下载了一键安装包，还可以使用easytrain的辅助工具。有了MMEdu，你会发现AI模型训练原来这么简单。</p>
 </section>
 
 

@@ -1,10 +1,13 @@
-MMEdu模块应用详解
-=================
+MMEdu功能简介和模块应用详解
+===========================
 
-1.MMEdu和常见AI框架的比较
--------------------------
+1.MMEdu功能简介
+---------------
 
 MMEdu是一个计算机视觉方向的深度学习开发工具，是一个用来训练AI模型的工具。
+
+2.MMEdu和常见AI框架的比较
+-------------------------
 
 1）MMEdu和OpenCV的比较
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -120,6 +123,7 @@ classes.txt包含数据集类别标签信息，每行包含一个类别名称，
 
 .. code:: plain
 
+   # 在windows测试通过
    import os
    # 列出指定目录下的所有文件名，确定类别名称
    classes = os.listdir('D:\测试数据集\EX_dataset\\training_set')
@@ -150,6 +154,49 @@ classes.txt包含数据集类别标签信息，每行包含一个类别名称，
            for line in files:
                str_line = classes[cnt] + '/' + line + ' ' + str(cnt) + '\n'
                f.write(str_line)  # 文件写入str_line，即标注信息
+
+如果你使用的是Mac系统，可以使用下面的代码。
+
+.. code:: plain
+
+   # 本文件可以放在数据集的根目录下运行
+   import os
+   # 如果不是在数据集根目录下，可以指定路径
+   set_path = './' 
+
+   templist = os.listdir(set_path +'training_set')
+   # 处理mac的特殊文件夹
+   classes = []
+   for line in templist:
+       if line[0] !='.':
+           classes.append(line)
+       
+   with open(set_path +'classes.txt','w') as f:
+       for line in classes: 
+           str_line = line +'\n'
+           f.write(str_line) # 文件分行写入，即类别名称
+
+   val_dir = set_path +'val_set/'  # 指定验证集文件路径
+   # 打开指定文件，写入标签信息
+   with open(set_path +'val.txt', 'w') as f:
+       for cnt in range(len(classes)):
+           t_dir = val_dir + classes[cnt]  # 指定验证集某个分类的文件目录
+           files = os.listdir(t_dir)  # 列出当前类别的文件目录下的所有文件名
+           # print(files)
+           for line in files:
+               str_line = classes[cnt] + '/' + line + ' ' + str(cnt) + '\n'
+               f.write(str_line)  # 文件写入str_line，即标注信息
+
+   test_dir = set_path +'test_set/' # 指定测试集文件路径
+   # 打开指定文件，写入标签信息
+   with open(set_path +'test.txt','w') as f:
+       for cnt in range(len(classes)):
+           t_dir = test_dir + classes[cnt]  # 指定测试集某个分类的文件目录
+           files = os.listdir(t_dir) # 列出当前类别的文件目录下的所有文件名
+           # print(files)
+           for line in files:
+               str_line = classes[cnt] + '/' + line + ' '+str(cnt) +'\n'
+               f.write(str_line)
 
 至于如何从零开始制作一个ImageNet格式的数据集，可参考如下步骤。
 
@@ -455,63 +502,3 @@ COCO数据集的标注信息存储在“annotations”文件夹中的\ ``json``\
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 创建两个文件夹“images”和“annotations”，分别用于存放图片以及标注信息。按照要求的目录结构，整理好文件夹的文件，最后将文件夹重新命名，在训练的时候，只要通过\ ``model.load_dataset``\ 指定数据集的路径就可以了。
-
-6.一键安装包目录详解
---------------------
-
-MMEdu一键安装版是一个压缩包，解压后即可使用。
-
-MMEdu的根目录结构如下：
-
-.. code:: plain
-
-   OpenMMLab-Edu
-   ├── MMEdu
-   ├── checkpoints
-   ├── dataset
-   ├── demo
-   ├── HowToStart
-   ├── tools（github)
-   ├── visualization（github)
-   ├── setup.bat
-   ├── pyzo.exe
-   ├── run_jupyter.bat
-
-接下来对每层子目录进行介绍。
-
-MMEdu目录：
-~~~~~~~~~~~
-
-存放各个模块的底层代码、算法模型文件夹“models”和封装环境文件夹“mmedu”。“models”文件夹中提供了各个模块常见的网络模型，内置模型配置文件和说明文档，说明文档提供了模型简介、特点、预训练模型下载链接和适用领域等。“mmedu”文件夹打包了MMEdu各模块运行所需的环境和中小学课程常用的库。
-
-checkpoints目录：
-~~~~~~~~~~~~~~~~~
-
-存放各个模块的预训练模型的权重文件，分别放在以模块名称命名的文件夹下，如“cls_model”。
-
-dataset目录：
-~~~~~~~~~~~~~
-
-存放为各个模块任务准备的数据集，分别放在以模块名称命名的文件夹下，如“cls”。同时github上此目录下还存放了各个模块自定义数据集的说明文档，如“pose-dataset.md”，文档提供了每个模块对应的数据集格式、下载链接、使用说明、自制数据集流程。
-
-demo目录：
-~~~~~~~~~~
-
-存放各个模块的测试程序，如“cls_demo.py”，并提供了测试图片。测试程序包括\ ``py``\ 文件和\ ``ipynb``\ 文件，可支持各种“Python
-IDE”和“jupyter
-notebook”运行，可运行根目录的“pyzo.exe”和“run_jupyter.bat”后打开测试程序。
-
-HowToStart目录：
-~~~~~~~~~~~~~~~~
-
-存放各个模块的使用教程文档，如“MMClassfication使用教程.md”，文档提供了代码详细说明、参数说明与使用等。同时github上此目录下还存放了OpenMMLab各个模块的开发文档供感兴趣的老师和同学参考，如“OpenMMLab_MMClassification.md”，提供了模块介绍、不同函数使用、深度魔改、添加网络等。
-
-tools目录：
-~~~~~~~~~~~
-
-存放数据集格式的转换、不同框架的部署等通用工具。后续会陆续开发数据集查看工具、数据集标注工具等工具。
-
-visualization目录：
-~~~~~~~~~~~~~~~~~~~
-
-存放可视化界面。
