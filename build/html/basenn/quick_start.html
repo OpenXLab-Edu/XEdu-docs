@@ -62,9 +62,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#id16">查看模型结构</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id17">附录</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id18">案例1. 搭建卷积神经网络实现手写体分类</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id21">案例2. 一维卷积神经网络文本情感识别</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">快速体验</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">附录</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id19">案例1. 搭建卷积神经网络实现手写体分类</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id22">案例2. 一维卷积神经网络文本情感识别</a></li>
 </ul>
 </li>
 </ul>
@@ -272,12 +273,18 @@
 </section>
 </section>
 <section id="id17">
-<h2>附录<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h2>
+<h2>快速体验<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h2>
+<p>体验BaseNN的最快速方式是通过OpenInnoLab平台。</p>
+<p>OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台，满足青少年的AI学习和创作需求，支持在线编程。在“AI项目工坊 - 人工智能工坊”中，查找”BaseNN“，即可找到所有与BaseNN相关的体验项目。</p>
+<p>AI项目工坊：https://www.openinnolab.org.cn/pjLab/projects/channel（用Chorm浏览器打开效果最佳）</p>
+</section>
 <section id="id18">
-<h3>案例1. 搭建卷积神经网络实现手写体分类<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h3>
-<p>说明：案例来源于《人工智能初步》人教地图p72，代码使用BaseNN库实现。</p>
+<h2>附录<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h2>
 <section id="id19">
-<h4>1）模型训练<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h4>
+<h3>案例1. 搭建卷积神经网络实现手写体分类<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h3>
+<p>说明：案例来源于《人工智能初步》人教地图p72，代码使用BaseNN库实现。</p>
+<section id="id20">
+<h4>1）模型训练<a class="headerlink" href="#id20" title="Permalink to this headline"></a></h4>
 <p>从零开始训练</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入BaseNN库、os、cv2、numpy库，os、cv2、numpy库用于数据处理</span>
 <span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
@@ -343,8 +350,8 @@
 </pre></div>
 </div>
 </section>
-<section id="id20">
-<h4>2）模型推理<a class="headerlink" href="#id20" title="Permalink to this headline"></a></h4>
+<section id="id21">
+<h4>2）模型推理<a class="headerlink" href="#id21" title="Permalink to this headline"></a></h4>
 <p>读取测试集所有图片进行推理：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 用测试集查看模型效果</span>
 <span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span> <span class="o">=</span> <span class="n">read_data</span><span class="p">(</span><span class="s1">&#39;/data/QX8UBM/mnist_sample/test_set&#39;</span><span class="p">)</span> <span class="c1"># 读取测试集数据</span>
@@ -368,12 +375,12 @@
 </div>
 </section>
 </section>
-<section id="id21">
-<h3>案例2. 一维卷积神经网络文本情感识别<a class="headerlink" href="#id21" title="Permalink to this headline"></a></h3>
+<section id="id22">
+<h3>案例2. 一维卷积神经网络文本情感识别<a class="headerlink" href="#id22" title="Permalink to this headline"></a></h3>
 <p>说明：搭建一维卷积神经网络实现文本感情识别分类任务，案例来源于《人工智能初步》人教地图版p72-76，代码使用BaseNN库实现，同时结合了Embedding层对单词文本进行向量化。</p>
 <p>数据集是imdb电影评论和情感分类数据集，来自斯坦福AI实验室平台，http://ai.stanford.edu/~amaas/data/sentiment/。</p>
-<section id="id22">
-<h4>1）模型训练<a class="headerlink" href="#id22" title="Permalink to this headline"></a></h4>
+<section id="id23">
+<h4>1）模型训练<a class="headerlink" href="#id23" title="Permalink to this headline"></a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入BaseNN库、numpy库用于数据处理</span>
 <span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -403,8 +410,8 @@
 </pre></div>
 </div>
 </section>
-<section id="id23">
-<h4>2）模型推理<a class="headerlink" href="#id23" title="Permalink to this headline"></a></h4>
+<section id="id24">
+<h4>2）模型推理<a class="headerlink" href="#id24" title="Permalink to this headline"></a></h4>
 <p>读取测试集所有数据进行推理：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#读取测试集数据</span>
 <span class="n">test_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;imdb/test_data.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
