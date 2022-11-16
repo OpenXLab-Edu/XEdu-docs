@@ -16,23 +16,23 @@
 
 第一步：双击运行，将自解压为XEdu文件夹。
 
-
+![image](../images/about/xedu一键安装包.png)
 
 目录结构图
 
 第二步：进入XEdu文件夹，双击“点我初始化.bat”完成初始化。
 
-
+![image](../images/about/xedu初始化.png)
 
 环境部署界面
 
 第三步：您可以根据个人喜好，选择自己习惯的IDE。
 
-1）使用XEdu自带的Pyzo。
+1）使用XEdu自带的pyzo。
 
-Pyzo是一款好用的Python轻量级IDE。其最突出的两个特点便是是简洁性和交互性。打开根目录下的“pyzo编辑器.exe”文件快捷方式即可打开pyzo，其指向“Tools”中的“pyzo.exe”。使用Pyzo打开“demo”文件夹中的py文件，如“cls_demo.py”，点击“运行”的“将文件作为脚本运行”即可运行代码，界面如下图所示。
+pyzo是一款好用的Python轻量级IDE。其最突出的两个特点便是是简洁性和交互性。打开根目录下的“pyzo编辑器.exe”文件快捷方式即可打开pyzo，其指向envs文件夹下software中的pyzo。使用Pyzo打开“demo”文件夹中的py文件，如“MMEdu_cls_demo.py”，点击“运行”的“将文件作为脚本运行”即可运行代码，界面如下图所示。
 
-
+![image](../images/about/demo运行1.png)
 
 Pyzo界面图
 
@@ -40,13 +40,13 @@ Pyzo界面图
 
 Jupyter Notebook是基于网页的用于交互计算的应用程序。其可被应用于全过程计算：开发、文档编写、运行代码和展示结果。它相对简单，对用户也更加友好，适合初学者。打开根目录下的“jupyter编辑器.bat”，即自动启动浏览器并显示界面，如下图所示。
 
-
+![image](../images/about/jupyter运行.png)
 
 jupyter界面图
 
-使用常用工具栏对代码进行操作，如“运行”，可以在单元格中编写文本或者代码（如下图中写了`print("hello")`代码的位置），执行代码的结果也将会在每个单元下方呈现。可以逐个运行单元格，每点击一次，仅运行一个单元格。单元格左侧[*]内的星号变为数字，表示该单元格运行完成。此时可打开“demo”文件夹中的ipynb文件，如“cls_notebook.ipynb”。
+使用常用工具栏对代码进行操作，如“运行”，可以在单元格中编写文本或者代码，执行代码的结果也将会在每个单元下方呈现。可以逐个运行单元格，每点击一次，仅运行一个单元格。单元格左侧[*]内的星号变为数字，表示该单元格运行完成。此时可打开“demo”文件夹中的ipynb文件，如“MMEdu_cls_notebook.ipynb”。
 
-
+![image](../images/about/jupyter运行1.png)
 
 jupyter运行界面
 
@@ -58,23 +58,35 @@ jupyter运行界面
 
 ①打开您的IDE，如PyCharm、Thonny等。
 
-②配置Python编译器，路径为解压路径下的“MMEdu”文件夹下的“mmedu”文件夹中的“python.exe”文件。 PyCharm环境路径配置如下图所示。
-
-
-
-PyCharm的环境路径配置界面
+②配置Python编译器，路径为解压路径下的“envs”文件夹下的“interpreter”文件夹中的“python.exe”文件。
 
 - 执行demo文件 
 
 用IDE打开解压路径下的py文件，如“cls_demo.py”，点击“运行”。运行效果应和pyzo一样。
 
-第四步：“EasyTrain.bat”、“EasyInference.bat”体验。
+第四步：“EasyTrain.bat”、“EasyInference.bat”、“EasyAPI.bat”体验。
 
-## 2.2一键安装包目录详解
+XEdu一键安装包内置了一套EasyDL系列工具，分“EasyTrain.bat”、“EasyInference.bat”和“EasyAPI.bat”这三个可视化工具。
 
-MMEdu一键安装版是一个压缩包，解压后即可使用。
+双击即可体验，体验时操作根据界面完成即可。
 
-MMEdu的根目录结构如下：
+①双击“EasyTrain.bat”，根据界面完成训练；
+
+![image](../images/about/EasyTrain.png)
+
+②双击“EasyInference.bat”，根据界面完成推理；
+
+![image](../images/about/EasyInference.png)
+
+③双击“EasyAPI.bat”，根据界面完成服务部署。
+
+![image](../images/about/EasyAPI.png)
+
+### 2.2一键安装包目录详解
+
+XEdu一键安装版是一个压缩包，解压后即可使用。
+
+XEdu的根目录结构如下：
 
 ```plain
 XEdu
@@ -89,6 +101,7 @@ XEdu
 ├── EasyTrain.bat
 ├── jupyter编辑器.bat
 ├── pyzo编辑器.exe
+├── XEdu1.0简介.pdf
 ├── 点我初始化.bat
 ```
 
@@ -143,6 +156,10 @@ XEdu
 **pyzo编辑器.exe：**
 
 双击打开即运行pyzo，一款轻量级Python IDE。
+
+**XEdu1.0简介.pdf：**
+
+XEdu一键安装包说明文档。
 
 **点我初始化.bat：**
 
@@ -294,7 +311,7 @@ $ pip install MMEdu==0.1.0rc0
 
 ## 6.卸载XEdu各模块库
 
-如果MMEdu库出现异常情况，可以尝试使用如下命令卸载MMEdu然后再使用install命令安装。
+如果XEdu某模块库出现异常情况，可以尝试使用`uninstall`命令卸载，然后再使用install命令安装。参考代码：
 
 ```
 $ pip uninstall MMEdu

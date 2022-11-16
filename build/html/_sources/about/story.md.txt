@@ -50,11 +50,11 @@ XEdu的全称是OpenXLabEdu，是基于OpenXLab（上海人工智能实验室开
 
 2）代码最简，部署方便
 
-将AI工具分解为“训练”和“推理”两种核心功能。无论是BaseML、BaseNet还是MMEdu，全部采用一致的语法完成训练、推理和部署。
+将AI工具分解为“训练”和“推理”两种核心功能。无论是BaseML、BaseNN还是MMEdu，全部采用一致的语法完成训练、推理和部署。
 
 3）兼容并蓄，灵活扩展
 
-虽然语法上做到最简，但是兼容原生工具的各种功能，如BaseNet和BaseML分别保留了Pytorch和Sklearn的功能，MMEdu则保留了OpenMMLab的各种参数，尤其是模型训练的所有常见参数，让学生在不同阶段都可以使用OpenXlab的系列工具进行学习。
+虽然语法上做到最简，但是兼容原生工具的各种功能，如BaseNN和BaseML分别保留了Pytorch和Sklearn的功能，MMEdu则保留了OpenMMLab的各种参数，尤其是模型训练的所有常见参数，让学生在不同阶段都可以使用OpenXLab的系列工具进行学习。
 
 ### XEdu的愿景
 
