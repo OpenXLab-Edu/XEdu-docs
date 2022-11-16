@@ -75,13 +75,13 @@ EasyDL系列工具是由上海人工智能实验室智能教育中心打造的�
 EasyTrain界面打开之后在下拉框中选择问题类型为分类或者检测。
 
 .. figure:: ../images/scitech_tools/probtype.png
-   :alt: image
 
-   image
 
 在选择了问题类型之后，下面的“算法类型”也会对应的更改。
 
 .. figure:: ../images/scitech_tools/algotype1.png
+
+
 
 
 .. figure:: ../images/scitech_tools/algotype2.png
