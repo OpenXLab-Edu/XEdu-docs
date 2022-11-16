@@ -109,6 +109,6 @@ AI项目工坊：https://www.openinnolab.org.cn/pjLab/projects/channel（用Chor
 
 
 3.MMEdu的简要总结
-=================
+-----------------
 
 MMEdu是针对青少年学习AI技术而设计的，其前身就是大名鼎鼎的OpenMMLab。MMEdu的语法非常简单，几句话就能完成训练和推理。如果你下载了一键安装包，还可以使用Easytrain等可视化辅助工具。有了MMEdu，你会发现AI模型训练原来这么简单。
