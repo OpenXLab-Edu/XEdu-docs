@@ -42,11 +42,7 @@ EasyDL系列工具是由上海人工智能实验室智能教育中心打造的�
 
 ④推理代码生成与查看
 
-
-
 .. figure:: ../images/scitech_tools/3.PNG
-
-
 
 
 2.3EasyAPI
@@ -65,7 +61,6 @@ EasyDL系列工具是由上海人工智能实验室智能教育中心打造的�
 
 ④在界面中跳转到Web服务的网页
 
-
 .. figure:: ../images/scitech_tools/4.PNG
 
 
@@ -79,58 +74,33 @@ EasyDL系列工具是由上海人工智能实验室智能教育中心打造的�
 
 EasyTrain界面打开之后在下拉框中选择问题类型为分类或者检测。
 
-
-
 .. figure:: ../images/scitech_tools/probtype.png
-
 
 
 在选择了问题类型之后，下面的“算法类型”也会对应的更改。
 
-
-
 .. figure:: ../images/scitech_tools/algotype1.png
-
-
-
-
-
-.. figure:: ../images/scitech_tools/algotype2.png
-
 
 
 在训练中要指定训练结果的保存路径和数据集路径，在选择了路径后，按钮文本会变成“选择路径”。如果训练新的模型，请尽量把结果保存在新的空文件夹中，否则不同训练问题的自动保存模型会冲突。
 
-
-
 .. figure:: ../images/scitech_tools/trpath.png
-
 
 
 训练的轮数，学习率，类别数量，使用设备等参数也可以调节，点击“更多参数”按钮可以修改更多的参数。一部分参数有范围，限定数字等要求。并且请选择合理的数值。如果是用不到的参数，建议不要修改，采用默认值。特别地，类别默认为-1是允许的，表示默认读取\ ``class.txt``\ 中的类别，修改之后需要填成正确的类数量。
 
-
-
 .. figure:: ../images/scitech_tools/trparam.png
-
 
 
 在更多参数中做出修改后，请点击“保存修改”将其保存。
 
-
-
 .. figure:: ../images/scitech_tools/trmoreparam.png
-
 
 
 在修改好自己的参数后，点击左下角的“代码生成”，可以生成训练代码，生成代码之后才可以训练。
 生成的代码会显示在上方的代码框，并且保存到\ ``train_code.py``\ 中，请不要随意修改。
 
-
-
 .. figure:: ../images/scitech_tools/trgenecode.png
-
-
 
 
 代码生成之后点击“开始训练”按钮即可开始训练，训练过程中主界面依旧可以正常运行，但是为了程序的稳定性和速度，不建议进行额外操作。
@@ -189,11 +159,14 @@ EasyAPI界面打开之后在下拉框中选择问题类型为分类或者检测�
 运行代码会看到EasyTrain界面打开的同时运行的cmd.exe框内会有呈现运行后台，此时点击打开网页。
 
 .. figure:: ../images/scitech_tools/API运行后台.png
+   :alt: image
 
+   image
 
 网页界面如下图所示。用户可指定类别的图片进行识别。
 
 .. figure:: ../images/scitech_tools/API测试.png
+
 
 注意事项
 --------

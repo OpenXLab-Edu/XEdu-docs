@@ -69,8 +69,6 @@ EasyTrain界面打开之后在下拉框中选择问题类型为分类或者检�
 
 ![image](../images/scitech_tools/algotype1.png)
 
-![image](../images/scitech_tools/algotype2.png)
-
 在训练中要指定训练结果的保存路径和数据集路径，在选择了路径后，按钮文本会变成“选择路径”。如果训练新的模型，请尽量把结果保存在新的空文件夹中，否则不同训练问题的自动保存模型会冲突。
 
 ![image](../images/scitech_tools/trpath.png)
