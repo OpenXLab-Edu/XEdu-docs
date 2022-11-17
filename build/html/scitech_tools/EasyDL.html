@@ -53,17 +53,18 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">EasyDL系列工具</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">1.简介</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">2.核心功能</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#easytrain">2.1EasyTrain</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#easyinference">2.2EasyInference</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#easyapi">2.3EasyAPI</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">3.运行方法</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#easytrain">3.1EasyTrain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#easytrain-1">3.1EasyTrain</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#easyinference-1">3.2EasyInference</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#easyapi-1">3.3EasyAPI</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">注意事项</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">注意事项</a></li>
 </ul>
 </li>
 </ul>
@@ -105,8 +106,8 @@
 </section>
 <section id="id2">
 <h2>2.核心功能<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
-<p>2.1EasyTrain</p>
-<hr class="docutils" />
+<section id="easytrain">
+<h3>2.1EasyTrain<a class="headerlink" href="#easytrain" title="Permalink to this headline"></a></h3>
 <p>①实现了无代码训练可视化界面</p>
 <p>②支持以下训练选项：</p>
 <ul class="simple">
@@ -120,6 +121,7 @@
 <figure class="align-default">
 <img alt="../_images/1.PNG" src="../_images/1.PNG" />
 </figure>
+</section>
 <section id="easyinference">
 <h3>2.2EasyInference<a class="headerlink" href="#easyinference" title="Permalink to this headline"></a></h3>
 <p>①实现了无代码推理可视化界面</p>
@@ -153,8 +155,8 @@
 </section>
 <section id="id3">
 <h2>3.运行方法<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
-<section id="easytrain">
-<span id="easytrain-1"></span><h3>3.1EasyTrain<a class="headerlink" href="#easytrain" title="Permalink to this headline"></a></h3>
+<section id="easytrain-1">
+<span id="id4"></span><h3>3.1EasyTrain<a class="headerlink" href="#easytrain-1" title="Permalink to this headline"></a></h3>
 <p>EasyTrain界面打开之后在下拉框中选择问题类型为分类或者检测。</p>
 <figure class="align-default">
 <img alt="../_images/probtype.PNG" src="../_images/probtype.PNG" />
@@ -185,7 +187,7 @@
 <p>在训练过程中，loss曲线会实时显示在右下方的loss框中，以轮数表示的训练进度也会表现在“结束训练”按钮下的进度条中。</p>
 </section>
 <section id="easyinference-1">
-<span id="id4"></span><h3>3.2EasyInference<a class="headerlink" href="#easyinference-1" title="Permalink to this headline"></a></h3>
+<span id="id5"></span><h3>3.2EasyInference<a class="headerlink" href="#easyinference-1" title="Permalink to this headline"></a></h3>
 <p>EasyInference页面的左侧还是基本的参数选择，包括问题类型，算法类型，权重文件，类别文件，推理结果的保存路径。
 如果推理结果的保存路径不选择，会默认保存到当前文件夹下的<code class="docutils literal notranslate"><span class="pre">det_result</span></code>中。
 但是请选择一个空文件夹作为保存路径，否则预览界面会出现问题。</p>
@@ -207,7 +209,7 @@
 <p>点击“上一张”，“下一张”可以进行切换。如果保存路径还有其他图片，程序会将那些图片全都展示，所以建议在推理之前清空保存路径。</p>
 </section>
 <section id="easyapi-1">
-<span id="id5"></span><h3>3.3EasyAPI<a class="headerlink" href="#easyapi-1" title="Permalink to this headline"></a></h3>
+<span id="id6"></span><h3>3.3EasyAPI<a class="headerlink" href="#easyapi-1" title="Permalink to this headline"></a></h3>
 <p>EasyAPI界面打开之后在下拉框中选择问题类型为分类或者检测。</p>
 <p>在选择了问题类型之后，下面的“算法类型”也会对应的更改。</p>
 <p>选择权重文件和类别文件。</p>
@@ -225,8 +227,8 @@
 </figure>
 </section>
 </section>
-<section id="id6">
-<h2>注意事项<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h2>
+<section id="id7">
+<h2>注意事项<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p>一部分参数有范围，例如学习率只能为正值，轮数只能为正整数，请选择合理范围的参数。</p></li>
 <li><p>关于设备类型，如果没有安装GPU版本的XEdu各模块，则不能以cuda设备运行，只能选择cpu。</p></li>

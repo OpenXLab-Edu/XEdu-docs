@@ -10,7 +10,6 @@ EasyDL系列工具是由上海人工智能实验室智能教育中心打造的�
 ----------
 
 2.1EasyTrain
-
 ~~~~~~~~~~~~
 
 ①实现了无代码训练可视化界面
@@ -27,7 +26,7 @@ EasyDL系列工具是由上海人工智能实验室智能教育中心打造的�
 ④集成开始训练与结束训练按钮，并实时显示loss曲线
 
 .. figure:: ../images/scitech_tools/1.PNG
-  
+
 
 2.2EasyInference
 ~~~~~~~~~~~~~~~~
@@ -124,7 +123,6 @@ EasyInference页面的左侧还是基本的参数选择，包括问题类型，�
 
 .. figure:: ../images/scitech_tools/infselsingle.PNG
 
-
 如果是选择文件夹，选择该文件夹即可。
 
 .. figure:: ../images/scitech_tools/infselfolder.PNG
@@ -133,7 +131,7 @@ EasyInference页面的左侧还是基本的参数选择，包括问题类型，�
 如果问题类型为检测，则会多出两个参数选择，分别是rpn阈值和rcnn阈值，请选择0-1之内的数字。
 
 .. figure:: ../images/scitech_tools/infmoreparam.PNG
- 
+
 
 点击“生成代码”后，代码会保存在\ ``inference_code.py``\ 中，并且在界面中显示。
 
