@@ -216,14 +216,14 @@ AI项目工坊：https://www.openinnolab.org.cn/pjLab/projects/channel（用Chor
 ----
 
 案例1. 搭建卷积神经网络实现手写体分类
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 本案例来源于《人工智能初步》人教地图72页，使用BaseNN库实现卷积神经网络搭建，完成手写图分类，数据集为MNIST数据集。
 
 .. _模型训练-1:
 
 1）模型训练
-'''''''''''
+^^^^^^^^^^^
 
 从零开始训练
 
@@ -294,7 +294,7 @@ AI项目工坊：https://www.openinnolab.org.cn/pjLab/projects/channel（用Chor
    model.train(lr=0.01, epochs=20, checkpoint=checkpoint)
 
 2）模型推理
-'''''''''''
+^^^^^^^^^^^
 
 读取测试集所有图片进行推理：
 
@@ -322,7 +322,7 @@ AI项目工坊：https://www.openinnolab.org.cn/pjLab/projects/channel（用Chor
    model.print_result(result) # 输出字典格式结果
 
 案例2. 一维卷积神经网络文本情感识别
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 本案例来源于《人工智能初步》人教地图版72-76页，完成了搭建一维卷积神经网络实现文本感情识别分类，代码使用BaseNN库实现，同时结合了Embedding层对单词文本进行向量化。
 
@@ -331,7 +331,7 @@ AI项目工坊：https://www.openinnolab.org.cn/pjLab/projects/channel（用Chor
 .. _模型训练-2:
 
 1）模型训练
-'''''''''''
+^^^^^^^^^^^
 
 ::
 
@@ -365,7 +365,7 @@ AI项目工坊：https://www.openinnolab.org.cn/pjLab/projects/channel（用Chor
 .. _模型推理-1:
 
 2）模型推理
-'''''''''''
+^^^^^^^^^^^
 
 读取测试集所有数据进行推理：
 
