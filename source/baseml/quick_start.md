@@ -20,14 +20,14 @@ BaseML库提供了众多机器学习训练方法，可以快速训练和应用�
 
 ```
 # 导入库，从BaseML导入分类模块
-from BaseML import Classification
+from BaseML import Classification as cls
 ```
 
 ### 1.实例化模型
 
 ```
 # 实例化模型，模型名称选择CART（Classification and Regression Trees）
-model=Classification.cls('CART')
+model=cls('CART')
 ```
 
 ### 2.载入数据
@@ -53,7 +53,7 @@ model.train()
 对一组数据直接推理。
 
 ```
-model=Classification.cls('CART')
+model=cls('CART')
 model.load('mymodel.pkl')
 y=model.inference([[1,  1,  1,  1]])
 ```
@@ -103,9 +103,9 @@ AI项目工坊：https://www.openinnolab.org.cn/pjLab/projects/channel（用Chor
 
 ```
 # 导入库，从BaseML导入分类模块
-from BaseML import Classification
+from BaseML import Classification as cls
 # 实例化模型，模型名称选则CART（Classification and Regression Trees）
-model=Classification.cls('CART')
+model=cls('CART')
 # 载入数据集，并说明特征列和标签列
 model.load_dataset('./道路是否可通行历史数据f.csv', type ='csv', x_column = [1,2],y_column=[3])
 # 模型训练
@@ -147,9 +147,9 @@ X_train, y_train, X_test, y_test = img_set.get_data(method='flatten')
 
 ```
 # 导入库，从BaseML导入分类模块
-from BaseML import Classification
+from BaseML import Classification as cls
 # 实例化模型，模型名称选择MLP（Multilayer Perceptron），n_hidden = (100,100)表示2层神经元数量为100的隐藏层
-model=Classification.cls(algorithm = 'MLP',n_hidden = (100,100))
+model=cls(algorithm = 'MLP',n_hidden = (100,100))
 # 载入数据，从变量载入
 model.load_dataset(X=X_train, y=y_train,type ='numpy')
 # 模型训练
@@ -187,7 +187,7 @@ print(label[y[0]])
 # 导入需要的各类库，numpy和pandas用来读入数据和处理数据，BaseML是主要的算法库
 import numpy as np
 import pandas as pd
-from BaseML import Classification
+from BaseML import Classification as cls
 
 # 构建字典键值对
 yesno_dict = {'是':1,'否':0}
@@ -205,7 +205,7 @@ df['专业人士'] = df['专业人士'].map(yesno_dict)
 
 ```
 # 实例化模型，KNN默认值为k=5
-model=Classification.cls('KNN')
+model=cls('KNN')
 # 载入数据集，并说明特征列和标签列
 model.load_dataset(X = df, y = df, type ='pandas', x_column = [1,2,3,4],y_column=[5])
 # 开始训练
@@ -228,7 +228,7 @@ print(loc.inverse_transform(test_y))
 
 ```
 # # 实例化模型，设置k=3
-model1=Classification.cls(algorithm = 'KNN',n_neighbors =3)
+model1=cls(algorithm = 'KNN',n_neighbors =3)
 model1.load_dataset(X = df, y = df, type ='pandas', x_column = [1,2,3,4],y_column=[5])
 model1.train()
 # 保存模型
@@ -249,9 +249,9 @@ model.save('mymodel2.pkl')
 # 导入需要的各类库，numpy和pandas用来读入数据和处理数据，BaseML是主要的算法库
 import numpy as np
 import pandas as pd
-from BaseML import Regression
+from BaseML import Regression as reg
 # 实例化模型
-model = Regression.reg(algorithm = 'LinearRegression')
+model = reg(algorithm = 'LinearRegression')
 # 指定数据集，需要显式指定类型
 model.load_dataset("蛋糕尺寸与价格.csv", type='csv', x_column=[0],y_column = [1])
 # 开始训练
@@ -291,7 +291,7 @@ plt.show()
 # 导入需要的各类库，numpy和pandas用来读入数据和处理数据，BaseML是主要的算法库
 import numpy as np
 import pandas as pd
-from BaseML import Cluster
+from BaseML import Cluster as clt
 import matplotlib.pyplot as plt
 from sklearn.datasets import make_blobs
 
@@ -305,7 +305,7 @@ plt.show()
 
 ```
 # 实例化模型
-model = Cluster.clt(algorithm = 'Kmeans', N_CLUSTERS=2)
+model = clt(algorithm = 'Kmeans', N_CLUSTERS=2)
 # 指定数据集，需要显式指定类型
 model.load_dataset(X = X, type='numpy', x_column=[0,1])
 # 开始训练
@@ -358,12 +358,12 @@ for i in range(model.model.cluster_centers_.shape[0]):
 # 导入需要的各类库，numpy和pandas用来读入数据和处理数据，BaseML是主要的算法库
 import numpy as np
 import pandas as pd
-from BaseML import Cluster
+from BaseML import Cluster as clt
 
 # 读取数据
 df = pd.read_csv("车辆聚类.csv")
 # 实例化模型
-model = Cluster.clt(algorithm = 'Kmeans', N_CLUSTERS=2)
+model = clt(algorithm = 'Kmeans', N_CLUSTERS=2)
 # 指定数据集，需要显式指定类型
 model.load_dataset(X = df, type='pandas', x_column=[1,2])
 # 开始训练

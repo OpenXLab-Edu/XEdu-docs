@@ -127,14 +127,14 @@
 <section id="id5">
 <h3>0.引入包<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库，从BaseML导入分类模块</span>
-<span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Classification</span>
+<span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Classification</span> <span class="k">as</span> <span class="bp">cls</span>
 </pre></div>
 </div>
 </section>
 <section id="id6">
 <h3>1.实例化模型<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择CART（Classification and Regression Trees）</span>
-<span class="n">model</span><span class="o">=</span><span class="n">Classification</span><span class="o">.</span><span class="n">cls</span><span class="p">(</span><span class="s1">&#39;CART&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;CART&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -159,7 +159,7 @@
 <section id="id10">
 <h3>使用现有模型直接推理<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
 <p>对一组数据直接推理。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">=</span><span class="n">Classification</span><span class="o">.</span><span class="n">cls</span><span class="p">(</span><span class="s1">&#39;CART&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;CART&#39;</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;mymodel.pkl&#39;</span><span class="p">)</span>
 <span class="n">y</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">]])</span>
 </pre></div>
@@ -202,9 +202,9 @@
 <section id="id16">
 <span id="id17"></span><h4>1）模型训练<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库，从BaseML导入分类模块</span>
-<span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Classification</span>
+<span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Classification</span> <span class="k">as</span> <span class="bp">cls</span>
 <span class="c1"># 实例化模型，模型名称选则CART（Classification and Regression Trees）</span>
-<span class="n">model</span><span class="o">=</span><span class="n">Classification</span><span class="o">.</span><span class="n">cls</span><span class="p">(</span><span class="s1">&#39;CART&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;CART&#39;</span><span class="p">)</span>
 <span class="c1"># 载入数据集，并说明特征列和标签列</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;./道路是否可通行历史数据f.csv&#39;</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="n">x_column</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span><span class="n">y_column</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
 <span class="c1"># 模型训练</span>
@@ -242,9 +242,9 @@
 <section id="id20">
 <span id="id21"></span><h4>1）模型训练<a class="headerlink" href="#id20" title="Permalink to this headline"></a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库，从BaseML导入分类模块</span>
-<span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Classification</span>
+<span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Classification</span> <span class="k">as</span> <span class="bp">cls</span>
 <span class="c1"># 实例化模型，模型名称选择MLP（Multilayer Perceptron），n_hidden = (100,100)表示2层神经元数量为100的隐藏层</span>
-<span class="n">model</span><span class="o">=</span><span class="n">Classification</span><span class="o">.</span><span class="n">cls</span><span class="p">(</span><span class="n">algorithm</span> <span class="o">=</span> <span class="s1">&#39;MLP&#39;</span><span class="p">,</span><span class="n">n_hidden</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span>
+<span class="n">model</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="n">algorithm</span> <span class="o">=</span> <span class="s1">&#39;MLP&#39;</span><span class="p">,</span><span class="n">n_hidden</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span>
 <span class="c1"># 载入数据，从变量载入</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_train</span><span class="p">,</span><span class="nb">type</span> <span class="o">=</span><span class="s1">&#39;numpy&#39;</span><span class="p">)</span>
 <span class="c1"># 模型训练</span>
@@ -278,7 +278,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入需要的各类库，numpy和pandas用来读入数据和处理数据，BaseML是主要的算法库</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Classification</span>
+<span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Classification</span> <span class="k">as</span> <span class="bp">cls</span>
 
 <span class="c1"># 构建字典键值对</span>
 <span class="n">yesno_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;是&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;否&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">}</span>
@@ -295,7 +295,7 @@
 <section id="id24">
 <span id="id25"></span><h4>1）模型训练<a class="headerlink" href="#id24" title="Permalink to this headline"></a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，KNN默认值为k=5</span>
-<span class="n">model</span><span class="o">=</span><span class="n">Classification</span><span class="o">.</span><span class="n">cls</span><span class="p">(</span><span class="s1">&#39;KNN&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;KNN&#39;</span><span class="p">)</span>
 <span class="c1"># 载入数据集，并说明特征列和标签列</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">,</span> <span class="n">x_column</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span><span class="n">y_column</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
 <span class="c1"># 开始训练</span>
@@ -316,7 +316,7 @@
 </div>
 <p>修改k值进行训练：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># # 实例化模型，设置k=3</span>
-<span class="n">model1</span><span class="o">=</span><span class="n">Classification</span><span class="o">.</span><span class="n">cls</span><span class="p">(</span><span class="n">algorithm</span> <span class="o">=</span> <span class="s1">&#39;KNN&#39;</span><span class="p">,</span><span class="n">n_neighbors</span> <span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">model1</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="n">algorithm</span> <span class="o">=</span> <span class="s1">&#39;KNN&#39;</span><span class="p">,</span><span class="n">n_neighbors</span> <span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">model1</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">,</span> <span class="n">x_column</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span><span class="n">y_column</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
 <span class="n">model1</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
 <span class="c1"># 保存模型</span>
@@ -334,9 +334,9 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入需要的各类库，numpy和pandas用来读入数据和处理数据，BaseML是主要的算法库</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Regression</span>
+<span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Regression</span> <span class="k">as</span> <span class="n">reg</span>
 <span class="c1"># 实例化模型</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">Regression</span><span class="o">.</span><span class="n">reg</span><span class="p">(</span><span class="n">algorithm</span> <span class="o">=</span> <span class="s1">&#39;LinearRegression&#39;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">reg</span><span class="p">(</span><span class="n">algorithm</span> <span class="o">=</span> <span class="s1">&#39;LinearRegression&#39;</span><span class="p">)</span>
 <span class="c1"># 指定数据集，需要显式指定类型</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;蛋糕尺寸与价格.csv&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="n">x_column</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">y_column</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="c1"># 开始训练</span>
@@ -373,7 +373,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入需要的各类库，numpy和pandas用来读入数据和处理数据，BaseML是主要的算法库</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Cluster</span>
+<span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Cluster</span> <span class="k">as</span> <span class="n">clt</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
 
@@ -386,7 +386,7 @@
 <section id="id33">
 <span id="id34"></span><h4>1）模型训练<a class="headerlink" href="#id33" title="Permalink to this headline"></a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">Cluster</span><span class="o">.</span><span class="n">clt</span><span class="p">(</span><span class="n">algorithm</span> <span class="o">=</span> <span class="s1">&#39;Kmeans&#39;</span><span class="p">,</span> <span class="n">N_CLUSTERS</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">clt</span><span class="p">(</span><span class="n">algorithm</span> <span class="o">=</span> <span class="s1">&#39;Kmeans&#39;</span><span class="p">,</span> <span class="n">N_CLUSTERS</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="c1"># 指定数据集，需要显式指定类型</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;numpy&#39;</span><span class="p">,</span> <span class="n">x_column</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
 <span class="c1"># 开始训练</span>
@@ -431,12 +431,12 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入需要的各类库，numpy和pandas用来读入数据和处理数据，BaseML是主要的算法库</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Cluster</span>
+<span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Cluster</span> <span class="k">as</span> <span class="n">clt</span>
 
 <span class="c1"># 读取数据</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;车辆聚类.csv&quot;</span><span class="p">)</span>
 <span class="c1"># 实例化模型</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">Cluster</span><span class="o">.</span><span class="n">clt</span><span class="p">(</span><span class="n">algorithm</span> <span class="o">=</span> <span class="s1">&#39;Kmeans&#39;</span><span class="p">,</span> <span class="n">N_CLUSTERS</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">clt</span><span class="p">(</span><span class="n">algorithm</span> <span class="o">=</span> <span class="s1">&#39;Kmeans&#39;</span><span class="p">,</span> <span class="n">N_CLUSTERS</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="c1"># 指定数据集，需要显式指定类型</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">,</span> <span class="n">x_column</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
 <span class="c1"># 开始训练</span>

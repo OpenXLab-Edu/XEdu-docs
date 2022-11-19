@@ -7,7 +7,7 @@
 ### 0.引入包
 
 ```
-from BaseML import Classification
+from BaseML import Classification as cls
 ```
 
 ### 1.实例化
@@ -20,7 +20,7 @@ from BaseML import Classification
 
 ```
 # 实例化模型，模型名称选择NaiveBayes
-model=Classification.cls('NaiveBayes')
+model=cls('NaiveBayes')
 ```
 
 #### 决策树分类
@@ -29,7 +29,7 @@ model=Classification.cls('NaiveBayes')
 
 ```
 # 实例化模型，模型名称选择CART（Classification and Regression Trees）
-model=Classification.cls('CART')
+model=cls('CART')
 ```
 
 #### k近邻
@@ -38,7 +38,7 @@ k近邻（K Nearest Neighbors）算法，简称为kNN，该算法以每一个测
 
 ```
 # 实例化模型，模型名称选择KNN(K Nearest Neighbor)
-model = Classification.cls(algorithm = 'KNN',n_neighbors=3)
+model = cls(algorithm = 'KNN',n_neighbors=3)
 ```
 
 `n_neighbors`表示k的值，参数需设置为整数，默认值为5。
@@ -49,7 +49,7 @@ model = Classification.cls(algorithm = 'KNN',n_neighbors=3)
 
 ```
 #实例化模型，模型名称选择SVM
-model=Classification.cls('SVM')
+model=cls('SVM')
 ```
 
 #### 多层感知机（MLP）
@@ -58,7 +58,7 @@ model=Classification.cls('SVM')
 
 ```
 # 实例化模型，模型名称选择MLP（Multilayer Perceptron），n_hidden = (100,100)表示2层神经元数量为100的隐藏层
-model=Classification.cls(algorithm = 'MLP',n_hidden = (100,100))
+model=cls(algorithm = 'MLP',n_hidden = (100,100))
 ```
 
 `n_hidden`表示隐藏层，参数值设置为一个元组，元组的元素数表示隐藏层数，元素的值依次表示隐藏层的神经元数。
@@ -69,7 +69,7 @@ AdaBoost是Adaptive Boosting的缩写，Adaptive是自适应的意思，Boosting
 
 ```
 # 实例化模型，模型名称选择AdaBoost（Adaptive Boosting）
-model=Classification.cls(algorithm = 'AdaBoost'，n_estimators = 50)
+model=cls(algorithm = 'AdaBoost'，n_estimators = 50)
 ```
 
 `n_estimators`表示弱学习器数量，默认值为100。
@@ -79,7 +79,7 @@ model=Classification.cls(algorithm = 'AdaBoost'，n_estimators = 50)
 #### 查看拥有的算法以及类注释
 
 ```
-Classification.cls.__doc__
+cls.__doc__
 ```
 
 
@@ -166,7 +166,7 @@ model.load("my_CART_model.pkl")
 ### 0.引入包
 
 ```
-from BaseML import Regression
+from BaseML import Regression as reg
 ```
 
 ### 1.实例化
@@ -177,7 +177,7 @@ from BaseML import Regression
 
 ```
 # 实例化模型，模型名称选择'LinearRegression'
-model = Regression.reg(algorithm = 'LinearRegression')
+model = reg(algorithm = 'LinearRegression')
 ```
 
 #### 决策树回归
@@ -186,7 +186,7 @@ model = Regression.reg(algorithm = 'LinearRegression')
 
 ```
 # 实例化模型，模型名称选择'DecisionTree'
-model = Regression.reg(algorithm = 'DecisionTree')
+model = reg(algorithm = 'DecisionTree')
 ```
 
 #### 随机森林回归
@@ -195,7 +195,7 @@ model = Regression.reg(algorithm = 'DecisionTree')
 
 ```
 # 实例化模型，模型名称选择'RandomForest'
-model = Regression.reg(algorithm = 'RandomForest')
+model = reg(algorithm = 'RandomForest')
 ```
 
 ...
@@ -203,7 +203,7 @@ model = Regression.reg(algorithm = 'RandomForest')
 #### 查看拥有的算法以及类注释
 
 ```
-Regression.reg.__doc__
+reg.__doc__
 ```
 
 
@@ -229,7 +229,7 @@ Regression.reg.__doc__
 ### 0.引入包
 
 ```
-from BaseML import Cluster
+from BaseML import Cluster as clt
 ```
 
 ### 1.实例化
@@ -240,7 +240,7 @@ k均值（k-means）算法是一种基于数据间距离迭代求解的聚类算
 
 ```
 # 实例化模型，模型名称选择'KMeans',N_CLUSTERS设置为3
-model=Cluster.clt(algorithm='KMeans',N_CLUSTERS=3)
+model = clt(algorithm='KMeans',N_CLUSTERS=3)
 ```
 
 `N_CLUSTERS`表示k的值，默认值为5。
@@ -251,7 +251,7 @@ model=Cluster.clt(algorithm='KMeans',N_CLUSTERS=3)
 
 ```
 # 实例化模型，模型名称选择'SpectralClustering',N_CLUSTERS设置为3
-model=Cluster.clt(algorithm='SpectralClustering',N_CLUSTERS=3)
+model = clt(algorithm='SpectralClustering',N_CLUSTERS=3)
 ```
 
 `N_CLUSTERS`表示子图的数量，默认值为5。
@@ -262,7 +262,7 @@ Agglomerative clutsering 是一种自底而上的层次聚类方法，它能够�
 
 ```
 # 实例化模型，模型名称选择'Agglomerative clustering',N_CLUSTERS设置为3
-model=Cluster.clt(algorithm='Agglomerative clustering',N_CLUSTERS=3)
+model = clt(algorithm='Agglomerative clustering',N_CLUSTERS=3)
 ```
 
 `N_CLUSTERS`表示聚类的数量，默认值为5。
@@ -272,7 +272,7 @@ model=Cluster.clt(algorithm='Agglomerative clustering',N_CLUSTERS=3)
 #### 查看拥有的算法以及类注释
 
 ```
-Cluster.clt.__doc__
+clt.__doc__
 ```
 
 ### 2.数据载入
