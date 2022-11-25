@@ -108,16 +108,16 @@ filesname_b.jpg n
 # 在windows测试通过
 import os
 # 列出指定目录下的所有文件名，确定类别名称
-classes = os.listdir('D:\测试数据集\EX_dataset\\training_set')
+classes = os.listdir('./my_dataset/training_set')
 # 打开指定文件，并写入类别名称
-with open('D:\测试数据集\EX_dataset/classes.txt','w') as f:
+with open('./my_dataset/classes.txt','w') as f:
     for line in classes:
         str_line = line +'\n'
         f.write(str_line) # 文件写入str_line，即类别名称
 
-test_dir = 'D:\测试数据集\EX_dataset\\test_set/' # 指定测试集文件路径
+test_dir = './my_dataset/test_set/' # 指定测试集文件路径
 # 打开指定文件，写入标签信息
-with open('D:\测试数据集\EX_dataset/test.txt','w') as f:
+with open('./my_dataset/test.txt','w') as f:
     for cnt in range(len(classes)):
         t_dir = test_dir + classes[cnt]  # 指定测试集某个分类的文件目录
         files = os.listdir(t_dir) # 列出当前类别的文件目录下的所有文件名
@@ -126,9 +126,9 @@ with open('D:\测试数据集\EX_dataset/test.txt','w') as f:
             str_line = classes[cnt] + '/' + line + ' '+str(cnt) +'\n' 
             f.write(str_line) 
 
-val_dir = 'D:\测试数据集\EX_dataset\\val_set/'  # 指定文件路径
+val_dir = './my_dataset/val_set/'  # 指定文件路径
 # 打开指定文件，写入标签信息
-with open('D:\测试数据集\EX_dataset/val.txt', 'w') as f:
+with open('./my_dataset/val.txt', 'w') as f:
     for cnt in range(len(classes)):
         t_dir = val_dir + classes[cnt]  # 指定验证集某个分类的文件目录
         files = os.listdir(t_dir)  # 列出当前类别的文件目录下的所有文件名
@@ -189,7 +189,7 @@ with open(set_path +'test.txt','w') as f:
 
 您可以用任何设备拍摄图像，也可以从视频中抽取帧图像，需要注意，这些图像可以被划分为多个类别。每个类别建立一个文件夹，文件夹名称为类别名称，将图片放在其中。
 
-接下来需要对图片进行尺寸、保存格式等的统一，可使用如下代码：
+接下来需要对图片进行尺寸、保存格式等的统一，简单情况下的参考代码如下：
 
 ```plain
 from PIL import Image
@@ -200,9 +200,9 @@ def makeDir(folder_path):
     if not os.path.exists(folder_path):  # 判断是否存在文件夹如果不存在则创建为文件夹
         os.makedirs(folder_path)
 
-classes = os.listdir('D:\测试数据集\自定义数据集')
-read_dir = 'D:\测试数据集\自定义数据集/' # 指定原始图片路径
-new_dir = 'D:\测试数据集\自定义数据集new/'
+classes = os.listdir('./my_dataset/training_set')
+read_dir = './my_dataset/training_set/' # 指定原始图片路径
+new_dir = './my_dataset/newtraining_set'
 for cnt in range(len(classes)):
     r_dir = read_dir + classes[cnt] + '/'
     files = os.listdir(r_dir)
@@ -225,8 +225,8 @@ for cnt in range(len(classes)):
 ```plain
 import os
 import shutil
-# 列出指定目录下的所有文件名，确定类别名称
-classes = os.listdir('D:\测试数据集\自定义表情数据集')
+# 列出指定目录下的所有文件名，确定分类信息
+classes = os.listdir('./my_photo')
 
 # 定义创建目录的方法
 def makeDir(folder_path):
@@ -234,15 +234,15 @@ def makeDir(folder_path):
         os.makedirs(folder_path)
 
 # 指定文件目录
-read_dir = 'D:\测试数据集\自定义表情数据集/' # 指定原始图片路径
-train_dir = 'D:\测试数据集\自制\EX_dataset\\training_set/' # 指定训练集路径
-test_dir = 'D:\测试数据集\自制\EX_dataset\\test_set/' # 指定测试集路径
-val_dir = 'D:\测试数据集\自制\EX_dataset\\val_set/' # 指定验证集路径
+read_dir = './my_photo/' # 指定原始图片路径
+train_dir = './my_dataset\\training_set/' # 指定训练集路径
+test_dir = './my_dataset\\test_set/'# 指定测试集路径
+val_dir = './my_dataset\\val_set/'# 指定验证集路径
 
 for cnt in range(len(classes)):
     r_dir = read_dir + classes[cnt] + '/'  # 指定原始数据某个分类的文件目录
     files = os.listdir(r_dir)  # 列出某个分类的文件目录下的所有文件名
-    files = files[:1000]
+    # files = files[:4000]
     # 按照6:2:2拆分文件名
     offset1 = int(len(files) * 0.6)
     offset2 = int(len(files) * 0.8)
@@ -254,15 +254,20 @@ for cnt in range(len(classes)):
     for index,fileName in enumerate(training_data):
         w_dir = train_dir + classes[cnt] + '/'  # 指定训练集某个分类的文件目录
         makeDir(w_dir)
-        shutil.copy(r_dir + fileName,w_dir + classes[cnt] + str(index)+'.jpg')
-    for index,fileName in enumerate(test_data):
+        # shutil.copy(r_dir + fileName,w_dir + classes[cnt] + str(index)+'.jpg')
+        shutil.copy(r_dir + fileName, w_dir + str(index) + '.jpg')
+    for index,fileName in enumerate(val_data):
         w_dir = test_dir + classes[cnt] + '/'  # 指定测试集某个分类的文件目录
         makeDir(w_dir)
-        shutil.copy(r_dir + fileName, w_dir + classes[cnt] + str(index) + '.jpg')
-    for index,fileName in enumerate(val_data):
+        # shutil.copy(r_dir + fileName, w_dir + classes[cnt] + str(index) + '.jpg')
+        shutil.copy(r_dir + fileName, w_dir + str(index) + '.jpg')
+    for index,fileName in enumerate(test_data):
         w_dir = val_dir + classes[cnt] + '/'  # 指定验证集某个分类的文件目录
         makeDir(w_dir)
-        shutil.copy(r_dir + fileName, w_dir + classes[cnt] + str(index) + '.jpg')
+        # shutil.copy(r_dir + fileName, w_dir + classes[cnt] + str(index) + '.jpg')
+        shutil.copy(r_dir + fileName, w_dir + str(index) + '.jpg')
+
+
 ```
 
 #### 第三步：生成标签文件
