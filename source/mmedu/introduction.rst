@@ -253,9 +253,9 @@ classes.txt包含数据集类别标签信息，每行包含一个类别名称，
 
    # 指定文件目录
    read_dir = './my_photo/' # 指定原始图片路径
-   train_dir = './my_dataset\\training_set/' # 指定训练集路径
-   test_dir = './my_dataset\\test_set/'# 指定测试集路径
-   val_dir = './my_dataset\\val_set/'# 指定验证集路径
+   train_dir = './my_dataset/training_set/' # 指定训练集路径
+   test_dir = './my_dataset/test_set/'# 指定测试集路径
+   val_dir = './my_dataset/val_set/'# 指定验证集路径
 
    for cnt in range(len(classes)):
        r_dir = read_dir + classes[cnt] + '/'  # 指定原始数据某个分类的文件目录
@@ -275,12 +275,12 @@ classes.txt包含数据集类别标签信息，每行包含一个类别名称，
            # shutil.copy(r_dir + fileName,w_dir + classes[cnt] + str(index)+'.jpg')
            shutil.copy(r_dir + fileName, w_dir + str(index) + '.jpg')
        for index,fileName in enumerate(val_data):
-           w_dir = test_dir + classes[cnt] + '/'  # 指定测试集某个分类的文件目录
+           w_dir = val_dir + classes[cnt] + '/'  # 指定测试集某个分类的文件目录
            makeDir(w_dir)
            # shutil.copy(r_dir + fileName, w_dir + classes[cnt] + str(index) + '.jpg')
            shutil.copy(r_dir + fileName, w_dir + str(index) + '.jpg')
        for index,fileName in enumerate(test_data):
-           w_dir = val_dir + classes[cnt] + '/'  # 指定验证集某个分类的文件目录
+           w_dir = test_dir + classes[cnt] + '/'  # 指定验证集某个分类的文件目录
            makeDir(w_dir)
            # shutil.copy(r_dir + fileName, w_dir + classes[cnt] + str(index) + '.jpg')
            shutil.copy(r_dir + fileName, w_dir + str(index) + '.jpg')
