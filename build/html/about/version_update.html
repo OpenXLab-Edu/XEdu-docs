@@ -107,6 +107,37 @@
 <h3>正式版更新记录<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
 <section id="mmedu">
 <h4>1）MMEdu<a class="headerlink" href="#mmedu" title="Permalink to this headline"></a></h4>
+<section id="v0-1-2-20221202">
+<h5>V0.1.2 20221202<a class="headerlink" href="#v0-1-2-20221202" title="Permalink to this headline"></a></h5>
+<ol>
+<li><p>cls检查数据集中图片shape，指出损坏图片。检查图片出现损坏时，抛出错误码<code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">image</span> <span class="pre">file</span> <span class="pre">xxx</span> <span class="pre">is</span> <span class="pre">damaged</span></code>。</p></li>
+<li><p>数据集如缺少txt，自动生成</p>
+<p>case1：数据集缺少classes.txt, val.txt, test.txt ，会自动生成并提示, eg，“生成val.txt”。</p>
+<p>case2：如缺少test_set，可正常训练，但不会生成test.txt 。（不影响正常功能）</p>
+<p>case3：如缺少val_set，可训练，但不能验证，即train函数中validate参数不能为True。（功能受损，看不到准确率，但还是可以训练出模型）。</p>
+</li>
+<li><p>检查写权限，确定写到哪里</p>
+<p>innolab上数据集没有读写权限，则将txt生成至项目内，文件夹名为dataset_txt，内含classes.txt,val.txt,test.txt</p>
+<p>(若有读写权限则生成至数据集路径内)</p>
+</li>
+</ol>
+</section>
+<section id="v0-1-1-20221118">
+<h5>V0.1.1 20221118<a class="headerlink" href="#v0-1-1-20221118" title="Permalink to this headline"></a></h5>
+<p>支持读入pil，np格式数据。</p>
+</section>
+<section id="v0-1-0-20221111">
+<h5>V0.1.0 20221111<a class="headerlink" href="#v0-1-0-20221111" title="Permalink to this headline"></a></h5>
+<ol class="simple">
+<li><p>train和infer的device=cuda检查torch.cuda.is_available()，device=cpu当cuda可用时提示可以使用cuda加速。</p></li>
+<li><p>文件夹推理 lenet 无误。</p></li>
+<li><p>fast_infer支持lenet。</p></li>
+</ol>
+</section>
+<section id="v0-1-0rc2-20221111">
+<h5>V0.1.0rc2 20221111<a class="headerlink" href="#v0-1-0rc2-20221111" title="Permalink to this headline"></a></h5>
+<p>同V0.0.9，少依赖版本。</p>
+</section>
 <section id="v0-0-9-20221104">
 <h5>V0.0.9 20221104<a class="headerlink" href="#v0-0-9-20221104" title="Permalink to this headline"></a></h5>
 <ol class="simple">

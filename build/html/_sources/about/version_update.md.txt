@@ -16,6 +16,38 @@
 
 #### 1）MMEdu
 
+##### V0.1.2 20221202
+
+1. cls检查数据集中图片shape，指出损坏图片。检查图片出现损坏时，抛出错误码`The image file xxx is damaged`。
+
+2. 数据集如缺少txt，自动生成
+
+   case1：数据集缺少classes.txt, val.txt, test.txt ，会自动生成并提示, eg，“生成val.txt”。
+
+   case2：如缺少test_set，可正常训练，但不会生成test.txt 。（不影响正常功能）
+
+   case3：如缺少val_set，可训练，但不能验证，即train函数中validate参数不能为True。（功能受损，看不到准确率，但还是可以训练出模型）。
+
+3. 检查写权限，确定写到哪里
+
+   innolab上数据集没有读写权限，则将txt生成至项目内，文件夹名为dataset_txt，内含classes.txt,val.txt,test.txt
+
+   (若有读写权限则生成至数据集路径内)
+
+##### V0.1.1 20221118
+
+支持读入pil，np格式数据。
+
+##### V0.1.0 20221111
+
+1. train和infer的device=cuda检查torch.cuda.is_available()，device=cpu当cuda可用时提示可以使用cuda加速。
+2. 文件夹推理 lenet 无误。
+3. fast_infer支持lenet。
+
+##### V0.1.0rc2 20221111
+
+同V0.0.9，少依赖版本。
+
 ##### V0.0.9 20221104
 
 1. 检测模块训练函数支持device参数。
