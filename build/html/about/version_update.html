@@ -45,15 +45,16 @@
 <li class="toctree-l2"><a class="reference internal" href="team.html">开发和维护团队</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">版本更新记录</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id2">1.正式版</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id3">正式版更新记录</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">开发计划：</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">正式版更新记录</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">2.测试版</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">2.测试版</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#xedu-0-1-0">XEdu 0.1.0版</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mmedu-pip-0-0-1">MMEdu pip-0.0.1版</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#xedu-0-0-1">XEdu 0.0.1版</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">0.7版</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">0.5版</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">0.7版</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">0.5版</a></li>
 </ul>
 </li>
 </ul>
@@ -100,12 +101,14 @@
 <section id="id2">
 <h2>1.正式版<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <p>发布时间：2022年9月发布</p>
-<p>开发计划：</p>
+<section id="id3">
+<h3>开发计划：<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
 <p>1.实现以pip方式安装。</p>
 <p>2.分MMEdu、BaseML、BaseNN三个功能模块。</p>
 <p>3.工具持续迭代。</p>
-<section id="id3">
-<h3>正式版更新记录<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+</section>
+<section id="id4">
+<h3>正式版更新记录<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
 <section id="mmedu">
 <h4>1）MMEdu<a class="headerlink" href="#mmedu" title="Permalink to this headline"></a></h4>
 <section id="v0-1-2-20221202">
@@ -130,9 +133,9 @@
 <section id="v0-1-0-20221111">
 <h5>V0.1.0 20221111<a class="headerlink" href="#v0-1-0-20221111" title="Permalink to this headline"></a></h5>
 <ol class="simple">
-<li><p>train和infer的device=cuda检查torch.cuda.is_available()，device=cpu当cuda可用时提示可以使用cuda加速。</p></li>
-<li><p>文件夹推理 lenet 无误。</p></li>
-<li><p>fast_infer支持lenet。</p></li>
+<li><p>train和infer的<code class="docutils literal notranslate"><span class="pre">device=cuda</span></code>检查<code class="docutils literal notranslate"><span class="pre">torch.cuda.is_available()</span></code>，<code class="docutils literal notranslate"><span class="pre">device=cpu</span></code>当cuda可用时提示可以使用cuda加速。</p></li>
+<li><p>文件夹推理LeNet无误。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fast_infer</span></code>支持LeNet。</p></li>
 </ol>
 </section>
 <section id="v0-1-0rc2-20221111">
@@ -143,9 +146,9 @@
 <h5>V0.0.9 20221104<a class="headerlink" href="#v0-0-9-20221104" title="Permalink to this headline"></a></h5>
 <ol class="simple">
 <li><p>检测模块训练函数支持device参数。</p></li>
-<li><p>load_checkpoint()参数顺序更换。将checkpoint前置（第一个），device后置，可以只输入路径，而省略 “checkpoint=”。</p></li>
-<li><p>fast_infer错误反馈，补充错误情况，当fast_infer之前未使用load_checkpoint载入ckpt时会提示错误码305。</p></li>
-<li><p>MMEdu.__ path __ 可正常返回环境中包所在地址。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">load_checkpoint()</span></code>参数顺序更换。将checkpoint前置（第一个），<code class="docutils literal notranslate"><span class="pre">device</span></code>后置，可以只输入路径，而省略 “<code class="docutils literal notranslate"><span class="pre">checkpoint=</span></code>”。</p></li>
+<li><p>fast_infer错误反馈，补充错误情况，当<code class="docutils literal notranslate"><span class="pre">fast_infer</span></code>之前未使用l<code class="docutils literal notranslate"><span class="pre">oad_checkpoint</span></code>载入<code class="docutils literal notranslate"><span class="pre">ckpt</span></code>时会提示错误码305。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MMEdu.__</span> <span class="pre">path</span> <span class="pre">__</span></code> 可正常返回环境中包所在地址。</p></li>
 <li><p>修复lenet 文件夹推理问题。</p></li>
 </ol>
 </section>
@@ -174,7 +177,7 @@
 </section>
 <section id="v0-0-3-20221115">
 <h5>V0.0.3 20221115<a class="headerlink" href="#v0-0-3-20221115" title="Permalink to this headline"></a></h5>
-<p>把 from BaseML import Classification  调用为Classification.cls  改成了 from BaseML import Classification as cls  调用为 cls(algorithm= …)。</p>
+<p>把 <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">BaseML</span> <span class="pre">import</span> <span class="pre">Classification</span></code>  调用为<code class="docutils literal notranslate"><span class="pre">Classification.cls</span></code>  改成了 f<code class="docutils literal notranslate"><span class="pre">rom</span> <span class="pre">BaseML</span> <span class="pre">import</span> <span class="pre">Classification</span> <span class="pre">as</span> <span class="pre">cls</span></code>  调用为 <code class="docutils literal notranslate"><span class="pre">cls(algorithm=</span> <span class="pre">...)</span></code>。</p>
 </section>
 <section id="v0-0-2-20221110">
 <h5>V0.0.2 20221110<a class="headerlink" href="#v0-0-2-20221110" title="Permalink to this headline"></a></h5>
@@ -186,7 +189,7 @@
 </section>
 <section id="v0-0-1-20221110">
 <h5>V0.0.1 20221110<a class="headerlink" href="#v0-0-1-20221110" title="Permalink to this headline"></a></h5>
-<p>load_dataset中设置了X和y的默认列，如果没有标明x_column和y_column，默认采用输入的所有列。但输入的是<strong>txt</strong>或<strong>csv</strong>格式的话，一定要标注出列号，否则报错。</p>
+<p>load_dataset中设置了X和y的默认列，如果没有标明<code class="docutils literal notranslate"><span class="pre">x_column</span></code>和<code class="docutils literal notranslate"><span class="pre">y_column</span></code>，默认采用输入的所有列。但输入的是<strong>txt</strong>或<strong>csv</strong>格式的话，一定要标注出列号，否则报错。</p>
 <p>inference()中加了参数verbose，默认值为True，表示会输出训练过程中的过程数据，False则不会。</p>
 <p>train()中设置了参数validate（默认为True），表示会将输入的训练集划分为训练集和验证集，并输出验证集下的模型准确率。</p>
 <p>添加了图片读取处理模块ImageLoader，具体使用方式查看文件中的注释以及demo实现。</p>
@@ -199,8 +202,8 @@
 </section>
 </section>
 </section>
-<section id="id4">
-<h2>2.测试版<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
+<section id="id5">
+<h2>2.测试版<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
 <section id="xedu-0-1-0">
 <h3>XEdu 0.1.0版<a class="headerlink" href="#xedu-0-1-0" title="Permalink to this headline"></a></h3>
 <p>发布时间：2022.11</p>
@@ -216,13 +219,13 @@
 <p>发布时间：2022.6</p>
 <p>版本说明：重构目录结构，建立MMEdu和BaseML两大模块。</p>
 </section>
-<section id="id5">
-<h3>0.7版<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<section id="id6">
+<h3>0.7版<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
 <p>发布时间：2022.6</p>
 <p>版本说明：优化0.5版两个模块，新增自定义网络（BaseNN）模块。</p>
 </section>
-<section id="id6">
-<h3>0.5版<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<section id="id7">
+<h3>0.5版<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
 <p>发布时间：2022.4</p>
 <p>版本说明：整合图像分类（cls）、物体检测（det）两个核心模块，内置Pyzo、Jupyter，实现一键部署。</p>
 </section>
