@@ -227,7 +227,7 @@ AI项目工坊：https://www.openinnolab.org.cn/pjLab/projects/channel（用Chor
 .. figure:: https://www.openinnolab.org.cn/webdav/635638d69ed68060c638f979/638028ff777c254264da4e6f/current/assets/%E7%94%A8%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AE%9E%E7%8E%B0%E6%89%8B%E5%86%99%E4%BD%93%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE%E6%95%88%E6%9E%9C%E5%9B%BE%E7%89%87.PNG
    :alt: 用卷积神经网络实现手写体分类项目效果图片.PNG
 
-   用卷积神经网络实现手写体分类项目效果图片.PNG
+
 
 **实现步骤：**
 
@@ -255,7 +255,7 @@ AI项目工坊：https://www.openinnolab.org.cn/pjLab/projects/channel（用Chor
        # 将顺序读取的文件保存到该list中
        for item in dir_list:
            tpath = os.path.join(path,item)
-
+    
            # print(tpath)
            for i in os.listdir(tpath):
                # print(item)
@@ -267,10 +267,10 @@ AI项目工坊：https://www.openinnolab.org.cn/pjLab/projects/channel（用Chor
                label.append(int(item))
        x = np.array(data)
        y = np.array(label)
-
+    
        x = np.expand_dims(x, axis=1)
        return x, y
-       
+
    # 读取训练数据
    train_x, train_y = read_data('/data/QX8UBM/mnist_sample/training_set')
    # 声明模型
