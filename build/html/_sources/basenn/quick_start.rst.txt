@@ -220,7 +220,8 @@ AI项目工坊：https://www.openinnolab.org.cn/pjLab/projects/channel（用Chor
 
 本案例来源于《人工智能初步》人教地图72页。
 
-**项目核心功能和实现效果展示**\ ：
+项目核心功能和实现效果展示：
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 使用BaseNN库实现卷积神经网络搭建，完成手写图分类，数据集为MNIST数据集。
 
@@ -229,7 +230,8 @@ AI项目工坊：https://www.openinnolab.org.cn/pjLab/projects/channel（用Chor
 
 
 
-**实现步骤：**
+实现步骤：
+^^^^^^^^^^
 
 .. _模型训练-1:
 
@@ -337,13 +339,17 @@ AI项目工坊：https://www.openinnolab.org.cn/pjLab/projects/channel（用Chor
 
 本案例来源于《人工智能初步》人教地图版72-76页。
 
-**项目核心功能**\ ：
+项目核心功能：
+^^^^^^^^^^^^^^
 
 完成了搭建一维卷积神经网络实现文本感情识别分类，代码使用BaseNN库实现，同时结合了Embedding层对单词文本进行向量化。
 
 数据集是imdb电影评论和情感分类数据集，来自斯坦福AI实验室平台，http://ai.stanford.edu/~amaas/data/sentiment/。
 
-**实现步骤：**
+.. _实现步骤-1:
+
+实现步骤：
+^^^^^^^^^^
 
 .. _模型训练-2:
 
