@@ -218,12 +218,23 @@ AI项目工坊：https://www.openinnolab.org.cn/pjLab/projects/channel（用Chor
 案例1. 搭建卷积神经网络实现手写体分类
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-本案例来源于《人工智能初步》人教地图72页，使用BaseNN库实现卷积神经网络搭建，完成手写图分类，数据集为MNIST数据集。
+本案例来源于《人工智能初步》人教地图72页。
+
+**项目核心功能和实现效果展示**\ ：
+
+使用BaseNN库实现卷积神经网络搭建，完成手写图分类，数据集为MNIST数据集。
+
+.. figure:: https://www.openinnolab.org.cn/webdav/635638d69ed68060c638f979/638028ff777c254264da4e6f/current/assets/%E7%94%A8%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AE%9E%E7%8E%B0%E6%89%8B%E5%86%99%E4%BD%93%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE%E6%95%88%E6%9E%9C%E5%9B%BE%E7%89%87.PNG
+   :alt: 用卷积神经网络实现手写体分类项目效果图片.PNG
+
+   用卷积神经网络实现手写体分类项目效果图片.PNG
+
+**实现步骤：**
 
 .. _模型训练-1:
 
 1）模型训练
-^^^^^^^^^^^
+'''''''''''
 
 从零开始训练
 
@@ -294,7 +305,7 @@ AI项目工坊：https://www.openinnolab.org.cn/pjLab/projects/channel（用Chor
    model.train(lr=0.01, epochs=20, checkpoint=checkpoint)
 
 2）模型推理
-^^^^^^^^^^^
+'''''''''''
 
 读取测试集所有图片进行推理：
 
@@ -324,14 +335,20 @@ AI项目工坊：https://www.openinnolab.org.cn/pjLab/projects/channel（用Chor
 案例2. 一维卷积神经网络文本情感识别
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-本案例来源于《人工智能初步》人教地图版72-76页，完成了搭建一维卷积神经网络实现文本感情识别分类，代码使用BaseNN库实现，同时结合了Embedding层对单词文本进行向量化。
+本案例来源于《人工智能初步》人教地图版72-76页。
+
+**项目核心功能**\ ：
+
+完成了搭建一维卷积神经网络实现文本感情识别分类，代码使用BaseNN库实现，同时结合了Embedding层对单词文本进行向量化。
 
 数据集是imdb电影评论和情感分类数据集，来自斯坦福AI实验室平台，http://ai.stanford.edu/~amaas/data/sentiment/。
+
+**实现步骤：**
 
 .. _模型训练-2:
 
 1）模型训练
-^^^^^^^^^^^
+'''''''''''
 
 ::
 
@@ -365,7 +382,7 @@ AI项目工坊：https://www.openinnolab.org.cn/pjLab/projects/channel（用Chor
 .. _模型推理-1:
 
 2）模型推理
-^^^^^^^^^^^
+'''''''''''
 
 读取测试集所有数据进行推理：
 
