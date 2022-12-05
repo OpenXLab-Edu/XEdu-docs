@@ -67,8 +67,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#id19">案例2.用多层感知机算法实现手写体数字分类</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#k">案例3.用k近邻为参观者推荐场馆</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id28">案例4.用线性回归预测蛋糕价格</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#kmeans">案例5.用KMeans实现集合地点的选择</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id37">案例6.车辆聚类</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id33">案例5.用k均值实现园区集合地点选取</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id38">案例6.用k均值实现车辆类别聚类分析</a></li>
 </ul>
 </li>
 </ul>
@@ -197,8 +197,22 @@
 <h2>附录<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h2>
 <section id="id15">
 <h3>案例1.基于决策树的道路智能决策<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h3>
-<p>本案例来源于上海科教版《人工智能初步》人教地图56-58页。借助决策树算法完成道路智能决策，可通过学习和实验了解决策树的工作原理，掌握决策树分类任务编程的流程。</p>
+<p>本案例来源于上海科教版《人工智能初步》人教地图56-58页。</p>
 <p>数据集来源：上海科教版《人工智能初步》人教地图56-58页。</p>
+<p><strong>项目核心功能和实现效果展示</strong>：</p>
+<p>借助决策树算法完成道路智能决策，可通过学习和实验了解决策树的工作原理，掌握决策树分类任务编程的流程。</p>
+<figure class="align-default">
+<img alt="利用历史数据生成决策树.png" src="https://www.openinnolab.org.cn/webdav/635638d69ed68060c638f979/638028c0777c254264da4dd7/current/assets/%E5%88%A9%E7%94%A8%E5%8E%86%E5%8F%B2%E6%95%B0%E6%8D%AE%E7%94%9F%E6%88%90%E5%86%B3%E7%AD%96%E6%A0%91.png" />
+</figure>
+<p><strong>数据说明：</strong></p>
+<p>第0列：序号；</p>
+<p>第1列：道路施工状况-(1) 未施工, (2) 施工；</p>
+<p>第2列：预计车流量 ；</p>
+<p>第3列：分类结果（道路能否通行）-(1) 不可通行, (2)可通行。</p>
+<figure class="align-default">
+<img alt="screenshot-20221205-111611.png" src="https://www.openinnolab.org.cn/webdav/635638d69ed68060c638f979/638028c0777c254264da4dd7/current/assets/screenshot-20221205-111611.png" />
+</figure>
+<p><strong>实现步骤：</strong></p>
 <section id="id16">
 <span id="id17"></span><h4>1）模型训练<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库，从BaseML导入分类模块</span>
@@ -227,7 +241,14 @@
 </section>
 <section id="id19">
 <h3>案例2.用多层感知机算法实现手写体数字分类<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h3>
-<p>本案例来源于《人工智能初步》广东教育出版社版75-80页。使用多层感知机算法完成手写体分类，可通过学习和实验引导学生了解神经网络和多层感知机，掌握多层感知机分类任务编程的流程。</p>
+<p>本案例来源于《人工智能初步》广东教育出版社版75-80页。</p>
+<p><strong>项目核心功能：</strong></p>
+<p>阿拉伯数字的字形信息量很小,不同数字写法字形相差又不大，使得准确区分某些数字相当困难。本项目解决的核心问题是如何利用计算机自动识别人手写在纸张上的阿拉伯数字。使用的数据集MNIST数据集包含
+0~9
+共10种数字的手写图片，每种数字一共有7000张图片，采集自不同书写风格的真实手写图片，一共70000张图片。70000张手写数字图片使用train_test_split方法划分为60000张训练集（Training
+Set）和10000张测试集（Test
+Set）。项目核心功能是使用BaseML库搭建多层感知机实现手写数字识别。</p>
+<p><strong>实现步骤：</strong></p>
 <p>首先需对MNIST数据集进行图像数字化处理，使用BaseML自带的IMGLoader库。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">IMGLoader</span>
 <span class="c1"># 指定数据集路径</span>
@@ -272,8 +293,11 @@
 </section>
 <section id="k">
 <h3>案例3.用k近邻为参观者推荐场馆<a class="headerlink" href="#k" title="Permalink to this headline"></a></h3>
-<p>本案例来源于华东师范大学出版社《人工智能初步》56-57页。使用k近邻算法完成参观者信息的分类，可通过学习和实验了解k近邻的工作原理，掌握使用BaseML进行k近邻分类的方法。</p>
-<p>数据集来源：华东师范大学出版社《人工智能初步》 38页。</p>
+<p>本案例来源于华师大出版社《人工智能初步》56-57页。</p>
+<p><strong>项目核心功能：</strong></p>
+<p>使用BaseML来实现knn分类算法，为旅行者们推荐最适合他们的场馆。在项目实践中了解k近邻的工作原理，掌握使用BaseML进行k近邻分类的方法。</p>
+<p>数据集来源：华师大出版社《人工智能初步》38页。</p>
+<p><strong>实现步骤：</strong></p>
 <p>首先导入库并进行文本特征数字化。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入需要的各类库，numpy和pandas用来读入数据和处理数据，BaseML是主要的算法库</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -327,8 +351,11 @@
 </section>
 <section id="id28">
 <h3>案例4.用线性回归预测蛋糕价格<a class="headerlink" href="#id28" title="Permalink to this headline"></a></h3>
-<p>本案例来源于人教地图版《人工智能初步》39-41页。使用线性回归预测蛋糕价格，案例场景贴近生活，可通过学习和实验了解线性回归的工作原理，掌握使用BaseML中的线性回归进行预测的方法。</p>
+<p>本案例来源于人教地图版《人工智能初步》39-41页。</p>
+<p><strong>项目核心功能：</strong></p>
+<p>使用线性回归预测蛋糕价格，案例场景贴近生活，可通过学习和实验了解线性回归的工作原理，掌握使用BaseML中的线性回归进行预测的方法。</p>
 <p>数据集来源：人教地图版《人工智能初步》39-41页。</p>
+<p><strong>实现步骤：</strong></p>
 <section id="id29">
 <span id="id30"></span><h4>1）模型训练<a class="headerlink" href="#id29" title="Permalink to this headline"></a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入需要的各类库，numpy和pandas用来读入数据和处理数据，BaseML是主要的算法库</span>
@@ -337,7 +364,7 @@
 <span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Regression</span> <span class="k">as</span> <span class="n">reg</span>
 <span class="c1"># 实例化模型</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">reg</span><span class="p">(</span><span class="n">algorithm</span> <span class="o">=</span> <span class="s1">&#39;LinearRegression&#39;</span><span class="p">)</span>
-<span class="c1"># 指定数据集，需要显式指定类型</span>
+<span class="c1"># 指定数据集，需要指定类型</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;蛋糕尺寸与价格.csv&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="n">x_column</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">y_column</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="c1"># 开始训练</span>
 <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
@@ -366,10 +393,14 @@
 </div>
 </section>
 </section>
-<section id="kmeans">
-<h3>案例5.用KMeans实现集合地点的选择<a class="headerlink" href="#kmeans" title="Permalink to this headline"></a></h3>
-<p>本案例来源于华东师范大学出版社《人工智能初步》53-55页。使用KMeans实现分布地点的聚类，可通过学习和实验了解KMeans的工作原理，掌握使用BaseML进行KMeans聚类的方法。</p>
+<section id="id33">
+<h3>案例5.用k均值实现园区集合地点选取<a class="headerlink" href="#id33" title="Permalink to this headline"></a></h3>
+<p>本案例来源于华东师范大学出版社《人工智能初步》53-55页。</p>
+<p><strong>项目核心功能：</strong></p>
+<p>使用BaseML中的Cluster模块进行聚类，使用matplotlib库对聚类结果进行可视化。该项目可根据同学所在位置，解决聚集点设定问题。可通过学习和实验了解KMeans的工作原理，掌握使用BaseML进行KMeans聚类的方法。</p>
 <p>数据集来源：自动生成。</p>
+<p><strong>实现步骤：</strong></p>
+<p>首先完成数据读取。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入需要的各类库，numpy和pandas用来读入数据和处理数据，BaseML是主要的算法库</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -383,11 +414,11 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<section id="id33">
-<span id="id34"></span><h4>1）模型训练<a class="headerlink" href="#id33" title="Permalink to this headline"></a></h4>
+<section id="id34">
+<span id="id35"></span><h4>1）模型训练<a class="headerlink" href="#id34" title="Permalink to this headline"></a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">clt</span><span class="p">(</span><span class="n">algorithm</span> <span class="o">=</span> <span class="s1">&#39;Kmeans&#39;</span><span class="p">,</span> <span class="n">N_CLUSTERS</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="c1"># 指定数据集，需要显式指定类型</span>
+<span class="c1"># 指定数据集，需要指定类型</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;numpy&#39;</span><span class="p">,</span> <span class="n">x_column</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
 <span class="c1"># 开始训练</span>
 <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
@@ -396,8 +427,8 @@
 </pre></div>
 </div>
 </section>
-<section id="id35">
-<span id="id36"></span><h4>2）模型推理<a class="headerlink" href="#id35" title="Permalink to this headline"></a></h4>
+<section id="id36">
+<span id="id37"></span><h4>2）模型推理<a class="headerlink" href="#id36" title="Permalink to this headline"></a></h4>
 <p>1.无参数推理，输出聚类数据结果</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 进行推理</span>
 <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">()</span>
@@ -422,12 +453,15 @@
 </div>
 </section>
 </section>
-<section id="id37">
-<h3>案例6.车辆聚类<a class="headerlink" href="#id37" title="Permalink to this headline"></a></h3>
-<p>本案例来源于上海科技教育出版社《人工智能初步》88-89页。使用KMeans实现汽车展车辆信息的聚类，可通过学习和实验了解KMeans的工作原理，掌握使用BaseML进行KMeans聚类的方法。</p>
-<p>数据集来源：上海科技教育出版社《人工智能初步》88页。</p>
 <section id="id38">
-<span id="id39"></span><h4>1）模型训练<a class="headerlink" href="#id38" title="Permalink to this headline"></a></h4>
+<h3>案例6.用k均值实现车辆类别聚类分析<a class="headerlink" href="#id38" title="Permalink to this headline"></a></h3>
+<p>本案例来源于上海科技教育出版社《人工智能初步》88-89页。</p>
+<p><strong>项目核心功能：</strong></p>
+<p>使用BaseML中的Cluster模块进行聚类，使用matplotlib库对聚类结果进行可视化。该项目可根据车辆的品质，解决车辆分类问题，便于用户进行决策。可通过学习和实验了解KMeans的工作原理，掌握使用BaseML进行KMeans聚类的方法。</p>
+<p>数据集来源：上海科技教育出版社《人工智能初步》88页。</p>
+<p><strong>实现步骤：</strong></p>
+<section id="id39">
+<span id="id40"></span><h4>1）模型训练<a class="headerlink" href="#id39" title="Permalink to this headline"></a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入需要的各类库，numpy和pandas用来读入数据和处理数据，BaseML是主要的算法库</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -446,8 +480,8 @@
 </pre></div>
 </div>
 </section>
-<section id="id40">
-<span id="id41"></span><h4>2）模型推理<a class="headerlink" href="#id40" title="Permalink to this headline"></a></h4>
+<section id="id41">
+<span id="id42"></span><h4>2）模型推理<a class="headerlink" href="#id41" title="Permalink to this headline"></a></h4>
 <p>1.无参数推理，输出聚类数据结果</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 进行推理</span>
 <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">()</span>
