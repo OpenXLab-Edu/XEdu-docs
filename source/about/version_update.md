@@ -84,21 +84,21 @@
 
 ##### V0.0.3 20221115
 
-把 `from BaseML import Classification`  调用为`Classification.cls`  改成了 f`rom BaseML import Classification as cls`  调用为 `cls(algorithm= ...)`。
+把 `from BaseML import Classification`  调用为`Classification.cls`  改成了 `from BaseML import Classification as cls`  调用为 `cls(algorithm= ...)`。
 
 ##### V0.0.2 20221110
 
 1.  给每个类增加了docstring类型的注释，可以使用`cls.__doc__`查看拥有的算法以及类注释。
-2.  更改了load_dataset函数的初始默认值，默认shuffle, 不展示前5条数据，不划分数据集，不进行数据归一化。
+2.  更改了`load_dataset`函数的初始默认值，默认shuffle, 不展示前5条数据，不划分数据集，不进行数据归一化。
 3.  添加了反归一化函数，可以将归一化后的数据转换为原数据，在`base.reverse_scale`函数中。
 
 ##### V0.0.1 20221110
 
-load_dataset中设置了X和y的默认列，如果没有标明`x_column`和`y_column`，默认采用输入的所有列。但输入的是**txt**或**csv**格式的话，一定要标注出列号，否则报错。
+`load_dataset`中设置了X和y的默认列，如果没有标明`x_column`和`y_column`，默认采用输入的所有列。但输入的是**txt**或**csv**格式的话，一定要标注出列号，否则报错。
 
-inference()中加了参数verbose，默认值为True，表示会输出训练过程中的过程数据，False则不会。
+`inference()`中加了参数`verbose`，默认值为True，表示会输出训练过程中的过程数据，False则不会。
 
-train()中设置了参数validate（默认为True），表示会将输入的训练集划分为训练集和验证集，并输出验证集下的模型准确率。
+`train()`中设置了参数`validate`（默认为True），表示会将输入的训练集划分为训练集和验证集，并输出验证集下的模型准确率。
 
 添加了图片读取处理模块ImageLoader，具体使用方式查看文件中的注释以及demo实现。
 
