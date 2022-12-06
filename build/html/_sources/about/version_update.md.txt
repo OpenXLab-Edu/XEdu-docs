@@ -18,6 +18,8 @@
 
 ##### V0.1.2 20221202
 
+cls：
+
 1. cls检查数据集中图片shape，指出损坏图片。检查图片出现损坏时，抛出错误码`The image file xxx is damaged`。
 
 2. 数据集如缺少txt，自动生成
@@ -33,6 +35,11 @@
    innolab上数据集没有读写权限，则将txt生成至项目内，文件夹名为dataset_txt，内含classes.txt,val.txt,test.txt
 
    (若有读写权限则生成至数据集路径内)
+
+det：
+
+1. det增加支持PIL和np array 输入功能。图片形式可以通过PIL和np数组进行输入，PIL和数组列表也支持输入。
+2. 参考cls，det增加相关错误码。
 
 ##### V0.1.1 20221118
 
