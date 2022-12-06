@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>图像分类模型ResNeXt &mdash; OpenXLabEdu  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="图像分类模型ShuffleNet_v2" href="ShuffleNet_v2.html" />
+    <link rel="prev" title="图像分类模型ResNet" href="ResNet.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> OpenXLabEdu
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mmedu.html">MMEdu入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basenn.html">BaseNN入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../baseml.html">BaseML入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scitech_tools.html">相关科创工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../support_resources.html">学习支持和资源获取</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../dl_library.html">深度学习知识库</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../parameter_explain.html">深度学习训练参数详解</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dataset_introduction.html">经典数据集介绍</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../network_introduction.html">经典网络模型介绍</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="lenet5.html">图像分类模型LeNet-5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mobilenet.html">图像分类模型MobileNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FasterRCNN.html">目标检测模型Faster R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Mask_RCNN.html">目标检测模型Mask R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RegNet.html">图像分类模型RegNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RepVGG.html">图像分类模型RepVGG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ResNet.html">图像分类模型ResNet</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">图像分类模型ResNeXt</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">简介</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#block">特点：block单元</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">ResNeXt网络结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">优点</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">参考文献</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ShuffleNet_v2.html">图像分类模型ShuffleNet_v2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SSD_Lite.html">目标检测模型SSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="VGG.html">图像分类模型VGG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Yolov3.html">目标检测模型Yolov3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">OpenXLabEdu</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../dl_library.html">深度学习知识库</a> &raquo;</li>
+          <li><a href="../network_introduction.html">经典网络模型介绍</a> &raquo;</li>
+      <li>图像分类模型ResNeXt</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/dl_library/net/ResNeXt.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="resnext">
+<h1>图像分类模型ResNeXt<a class="headerlink" href="#resnext" title="Permalink to this headline"></a></h1>
+<blockquote>
+<div><p><a class="reference external" href="https://arxiv.org/abs/1611.05431">Aggregated Residual Transformations for Deep Neural Networks</a></p>
+</div></blockquote>
+<section id="id1">
+<h2>简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<p>ResNeXt是ResNet和Inception的结合体，ResNext不需要人工设计复杂的Inception结构细节，而是每一个分支都采用相同的拓扑结构。</p>
+<p>如果要提高模型的准确率，传统的方法是加深或加宽网络，但随着超参数数量的增加（比如channels数，filter size等等），网络设计的难度和计算开销也会增加。ResNeXt结构可以在不增加参数复杂度的前提下提高准确率，同时还减少了超参数的数量。ResNeXt同时采用VGG堆叠的思想和Inception的split-transform-merge思想，可扩展性比Inception强，可以认为是在增加准确率的同时基本不改变或降低模型的复杂度。</p>
+<p>ResNeXt的本质是分组卷积（Group Convolution，通过变量基数（Cardinality）来控制组的数量。分组卷积是普通卷积和深度可分离卷积的一个折中方案，即每个分支产生的Feature Map的通道数为n(n&gt;1)。</p>
+</section>
+<section id="block">
+<h2>特点：block单元<a class="headerlink" href="#block" title="Permalink to this headline"></a></h2>
+<p>如下图，左边是ResNet的基本结构，右边是构成ResNeXt网络的基本block单元：</p>
+<div align=center> <img src="https://pic2.zhimg.com/80/v2-ee942d228efdaaff277c8a9a8b96a131_720w.jpg" /> </div><p>图中的每个方框代表一层，三个数据的意义分别为输入数据的channel、fliter大小以及输出数据的channel。</p>
+<p>构成ResNeXt网络的基本block单元看起来与Inception Resnet中所有的基本单元极为相似，但是实际上block当中的每个sub branch都是相同的，也就是说<strong>每个被聚合的拓扑结构都是一样的</strong>，这是它与IR网络结构的本质区别，而正是基于这区别，我们可以使用分组卷积来对其进行良好实现。这样就能够使ResNeXt在保证FLOPs和参数量的前提下，通过更宽或更深的网络来提高精度。</p>
+</section>
+<section id="id2">
+<h2>ResNeXt网络结构<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<p>下图中，左边为ResNet-50的网络结构，右边为ResNeXt-50的网络结构：</p>
+<div align=center> <img src="https://pytorch.org/assets/images/resnext.png" width="70%" /> </div><p>ResNeXt的网络结构与ResNet类似，选择了简单的基本结构，每一组的C个不同的分支都进行相同的简单变换。上图的ResNeXt-50（32x4d）配置清单中，32指进入网络的第一个ResNeXt基本结构的分组数量C（即基数）为32，4d表示depth（每一个分组的通道数）为4，所以第一个基本结构输入通道数为128。</p>
+<p>可以看出，ResNet-50和ResNeXt-50（32x4d）拥有相同的参数，但是精度却更高。在具体实现上，因为1x1卷积可以合并，合并后的代码更简单并且效率更高。虽然两种模型的参数量相同，但是因为ResNeXt是分组卷积，多个分支单独进行处理，所以相较于ResNet整个一起卷积，硬件执行效率上会低一点，训练ResNeXt的每个batch的时间要更长。</p>
+</section>
+<section id="id3">
+<h2>优点<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>ResNeXt的网络结构更简单，可以防止对于特定数据集的过拟合，在用于自己的任务的时候，自定义和修改起来更简单</p></li>
+<li><p>引入了cardinality的概念，能更好的学到特征信息的不同，从而达到更好的分类效果</p></li>
+</ul>
+</section>
+<section id="id4">
+<h2>参考文献<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@article</span><span class="p">{</span><span class="mi">2016</span><span class="n">Aggregated</span><span class="p">,</span>
+  <span class="n">title</span><span class="o">=</span><span class="p">{</span><span class="n">Aggregated</span> <span class="n">Residual</span> <span class="n">Transformations</span> <span class="k">for</span> <span class="n">Deep</span> <span class="n">Neural</span> <span class="n">Networks</span><span class="p">},</span>
+  <span class="n">author</span><span class="o">=</span><span class="p">{</span> <span class="n">Xie</span><span class="p">,</span> <span class="n">S</span><span class="o">.</span>  <span class="ow">and</span>  <span class="n">Girshick</span><span class="p">,</span> <span class="n">R</span><span class="o">.</span>  <span class="ow">and</span> <span class="n">P</span> <span class="n">Dollár</span> <span class="ow">and</span>  <span class="n">Tu</span><span class="p">,</span> <span class="n">Z</span><span class="o">.</span>  <span class="ow">and</span>  <span class="n">He</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span> <span class="p">},</span>
+  <span class="n">journal</span><span class="o">=</span><span class="p">{</span><span class="n">IEEE</span><span class="p">},</span>
+  <span class="n">year</span><span class="o">=</span><span class="p">{</span><span class="mi">2016</span><span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ResNet.html" class="btn btn-neutral float-left" title="图像分类模型ResNet" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ShuffleNet_v2.html" class="btn btn-neutral float-right" title="图像分类模型ShuffleNet_v2" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022 OpenXLabEdu.All Rights Reserved.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
