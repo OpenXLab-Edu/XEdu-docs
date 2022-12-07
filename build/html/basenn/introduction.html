@@ -59,7 +59,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#id9">6.输出推理结果</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id10">7.模型的保存与加载</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id11">8.查看模型结构</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">附录</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id12">9.网络中特征（图片）可视化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">附录</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#add">1. add()详细介绍</a></li>
 </ul>
 </li>
@@ -248,10 +249,22 @@
 </pre></div>
 </div>
 <p>无参数。</p>
-<p>完整测试用例可见BaseNN_demo.py文件。</p>
 </section>
 <section id="id12">
-<h2>附录<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h2>
+<h2>9.网络中特征（图片）可视化<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h2>
+<p>BaseNN内置<code class="docutils literal notranslate"><span class="pre">visual_feature</span></code>函数可查看图片在网络中传递。需要指定输入图片和已经训练好的模型。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;mn_ckpt/basenn.pkl&#39;</span><span class="p">)</span>          <span class="c1"># 保存的已训练模型载入</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;test_IMG/single_data.jpg&#39;</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">flags</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>          <span class="c1"># 图片数据读取</span>
+<span class="n">model</span><span class="o">.</span><span class="n">visual_feature</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">in1img</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>   <span class="c1"># 特征的可视化</span>
+</pre></div>
+</div>
+</section>
+<section id="id13">
+<h2>附录<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h2>
 <section id="add">
 <h3>1. add()详细介绍<a class="headerlink" href="#add" title="Permalink to this headline"></a></h3>
 <p>此处以典型的LeNet5网络结构为例。注释标明了数据经过各层的尺寸变化。</p>
