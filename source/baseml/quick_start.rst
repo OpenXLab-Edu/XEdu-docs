@@ -99,10 +99,11 @@ BaseML库提供了众多机器学习训练方法，可以快速训练和应用�
 
 体验BaseML的最快速方式是通过OpenInnoLab平台。
 
-OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台，满足青少年的AI学习和创作需求，支持在线编程。在“AI项目工坊
-- 人工智能工坊”中，查找”BaseML“，即可找到所有与BaseML相关的体验项目。
+OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台，满足青少年的AI学习和创作需求，支持在线编程。在“项目”中查看更多，查找”BaseML“，即可找到所有与BaseML相关的体验项目。
 
-AI项目工坊：https://www.openinnolab.org.cn/pjLab/projects/channel（用Chorm浏览器打开效果最佳）
+AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pjlab/ai/projects
+
+（用Chorm浏览器打开效果最佳）
 
 附录
 ----
@@ -122,7 +123,7 @@ AI项目工坊：https://www.openinnolab.org.cn/pjLab/projects/channel（用Chor
 .. figure:: https://www.openinnolab.org.cn/webdav/635638d69ed68060c638f979/638028c0777c254264da4dd7/current/assets/%E5%88%A9%E7%94%A8%E5%8E%86%E5%8F%B2%E6%95%B0%E6%8D%AE%E7%94%9F%E6%88%90%E5%86%B3%E7%AD%96%E6%A0%91.png
    :alt: 利用历史数据生成决策树.png
 
-   利用历史数据生成决策树.png
+
 
 数据说明：
 ^^^^^^^^^^
@@ -138,7 +139,7 @@ AI项目工坊：https://www.openinnolab.org.cn/pjLab/projects/channel（用Chor
 .. figure:: https://www.openinnolab.org.cn/webdav/635638d69ed68060c638f979/638028c0777c254264da4dd7/current/assets/screenshot-20221205-111611.png
    :alt: screenshot-20221205-111611.png
 
-   screenshot-20221205-111611.png
+
 
 实现步骤：
 ^^^^^^^^^^

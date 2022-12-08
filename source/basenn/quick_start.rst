@@ -207,10 +207,11 @@ BaseNN可以方便地逐层搭建神经网路，深入探究网络原理。
 
 体验BaseNN的最快速方式是通过OpenInnoLab平台。
 
-OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台，满足青少年的AI学习和创作需求，支持在线编程。在“AI项目工坊
-- 人工智能工坊”中，查找”BaseNN“，即可找到所有与BaseNN相关的体验项目。
+OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台，满足青少年的AI学习和创作需求，支持在线编程。在“项目”中查看更多，搜索”BaseNN“，即可找到所有与BaseNN相关的体验项目。
 
-AI项目工坊：https://www.openinnolab.org.cn/pjLab/projects/channel（用Chorm浏览器打开效果最佳）
+AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pjlab/ai/projects
+
+（用Chorm浏览器打开效果最佳）
 
 附录
 ----
