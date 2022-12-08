@@ -25,7 +25,7 @@ XEdu安装和下载
 
 目录结构图
 
-第二步：进入XEdu文件夹，双击“点我初始化.bat”完成初始化。
+第二步：进入XEdu文件夹，双击“点我初始化.bat”完成初始化（不要以管理员身份运行）。
 
 .. figure:: ../images/about/xedu初始化.png
 
@@ -233,7 +233,7 @@ XEdu一键安装包说明文档。
 
 打开安装界面后，依次选择\ ``Install for me only`` -> ``Next`` -> 
 ``Next`` -> ``Next`` -> ``Next`` -> ``Next`` -> ``Install`` -> 
-``Finish``
+``Finish`` 
 
 **运行**
 
