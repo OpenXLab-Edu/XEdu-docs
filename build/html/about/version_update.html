@@ -120,6 +120,9 @@
 <p>case1：数据集缺少classes.txt, val.txt, test.txt ，会自动生成并提示, eg，“生成val.txt”。</p>
 <p>case2：如缺少test_set，可正常训练，但不会生成test.txt 。（不影响正常功能）</p>
 <p>case3：如缺少val_set，可训练，但不能验证，即train函数中validate参数不能为True。（功能受损，看不到准确率，但还是可以训练出模型）。</p>
+<p>其他：</p>
+<p>允许数据集中出现其他类别的文件，eg,csv；</p>
+<p>数据集中test_set可以不按照类别存放。</p>
 </li>
 <li><p>检查写权限，确定写到哪里</p>
 <p>innolab上数据集没有读写权限，则将txt生成至项目内，文件夹名为dataset_txt，内含classes.txt,val.txt,test.txt</p>

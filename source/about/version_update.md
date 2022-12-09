@@ -30,6 +30,12 @@ cls：
 
    case3：如缺少val_set，可训练，但不能验证，即train函数中validate参数不能为True。（功能受损，看不到准确率，但还是可以训练出模型）。
 
+   其他：
+
+   允许数据集中出现其他类别的文件，eg,csv；
+
+   数据集中test_set可以不按照类别存放。
+
 3. 检查写权限，确定写到哪里
 
    innolab上数据集没有读写权限，则将txt生成至项目内，文件夹名为dataset_txt，内含classes.txt,val.txt,test.txt
