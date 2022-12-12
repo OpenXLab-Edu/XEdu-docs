@@ -24,7 +24,7 @@ cls：
 
 2. 数据集如缺少txt，自动生成
 
-   case1：数据集缺少classes.txt, val.txt, test.txt ，会自动生成并提示, eg，“生成val.txt”。
+   case1：数据集缺少classes.txt, val.txt ，会自动生成并提示, eg，“生成val.txt”。
 
    case2：如缺少test_set，可正常训练，但不会生成test.txt 。（不影响正常功能）
 
@@ -38,7 +38,7 @@ cls：
 
 3. 检查写权限，确定写到哪里
 
-   innolab上数据集没有读写权限，则将txt生成至项目内，文件夹名为dataset_txt，内含classes.txt,val.txt,test.txt
+   innolab上数据集没有读写权限，则将txt生成至项目内，文件夹名为dataset_txt，内含classes.txt，val.txt。
 
    (若有读写权限则生成至数据集路径内)
 
