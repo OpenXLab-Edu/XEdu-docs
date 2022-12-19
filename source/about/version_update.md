@@ -38,9 +38,8 @@ cls：
 
 3. 检查写权限，确定写到哪里
 
-   innolab上数据集没有读写权限，则将txt生成至项目内，文件夹名为dataset_txt，内含classes.txt，val.txt。
+   innolab上数据集没有读写权限，则将txt生成至项目内，文件夹名为dataset_txt，内含classes.txt，val.txt。(若有读写权限则生成至数据集路径内）
 
-   (若有读写权限则生成至数据集路径内）。
 
 ​	4.加入模型转换convert()函数，pth转onnx。
 
