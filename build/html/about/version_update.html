@@ -111,8 +111,8 @@
 <h3>正式版更新记录<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
 <section id="mmedu">
 <h4>1）MMEdu<a class="headerlink" href="#mmedu" title="Permalink to this headline"></a></h4>
-<section id="v0-1-2-20221202">
-<h5>V0.1.2 20221202<a class="headerlink" href="#v0-1-2-20221202" title="Permalink to this headline"></a></h5>
+<section id="v0-1-2-20221215">
+<h5>V0.1.2 20221215<a class="headerlink" href="#v0-1-2-20221215" title="Permalink to this headline"></a></h5>
 <p>cls：</p>
 <ol>
 <li><p>cls检查数据集中图片shape，指出损坏图片。检查图片出现损坏时，抛出错误码<code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">image</span> <span class="pre">file</span> <span class="pre">xxx</span> <span class="pre">is</span> <span class="pre">damaged</span></code>。</p></li>
@@ -126,9 +126,10 @@
 </li>
 <li><p>检查写权限，确定写到哪里</p>
 <p>innolab上数据集没有读写权限，则将txt生成至项目内，文件夹名为dataset_txt，内含classes.txt，val.txt。</p>
-<p>(若有读写权限则生成至数据集路径内)</p>
+<p>(若有读写权限则生成至数据集路径内）。</p>
 </li>
 </ol>
+<p>​	4.加入模型转换convert()函数，pth转onnx。</p>
 <p>det：</p>
 <ol class="simple">
 <li><p>det增加支持PIL和np array 输入功能。图片形式可以通过PIL和np数组进行输入，PIL和数组列表也支持输入。</p></li>
