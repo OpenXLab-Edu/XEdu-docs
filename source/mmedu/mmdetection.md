@@ -100,6 +100,33 @@ model.inference(image=img, show=True, class_path=class_path,checkpoint_path = ch
 
 （最后两个参数的使用，我们将在下一部分进行详细举例解释）。
 
+- **快速推理**
+
+针对部分用户希望加快推理速度的需求，设计了`fast_inference`函数，主要方法是使用`load_checkpoint`提前加载权重文件。
+
+```
+model.load_checkpoint(checkpoint=checkpoint,class_path=class_path)
+result = model.fast_inference(image=img)
+```
+
+- **参数详解**
+
+1. `load_checkpoint`函数的传入参数：
+
+`device`：推理所用的设备，默认为`'cpu'`，如果电脑支持GPU，也可以将参数修改为`'cuda'`，使用GPU进行推理。
+
+`checkpoint`：指定使用的模型权重文件，默认参数为`None`，如果没有指定模型权重文件，那么我们将会使用默认的模型权重文件进行推理。
+
+`class_path`：指定训练集的路径，默认参数为`"../dataset/classes/det_classes.txt"`。
+
+2. `fast_inference`函数的传入参数：
+
+`image`：推理图片的路径。
+
+`show`：布尔值，默认为`True`，表示推理后是否显示推理结果。
+
+`save_fold`：保存的图片名，数据结构为字符串，默认参数为`'det_result'`，用户也可以定义为自己想要的名字。
+
 #### 2.训练模型
 
 使用下面的代码即可简单体验MMDetection的训练过程，我们以车牌的识别为例，为您进行详细的介绍。

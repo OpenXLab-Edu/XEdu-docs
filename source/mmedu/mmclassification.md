@@ -2,13 +2,13 @@
 
 ### 简介
 
-MMClassifiation的主要功能是对图像进行分类。其支持的SOTA模型有LeNet、MobileNet等。如需查看所有支持的SOTA模型，可使用`model.sota()`代码进行查看。
+MMClassifiation的主要功能是对图像进行分类。其支持的SOTA模型有LeNet、MobileNet、ResNet18、ResNet50等。如需查看所有支持的SOTA模型，可使用`model.sota()`代码进行查看。
 
 ### 使用说明
 
-MMEdu中预置了“石头剪刀布”三分类的数据集，并且已经预训练了权重（路径：/checkpoints/cls_model/hand_gray/latest.pth）。在demo文件夹中，还提供了一张测试图片。
+MMEdu中预置了“石头剪刀布”手势三分类的数据集，并且已经预训练了权重（路径：/checkpoints/cls_model/hand_gray/latest.pth）。在demo文件夹中，还提供了一张测试图片。
 
-#### 1.模型推理
+#### 1.直接推理（支持CPU）
 
 如果想快速上手体验MMClassification的话，我们建议您使用我们已经预训练好的模型和权重文件进行推理，提供一张图片测试推理的准确度。
 
@@ -32,7 +32,7 @@ model.print_result() # 输出结果
 
 推理结果图片（带标签的图片）会以原来的文件名称保存在`demo`文件夹下的`cls_result`文件夹下，如果在`demo`下没有发现该文件夹，不用担心，系统会自动建立。当然，您可以自己指定保存文件夹的名称。
 
-您也可以将收集的图片放在一个文件夹下，然后指定文件夹路径进行一组图片的批量推理。如在demo文件夹下新建一个cls_testIMG文件夹放图片，运行下面这段代码。
+您也可以将收集的图片放在一个文件夹下，然后指定文件夹路径进行一组图片的批量推理。如在`demo`文件夹下新建一个`cls_testIMG`文件夹放图片，运行下面这段代码。
 
 ```python
 img = 'cls_testIMG/' # 指定进行推理的一组图片的路径
@@ -40,7 +40,7 @@ model = cls(backbone='LeNet') # 实例化MMClassification模型
 model.checkpoint='../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的模型权重文件
 class_path = '../dataset/classes/cls_classes.txt' # 指定训练集的路径
 result = model.inference(image=img, show=True, class_path=class_path, checkpoint=checkpoint) # 在CPU上进行推理
-model.print_result() # 输出结果
+model.print_result(result) # 输出结果
 # 同时您可以修改show的值来决定是否需要显示结果图片，此处默认显示结果图片
 ```
 
@@ -78,7 +78,7 @@ model.inference(image=img, show=True, class_path=class_path, checkpoint=checkpoi
 
 在MMClassification中对于`inference`函数还有其他的传入参数，在这里进行说明：
 
-`device`：推理所用的设备，默认为`'cpu'`，如果电脑支持GPU，也可以将参数修改为`'cuda:0'`，使用GPU进行推理。
+`device`：推理所用的设备，默认为`'cpu'`，如果电脑支持GPU，也可以将参数修改为`'cuda'`，使用GPU进行推理。
 
 `checkpoint`：指定使用的模型权重文件，默认参数为`None`，如果没有指定模型权重文件，那么我们将会使用默认的模型权重文件进行推理。
 
@@ -87,6 +87,33 @@ model.inference(image=img, show=True, class_path=class_path, checkpoint=checkpoi
 `show`：布尔值，默认为`True`，表示推理后是否显示推理结果
 
 `class_path`：指定训练集的路径，默认参数为`'../dataset/classes/cls_classes.txt'`。
+
+`save_fold`：保存的图片名，数据结构为字符串，默认参数为`'cls_result'`，用户也可以定义为自己想要的名字。
+
+- **快速推理**
+
+针对部分用户希望加快推理速度的需求，设计了`fast_inference`函数，主要方法是使用`load_checkpoint`提前加载权重文件。
+
+```
+model.load_checkpoint(checkpoint=checkpoint,class_path=class_path)
+result = model.fast_inference(image=img)
+```
+
+- **参数详解**
+
+1. `load_checkpoint`函数的传入参数：
+
+`device`：推理所用的设备，默认为`'cpu'`，如果电脑支持GPU，也可以将参数修改为`'cuda'`，使用GPU进行推理。
+
+`checkpoint`：指定使用的模型权重文件，默认参数为`None`，如果没有指定模型权重文件，那么我们将会使用默认的模型权重文件进行推理。
+
+`class_path`：指定训练集的路径，默认参数为`'../dataset/classes/cls_classes.txt'`。
+
+2. `fast_inference`函数的传入参数：
+
+`image`：推理图片的路径。
+
+`show`：布尔值，默认为`True`，表示推理后是否显示推理结果。
 
 `save_fold`：保存的图片名，数据结构为字符串，默认参数为`'cls_result'`，用户也可以定义为自己想要的名字。
 
@@ -158,7 +185,7 @@ model.train(epochs=10, validate=True) # 设定训练的epoch次数以及是否�
 
 `distributed`：布尔值，表示是否在分布式环境中训练该模型，默认为`False`。
 
-`device`：训练时所使用的设备，默认为`'cpu'`，如果电脑支持GPU，也可以将参数修改为`'cuda:0'`，使用GPU进行推理。
+`device`：训练时所使用的设备，默认为`'cpu'`，如果电脑支持GPU，也可以将参数修改为`'cuda'`，使用GPU进行推理。
 
 `metric`：验证指标，默认参数为`'accuracy'`，在进行模型评估时会计算分类准确率，数值越高说明模型性能越好，我们在运行完程序之后也会看到这个结果。
 
@@ -194,7 +221,7 @@ model.train(epochs=50, validate=True, checkpoint=checkpoint) # 进行再训练
 
 #### 4.SOTA模型介绍
 
-目前MMClassifiation支持的SOTA模型有LeNet、MobileNet、ResNet等，这些模型的作用和适用场景简介如下。
+目前MMClassifiation支持的SOTA模型有LeNet、MobileNet、ResNet18、ResNet50等，这些模型的作用和适用场景简介如下。
 
 - **LeNet**
 

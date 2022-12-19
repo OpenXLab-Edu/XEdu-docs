@@ -61,6 +61,16 @@
 <li class="toctree-l4"><a class="reference internal" href="#id12">模型的保存与加载</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">快速体验</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">附录</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id15">案例1.基于决策树的道路智能决策</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id22">案例2.用多层感知机算法实现手写体数字分类</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#k">案例3.用k近邻为参观者推荐场馆</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id38">案例4.用线性回归预测蛋糕价格</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id47">案例5.用k均值实现园区集合地点选取</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id56">案例6.用k均值实现车辆类别聚类分析</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="installation.html">BaseML安装</a></li>
@@ -89,7 +99,7 @@
           <li><a href="../baseml.html">BaseML入门</a> &raquo;</li>
       <li>BaseML快速入门</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/baseml/quick_start.md.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/baseml/quick_start.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -101,7 +111,7 @@
 <h1>BaseML快速入门<a class="headerlink" href="#baseml" title="Permalink to this headline"></a></h1>
 <section id="id1">
 <h2>简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
-<p>BaseML提供了众多机器学习训练方法，可以快速训练和应用模型。</p>
+<p>BaseML库提供了众多机器学习训练方法，可以快速训练和应用模型。</p>
 </section>
 <section id="id2">
 <h2>安装<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
@@ -110,13 +120,13 @@
 <section id="id3">
 <h2>体验<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
 <p>可以在命令行输入BaseML查看安装的路径，在安装路径内，可以查看提供的更多demo案例。</p>
-<p>此处以用决策树方法配隐形眼镜案例为示例。</p>
+<p>此处以用“决策树方法配隐形眼镜”案例为示例，想看更多案例也可以查看附录。</p>
 </section>
 <section id="id4">
 <h2>训练<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
 <section id="id5">
 <h3>0.引入包<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库，从BaseML导入分类模块，简称cls</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库，从BaseML导入分类模块</span>
 <span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Classification</span> <span class="k">as</span> <span class="bp">cls</span>
 </pre></div>
 </div>
@@ -130,7 +140,6 @@
 </section>
 <section id="id7">
 <h3>2.载入数据<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
-<p>从路径载入数据：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 载入数据集，并说明特征列和标签列</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;./lenses.csv&#39;</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="n">x_column</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span><span class="n">y_column</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
 </pre></div>
@@ -175,6 +184,358 @@
 </pre></div>
 </div>
 <p>参数为模型保存的路径，<code class="docutils literal notranslate"><span class="pre">.pkl</span></code>文件格式可以理解为将python中的数组、列表等持久化地存储在硬盘上的一种方式。</p>
+</section>
+</section>
+<section id="id13">
+<h2>快速体验<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h2>
+<p>体验BaseML的最快速方式是通过OpenInnoLab平台。</p>
+<p>OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台，满足青少年的AI学习和创作需求，支持在线编程。在“项目”中查看更多，查找”BaseML“，即可找到所有与BaseML相关的体验项目。</p>
+<p>AI项目工坊：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pjlab/ai/projects">https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pjlab/ai/projects</a></p>
+<p>（用Chorm浏览器打开效果最佳）</p>
+</section>
+<section id="id14">
+<h2>附录<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h2>
+<section id="id15">
+<h3>案例1.基于决策树的道路智能决策<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h3>
+<p>本案例来源于上海科教版《人工智能初步》人教地图56-58页。</p>
+<p>数据集来源：上海科教版《人工智能初步》人教地图56-58页。</p>
+<section id="id16">
+<h4>项目核心功能和实现效果展示：<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h4>
+<p>借助决策树算法完成道路智能决策，可通过学习和实验了解决策树的工作原理，掌握决策树分类任务编程的流程。</p>
+<figure class="align-default">
+<img alt="利用历史数据生成决策树.png" src="https://www.openinnolab.org.cn/webdav/635638d69ed68060c638f979/638028c0777c254264da4dd7/current/assets/%E5%88%A9%E7%94%A8%E5%8E%86%E5%8F%B2%E6%95%B0%E6%8D%AE%E7%94%9F%E6%88%90%E5%86%B3%E7%AD%96%E6%A0%91.png" />
+</figure>
+</section>
+<section id="id17">
+<h4>数据说明：<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h4>
+<p>第0列：序号；</p>
+<p>第1列：道路施工状况-(1) 未施工, (2) 施工；</p>
+<p>第2列：预计车流量 ；</p>
+<p>第3列：分类结果（道路能否通行）-(1) 不可通行, (2)可通行。</p>
+<figure class="align-default">
+<img alt="screenshot-20221205-111611.png" src="https://www.openinnolab.org.cn/webdav/635638d69ed68060c638f979/638028c0777c254264da4dd7/current/assets/screenshot-20221205-111611.png" />
+</figure>
+</section>
+<section id="id18">
+<h4>实现步骤：<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h4>
+<section id="id19">
+<span id="id20"></span><h5>1）模型训练<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库，从BaseML导入分类模块</span>
+<span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Classification</span> <span class="k">as</span> <span class="bp">cls</span>
+<span class="c1"># 实例化模型，模型名称选则CART（Classification and Regression Trees）</span>
+<span class="n">model</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;CART&#39;</span><span class="p">)</span>
+<span class="c1"># 载入数据集，并说明特征列和标签列</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;./道路是否可通行历史数据f.csv&#39;</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="n">x_column</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span><span class="n">y_column</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<span class="c1"># 模型训练</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">validate</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="c1"># 保存模型</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;my_CART_model.pkl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id21">
+<h5>2）模型推理<a class="headerlink" href="#id21" title="Permalink to this headline"></a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 给定一组数据，推理查看效果</span>
+<span class="n">y</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">10</span><span class="p">]])</span>
+<span class="c1"># 输出结果</span>
+<span class="n">label</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;不可通行&#39;</span><span class="p">,</span> <span class="s1">&#39;可通行&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">label</span><span class="p">[</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="id22">
+<h3>案例2.用多层感知机算法实现手写体数字分类<a class="headerlink" href="#id22" title="Permalink to this headline"></a></h3>
+<p>本案例来源于《人工智能初步》广东教育出版社版75-80页。</p>
+<section id="id23">
+<h4>项目核心功能：<a class="headerlink" href="#id23" title="Permalink to this headline"></a></h4>
+<p>阿拉伯数字的字形信息量很小,不同数字写法字形相差又不大，使得准确区分某些数字相当困难。本项目解决的核心问题是如何利用计算机自动识别人手写在纸张上的阿拉伯数字。使用的数据集MNIST数据集包含
+0~9
+共10种数字的手写图片，每种数字一共有7000张图片，采集自不同书写风格的真实手写图片，一共70000张图片。70000张手写数字图片使用train_test_split方法划分为60000张训练集（Training
+Set）和10000张测试集（Test
+Set）。项目核心功能是使用BaseML库搭建多层感知机实现手写数字识别。</p>
+</section>
+<section id="id24">
+<span id="id25"></span><h4>实现步骤：<a class="headerlink" href="#id24" title="Permalink to this headline"></a></h4>
+<p>首先需对MNIST数据集进行图像数字化处理，使用BaseML自带的IMGLoader库。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">IMGLoader</span>
+<span class="c1"># 指定数据集路径</span>
+<span class="n">train_path</span> <span class="o">=</span> <span class="s1">&#39;/data/QX8UBM/mnist_sample/training_set&#39;</span>
+<span class="n">test_path</span> <span class="o">=</span> <span class="s1">&#39;/data/QX8UBM/mnist_sample/test_set&#39;</span>
+<span class="c1"># 初始化图片加载器并载入数据集</span>
+<span class="n">img_set</span> <span class="o">=</span> <span class="n">IMGLoader</span><span class="o">.</span><span class="n">ImageLoader</span><span class="p">(</span><span class="n">train_path</span><span class="p">,</span> <span class="n">test_path</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">28</span><span class="p">)</span>
+<span class="c1"># 图像数字化处理</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">img_set</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;flatten&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="id26">
+<span id="id27"></span><h5>1）模型训练<a class="headerlink" href="#id26" title="Permalink to this headline"></a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库，从BaseML导入分类模块</span>
+<span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Classification</span> <span class="k">as</span> <span class="bp">cls</span>
+<span class="c1"># 实例化模型，模型名称选择MLP（Multilayer Perceptron），n_hidden = (100,100)表示2层神经元数量为100的隐藏层</span>
+<span class="n">model</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="n">algorithm</span> <span class="o">=</span> <span class="s1">&#39;MLP&#39;</span><span class="p">,</span><span class="n">n_hidden</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span>
+<span class="c1"># 载入数据，从变量载入</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_train</span><span class="p">,</span><span class="nb">type</span> <span class="o">=</span><span class="s1">&#39;numpy&#39;</span><span class="p">)</span>
+<span class="c1"># 模型训练</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+<span class="c1"># 保存模型</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;checkpoints/mymodel.pkl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id28">
+<span id="id29"></span><h5>2）模型推理<a class="headerlink" href="#id28" title="Permalink to this headline"></a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 给定一张图片，推理查看效果</span>
+<span class="n">img</span> <span class="o">=</span> <span class="s1">&#39;/data/QX8UBM/mnist_sample/test_set/0/0.jpg&#39;</span> <span class="c1"># 指定一张图片</span>
+<span class="n">img_cast</span> <span class="o">=</span> <span class="n">img_set</span><span class="o">.</span><span class="n">pre_process</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">img_set</span><span class="o">.</span><span class="n">get_feature</span><span class="p">(</span><span class="n">img_cast</span><span class="p">,</span><span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;flatten&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1">#图片推理</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="c1"># 输出结果</span>
+<span class="n">label</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;4&#39;</span><span class="p">,</span><span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;6&#39;</span><span class="p">,</span> <span class="s1">&#39;7&#39;</span><span class="p">,</span><span class="s1">&#39;8&#39;</span><span class="p">,</span> <span class="s1">&#39;9&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">label</span><span class="p">[</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="k">
+<h3>案例3.用k近邻为参观者推荐场馆<a class="headerlink" href="#k" title="Permalink to this headline"></a></h3>
+<p>本案例来源于华师大出版社《人工智能初步》56-57页。</p>
+<section id="id30">
+<span id="id31"></span><h4>项目核心功能：<a class="headerlink" href="#id30" title="Permalink to this headline"></a></h4>
+<p>使用BaseML来实现knn分类算法，为旅行者们推荐最适合他们的场馆。在项目实践中了解k近邻的工作原理，掌握使用BaseML进行k近邻分类的方法。</p>
+<p>数据集来源：华师大出版社《人工智能初步》38页。</p>
+</section>
+<section id="id32">
+<span id="id33"></span><h4>实现步骤：<a class="headerlink" href="#id32" title="Permalink to this headline"></a></h4>
+<p>首先导入库并进行文本特征数字化。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入需要的各类库，numpy和pandas用来读入数据和处理数据，BaseML是主要的算法库</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Classification</span> <span class="k">as</span> <span class="bp">cls</span>
+
+<span class="c1"># 构建字典键值对</span>
+<span class="n">yesno_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;是&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;否&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">}</span>
+<span class="n">number_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;多&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;少&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">}</span>
+<span class="n">weather_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;雨&#39;</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;阴&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;晴&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">}</span>
+
+<span class="c1"># 采用map进行值的映射</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;首次参观&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;首次参观&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">yesno_dict</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;参观人数&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;参观人数&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">number_dict</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;天气&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;天气&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">weather_dict</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;专业人士&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;专业人士&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">yesno_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="id34">
+<span id="id35"></span><h5>1）模型训练<a class="headerlink" href="#id34" title="Permalink to this headline"></a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，KNN默认值为k=5</span>
+<span class="n">model</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;KNN&#39;</span><span class="p">)</span>
+<span class="c1"># 载入数据集，并说明特征列和标签列</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">,</span> <span class="n">x_column</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span><span class="n">y_column</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+<span class="c1"># 开始训练</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+<span class="c1"># 保存模型</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;mymodel.pkl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id36">
+<span id="id37"></span><h5>2）模型推理<a class="headerlink" href="#id36" title="Permalink to this headline"></a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 给定一组数据，查看模型推理结果</span>
+<span class="n">test_data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]]</span>
+<span class="n">test_y</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">loc</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">test_y</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>修改k值进行训练：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># # 实例化模型，设置k=3</span>
+<span class="n">model1</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="n">algorithm</span> <span class="o">=</span> <span class="s1">&#39;KNN&#39;</span><span class="p">,</span><span class="n">n_neighbors</span> <span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">model1</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">,</span> <span class="n">x_column</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span><span class="n">y_column</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">model1</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+<span class="c1"># 保存模型</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;mymodel2.pkl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="id38">
+<h3>案例4.用线性回归预测蛋糕价格<a class="headerlink" href="#id38" title="Permalink to this headline"></a></h3>
+<p>本案例来源于人教地图版《人工智能初步》39-41页。</p>
+<section id="id39">
+<span id="id40"></span><h4>项目核心功能：<a class="headerlink" href="#id39" title="Permalink to this headline"></a></h4>
+<p>使用线性回归预测蛋糕价格，案例场景贴近生活，可通过学习和实验了解线性回归的工作原理，掌握使用BaseML中的线性回归进行预测的方法。</p>
+<p>数据集来源：人教地图版《人工智能初步》39-41页。</p>
+</section>
+<section id="id41">
+<span id="id42"></span><h4>实现步骤：<a class="headerlink" href="#id41" title="Permalink to this headline"></a></h4>
+<section id="id43">
+<span id="id44"></span><h5>1）模型训练<a class="headerlink" href="#id43" title="Permalink to this headline"></a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入需要的各类库，numpy和pandas用来读入数据和处理数据，BaseML是主要的算法库</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Regression</span> <span class="k">as</span> <span class="n">reg</span>
+<span class="c1"># 实例化模型</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">reg</span><span class="p">(</span><span class="n">algorithm</span> <span class="o">=</span> <span class="s1">&#39;LinearRegression&#39;</span><span class="p">)</span>
+<span class="c1"># 指定数据集，需要指定类型</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;蛋糕尺寸与价格.csv&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="n">x_column</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">y_column</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1"># 开始训练</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+<span class="c1"># 模型保存</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;mymodel.pkl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id45">
+<span id="id46"></span><h5>2）模型推理<a class="headerlink" href="#id45" title="Permalink to this headline"></a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 指定数据</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;蛋糕尺寸与价格.csv&quot;</span><span class="p">)</span>
+<span class="c1"># 输出模型对于数据的预测结果</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">values</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># 可视化线性回归</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="c1"># 画真实的点</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;蛋糕尺寸/英寸&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;价格/元&#39;</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="c1"># 画拟合的直线</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">values</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">result</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;size&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="id47">
+<h3>案例5.用k均值实现园区集合地点选取<a class="headerlink" href="#id47" title="Permalink to this headline"></a></h3>
+<p>本案例来源于华东师范大学出版社《人工智能初步》53-55页。</p>
+<section id="id48">
+<span id="id49"></span><h4>项目核心功能：<a class="headerlink" href="#id48" title="Permalink to this headline"></a></h4>
+<p>使用BaseML中的Cluster模块进行聚类，使用matplotlib库对聚类结果进行可视化。该项目可根据同学所在位置，解决聚集点设定问题。可通过学习和实验了解KMeans的工作原理，掌握使用BaseML进行KMeans聚类的方法。</p>
+<p>数据集来源：自动生成。</p>
+</section>
+<section id="id50">
+<span id="id51"></span><h4>实现步骤：<a class="headerlink" href="#id50" title="Permalink to this headline"></a></h4>
+<p>首先完成数据读取。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入需要的各类库，numpy和pandas用来读入数据和处理数据，BaseML是主要的算法库</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Cluster</span> <span class="k">as</span> <span class="n">clt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
+
+<span class="c1"># 生成自定义数据，并查看数据分布情况。随机生成1000个点，定义两个中心。</span>
+<span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">make_blobs</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span><span class="n">n_features</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">centers</span><span class="o">=</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">]],</span><span class="n">cluster_std</span><span class="o">=</span><span class="p">[</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.6</span><span class="p">],</span><span class="n">random_state</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<section id="id52">
+<span id="id53"></span><h5>1）模型训练<a class="headerlink" href="#id52" title="Permalink to this headline"></a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">clt</span><span class="p">(</span><span class="n">algorithm</span> <span class="o">=</span> <span class="s1">&#39;Kmeans&#39;</span><span class="p">,</span> <span class="n">N_CLUSTERS</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># 指定数据集，需要指定类型</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;numpy&#39;</span><span class="p">,</span> <span class="n">x_column</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1"># 开始训练</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+<span class="c1"># 模型保存</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;mymodel.pkl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id54">
+<span id="id55"></span><h5>2）模型推理<a class="headerlink" href="#id54" title="Permalink to this headline"></a></h5>
+<p>1.无参数推理，输出聚类数据结果</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 进行推理</span>
+<span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>2.有参数推理，返回聚类结果，便于可视化</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 进行推理（）</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>可视化聚类结果的代码：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="c1"># 聚类结果根据颜色区分</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">result</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+<span class="c1"># 标出聚类序号，长方形序号的左下角为聚类中心所在位置</span>
+<span class="n">centers</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">cluster_centers_</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">centers</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mf">0.03</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">centers</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mf">0.03</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="n">i</span><span class="p">,</span>
+             <span class="n">fontdict</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span>
+             <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="id56">
+<h3>案例6.用k均值实现车辆类别聚类分析<a class="headerlink" href="#id56" title="Permalink to this headline"></a></h3>
+<p>本案例来源于上海科技教育出版社《人工智能初步》88-89页。</p>
+<section id="id57">
+<span id="id58"></span><h4>项目核心功能：<a class="headerlink" href="#id57" title="Permalink to this headline"></a></h4>
+<p>使用BaseML中的Cluster模块进行聚类，使用matplotlib库对聚类结果进行可视化。该项目可根据车辆的品质，解决车辆分类问题，便于用户进行决策。可通过学习和实验了解KMeans的工作原理，掌握使用BaseML进行KMeans聚类的方法。</p>
+<p>数据集来源：上海科技教育出版社《人工智能初步》88页。</p>
+</section>
+<section id="id59">
+<span id="id60"></span><h4>实现步骤：<a class="headerlink" href="#id59" title="Permalink to this headline"></a></h4>
+<section id="id61">
+<span id="id62"></span><h5>1）模型训练<a class="headerlink" href="#id61" title="Permalink to this headline"></a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入需要的各类库，numpy和pandas用来读入数据和处理数据，BaseML是主要的算法库</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Cluster</span> <span class="k">as</span> <span class="n">clt</span>
+
+<span class="c1"># 读取数据</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;车辆聚类.csv&quot;</span><span class="p">)</span>
+<span class="c1"># 实例化模型</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">clt</span><span class="p">(</span><span class="n">algorithm</span> <span class="o">=</span> <span class="s1">&#39;Kmeans&#39;</span><span class="p">,</span> <span class="n">N_CLUSTERS</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># 指定数据集，需要显式指定类型</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">,</span> <span class="n">x_column</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="c1"># 开始训练</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+<span class="c1"># 模型保存</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;mymodel.pkl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id63">
+<span id="id64"></span><h5>2）模型推理<a class="headerlink" href="#id63" title="Permalink to this headline"></a></h5>
+<p>1.无参数推理，输出聚类数据结果</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 进行推理</span>
+<span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>2.有参数推理，返回聚类结果，便于可视化</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 进行推理</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,[</span><span class="s1">&#39;大小&#39;</span><span class="p">,</span><span class="s1">&#39;颜色&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="c1"># 输出最终的车辆聚类文字结果</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">号车辆属于第</span><span class="si">{1}</span><span class="s1">个类别&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;汽车编号&#39;</span><span class="p">],</span><span class="n">result</span><span class="p">[</span><span class="n">index</span><span class="p">]))</span> <span class="c1"># 输出每一行</span>
+</pre></div>
+</div>
+<p>可视化聚类结果的代码：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="c1"># 画出不同颜色的车辆点</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">result</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+
+<span class="c1"># 标出聚类序号，长方形序号的左下角为聚类中心所在位置</span>
+<span class="n">centers</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">cluster_centers_</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">centers</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mf">0.03</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">centers</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mf">0.03</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="n">i</span><span class="p">,</span>
+             <span class="n">fontdict</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span>
+             <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">),</span>
+            <span class="n">zorder</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 </section>
 </section>

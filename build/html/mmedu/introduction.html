@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MMEdu模块应用详解 &mdash; OpenXLabEdu  documentation</title>
+  <title>MMEdu功能简介和模块应用详解 &mdash; OpenXLabEdu  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -44,29 +44,20 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../mmedu.html">MMEdu入门</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="quick_start.html">MMEdu快速入门</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation.html">MMEdu安装和下载</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">MMEdu模块应用详解</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#mmeduai">1.MMEdu和常见AI框架的比较</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">MMEdu功能简介和模块应用详解</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">1.MMEdu功能简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mmeduai">2.MMEdu和常见AI框架的比较</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#mmeduopencv">1）MMEdu和OpenCV的比较</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mmedumediapipe">2）MMEdu和MediaPipe的比较</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mmedukeras">3）MMEdu和Keras的比较</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mmedufastai">4）MMEdu和FastAI的比较</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">3.MMEdu的内置模块概述</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">3.MMEdu的内置模块概述</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mmedusota">4.MMEdu的内置SOTA模型</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">5.数据集支持</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">5.数据集支持</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#imagenet">1.ImageNet</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#coco">2.COCO</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">6.一键安装包目录详解</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id13">MMEdu目录：</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#checkpoints">checkpoints目录：</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#dataset">dataset目录：</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#demo">demo目录：</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#howtostart">HowToStart目录：</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#tools">tools目录：</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#visualization">visualization目录：</a></li>
 </ul>
 </li>
 </ul>
@@ -98,7 +89,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../mmedu.html">MMEdu入门</a> &raquo;</li>
-      <li>MMEdu模块应用详解</li>
+      <li>MMEdu功能简介和模块应用详解</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/mmedu/introduction.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -109,10 +100,13 @@
            <div itemprop="articleBody">
              
   <section id="mmedu">
-<h1>MMEdu模块应用详解<a class="headerlink" href="#mmedu" title="Permalink to this headline"></a></h1>
-<section id="mmeduai">
-<h2>1.MMEdu和常见AI框架的比较<a class="headerlink" href="#mmeduai" title="Permalink to this headline"></a></h2>
+<h1>MMEdu功能简介和模块应用详解<a class="headerlink" href="#mmedu" title="Permalink to this headline"></a></h1>
+<section id="id1">
+<h2>1.MMEdu功能简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <p>MMEdu是一个计算机视觉方向的深度学习开发工具，是一个用来训练AI模型的工具。</p>
+</section>
+<section id="mmeduai">
+<h2>2.MMEdu和常见AI框架的比较<a class="headerlink" href="#mmeduai" title="Permalink to this headline"></a></h2>
 <section id="mmeduopencv">
 <h3>1）MMEdu和OpenCV的比较<a class="headerlink" href="#mmeduopencv" title="Permalink to this headline"></a></h3>
 <p>OpenCV是一个开源的计算机视觉框架，MMEdu的核心模块MMCV基于OpenCV，二者联系紧密。</p>
@@ -135,8 +129,8 @@
 <p>MMEdu基于OpenMMLab的基础上开发，因为面向中小学，优先选择支持CPU训练的模块。</p>
 </section>
 </section>
-<section id="id1">
-<h2>3.MMEdu的内置模块概述<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<section id="id2">
+<h2>3.MMEdu的内置模块概述<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 42%" />
@@ -206,8 +200,8 @@
 <p>注：对于这些SOTA模型的作用，请参考本文档的“深度学习知识库”部分的“经典网络模型介绍”。当然，通过“AI模型
 + 关键词”的形式，你在很多搜索引擎中都能找到资料。</p>
 </section>
-<section id="id2">
-<h2>5.数据集支持<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<section id="id3">
+<h2>5.数据集支持<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
 <p>MMEdu系列提供了包括分类、检测等任务的若干数据集，存储在dataset文件夹下。</p>
 <section id="imagenet">
 <h3>1.ImageNet<a class="headerlink" href="#imagenet" title="Permalink to this headline"></a></h3>
@@ -247,18 +241,19 @@ filesname_b.jpg n
 </div>
 <p>注：真实标签的值应该位于<code class="docutils literal notranslate"><span class="pre">[0,类别数目-1]</span></code>之间。</p>
 <p>这里，为您提供一段用Python代码完成标签文件的程序如下所示，程序中设计了“val.txt”和“test.txt”这两个标签文件每行会包含类别名称、文件名和真实标签。</p>
-<div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>import os
+<div class="highlight-plain notranslate"><div class="highlight"><pre><span></span># 在windows测试通过
+import os
 # 列出指定目录下的所有文件名，确定类别名称
-classes = os.listdir(&#39;D:\测试数据集\EX_dataset\\training_set&#39;)
+classes = os.listdir(&#39;./my_dataset/training_set&#39;)
 # 打开指定文件，并写入类别名称
-with open(&#39;D:\测试数据集\EX_dataset/classes.txt&#39;,&#39;w&#39;) as f:
+with open(&#39;./my_dataset/classes.txt&#39;,&#39;w&#39;) as f:
     for line in classes:
         str_line = line +&#39;\n&#39;
         f.write(str_line) # 文件写入str_line，即类别名称
 
-test_dir = &#39;D:\测试数据集\EX_dataset\\test_set/&#39; # 指定测试集文件路径
+test_dir = &#39;./my_dataset/test_set/&#39; # 指定测试集文件路径
 # 打开指定文件，写入标签信息
-with open(&#39;D:\测试数据集\EX_dataset/test.txt&#39;,&#39;w&#39;) as f:
+with open(&#39;./my_dataset/test.txt&#39;,&#39;w&#39;) as f:
     for cnt in range(len(classes)):
         t_dir = test_dir + classes[cnt]  # 指定测试集某个分类的文件目录
         files = os.listdir(t_dir) # 列出当前类别的文件目录下的所有文件名
@@ -267,9 +262,9 @@ with open(&#39;D:\测试数据集\EX_dataset/test.txt&#39;,&#39;w&#39;) as f:
             str_line = classes[cnt] + &#39;/&#39; + line + &#39; &#39;+str(cnt) +&#39;\n&#39;
             f.write(str_line)
 
-val_dir = &#39;D:\测试数据集\EX_dataset\\val_set/&#39;  # 指定文件路径
+val_dir = &#39;./my_dataset/val_set/&#39;  # 指定文件路径
 # 打开指定文件，写入标签信息
-with open(&#39;D:\测试数据集\EX_dataset/val.txt&#39;, &#39;w&#39;) as f:
+with open(&#39;./my_dataset/val.txt&#39;, &#39;w&#39;) as f:
     for cnt in range(len(classes)):
         t_dir = val_dir + classes[cnt]  # 指定验证集某个分类的文件目录
         files = os.listdir(t_dir)  # 列出当前类别的文件目录下的所有文件名
@@ -279,11 +274,52 @@ with open(&#39;D:\测试数据集\EX_dataset/val.txt&#39;, &#39;w&#39;) as f:
             f.write(str_line)  # 文件写入str_line，即标注信息
 </pre></div>
 </div>
+<p>如果你使用的是Mac系统，可以使用下面的代码。</p>
+<div class="highlight-plain notranslate"><div class="highlight"><pre><span></span># 本文件可以放在数据集的根目录下运行
+import os
+# 如果不是在数据集根目录下，可以指定路径
+set_path = &#39;./&#39;
+
+templist = os.listdir(set_path +&#39;training_set&#39;)
+# 处理mac的特殊文件夹
+classes = []
+for line in templist:
+    if line[0] !=&#39;.&#39;:
+        classes.append(line)
+
+with open(set_path +&#39;classes.txt&#39;,&#39;w&#39;) as f:
+    for line in classes:
+        str_line = line +&#39;\n&#39;
+        f.write(str_line) # 文件分行写入，即类别名称
+
+val_dir = set_path +&#39;val_set/&#39;  # 指定验证集文件路径
+# 打开指定文件，写入标签信息
+with open(set_path +&#39;val.txt&#39;, &#39;w&#39;) as f:
+    for cnt in range(len(classes)):
+        t_dir = val_dir + classes[cnt]  # 指定验证集某个分类的文件目录
+        files = os.listdir(t_dir)  # 列出当前类别的文件目录下的所有文件名
+        # print(files)
+        for line in files:
+            str_line = classes[cnt] + &#39;/&#39; + line + &#39; &#39; + str(cnt) + &#39;\n&#39;
+            f.write(str_line)  # 文件写入str_line，即标注信息
+
+test_dir = set_path +&#39;test_set/&#39; # 指定测试集文件路径
+# 打开指定文件，写入标签信息
+with open(set_path +&#39;test.txt&#39;,&#39;w&#39;) as f:
+    for cnt in range(len(classes)):
+        t_dir = test_dir + classes[cnt]  # 指定测试集某个分类的文件目录
+        files = os.listdir(t_dir) # 列出当前类别的文件目录下的所有文件名
+        # print(files)
+        for line in files:
+            str_line = classes[cnt] + &#39;/&#39; + line + &#39; &#39;+str(cnt) +&#39;\n&#39;
+            f.write(str_line)
+</pre></div>
+</div>
 <p>至于如何从零开始制作一个ImageNet格式的数据集，可参考如下步骤。</p>
-<section id="id3">
-<h4>第一步：整理图片<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h4>
+<section id="id4">
+<h4>第一步：整理图片<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h4>
 <p>您可以用任何设备拍摄图像，也可以从视频中抽取帧图像，需要注意，这些图像可以被划分为多个类别。每个类别建立一个文件夹，文件夹名称为类别名称，将图片放在其中。</p>
-<p>接下来需要对图片进行尺寸、保存格式等的统一，可使用如下代码：</p>
+<p>接下来需要对图片进行尺寸、保存格式等的统一，简单情况下的参考代码如下：</p>
 <div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>from PIL import Image
 from torchvision import transforms
 import os
@@ -292,9 +328,9 @@ def makeDir(folder_path):
     if not os.path.exists(folder_path):  # 判断是否存在文件夹如果不存在则创建为文件夹
         os.makedirs(folder_path)
 
-classes = os.listdir(&#39;D:\测试数据集\自定义数据集&#39;)
-read_dir = &#39;D:\测试数据集\自定义数据集/&#39; # 指定原始图片路径
-new_dir = &#39;D:\测试数据集\自定义数据集new/&#39;
+classes = os.listdir(&#39;./my_dataset/training_set&#39;)
+read_dir = &#39;./my_dataset/training_set/&#39; # 指定原始图片路径
+new_dir = &#39;./my_dataset/newtraining_set&#39;
 for cnt in range(len(classes)):
     r_dir = read_dir + classes[cnt] + &#39;/&#39;
     files = os.listdir(r_dir)
@@ -311,13 +347,13 @@ for cnt in range(len(classes)):
 </pre></div>
 </div>
 </section>
-<section id="id4">
-<h4>第二步：划分训练集、验证集和测试集<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h4>
+<section id="id5">
+<h4>第二步：划分训练集、验证集和测试集<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h4>
 <p>根据整理的数据集大小，按照一定比例拆分训练集、验证集和测试集，可使用如下代码将原始数据集按照“6:2:2”的比例拆分。</p>
 <div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>import os
 import shutil
-# 列出指定目录下的所有文件名，确定类别名称
-classes = os.listdir(&#39;D:\测试数据集\自定义表情数据集&#39;)
+# 列出指定目录下的所有文件名，确定分类信息
+classes = os.listdir(&#39;./my_photo&#39;)
 
 # 定义创建目录的方法
 def makeDir(folder_path):
@@ -325,15 +361,15 @@ def makeDir(folder_path):
         os.makedirs(folder_path)
 
 # 指定文件目录
-read_dir = &#39;D:\测试数据集\自定义表情数据集/&#39; # 指定原始图片路径
-train_dir = &#39;D:\测试数据集\自制\EX_dataset\\training_set/&#39; # 指定训练集路径
-test_dir = &#39;D:\测试数据集\自制\EX_dataset\\test_set/&#39; # 指定测试集路径
-val_dir = &#39;D:\测试数据集\自制\EX_dataset\\val_set/&#39; # 指定验证集路径
+read_dir = &#39;./my_photo/&#39; # 指定原始图片路径
+train_dir = &#39;./my_dataset/training_set/&#39; # 指定训练集路径
+test_dir = &#39;./my_dataset/test_set/&#39;# 指定测试集路径
+val_dir = &#39;./my_dataset/val_set/&#39;# 指定验证集路径
 
 for cnt in range(len(classes)):
     r_dir = read_dir + classes[cnt] + &#39;/&#39;  # 指定原始数据某个分类的文件目录
     files = os.listdir(r_dir)  # 列出某个分类的文件目录下的所有文件名
-    files = files[:1000]
+    # files = files[:4000]
     # 按照6:2:2拆分文件名
     offset1 = int(len(files) * 0.6)
     offset2 = int(len(files) * 0.8)
@@ -345,25 +381,32 @@ for cnt in range(len(classes)):
     for index,fileName in enumerate(training_data):
         w_dir = train_dir + classes[cnt] + &#39;/&#39;  # 指定训练集某个分类的文件目录
         makeDir(w_dir)
-        shutil.copy(r_dir + fileName,w_dir + classes[cnt] + str(index)+&#39;.jpg&#39;)
-    for index,fileName in enumerate(test_data):
-        w_dir = test_dir + classes[cnt] + &#39;/&#39;  # 指定测试集某个分类的文件目录
-        makeDir(w_dir)
-        shutil.copy(r_dir + fileName, w_dir + classes[cnt] + str(index) + &#39;.jpg&#39;)
+        # shutil.copy(r_dir + fileName,w_dir + classes[cnt] + str(index)+&#39;.jpg&#39;)
+        shutil.copy(r_dir + fileName, w_dir + str(index) + &#39;.jpg&#39;)
     for index,fileName in enumerate(val_data):
-        w_dir = val_dir + classes[cnt] + &#39;/&#39;  # 指定验证集某个分类的文件目录
+        w_dir = val_dir + classes[cnt] + &#39;/&#39;  # 指定测试集某个分类的文件目录
         makeDir(w_dir)
-        shutil.copy(r_dir + fileName, w_dir + classes[cnt] + str(index) + &#39;.jpg&#39;)
+        # shutil.copy(r_dir + fileName, w_dir + classes[cnt] + str(index) + &#39;.jpg&#39;)
+        shutil.copy(r_dir + fileName, w_dir + str(index) + &#39;.jpg&#39;)
+    for index,fileName in enumerate(test_data):
+        w_dir = test_dir + classes[cnt] + &#39;/&#39;  # 指定验证集某个分类的文件目录
+        makeDir(w_dir)
+        # shutil.copy(r_dir + fileName, w_dir + classes[cnt] + str(index) + &#39;.jpg&#39;)
+        shutil.copy(r_dir + fileName, w_dir + str(index) + &#39;.jpg&#39;)
 </pre></div>
 </div>
 </section>
-<section id="id5">
-<h4>第三步：生成标签文件<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h4>
+<section id="id6">
+<h4>第三步：生成标签文件<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h4>
 <p>划分完训练集、验证集和测试集，我们需要生成“classes.txt”，“val.txt”和“test.txt”，使用上文介绍的Python代码完成标签文件的程序生成标签文件。</p>
 </section>
-<section id="id6">
-<h4>第四步：给数据集命名<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h4>
+<section id="id7">
+<h4>第四步：给数据集命名<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h4>
 <p>最后，我们将这些文件放在一个文件夹中，命名为数据集的名称。这样，在训练的时候，只要通过<code class="docutils literal notranslate"><span class="pre">model.load_dataset</span></code>指定数据集的路径就可以了。</p>
+</section>
+<section id="id8">
+<h4>快速整理数据集的方式<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h4>
+<p>如果您觉得整理规范格式数据集有点困难，其实您只完成第一步和第二步，即收集完图片按照类别存放，然后完成训练集（trainning_set）、验证集（val_set）和测试集（test_set）等的拆分，整理在一个大的文件夹下作为你的数据集也可以符合要求。此时指定数据集路径后同样可以训练模型，后台会为你生成“classes.txt”，“val.txt”等（如存在对应的数据文件夹）开始训练。这些txt文件会生成你指定的数据集路径下，即帮您补齐数据集。</p>
 </section>
 </section>
 <section id="coco">
@@ -419,20 +462,20 @@ categories [{
 </pre></div>
 </div>
 <p>​ 这里，为您提供一种自己制作COCO格式数据集的方法。</p>
-<section id="id7">
-<span id="id8"></span><h4>第一步、整理图片<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h4>
+<section id="id9">
+<span id="id10"></span><h4>第一步、整理图片<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h4>
 <p>根据需求按照自己喜欢的方式收集图片，图片中包含需要检测的信息即可，可以使用ImageNet格式数据集整理图片的方式对收集的图片进行预处理。</p>
 </section>
-<section id="id9">
-<h4>第二步、标注图片<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h4>
+<section id="id11">
+<h4>第二步、标注图片<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h4>
 <p>可使用LabelMe批量打开图片文件夹的图片，进行标注并保存为json文件。</p>
 <ul class="simple">
 <li><p>LabelMe：格式为LabelMe，提供了转VOC、COCO格式的脚本，可以标注矩形、圆形、线段、点。标注语义分割、实例分割数据集尤其推荐。</p></li>
 <li><p>LabelMe安装与打开方式：<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">labelme</span></code>安装完成后输入<code class="docutils literal notranslate"><span class="pre">labelme</span></code>即可打开。</p></li>
 </ul>
 </section>
-<section id="id10">
-<h4>第三步、转换成COCO标注格式<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h4>
+<section id="id12">
+<h4>第三步、转换成COCO标注格式<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h4>
 <p>将LabelMe格式的标注文件转换成COCO标注格式，可以使用如下代码：</p>
 <div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>import json
 import numpy as np
@@ -559,59 +602,10 @@ labelme2coco(labelme_json, &#39;picture/new.json&#39;) # 指定生成文件路�
 </pre></div>
 </div>
 </section>
-<section id="id11">
-<h4>第四步、按照目录结构整理文件<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h4>
+<section id="id13">
+<h4>第四步、按照目录结构整理文件<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h4>
 <p>创建两个文件夹“images”和“annotations”，分别用于存放图片以及标注信息。按照要求的目录结构，整理好文件夹的文件，最后将文件夹重新命名，在训练的时候，只要通过<code class="docutils literal notranslate"><span class="pre">model.load_dataset</span></code>指定数据集的路径就可以了。</p>
 </section>
-</section>
-</section>
-<section id="id12">
-<h2>6.一键安装包目录详解<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h2>
-<p>MMEdu一键安装版是一个压缩包，解压后即可使用。</p>
-<p>MMEdu的根目录结构如下：</p>
-<div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>OpenMMLab-Edu
-├── MMEdu
-├── checkpoints
-├── dataset
-├── demo
-├── HowToStart
-├── tools（github)
-├── visualization（github)
-├── setup.bat
-├── pyzo.exe
-├── run_jupyter.bat
-</pre></div>
-</div>
-<p>接下来对每层子目录进行介绍。</p>
-<section id="id13">
-<h3>MMEdu目录：<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h3>
-<p>存放各个模块的底层代码、算法模型文件夹“models”和封装环境文件夹“mmedu”。“models”文件夹中提供了各个模块常见的网络模型，内置模型配置文件和说明文档，说明文档提供了模型简介、特点、预训练模型下载链接和适用领域等。“mmedu”文件夹打包了MMEdu各模块运行所需的环境和中小学课程常用的库。</p>
-</section>
-<section id="checkpoints">
-<h3>checkpoints目录：<a class="headerlink" href="#checkpoints" title="Permalink to this headline"></a></h3>
-<p>存放各个模块的预训练模型的权重文件，分别放在以模块名称命名的文件夹下，如“cls_model”。</p>
-</section>
-<section id="dataset">
-<h3>dataset目录：<a class="headerlink" href="#dataset" title="Permalink to this headline"></a></h3>
-<p>存放为各个模块任务准备的数据集，分别放在以模块名称命名的文件夹下，如“cls”。同时github上此目录下还存放了各个模块自定义数据集的说明文档，如“pose-dataset.md”，文档提供了每个模块对应的数据集格式、下载链接、使用说明、自制数据集流程。</p>
-</section>
-<section id="demo">
-<h3>demo目录：<a class="headerlink" href="#demo" title="Permalink to this headline"></a></h3>
-<p>存放各个模块的测试程序，如“cls_demo.py”，并提供了测试图片。测试程序包括<code class="docutils literal notranslate"><span class="pre">py</span></code>文件和<code class="docutils literal notranslate"><span class="pre">ipynb</span></code>文件，可支持各种“Python
-IDE”和“jupyter
-notebook”运行，可运行根目录的“pyzo.exe”和“run_jupyter.bat”后打开测试程序。</p>
-</section>
-<section id="howtostart">
-<h3>HowToStart目录：<a class="headerlink" href="#howtostart" title="Permalink to this headline"></a></h3>
-<p>存放各个模块的使用教程文档，如“MMClassfication使用教程.md”，文档提供了代码详细说明、参数说明与使用等。同时github上此目录下还存放了OpenMMLab各个模块的开发文档供感兴趣的老师和同学参考，如“OpenMMLab_MMClassification.md”，提供了模块介绍、不同函数使用、深度魔改、添加网络等。</p>
-</section>
-<section id="tools">
-<h3>tools目录：<a class="headerlink" href="#tools" title="Permalink to this headline"></a></h3>
-<p>存放数据集格式的转换、不同框架的部署等通用工具。后续会陆续开发数据集查看工具、数据集标注工具等工具。</p>
-</section>
-<section id="visualization">
-<h3>visualization目录：<a class="headerlink" href="#visualization" title="Permalink to this headline"></a></h3>
-<p>存放可视化界面。</p>
 </section>
 </section>
 </section>

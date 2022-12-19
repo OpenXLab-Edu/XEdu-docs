@@ -170,9 +170,19 @@ model.print_model()
 
 无参数。
 
+### 9.网络中特征（图片）可视化
 
+BaseNN内置`visual_feature`函数可查看图片在网络中传递。需要指定输入图片和已经训练好的模型。
 
-完整测试用例可见BaseNN_demo.py文件。
+```
+import cv2
+from BaseNN import nn
+model = nn()
+model.load('mn_ckpt/basenn.pkl')          # 保存的已训练模型载入
+path = 'test_IMG/single_data.jpg'
+img = cv2.imread(path,flags = 0)          # 图片数据读取
+model.visual_feature(img,in1img = True)   # 特征的可视化
+```
 
 ## 附录
 

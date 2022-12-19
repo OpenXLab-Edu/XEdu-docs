@@ -76,9 +76,11 @@ Jupyter Notebook是基于网页的用于交互计算的应用程序。其可被�
 
 用IDE打开解压路径下的py文件，如“cls_demo.py”，点击“运行”。运行效果应和pyzo一样。
 
+**在2022年9月后，不再维护MMEdu一键安装包，统一更新为XEdu。XEdu于22年9月在世界人工智能大会正式发布，分MMEdu、BaseML、BaseNN三个功能模块，除了一键安装包，同时实现以pip方式安装。**
+
 ### 2.2 pip安装
 
-当前，我们提供的MMEdu0.0.7版本是基础版的pip安装包，可以使用如下命令安装：
+当前，我们提供的MMEdu0.0.7版本的安装是基础版的pip安装包，可以使用如下命令安装：
 `pip install mmedu==0.0.7`或`pip install MMEdu==0.0.7`。
 
 ## 3.完整版安装之pip安装
@@ -129,7 +131,8 @@ Jupyter Notebook是基于网页的用于交互计算的应用程序。其可被�
 
 点击Thonny主界面右下角的Python版本号，可以选择对应的Python解释器，第一次配置点击`Configure inter preter`，弹出的窗口中，第一个下拉栏选择`可选的python3解释器或虚拟环境`， 第二个下拉栏找到自己之前安装的anaconda环境中的python解释器位置。点击确认即可使用该python解释器。
 
-### 3.2安装MMEdu
+### 3.2安装MMEdu(CPU版本)
+
 #### 3.2.1Linux安装MMEdu
 
 点击鼠标右键，打开终端。
@@ -143,14 +146,14 @@ $ pip install MMEdu
 注：为避免出现版本冲突，建议新建一个conda环境，并在新环境中执行以上命令（注：要求python<3.9）。
 
 ```powershell
-$ conda create -n your_env_name python=3.6
+$ conda create -n your_env_name python=3.8
 $ conda activate your_env_name
 $ pip install MMEdu
 ```
 
 注：请将命令中的“your_env_name”换成你喜欢的名称，如“mmedu”。
 
-### 3.2.2Windows安装MMEdu
+#### 3.2.2Windows安装MMEdu
 
 同时按下win+r，输入cmd，回车，打开一个命令行窗口。
 
@@ -163,10 +166,45 @@ $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/i
 注：为避免出现版本冲突，建议新建一个conda环境，并在新环境中执行以上命令（注：要求python<3.9）。
 
 ```powershell
-$ conda create -n your_env_name python=3.6
+$ conda create -n your_env_name python=3.8
 $ conda activate your_env_name
 $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/index.html
 ```
+
+### 3.3安装MMEdu(GPU版本)
+
+首先安装对应自己cuda版本的pytorch，安装命令可在以下网址中进行查询：https://pytorch.org/get-started/locally/
+
+可以在命令行中使用`nvidia-smi`指令查询自己的cuda版本。
+
+例如，若cuda版本为10.1，想要安装1.8.1版本的pytorch，则安装命令为：
+
+```powershell
+$ pip install torch==1.8.1+cu101 torchvision==0.9.1+cu101 torchaudio==0.8.1 -f https://download.pytorch.org/whl/torch_stable.html
+```
+
+其次，根据torch版本和cuda版本安装mmcv。
+
+```powershell
+$ pip install mmcv-full -f https://download.openmmlab.com/mmcv/dist/{cu_version}/{torch_version}/index.html
+```
+
+其中 `{cu_version}` 和 `{torch_version}` 根据自身需求替换成实际的版本号。
+
+例如想安装和 `CUDA 10.1`、`PyTorch 1.8.0` 兼容的 `mmcv-full`，使用如下替换过的命令
+
+```powershell
+$ pip install mmcv-full==1.4.5 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.8.0/index.html
+```
+
+最后安装MMEdu的rc版本，例如
+
+```powershell
+$ pip install MMEdu==0.1.0rc0
+```
+
+即可。
+
 ## 4.完整版安装之docker容器镜像。
 
 敬请期待
@@ -242,5 +280,4 @@ print(MMEdu.__path__)
 ![image](../images/mmedu/pip安装指南2.png)
 
 注意：内置examples文件夹下的案例仅供参考使用，请勿直接改写其中文件。应在用户自己的工作目录下新建文件，并参考examples中的写法。
-
 

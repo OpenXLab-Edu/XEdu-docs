@@ -44,7 +44,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../mmedu.html">MMEdu入门</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="quick_start.html">MMEdu快速入门</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation.html">MMEdu安装和下载</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html">MMEdu模块应用详解</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">MMEdu功能简介和模块应用详解</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mmclassification.html">图像分类模块：MMClassification</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">物体检测模块：MMDetection</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">简介</a></li>
@@ -174,6 +174,29 @@
 <p><code class="docutils literal notranslate"><span class="pre">class_path</span></code>：指定训练集的路径，默认参数为<code class="docutils literal notranslate"><span class="pre">&quot;../dataset/classes/det_classes.txt&quot;</span></code>。</p>
 <p><code class="docutils literal notranslate"><span class="pre">save_fold</span></code>：保存的图片名，数据结构为字符串，默认参数为<code class="docutils literal notranslate"><span class="pre">'det_result'</span></code>，用户也可以定义为自己想要的名字。</p>
 <p>（最后两个参数的使用，我们将在下一部分进行详细举例解释）。</p>
+<ul class="simple">
+<li><p><strong>快速推理</strong></p></li>
+</ul>
+<p>针对部分用户希望加快推理速度的需求，设计了<code class="docutils literal notranslate"><span class="pre">fast_inference</span></code>函数，主要方法是使用<code class="docutils literal notranslate"><span class="pre">load_checkpoint</span></code>提前加载权重文件。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">load_checkpoint</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">,</span><span class="n">class_path</span><span class="o">=</span><span class="n">class_path</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fast_inference</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">img</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>参数详解</strong></p></li>
+</ul>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">load_checkpoint</span></code>函数的传入参数：</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">device</span></code>：推理所用的设备，默认为<code class="docutils literal notranslate"><span class="pre">'cpu'</span></code>，如果电脑支持GPU，也可以将参数修改为<code class="docutils literal notranslate"><span class="pre">'cuda'</span></code>，使用GPU进行推理。</p>
+<p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>：指定使用的模型权重文件，默认参数为<code class="docutils literal notranslate"><span class="pre">None</span></code>，如果没有指定模型权重文件，那么我们将会使用默认的模型权重文件进行推理。</p>
+<p><code class="docutils literal notranslate"><span class="pre">class_path</span></code>：指定训练集的路径，默认参数为<code class="docutils literal notranslate"><span class="pre">&quot;../dataset/classes/det_classes.txt&quot;</span></code>。</p>
+<ol class="arabic simple" start="2">
+<li><p><code class="docutils literal notranslate"><span class="pre">fast_inference</span></code>函数的传入参数：</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">image</span></code>：推理图片的路径。</p>
+<p><code class="docutils literal notranslate"><span class="pre">show</span></code>：布尔值，默认为<code class="docutils literal notranslate"><span class="pre">True</span></code>，表示推理后是否显示推理结果。</p>
+<p><code class="docutils literal notranslate"><span class="pre">save_fold</span></code>：保存的图片名，数据结构为字符串，默认参数为<code class="docutils literal notranslate"><span class="pre">'det_result'</span></code>，用户也可以定义为自己想要的名字。</p>
 </section>
 <section id="id3">
 <h3>2.训练模型<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>

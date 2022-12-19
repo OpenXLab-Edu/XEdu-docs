@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="物体检测模块：MMDetection" href="mmdetection.html" />
-    <link rel="prev" title="MMEdu模块应用详解" href="introduction.html" /> 
+    <link rel="prev" title="MMEdu功能简介和模块应用详解" href="introduction.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,13 +44,13 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../mmedu.html">MMEdu入门</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="quick_start.html">MMEdu快速入门</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation.html">MMEdu安装和下载</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html">MMEdu模块应用详解</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">MMEdu功能简介和模块应用详解</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">图像分类模块：MMClassification</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">简介</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">使用说明</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id3">1.模型推理</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">2.训练模型</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">3.继续训练</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cpu">1.直接推理（支持CPU）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">2.训练模型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">3.继续训练</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sota">4.SOTA模型介绍</a></li>
 </ul>
 </li>
@@ -96,13 +96,13 @@
 <h1>图像分类模块：MMClassification<a class="headerlink" href="#mmclassification" title="Permalink to this headline"></a></h1>
 <section id="id1">
 <h2>简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
-<p>MMClassifiation的主要功能是对图像进行分类。其支持的SOTA模型有LeNet、MobileNet等。如需查看所有支持的SOTA模型，可使用<code class="docutils literal notranslate"><span class="pre">model.sota()</span></code>代码进行查看。</p>
+<p>MMClassifiation的主要功能是对图像进行分类。其支持的SOTA模型有LeNet、MobileNet、ResNet18、ResNet50等。如需查看所有支持的SOTA模型，可使用<code class="docutils literal notranslate"><span class="pre">model.sota()</span></code>代码进行查看。</p>
 </section>
 <section id="id2">
 <h2>使用说明<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
-<p>MMEdu中预置了“石头剪刀布”三分类的数据集，并且已经预训练了权重（路径：/checkpoints/cls_model/hand_gray/latest.pth）。在demo文件夹中，还提供了一张测试图片。</p>
-<section id="id3">
-<h3>1.模型推理<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<p>MMEdu中预置了“石头剪刀布”手势三分类的数据集，并且已经预训练了权重（路径：/checkpoints/cls_model/hand_gray/latest.pth）。在demo文件夹中，还提供了一张测试图片。</p>
+<section id="cpu">
+<h3>1.直接推理（支持CPU）<a class="headerlink" href="#cpu" title="Permalink to this headline"></a></h3>
 <p>如果想快速上手体验MMClassification的话，我们建议您使用我们已经预训练好的模型和权重文件进行推理，提供一张图片测试推理的准确度。</p>
 <p>执行代码如下:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>  <span class="c1"># 导入mmcls模块</span>
@@ -121,13 +121,13 @@
 <img alt="../_images/cls_result.png" src="../_images/cls_result.png" />
 </figure>
 <p>推理结果图片（带标签的图片）会以原来的文件名称保存在<code class="docutils literal notranslate"><span class="pre">demo</span></code>文件夹下的<code class="docutils literal notranslate"><span class="pre">cls_result</span></code>文件夹下，如果在<code class="docutils literal notranslate"><span class="pre">demo</span></code>下没有发现该文件夹，不用担心，系统会自动建立。当然，您可以自己指定保存文件夹的名称。</p>
-<p>您也可以将收集的图片放在一个文件夹下，然后指定文件夹路径进行一组图片的批量推理。如在demo文件夹下新建一个cls_testIMG文件夹放图片，运行下面这段代码。</p>
+<p>您也可以将收集的图片放在一个文件夹下，然后指定文件夹路径进行一组图片的批量推理。如在<code class="docutils literal notranslate"><span class="pre">demo</span></code>文件夹下新建一个<code class="docutils literal notranslate"><span class="pre">cls_testIMG</span></code>文件夹放图片，运行下面这段代码。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">img</span> <span class="o">=</span> <span class="s1">&#39;cls_testIMG/&#39;</span> <span class="c1"># 指定进行推理的一组图片的路径</span>
 <span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;LeNet&#39;</span><span class="p">)</span> <span class="c1"># 实例化MMClassification模型</span>
 <span class="n">model</span><span class="o">.</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;../checkpoints/cls_model/hand_gray/latest.pth&#39;</span> <span class="c1"># 指定使用的模型权重文件</span>
 <span class="n">class_path</span> <span class="o">=</span> <span class="s1">&#39;../dataset/classes/cls_classes.txt&#39;</span> <span class="c1"># 指定训练集的路径</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">img</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">class_path</span><span class="o">=</span><span class="n">class_path</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">)</span> <span class="c1"># 在CPU上进行推理</span>
-<span class="n">model</span><span class="o">.</span><span class="n">print_result</span><span class="p">()</span> <span class="c1"># 输出结果</span>
+<span class="n">model</span><span class="o">.</span><span class="n">print_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="c1"># 输出结果</span>
 <span class="c1"># 同时您可以修改show的值来决定是否需要显示结果图片，此处默认显示结果图片</span>
 </pre></div>
 </div>
@@ -159,15 +159,38 @@
 <li><p><strong>参数详解</strong></p></li>
 </ul>
 <p>在MMClassification中对于<code class="docutils literal notranslate"><span class="pre">inference</span></code>函数还有其他的传入参数，在这里进行说明：</p>
-<p><code class="docutils literal notranslate"><span class="pre">device</span></code>：推理所用的设备，默认为<code class="docutils literal notranslate"><span class="pre">'cpu'</span></code>，如果电脑支持GPU，也可以将参数修改为<code class="docutils literal notranslate"><span class="pre">'cuda:0'</span></code>，使用GPU进行推理。</p>
+<p><code class="docutils literal notranslate"><span class="pre">device</span></code>：推理所用的设备，默认为<code class="docutils literal notranslate"><span class="pre">'cpu'</span></code>，如果电脑支持GPU，也可以将参数修改为<code class="docutils literal notranslate"><span class="pre">'cuda'</span></code>，使用GPU进行推理。</p>
 <p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>：指定使用的模型权重文件，默认参数为<code class="docutils literal notranslate"><span class="pre">None</span></code>，如果没有指定模型权重文件，那么我们将会使用默认的模型权重文件进行推理。</p>
 <p><code class="docutils literal notranslate"><span class="pre">image</span></code>：推理图片的路径。</p>
 <p><code class="docutils literal notranslate"><span class="pre">show</span></code>：布尔值，默认为<code class="docutils literal notranslate"><span class="pre">True</span></code>，表示推理后是否显示推理结果</p>
 <p><code class="docutils literal notranslate"><span class="pre">class_path</span></code>：指定训练集的路径，默认参数为<code class="docutils literal notranslate"><span class="pre">'../dataset/classes/cls_classes.txt'</span></code>。</p>
 <p><code class="docutils literal notranslate"><span class="pre">save_fold</span></code>：保存的图片名，数据结构为字符串，默认参数为<code class="docutils literal notranslate"><span class="pre">'cls_result'</span></code>，用户也可以定义为自己想要的名字。</p>
+<ul class="simple">
+<li><p><strong>快速推理</strong></p></li>
+</ul>
+<p>针对部分用户希望加快推理速度的需求，设计了<code class="docutils literal notranslate"><span class="pre">fast_inference</span></code>函数，主要方法是使用<code class="docutils literal notranslate"><span class="pre">load_checkpoint</span></code>提前加载权重文件。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">load_checkpoint</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">,</span><span class="n">class_path</span><span class="o">=</span><span class="n">class_path</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fast_inference</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">img</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>参数详解</strong></p></li>
+</ul>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">load_checkpoint</span></code>函数的传入参数：</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">device</span></code>：推理所用的设备，默认为<code class="docutils literal notranslate"><span class="pre">'cpu'</span></code>，如果电脑支持GPU，也可以将参数修改为<code class="docutils literal notranslate"><span class="pre">'cuda'</span></code>，使用GPU进行推理。</p>
+<p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>：指定使用的模型权重文件，默认参数为<code class="docutils literal notranslate"><span class="pre">None</span></code>，如果没有指定模型权重文件，那么我们将会使用默认的模型权重文件进行推理。</p>
+<p><code class="docutils literal notranslate"><span class="pre">class_path</span></code>：指定训练集的路径，默认参数为<code class="docutils literal notranslate"><span class="pre">'../dataset/classes/cls_classes.txt'</span></code>。</p>
+<ol class="arabic simple" start="2">
+<li><p><code class="docutils literal notranslate"><span class="pre">fast_inference</span></code>函数的传入参数：</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">image</span></code>：推理图片的路径。</p>
+<p><code class="docutils literal notranslate"><span class="pre">show</span></code>：布尔值，默认为<code class="docutils literal notranslate"><span class="pre">True</span></code>，表示推理后是否显示推理结果。</p>
+<p><code class="docutils literal notranslate"><span class="pre">save_fold</span></code>：保存的图片名，数据结构为字符串，默认参数为<code class="docutils literal notranslate"><span class="pre">'cls_result'</span></code>，用户也可以定义为自己想要的名字。</p>
 </section>
-<section id="id4">
-<h3>2.训练模型<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<section id="id3">
+<h3>2.训练模型<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
 <p>使用下面的代码即可简单体验MMClassification的训练过程，我们会为您进行详细的介绍。</p>
 <p>在运行代码之前，您需要先拥有一个数据集，这里我们为您提供经典的石头剪刀布分类数据集。</p>
 <p>数据集文件结构如下:</p>
@@ -222,7 +245,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">random_seed</span></code>：随机种子策略，默认为<code class="docutils literal notranslate"><span class="pre">0</span></code>即不使用，使用随机种子策略会减小模型算法结果的随机性。</p>
 <p><code class="docutils literal notranslate"><span class="pre">save_fold</span></code>：模型的保存路径，参数为<code class="docutils literal notranslate"><span class="pre">None</span></code>，默认保存路径为<code class="docutils literal notranslate"><span class="pre">./checkpoints/cls_model/</span></code>，如果不想模型保存在该目录下，可自己指定路径。</p>
 <p><code class="docutils literal notranslate"><span class="pre">distributed</span></code>：布尔值，表示是否在分布式环境中训练该模型，默认为<code class="docutils literal notranslate"><span class="pre">False</span></code>。</p>
-<p><code class="docutils literal notranslate"><span class="pre">device</span></code>：训练时所使用的设备，默认为<code class="docutils literal notranslate"><span class="pre">'cpu'</span></code>，如果电脑支持GPU，也可以将参数修改为<code class="docutils literal notranslate"><span class="pre">'cuda:0'</span></code>，使用GPU进行推理。</p>
+<p><code class="docutils literal notranslate"><span class="pre">device</span></code>：训练时所使用的设备，默认为<code class="docutils literal notranslate"><span class="pre">'cpu'</span></code>，如果电脑支持GPU，也可以将参数修改为<code class="docutils literal notranslate"><span class="pre">'cuda'</span></code>，使用GPU进行推理。</p>
 <p><code class="docutils literal notranslate"><span class="pre">metric</span></code>：验证指标，默认参数为<code class="docutils literal notranslate"><span class="pre">'accuracy'</span></code>，在进行模型评估时会计算分类准确率，数值越高说明模型性能越好，我们在运行完程序之后也会看到这个结果。</p>
 <p><code class="docutils literal notranslate"><span class="pre">save_best</span></code>：验证指标，默认参数为<code class="docutils literal notranslate"><span class="pre">'auto'</span></code>，在进行模型评估时会计算分类准确率，数值越高说明模型性能越好，运行完程序之后会将这个结果保存。</p>
 <p><code class="docutils literal notranslate"><span class="pre">optimizer</span></code>：进行迭代时的优化器，默认参数为<code class="docutils literal notranslate"><span class="pre">SGD</span></code>，<code class="docutils literal notranslate"><span class="pre">SGD</span></code>会在训练的过程中迭代计算mini-bath的梯度。</p>
@@ -234,8 +257,8 @@
 </figure>
 <p>而在<code class="docutils literal notranslate"><span class="pre">checkpoints\cls_model</span></code>文件夹中我们会发现多了两种文件，一个是<code class="docutils literal notranslate"><span class="pre">None.log.json</span></code>文件，它记录了我们模型在训练过程中的一些参数，比如说学习率<code class="docutils literal notranslate"><span class="pre">lr</span></code>，所用时间<code class="docutils literal notranslate"><span class="pre">time</span></code>，以及损失<code class="docutils literal notranslate"><span class="pre">loss</span></code>等；另一个文件是.pth文件，这个是我们在训练过程中所保存的模型。</p>
 </section>
-<section id="id5">
-<h3>3.继续训练<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<section id="id4">
+<h3>3.继续训练<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
 <p>在这一步中，我们会教您加载之前训练过的模型接着训练，如果您觉得之前训练的模型epoch数不够的话或者因为一些客观原因而不得不提前结束训练，相信下面的代码会帮到您。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;LeNet&#39;</span><span class="p">)</span> <span class="c1"># 初始化实例模型</span>
 <span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">3</span> <span class="c1"># 指定数据集中的类别数量</span>
@@ -250,7 +273,7 @@
 </section>
 <section id="sota">
 <h3>4.SOTA模型介绍<a class="headerlink" href="#sota" title="Permalink to this headline"></a></h3>
-<p>目前MMClassifiation支持的SOTA模型有LeNet、MobileNet、ResNet等，这些模型的作用和适用场景简介如下。</p>
+<p>目前MMClassifiation支持的SOTA模型有LeNet、MobileNet、ResNet18、ResNet50等，这些模型的作用和适用场景简介如下。</p>
 <ul class="simple">
 <li><p><strong>LeNet</strong></p></li>
 </ul>
@@ -271,7 +294,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="introduction.html" class="btn btn-neutral float-left" title="MMEdu模块应用详解" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="introduction.html" class="btn btn-neutral float-left" title="MMEdu功能简介和模块应用详解" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="mmdetection.html" class="btn btn-neutral float-right" title="物体检测模块：MMDetection" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

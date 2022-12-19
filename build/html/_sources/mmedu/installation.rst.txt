@@ -88,16 +88,24 @@ PyCharm环境路径配置如下图所示。
 
 用IDE打开解压路径下的py文件，如“cls_demo.py”，点击“运行”。运行效果应和pyzo一样。
 
-3.完整版安装：pip安装
+**在2022年9月后，不再维护MMEdu一键安装包，统一更新为XEdu。XEdu于22年9月在世界人工智能大会正式发布，分MMEdu、BaseML、BaseNN三个功能模块，除了一键安装包，同时实现以pip方式安装。**
+
+2.2 pip安装
+~~~~~~~~~~~
+
+当前，我们提供的MMEdu0.0.7版本的安装是基础版的pip安装包，可以使用如下命令安装：
+``pip install mmedu==0.0.7``\ 或\ ``pip install MMEdu==0.0.7``\ 。
+
+3.完整版安装之pip安装
 ---------------------
 
-1.准备工作
-~~~~~~~~~~
+3.1.准备工作
+~~~~~~~~~~~~
 
 强烈推荐你在Anaconda的基础上安装MMEdu，可以避免很多的版本冲突问题。
 
-1.1安装Anaconda
-^^^^^^^^^^^^^^^
+3.1.1安装Anaconda
+^^^^^^^^^^^^^^^^^
 
 若您已经安装好conda，该步骤可跳过。
 
@@ -113,11 +121,11 @@ PyCharm环境路径配置如下图所示。
 
 打开安装界面后，依次选择\ ``Next`` -> ``I Agree`` -> ``All Users`` 
 -> ``Next`` -> ``Next`` 
--> ``Add Anaconda3 to the system PATH environment variable`` ->
-``Install`` -> ``Next`` -> ``Next`` -> ``Finish``
+-> ``Add Anaconda3 to the system PATH environment variable`` -> 
+``Install`` -> ``Next`` -> ``Next`` -> ``Finish`` 
 
-1.2安装python编辑器
-^^^^^^^^^^^^^^^^^^^
+3.1.2安装python编辑器
+^^^^^^^^^^^^^^^^^^^^^
 
 若您已经安装好合适的python编辑器，该步骤可跳过。
 
@@ -133,9 +141,9 @@ PyCharm环境路径配置如下图所示。
 
 双击exe文件即可开始安装（一般下载完成后会自动打开安装界面无需点击exe文件，若没有自动打开安装页面再点击此exe文件）
 
-打开安装界面后，依次选择\ ``Install for me only`` -> ``Next`` ->
- ``Next`` -> ``Next`` -> ``Next`` -> ``Next`` -> ``Install`` ->
- ``Finish``
+打开安装界面后，依次选择\ ``Install for me only`` -> ``Next`` -> 
+``Next`` -> ``Next`` -> ``Next`` -> ``Next`` -> ``Install`` -> 
+``Finish``
 
 **运行**
 
@@ -146,8 +154,11 @@ PyCharm环境路径配置如下图所示。
 点击Thonny主界面右下角的Python版本号，可以选择对应的Python解释器，第一次配置点击\ ``Configure inter preter``\ ，弹出的窗口中，第一个下拉栏选择\ ``可选的python3解释器或虚拟环境``\ ，
 第二个下拉栏找到自己之前安装的anaconda环境中的python解释器位置。点击确认即可使用该python解释器。
 
-2.Linux安装MMEdu
-~~~~~~~~~~~~~~~~
+3.2安装MMEdu(CPU版本)
+~~~~~~~~~~~~~~~~~~~~~
+
+3.2.1Linux安装MMEdu
+^^^^^^^^^^^^^^^^^^^
 
 点击鼠标右键，打开终端。
 
@@ -161,14 +172,14 @@ PyCharm环境路径配置如下图所示。
 
 .. code:: powershell
 
-   $ conda create -n your_env_name python=3.6
+   $ conda create -n your_env_name python=3.8
    $ conda activate your_env_name
    $ pip install MMEdu
 
 注：请将命令中的“your_env_name”换成你喜欢的名称，如“mmedu”。
 
-3.Windows安装MMEdu
-~~~~~~~~~~~~~~~~~~
+3.2.2Windows安装MMEdu
+^^^^^^^^^^^^^^^^^^^^^
 
 同时按下win+r，输入cmd，回车，打开一个命令行窗口。
 
@@ -182,12 +193,54 @@ PyCharm环境路径配置如下图所示。
 
 .. code:: powershell
 
-   $ conda create -n your_env_name python=3.6
+   $ conda create -n your_env_name python=3.8
    $ conda activate your_env_name
    $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/index.html
 
-4.查看MMEdu版本
-~~~~~~~~~~~~~~~
+3.3安装MMEdu(GPU版本)
+~~~~~~~~~~~~~~~~~~~~~
+
+首先安装对应自己cuda版本的pytorch，安装命令可在以下网址中进行查询：https://pytorch.org/get-started/locally/
+
+可以在命令行中使用\ ``nvidia-smi``\ 指令查询自己的cuda版本。
+
+例如，若cuda版本为10.1，想要安装1.8.1版本的pytorch，则安装命令为：
+
+.. code:: powershell
+
+   $ pip install torch==1.8.1+cu101 torchvision==0.9.1+cu101 torchaudio==0.8.1 -f https://download.pytorch.org/whl/torch_stable.html
+
+其次，根据torch版本和cuda版本安装mmcv。
+
+.. code:: powershell
+
+   $ pip install mmcv-full -f https://download.openmmlab.com/mmcv/dist/{cu_version}/{torch_version}/index.html
+
+其中 ``{cu_version}`` 和 ``{torch_version}``
+根据自身需求替换成实际的版本号。
+
+例如想安装和 ``CUDA 10.1``\ 、\ ``PyTorch 1.8.0`` 兼容的
+``mmcv-full``\ ，使用如下替换过的命令
+
+.. code:: powershell
+
+   $ pip install mmcv-full==1.4.5 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.8.0/index.html
+
+最后安装MMEdu的rc版本，例如
+
+.. code:: powershell
+
+   $ pip install MMEdu==0.1.0rc0
+
+即可。
+
+4.完整版安装之docker容器镜像。
+------------------------------
+
+敬请期待
+
+5.查看MMEdu版本
+---------------
 
 打开python终端，执行以下命令即可查看MMEdu版本。当前最新版本是0.04。
 
@@ -196,8 +249,8 @@ PyCharm环境路径配置如下图所示。
 
 注：目前版本MMEdu仅支持CPU。
 
-5.卸载MMEdu库
-~~~~~~~~~~~~~
+6.卸载MMEdu库
+-------------
 
 如果MMEdu库出现异常情况，可以尝试使用如下命令卸载MMEdu然后再使用install命令安装。
 
@@ -206,7 +259,7 @@ PyCharm环境路径配置如下图所示。
    $ pip uninstall MMEdu
 
 使用示例
-~~~~~~~~
+--------
 
 推理：
 
@@ -265,9 +318,5 @@ PyCharm环境路径配置如下图所示。
 
 注意：内置examples文件夹下的案例仅供参考使用，请勿直接改写其中文件。应在用户自己的工作目录下新建文件，并参考examples中的写法。
 
-4.完整版安装：容器镜像安装
---------------------------
-
-敬请期待
-
 .. |image| image:: ../images/mmedu/MMEDU安装图4.png
+

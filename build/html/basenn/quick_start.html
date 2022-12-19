@@ -62,8 +62,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#id16">查看模型结构</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id17">附录</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#add">1. add()详细介绍</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">快速体验</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">附录</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id19">案例1. 搭建卷积神经网络实现手写体分类</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id25">案例2. 一维卷积神经网络文本情感识别</a></li>
 </ul>
 </li>
 </ul>
@@ -95,7 +97,7 @@
           <li><a href="../basenn.html">BaseNN入门</a> &raquo;</li>
       <li>BaseNN快速入门</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/basenn/quick_start.md.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/basenn/quick_start.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -116,7 +118,7 @@
 <section id="id3">
 <h2>体验<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
 <p>运行demo/BaseNN_demo.py。</p>
-<p>可以在命令行输入BaseNN查看安装的路径，在安装路径内，可以查看提供的更多demo案例。</p>
+<p>可以在命令行输入BaseNN查看安装的路径，在安装路径内，可以查看提供的更多demo案例。同时可查看附录。</p>
 </section>
 <section id="id4">
 <h2>训练<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
@@ -137,7 +139,7 @@
 <p>此处采用lvis鸢尾花数据集和MNIST手写体数据集作为示例。</p>
 <p>读取并载入鸢尾花数据：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 训练数据</span>
-<span class="n">train_path</span> <span class="o">=</span> <span class="s1">&#39;../dataset/iris/iris_training.csv&#39;</span> 
+<span class="n">train_path</span> <span class="o">=</span> <span class="s1">&#39;../dataset/iris/iris_training.csv&#39;</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">train_path</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span> <span class="c1"># 读取前四列，特征</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">train_path</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># 读取第五列，标签</span>
 <span class="c1"># 测试数据</span>
@@ -172,11 +174,11 @@
 
     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
-    
+
 <span class="c1"># 读取训练数据</span>
 <span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span> <span class="o">=</span> <span class="n">read_data</span><span class="p">(</span><span class="s1">&#39;../dataset/mnist/training_set&#39;</span><span class="p">)</span>
 <span class="c1"># 载入数据</span>
-<span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">)</span> 
+<span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -188,7 +190,7 @@
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;Softmax&#39;</span><span class="p">)</span> <span class="c1"># [120, 3]</span>
 </pre></div>
 </div>
-<p>以上使用<code class="docutils literal notranslate"><span class="pre">add()</span></code>方法添加层，参数<code class="docutils literal notranslate"><span class="pre">layer='Linear'</span></code>表示添加的层是线性层，<code class="docutils literal notranslate"><span class="pre">size=(4,10)</span></code>表示该层输入维度为4，输出维度为10，<code class="docutils literal notranslate"><span class="pre">activation='ReLU'</span></code>表示使用ReLU激活函数。更详细<code class="docutils literal notranslate"><span class="pre">add()</span></code>方法使用可见附录1。</p>
+<p>以上使用<code class="docutils literal notranslate"><span class="pre">add()</span></code>方法添加层，参数<code class="docutils literal notranslate"><span class="pre">layer='Linear'</span></code>表示添加的层是线性层，<code class="docutils literal notranslate"><span class="pre">size=(4,10)</span></code>表示该层输入维度为4，输出维度为10，<code class="docutils literal notranslate"><span class="pre">activation='ReLU'</span></code>表示使用ReLU激活函数。</p>
 </section>
 <section id="id9">
 <h3>4.模型训练<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
@@ -196,10 +198,11 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>参数<code class="docutils literal notranslate"><span class="pre">lr</span></code>为学习率， <code class="docutils literal notranslate"><span class="pre">epochs</span></code>为训练轮数，<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>为现有模型路径，当使用<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>参数时，模型基于一个已有的模型继续训练，不使用<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>参数时，模型从零开始训练。</p>
+<p>参数<code class="docutils literal notranslate"><span class="pre">lr</span></code>为学习率，
+<code class="docutils literal notranslate"><span class="pre">epochs</span></code>为训练轮数，<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>为现有模型路径，当使用<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>参数时，模型基于一个已有的模型继续训练，不使用<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>参数时，模型从零开始训练。</p>
 <section id="id10">
 <h4>4.1正常训练<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1"># [120, 10]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1"># [120, 5]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;Softmax&#39;</span><span class="p">)</span> <span class="c1"># [120, 3]</span>
@@ -271,30 +274,182 @@
 </section>
 </section>
 <section id="id17">
-<h2>附录<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h2>
-<section id="add">
-<h3>1. add()详细介绍<a class="headerlink" href="#add" title="Permalink to this headline"></a></h3>
-<p>此处以典型的LeNet5网络结构为例。注释标明了数据经过各层的尺寸变化。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Conv2D&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span><span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1"># [100, 3, 18, 18]</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;MaxPool&#39;</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># [100, 3, 9, 9]</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Conv2D&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1"># [100, 10, 7, 7]</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;AvgPool&#39;</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># [100, 10, 3, 3]</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1"># [100, 10]</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;Softmax&#39;</span><span class="p">)</span> <span class="c1"># [100,2]</span>
+<h2>快速体验<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h2>
+<p>体验BaseNN的最快速方式是通过OpenInnoLab平台。</p>
+<p>OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台，满足青少年的AI学习和创作需求，支持在线编程。在“项目”中查看更多，搜索”BaseNN“，即可找到所有与BaseNN相关的体验项目。</p>
+<p>AI项目工坊：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pjlab/ai/projects">https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pjlab/ai/projects</a></p>
+<p>（用Chorm浏览器打开效果最佳）</p>
+</section>
+<section id="id18">
+<h2>附录<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h2>
+<section id="id19">
+<h3>案例1. 搭建卷积神经网络实现手写体分类<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h3>
+<p>本案例来源于《人工智能初步》人教地图72页。</p>
+<section id="id20">
+<h4>项目核心功能和实现效果展示：<a class="headerlink" href="#id20" title="Permalink to this headline"></a></h4>
+<p>使用BaseNN库实现卷积神经网络搭建，完成手写图分类，数据集为MNIST数据集。</p>
+<figure class="align-default">
+<img alt="用卷积神经网络实现手写体分类项目效果图片.PNG" src="https://www.openinnolab.org.cn/webdav/635638d69ed68060c638f979/638028ff777c254264da4e6f/current/assets/%E7%94%A8%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AE%9E%E7%8E%B0%E6%89%8B%E5%86%99%E4%BD%93%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE%E6%95%88%E6%9E%9C%E5%9B%BE%E7%89%87.PNG" />
+</figure>
+</section>
+<section id="id21">
+<h4>实现步骤：<a class="headerlink" href="#id21" title="Permalink to this headline"></a></h4>
+<section id="id22">
+<span id="id23"></span><h5>1）模型训练<a class="headerlink" href="#id22" title="Permalink to this headline"></a></h5>
+<p>从零开始训练</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入BaseNN库、os、cv2、numpy库，os、cv2、numpy库用于数据处理</span>
+<span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># 定义读取训练数据的函数</span>
+<span class="k">def</span> <span class="nf">read_data</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">dir_list</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+    <span class="c1"># 将顺序读取的文件保存到该list中</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">dir_list</span><span class="p">:</span>
+        <span class="n">tpath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">item</span><span class="p">)</span>
+
+        <span class="c1"># print(tpath)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">tpath</span><span class="p">):</span>
+            <span class="c1"># print(item)</span>
+            <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tpath</span><span class="p">,</span><span class="n">i</span><span class="p">))</span>
+            <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">img</span><span class="p">,(</span><span class="mi">32</span><span class="p">,</span><span class="mi">32</span><span class="p">))</span>
+            <span class="n">imGray</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
+            <span class="c1"># print(img)</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">imGray</span><span class="p">)</span>
+            <span class="n">label</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">item</span><span class="p">))</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+
+<span class="c1"># 读取训练数据</span>
+<span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span> <span class="o">=</span> <span class="n">read_data</span><span class="p">(</span><span class="s1">&#39;/data/QX8UBM/mnist_sample/training_set&#39;</span><span class="p">)</span>
+<span class="c1"># 声明模型</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
+<span class="c1"># 载入数据</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">)</span>
+
+<span class="c1"># 搭建模型</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Conv2D&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span><span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;AvgPool&#39;</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Conv2D&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;AvgPool&#39;</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">84</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">84</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;Softmax&#39;</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;SGD&#39;</span><span class="p">)</span> <span class="c1"># 设定优化器</span>
+
+<span class="c1"># 设置模型保存的路径</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/mn_ckpt1&#39;</span>
+<span class="c1"># 模型训练</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>添加层的方法为<code class="docutils literal notranslate"><span class="pre">add(self,</span> <span class="pre">layer=None,</span> <span class="pre">activation=None,</span> <span class="pre">optimizer='SGD',</span> <span class="pre">**kw)</span></code>，</p>
-<p>参数:</p>
-<p>​	layer：层的类型，可选值包括Conv2D, MaxPool, AvgPool, Linear。</p>
-<p>​	activation：激活函数类型，可选值包括ReLU，Softmax。</p>
-<p>​	optimizer：为优化器类型，默认值为SGD，可选值包括SGD，Adam，Adagrad，ASGD。</p>
-<p>​	kw：关键字参数，包括与size相关的各种参数，常用的如size=(x,y)，x为输入维度，y为输出维度；					                     			kernel_size=(a,b)， (a,b)表示核的尺寸。</p>
-<p>以下具体讲述各种层：</p>
-<p>Conv2D：卷积层（二维），需给定size，kernel_size。</p>
-<p>MaxPool：最大池化层，需给定kernel_size。</p>
-<p>AvgPool：平均池化层，需给定kernel_size。</p>
-<p>Linear：线性层，需给定size。</p>
+<p>继续训练：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 继续训练</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/mn_ckpt2&#39;</span> <span class="c1"># 设置模型保存的新路径</span>
+<span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/mn_ckpt1/basenn.pkl&#39;</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id24">
+<h5>2）模型推理<a class="headerlink" href="#id24" title="Permalink to this headline"></a></h5>
+<p>读取测试集所有图片进行推理：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 用测试集查看模型效果</span>
+<span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span> <span class="o">=</span> <span class="n">read_data</span><span class="p">(</span><span class="s1">&#39;/data/QX8UBM/mnist_sample/test_set&#39;</span><span class="p">)</span> <span class="c1"># 读取测试集数据</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">test_x</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">print_result</span><span class="p">(</span><span class="n">res</span><span class="p">)</span> <span class="c1"># 输出字典格式结果</span>
+</pre></div>
+</div>
+<p>读取某张图片进行推理：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 用测试集某张图片查看模型效果</span>
+<span class="n">img</span> <span class="o">=</span> <span class="s1">&#39;/data/QX8UBM/mnist_sample/test_set/0/0.jpg&#39;</span> <span class="c1"># 指定一张图片</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">im</span><span class="p">,(</span><span class="mi">32</span><span class="p">,</span><span class="mi">32</span><span class="p">))</span>
+<span class="n">imGray</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">imGray</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">print_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="c1"># 输出字典格式结果</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="id25">
+<h3>案例2. 一维卷积神经网络文本情感识别<a class="headerlink" href="#id25" title="Permalink to this headline"></a></h3>
+<p>本案例来源于《人工智能初步》人教地图版72-76页。</p>
+<section id="id26">
+<h4>项目核心功能：<a class="headerlink" href="#id26" title="Permalink to this headline"></a></h4>
+<p>完成了搭建一维卷积神经网络实现文本感情识别分类，代码使用BaseNN库实现，同时结合了Embedding层对单词文本进行向量化。</p>
+<p>数据集是imdb电影评论和情感分类数据集，来自斯坦福AI实验室平台，<a class="reference external" href="http://ai.stanford.edu/~amaas/data/sentiment/">http://ai.stanford.edu/~amaas/data/sentiment/</a>。</p>
+</section>
+<section id="id27">
+<span id="id28"></span><h4>实现步骤：<a class="headerlink" href="#id27" title="Permalink to this headline"></a></h4>
+<section id="id29">
+<span id="id30"></span><h5>1）模型训练<a class="headerlink" href="#id29" title="Permalink to this headline"></a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入BaseNN库、numpy库用于数据处理</span>
+<span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="c1"># 声明模型</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span> <span class="c1"># 有Embedding层</span>
+<span class="c1"># 读取训练集数据</span>
+<span class="n">train_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;imdb/train_data.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="n">train_label</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;imdb/train_label.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="c1"># 模型载入数据</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">train_label</span><span class="p">)</span>
+
+<span class="c1"># 搭建模型</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Embedding&#39;</span><span class="p">,</span> <span class="n">vocab_size</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">embedding_dim</span> <span class="o">=</span> <span class="mi">32</span><span class="p">)</span>  <span class="c1"># Embedding层，对实现文本任务十分重要，将one-hot编码转化为相关向量 输入大小（batch_size,512）输出大小（batch_size,32,510）</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Conv1D&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">),</span><span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1">#一维卷积 输入大小（batch_size,32,510） 输出大小（batch_size,32,508）</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Conv1D&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span><span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1">#一维卷积 输入大小（batch_size,32,508） 输出大小（batch_size,64,506）</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Mean&#39;</span><span class="p">)</span> <span class="c1">#全局池化 输入大小（batch_size,64,508）输出大小（batch_size,64）</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">128</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1">#全连接层 输入大小（batch_size,64）输出大小（batch_size,128）</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">)</span> <span class="c1">#全连接层 输入大小（batch_size,128）输出大小（batch_size,2）</span>
+
+<span class="c1"># 模型超参数设置和网络训练（训练时间较长, 可调整最大迭代次数减少训练时间）</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;Adam&#39;</span><span class="p">)</span> <span class="c1">#&#39;SGD&#39; , &#39;Adam&#39; , &#39;Adagrad&#39; , &#39;ASGD&#39; 内置不同优化器</span>
+<span class="n">learn_rate</span> <span class="o">=</span> <span class="mf">0.001</span> <span class="c1">#学习率</span>
+<span class="n">max_epoch</span> <span class="o">=</span> <span class="mi">150</span> <span class="c1"># 最大迭代次数</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;mn_ckpt&#39;</span> <span class="c1"># 模型保存路径</span>
+<span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;mn_ckpt/cov_basenn.pkl&#39;</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="n">learn_rate</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="n">max_epoch</span><span class="p">)</span> <span class="c1"># 直接训练</span>
+</pre></div>
+</div>
+</section>
+<section id="id31">
+<span id="id32"></span><h5>2）模型推理<a class="headerlink" href="#id31" title="Permalink to this headline"></a></h5>
+<p>读取测试集所有数据进行推理：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#读取测试集数据</span>
+<span class="n">test_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;imdb/test_data.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="n">test_label</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;imdb/test_label.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">train_data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>用单个数据进行推理：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 用测试集单个数据查看模型效果</span>
+<span class="n">single_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;imdb/test_data.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">max_rows</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">single_label</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;imdb/test_label.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">max_rows</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">label</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;差评&#39;</span><span class="p">,</span><span class="s1">&#39;好评&#39;</span><span class="p">]</span>
+<span class="n">single_data</span> <span class="o">=</span> <span class="n">single_data</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">512</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">single_data</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;评论对电影的评价是：&#39;</span><span class="p">,</span> <span class="n">label</span><span class="p">[</span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span> <span class="c1"># 该评论文本数据可见single_data.txt</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 </section>
 </section>

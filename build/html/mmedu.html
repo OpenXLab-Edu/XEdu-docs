@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="MMEdu快速入门" href="mmedu/quick_start.html" />
-    <link rel="prev" title="XEdu大事记" href="about/milestones.html" /> 
+    <link rel="prev" title="XEdu安装和下载" href="about/installation.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,7 +44,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">MMEdu入门</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="mmedu/quick_start.html">MMEdu快速入门</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mmedu/installation.html">MMEdu安装和下载</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mmedu/introduction.html">MMEdu模块应用详解</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmedu/introduction.html">MMEdu功能简介和模块应用详解</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mmedu/mmclassification.html">图像分类模块：MMClassification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mmedu/mmdetection.html">物体检测模块：MMDetection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mmedu/mmediting.html">图像处理模块：MMEditing</a></li>
@@ -87,77 +87,75 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="mmedu/quick_start.html">MMEdu快速入门</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="mmedu/quick_start.html#id1">1.MMEdu是什么？</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mmedu/quick_start.html#id2">2.MMEdu安装</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mmedu/quick_start.html#demo">3.体验demo代码</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mmedu/quick_start.html#id3">4.模型训练</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mmedu/quick_start.html#id4">5.模型推理</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mmedu/quick_start.html#ai">6.部署AI应用</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="mmedu/quick_start.html#id5">1.准备工作</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mmedu/quick_start.html#opencv">2.借助OpenCV识别摄像头画面</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mmedu/quick_start.html#pywebioweb">3.借助PyWebIO部署Web应用</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mmedu/quick_start.html#id6">4.连接开源硬件开发智能作品</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmedu/quick_start.html#id2">2.体验MMEdu</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mmedu/quick_start.html#openinnolab">2.1访问OpenInnoLab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mmedu/quick_start.html#id3">2.2 克隆项目</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mmedu/quick_start.html#id4">2.3 加载数据集</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mmedu/quick_start.html#id5">2.4 训练模型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mmedu/quick_start.html#id6">2.5 模型推理</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="mmedu/quick_start.html#id7">2.6 继续训练</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmedu/quick_start.html#id8">3.MMEdu的简要总结</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="mmedu/installation.html">MMEdu安装和下载</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="mmedu/installation.html#id1">1.安装方式介绍</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mmedu/installation.html#id2">2.基础版的安装</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="mmedu/installation.html#id3">2.1 一键安装包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mmedu/installation.html#pip">2.2 pip安装</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="mmedu/installation.html#pip">3.完整版安装：pip安装</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="mmedu/installation.html#id4">1.准备工作</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="mmedu/installation.html#anaconda">1.1安装Anaconda</a></li>
-<li class="toctree-l4"><a class="reference internal" href="mmedu/installation.html#python">1.2安装python编辑器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmedu/installation.html#id4">3.完整版安装之pip安装</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mmedu/installation.html#id5">3.1.准备工作</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/installation.html#anaconda">3.1.1安装Anaconda</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/installation.html#python">3.1.2安装python编辑器</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="mmedu/installation.html#linuxmmedu">2.Linux安装MMEdu</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mmedu/installation.html#windowsmmedu">3.Windows安装MMEdu</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mmedu/installation.html#id5">4.查看MMEdu版本</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mmedu/installation.html#id6">5.卸载MMEdu库</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mmedu/installation.html#id7">使用示例</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mmedu/installation.html#id8">更多示例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mmedu/installation.html#mmedu-cpu">3.2安装MMEdu(CPU版本)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/installation.html#linuxmmedu">3.2.1Linux安装MMEdu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/installation.html#windowsmmedu">3.2.2Windows安装MMEdu</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="mmedu/installation.html#id9">4.完整版安装：容器镜像安装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mmedu/installation.html#mmedu-gpu">3.3安装MMEdu(GPU版本)</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="mmedu/introduction.html">MMEdu模块应用详解</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="mmedu/introduction.html#mmeduai">1.MMEdu和常见AI框架的比较</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mmedu/installation.html#docker">4.完整版安装之docker容器镜像。</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmedu/installation.html#id6">5.查看MMEdu版本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmedu/installation.html#id7">6.卸载MMEdu库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmedu/installation.html#id8">使用示例</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mmedu/installation.html#id9">更多示例</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mmedu/introduction.html">MMEdu功能简介和模块应用详解</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mmedu/introduction.html#id1">1.MMEdu功能简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmedu/introduction.html#mmeduai">2.MMEdu和常见AI框架的比较</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="mmedu/introduction.html#mmeduopencv">1）MMEdu和OpenCV的比较</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mmedu/introduction.html#mmedumediapipe">2）MMEdu和MediaPipe的比较</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mmedu/introduction.html#mmedukeras">3）MMEdu和Keras的比较</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mmedu/introduction.html#mmedufastai">4）MMEdu和FastAI的比较</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="mmedu/introduction.html#id1">3.MMEdu的内置模块概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmedu/introduction.html#id2">3.MMEdu的内置模块概述</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mmedu/introduction.html#mmedusota">4.MMEdu的内置SOTA模型</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mmedu/introduction.html#id2">5.数据集支持</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mmedu/introduction.html#id3">5.数据集支持</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="mmedu/introduction.html#imagenet">1.ImageNet</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="mmedu/introduction.html#id3">第一步：整理图片</a></li>
-<li class="toctree-l4"><a class="reference internal" href="mmedu/introduction.html#id4">第二步：划分训练集、验证集和测试集</a></li>
-<li class="toctree-l4"><a class="reference internal" href="mmedu/introduction.html#id5">第三步：生成标签文件</a></li>
-<li class="toctree-l4"><a class="reference internal" href="mmedu/introduction.html#id6">第四步：给数据集命名</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/introduction.html#id4">第一步：整理图片</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/introduction.html#id5">第二步：划分训练集、验证集和测试集</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/introduction.html#id6">第三步：生成标签文件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/introduction.html#id7">第四步：给数据集命名</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/introduction.html#id8">快速整理数据集的方式</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="mmedu/introduction.html#coco">2.COCO</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="mmedu/introduction.html#id7">第一步、整理图片</a></li>
-<li class="toctree-l4"><a class="reference internal" href="mmedu/introduction.html#id9">第二步、标注图片</a></li>
-<li class="toctree-l4"><a class="reference internal" href="mmedu/introduction.html#id10">第三步、转换成COCO标注格式</a></li>
-<li class="toctree-l4"><a class="reference internal" href="mmedu/introduction.html#id11">第四步、按照目录结构整理文件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/introduction.html#id9">第一步、整理图片</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/introduction.html#id11">第二步、标注图片</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/introduction.html#id12">第三步、转换成COCO标注格式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmedu/introduction.html#id13">第四步、按照目录结构整理文件</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="mmedu/introduction.html#id12">6.一键安装包目录详解</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="mmedu/introduction.html#id13">MMEdu目录：</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mmedu/introduction.html#checkpoints">checkpoints目录：</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mmedu/introduction.html#dataset">dataset目录：</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mmedu/introduction.html#demo">demo目录：</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mmedu/introduction.html#howtostart">HowToStart目录：</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mmedu/introduction.html#tools">tools目录：</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mmedu/introduction.html#visualization">visualization目录：</a></li>
 </ul>
 </li>
 </ul>
@@ -165,9 +163,9 @@
 <li class="toctree-l1"><a class="reference internal" href="mmedu/mmclassification.html">图像分类模块：MMClassification</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="mmedu/mmclassification.html#id1">简介</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mmedu/mmclassification.html#id2">使用说明</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="mmedu/mmclassification.html#id3">1.模型推理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mmedu/mmclassification.html#id4">2.训练模型</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mmedu/mmclassification.html#id5">3.继续训练</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mmedu/mmclassification.html#cpu">1.直接推理（支持CPU）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mmedu/mmclassification.html#id3">2.训练模型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mmedu/mmclassification.html#id4">3.继续训练</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mmedu/mmclassification.html#sota">4.SOTA模型介绍</a></li>
 </ul>
 </li>
@@ -193,7 +191,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="about/milestones.html" class="btn btn-neutral float-left" title="XEdu大事记" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="about/installation.html" class="btn btn-neutral float-left" title="XEdu安装和下载" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="mmedu/quick_start.html" class="btn btn-neutral float-right" title="MMEdu快速入门" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

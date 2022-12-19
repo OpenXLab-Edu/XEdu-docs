@@ -12,15 +12,15 @@ GitHub：https://github.com/OpenXLab-Edu/OpenMMLab-Edu
 
 ## 2.体验MMEdu
 
-MMEdu有多种安装方式，可以通过Pip方式安装，也可以使用一键安装包。体验MMEdu的最快速方式是通过InnoLab平台。
+MMEdu有多种安装方式，可以通过Pip方式安装，也可以使用一键安装包。体验MMEdu的最快速方式是通过OpenInnoLab平台。
 
-### 2.1访问InnoLab
+### 2.1访问OpenInnoLab
 
-InnoLab为上海人工智能实验室推出的青少年AI学习平台。在“AI项目工坊 - 人工智能工坊”中，查找”MMEdu“，即可找到所有与MMEdu相关的体验项目。
+OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台，满足青少年的AI学习和创作需求，支持在线编程。在“AI项目工坊 - 人工智能工坊”中，查找”MMEdu“，即可找到所有与MMEdu相关的体验项目。
 
-AI项目工坊：https://www.openinnolab.org.cn/pjLab/projects/channel
+AI项目工坊：https://www.openinnolab.org.cn/pjLab/projects/channel（用Chorm浏览器打开效果最佳）
 
-<img src="../images/mmedu/quick_start_01.png" title="" alt="image" width="568">
+![image](../images/mmedu/quick_start_01.png)
 
 下面以“手写体识别”为例来介绍从零开始训练一个AI模型的过程。
 
@@ -36,11 +36,9 @@ AI项目工坊：https://www.openinnolab.org.cn/pjLab/projects/channel
 
 - 在数据集上方点击“右键”，选择“复制文件路径”。接下来，你就可以通过这个路径来访问你的数据集。比如，我得到的文件路径是：`/data/QX8UBM/mnist_sample`。
 
-<img title="" src="file:///Users/xiezuoru/Documents/GitHub/XEdu-docs/source/images/mmedu/quick_start_02.png" alt="" width="312">
+![image](../images/mmedu/quick_start_02.png)
 
-
-
-<img src="file:///Users/xiezuoru/Documents/GitHub/XEdu-docs/source/images/mmedu/quick_start_03.png" title="" alt="" width="314">
+![image](../images/mmedu/quick_start_03.png)
 
 **新手提问1：** 我要使用自己的数据集怎么办？为什么会这么麻烦？
 
@@ -91,10 +89,12 @@ checkpoint = './latest.pth'
 model.train(epochs=10, validate=True, checkpoint=checkpoint)
 ```
 
-**注意**：“继续训练”和“普通训练”的区别就在于model.train()函数中多了一个参数，即`checkpoint=checkpoint`。checkpoint的路径就来自之前训练的权重文件。
+**注意**：“继续训练”和“普通训练”的区别就在于`model.train()`函数中多了一个参数，即`checkpoint=checkpoint`。checkpoint的路径就来自之前训练的权重文件。
 
- 
+更多案例参考详见项目集区域，这里的AI特色工具专区展示了一些有助于深度学习和机器学习入门和进阶的案例。 当然你也可以在AI项目工坊创建自己的项目，做自己的人工智能案例。
 
-# 3.MMEdu的简要总结
+![image](../images/mmedu/XEdu项目集.png)
 
-MMEdu是针对青少年学习AI技术而设计的，其前身就是大名鼎鼎的OpenMMLab。MMEdu的语法非常简单，几句话就能完成训练和推理。如果你下载了一键安装包，还可以使用easytrain的辅助工具。有了MMEdu，你会发现AI模型训练原来这么简单。
+## 3.MMEdu的简要总结
+
+MMEdu是针对青少年学习AI技术而设计的，其前身就是大名鼎鼎的OpenMMLab。MMEdu的语法非常简单，几句话就能完成训练和推理。如果你下载了一键安装包，还可以使用Easytrain等可视化辅助工具。有了MMEdu，你会发现AI模型训练原来这么简单。
