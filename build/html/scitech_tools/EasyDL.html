@@ -138,6 +138,7 @@
 </section>
 <section id="easyapi">
 <h3>2.3EasyAPI<a class="headerlink" href="#easyapi" title="Permalink to this headline"></a></h3>
+<p>EasyAPI是XEdu提供的无代码接口部署工具系列。利用EasyAPI，可以将推理侧从边缘硬件设备上剥离开，在PC机或计算节点上启动EasyAPI，即可供同一局域网下的边缘硬件设备调用，用户也可以在公网环境中启动EasyAPI，并打开相应的安全组，即可供公网设备调用该接口服务。该方案增加了数据传输的时间，节省了由于边缘设备算力有限带来了计算消耗。</p>
 <p>①实现了无代码服务部署可视化界面</p>
 <p>②支持以下选项：</p>
 <ul class="simple">
@@ -212,16 +213,16 @@
 <span id="id6"></span><h3>3.3EasyAPI<a class="headerlink" href="#easyapi-1" title="Permalink to this headline"></a></h3>
 <p>EasyAPI界面打开之后在下拉框中选择问题类型为分类或者检测。</p>
 <p>在选择了问题类型之后，下面的“算法类型”也会对应的更改。</p>
-<p>选择权重文件和类别文件。</p>
+<p>选择权重文件、类别文件、推理结果保存路径、推理所用设备。</p>
 <p>点击生成代码会在上方Code呈现代码，有需要的用户也可以复制到本地运行。</p>
 <figure class="align-default">
 <img alt="../_images/API_code.png" src="../_images/API_code.png" />
 </figure>
-<p>运行代码会看到EasyTrain界面打开的同时运行的cmd.exe框内会有呈现运行后台，此时点击打开网页。</p>
+<p>运行代码会看到EasyAPI界面打开的同时运行的cmd.exe框内会有呈现运行后台，此时点击打开网页。</p>
 <figure class="align-default">
 <img alt="../_images/API运行后台.png" src="../_images/API运行后台.png" />
 </figure>
-<p>网页界面如下图所示。用户可指定类别的图片进行识别。</p>
+<p>网页界面如下图所示。用户可指定类别的图片进行识别。此外，EasyAPI还提供了一个接口地址，可通过POST请求进行图像发送-服务器推理识别-结果放回的数据通路。如果手机和启动EasyAPI服务的电脑在同一wifi下，手机端还可以直接输入可视化网页连接来访问该服务，可以实现一个手机拍照，识别推理结果返回显示的功能。</p>
 <figure class="align-default">
 <img alt="../_images/API测试.png" src="../_images/API测试.png" />
 </figure>

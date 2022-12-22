@@ -170,9 +170,11 @@ model.print_model()
 
 无参数。
 
-### 9.网络中特征（图片）可视化
+### 9.网络中特征可视化
 
-BaseNN内置`visual_feature`函数可查看图片在网络中传递。需要指定输入图片和已经训练好的模型。
+BaseNN内置`visual_feature`函数可查看数据在网络中传递。
+
+如输入数据为图片，指定图片和已经训练好的模型，可生成一张展示逐层网络特征传递的图片。
 
 ```
 import cv2
@@ -183,6 +185,57 @@ path = 'test_IMG/single_data.jpg'
 img = cv2.imread(path,flags = 0)          # 图片数据读取
 model.visual_feature(img,in1img = True)   # 特征的可视化
 ```
+
+如输入数据为一维数据，指定数据和已经训练好的模型，可生成一个txt文件展示经过各层后的输出。
+
+```
+import numpy as np
+from BaseNN import nn
+model = nn()
+model.load('checkpoints/iris_ckpt/basenn.pkl')          # 保存的已训练模型载入
+data = np.array(test_x[0]) # 指定数据,如测试数据的一行
+model.visual_feature(data)   # 特征的可视化
+```
+
+### 10.指定随机数种子（选）
+
+默认初始化是随机的，每次训练结果都不一样。可以可使用`set_seed()`函数设定随机数种子，使得训练结果可被其他人复现。一旦指定，则每次训练结果一致。使用方法如下：
+
+```Shell
+model = nn()
+model.set_seed(1235)
+model.add(...)
+...
+model.train(...)
+```
+
+注：设定随机数种子`set_seed()`应当在搭建网络`add()`之前。
+
+### 11.指定损失函数（选）
+
+默认的损失函数是交叉熵损失函数，允许选择不同的损失函数，支持的损失函数见附录。自选损失函数方法如下：
+
+```
+model.train(...,loss="CrossEntropyLoss")
+```
+
+### 12.指定评价指标（选）
+
+默认的默认为准确率，允许选择其他的评价指标。支持的评价指标：acc（准确率），mae（平均绝对误差），mse（均方误差）。
+
+自选评价指标方法如下：
+
+```
+model.train(...,metrics=["mse"])
+```
+
+因此针对不同的分类或回归任务，可指定不同的损失函数和评价指标。
+
+例：
+
+回归：`model.train(...,loss="SmoothL1Loss", metrics=["mae"])` 
+
+分类：`model.train(...,loss="CrossEntropyLoss",metrics=["acc"])`
 
 ## 附录
 
@@ -222,3 +275,28 @@ AvgPool：平均池化层，需给定kernel_size。
 
 Linear：线性层，需给定size。
 
+#### 2. 支持的损失函数
+
+| 序号 | 损失函数                                                     |
+| ---- | :----------------------------------------------------------- |
+| 1    | [nn.L1Loss](https://pytorch.org/docs/stable/generated/torch.nn.L1Loss.html#torch.nn.L1Loss) |
+| 2    | [nn.MSELoss](https://pytorch.org/docs/stable/generated/torch.nn.MSELoss.html#torch.nn.MSELoss) |
+| 3    | [nn.CrossEntropyLoss](https://pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html#torch.nn.CrossEntropyLoss) |
+| 4    | [nn.CTCLoss](https://pytorch.org/docs/stable/generated/torch.nn.CTCLoss.html#torch.nn.CTCLoss) |
+| 5    | [nn.NLLLoss](https://pytorch.org/docs/stable/generated/torch.nn.NLLLoss.html#torch.nn.NLLLoss) |
+| 6    | [nn.PoissonNLLLoss](https://pytorch.org/docs/stable/generated/torch.nn.PoissonNLLLoss.html#torch.nn.PoissonNLLLoss) |
+| 7    | [nn.GaussianNLLLoss](https://pytorch.org/docs/stable/generated/torch.nn.GaussianNLLLoss.html#torch.nn.GaussianNLLLoss) |
+| 8    | [nn.KLDivLoss](https://pytorch.org/docs/stable/generated/torch.nn.KLDivLoss.html#torch.nn.KLDivLoss) |
+| 9    | [nn.BCELoss](https://pytorch.org/docs/stable/generated/torch.nn.BCELoss.html#torch.nn.BCELoss) |
+| 10   | [nn.BCEWithLogitsLoss](https://pytorch.org/docs/stable/generated/torch.nn.BCEWithLogitsLoss.html#torch.nn.BCEWithLogitsLoss) |
+| 11   | [nn.MarginRankingLoss](https://pytorch.org/docs/stable/generated/torch.nn.MarginRankingLoss.html#torch.nn.MarginRankingLoss) |
+| 12   | [nn.HingeEmbeddingLoss](https://pytorch.org/docs/stable/generated/torch.nn.HingeEmbeddingLoss.html#torch.nn.HingeEmbeddingLoss) |
+| 13   | [nn.MultiLabelMarginLoss](https://pytorch.org/docs/stable/generated/torch.nn.MultiLabelMarginLoss.html#torch.nn.MultiLabelMarginLoss) |
+| 14   | [nn.HuberLoss](https://pytorch.org/docs/stable/generated/torch.nn.HuberLoss.html#torch.nn.HuberLoss) |
+| 15   | [nn.SmoothL1Loss](https://pytorch.org/docs/stable/generated/torch.nn.SmoothL1Loss.html#torch.nn.SmoothL1Loss) |
+| 16   | [nn.SoftMarginLoss](https://pytorch.org/docs/stable/generated/torch.nn.SoftMarginLoss.html#torch.nn.SoftMarginLoss) |
+| 17   | [nn.MultiLabelSoftMarginLoss](https://pytorch.org/docs/stable/generated/torch.nn.MultiLabelSoftMarginLoss.html#torch.nn.MultiLabelSoftMarginLoss) |
+| 18   | [nn.CosineEmbeddingLoss](https://pytorch.org/docs/stable/generated/torch.nn.CosineEmbeddingLoss.html#torch.nn.CosineEmbeddingLoss) |
+| 19   | [nn.MultiMarginLoss](https://pytorch.org/docs/stable/generated/torch.nn.MultiMarginLoss.html#torch.nn.MultiMarginLoss) |
+| 20   | [nn.TripletMarginLoss](https://pytorch.org/docs/stable/generated/torch.nn.TripletMarginLoss.html#torch.nn.TripletMarginLoss) |
+| 21   | [nn.TripletMarginWithDistanceLoss](https://pytorch.org/docs/stable/generated/torch.nn.TripletMarginWithDistanceLoss.html#torch.nn.TripletMarginWithDistanceLoss) |
