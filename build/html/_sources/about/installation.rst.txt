@@ -12,7 +12,7 @@ XEdu安装和下载
 2.1一键安装包下载和安装
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-下载工具：XEdu公测版1.0.exe
+下载工具：XEdu一键安装包
 
 下载方式
 
@@ -25,14 +25,7 @@ XEdu安装和下载
 
 目录结构图
 
-第二步：进入XEdu文件夹，双击“点我初始化.bat”完成初始化（不要以管理员身份运行）。
-
-.. figure:: ../images/about/xedu初始化.png
-
-
-环境部署界面
-
-第三步：您可以根据个人喜好，选择自己习惯的IDE。
+第二步：您可以根据个人喜好，选择自己习惯的IDE。
 
 1）使用XEdu自带的pyzo。
 
@@ -46,7 +39,16 @@ Pyzo界面图
 2）使用MMEdu自带的Jupyter。
 
 Jupyter
-Notebook是基于网页的用于交互计算的应用程序。其可被应用于全过程计算：开发、文档编写、运行代码和展示结果。它相对简单，对用户也更加友好，适合初学者。打开根目录下的“jupyter编辑器.bat”，即自动启动浏览器并显示界面，如下图所示。
+Notebook是基于网页的用于交互计算的应用程序。其可被应用于全过程计算：开发、文档编写、运行代码和展示结果。它相对简单，对用户也更加友好，适合初学者。
+
+打开jupyter，需先双击“jupyter初始化.bat”完成初始化（不要以管理员身份运行）。初始化完成方可使用jupyter。
+
+.. figure:: ../images/about/xedu初始化.png
+
+
+初始化界面
+
+初始化完成（初始化界面自动消失）后打开根目录下的“jupyter编辑器.bat”，即自动启动浏览器并显示界面，如下图所示。
 
 .. figure:: ../images/about/jupyter运行.png
 
@@ -84,7 +86,6 @@ XEdu一键安装包内置了一套EasyDL系列工具，分“EasyTrain.bat”、
 
 .. figure:: ../images/about/EasyTrain.png
 
-
 ②双击“EasyInference.bat”，根据界面完成推理；
 
 .. figure:: ../images/about/EasyInference.png
@@ -94,6 +95,8 @@ XEdu一键安装包内置了一套EasyDL系列工具，分“EasyTrain.bat”、
 
 .. figure:: ../images/about/EasyAPI.png
 
+
+更多EasyDL系列工具详见\ `相关科创工具-EasyDL系列工具 <https://xedu.readthedocs.io/zh/latest/scitech_tools/EasyDL.html>`__\ 。
 
 2.2一键安装包目录详解
 ~~~~~~~~~~~~~~~~~~~~~
@@ -115,9 +118,9 @@ XEdu的根目录结构如下：
    ├── EasyInference.bat
    ├── EasyTrain.bat
    ├── jupyter编辑器.bat
+   ├── jupyter初始化.bat
    ├── pyzo编辑器.exe
    ├── XEdu1.0简介.pdf
-   ├── 点我初始化.bat
 
 接下来对每层子目录进行介绍。
 
@@ -171,6 +174,10 @@ notebook”运行，可运行根目录的“pyzo编辑器.exe”和“jupyter编
 
 双击打开即运行jupyter notebook。
 
+**jupyter初始化.bat：**
+
+双击完成jupyter初始化环境部署。
+
 **pyzo编辑器.exe：**
 
 双击打开即运行pyzo，一款轻量级Python IDE。
@@ -178,10 +185,6 @@ notebook”运行，可运行根目录的“pyzo编辑器.exe”和“jupyter编
 **XEdu1.0简介.pdf：**
 
 XEdu一键安装包说明文档。
-
-**点我初始化.bat：**
-
-双击完成初始化环境部署。
 
 3.pip安装
 ---------

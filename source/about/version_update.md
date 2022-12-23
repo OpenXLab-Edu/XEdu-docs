@@ -136,6 +136,14 @@ det：
 
 增加提取特征，可视化特征功能。
 
+#### 4）XEdu一键安装包
+
+##### V1.1 20221220
+
+支持模块：MMEdu0.1.2（支持cls和det），BaseNN0.0.5，BaseML0.0.3（支持cls、reg和clt）
+
+内置编辑器：jupyter、pyzo、三个可视化工具（EasyTrain、EasyInference和EasyAPI）
+
 ## 2.测试版
 
 ### XEdu 0.1.0版
