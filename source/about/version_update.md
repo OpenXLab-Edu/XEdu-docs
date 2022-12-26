@@ -16,6 +16,11 @@
 
 #### 1）MMEdu
 
+##### V0.1.3 20221222
+
+1. det增加模型转化功能。
+2. cls+det更新模型转化功能，参数调整，会额外输出config文件。
+
 ##### V0.1.2 20221215
 
 cls：
@@ -50,7 +55,7 @@ det：
 
 ##### V0.1.1 20221118
 
-支持读入pil，np格式数据。
+​	支持读入pil，np格式数据。
 
 ##### V0.1.0 20221111
 
@@ -60,7 +65,7 @@ det：
 
 ##### V0.1.0rc2 20221111
 
-同V0.0.9，少依赖版本。
+​	同V0.0.9，少依赖版本。
 
 ##### V0.0.9 20221104
 
@@ -72,33 +77,33 @@ det：
 
 ##### V0.0.1rc2 20221104
 
-同V0.0.9，少依赖版本。
+​	同V0.0.9，少依赖版本。
 
 ##### V0.0.8 20221102
 
-1.加入错误反馈机制。
+1. 加入错误反馈机制。
 
-2.增加命令行字符画和简介。
+2. 增加命令行字符画和简介。
 
-3.提示目前支持的主干网络。
+3. 提示目前支持的主干网络。
 
-4.支持推理opencv、PIL读入的图片。
+4. 支持推理opencv、PIL读入的图片。
 
-5.模型声明时允许读入配置文件，而不仅是模型名。
+5. 模型声明时允许读入配置文件，而不仅是模型名。
 
 ##### V0.0.1rc1 20221102
 
-同V0.0.8，少依赖版本。
+​	同V0.0.8，少依赖版本。
 
 #### 2）BaseML
 
 ##### V0.0.4 20221121
 
-按照cls中的分类算法，给reg中的算法名进行了更改与添加，目前的回归算法有：['LinearRegression', 'CART', 'RandomForest',       'Polynomial', 'Lasso', 'Ridge', 'SVM', 'AdaBoost', 'MLP']。
+​	按照cls中的分类算法，给reg中的算法名进行了更改与添加，目前的回归算法有：['LinearRegression', 'CART', 'RandomForest',       'Polynomial', 'Lasso', 'Ridge', 'SVM', 'AdaBoost', 'MLP']。
 
 ##### V0.0.3 20221115
 
-把 `from BaseML import Classification`  调用为`Classification.cls`  改成了 `from BaseML import Classification as cls`  调用为 `cls(algorithm= ...)`。
+​	把 `from BaseML import Classification`  调用为`Classification.cls`  改成了 `from BaseML import Classification as cls`  调用为 `cls(algorithm= ...)`。
 
 ##### V0.0.2 20221110
 
@@ -108,17 +113,17 @@ det：
 
 ##### V0.0.1 20221110
 
-`load_dataset`中设置了X和y的默认列，如果没有标明`x_column`和`y_column`，默认采用输入的所有列。但输入的是**txt**或**csv**格式的话，一定要标注出列号，否则报错。
+1. `load_dataset`中设置了X和y的默认列，如果没有标明`x_column`和`y_column`，默认采用输入的所有列。但输入的是**txt**或**csv**格式的话，一定要标注出列号，否则报错。
+2. `inference()`中加了参数`verbose`，默认值为True，表示会输出训练过程中的过程数据，False则不会。
 
-`inference()`中加了参数`verbose`，默认值为True，表示会输出训练过程中的过程数据，False则不会。
+3. `train()`中设置了参数`validate`（默认为True），表示会将输入的训练集划分为训练集和验证集，并输出验证集下的模型准确率。
 
-`train()`中设置了参数`validate`（默认为True），表示会将输入的训练集划分为训练集和验证集，并输出验证集下的模型准确率。
+4. 添加了图片读取处理模块ImageLoader，具体使用方式查看文件中的注释以及demo实现。
 
-添加了图片读取处理模块ImageLoader，具体使用方式查看文件中的注释以及demo实现。
+5. 对于加载数据集，添加了几个bool标记：shuffle, show, split, scale，分别表示是否打乱数据集、是否展示5条数据、是否划分数据集、是否对训练数据进行归一化。
 
-对于加载数据集，添加了几个bool标记：shuffle, show, split, scale，分别表示是否打乱数据集、是否展示5条数据、是否划分数据集、是否对训练数据进行归一化。
+6. 每个模型的初始化增加了参数字典方法，便于更高级的模型调参。
 
-每个模型的初始化增加了参数字典方法，便于更高级的模型调参。
 
 #### 3）BaseNN
 
@@ -130,11 +135,11 @@ det：
 
 ##### V0.0.4 20221202
 
-参数控制可视化，一整张图or一系列图。
+​	参数控制可视化，一整张图or一系列图。
 
 ##### V0.0.3 20221116
 
-增加提取特征，可视化特征功能。
+​	增加提取特征，可视化特征功能。
 
 #### 4）XEdu一键安装包
 
