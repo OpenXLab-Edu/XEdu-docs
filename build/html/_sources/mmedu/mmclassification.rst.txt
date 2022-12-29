@@ -28,6 +28,7 @@ MMEdu中预置了“石头剪刀布”手势三分类的数据集，并且已经
    class_path = '../dataset/classes/cls_classes.txt' # 指定训练集的路径
    result = model.inference(image=img, show=True, class_path=class_path, checkpoint=checkpoint) # 在CPU上进行推理
    model.print_result() # 输出结果
+
    # 同时您可以修改show的值来决定是否需要显示结果图片，此处默认显示结果图片
 
 运行结果如图：
@@ -183,6 +184,8 @@ MMEdu中预置了“石头剪刀布”手势三分类的数据集，并且已经
 ``train``\ 函数支持很多参数，为了降低难度，MMEdu已经给绝大多数的参数设置了默认值。根据具体的情况修改参数，可能会得到更好的训练效果。下面来详细说明\ ``train``\ 函数的各个参数。
 
 ``epochs``\ ：默认参数为\ ``100``\ ，用于指定训练的轮次，而在上述代码中我们设置为\ ``10``\ 。
+
+``batch_size``\ ：默认参数为\ ``None``\ ，如为\ ``None``\ 则默认为对应网络配置文件中设置的\ ``samples_per_gpu``\ 的值，用于指定一次训练所选取的样本数。当训练集样本非常多时，直接将这些数据输入到神经网络的话会导致计算量非常大，容易因内存不足导致内核挂掉，因此可引入\ ``batch_size``\ 参数设置。
 
 ``validate``\ ：布尔值，只能为\ ``True``\ 或者\ ``False``\ ，默认参数为\ ``True``\ ，在训练结束后，设定是否需要在校验集上进行评估，\ ``True``\ 则是需要进行评估。
 
