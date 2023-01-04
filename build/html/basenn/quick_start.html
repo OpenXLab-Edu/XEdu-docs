@@ -48,11 +48,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#id2">安装</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">体验</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id4">训练</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id5">0.引入包</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">1.声明模型</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id7">2.载入数据</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id8">3.搭建模型</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id9">4.模型训练</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">0. 引入包</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">1. 声明模型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">2. 载入数据</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">3. 搭建模型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">4. 模型训练</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#id12">推理</a><ul>
@@ -123,19 +123,19 @@
 <section id="id4">
 <h2>训练<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
 <section id="id5">
-<h3>0.引入包<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<h3>0. 引入包<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
 </pre></div>
 </div>
 </section>
 <section id="id6">
-<h3>1.声明模型<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<h3>1. 声明模型<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
 <section id="id7">
-<h3>2.载入数据<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<h3>2. 载入数据<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
 <p>此处采用lvis鸢尾花数据集和MNIST手写体数据集作为示例。</p>
 <p>读取并载入鸢尾花数据：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 训练数据</span>
@@ -183,7 +183,7 @@
 </div>
 </section>
 <section id="id8">
-<h3>3.搭建模型<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
+<h3>3. 搭建模型<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
 <p>逐层添加，搭建起模型结构。注释标明了数据经过各层的尺寸变化。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1"># [120, 10]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1"># [120, 5]</span>
@@ -193,7 +193,7 @@
 <p>以上使用<code class="docutils literal notranslate"><span class="pre">add()</span></code>方法添加层，参数<code class="docutils literal notranslate"><span class="pre">layer='Linear'</span></code>表示添加的层是线性层，<code class="docutils literal notranslate"><span class="pre">size=(4,10)</span></code>表示该层输入维度为4，输出维度为10，<code class="docutils literal notranslate"><span class="pre">activation='ReLU'</span></code>表示使用ReLU激活函数。</p>
 </section>
 <section id="id9">
-<h3>4.模型训练<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
+<h3>4. 模型训练<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
 <p>模型训练可以采用以下函数：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">)</span>
 </pre></div>
@@ -201,7 +201,7 @@
 <p>参数<code class="docutils literal notranslate"><span class="pre">lr</span></code>为学习率，
 <code class="docutils literal notranslate"><span class="pre">epochs</span></code>为训练轮数，<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>为现有模型路径，当使用<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>参数时，模型基于一个已有的模型继续训练，不使用<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>参数时，模型从零开始训练。</p>
 <section id="id10">
-<h4>4.1正常训练<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h4>
+<h4>4.1 正常训练<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1"># [120, 10]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1"># [120, 5]</span>
@@ -288,8 +288,11 @@
 <section id="id20">
 <h4>项目核心功能和实现效果展示：<a class="headerlink" href="#id20" title="Permalink to this headline"></a></h4>
 <p>使用BaseNN库实现卷积神经网络搭建，完成手写图分类，数据集为MNIST数据集。</p>
-<figure class="align-default">
+<figure class="align-default" id="id33">
 <img alt="用卷积神经网络实现手写体分类项目效果图片.PNG" src="https://www.openinnolab.org.cn/webdav/635638d69ed68060c638f979/638028ff777c254264da4e6f/current/assets/%E7%94%A8%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AE%9E%E7%8E%B0%E6%89%8B%E5%86%99%E4%BD%93%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE%E6%95%88%E6%9E%9C%E5%9B%BE%E7%89%87.PNG" />
+<figcaption>
+<p><span class="caption-text">用卷积神经网络实现手写体分类项目效果图片.PNG</span><a class="headerlink" href="#id33" title="Permalink to this image"></a></p>
+</figcaption>
 </figure>
 </section>
 <section id="id21">

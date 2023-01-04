@@ -1,18 +1,18 @@
 # BaseNN功能详解
 
-### 0.引入包
+### 0. 引入包
 
 ```python
 from BaseNN import nn
 ```
 
-### 1.声明模型
+### 1. 声明模型
 
 ```python
 model = nn()
 ```
 
-### 2.载入数据
+### 2. 载入数据
 
 ```
 model.load_dataset(x, y)
@@ -68,7 +68,7 @@ train_x, train_y = read_data('../dataset/mnist/training_set')
 model.load_dataset(train_x, train_y) 
 ```
 
-### 3.搭建模型
+### 3. 搭建模型
 
 逐层添加，搭建起模型结构。注释标明了数据经过各层的尺寸变化。
 
@@ -80,7 +80,7 @@ model.add(layer='Linear', size=(5, 3), activation='Softmax') # [120, 3]
 
 以上使用`add()`方法添加层，参数`layer='Linear'`表示添加的层是线性层，`size=(4,10)`表示该层输入维度为4，输出维度为10，`activation='ReLU'`表示使用ReLU激活函数。更详细`add()`方法使用可见附录1。
 
-### 4.模型训练
+### 4. 模型训练
 
 模型训练可以采用以下函数：
 
@@ -90,7 +90,7 @@ model.train(lr=0.01, epochs=500)
 
 参数`lr`为学习率，`epochs`为训练轮数。
 
-#### 4.1正常训练
+#### 4.1 正常训练
 
 ```python
 model = nn() 
@@ -116,7 +116,7 @@ model.train(lr=0.01, epochs=1000, checkpoint=checkpoint)
 
 `checkpoint`为现有模型路径，当使用`checkpoint`参数时，模型基于一个已有的模型继续训练，不使用`checkpoint`参数时，模型从零开始训练。
 
-### 5.使用现有模型直接推理
+### 5. 使用现有模型直接推理
 
 可使用以下函数进行推理：
 
@@ -135,7 +135,7 @@ result = model.inference(data=test_x, checkpoint=checkpoint) # 直接推理
 model.print_result() # 输出结果
 ```
 
-### 6.输出推理结果
+### 6. 输出推理结果
 
 ```python
 res = model.inference(test_x)
@@ -149,7 +149,7 @@ model.print_result() # 输出字典格式结果
 
 输出结果数据类型为字典，格式为{样本编号：{预测值：x，置信度：y}}。该函数调用即输出，但也有返回值。
 
-### 7.模型的保存与加载
+### 7. 模型的保存与加载
 
 ```python
 # 保存
@@ -162,7 +162,7 @@ model.load("basenn.pkl")
 
 注：`train()`，`inference()`函数中也可通过参数控制模型的保存与加载，但这里也列出单独保存与加载模型的方法，以确保灵活性。
 
-### 8.查看模型结构
+### 8. 查看模型结构
 
 ```python
 model.print_model()
@@ -170,7 +170,7 @@ model.print_model()
 
 无参数。
 
-### 9.网络中特征可视化
+### 9. 网络中特征可视化
 
 BaseNN内置`visual_feature`函数可查看数据在网络中传递。
 
@@ -197,7 +197,7 @@ data = np.array(test_x[0]) # 指定数据,如测试数据的一行
 model.visual_feature(data)   # 特征的可视化
 ```
 
-### 10.指定随机数种子（选）
+### 10. 指定随机数种子（选）
 
 默认初始化是随机的，每次训练结果都不一样。可以可使用`set_seed()`函数设定随机数种子，使得训练结果可被其他人复现。一旦指定，则每次训练结果一致。使用方法如下：
 
@@ -211,7 +211,7 @@ model.train(...)
 
 注：设定随机数种子`set_seed()`应当在搭建网络`add()`之前。
 
-### 11.指定损失函数（选）
+### 11. 指定损失函数（选）
 
 默认的损失函数是交叉熵损失函数，允许选择不同的损失函数，支持的损失函数见附录。自选损失函数方法如下：
 
@@ -219,7 +219,7 @@ model.train(...)
 model.train(...,loss="CrossEntropyLoss")
 ```
 
-### 12.指定评价指标（选）
+### 12. 指定评价指标（选）
 
 默认的默认为准确率，允许选择其他的评价指标。支持的评价指标：acc（准确率），mae（平均绝对误差），mse（均方误差）。
 

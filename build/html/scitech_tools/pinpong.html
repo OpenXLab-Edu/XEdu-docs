@@ -49,9 +49,9 @@
 <li class="toctree-l2"><a class="reference internal" href="pywebio.html">Web库PyWebIO简介</a></li>
 <li class="toctree-l2"><a class="reference internal" href="siot.html">MQTT库siot简介</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">开源硬件库pinpong简介</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">1.简介</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">2.安装</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">3.代码示例</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">1. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2. 安装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">3. 代码示例</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id4">3.1 数字输出</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id5">3.2 数字输入</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id6">3.3 模拟输入</a></li>
@@ -87,7 +87,7 @@
           <li><a href="../scitech_tools.html">相关科创工具</a> &raquo;</li>
       <li>开源硬件库pinpong简介</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/scitech_tools/pinpong.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/scitech_tools/pinpong.md.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -98,13 +98,13 @@
   <section id="pinpong">
 <h1>开源硬件库pinpong简介<a class="headerlink" href="#pinpong" title="Permalink to this headline"></a></h1>
 <section id="id1">
-<h2>1.简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<h2>1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <p>pinpong库是一个基于Firmata协议开发的Python硬件控制库。借助于pinpong库，直接用Python代码就能给各种常见的开源硬件编程，即使该硬件并不支持Python。</p>
 <p>pinpong库的原理是给开源硬件烧录一个特定的固件，使其可以通过串口与电脑通讯，执行各种命令。pinpong库的名称由“Pin”和“Pong”组成，“Pin”指引脚，“pinpong”为“乒乓球”的谐音，指信号的往复。目前pinpong库支持Arduino、掌控板、micro:bit等开源硬件，同时支持虚谷号、树莓派和拿铁熊猫等。</p>
-<p>github地址：<a class="reference external" href="https://github.com/DFRobot/pinpong-docs">https://github.com/DFRobot/pinpong-docs</a></p>
+<p>github地址：https://github.com/DFRobot/pinpong-docs</p>
 </section>
 <section id="id2">
-<h2>2.安装<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<h2>2. 安装<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <p>可以使用使用pip命令安装pinpong库，如：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pinpong</span>
 </pre></div>
@@ -112,7 +112,7 @@
 <p>注：MMEdu中已经内置了pinpong库。</p>
 </section>
 <section id="id3">
-<h2>3.代码示例<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<h2>3. 代码示例<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
 <p>示例程序以“Arduino”为例，复制粘贴代码到python编辑器中，并修改Board初始化版型参数为你使用的板子型号即可。</p>
 <section id="id4">
 <h3>3.1 数字输出<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
@@ -147,7 +147,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">from</span> <span class="nn">pinpong.board</span> <span class="kn">import</span> <span class="n">Board</span><span class="p">,</span><span class="n">Pin</span>
 
-<span class="n">Board</span><span class="p">(</span><span class="s2">&quot;uno&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">begin</span><span class="p">()</span>
+<span class="n">Board</span><span class="p">(</span><span class="s2">&quot;uno&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">begin</span><span class="p">()</span> 
 
 <span class="n">btn</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="n">Pin</span><span class="o">.</span><span class="n">D8</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">)</span> <span class="c1">#引脚初始化为电平输入</span>
 <span class="n">led</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="n">Pin</span><span class="o">.</span><span class="n">D13</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
@@ -235,7 +235,7 @@
 </pre></div>
 </div>
 <p>更多代码请访问官方文档。</p>
-<p>官方文档地址：<a class="reference external" href="https://pinpong.readthedocs.io/">https://pinpong.readthedocs.io/</a></p>
+<p>官方文档地址：https://pinpong.readthedocs.io/</p>
 </section>
 </section>
 <section id="id9">

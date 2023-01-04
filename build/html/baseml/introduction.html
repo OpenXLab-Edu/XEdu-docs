@@ -48,34 +48,34 @@
 <li class="toctree-l2"><a class="reference internal" href="installation.html">BaseML安装</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">BaseML功能详解</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">分类任务</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">0.引入包</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">1.实例化</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id7">2.数据载入</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id8">3.模型训练</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id9">4.模型测试</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id10">5.模型的保存与加载</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">0. 引入包</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">1. 实例化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">2. 数据载入</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">3. 模型训练</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">4. 模型测试</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">5. 模型的保存与加载</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#id11">回归任务</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id12">0.引入包</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id13">1.实例化</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id18">2.数据载入</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id19">3.模型训练</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id20">4.模型测试</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id21">5.模型的保存与加载</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">0. 引入包</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">1. 实例化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18">2. 数据载入</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">3. 模型训练</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id20">4. 模型测试</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id21">5. 模型的保存与加载</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#id22">聚类任务</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id23">0.引入包</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id24">1.实例化</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id28">2.数据载入</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id29">3.模型训练</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id30">4.模型测试</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id31">5.模型的保存与加载</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id23">0. 引入包</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id24">1. 实例化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id28">2. 数据载入</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id29">3. 模型训练</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id30">4. 模型测试</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id31">5. 模型的保存与加载</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#id32">附录</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id33">1.分类、回归和聚类</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id33">1. 分类、回归和聚类</a></li>
 </ul>
 </li>
 </ul>
@@ -118,13 +118,13 @@
 <section id="id1">
 <h2>分类任务<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <section id="id2">
-<h3>0.引入包<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<h3>0. 引入包<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Classification</span> <span class="k">as</span> <span class="bp">cls</span>
 </pre></div>
 </div>
 </section>
 <section id="id3">
-<h3>1.实例化<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<h3>1. 实例化<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
 <section id="id4">
 <h4>贝叶斯分类<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h4>
 <p>贝叶斯分类算法常用于解决不确定问题，如人们普遍认为夜里下雨，第二天早晨草地会湿，实际到了早上草地可能就干了，也许是因为风的因素，解决这类问题往往需要根据人类已有的经验来计算某种状态出现的概率，这种方式叫做贝叶斯推理。 贝叶斯分类算法是基于贝叶斯定理的一种算法，即“简单”地假设每对特征之间相互独立。</p>
@@ -186,7 +186,7 @@ model=cls(algorithm = &#39;AdaBoost&#39;，n_estimators = 50)
 </section>
 </section>
 <section id="id7">
-<h3>2.数据载入<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<h3>2. 数据载入<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
 <p>BaseML库支持各种形式载入数据。</p>
 <ol class="simple">
 <li><p>从路径载入数据：</p></li>
@@ -222,14 +222,14 @@ model=cls(algorithm = &#39;AdaBoost&#39;，n_estimators = 50)
 </div>
 </section>
 <section id="id8">
-<h3>3.模型训练<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
+<h3>3. 模型训练<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型训练</span>
 <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
 <section id="id9">
-<h3>4.模型测试<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
+<h3>4. 模型测试<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
 <p>对一组数进行推理：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 给定一组数据，推理查看效果</span>
 <span class="n">y</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">]])</span>
@@ -243,7 +243,7 @@ model=cls(algorithm = &#39;AdaBoost&#39;，n_estimators = 50)
 </div>
 </section>
 <section id="id10">
-<h3>5.模型的保存与加载<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
+<h3>5. 模型的保存与加载<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 保存模型</span>
 <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;my_CART_model.pkl&#39;</span><span class="p">)</span>
 <span class="c1"># 加载模型</span>
@@ -256,13 +256,13 @@ model=cls(algorithm = &#39;AdaBoost&#39;，n_estimators = 50)
 <section id="id11">
 <h2>回归任务<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h2>
 <section id="id12">
-<h3>0.引入包<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h3>
+<h3>0. 引入包<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Regression</span> <span class="k">as</span> <span class="n">reg</span>
 </pre></div>
 </div>
 </section>
 <section id="id13">
-<h3>1.实例化<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h3>
+<h3>1. 实例化<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h3>
 <section id="id14">
 <h4>线性回归<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h4>
 <p>线性回归（Linear Regression）是一种数据分析技术，它通过使用另一个相关的已知数据值来预测未知数据的值，类似于一次函数。回归算法一般用于确定两种或两种以上变量间的定量关系。按照自变量的数量多少，可以分为一元回归和多元回归。</p>
@@ -296,32 +296,32 @@ model=cls(algorithm = &#39;AdaBoost&#39;，n_estimators = 50)
 </section>
 </section>
 <section id="id18">
-<h3>2.数据载入<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h3>
+<h3>2. 数据载入<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h3>
 <p>与分类任务一致（见上文）。</p>
 </section>
 <section id="id19">
-<h3>3.模型训练<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h3>
+<h3>3. 模型训练<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h3>
 <p>与分类任务一致（见上文）。</p>
 </section>
 <section id="id20">
-<h3>4.模型测试<a class="headerlink" href="#id20" title="Permalink to this headline"></a></h3>
+<h3>4. 模型测试<a class="headerlink" href="#id20" title="Permalink to this headline"></a></h3>
 <p>与分类任务一致（见上文）。</p>
 </section>
 <section id="id21">
-<h3>5.模型的保存与加载<a class="headerlink" href="#id21" title="Permalink to this headline"></a></h3>
+<h3>5. 模型的保存与加载<a class="headerlink" href="#id21" title="Permalink to this headline"></a></h3>
 <p>与分类任务一致（见上文）。</p>
 </section>
 </section>
 <section id="id22">
 <h2>聚类任务<a class="headerlink" href="#id22" title="Permalink to this headline"></a></h2>
 <section id="id23">
-<h3>0.引入包<a class="headerlink" href="#id23" title="Permalink to this headline"></a></h3>
+<h3>0. 引入包<a class="headerlink" href="#id23" title="Permalink to this headline"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Cluster</span> <span class="k">as</span> <span class="n">clt</span>
 </pre></div>
 </div>
 </section>
 <section id="id24">
-<h3>1.实例化<a class="headerlink" href="#id24" title="Permalink to this headline"></a></h3>
+<h3>1. 实例化<a class="headerlink" href="#id24" title="Permalink to this headline"></a></h3>
 <section id="id25">
 <h4>k均值<a class="headerlink" href="#id25" title="Permalink to this headline"></a></h4>
 <p>k均值（k-means）算法是一种基于数据间距离迭代求解的聚类算法，通过分析数据之间的距离，发现数据之间的内在联系和相关性，将看似没有关联的事物聚合在一起，并将数据划分为若干个集合，方便为数据打上标签，从而进行后续的分析和处理。k代表划分的集合个数，means代表子集内数据对象的均值。</p>
@@ -358,26 +358,26 @@ model=cls(algorithm = &#39;AdaBoost&#39;，n_estimators = 50)
 </section>
 </section>
 <section id="id28">
-<h3>2.数据载入<a class="headerlink" href="#id28" title="Permalink to this headline"></a></h3>
+<h3>2. 数据载入<a class="headerlink" href="#id28" title="Permalink to this headline"></a></h3>
 <p>与分类任务一致（见上文）。</p>
 </section>
 <section id="id29">
-<h3>3.模型训练<a class="headerlink" href="#id29" title="Permalink to this headline"></a></h3>
+<h3>3. 模型训练<a class="headerlink" href="#id29" title="Permalink to this headline"></a></h3>
 <p>与分类任务一致（见上文）。</p>
 </section>
 <section id="id30">
-<h3>4.模型测试<a class="headerlink" href="#id30" title="Permalink to this headline"></a></h3>
+<h3>4. 模型测试<a class="headerlink" href="#id30" title="Permalink to this headline"></a></h3>
 <p>与分类任务一致（见上文）。</p>
 </section>
 <section id="id31">
-<h3>5.模型的保存与加载<a class="headerlink" href="#id31" title="Permalink to this headline"></a></h3>
+<h3>5. 模型的保存与加载<a class="headerlink" href="#id31" title="Permalink to this headline"></a></h3>
 <p>与分类任务一致（见上文）。</p>
 </section>
 </section>
 <section id="id32">
 <h2>附录<a class="headerlink" href="#id32" title="Permalink to this headline"></a></h2>
 <section id="id33">
-<h3>1.分类、回归和聚类<a class="headerlink" href="#id33" title="Permalink to this headline"></a></h3>
+<h3>1. 分类、回归和聚类<a class="headerlink" href="#id33" title="Permalink to this headline"></a></h3>
 <p>如果预测任务是为了将观察值分类到有限的标签集合中，换句话说，就是给观察对象命名，那任务就被称为 <strong>分类</strong> 任务。另外，如果任务是为了预测一个连续的目标变量，那就被称为 <strong>回归</strong> 任务。</p>
 <p>所谓 <strong>聚类</strong> ，即根据相似性原则，将具有较高相似度的数据对象划分至同一类簇，将具有较高相异度的数据对象划分至不同类簇。聚类与分类最大的区别在于，聚类过程为无监督过程，即待处理数据对象没有任何先验知识，而分类过程为有监督过程，即存在有先验知识的训练数据集。</p>
 </section>

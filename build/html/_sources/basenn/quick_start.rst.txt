@@ -21,22 +21,22 @@ BaseNN可以方便地逐层搭建神经网路，深入探究网络原理。
 训练
 ----
 
-0.引入包
-~~~~~~~~
+0. 引入包
+~~~~~~~~~
 
 .. code:: python
 
    from BaseNN import nn
 
-1.声明模型
-~~~~~~~~~~
+1. 声明模型
+~~~~~~~~~~~
 
 .. code:: python
 
    model = nn()
 
-2.载入数据
-~~~~~~~~~~
+2. 载入数据
+~~~~~~~~~~~
 
 此处采用lvis鸢尾花数据集和MNIST手写体数据集作为示例。
 
@@ -88,8 +88,8 @@ BaseNN可以方便地逐层搭建神经网路，深入探究网络原理。
    # 载入数据
    model.load_dataset(train_x, train_y) 
 
-3.搭建模型
-~~~~~~~~~~
+3. 搭建模型
+~~~~~~~~~~~
 
 逐层添加，搭建起模型结构。注释标明了数据经过各层的尺寸变化。
 
@@ -101,8 +101,8 @@ BaseNN可以方便地逐层搭建神经网路，深入探究网络原理。
 
 以上使用\ ``add()``\ 方法添加层，参数\ ``layer='Linear'``\ 表示添加的层是线性层，\ ``size=(4,10)``\ 表示该层输入维度为4，输出维度为10，\ ``activation='ReLU'``\ 表示使用ReLU激活函数。
 
-4.模型训练
-~~~~~~~~~~
+4. 模型训练
+~~~~~~~~~~~
 
 模型训练可以采用以下函数：
 
@@ -113,8 +113,8 @@ BaseNN可以方便地逐层搭建神经网路，深入探究网络原理。
 参数\ ``lr``\ 为学习率，
 ``epochs``\ 为训练轮数，\ ``checkpoint``\ 为现有模型路径，当使用\ ``checkpoint``\ 参数时，模型基于一个已有的模型继续训练，不使用\ ``checkpoint``\ 参数时，模型从零开始训练。
 
-4.1正常训练
-^^^^^^^^^^^
+4.1 正常训练
+^^^^^^^^^^^^
 
 .. code:: python
 
@@ -229,7 +229,7 @@ AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pj
 .. figure:: https://www.openinnolab.org.cn/webdav/635638d69ed68060c638f979/638028ff777c254264da4e6f/current/assets/%E7%94%A8%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AE%9E%E7%8E%B0%E6%89%8B%E5%86%99%E4%BD%93%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE%E6%95%88%E6%9E%9C%E5%9B%BE%E7%89%87.PNG
    :alt: 用卷积神经网络实现手写体分类项目效果图片.PNG
 
-
+   用卷积神经网络实现手写体分类项目效果图片.PNG
 
 实现步骤：
 ^^^^^^^^^^
@@ -258,7 +258,7 @@ AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pj
        # 将顺序读取的文件保存到该list中
        for item in dir_list:
            tpath = os.path.join(path,item)
-    
+
            # print(tpath)
            for i in os.listdir(tpath):
                # print(item)
@@ -270,10 +270,10 @@ AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pj
                label.append(int(item))
        x = np.array(data)
        y = np.array(label)
-    
+
        x = np.expand_dims(x, axis=1)
        return x, y
-
+       
    # 读取训练数据
    train_x, train_y = read_data('/data/QX8UBM/mnist_sample/training_set')
    # 声明模型

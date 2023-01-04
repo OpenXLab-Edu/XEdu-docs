@@ -49,10 +49,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#id2">安装</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">体验</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id4">训练</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id5">0.引入包</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">1.实例化模型</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id7">2.载入数据</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id8">3.模型训练</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">0. 引入包</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">1. 实例化模型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">2. 载入数据</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">3. 模型训练</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#id9">推理</a><ul>
@@ -64,11 +64,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#id13">快速体验</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id14">附录</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id15">案例1.基于决策树的道路智能决策</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id22">案例2.用多层感知机算法实现手写体数字分类</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#k">案例3.用k近邻为参观者推荐场馆</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id38">案例4.用线性回归预测蛋糕价格</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id47">案例5.用k均值实现园区集合地点选取</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id56">案例6.用k均值实现车辆类别聚类分析</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id22">案例2. 用多层感知机算法实现手写体数字分类</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#k">案例3. 用k近邻为参观者推荐场馆</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id38">案例4. 用线性回归预测蛋糕价格</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id47">案例5. 用k均值实现园区集合地点选取</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id56">案例6. 用k均值实现车辆类别聚类分析</a></li>
 </ul>
 </li>
 </ul>
@@ -125,21 +125,21 @@
 <section id="id4">
 <h2>训练<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
 <section id="id5">
-<h3>0.引入包<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<h3>0. 引入包<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库，从BaseML导入分类模块</span>
 <span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Classification</span> <span class="k">as</span> <span class="bp">cls</span>
 </pre></div>
 </div>
 </section>
 <section id="id6">
-<h3>1.实例化模型<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<h3>1. 实例化模型<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择CART（Classification and Regression Trees）</span>
 <span class="n">model</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;CART&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="id7">
-<h3>2.载入数据<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<h3>2. 载入数据<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 载入数据集，并说明特征列和标签列</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;./lenses.csv&#39;</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="n">x_column</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span><span class="n">y_column</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
 </pre></div>
@@ -147,7 +147,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">x_column</span></code>表示特征列，<code class="docutils literal notranslate"><span class="pre">y_column</span></code>表示标签列。</p>
 </section>
 <section id="id8">
-<h3>3.模型训练<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
+<h3>3. 模型训练<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型训练</span>
 <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
 </pre></div>
@@ -202,8 +202,11 @@
 <section id="id16">
 <h4>项目核心功能和实现效果展示：<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h4>
 <p>借助决策树算法完成道路智能决策，可通过学习和实验了解决策树的工作原理，掌握决策树分类任务编程的流程。</p>
-<figure class="align-default">
+<figure class="align-default" id="id65">
 <img alt="利用历史数据生成决策树.png" src="https://www.openinnolab.org.cn/webdav/635638d69ed68060c638f979/638028c0777c254264da4dd7/current/assets/%E5%88%A9%E7%94%A8%E5%8E%86%E5%8F%B2%E6%95%B0%E6%8D%AE%E7%94%9F%E6%88%90%E5%86%B3%E7%AD%96%E6%A0%91.png" />
+<figcaption>
+<p><span class="caption-text">利用历史数据生成决策树.png</span><a class="headerlink" href="#id65" title="Permalink to this image"></a></p>
+</figcaption>
 </figure>
 </section>
 <section id="id17">
@@ -212,8 +215,11 @@
 <p>第1列：道路施工状况-(1) 未施工, (2) 施工；</p>
 <p>第2列：预计车流量 ；</p>
 <p>第3列：分类结果（道路能否通行）-(1) 不可通行, (2)可通行。</p>
-<figure class="align-default">
+<figure class="align-default" id="id66">
 <img alt="screenshot-20221205-111611.png" src="https://www.openinnolab.org.cn/webdav/635638d69ed68060c638f979/638028c0777c254264da4dd7/current/assets/screenshot-20221205-111611.png" />
+<figcaption>
+<p><span class="caption-text">screenshot-20221205-111611.png</span><a class="headerlink" href="#id66" title="Permalink to this image"></a></p>
+</figcaption>
 </figure>
 </section>
 <section id="id18">
@@ -246,7 +252,7 @@
 </section>
 </section>
 <section id="id22">
-<h3>案例2.用多层感知机算法实现手写体数字分类<a class="headerlink" href="#id22" title="Permalink to this headline"></a></h3>
+<h3>案例2. 用多层感知机算法实现手写体数字分类<a class="headerlink" href="#id22" title="Permalink to this headline"></a></h3>
 <p>本案例来源于《人工智能初步》广东教育出版社版75-80页。</p>
 <section id="id23">
 <h4>项目核心功能：<a class="headerlink" href="#id23" title="Permalink to this headline"></a></h4>
@@ -302,7 +308,7 @@ Set）。项目核心功能是使用BaseML库搭建多层感知机实现手写�
 </section>
 </section>
 <section id="k">
-<h3>案例3.用k近邻为参观者推荐场馆<a class="headerlink" href="#k" title="Permalink to this headline"></a></h3>
+<h3>案例3. 用k近邻为参观者推荐场馆<a class="headerlink" href="#k" title="Permalink to this headline"></a></h3>
 <p>本案例来源于华师大出版社《人工智能初步》56-57页。</p>
 <section id="id30">
 <span id="id31"></span><h4>项目核心功能：<a class="headerlink" href="#id30" title="Permalink to this headline"></a></h4>
@@ -364,7 +370,7 @@ Set）。项目核心功能是使用BaseML库搭建多层感知机实现手写�
 </section>
 </section>
 <section id="id38">
-<h3>案例4.用线性回归预测蛋糕价格<a class="headerlink" href="#id38" title="Permalink to this headline"></a></h3>
+<h3>案例4. 用线性回归预测蛋糕价格<a class="headerlink" href="#id38" title="Permalink to this headline"></a></h3>
 <p>本案例来源于人教地图版《人工智能初步》39-41页。</p>
 <section id="id39">
 <span id="id40"></span><h4>项目核心功能：<a class="headerlink" href="#id39" title="Permalink to this headline"></a></h4>
@@ -412,7 +418,7 @@ Set）。项目核心功能是使用BaseML库搭建多层感知机实现手写�
 </section>
 </section>
 <section id="id47">
-<h3>案例5.用k均值实现园区集合地点选取<a class="headerlink" href="#id47" title="Permalink to this headline"></a></h3>
+<h3>案例5. 用k均值实现园区集合地点选取<a class="headerlink" href="#id47" title="Permalink to this headline"></a></h3>
 <p>本案例来源于华东师范大学出版社《人工智能初步》53-55页。</p>
 <section id="id48">
 <span id="id49"></span><h4>项目核心功能：<a class="headerlink" href="#id48" title="Permalink to this headline"></a></h4>
@@ -476,7 +482,7 @@ Set）。项目核心功能是使用BaseML库搭建多层感知机实现手写�
 </section>
 </section>
 <section id="id56">
-<h3>案例6.用k均值实现车辆类别聚类分析<a class="headerlink" href="#id56" title="Permalink to this headline"></a></h3>
+<h3>案例6. 用k均值实现车辆类别聚类分析<a class="headerlink" href="#id56" title="Permalink to this headline"></a></h3>
 <p>本案例来源于上海科技教育出版社《人工智能初步》88-89页。</p>
 <section id="id57">
 <span id="id58"></span><h4>项目核心功能：<a class="headerlink" href="#id57" title="Permalink to this headline"></a></h4>

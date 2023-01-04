@@ -1,8 +1,8 @@
 MMEdu安装和下载
 ===============
 
-1.安装方式介绍
---------------
+1. 安装方式介绍
+---------------
 
 根据对算力的依赖程度，MMEdu分为两个版本，分别是：基础版和完整版。
 
@@ -10,8 +10,8 @@ MMEdu安装和下载
 
 标准版对算力要求较高，建议装在有英伟达显卡的电脑上，安装方式有pip安装和容器镜像安装两种。本版本集成了MMClassification（图像分类）、MMDetection（物体检测）、MMEditing（图像编辑）等模块，需要GPU环境支持。
 
-2.基础版的安装
---------------
+2. 基础版的安装
+---------------
 
 2.1 一键安装包
 ~~~~~~~~~~~~~~
@@ -96,16 +96,16 @@ PyCharm环境路径配置如下图所示。
 当前，我们提供的MMEdu0.0.7版本的安装是基础版的pip安装包，可以使用如下命令安装：
 ``pip install mmedu==0.0.7``\ 或\ ``pip install MMEdu==0.0.7``\ 。
 
-3.完整版安装之pip安装
----------------------
+3. 完整版安装之pip安装
+----------------------
 
-3.1.准备工作
+3.1 准备工作
 ~~~~~~~~~~~~
 
 强烈推荐你在Anaconda的基础上安装MMEdu，可以避免很多的版本冲突问题。
 
-3.1.1安装Anaconda
-^^^^^^^^^^^^^^^^^
+3.1.1 安装Anaconda
+^^^^^^^^^^^^^^^^^^
 
 若您已经安装好conda，该步骤可跳过。
 
@@ -122,10 +122,10 @@ PyCharm环境路径配置如下图所示。
 打开安装界面后，依次选择\ ``Next`` -> ``I Agree`` -> ``All Users`` 
 -> ``Next`` -> ``Next`` 
 -> ``Add Anaconda3 to the system PATH environment variable`` -> 
-``Install`` -> ``Next`` -> ``Next`` -> ``Finish`` 
+``Install`` -> ``Next`` -> ``Next`` -> ``Finish``
 
-3.1.2安装python编辑器
-^^^^^^^^^^^^^^^^^^^^^
+3.1.2 安装python编辑器
+^^^^^^^^^^^^^^^^^^^^^^
 
 若您已经安装好合适的python编辑器，该步骤可跳过。
 
@@ -154,11 +154,11 @@ PyCharm环境路径配置如下图所示。
 点击Thonny主界面右下角的Python版本号，可以选择对应的Python解释器，第一次配置点击\ ``Configure inter preter``\ ，弹出的窗口中，第一个下拉栏选择\ ``可选的python3解释器或虚拟环境``\ ，
 第二个下拉栏找到自己之前安装的anaconda环境中的python解释器位置。点击确认即可使用该python解释器。
 
-3.2安装MMEdu(CPU版本)
-~~~~~~~~~~~~~~~~~~~~~
+3.2 安装MMEdu(CPU版本)
+~~~~~~~~~~~~~~~~~~~~~~
 
-3.2.1Linux安装MMEdu
-^^^^^^^^^^^^^^^^^^^
+3.2.1 Linux安装MMEdu
+^^^^^^^^^^^^^^^^^^^^
 
 点击鼠标右键，打开终端。
 
@@ -178,8 +178,8 @@ PyCharm环境路径配置如下图所示。
 
 注：请将命令中的“your_env_name”换成你喜欢的名称，如“mmedu”。
 
-3.2.2Windows安装MMEdu
-^^^^^^^^^^^^^^^^^^^^^
+3.2.2 Windows安装MMEdu
+^^^^^^^^^^^^^^^^^^^^^^
 
 同时按下win+r，输入cmd，回车，打开一个命令行窗口。
 
@@ -197,8 +197,8 @@ PyCharm环境路径配置如下图所示。
    $ conda activate your_env_name
    $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/index.html
 
-3.3安装MMEdu(GPU版本)
-~~~~~~~~~~~~~~~~~~~~~
+3.3 安装MMEdu(GPU版本)
+~~~~~~~~~~~~~~~~~~~~~~
 
 首先安装对应自己cuda版本的pytorch，安装命令可在以下网址中进行查询：https://pytorch.org/get-started/locally/
 
@@ -234,23 +234,25 @@ PyCharm环境路径配置如下图所示。
 
 即可。
 
-4.完整版安装之docker容器镜像。
-------------------------------
+4. 完整版安装之docker容器镜像。
+-------------------------------
 
 敬请期待
 
-5.查看MMEdu版本
----------------
+5. 查看MMEdu版本
+----------------
 
 打开python终端，执行以下命令即可查看MMEdu版本。当前最新版本是0.04。
 
 .. figure:: ../images/mmedu/pip安装指南3.png
+   :alt: image
 
+   image
 
 注：目前版本MMEdu仅支持CPU。
 
-6.卸载MMEdu库
--------------
+6. 卸载MMEdu库
+--------------
 
 如果MMEdu库出现异常情况，可以尝试使用如下命令卸载MMEdu然后再使用install命令安装。
 

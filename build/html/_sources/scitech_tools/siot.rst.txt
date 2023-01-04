@@ -1,8 +1,8 @@
 MQTT库siot简介
 ==============
 
-1.简介
-------
+1. 简介
+-------
 
 MQTT是最常用的物联网协议之一。但是，MQTT的官方Python库明显不好用，前面要定义一个类，代码冗长，对初学者不够友好。siot是虚谷物联团队基于MQTT
 paho写的一个Python库，为了让初学者能够写出更加简洁、优雅的Python代码。
@@ -11,8 +11,8 @@ paho写的一个Python库，为了让初学者能够写出更加简洁、优雅�
 
 GitHub地址：https://github.com/vvlink/SIoT/tree/master/siot-lib
 
-2.安装
-------
+2. 安装
+-------
 
 可以使用使用pip命令安装siot库，如：
 
@@ -22,8 +22,8 @@ GitHub地址：https://github.com/vvlink/SIoT/tree/master/siot-lib
 
 注：MMEdu中已经内置了siot库。
 
-3.代码范例
-----------
+3. 代码范例
+-----------
 
 下面的代码以MQTT服务器软件SIoT为例。SIoT是一个一键部署的MQTT服务器，广泛应用于中小学的物联网教学中。
 

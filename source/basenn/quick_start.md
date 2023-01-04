@@ -17,19 +17,19 @@ BaseNN可以方便地逐层搭建神经网路，深入探究网络原理。
 
 ## 训练
 
-### 0.引入包
+### 0. 引入包
 
 ```python
 from BaseNN import nn
 ```
 
-### 1.声明模型
+### 1. 声明模型
 
 ```python
 model = nn()
 ```
 
-### 2.载入数据
+### 2. 载入数据
 
 此处采用lvis鸢尾花数据集和MNIST手写体数据集作为示例。
 
@@ -81,7 +81,7 @@ train_x, train_y = read_data('../dataset/mnist/training_set')
 model.load_dataset(train_x, train_y) 
 ```
 
-### 3.搭建模型
+### 3. 搭建模型
 
 逐层添加，搭建起模型结构。注释标明了数据经过各层的尺寸变化。
 
@@ -93,7 +93,7 @@ model.add(layer='Linear', size=(5, 3), activation='Softmax') # [120, 3]
 
 以上使用`add()`方法添加层，参数`layer='Linear'`表示添加的层是线性层，`size=(4,10)`表示该层输入维度为4，输出维度为10，`activation='ReLU'`表示使用ReLU激活函数。
 
-### 4.模型训练
+### 4. 模型训练
 
 模型训练可以采用以下函数：
 
@@ -103,7 +103,7 @@ model.train(lr=0.01, epochs=500,checkpoint=checkpoint)
 
 参数`lr`为学习率， `epochs`为训练轮数，`checkpoint`为现有模型路径，当使用`checkpoint`参数时，模型基于一个已有的模型继续训练，不使用`checkpoint`参数时，模型从零开始训练。
 
-#### 4.1正常训练
+#### 4.1 正常训练
 
 ```python
 model = nn() 

@@ -1,6 +1,6 @@
 # MMEdu快速入门
 
-## 1.MMEdu是什么？
+## 1. MMEdu是什么？
 
 MMEdu源于国产人工智能视觉（CV）算法集成框架OpenMMLab，是一个“开箱即用”的深度学习开发工具。在继承OpenMMLab强大功能的同时，MMEdu简化了神经网络模型搭建和训练的参数，降低了编程的难度，并实现一键部署编程环境，让初学者通过简洁的代码完成各种SOTA模型（state-of-the-art，指在该项研究任务中目前最好/最先进的模型）的训练，并能够快速搭建出AI应用系统。 
 
@@ -10,11 +10,11 @@ GitHub：https://github.com/OpenXLab-Edu/OpenMMLab-Edu
 
 国内镜像：https://gitee.com/openxlab-edu/OpenMMLab-Edu
 
-## 2.体验MMEdu
+## 2. 体验MMEdu
 
 MMEdu有多种安装方式，可以通过Pip方式安装，也可以使用一键安装包。体验MMEdu的最快速方式是通过OpenInnoLab平台。
 
-### 2.1访问OpenInnoLab
+### 2.1 访问OpenInnoLab
 
 OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台，满足青少年的AI学习和创作需求，支持在线编程。在“AI项目工坊 - 人工智能工坊”中，查找”MMEdu“，即可找到所有与MMEdu相关的体验项目。
 
@@ -75,7 +75,7 @@ result = model.inference(image=img, show=True, class_path=class_path,checkpoint 
 model.print_result(result)
 ```
 
-## 2.6 继续训练
+### 2.6 继续训练
 
 如果觉得效果不够好，请继续训练（实际上就是“迁移学习”）：
 
@@ -95,6 +95,6 @@ model.train(epochs=10, validate=True, checkpoint=checkpoint)
 
 ![image](../images/mmedu/XEdu项目集.png)
 
-## 3.MMEdu的简要总结
+## 3. MMEdu的简要总结
 
 MMEdu是针对青少年学习AI技术而设计的，其前身就是大名鼎鼎的OpenMMLab。MMEdu的语法非常简单，几句话就能完成训练和推理。如果你下载了一键安装包，还可以使用Easytrain等可视化辅助工具。有了MMEdu，你会发现AI模型训练原来这么简单。

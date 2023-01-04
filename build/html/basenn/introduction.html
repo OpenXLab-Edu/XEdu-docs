@@ -46,23 +46,23 @@
 <li class="toctree-l2"><a class="reference internal" href="quick_start.html">BaseNN快速入门</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation.html">BaseNN安装或下载</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">BaseNN功能详解</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">0.引入包</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">1.声明模型</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">2.载入数据</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">3.搭建模型</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">4.模型训练</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id6">4.1正常训练</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">0. 引入包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">1. 声明模型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">2. 载入数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">3. 搭建模型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">4. 模型训练</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">4.1 正常训练</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id7">4.2 继续训练</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">5.使用现有模型直接推理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">6.输出推理结果</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">7.模型的保存与加载</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id11">8.查看模型结构</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">9.网络中特征可视化</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id13">10.指定随机数种子（选）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id14">11.指定损失函数（选）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id15">12.指定评价指标（选）</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">5. 使用现有模型直接推理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">6. 输出推理结果</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">7. 模型的保存与加载</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">8. 查看模型结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">9. 网络中特征可视化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">10. 指定随机数种子（选）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">11. 指定损失函数（选）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">12. 指定评价指标（选）</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#add">1. add()详细介绍</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id16">2. 支持的损失函数</a></li>
 </ul>
@@ -105,19 +105,19 @@
   <section id="basenn">
 <h1>BaseNN功能详解<a class="headerlink" href="#basenn" title="Permalink to this headline"></a></h1>
 <section id="id1">
-<h2>0.引入包<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<h2>0. 引入包<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
 </pre></div>
 </div>
 </section>
 <section id="id2">
-<h2>1.声明模型<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<h2>1. 声明模型<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
 <section id="id3">
-<h2>2.载入数据<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<h2>2. 载入数据<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -168,7 +168,7 @@
 </div>
 </section>
 <section id="id4">
-<h2>3.搭建模型<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
+<h2>3. 搭建模型<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
 <p>逐层添加，搭建起模型结构。注释标明了数据经过各层的尺寸变化。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1"># [120, 10]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1"># [120, 5]</span>
@@ -178,14 +178,14 @@
 <p>以上使用<code class="docutils literal notranslate"><span class="pre">add()</span></code>方法添加层，参数<code class="docutils literal notranslate"><span class="pre">layer='Linear'</span></code>表示添加的层是线性层，<code class="docutils literal notranslate"><span class="pre">size=(4,10)</span></code>表示该层输入维度为4，输出维度为10，<code class="docutils literal notranslate"><span class="pre">activation='ReLU'</span></code>表示使用ReLU激活函数。更详细<code class="docutils literal notranslate"><span class="pre">add()</span></code>方法使用可见附录1。</p>
 </section>
 <section id="id5">
-<h2>4.模型训练<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
+<h2>4. 模型训练<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
 <p>模型训练可以采用以下函数：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>参数<code class="docutils literal notranslate"><span class="pre">lr</span></code>为学习率，<code class="docutils literal notranslate"><span class="pre">epochs</span></code>为训练轮数。</p>
 <section id="id6">
-<h3>4.1正常训练<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<h3>4.1 正常训练<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1"># [120, 10]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1"># [120, 5]</span>
@@ -210,7 +210,7 @@
 </section>
 </section>
 <section id="id8">
-<h2>5.使用现有模型直接推理<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h2>
+<h2>5. 使用现有模型直接推理<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h2>
 <p>可使用以下函数进行推理：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">test_x</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">)</span>
 </pre></div>
@@ -225,7 +225,7 @@
 </div>
 </section>
 <section id="id9">
-<h2>6.输出推理结果<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h2>
+<h2>6. 输出推理结果<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">test_x</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -236,7 +236,7 @@
 <p>输出结果数据类型为字典，格式为{样本编号：{预测值：x，置信度：y}}。该函数调用即输出，但也有返回值。</p>
 </section>
 <section id="id10">
-<h2>7.模型的保存与加载<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h2>
+<h2>7. 模型的保存与加载<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 保存</span>
 <span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;mn_ckpt&#39;</span>
 <span class="c1"># 加载</span>
@@ -247,14 +247,14 @@
 <p>注：<code class="docutils literal notranslate"><span class="pre">train()</span></code>，<code class="docutils literal notranslate"><span class="pre">inference()</span></code>函数中也可通过参数控制模型的保存与加载，但这里也列出单独保存与加载模型的方法，以确保灵活性。</p>
 </section>
 <section id="id11">
-<h2>8.查看模型结构<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h2>
+<h2>8. 查看模型结构<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">print_model</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>无参数。</p>
 </section>
 <section id="id12">
-<h2>9.网络中特征可视化<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h2>
+<h2>9. 网络中特征可视化<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h2>
 <p>BaseNN内置<code class="docutils literal notranslate"><span class="pre">visual_feature</span></code>函数可查看数据在网络中传递。</p>
 <p>如输入数据为图片，指定图片和已经训练好的模型，可生成一张展示逐层网络特征传递的图片。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
@@ -277,7 +277,7 @@
 </div>
 </section>
 <section id="id13">
-<h2>10.指定随机数种子（选）<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h2>
+<h2>10. 指定随机数种子（选）<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h2>
 <p>默认初始化是随机的，每次训练结果都不一样。可以可使用<code class="docutils literal notranslate"><span class="pre">set_seed()</span></code>函数设定随机数种子，使得训练结果可被其他人复现。一旦指定，则每次训练结果一致。使用方法如下：</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">model</span> <span class="o">=</span> nn<span class="o">()</span>
 model.set_seed<span class="o">(</span><span class="m">1235</span><span class="o">)</span>
@@ -289,14 +289,14 @@ model.train<span class="o">(</span>...<span class="o">)</span>
 <p>注：设定随机数种子<code class="docutils literal notranslate"><span class="pre">set_seed()</span></code>应当在搭建网络<code class="docutils literal notranslate"><span class="pre">add()</span></code>之前。</p>
 </section>
 <section id="id14">
-<h2>11.指定损失函数（选）<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h2>
+<h2>11. 指定损失函数（选）<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h2>
 <p>默认的损失函数是交叉熵损失函数，允许选择不同的损失函数，支持的损失函数见附录。自选损失函数方法如下：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="o">...</span><span class="p">,</span><span class="n">loss</span><span class="o">=</span><span class="s2">&quot;CrossEntropyLoss&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="id15">
-<h2>12.指定评价指标（选）<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h2>
+<h2>12. 指定评价指标（选）<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h2>
 <p>默认的默认为准确率，允许选择其他的评价指标。支持的评价指标：acc（准确率），mae（平均绝对误差），mse（均方误差）。</p>
 <p>自选评价指标方法如下：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="o">...</span><span class="p">,</span><span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;mse&quot;</span><span class="p">])</span>

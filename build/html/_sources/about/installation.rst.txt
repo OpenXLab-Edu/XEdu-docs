@@ -1,16 +1,16 @@
 XEdu安装和下载
 ==============
 
-1.安装方式介绍
---------------
+1. 安装方式介绍
+---------------
 
 为了满足广大中小学师生的需求，XEdu安装方式分为一键安装包安装和pip安装。一键安装包版包含MMEdu、BaseML、BaseNN三个模块的基础功能，同时内置了一套EasyDL系列工具，分“EasyTrain.bat”、“EasyInference.bat”和“EasyAPI.bat”这三个可视化工具，定期更新。pip安装方式需用户自己分模块安装，各模块更新同步工具开发进度。后续还将推出docker容器镜像，敬请期待。
 
-2.一键安装包
-------------
+2. 一键安装包
+-------------
 
-2.1一键安装包下载和安装
-~~~~~~~~~~~~~~~~~~~~~~~
+2.1 一键安装包下载和安装
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 下载工具：XEdu一键安装包
 
@@ -85,6 +85,7 @@ XEdu一键安装包内置了一套EasyDL系列工具，分“EasyTrain.bat”、
 ①双击“EasyTrain.bat”，根据界面完成训练；
 
 .. figure:: ../images/about/EasyTrain.png
+
 
 ②双击“EasyInference.bat”，根据界面完成推理；
 
@@ -212,10 +213,10 @@ XEdu一键安装包说明文档。
 
 双击exe文件即可开始安装（一般下载完成后会自动打开安装界面无需点击exe文件，若没有自动打开安装页面再点击此exe文件）。
 
-打开安装界面后，依次选择\ ``Next`` -> ``I Agree`` -> ``All Users`` 
--> ``Next`` -> ``Next`` 
--> ``Add Anaconda3 to the system PATH environment variable`` -> 
-``Install`` -> ``Next`` -> ``Next`` -> ``Finish`` 
+打开安装界面后，依次选择\ ``Next`` ->``I Agree`` -> ``All Users``
+->``Next``->``Next``
+->``Add Anaconda3 to the system PATH environment variable`` ->
+``Install`` ->``Next`` ->``Next`` ->``Finish``
 
 2）安装python编辑器
 '''''''''''''''''''
@@ -234,9 +235,9 @@ XEdu一键安装包说明文档。
 
 双击exe文件即可开始安装（一般下载完成后会自动打开安装界面无需点击exe文件，若没有自动打开安装页面再点击此exe文件）
 
-打开安装界面后，依次选择\ ``Install for me only`` -> ``Next`` -> 
-``Next`` -> ``Next`` -> ``Next`` -> ``Next`` -> ``Install`` -> 
-``Finish`` 
+打开安装界面后，依次选择\ ``Install for me only`` -> ``Next`` ->
+``Next`` -> ``Next`` -> ``Next`` -> ``Next`` -> ``Install`` ->
+``Finish``
 
 **运行**
 
@@ -290,8 +291,8 @@ XEdu一键安装包说明文档。
    $ conda activate your_env_name
    $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/index.html
 
-3.1.3安装MMEdu(GPU版本)
-^^^^^^^^^^^^^^^^^^^^^^^
+3.1.3 安装MMEdu(GPU版本)
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 首先安装对应自己cuda版本的pytorch，安装命令可在以下网址中进行查询：https://pytorch.org/get-started/locally/
 
@@ -327,23 +328,23 @@ XEdu一键安装包说明文档。
 
 即可。
 
-3.2BaseML
-~~~~~~~~~
+3.2 BaseML
+~~~~~~~~~~
 
 ``pip install baseml`` 或 ``pip install BaseML``
 
-3.3BaseNN
-~~~~~~~~~
+3.3 BaseNN
+~~~~~~~~~~
 
 ``pip install basenn`` 或 ``pip install BaseNN``
 
-4.docker容器镜像
-----------------
+4. docker容器镜像
+-----------------
 
 敬请期待
 
-5.查看XEdu各模块库的版本
-------------------------
+5. 查看XEdu各模块库的版本
+-------------------------
 
 打开python终端，执行以下命令即可查看XEdu各模块库的版本。当前最新版本是0.04。
 
@@ -352,8 +353,8 @@ XEdu一键安装包说明文档。
 
 注：目前版本MMEdu仅支持CPU。
 
-6.卸载XEdu各模块库
-------------------
+6. 卸载XEdu各模块库
+-------------------
 
 如果XEdu某模块库出现异常情况，可以尝试使用\ ``uninstall``\ 命令卸载，然后再使用install命令安装。参考代码：
 

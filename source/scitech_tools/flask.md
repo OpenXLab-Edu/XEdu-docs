@@ -1,12 +1,12 @@
 # Web库Flask简介
 
-## 1.简介
+## 1. 简介
 
 Flask是一个轻量级的可定制框架，使用Python语言编写，较其他同类型框架更为灵活、轻便、安全且容易上手，其强大的插件库可以让用户实现个性化的网站定制，开发出功能强大的网站。
 
 文档地址：https://dormousehole.readthedocs.io/en/latest/quickstart.html
 
-## 2.安装
+## 2. 安装
 
 可以使用使用pip命令安装Flask库，如：
 
@@ -16,7 +16,7 @@ pip install flask
 
 注：MMEdu中已经内置了Flask库。
 
-## 3.代码示例
+## 3. 代码示例
 
 ### 3.1 最简Web服务器
 
