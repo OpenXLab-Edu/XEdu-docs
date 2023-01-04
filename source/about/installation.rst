@@ -213,10 +213,10 @@ XEdu一键安装包说明文档。
 
 双击exe文件即可开始安装（一般下载完成后会自动打开安装界面无需点击exe文件，若没有自动打开安装页面再点击此exe文件）。
 
-打开安装界面后，依次选择\ ``Next`` ->``I Agree`` -> ``All Users``
-->``Next``->``Next``
-->``Add Anaconda3 to the system PATH environment variable`` ->
-``Install`` ->``Next`` ->``Next`` ->``Finish``
+打开安装界面后，依次选择\ ``Next`` -> ``I Agree`` -> ``All Users`` 
+-> ``Next`` -> ``Next`` 
+-> ``Add Anaconda3 to the system PATH environment variable`` -> 
+``Install`` -> ``Next`` -> ``Next`` -> ``Finish`` 
 
 2）安装python编辑器
 '''''''''''''''''''
