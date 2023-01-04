@@ -113,7 +113,6 @@
 <span class="n">class_path</span> <span class="o">=</span> <span class="s1">&#39;../dataset/classes/cls_classes.txt&#39;</span> <span class="c1"># 指定训练集的路径</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">img</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">class_path</span><span class="o">=</span><span class="n">class_path</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">)</span> <span class="c1"># 在CPU上进行推理</span>
 <span class="n">model</span><span class="o">.</span><span class="n">print_result</span><span class="p">()</span> <span class="c1"># 输出结果</span>
-
 <span class="c1"># 同时您可以修改show的值来决定是否需要显示结果图片，此处默认显示结果图片</span>
 </pre></div>
 </div>
@@ -242,7 +241,7 @@
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">train</span></code>函数支持很多参数，为了降低难度，MMEdu已经给绝大多数的参数设置了默认值。根据具体的情况修改参数，可能会得到更好的训练效果。下面来详细说明<code class="docutils literal notranslate"><span class="pre">train</span></code>函数的各个参数。</p>
 <p><code class="docutils literal notranslate"><span class="pre">epochs</span></code>：默认参数为<code class="docutils literal notranslate"><span class="pre">100</span></code>，用于指定训练的轮次，而在上述代码中我们设置为<code class="docutils literal notranslate"><span class="pre">10</span></code>。</p>
-<p><code class="docutils literal notranslate"><span class="pre">batch_size</span></code>：默认参数为<code class="docutils literal notranslate"><span class="pre">None</span></code>，如为<code class="docutils literal notranslate"><span class="pre">None</span></code>则默认为对应网络配置文件中设置的<code class="docutils literal notranslate"><span class="pre">samples_per_gpu</span></code>的值，用于指定一次训练所选取的样本数。当训练集样本非常多时，直接将这些数据输入到神经网络的话会导致计算量非常大，容易因内存不足导致内核挂掉，因此可引入<code class="docutils literal notranslate"><span class="pre">batch_size</span></code>参数设置。</p>
+<p><code class="docutils literal notranslate"><span class="pre">batch_size</span></code>：默认参数为<code class="docutils literal notranslate"><span class="pre">None</span></code>，如为<code class="docutils literal notranslate"><span class="pre">None</span></code>则默认为对应网络配置文件中设置的<code class="docutils literal notranslate"><span class="pre">samples_per_gpu</span></code>的值，用于指定一次训练所选取的样本数。当训练集样本非常多时，直接将这些数据输入到神经网络的话会导致计算量非常大，容易因内存不足导致内核挂掉，因此可引入<code class="docutils literal notranslate"><span class="pre">batch_size</span></code>参数的设置。关于<code class="docutils literal notranslate"><span class="pre">batch_size</span></code>的取值范围，应该大于类别数，小于样本数，且由于GPU对2的幂次的<code class="docutils literal notranslate"><span class="pre">batch</span></code>可以发挥更佳的性能，因此设置成16、32、64、128…时往往要比设置为整10、整100的倍数时表现更优。</p>
 <p><code class="docutils literal notranslate"><span class="pre">validate</span></code>：布尔值，只能为<code class="docutils literal notranslate"><span class="pre">True</span></code>或者<code class="docutils literal notranslate"><span class="pre">False</span></code>，默认参数为<code class="docutils literal notranslate"><span class="pre">True</span></code>，在训练结束后，设定是否需要在校验集上进行评估，<code class="docutils literal notranslate"><span class="pre">True</span></code>则是需要进行评估。</p>
 <p><code class="docutils literal notranslate"><span class="pre">random_seed</span></code>：随机种子策略，默认为<code class="docutils literal notranslate"><span class="pre">0</span></code>即不使用，使用随机种子策略会减小模型算法结果的随机性。</p>
 <p><code class="docutils literal notranslate"><span class="pre">save_fold</span></code>：模型的保存路径，参数为<code class="docutils literal notranslate"><span class="pre">None</span></code>，默认保存路径为<code class="docutils literal notranslate"><span class="pre">./checkpoints/cls_model/</span></code>，如果不想模型保存在该目录下，可自己指定路径。</p>
@@ -303,7 +302,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021-2022 OpenXLabEdu.All Rights Reserved.</p>
+    <p>&#169; Copyright 2021-2023 OpenXLabEdu.All Rights Reserved.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

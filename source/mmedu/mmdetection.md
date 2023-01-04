@@ -4,7 +4,7 @@
 
 MMDetection的主要功能：输出图片或视频中出现的多个对象名称，同时用方框框出对象所在方形区域。
 
-<img src="../../build/html/_static/image-20220408192155931.png" alt="image-20220408192155931" style="zoom:40%;" />
+![image-20220408210420560](../../build/html/_static/image-20220408192155931.png)
 
 其支持的SOTA模型有FasterRCNN、Yolov3等。如需查看所有支持的SOTA模型，可使用`model.sota()`代码进行查看。
 
@@ -34,7 +34,7 @@ model.print_result() # 输出结果
 
 运行结果如图：
 
-<img src="../../build/html/_static/image-20220408191108835.png" alt="image-20220408191108835" style="zoom:45%;" />
+![image-20220408210420560](../../build/html/_static/image-20220408191108835.png)
 
 推理结果图片（带标签的图片）会以原本的文件名称保存在`demo`文件夹下的`det_result`文件夹下，如果在`demo`下没有发现该文件夹，不用担心，系统会自动建立。当然，您可以自己指定保存文件夹的名称。
 
@@ -197,7 +197,7 @@ model.train(epochs=10, validate=True) # 设定训练的epoch次数以及是否�
 
 `epochs`：默认参数为`100`，用于指定训练的轮次，而在上述代码中我们设置为`10`。
 
-`batch_size`：默认参数为`None`，如为`None`则默认为对应网络配置文件中设置的`samples_per_gpu`的值，用于指定一次训练所选取的样本数。当训练集样本非常多时，直接将这些数据输入到神经网络的话会导致计算量非常大，容易因内存不足导致内核挂掉，因此可引入`batch_size`参数设置。
+`batch_size`：默认参数为`None`，如为`None`则默认为对应网络配置文件中设置的`samples_per_gpu`的值，用于指定一次训练所选取的样本数。当训练集样本非常多时，直接将这些数据输入到神经网络的话会导致计算量非常大，容易因内存不足导致内核挂掉，因此可引入`batch_size`参数的设置。关于`batch_size`的取值范围，应该大于类别数，小于样本数，且由于GPU对2的幂次的`batch`可以发挥更佳的性能，因此设置成16、32、64、128…时往往要比设置为整10、整100的倍数时表现更优。
 
 `validate`：布尔值，只能为`True`或者`False`，默认参数为`True`，在训练结束后，设定是否需要在校验集上进行评估，`True`则是需要进行评估。
 
@@ -215,7 +215,7 @@ model.train(epochs=10, validate=True) # 设定训练的epoch次数以及是否�
 
 执行上述代码之后的运行结果如下图
 
-<img src="../../build/html/_static/image-20220408211213751.png" alt="image-20220408211213751" style="zoom:60%;" />
+![image-20220408210420560](../../build/html/_static/image-20220408211213751.png)
 
 而在`checkpoints\det_model`文件夹中我们会发现多了两种文件，一个是`None.log.json`文件，它记录了我们模型在训练过程中的一些参数，比如说学习率`lr`，所用时间`time`，以及损失`loss`等；另一个文件是.pth文件，这个是我们在训练过程中所保存的模型。
 
