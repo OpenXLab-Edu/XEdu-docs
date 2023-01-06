@@ -8,6 +8,7 @@ OpenXLabEdu帮助文档
 欢迎您使用OpenXLabEdu（XEdu）！
 -----------
 .. toctree::
+   :maxdepth: 2
    :caption: 目录
 
    about
