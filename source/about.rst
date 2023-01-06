@@ -2,8 +2,14 @@
 =================================
 
 .. toctree::
-  about/story.md
-  about/team.md
-  about/version_update.md
-  about/milestones.md
-  about/installation.md
+   :maxdepth: 2
+
+   about/story.md
+
+   about/team.md
+
+   about/version_update.md
+
+   about/milestones.md
+
+   about/installation.md
