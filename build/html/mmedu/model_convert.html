@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>图像处理模块：MMEditing &mdash; OpenXLabEdu  documentation</title>
+  <title>AI模型的转换 &mdash; OpenXLabEdu  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,8 +19,8 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="AI模型的转换" href="model_convert.html" />
-    <link rel="prev" title="物体检测模块：MMDetection" href="mmdetection.html" /> 
+    <link rel="next" title="BaseNN入门" href="../basenn.html" />
+    <link rel="prev" title="图像处理模块：MMEditing" href="mmediting.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -47,9 +47,20 @@
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">MMEdu功能简介和模块应用详解</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mmclassification.html">图像分类模块：MMClassification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mmdetection.html">物体检测模块：MMDetection</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">图像处理模块：MMEditing</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">图像处理模块：MMEditing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="model_convert.html">AI模型的转换</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmediting.html">图像处理模块：MMEditing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmediting.html">图像处理模块：MMEditing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">AI模型的转换</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">1. 常见的AI模型类型</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#onnx">1.1 ONNX</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ncnn">1.2 NCNN</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#mmedu">2. MMEdu的模型转换</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">2.1 典型代码</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../basenn.html">BaseNN入门</a></li>
@@ -74,9 +85,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../mmedu.html">MMEdu入门</a> &raquo;</li>
-      <li>图像处理模块：MMEditing</li>
+      <li>AI模型的转换</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/mmedu/mmediting.md.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/mmedu/model_convert.md.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -84,17 +95,41 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="mmediting">
-<h1>图像处理模块：MMEditing<a class="headerlink" href="#mmediting" title="Permalink to this headline"></a></h1>
-<p>开发中，敬请期待</p>
+  <section id="ai">
+<h1>AI模型的转换<a class="headerlink" href="#ai" title="Permalink to this headline"></a></h1>
+<section id="id1">
+<h2>1. 常见的AI模型类型<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<section id="onnx">
+<h3>1.1 ONNX<a class="headerlink" href="#onnx" title="Permalink to this headline"></a></h3>
+<p>ONNX 的全称是“Open Neural Network Exchange”，即“开放的神经网络切换”，旨在实现不同神经网络开发框架之间的互通互用。ONNXRuntime是微软推出的一款推理框架，支持多种运行后端包括CPU，GPU，TensorRT，DML等，是对ONNX模型最原生的支持。</p>
+</section>
+<section id="ncnn">
+<h3>1.2 NCNN<a class="headerlink" href="#ncnn" title="Permalink to this headline"></a></h3>
+<p>腾讯公司开发的移动端平台部署工具，一个为手机端极致优化的高性能神经网络前向计算框架。NCNN仅用于推理，不支持学习。</p>
+</section>
+</section>
+<section id="mmedu">
+<h2>2. MMEdu的模型转换<a class="headerlink" href="#mmedu" title="Permalink to this headline"></a></h2>
+<section id="id2">
+<h3>2.1 典型代码<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
+<span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;MobileNet&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/cls_model/CatsDog/best_accuracy_top-1_epoch_2.pth&#39;</span>
+<span class="n">out_file</span><span class="o">=</span><span class="s2">&quot;out_file/catdog.onnx&quot;</span>
+<span class="n">model</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;ONNX&quot;</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="mmdetection.html" class="btn btn-neutral float-left" title="物体检测模块：MMDetection" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="model_convert.html" class="btn btn-neutral float-right" title="AI模型的转换" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="mmediting.html" class="btn btn-neutral float-left" title="图像处理模块：MMEditing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../basenn.html" class="btn btn-neutral float-right" title="BaseNN入门" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
