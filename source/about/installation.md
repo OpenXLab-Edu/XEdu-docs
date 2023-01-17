@@ -169,11 +169,11 @@ XEdu
 
 XEdu一键安装包说明文档。
 
-## 3.pip安装
+## 3. pip安装
 
-### 3.1MMEdu
+### 3.1 MMEdu
 
-#### 3.1.1准备工作
+#### 3.1.1 准备工作
 
 强烈推荐你在Anaconda的基础上安装MMEdu，可以避免很多的版本冲突问题。
 
@@ -219,7 +219,7 @@ XEdu一键安装包说明文档。
 
 点击Thonny主界面右下角的Python版本号，可以选择对应的Python解释器，第一次配置点击`Configure inter preter`，弹出的窗口中，第一个下拉栏选择`可选的python3解释器或虚拟环境`， 第二个下拉栏找到自己之前安装的anaconda环境中的python解释器位置。点击确认即可使用该python解释器。
 
-#### 3.1.1安装MMEdu(CPU版本)
+#### 3.1.1 安装MMEdu(CPU版本)
 
 ##### 1）Linux安装MMEdu
 
