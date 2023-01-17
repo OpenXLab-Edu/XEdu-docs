@@ -120,6 +120,20 @@
 <span class="n">model</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;ONNX&quot;</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>这段代码是完成分类模型的转换，接下来对为您<code class="docutils literal notranslate"><span class="pre">model.convert</span></code>函数的各个参数：</p>
+<p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>：选择想要进行模型转换的权重文件，以.pth为后缀。</p>
+<p><code class="docutils literal notranslate"><span class="pre">backend</span></code>：模型转换的后端推理框架，目前支持ONNX，后续将陆续支持NCNN、TensorRT、OpenVINO等。</p>
+<p><code class="docutils literal notranslate"><span class="pre">out_file</span></code>：模型转换后的输出文件路径。</p>
+<p><code class="docutils literal notranslate"><span class="pre">class_path</span></code>：模型输入的类别文件路径。</p>
+<p>目标检测模型转换的示例代码如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMDetection</span> <span class="k">as</span> <span class="n">det</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">det</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;SSD_Lite&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">80</span>
+<span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/COCO-80/ssdlite.pth&#39;</span>
+<span class="n">out_file</span><span class="o">=</span><span class="s2">&quot;out_file/COCO-80.onnx&quot;</span>
+<span class="n">model</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;ONNX&quot;</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 </section>
 </section>

@@ -23,3 +23,24 @@ out_file="out_file/catdog.onnx"
 model.convert(checkpoint=checkpoint, backend="ONNX", out_file=out_file)
 ```
 
+这段代码是完成分类模型的转换，接下来对为您`model.convert`函数的各个参数：
+
+`checkpoint`：选择想要进行模型转换的权重文件，以.pth为后缀。
+
+`backend`：模型转换的后端推理框架，目前支持ONNX，后续将陆续支持NCNN、TensorRT、OpenVINO等。
+
+`out_file`：模型转换后的输出文件路径。
+
+`class_path`：模型输入的类别文件路径。
+
+目标检测模型转换的示例代码如下：
+
+```
+from MMEdu import MMDetection as det
+model = det(backbone='SSD_Lite')
+model.num_classes = 80
+checkpoint = 'checkpoints/COCO-80/ssdlite.pth'
+out_file="out_file/COCO-80.onnx"
+model.convert(checkpoint=checkpoint, backend="ONNX", out_file=out_file)
+```
+
