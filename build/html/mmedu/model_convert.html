@@ -57,6 +57,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#mmedu">2. MMEdu的模型转换</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">2.1 典型代码</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">2.1 部署到硬件</a></li>
 </ul>
 </li>
 </ul>
@@ -110,6 +111,14 @@
 </section>
 <section id="mmedu">
 <h2>2. MMEdu的模型转换<a class="headerlink" href="#mmedu" title="Permalink to this headline"></a></h2>
+<ul>
+<li><p>转换准备：</p>
+<p>分类的标签文件、待转换的模型权重文件。</p>
+</li>
+<li><p>需要配置四个信息：</p>
+<p>待转换的模型权重文件（<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>），图片分类的类别数量（model.num_classes），分类标签信息文件（<code class="docutils literal notranslate"><span class="pre">class_path</span></code>）和输出的文件（<code class="docutils literal notranslate"><span class="pre">out_file</span></code>）。</p>
+</li>
+</ul>
 <section id="id2">
 <h3>2.1 典型代码<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
@@ -117,7 +126,7 @@
 <span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/cls_model/CatsDog/best_accuracy_top-1_epoch_2.pth&#39;</span>
 <span class="n">out_file</span><span class="o">=</span><span class="s2">&quot;out_file/catdog.onnx&quot;</span>
-<span class="n">model</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;ONNX&quot;</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;ONNX&quot;</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="n">out_file</span><span class="p">,</span> <span class="n">class_path</span><span class="o">=</span><span class="n">class_path</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>这段代码是完成分类模型的转换，接下来对为您<code class="docutils literal notranslate"><span class="pre">model.convert</span></code>函数的各个参数：</p>
@@ -131,9 +140,19 @@
 <span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">80</span>
 <span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/COCO-80/ssdlite.pth&#39;</span>
 <span class="n">out_file</span><span class="o">=</span><span class="s2">&quot;out_file/COCO-80.onnx&quot;</span>
-<span class="n">model</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;ONNX&quot;</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;ONNX&quot;</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="n">out_file</span><span class="p">,</span> <span class="n">class_path</span><span class="o">=</span><span class="n">class_path</span><span class="p">)</span>
 </pre></div>
 </div>
+</section>
+<section id="id3">
+<h3>2.1 部署到硬件<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<ul>
+<li><p>需上传到硬件的文件：</p>
+<p>1）out_file文件夹（内含模型转换生成的两个文件）。
+2）BaseData.py，用于数据预处理。</p>
+<p>新建一个代码文件，将out_file文件夹中的py文件中的代码稍作修改用于代码运行。</p>
+</li>
+</ul>
 </section>
 </section>
 </section>
