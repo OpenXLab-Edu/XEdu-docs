@@ -10,5 +10,4 @@ MMEdu入门
    mmedu/mmclassification.md
    mmedu/mmdetection.md
    mmedu/mmediting.md
-   mmedu/mmediting.md
    mmedu/model_convert.md
