@@ -57,6 +57,7 @@ model.convert(checkpoint=checkpoint, backend="ONNX", out_file=out_file, class_pa
 - 需上传到硬件的文件：
 
   1）out_file文件夹（内含模型转换生成的两个文件）。
+  
   2）BaseData.py，用于数据预处理。
-
+  
   新建一个代码文件，将out_file文件夹中的py文件中的代码稍作修改用于代码运行。
