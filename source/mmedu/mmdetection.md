@@ -237,7 +237,11 @@ model.train(epochs=3, validate=True, checkpoint=checkpoint) # 进行再训练
 
 #### 4.SOTA模型介绍
 
-目前MMDetection支持的SOTA模型有FaterRCNN、Yolov3等，如需查看所有支持的SOTA模型，可使用`model.sota()`代码进行查看。这些模型的作用和适用场景简介如下。
+目前MMDetection支持的SOTA模型有SSD_Lite、FaterRCNN、Yolov3等，如需查看所有支持的SOTA模型，可使用`model.sota()`代码进行查看。这些模型的作用和适用场景简介如下。
+
+- **SSD_Lite**
+
+相比Faster RCNN有明显的速度优势，相比YOLO又有明显的mAP优势。
 
 - **FasterRCNN**
 
@@ -246,3 +250,12 @@ model.train(epochs=3, validate=True, checkpoint=checkpoint) # 进行再训练
 - **Yolov3**
 
 只进行一次检测，速度较快，适用于稍微大的目标检测问题。
+
+
+
+| 序号 | SOTA模型介绍                                                 |
+| ---- | :----------------------------------------------------------- |
+| 1    | [SSD](https://xedu.readthedocs.io/zh/latest/dl_library/net/SSD_Lite.html) |
+| 2    | [FasterRCNN](https://xedu.readthedocs.io/zh/latest/dl_library/net/FasterRCNN.html) |
+| 3    | [Yolov3](https://xedu.readthedocs.io/zh/latest/dl_library/net/Yolov3.html) |
+| 4    | [更多](https://xedu.readthedocs.io/zh/latest/dl_library/network_introduction.html) |

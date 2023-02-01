@@ -49,16 +49,21 @@
 <li class="toctree-l2"><a class="reference internal" href="mmdetection.html">物体检测模块：MMDetection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mmediting.html">图像处理模块：MMEditing</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">AI模型的转换</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">1. 常见的AI模型类型</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#onnx">1.1 ONNX</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ncnn">1.2 NCNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">1. 模型转换的意义</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2. 常见的AI模型类型</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#onnx">2.1 ONNX</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ncnn">2.2 NCNN</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#mmedu">2. MMEdu的模型转换</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">2.1 典型代码</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">2.1 部署到硬件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mmedu">3. MMEdu的模型转换</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">2.1 典型代码</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">4. 模型部署</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#python">4.1 部署到硬件（可以运行python的硬件）</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">5. 模型部署示例</a></li>
 </ul>
 </li>
 </ul>
@@ -98,18 +103,22 @@
   <section id="ai">
 <h1>AI模型的转换<a class="headerlink" href="#ai" title="Permalink to this headline"></a></h1>
 <section id="id1">
-<h2>1. 常见的AI模型类型<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<h2>1. 模型转换的意义<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<p>模型转换是为了模型能在不同框架间流转。在实际应用时，模型转换几乎都用于工业部署，负责模型从训练框架到部署侧推理框架的连接。 这是因为随着深度学习应用和技术的演进，训练框架和推理框架的职能已经逐渐分化。 分布式、自动求导、混合精度……训练框架往往围绕着易用性，面向设计算法的研究员，以研究员能更快地生产高性能模型为目标。 硬件指令集、预编译优化、量化算法……推理框架往往围绕着硬件平台的极致优化加速，面向工业落地，以模型能更快执行为目标。由于职能和侧重点不同，没有一个深度学习框架能面面俱到，完全一统训练侧和推理侧，而模型在各个框架内部的表示方式又千差万别，所以模型转换就被广泛需要了。</p>
+</section>
+<section id="id2">
+<h2>2. 常见的AI模型类型<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <section id="onnx">
-<h3>1.1 ONNX<a class="headerlink" href="#onnx" title="Permalink to this headline"></a></h3>
+<h3>2.1 ONNX<a class="headerlink" href="#onnx" title="Permalink to this headline"></a></h3>
 <p>ONNX 的全称是“Open Neural Network Exchange”，即“开放的神经网络切换”，旨在实现不同神经网络开发框架之间的互通互用。ONNXRuntime是微软推出的一款推理框架，支持多种运行后端包括CPU，GPU，TensorRT，DML等，是对ONNX模型最原生的支持。</p>
 </section>
 <section id="ncnn">
-<h3>1.2 NCNN<a class="headerlink" href="#ncnn" title="Permalink to this headline"></a></h3>
+<h3>2.2 NCNN<a class="headerlink" href="#ncnn" title="Permalink to this headline"></a></h3>
 <p>腾讯公司开发的移动端平台部署工具，一个为手机端极致优化的高性能神经网络前向计算框架。NCNN仅用于推理，不支持学习。</p>
 </section>
 </section>
 <section id="mmedu">
-<h2>2. MMEdu的模型转换<a class="headerlink" href="#mmedu" title="Permalink to this headline"></a></h2>
+<h2>3. MMEdu的模型转换<a class="headerlink" href="#mmedu" title="Permalink to this headline"></a></h2>
 <ul>
 <li><p>转换准备：</p>
 <p>分类的标签文件、待转换的模型权重文件。</p>
@@ -118,8 +127,8 @@
 <p>待转换的模型权重文件（<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>），图片分类的类别数量（model.num_classes），分类标签信息文件（<code class="docutils literal notranslate"><span class="pre">class_path</span></code>）和输出的文件（<code class="docutils literal notranslate"><span class="pre">out_file</span></code>）。</p>
 </li>
 </ul>
-<section id="id2">
-<h3>2.1 典型代码<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<section id="id3">
+<h3>2.1 典型代码<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
 <span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;MobileNet&#39;</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">2</span>
@@ -143,16 +152,52 @@
 </pre></div>
 </div>
 </section>
-<section id="id3">
-<h3>2.1 部署到硬件<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+</section>
+<section id="id4">
+<h2>4. 模型部署<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
+<section id="python">
+<h3>4.1 部署到硬件（可以运行python的硬件）<a class="headerlink" href="#python" title="Permalink to this headline"></a></h3>
 <ul>
+<li><p>硬件上需安装的库：</p>
+<p>onnxruntime</p>
+</li>
 <li><p>需上传到硬件的文件：</p>
 <p>1）out_file文件夹（内含模型转换生成的两个文件）。</p>
 <p>2）BaseData.py，用于数据预处理。</p>
 <p>新建一个代码文件，将out_file文件夹中的py文件中的代码稍作修改用于代码运行。</p>
 </li>
 </ul>
+<p>示例代码：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">onnxruntime</span> <span class="k">as</span> <span class="nn">rt</span>
+<span class="kn">import</span> <span class="nn">BaseData</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">tag</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">]</span>
+<span class="n">sess</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">InferenceSession</span><span class="p">(</span><span class="s1">&#39;out_file/catdog.onnx&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+<span class="n">input_name</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">get_inputs</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
+<span class="n">out_name</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">get_outputs</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
+
+<span class="n">dt</span> <span class="o">=</span> <span class="n">BaseData</span><span class="o">.</span><span class="n">ImageData</span><span class="p">(</span><span class="s1">&#39;/data/TC4V0D/CatsDogsSample/test_set/cat/cat26.jpg&#39;</span><span class="p">,</span> <span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;MobileNet&#39;</span><span class="p">)</span>
+
+<span class="n">input_data</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">()</span>
+<span class="n">pred_onx</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">out_name</span><span class="p">],</span> <span class="p">{</span><span class="n">input_name</span><span class="p">:</span> <span class="n">input_data</span><span class="p">})</span>
+<span class="n">ort_output</span> <span class="o">=</span> <span class="n">pred_onx</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">ort_output</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">if</span> <span class="n">tag</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;dog&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;这是小狗，汪汪汪！&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;这是小猫，喵喵喵！&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
+</section>
+<section id="id5">
+<h2>5. 模型部署示例<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
+<p>猫狗分类小助手：https://www.openinnolab.org.cn/pjlab/project?id=63c3f52a1dd9517dffa1f513&amp;sc=62f34141bf4f550f3e926e0e#public</p>
+<p>千物识别小助手：https://www.openinnolab.org.cn/pjlab/project?id=63c4106c2e26ff0a30cb440f&amp;sc=62f34141bf4f550f3e926e0e#public</p>
+<p>有无人检测小助手：https://www.openinnolab.org.cn/pjlab/project?id=63c4b6d22e26ff0a30f26ebc&amp;sc=62f34141bf4f550f3e926e0e#public</p>
+<p>行空板上温州话识别：https://www.openinnolab.org.cn/pjlab/project?id=63b7c66e5e089d71e61d19a0&amp;sc=62f34141bf4f550f3e926e0e#public</p>
 </section>
 </section>
 
