@@ -242,10 +242,14 @@ MMEdu中预置了“车牌检测”数据集，并且已经预训练了权重（
 
 这里我们有一个参数在之前的\ `训练模型 <####2.训练模型>`__\ 过程中没有提及，那就是\ ``train``\ 函数中的\ ``checkpoint``\ 参数，这个放到这里就比较好理解，它的意思是指定需要进行再训练的模型路径，当然你也可以根据你需要训练的不同模型而调整参数。
 
-4.SOTA模型介绍
-^^^^^^^^^^^^^^
+4.支持的SOTA模型
+^^^^^^^^^^^^^^^^
 
-目前MMDetection支持的SOTA模型有FaterRCNN、Yolov3等，如需查看所有支持的SOTA模型，可使用\ ``model.sota()``\ 代码进行查看。这些模型的作用和适用场景简介如下。
+目前MMDetection支持的SOTA模型有SSD_Lite、FaterRCNN、Yolov3等，如需查看所有支持的SOTA模型，可使用\ ``model.sota()``\ 代码进行查看。这些模型的作用和适用场景简介如下。
+
+-  **SSD_Lite**
+
+相比Faster RCNN有明显的速度优势，相比YOLO又有明显的mAP优势。
 
 -  **FasterRCNN**
 
@@ -254,3 +258,12 @@ MMEdu中预置了“车牌检测”数据集，并且已经预训练了权重（
 -  **Yolov3**
 
 只进行一次检测，速度较快，适用于稍微大的目标检测问题。
+
+==== =====================================================================================
+序号 SOTA模型介绍
+==== =====================================================================================
+1    `SSD_Lite <https://xedu.readthedocs.io/zh/latest/dl_library/net/SSD_Lite.html>`__
+2    `FasterRCNN <https://xedu.readthedocs.io/zh/latest/dl_library/net/FasterRCNN.html>`__
+3    `Yolov3 <https://xedu.readthedocs.io/zh/latest/dl_library/net/Yolov3.html>`__
+4    `更多 <https://xedu.readthedocs.io/zh/latest/dl_library/network_introduction.html>`__
+==== =====================================================================================

@@ -235,7 +235,7 @@ model.train(epochs=3, validate=True, checkpoint=checkpoint) # 进行再训练
 
 这里我们有一个参数在之前的[训练模型](####2.训练模型)过程中没有提及，那就是`train`函数中的`checkpoint`参数，这个放到这里就比较好理解，它的意思是指定需要进行再训练的模型路径，当然你也可以根据你需要训练的不同模型而调整参数。
 
-#### 4.SOTA模型介绍
+#### 4.支持的SOTA模型
 
 目前MMDetection支持的SOTA模型有SSD_Lite、FaterRCNN、Yolov3等，如需查看所有支持的SOTA模型，可使用`model.sota()`代码进行查看。这些模型的作用和适用场景简介如下。
 
@@ -255,7 +255,7 @@ model.train(epochs=3, validate=True, checkpoint=checkpoint) # 进行再训练
 
 | 序号 | SOTA模型介绍                                                 |
 | ---- | :----------------------------------------------------------- |
-| 1    | [SSD](https://xedu.readthedocs.io/zh/latest/dl_library/net/SSD_Lite.html) |
+| 1    | [SSD_Lite](https://xedu.readthedocs.io/zh/latest/dl_library/net/SSD_Lite.html) |
 | 2    | [FasterRCNN](https://xedu.readthedocs.io/zh/latest/dl_library/net/FasterRCNN.html) |
 | 3    | [Yolov3](https://xedu.readthedocs.io/zh/latest/dl_library/net/Yolov3.html) |
 | 4    | [更多](https://xedu.readthedocs.io/zh/latest/dl_library/network_introduction.html) |

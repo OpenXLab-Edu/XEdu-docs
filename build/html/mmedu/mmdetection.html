@@ -52,7 +52,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#cpu">1.直接推理（支持CPU）</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id3">2.训练模型</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id4">3.继续训练</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#sota">4.SOTA模型介绍</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sota">4.支持的SOTA模型</a></li>
 </ul>
 </li>
 </ul>
@@ -283,8 +283,12 @@
 <p>这里我们有一个参数在之前的<a class="reference external" href="####2.训练模型">训练模型</a>过程中没有提及，那就是<code class="docutils literal notranslate"><span class="pre">train</span></code>函数中的<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>参数，这个放到这里就比较好理解，它的意思是指定需要进行再训练的模型路径，当然你也可以根据你需要训练的不同模型而调整参数。</p>
 </section>
 <section id="sota">
-<h3>4.SOTA模型介绍<a class="headerlink" href="#sota" title="Permalink to this headline"></a></h3>
-<p>目前MMDetection支持的SOTA模型有FaterRCNN、Yolov3等，如需查看所有支持的SOTA模型，可使用<code class="docutils literal notranslate"><span class="pre">model.sota()</span></code>代码进行查看。这些模型的作用和适用场景简介如下。</p>
+<h3>4.支持的SOTA模型<a class="headerlink" href="#sota" title="Permalink to this headline"></a></h3>
+<p>目前MMDetection支持的SOTA模型有SSD_Lite、FaterRCNN、Yolov3等，如需查看所有支持的SOTA模型，可使用<code class="docutils literal notranslate"><span class="pre">model.sota()</span></code>代码进行查看。这些模型的作用和适用场景简介如下。</p>
+<ul class="simple">
+<li><p><strong>SSD_Lite</strong></p></li>
+</ul>
+<p>相比Faster RCNN有明显的速度优势，相比YOLO又有明显的mAP优势。</p>
 <ul class="simple">
 <li><p><strong>FasterRCNN</strong></p></li>
 </ul>
@@ -293,6 +297,31 @@
 <li><p><strong>Yolov3</strong></p></li>
 </ul>
 <p>只进行一次检测，速度较快，适用于稍微大的目标检测问题。</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 96%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>序号</p></th>
+<th class="head"><p>SOTA模型介绍</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p><a class="reference external" href="https://xedu.readthedocs.io/zh/latest/dl_library/net/SSD_Lite.html">SSD_Lite</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><a class="reference external" href="https://xedu.readthedocs.io/zh/latest/dl_library/net/FasterRCNN.html">FasterRCNN</a></p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p><a class="reference external" href="https://xedu.readthedocs.io/zh/latest/dl_library/net/Yolov3.html">Yolov3</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p><a class="reference external" href="https://xedu.readthedocs.io/zh/latest/dl_library/network_introduction.html">更多</a></p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 </section>
