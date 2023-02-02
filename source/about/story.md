@@ -40,12 +40,33 @@ MMEdu很快就出了第一版，邀请了国内的骨干教师进行内部测试
 
 XEdu的定位是面向中小学AI教育的开发和学习工具。
 
-
-
 ## 杂志专稿：中小学需要怎样的AI学习工具
 
+20222年春，北京师范大学吴俊杰博士受《中国信息技术教育》杂志社委托，以“中小学 AI 教育需要怎样的工具“为主题，邀请戴娟和谢作如做了一期对话。
 
 
 
 
+![](/Users/xiezuoru/Documents/GitHub/XEdu-docs/source/images/about/magazine1.jpg)
 
+![](/Users/xiezuoru/Documents/GitHub/XEdu-docs/source/images/about/magazine2.jpg)
+
+
+
+![](/Users/xiezuoru/Documents/GitHub/XEdu-docs/source/images/about/magazine3.jpg)
+
+
+
+![](/Users/xiezuoru/Documents/GitHub/XEdu-docs/source/images/about/magazine4.jpg)
+
+
+
+![](/Users/xiezuoru/Documents/GitHub/XEdu-docs/source/images/about/magazine5.jpg)
+
+
+
+![](/Users/xiezuoru/Documents/GitHub/XEdu-docs/source/images/about/magazine6.jpg)
+
+
+
+![](/Users/xiezuoru/Documents/GitHub/XEdu-docs/source/images/about/magazine7.jpg)
