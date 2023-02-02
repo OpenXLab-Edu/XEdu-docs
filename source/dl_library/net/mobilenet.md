@@ -1,7 +1,5 @@
 # 图像分类模型MobileNet
 
-
-
 [MobileNetV2: Inverted Residuals and Linear Bottlenecks](https://arxiv.org/abs/1801.04381)
 
 ## 介绍
