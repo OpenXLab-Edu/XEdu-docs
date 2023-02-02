@@ -2,13 +2,23 @@
 
 ## 开发历史
 
+2023年1月，启动全国新一代人工智能教师成长营活动，报名人数数千人；在OpenInnoLab上线专属容器。
+
+2022年12月，启动BaseDT模块的编写。
+
+2022年11月，在第十届中小学STEAM教育大会展示，开设一天的工作坊活动（8个活动），随后在温州大学开设浙江省AI教师培训活动。
+
+2022年10月，编写Easy系列工具，实现无代码训练和推理。
+
 2022年9月，在世界人工智能大会的智能教育论坛上正式发布。
 
 2022年8月，上线MMEdu pip包，并整合在OpenInnoLab平台上。
 
 2022年7月，发布MMEdu 0.7版。
 
-2022年6月，发布MMEdu 0.6版，启动XEdu整体规划。
+2022年6月，发布MMEdu 0.6版，启动XEdu整体规划，增加了BaseNN和BaseNN。
+
+2022年5月，封装MMEdu一键安装包。
 
 2022年4月，发布MMEdu 0.5版。
 
@@ -23,19 +33,5 @@
 ## 媒体关注
 
 2022年，中国信息教育杂志社特约记者吴俊杰博士访谈戴娟和谢作如。
-
-![](../images/about/pdf-1.png)
-
-![](..//images/about/pdf-2.png)
-
-![](../images/about/pdf-3.png)
-
-![](../images/about/pdf-4.png)
-
-![](../images/about/pdf-5.png)
-
-![](../images/about/pdf-6.png)
-
-![](../images/about/pdf-7.png)
 
 文章链接：[中小学人工智能教育需要怎么样的工具](../images/about/2022-6.pdf)
