@@ -45,28 +45,16 @@ XEdu的定位是面向中小学AI教育的开发和学习工具。
 20222年春，北京师范大学吴俊杰博士受《中国信息技术教育》杂志社委托，以“中小学 AI 教育需要怎样的工具“为主题，邀请戴娟和谢作如做了一期对话。
 
 
+![](../images/about/magazine1.jpg)
 
+![](../images/about/magazine2.jpg)
 
-![](/Users/xiezuoru/Documents/GitHub/XEdu-docs/source/images/about/magazine1.jpg)
+![](../images/about/magazine3.jpg)
 
-![](/Users/xiezuoru/Documents/GitHub/XEdu-docs/source/images/about/magazine2.jpg)
+![](../images/about/magazine4.jpg)
 
+![](../images/about/magazine5.jpg)
 
+![](../images/about/magazine6.jpg)
 
-![](/Users/xiezuoru/Documents/GitHub/XEdu-docs/source/images/about/magazine3.jpg)
-
-
-
-![](/Users/xiezuoru/Documents/GitHub/XEdu-docs/source/images/about/magazine4.jpg)
-
-
-
-![](/Users/xiezuoru/Documents/GitHub/XEdu-docs/source/images/about/magazine5.jpg)
-
-
-
-![](/Users/xiezuoru/Documents/GitHub/XEdu-docs/source/images/about/magazine6.jpg)
-
-
-
-![](/Users/xiezuoru/Documents/GitHub/XEdu-docs/source/images/about/magazine7.jpg)
+![](../images/about/magazine7.jpg)
