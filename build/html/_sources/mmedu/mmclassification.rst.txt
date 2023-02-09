@@ -1,15 +1,17 @@
-图像分类模块：MMClassification
-==============================
+解锁图像分类模块：MMClassification
+==================================
 
-简介
-~~~~
+初识MMClassification
+~~~~~~~~~~~~~~~~~~~~
 
-MMClassifiation的主要功能是对图像进行分类。其支持的SOTA模型有LeNet、MobileNet、ResNet18、ResNet50等，具体介绍详见\ `后文 <https://xedu.readthedocs.io/zh/latest/mmedu/mmclassification.html#sota>`__\ 。如需查看所有支持的SOTA模型，可使用\ ``model.sota()``\ 代码进行查看。
+MMClassifiation（简称cls）的主要功能是对图像进行分类。其支持的SOTA模型有LeNet、MobileNet、ResNet18、ResNet50等，具体介绍详见\ `后文 <https://xedu.readthedocs.io/zh/latest/mmedu/mmclassification.html#sota>`__\ 。如需查看所有支持的SOTA模型，可使用\ ``model.sota()``\ 代码进行查看。
 
 使用说明
 ~~~~~~~~
 
-MMEdu中预置了“石头剪刀布”手势三分类的数据集，并且已经预训练了权重（路径：/checkpoints/cls_model/hand_gray/latest.pth）。在demo文件夹中，还提供了一张测试图片。
+XEdu一键安装包中预置了MMEdu的cls模块的示例代码（路径：/demo）、常用小数据集（路径：/dataset/cls）,并且已经预训练了一些权重（路径：/checkpoints/cls_model）。在demo文件夹中，还提供了一张测试图片，OpenInnoLab平台也公开了非常多图像分类任务的项目，体验了几个之后相信会对此模块有一定理解。
+
+下面我们将以“石头剪刀布”手势识别这个任务为例，介绍一下图像分类模块示例代码的用法，解锁图像分类模块的同时也一起完成一个新的图像分类项目吧！
 
 1. 直接推理（支持CPU）
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -21,7 +23,6 @@ MMEdu中预置了“石头剪刀布”手势三分类的数据集，并且已经
 .. code:: python
 
    from MMEdu import MMClassification as cls  # 导入mmcls模块
-
    img = 'testrock01-02.png' # 指定进行推理的图片路径，我们使用demo文件夹中提供的图片
    model = cls(backbone='LeNet') # 实例化MMClassification模型
    model.checkpoint='../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的模型权重文件

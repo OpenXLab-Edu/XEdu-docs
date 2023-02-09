@@ -24,8 +24,6 @@ XEdu的基础工具BaseDT，则是一个整合了常见数据处理工具的基�
 
 ## XEdu的规划
 
-
-
 1.计算机视觉开发库：MMEdu
 
 MMEdu全称为OpenMMLabEdu，是著名的计算机视觉开发工具OpenMMLab的教育版本。 

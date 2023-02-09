@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>图像分类模块：MMClassification &mdash; OpenXLabEdu  documentation</title>
+  <title>解锁图像分类模块：MMClassification &mdash; OpenXLabEdu  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,7 +19,7 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="物体检测模块：MMDetection" href="mmdetection.html" />
+    <link rel="next" title="揭秘目标检测模块：MMDetection" href="mmdetection.html" />
     <link rel="prev" title="MMEdu功能简介和模块应用详解" href="introduction.html" /> 
 </head>
 
@@ -42,11 +42,11 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../mmedu.html">MMEdu入门</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="quick_start.html">MMEdu快速入门</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start.html">快速体验MMEdu，开始！</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation.html">MMEdu安装和下载</a></li>
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">MMEdu功能简介和模块应用详解</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">图像分类模块：MMClassification</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">简介</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">解锁图像分类模块：MMClassification</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">初识MMClassification</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">使用说明</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#cpu">1. 直接推理（支持CPU）</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id3">2. 训练模型</a></li>
@@ -56,7 +56,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="mmdetection.html">物体检测模块：MMDetection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmdetection.html">揭秘目标检测模块：MMDetection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mmediting.html">图像处理模块：MMEditing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="model_convert.html">AI模型的转换</a></li>
 </ul>
@@ -83,7 +83,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../mmedu.html">MMEdu入门</a> &raquo;</li>
-      <li>图像分类模块：MMClassification</li>
+      <li>解锁图像分类模块：MMClassification</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/mmedu/mmclassification.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -94,20 +94,20 @@
            <div itemprop="articleBody">
              
   <section id="mmclassification">
-<h1>图像分类模块：MMClassification<a class="headerlink" href="#mmclassification" title="Permalink to this headline"></a></h1>
+<h1>解锁图像分类模块：MMClassification<a class="headerlink" href="#mmclassification" title="Permalink to this headline"></a></h1>
 <section id="id1">
-<h2>简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
-<p>MMClassifiation的主要功能是对图像进行分类。其支持的SOTA模型有LeNet、MobileNet、ResNet18、ResNet50等，具体介绍详见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/mmclassification.html#sota">后文</a>。如需查看所有支持的SOTA模型，可使用<code class="docutils literal notranslate"><span class="pre">model.sota()</span></code>代码进行查看。</p>
+<h2>初识MMClassification<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<p>MMClassifiation（简称cls）的主要功能是对图像进行分类。其支持的SOTA模型有LeNet、MobileNet、ResNet18、ResNet50等，具体介绍详见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/mmclassification.html#sota">后文</a>。如需查看所有支持的SOTA模型，可使用<code class="docutils literal notranslate"><span class="pre">model.sota()</span></code>代码进行查看。</p>
 </section>
 <section id="id2">
 <h2>使用说明<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
-<p>MMEdu中预置了“石头剪刀布”手势三分类的数据集，并且已经预训练了权重（路径：/checkpoints/cls_model/hand_gray/latest.pth）。在demo文件夹中，还提供了一张测试图片。</p>
+<p>XEdu一键安装包中预置了MMEdu的cls模块的示例代码（路径：/demo）、常用小数据集（路径：/dataset/cls）,并且已经预训练了一些权重（路径：/checkpoints/cls_model）。在demo文件夹中，还提供了一张测试图片，OpenInnoLab平台也公开了非常多图像分类任务的项目，体验了几个之后相信会对此模块有一定理解。</p>
+<p>下面我们将以“石头剪刀布”手势识别这个任务为例，介绍一下图像分类模块示例代码的用法，解锁图像分类模块的同时也一起完成一个新的图像分类项目吧！</p>
 <section id="cpu">
 <h3>1. 直接推理（支持CPU）<a class="headerlink" href="#cpu" title="Permalink to this headline"></a></h3>
 <p>如果想快速上手体验MMClassification的话，我们建议您使用我们已经预训练好的模型和权重文件进行推理，提供一张图片测试推理的准确度。</p>
 <p>执行代码如下:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>  <span class="c1"># 导入mmcls模块</span>
-
 <span class="n">img</span> <span class="o">=</span> <span class="s1">&#39;testrock01-02.png&#39;</span> <span class="c1"># 指定进行推理的图片路径，我们使用demo文件夹中提供的图片</span>
 <span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;LeNet&#39;</span><span class="p">)</span> <span class="c1"># 实例化MMClassification模型</span>
 <span class="n">model</span><span class="o">.</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;../checkpoints/cls_model/hand_gray/latest.pth&#39;</span> <span class="c1"># 指定使用的模型权重文件</span>
@@ -324,7 +324,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="introduction.html" class="btn btn-neutral float-left" title="MMEdu功能简介和模块应用详解" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="mmdetection.html" class="btn btn-neutral float-right" title="物体检测模块：MMDetection" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="mmdetection.html" class="btn btn-neutral float-right" title="揭秘目标检测模块：MMDetection" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
