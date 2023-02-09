@@ -34,4 +34,4 @@
 
 2022年，中国信息教育杂志社特约记者吴俊杰博士访谈戴娟和谢作如。
 
-文章链接：[中小学人工智能教育需要怎么样的工具](https://github.com/OpenXLab-Edu/XEdu-docs/blob/c992a1b186d04803c44e185336bbf3bdca365f7b/source/images/about/2022-6.pdf)
+文章链接：[中小学人工智能教育需要怎么样的工具](../images/about/2022-6.pdf)
