@@ -205,7 +205,7 @@ $ pip install MMEdu==0.1.0rc0
 
 即可。
 
-## 4. 完整版安装之docker容器镜像。
+## 4. 完整版安装之docker容器镜像
 
 敬请期待
 
