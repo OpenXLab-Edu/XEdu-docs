@@ -16,11 +16,18 @@
 
 #### 1）MMEdu
 
+##### V0.1.5 20230203
+
+1. det修正infer和convert中类别数量的问题。
+1. det模型训练时会自动保存best_map的权重。
+1. det 规范化数据集文件夹名称。
+1. 修复SSD_Lite类名传递不正确的问题。
+
 ##### V0.1.4 20230106
 
 1. cls+det同时增加可选batch_size功能。
 1. det补充SSD和yolov3。
-1. det输出格式由xywh修正为x1y1x2y2
+1. det输出格式由xywh修正为x1y1x2y2。
 
 ##### V0.1.3 20221222
 

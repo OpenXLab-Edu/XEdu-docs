@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI模型的转换 &mdash; OpenXLabEdu  documentation</title>
+  <title>揭秘AI模型的转换 &mdash; OpenXLabEdu  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -48,22 +48,20 @@
 <li class="toctree-l2"><a class="reference internal" href="mmclassification.html">解锁图像分类模块：MMClassification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mmdetection.html">揭秘目标检测模块：MMDetection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mmediting.html">图像处理模块：MMEditing</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">AI模型的转换</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">1. 模型转换的意义</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">2. 常见的AI模型类型</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#onnx">2.1 ONNX</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ncnn">2.2 NCNN</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">揭秘AI模型的转换</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">为什么要进行模型转换？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">快速认识常见的AI模型类型</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#onnx">1. ONNX</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ncnn">2. NCNN</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#mmedu">3. MMEdu的模型转换</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id3">2.1 典型代码</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mmedu">用MMEdu就能做模型转换！</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">从零开始训练猫狗识别模型并完成模型转换</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">挑战模型部署到硬件</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">准备工作</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">4. 模型部署</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#python">4.1 部署到硬件（可以运行python的硬件）</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">5. 模型部署示例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">更多模型部署项目</a></li>
 </ul>
 </li>
 </ul>
@@ -90,7 +88,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../mmedu.html">MMEdu入门</a> &raquo;</li>
-      <li>AI模型的转换</li>
+      <li>揭秘AI模型的转换</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/mmedu/model_convert.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -101,28 +99,29 @@
            <div itemprop="articleBody">
              
   <section id="ai">
-<h1>AI模型的转换<a class="headerlink" href="#ai" title="Permalink to this headline"></a></h1>
+<h1>揭秘AI模型的转换<a class="headerlink" href="#ai" title="Permalink to this headline"></a></h1>
 <section id="id1">
-<h2>1. 模型转换的意义<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<h2>为什么要进行模型转换？<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <p>模型转换是为了模型能在不同框架间流转。在实际应用时，模型转换几乎都用于工业部署，负责模型从训练框架到部署侧推理框架的连接。
 这是因为随着深度学习应用和技术的演进，训练框架和推理框架的职能已经逐渐分化。
 分布式、自动求导、混合精度……训练框架往往围绕着易用性，面向设计算法的研究员，以研究员能更快地生产高性能模型为目标。
 硬件指令集、预编译优化、量化算法……推理框架往往围绕着硬件平台的极致优化加速，面向工业落地，以模型能更快执行为目标。由于职能和侧重点不同，没有一个深度学习框架能面面俱到，完全一统训练侧和推理侧，而模型在各个框架内部的表示方式又千差万别，所以模型转换就被广泛需要了。</p>
 </section>
 <section id="id2">
-<h2>2. 常见的AI模型类型<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<h2>快速认识常见的AI模型类型<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <section id="onnx">
-<h3>2.1 ONNX<a class="headerlink" href="#onnx" title="Permalink to this headline"></a></h3>
+<h3>1. ONNX<a class="headerlink" href="#onnx" title="Permalink to this headline"></a></h3>
 <p>ONNX 的全称是“Open Neural Network
 Exchange”，即“开放的神经网络切换”，旨在实现不同神经网络开发框架之间的互通互用。ONNXRuntime是微软推出的一款推理框架，支持多种运行后端包括CPU，GPU，TensorRT，DML等，是对ONNX模型最原生的支持。</p>
 </section>
 <section id="ncnn">
-<h3>2.2 NCNN<a class="headerlink" href="#ncnn" title="Permalink to this headline"></a></h3>
+<h3>2. NCNN<a class="headerlink" href="#ncnn" title="Permalink to this headline"></a></h3>
 <p>腾讯公司开发的移动端平台部署工具，一个为手机端极致优化的高性能神经网络前向计算框架。NCNN仅用于推理，不支持学习。</p>
 </section>
 </section>
 <section id="mmedu">
-<h2>3. MMEdu的模型转换<a class="headerlink" href="#mmedu" title="Permalink to this headline"></a></h2>
+<h2>用MMEdu就能做模型转换！<a class="headerlink" href="#mmedu" title="Permalink to this headline"></a></h2>
+<p>MMEdu内置了一个<code class="docutils literal notranslate"><span class="pre">convert</span></code>函数实现了一键式模型转换，转换前先了解一下转换要做的事情吧。</p>
 <ul>
 <li><p>转换准备：</p>
 <p>分类的标签文件、待转换的模型权重文件。</p>
@@ -130,9 +129,8 @@ Exchange”，即“开放的神经网络切换”，旨在实现不同神经网
 <li><p>需要配置四个信息：</p>
 <p>待转换的模型权重文件（<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>），图片分类的类别数量（model.num_classes），分类标签信息文件（<code class="docutils literal notranslate"><span class="pre">class_path</span></code>）和输出的文件（<code class="docutils literal notranslate"><span class="pre">out_file</span></code>）。</p>
 </li>
+<li><p>模型转换的典型代码：</p></li>
 </ul>
-<section id="id3">
-<h3>2.1 典型代码<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
 <span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;MobileNet&#39;</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">2</span>
@@ -156,11 +154,56 @@ Exchange”，即“开放的神经网络切换”，旨在实现不同神经网
 </pre></div>
 </div>
 </section>
+<section id="id3">
+<h2>从零开始训练猫狗识别模型并完成模型转换<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<p>现在我们一起体验以猫狗识别为例，理解并掌握使用MMEdu工具完成从模型训练到模型部署的基本流程。</p>
+<p>可参考的项目：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&amp;sc=635638d69ed68060c638f979#public">https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&amp;sc=635638d69ed68060c638f979#public</a></p>
+<p>（用谷歌浏览器打开）</p>
+<p><strong>1.准备数据集</strong></p>
+<p>思考自己想要解决的分类问题后，首先收集数据并整理好数据集，如想要解决猫狗识别问题需准备猫狗数据集。</p>
+<p><strong>2.模型训练</strong></p>
+<p>全新开始训练一个模型，一般要花较长时间。因此我们强烈建议在预训练模型的基础上继续训练，哪怕你要分类的数据集和预训练的数据集并不一样。如下代码使用基于MobileNet网络训练的猫狗识别预训练模型，在这个预训练模型基础上继续训练。基于预训练模型继续训练可起到加速训练的作用，通常会使得模型达到更好的效果。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
+<span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;MobileNet&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;/data/TC4V0D/CatsDogsSample&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/cls_model/CatsDog1&#39;</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">epochs</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;checkpoints/pretrain_model/mobilenet_v2.pth&#39;</span> <span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">device</span><span class="o">=</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>3.推理部署</strong></p>
+<p>使用MMEdu图像分类模块模型推理的示例代码完成模型推理。返回的数据类型是一个字典列表（很多个字典组成的列表）类型的变量，内置的字典表示分类的结果，如“<code class="docutils literal notranslate"><span class="pre">{'标签':</span> <span class="pre">0,</span> <span class="pre">'置信度':</span> <span class="pre">0.9417100548744202,</span> <span class="pre">'预测结果':</span> <span class="pre">'cat'}</span></code>”，我们可以用字典访问其中的元素。巧用预测结果设置一些输出。如：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
+<span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;MobileNet&#39;</span><span class="p">)</span>
+<span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/cls_model/CatsDog1/best_accuracy_top-1_epoch_1.pth&#39;</span>
+<span class="n">class_path</span> <span class="o">=</span> <span class="s1">&#39;/data/TC4V0D/CatsDogsSample/classes.txt&#39;</span>
+<span class="n">img_path</span> <span class="o">=</span> <span class="s1">&#39;/data/TC4V0D/CatsDogsSample/test_set/cat/cat0.jpg&#39;</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">img_path</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">class_path</span><span class="o">=</span><span class="n">class_path</span><span class="p">,</span><span class="n">checkpoint</span> <span class="o">=</span> <span class="n">checkpoint</span><span class="p">,</span><span class="n">device</span><span class="o">=</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">print_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;标签（序号）为：&#39;</span><span class="p">,</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;标签&#39;</span><span class="p">])</span>
+
+<span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;标签&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;这是小猫，喵喵喵！&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;这是小猫，喵喵喵！&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>4.模型转换和部署</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
+<span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;MobileNet&#39;</span><span class="p">)</span>
+<span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/cls_model/CatsDog1/best_accuracy_top-1_epoch_1.pth&#39;</span>
+<span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">class_path</span> <span class="o">=</span> <span class="s1">&#39;/data/TC4V0D/CatsDogsSample/classes.txt&#39;</span>
+<span class="n">out_file</span><span class="o">=</span><span class="s1">&#39;out_file/cats_dogs.onnx&#39;</span>
+<span class="n">model</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;ONNX&quot;</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="n">out_file</span><span class="p">,</span> <span class="n">class_path</span><span class="o">=</span><span class="n">class_path</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>此时项目文件中的out_file文件夹下便生成了模型转换后生成的两个文件，可打开查看。一个是ONNX模型权重，一个是示例代码，示例代码稍作改动即可运行（需配合BaseData.py的BaseDT库）。</p>
 </section>
 <section id="id4">
-<h2>4. 模型部署<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
-<section id="python">
-<h3>4.1 部署到硬件（可以运行python的硬件）<a class="headerlink" href="#python" title="Permalink to this headline"></a></h3>
+<h2>挑战模型部署到硬件<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
+<section id="id5">
+<h3>准备工作<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
 <ul>
 <li><p>硬件上需安装的库：</p>
 <p>onnxruntime</p>
@@ -196,8 +239,8 @@ Exchange”，即“开放的神经网络切换”，旨在实现不同神经网
 </div>
 </section>
 </section>
-<section id="id5">
-<h2>5. 模型部署示例<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
+<section id="id6">
+<h2>更多模型部署项目<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h2>
 <p>猫狗分类小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63c3f52a1dd9517dffa1f513&amp;sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=63c3f52a1dd9517dffa1f513&amp;sc=62f34141bf4f550f3e926e0e#public</a></p>
 <p>千物识别小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63c4106c2e26ff0a30cb440f&amp;sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=63c4106c2e26ff0a30cb440f&amp;sc=62f34141bf4f550f3e926e0e#public</a></p>
 <p>有无人检测小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63c4b6d22e26ff0a30f26ebc&amp;sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=63c4b6d22e26ff0a30f26ebc&amp;sc=62f34141bf4f550f3e926e0e#public</a></p>
