@@ -1,4 +1,4 @@
-# BaseML快速入门
+# 快速体验BaseML
 
 ## 简介
 
@@ -12,7 +12,7 @@ BaseML库提供了众多机器学习训练方法，可以快速训练和应用�
 
 可以在命令行输入BaseML查看安装的路径，在安装路径内，可以查看提供的更多demo案例。
 
-此处以用“决策树方法配隐形眼镜”案例为示例，想看更多案例也可以查看附录。
+下面我们以用“决策树方法配隐形眼镜”案例为示例，体验用BaseML做第一个机器学习项目！体验更多案例请看附录。
 
 ## 训练
 
@@ -95,15 +95,17 @@ AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pj
 
 ## 附录
 
-### 案例1.基于决策树的道路智能决策
+### 体验案例1.基于决策树的道路智能决策
 
 本案例来源于上海科教版《人工智能初步》人教地图56-58页。
 
 数据集来源：上海科教版《人工智能初步》人教地图56-58页。
 
+项目地址：https://www.openinnolab.org.cn/pjlab/project?id=638028c0777c254264da4dd7&sc=62f34141bf4f550f3e926e0e#public
+
 #### 项目核心功能和实现效果展示：
 
-借助决策树算法完成道路智能决策，可通过学习和实验了解决策树的工作原理，掌握决策树分类任务编程的流程。
+借助[决策树](https://xedu.readthedocs.io/zh/latest/baseml/introduction.html#id5)算法完成道路智能决策，可通过学习和实验了解决策树的工作原理，掌握决策树分类任务编程的流程。
 
 ![利用历史数据生成决策树.png](https://www.openinnolab.org.cn/webdav/635638d69ed68060c638f979/638028c0777c254264da4dd7/current/assets/%E5%88%A9%E7%94%A8%E5%8E%86%E5%8F%B2%E6%95%B0%E6%8D%AE%E7%94%9F%E6%88%90%E5%86%B3%E7%AD%96%E6%A0%91.png)
 
@@ -148,13 +150,15 @@ print(label[y[0]-1])
 
 
 
-### 案例2. 用多层感知机算法实现手写体数字分类
+### 体验案例2. 用多层感知机算法实现手写体数字分类
 
 本案例来源于《人工智能初步》广东教育出版社版75-80页。
 
+项目地址：https://www.openinnolab.org.cn/pjlab/project?id=637db4e401df4535876a8690&sc=62f34141bf4f550f3e926e0e#public
+
 #### 项目核心功能：
 
-阿拉伯数字的字形信息量很小,不同数字写法字形相差又不大，使得准确区分某些数字相当困难。本项目解决的核心问题是如何利用计算机自动识别人手写在纸张上的阿拉伯数字。使用的数据集MNIST数据集包含 0~9 共10种数字的手写图片，每种数字一共有7000张图片，采集自不同书写风格的真实手写图片，一共70000张图片。70000张手写数字图片使用train_test_split方法划分为60000张训练集（Training Set）和10000张测试集（Test Set）。项目核心功能是使用BaseML库搭建多层感知机实现手写数字识别。
+阿拉伯数字的字形信息量很小,不同数字写法字形相差又不大，使得准确区分某些数字相当困难。本项目解决的核心问题是如何利用计算机自动识别人手写在纸张上的阿拉伯数字。使用的数据集MNIST数据集包含 0~9 共10种数字的手写图片，每种数字一共有7000张图片，采集自不同书写风格的真实手写图片，一共70000张图片。70000张手写数字图片使用train_test_split方法划分为60000张训练集（Training Set）和10000张测试集（Test Set）。项目核心功能是使用BaseML库搭建[多层感知机](https://xedu.readthedocs.io/zh/latest/baseml/introduction.html#mlp)实现手写数字识别。
 
 #### 实现步骤：
 
@@ -203,13 +207,15 @@ print(label[y[0]])
 
 
 
-### 案例3. 用k近邻为参观者推荐场馆
+### 体验案例3. 用k近邻为参观者推荐场馆
 
 本案例来源于华师大出版社《人工智能初步》56-57页。
 
+项目地址：https://www.openinnolab.org.cn/pjlab/project?id=638da9a6be5e9c6ce28aebef&sc=62f34141bf4f550f3e926e0e#public
+
 #### 项目核心功能：
 
-使用BaseML来实现knn分类算法，为旅行者们推荐最适合他们的场馆。在项目实践中了解k近邻的工作原理，掌握使用BaseML进行k近邻分类的方法。
+使用BaseML来实现[k近邻（knn）](https://xedu.readthedocs.io/zh/latest/baseml/introduction.html#k)分类算法，为旅行者们推荐最适合他们的场馆。在项目实践中了解k近邻的工作原理，掌握使用BaseML进行k近邻分类的方法。
 
 数据集来源：华师大出版社《人工智能初步》38页。
 
@@ -271,13 +277,17 @@ model.save('mymodel2.pkl')
 
 
 
-### 案例4. 用线性回归预测蛋糕价格
+### 体验案例4. 用线性回归预测蛋糕价格
 
 本案例来源于人教地图版《人工智能初步》39-41页。
 
+项目地址：https://www.openinnolab.org.cn/pjlab/project?id=638daaaaaf104f69456a2eb2&sc=62f34141bf4f550f3e926e0e#public
+
+项目地址2（增加可视化版本）：https://www.openinnolab.org.cn/pjlab/project?id=6368a382bbcccd583a837a0e&sc=62f34141bf4f550f3e926e0e#public
+
 #### 项目核心功能：
 
-使用线性回归预测蛋糕价格，案例场景贴近生活，可通过学习和实验了解线性回归的工作原理，掌握使用BaseML中的线性回归进行预测的方法。
+使用[线性回归](https://xedu.readthedocs.io/zh/latest/baseml/introduction.html#id14)预测蛋糕价格，案例场景贴近生活，可通过学习和实验了解线性回归的工作原理，掌握使用BaseML中的线性回归进行预测的方法。
 
 数据集来源：人教地图版《人工智能初步》39-41页。
 
@@ -321,13 +331,15 @@ plt.show()
 
 
 
-### 案例5. 用k均值实现园区集合地点选取
+### 体验案例5. 用k均值实现园区集合地点选取
 
 本案例来源于华东师范大学出版社《人工智能初步》53-55页。
 
+项目地址：https://www.openinnolab.org.cn/pjlab/project?id=638015a0777c254264da387f&sc=62f34141bf4f550f3e926e0e#public
+
 #### 项目核心功能：
 
-使用BaseML中的Cluster模块进行聚类，使用matplotlib库对聚类结果进行可视化。该项目可根据同学所在位置，解决聚集点设定问题。可通过学习和实验了解KMeans的工作原理，掌握使用BaseML进行KMeans聚类的方法。
+使用BaseML中的Cluster模块进行聚类，使用matplotlib库对聚类结果进行可视化。该项目可根据同学所在位置，解决聚集点设定问题。可通过学习和实验了解KMeans的工作原理，掌握使用BaseML进行[k均值（KMeans）](https://xedu.readthedocs.io/zh/latest/baseml/introduction.html#id25)聚类的方法。
 
 数据集来源：自动生成。
 
@@ -394,13 +406,15 @@ for i in range(model.model.cluster_centers_.shape[0]):
 
 
 
-### 案例6. 用k均值实现车辆类别聚类分析
+### 体验案例6. 用k均值实现车辆类别聚类分析
 
 本案例来源于上海科技教育出版社《人工智能初步》88-89页。
 
+项目地址：https://www.openinnolab.org.cn/pjlab/project?id=638015e4777c254264da38ca&sc=62f34141bf4f550f3e926e0e#public
+
 #### 项目核心功能：
 
-使用BaseML中的Cluster模块进行聚类，使用matplotlib库对聚类结果进行可视化。该项目可根据车辆的品质，解决车辆分类问题，便于用户进行决策。可通过学习和实验了解KMeans的工作原理，掌握使用BaseML进行KMeans聚类的方法。
+使用BaseML中的Cluster模块进行聚类，使用matplotlib库对聚类结果进行可视化。该项目可根据车辆的品质，解决车辆分类问题，便于用户进行决策。可通过学习和实验了解KMeans的工作原理，掌握使用BaseML进行[k均值（KMeans）](https://xedu.readthedocs.io/zh/latest/baseml/introduction.html#id25)聚类的方法。
 
 数据集来源：上海科技教育出版社《人工智能初步》88页。
 

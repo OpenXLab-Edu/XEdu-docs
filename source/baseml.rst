@@ -8,3 +8,6 @@ BaseML入门
    baseml/installation.md
 
    baseml/introduction.rst
+
+   baseml/visualization.rst
+
