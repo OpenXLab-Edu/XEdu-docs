@@ -86,7 +86,6 @@ XEdu一键安装包内置了一套EasyDL系列工具，分“EasyTrain.bat”、
 
 .. figure:: ../images/about/EasyTrain.png
 
-
 ②双击“EasyInference.bat”，根据界面完成推理；
 
 .. figure:: ../images/about/EasyInference.png
@@ -96,8 +95,7 @@ XEdu一键安装包内置了一套EasyDL系列工具，分“EasyTrain.bat”、
 
 .. figure:: ../images/about/EasyAPI.png
 
-
-更多EasyDL系列工具详见\ `相关科创工具-EasyDL系列工具 <https://xedu.readthedocs.io/zh/latest/scitech_tools/EasyDL.html>`__\ 。
+更多EasyDL系列工具详见\ `EasyDL系列无代码工具 <https://xedu.readthedocs.io/zh/latest/easydl.html#easydl>`__\ 。
 
 2.2一键安装包目录详解
 ~~~~~~~~~~~~~~~~~~~~~
