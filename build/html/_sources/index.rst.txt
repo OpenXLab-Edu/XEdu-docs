@@ -15,6 +15,7 @@ OpenXLabEdu帮助文档
    mmedu
    basenn
    baseml
+   easydl
    scitech_tools
    support_resources
    dl_library
