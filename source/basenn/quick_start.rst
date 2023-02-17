@@ -1,5 +1,5 @@
-BaseNN快速入门
-==============
+快速体验BaseNN，开始！
+======================
 
 简介
 ----
@@ -216,10 +216,12 @@ AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pj
 附录
 ----
 
-案例1. 搭建卷积神经网络实现手写体分类
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+体验案例1. 搭建卷积神经网络实现手写体分类
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 本案例来源于《人工智能初步》人教地图72页。
+
+项目地址：https://www.openinnolab.org.cn/pjlab/project?id=638028ff777c254264da4e6f&sc=62f34141bf4f550f3e926e0e#public
 
 项目核心功能和实现效果展示：
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -335,10 +337,12 @@ AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pj
    result = model.inference(data=x)
    model.print_result(result) # 输出字典格式结果
 
-案例2. 一维卷积神经网络文本情感识别
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+体验案例2. 一维卷积神经网络文本情感识别
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 本案例来源于《人工智能初步》人教地图版72-76页。
+
+项目地址：https://www.openinnolab.org.cn/pjlab/project?id=6379b63262c7304e16ed6d82&sc=62f34141bf4f550f3e926e0e#public
 
 项目核心功能：
 ^^^^^^^^^^^^^^
