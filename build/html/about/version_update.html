@@ -208,6 +208,22 @@
 </section>
 <section id="baseml">
 <h4>2）BaseML<a class="headerlink" href="#baseml" title="Permalink to this headline"></a></h4>
+<section id="v0-0-6-20230217">
+<h5>V0.0.6 20230217<a class="headerlink" href="#v0-0-6-20230217" title="Permalink to this headline"></a></h5>
+<ol class="simple">
+<li><p>与MMEdu的错误提示码风格进行了统一，并在此基础上进行了BaseML部分的补充。</p></li>
+<li><p>所有库类代码应用了PEP8代码规范，使得代码结构与语句更加美观。</p></li>
+</ol>
+</section>
+<section id="v0-0-5-20230210">
+<h5>V0.0.5 20230210<a class="headerlink" href="#v0-0-5-20230210" title="Permalink to this headline"></a></h5>
+<ol class="simple">
+<li><p>完成模型可视化和评测指标可视化两个库。目前只有4种算法支持可视化，大部分模型支持评测指标可视化，少部分不支持。</p></li>
+<li><p>引入yellowbrick库，用于评测指标可视化。</p></li>
+<li><p>修改了load_dataset函数，cls和reg默认split=True, 即划分为训练和测试集， 聚类和降维默认不划分。</p></li>
+<li><p>加入了警告（蓝色字体）和报错（红色字体），但待与MMEdu的风格统一。</p></li>
+</ol>
+</section>
 <section id="v0-0-4-20221121">
 <h5>V0.0.4 20221121<a class="headerlink" href="#v0-0-4-20221121" title="Permalink to this headline"></a></h5>
 <p>​	按照cls中的分类算法，给reg中的算法名进行了更改与添加，目前的回归算法有：[’LinearRegression’, ‘CART’, ‘RandomForest’,       ‘Polynomial’, ‘Lasso’, ‘Ridge’, ‘SVM’, ‘AdaBoost’, ‘MLP’]。</p>
