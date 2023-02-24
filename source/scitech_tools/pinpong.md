@@ -1,4 +1,4 @@
-# 开源硬件库pinpong简介
+# 开源硬件库pinpong
 
 ## 1. 简介
 
@@ -10,13 +10,13 @@ github地址：https://github.com/DFRobot/pinpong-docs
 
 ## 2. 安装
 
-可以使用使用pip命令安装pinpong库，如：
+可以使用使用pip命令安装pinpong库。
 
 ```
 pip install pinpong
 ```
 
-注：MMEdu中已经内置了pinpong库。
+注：XEdu一键安装包中已经内置了pinpong库。
 
 ## 3. 代码示例
 

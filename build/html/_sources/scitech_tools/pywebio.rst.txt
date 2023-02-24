@@ -1,4 +1,4 @@
-Web库PyWebIO简介
+Web库PyWebIO
 ================
 
 1. 简介

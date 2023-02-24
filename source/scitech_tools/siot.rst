@@ -1,5 +1,5 @@
-MQTT库siot简介
-==============
+MQTT库siot
+==========
 
 1. 简介
 -------
@@ -14,13 +14,13 @@ GitHub地址：https://github.com/vvlink/SIoT/tree/master/siot-lib
 2. 安装
 -------
 
-可以使用使用pip命令安装siot库，如：
+可以使用使用pip命令安装siot库。
 
 ::
 
    pip install siot
 
-注：MMEdu中已经内置了siot库。
+注：XEdu一键安装包中已经内置了siot库。
 
 3. 代码范例
 -----------

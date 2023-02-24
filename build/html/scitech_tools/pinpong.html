@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>开源硬件库pinpong简介 &mdash; OpenXLabEdu  documentation</title>
+  <title>开源硬件库pinpong &mdash; OpenXLabEdu  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,8 +19,8 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Web库Flask简介" href="flask.html" />
-    <link rel="prev" title="MQTT库siot简介" href="siot.html" /> 
+    <link rel="next" title="Web库Flask" href="flask.html" />
+    <link rel="prev" title="MQTT库siot" href="siot.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -47,9 +47,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../scitech_tools.html">相关科创工具</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="data_labeling.html">数据集标注工具</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pywebio.html">Web库PyWebIO简介</a></li>
-<li class="toctree-l2"><a class="reference internal" href="siot.html">MQTT库siot简介</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">开源硬件库pinpong简介</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pywebio.html">Web库PyWebIO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="siot.html">MQTT库siot</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">开源硬件库pinpong</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">1. 简介</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">2. 安装</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">3. 代码示例</a><ul>
@@ -63,7 +63,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id9">4. 借助pinpong开发智能作品</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="flask.html">Web库Flask简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flask.html">Web库Flask</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../support_resources.html">学习支持和资源获取</a></li>
@@ -85,9 +85,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../scitech_tools.html">相关科创工具</a> &raquo;</li>
-      <li>开源硬件库pinpong简介</li>
+      <li>开源硬件库pinpong</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/scitech_tools/pinpong.md.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/scitech_tools/pinpong.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -96,20 +96,20 @@
            <div itemprop="articleBody">
              
   <section id="pinpong">
-<h1>开源硬件库pinpong简介<a class="headerlink" href="#pinpong" title="Permalink to this headline"></a></h1>
+<h1>开源硬件库pinpong<a class="headerlink" href="#pinpong" title="Permalink to this headline"></a></h1>
 <section id="id1">
 <h2>1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <p>pinpong库是一个基于Firmata协议开发的Python硬件控制库。借助于pinpong库，直接用Python代码就能给各种常见的开源硬件编程，即使该硬件并不支持Python。</p>
 <p>pinpong库的原理是给开源硬件烧录一个特定的固件，使其可以通过串口与电脑通讯，执行各种命令。pinpong库的名称由“Pin”和“Pong”组成，“Pin”指引脚，“pinpong”为“乒乓球”的谐音，指信号的往复。目前pinpong库支持Arduino、掌控板、micro:bit等开源硬件，同时支持虚谷号、树莓派和拿铁熊猫等。</p>
-<p>github地址：https://github.com/DFRobot/pinpong-docs</p>
+<p>github地址：<a class="reference external" href="https://github.com/DFRobot/pinpong-docs">https://github.com/DFRobot/pinpong-docs</a></p>
 </section>
 <section id="id2">
 <h2>2. 安装<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
-<p>可以使用使用pip命令安装pinpong库，如：</p>
+<p>可以使用使用pip命令安装pinpong库。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pinpong</span>
 </pre></div>
 </div>
-<p>注：MMEdu中已经内置了pinpong库。</p>
+<p>注：XEdu一键安装包中已经内置了pinpong库。</p>
 </section>
 <section id="id3">
 <h2>3. 代码示例<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
@@ -147,7 +147,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">from</span> <span class="nn">pinpong.board</span> <span class="kn">import</span> <span class="n">Board</span><span class="p">,</span><span class="n">Pin</span>
 
-<span class="n">Board</span><span class="p">(</span><span class="s2">&quot;uno&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">begin</span><span class="p">()</span> 
+<span class="n">Board</span><span class="p">(</span><span class="s2">&quot;uno&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">begin</span><span class="p">()</span>
 
 <span class="n">btn</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="n">Pin</span><span class="o">.</span><span class="n">D8</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">)</span> <span class="c1">#引脚初始化为电平输入</span>
 <span class="n">led</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="n">Pin</span><span class="o">.</span><span class="n">D13</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
@@ -235,7 +235,7 @@
 </pre></div>
 </div>
 <p>更多代码请访问官方文档。</p>
-<p>官方文档地址：https://pinpong.readthedocs.io/</p>
+<p>官方文档地址：<a class="reference external" href="https://pinpong.readthedocs.io/">https://pinpong.readthedocs.io/</a></p>
 </section>
 </section>
 <section id="id9">
@@ -249,8 +249,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="siot.html" class="btn btn-neutral float-left" title="MQTT库siot简介" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="flask.html" class="btn btn-neutral float-right" title="Web库Flask简介" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="siot.html" class="btn btn-neutral float-left" title="MQTT库siot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="flask.html" class="btn btn-neutral float-right" title="Web库Flask" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
