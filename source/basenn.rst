@@ -1,4 +1,4 @@
-BaseNN入门
+神经网络库BaseNN
 =================================
 .. toctree::
    :maxdepth: 2
