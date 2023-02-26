@@ -44,23 +44,11 @@ __值得注意的是，包括Pytorch、Tensorflow，以及国内的百度PaddleP
 
 2. 深度学习模型的结构通常比较庞大，需要大量的算力才能满足实时运行的需求。模型的运行效率需要优化。 因为这些难题的存在，模型部署不能靠简单的环境配置与安装完成。经过工业界和学术界数年的探索，结合`XEdu`的工具，展示模型部署一条流行的流水线：
 
+![image](../images/model_convert/XEdu模型部署全链路pipeline.JPG)
 
 这一条流水线解决了模型部署中的两大问题：使用对接深度学习框架和推理引擎的中间表示，开发者不必担心如何在新环境中运行各个复杂的框架；通过中间表示的网络结构优化和推理引擎对运算的底层优化，模型的运算效率大幅提升。
 
-现在，让我们从一个模型部署的“Hello World”项目入手，见识一下模型部署各方面的知识吧！
-
-## 快速认识常见的AI模型类型
-
-### 1. ONNX
-
-ONNX 的全称是“Open Neural Network Exchange”，即“开放的神经网络切换”，旨在实现不同神经网络开发框架之间的互通互用。ONNXRuntime是微软推出的一款推理框架，支持多种运行后端包括CPU，GPU，TensorRT，DML等，是对ONNX模型最原生的支持。
-
-### 2. NCNN
-
-腾讯公司开发的移动端平台部署工具，一个为手机端极致优化的高性能神经网络前向计算框架。NCNN仅用于推理，不支持学习。
-
-## 用MMEdu就能做模型转换！
-
+### 用MMEdu进行模型转换
 MMEdu内置了一个`convert`函数实现了一键式模型转换，转换前先了解一下转换要做的事情吧。
 
 - 转换准备：
@@ -103,13 +91,7 @@ out_file="out_file/COCO-80.onnx"
 model.convert(checkpoint=checkpoint, backend="ONNX", out_file=out_file, class_path=class_path)
 ```
 
-## 从零开始训练猫狗识别模型并完成模型转换
-
-现在我们一起体验以猫狗识别为例，理解并掌握使用MMEdu工具完成从模型训练到模型部署的基本流程。
-
-可参考的项目：https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&sc=635638d69ed68060c638f979#public
-
-（用谷歌浏览器打开）
+现在，让我们从“[从零开始训练猫狗识别模型并完成模型转换](https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&sc=635638d69ed68060c638f979#public)”项目入手，见识一下使用MMEdu工具完成从模型训练到模型部署的基本流程吧！
 
 **1.准备数据集**
 
@@ -164,6 +146,7 @@ model.convert(checkpoint=checkpoint, backend="ONNX", out_file=out_file, class_pa
 
 ## 挑战模型部署到硬件
 
+
 ### 准备工作
 
 - 硬件上需安装的库：
@@ -203,6 +186,7 @@ else:
     print('这是小猫，喵喵喵！')
 ```
 
+## What：
 ## 精度测试结果
 ### 软硬件环境
 - 操作系统：Ubuntu 16.04
@@ -216,7 +200,7 @@ else:
 - `静态图`导出
 - `batch`大小为1
 - `BaseDT`内置`ImageData`工具进行数据预处理
-### 测试结果汇总
+### 精度测试结果汇总
 - 图像分类
 <table class="tg">
 
@@ -390,6 +374,6 @@ else:
 
 MMEdu模型转换：https://www.openinnolab.org.cn/pjlab/project?id=63a1a47e5e089d71e6c6f068&backpath=/pjlab/projects/list?backpath=/pjlab/ai/projects#public
 
-![image](../../build/html/_static/cls_result.png)
+
 
 
