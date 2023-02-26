@@ -44,8 +44,6 @@ __值得注意的是，包括Pytorch、Tensorflow，以及国内的百度PaddleP
 
 2. 深度学习模型的结构通常比较庞大，需要大量的算力才能满足实时运行的需求。模型的运行效率需要优化。 因为这些难题的存在，模型部署不能靠简单的环境配置与安装完成。经过工业界和学术界数年的探索，结合`XEdu`的工具，展示模型部署一条流行的流水线：
 
-![image](../images/model_convert/XEdu模型部署全链路pipeline.JPG)
-
 <div align="center">
 	<img src="../images/model_convert/XEdu模型部署全链路pipeline.JPG" width="75%">
 </div>
