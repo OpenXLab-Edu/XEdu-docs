@@ -363,7 +363,7 @@ else:
 #### 软硬件环境
 - 操作系统：Linux
 - 系统位数：64
-- 处理器：4核单板AArch
+- 处理器：4核单板AArch64
 - 推理框架：ONNXRuntime == 1.13.1
 - 数据处理工具：BaseDT == 0.0.1
 #### 配置
@@ -381,12 +381,9 @@ else:
     <th rowspan="2">模型</th>
     <th rowspan="2">数据集</th>
     <th rowspan="1" colspan="2">权重大小</th>
-    <th rowspan="1" colspan="2">精度（TOP-1）</th>
-    <th rowspan="1" colspan="2">精度（TOP-5）</th>
+    <th rowspan="1" colspan="2">吞吐量 (图片数/每秒) </th>
   </tr>
   <tr>
-    <th colspan="1">FP32</th>
-    <th colspan="1">INT8</th>
     <th colspan="1">FP32</th>
     <th colspan="1">INT8</th>
     <th colspan="1">FP32</th>
@@ -399,18 +396,116 @@ else:
     <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
     <td><a href="https://github.com/onnx/models/blob/main/vision/classification/mobilenet/model/mobilenetv2-10.onnx">13.3 MB</a></td>
     <td><a href="https://github.com/onnx/models/blob/main/vision/classification/mobilenet/model/mobilenetv2-12-int8.onnx">3.5 MB</a> </td>
-    <td>70.94%</td>
-    <td>68.30%</td>
-    <td>89.99%</td>
-    <td>88.44%</td>
+    <td></td>
+    <td></td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">ResNet18</td>
+    <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/resnet/model/resnet18-v1-7.onnx">44.7 MB</a></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">ResNet50</td>
+    <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/resnet/model/resnet50-v1-7.onnx">97.8 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/resnet/model/resnet50-v1-12-int8.onnx">24.6 MB</a></td>
+    <td></td>
+    <td></td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">ShuffleNet_v2</td>
+    <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/shufflenet/model/shufflenet-v2-10.onnx">9.2 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/shufflenet/model/shufflenet-v2-12-int8.onnx">2.28 MB</a></td>
+    <td></td>
+    <td></td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">VGG</td>
+    <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/vgg/model/vgg16-7.onnx">527.8 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/vgg/model/vgg16-12-int8.onnx">101.1 MB</a></td>
+    <td></td>
+    <td></td>
   </tr>
 </tbody>
 </table>
 
-> ImageNet 数据集：ImageNet项目是一个用于视觉对象识别软件研究的大型可视化数据库。ImageNet项目每年举办一次软件比赛，即`ImageNet大规模视觉识别挑战赛`（ILSVRC），软件程序竞相正确分类检测物体和场景。 ImageNet挑战使用了一个“修剪”的1000个非重叠类的列表。2012年在解决ImageNet挑战方面取得了巨大的突破
->
-#### 树莓派
+> 吞吐量 (图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现
+> 
 
+- 目标检测
+<table class="tg">
+
+<thead>
+   <tr>
+    <th rowspan="2">模型</th>
+    <th rowspan="2">数据集</th>
+    <th rowspan="1" colspan="2">权重大小</th>
+    <th rowspan="1" colspan="2">吞吐量 (图片数/每秒) </th>
+  </tr>
+  <tr>
+    <th colspan="1">FP32</th>
+    <th colspan="1">INT8</th>
+    <th colspan="1">FP32</th>
+    <th colspan="1">INT8</th>
+  </tr>
+</thead>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">SSD_Lite</td>
+    <td><a href="https://cocodataset.org/#home">COCO</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/ssd-mobilenetv1/model/ssd_mobilenet_v1_12.onnx">28.1 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/ssd-mobilenetv1/model/ssd_mobilenet_v1_12-int8.onnx">8.5 MB</a> </td>
+    <td></td>
+    <td></td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">FasterRCNN</td>
+    <td><a href="https://cocodataset.org/#home">COCO</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/faster-rcnn/model/FasterRCNN-12.onnx">168.5 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/faster-rcnn/model/FasterRCNN-12-int8.onnx">42.6 MB</a></td>
+    <td></td>
+    <td></td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">Mask_RCNN</td>
+    <td><a href="https://cocodataset.org/#home">COCO</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/mask-rcnn/model/MaskRCNN-12.onnx">169.7 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/mask-rcnn/model/MaskRCNN-12-int8.onnx">45.9 MB</a></td>
+    <td></td>
+    <td></td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">Yolov3</td>
+    <td><a href="https://cocodataset.org/#home">COCO</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/yolov3/model/yolov3-12.onnx">237 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/yolov3/model/yolov3-12-int8.onnx">61 MB</a></td>
+    <td></td>
+    <td></td>
+  </tr>
+</tbody>
+</table>
+
+>SSD_Lite的后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本
+> 
 ## 更多模型部署项目
 
 猫狗分类小助手：https://www.openinnolab.org.cn/pjlab/project?id=63c3f52a1dd9517dffa1f513&sc=62f34141bf4f550f3e926e0e#public
