@@ -40,9 +40,11 @@ __值得注意的是，包括Pytorch、Tensorflow，以及国内的百度PaddleP
 ## How：怎么做
 总结一下Why中的回应，在软件工程中，部署指把开发完毕的软件投入使用的过程，包括环境配置、软件安装等步骤。类似地，对于深度学习模型来说，模型部署指让训练好的模型在特定环境中运行的过程。相比于软件部署，模型部署会面临更多的难题：
 
-1. 运行模型所需的环境难以配置。深度学习模型通常是由一些框架编写，比如 PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架不适合在手机、开发板等生产环境中安装。
+> 1. 运行模型所需的环境难以配置。深度学习模型通常是由一些框架编写，比如 PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架不适合在手机、开发板等生产环境中安装。 
+> 2. 深度学习模型的结构通常比较庞大，需要大量的算力才能满足实时运行的需求。模型的运行效率需要优化。 因为这些难题的存在，模型部署不能靠简单的环境配置与安装完成。`
 
-2. 深度学习模型的结构通常比较庞大，需要大量的算力才能满足实时运行的需求。模型的运行效率需要优化。 因为这些难题的存在，模型部署不能靠简单的环境配置与安装完成。经过工业界和学术界数年的探索，结合`XEdu`的工具，展示模型部署一条流行的流水线：
+
+经过工业界和学术界数年的探索，结合`XEdu`的工具，展示模型部署一条流行的流水线：
 
 <div align="center">
 	<img src="../images/model_convert/XEdu模型部署全链路pipeline.JPG" width="75%">
@@ -82,7 +84,7 @@ model.convert(checkpoint=checkpoint, backend="ONNX", out_file=out_file, class_pa
 
 `class_path`：模型输入的类别文件路径。
 
-目标检测模型转换的示例代码如下：
+类似的，目标检测模型转换的示例代码如下：
 
 ```
 from MMEdu import MMDetection as det
@@ -125,14 +127,13 @@ img_path = '/data/TC4V0D/CatsDogsSample/test_set/cat/cat0.jpg'
 result = model.inference(image=img_path, show=True, class_path=class_path,checkpoint = checkpoint,device='cuda')
 x = model.print_result(result)
 print('标签（序号）为：',x[0]['标签'])
-
 if x[0]['标签'] == 0:
     print('这是小猫，喵喵喵！')
 else:
     print('这是小猫，喵喵喵！')
 ```
 
-**4.模型转换和部署**
+**4.模型转换**
 
 ```
 from MMEdu import MMClassification as cls
@@ -146,10 +147,7 @@ model.convert(checkpoint=checkpoint, backend="ONNX", out_file=out_file, class_pa
 
 此时项目文件中的out_file文件夹下便生成了模型转换后生成的两个文件，可打开查看。一个是ONNX模型权重，一个是示例代码，示例代码稍作改动即可运行（需配合BaseData.py的BaseDT库）。
 
-## 挑战模型部署到硬件
-
-
-### 准备工作
+**5.模型部署**
 
 - 硬件上需安装的库：
 
@@ -188,9 +186,10 @@ else:
     print('这是小猫，喵喵喵！')
 ```
 
-## What：
-## 精度测试结果
-### 软硬件环境
+## What：什么现象与成果
+
+### 精度测试结果
+#### 软硬件环境
 - 操作系统：Ubuntu 16.04
 - 系统位数：64
 - 处理器：Intel i7-11700 @ 2.50GHz * 16
@@ -198,11 +197,11 @@ else:
 - 推理框架：ONNXRuntime == 1.13.1
 - 数据处理工具：BaseDT == 0.0.1
 
-### 配置
+#### 配置
 - `静态图`导出
 - `batch`大小为1
 - `BaseDT`内置`ImageData`工具进行数据预处理
-### 精度测试结果汇总
+#### 精度测试结果汇总
 - 图像分类
 <table class="tg">
 
@@ -357,10 +356,60 @@ else:
 > mAP（mean AP）:平均精度的均值，各类别的AP的均值
 > 
 
-## 边、端设备测试结果
-### 行空板
+### 边、端设备测试结果
 
-### 树莓派
+#### 行空板
+> 行空板, 青少年Python教学用开源硬件，解决Python教学难和使用门槛高的问题，旨在推动Python教学在青少年中的普及。官网：https://www.dfrobot.com.cn/
+#### 软硬件环境
+- 操作系统：Linux
+- 系统位数：64
+- 处理器：4核单板AArch
+- 推理框架：ONNXRuntime == 1.13.1
+- 数据处理工具：BaseDT == 0.0.1
+#### 配置
+- `静态图`导出
+- `batch`大小为1
+- `BaseDT`内置`ImageData`工具进行数据预处理 
+- 测试时，计算各个数据集中 10 张图片的平均耗时
+
+下面是我们环境中的测试结果：
+- 图像分类
+<table class="tg">
+
+<thead>
+  <tr>
+    <th rowspan="2">模型</th>
+    <th rowspan="2">数据集</th>
+    <th rowspan="1" colspan="2">权重大小</th>
+    <th rowspan="1" colspan="2">精度（TOP-1）</th>
+    <th rowspan="1" colspan="2">精度（TOP-5）</th>
+  </tr>
+  <tr>
+    <th colspan="1">FP32</th>
+    <th colspan="1">INT8</th>
+    <th colspan="1">FP32</th>
+    <th colspan="1">INT8</th>
+    <th colspan="1">FP32</th>
+    <th colspan="1">INT8</th>
+  </tr>
+</thead>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">MobileNet</td>
+    <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/mobilenet/model/mobilenetv2-10.onnx">13.3 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/mobilenet/model/mobilenetv2-12-int8.onnx">3.5 MB</a> </td>
+    <td>70.94%</td>
+    <td>68.30%</td>
+    <td>89.99%</td>
+    <td>88.44%</td>
+  </tr>
+</tbody>
+</table>
+
+> ImageNet 数据集：ImageNet项目是一个用于视觉对象识别软件研究的大型可视化数据库。ImageNet项目每年举办一次软件比赛，即`ImageNet大规模视觉识别挑战赛`（ILSVRC），软件程序竞相正确分类检测物体和场景。 ImageNet挑战使用了一个“修剪”的1000个非重叠类的列表。2012年在解决ImageNet挑战方面取得了巨大的突破
+>
+#### 树莓派
 
 ## 更多模型部署项目
 
@@ -374,8 +423,6 @@ else:
 
 树莓派与MMEdu：https://www.openinnolab.org.cn/pjlab/project?id=63bb8be4c437c904d8a90350&backpath=/pjlab/projects/list?backpath=/pjlab/ai/projects#public
 
-MMEdu模型转换：https://www.openinnolab.org.cn/pjlab/project?id=63a1a47e5e089d71e6c6f068&backpath=/pjlab/projects/list?backpath=/pjlab/ai/projects#public
-
-
+MMEdu模型在线转换：https://www.openinnolab.org.cn/pjlab/project?id=63a1a47e5e089d71e6c6f068&backpath=/pjlab/projects/list?backpath=/pjlab/ai/projects#public
 
 
