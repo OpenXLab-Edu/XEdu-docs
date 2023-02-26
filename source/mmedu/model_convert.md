@@ -360,13 +360,15 @@ else:
 
 #### 行空板
 > 行空板, 青少年Python教学用开源硬件，解决Python教学难和使用门槛高的问题，旨在推动Python教学在青少年中的普及。官网：https://www.dfrobot.com.cn/
-#### 软硬件环境
+##### 软硬件环境
 - 操作系统：Linux
 - 系统位数：64
-- 处理器：4核单板AArch64
+- 处理器：4核单板AArch64 1.20GHz
+- 内存：512MB
+- 硬盘：16GB
 - 推理框架：ONNXRuntime == 1.13.1
 - 数据处理工具：BaseDT == 0.0.1
-#### 配置
+##### 配置
 - `静态图`导出
 - `batch`大小为1
 - `BaseDT`内置`ImageData`工具进行数据预处理 
@@ -396,8 +398,8 @@ else:
     <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
     <td><a href="https://github.com/onnx/models/blob/main/vision/classification/mobilenet/model/mobilenetv2-10.onnx">13.3 MB</a></td>
     <td><a href="https://github.com/onnx/models/blob/main/vision/classification/mobilenet/model/mobilenetv2-12-int8.onnx">3.5 MB</a> </td>
-    <td></td>
-    <td></td>
+    <td>1.77</td>
+    <td>4.94</td>
   </tr>
 </tbody>
 <tbody align="center">
@@ -426,8 +428,8 @@ else:
     <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
     <td><a href="https://github.com/onnx/models/blob/main/vision/classification/shufflenet/model/shufflenet-v2-10.onnx">9.2 MB</a></td>
     <td><a href="https://github.com/onnx/models/blob/main/vision/classification/shufflenet/model/shufflenet-v2-12-int8.onnx">2.28 MB</a></td>
-    <td></td>
-    <td></td>
+    <td>3.97</td>
+    <td>8.51</td>
   </tr>
 </tbody>
 <tbody align="center">
@@ -468,8 +470,8 @@ else:
     <td><a href="https://cocodataset.org/#home">COCO</a></td>
     <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/ssd-mobilenetv1/model/ssd_mobilenet_v1_12.onnx">28.1 MB</a></td>
     <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/ssd-mobilenetv1/model/ssd_mobilenet_v1_12-int8.onnx">8.5 MB</a> </td>
-    <td></td>
-    <td></td>
+    <td>0.55</td>
+    <td>1.30</td>
   </tr>
 </tbody>
 <tbody align="center">
@@ -506,6 +508,14 @@ else:
 
 >SSD_Lite的后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本
 > 
+
+## 多模态交互
+回顾用AI解决真实问题的流程图，我们已经介绍了收集数据、训练模型、模型推理和应用部署。结合项目设计，我们还会去思考如何通过摄像头获得图像，如何控制灯光发亮，如何操纵舵机，如何设计显示界面UI等需要使用输入设备和输出设备等来实现的交互设计。
+
+<div align="center">
+	<img src="../images/model_convert/用AI解决真实问题.JPG" width="80%">
+</div>
+
 ## 更多模型部署项目
 
 猫狗分类小助手：https://www.openinnolab.org.cn/pjlab/project?id=63c3f52a1dd9517dffa1f513&sc=62f34141bf4f550f3e926e0e#public
