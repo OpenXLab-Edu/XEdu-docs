@@ -46,6 +46,10 @@ __值得注意的是，包括Pytorch、Tensorflow，以及国内的百度PaddleP
 
 ![image](../images/model_convert/XEdu模型部署全链路pipeline.JPG)
 
+<div align="center">
+	<img src="../images/model_convert/XEdu模型部署全链路pipeline.JPG" width="75%">
+</div>
+
 这一条流水线解决了模型部署中的两大问题：使用对接深度学习框架和推理引擎的中间表示，开发者不必担心如何在新环境中运行各个复杂的框架；通过中间表示的网络结构优化和推理引擎对运算的底层优化，模型的运算效率大幅提升。
 
 ### 用MMEdu进行模型转换
