@@ -1,4 +1,5 @@
-# 揭秘AI模型的转换
+# 揭秘AI模型的部署
+
 
 ## 为什么要进行模型转换？
 
@@ -158,6 +159,49 @@ else:
     print('这是小猫，喵喵喵！')
 ```
 
+## 精度测试结果
+
+
+## 边、端设备测试结果
+### 行空板
+- 图像分类
+<table class="tg">
+<thead>
+  <tr>
+    <th rowspan="2">模型</th>
+    <th rowspan="2">数据集</th>
+    <th rowspan="1" colspan="2">模型大小</th>
+    <th rowspan="1" colspan="2">准确度（TOP-1）</th>
+    <th rowspan="1" colspan="2">准确度（TOP-5）</th>
+  </tr>
+  <tr>
+    <th colspan="1">FP32</th>
+    <th colspan="1">INT8</th>
+    <th colspan="1">FP32</th>
+    <th colspan="1">INT8</th>
+    <th colspan="1">FP32</th>
+    <th colspan="1">INT8</th>
+  </tr>
+</thead>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">MobileNet</td>
+    <td></td>
+    <td href="https://github.com/onnx/models/blob/main/vision/classification/mobilenet/model/mobilenetv2-7.onnx">13.3MB</td>
+    <td>28.8MB</td>
+    <td>102.1MB</td>
+    <td>-71.80%</td>
+    <td>76.03%</td>
+    <td>76.15%</td>
+  </tr>
+</tbody>
+
+</table>
+- 目标检测
+
+
+### 树莓派
+
 ## 更多模型部署项目
 
 猫狗分类小助手：https://www.openinnolab.org.cn/pjlab/project?id=63c3f52a1dd9517dffa1f513&sc=62f34141bf4f550f3e926e0e#public
@@ -167,3 +211,5 @@ else:
 有无人检测小助手：https://www.openinnolab.org.cn/pjlab/project?id=63c4b6d22e26ff0a30f26ebc&sc=62f34141bf4f550f3e926e0e#public
 
 行空板上温州话识别：https://www.openinnolab.org.cn/pjlab/project?id=63b7c66e5e089d71e61d19a0&sc=62f34141bf4f550f3e926e0e#public
+
+
