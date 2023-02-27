@@ -50,7 +50,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id1">了解BaseDT</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">安装</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">快速体验</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">使用BaseDT进行数据的处理</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">数据的处理</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id5">1. 图片数据处理</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id6">2. 文本数据处理</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id7">3. 语音数据处理</a></li>
@@ -58,19 +58,19 @@
 <li class="toctree-l4"><a class="reference internal" href="#id9">5. 模型部署数据处理</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">使用BaseDT完成数据集处理</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id10">数据集处理</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id11">1. 常用数据集下载</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id12">2. 数据集格式检查</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id13">3. 数据集格式转换</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id14">使用BaseDT进行数据的可视化</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id14">数据的可视化</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id15">1. 绘制分类任务混淆矩阵</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id16">2. 绘制目标检测任务的检测框</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id17">3. 绘制分割任务的掩膜</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#basedti-o">使用BaseDT轻松调用I/O设备</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#i-o">轻松调用I/O设备</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id18">调用麦克风</a></li>
 </ul>
 </li>
@@ -126,7 +126,7 @@
 <p>敬请期待。</p>
 </section>
 <section id="id4">
-<h2>使用BaseDT进行数据的处理<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
+<h2>数据的处理<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
 <p>BaseDT提供了一个data模块，它包含了多个子模块和类，分别针对不同类型和格式的数据提供了处理功能。例如，ImageData子模块可以让你对图片数据进行resize、crop、normalize等操作；TextData子模块可以让你对文本数据进行分词、词向量化等操作；AudioData子模块可以让你对语音数据进行重采样、裁剪、增强等操作。</p>
 <section id="id5">
 <h3>1. 图片数据处理<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
@@ -146,10 +146,10 @@
 <img alt="https://aicarrier.feishu.cn/space/api/box/stream/download/asynccode/?code=NDUzOTdiYmNjYzA4OGIxMWE2NWMyYTgxOTIxOTJjYmJfeEdKUHJEbEY2T0pBWm5VcU1qOHRQd1BjWVN2d0Jham1fVG9rZW46Ym94Y25kWkNZV09jTERmVlNKeWo5Vk5vYWZmXzE2Nzc0ODk3MTY6MTY3NzQ5MzMxNl9WNA" src="https://aicarrier.feishu.cn/space/api/box/stream/download/asynccode/?code=NDUzOTdiYmNjYzA4OGIxMWE2NWMyYTgxOTIxOTJjYmJfeEdKUHJEbEY2T0pBWm5VcU1qOHRQd1BjWVN2d0Jham1fVG9rZW46Ym94Y25kWkNZV09jTERmVlNKeWo5Vk5vYWZmXzE2Nzc0ODk3MTY6MTY3NzQ5MzMxNl9WNA" />
 </figure>
 <p><strong>参数详解：</strong></p>
-<p>img: 一个np.ndarray对象或者一个图像文件的路径。</p>
-<p>size: 一个元组，表示要调整的图像大小，例如(256, 256)。</p>
-<p>crop_size: 一个元组，表示要裁剪的图像区域大小，例如(224,224)。</p>
-<p>normalize: 一个布尔值，表示是否要对图像数据进行归一化处理。</p>
+<p><code class="docutils literal notranslate"><span class="pre">img</span></code>: 一个<code class="docutils literal notranslate"><span class="pre">np.ndarray</span></code>对象或者一个图像文件的路径。</p>
+<p><code class="docutils literal notranslate"><span class="pre">size</span></code>: 一个元组，表示要调整的图像大小，例如(256, 256)。</p>
+<p><code class="docutils literal notranslate"><span class="pre">crop_size</span></code>: 一个元组，表示要裁剪的图像区域大小，例如(224,224)。</p>
+<p><code class="docutils literal notranslate"><span class="pre">normalize</span></code>: 一个布尔值，表示是否要对图像数据进行归一化处理。</p>
 </section>
 <section id="id6">
 <h3>2. 文本数据处理<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
@@ -169,8 +169,8 @@
 <img alt="https://aicarrier.feishu.cn/space/api/box/stream/download/asynccode/?code=ZjZjNDY4NDIyNTg0ZTJhMGM5YjNkMDBmYThlYjc2YzFfOWtNYjlIVGxZeTlYYVVNU1drQmx2NkttUUVFblkxZjdfVG9rZW46Ym94Y240cExiTjVEQkpKNFJJQXpKaG9abXBiXzE2Nzc0ODk3MTY6MTY3NzQ5MzMxNl9WNA" src="https://aicarrier.feishu.cn/space/api/box/stream/download/asynccode/?code=ZjZjNDY4NDIyNTg0ZTJhMGM5YjNkMDBmYThlYjc2YzFfOWtNYjlIVGxZeTlYYVVNU1drQmx2NkttUUVFblkxZjdfVG9rZW46Ym94Y240cExiTjVEQkpKNFJJQXpKaG9abXBiXzE2Nzc0ODk3MTY6MTY3NzQ5MzMxNl9WNA" />
 </figure>
 <p><strong>参数详解：</strong></p>
-<p>texts：一个字符串、一个字典或者一个列表，表示要处理的文本数据。如果是字符串，那么表示单个文本；如果是字典，那么表示多个文本，每个键值对代表一个特征和它的取值；如果是列表，那么表示多个文本，每个元素代表一个文本。</p>
-<p>vectorize：一个布尔值，表示是否要对文本数据进行向量化。如果为True，那么会调用vectorizer方法，根据文本类型（str或dict）选择合适的向量化器（CountVectorizer或DictVectorizer），并返回一个词向量矩阵；如果为False，那么不会进行向量化。</p>
+<p><code class="docutils literal notranslate"><span class="pre">texts</span></code>：一个字符串、一个字典或者一个列表，表示要处理的文本数据。如果是字符串，那么表示单个文本；如果是字典，那么表示多个文本，每个键值对代表一个特征和它的取值；如果是列表，那么表示多个文本，每个元素代表一个文本。</p>
+<p><code class="docutils literal notranslate"><span class="pre">vectorize</span></code>：一个布尔值，表示是否要对文本数据进行向量化。如果为True，那么会调用vectorizer方法，根据文本类型（str或dict）选择合适的向量化器（CountVectorizer或DictVectorizer），并返回一个词向量矩阵；如果为False，那么不会进行向量化。</p>
 </section>
 <section id="id7">
 <h3>3. 语音数据处理<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
@@ -193,12 +193,12 @@
 <p>该代码表示使用“MobileNet”网络模型训练时的数据处理，并将数据转化为网络模型可处理的张量。</p>
 <p>通过使用BaseDT库，我们可以大大简化网络模型部署时所需地数据处理过程，并且保证与训练时相同或类似地pipeline一致性。</p>
 <p><strong>参数详解：</strong></p>
-<p>img: 一个np.ndarray对象或者一个图像文件的路径。</p>
-<p>backbone: 网络模型所使用地backbone名称。</p>
+<p><code class="docutils literal notranslate"><span class="pre">img</span></code>: 一个np.ndarray对象或者一个图像文件的路径。</p>
+<p><code class="docutils literal notranslate"><span class="pre">backbone</span></code>: 网络模型所使用地backbone名称。</p>
 </section>
 </section>
 <section id="id10">
-<h2>使用BaseDT完成数据集处理<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h2>
+<h2>数据集处理<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h2>
 <p>BaseDT提供了一个DataSet类，它可以让你对不同类型和格式的数据集进行处理。</p>
 <section id="id11">
 <h3>1. 常用数据集下载<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h3>
@@ -214,7 +214,7 @@
 </section>
 </section>
 <section id="id14">
-<h2>使用BaseDT进行数据的可视化<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h2>
+<h2>数据的可视化<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h2>
 <p>BaseDT提供了一个plot模块，它可以让你对不同任务的数据进行可视化，例如绘制分类任务的混淆矩阵、目标检测任务的目标框、分割任务的掩膜等。plot模块支持多种显示方式，让你可以方便地查看和分析图片、文本、语音等不同类型的数据。</p>
 <section id="id15">
 <h3>1. 绘制分类任务混淆矩阵<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h3>
@@ -233,21 +233,21 @@
 <img alt="https://aicarrier.feishu.cn/space/api/box/stream/download/asynccode/?code=ZDc4M2I2MDAyOTE2NThlNjQ2NjVhOTI2NjI5YmFkYThfaE5paUlsM3ZjVXcySHlFaEc4bVVNZlNDSFVBbmtXT1ZfVG9rZW46Ym94Y24zRWI4SnZWTUd2ODkwSjFSTVF5NFdoXzE2Nzc0ODk3MTY6MTY3NzQ5MzMxNl9WNA" src="https://aicarrier.feishu.cn/space/api/box/stream/download/asynccode/?code=ZDc4M2I2MDAyOTE2NThlNjQ2NjVhOTI2NjI5YmFkYThfaE5paUlsM3ZjVXcySHlFaEc4bVVNZlNDSFVBbmtXT1ZfVG9rZW46Ym94Y24zRWI4SnZWTUd2ODkwSjFSTVF5NFdoXzE2Nzc0ODk3MTY6MTY3NzQ5MzMxNl9WNA" />
 </figure>
 <p><strong>参数详解：</strong></p>
-<p>img: 一个np.ndarray对象或者一个图像文件的路径。</p>
-<p>bboxes: 边界框（带分数），这里只有一个边界框，坐标为 [3,25,170,263]
-，分数为 0.9</p>
-<p>labels: 边界框的类别，这里只有一个类别，编号为 0</p>
-<p>class_names: 每个类别的名称，这里只有一个名称，就是 “cat”</p>
-<p>score_thr: 显示边界框的最小分数，这里是 0.8 ，表示只显示分数大于等于 0.8
-的边界框</p>
+<p><code class="docutils literal notranslate"><span class="pre">img</span></code>: 一个np.ndarray对象或者一个图像文件的路径。</p>
+<p><code class="docutils literal notranslate"><span class="pre">bboxes</span></code>: 边界框（带分数），这里只有一个边界框，坐标为 [3,25,170,263]
+，分数为 0.9。</p>
+<p><code class="docutils literal notranslate"><span class="pre">labels</span></code>: 边界框的类别，这里只有一个类别，编号为 0。</p>
+<p><code class="docutils literal notranslate"><span class="pre">class_names</span></code>: 每个类别的名称，这里只有一个名称，就是 “cat”。</p>
+<p><code class="docutils literal notranslate"><span class="pre">score_thr</span></code>: 显示边界框的最小分数，这里是 0.8 ，表示只显示分数大于等于
+0.8 的边界框。</p>
 </section>
 <section id="id17">
 <h3>3. 绘制分割任务的掩膜<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h3>
 <p>敬请期待。</p>
 </section>
 </section>
-<section id="basedti-o">
-<h2>使用BaseDT轻松调用I/O设备<a class="headerlink" href="#basedti-o" title="Permalink to this headline"></a></h2>
+<section id="i-o">
+<h2>轻松调用I/O设备<a class="headerlink" href="#i-o" title="Permalink to this headline"></a></h2>
 <p>BaseDT提供了一个io模块，用于支持数据的I/O设备的调用，它可以让你方便地从不同的来源获取和输出数据。例如，你可以用io模块中的MicroPhone类来调用麦克风录音，并且直接将录音转换成AudioData对象，进行后续的处理和分析。此外，BaseDT还支持其他多种I/O设备，比如摄像头、扫描仪、打印机等，让你可以轻松地处理各种类型和格式的数据。</p>
 <section id="id18">
 <h3>调用麦克风<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h3>
@@ -264,7 +264,7 @@
 <img alt="https://aicarrier.feishu.cn/space/api/box/stream/download/asynccode/?code=OTQ1NjAxMWExNDM2MGU2OTAyM2Q0NTM3MjAzYzY2YjNfcGJYdkhHbkVIRk9Fb0hWRHMxbjNTZTAyVlR0SEMzTERfVG9rZW46Ym94Y245R3ZTdHhpbE03REphMWhjdWNlM3NtXzE2Nzc0ODk3MTY6MTY3NzQ5MzMxNl9WNA" src="https://aicarrier.feishu.cn/space/api/box/stream/download/asynccode/?code=OTQ1NjAxMWExNDM2MGU2OTAyM2Q0NTM3MjAzYzY2YjNfcGJYdkhHbkVIRk9Fb0hWRHMxbjNTZTAyVlR0SEMzTERfVG9rZW46Ym94Y245R3ZTdHhpbE03REphMWhjdWNlM3NtXzE2Nzc0ODk3MTY6MTY3NzQ5MzMxNl9WNA" />
 </figure>
 <p><strong>参数详解：</strong></p>
-<p>time：录音时间，单位是秒，这里是录音两秒</p>
+<p><code class="docutils literal notranslate"><span class="pre">time</span></code>：录音时间，单位是秒，这里是录音两秒。</p>
 </section>
 </section>
 <section id="id19">
