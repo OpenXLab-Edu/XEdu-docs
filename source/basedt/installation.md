@@ -1,4 +1,5 @@
 # BaseDT安装
 
-敬请期待。
+你可以通过pip命令来安装BaseDT。
 
+`pip install basedt`或`pip install BaseDT`
