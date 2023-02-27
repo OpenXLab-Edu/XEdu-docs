@@ -358,7 +358,7 @@ else:
 
 ### 边、端设备测试结果
 
-#### 行空板
+#### 行空板测试
 > 行空板, 青少年Python教学用开源硬件，解决Python教学难和使用门槛高的问题，旨在推动Python教学在青少年中的普及。官网：https://www.dfrobot.com.cn/
 ##### 软硬件环境
 - 操作系统：Linux
@@ -408,7 +408,7 @@ else:
     <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
     <td><a href="https://github.com/onnx/models/blob/main/vision/classification/resnet/model/resnet18-v1-7.onnx">44.7 MB</a></td>
     <td></td>
-    <td></td>
+    <td>0.46</td>
     <td></td>
   </tr>
 </tbody>
@@ -418,8 +418,8 @@ else:
     <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
     <td><a href="https://github.com/onnx/models/blob/main/vision/classification/resnet/model/resnet50-v1-7.onnx">97.8 MB</a></td>
     <td><a href="https://github.com/onnx/models/blob/main/vision/classification/resnet/model/resnet50-v1-12-int8.onnx">24.6 MB</a></td>
-    <td></td>
-    <td></td>
+    <td>0.22</td>
+    <td>0.58</td>
   </tr>
 </tbody>
 <tbody align="center">
@@ -438,14 +438,15 @@ else:
     <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
     <td><a href="https://github.com/onnx/models/blob/main/vision/classification/vgg/model/vgg16-7.onnx">527.8 MB</a></td>
     <td><a href="https://github.com/onnx/models/blob/main/vision/classification/vgg/model/vgg16-12-int8.onnx">101.1 MB</a></td>
-    <td></td>
-    <td></td>
+    <td>*</td>
+    <td>*</td>
   </tr>
 </tbody>
 </table>
 
 > 吞吐量 (图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现
 > 
+> *：不建议部署，单张图片推理的时间超过30s
 
 - 目标检测
 <table class="tg">
@@ -466,12 +467,22 @@ else:
 </thead>
 <tbody align="center">
   <tr>
-    <td class="tg-zk71">SSD_Lite</td>
+    <td class="tg-zk71">SSD_Lite<sup>*</sup></td>
     <td><a href="https://cocodataset.org/#home">COCO</a></td>
     <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/ssd-mobilenetv1/model/ssd_mobilenet_v1_12.onnx">28.1 MB</a></td>
     <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/ssd-mobilenetv1/model/ssd_mobilenet_v1_12-int8.onnx">8.5 MB</a> </td>
     <td>0.55</td>
     <td>1.30</td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">SSD_Lite<sup>**</sup></td>
+    <td><a href="https://cocodataset.org/#home">COCO</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/ssd-mobilenetv1/model/ssd_mobilenet_v1_12.onnx">28.1 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/ssd-mobilenetv1/model/ssd_mobilenet_v1_12-int8.onnx">8.5 MB</a> </td>
+    <td></td>
+    <td></td>
   </tr>
 </tbody>
 <tbody align="center">
@@ -500,21 +511,190 @@ else:
     <td><a href="https://cocodataset.org/#home">COCO</a></td>
     <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/yolov3/model/yolov3-12.onnx">237 MB</a></td>
     <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/yolov3/model/yolov3-12-int8.onnx">61 MB</a></td>
-    <td></td>
-    <td></td>
+    <td>0.026</td>
+    <td>0.066</td>
   </tr>
 </tbody>
 </table>
 
->SSD_Lite的后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本
+>*：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本
 > 
+> **：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite
+
+#### 树莓派（4b）测试
+> Raspberry Pi。中文名为“树莓派”,简写为RPi，或者RasPi/RPi)是为学生计算机编程教育而设计，卡片式电脑，其系统基于Linux。
+##### 软硬件环境
+- 操作系统：Linux
+- 系统位数：32
+- 处理器：BCM2711 四核 Cortex-A72(ARM v8) @1.5GHz
+- 内存：4G
+- 硬盘：16G
+- 推理框架：ONNXRuntime == 1.13.1
+- 数据处理工具：BaseDT == 0.0.1
+##### 配置
+- `静态图`导出
+- `batch`大小为1
+- `BaseDT`内置`ImageData`工具进行数据预处理 
+- 测试时，计算各个数据集中 10 张图片的平均耗时
+
+下面是我们环境中的测试结果：
+- 图像分类
+<table class="tg">
+
+<thead>
+  <tr>
+    <th rowspan="2">模型</th>
+    <th rowspan="2">数据集</th>
+    <th rowspan="1" colspan="2">权重大小</th>
+    <th rowspan="1" colspan="2">吞吐量 (图片数/每秒) </th>
+  </tr>
+  <tr>
+    <th colspan="1">FP32</th>
+    <th colspan="1">INT8</th>
+    <th colspan="1">FP32</th>
+    <th colspan="1">INT8</th>
+  </tr>
+</thead>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">MobileNet</td>
+    <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/mobilenet/model/mobilenetv2-10.onnx">13.3 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/mobilenet/model/mobilenetv2-12-int8.onnx">3.5 MB</a> </td>
+    <td>6.45</td>
+    <td></td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">ResNet18</td>
+    <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/resnet/model/resnet18-v1-7.onnx">44.7 MB</a></td>
+    <td></td>
+    <td>3.20</td>
+    <td></td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">ResNet50</td>
+    <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/resnet/model/resnet50-v1-7.onnx">97.8 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/resnet/model/resnet50-v1-12-int8.onnx">24.6 MB</a></td>
+    <td>1.48</td>
+    <td>2.91</td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">ShuffleNet_v2</td>
+    <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/shufflenet/model/shufflenet-v2-10.onnx">9.2 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/shufflenet/model/shufflenet-v2-12-int8.onnx">2.28 MB</a></td>
+    <td>19.11</td>
+    <td>10.85<cup>*</cup></td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">VGG</td>
+    <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/vgg/model/vgg16-7.onnx">527.8 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/vgg/model/vgg16-12-int8.onnx">101.1 MB</a></td>
+    <td>0.43</td>
+    <td>0.44</td>
+  </tr>
+</tbody>
+</table>
+
+> 吞吐量 (图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现
+> 
+> *：量化后在树莓派上推理速度变慢
+
+- 目标检测
+<table class="tg">
+
+<thead>
+   <tr>
+    <th rowspan="2">模型</th>
+    <th rowspan="2">数据集</th>
+    <th rowspan="1" colspan="2">权重大小</th>
+    <th rowspan="1" colspan="2">吞吐量 (图片数/每秒) </th>
+  </tr>
+  <tr>
+    <th colspan="1">FP32</th>
+    <th colspan="1">INT8</th>
+    <th colspan="1">FP32</th>
+    <th colspan="1">INT8</th>
+  </tr>
+</thead>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">SSD_Lite<sup>*</sup></td>
+    <td><a href="https://cocodataset.org/#home">COCO</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/ssd-mobilenetv1/model/ssd_mobilenet_v1_12.onnx">28.1 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/ssd-mobilenetv1/model/ssd_mobilenet_v1_12-int8.onnx">8.5 MB</a> </td>
+    <td>2.55</td>
+    <td></td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">SSD_Lite<sup>**</sup></td>
+    <td><a href="https://cocodataset.org/#home">COCO</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/ssd-mobilenetv1/model/ssd_mobilenet_v1_12.onnx"></a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/ssd-mobilenetv1/model/ssd_mobilenet_v1_12-int8.onnx"></a></td>
+    <td></td>
+    <td></td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">FasterRCNN</td>
+    <td><a href="https://cocodataset.org/#home">COCO</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/faster-rcnn/model/FasterRCNN-12.onnx">168.5 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/faster-rcnn/model/FasterRCNN-12-int8.onnx">42.6 MB</a></td>
+    <td></td>
+    <td></td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">Mask_RCNN</td>
+    <td><a href="https://cocodataset.org/#home">COCO</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/mask-rcnn/model/MaskRCNN-12.onnx">169.7 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/mask-rcnn/model/MaskRCNN-12-int8.onnx">45.9 MB</a></td>
+    <td></td>
+    <td></td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">Yolov3</td>
+    <td><a href="https://cocodataset.org/#home">COCO</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/yolov3/model/yolov3-12.onnx">237 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/yolov3/model/yolov3-12-int8.onnx">61 MB</a></td>
+    <td>0.21</td>
+    <td>0.34</td>
+  </tr>
+</tbody>
+</table>
+
+>*：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本
+> 
+> **：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite
+
+__注：硬件测试模块持续更新中，如有更多硬件测试需求，请[联系我们](https://github.com/OpenXLab-Edu/XEdu-docs/issues)__
 
 ## 多模态交互
-回顾用AI解决真实问题的流程图，我们已经介绍了收集数据、训练模型、模型推理和应用部署。结合项目设计，我们还会去思考如何通过摄像头获得图像，如何控制灯光发亮，如何操纵舵机，如何设计显示界面UI等需要使用输入设备和输出设备等来实现的交互设计。
+回顾用AI解决真实问题的流程图，我们已经介绍了收集数据、训练模型、模型推理和应用部署。结合项目设计，我们还会去思考如何通过摄像头获得图像，如何控制灯光发亮，如何操纵舵机，如何设计显示界面UI等需要使用输入设备和输出设备等来实现的交互设计，即对`多模态交互`的考量。
 
 <div align="center">
 	<img src="../images/model_convert/用AI解决真实问题.JPG" width="80%">
 </div>
+
+更多传感器、执行器使用教程参见：[DFRobot](https://wiki.dfrobot.com.cn/)
+
 
 ## 更多模型部署项目
 
