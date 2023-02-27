@@ -103,7 +103,7 @@
           <li><a href="../basedt.html">数据处理库BaseDT</a> &raquo;</li>
       <li>快速上手BaseDT</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/basedt/quick_start.md.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/basedt/quick_start.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -133,15 +133,18 @@
 <p>图片数据处理是指对数字图像进行各种操作以改变其属性或提取其中的信息。图片数据处理在许多领域都有广泛地应用，比如计算机视觉、医学成像、生物识别、数字艺术等。通过对图片进行合适地处理，我们可以提高图片地质量、增强图片地特征、分析图片地内容、生成新地图片等。</p>
 <p>BaseDT库可进行一些常见的图片数据处理操作，比如resize、crop和normalize。这些操作可以帮助我们调整图片地大小和形状以适应不同地需求，以及将图片的数值标准化以方便后续地计算。</p>
 <p>下面是一个使用BaseDT库进行图片数据处理的示例代码：</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.data</span> <span class="kn">import</span> <span class="n">ImageData</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.data</span> <span class="kn">import</span> <span class="n">ImageData</span>
 <span class="c1">#图片路径，修改为对应路径</span>
-<span class="n">img</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;D:\PythonProject\OpenDataLab-Edu\dataset\cat2.jpg&quot;</span> 
+<span class="n">img</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;D:\PythonProject\OpenDataLab-Edu\dataset\cat2.jpg&quot;</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">ImageData</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">),</span> <span class="n">crop_size</span><span class="o">=</span><span class="p">(</span><span class="mi">224</span><span class="p">,</span><span class="mi">224</span><span class="p">),</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="c1">#</span>
 <span class="n">data</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>下图分别是原图片，resize大小至(256, 256)的图片，crop大小至(224,224)的图片和归一化的图片。</p>
-<p><img alt="img" src="https://aicarrier.feishu.cn/space/api/box/stream/download/asynccode/?code=NDUzOTdiYmNjYzA4OGIxMWE2NWMyYTgxOTIxOTJjYmJfeEdKUHJEbEY2T0pBWm5VcU1qOHRQd1BjWVN2d0Jham1fVG9rZW46Ym94Y25kWkNZV09jTERmVlNKeWo5Vk5vYWZmXzE2Nzc0ODk3MTY6MTY3NzQ5MzMxNl9WNA" /></p>
+<p>下图分别是原图片，resize大小至(256,
+256)的图片，crop大小至(224,224)的图片和归一化的图片。</p>
+<figure class="align-default">
+<img alt="https://aicarrier.feishu.cn/space/api/box/stream/download/asynccode/?code=NDUzOTdiYmNjYzA4OGIxMWE2NWMyYTgxOTIxOTJjYmJfeEdKUHJEbEY2T0pBWm5VcU1qOHRQd1BjWVN2d0Jham1fVG9rZW46Ym94Y25kWkNZV09jTERmVlNKeWo5Vk5vYWZmXzE2Nzc0ODk3MTY6MTY3NzQ5MzMxNl9WNA" src="https://aicarrier.feishu.cn/space/api/box/stream/download/asynccode/?code=NDUzOTdiYmNjYzA4OGIxMWE2NWMyYTgxOTIxOTJjYmJfeEdKUHJEbEY2T0pBWm5VcU1qOHRQd1BjWVN2d0Jham1fVG9rZW46Ym94Y25kWkNZV09jTERmVlNKeWo5Vk5vYWZmXzE2Nzc0ODk3MTY6MTY3NzQ5MzMxNl9WNA" />
+</figure>
 <p><strong>参数详解：</strong></p>
 <p>img: 一个np.ndarray对象或者一个图像文件的路径。</p>
 <p>size: 一个元组，表示要调整的图像大小，例如(256, 256)。</p>
@@ -153,15 +156,18 @@
 <p>文本数据处理是指对自然语言形式的数据进行各种操作以改变其属性或提取其中的信息。文本数据处理在许多领域都有广泛地应用，比如自然语言理解、机器翻译、情感分析、信息检索等。通过对文本进行合适地处理，我们可以提高文本地质量、增强文本地特征、分析文本地内容、生成新地文本等。</p>
 <p>BaseDT库来进行一些常见地文本数据处理操作，比如向量化。向量化是指将文字转换为数字形式以方便后续地计算和分析。向量化可以帮助我们度量文字之间地相似性、分类文字地类别、预测文字地情感等。</p>
 <p>下面是一个使用BaseDT库进行文本数据处理的示例代码：</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.data</span> <span class="kn">import</span> <span class="n">TextData</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.data</span> <span class="kn">import</span> <span class="n">TextData</span>
 <span class="c1"># 文本数据，字典类型</span>
 <span class="n">texts</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="s1">&#39;Dubai&#39;</span><span class="p">,</span> <span class="s1">&#39;temperature&#39;</span><span class="p">:</span> <span class="mi">33</span><span class="p">}</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">TextData</span><span class="p">(</span><span class="n">texts</span><span class="p">,</span> <span class="n">vectorize</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>可看到text中’city’: ‘Dubai’的’Dubai’向量化后变为1，’temperature’: 33的33仍保留为原本数值。</p>
-<p><img alt="img" src="https://aicarrier.feishu.cn/space/api/box/stream/download/asynccode/?code=ZjZjNDY4NDIyNTg0ZTJhMGM5YjNkMDBmYThlYjc2YzFfOWtNYjlIVGxZeTlYYVVNU1drQmx2NkttUUVFblkxZjdfVG9rZW46Ym94Y240cExiTjVEQkpKNFJJQXpKaG9abXBiXzE2Nzc0ODk3MTY6MTY3NzQ5MzMxNl9WNA" /></p>
+<p>可看到text中’city’: ‘Dubai’的’Dubai’向量化后变为1，’temperature’:
+33的33仍保留为原本数值。</p>
+<figure class="align-default">
+<img alt="https://aicarrier.feishu.cn/space/api/box/stream/download/asynccode/?code=ZjZjNDY4NDIyNTg0ZTJhMGM5YjNkMDBmYThlYjc2YzFfOWtNYjlIVGxZeTlYYVVNU1drQmx2NkttUUVFblkxZjdfVG9rZW46Ym94Y240cExiTjVEQkpKNFJJQXpKaG9abXBiXzE2Nzc0ODk3MTY6MTY3NzQ5MzMxNl9WNA" src="https://aicarrier.feishu.cn/space/api/box/stream/download/asynccode/?code=ZjZjNDY4NDIyNTg0ZTJhMGM5YjNkMDBmYThlYjc2YzFfOWtNYjlIVGxZeTlYYVVNU1drQmx2NkttUUVFblkxZjdfVG9rZW46Ym94Y240cExiTjVEQkpKNFJJQXpKaG9abXBiXzE2Nzc0ODk3MTY6MTY3NzQ5MzMxNl9WNA" />
+</figure>
 <p><strong>参数详解：</strong></p>
 <p>texts：一个字符串、一个字典或者一个列表，表示要处理的文本数据。如果是字符串，那么表示单个文本；如果是字典，那么表示多个文本，每个键值对代表一个特征和它的取值；如果是列表，那么表示多个文本，每个元素代表一个文本。</p>
 <p>vectorize：一个布尔值，表示是否要对文本数据进行向量化。如果为True，那么会调用vectorizer方法，根据文本类型（str或dict）选择合适的向量化器（CountVectorizer或DictVectorizer），并返回一个词向量矩阵；如果为False，那么不会进行向量化。</p>
@@ -176,15 +182,15 @@
 </section>
 <section id="id9">
 <h3>5. 模型部署数据处理<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
-<p>由于网络模型在训练时会对输入数据进行一系列预处理操作以提高模型性能，在部署时也需要对输入设备采集到的原始数据进行相同或类似地预处理操作以保证模型效果。然而，在不同设备上进行相同或类似地预处理操作并不容易实现，并且可能会增加部署成本和时间。为了简化这个过程，并且保证预处理操作与训练时相同或类似地执行方式与顺序，在BaseDT库中我们提供了一个简单而强大地功能：只需指定网络模型所使用地backbone名称（例如”MobileNet”），就可以自动完成与该backbone对应地预处理操作，并将原始输入转换为网络模型可接受地张量格式。</p>
+<p>由于网络模型在训练时会对输入数据进行一系列预处理操作以提高模型性能，在部署时也需要对输入设备采集到的原始数据进行相同或类似地预处理操作以保证模型效果。然而，在不同设备上进行相同或类似地预处理操作并不容易实现，并且可能会增加部署成本和时间。为了简化这个过程，并且保证预处理操作与训练时相同或类似地执行方式与顺序，在BaseDT库中我们提供了一个简单而强大地功能：只需指定网络模型所使用地backbone名称（例如“MobileNet”），就可以自动完成与该backbone对应地预处理操作，并将原始输入转换为网络模型可接受地张量格式。</p>
 <p>下面是一个使用BaseDT库进行网络模型部署时所需地数据处理的示例代码：</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.data</span> <span class="kn">import</span> <span class="n">ImageData</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.data</span> <span class="kn">import</span> <span class="n">ImageData</span>
 <span class="n">img</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;D:\PythonProject\OpenDataLab-Edu\dataset\cat2.jpg&quot;</span> <span class="c1">#修改为对应路径</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">ImageData</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">backbone</span> <span class="o">=</span> <span class="s2">&quot;MobileNet&quot;</span><span class="p">)</span>
 <span class="n">tensor_value</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>该代码表示使用”MobileNet”网络模型训练时的数据处理，并将数据转化为网络模型可处理的张量。</p>
+<p>该代码表示使用“MobileNet”网络模型训练时的数据处理，并将数据转化为网络模型可处理的张量。</p>
 <p>通过使用BaseDT库，我们可以大大简化网络模型部署时所需地数据处理过程，并且保证与训练时相同或类似地pipeline一致性。</p>
 <p><strong>参数详解：</strong></p>
 <p>img: 一个np.ndarray对象或者一个图像文件的路径。</p>
@@ -217,19 +223,23 @@
 <section id="id16">
 <h3>2. 绘制目标检测任务的检测框<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h3>
 <p>针对目标检测任务目标框的绘制，BaseDT可根据网络模型的输出数据出检测出相应目标框。</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.plot</span> <span class="kn">import</span> <span class="n">imshow_det_bboxes</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.plot</span> <span class="kn">import</span> <span class="n">imshow_det_bboxes</span>
 <span class="n">img</span> <span class="o">=</span> <span class="s1">&#39;test.jpg&#39;</span>
 <span class="c1"># imshow_det_bboxes(图像， 框和得分，标签， 类别， 得分阈值)</span>
 <span class="n">imshow_det_bboxes</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">bboxes</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">3</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">170</span><span class="p">,</span><span class="mi">263</span><span class="p">,</span><span class="mf">0.9</span><span class="p">]],</span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">class_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;cat&quot;</span><span class="p">],</span> <span class="n">score_thr</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><img alt="img" src="https://aicarrier.feishu.cn/space/api/box/stream/download/asynccode/?code=ZDc4M2I2MDAyOTE2NThlNjQ2NjVhOTI2NjI5YmFkYThfaE5paUlsM3ZjVXcySHlFaEc4bVVNZlNDSFVBbmtXT1ZfVG9rZW46Ym94Y24zRWI4SnZWTUd2ODkwSjFSTVF5NFdoXzE2Nzc0ODk3MTY6MTY3NzQ5MzMxNl9WNA" /></p>
+<figure class="align-default">
+<img alt="https://aicarrier.feishu.cn/space/api/box/stream/download/asynccode/?code=ZDc4M2I2MDAyOTE2NThlNjQ2NjVhOTI2NjI5YmFkYThfaE5paUlsM3ZjVXcySHlFaEc4bVVNZlNDSFVBbmtXT1ZfVG9rZW46Ym94Y24zRWI4SnZWTUd2ODkwSjFSTVF5NFdoXzE2Nzc0ODk3MTY6MTY3NzQ5MzMxNl9WNA" src="https://aicarrier.feishu.cn/space/api/box/stream/download/asynccode/?code=ZDc4M2I2MDAyOTE2NThlNjQ2NjVhOTI2NjI5YmFkYThfaE5paUlsM3ZjVXcySHlFaEc4bVVNZlNDSFVBbmtXT1ZfVG9rZW46Ym94Y24zRWI4SnZWTUd2ODkwSjFSTVF5NFdoXzE2Nzc0ODk3MTY6MTY3NzQ5MzMxNl9WNA" />
+</figure>
 <p><strong>参数详解：</strong></p>
 <p>img: 一个np.ndarray对象或者一个图像文件的路径。</p>
-<p>bboxes: 边界框（带分数），这里只有一个边界框，坐标为 [3,25,170,263] ，分数为 0.9</p>
+<p>bboxes: 边界框（带分数），这里只有一个边界框，坐标为 [3,25,170,263]
+，分数为 0.9</p>
 <p>labels: 边界框的类别，这里只有一个类别，编号为 0</p>
 <p>class_names: 每个类别的名称，这里只有一个名称，就是 “cat”</p>
-<p>score_thr: 显示边界框的最小分数，这里是 0.8 ，表示只显示分数大于等于 0.8 的边界框</p>
+<p>score_thr: 显示边界框的最小分数，这里是 0.8 ，表示只显示分数大于等于 0.8
+的边界框</p>
 </section>
 <section id="id17">
 <h3>3. 绘制分割任务的掩膜<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h3>
@@ -242,7 +252,7 @@
 <section id="id18">
 <h3>调用麦克风<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h3>
 <p>针对麦克风设备，BaseDT可调用麦克风，并用其录音。</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.io</span> <span class="kn">import</span> <span class="n">MicroPhone</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.io</span> <span class="kn">import</span> <span class="n">MicroPhone</span>
 <span class="c1"># 创建麦克风对象</span>
 <span class="n">microphone</span> <span class="o">=</span> <span class="n">MicroPhone</span><span class="p">()</span>
 <span class="c1"># 录音两秒</span>
@@ -250,7 +260,9 @@
 </pre></div>
 </div>
 <p>录制的两秒音频图下如下图：</p>
-<p><img alt="img" src="https://aicarrier.feishu.cn/space/api/box/stream/download/asynccode/?code=OTQ1NjAxMWExNDM2MGU2OTAyM2Q0NTM3MjAzYzY2YjNfcGJYdkhHbkVIRk9Fb0hWRHMxbjNTZTAyVlR0SEMzTERfVG9rZW46Ym94Y245R3ZTdHhpbE03REphMWhjdWNlM3NtXzE2Nzc0ODk3MTY6MTY3NzQ5MzMxNl9WNA" /></p>
+<figure class="align-default">
+<img alt="https://aicarrier.feishu.cn/space/api/box/stream/download/asynccode/?code=OTQ1NjAxMWExNDM2MGU2OTAyM2Q0NTM3MjAzYzY2YjNfcGJYdkhHbkVIRk9Fb0hWRHMxbjNTZTAyVlR0SEMzTERfVG9rZW46Ym94Y245R3ZTdHhpbE03REphMWhjdWNlM3NtXzE2Nzc0ODk3MTY6MTY3NzQ5MzMxNl9WNA" src="https://aicarrier.feishu.cn/space/api/box/stream/download/asynccode/?code=OTQ1NjAxMWExNDM2MGU2OTAyM2Q0NTM3MjAzYzY2YjNfcGJYdkhHbkVIRk9Fb0hWRHMxbjNTZTAyVlR0SEMzTERfVG9rZW46Ym94Y245R3ZTdHhpbE03REphMWhjdWNlM3NtXzE2Nzc0ODk3MTY6MTY3NzQ5MzMxNl9WNA" />
+</figure>
 <p><strong>参数详解：</strong></p>
 <p>time：录音时间，单位是秒，这里是录音两秒</p>
 </section>
