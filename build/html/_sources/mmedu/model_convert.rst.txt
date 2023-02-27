@@ -232,627 +232,630 @@ What：什么现象与成果
 配置
 ^^^^
 
--  ``静态图``\ 导出
+-  静态图导出
 -  ``batch``\ 大小为1
--  ``BaseDT``\ 内置\ ``ImageData``\ 工具进行数据预处理 ####
-   精度测试结果汇总
+-  ``BaseDT``\ 内置\ ``ImageData``\ 工具进行数据预处理 
+
+精度测试结果汇总
+^^^^^^^^^^^^^^^
+
 -  图像分类
 
-   .. raw:: html
+.. raw:: html
 
-      <table class="tg">
+   <table class="docutils align-default">
 
-   .. raw:: html
+.. raw:: html
 
-      <thead>
+   <thead>
 
-   .. raw:: html
+.. raw:: html
 
-      <tr>
+   <tr>
 
-   .. raw:: html
+.. raw:: html
 
-      <th rowspan="2">
+   <th rowspan="2">
 
-   模型
+模型
 
-   .. raw:: html
+.. raw:: html
 
-      </th>
+   </th>
 
-   .. raw:: html
+.. raw:: html
 
-      <th rowspan="2">
+   <th rowspan="2">
 
-   数据集
+数据集
 
-   .. raw:: html
+.. raw:: html
 
-      </th>
+   </th>
 
-   .. raw:: html
+.. raw:: html
 
-      <th rowspan="1" colspan="2">
+   <th rowspan="1" colspan="2">
 
-   权重大小
+权重大小
 
-   .. raw:: html
+.. raw:: html
 
-      </th>
+   </th>
 
-   .. raw:: html
+.. raw:: html
 
-      <th rowspan="1" colspan="2">
+   <th rowspan="1" colspan="2">
 
-   精度（TOP-1）
+精度（TOP-1）
 
-   .. raw:: html
+.. raw:: html
 
-      </th>
+   </th>
 
-   .. raw:: html
+.. raw:: html
 
-      <th rowspan="1" colspan="2">
+   <th rowspan="1" colspan="2">
 
-   精度（TOP-5）
+精度（TOP-5）
 
-   .. raw:: html
+.. raw:: html
 
-      </th>
+   </th>
 
-   .. raw:: html
+.. raw:: html
 
-      </tr>
+   </tr>
 
-   .. raw:: html
+.. raw:: html
 
-      <tr>
+   <tr>
 
-   .. raw:: html
+.. raw:: html
 
-      <th colspan="1">
+   <th colspan="1">
 
-   FP32
+FP32
 
-   .. raw:: html
+.. raw:: html
 
-      </th>
+   </th>
 
-   .. raw:: html
+.. raw:: html
 
-      <th colspan="1">
+   <th colspan="1">
 
-   INT8
+INT8
 
-   .. raw:: html
+.. raw:: html
 
-      </th>
+   </th>
 
-   .. raw:: html
+.. raw:: html
 
-      <th colspan="1">
+   <th colspan="1">
 
-   FP32
+FP32
 
-   .. raw:: html
+.. raw:: html
 
-      </th>
+   </th>
 
-   .. raw:: html
+.. raw:: html
 
-      <th colspan="1">
+   <th colspan="1">
 
-   INT8
+INT8
 
-   .. raw:: html
+.. raw:: html
 
-      </th>
+   </th>
 
-   .. raw:: html
+.. raw:: html
 
-      <th colspan="1">
+   <th colspan="1">
 
-   FP32
+FP32
 
-   .. raw:: html
+.. raw:: html
 
-      </th>
+   </th>
 
-   .. raw:: html
+.. raw:: html
 
-      <th colspan="1">
+   <th colspan="1">
 
-   INT8
+INT8
 
-   .. raw:: html
+.. raw:: html
 
-      </th>
+   </th>
 
-   .. raw:: html
+.. raw:: html
 
-      </tr>
+   </tr>
 
-   .. raw:: html
+.. raw:: html
 
-      </thead>
+   </thead>
 
-   .. raw:: html
+.. raw:: html
 
-      <tbody align="center">
+   <tbody align="center">
 
-   .. raw:: html
+.. raw:: html
 
-      <tr>
+   <tr>
 
-   .. raw:: html
+.. raw:: html
 
-      <td class="tg-zk71">
+   <td class="tg-zk71">
 
-   MobileNet
+MobileNet
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   ImageNet
+ImageNet
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   13.3 MB
+13.3 MB
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   3.5 MB
+3.5 MB
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   70.94%
+70.94%
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   68.30%
+68.30%
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   89.99%
+89.99%
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   88.44%
+88.44%
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      </tr>
+   </tr>
 
-   .. raw:: html
+.. raw:: html
 
-      </tbody>
+   </tbody>
 
-   .. raw:: html
+.. raw:: html
 
-      <tbody align="center">
+   <tbody align="center">
 
-   .. raw:: html
+.. raw:: html
 
-      <tr>
+   <tr>
 
-   .. raw:: html
+.. raw:: html
 
-      <td class="tg-zk71">
+   <td class="tg-zk71">
 
-   ResNet18
+ResNet18
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   ImageNet
+ImageNet
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   44.7 MB
+44.7 MB
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   69.93%
+69.93%
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   89.29%
+89.29%
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      </tr>
+   </tr>
 
-   .. raw:: html
+.. raw:: html
 
-      </tbody>
+   </tbody>
 
-   .. raw:: html
+.. raw:: html
 
-      <tbody align="center">
+   <tbody align="center">
 
-   .. raw:: html
+.. raw:: html
 
-      <tr>
+   <tr>
 
-   .. raw:: html
+.. raw:: html
 
-      <td class="tg-zk71">
+   <td class="tg-zk71">
 
-   ResNet50
+ResNet50
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   ImageNet
+ImageNet
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   97.8 MB
+97.8 MB
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   24.6 MB
+24.6 MB
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   74.93%
+74.93%
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   74.77%
+74.77%
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   92.38%
+92.38%
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   92.32%
+92.32%
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      </tr>
+   </tr>
 
-   .. raw:: html
+.. raw:: html
 
-      </tbody>
+   </tbody>
 
-   .. raw:: html
+.. raw:: html
 
-      <tbody align="center">
+   <tbody align="center">
 
-   .. raw:: html
+.. raw:: html
 
-      <tr>
+   <tr>
 
-   .. raw:: html
+.. raw:: html
 
-      <td class="tg-zk71">
+   <td class="tg-zk71">
 
-   ShuffleNet_v2
+ShuffleNet_v2
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   ImageNet
+ImageNet
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   9.2 MB
+9.2 MB
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   2.28 MB
+2.28 MB
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   69.36%
+69.36%
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   66.15%
+66.15%
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   88.32%
+88.32%
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   86.34%
+86.34%
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      </tr>
+   </tr>
 
-   .. raw:: html
+.. raw:: html
 
-      </tbody>
+   </tbody>
 
-   .. raw:: html
+.. raw:: html
 
-      <tbody align="center">
+   <tbody align="center">
 
-   .. raw:: html
+.. raw:: html
 
-      <tr>
+   <tr>
 
-   .. raw:: html
+.. raw:: html
 
-      <td class="tg-zk71">
+   <td class="tg-zk71">
 
-   VGG
+VGG
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   ImageNet
+ImageNet
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   527.8 MB
+527.8 MB
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   101.1 MB
+101.1 MB
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   72.62%
+72.62%
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   72.32%
+72.32%
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   91.14%
+91.14%
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   90.97%
+90.97%
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      </tr>
+   </tr>
 
-   .. raw:: html
+.. raw:: html
 
-      </tbody>
+   </tbody>
 
-   .. raw:: html
+.. raw:: html
 
-      </table>
+   </table>
 
 ..
 
@@ -864,423 +867,425 @@ What：什么现象与成果
 
    准确度（Top-5）：排名前五的类别包含实际结果的准确率
 
-   -  目标检测
+-  目标检测
 
-      .. raw:: html
+.. raw:: html
 
-         <table class="tg">
+   <table class="docutils align-default">
 
-      .. raw:: html
+.. raw:: html
 
-         <thead>
+   <thead>
 
-      .. raw:: html
+.. raw:: html
 
-         <tr>
+   <tr>
 
-      .. raw:: html
+.. raw:: html
 
-         <th rowspan="2">
+   <th rowspan="2">
 
-      模型
+模型
 
-      .. raw:: html
+.. raw:: html
 
-         </th>
+   </th>
 
-      .. raw:: html
+.. raw:: html
 
-         <th rowspan="2">
+   <th rowspan="2">
 
-      数据集
+数据集
 
-      .. raw:: html
+.. raw:: html
 
-         </th>
+   </th>
 
-      .. raw:: html
+.. raw:: html
 
-         <th rowspan="1" colspan="2">
+   <th rowspan="1" colspan="2">
 
-      权重大小
+权重大小
 
-      .. raw:: html
+.. raw:: html
 
-         </th>
+   </th>
 
-      .. raw:: html
+.. raw:: html
 
-         <th rowspan="1" colspan="2">
+   <th rowspan="1" colspan="2">
 
-      精度（mAP）
+精度（mAP）
 
-      .. raw:: html
+.. raw:: html
 
-         </th>
+   </th>
 
-      .. raw:: html
+.. raw:: html
 
-         </tr>
+   </tr>
 
-      .. raw:: html
+.. raw:: html
 
-         <tr>
+   <tr>
 
-      .. raw:: html
+.. raw:: html
 
-         <th colspan="1">
+   <th colspan="1">
 
-      FP32
+FP32
 
-      .. raw:: html
+.. raw:: html
 
-         </th>
+   </th>
 
-      .. raw:: html
+.. raw:: html
 
-         <th colspan="1">
+   <th colspan="1">
 
-      INT8
+INT8
 
-      .. raw:: html
+.. raw:: html
 
-         </th>
+   </th>
 
-      .. raw:: html
+.. raw:: html
 
-         <th colspan="1">
+   <th colspan="1">
 
-      FP32
+FP32
 
-      .. raw:: html
+.. raw:: html
 
-         </th>
+   </th>
 
-      .. raw:: html
+.. raw:: html
 
-         <th colspan="1">
+   <th colspan="1">
 
-      INT8
+INT8
 
-      .. raw:: html
+.. raw:: html
 
-         </th>
+   </th>
 
-      .. raw:: html
+.. raw:: html
 
-         </tr>
+   </tr>
 
-      .. raw:: html
+.. raw:: html
 
-         </thead>
+   </thead>
 
-      .. raw:: html
+.. raw:: html
 
-         <tbody align="center">
+   <tbody align="center">
 
-      .. raw:: html
+.. raw:: html
 
-         <tr>
+   <tr>
 
-      .. raw:: html
+.. raw:: html
 
-         <td class="tg-zk71">
+   <td class="tg-zk71">
 
-      SSD_Lite
+SSD_Lite
 
-      .. raw:: html
+.. raw:: html
 
-         </td>
+   </td>
 
-      .. raw:: html
+.. raw:: html
 
-         <td>
+   <td>
 
-      COCO
+COCO
 
-      .. raw:: html
+.. raw:: html
 
-         </td>
+   </td>
 
-      .. raw:: html
+.. raw:: html
 
-         <td>
+   <td>
 
-      28.1 MB
+28.1 MB
 
-      .. raw:: html
+.. raw:: html
 
-         </td>
+   </td>
 
-      .. raw:: html
+.. raw:: html
 
-         <td>
+   <td>
 
-      8.5 MB
+8.5 MB
 
-      .. raw:: html
+.. raw:: html
 
-         </td>
+   </td>
 
-      .. raw:: html
+.. raw:: html
 
-         <td>
+   <td>
 
-      0.2303
+0.2303
 
-      .. raw:: html
+.. raw:: html
 
-         </td>
+   </td>
 
-      .. raw:: html
+.. raw:: html
 
-         <td>
+   <td>
 
-      0.2285
+0.2285
 
-      .. raw:: html
+.. raw:: html
 
-         </td>
+   </td>
 
-      .. raw:: html
+.. raw:: html
 
-         </tr>
+   </tr>
 
-      .. raw:: html
+.. raw:: html
 
-         </tbody>
+   </tbody>
 
-      .. raw:: html
+.. raw:: html
 
-         <tbody align="center">
+   <tbody align="center">
 
-      .. raw:: html
+.. raw:: html
 
-         <tr>
+   <tr>
 
-      .. raw:: html
+.. raw:: html
 
-         <td class="tg-zk71">
+   <td class="tg-zk71">
 
-      FasterRCNN
+FasterRCNN
 
-      .. raw:: html
+.. raw:: html
 
-         </td>
+   </td>
 
-      .. raw:: html
+.. raw:: html
 
-         <td>
+   <td>
 
-      COCO
+COCO
 
-      .. raw:: html
+.. raw:: html
 
-         </td>
+   </td>
 
-      .. raw:: html
+.. raw:: html
 
-         <td>
+   <td>
 
-      168.5 MB
+168.5 MB
 
-      .. raw:: html
+.. raw:: html
 
-         </td>
+   </td>
 
-      .. raw:: html
+.. raw:: html
 
-         <td>
+   <td>
 
-      42.6 MB
+42.6 MB
 
-      .. raw:: html
+.. raw:: html
 
-         </td>
+   </td>
 
-      .. raw:: html
+.. raw:: html
 
-         <td>
+   <td>
 
-      0.3437
+0.3437
 
-      .. raw:: html
+.. raw:: html
 
-         </td>
+   </td>
 
-      .. raw:: html
+.. raw:: html
 
-         <td>
+   <td>
 
-      0.3399
+0.3399
 
-      .. raw:: html
+.. raw:: html
 
-         </td>
+   </td>
 
-      .. raw:: html
+.. raw:: html
 
-         </tr>
+   </tr>
 
-      .. raw:: html
+.. raw:: html
 
-         </tbody>
+   </tbody>
 
-      .. raw:: html
+.. raw:: html
 
-         <tbody align="center">
+   <tbody align="center">
 
-      .. raw:: html
+.. raw:: html
 
-         <tr>
+   <tr>
 
-      .. raw:: html
+.. raw:: html
 
-         <td class="tg-zk71">
+   <td class="tg-zk71">
 
-      Mask_RCNN
+Mask_RCNN
 
-      .. raw:: html
+.. raw:: html
 
-         </td>
+   </td>
 
-      .. raw:: html
+.. raw:: html
 
-         <td>
+   <td>
 
-      COCO
+COCO
 
-      .. raw:: html
+.. raw:: html
 
-         </td>
+   </td>
 
-      .. raw:: html
+.. raw:: html
 
-         <td>
+   <td>
 
-      169.7 MB
+169.7 MB
 
-      .. raw:: html
+.. raw:: html
 
-         </td>
+   </td>
 
-      .. raw:: html
+.. raw:: html
 
-         <td>
+   <td>
 
-      45.9 MB
+45.9 MB
 
-      .. raw:: html
+.. raw:: html
 
-         </td>
+   </td>
 
-      .. raw:: html
+.. raw:: html
 
-         <td>
+   <td>
 
-      0.3372
+0.3372
 
-      .. raw:: html
+.. raw:: html
 
-         </td>
+   </td>
 
-      .. raw:: html
+.. raw:: html
 
-         <td>
+   <td>
 
-      0.3340
+0.3340
 
-      .. raw:: html
+.. raw:: html
 
-         </td>
+   </td>
 
-      .. raw:: html
+.. raw:: html
 
-         </tr>
+   </tr>
 
-      .. raw:: html
+.. raw:: html
 
-         </tbody>
+   </tbody>
 
-      .. raw:: html
+.. raw:: html
 
-         <tbody align="center">
+   <tbody align="center">
 
-      .. raw:: html
+.. raw:: html
 
-         <tr>
+   <tr>
 
-      .. raw:: html
+.. raw:: html
 
-         <td class="tg-zk71">
+   <td class="tg-zk71">
 
-      Yolov3
+Yolov3
 
-      .. raw:: html
+.. raw:: html
 
-         </td>
+   </td>
 
-      .. raw:: html
+.. raw:: html
 
-         <td>
+   <td>
 
-      COCO
+COCO
 
-      .. raw:: html
+.. raw:: html
 
-         </td>
+   </td>
 
-      .. raw:: html
+.. raw:: html
 
-         <td>
+   <td>
 
-      237 MB
+237 MB
 
-      .. raw:: html
+.. raw:: html
 
-         </td>
+   </td>
 
-      .. raw:: html
+.. raw:: html
 
-         <td>
+   <td>
 
-      61 MB
+61 MB
 
-      .. raw:: html
+.. raw:: html
 
-         </td>
+   </td>
 
-      .. raw:: html
+.. raw:: html
 
-         <td>
+   <td>
 
-      0.2874
+0.2874
 
-      .. raw:: html
+.. raw:: html
 
-         </td>
+   </td>
 
-      .. raw:: html
+.. raw:: html
 
-         <td>
+   <td>
 
-      0.2688
+0.2688
 
-      .. raw:: html
+.. raw:: html
 
-         </td>
+   </td>
 
-      .. raw:: html
+.. raw:: html
 
-         </tr>
+   </tr>
 
-      .. raw:: html
+.. raw:: html
 
-         </tbody>
+   </tbody>
 
-      .. raw:: html
+.. raw:: html
 
-         </table>
+   </table>
+
+..
 
    COCO 数据集: MS
    COCO的全称是\ ``Microsoft Common Objects in Context``\ ，起源于微软于2014年出资标注的Microsoft
@@ -1314,7 +1319,7 @@ What：什么现象与成果
 
 .. raw:: html
 
-   <table class="tg">
+   <table class="docutils align-default">
 
 .. raw:: html
 
@@ -1800,8 +1805,10 @@ ImageNet
 
    </table>
 
-​ 吞吐量
-(图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现
+..
+
+   吞吐量
+   (图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现
 
    \*：不建议部署，单张图片推理的时间超过30s
 
@@ -1809,7 +1816,7 @@ ImageNet
 
    .. raw:: html
 
-      <table class="tg">
+      <table class="docutils align-default">
 
    .. raw:: html
 
@@ -2309,7 +2316,7 @@ ImageNet
 
 .. raw:: html
 
-   <table class="tg">
+   <table class="docutils align-default">
 
 .. raw:: html
 
@@ -2802,479 +2809,479 @@ ImageNet
 
 -  目标检测
 
-   .. raw:: html
+.. raw:: html
 
-      <table class="tg">
+   <table class="docutils align-default">
 
-   .. raw:: html
+.. raw:: html
 
-      <thead>
+   <thead>
 
-   .. raw:: html
+.. raw:: html
 
-      <tr>
+   <tr>
 
-   .. raw:: html
+.. raw:: html
 
-      <th rowspan="2">
+   <th rowspan="2">
 
-   模型
+模型
 
-   .. raw:: html
+.. raw:: html
 
-      </th>
+   </th>
 
-   .. raw:: html
+.. raw:: html
 
-      <th rowspan="2">
+   <th rowspan="2">
 
-   数据集
+数据集
 
-   .. raw:: html
+.. raw:: html
 
-      </th>
+   </th>
 
-   .. raw:: html
+.. raw:: html
 
-      <th rowspan="1" colspan="2">
+   <th rowspan="1" colspan="2">
 
-   权重大小
+权重大小
 
-   .. raw:: html
+.. raw:: html
 
-      </th>
+   </th>
 
-   .. raw:: html
+.. raw:: html
 
-      <th rowspan="1" colspan="2">
+   <th rowspan="1" colspan="2">
 
-   吞吐量 (图片数/每秒)
+吞吐量 (图片数/每秒)
 
-   .. raw:: html
+.. raw:: html
 
-      </th>
+   </th>
 
-   .. raw:: html
+.. raw:: html
 
-      </tr>
+   </tr>
 
-   .. raw:: html
+.. raw:: html
 
-      <tr>
+   <tr>
 
-   .. raw:: html
+.. raw:: html
 
-      <th colspan="1">
+   <th colspan="1">
 
-   FP32
+FP32
 
-   .. raw:: html
+.. raw:: html
 
-      </th>
+   </th>
 
-   .. raw:: html
+.. raw:: html
 
-      <th colspan="1">
+   <th colspan="1">
 
-   INT8
+INT8
 
-   .. raw:: html
+.. raw:: html
 
-      </th>
+   </th>
 
-   .. raw:: html
+.. raw:: html
 
-      <th colspan="1">
+   <th colspan="1">
 
-   FP32
+FP32
 
-   .. raw:: html
+.. raw:: html
 
-      </th>
+   </th>
 
-   .. raw:: html
+.. raw:: html
 
-      <th colspan="1">
+   <th colspan="1">
 
-   INT8
+INT8
 
-   .. raw:: html
+.. raw:: html
 
-      </th>
+   </th>
 
-   .. raw:: html
+.. raw:: html
 
-      </tr>
+   </tr>
 
-   .. raw:: html
+.. raw:: html
 
-      </thead>
+   </thead>
 
-   .. raw:: html
+.. raw:: html
 
-      <tbody align="center">
+   <tbody align="center">
 
-   .. raw:: html
+.. raw:: html
 
-      <tr>
+   <tr>
 
-   .. raw:: html
+.. raw:: html
 
-      <td class="tg-zk71">
+   <td class="tg-zk71">
 
-   SSD_Lite\*
+SSD_Lite\*
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   COCO
+COCO
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   28.1 MB
+28.1 MB
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   8.5 MB
+8.5 MB
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   2.55
+2.55
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      </tr>
+   </tr>
 
-   .. raw:: html
+.. raw:: html
 
-      </tbody>
+   </tbody>
 
-   .. raw:: html
+.. raw:: html
 
-      <tbody align="center">
+   <tbody align="center">
 
-   .. raw:: html
+.. raw:: html
 
-      <tr>
+   <tr>
 
-   .. raw:: html
+.. raw:: html
 
-      <td class="tg-zk71">
+   <td class="tg-zk71">
 
-   SSD_Lite\*\*
+SSD_Lite\*\*
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   COCO
+COCO
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      </tr>
+   </tr>
 
-   .. raw:: html
+.. raw:: html
 
-      </tbody>
+   </tbody>
 
-   .. raw:: html
+.. raw:: html
 
-      <tbody align="center">
+   <tbody align="center">
 
-   .. raw:: html
+.. raw:: html
 
-      <tr>
+   <tr>
 
-   .. raw:: html
+.. raw:: html
 
-      <td class="tg-zk71">
+   <td class="tg-zk71">
 
-   FasterRCNN
+FasterRCNN
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   COCO
+COCO
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   168.5 MB
+168.5 MB
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   42.6 MB
+42.6 MB
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      </tr>
+   </tr>
 
-   .. raw:: html
+.. raw:: html
 
-      </tbody>
+   </tbody>
 
-   .. raw:: html
+.. raw:: html
 
-      <tbody align="center">
+   <tbody align="center">
 
-   .. raw:: html
+.. raw:: html
 
-      <tr>
+   <tr>
 
-   .. raw:: html
+.. raw:: html
 
-      <td class="tg-zk71">
+   <td class="tg-zk71">
 
-   Mask_RCNN
+Mask_RCNN
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   COCO
+COCO
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   169.7 MB
+169.7 MB
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   45.9 MB
+45.9 MB
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      </tr>
+   </tr>
 
-   .. raw:: html
+.. raw:: html
 
-      </tbody>
+   </tbody>
 
-   .. raw:: html
+.. raw:: html
 
-      <tbody align="center">
+   <tbody align="center">
 
-   .. raw:: html
+.. raw:: html
 
-      <tr>
+   <tr>
 
-   .. raw:: html
+.. raw:: html
 
-      <td class="tg-zk71">
+   <td class="tg-zk71">
 
-   Yolov3
+Yolov3
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   COCO
+COCO
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   237 MB
+237 MB
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   61 MB
+61 MB
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   0.21
+0.21
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      <td>
+   <td>
 
-   0.34
+0.34
 
-   .. raw:: html
+.. raw:: html
 
-      </td>
+   </td>
 
-   .. raw:: html
+.. raw:: html
 
-      </tr>
+   </tr>
 
-   .. raw:: html
+.. raw:: html
 
-      </tbody>
+   </tbody>
 
-   .. raw:: html
+.. raw:: html
 
-      </table>
+   </table>
 
 ..
 

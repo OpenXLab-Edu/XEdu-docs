@@ -198,12 +198,17 @@ else:
 - 数据处理工具：BaseDT == 0.0.1
 
 #### 配置
-- `静态图`导出
+- 静态图导出
 - `batch`大小为1
 - `BaseDT`内置`ImageData`工具进行数据预处理
+
+
+
 #### 精度测试结果汇总
+
 - 图像分类
-<table class="tg">
+
+<table class="docutils align-default">
     <thead>
   <tr>
     <th rowspan="2">模型</th>
@@ -282,15 +287,16 @@ else:
   </tr>
 </tbody>
 </table>
-
 > ImageNet 数据集：ImageNet项目是一个用于视觉对象识别软件研究的大型可视化数据库。ImageNet项目每年举办一次软件比赛，即`ImageNet大规模视觉识别挑战赛`（ILSVRC），软件程序竞相正确分类检测物体和场景。 ImageNet挑战使用了一个“修剪”的1000个非重叠类的列表。2012年在解决ImageNet挑战方面取得了巨大的突破
-> 
+>
 > 准确度（Top-1）：排名第一的类别与实际结果相符的准确率
-> 
+>
 > 准确度（Top-5）：排名前五的类别包含实际结果的准确率
-> 
+>
+
 - 目标检测
-<table class="tg">
+
+<table class="docutils align-default">
     <thead>
   <tr>
     <th rowspan="2">模型</th>
@@ -346,7 +352,6 @@ else:
   </tr>
 </tbody>
 </table>
-
 > COCO 数据集: MS COCO的全称是`Microsoft Common Objects in Context`，起源于微软于2014年出资标注的Microsoft COCO数据集，与ImageNet竞赛一样，被视为是计算机视觉领域最受关注和最权威的比赛之一。 COCO数据集是一个大型的、丰富的物体检测，分割和字幕数据集。这个数据集以scene understanding为目标，目前为止有语义分割的最大数据集，提供的类别有80 类，有超过33 万张图片，其中20 万张有标注，整个数据集中个体的数目超过150 万个。
 > 
 >AP (average Precision)：平均精度，在不同recall下的最高precision的均值(一般会对各类别分别计算各自的AP)
@@ -374,7 +379,8 @@ else:
 
 下面是我们环境中的测试结果：
 - 图像分类
-<table class="tg">
+
+<table class="docutils align-default">
     <thead>
   <tr>
     <th rowspan="2">模型</th>
@@ -441,12 +447,12 @@ else:
 </tbody>
 </table>
 
-​    吞吐量 (图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现
-
+> 吞吐量 (图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现
+>
 > *：不建议部署，单张图片推理的时间超过30s
 
 - 目标检测
-<table class="tg">
+<table class="docutils align-default">
     <thead>
    <tr>
     <th rowspan="2">模型</th>
@@ -513,9 +519,10 @@ else:
 </tbody>
 </table>
 
+
 >*：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本
-> 
-> **：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite
+>
+>**：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite
 
 #### 树莓派（4b）测试
 > Raspberry Pi。中文名为“树莓派”,简写为RPi，或者RasPi/RPi)是为学生计算机编程教育而设计，卡片式电脑，其系统基于Linux。
@@ -535,7 +542,8 @@ else:
 
 下面是我们环境中的测试结果：
 - 图像分类
-<table class="tg">
+
+<table class="docutils align-default">
     <thead>
   <tr>
     <th rowspan="2">模型</th>
@@ -602,12 +610,14 @@ else:
 </tbody>
 </table>
 
+
 > 吞吐量 (图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现
-> 
+>
 > *：量化后在树莓派上推理速度变慢
 
 - 目标检测
-<table class="tg">
+
+<table class="docutils align-default">
     <thead>
    <tr>
     <th rowspan="2">模型</th>
@@ -674,9 +684,10 @@ else:
 </tbody>
 </table>
 
+
 >*：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本
-> 
-> **：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite
+>
+>**：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite
 
 __注：硬件测试模块持续更新中，如有更多硬件测试需求，请[联系我们](https://github.com/OpenXLab-Edu/XEdu-docs/issues)__
 
@@ -694,13 +705,23 @@ __注：硬件测试模块持续更新中，如有更多硬件测试需求，请
 
 猫狗分类小助手：https://www.openinnolab.org.cn/pjlab/project?id=63c3f52a1dd9517dffa1f513&sc=62f34141bf4f550f3e926e0e#public
 
+
+
 千物识别小助手：https://www.openinnolab.org.cn/pjlab/project?id=63c4106c2e26ff0a30cb440f&sc=62f34141bf4f550f3e926e0e#public
+
+
 
 有无人检测小助手：https://www.openinnolab.org.cn/pjlab/project?id=63c4b6d22e26ff0a30f26ebc&sc=62f34141bf4f550f3e926e0e#public
 
+
+
 行空板上温州话识别：https://www.openinnolab.org.cn/pjlab/project?id=63b7c66e5e089d71e61d19a0&sc=62f34141bf4f550f3e926e0e#public
 
+
+
 树莓派与MMEdu：https://www.openinnolab.org.cn/pjlab/project?id=63bb8be4c437c904d8a90350&backpath=/pjlab/projects/list?backpath=/pjlab/ai/projects#public
+
+
 
 MMEdu模型在线转换：https://www.openinnolab.org.cn/pjlab/project?id=63a1a47e5e089d71e6c6f068&backpath=/pjlab/projects/list?backpath=/pjlab/ai/projects#public
 

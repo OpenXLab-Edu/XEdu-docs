@@ -62,11 +62,11 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#what">What：什么现象与成果</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id5">精度测试结果</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id8">边、端设备测试结果</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">边、端设备测试结果</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id14">多模态交互</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id15">更多模型部署项目</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">多模态交互</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">更多模型部署项目</a></li>
 </ul>
 </li>
 </ul>
@@ -302,13 +302,18 @@ PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架
 </section>
 <section id="id7">
 <h4>配置<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h4>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">静态图</span></code>导出</p></li>
+<ul class="simple">
+<li><p>静态图导出</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">batch</span></code>大小为1</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">BaseDT</span></code>内置<code class="docutils literal notranslate"><span class="pre">ImageData</span></code>工具进行数据预处理 ####
-精度测试结果汇总</p></li>
-<li><p>图像分类</p>
-<table class="tg"><thead><tr><th rowspan="2"><p>模型</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">BaseDT</span></code>内置<code class="docutils literal notranslate"><span class="pre">ImageData</span></code>工具进行数据预处理</p></li>
+</ul>
+</section>
+<section id="id8">
+<h4>精度测试结果汇总<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p>图像分类</p></li>
+</ul>
+<table class="docutils align-default"><thead><tr><th rowspan="2"><p>模型</p>
 </th><th rowspan="2"><p>数据集</p>
 </th><th rowspan="1" colspan="2"><p>权重大小</p>
 </th><th rowspan="1" colspan="2"><p>精度（TOP-1）</p>
@@ -356,17 +361,17 @@ PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架
 </td><td><p>72.32%</p>
 </td><td><p>91.14%</p>
 </td><td><p>90.97%</p>
-</td></tr></tbody></table></li>
-</ul>
-<blockquote>
+</td></tr></tbody></table><blockquote>
 <div><p>ImageNet
 数据集：ImageNet项目是一个用于视觉对象识别软件研究的大型可视化数据库。ImageNet项目每年举办一次软件比赛，即<code class="docutils literal notranslate"><span class="pre">ImageNet大规模视觉识别挑战赛</span></code>（ILSVRC），软件程序竞相正确分类检测物体和场景。
 ImageNet挑战使用了一个“修剪”的1000个非重叠类的列表。2012年在解决ImageNet挑战方面取得了巨大的突破</p>
 <p>准确度（Top-1）：排名第一的类别与实际结果相符的准确率</p>
 <p>准确度（Top-5）：排名前五的类别包含实际结果的准确率</p>
-<ul>
-<li><p>目标检测</p>
-<table class="tg"><thead><tr><th rowspan="2"><p>模型</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>目标检测</p></li>
+</ul>
+<table class="docutils align-default"><thead><tr><th rowspan="2"><p>模型</p>
 </th><th rowspan="2"><p>数据集</p>
 </th><th rowspan="1" colspan="2"><p>权重大小</p>
 </th><th rowspan="1" colspan="2"><p>精度（mAP）</p>
@@ -398,9 +403,8 @@ ImageNet挑战使用了一个“修剪”的1000个非重叠类的列表。2012�
 </td><td><p>61 MB</p>
 </td><td><p>0.2874</p>
 </td><td><p>0.2688</p>
-</td></tr></tbody></table></li>
-</ul>
-<p>COCO 数据集: MS
+</td></tr></tbody></table><blockquote>
+<div><p>COCO 数据集: MS
 COCO的全称是<code class="docutils literal notranslate"><span class="pre">Microsoft</span> <span class="pre">Common</span> <span class="pre">Objects</span> <span class="pre">in</span> <span class="pre">Context</span></code>，起源于微软于2014年出资标注的Microsoft
 COCO数据集，与ImageNet竞赛一样，被视为是计算机视觉领域最受关注和最权威的比赛之一。
 COCO数据集是一个大型的、丰富的物体检测，分割和字幕数据集。这个数据集以scene
@@ -413,10 +417,10 @@ Precision)：平均精度，在不同recall下的最高precision的均值(一般
 </div></blockquote>
 </section>
 </section>
-<section id="id8">
-<h3>边、端设备测试结果<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
 <section id="id9">
-<h4>行空板测试<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h4>
+<h3>边、端设备测试结果<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
+<section id="id10">
+<h4>行空板测试<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h4>
 <blockquote>
 <div><p>行空板,
 青少年Python教学用开源硬件，解决Python教学难和使用门槛高的问题，旨在推动Python教学在青少年中的普及。官网：<a class="reference external" href="https://www.dfrobot.com.cn/">https://www.dfrobot.com.cn/</a>
@@ -428,7 +432,7 @@ Precision)：平均精度，在不同recall下的最高precision的均值(一般
 测试时，计算各个数据集中 10 张图片的平均耗时</p>
 </div></blockquote>
 <p>下面是我们环境中的测试结果： - 图像分类</p>
-<table class="tg"><thead><tr><th rowspan="2"><p>模型</p>
+<table class="docutils align-default"><thead><tr><th rowspan="2"><p>模型</p>
 </th><th rowspan="2"><p>数据集</p>
 </th><th rowspan="1" colspan="2"><p>权重大小</p>
 </th><th rowspan="1" colspan="2"><p>吞吐量 (图片数/每秒)</p>
@@ -464,14 +468,14 @@ Precision)：平均精度，在不同recall下的最高precision的均值(一般
 </td><td><p>101.1 MB</p>
 </td><td><p>*</p>
 </td><td><p>*</p>
-</td></tr></tbody></table><p>​ 吞吐量
+</td></tr></tbody></table><blockquote>
+<div><p>吞吐量
 (图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现</p>
-<blockquote>
-<div><p>*：不建议部署，单张图片推理的时间超过30s</p>
+<p>*：不建议部署，单张图片推理的时间超过30s</p>
 </div></blockquote>
 <ul>
 <li><p>目标检测</p>
-<table class="tg"><thead><tr><th rowspan="2"><p>模型</p>
+<table class="docutils align-default"><thead><tr><th rowspan="2"><p>模型</p>
 </th><th rowspan="2"><p>数据集</p>
 </th><th rowspan="1" colspan="2"><p>权重大小</p>
 </th><th rowspan="1" colspan="2"><p>吞吐量 (图片数/每秒)</p>
@@ -523,7 +527,7 @@ Pi。中文名为“树莓派”,简写为RPi，或者RasPi/RPi)是为学生计�
 测试时，计算各个数据集中 10 张图片的平均耗时</p>
 </div></blockquote>
 <p>下面是我们环境中的测试结果： - 图像分类</p>
-<table class="tg"><thead><tr><th rowspan="2"><p>模型</p>
+<table class="docutils align-default"><thead><tr><th rowspan="2"><p>模型</p>
 </th><th rowspan="2"><p>数据集</p>
 </th><th rowspan="1" colspan="2"><p>权重大小</p>
 </th><th rowspan="1" colspan="2"><p>吞吐量 (图片数/每秒)</p>
@@ -563,9 +567,10 @@ Pi。中文名为“树莓派”,简写为RPi，或者RasPi/RPi)是为学生计�
 (图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现</p>
 <p>*：量化后在树莓派上推理速度变慢</p>
 </div></blockquote>
-<ul>
-<li><p>目标检测</p>
-<table class="tg"><thead><tr><th rowspan="2"><p>模型</p>
+<ul class="simple">
+<li><p>目标检测</p></li>
+</ul>
+<table class="docutils align-default"><thead><tr><th rowspan="2"><p>模型</p>
 </th><th rowspan="2"><p>数据集</p>
 </th><th rowspan="1" colspan="2"><p>权重大小</p>
 </th><th rowspan="1" colspan="2"><p>吞吐量 (图片数/每秒)</p>
@@ -594,18 +599,16 @@ Pi。中文名为“树莓派”,简写为RPi，或者RasPi/RPi)是为学生计�
 </td><td><p>61 MB</p>
 </td><td><p>0.21</p>
 </td><td><p>0.34</p>
-</td></tr></tbody></table></li>
-</ul>
-<blockquote>
+</td></tr></tbody></table><blockquote>
 <div><p>*：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本</p>
 <p>**：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite</p>
 </div></blockquote>
-<p><a href="#id10"><span class="problematic" id="id11">**</span></a>注：硬件测试模块持续更新中，如有更多硬件测试需求，请<a href="#id12"><span class="problematic" id="id13">**</span></a><a class="reference external" href="https://github.com/OpenXLab-Edu/XEdu-docs/issues">联系我们</a></p>
+<p><a href="#id11"><span class="problematic" id="id12">**</span></a>注：硬件测试模块持续更新中，如有更多硬件测试需求，请<a href="#id13"><span class="problematic" id="id14">**</span></a><a class="reference external" href="https://github.com/OpenXLab-Edu/XEdu-docs/issues">联系我们</a></p>
 </section>
 </section>
 </section>
-<section id="id14">
-<h2>多模态交互<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h2>
+<section id="id15">
+<h2>多模态交互<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h2>
 <p>回顾用AI解决真实问题的流程图，我们已经介绍了收集数据、训练模型、模型推理和应用部署。结合项目设计，我们还会去思考如何通过摄像头获得图像，如何控制灯光发亮，如何操纵舵机，如何设计显示界面UI等需要使用输入设备和输出设备等来实现的交互设计，即对<code class="docutils literal notranslate"><span class="pre">多模态交互</span></code>的考量。</p>
 <div class="docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;../images/model_convert/用AI解决真实问题.JPG&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;80%&quot;</span><span class="o">&gt;</span>
@@ -614,8 +617,8 @@ Pi。中文名为“树莓派”,简写为RPi，或者RasPi/RPi)是为学生计�
 </div>
 <p>更多传感器、执行器使用教程参见：<a class="reference external" href="https://wiki.dfrobot.com.cn/">DFRobot</a></p>
 </section>
-<section id="id15">
-<h2>更多模型部署项目<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h2>
+<section id="id16">
+<h2>更多模型部署项目<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h2>
 <p>猫狗分类小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63c3f52a1dd9517dffa1f513&amp;sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=63c3f52a1dd9517dffa1f513&amp;sc=62f34141bf4f550f3e926e0e#public</a></p>
 <p>千物识别小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63c4106c2e26ff0a30cb440f&amp;sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=63c4106c2e26ff0a30cb440f&amp;sc=62f34141bf4f550f3e926e0e#public</a></p>
 <p>有无人检测小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63c4b6d22e26ff0a30f26ebc&amp;sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=63c4b6d22e26ff0a30f26ebc&amp;sc=62f34141bf4f550f3e926e0e#public</a></p>
