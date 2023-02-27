@@ -1,12 +1,12 @@
-# XEdu安装和下载
+# XEdu的安装和下载
 
-## 1. 安装方式介绍
+## 可选的安装方式
 
 为了满足广大中小学师生的需求，XEdu安装方式分为一键安装包安装和pip安装。一键安装包版包含MMEdu、BaseML、BaseNN三个模块的基础功能，同时内置了一套EasyDL系列工具，分“EasyTrain.bat”、“EasyInference.bat”和“EasyAPI.bat”这三个可视化工具，定期更新。pip安装方式需用户自己分模块安装，各模块更新同步工具开发进度。后续还将推出docker容器镜像，敬请期待。
 
-## 2. 一键安装包
+## 初学者安装强推!!!不会让人失望的一键安装包
 
-### 2.1 一键安装包下载和安装
+### 即刻体验XEdu一键安装包，开始！
 
 下载工具：XEdu一键安装包
 
@@ -14,11 +14,9 @@
 
 飞书网盘：https://p6bm2if73b.feishu.cn/drive/folder/fldcn67XTwhg8qIFCl8edJBZZQb
 
-第一步：双击运行，将自解压为XEdu文件夹。
+第一步：双击运行，将自解压为XEdu文件夹（注意！避免踩坑请安装到纯英文路径下）。
 
 ![image](../images/about/xedu一键安装包.png)
-
-目录结构图
 
 第二步：您可以根据个人喜好，选择自己习惯的IDE。
 
@@ -28,29 +26,21 @@ pyzo是一款好用的Python轻量级IDE。其最突出的两个特点便是是�
 
 ![image](../images/about/demo运行1.png)
 
-Pyzo界面图
-
 2）使用MMEdu自带的Jupyter。
 
 Jupyter Notebook是基于网页的用于交互计算的应用程序。其可被应用于全过程计算：开发、文档编写、运行代码和展示结果。它相对简单，对用户也更加友好，适合初学者。
 
-打开jupyter，需先双击“jupyter初始化.bat”完成初始化（不要以管理员身份运行）。初始化完成方可使用jupyter。
+**打开jupyter，首先需先双击“jupyter初始化.bat”完成初始化（注意！不要以管理员身份运行）。初始化完成方可使用jupyter。**初始化完成后第二次可直接打开。
 
 ![image](../images/about/xedu初始化.png)
-
-初始化界面
 
 初始化完成（初始化界面自动消失）后打开根目录下的“jupyter编辑器.bat”，即自动启动浏览器并显示界面，如下图所示。
 
 ![image](../images/about/jupyter运行.png)
 
-jupyter界面图
-
 使用常用工具栏对代码进行操作，如“运行”，可以在单元格中编写文本或者代码，执行代码的结果也将会在每个单元下方呈现。可以逐个运行单元格，每点击一次，仅运行一个单元格。单元格左侧[*]内的星号变为数字，表示该单元格运行完成。此时可打开“demo”文件夹中的ipynb文件，如“MMEdu_cls_notebook.ipynb”。
 
 ![image](../images/about/jupyter运行1.png)
-
-jupyter运行界面
 
 3）使用其他IDE。
 
@@ -86,7 +76,7 @@ XEdu一键安装包内置了一套EasyDL系列工具，分“EasyTrain.bat”、
 
 更多EasyDL系列工具详见[EasyDL系列无代码工具](https://xedu.readthedocs.io/zh/latest/easydl.html#easydl)。
 
-### 2.2一键安装包目录详解
+### 揭秘一键安装包功能
 
 XEdu一键安装版是一个压缩包，解压后即可使用。
 
@@ -155,7 +145,7 @@ XEdu
 
 **jupyter编辑器.bat：**
 
-双击打开即运行jupyter notebook。
+“jupyter初始化.bat”完成初始化（注意！不要以管理员身份运行）。初始化完成后双击打开即运行jupyter notebook，初始化完成后第二次可直接打开。
 
 **jupyter初始化.bat：**
 
@@ -169,11 +159,13 @@ XEdu
 
 XEdu一键安装包说明文档。
 
-## 3. pip安装
+## 体验pip安装
 
-### 3.1 MMEdu
+XEdu的MMEdu、BaseML、BaseNN等各模块库均已支持pip安装并会持续迭代。
 
-#### 3.1.1 准备工作
+### 1. pip安装MMEdu
+
+#### 1.1 准备工作
 
 强烈推荐你在Anaconda的基础上安装MMEdu，可以避免很多的版本冲突问题。
 
@@ -219,7 +211,7 @@ XEdu一键安装包说明文档。
 
 点击Thonny主界面右下角的Python版本号，可以选择对应的Python解释器，第一次配置点击`Configure inter preter`，弹出的窗口中，第一个下拉栏选择`可选的python3解释器或虚拟环境`， 第二个下拉栏找到自己之前安装的anaconda环境中的python解释器位置。点击确认即可使用该python解释器。
 
-#### 3.1.1 安装MMEdu(CPU版本)
+#### 1.2 安装MMEdu(CPU版本)
 
 ##### 1）Linux安装MMEdu
 
@@ -259,7 +251,7 @@ $ conda activate your_env_name
 $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/index.html
 ```
 
-#### 3.1.3 安装MMEdu(GPU版本)
+#### 1.3 安装MMEdu(GPU版本)
 
 首先安装对应自己cuda版本的pytorch，安装命令可在以下网址中进行查询：https://pytorch.org/get-started/locally/
 
@@ -293,19 +285,19 @@ $ pip install MMEdu==0.1.0rc0
 
 即可。
 
-### 3.2 BaseML
+### 2. pip安装BaseML
 
 `pip install baseml` 或 `pip install BaseML`
 
-### 3.3 BaseNN
+### 3. pip安装BaseNN
 
 `pip install basenn` 或 `pip install BaseNN`
 
-## 4. docker容器镜像
+## docker容器镜像
 
 敬请期待
 
-## 5. 查看XEdu各模块库的版本
+## 如何快速查看XEdu各模块库的版本
 
 打开python终端，执行以下命令即可查看XEdu各模块库的版本。当前最新版本是0.04。
 
@@ -313,7 +305,7 @@ $ pip install MMEdu==0.1.0rc0
 
 注：目前版本MMEdu仅支持CPU。
 
-## 6. 卸载XEdu各模块库
+## 如何卸载XEdu各模块库
 
 如果XEdu某模块库出现异常情况，可以尝试使用`uninstall`命令卸载，然后再使用install命令安装。参考代码：
 

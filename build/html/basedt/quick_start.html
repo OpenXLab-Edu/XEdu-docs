@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>快速入门BaseDT &mdash; OpenXLabEdu  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="BaseDT安装" href="installation.html" />
+    <link rel="prev" title="数据处理库BaseDT" href="../basedt.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basenn.html">神经网络库BaseNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../baseml.html">传统机器学习库BaseML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../basedt.html">数据处理库BaseDT</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">快速入门BaseDT</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">安装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">体验</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html">BaseDT安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">BaseDT功能详解</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../scitech_tools.html">相关科创工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support_resources.html">学习支持和资源获取</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dl_library.html">深度学习知识库</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenXLabEdu</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../basedt.html">数据处理库BaseDT</a> &raquo;</li>
+      <li>快速入门BaseDT</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/basedt/quick_start.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="basedt">
+<h1>快速入门BaseDT<a class="headerlink" href="#basedt" title="Permalink to this headline"></a></h1>
+<section id="id1">
+<h2>简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<p>数据是机器学习和深度学习的核心，而数据处理是数据科学的基础。如果你想要快速、高效、灵活地处理各种类型和格式的数据，那么BaseDT库是你的最佳选择。BaseDT是一个用Python编写的库，它可以让你用一行代码就完成数据的各种操作，比如resize、crop、normalize、转换格式等。无论你是处理图片数据、文本数据、语音数据，还是其他类型的数据，BaseDT都可以帮助你轻松地准备好你的数据集，并且保持部署模型时和推理时的pipeline一致。BaseDT还支持数据集的处理，例如数据集的下载、检查和转换。此外，BaseDT还支持数据的可视化和I/O设备的调用。BaseDT不仅是一个功能强大的库，也是一个易于使用和扩展的库。它可以让你专注于模型的构建和训练，而不用担心数据处理的问题。BaseDT是一个值得你尝试和信赖的库。</p>
+</section>
+<section id="id2">
+<h2>安装<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<p>敬请期待。</p>
+</section>
+<section id="id3">
+<h2>体验<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<p>敬请期待。</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../basedt.html" class="btn btn-neutral float-left" title="数据处理库BaseDT" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="installation.html" class="btn btn-neutral float-right" title="BaseDT安装" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2023 OpenXLabEdu.All Rights Reserved.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
