@@ -204,8 +204,7 @@ else:
 #### 精度测试结果汇总
 - 图像分类
 <table class="tg">
-
-<thead>
+    <thead>
   <tr>
     <th rowspan="2">模型</th>
     <th rowspan="2">数据集</th>
@@ -292,8 +291,7 @@ else:
 > 
 - 目标检测
 <table class="tg">
-
-<thead>
+    <thead>
   <tr>
     <th rowspan="2">模型</th>
     <th rowspan="2">数据集</th>
@@ -377,8 +375,7 @@ else:
 下面是我们环境中的测试结果：
 - 图像分类
 <table class="tg">
-
-<thead>
+    <thead>
   <tr>
     <th rowspan="2">模型</th>
     <th rowspan="2">数据集</th>
@@ -444,14 +441,13 @@ else:
 </tbody>
 </table>
 
-> 吞吐量 (图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现
-> 
+​    吞吐量 (图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现
+
 > *：不建议部署，单张图片推理的时间超过30s
 
 - 目标检测
 <table class="tg">
-
-<thead>
+    <thead>
    <tr>
     <th rowspan="2">模型</th>
     <th rowspan="2">数据集</th>
@@ -540,8 +536,7 @@ else:
 下面是我们环境中的测试结果：
 - 图像分类
 <table class="tg">
-
-<thead>
+    <thead>
   <tr>
     <th rowspan="2">模型</th>
     <th rowspan="2">数据集</th>
@@ -613,8 +608,7 @@ else:
 
 - 目标检测
 <table class="tg">
-
-<thead>
+    <thead>
    <tr>
     <th rowspan="2">模型</th>
     <th rowspan="2">数据集</th>
@@ -709,5 +703,4 @@ __注：硬件测试模块持续更新中，如有更多硬件测试需求，请
 树莓派与MMEdu：https://www.openinnolab.org.cn/pjlab/project?id=63bb8be4c437c904d8a90350&backpath=/pjlab/projects/list?backpath=/pjlab/ai/projects#public
 
 MMEdu模型在线转换：https://www.openinnolab.org.cn/pjlab/project?id=63a1a47e5e089d71e6c6f068&backpath=/pjlab/projects/list?backpath=/pjlab/ai/projects#public
-
 
