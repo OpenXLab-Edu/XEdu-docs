@@ -31,24 +31,23 @@
 
 ### 什么是推理框架
 深度学习推理框架是一种让深度学习算法在实时处理环境中提高性能的框架。常见的有[ONNXRuntime](https://github.com/microsoft/onnxruntime)、[NCNN](https://github.com/Tencent/ncnn)、[TensorRT](https://github.com/NVIDIA/TensorRT)、[OpenVINO](https://github.com/openvinotoolkit/openvino)等。
+
 > ONNXRuntime是微软推出的一款推理框架，支持多种运行后端包括CPU，GPU，TensorRT，DML等，是对ONNX模型最原生的支持。
-> 
+>
 > NCNN是腾讯公司开发的移动端平台部署工具，一个为手机端极致优化的高性能神经网络前向计算框架。NCNN仅用于推理，不支持学习。
 
-__值得注意的是，包括Pytorch、Tensorflow，以及国内的百度PaddlePaddle、华为的MindSpore等主流的深度学习框架都开发了工具链来回应这个Why。我们采用业界主流的方法，以更高代码封装度的形式来解决这一问题。接下来，且听我们对利用`XEdu`进行`How怎么做`的流程娓娓道来。__
+**值得注意的是，包括Pytorch、Tensorflow，以及国内的百度PaddlePaddle、华为的MindSpore等主流的深度学习框架都开发了工具链来回应这个Why。我们采用业界主流的方法，以更高代码封装度的形式来解决这一问题。接下来，且听我们对利用`XEdu`进行`How怎么做`的流程娓娓道来。**
 
 ## How：怎么做
 总结一下Why中的回应，在软件工程中，部署指把开发完毕的软件投入使用的过程，包括环境配置、软件安装等步骤。类似地，对于深度学习模型来说，模型部署指让训练好的模型在特定环境中运行的过程。相比于软件部署，模型部署会面临更多的难题：
 
 > 1. 运行模型所需的环境难以配置。深度学习模型通常是由一些框架编写，比如 PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架不适合在手机、开发板等生产环境中安装。 
-> 2. 深度学习模型的结构通常比较庞大，需要大量的算力才能满足实时运行的需求。模型的运行效率需要优化。 因为这些难题的存在，模型部署不能靠简单的环境配置与安装完成。`
-
+> 2. 深度学习模型的结构通常比较庞大，需要大量的算力才能满足实时运行的需求。模型的运行效率需要优化。 因为这些难题的存在，模型部署不能靠简单的环境配置与安装完成。
 
 经过工业界和学术界数年的探索，结合`XEdu`的工具，展示模型部署一条流行的流水线：
 
-<div align="center">
-	<img src="../images/model_convert/XEdu模型部署全链路pipeline.JPG" width="75%">
-</div>
+![image](../images/model_convert/XEdu模型部署全链路pipeline.JPG)
+
 
 这一条流水线解决了模型部署中的两大问题：使用对接深度学习框架和推理引擎的中间表示，开发者不必担心如何在新环境中运行各个复杂的框架；通过中间表示的网络结构优化和推理引擎对运算的底层优化，模型的运算效率大幅提升。
 
@@ -378,6 +377,9 @@ else:
 - 测试时，计算各个数据集中 10 张图片的平均耗时
 
 下面是我们环境中的测试结果：
+
+
+
 - 图像分类
 
 <table class="docutils align-default">
@@ -541,6 +543,9 @@ else:
 - 测试时，计算各个数据集中 10 张图片的平均耗时
 
 下面是我们环境中的测试结果：
+
+
+
 - 图像分类
 
 <table class="docutils align-default">
@@ -694,9 +699,8 @@ __注：硬件测试模块持续更新中，如有更多硬件测试需求，请
 ## 多模态交互
 回顾用AI解决真实问题的流程图，我们已经介绍了收集数据、训练模型、模型推理和应用部署。结合项目设计，我们还会去思考如何通过摄像头获得图像，如何控制灯光发亮，如何操纵舵机，如何设计显示界面UI等需要使用输入设备和输出设备等来实现的交互设计，即对`多模态交互`的考量。
 
-<div align="center">
-	<img src="../images/model_convert/用AI解决真实问题.JPG" width="80%">
-</div>
+![image](../images/model_convert/用AI解决真实问题.JPG)
+
 
 更多传感器、执行器使用教程参见：[DFRobot](https://wiki.dfrobot.com.cn/)
 

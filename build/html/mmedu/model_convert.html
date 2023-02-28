@@ -149,11 +149,11 @@ MB的模型量化后大小变为了42.6 MB，推理速度提高了两倍。</p>
 </section>
 <section id="id4">
 <h3>什么是推理框架<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
-<p>深度学习推理框架是一种让深度学习算法在实时处理环境中提高性能的框架。常见的有<a class="reference external" href="https://github.com/microsoft/onnxruntime">ONNXRuntime</a>、<a class="reference external" href="https://github.com/Tencent/ncnn">NCNN</a>、<a class="reference external" href="https://github.com/NVIDIA/TensorRT">TensorRT</a>、<a class="reference external" href="https://github.com/openvinotoolkit/openvino">OpenVINO</a>等。
-&gt;
-ONNXRuntime是微软推出的一款推理框架，支持多种运行后端包括CPU，GPU，TensorRT，DML等，是对ONNX模型最原生的支持。
-&gt; &gt;
-NCNN是腾讯公司开发的移动端平台部署工具，一个为手机端极致优化的高性能神经网络前向计算框架。NCNN仅用于推理，不支持学习。</p>
+<p>深度学习推理框架是一种让深度学习算法在实时处理环境中提高性能的框架。常见的有<a class="reference external" href="https://github.com/microsoft/onnxruntime">ONNXRuntime</a>、<a class="reference external" href="https://github.com/Tencent/ncnn">NCNN</a>、<a class="reference external" href="https://github.com/NVIDIA/TensorRT">TensorRT</a>、<a class="reference external" href="https://github.com/openvinotoolkit/openvino">OpenVINO</a>等。</p>
+<blockquote>
+<div><p>ONNXRuntime是微软推出的一款推理框架，支持多种运行后端包括CPU，GPU，TensorRT，DML等，是对ONNX模型最原生的支持。</p>
+<p>NCNN是腾讯公司开发的移动端平台部署工具，一个为手机端极致优化的高性能神经网络前向计算框架。NCNN仅用于推理，不支持学习。</p>
+</div></blockquote>
 <p><strong>值得注意的是，包括Pytorch、Tensorflow，以及国内的百度PaddlePaddle、华为的MindSpore等主流的深度学习框架都开发了工具链来回应这个Why。我们采用业界主流的方法，以更高代码封装度的形式来解决这一问题。接下来，且听我们对利用``XEdu``进行``How怎么做``的流程娓娓道来。</strong></p>
 </section>
 </section>
@@ -165,15 +165,13 @@ NCNN是腾讯公司开发的移动端平台部署工具，一个为手机端极�
 <li><p>运行模型所需的环境难以配置。深度学习模型通常是由一些框架编写，比如
 PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架不适合在手机、开发板等生产环境中安装。</p></li>
 <li><p>深度学习模型的结构通常比较庞大，需要大量的算力才能满足实时运行的需求。模型的运行效率需要优化。
-因为这些难题的存在，模型部署不能靠简单的环境配置与安装完成。`</p></li>
+因为这些难题的存在，模型部署不能靠简单的环境配置与安装完成。</p></li>
 </ol>
 </div></blockquote>
 <p>经过工业界和学术界数年的探索，结合<code class="docutils literal notranslate"><span class="pre">XEdu</span></code>的工具，展示模型部署一条流行的流水线：</p>
-<div class="docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;../images/model_convert/XEdu模型部署全链路pipeline.JPG&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;75%&quot;</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-</div>
+<figure class="align-default">
+<img alt="../_images/XEdu模型部署全链路pipeline.JPG" src="../_images/XEdu模型部署全链路pipeline.JPG" />
+</figure>
 <p>这一条流水线解决了模型部署中的两大问题：使用对接深度学习框架和推理引擎的中间表示，开发者不必担心如何在新环境中运行各个复杂的框架；通过中间表示的网络结构优化和推理引擎对运算的底层优化，模型的运算效率大幅提升。</p>
 <section id="mmedu">
 <h3>用MMEdu进行模型转换<a class="headerlink" href="#mmedu" title="Permalink to this headline"></a></h3>
@@ -431,7 +429,10 @@ Precision)：平均精度，在不同recall下的最高precision的均值(一般
 <code class="docutils literal notranslate"><span class="pre">BaseDT</span></code>内置<code class="docutils literal notranslate"><span class="pre">ImageData</span></code>工具进行数据预处理 -
 测试时，计算各个数据集中 10 张图片的平均耗时</p>
 </div></blockquote>
-<p>下面是我们环境中的测试结果： - 图像分类</p>
+<p>下面是我们环境中的测试结果：</p>
+<ul class="simple">
+<li><p>图像分类</p></li>
+</ul>
 <table class="docutils align-default"><thead><tr><th rowspan="2"><p>模型</p>
 </th><th rowspan="2"><p>数据集</p>
 </th><th rowspan="1" colspan="2"><p>权重大小</p>
@@ -526,7 +527,10 @@ Pi。中文名为“树莓派”,简写为RPi，或者RasPi/RPi)是为学生计�
 <code class="docutils literal notranslate"><span class="pre">BaseDT</span></code>内置<code class="docutils literal notranslate"><span class="pre">ImageData</span></code>工具进行数据预处理 -
 测试时，计算各个数据集中 10 张图片的平均耗时</p>
 </div></blockquote>
-<p>下面是我们环境中的测试结果： - 图像分类</p>
+<p>下面是我们环境中的测试结果：</p>
+<ul class="simple">
+<li><p>图像分类</p></li>
+</ul>
 <table class="docutils align-default"><thead><tr><th rowspan="2"><p>模型</p>
 </th><th rowspan="2"><p>数据集</p>
 </th><th rowspan="1" colspan="2"><p>权重大小</p>
@@ -610,11 +614,9 @@ Pi。中文名为“树莓派”,简写为RPi，或者RasPi/RPi)是为学生计�
 <section id="id15">
 <h2>多模态交互<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h2>
 <p>回顾用AI解决真实问题的流程图，我们已经介绍了收集数据、训练模型、模型推理和应用部署。结合项目设计，我们还会去思考如何通过摄像头获得图像，如何控制灯光发亮，如何操纵舵机，如何设计显示界面UI等需要使用输入设备和输出设备等来实现的交互设计，即对<code class="docutils literal notranslate"><span class="pre">多模态交互</span></code>的考量。</p>
-<div class="docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;../images/model_convert/用AI解决真实问题.JPG&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;80%&quot;</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-</div>
+<figure class="align-default">
+<img alt="../_images/用AI解决真实问题.JPG" src="../_images/用AI解决真实问题.JPG" />
+</figure>
 <p>更多传感器、执行器使用教程参见：<a class="reference external" href="https://wiki.dfrobot.com.cn/">DFRobot</a></p>
 </section>
 <section id="id16">
