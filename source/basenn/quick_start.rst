@@ -438,8 +438,6 @@ AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pj
 
 本案例是一个跨学科项目，用神经网络来拟合三角函数。案例发表于2023年的《中国信息技术教育》杂志。
 
-项目地址：https://www.openinnolab.org.cn/pjlab/project?id=6379b63262c7304e16ed6d82&sc=62f34141bf4f550f3e926e0e#public
-
 .. _项目核心功能-1:
 
 项目核心功能：
