@@ -65,7 +65,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#id17">快速体验</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id18">附录</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id19">体验案例1. 搭建卷积神经网络实现手写体分类</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id25">体验案例2. 一维卷积神经网络文本情感识别</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id24">体验案例2. 一维卷积神经网络文本情感识别</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id32">体验案例3. 用神经网络计算前方障碍物方向</a></li>
 </ul>
 </li>
 </ul>
@@ -291,25 +292,24 @@
 <section id="id20">
 <h4>项目核心功能和实现效果展示：<a class="headerlink" href="#id20" title="Permalink to this headline"></a></h4>
 <p>使用BaseNN库实现卷积神经网络搭建，完成手写图分类，数据集为MNIST数据集。</p>
-<figure class="align-default" id="id33">
-<img alt="用卷积神经网络实现手写体分类项目效果图片.PNG" src="https://www.openinnolab.org.cn/webdav/635638d69ed68060c638f979/638028ff777c254264da4e6f/current/assets/%E7%94%A8%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AE%9E%E7%8E%B0%E6%89%8B%E5%86%99%E4%BD%93%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE%E6%95%88%E6%9E%9C%E5%9B%BE%E7%89%87.PNG" />
-<figcaption>
-<p><span class="caption-text">用卷积神经网络实现手写体分类项目效果图片.PNG</span><a class="headerlink" href="#id33" title="Permalink to this image"></a></p>
-</figcaption>
+<figure class="align-default">
+<img alt="https://www.openinnolab.org.cn/webdav/635638d69ed68060c638f979/638028ff777c254264da4e6f/current/assets/%E7%94%A8%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AE%9E%E7%8E%B0%E6%89%8B%E5%86%99%E4%BD%93%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE%E6%95%88%E6%9E%9C%E5%9B%BE%E7%89%87.PNG" src="https://www.openinnolab.org.cn/webdav/635638d69ed68060c638f979/638028ff777c254264da4e6f/current/assets/%E7%94%A8%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AE%9E%E7%8E%B0%E6%89%8B%E5%86%99%E4%BD%93%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE%E6%95%88%E6%9E%9C%E5%9B%BE%E7%89%87.PNG" />
 </figure>
 </section>
 <section id="id21">
 <h4>实现步骤：<a class="headerlink" href="#id21" title="Permalink to this headline"></a></h4>
 <section id="id22">
-<span id="id23"></span><h5>1）模型训练<a class="headerlink" href="#id22" title="Permalink to this headline"></a></h5>
-<p>从零开始训练</p>
+<h5>1）网络搭建和模型训练<a class="headerlink" href="#id22" title="Permalink to this headline"></a></h5>
+<p>导入库：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入BaseNN库、os、cv2、numpy库，os、cv2、numpy库用于数据处理</span>
 <span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">cv2</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="c1"># 定义读取训练数据的函数</span>
+</pre></div>
+</div>
+<p>读取数据：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 定义读取训练数据的函数</span>
 <span class="k">def</span> <span class="nf">read_data</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
     <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">label</span> <span class="o">=</span> <span class="p">[]</span>
@@ -336,7 +336,10 @@
 
 <span class="c1"># 读取训练数据</span>
 <span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span> <span class="o">=</span> <span class="n">read_data</span><span class="p">(</span><span class="s1">&#39;/data/QX8UBM/mnist_sample/training_set&#39;</span><span class="p">)</span>
-<span class="c1"># 声明模型</span>
+</pre></div>
+</div>
+<p>从零开始训练：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 声明模型</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
 <span class="c1"># 载入数据</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">)</span>
@@ -367,8 +370,8 @@
 </pre></div>
 </div>
 </section>
-<section id="id24">
-<h5>2）模型推理<a class="headerlink" href="#id24" title="Permalink to this headline"></a></h5>
+<section id="id23">
+<h5>2）模型推理<a class="headerlink" href="#id23" title="Permalink to this headline"></a></h5>
 <p>读取测试集所有图片进行推理：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 用测试集查看模型效果</span>
 <span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span> <span class="o">=</span> <span class="n">read_data</span><span class="p">(</span><span class="s1">&#39;/data/QX8UBM/mnist_sample/test_set&#39;</span><span class="p">)</span> <span class="c1"># 读取测试集数据</span>
@@ -393,30 +396,36 @@
 </section>
 </section>
 </section>
-<section id="id25">
-<h3>体验案例2. 一维卷积神经网络文本情感识别<a class="headerlink" href="#id25" title="Permalink to this headline"></a></h3>
+<section id="id24">
+<h3>体验案例2. 一维卷积神经网络文本情感识别<a class="headerlink" href="#id24" title="Permalink to this headline"></a></h3>
 <p>本案例来源于《人工智能初步》人教地图版72-76页。</p>
 <p>项目地址：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=6379b63262c7304e16ed6d82&amp;sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=6379b63262c7304e16ed6d82&amp;sc=62f34141bf4f550f3e926e0e#public</a></p>
-<section id="id26">
-<h4>项目核心功能：<a class="headerlink" href="#id26" title="Permalink to this headline"></a></h4>
+<section id="id25">
+<h4>项目核心功能：<a class="headerlink" href="#id25" title="Permalink to this headline"></a></h4>
 <p>完成了搭建一维卷积神经网络实现文本感情识别分类，代码使用BaseNN库实现，同时结合了Embedding层对单词文本进行向量化。</p>
 <p>数据集是imdb电影评论和情感分类数据集，来自斯坦福AI实验室平台，<a class="reference external" href="http://ai.stanford.edu/~amaas/data/sentiment/">http://ai.stanford.edu/~amaas/data/sentiment/</a>。</p>
 </section>
-<section id="id27">
-<span id="id28"></span><h4>实现步骤：<a class="headerlink" href="#id27" title="Permalink to this headline"></a></h4>
-<section id="id29">
-<span id="id30"></span><h5>1）模型训练<a class="headerlink" href="#id29" title="Permalink to this headline"></a></h5>
+<section id="id26">
+<span id="id27"></span><h4>实现步骤：<a class="headerlink" href="#id26" title="Permalink to this headline"></a></h4>
+<section id="id28">
+<span id="id29"></span><h5>1）网络搭建和模型训练<a class="headerlink" href="#id28" title="Permalink to this headline"></a></h5>
+<p>导入库：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入BaseNN库、numpy库用于数据处理</span>
 <span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="c1"># 声明模型</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span> <span class="c1"># 有Embedding层</span>
-<span class="c1"># 读取训练集数据</span>
+</pre></div>
+</div>
+<p>读取数据并载入：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 读取训练集数据</span>
 <span class="n">train_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;imdb/train_data.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
 <span class="n">train_label</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;imdb/train_label.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
 <span class="c1"># 模型载入数据</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">train_label</span><span class="p">)</span>
-
+</pre></div>
+</div>
+<p>搭建模型并开始训练：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 声明模型</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span> <span class="c1"># 有Embedding层</span>
 <span class="c1"># 搭建模型</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Embedding&#39;</span><span class="p">,</span> <span class="n">vocab_size</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">embedding_dim</span> <span class="o">=</span> <span class="mi">32</span><span class="p">)</span>  <span class="c1"># Embedding层，对实现文本任务十分重要，将one-hot编码转化为相关向量 输入大小（batch_size,512）输出大小（batch_size,32,510）</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Conv1D&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">),</span><span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1">#一维卷积 输入大小（batch_size,32,510） 输出大小（batch_size,32,508）</span>
@@ -435,8 +444,8 @@
 </pre></div>
 </div>
 </section>
-<section id="id31">
-<span id="id32"></span><h5>2）模型推理<a class="headerlink" href="#id31" title="Permalink to this headline"></a></h5>
+<section id="id30">
+<span id="id31"></span><h5>2）模型推理<a class="headerlink" href="#id30" title="Permalink to this headline"></a></h5>
 <p>读取测试集所有数据进行推理：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#读取测试集数据</span>
 <span class="n">test_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;imdb/test_data.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
@@ -453,6 +462,70 @@
 <span class="n">res</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">single_data</span><span class="p">)</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;评论对电影的评价是：&#39;</span><span class="p">,</span> <span class="n">label</span><span class="p">[</span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span> <span class="c1"># 该评论文本数据可见single_data.txt</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="id32">
+<h3>体验案例3. 用神经网络计算前方障碍物方向<a class="headerlink" href="#id32" title="Permalink to this headline"></a></h3>
+<p>本案例是一个跨学科项目，用神经网络来拟合三角函数。案例发表于2023年的《中国信息技术教育》杂志。</p>
+<p>项目地址：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=6379b63262c7304e16ed6d82&amp;sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=6379b63262c7304e16ed6d82&amp;sc=62f34141bf4f550f3e926e0e#public</a></p>
+<section id="id33">
+<span id="id34"></span><h4>项目核心功能：<a class="headerlink" href="#id33" title="Permalink to this headline"></a></h4>
+<p>用两个超声波传感器测量前方的障碍物距离，然后计算出障碍物所在的方向。这是一个跨学科项目，用神经网络来拟合三角函数。训练一个可以通过距离计算出坐标的神经网络模型，掌握使用BaseNN库搭建神经网络完成“回归”任务的流程。</p>
+</section>
+<section id="id35">
+<span id="id36"></span><h4>实现步骤：<a class="headerlink" href="#id35" title="Permalink to this headline"></a></h4>
+<section id="id37">
+<h5>1）数据采集<a class="headerlink" href="#id37" title="Permalink to this headline"></a></h5>
+<p>我们有多种方式来采集数据。第一种是最真实的，即在障碍物和中点之间拉一条
+线，然后读取两个超声波传感器的数据，同时测量角度并记录。另一种是拉三条线，
+因为超声波传感器的数值和真实长度误差是很小的。
+当然，因为这一角度是可以用三角函数计算的，那么最方面的数据采集方式莫过于是用Python写一段代码，然后将一组数据输出到CSV
+文件中。或者使用Excel的公式来计算，再导出关键数据，如图所示。</p>
+<figure class="align-default" id="id42">
+<img alt="image" src="../_images/用Excel计算数据.png" />
+<figcaption>
+<p><span class="caption-text">image</span><a class="headerlink" href="#id42" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id38">
+<span id="id39"></span><h5>2）网络搭建和模型训练<a class="headerlink" href="#id38" title="Permalink to this headline"></a></h5>
+<p>训练数据由Excel的随机数结合三角函数公式产生。0-2为输入，3-9是各种输出的数据。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">train_path</span> <span class="o">=</span> <span class="s1">&#39;./data/train-full.csv&#39;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">train_path</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># 读取前3列</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">train_path</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>搭建一个3层的神经网络并开始训练，输入维度是3（3列数据），最后输出维度是1（1列数据），激活函数使用ReLU。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span> <span class="c1">#声明模型</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="c1"># 载入数据</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;SGD&#39;</span><span class="p">)</span>
+
+<span class="c1"># 设置模型保存的路径</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/ckpt-1&#39;</span>
+<span class="c1"># model.train(lr=0.001, epochs=500, loss=&quot;MSELoss&quot;,metrics=[&quot;mae&quot;],checkpoint=&#39;checkpoints/ckpt/basenn.pkl&#39;) # 直接训练</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;MSELoss&quot;</span><span class="p">,</span><span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;mae&quot;</span><span class="p">])</span> <span class="c1"># 直接训练</span>
+</pre></div>
+</div>
+</section>
+<section id="id40">
+<span id="id41"></span><h5>3）模型推理<a class="headerlink" href="#id40" title="Permalink to this headline"></a></h5>
+<p>读取测试数据进行模型推理，测试数据同样来自随机数。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 测试数据</span>
+<span class="n">test_path</span> <span class="o">=</span> <span class="s1">&#39;./data/test.csv&#39;</span>
+<span class="n">test_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">test_path</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># 读取前3列</span>
+<span class="n">test_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">test_path</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="c1"># 读取第4列</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">test_x</span><span class="p">)</span> <span class="c1"># 对该数据进行预测</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mi">180</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>

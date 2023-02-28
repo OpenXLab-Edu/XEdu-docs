@@ -229,19 +229,15 @@ AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pj
 使用BaseNN库实现卷积神经网络搭建，完成手写图分类，数据集为MNIST数据集。
 
 .. figure:: https://www.openinnolab.org.cn/webdav/635638d69ed68060c638f979/638028ff777c254264da4e6f/current/assets/%E7%94%A8%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AE%9E%E7%8E%B0%E6%89%8B%E5%86%99%E4%BD%93%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE%E6%95%88%E6%9E%9C%E5%9B%BE%E7%89%87.PNG
-   :alt: 用卷积神经网络实现手写体分类项目效果图片.PNG
 
-   用卷积神经网络实现手写体分类项目效果图片.PNG
 
 实现步骤：
 ^^^^^^^^^^
 
-.. _模型训练-1:
+1）网络搭建和模型训练
+'''''''''''''''''''''
 
-1）模型训练
-'''''''''''
-
-从零开始训练
+导入库：
 
 ::
 
@@ -250,6 +246,10 @@ AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pj
    import os
    import cv2
    import numpy as np
+
+读取数据：
+
+::
 
    # 定义读取训练数据的函数
    def read_data(path):
@@ -260,7 +260,7 @@ AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pj
        # 将顺序读取的文件保存到该list中
        for item in dir_list:
            tpath = os.path.join(path,item)
-
+    
            # print(tpath)
            for i in os.listdir(tpath):
                # print(item)
@@ -272,12 +272,17 @@ AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pj
                label.append(int(item))
        x = np.array(data)
        y = np.array(label)
-
+    
        x = np.expand_dims(x, axis=1)
        return x, y
-       
+
    # 读取训练数据
    train_x, train_y = read_data('/data/QX8UBM/mnist_sample/training_set')
+
+从零开始训练：
+
+::
+
    # 声明模型
    model = nn()
    # 载入数据
@@ -356,24 +361,35 @@ AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pj
 实现步骤：
 ^^^^^^^^^^
 
-.. _模型训练-2:
+.. _网络搭建和模型训练-1:
 
-1）模型训练
-'''''''''''
+1）网络搭建和模型训练
+'''''''''''''''''''''
+
+导入库：
 
 ::
 
    # 导入BaseNN库、numpy库用于数据处理
    from BaseNN import nn
    import numpy as np
-   # 声明模型
-   model = nn() # 有Embedding层
+
+读取数据并载入：
+
+::
+
    # 读取训练集数据
    train_data = np.loadtxt('imdb/train_data.csv', delimiter=",")
    train_label = np.loadtxt('imdb/train_label.csv', delimiter=",")
    # 模型载入数据
    model.load_dataset(train_data, train_label) 
 
+搭建模型并开始训练：
+
+::
+
+   # 声明模型
+   model = nn() # 有Embedding层
    # 搭建模型
    model.add('Embedding', vocab_size = 10000, embedding_dim = 32)  # Embedding层，对实现文本任务十分重要，将one-hot编码转化为相关向量 输入大小（batch_size,512）输出大小（batch_size,32,510）
    model.add('Conv1D', size=(32, 32),kernel_size=3, activation='ReLU') #一维卷积 输入大小（batch_size,32,510） 输出大小（batch_size,32,508）
@@ -416,3 +432,84 @@ AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pj
    res = model.inference(data=single_data)
    res = res.argmax(axis=1)
    print('评论对电影的评价是：', label[res[0]]) # 该评论文本数据可见single_data.txt
+
+体验案例3. 用神经网络计算前方障碍物方向
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+本案例是一个跨学科项目，用神经网络来拟合三角函数。案例发表于2023年的《中国信息技术教育》杂志。
+
+项目地址：https://www.openinnolab.org.cn/pjlab/project?id=6379b63262c7304e16ed6d82&sc=62f34141bf4f550f3e926e0e#public
+
+.. _项目核心功能-1:
+
+项目核心功能：
+^^^^^^^^^^^^^^
+
+用两个超声波传感器测量前方的障碍物距离，然后计算出障碍物所在的方向。这是一个跨学科项目，用神经网络来拟合三角函数。训练一个可以通过距离计算出坐标的神经网络模型，掌握使用BaseNN库搭建神经网络完成“回归”任务的流程。
+
+.. _实现步骤-2:
+
+实现步骤：
+^^^^^^^^^^
+
+1）数据采集
+'''''''''''
+
+我们有多种方式来采集数据。第一种是最真实的，即在障碍物和中点之间拉一条
+线，然后读取两个超声波传感器的数据，同时测量角度并记录。另一种是拉三条线，
+因为超声波传感器的数值和真实长度误差是很小的。
+当然，因为这一角度是可以用三角函数计算的，那么最方面的数据采集方式莫过于是用Python写一段代码，然后将一组数据输出到CSV
+文件中。或者使用Excel的公式来计算，再导出关键数据，如图所示。
+
+.. figure:: ../images/basenn/用Excel计算数据.png
+   :alt: image
+
+   image
+
+.. _网络搭建和模型训练-2:
+
+2）网络搭建和模型训练
+'''''''''''''''''''''
+
+训练数据由Excel的随机数结合三角函数公式产生。0-2为输入，3-9是各种输出的数据。
+
+::
+
+   import numpy as np
+   train_path = './data/train-full.csv'
+   x = np.loadtxt(train_path, dtype=float, delimiter=',',skiprows=1,usecols=[0,1,2]) # 读取前3列
+   y = np.loadtxt(train_path, dtype=float, delimiter=',',skiprows=1,usecols=[3])
+
+搭建一个3层的神经网络并开始训练，输入维度是3（3列数据），最后输出维度是1（1列数据），激活函数使用ReLU。
+
+::
+
+   from BaseNN import nn
+   model = nn() #声明模型 
+   model.load_dataset(x, y) # 载入数据
+   model.add('Linear', size=(3, 30), activation='ReLU')  
+   model.add('Linear', size=(30, 10), activation='ReLU') 
+   model.add('Linear', size=(10, 5), activation='ReLU') 
+   model.add('Linear', size=(5, 1))
+   model.add(optimizer='SGD')
+
+   # 设置模型保存的路径
+   model.save_fold = 'checkpoints/ckpt-1'
+   # model.train(lr=0.001, epochs=500, loss="MSELoss",metrics=["mae"],checkpoint='checkpoints/ckpt/basenn.pkl') # 直接训练
+   model.train(lr=0.001, epochs=500, loss="MSELoss",metrics=["mae"]) # 直接训练
+
+.. _模型推理-2:
+
+3）模型推理
+'''''''''''
+
+读取测试数据进行模型推理，测试数据同样来自随机数。
+
+::
+
+   # 测试数据
+   test_path = './data/test.csv'
+   test_x = np.loadtxt(test_path, dtype=float, delimiter=',',skiprows=1,usecols=[0,1,2]) # 读取前3列
+   test_y = np.loadtxt(test_path, dtype=float, delimiter=',',skiprows=1,usecols=[3]) # 读取第4列
+   result = model.inference(data=test_x) # 对该数据进行预测
+   print(np.arccos(result)/np.pi*180)
