@@ -3313,6 +3313,8 @@ COCO
 
 行空板上温州话识别：https://www.openinnolab.org.cn/pjlab/project?id=63b7c66e5e089d71e61d19a0&sc=62f34141bf4f550f3e926e0e#public
 
-树莓派与MMEdu：https://www.openinnolab.org.cn/pjlab/project?id=63bb8be4c437c904d8a90350&backpath=/pjlab/projects/list?backpath=/pjlab/ai/projects#public
+树莓派与MMEdu：https://www.openinnolab.org.cn/pjlab/project?id=63bb8be4c437c904d8a90350&backpath=/pjlab/projects/list%3Fbackpath=/pjlab/ai/projects#public
 
-MMEdu模型在线转换：https://www.openinnolab.org.cn/pjlab/project?id=63a1a47e5e089d71e6c6f068&backpath=/pjlab/projects/list?backpath=/pjlab/ai/projects#public
+MMEdu模型在线转换：https://www.openinnolab.org.cn/pjlab/project?id=63a1a47e5e089d71e6c6f068&backpath=/pjlab/projects/list%3Fbackpath=/pjlab/ai/projects#public
+
+~~~~~~~~~~~~~~~~~~~~~~
