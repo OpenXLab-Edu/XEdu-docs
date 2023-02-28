@@ -61,8 +61,8 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#what">What：什么现象与成果</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id5">精度测试结果</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id9">边、端设备测试结果</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">先看看转换后的精度测试结果</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">再看看在边、端设备上的测试结果</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#id15">多模态交互</a></li>
@@ -117,7 +117,7 @@
 <li><p>多模态交互</p></li>
 </ul>
 <blockquote>
-<div><p>MMEdu已经可以帮助我diy自己的AI模型了，为什么要多此一举、徒增难度，来学习需要更多编程知识的模型部署模块？</p>
+<div><p><em>MMEdu已经可以帮助我diy自己的AI模型了，为什么要多此一举、徒增难度，来学习需要更多编程知识的模型部署模块？</em></p>
 </div></blockquote>
 <p>初学新知识，我们总会有困惑与畏难，好奇这项技术能否为我所用、产生效益，担心过程是否困难，付出与收获不成正比。没有关系！请让自己的思考凝聚成三个层面，即<code class="docutils literal notranslate"><span class="pre">黄金圈法则：Why、How、What</span></code>，来从如下的行文中去寻找答案。</p>
 <p>希望通过本系列教程，带领大家学会如何把自己使用<code class="docutils literal notranslate"><span class="pre">MMEdu</span></code>训练的计算机视觉任务<code class="docutils literal notranslate"><span class="pre">SOTA模型</span></code>部署到<code class="docutils literal notranslate"><span class="pre">ONNXRuntime</span></code>、<code class="docutils literal notranslate"><span class="pre">NCNN</span></code>等各个推理引擎上。我们默认大家熟悉
@@ -131,28 +131,28 @@ Python 语言，除此之外不需要了解任何模型部署的知识。</p>
 分布式、自动求导、混合精度……训练框架往往围绕着易用性，面向设计算法的研究员，以研究员能更快地生产高性能模型为目标。
 硬件指令集、预编译优化、量化算法……推理框架往往围绕着硬件平台的极致优化加速，面向工业落地，以模型能更快执行为目标。由于职能和侧重点不同，没有一个深度学习框架能面面俱到，完全一统训练侧和推理侧，而模型在各个框架内部的表示方式又千差万别，所以模型转换就被广泛需要了。</p>
 <blockquote>
-<div><p>概括：训练框架大，塞不进两三百块钱买的硬件设备中，推理框架小，能在硬件设备上安装。要把训练出的模型翻译成推理框架能读懂的语言，才能在硬件设备上运行</p>
+<div><p><em>概括：训练框架大，塞不进两三百块钱买的硬件设备中，推理框架小，能在硬件设备上安装。要把训练出的模型翻译成推理框架能读懂的语言，才能在硬件设备上运行。</em></p>
 </div></blockquote>
 </section>
 <section id="id2">
 <h3>为什么要进行模型量化<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
 <p>模型量化是指将深度学习模型中的参数、激活值等数据转化为更小的数据类型（通常是8位整数或者浮点数），以达到模型大小减小、计算速度加快、内存占用减小等优化目的的技术手段。模型量化有以下几个优点：减小模型大小、加速模型推理、减少内存占用等。因此，模型量化可以帮助提高深度学习模型的效率和性能，在实际应用中具有重要的价值和意义。</p>
 <blockquote>
-<div><p>概括：对模型采用合适的量化，能在对准确率忽略不计的情况下，让模型更小、更快、更轻量。比如原先168
-MB的模型量化后大小变为了42.6 MB，推理速度提高了两倍。</p>
+<div><p><em>概括：对模型采用合适的量化，能在对准确率忽略不计的情况下，让模型更小、更快、更轻量。比如原先168
+MB的模型量化后大小变为了42.6 MB，推理速度提高了两倍。</em></p>
 </div></blockquote>
 </section>
 <section id="id3">
 <h3>为什么要进行多模态交互<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
 <p>多模态交互是指利用多个感知通道（例如语音、图像、触觉、姿态等）进行交互的技术。多模态交互在人机交互、智能交通、健康医疗、教育培训等领域都有广泛的应用、在提高交互效率、用户体验、解决单模态限制和实现智能化交互等方面具有重要的作用和价值。
-&gt;概括：给你的AI作品加点创客料 &gt;</p>
+&gt;<em>概括：给你的AI作品加点创客料。</em></p>
 </section>
 <section id="id4">
 <h3>什么是推理框架<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
 <p>深度学习推理框架是一种让深度学习算法在实时处理环境中提高性能的框架。常见的有<a class="reference external" href="https://github.com/microsoft/onnxruntime">ONNXRuntime</a>、<a class="reference external" href="https://github.com/Tencent/ncnn">NCNN</a>、<a class="reference external" href="https://github.com/NVIDIA/TensorRT">TensorRT</a>、<a class="reference external" href="https://github.com/openvinotoolkit/openvino">OpenVINO</a>等。</p>
 <blockquote>
-<div><p>ONNXRuntime是微软推出的一款推理框架，支持多种运行后端包括CPU，GPU，TensorRT，DML等，是对ONNX模型最原生的支持。</p>
-<p>NCNN是腾讯公司开发的移动端平台部署工具，一个为手机端极致优化的高性能神经网络前向计算框架。NCNN仅用于推理，不支持学习。</p>
+<div><p><em>ONNXRuntime是微软推出的一款推理框架，支持多种运行后端包括CPU，GPU，TensorRT，DML等，是对ONNX模型最原生的支持。</em></p>
+<p><em>NCNN是腾讯公司开发的移动端平台部署工具，一个为手机端极致优化的高性能神经网络前向计算框架。NCNN仅用于推理，不支持学习。</em></p>
 </div></blockquote>
 <p><strong>值得注意的是，包括Pytorch、Tensorflow，以及国内的百度PaddlePaddle、华为的MindSpore等主流的深度学习框架都开发了工具链来回应这个Why。我们采用业界主流的方法，以更高代码封装度的形式来解决这一问题。接下来，且听我们对利用``XEdu``进行``How怎么做``的流程娓娓道来。</strong></p>
 </section>
@@ -162,10 +162,10 @@ MB的模型量化后大小变为了42.6 MB，推理速度提高了两倍。</p>
 <p>总结一下Why中的回应，在软件工程中，部署指把开发完毕的软件投入使用的过程，包括环境配置、软件安装等步骤。类似地，对于深度学习模型来说，模型部署指让训练好的模型在特定环境中运行的过程。相比于软件部署，模型部署会面临更多的难题：</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>运行模型所需的环境难以配置。深度学习模型通常是由一些框架编写，比如
-PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架不适合在手机、开发板等生产环境中安装。</p></li>
-<li><p>深度学习模型的结构通常比较庞大，需要大量的算力才能满足实时运行的需求。模型的运行效率需要优化。
-因为这些难题的存在，模型部署不能靠简单的环境配置与安装完成。</p></li>
+<li><p><em>运行模型所需的环境难以配置。深度学习模型通常是由一些框架编写，比如
+PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架不适合在手机、开发板等生产环境中安装。</em></p></li>
+<li><p><em>深度学习模型的结构通常比较庞大，需要大量的算力才能满足实时运行的需求。模型的运行效率需要优化。
+因为这些难题的存在，模型部署不能靠简单的环境配置与安装完成。</em></p></li>
 </ol>
 </div></blockquote>
 <p>经过工业界和学术界数年的探索，结合<code class="docutils literal notranslate"><span class="pre">XEdu</span></code>的工具，展示模型部署一条流行的流水线：</p>
@@ -286,7 +286,7 @@ PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架
 <section id="what">
 <h2>What：什么现象与成果<a class="headerlink" href="#what" title="Permalink to this headline"></a></h2>
 <section id="id5">
-<h3>精度测试结果<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<h3>先看看转换后的精度测试结果<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
 <section id="id6">
 <h4>软硬件环境<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h4>
 <ul class="simple">
@@ -360,11 +360,11 @@ PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架
 </td><td><p>91.14%</p>
 </td><td><p>90.97%</p>
 </td></tr></tbody></table><blockquote>
-<div><p>ImageNet
-数据集：ImageNet项目是一个用于视觉对象识别软件研究的大型可视化数据库。ImageNet项目每年举办一次软件比赛，即<code class="docutils literal notranslate"><span class="pre">ImageNet大规模视觉识别挑战赛</span></code>（ILSVRC），软件程序竞相正确分类检测物体和场景。
-ImageNet挑战使用了一个“修剪”的1000个非重叠类的列表。2012年在解决ImageNet挑战方面取得了巨大的突破</p>
-<p>准确度（Top-1）：排名第一的类别与实际结果相符的准确率</p>
-<p>准确度（Top-5）：排名前五的类别包含实际结果的准确率</p>
+<div><p><em>ImageNet
+数据集：ImageNet项目是一个用于视觉对象识别软件研究的大型可视化数据库。ImageNet项目每年举办一次软件比赛，即``ImageNet大规模视觉识别挑战赛``（ILSVRC），软件程序竞相正确分类检测物体和场景。
+ImageNet挑战使用了一个“修剪”的1000个非重叠类的列表。2012年在解决ImageNet挑战方面取得了巨大的突破</em></p>
+<p><em>准确度（Top-1）：排名第一的类别与实际结果相符的准确率</em></p>
+<p><em>准确度（Top-5）：排名前五的类别包含实际结果的准确率</em></p>
 </div></blockquote>
 <ul class="simple">
 <li><p>目标检测</p></li>
@@ -402,26 +402,26 @@ ImageNet挑战使用了一个“修剪”的1000个非重叠类的列表。2012�
 </td><td><p>0.2874</p>
 </td><td><p>0.2688</p>
 </td></tr></tbody></table><blockquote>
-<div><p>COCO 数据集: MS
-COCO的全称是<code class="docutils literal notranslate"><span class="pre">Microsoft</span> <span class="pre">Common</span> <span class="pre">Objects</span> <span class="pre">in</span> <span class="pre">Context</span></code>，起源于微软于2014年出资标注的Microsoft
+<div><p><em>COCO 数据集: MS COCO的全称是Microsoft Common Objects in
+Context，起源于微软于2014年出资标注的Microsoft
 COCO数据集，与ImageNet竞赛一样，被视为是计算机视觉领域最受关注和最权威的比赛之一。
 COCO数据集是一个大型的、丰富的物体检测，分割和字幕数据集。这个数据集以scene
 understanding为目标，目前为止有语义分割的最大数据集，提供的类别有80
 类，有超过33 万张图片，其中20
-万张有标注，整个数据集中个体的数目超过150 万个。</p>
-<p>AP (average
-Precision)：平均精度，在不同recall下的最高precision的均值(一般会对各类别分别计算各自的AP)</p>
-<p>mAP（mean AP）:平均精度的均值，各类别的AP的均值</p>
+万张有标注，整个数据集中个体的数目超过150 万个。</em></p>
+<p><em>AP (average
+Precision)：平均精度，在不同recall下的最高precision的均值(一般会对各类别分别计算各自的AP)。</em></p>
+<p><em>mAP（mean AP）:平均精度的均值，各类别的AP的均值</em>。</p>
 </div></blockquote>
 </section>
 </section>
 <section id="id9">
-<h3>边、端设备测试结果<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
+<h3>再看看在边、端设备上的测试结果<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
 <section id="id10">
 <h4>行空板测试<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h4>
 <blockquote>
-<div><p>行空板,
-青少年Python教学用开源硬件，解决Python教学难和使用门槛高的问题，旨在推动Python教学在青少年中的普及。官网：<a class="reference external" href="https://www.dfrobot.com.cn/">https://www.dfrobot.com.cn/</a>
+<div><p><em>行空板,
+青少年Python教学用开源硬件，解决Python教学难和使用门槛高的问题，旨在推动Python教学在青少年中的普及。官网：https://www.dfrobot.com.cn/</em>
 ##### 软硬件环境 - 操作系统：Linux - 系统位数：64 -
 处理器：4核单板AArch64 1.20GHz - 内存：512MB - 硬盘：16GB -
 推理框架：ONNXRuntime == 1.13.1 - 数据处理工具：BaseDT == 0.0.1 #####
@@ -470,9 +470,9 @@ Precision)：平均精度，在不同recall下的最高precision的均值(一般
 </td><td><p>*</p>
 </td><td><p>*</p>
 </td></tr></tbody></table><blockquote>
-<div><p>吞吐量
-(图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现</p>
-<p>*：不建议部署，单张图片推理的时间超过30s</p>
+<div><p><em>吞吐量
+(图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现</em>。</p>
+<p>**：不建议部署，单张图片推理的时间超过30s*。</p>
 </div></blockquote>
 <ul>
 <li><p>目标检测</p>
@@ -511,15 +511,15 @@ Precision)：平均精度，在不同recall下的最高precision的均值(一般
 </td></tr></tbody></table></li>
 </ul>
 <blockquote>
-<div><p>*：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本</p>
-<p>**：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite</p>
+<div><p>**：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本。*</p>
+<p>**<em>：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite。</em></p>
 </div></blockquote>
 </section>
 <section id="b">
 <h4>树莓派（4b）测试<a class="headerlink" href="#b" title="Permalink to this headline"></a></h4>
 <blockquote>
-<div><p>Raspberry
-Pi。中文名为“树莓派”,简写为RPi，或者RasPi/RPi)是为学生计算机编程教育而设计，卡片式电脑，其系统基于Linux。
+<div><p><em>Raspberry
+Pi。中文名为“树莓派”,简写为RPi，或者RasPi/RPi)是为学生计算机编程教育而设计，卡片式电脑，其系统基于Linux。</em>
 ##### 软硬件环境 - 操作系统：Linux - 系统位数：32 - 处理器：BCM2711
 四核 Cortex-A72(ARM v8) &#64;1.5GHz - 内存：4G - 硬盘：16G -
 推理框架：ONNXRuntime == 1.13.1 - 数据处理工具：BaseDT == 0.0.1 #####
@@ -567,9 +567,9 @@ Pi。中文名为“树莓派”,简写为RPi，或者RasPi/RPi)是为学生计�
 </td><td><p>0.43</p>
 </td><td><p>0.44</p>
 </td></tr></tbody></table><blockquote>
-<div><p>吞吐量
-(图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现</p>
-<p>*：量化后在树莓派上推理速度变慢</p>
+<div><p><em>吞吐量
+(图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现。</em></p>
+<p>**：量化后在树莓派上推理速度变慢。*</p>
 </div></blockquote>
 <ul class="simple">
 <li><p>目标检测</p></li>
@@ -604,8 +604,8 @@ Pi。中文名为“树莓派”,简写为RPi，或者RasPi/RPi)是为学生计�
 </td><td><p>0.21</p>
 </td><td><p>0.34</p>
 </td></tr></tbody></table><blockquote>
-<div><p>*：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本</p>
-<p>**：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite</p>
+<div><p>**：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本。*</p>
+<p>**<em>：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite。</em></p>
 </div></blockquote>
 <p><a href="#id11"><span class="problematic" id="id12">**</span></a>注：硬件测试模块持续更新中，如有更多硬件测试需求，请<a href="#id13"><span class="problematic" id="id14">**</span></a><a class="reference external" href="https://github.com/OpenXLab-Edu/XEdu-docs/issues">联系我们</a></p>
 </section>
@@ -622,12 +622,11 @@ Pi。中文名为“树莓派”,简写为RPi，或者RasPi/RPi)是为学生计�
 <section id="id16">
 <h2>更多模型部署项目<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h2>
 <p>猫狗分类小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63c3f52a1dd9517dffa1f513&amp;sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=63c3f52a1dd9517dffa1f513&amp;sc=62f34141bf4f550f3e926e0e#public</a></p>
+<p>MMEdu模型在线转换：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63a1a47e5e089d71e6c6f068&amp;backpath=/pjlab/projects/list%3Fbackpath=/pjlab/ai/projects#public">https://www.openinnolab.org.cn/pjlab/project?id=63a1a47e5e089d71e6c6f068&amp;backpath=/pjlab/projects/list%3Fbackpath=/pjlab/ai/projects#public</a></p>
 <p>千物识别小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63c4106c2e26ff0a30cb440f&amp;sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=63c4106c2e26ff0a30cb440f&amp;sc=62f34141bf4f550f3e926e0e#public</a></p>
 <p>有无人检测小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63c4b6d22e26ff0a30f26ebc&amp;sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=63c4b6d22e26ff0a30f26ebc&amp;sc=62f34141bf4f550f3e926e0e#public</a></p>
 <p>行空板上温州话识别：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63b7c66e5e089d71e61d19a0&amp;sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=63b7c66e5e089d71e61d19a0&amp;sc=62f34141bf4f550f3e926e0e#public</a></p>
 <p>树莓派与MMEdu：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63bb8be4c437c904d8a90350&amp;backpath=/pjlab/projects/list%3Fbackpath=/pjlab/ai/projects#public">https://www.openinnolab.org.cn/pjlab/project?id=63bb8be4c437c904d8a90350&amp;backpath=/pjlab/projects/list%3Fbackpath=/pjlab/ai/projects#public</a></p>
-<p>MMEdu模型在线转换：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63a1a47e5e089d71e6c6f068&amp;backpath=/pjlab/projects/list%3Fbackpath=/pjlab/ai/projects#public">https://www.openinnolab.org.cn/pjlab/project?id=63a1a47e5e089d71e6c6f068&amp;backpath=/pjlab/projects/list%3Fbackpath=/pjlab/ai/projects#public</a></p>
-<hr class="docutils" />
 </section>
 </section>
 
