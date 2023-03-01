@@ -94,9 +94,9 @@ MMEdu内置了一个\ ``convert``\ 函数实现了一键式模型转换，转换
    from MMEdu import MMClassification as cls
    model = cls(backbone='MobileNet')
    model.num_classes = 2
-   checkpoint = 'checkpoints/cls_model/CatsDog/best_accuracy_top-1_epoch_2.pth'
-   out_file="out_file/catdog.onnx"
-   model.convert(checkpoint=checkpoint, backend="ONNX", out_file=out_file, class_path=class_path)
+   checkpoint = 'latest.pth'
+   out_file="out_file/cat_dog.onnx"
+   model.convert(checkpoint=checkpoint, backend="ONNX", out_file=out_file, class_path='/data/TC4V0D/CatsDogsSample/classes.txt')
 
 这段代码是完成分类模型的转换，接下来对为您\ ``model.convert``\ 函数的各个参数：
 
@@ -117,7 +117,10 @@ MMEdu内置了一个\ ``convert``\ 函数实现了一键式模型转换，转换
    model.num_classes = 80
    checkpoint = 'checkpoints/COCO-80/ssdlite.pth'
    out_file="out_file/COCO-80.onnx"
-   model.convert(checkpoint=checkpoint, backend="ONNX", out_file=out_file, class_path=class_path)
+   model.convert(checkpoint=checkpoint, backend="ONNX", out_file=out_file, class_path='dataset/classes.txt')
+
+完成第一个模型转换，开始！
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 现在，让我们从“`从零开始训练猫狗识别模型并完成模型转换 <https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&sc=635638d69ed68060c638f979#public>`__”项目入手，见识一下使用MMEdu工具完成从模型训练到模型部署的基本流程吧！
 
@@ -3290,7 +3293,7 @@ COCO
 
    \*\*\ *：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite。*
 
-**注：硬件测试模块持续更新中，如有更多硬件测试需求，请\ **\ `联系我们 <https://github.com/OpenXLab-Edu/XEdu-docs/issues>`__
+注：硬件测试模块持续更新中，如有更多硬件测试需求，请\ `联系我们 <https://github.com/OpenXLab-Edu/XEdu-docs/issues>`__
 
 多模态交互
 ----------
