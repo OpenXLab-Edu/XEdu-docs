@@ -65,8 +65,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#id10">再看看在边、端设备上的测试结果</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">多模态交互</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id13">更多模型部署项目</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">多模态交互</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">更多模型部署项目</a></li>
 </ul>
 </li>
 </ul>
@@ -424,14 +424,28 @@ Precision)：平均精度，在不同recall下的最高precision的均值(一般
 <h4>行空板测试<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h4>
 <blockquote>
 <div><p><em>行空板,
-青少年Python教学用开源硬件，解决Python教学难和使用门槛高的问题，旨在推动Python教学在青少年中的普及。官网：https://www.dfrobot.com.cn/</em>
-##### 软硬件环境 - 操作系统：Linux - 系统位数：64 -
-处理器：4核单板AArch64 1.20GHz - 内存：512MB - 硬盘：16GB -
-推理框架：ONNXRuntime == 1.13.1 - 数据处理工具：BaseDT == 0.0.1 #####
-配置 - <code class="docutils literal notranslate"><span class="pre">静态图</span></code>导出 - <code class="docutils literal notranslate"><span class="pre">batch</span></code>大小为1 -
-<code class="docutils literal notranslate"><span class="pre">BaseDT</span></code>内置<code class="docutils literal notranslate"><span class="pre">ImageData</span></code>工具进行数据预处理 -
-测试时，计算各个数据集中 10 张图片的平均耗时</p>
+青少年Python教学用开源硬件，解决Python教学难和使用门槛高的问题，旨在推动Python教学在青少年中的普及。官网：https://www.dfrobot.com.cn/</em></p>
 </div></blockquote>
+<section id="id12">
+<span id="id13"></span><h5>软硬件环境<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h5>
+<ul class="simple">
+<li><p>操作系统：Linux</p></li>
+<li><p>系统位数：64</p></li>
+<li><p>处理器：4核单板AArch64 1.20GHz</p></li>
+<li><p>内存：512MB</p></li>
+<li><p>硬盘：16GB</p></li>
+<li><p>推理框架：ONNXRuntime == 1.13.1</p></li>
+<li><p>数据处理工具：BaseDT == 0.0.1</p></li>
+</ul>
+</section>
+<section id="id14">
+<span id="id15"></span><h5>配置<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h5>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">静态图</span></code>导出</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">batch</span></code>大小为1</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BaseDT</span></code>内置<code class="docutils literal notranslate"><span class="pre">ImageData</span></code>工具进行数据预处理</p></li>
+<li><p>测试时，计算各个数据集中 10 张图片的平均耗时</p></li>
+</ul>
 <p>下面是我们环境中的测试结果：</p>
 <ul class="simple">
 <li><p>图像分类</p></li>
@@ -475,7 +489,7 @@ Precision)：平均精度，在不同recall下的最高precision的均值(一般
 </td></tr></tbody></table><blockquote>
 <div><p><em>吞吐量
 (图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现</em>。</p>
-<p>**：不建议部署，单张图片推理的时间超过30s*。</p>
+<p>*：不建议部署，单张图片推理的时间超过30s。</p>
 </div></blockquote>
 <ul>
 <li><p>目标检测</p>
@@ -514,22 +528,37 @@ Precision)：平均精度，在不同recall下的最高precision的均值(一般
 </td></tr></tbody></table></li>
 </ul>
 <blockquote>
-<div><p>**：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本。*</p>
-<p>**<em>：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite。</em></p>
+<div><p>*：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本。</p>
+<p>**：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite。</p>
 </div></blockquote>
+</section>
 </section>
 <section id="b">
 <h4>树莓派（4b）测试<a class="headerlink" href="#b" title="Permalink to this headline"></a></h4>
 <blockquote>
 <div><p><em>Raspberry
-Pi。中文名为“树莓派”,简写为RPi，或者RasPi/RPi)是为学生计算机编程教育而设计，卡片式电脑，其系统基于Linux。</em>
-##### 软硬件环境 - 操作系统：Linux - 系统位数：32 - 处理器：BCM2711
-四核 Cortex-A72(ARM v8) &#64;1.5GHz - 内存：4G - 硬盘：16G -
-推理框架：ONNXRuntime == 1.13.1 - 数据处理工具：BaseDT == 0.0.1 #####
-配置 - <code class="docutils literal notranslate"><span class="pre">静态图</span></code>导出 - <code class="docutils literal notranslate"><span class="pre">batch</span></code>大小为1 -
-<code class="docutils literal notranslate"><span class="pre">BaseDT</span></code>内置<code class="docutils literal notranslate"><span class="pre">ImageData</span></code>工具进行数据预处理 -
-测试时，计算各个数据集中 10 张图片的平均耗时</p>
+Pi。中文名为“树莓派”,简写为RPi，或者RasPi/RPi)是为学生计算机编程教育而设计，卡片式电脑，其系统基于Linux。</em></p>
 </div></blockquote>
+<section id="id16">
+<span id="id17"></span><h5>软硬件环境<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h5>
+<ul class="simple">
+<li><p>操作系统：Linux</p></li>
+<li><p>系统位数：32</p></li>
+<li><p>处理器：BCM2711 四核 Cortex-A72(ARM v8) &#64;1.5GHz</p></li>
+<li><p>内存：4G</p></li>
+<li><p>硬盘：16G</p></li>
+<li><p>推理框架：ONNXRuntime == 1.13.1</p></li>
+<li><p>数据处理工具：BaseDT == 0.0.1</p></li>
+</ul>
+</section>
+<section id="id18">
+<span id="id19"></span><h5>配置<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h5>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">静态图</span></code>导出</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">batch</span></code>大小为1</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BaseDT</span></code>内置<code class="docutils literal notranslate"><span class="pre">ImageData</span></code>工具进行数据预处理</p></li>
+<li><p>测试时，计算各个数据集中 10 张图片的平均耗时</p></li>
+</ul>
 <p>下面是我们环境中的测试结果：</p>
 <ul class="simple">
 <li><p>图像分类</p></li>
@@ -572,7 +601,7 @@ Pi。中文名为“树莓派”,简写为RPi，或者RasPi/RPi)是为学生计�
 </td></tr></tbody></table><blockquote>
 <div><p><em>吞吐量
 (图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现。</em></p>
-<p>**：量化后在树莓派上推理速度变慢。*</p>
+<p>*：量化后在树莓派上推理速度变慢。</p>
 </div></blockquote>
 <ul class="simple">
 <li><p>目标检测</p></li>
@@ -607,23 +636,24 @@ Pi。中文名为“树莓派”,简写为RPi，或者RasPi/RPi)是为学生计�
 </td><td><p>0.21</p>
 </td><td><p>0.34</p>
 </td></tr></tbody></table><blockquote>
-<div><p>**：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本。*</p>
-<p>**<em>：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite。</em></p>
+<div><p>*：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本。</p>
+<p>**：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite。</p>
 </div></blockquote>
 <p>注：硬件测试模块持续更新中，如有更多硬件测试需求，请<a class="reference external" href="https://github.com/OpenXLab-Edu/XEdu-docs/issues">联系我们</a></p>
 </section>
 </section>
 </section>
-<section id="id12">
-<h2>多模态交互<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h2>
+</section>
+<section id="id20">
+<h2>多模态交互<a class="headerlink" href="#id20" title="Permalink to this headline"></a></h2>
 <p>回顾用AI解决真实问题的流程图，我们已经介绍了收集数据、训练模型、模型推理和应用部署。结合项目设计，我们还会去思考如何通过摄像头获得图像，如何控制灯光发亮，如何操纵舵机，如何设计显示界面UI等需要使用输入设备和输出设备等来实现的交互设计，即对<code class="docutils literal notranslate"><span class="pre">多模态交互</span></code>的考量。</p>
 <figure class="align-default">
 <img alt="../_images/用AI解决真实问题.JPG" src="../_images/用AI解决真实问题.JPG" />
 </figure>
 <p>更多传感器、执行器使用教程参见：<a class="reference external" href="https://wiki.dfrobot.com.cn/">DFRobot</a></p>
 </section>
-<section id="id13">
-<h2>更多模型部署项目<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h2>
+<section id="id21">
+<h2>更多模型部署项目<a class="headerlink" href="#id21" title="Permalink to this headline"></a></h2>
 <p>猫狗分类小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63c3f52a1dd9517dffa1f513&amp;sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=63c3f52a1dd9517dffa1f513&amp;sc=62f34141bf4f550f3e926e0e#public</a></p>
 <p>MMEdu模型在线转换：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63a1a47e5e089d71e6c6f068&amp;backpath=/pjlab/projects/list%3Fbackpath=/pjlab/ai/projects#public">https://www.openinnolab.org.cn/pjlab/project?id=63a1a47e5e089d71e6c6f068&amp;backpath=/pjlab/projects/list%3Fbackpath=/pjlab/ai/projects#public</a></p>
 <p>千物识别小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63c4106c2e26ff0a30cb440f&amp;sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=63c4106c2e26ff0a30cb440f&amp;sc=62f34141bf4f550f3e926e0e#public</a></p>

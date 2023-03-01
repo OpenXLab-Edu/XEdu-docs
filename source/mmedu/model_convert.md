@@ -361,6 +361,8 @@ else:
 
 #### 行空板测试
 > *行空板, 青少年Python教学用开源硬件，解决Python教学难和使用门槛高的问题，旨在推动Python教学在青少年中的普及。官网：https://www.dfrobot.com.cn/*
+
+
 ##### 软硬件环境
 - 操作系统：Linux
 - 系统位数：64
@@ -369,7 +371,11 @@ else:
 - 硬盘：16GB
 - 推理框架：ONNXRuntime == 1.13.1
 - 数据处理工具：BaseDT == 0.0.1
+
+
+
 ##### 配置
+
 - `静态图`导出
 - `batch`大小为1
 - `BaseDT`内置`ImageData`工具进行数据预处理 
@@ -450,7 +456,7 @@ else:
 
 > *吞吐量 (图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现*。
 >
-> **：不建议部署，单张图片推理的时间超过30s*。
+> *：不建议部署，单张图片推理的时间超过30s。
 
 - 目标检测
 <table class="docutils align-default">
@@ -521,13 +527,16 @@ else:
 </table>
 
 
->**：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本。*
+>*：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本。
 >
->***：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite。*
+>**：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite。
 
 #### 树莓派（4b）测试
 > *Raspberry Pi。中文名为“树莓派”,简写为RPi，或者RasPi/RPi)是为学生计算机编程教育而设计，卡片式电脑，其系统基于Linux。*
+
+
 ##### 软硬件环境
+
 - 操作系统：Linux
 - 系统位数：32
 - 处理器：BCM2711 四核 Cortex-A72(ARM v8) @1.5GHz
@@ -535,7 +544,11 @@ else:
 - 硬盘：16G
 - 推理框架：ONNXRuntime == 1.13.1
 - 数据处理工具：BaseDT == 0.0.1
+
+
+
 ##### 配置
+
 - `静态图`导出
 - `batch`大小为1
 - `BaseDT`内置`ImageData`工具进行数据预处理 
@@ -617,7 +630,9 @@ else:
 
 > *吞吐量 (图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现。*
 >
-> **：量化后在树莓派上推理速度变慢。*
+> *：量化后在树莓派上推理速度变慢。
+
+
 
 - 目标检测
 
@@ -689,9 +704,9 @@ else:
 </table>
 
 
->**：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本。*
+>*：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本。
 >
->***：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite。*
+>**：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite。
 
 注：硬件测试模块持续更新中，如有更多硬件测试需求，请[联系我们](https://github.com/OpenXLab-Edu/XEdu-docs/issues)
 
@@ -708,7 +723,7 @@ else:
 
 猫狗分类小助手：https://www.openinnolab.org.cn/pjlab/project?id=63c3f52a1dd9517dffa1f513&sc=62f34141bf4f550f3e926e0e#public
 
-MMEdu模型在线转换：https://www.openinnolab.org.cn/pjlab/project?id=63a1a47e5e089d71e6c6f068&backpath=/pjlab/projects/list?backpath=/pjlab/ai/projects#public
+MMEdu模型在线转换：https://www.openinnolab.org.cn/pjlab/project?id=63a1a47e5e089d71e6c6f068&backpath=/pjlab/projects/list%3Fbackpath=/pjlab/ai/projects#public
 
 千物识别小助手：https://www.openinnolab.org.cn/pjlab/project?id=63c4106c2e26ff0a30cb440f&sc=62f34141bf4f550f3e926e0e#public
 
@@ -716,4 +731,4 @@ MMEdu模型在线转换：https://www.openinnolab.org.cn/pjlab/project?id=63a1a4
 
 行空板上温州话识别：https://www.openinnolab.org.cn/pjlab/project?id=63b7c66e5e089d71e61d19a0&sc=62f34141bf4f550f3e926e0e#public
 
-树莓派与MMEdu：https://www.openinnolab.org.cn/pjlab/project?id=63bb8be4c437c904d8a90350&backpath=/pjlab/projects/list?backpath=/pjlab/ai/projects#public
+树莓派与MMEdu：https://www.openinnolab.org.cn/pjlab/project?id=63bb8be4c437c904d8a90350&backpath=/pjlab/projects/list%3Fbackpath=/pjlab/ai/projects#public
