@@ -2,7 +2,7 @@
 ==================================
 
 初识MMClassification
-~~~~~~~~~~~~~~~~~~~~，
+~~~~~~~~~~~~~~~~~~~~
 
 MMClassifiation（简称cls）的主要功能是对图像进行分类。其支持的SOTA模型有LeNet、MobileNet、ResNet18、ResNet50等，具体介绍详见\ `后文 <https://xedu.readthedocs.io/zh/latest/mmedu/mmclassification.html#sota>`__\ 。如需查看所有支持的SOTA模型，可使用\ ``model.sota()``\ 代码进行查看。
 
@@ -127,7 +127,9 @@ XEdu一键安装包中预置了MMEdu的cls模块的示例代码（路径：/demo
 数据集文件结构如下:
 
 .. figure:: ../../build/html/_static/cls_dataset.png
+   :alt: image-dataset
 
+   image-dataset
 
 **hand_gray**\ 文件夹中包含三个图片文件夹，\ ``test_set``,\ ``training_set``,\ ``val_set``\ 分别存储测试集，训练集和验证集的图片；以及三个\ ``txt``\ 文件，\ ``classes.txt``\ 记录该数据集的类别，\ ``test.txt``\ 和\ ``val.txt``\ 分别记录测试集和验证集的图片名。
 
