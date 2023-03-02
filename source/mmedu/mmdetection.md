@@ -36,8 +36,7 @@ from MMEdu import MMDetection as det # 导入mmdet模块
 img = 'car_plate.png' # 指定进行推理的图片路径，我们使用demo文件夹中提供的图片
 model = det(backbone="FasterRCNN") # 实例化MMDetection模型
 checkpoint = '../checkpoints/det_model/plate/latest.pth' # 指定使用的模型权重文件
-class_path = '../dataset/classes/det_classes.txt' # 指定训练集的路径
-result = model.inference(image=img, show=True, class_path=class_path,checkpoint_path = checkpoint) # 在CPU上进行推理
+result = model.inference(image=img, show=True, checkpoint_path = checkpoint) # 在CPU上进行推理
 model.print_result() # 输出结果
 # 同时您可以修改show的值来决定是否需要显示结果图片，此处默认显示结果图片
 ```
@@ -54,8 +53,7 @@ model.print_result() # 输出结果
 img = 'det_testIMG/' # 指定进行推理的一组图片的路径
 model = det(backbone="FasterRCNN") # 实例化MMDetection模型
 checkpoint = '../checkpoints/det_model/plate/latest.pth' # 指定使用的模型权重文件
-class_path = '../dataset/classes/det_classes.txt' # 指定训练集的路径
-result = model.inference(image=img, show=True, class_path=class_path,checkpoint_path = checkpoint) # 在CPU上进行推理
+result = model.inference(image=img, show=True, checkpoint_path = checkpoint) # 在CPU上进行推理
 model.print_result() # 输出结果
 # 同时您可以修改show的值来决定是否需要显示结果图片，此处默认显示结果图片
 ~~~
@@ -85,10 +83,10 @@ model = det(backbone='FasterRCNN') # 实例化MMDetection模型
 - **模型推理**
 
 ```python
-model.inference(image=img, show=True, class_path=class_path,checkpoint_path = checkpoint) # 在CPU上进行推理
+model.inference(image=img, show=True, checkpoint_path = checkpoint) # 在CPU上进行推理
 ```
 
-将所需要推理图片的路径传入`inference`函数中即可进行推理，我们这里传入了四个参数，`image`代表的就是推理图片的路径，`show`代表是否需要显示结果图片，`class_path`代表训练集的路径，`checkpoint`代表指定使用的模型权重文件。
+将所需要推理图片的路径传入`inference`函数中即可进行推理，我们这里传入了四个参数，`image`代表的就是推理图片的路径，`show`代表是否需要显示结果图片，`checkpoint`代表指定使用的模型权重文件。
 
 - **参数详解**：
 
@@ -104,8 +102,6 @@ model.inference(image=img, show=True, class_path=class_path,checkpoint_path = ch
 
 `rpn_threshold` & `rcnn_threshold`: 0～1之间的数值。由于FasterRCNN为一个两阶段的检测模型，这两个参数分别表示两个阶段对于检测框的保留程度，高于这个数值的框将会被保留（这里如果同学们设置过低，也可能会发现图中出现了多个框）。
 
-`class_path`：指定训练集的路径，默认参数为`"../dataset/classes/det_classes.txt"`。
-
 `save_fold`：保存的图片名，数据结构为字符串，默认参数为`'det_result'`，用户也可以定义为自己想要的名字。
 
 （最后两个参数的使用，我们将在下一部分进行详细举例解释）。
@@ -115,7 +111,7 @@ model.inference(image=img, show=True, class_path=class_path,checkpoint_path = ch
 针对部分用户希望加快推理速度的需求，设计了`fast_inference`函数，主要方法是使用`load_checkpoint`提前加载权重文件。
 
 ```
-model.load_checkpoint(checkpoint=checkpoint,class_path=class_path)
+model.load_checkpoint(checkpoint=checkpoint)
 result = model.fast_inference(image=img)
 ```
 
@@ -126,8 +122,6 @@ result = model.fast_inference(image=img)
 `device`：推理所用的设备，默认为`'cpu'`，如果电脑支持GPU，也可以将参数修改为`'cuda'`，使用GPU进行推理。
 
 `checkpoint`：指定使用的模型权重文件，默认参数为`None`，如果没有指定模型权重文件，那么我们将会使用默认的模型权重文件进行推理。
-
-`class_path`：指定训练集的路径，默认参数为`"../dataset/classes/det_classes.txt"`。
 
 2. `fast_inference`函数的传入参数：
 

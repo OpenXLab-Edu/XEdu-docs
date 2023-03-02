@@ -2,7 +2,7 @@
 ==================================
 
 初识MMClassification
-~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~，
 
 MMClassifiation（简称cls）的主要功能是对图像进行分类。其支持的SOTA模型有LeNet、MobileNet、ResNet18、ResNet50等，具体介绍详见\ `后文 <https://xedu.readthedocs.io/zh/latest/mmedu/mmclassification.html#sota>`__\ 。如需查看所有支持的SOTA模型，可使用\ ``model.sota()``\ 代码进行查看。
 
@@ -26,8 +26,7 @@ XEdu一键安装包中预置了MMEdu的cls模块的示例代码（路径：/demo
    img = 'testrock01-02.png' # 指定进行推理的图片路径，我们使用demo文件夹中提供的图片
    model = cls(backbone='LeNet') # 实例化MMClassification模型
    model.checkpoint='../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的模型权重文件
-   class_path = '../dataset/classes/cls_classes.txt' # 指定训练集的路径
-   result = model.inference(image=img, show=True, class_path=class_path, checkpoint=checkpoint) # 在CPU上进行推理
+   result = model.inference(image=img, show=True, checkpoint=checkpoint) # 在CPU上进行推理
    model.print_result() # 输出结果
    # 同时您可以修改show的值来决定是否需要显示结果图片，此处默认显示结果图片
 
@@ -45,8 +44,7 @@ XEdu一键安装包中预置了MMEdu的cls模块的示例代码（路径：/demo
    img = 'cls_testIMG/' # 指定进行推理的一组图片的路径
    model = cls(backbone='LeNet') # 实例化MMClassification模型
    model.checkpoint='../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的模型权重文件
-   class_path = '../dataset/classes/cls_classes.txt' # 指定训练集的路径
-   result = model.inference(image=img, show=True, class_path=class_path, checkpoint=checkpoint) # 在CPU上进行推理
+   result = model.inference(image=img, show=True, checkpoint=checkpoint) # 在CPU上进行推理
    model.print_result(result) # 输出结果
    # 同时您可以修改show的值来决定是否需要显示结果图片，此处默认显示结果图片
 
@@ -76,7 +74,7 @@ XEdu一键安装包中预置了MMEdu的cls模块的示例代码（路径：/demo
 
 .. code:: python
 
-   model.inference(image=img, show=True, class_path=class_path, checkpoint=checkpoint) # 在cpu上进行推理
+   model.inference(image=img, show=True, checkpoint=checkpoint) # 在cpu上进行推理
 
 将所需要推理图片的路径传入\ ``inference``\ 函数中即可进行推理，我们这里传入了四个参数，\ ``image``\ 代表的就是推理图片的路径，\ ``show``\ 代表是否需要显示结果图片，\ ``class_path``\ 代表训练集的路径，\ ``checkpoint``\ 代表指定使用的模型权重文件。
 
@@ -92,8 +90,6 @@ XEdu一键安装包中预置了MMEdu的cls模块的示例代码（路径：/demo
 
 ``show``\ ：布尔值，默认为\ ``True``\ ，表示推理后是否显示推理结果
 
-``class_path``\ ：指定训练集的路径，默认参数为\ ``'../dataset/classes/cls_classes.txt'``\ 。
-
 ``save_fold``\ ：保存的图片名，数据结构为字符串，默认参数为\ ``'cls_result'``\ ，用户也可以定义为自己想要的名字。
 
 -  **快速推理**
@@ -102,7 +98,7 @@ XEdu一键安装包中预置了MMEdu的cls模块的示例代码（路径：/demo
 
 ::
 
-   model.load_checkpoint(checkpoint=checkpoint,class_path=class_path)
+   model.load_checkpoint(checkpoint=checkpoint)
    result = model.fast_inference(image=img)
 
 -  **参数详解**
@@ -112,8 +108,6 @@ XEdu一键安装包中预置了MMEdu的cls模块的示例代码（路径：/demo
 ``device``\ ：推理所用的设备，默认为\ ``'cpu'``\ ，如果电脑支持GPU，也可以将参数修改为\ ``'cuda'``\ ，使用GPU进行推理。
 
 ``checkpoint``\ ：指定使用的模型权重文件，默认参数为\ ``None``\ ，如果没有指定模型权重文件，那么我们将会使用默认的模型权重文件进行推理。
-
-``class_path``\ ：指定训练集的路径，默认参数为\ ``'../dataset/classes/cls_classes.txt'``\ 。
 
 2. ``fast_inference``\ 函数的传入参数：
 

@@ -10,7 +10,7 @@
 -  模型量化
 -  多模态交互
 
-..
+.. Note::
 
    *MMEdu已经可以帮助我diy自己的AI模型了，为什么要多此一举、徒增难度，来学习需要更多编程知识的模型部署模块？*
 
@@ -30,12 +30,15 @@ Why：为什么
 分布式、自动求导、混合精度……训练框架往往围绕着易用性，面向设计算法的研究员，以研究员能更快地生产高性能模型为目标。
 硬件指令集、预编译优化、量化算法……推理框架往往围绕着硬件平台的极致优化加速，面向工业落地，以模型能更快执行为目标。由于职能和侧重点不同，没有一个深度学习框架能面面俱到，完全一统训练侧和推理侧，而模型在各个框架内部的表示方式又千差万别，所以模型转换就被广泛需要了。
 
+.. Note::
    *概括：训练框架大，塞不进两三百块钱买的硬件设备中，推理框架小，能在硬件设备上安装。要把训练出的模型翻译成推理框架能读懂的语言，才能在硬件设备上运行。*
 
 为什么要进行模型量化
 ~~~~~~~~~~~~~~~~~~~~
 
 模型量化是指将深度学习模型中的参数、激活值等数据转化为更小的数据类型（通常是8位整数或者浮点数），以达到模型大小减小、计算速度加快、内存占用减小等优化目的的技术手段。模型量化有以下几个优点：减小模型大小、加速模型推理、减少内存占用等。因此，模型量化可以帮助提高深度学习模型的效率和性能，在实际应用中具有重要的价值和意义。
+
+.. Note::
 
    *概括：对模型采用合适的量化，能在对准确率忽略不计的情况下，让模型更小、更快、更轻量。比如原先168
    MB的模型量化后大小变为了42.6 MB，推理速度提高了两倍。*
@@ -44,15 +47,18 @@ Why：为什么
 ~~~~~~~~~~~~~~~~~~~~~~
 
 多模态交互是指利用多个感知通道（例如语音、图像、触觉、姿态等）进行交互的技术。多模态交互在人机交互、智能交通、健康医疗、教育培训等领域都有广泛的应用、在提高交互效率、用户体验、解决单模态限制和实现智能化交互等方面具有重要的作用和价值。
->\ *概括：给你的AI作品加点创客料。*
+
+.. Note::
+   *概括：给你的AI作品加点创客料。*
 
 什么是推理框架
 ~~~~~~~~~~~~~~
 
 深度学习推理框架是一种让深度学习算法在实时处理环境中提高性能的框架。常见的有\ `ONNXRuntime <https://github.com/microsoft/onnxruntime>`__\ 、\ `NCNN <https://github.com/Tencent/ncnn>`__\ 、\ `TensorRT <https://github.com/NVIDIA/TensorRT>`__\ 、\ `OpenVINO <https://github.com/openvinotoolkit/openvino>`__\ 等。
 
+.. Note::
    *ONNXRuntime是微软推出的一款推理框架，支持多种运行后端包括CPU，GPU，TensorRT，DML等，是对ONNX模型最原生的支持。*
-
+   
    *NCNN是腾讯公司开发的移动端平台部署工具，一个为手机端极致优化的高性能神经网络前向计算框架。NCNN仅用于推理，不支持学习。*
 
 **值得注意的是，包括Pytorch、Tensorflow，以及国内的百度PaddlePaddle、华为的MindSpore等主流的深度学习框架都开发了工具链来回应这个Why。我们采用业界主流的方法，以更高代码封装度的形式来解决这一问题。接下来，且听我们对利用\ ``XEdu``\ 进行\ ``How怎么做``\ 的流程娓娓道来。**
@@ -62,6 +68,7 @@ How：怎么做
 
 总结一下Why中的回应，在软件工程中，部署指把开发完毕的软件投入使用的过程，包括环境配置、软件安装等步骤。类似地，对于深度学习模型来说，模型部署指让训练好的模型在特定环境中运行的过程。相比于软件部署，模型部署会面临更多的难题：
 
+.. Note::
    1. *运行模型所需的环境难以配置。深度学习模型通常是由一些框架编写，比如
       PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架不适合在手机、开发板等生产环境中安装。*
    2. *深度学习模型的结构通常比较庞大，需要大量的算力才能满足实时运行的需求。模型的运行效率需要优化。
@@ -83,9 +90,9 @@ MMEdu内置了一个\ ``convert``\ 函数实现了一键式模型转换，转换
 
    分类的标签文件、待转换的模型权重文件。
 
--  需要配置四个信息：
+-  需要配置三个信息：
 
-   待转换的模型权重文件（\ ``checkpoint``\ ），图片分类的类别数量（model.num_classes），分类标签信息文件（\ ``class_path``\ ）和输出的文件（\ ``out_file``\ ）。
+   待转换的模型权重文件（\ ``checkpoint``\ ），图片分类的类别数量（model.num_classes）和输出的文件（\ ``out_file``\ ）。
 
 -  模型转换的典型代码：
 
@@ -96,7 +103,7 @@ MMEdu内置了一个\ ``convert``\ 函数实现了一键式模型转换，转换
    model.num_classes = 2
    checkpoint = 'latest.pth'
    out_file="out_file/cat_dog.onnx"
-   model.convert(checkpoint=checkpoint, backend="ONNX", out_file=out_file, class_path='/data/TC4V0D/CatsDogsSample/classes.txt')
+   model.convert(checkpoint=checkpoint, backend="ONNX", out_file=out_file)
 
 这段代码是完成分类模型的转换，接下来对为您\ ``model.convert``\ 函数的各个参数：
 
@@ -106,7 +113,6 @@ MMEdu内置了一个\ ``convert``\ 函数实现了一键式模型转换，转换
 
 ``out_file``\ ：模型转换后的输出文件路径。
 
-``class_path``\ ：模型输入的类别文件路径。
 
 类似的，目标检测模型转换的示例代码如下：
 
@@ -117,7 +123,7 @@ MMEdu内置了一个\ ``convert``\ 函数实现了一键式模型转换，转换
    model.num_classes = 80
    checkpoint = 'checkpoints/COCO-80/ssdlite.pth'
    out_file="out_file/COCO-80.onnx"
-   model.convert(checkpoint=checkpoint, backend="ONNX", out_file=out_file, class_path='dataset/classes.txt')
+   model.convert(checkpoint=checkpoint, backend="ONNX", out_file=out_file,)
 
 完成第一个模型转换，开始！
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -857,7 +863,7 @@ ImageNet
 
    </table>
 
-..
+.. Note::
 
    *ImageNet
    数据集：ImageNet项目是一个用于视觉对象识别软件研究的大型可视化数据库。ImageNet项目每年举办一次软件比赛，即\ ``ImageNet大规模视觉识别挑战赛``\ （ILSVRC），软件程序竞相正确分类检测物体和场景。
@@ -1285,7 +1291,7 @@ COCO
 
    </table>
 
-..
+.. Note::
 
    *COCO 数据集: MS COCO的全称是Microsoft Common Objects in
    Context，起源于微软于2014年出资标注的Microsoft
@@ -1306,6 +1312,7 @@ COCO
 行空板测试
 ^^^^^^^^^^
 
+.. Note::
    *行空板,
    青少年Python教学用开源硬件，解决Python教学难和使用门槛高的问题，旨在推动Python教学在青少年中的普及。官网：https://www.dfrobot.com.cn/*
 
@@ -1824,7 +1831,7 @@ ImageNet
 
    </table>
 
-..
+.. Note::
 
    *吞吐量
    (图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现*\ 。
@@ -2313,7 +2320,7 @@ ImageNet
 
       </table>
 
-..
+.. Note::
 
    \*：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本。
 
@@ -2321,6 +2328,8 @@ ImageNet
 
 树莓派（4b）测试
 ^^^^^^^^^^^^^^^^
+
+.. Note::
 
    *Raspberry
    Pi。中文名为“树莓派”,简写为RPi，或者RasPi/RPi)是为学生计算机编程教育而设计，卡片式电脑，其系统基于Linux。*
@@ -2838,7 +2847,7 @@ ImageNet
 
    </table>
 
-..
+.. Note::
 
    *吞吐量
    (图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现。*
@@ -3321,7 +3330,7 @@ COCO
 
    </table>
 
-..
+.. Note::
 
    \*：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本。
 

@@ -125,8 +125,7 @@
 <span class="n">img</span> <span class="o">=</span> <span class="s1">&#39;car_plate.png&#39;</span> <span class="c1"># 指定进行推理的图片路径，我们使用demo文件夹中提供的图片</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">det</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s2">&quot;FasterRCNN&quot;</span><span class="p">)</span> <span class="c1"># 实例化MMDetection模型</span>
 <span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;../checkpoints/det_model/plate/latest.pth&#39;</span> <span class="c1"># 指定使用的模型权重文件</span>
-<span class="n">class_path</span> <span class="o">=</span> <span class="s1">&#39;../dataset/classes/det_classes.txt&#39;</span> <span class="c1"># 指定训练集的路径</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">img</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">class_path</span><span class="o">=</span><span class="n">class_path</span><span class="p">,</span><span class="n">checkpoint_path</span> <span class="o">=</span> <span class="n">checkpoint</span><span class="p">)</span> <span class="c1"># 在CPU上进行推理</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">img</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">checkpoint_path</span> <span class="o">=</span> <span class="n">checkpoint</span><span class="p">)</span> <span class="c1"># 在CPU上进行推理</span>
 <span class="n">model</span><span class="o">.</span><span class="n">print_result</span><span class="p">()</span> <span class="c1"># 输出结果</span>
 <span class="c1"># 同时您可以修改show的值来决定是否需要显示结果图片，此处默认显示结果图片</span>
 </pre></div>
@@ -140,8 +139,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">img</span> <span class="o">=</span> <span class="s1">&#39;det_testIMG/&#39;</span> <span class="c1"># 指定进行推理的一组图片的路径</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">det</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s2">&quot;FasterRCNN&quot;</span><span class="p">)</span> <span class="c1"># 实例化MMDetection模型</span>
 <span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;../checkpoints/det_model/plate/latest.pth&#39;</span> <span class="c1"># 指定使用的模型权重文件</span>
-<span class="n">class_path</span> <span class="o">=</span> <span class="s1">&#39;../dataset/classes/det_classes.txt&#39;</span> <span class="c1"># 指定训练集的路径</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">img</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">class_path</span><span class="o">=</span><span class="n">class_path</span><span class="p">,</span><span class="n">checkpoint_path</span> <span class="o">=</span> <span class="n">checkpoint</span><span class="p">)</span> <span class="c1"># 在CPU上进行推理</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">img</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">checkpoint_path</span> <span class="o">=</span> <span class="n">checkpoint</span><span class="p">)</span> <span class="c1"># 在CPU上进行推理</span>
 <span class="n">model</span><span class="o">.</span><span class="n">print_result</span><span class="p">()</span> <span class="c1"># 输出结果</span>
 <span class="c1"># 同时您可以修改show的值来决定是否需要显示结果图片，此处默认显示结果图片</span>
 </pre></div>
@@ -167,10 +165,10 @@
 <ul class="simple">
 <li><p><strong>模型推理</strong></p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">img</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">class_path</span><span class="o">=</span><span class="n">class_path</span><span class="p">,</span><span class="n">checkpoint_path</span> <span class="o">=</span> <span class="n">checkpoint</span><span class="p">)</span> <span class="c1"># 在CPU上进行推理</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">img</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">checkpoint_path</span> <span class="o">=</span> <span class="n">checkpoint</span><span class="p">)</span> <span class="c1"># 在CPU上进行推理</span>
 </pre></div>
 </div>
-<p>将所需要推理图片的路径传入<code class="docutils literal notranslate"><span class="pre">inference</span></code>函数中即可进行推理，我们这里传入了四个参数，<code class="docutils literal notranslate"><span class="pre">image</span></code>代表的就是推理图片的路径，<code class="docutils literal notranslate"><span class="pre">show</span></code>代表是否需要显示结果图片，<code class="docutils literal notranslate"><span class="pre">class_path</span></code>代表训练集的路径，<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>代表指定使用的模型权重文件。</p>
+<p>将所需要推理图片的路径传入<code class="docutils literal notranslate"><span class="pre">inference</span></code>函数中即可进行推理，我们这里传入了四个参数，<code class="docutils literal notranslate"><span class="pre">image</span></code>代表的就是推理图片的路径，<code class="docutils literal notranslate"><span class="pre">show</span></code>代表是否需要显示结果图片，<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>代表指定使用的模型权重文件。</p>
 <ul class="simple">
 <li><p><strong>参数详解</strong>：</p></li>
 </ul>
@@ -181,14 +179,13 @@
 <p><code class="docutils literal notranslate"><span class="pre">show</span></code>：布尔值，默认为<code class="docutils literal notranslate"><span class="pre">True</span></code>，表示推理后是否显示推理结果。</p>
 <p><code class="docutils literal notranslate"><span class="pre">rpn_threshold</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">rcnn_threshold</span></code>:
 0～1之间的数值。由于FasterRCNN为一个两阶段的检测模型，这两个参数分别表示两个阶段对于检测框的保留程度，高于这个数值的框将会被保留（这里如果同学们设置过低，也可能会发现图中出现了多个框）。</p>
-<p><code class="docutils literal notranslate"><span class="pre">class_path</span></code>：指定训练集的路径，默认参数为<code class="docutils literal notranslate"><span class="pre">&quot;../dataset/classes/det_classes.txt&quot;</span></code>。</p>
 <p><code class="docutils literal notranslate"><span class="pre">save_fold</span></code>：保存的图片名，数据结构为字符串，默认参数为<code class="docutils literal notranslate"><span class="pre">'det_result'</span></code>，用户也可以定义为自己想要的名字。</p>
 <p>（最后两个参数的使用，我们将在下一部分进行详细举例解释）。</p>
 <ul class="simple">
 <li><p><strong>快速推理</strong></p></li>
 </ul>
 <p>针对部分用户希望加快推理速度的需求，设计了<code class="docutils literal notranslate"><span class="pre">fast_inference</span></code>函数，主要方法是使用<code class="docutils literal notranslate"><span class="pre">load_checkpoint</span></code>提前加载权重文件。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">load_checkpoint</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">,</span><span class="n">class_path</span><span class="o">=</span><span class="n">class_path</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">load_checkpoint</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">)</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fast_inference</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">img</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -200,7 +197,6 @@
 </ol>
 <p><code class="docutils literal notranslate"><span class="pre">device</span></code>：推理所用的设备，默认为<code class="docutils literal notranslate"><span class="pre">'cpu'</span></code>，如果电脑支持GPU，也可以将参数修改为<code class="docutils literal notranslate"><span class="pre">'cuda'</span></code>，使用GPU进行推理。</p>
 <p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>：指定使用的模型权重文件，默认参数为<code class="docutils literal notranslate"><span class="pre">None</span></code>，如果没有指定模型权重文件，那么我们将会使用默认的模型权重文件进行推理。</p>
-<p><code class="docutils literal notranslate"><span class="pre">class_path</span></code>：指定训练集的路径，默认参数为<code class="docutils literal notranslate"><span class="pre">&quot;../dataset/classes/det_classes.txt&quot;</span></code>。</p>
 <ol class="arabic simple" start="2">
 <li><p><code class="docutils literal notranslate"><span class="pre">fast_inference</span></code>函数的传入参数：</p></li>
 </ol>
@@ -335,8 +331,11 @@
 <section id="id7">
 <h3>补充内容：再了解一下单目标检测和多目标检测<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
 <p>根据图像中目标的数量，目标检测分为单目标检测和多目标检测，单目标检测顾名思义，就是识别图像中的单独的一个目标。如下图，就用红框框出了一只猫。</p>
-<figure class="align-default">
-<img alt="../_images/单目标检测.png" src="../_images/单目标检测.png" />
+<figure class="align-default" id="id8">
+<img alt="image" src="../_images/单目标检测.png" />
+<figcaption>
+<p><span class="caption-text">image</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
+</figcaption>
 </figure>
 <p>多目标检测就像下面这张图，识别图中的多个目标，在下图中分别用红色的框框出来了猫和绿色的框框出来了狗。多目标检测通常比单目标检测更难，因为它需要同时处理多个目标。但是，多目标检测在很多场景中都是必要的。</p>
 <figure class="align-default">
