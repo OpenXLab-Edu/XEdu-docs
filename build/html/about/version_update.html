@@ -118,7 +118,7 @@
 <h5>V0.1.6 20230302<a class="headerlink" href="#v0-1-6-20230302" title="Permalink to this headline"></a></h5>
 <ol class="simple">
 <li><p>cls和det的推理和转化函数中去除了class_path这一参数，类别信息从pth中获得。</p></li>
-<li><p>修复SSD_Lite类名传递不正确的问题</p></li>
+<li><p>修复SSD_Lite类名传递不正确的问题。</p></li>
 </ol>
 </section>
 <section id="v0-1-5-20230203">
@@ -150,7 +150,7 @@
 <p>cls：</p>
 <ol>
 <li><p>cls检查数据集中图片shape，指出损坏图片。检查图片出现损坏时，抛出错误码<code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">image</span> <span class="pre">file</span> <span class="pre">xxx</span> <span class="pre">is</span> <span class="pre">damaged</span></code>。</p></li>
-<li><p>数据集如缺少txt，自动生成</p>
+<li><p>数据集如缺少txt，自动生成。</p>
 <p>case1：数据集缺少classes.txt, val.txt ，会自动生成并提示, eg，“生成val.txt”。</p>
 <p>case2：如缺少test_set，可正常训练，但不会生成test.txt 。（不影响正常功能）</p>
 <p>case3：如缺少val_set，可训练，但不能验证，即train函数中validate参数不能为True。（功能受损，看不到准确率，但还是可以训练出模型）。</p>

@@ -19,7 +19,7 @@
 ##### V0.1.6 20230302
 
 1. cls和det的推理和转化函数中去除了class_path这一参数，类别信息从pth中获得。
-1. 修复SSD_Lite类名传递不正确的问题
+1. 修复SSD_Lite类名传递不正确的问题。
 
 ##### V0.1.5 20230203
 
@@ -45,7 +45,7 @@ cls：
 
 1. cls检查数据集中图片shape，指出损坏图片。检查图片出现损坏时，抛出错误码`The image file xxx is damaged`。
 
-2. 数据集如缺少txt，自动生成
+2. 数据集如缺少txt，自动生成。
 
    case1：数据集缺少classes.txt, val.txt ，会自动生成并提示, eg，“生成val.txt”。
 
