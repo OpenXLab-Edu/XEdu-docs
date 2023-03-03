@@ -54,8 +54,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#id3">超参数</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id4">学习速率</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id5">学习轮次</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">优化器</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id7">训练策略</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">批量大小</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">优化器</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">训练策略</a></li>
 </ul>
 </li>
 </ul>
@@ -110,12 +111,20 @@
 <p>学习轮次（epoch）表示完成多少次训练，还是以看书做比喻，每一轮就好比看完一次书，模型会完整学习一次训练集，重复的轮数越多，一般效果越好。</p>
 </section>
 <section id="id6">
-<h3>优化器<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<h3>批量大小<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<p>批量大小（batch_size）表示在一次训练中同时处理的样本数量。通常情况下，批量大小越大，模型的收敛速度越快，但内存和计算资源的需求也会相应增加。关于batch_size的取值范围，应该大于类别数，小于样本数，且由于GPU对2的幂次的batch可以发挥更佳的性能，因此设置成16、32、64、128…时往往要比设置为整10、整100的倍数时表现更优。batch_size、iter、 epoch的关系如下：</p>
+<p>（1）batch_size：批大小，一次训练所选取的样本数，指每次训练在训练集中取batch_size个样本训练；</p>
+<p>（2）iter：1个iter等于使用batch_size个样本训练一次，iter可在训练日志中看到；</p>
+<p>（3）epoch：1个epoch等于使用训练集中的全部样本训练一次；</p>
+<p>如训练集有240个样本，设置batch_size=6，那么：训练完整个样本集需要：40个iter，1个epoch。</p>
+</section>
+<section id="id7">
+<h3>优化器<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
 <p>优化器规定了学习的方向。我们以考试为例，要想考试成绩更高，可以有多种途径，这些途径就是可选的“优化器”，在不同的任务中，要根据实际情况来选择优化器。</p>
 <p>常见的优化器是SGD和Adam。</p>
 </section>
-<section id="id7">
-<h3>训练策略<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<section id="id8">
+<h3>训练策略<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
 <p>我们从读书和考试的角度去考虑，读书一般是先粗放地读，然后再仔细读。如果一种学习方式走不通，再换一种方式。</p>
 <p>训练也是这样，一般先用大的学习率，再转为小的学习率继续训练。尝试使用多种优化器，经过不断尝试，让最终结果达到最优或可用的状态。</p>
 </section>
