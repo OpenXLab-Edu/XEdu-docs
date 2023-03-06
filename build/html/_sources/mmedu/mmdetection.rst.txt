@@ -19,7 +19,7 @@
 
 那么MMEdu的目标检测模块MMDetection（简称det）的主要功能便是输出图片或视频中出现的多个对象名称，同时用方框框出对象所在方形区域。
 
-其支持的SOTA模型有FasterRCNN、Yolov3等，，具体介绍详见\ `后文 <https://xedu.readthedocs.io/zh/latest/mmedu/mmdetection.html#sota>`__\ 。如需查看所有支持的SOTA模型，可使用\ ``model.sota()``\ 代码进行查看。
+其支持的SOTA模型有FasterRCNN、Yolov3、SSD_Lite等，具体介绍详见\ `后文 <https://xedu.readthedocs.io/zh/latest/mmedu/mmdetection.html#sota>`__\ 。如需查看所有支持的SOTA模型，可使用\ ``model.sota()``\ 代码进行查看。
 
 使用说明
 ~~~~~~~~
@@ -278,9 +278,7 @@ XEdu一键安装包中预置了MMEdu的det模块的示例代码（路径：/demo
 根据图像中目标的数量，目标检测分为单目标检测和多目标检测，单目标检测顾名思义，就是识别图像中的单独的一个目标。如下图，就用红框框出了一只猫。
 
 .. figure:: ../images/mmedu/单目标检测.png
-   :alt: image
 
-   image
 
 多目标检测就像下面这张图，识别图中的多个目标，在下图中分别用红色的框框出来了猫和绿色的框框出来了狗。多目标检测通常比单目标检测更难，因为它需要同时处理多个目标。但是，多目标检测在很多场景中都是必要的。
 

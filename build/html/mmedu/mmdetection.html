@@ -111,7 +111,7 @@
 <img alt="../_images/目标检测概述.png" src="../_images/目标检测概述.png" />
 </figure>
 <p>那么MMEdu的目标检测模块MMDetection（简称det）的主要功能便是输出图片或视频中出现的多个对象名称，同时用方框框出对象所在方形区域。</p>
-<p>其支持的SOTA模型有FasterRCNN、Yolov3等，，具体介绍详见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/mmdetection.html#sota">后文</a>。如需查看所有支持的SOTA模型，可使用<code class="docutils literal notranslate"><span class="pre">model.sota()</span></code>代码进行查看。</p>
+<p>其支持的SOTA模型有FasterRCNN、Yolov3、SSD_Lite等，具体介绍详见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/mmdetection.html#sota">后文</a>。如需查看所有支持的SOTA模型，可使用<code class="docutils literal notranslate"><span class="pre">model.sota()</span></code>代码进行查看。</p>
 </section>
 <section id="id4">
 <h2>使用说明<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
@@ -331,11 +331,8 @@
 <section id="id7">
 <h3>补充内容：再了解一下单目标检测和多目标检测<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
 <p>根据图像中目标的数量，目标检测分为单目标检测和多目标检测，单目标检测顾名思义，就是识别图像中的单独的一个目标。如下图，就用红框框出了一只猫。</p>
-<figure class="align-default" id="id8">
-<img alt="image" src="../_images/单目标检测.png" />
-<figcaption>
-<p><span class="caption-text">image</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
-</figcaption>
+<figure class="align-default">
+<img alt="../_images/单目标检测.png" src="../_images/单目标检测.png" />
 </figure>
 <p>多目标检测就像下面这张图，识别图中的多个目标，在下图中分别用红色的框框出来了猫和绿色的框框出来了狗。多目标检测通常比单目标检测更难，因为它需要同时处理多个目标。但是，多目标检测在很多场景中都是必要的。</p>
 <figure class="align-default">
