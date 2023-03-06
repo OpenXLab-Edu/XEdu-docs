@@ -61,9 +61,9 @@ MMEdu内置了一个`convert`函数实现了一键式模型转换，转换前先
 
   分类的标签文件、待转换的模型权重文件。
 
-- 需要配置四个信息：
+- 需要配置三个信息：
 
-  待转换的模型权重文件（`checkpoint`），图片分类的类别数量（`model.num_classes`），分类标签信息文件（`class_path`）和输出的文件（`out_file`）。
+  待转换的模型权重文件（`checkpoint`），图片分类的类别数量（`model.num_classes`）和输出的文件（`out_file`）。
 
 - 模型转换的典型代码：
 
@@ -73,7 +73,7 @@ model = cls(backbone='MobileNet')
 model.num_classes = 2
 checkpoint = 'checkpoints/cls_model/CatsDog/best_accuracy_top-1_epoch_2.pth'
 out_file="out_file/catdog.onnx"
-model.convert(checkpoint=checkpoint, backend="ONNX", out_file=out_file, class_path=class_path)
+model.convert(checkpoint=checkpoint, backend="ONNX", out_file=out_file)
 ```
 
 这段代码是完成分类模型的转换，接下来对为您`model.convert`函数的各个参数：
@@ -84,7 +84,6 @@ model.convert(checkpoint=checkpoint, backend="ONNX", out_file=out_file, class_pa
 
 `out_file`：模型转换后的输出文件路径。
 
-`class_path`：模型输入的类别文件路径。
 
 类似的，目标检测模型转换的示例代码如下：
 
@@ -94,7 +93,7 @@ model = det(backbone='SSD_Lite')
 model.num_classes = 80
 checkpoint = 'checkpoints/COCO-80/ssdlite.pth'
 out_file="out_file/COCO-80.onnx"
-model.convert(checkpoint=checkpoint, backend="ONNX", out_file=out_file, class_path=class_path)
+model.convert(checkpoint=checkpoint, backend="ONNX", out_file=out_file)
 ```
 
 现在，让我们从“[从零开始训练猫狗识别模型并完成模型转换](https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&sc=635638d69ed68060c638f979#public)”项目入手，见识一下使用MMEdu工具完成从模型训练到模型部署的基本流程吧！
@@ -124,9 +123,8 @@ model.train(epochs=5, checkpoint='checkpoints/pretrain_model/mobilenet_v2.pth' ,
 from MMEdu import MMClassification as cls
 model = cls(backbone='MobileNet')
 checkpoint = 'checkpoints/cls_model/CatsDog1/best_accuracy_top-1_epoch_1.pth'
-class_path = '/data/TC4V0D/CatsDogsSample/classes.txt'
 img_path = '/data/TC4V0D/CatsDogsSample/test_set/cat/cat0.jpg'
-result = model.inference(image=img_path, show=True, class_path=class_path,checkpoint = checkpoint,device='cuda')
+result = model.inference(image=img_path, show=True, checkpoint = checkpoint,device='cuda')
 x = model.print_result(result)
 print('标签（序号）为：',x[0]['标签'])
 if x[0]['标签'] == 0:
@@ -142,9 +140,8 @@ from MMEdu import MMClassification as cls
 model = cls(backbone='MobileNet')
 checkpoint = 'checkpoints/cls_model/CatsDog1/best_accuracy_top-1_epoch_1.pth'
 model.num_classes = 2
-class_path = '/data/TC4V0D/CatsDogsSample/classes.txt'
 out_file='out_file/cats_dogs.onnx'
-model.convert(checkpoint=checkpoint, backend="ONNX", out_file=out_file, class_path=class_path)
+model.convert(checkpoint=checkpoint, backend="ONNX", out_file=out_file)
 ```
 
 此时项目文件中的out_file文件夹下便生成了模型转换后生成的两个文件，可打开查看。一个是ONNX模型权重，一个是示例代码，示例代码稍作改动即可运行（需配合BaseData.py的BaseDT库）。
