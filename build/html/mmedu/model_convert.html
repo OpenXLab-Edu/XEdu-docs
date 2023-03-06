@@ -28,11 +28,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -61,12 +65,12 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#what">What：什么现象与成果</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id6">先看看转换后的精度测试结果</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id10">再看看在边、端设备上的测试结果</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">精度测试结果</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">边、端设备测试结果</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id20">多模态交互</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id21">更多模型部署项目</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id23">多模态交互</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id24">更多模型部署项目</a></li>
 </ul>
 </li>
 </ul>
@@ -93,9 +97,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../mmedu.html">计算机视觉库MMEdu</a> &raquo;</li>
-      <li>“最后一公里”—XEdu助力AI模型部署</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../mmedu.html">计算机视觉库MMEdu</a></li>
+      <li class="breadcrumb-item active">“最后一公里”—XEdu助力AI模型部署</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/mmedu/model_convert.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -123,6 +127,8 @@
 <p>初学新知识，我们总会有困惑与畏难，好奇这项技术能否为我所用、产生效益，担心过程是否困难，付出与收获不成正比。没有关系！请让自己的思考凝聚成三个层面，即<code class="docutils literal notranslate"><span class="pre">黄金圈法则：Why、How、What</span></code>，来从如下的行文中去寻找答案。</p>
 <p>希望通过本系列教程，带领大家学会如何把自己使用<code class="docutils literal notranslate"><span class="pre">MMEdu</span></code>训练的计算机视觉任务<code class="docutils literal notranslate"><span class="pre">SOTA模型</span></code>部署到<code class="docutils literal notranslate"><span class="pre">ONNXRuntime</span></code>、<code class="docutils literal notranslate"><span class="pre">NCNN</span></code>等各个推理引擎上。我们默认大家熟悉
 Python 语言，除此之外不需要了解任何模型部署的知识。</p>
+<p><strong>行空板上部署MMEdu训练模型效果示例：</strong></p>
+<img alt="image" src="../_images/部署演示.gif" />
 <section id="why">
 <h2>Why：为什么<a class="headerlink" href="#why" title="Permalink to this headline"></a></h2>
 <section id="id1">
@@ -177,9 +183,7 @@ PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架
 </ol>
 </div>
 <p>经过工业界和学术界数年的探索，结合<code class="docutils literal notranslate"><span class="pre">XEdu</span></code>的工具，展示模型部署一条流行的流水线：</p>
-<figure class="align-default">
-<img alt="../_images/XEdu模型部署全链路pipeline.JPG" src="../_images/XEdu模型部署全链路pipeline.JPG" />
-</figure>
+<img alt="image" src="../_images/XEdu模型部署全链路pipeline.JPG" />
 <p>这一条流水线解决了模型部署中的两大问题：使用对接深度学习框架和推理引擎的中间表示，开发者不必担心如何在新环境中运行各个复杂的框架；通过中间表示的网络结构优化和推理引擎对运算的底层优化，模型的运算效率大幅提升。</p>
 <section id="mmedu">
 <h3>用MMEdu进行模型转换<a class="headerlink" href="#mmedu" title="Permalink to this headline"></a></h3>
@@ -189,15 +193,15 @@ PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架
 <p>分类的标签文件、待转换的模型权重文件。</p>
 </li>
 <li><p>需要配置三个信息：</p>
-<p>待转换的模型权重文件（<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>），图片分类的类别数量（model.num_classes）和输出的文件（<code class="docutils literal notranslate"><span class="pre">out_file</span></code>）。</p>
+<p>待转换的模型权重文件（<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>），图片分类的类别数量（<code class="docutils literal notranslate"><span class="pre">model.num_classes</span></code>）和输出的文件（<code class="docutils literal notranslate"><span class="pre">out_file</span></code>）。</p>
 </li>
 <li><p>模型转换的典型代码：</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
 <span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;MobileNet&#39;</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;latest.pth&#39;</span>
-<span class="n">out_file</span><span class="o">=</span><span class="s2">&quot;out_file/cat_dog.onnx&quot;</span>
+<span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/cls_model/CatsDog/best_accuracy_top-1_epoch_2.pth&#39;</span>
+<span class="n">out_file</span><span class="o">=</span><span class="s2">&quot;out_file/catdog.onnx&quot;</span>
 <span class="n">model</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;ONNX&quot;</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -211,11 +215,9 @@ PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架
 <span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">80</span>
 <span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/COCO-80/ssdlite.pth&#39;</span>
 <span class="n">out_file</span><span class="o">=</span><span class="s2">&quot;out_file/COCO-80.onnx&quot;</span>
-<span class="n">model</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;ONNX&quot;</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="n">out_file</span><span class="p">,)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;ONNX&quot;</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
 </pre></div>
 </div>
-<section id="id5">
-<h4>完成第一个模型转换，开始！<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h4>
 <p>现在，让我们从“<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&amp;sc=635638d69ed68060c638f979#public">从零开始训练猫狗识别模型并完成模型转换</a>”项目入手，见识一下使用MMEdu工具完成从模型训练到模型部署的基本流程吧！</p>
 <p><strong>1.准备数据集</strong></p>
 <p>思考自己想要解决的分类问题后，首先收集数据并整理好数据集，如想要解决猫狗识别问题需准备猫狗数据集。</p>
@@ -234,9 +236,8 @@ PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
 <span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;MobileNet&#39;</span><span class="p">)</span>
 <span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/cls_model/CatsDog1/best_accuracy_top-1_epoch_1.pth&#39;</span>
-<span class="n">class_path</span> <span class="o">=</span> <span class="s1">&#39;/data/TC4V0D/CatsDogsSample/classes.txt&#39;</span>
 <span class="n">img_path</span> <span class="o">=</span> <span class="s1">&#39;/data/TC4V0D/CatsDogsSample/test_set/cat/cat0.jpg&#39;</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">img_path</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">class_path</span><span class="o">=</span><span class="n">class_path</span><span class="p">,</span><span class="n">checkpoint</span> <span class="o">=</span> <span class="n">checkpoint</span><span class="p">,</span><span class="n">device</span><span class="o">=</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">img_path</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">checkpoint</span> <span class="o">=</span> <span class="n">checkpoint</span><span class="p">,</span><span class="n">device</span><span class="o">=</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">print_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;标签（序号）为：&#39;</span><span class="p">,</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;标签&#39;</span><span class="p">])</span>
 <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;标签&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -250,13 +251,143 @@ PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架
 <span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;MobileNet&#39;</span><span class="p">)</span>
 <span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/cls_model/CatsDog1/best_accuracy_top-1_epoch_1.pth&#39;</span>
 <span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">class_path</span> <span class="o">=</span> <span class="s1">&#39;/data/TC4V0D/CatsDogsSample/classes.txt&#39;</span>
 <span class="n">out_file</span><span class="o">=</span><span class="s1">&#39;out_file/cats_dogs.onnx&#39;</span>
-<span class="n">model</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;ONNX&quot;</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="n">out_file</span><span class="p">,</span> <span class="n">class_path</span><span class="o">=</span><span class="n">class_path</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;ONNX&quot;</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>此时项目文件中的out_file文件夹下便生成了模型转换后生成的两个文件，可打开查看。一个是ONNX模型权重，一个是示例代码，示例代码稍作改动即可运行（需配合BaseData.py的BaseDT库）。</p>
-<p><strong>5.模型部署</strong></p>
+<p><strong>5.模型转换在线版</strong></p>
+<p>除了模型转换本地版，MMDeploy还推出了模型转换工具网页版本，支持更多后端推理框架，具体使用步骤如下。</p>
+<ul class="simple">
+<li><p>点击<a class="reference external" href="https://platform.openmmlab.com/deploee">MMDeploy硬件模型库</a>，后选择模型转换</p></li>
+</ul>
+<img alt="image" src="../_images/网页版使用步骤1.png" />
+<ul class="simple">
+<li><p>点击新建转换任务</p></li>
+</ul>
+<img alt="image" src="../_images/网页版使用步骤2.png" />
+<ul class="simple">
+<li><p>选择需要转换的模型类型、模型训练配置，并点击<code class="docutils literal notranslate"><span class="pre">上传模型</span></code>上传本地训练好的.pth权重文件，具体的选项如下表所示</p></li>
+</ul>
+<img alt="image" src="../_images/网页版使用步骤3.png" />
+<table class="docutils align-default">
+<thead>
+  <tr>
+    <th rowspan="2">MMEdu模型名称</th>
+    <th rowspan="2">功能</th>
+    <th rowspan="2">OpenMMlab算法</th>
+    <th rowspan="10">模型训练配置</th>
+  </tr>
+</thead>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">MobileNet</td>
+    <td>图像分类</td>
+    <td>mmcls v1.0.0rc5</td>
+    <td>configs/mobilenet_v2/mobilenet-v2_8xb32_in1k.py</td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">RegNet</td>
+    <td>图像分类</td>
+    <td>mmcls v1.0.0rc5</td>
+    <td>configs/regnet/regnetx-400mf_8xb128_in1k.py</td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">RepVGG</td>
+    <td>图像分类</td>
+    <td>mmcls v1.0.0rc5</td>
+    <td>configs/repvgg/deploy/repvgg-A0_deploy_4xb64-coslr-120e_in1k.py</td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">ResNeXt</td>
+    <td>图像分类</td>
+    <td>mmcls v1.0.0rc5</td>
+    <td>configs/resnext/resnext50-32x4d_8xb32_in1k.py</td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">ResNet18</td>
+    <td>图像分类</td>
+    <td>mmcls v1.0.0rc5</td>
+    <td>configs/resnet/resnet18_8xb32_in1k.py</td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">ResNet50</td>
+    <td>图像分类</td>
+    <td>mmcls v1.0.0rc5</td>
+    <td>configs/resnet/resnet50_8xb32_in1k.py</td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">ShuffleNet_v2</td>
+    <td>图像分类</td>
+    <td>mmcls v1.0.0rc5</td>
+    <td>configs/shufflenet_v2/shufflenet-v2-1x_16xb64_in1k.py</td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">VGG</td>
+    <td>图像分类</td>
+    <td>mmcls v1.0.0rc5</td>
+    <td>configs/vgg/vgg19_8xb32_in1k.py</td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">FasterRCNN</td>
+    <td>目标检测</td>
+    <td>mmdet-det v3.0.0rc5</td>
+    <td>configs/faster_rcnn/faster_rcnn_r50_fpn_1x_coco.py</td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">Mask_RCNN</td>
+    <td>目标检测</td>
+    <td>mmdet-det v3.0.0rc5</td>
+    <td>configs/mask_rcnn/mask_rcnn_r50_fpn_1x_coco.py</td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">SSD_Lite</td>
+    <td>目标检测</td>
+    <td>mmdet-det v3.0.0rc5</td>
+    <td>configs/ssd/ssdlite_mobilenetv2_scratch_600e_coco.py</td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">Yolov3</td>
+    <td>目标检测</td>
+    <td>mmdet-det v3.0.0rc5</td>
+    <td>configs/yolo/yolov3_d53_320_273e_coco.py</td>
+  </tr>
+</tbody>
+</table><ul class="simple">
+<li><p>选择需要的目标runtime，可选的有<code class="docutils literal notranslate"><span class="pre">ncnn</span></code>,<code class="docutils literal notranslate"><span class="pre">ort1.8.1(onnxruntime)</span></code>,<code class="docutils literal notranslate"><span class="pre">openvino</span></code>等，点击提交任务</p></li>
+</ul>
+<img alt="image" src="../_images/网页版使用步骤4.png" />
+<ul class="simple">
+<li><p>点击提交任务后，状态会变为排队中，或处理中，如果转换失败会提示错误日志，根据错误日志提示修改，像下图错误的原因是使用ResNet50（分类）的权重，可对应的OpenMMLab算法误选为了mmdet（检测）的，所以提示的错误是找不到配置文件</p></li>
+</ul>
+<img alt="image" src="../_images/网页版使用步骤5.png" />
+<ul class="simple">
+<li><p>转换成功后，点击<code class="docutils literal notranslate"><span class="pre">下载模型</span></code>即可使用</p></li>
+</ul>
+<img alt="image" src="../_images/网页版使用步骤6.png" />
+<p><strong>6.模型部署</strong></p>
 <ul>
 <li><p>硬件上需安装的库：</p>
 <p>onnxruntime</p>
@@ -290,15 +421,77 @@ PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;这是小猫，喵喵喵！&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
+<p><strong>7.代码规范性</strong></p>
+<p>为了便于部署代码的理解，我们提供了不同后端推理框架下的示例代码，以供用户参考使用</p>
+<p><strong>ONNXRuntime</strong></p>
+<ul class="simple">
+<li><p>图像分类</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">onnxruntime</span> <span class="k">as</span> <span class="nn">rt</span>
+<span class="kn">from</span> <span class="nn">BaseDT.data_image</span> <span class="kn">import</span> <span class="n">ImageData</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+
+<span class="n">class_names</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">def</span> <span class="nf">infer</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">pth</span><span class="p">,</span> <span class="n">backbone</span><span class="p">):</span>
+    <span class="n">sess</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">InferenceSession</span><span class="p">(</span><span class="n">pth</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">input_name</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">get_inputs</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
+    <span class="n">out_name</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">get_outputs</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="n">ImageData</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">backbone</span><span class="o">=</span><span class="n">backbone</span><span class="p">)</span>
+    <span class="n">input_data</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">()</span>
+    <span class="n">pred_onx</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">out_name</span><span class="p">],</span> <span class="p">{</span><span class="n">input_name</span><span class="p">:</span> <span class="n">input_data</span><span class="p">})</span>
+    <span class="n">ort_output</span> <span class="o">=</span> <span class="n">pred_onx</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">ort_output</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="n">ort_output</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">idx</span><span class="p">]]</span>
+
+
+<span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ret</span><span class="p">,</span> <span class="n">img</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">backbone</span> <span class="o">=</span> <span class="s1">&#39;MobileNet&#39;</span> <span class="c1">#推理模型</span>
+<span class="n">pth</span> <span class="o">=</span> <span class="s1">&#39;cls/checkpoints/mobilenetv2.onnx&#39;</span> <span class="c1">#权重文件</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">infer</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">pth</span><span class="p">,</span> <span class="n">backbone</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;result:&#39;</span> <span class="o">+</span> <span class="n">class_names</span><span class="p">[</span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+</span> <span class="s1">&#39; , and acc:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>目标检测</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">onnxruntime</span> <span class="k">as</span> <span class="nn">rt</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">from</span> <span class="nn">BaseDT.data_image</span> <span class="kn">import</span> <span class="n">ImageData</span>
+<span class="kn">from</span> <span class="nn">BaseDT.plot</span> <span class="kn">import</span> <span class="n">imshow_det_bboxes</span>
+
+<span class="n">class_names</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">def</span> <span class="nf">infer</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">pth</span><span class="p">,</span> <span class="n">backbone</span><span class="p">):</span>
+    <span class="n">sess</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">InferenceSession</span><span class="p">(</span><span class="n">pth</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">input_name</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">get_inputs</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
+    <span class="n">output_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">o</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">sess</span><span class="o">.</span><span class="n">get_outputs</span><span class="p">()]</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="n">ImageData</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">backbone</span><span class="o">=</span><span class="n">backbone</span><span class="p">)</span>
+    <span class="n">input_data</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">()</span>
+    <span class="n">pred_onx</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">output_names</span><span class="p">,</span> <span class="p">{</span><span class="n">input_name</span><span class="p">:</span> <span class="n">input_data</span><span class="p">})</span>
+    <span class="n">boxes</span> <span class="o">=</span> <span class="n">pred_onx</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">pred_onx</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">boxes</span><span class="p">,</span><span class="n">labels</span><span class="p">]</span>
+
+<span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ret</span><span class="p">,</span> <span class="n">img</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">backbone</span> <span class="o">=</span> <span class="s1">&#39;SSD_Lite&#39;</span> <span class="c1">#推理模型</span>
+<span class="n">pth</span> <span class="o">=</span> <span class="s1">&#39;det/checkpoints/coco.onnx&#39;</span> <span class="c1">#权重文件</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">infer</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">pth</span><span class="p">,</span> <span class="n">backbone</span><span class="p">)</span>
+<span class="n">imshow_det_bboxes</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">bboxes</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">labels</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">class_names</span> <span class="o">=</span> <span class="n">class_names</span><span class="p">,</span> <span class="n">score_thr</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">)</span> <span class="c1">#根据需求修改阈值score_thr</span>
+<span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+</pre></div>
+</div>
 </section>
 </section>
 <section id="what">
 <h2>What：什么现象与成果<a class="headerlink" href="#what" title="Permalink to this headline"></a></h2>
+<section id="id5">
+<h3>精度测试结果<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
 <section id="id6">
-<h3>先看看转换后的精度测试结果<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
-<section id="id7">
-<h4>软硬件环境<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h4>
+<h4>软硬件环境<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h4>
 <ul class="simple">
 <li><p>操作系统：Ubuntu 16.04</p></li>
 <li><p>系统位数：64</p></li>
@@ -308,111 +501,164 @@ PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架
 <li><p>数据处理工具：BaseDT == 0.0.1</p></li>
 </ul>
 </section>
-<section id="id8">
-<h4>配置<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h4>
+<section id="id7">
+<h4>配置<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h4>
 <ul class="simple">
 <li><p>静态图导出</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">batch</span></code>大小为1</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">BaseDT</span></code>内置<code class="docutils literal notranslate"><span class="pre">ImageData</span></code>工具进行数据预处理</p></li>
 </ul>
 </section>
-<section id="id9">
-<h4>精度测试结果汇总<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h4>
+<section id="id8">
+<h4>精度测试结果汇总<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h4>
 <ul class="simple">
 <li><p>图像分类</p></li>
 </ul>
-<table class="docutils align-default"><thead><tr><th rowspan="2"><p>模型</p>
-</th><th rowspan="2"><p>数据集</p>
-</th><th rowspan="1" colspan="2"><p>权重大小</p>
-</th><th rowspan="1" colspan="2"><p>精度（TOP-1）</p>
-</th><th rowspan="1" colspan="2"><p>精度（TOP-5）</p>
-</th></tr><tr><th colspan="1"><p>FP32</p>
-</th><th colspan="1"><p>INT8</p>
-</th><th colspan="1"><p>FP32</p>
-</th><th colspan="1"><p>INT8</p>
-</th><th colspan="1"><p>FP32</p>
-</th><th colspan="1"><p>INT8</p>
-</th></tr></thead><tbody align="center"><tr><td class="tg-zk71"><p>MobileNet</p>
-</td><td><p>ImageNet</p>
-</td><td><p>13.3 MB</p>
-</td><td><p>3.5 MB</p>
-</td><td><p>70.94%</p>
-</td><td><p>68.30%</p>
-</td><td><p>89.99%</p>
-</td><td><p>88.44%</p>
-</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>ResNet18</p>
-</td><td><p>ImageNet</p>
-</td><td><p>44.7 MB</p>
-</td><td></td><td><p>69.93%</p>
-</td><td></td><td><p>89.29%</p>
-</td><td></td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>ResNet50</p>
-</td><td><p>ImageNet</p>
-</td><td><p>97.8 MB</p>
-</td><td><p>24.6 MB</p>
-</td><td><p>74.93%</p>
-</td><td><p>74.77%</p>
-</td><td><p>92.38%</p>
-</td><td><p>92.32%</p>
-</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>ShuffleNet_v2</p>
-</td><td><p>ImageNet</p>
-</td><td><p>9.2 MB</p>
-</td><td><p>2.28 MB</p>
-</td><td><p>69.36%</p>
-</td><td><p>66.15%</p>
-</td><td><p>88.32%</p>
-</td><td><p>86.34%</p>
-</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>VGG</p>
-</td><td><p>ImageNet</p>
-</td><td><p>527.8 MB</p>
-</td><td><p>101.1 MB</p>
-</td><td><p>72.62%</p>
-</td><td><p>72.32%</p>
-</td><td><p>91.14%</p>
-</td><td><p>90.97%</p>
-</td></tr></tbody></table><div class="admonition note">
+<table class="docutils align-default">
+    <thead>
+  <tr>
+    <th rowspan="2">模型</th>
+    <th rowspan="2">数据集</th>
+    <th rowspan="1" colspan="2">权重大小</th>
+    <th rowspan="1" colspan="2">精度（TOP-1）</th>
+    <th rowspan="1" colspan="2">精度（TOP-5）</th>
+  </tr>
+  <tr>
+    <th colspan="1">FP32</th>
+    <th colspan="1">INT8</th>
+    <th colspan="1">FP32</th>
+    <th colspan="1">INT8</th>
+    <th colspan="1">FP32</th>
+    <th colspan="1">INT8</th>
+  </tr>
+</thead>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">MobileNet</td>
+    <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/mobilenet/model/mobilenetv2-10.onnx">13.3 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/mobilenet/model/mobilenetv2-12-int8.onnx">3.5 MB</a> </td>
+    <td>70.94%</td>
+    <td>68.30%</td>
+    <td>89.99%</td>
+    <td>88.44%</td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">ResNet18</td>
+    <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/resnet/model/resnet18-v1-7.onnx">44.7 MB</a></td>
+    <td></td>
+    <td>69.93%</td>
+    <td></td>
+    <td>89.29%</td>
+    <td></td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">ResNet50</td>
+    <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/resnet/model/resnet50-v1-7.onnx">97.8 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/resnet/model/resnet50-v1-12-int8.onnx">24.6 MB</a></td>
+    <td>74.93%</td>
+    <td>74.77%</td>
+    <td>92.38%</td>
+    <td>92.32%</td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">ShuffleNet_v2</td>
+    <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/shufflenet/model/shufflenet-v2-10.onnx">9.2 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/shufflenet/model/shufflenet-v2-12-int8.onnx">2.28 MB</a></td>
+    <td>69.36%</td>
+    <td>66.15%</td>
+    <td>88.32%</td>
+    <td>86.34%</td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">VGG</td>
+    <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/vgg/model/vgg16-7.onnx">527.8 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/vgg/model/vgg16-12-int8.onnx">101.1 MB</a></td>
+    <td>72.62%</td>
+    <td>72.32%</td>
+    <td>91.14%</td>
+    <td>90.97%</td>
+  </tr>
+</tbody>
+</table><div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><em>ImageNet
 数据集：ImageNet项目是一个用于视觉对象识别软件研究的大型可视化数据库。ImageNet项目每年举办一次软件比赛，即``ImageNet大规模视觉识别挑战赛``（ILSVRC），软件程序竞相正确分类检测物体和场景。
-ImageNet挑战使用了一个“修剪”的1000个非重叠类的列表。2012年在解决ImageNet挑战方面取得了巨大的突破</em></p>
-<p><em>准确度（Top-1）：排名第一的类别与实际结果相符的准确率</em></p>
-<p><em>准确度（Top-5）：排名前五的类别包含实际结果的准确率</em></p>
+ImageNet挑战使用了一个“修剪”的1000个非重叠类的列表。2012年在解决ImageNet挑战方面取得了巨大的突破。</em></p>
+<p><em>准确度（Top-1）：排名第一的类别与实际结果相符的准确率。</em></p>
+<p><em>准确度（Top-5）：排名前五的类别包含实际结果的准确率。</em></p>
 </div>
 <ul class="simple">
 <li><p>目标检测</p></li>
 </ul>
-<table class="docutils align-default"><thead><tr><th rowspan="2"><p>模型</p>
-</th><th rowspan="2"><p>数据集</p>
-</th><th rowspan="1" colspan="2"><p>权重大小</p>
-</th><th rowspan="1" colspan="2"><p>精度（mAP）</p>
-</th></tr><tr><th colspan="1"><p>FP32</p>
-</th><th colspan="1"><p>INT8</p>
-</th><th colspan="1"><p>FP32</p>
-</th><th colspan="1"><p>INT8</p>
-</th></tr></thead><tbody align="center"><tr><td class="tg-zk71"><p>SSD_Lite</p>
-</td><td><p>COCO</p>
-</td><td><p>28.1 MB</p>
-</td><td><p>8.5 MB</p>
-</td><td><p>0.2303</p>
-</td><td><p>0.2285</p>
-</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>FasterRCNN</p>
-</td><td><p>COCO</p>
-</td><td><p>168.5 MB</p>
-</td><td><p>42.6 MB</p>
-</td><td><p>0.3437</p>
-</td><td><p>0.3399</p>
-</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>Mask_RCNN</p>
-</td><td><p>COCO</p>
-</td><td><p>169.7 MB</p>
-</td><td><p>45.9 MB</p>
-</td><td><p>0.3372</p>
-</td><td><p>0.3340</p>
-</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>Yolov3</p>
-</td><td><p>COCO</p>
-</td><td><p>237 MB</p>
-</td><td><p>61 MB</p>
-</td><td><p>0.2874</p>
-</td><td><p>0.2688</p>
-</td></tr></tbody></table><div class="admonition note">
+<table class="docutils align-default">
+    <thead>
+  <tr>
+    <th rowspan="2">模型</th>
+    <th rowspan="2">数据集</th>
+    <th rowspan="1" colspan="2">权重大小</th>
+    <th rowspan="1" colspan="2">精度（mAP）</th>
+  </tr>
+  <tr>
+    <th colspan="1">FP32</th>
+    <th colspan="1">INT8</th>
+    <th colspan="1">FP32</th>
+    <th colspan="1">INT8</th>
+  </tr>
+</thead>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">SSD_Lite</td>
+    <td><a href="https://cocodataset.org/#home">COCO</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/ssd-mobilenetv1/model/ssd_mobilenet_v1_12.onnx">28.1 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/ssd-mobilenetv1/model/ssd_mobilenet_v1_12-int8.onnx">8.5 MB</a> </td>
+    <td>0.2303</td>
+    <td>0.2285</td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">FasterRCNN</td>
+    <td><a href="https://cocodataset.org/#home">COCO</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/faster-rcnn/model/FasterRCNN-12.onnx">168.5 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/faster-rcnn/model/FasterRCNN-12-int8.onnx">42.6 MB</a></td>
+    <td>0.3437</td>
+    <td>0.3399</td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">Mask_RCNN</td>
+    <td><a href="https://cocodataset.org/#home">COCO</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/mask-rcnn/model/MaskRCNN-12.onnx">169.7 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/mask-rcnn/model/MaskRCNN-12-int8.onnx">45.9 MB</a></td>
+    <td>0.3372</td>
+    <td>0.3340</td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">Yolov3</td>
+    <td><a href="https://cocodataset.org/#home">COCO</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/yolov3/model/yolov3-12.onnx">237 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/yolov3/model/yolov3-12-int8.onnx">61 MB</a></td>
+    <td>0.2874</td>
+    <td>0.2688</td>
+  </tr>
+</tbody>
+</table><div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><em>COCO 数据集: MS COCO的全称是Microsoft Common Objects in
 Context，起源于微软于2014年出资标注的Microsoft
@@ -427,29 +673,27 @@ Precision)：平均精度，在不同recall下的最高precision的均值(一般
 </div>
 </section>
 </section>
-<section id="id10">
-<h3>再看看在边、端设备上的测试结果<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
-<section id="id11">
-<h4>行空板测试<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h4>
+<section id="id9">
+<h3>边、端设备测试结果<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
+<section id="pc">
+<h4>PC机测试<a class="headerlink" href="#pc" title="Permalink to this headline"></a></h4>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><em>行空板,
-青少年Python教学用开源硬件，解决Python教学难和使用门槛高的问题，旨在推动Python教学在青少年中的普及。官网：https://www.dfrobot.com.cn/</em></p>
+<p><em>用于模型训练的机器，性能较优，常见的操作系统有Windows和Linux</em></p>
 </div>
-<section id="id12">
-<span id="id13"></span><h5>软硬件环境<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h5>
+</section>
+<section id="id10">
+<span id="id11"></span><h4>软硬件环境<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h4>
 <ul class="simple">
-<li><p>操作系统：Linux</p></li>
+<li><p>操作系统：Ubuntu 16.04</p></li>
 <li><p>系统位数：64</p></li>
-<li><p>处理器：4核单板AArch64 1.20GHz</p></li>
-<li><p>内存：512MB</p></li>
-<li><p>硬盘：16GB</p></li>
+<li><p>处理器：Intel i7-11700 &#64; 2.50GHz * 16</p></li>
+<li><p>显卡：GeForce GTX 1660Ti</p></li>
 <li><p>推理框架：ONNXRuntime == 1.13.1</p></li>
 <li><p>数据处理工具：BaseDT == 0.0.1</p></li>
 </ul>
-</section>
-<section id="id14">
-<span id="id15"></span><h5>配置<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h5>
+<section id="id12">
+<span id="id13"></span><h5>配置<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h5>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">静态图</span></code>导出</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">batch</span></code>大小为1</p></li>
@@ -460,85 +704,322 @@ Precision)：平均精度，在不同recall下的最高precision的均值(一般
 <ul class="simple">
 <li><p>图像分类</p></li>
 </ul>
-<table class="docutils align-default"><thead><tr><th rowspan="2"><p>模型</p>
-</th><th rowspan="2"><p>数据集</p>
-</th><th rowspan="1" colspan="2"><p>权重大小</p>
-</th><th rowspan="1" colspan="2"><p>吞吐量 (图片数/每秒)</p>
-</th></tr><tr><th colspan="1"><p>FP32</p>
-</th><th colspan="1"><p>INT8</p>
-</th><th colspan="1"><p>FP32</p>
-</th><th colspan="1"><p>INT8</p>
-</th></tr></thead><tbody align="center"><tr><td class="tg-zk71"><p>MobileNet</p>
-</td><td><p>ImageNet</p>
-</td><td><p>13.3 MB</p>
-</td><td><p>3.5 MB</p>
-</td><td><p>1.77</p>
-</td><td><p>4.94</p>
-</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>ResNet18</p>
-</td><td><p>ImageNet</p>
-</td><td><p>44.7 MB</p>
-</td><td></td><td><p>0.46</p>
-</td><td></td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>ResNet50</p>
-</td><td><p>ImageNet</p>
-</td><td><p>97.8 MB</p>
-</td><td><p>24.6 MB</p>
-</td><td><p>0.22</p>
-</td><td><p>0.58</p>
-</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>ShuffleNet_v2</p>
-</td><td><p>ImageNet</p>
-</td><td><p>9.2 MB</p>
-</td><td><p>2.28 MB</p>
-</td><td><p>3.97</p>
-</td><td><p>8.51</p>
-</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>VGG</p>
-</td><td><p>ImageNet</p>
-</td><td><p>527.8 MB</p>
-</td><td><p>101.1 MB</p>
-</td><td><p>*</p>
-</td><td><p>*</p>
-</td></tr></tbody></table><div class="admonition note">
+<table class="docutils align-default">
+    <thead>
+  <tr>
+    <th rowspan="2">模型</th>
+    <th rowspan="2">数据集</th>
+    <th rowspan="1" colspan="2">权重大小</th>
+    <th rowspan="1" colspan="2">吞吐量 (图片数/每秒) </th>
+  </tr>
+  <tr>
+    <th colspan="1">FP32</th>
+    <th colspan="1">INT8</th>
+    <th colspan="1">FP32</th>
+    <th colspan="1">INT8</th>
+  </tr>
+</thead>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">MobileNet</td>
+    <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/mobilenet/model/mobilenetv2-10.onnx">13.3 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/mobilenet/model/mobilenetv2-12-int8.onnx">3.5 MB</a> </td>
+    <td>201</td>
+    <td>217</td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">ResNet18</td>
+    <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/resnet/model/resnet18-v1-7.onnx">44.7 MB</a></td>
+    <td></td>
+    <td>62</td>
+    <td></td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">ResNet50</td>
+    <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/resnet/model/resnet50-v1-7.onnx">97.8 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/resnet/model/resnet50-v1-12-int8.onnx">24.6 MB</a></td>
+    <td>29</td>
+    <td>43</td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">ShuffleNet_v2</td>
+    <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/shufflenet/model/shufflenet-v2-10.onnx">9.2 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/shufflenet/model/shufflenet-v2-12-int8.onnx">2.28 MB</a></td>
+    <td>244</td>
+    <td>278</td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">VGG</td>
+    <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/vgg/model/vgg16-7.onnx">527.8 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/vgg/model/vgg16-12-int8.onnx">101.1 MB</a></td>
+    <td>6</td>
+    <td>15</td>
+  </tr>
+</tbody>
+</table><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>吞吐量
+(图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现。</em></p>
+</div>
+<ul class="simple">
+<li><p>目标检测</p></li>
+</ul>
+<table class="docutils align-default">
+    <thead>
+   <tr>
+    <th rowspan="2">模型</th>
+    <th rowspan="2">数据集</th>
+    <th rowspan="1" colspan="2">权重大小</th>
+    <th rowspan="1" colspan="2">吞吐量 (图片数/每秒) </th>
+  </tr>
+  <tr>
+    <th colspan="1">FP32</th>
+    <th colspan="1">INT8</th>
+    <th colspan="1">FP32</th>
+    <th colspan="1">INT8</th>
+  </tr>
+</thead>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">SSD_Lite<sup>*</sup></td>
+    <td><a href="https://cocodataset.org/#home">COCO</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/ssd-mobilenetv1/model/ssd_mobilenet_v1_12.onnx">28.1 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/ssd-mobilenetv1/model/ssd_mobilenet_v1_12-int8.onnx">8.5 MB</a> </td>
+    <td>37</td>
+    <td>53</td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">SSD_Lite<sup>**</sup></td>
+    <td><a href="https://cocodataset.org/#home">COCO</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/ssd-mobilenetv1/model/ssd_mobilenet_v1_12.onnx">28.1 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/ssd-mobilenetv1/model/ssd_mobilenet_v1_12-int8.onnx">8.5 MB</a> </td>
+    <td></td>
+    <td></td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">FasterRCNN</td>
+    <td><a href="https://cocodataset.org/#home">COCO</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/faster-rcnn/model/FasterRCNN-12.onnx">168.5 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/faster-rcnn/model/FasterRCNN-12-int8.onnx">42.6 MB</a></td>
+    <td></td>
+    <td></td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">Mask_RCNN</td>
+    <td><a href="https://cocodataset.org/#home">COCO</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/mask-rcnn/model/MaskRCNN-12.onnx">169.7 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/mask-rcnn/model/MaskRCNN-12-int8.onnx">45.9 MB</a></td>
+    <td></td>
+    <td></td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">Yolov3</td>
+    <td><a href="https://cocodataset.org/#home">COCO</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/yolov3/model/yolov3-12.onnx">237 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/yolov3/model/yolov3-12-int8.onnx">61 MB</a></td>
+    <td>3</td>
+    <td>6</td>
+  </tr>
+</tbody>
+</table><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>*：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本。</p>
+<p>**：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite。</p>
+</div>
+</section>
+</section>
+<section id="id14">
+<h4>行空板测试<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>行空板,
+青少年Python教学用开源硬件，解决Python教学难和使用门槛高的问题，旨在推动Python教学在青少年中的普及。官网：https://www.dfrobot.com.cn/</em></p>
+</div>
+<section id="id15">
+<span id="id16"></span><h5>软硬件环境<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h5>
+<ul class="simple">
+<li><p>操作系统：Linux</p></li>
+<li><p>系统位数：64</p></li>
+<li><p>处理器：4核单板AArch64 1.20GHz</p></li>
+<li><p>内存：512MB</p></li>
+<li><p>硬盘：16GB</p></li>
+<li><p>推理框架：ONNXRuntime == 1.13.1</p></li>
+<li><p>数据处理工具：BaseDT == 0.0.1</p></li>
+</ul>
+</section>
+<section id="id17">
+<span id="id18"></span><h5>配置<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h5>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">静态图</span></code>导出</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">batch</span></code>大小为1</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BaseDT</span></code>内置<code class="docutils literal notranslate"><span class="pre">ImageData</span></code>工具进行数据预处理</p></li>
+<li><p>测试时，计算各个数据集中 10 张图片的平均耗时</p></li>
+</ul>
+<p>下面是我们环境中的测试结果：</p>
+<ul class="simple">
+<li><p>图像分类</p></li>
+</ul>
+<table class="docutils align-default">
+    <thead>
+  <tr>
+    <th rowspan="2">模型</th>
+    <th rowspan="2">数据集</th>
+    <th rowspan="1" colspan="2">权重大小</th>
+    <th rowspan="1" colspan="2">吞吐量 (图片数/每秒) </th>
+  </tr>
+  <tr>
+    <th colspan="1">FP32</th>
+    <th colspan="1">INT8</th>
+    <th colspan="1">FP32</th>
+    <th colspan="1">INT8</th>
+  </tr>
+</thead>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">MobileNet</td>
+    <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/mobilenet/model/mobilenetv2-10.onnx">13.3 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/mobilenet/model/mobilenetv2-12-int8.onnx">3.5 MB</a> </td>
+    <td>1.77</td>
+    <td>4.94</td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">ResNet18</td>
+    <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/resnet/model/resnet18-v1-7.onnx">44.7 MB</a></td>
+    <td></td>
+    <td>0.46</td>
+    <td></td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">ResNet50</td>
+    <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/resnet/model/resnet50-v1-7.onnx">97.8 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/resnet/model/resnet50-v1-12-int8.onnx">24.6 MB</a></td>
+    <td>0.22</td>
+    <td>0.58</td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">ShuffleNet_v2</td>
+    <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/shufflenet/model/shufflenet-v2-10.onnx">9.2 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/shufflenet/model/shufflenet-v2-12-int8.onnx">2.28 MB</a></td>
+    <td>3.97</td>
+    <td>8.51</td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">VGG</td>
+    <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/vgg/model/vgg16-7.onnx">527.8 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/vgg/model/vgg16-12-int8.onnx">101.1 MB</a></td>
+    <td>*</td>
+    <td>*</td>
+  </tr>
+</tbody>
+</table><div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><em>吞吐量
 (图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现</em>。</p>
 <p>*：不建议部署，单张图片推理的时间超过30s。</p>
 </div>
-<ul>
-<li><p>目标检测</p>
-<table class="docutils align-default"><thead><tr><th rowspan="2"><p>模型</p>
-</th><th rowspan="2"><p>数据集</p>
-</th><th rowspan="1" colspan="2"><p>权重大小</p>
-</th><th rowspan="1" colspan="2"><p>吞吐量 (图片数/每秒)</p>
-</th></tr><tr><th colspan="1"><p>FP32</p>
-</th><th colspan="1"><p>INT8</p>
-</th><th colspan="1"><p>FP32</p>
-</th><th colspan="1"><p>INT8</p>
-</th></tr></thead><tbody align="center"><tr><td class="tg-zk71"><p>SSD_Lite*</p>
-</td><td><p>COCO</p>
-</td><td><p>28.1 MB</p>
-</td><td><p>8.5 MB</p>
-</td><td><p>0.55</p>
-</td><td><p>1.30</p>
-</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>SSD_Lite**</p>
-</td><td><p>COCO</p>
-</td><td><p>28.1 MB</p>
-</td><td><p>8.5 MB</p>
-</td><td></td><td></td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>FasterRCNN</p>
-</td><td><p>COCO</p>
-</td><td><p>168.5 MB</p>
-</td><td><p>42.6 MB</p>
-</td><td></td><td></td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>Mask_RCNN</p>
-</td><td><p>COCO</p>
-</td><td><p>169.7 MB</p>
-</td><td><p>45.9 MB</p>
-</td><td></td><td></td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>Yolov3</p>
-</td><td><p>COCO</p>
-</td><td><p>237 MB</p>
-</td><td><p>61 MB</p>
-</td><td><p>0.026</p>
-</td><td><p>0.066</p>
-</td></tr></tbody></table></li>
+<ul class="simple">
+<li><p>目标检测</p></li>
 </ul>
-<div class="admonition note">
+<table class="docutils align-default">
+    <thead>
+   <tr>
+    <th rowspan="2">模型</th>
+    <th rowspan="2">数据集</th>
+    <th rowspan="1" colspan="2">权重大小</th>
+    <th rowspan="1" colspan="2">吞吐量 (图片数/每秒) </th>
+  </tr>
+  <tr>
+    <th colspan="1">FP32</th>
+    <th colspan="1">INT8</th>
+    <th colspan="1">FP32</th>
+    <th colspan="1">INT8</th>
+  </tr>
+</thead>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">SSD_Lite<sup>*</sup></td>
+    <td><a href="https://cocodataset.org/#home">COCO</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/ssd-mobilenetv1/model/ssd_mobilenet_v1_12.onnx">28.1 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/ssd-mobilenetv1/model/ssd_mobilenet_v1_12-int8.onnx">8.5 MB</a> </td>
+    <td>0.55</td>
+    <td>1.30</td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">SSD_Lite<sup>**</sup></td>
+    <td><a href="https://cocodataset.org/#home">COCO</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/ssd-mobilenetv1/model/ssd_mobilenet_v1_12.onnx">28.1 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/ssd-mobilenetv1/model/ssd_mobilenet_v1_12-int8.onnx">8.5 MB</a> </td>
+    <td></td>
+    <td></td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">FasterRCNN</td>
+    <td><a href="https://cocodataset.org/#home">COCO</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/faster-rcnn/model/FasterRCNN-12.onnx">168.5 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/faster-rcnn/model/FasterRCNN-12-int8.onnx">42.6 MB</a></td>
+    <td></td>
+    <td></td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">Mask_RCNN</td>
+    <td><a href="https://cocodataset.org/#home">COCO</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/mask-rcnn/model/MaskRCNN-12.onnx">169.7 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/mask-rcnn/model/MaskRCNN-12-int8.onnx">45.9 MB</a></td>
+    <td></td>
+    <td></td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">Yolov3</td>
+    <td><a href="https://cocodataset.org/#home">COCO</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/yolov3/model/yolov3-12.onnx">237 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/yolov3/model/yolov3-12-int8.onnx">61 MB</a></td>
+    <td>0.026</td>
+    <td>0.066</td>
+  </tr>
+</tbody>
+</table><div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>*：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本。</p>
 <p>**：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite。</p>
@@ -552,8 +1033,8 @@ Precision)：平均精度，在不同recall下的最高precision的均值(一般
 <p><em>Raspberry
 Pi。中文名为“树莓派”,简写为RPi，或者RasPi/RPi)是为学生计算机编程教育而设计，卡片式电脑，其系统基于Linux。</em></p>
 </div>
-<section id="id16">
-<span id="id17"></span><h5>软硬件环境<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h5>
+<section id="id19">
+<span id="id20"></span><h5>软硬件环境<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h5>
 <ul class="simple">
 <li><p>操作系统：Linux</p></li>
 <li><p>系统位数：32</p></li>
@@ -564,8 +1045,8 @@ Pi。中文名为“树莓派”,简写为RPi，或者RasPi/RPi)是为学生计�
 <li><p>数据处理工具：BaseDT == 0.0.1</p></li>
 </ul>
 </section>
-<section id="id18">
-<span id="id19"></span><h5>配置<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h5>
+<section id="id21">
+<span id="id22"></span><h5>配置<a class="headerlink" href="#id21" title="Permalink to this headline"></a></h5>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">静态图</span></code>导出</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">batch</span></code>大小为1</p></li>
@@ -576,105 +1057,169 @@ Pi。中文名为“树莓派”,简写为RPi，或者RasPi/RPi)是为学生计�
 <ul class="simple">
 <li><p>图像分类</p></li>
 </ul>
-<table class="docutils align-default"><thead><tr><th rowspan="2"><p>模型</p>
-</th><th rowspan="2"><p>数据集</p>
-</th><th rowspan="1" colspan="2"><p>权重大小</p>
-</th><th rowspan="1" colspan="2"><p>吞吐量 (图片数/每秒)</p>
-</th></tr><tr><th colspan="1"><p>FP32</p>
-</th><th colspan="1"><p>INT8</p>
-</th><th colspan="1"><p>FP32</p>
-</th><th colspan="1"><p>INT8</p>
-</th></tr></thead><tbody align="center"><tr><td class="tg-zk71"><p>MobileNet</p>
-</td><td><p>ImageNet</p>
-</td><td><p>13.3 MB</p>
-</td><td><p>3.5 MB</p>
-</td><td><p>6.45</p>
-</td><td></td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>ResNet18</p>
-</td><td><p>ImageNet</p>
-</td><td><p>44.7 MB</p>
-</td><td></td><td><p>3.20</p>
-</td><td></td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>ResNet50</p>
-</td><td><p>ImageNet</p>
-</td><td><p>97.8 MB</p>
-</td><td><p>24.6 MB</p>
-</td><td><p>1.48</p>
-</td><td><p>2.91</p>
-</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>ShuffleNet_v2</p>
-</td><td><p>ImageNet</p>
-</td><td><p>9.2 MB</p>
-</td><td><p>2.28 MB</p>
-</td><td><p>19.11</p>
-</td><td><p>10.85*</p>
-</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>VGG</p>
-</td><td><p>ImageNet</p>
-</td><td><p>527.8 MB</p>
-</td><td><p>101.1 MB</p>
-</td><td><p>0.43</p>
-</td><td><p>0.44</p>
-</td></tr></tbody></table><div class="admonition note">
+<table class="docutils align-default">
+    <thead>
+  <tr>
+    <th rowspan="2">模型</th>
+    <th rowspan="2">数据集</th>
+    <th rowspan="1" colspan="2">权重大小</th>
+    <th rowspan="1" colspan="2">吞吐量 (图片数/每秒) </th>
+  </tr>
+  <tr>
+    <th colspan="1">FP32</th>
+    <th colspan="1">INT8</th>
+    <th colspan="1">FP32</th>
+    <th colspan="1">INT8</th>
+  </tr>
+</thead>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">MobileNet</td>
+    <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/mobilenet/model/mobilenetv2-10.onnx">13.3 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/mobilenet/model/mobilenetv2-12-int8.onnx">3.5 MB</a> </td>
+    <td>6.45</td>
+    <td></td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">ResNet18</td>
+    <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/resnet/model/resnet18-v1-7.onnx">44.7 MB</a></td>
+    <td></td>
+    <td>3.20</td>
+    <td></td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">ResNet50</td>
+    <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/resnet/model/resnet50-v1-7.onnx">97.8 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/resnet/model/resnet50-v1-12-int8.onnx">24.6 MB</a></td>
+    <td>1.48</td>
+    <td>2.91</td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">ShuffleNet_v2</td>
+    <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/shufflenet/model/shufflenet-v2-10.onnx">9.2 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/shufflenet/model/shufflenet-v2-12-int8.onnx">2.28 MB</a></td>
+    <td>19.11</td>
+    <td>10.85<cup>*</cup></td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">VGG</td>
+    <td><a href="http://www.image-net.org/challenges/LSVRC/2012/">ImageNet</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/vgg/model/vgg16-7.onnx">527.8 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/classification/vgg/model/vgg16-12-int8.onnx">101.1 MB</a></td>
+    <td>0.43</td>
+    <td>0.44</td>
+  </tr>
+</tbody>
+</table><div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><em>吞吐量
-(图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现。</em></p>
-<p>*：量化后在树莓派上推理速度变慢。</p>
+(图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现</em>。</p>
+<p>*：不建议部署，单张图片推理的时间超过30s。</p>
 </div>
 <ul class="simple">
 <li><p>目标检测</p></li>
 </ul>
-<table class="docutils align-default"><thead><tr><th rowspan="2"><p>模型</p>
-</th><th rowspan="2"><p>数据集</p>
-</th><th rowspan="1" colspan="2"><p>权重大小</p>
-</th><th rowspan="1" colspan="2"><p>吞吐量 (图片数/每秒)</p>
-</th></tr><tr><th colspan="1"><p>FP32</p>
-</th><th colspan="1"><p>INT8</p>
-</th><th colspan="1"><p>FP32</p>
-</th><th colspan="1"><p>INT8</p>
-</th></tr></thead><tbody align="center"><tr><td class="tg-zk71"><p>SSD_Lite*</p>
-</td><td><p>COCO</p>
-</td><td><p>28.1 MB</p>
-</td><td><p>8.5 MB</p>
-</td><td><p>2.55</p>
-</td><td></td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>SSD_Lite**</p>
-</td><td><p>COCO</p>
-</td><td></td><td></td><td></td><td></td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>FasterRCNN</p>
-</td><td><p>COCO</p>
-</td><td><p>168.5 MB</p>
-</td><td><p>42.6 MB</p>
-</td><td></td><td></td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>Mask_RCNN</p>
-</td><td><p>COCO</p>
-</td><td><p>169.7 MB</p>
-</td><td><p>45.9 MB</p>
-</td><td></td><td></td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>Yolov3</p>
-</td><td><p>COCO</p>
-</td><td><p>237 MB</p>
-</td><td><p>61 MB</p>
-</td><td><p>0.21</p>
-</td><td><p>0.34</p>
-</td></tr></tbody></table><div class="admonition note">
+<table class="docutils align-default">
+    <thead>
+   <tr>
+    <th rowspan="2">模型</th>
+    <th rowspan="2">数据集</th>
+    <th rowspan="1" colspan="2">权重大小</th>
+    <th rowspan="1" colspan="2">吞吐量 (图片数/每秒) </th>
+  </tr>
+  <tr>
+    <th colspan="1">FP32</th>
+    <th colspan="1">INT8</th>
+    <th colspan="1">FP32</th>
+    <th colspan="1">INT8</th>
+  </tr>
+</thead>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">SSD_Lite<sup>*</sup></td>
+    <td><a href="https://cocodataset.org/#home">COCO</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/ssd-mobilenetv1/model/ssd_mobilenet_v1_12.onnx">28.1 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/ssd-mobilenetv1/model/ssd_mobilenet_v1_12-int8.onnx">8.5 MB</a> </td>
+    <td>2.55</td>
+    <td></td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">SSD_Lite<sup>**</sup></td>
+    <td><a href="https://cocodataset.org/#home">COCO</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/ssd-mobilenetv1/model/ssd_mobilenet_v1_12.onnx"></a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/ssd-mobilenetv1/model/ssd_mobilenet_v1_12-int8.onnx"></a></td>
+    <td></td>
+    <td></td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">FasterRCNN</td>
+    <td><a href="https://cocodataset.org/#home">COCO</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/faster-rcnn/model/FasterRCNN-12.onnx">168.5 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/faster-rcnn/model/FasterRCNN-12-int8.onnx">42.6 MB</a></td>
+    <td></td>
+    <td></td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">Mask_RCNN</td>
+    <td><a href="https://cocodataset.org/#home">COCO</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/mask-rcnn/model/MaskRCNN-12.onnx">169.7 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/mask-rcnn/model/MaskRCNN-12-int8.onnx">45.9 MB</a></td>
+    <td></td>
+    <td></td>
+  </tr>
+</tbody>
+<tbody align="center">
+  <tr>
+    <td class="tg-zk71">Yolov3</td>
+    <td><a href="https://cocodataset.org/#home">COCO</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/yolov3/model/yolov3-12.onnx">237 MB</a></td>
+    <td><a href="https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/yolov3/model/yolov3-12-int8.onnx">61 MB</a></td>
+    <td>0.21</td>
+    <td>0.34</td>
+  </tr>
+</tbody>
+</table><div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>*：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本。</p>
 <p>**：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite。</p>
 </div>
-<p>注：硬件测试模块持续更新中，如有更多硬件测试需求，请<a class="reference external" href="https://github.com/OpenXLab-Edu/XEdu-docs/issues">联系我们</a></p>
+<p>注：硬件测试模块持续更新中，如有更多硬件测试需求，请通过issue联系我们。</p>
 </section>
 </section>
 </section>
 </section>
-<section id="id20">
-<h2>多模态交互<a class="headerlink" href="#id20" title="Permalink to this headline"></a></h2>
+<section id="id23">
+<h2>多模态交互<a class="headerlink" href="#id23" title="Permalink to this headline"></a></h2>
 <p>回顾用AI解决真实问题的流程图，我们已经介绍了收集数据、训练模型、模型推理和应用部署。结合项目设计，我们还会去思考如何通过摄像头获得图像，如何控制灯光发亮，如何操纵舵机，如何设计显示界面UI等需要使用输入设备和输出设备等来实现的交互设计，即对<code class="docutils literal notranslate"><span class="pre">多模态交互</span></code>的考量。</p>
-<figure class="align-default">
-<img alt="../_images/用AI解决真实问题.JPG" src="../_images/用AI解决真实问题.JPG" />
-</figure>
+<img alt="image" src="../_images/用AI解决真实问题.JPG" />
 <p>更多传感器、执行器使用教程参见：<a class="reference external" href="https://wiki.dfrobot.com.cn/">DFRobot</a></p>
 </section>
-<section id="id21">
-<h2>更多模型部署项目<a class="headerlink" href="#id21" title="Permalink to this headline"></a></h2>
+<section id="id24">
+<h2>更多模型部署项目<a class="headerlink" href="#id24" title="Permalink to this headline"></a></h2>
 <p>猫狗分类小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63c3f52a1dd9517dffa1f513&amp;sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=63c3f52a1dd9517dffa1f513&amp;sc=62f34141bf4f550f3e926e0e#public</a></p>
-<p>MMEdu模型在线转换：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63a1a47e5e089d71e6c6f068&amp;backpath=/pjlab/projects/list%3Fbackpath=/pjlab/ai/projects#public">https://www.openinnolab.org.cn/pjlab/project?id=63a1a47e5e089d71e6c6f068&amp;backpath=/pjlab/projects/list%3Fbackpath=/pjlab/ai/projects#public</a></p>
 <p>千物识别小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63c4106c2e26ff0a30cb440f&amp;sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=63c4106c2e26ff0a30cb440f&amp;sc=62f34141bf4f550f3e926e0e#public</a></p>
 <p>有无人检测小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63c4b6d22e26ff0a30f26ebc&amp;sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=63c4b6d22e26ff0a30f26ebc&amp;sc=62f34141bf4f550f3e926e0e#public</a></p>
 <p>行空板上温州话识别：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63b7c66e5e089d71e61d19a0&amp;sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=63b7c66e5e089d71e61d19a0&amp;sc=62f34141bf4f550f3e926e0e#public</a></p>
-<p>树莓派与MMEdu：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63bb8be4c437c904d8a90350&amp;backpath=/pjlab/projects/list%3Fbackpath=/pjlab/ai/projects#public">https://www.openinnolab.org.cn/pjlab/project?id=63bb8be4c437c904d8a90350&amp;backpath=/pjlab/projects/list%3Fbackpath=/pjlab/ai/projects#public</a></p>
+<p>树莓派与MMEdu：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63bb8be4c437c904d8a90350&amp;backpath=/pjlab/projects/list">https://www.openinnolab.org.cn/pjlab/project?id=63bb8be4c437c904d8a90350&amp;backpath=/pjlab/projects/list</a>?backpath=/pjlab/ai/projects#public</p>
+<p>MMEdu模型在线转换：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63a1a47e5e089d71e6c6f068&amp;backpath=/pjlab/projects/list">https://www.openinnolab.org.cn/pjlab/project?id=63a1a47e5e089d71e6c6f068&amp;backpath=/pjlab/projects/list</a>?backpath=/pjlab/ai/projects#public</p>
 </section>
 </section>
 
