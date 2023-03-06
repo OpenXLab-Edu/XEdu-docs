@@ -34,7 +34,7 @@ data.show()
 
 下图分别是原图片，resize大小至(256, 256)的图片，crop大小至(224,224)的图片和归一化的图片。
 
-![img](https://aicarrier.feishu.cn/space/api/box/stream/download/asynccode/?code=NDUzOTdiYmNjYzA4OGIxMWE2NWMyYTgxOTIxOTJjYmJfeEdKUHJEbEY2T0pBWm5VcU1qOHRQd1BjWVN2d0Jham1fVG9rZW46Ym94Y25kWkNZV09jTERmVlNKeWo5Vk5vYWZmXzE2Nzc0ODk3MTY6MTY3NzQ5MzMxNl9WNA)
+![image](../images/basedt/图片处理示例图.JPEG)
 
 **参数详解：**
 
@@ -64,7 +64,7 @@ print(data.value)
 
 可看到text中'city': 'Dubai'的'Dubai'向量化后变为1，'temperature': 33的33仍保留为原本数值。
 
-![img](https://aicarrier.feishu.cn/space/api/box/stream/download/asynccode/?code=ZjZjNDY4NDIyNTg0ZTJhMGM5YjNkMDBmYThlYjc2YzFfOWtNYjlIVGxZeTlYYVVNU1drQmx2NkttUUVFblkxZjdfVG9rZW46Ym94Y240cExiTjVEQkpKNFJJQXpKaG9abXBiXzE2Nzc0ODk3MTY6MTY3NzQ5MzMxNl9WNA)
+![image](../images/basedt/文本转换示例图.PNG)
 
 **参数详解：**
 

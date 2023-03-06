@@ -41,7 +41,7 @@ BaseDT库可进行一些常见的图片数据处理操作，比如resize、crop�
 下图分别是原图片，resize大小至(256,
 256)的图片，crop大小至(224,224)的图片和归一化的图片。
 
-.. figure:: https://aicarrier.feishu.cn/space/api/box/stream/download/asynccode/?code=NDUzOTdiYmNjYzA4OGIxMWE2NWMyYTgxOTIxOTJjYmJfeEdKUHJEbEY2T0pBWm5VcU1qOHRQd1BjWVN2d0Jham1fVG9rZW46Ym94Y25kWkNZV09jTERmVlNKeWo5Vk5vYWZmXzE2Nzc0ODk3MTY6MTY3NzQ5MzMxNl9WNA
+.. figure:: ../images/basedt/图片处理示例图.JPEG
 
 
 **参数详解：**
@@ -74,7 +74,7 @@ BaseDT库来进行一些常见地文本数据处理操作，比如向量化。�
 可看到text中’city’: ‘Dubai’的’Dubai’向量化后变为1，’temperature’:
 33的33仍保留为原本数值。
 
-.. figure:: https://aicarrier.feishu.cn/space/api/box/stream/download/asynccode/?code=ZjZjNDY4NDIyNTg0ZTJhMGM5YjNkMDBmYThlYjc2YzFfOWtNYjlIVGxZeTlYYVVNU1drQmx2NkttUUVFblkxZjdfVG9rZW46Ym94Y240cExiTjVEQkpKNFJJQXpKaG9abXBiXzE2Nzc0ODk3MTY6MTY3NzQ5MzMxNl9WNA
+.. figure:: ../images/basedt/文本转换示例图.PNG
 
 
 **参数详解：**
@@ -160,7 +160,9 @@ BaseDT提供了一个plot模块，它可以让你对不同任务的数据进行�
    imshow_det_bboxes(img, bboxes = [[3,25,170,263,0.9]],labels = [0], class_names = ["cat"], score_thr = 0.8)
 
 .. figure:: https://aicarrier.feishu.cn/space/api/box/stream/download/asynccode/?code=ZDc4M2I2MDAyOTE2NThlNjQ2NjVhOTI2NjI5YmFkYThfaE5paUlsM3ZjVXcySHlFaEc4bVVNZlNDSFVBbmtXT1ZfVG9rZW46Ym94Y24zRWI4SnZWTUd2ODkwSjFSTVF5NFdoXzE2Nzc0ODk3MTY6MTY3NzQ5MzMxNl9WNA
+   :alt: img
 
+   img
 
 **参数详解：**
 
@@ -202,7 +204,9 @@ BaseDT提供了一个io模块，用于支持数据的I/O设备的调用，它可
 录制的两秒音频图下如下图：
 
 .. figure:: https://aicarrier.feishu.cn/space/api/box/stream/download/asynccode/?code=OTQ1NjAxMWExNDM2MGU2OTAyM2Q0NTM3MjAzYzY2YjNfcGJYdkhHbkVIRk9Fb0hWRHMxbjNTZTAyVlR0SEMzTERfVG9rZW46Ym94Y245R3ZTdHhpbE03REphMWhjdWNlM3NtXzE2Nzc0ODk3MTY6MTY3NzQ5MzMxNl9WNA
+   :alt: img
 
+   img
 
 **参数详解：**
 
