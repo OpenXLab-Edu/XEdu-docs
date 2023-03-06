@@ -159,10 +159,8 @@ BaseDT提供了一个plot模块，它可以让你对不同任务的数据进行�
    # imshow_det_bboxes(图像， 框和得分，标签， 类别， 得分阈值)
    imshow_det_bboxes(img, bboxes = [[3,25,170,263,0.9]],labels = [0], class_names = ["cat"], score_thr = 0.8)
 
-.. figure:: https://aicarrier.feishu.cn/space/api/box/stream/download/asynccode/?code=ZDc4M2I2MDAyOTE2NThlNjQ2NjVhOTI2NjI5YmFkYThfaE5paUlsM3ZjVXcySHlFaEc4bVVNZlNDSFVBbmtXT1ZfVG9rZW46Ym94Y24zRWI4SnZWTUd2ODkwSjFSTVF5NFdoXzE2Nzc0ODk3MTY6MTY3NzQ5MzMxNl9WNA
-   :alt: img
+.. figure:: ../images/basedt/绘制目标检测框.png
 
-   img
 
 **参数详解：**
 
@@ -203,10 +201,8 @@ BaseDT提供了一个io模块，用于支持数据的I/O设备的调用，它可
 
 录制的两秒音频图下如下图：
 
-.. figure:: https://aicarrier.feishu.cn/space/api/box/stream/download/asynccode/?code=OTQ1NjAxMWExNDM2MGU2OTAyM2Q0NTM3MjAzYzY2YjNfcGJYdkhHbkVIRk9Fb0hWRHMxbjNTZTAyVlR0SEMzTERfVG9rZW46Ym94Y245R3ZTdHhpbE03REphMWhjdWNlM3NtXzE2Nzc0ODk3MTY6MTY3NzQ5MzMxNl9WNA
-   :alt: img
+.. figure:: ../images/basedt/音频图.png
 
-   img
 
 **参数详解：**
 

@@ -138,7 +138,7 @@ img = 'test.jpg'
 imshow_det_bboxes(img, bboxes = [[3,25,170,263,0.9]],labels = [0], class_names = ["cat"], score_thr = 0.8)
 ```
 
-![img](https://aicarrier.feishu.cn/space/api/box/stream/download/asynccode/?code=ZDc4M2I2MDAyOTE2NThlNjQ2NjVhOTI2NjI5YmFkYThfaE5paUlsM3ZjVXcySHlFaEc4bVVNZlNDSFVBbmtXT1ZfVG9rZW46Ym94Y24zRWI4SnZWTUd2ODkwSjFSTVF5NFdoXzE2Nzc0ODk3MTY6MTY3NzQ5MzMxNl9WNA)
+![image](../images/basedt/绘制目标检测框.png)
 
 **参数详解：**
 
@@ -174,7 +174,7 @@ audio_data = microphone.record_audio(time = 2)
 
 录制的两秒音频图下如下图：
 
-![img](https://aicarrier.feishu.cn/space/api/box/stream/download/asynccode/?code=OTQ1NjAxMWExNDM2MGU2OTAyM2Q0NTM3MjAzYzY2YjNfcGJYdkhHbkVIRk9Fb0hWRHMxbjNTZTAyVlR0SEMzTERfVG9rZW46Ym94Y245R3ZTdHhpbE03REphMWhjdWNlM3NtXzE2Nzc0ODk3MTY6MTY3NzQ5MzMxNl9WNA)
+![image](../images/basedt/音频图.png)
 
 **参数详解：**
 
