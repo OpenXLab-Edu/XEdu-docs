@@ -16,7 +16,7 @@
 
 那么MMEdu的目标检测模块MMDetection（简称det）的主要功能便是输出图片或视频中出现的多个对象名称，同时用方框框出对象所在方形区域。
 
-其支持的SOTA模型有FasterRCNN、Yolov3等，，具体介绍详见[后文](https://xedu.readthedocs.io/zh/latest/mmedu/mmdetection.html#sota)。如需查看所有支持的SOTA模型，可使用`model.sota()`代码进行查看。
+其支持的SOTA模型有FasterRCNN、Yolov3、SSD_Lite等，具体介绍详见[后文](https://xedu.readthedocs.io/zh/latest/mmedu/mmdetection.html#sota)。如需查看所有支持的SOTA模型，可使用`model.sota()`代码进行查看。
 
 ### 使用说明
 
