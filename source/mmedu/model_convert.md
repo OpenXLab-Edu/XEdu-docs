@@ -13,6 +13,8 @@
 
 希望通过本系列教程，带领大家学会如何把自己使用`MMEdu`训练的计算机视觉任务`SOTA模型`部署到`ONNXRuntime`、`NCNN`等各个推理引擎上。我们默认大家熟悉 Python 语言，除此之外不需要了解任何模型部署的知识。
 
+**行空板上部署MMEdu训练模型效果示例：**
+
 ![image](../images/model_convert/部署演示.gif)
 
 ## Why：为什么
@@ -380,10 +382,10 @@ def infer(img, pth, backbone):
 
 cap = cv2.VideoCapture(0)
 ret, img = cap.read()
-backbone = 'SSD_Lite' # 推理模型
+backbone = 'SSD_Lite' #推理模型
 pth = 'det/checkpoints/coco.onnx' #权重文件
 res = infer(img, pth, backbone)
-imshow_det_bboxes(img, bboxes = res[0],labels = res[1], class_names = class_names, score_thr = 0.8)
+imshow_det_bboxes(img, bboxes = res[0],labels = res[1], class_names = class_names, score_thr = 0.8) #根据需求修改阈值score_thr
 cap.release()
 ```
 
