@@ -150,7 +150,7 @@ XEdu一键安装包中预置了MMEdu的det模块的示例代码（路径：/demo
 .. figure:: ../../build/html/_static/image-20220408210420560.png
 
 
-**车牌数据集coco**\ 符合MMEdu目标检测模块支持的数据集要求，文件夹中包含两个文件夹\ ``annotations``\ 和\ ``images``\ ，分别存储标注信息以及图片数据，每个文件夹下面有\ ``train``\ 和\ ``valid``\ 两个\ ``json``\ 文件。如您想要自己制作一个数据集进行训练，可参考\ `数据集支持 <https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#imagenet>`__\ 部分。
+**车牌数据集coco**\ 符合MMEdu目标检测模块支持的数据集要求，文件夹中包含两个文件夹\ ``annotations``\ 和\ ``images``\ ，分别存储标注信息以及图片数据，每个文件夹下面有\ ``train``\ 和\ ``valid``\ 两个\ ``json``\ 文件。如您想要自己制作一个数据集进行训练，可参考\ `数据集支持 <https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#id3>`__\ 部分。
 
 -  代码展示
 
