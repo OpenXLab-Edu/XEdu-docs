@@ -117,7 +117,23 @@ BaseDT提供了一个DataSet类，它可以让你对不同类型和格式的数�
 
 ###  3. 数据集格式转换
 
-敬请期待。
+针对网上下载的数据集，BaseDT可支持常见数据集格式的转换。
+
+```
+from BaseDT.dataset import DataSet
+ds = DataSet(r"my_dataset") # 转换后的文件夹路径
+ds.make_dataset(r"/data/43LP6X", src_format="INNOLAB", train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2) # 转换前的数据集路径
+```
+
+![image](../images/basedt/COCO转换完成.PNG)
+
+ **参数详解：**
+
+`source`: 原始数据集路径。
+
+`src_format`: 原始数据集格式，目前支持"IMAGENET"、“VOC”、“COCO"、"INNOLAB"（OpenInnoLab平台在线标注格式）。
+
+`train_ratio , test_ratio, val_ratio`：训练集、测试集、验证集划分比例，默认比例为train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2。
 
 ## 数据的可视化
 

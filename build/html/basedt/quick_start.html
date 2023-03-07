@@ -210,7 +210,21 @@
 </section>
 <section id="id13">
 <h3>3. 数据集格式转换<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h3>
-<p>敬请期待。</p>
+<p>针对网上下载的数据集，BaseDT可支持常见数据集格式的转换。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.dataset</span> <span class="kn">import</span> <span class="n">DataSet</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">DataSet</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;my_dataset&quot;</span><span class="p">)</span> <span class="c1"># 转换后的文件夹路径</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">make_dataset</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;/data/43LP6X&quot;</span><span class="p">,</span> <span class="n">src_format</span><span class="o">=</span><span class="s2">&quot;INNOLAB&quot;</span><span class="p">,</span> <span class="n">train_ratio</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">,</span> <span class="n">test_ratio</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">val_ratio</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span> <span class="c1"># 转换前的数据集路径</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../_images/COCO转换完成.PNG" src="../_images/COCO转换完成.PNG" />
+</figure>
+<p><strong>参数详解：</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">source</span></code>: 原始数据集路径。</p>
+<p><code class="docutils literal notranslate"><span class="pre">src_format</span></code>:
+原始数据集格式，目前支持“IMAGENET”、“VOC”、“COCO”、“INNOLAB”（OpenInnoLab平台在线标注格式）。</p>
+<p><code class="docutils literal notranslate"><span class="pre">train_ratio</span> <span class="pre">,</span> <span class="pre">test_ratio,</span> <span class="pre">val_ratio</span></code>：训练集、测试集、验证集划分比例，默认比例为train_ratio
+= 0.7, test_ratio = 0.1, val_ratio = 0.2。</p>
 </section>
 </section>
 <section id="id14">
