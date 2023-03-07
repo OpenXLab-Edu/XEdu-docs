@@ -144,7 +144,7 @@ BaseDT提供了一个DataSet类，它可以让你对不同类型和格式的数�
    # 默认比例为train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2
    ds.make_dataset(r"G:\\测试数据集\\fruit_voc", src_format="VOC",train_ratio = 0.8, test_ratio = 0.1, val_ratio = 0.1) # 仅需修改为待转格式的
 
-.. figure:: ../images/basedt/voc2coco.PNG
+.. figure:: ../images/basedt/voc2coco.png
 
 
 针对OpenInnoLab平台标注创建的数据集，也可以使用BaseDT直接转换为XEdu支持的数据集。
