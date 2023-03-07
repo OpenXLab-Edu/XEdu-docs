@@ -117,26 +117,44 @@ BaseDT提供了一个DataSet类，它可以让你对不同类型和格式的数�
 
 ###  3. 数据集格式转换
 
-针对网上下载的数据集，BaseDT可支持常见数据集格式的转换。
+针对网上下载的数据集，BaseDT可支持常见数据集格式（目前支持IMAGENET、VOC和COCO）的转换。
+
+首先需将网上下载的原始数据集做初步整理，整理规范如下：
+
+```Python
+原数据集（目标检测）
+|---annotations
+      |----xxx.json/xxx.xml/xxx.txt
+|---images
+      |----xxx.jpg/png/....
+classes.txt
+
+原数据集（分类）
+|---images
+    |---class1
+          |----xxx.jpg/png/....
+    |---class2
+          |----xxx.jpg/png/....
+    |---class3
+          |----xxx.jpg/png/....
+    |---classN
+          |----xxx.jpg/png/....
+classes.txt
+```
+
+如是目标检测数据集，需将所有图片存放至images文件夹，所有标注文件（VOC格式的为xml文件、COCO格式的为json格式）存放至annotations文件夹，同时在根目录下新建一个classes.txt，写入类别信息。如是图像分类数据集，首先需将所有图片按照类别存放，然后将所有图片文件夹放入images文件夹，同时新建一个classes.txt，写入类别信息。通过此过程，也有助于初步了解此数据集。
+
+整理完毕使用BaseDT的数据集格式转换的代码即可完成数据集转换。
 
 ```
 from BaseDT.dataset import DataSet
-ds = DataSet(r"my_dataset")
-# 默认比例为train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2
-ds.make_dataset(r"G:\\测试数据集\\fruit_voc", src_format="VOC",train_ratio = 0.8, test_ratio = 0.1, val_ratio = 0.1) # 仅需修改为待转格式的
+ds = DataSet(r"my_dataset") # 指定为新数据集路径
+ds.make_dataset(r"G:\\测试数据集\\fruit_voc", src_format="VOC",train_ratio = 0.8, test_ratio = 0.1, val_ratio = 0.1) # 指定待转格式的原始数据集路径，原始数据集格式，划分比例，默认比例为train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2
 ```
 
 ![image](../images/basedt/voc2coco.png)
 
- 针对OpenInnoLab平台标注创建的数据集，也可以使用BaseDT直接转换为XEdu支持的数据集。
-
-```Python
-from BaseDT.dataset import DataSet
-ds = DataSet(r"my_dataset") # 转换后的文件夹路径
-ds.make_dataset(r"/data/43LP6X", src_format="INNOLAB") # 转换前的数据集路径
-```
-
-![image](../images/basedt/coco转换完成.png)
+使用以上代码，不仅将网上下载的VOC格式数据集做了格式转换，并将训练集、测试集、验证集做了新的比例拆分。
 
 **参数详解：**
 
@@ -145,6 +163,18 @@ ds.make_dataset(r"/data/43LP6X", src_format="INNOLAB") # 转换前的数据集�
 `src_format`: 原始数据集格式，目前支持"IMAGENET"、“VOC”、“COCO"、"INNOLAB"（OpenInnoLab平台在线标注格式）。
 
 `train_ratio , test_ratio, val_ratio`：训练集、测试集、验证集划分比例，默认比例为train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2。
+
+针对OpenInnoLab平台标注创建的数据集，也可以使用BaseDT直接转换为XEdu支持的数据集。
+
+```Python
+from BaseDT.dataset import DataSet
+ds = DataSet(r"my_dataset") # 指定为新数据集路径
+ds.make_dataset(r"/data/43LP6X", src_format="INNOLAB") # 转换前的数据集路径
+```
+
+![image](../images/basedt/coco转换完成.png)
+
+
 
 ## 数据的可视化
 

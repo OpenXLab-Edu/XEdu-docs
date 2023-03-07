@@ -210,31 +210,54 @@
 </section>
 <section id="id13">
 <h3>3. 数据集格式转换<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h3>
-<p>针对网上下载的数据集，BaseDT可支持常见数据集格式的转换。</p>
+<p>针对网上下载的数据集，BaseDT可支持常见数据集格式（目前支持IMAGENET、VOC和COCO）的转换。</p>
+<p>首先需将网上下载的原始数据集做初步整理，整理规范如下：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>原数据集（目标检测）
+|---annotations
+      |----xxx.json/xxx.xml/xxx.txt
+|---images
+      |----xxx.jpg/png/....
+classes.txt
+
+原数据集（分类）
+|---images
+    |---class1
+          |----xxx.jpg/png/....
+    |---class2
+          |----xxx.jpg/png/....
+    |---class3
+          |----xxx.jpg/png/....
+    |---classN
+          |----xxx.jpg/png/....
+classes.txt
+</pre></div>
+</div>
+<p>如是目标检测数据集，需将所有图片存放至images文件夹，所有标注文件（VOC格式的为xml文件、COCO格式的为json格式）存放至annotations文件夹，同时在根目录下新建一个classes.txt，写入类别信息。如是图像分类数据集，首先需将所有图片按照类别存放，然后将所有图片文件夹放入images文件夹，同时新建一个classes.txt，写入类别信息。通过此过程，也有助于初步了解此数据集。</p>
+<p>整理完毕使用BaseDT的数据集格式转换的代码即可完成数据集转换。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.dataset</span> <span class="kn">import</span> <span class="n">DataSet</span>
-<span class="n">ds</span> <span class="o">=</span> <span class="n">DataSet</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;my_dataset&quot;</span><span class="p">)</span>
-<span class="c1"># 默认比例为train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2</span>
-<span class="n">ds</span><span class="o">.</span><span class="n">make_dataset</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;G:</span><span class="se">\\</span><span class="s2">测试数据集</span><span class="se">\\</span><span class="s2">fruit_voc&quot;</span><span class="p">,</span> <span class="n">src_format</span><span class="o">=</span><span class="s2">&quot;VOC&quot;</span><span class="p">,</span><span class="n">train_ratio</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">test_ratio</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">val_ratio</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span> <span class="c1"># 仅需修改为待转格式的</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">DataSet</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;my_dataset&quot;</span><span class="p">)</span> <span class="c1"># 指定为新数据集路径</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">make_dataset</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;G:</span><span class="se">\\</span><span class="s2">测试数据集</span><span class="se">\\</span><span class="s2">fruit_voc&quot;</span><span class="p">,</span> <span class="n">src_format</span><span class="o">=</span><span class="s2">&quot;VOC&quot;</span><span class="p">,</span><span class="n">train_ratio</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">test_ratio</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">val_ratio</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span> <span class="c1"># 指定待转格式的原始数据集路径，原始数据集格式，划分比例，默认比例为train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2</span>
 </pre></div>
 </div>
 <figure class="align-default">
 <img alt="../_images/voc2coco.png" src="../_images/voc2coco.png" />
 </figure>
-<p>针对OpenInnoLab平台标注创建的数据集，也可以使用BaseDT直接转换为XEdu支持的数据集。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.dataset</span> <span class="kn">import</span> <span class="n">DataSet</span>
-<span class="n">ds</span> <span class="o">=</span> <span class="n">DataSet</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;my_dataset&quot;</span><span class="p">)</span> <span class="c1"># 转换后的文件夹路径</span>
-<span class="n">ds</span><span class="o">.</span><span class="n">make_dataset</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;/data/43LP6X&quot;</span><span class="p">,</span> <span class="n">src_format</span><span class="o">=</span><span class="s2">&quot;INNOLAB&quot;</span><span class="p">)</span> <span class="c1"># 转换前的数据集路径</span>
-</pre></div>
-</div>
-<figure class="align-default">
-<img alt="../_images/coco转换完成.png" src="../_images/coco转换完成.png" />
-</figure>
+<p>使用以上代码，不仅将网上下载的VOC格式数据集做了格式转换，并将训练集、测试集、验证集做了新的比例拆分。</p>
 <p><strong>参数详解：</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">source</span></code>: 原始数据集路径。</p>
 <p><code class="docutils literal notranslate"><span class="pre">src_format</span></code>:
 原始数据集格式，目前支持“IMAGENET”、“VOC”、“COCO”、“INNOLAB”（OpenInnoLab平台在线标注格式）。</p>
 <p><code class="docutils literal notranslate"><span class="pre">train_ratio</span> <span class="pre">,</span> <span class="pre">test_ratio,</span> <span class="pre">val_ratio</span></code>：训练集、测试集、验证集划分比例，默认比例为train_ratio
 = 0.7, test_ratio = 0.1, val_ratio = 0.2。</p>
+<p>针对OpenInnoLab平台标注创建的数据集，也可以使用BaseDT直接转换为XEdu支持的数据集。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.dataset</span> <span class="kn">import</span> <span class="n">DataSet</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">DataSet</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;my_dataset&quot;</span><span class="p">)</span> <span class="c1"># 指定为新数据集路径</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">make_dataset</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;/data/43LP6X&quot;</span><span class="p">,</span> <span class="n">src_format</span><span class="o">=</span><span class="s2">&quot;INNOLAB&quot;</span><span class="p">)</span> <span class="c1"># 转换前的数据集路径</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../_images/coco转换完成.png" src="../_images/coco转换完成.png" />
+</figure>
 </section>
 </section>
 <section id="id14">
