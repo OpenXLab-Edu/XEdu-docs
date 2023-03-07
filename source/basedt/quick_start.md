@@ -121,13 +121,24 @@ BaseDT提供了一个DataSet类，它可以让你对不同类型和格式的数�
 
 ```
 from BaseDT.dataset import DataSet
-ds = DataSet(r"my_dataset") # 转换后的文件夹路径
-ds.make_dataset(r"/data/43LP6X", src_format="INNOLAB", train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2) # 转换前的数据集路径
+ds = DataSet(r"my_dataset")
+# 默认比例为train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2
+ds.make_dataset(r"G:\\测试数据集\\fruit_voc", src_format="VOC",train_ratio = 0.8, test_ratio = 0.1, val_ratio = 0.1) # 仅需修改为待转格式的
 ```
 
-![image](../images/basedt/COCO转换完成.PNG)
+![image](../images/basedt/voc2coco.PNG)
 
- **参数详解：**
+ 针对OpenInnoLab平台标注创建的数据集，也可以使用BaseDT直接转换为XEdu支持的数据集。
+
+```Python
+from BaseDT.dataset import DataSet
+ds = DataSet(r"my_dataset") # 转换后的文件夹路径
+ds.make_dataset(r"/data/43LP6X", src_format="INNOLAB") # 转换前的数据集路径
+```
+
+![image](../images/basedt/coco转换完成.png)
+
+**参数详解：**
 
 `source`: 原始数据集路径。
 
