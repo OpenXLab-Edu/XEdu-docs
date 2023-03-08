@@ -212,11 +212,9 @@
 <figure class="align-default">
 <img alt="../_images/det数据集格式.png" src="../_images/det数据集格式.png" />
 </figure>
-<p><strong>车牌数据集coco</strong>符合MMEdu目标检测模块支持的数据集要求，文件夹中包含两个文件夹<code class="docutils literal notranslate"><span class="pre">annotations</span></code>和<code class="docutils literal notranslate"><span class="pre">images</span></code>，分别存储标注信息以及图片数据，每个文件夹下面有<code class="docutils literal notranslate"><span class="pre">train</span></code>和<code class="docutils literal notranslate"><span class="pre">valid</span></code>两个<code class="docutils literal notranslate"><span class="pre">json</span></code>文件。如您想要了解更多数据集格式的内容，可参考<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#id3">数据集支持</a>部分。</p>
-<ul class="simple">
-<li><p>代码展示</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">det</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;FasterRCNN&#39;</span><span class="p">)</span> <span class="c1"># 实例化模型，不指定参数即使用默认参数。</span>
+<p>车牌数据集符合MMEdu目标检测模块支持的数据集要求，文件夹中包含两个文件夹<code class="docutils literal notranslate"><span class="pre">annotations</span></code>和<code class="docutils literal notranslate"><span class="pre">images</span></code>，分别存储标注信息以及图片数据，每个文件夹下面有<code class="docutils literal notranslate"><span class="pre">train</span></code>和<code class="docutils literal notranslate"><span class="pre">valid</span></code>两个<code class="docutils literal notranslate"><span class="pre">json</span></code>文件。如您想要了解更多数据集格式的内容，可参考<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#coco">数据集支持</a>部分。</p>
+<p>训练代码如下：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">det</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;FasterRCNN&#39;</span><span class="p">)</span> <span class="c1"># 实例化模型，不指定参数即使用默认参数</span>
 <span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># 进行车牌识别，此时只有一个类别。</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;../dataset/det/coco&#39;</span><span class="p">)</span> <span class="c1"># 从指定数据集路径中加载数据</span>
 <span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;../checkpoints/det_model/plate&#39;</span> <span class="c1"># 设置模型的保存路径</span>

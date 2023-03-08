@@ -150,13 +150,13 @@ XEdu一键安装包中预置了MMEdu的det模块的示例代码（路径：/demo
 .. figure:: ../images/mmedu/det数据集格式.png
 
 
-**车牌数据集coco**\ 符合MMEdu目标检测模块支持的数据集要求，文件夹中包含两个文件夹\ ``annotations``\ 和\ ``images``\ ，分别存储标注信息以及图片数据，每个文件夹下面有\ ``train``\ 和\ ``valid``\ 两个\ ``json``\ 文件。如您想要了解更多数据集格式的内容，可参考\ `数据集支持 <https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#id3>`__\ 部分。
+车牌数据集符合MMEdu目标检测模块支持的数据集要求，文件夹中包含两个文件夹\ ``annotations``\ 和\ ``images``\ ，分别存储标注信息以及图片数据，每个文件夹下面有\ ``train``\ 和\ ``valid``\ 两个\ ``json``\ 文件。如您想要了解更多数据集格式的内容，可参考\ `数据集支持 <https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#coco>`__\ 部分。
 
--  代码展示
+训练代码如下：
 
 .. code:: python
 
-   model = det(backbone='FasterRCNN') # 实例化模型，不指定参数即使用默认参数。
+   model = det(backbone='FasterRCNN') # 实例化模型，不指定参数即使用默认参数
    model.num_classes = 1 # 进行车牌识别，此时只有一个类别。
    model.load_dataset(path='../dataset/det/coco') # 从指定数据集路径中加载数据
    model.save_fold = '../checkpoints/det_model/plate' # 设置模型的保存路径
