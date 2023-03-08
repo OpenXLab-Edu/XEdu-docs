@@ -166,4 +166,5 @@ categories [{
 }]
 ```
 
-制作一个COCO格式的数据集的步骤详见[深度学习知识库](https://xedu.readthedocs.io/zh/latest/dl_library/dataset_introduction.html#coco)。
+为了验证和测试，我们建议划分训练集、验证集和测试集，需要生成验证集valid和标注文件valid.json，测试集test和标注文件test.json，json文件的基本数据结构依然是COCO格式。制作一个COCO格式的数据集的步骤详见[深度学习知识库](https://xedu.readthedocs.io/zh/latest/dl_library/dataset_introduction.html#coco)。
+
