@@ -126,9 +126,7 @@ ds.make_dataset(r"/data/HZQV42", src_format="INNOLAB",train_ratio = 0.8, test_ra
 
 ![image](../images/basedt/coco转换完成.png)
 
-体验项目：从零开始制作一个COCO数据集之格式转换
-
-项目链接：https://www.openinnolab.org.cn/pjlab/project?id=63c4ad101dd9517dffdff539&sc=635638d69ed68060c638f979#public
+更多XEdu支持的数据集格式的介绍详见[数据集支持](https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#id3)部分。
 
 ## 数据的可视化
 

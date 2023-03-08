@@ -32,14 +32,14 @@ MMEdu基于OpenMMLab的基础上开发，因为面向中小学，优先选择支
 
 ## MMEdu的内置模块概述
 
-| 模块名称             | 简称     | 功能       |
-| ---------------- | ------ | -------- |
-| MMClassification | MMCLS  | 图片分类     |
-| MMDetection      | MMDET  | 图片中的物体检测 |
-| MMGeneration     | MMGEN  | GAN，风格化  |
-| MMPose           | MMPOSE | 骨架       |
-| MMEditing        |        |          |
-| MMSegmentation   |        | 像素级识别    |
+| 模块名称         | 简称   | 功能             |
+| ---------------- | ------ | ---------------- |
+| MMClassification | MMCls  | 图片分类         |
+| MMDetection      | MMDet  | 图片中的物体检测 |
+| MMGeneration     | MMGen  | GAN，风格化      |
+| MMPose           | MMPose | 骨架             |
+| MMEditing        |        |                  |
+| MMSegmentation   |        | 像素级识别       |
 
 ## MMEdu的内置SOTA模型
 
@@ -54,7 +54,7 @@ MMEdu内置了常见的SOTA模型，我们还在不断更新中。如需查看�
 
 ## 数据集支持
 
-MMEdu系列提供了包括分类、检测等任务的若干数据集，存储在dataset文件夹下。
+MMEdu系列提供了包括分类、检测等任务的若干数据集，存储在XEdu一键安装包中的dataset文件夹下。
 
 ### 1）ImageNet
 

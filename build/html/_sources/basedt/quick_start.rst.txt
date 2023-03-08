@@ -12,7 +12,7 @@ BaseDT不仅是一个功能强大的数据处理库，也是一个易于使用�
 ``pip install basedt``\ 或\ ``pip install BaseDT``
 
 数据的处理
-------------------
+----------
 
 BaseDT提供了一个data模块，它包含了多个子模块和类，分别针对不同类型和格式的数据提供了处理功能。
 
@@ -129,7 +129,6 @@ BaseDT提供了一个DataSet类，它可以让你对不同类型和格式的数�
 
 .. figure:: ../images/basedt/voc2coco.png
 
-
 使用以上代码，不仅将网上下载的VOC格式数据集做了格式转换，并将训练集、测试集、验证集做了新的比例拆分。
 
 针对OpenInnoLab平台标注创建的数据集，也可以使用BaseDT直接转换为XEdu支持的数据集。
@@ -146,9 +145,7 @@ BaseDT提供了一个DataSet类，它可以让你对不同类型和格式的数�
 .. figure:: ../images/basedt/coco转换完成.png
 
 
-体验项目：从零开始制作一个COCO数据集之格式转换
-
-项目链接：https://www.openinnolab.org.cn/pjlab/project?id=63c4ad101dd9517dffdff539&sc=635638d69ed68060c638f979#public
+更多XEdu支持的数据集格式的介绍详见\ `数据集支持 <https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#id3>`__\ 部分。
 
 数据的可视化
 ------------

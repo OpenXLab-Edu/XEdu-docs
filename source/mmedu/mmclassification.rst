@@ -129,7 +129,7 @@ XEdu一键安装包中预置了MMEdu的cls模块的示例代码（路径：/demo
 .. figure:: ../../build/html/_static/cls_dataset.png
 
 
-**hand_gray**\ 数据集符合MMEdu图像分类模块支持的数据集要求，文件夹中包含三个图片文件夹，\ ``test_set``,\ ``training_set``,\ ``val_set``\ 分别存储测试集，训练集和验证集的图片；以及三个\ ``txt``\ 文件，\ ``classes.txt``\ 记录该数据集的类别，\ ``test.txt``\ 和\ ``val.txt``\ 分别记录测试集和验证集的图片名。如您想要自己制作一个数据集进行训练，可参考\ `数据集支持 <https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#id3>`__\ 部分。
+**hand_gray**\ 数据集符合MMEdu图像分类模块支持的数据集要求，文件夹中包含三个图片文件夹，\ ``test_set``,\ ``training_set``,\ ``val_set``\ 分别存储测试集，训练集和验证集的图片；以及三个\ ``txt``\ 文件，\ ``classes.txt``\ 记录该数据集的类别，\ ``test.txt``\ 和\ ``val.txt``\ 分别记录测试集和验证集的图片名。如您想要了解更多数据集格式的内容，可参考\ `数据集支持 <https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#id3>`__\ 部分。
 
 -  代码展示
 

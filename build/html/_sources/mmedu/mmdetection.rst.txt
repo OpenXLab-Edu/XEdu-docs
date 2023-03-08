@@ -147,10 +147,10 @@ XEdu一键安装包中预置了MMEdu的det模块的示例代码（路径：/demo
 
 数据集文件结构如下：
 
-.. figure:: ../../build/html/_static/image-20220408210420560.png
+.. figure:: ../images/mmedu/det数据集格式.png
 
 
-**车牌数据集coco**\ 符合MMEdu目标检测模块支持的数据集要求，文件夹中包含两个文件夹\ ``annotations``\ 和\ ``images``\ ，分别存储标注信息以及图片数据，每个文件夹下面有\ ``train``\ 和\ ``valid``\ 两个\ ``json``\ 文件。如您想要自己制作一个数据集进行训练，可参考\ `数据集支持 <https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#id3>`__\ 部分。
+**车牌数据集coco**\ 符合MMEdu目标检测模块支持的数据集要求，文件夹中包含两个文件夹\ ``annotations``\ 和\ ``images``\ ，分别存储标注信息以及图片数据，每个文件夹下面有\ ``train``\ 和\ ``valid``\ 两个\ ``json``\ 文件。如您想要了解更多数据集格式的内容，可参考\ `数据集支持 <https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#id3>`__\ 部分。
 
 -  代码展示
 
@@ -225,7 +225,7 @@ XEdu一键安装包中预置了MMEdu的det模块的示例代码（路径：/demo
 
 执行上述代码之后的运行结果如下图
 
-.. figure:: ../../build/html/_static/image-20220408211213751.png
+.. figure:: ../images/mmedu/det模型训练日志.png
 
 
 此时，打开model.save_fold指定的checkpoints/det_model/plate文件夹，我们会发现多了两种文件，一种是\ ``**.log.json``\ 日志文件，它记录了我们模型在训练过程中的一些参数，比如说学习率\ ``lr``\ ，所用时间\ ``time``\ ，损失\ ``loss``\ ，以及评估指标\ ``bbox_mAP``\ 等；另一种文件是\ ``.pth``\ 文件，这个是我们在训练过程中所保存的模型权重文件，分为按照训练轮次生成的权重文件\ ``epoch_x.pth``\ 和一个\ ``best_bbox_mAP_epoch_**.pth``\ 权重文件，\ ``best_bbox_mAP_epoch_**.pth``\ 权重文件即目前为止准确率最高的权重。

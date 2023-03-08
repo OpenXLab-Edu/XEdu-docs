@@ -210,9 +210,9 @@
 <p>在运行代码之前，您需要先拥有一个数据集，这里我们为您提供车牌检测数据集。</p>
 <p>数据集文件结构如下：</p>
 <figure class="align-default">
-<img alt="../_images/image-20220408210420560.png" src="../_images/image-20220408210420560.png" />
+<img alt="../_images/det数据集格式.png" src="../_images/det数据集格式.png" />
 </figure>
-<p><strong>车牌数据集coco</strong>符合MMEdu目标检测模块支持的数据集要求，文件夹中包含两个文件夹<code class="docutils literal notranslate"><span class="pre">annotations</span></code>和<code class="docutils literal notranslate"><span class="pre">images</span></code>，分别存储标注信息以及图片数据，每个文件夹下面有<code class="docutils literal notranslate"><span class="pre">train</span></code>和<code class="docutils literal notranslate"><span class="pre">valid</span></code>两个<code class="docutils literal notranslate"><span class="pre">json</span></code>文件。如您想要自己制作一个数据集进行训练，可参考<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#id3">数据集支持</a>部分。</p>
+<p><strong>车牌数据集coco</strong>符合MMEdu目标检测模块支持的数据集要求，文件夹中包含两个文件夹<code class="docutils literal notranslate"><span class="pre">annotations</span></code>和<code class="docutils literal notranslate"><span class="pre">images</span></code>，分别存储标注信息以及图片数据，每个文件夹下面有<code class="docutils literal notranslate"><span class="pre">train</span></code>和<code class="docutils literal notranslate"><span class="pre">valid</span></code>两个<code class="docutils literal notranslate"><span class="pre">json</span></code>文件。如您想要了解更多数据集格式的内容，可参考<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#id3">数据集支持</a>部分。</p>
 <ul class="simple">
 <li><p>代码展示</p></li>
 </ul>
@@ -270,7 +270,7 @@
 默认为’None’，表示在训练过程中使用初始化权重。如果使用训练得到的模型（或预训练模型），此参数传入一个模型路径，我们的训练将基于传入的模型参数继续训练。</p>
 <p>执行上述代码之后的运行结果如下图</p>
 <figure class="align-default">
-<img alt="../_images/image-20220408211213751.png" src="../_images/image-20220408211213751.png" />
+<img alt="../_images/det模型训练日志.png" src="../_images/det模型训练日志.png" />
 </figure>
 <p>此时，打开model.save_fold指定的checkpoints/det_model/plate文件夹，我们会发现多了两种文件，一种是<code class="docutils literal notranslate"><span class="pre">**.log.json</span></code>日志文件，它记录了我们模型在训练过程中的一些参数，比如说学习率<code class="docutils literal notranslate"><span class="pre">lr</span></code>，所用时间<code class="docutils literal notranslate"><span class="pre">time</span></code>，损失<code class="docutils literal notranslate"><span class="pre">loss</span></code>，以及评估指标<code class="docutils literal notranslate"><span class="pre">bbox_mAP</span></code>等；另一种文件是<code class="docutils literal notranslate"><span class="pre">.pth</span></code>文件，这个是我们在训练过程中所保存的模型权重文件，分为按照训练轮次生成的权重文件<code class="docutils literal notranslate"><span class="pre">epoch_x.pth</span></code>和一个<code class="docutils literal notranslate"><span class="pre">best_bbox_mAP_epoch_**.pth</span></code>权重文件，<code class="docutils literal notranslate"><span class="pre">best_bbox_mAP_epoch_**.pth</span></code>权重文件即目前为止准确率最高的权重。</p>
 <p>日志解读：</p>
