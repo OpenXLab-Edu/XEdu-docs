@@ -70,7 +70,7 @@ MMDetection      `FastRCNN <https://xedu.readthedocs.io/zh/latest/dl_library/net
 数据集支持
 ----------
 
-MMEdu系列提供了包括分类、检测等任务的若干数据集，存储在XEdu一键安装包中的dataset文件夹下。
+MMEdu系列提供了包括分类、检测等任务的若干数据集，存储在XEdu一键安装包中的dataset文件夹下。MMEdu支持的数据集格式如下：
 
 1）ImageNet
 ~~~~~~~~~~~

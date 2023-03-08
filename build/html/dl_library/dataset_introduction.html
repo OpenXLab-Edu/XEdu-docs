@@ -66,7 +66,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#labelme">(2）LabelMe版</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id17">能不能使用网上下载的数据集？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">能不能使用网上下载的数据集？</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="network_introduction.html">经典网络模型介绍</a></li>
@@ -91,7 +91,7 @@
           <li><a href="../dl_library.html">深度学习知识库</a> &raquo;</li>
       <li>经典数据集</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/dl_library/dataset_introduction.md.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/dl_library/dataset_introduction.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -103,9 +103,13 @@
 <h1>经典数据集<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h1>
 <section id="imagenet">
 <h2>ImageNet<a class="headerlink" href="#imagenet" title="Permalink to this headline"></a></h2>
-<p>ImageNet 是目前世界上图像识别最大的数据库，有超过1500万张图片，约2.2万种类别，权威、可靠。</p>
-<p>斯坦福大学教授李飞飞为了解决机器学习中过拟合和泛化的问题而牵头构建的数据集。该数据集从2007年开始手机建立，直到2009年作为论文的形式在CVPR 2009上面发布。直到目前，该数据集仍然是深度学习领域中图像分类、检测、定位的最常用数据集之一。</p>
-<p>基于ImageNet有一个比赛，从2010年开始举行，到2017年最后一届结束。该比赛称为ILSVRC，全称是ImageNet Large-Scale Visual Recognition Challenge，每年举办一次，每次从ImageNet数据集中抽取部分样本作为比赛的数据集。ILSVRC比赛包括：图像分类、目标定位、目标检测、视频目标检测、场景分类。在该比赛的历年优胜者中，诞生了AlexNet（2012）、VGG（2014）、GoogLeNet（2014）、ResNet（2015）等耳熟能详的深度学习网络模型。“ILSVRC”一词有时候也用来特指该比赛使用的数据集，即ImageNet的一个子集，其中最常用的是2012年的数据集，记为ILSVRC2012。因此有时候提到ImageNet，很可能是指ImageNet中用于ILSVRC2012的这个子集。ILSVRC2012数据集拥有1000个分类（这意味着面向ImageNet图片识别的神经网络的输出是1000个），每个分类约有1000张图片。这些用于训练的图片总数约为120万张，此外还有一些图片作为验证集和测试集。ILSVRC2012含有5万张图片作为验证集，10万张图片作为测试集（测试集没有标签，验证集的标签通过另外的文档给出）。</p>
+<p>ImageNet
+是目前世界上图像识别最大的数据库，有超过1500万张图片，约2.2万种类别，权威、可靠。</p>
+<p>斯坦福大学教授李飞飞为了解决机器学习中过拟合和泛化的问题而牵头构建的数据集。该数据集从2007年开始手机建立，直到2009年作为论文的形式在CVPR
+2009上面发布。直到目前，该数据集仍然是深度学习领域中图像分类、检测、定位的最常用数据集之一。</p>
+<p>基于ImageNet有一个比赛，从2010年开始举行，到2017年最后一届结束。该比赛称为ILSVRC，全称是ImageNet
+Large-Scale Visual Recognition
+Challenge，每年举办一次，每次从ImageNet数据集中抽取部分样本作为比赛的数据集。ILSVRC比赛包括：图像分类、目标定位、目标检测、视频目标检测、场景分类。在该比赛的历年优胜者中，诞生了AlexNet（2012）、VGG（2014）、GoogLeNet（2014）、ResNet（2015）等耳熟能详的深度学习网络模型。“ILSVRC”一词有时候也用来特指该比赛使用的数据集，即ImageNet的一个子集，其中最常用的是2012年的数据集，记为ILSVRC2012。因此有时候提到ImageNet，很可能是指ImageNet中用于ILSVRC2012的这个子集。ILSVRC2012数据集拥有1000个分类（这意味着面向ImageNet图片识别的神经网络的输出是1000个），每个分类约有1000张图片。这些用于训练的图片总数约为120万张，此外还有一些图片作为验证集和测试集。ILSVRC2012含有5万张图片作为验证集，10万张图片作为测试集（测试集没有标签，验证集的标签通过另外的文档给出）。</p>
 <p>ImageNet不仅是一个数据集、一项比赛，也是一种典型的数据集格式。分类任务中最经典的数据集类型就是ImageNet格式。</p>
 <p>XEdu中MMEdu的图像分类模块数据集类型是ImageNet，包含三个文件夹和三个文本文件，文件夹内，不同类别图片按照文件夹分门别类排好，通过trainning_set、val_set、test_set区分训练集、验证集和测试集。文本文件classes.txt说明类别名称与序号的对应关系，val.txt说明验证集图片路径与类别序号的对应关系，test.txt说明测试集图片路径与类别序号的对应关系。如需训练自己创建的数据集，数据集需转换成ImageNet格式。</p>
 </section>
@@ -189,7 +193,6 @@ for cnt in range(len(classes)):
         makeDir(w_dir)
         # shutil.copy(r_dir + fileName, w_dir + classes[cnt] + str(index) + &#39;.jpg&#39;)
         shutil.copy(r_dir + fileName, w_dir + str(index) + &#39;.jpg&#39;)
-
 </pre></div>
 </div>
 </section>
@@ -215,8 +218,8 @@ with open(&#39;./my_dataset/test.txt&#39;,&#39;w&#39;) as f:
         files = os.listdir(t_dir) # 列出当前类别的文件目录下的所有文件名
         # print(files)
         for line in files:
-            str_line = classes[cnt] + &#39;/&#39; + line + &#39; &#39;+str(cnt) +&#39;\n&#39; 
-            f.write(str_line) 
+            str_line = classes[cnt] + &#39;/&#39; + line + &#39; &#39;+str(cnt) +&#39;\n&#39;
+            f.write(str_line)
 
 val_dir = &#39;./my_dataset/val_set/&#39;  # 指定文件路径
 # 打开指定文件，写入标签信息
@@ -234,7 +237,7 @@ with open(&#39;./my_dataset/val.txt&#39;, &#39;w&#39;) as f:
 <div class="highlight-plain notranslate"><div class="highlight"><pre><span></span># 本文件可以放在数据集的根目录下运行
 import os
 # 如果不是在数据集根目录下，可以指定路径
-set_path = &#39;./&#39; 
+set_path = &#39;./&#39;
 
 templist = os.listdir(set_path +&#39;training_set&#39;)
 # 处理mac的特殊文件夹
@@ -242,9 +245,9 @@ classes = []
 for line in templist:
     if line[0] !=&#39;.&#39;:
         classes.append(line)
-    
+
 with open(set_path +&#39;classes.txt&#39;,&#39;w&#39;) as f:
-    for line in classes: 
+    for line in classes:
         str_line = line +&#39;\n&#39;
         f.write(str_line) # 文件分行写入，即类别名称
 
@@ -283,8 +286,13 @@ with open(set_path +&#39;test.txt&#39;,&#39;w&#39;) as f:
 </section>
 <section id="coco">
 <h2>COCO<a class="headerlink" href="#coco" title="Permalink to this headline"></a></h2>
-<p>MS COCO的全称是Microsoft Common Objects in Context，起源于微软于2014年出资标注的Microsoft COCO数据集，与ImageNet竞赛一样，被视为是计算机视觉领域最受关注和最权威的比赛之一。</p>
-<p>COCO数据集是一个大型的、丰富的物体检测，分割和字幕数据集。这个数据集以scene understanding为目标，主要从复杂的日常场景中截取，图像中的目标通过精确的segmentation进行位置的标定。图像包括91类目标，328,000影像和2,500,000个label。目前为止有语义分割的最大数据集，提供的类别有80 类，有超过33 万张图片，其中20 万张有标注，整个数据集中个体的数目超过150 万个。</p>
+<p>MS COCO的全称是Microsoft Common Objects in
+Context，起源于微软于2014年出资标注的Microsoft
+COCO数据集，与ImageNet竞赛一样，被视为是计算机视觉领域最受关注和最权威的比赛之一。</p>
+<p>COCO数据集是一个大型的、丰富的物体检测，分割和字幕数据集。这个数据集以scene
+understanding为目标，主要从复杂的日常场景中截取，图像中的目标通过精确的segmentation进行位置的标定。图像包括91类目标，328,000影像和2,500,000个label。目前为止有语义分割的最大数据集，提供的类别有80
+类，有超过33 万张图片，其中20 万张有标注，整个数据集中个体的数目超过150
+万个。</p>
 <p>XEdu中MMEdu的MMDetection模块支持的数据集类型是COCO，如需训练自己创建的数据集，数据集需转换成COCO格式。这里，为您提供2种自己制作COCO格式数据集的方法。</p>
 </section>
 <section id="id8">
@@ -292,15 +300,16 @@ with open(set_path +&#39;test.txt&#39;,&#39;w&#39;) as f:
 <section id="openinnolab">
 <h3>(1）OpenInnoLab版<a class="headerlink" href="#openinnolab" title="Permalink to this headline"></a></h3>
 <section id="id9">
-<h4>第一步、整理图片<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h4>
-<p>新建一个images文件夹用于存放图片 ，根据需求按照自己喜欢的方式收集图片，图片中包含需要检测的信息即可。</p>
-</section>
-<section id="id10">
-<h4>第二步、标注图片<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h4>
-<p>使用熟悉的标注方式标注图片，如可进入平台的在线工具-人工智能工坊-数据标注完成数据标注。跳转链接：https://www.openinnolab.org.cn/pjlab/projects/channel</p>
+<span id="id10"></span><h4>第一步、整理图片<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h4>
+<p>新建一个images文件夹用于存放图片
+，根据需求按照自己喜欢的方式收集图片，图片中包含需要检测的信息即可。</p>
 </section>
 <section id="id11">
-<h4>第三步、转换成COCO格式<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h4>
+<h4>第二步、标注图片<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h4>
+<p>使用熟悉的标注方式标注图片，如可进入平台的在线工具-人工智能工坊-数据标注完成数据标注。跳转链接：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/projects/channel">https://www.openinnolab.org.cn/pjlab/projects/channel</a></p>
+</section>
+<section id="id12">
+<h4>第三步、转换成COCO格式<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h4>
 <p>安装BaseDT库将平台标注格式的数据集转换成COCO格式，可以使用如下代码：</p>
 <div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>from BaseDT.dataset import DataSet
 ds = DataSet(r&quot;my_dataset&quot;) # 指定目标数据集
@@ -308,28 +317,28 @@ ds.make_dataset(r&quot;/data/HZQV42&quot;, src_format=&quot;INNOLAB&quot;,train_
 </pre></div>
 </div>
 </section>
-<section id="id12">
-<h4>第四步、检查数据集格式<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h4>
+<section id="id13">
+<h4>第四步、检查数据集格式<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h4>
 <p>最后检查数据集格式转换是否已完成，将文件夹重新命名，在训练的时候，只要通过<code class="docutils literal notranslate"><span class="pre">model.load_dataset</span></code>指定数据集的路径就可以了。</p>
-<p>参考项目：https://www.openinnolab.org.cn/pjlab/project?id=63c4ad101dd9517dffdff539&amp;sc=635638d69ed68060c638f979#public</p>
+<p>参考项目：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63c4ad101dd9517dffdff539&amp;sc=635638d69ed68060c638f979#public">https://www.openinnolab.org.cn/pjlab/project?id=63c4ad101dd9517dffdff539&amp;sc=635638d69ed68060c638f979#public</a></p>
 </section>
 </section>
 <section id="labelme">
 <h3>(2）LabelMe版<a class="headerlink" href="#labelme" title="Permalink to this headline"></a></h3>
-<section id="id13">
-<h4>第一步、整理图片<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h4>
+<section id="id14">
+<span id="id15"></span><h4>第一步、整理图片<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h4>
 <p>根据需求按照自己喜欢的方式收集图片，图片中包含需要检测的信息即可，可以使用ImageNet格式数据集整理图片的方式对收集的图片进行预处理。</p>
 </section>
-<section id="id14">
-<h4>第二步、标注图片<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h4>
+<section id="id16">
+<span id="id17"></span><h4>第二步、标注图片<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h4>
 <p>使用熟悉的标注方式标注图片，如可使用LabelMe批量打开图片文件夹的图片，进行标注并保存为json文件。</p>
 <ul class="simple">
 <li><p>LabelMe：格式为LabelMe，提供了转VOC、COCO格式的脚本，可以标注矩形、圆形、线段、点。标注语义分割、实例分割数据集尤其推荐。</p></li>
 <li><p>LabelMe安装与打开方式：<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">labelme</span></code>安装完成后输入<code class="docutils literal notranslate"><span class="pre">labelme</span></code>即可打开。</p></li>
 </ul>
 </section>
-<section id="id15">
-<h4>第三步、转换成COCO标注格式<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h4>
+<section id="id18">
+<h4>第三步、转换成COCO标注格式<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h4>
 <p>将LabelMe格式的标注文件转换成COCO标注格式，可以使用如下代码：</p>
 <div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>import json
 import numpy as np
@@ -379,7 +388,7 @@ class labelme2coco(object):
                     points = shapes[&#39;points&#39;]
                     shape_type = shapes[&#39;shape_type&#39;]
                     if shape_type == &#39;rectangle&#39;:
-                        points = [points[0],[points[0][0],points[1][1]],points[1],[points[1][0],points[0][1]]]     
+                        points = [points[0],[points[0][0],points[1][1]],points[1],[points[1][0],points[0][1]]]
                     self.annotations.append(self.annotation(points, label, num)) # 读取所有检测框标注信息并加入annotations数组
                     self.annID += 1
         print(self.annotations)
@@ -456,14 +465,14 @@ labelme2coco(labelme_json, &#39;picture/new.json&#39;) # 指定生成文件路�
 </pre></div>
 </div>
 </section>
-<section id="id16">
-<h4>第四步、按照目录结构整理文件<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h4>
+<section id="id19">
+<h4>第四步、按照目录结构整理文件<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h4>
 <p>创建两个文件夹“images”和“annotations”，分别用于存放图片以及标注信息。按照要求的目录结构，整理好文件夹的文件，最后将文件夹重新命名，在训练的时候，只要通过<code class="docutils literal notranslate"><span class="pre">model.load_dataset</span></code>指定数据集的路径就可以了。</p>
 </section>
 </section>
 </section>
-<section id="id17">
-<h2>能不能使用网上下载的数据集？<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h2>
+<section id="id20">
+<h2>能不能使用网上下载的数据集？<a class="headerlink" href="#id20" title="Permalink to this headline"></a></h2>
 <p>网上下载的数据集的格式可能不符合XEdu的需求。那么就需要进行数据集格式转换。</p>
 <p>如您想要使用下载网上的数据集，可以选择使用BaseDT的常见数据集格式转换功能。详见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basedt/introduction.html#id7">BaseDT的数据集格式转换</a>部分。</p>
 </section>
