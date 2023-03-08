@@ -14,17 +14,74 @@ ImageNet
 Large-Scale Visual Recognition
 Challenge，每年举办一次，每次从ImageNet数据集中抽取部分样本作为比赛的数据集。ILSVRC比赛包括：图像分类、目标定位、目标检测、视频目标检测、场景分类。在该比赛的历年优胜者中，诞生了AlexNet（2012）、VGG（2014）、GoogLeNet（2014）、ResNet（2015）等耳熟能详的深度学习网络模型。“ILSVRC”一词有时候也用来特指该比赛使用的数据集，即ImageNet的一个子集，其中最常用的是2012年的数据集，记为ILSVRC2012。因此有时候提到ImageNet，很可能是指ImageNet中用于ILSVRC2012的这个子集。ILSVRC2012数据集拥有1000个分类（这意味着面向ImageNet图片识别的神经网络的输出是1000个），每个分类约有1000张图片。这些用于训练的图片总数约为120万张，此外还有一些图片作为验证集和测试集。ILSVRC2012含有5万张图片作为验证集，10万张图片作为测试集（测试集没有标签，验证集的标签通过另外的文档给出）。
 
-ImageNet不仅是一个数据集、一项比赛，也是一种典型的数据集格式。分类任务中最经典的数据集类型就是ImageNet格式。
+ImageNet不仅是一个数据集、一项比赛，也是一种典型的数据集格式。分类任务中最经典的数据集类型就是\ `ImageNet格式 <https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#imagenet>`__\ 。
 
-XEdu中MMEdu的图像分类模块数据集类型是ImageNet，包含三个文件夹和三个文本文件，文件夹内，不同类别图片按照文件夹分门别类排好，通过trainning_set、val_set、test_set区分训练集、验证集和测试集。文本文件classes.txt说明类别名称与序号的对应关系，val.txt说明验证集图片路径与类别序号的对应关系，test.txt说明测试集图片路径与类别序号的对应关系。如需训练自己创建的数据集，数据集需转换成ImageNet格式。
+XEdu中MMEdu的图像分类模块数据集类型是\ `ImageNet <https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#imagenet>`__\ ，包含三个文件夹和三个文本文件，文件夹内，不同类别图片按照文件夹分门别类排好，通过trainning_set、val_set、test_set区分训练集、验证集和测试集。文本文件classes.txt说明类别名称与序号的对应关系，val.txt说明验证集图片路径与类别序号的对应关系，test.txt说明测试集图片路径与类别序号的对应关系。如需训练自己创建的数据集，数据集需转换成\ `ImageNet格式 <https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#imagenet>`__\ 。这里，为您提供几种自己制作\ `ImageNet格式 <https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#coco>`__\ 数据集的方法。
 
 从零开始制作一个ImageNet格式数据集
 ----------------------------------
 
-从零开始制作一个ImageNet格式的数据集，可参考如下步骤。
+（1）巧用BaseDT的make_dataset功能制作
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 第一步：整理图片
-~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^
+
+首先新建一个images文件夹用于存放图片，然后开始采集图片，您可以用任何设备拍摄图像，也可以从视频中抽取帧图像，需要注意，这些图像可以被划分为多个类别。每个类别建立一个文件夹，文件夹名称为类别名称，将图片放在其中。
+
+第二步：制作类别说明文件
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+在images文件夹同级目录下新建一个文本文件classes.txt，将类别名称写入，要求符合\ `ImageNet格式 <https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#imagenet>`__\ 。
+
+参考示例如下：
+
+::
+
+   cat
+   dog
+
+此时前两步整理的文件夹应是如下格式：
+
+::
+
+   |---images
+       |---class1
+             |----xxx.jpg/png/....
+       |---class2
+             |----xxx.jpg/png/....
+       |---class3
+             |----xxx.jpg/png/....
+       |---classN
+             |----xxx.jpg/png/....
+   classes.txt
+
+第三步：生成数据集
+^^^^^^^^^^^^^^^^^^
+
+使用BaseDT库完成数据集制作。如需了解更多BaseDT库数据集处理的功能，详见\ `BaseDT的数据集格式转换 <https://xedu.readthedocs.io/zh/latest/basedt/introduction.html#id7>`__\ 部分。
+
+::
+
+   from BaseDT.dataset import DataSet
+   ds = DataSet(r"my_dataset_catdog2") # 指定为生成数据集的路径
+   # 默认比例为train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2
+   ds.make_dataset(r"catdog2", src_format="IMAGENET，",train_ratio = 0.8, test_ratio = 0.1, val_ratio = 0.1)# 指定原始数据集的路径，数据集格式选择IMAGENET
+
+第四步、检查数据集格式
+^^^^^^^^^^^^^^^^^^^^^^
+
+最后检查数据集格式转换是否已完成，将文件夹重新命名，在训练的时候，只要通过\ ``model.load_dataset``\ 指定数据集的路径就可以了。
+
+注：网上下载的ImageNet数据集也可使用上述方法完成数据集处理。
+
+（2）按照标准方式制作
+~~~~~~~~~~~~~~~~~~~~~
+
+.. _第一步整理图片-1:
+
+第一步：整理图片
+^^^^^^^^^^^^^^^^
 
 您可以用任何设备拍摄图像，也可以从视频中抽取帧图像，需要注意，这些图像可以被划分为多个类别。每个类别建立一个文件夹，文件夹名称为类别名称，将图片放在其中。
 
@@ -58,9 +115,9 @@ XEdu中MMEdu的图像分类模块数据集类型是ImageNet，包含三个文件
            IMG.save(save_path)
 
 第二步：划分训练集、验证集和测试集
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-根据整理的数据集大小，按照一定比例拆分训练集、验证集和测试集，可使用如下代码将原始数据集按照“6:2:2”的比例拆分。
+根据整理的数据集大小，按照一定比例拆分训练集、验证集和测试集，可手动也可以使用如下代码将原始数据集按照“6:2:2”的比例拆分。
 
 .. code:: plain
 
@@ -109,11 +166,11 @@ XEdu中MMEdu的图像分类模块数据集类型是ImageNet，包含三个文件
            shutil.copy(r_dir + fileName, w_dir + str(index) + '.jpg')
 
 第三步：生成标签文件
-~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 
 划分完训练集、验证集和测试集，我们需要生成“classes.txt”，“val.txt”和“test.txt”。其中classes.txt包含数据集类别标签信息，每行包含一个类别名称，按照字母顺序排列。“val.txt”和“test.txt”这两个标签文件的要求是每一行都包含一个文件名和其相应的真实标签。
 
-这里，为您提供一段用Python代码完成标签文件的程序如下所示，程序中设计了“val.txt”和“test.txt”这两个标签文件每行会包含类别名称、文件名和真实标签。
+可以手动完成，这里也为您提供一段用Python代码完成标签文件的程序如下所示，程序中设计了“val.txt”和“test.txt”这两个标签文件每行会包含类别名称、文件名和真实标签。
 
 .. code:: plain
 
@@ -193,14 +250,14 @@ XEdu中MMEdu的图像分类模块数据集类型是ImageNet，包含三个文件
                f.write(str_line)
 
 第四步：给数据集命名
-~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 
 最后，我们将这些文件放在一个文件夹中，命名为数据集的名称。这样，在训练的时候，只要通过\ ``model.load_dataset``\ 指定数据集的路径就可以了。
 
-快速整理数据集的方式
-~~~~~~~~~~~~~~~~~~~~
+（3）巧用XEdu自动补齐功能快速制作
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-如果您觉得整理规范格式数据集有点困难，其实您只完成第一步和第二步，即收集完图片按照类别存放，然后完成训练集（trainning_set）、验证集（val_set）和测试集（test_set）等的拆分，整理在一个大的文件夹下作为你的数据集也可以符合要求。此时指定数据集路径后同样可以训练模型，因为XEdu拥有检测数据集的功能，如您的数据集缺失txt文件，会自动帮您生成“classes.txt”，“val.txt”等（如存在对应的数据文件夹）开始训练。这些txt文件会生成你指定的数据集路径下，即帮您补齐数据集。
+如果您觉得整理规范格式数据集有点困难，其实您只收集了图片按照类别存放，然后完成训练集（trainning_set）、验证集（val_set）和测试集（test_set）等的拆分，最后整理在一个大的文件夹下作为您的数据集也可以符合要求。此时指定数据集路径后同样可以训练模型，因为XEdu拥有检测数据集的功能，如您的数据集缺失txt文件，会自动帮您生成“classes.txt”，“val.txt”等（如存在对应的数据文件夹）开始训练。这些txt文件会生成在您指定的数据集路径下，即帮您补齐数据集。
 
 COCO
 ----
@@ -214,7 +271,7 @@ understanding为目标，主要从复杂的日常场景中截取，图像中的�
 类，有超过33 万张图片，其中20 万张有标注，整个数据集中个体的数目超过150
 万个。
 
-XEdu中MMEdu的MMDetection模块支持的数据集类型是COCO，如需训练自己创建的数据集，数据集需转换成COCO格式。这里，为您提供2种自己制作COCO格式数据集的方法。
+XEdu中MMEdu的MMDetection模块支持的数据集类型是COCO，如需训练自己创建的数据集，数据集需转换成\ `COCO格式 <https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#coco>`__\ 。这里，为您提供几种自己制作\ `COCO格式 <https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#coco>`__\ 数据集的方法。
 
 从零开始制作一个COCO格式数据集
 ------------------------------
@@ -222,7 +279,7 @@ XEdu中MMEdu的MMDetection模块支持的数据集类型是COCO，如需训练�
 (1）OpenInnoLab版
 ~~~~~~~~~~~~~~~~~
 
-.. _第一步整理图片-1:
+.. _第一步整理图片-2:
 
 第一步、整理图片
 ^^^^^^^^^^^^^^^^
@@ -238,13 +295,15 @@ XEdu中MMEdu的MMDetection模块支持的数据集类型是COCO，如需训练�
 第三步、转换成COCO格式
 ^^^^^^^^^^^^^^^^^^^^^^
 
-安装BaseDT库将平台标注格式的数据集转换成COCO格式，可以使用如下代码：
+使用BaseDT库将平台标注格式的数据集转换成COCO格式，可以使用如下代码：
 
 .. code:: plain
 
    from BaseDT.dataset import DataSet
    ds = DataSet(r"my_dataset") # 指定目标数据集
    ds.make_dataset(r"/data/HZQV42", src_format="INNOLAB",train_ratio = 0.8, test_ratio = 0.1, val_ratio = 0.1) # 仅需修改为待转格式的原始数据集路径（注意是整个数据集）
+
+.. _第四步检查数据集格式-1:
 
 第四步、检查数据集格式
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -256,7 +315,7 @@ XEdu中MMEdu的MMDetection模块支持的数据集类型是COCO，如需训练�
 (2）LabelMe版
 ~~~~~~~~~~~~~
 
-.. _第一步整理图片-2:
+.. _第一步整理图片-3:
 
 第一步、整理图片
 ^^^^^^^^^^^^^^^^
@@ -408,9 +467,39 @@ XEdu中MMEdu的MMDetection模块支持的数据集类型是COCO，如需训练�
 
 创建两个文件夹“images”和“annotations”，分别用于存放图片以及标注信息。按照要求的目录结构，整理好文件夹的文件，最后将文件夹重新命名，在训练的时候，只要通过\ ``model.load_dataset``\ 指定数据集的路径就可以了。
 
-能不能使用网上下载的数据集？
-----------------------------
+（3）改装网上下载的目标检测数据集
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-网上下载的数据集的格式可能不符合XEdu的需求。那么就需要进行数据集格式转换。
+网上也可以找到一些目标检测数据集，但是网上下载的数据集的格式可能不符合XEdu的需求。那么就需要进行数据集格式转换。
 
 如您想要使用下载网上的数据集，可以选择使用BaseDT的常见数据集格式转换功能。详见\ `BaseDT的数据集格式转换 <https://xedu.readthedocs.io/zh/latest/basedt/introduction.html#id7>`__\ 部分。
+
+第一步：整理原始数据集
+^^^^^^^^^^^^^^^^^^^^^^
+
+首先新建一个annotations文件夹用于存放所有标注文件（VOC格式的为xml文件、COCO格式的为json格式），然后新建一个images文件夹用于存放所有图片，同时在根目录下新建一个classes.txt，写入类别名称。整理规范如下：
+
+::
+
+   原数据集（目标检测）
+   |---annotations
+         |----xxx.json/xxx.xml/xxx.txt
+   |---images
+         |----xxx.jpg/png/....
+   classes.txt
+
+第二步：转换为COCO格式
+^^^^^^^^^^^^^^^^^^^^^^
+
+使用BaseDT库将平台标注格式的数据集转换成COCO格式，可以使用如下代码：
+
+.. code:: plain
+
+   from BaseDT.dataset import DataSet
+   ds = DataSet(r"my_dataset") # 指定为新数据集路径
+   ds.make_dataset(r"G:\\测试数据集\\fruit_voc", src_format="VOC",train_ratio = 0.8, test_ratio = 0.1, val_ratio = 0.1) # 指定待转格式的原始数据集路径，原始数据集格式，划分比例，默认比例为train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2
+
+第三步、检查数据集格式
+^^^^^^^^^^^^^^^^^^^^^^
+
+最后检查数据集格式转换是否已完成，将文件夹重新命名，在训练的时候，只要通过\ ``model.load_dataset``\ 指定数据集的路径就可以了。
