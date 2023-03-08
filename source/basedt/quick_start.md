@@ -36,7 +36,7 @@ data = TextData(texts, vectorize = True)
 print(data.value)
 ```
 
-可看到text中'city': 'Dubai'的'Dubai'向量化后变为1，'temperature': 33的33仍保留为原本数值。
+可看到text中`'city': 'Dubai'`的`'Dubai'`向量化后变为1，`'temperature': 33`的33仍保留为原本数值。
 
 ![image](../images/basedt/文本转换示例图.PNG)
 
@@ -100,9 +100,9 @@ classes.txt
 classes.txt
 ```
 
-如是目标检测数据集，需将所有图片存放至images文件夹，所有标注文件（VOC格式的为xml文件、COCO格式的为json格式）存放至annotations文件夹，同时在根目录下新建一个classes.txt，写入类别信息。如是图像分类数据集，首先需将所有图片按照类别存放，然后将所有图片文件夹放入images文件夹，同时新建一个classes.txt，写入类别信息。通过此过程，也有助于初步了解这个原始数据集。
+如是目标检测数据集，需将所有图片存放至images文件夹，所有标注文件（VOC格式的为xml文件、COCO格式的为json格式）存放至annotations文件夹，同时在根目录下新建一个classes.txt，写入类别信息。如是图像分类数据集，首先需将所有图片按照类别存放，然后将所有图片文件夹放入images文件夹，同时新建一个classes.txt，写入类别信息。通过此过程，也有助于初步了解网上下载的数据集。
 
-整理完毕使用BaseDT的数据集格式转换的代码即可完成数据集转换。
+整理完毕即可使用BaseDT数据集格式转换的代码完成数据集转换。需指定新数据集路径、原始数据集路径、原始数据集格式、划分比例（如不设置，则默认比例为训练集:测试集:验证集=7:1:2）。
 
 ```
 from BaseDT.dataset import DataSet
@@ -112,7 +112,7 @@ ds.make_dataset(r"G:\\测试数据集\\fruit_voc", src_format="VOC",train_ratio 
 
 ![image](../images/basedt/voc2coco.png)
 
-使用以上代码，不仅将网上下载的VOC格式数据集做了格式转换，并将训练集、测试集、验证集做了新的比例拆分。
+转换成功后，不仅将网上下载的数据集转换为了XEdu支持的数据集格式，并对训练集、测试集、验证集进行了重新划分。
 
 针对OpenInnoLab平台标注创建的数据集，也可以使用BaseDT直接转换为XEdu支持的数据集。
 
