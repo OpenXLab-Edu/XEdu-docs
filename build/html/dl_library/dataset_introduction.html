@@ -517,7 +517,7 @@ labelme2coco(labelme_json, &#39;picture/new.json&#39;) # 指定生成文件路�
 <section id="id26">
 <h3>(3）改装网上下载的目标检测数据集<a class="headerlink" href="#id26" title="Permalink to this headline"></a></h3>
 <p>网上也可以找到一些目标检测数据集，但是网上下载的数据集的格式可能不符合XEdu的需求。那么就需要进行数据集格式转换。</p>
-<p>如您想要使用下载网上的数据集，可以选择使用BaseDT的常见数据集格式转换功能。详见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basedt/introduction.html#id7">BaseDT的数据集格式转换</a>部分。</p>
+<p>我们可以下载网上的数据集，改装生成我们需要的数据集格式。此时可以选择使用BaseDT的常见数据集格式转换功能。</p>
 <section id="id27">
 <h4>第一步：整理原始数据集<a class="headerlink" href="#id27" title="Permalink to this headline"></a></h4>
 <p>首先新建一个annotations文件夹用于存放所有标注文件（VOC格式的为xml文件、COCO格式的为json格式），然后新建一个images文件夹用于存放所有图片，同时在根目录下新建一个classes.txt，写入类别名称。整理规范如下：</p>
@@ -532,7 +532,7 @@ classes.txt
 </section>
 <section id="id28">
 <h4>第二步：转换为COCO格式<a class="headerlink" href="#id28" title="Permalink to this headline"></a></h4>
-<p>使用BaseDT库将平台标注格式的数据集转换成COCO格式，可以使用如下代码：</p>
+<p>使用BaseDT库将平台标注格式的数据集转换成COCO格式，可以使用如下代码。如需了解更多BaseDT库数据集处理的功能，详见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basedt/introduction.html#id7">BaseDT的数据集格式转换</a>部分。</p>
 <div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>from BaseDT.dataset import DataSet
 ds = DataSet(r&quot;my_dataset&quot;) # 指定为新数据集路径
 ds.make_dataset(r&quot;G:\\测试数据集\\fruit_voc&quot;, src_format=&quot;VOC&quot;,train_ratio = 0.8, test_ratio = 0.1, val_ratio = 0.1) # 指定待转格式的原始数据集路径，原始数据集格式，划分比例，默认比例为train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2

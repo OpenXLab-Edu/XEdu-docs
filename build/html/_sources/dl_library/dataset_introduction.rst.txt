@@ -472,7 +472,7 @@ XEdu中MMEdu的MMDetection模块支持的数据集类型是COCO，如需训练�
 
 网上也可以找到一些目标检测数据集，但是网上下载的数据集的格式可能不符合XEdu的需求。那么就需要进行数据集格式转换。
 
-如您想要使用下载网上的数据集，可以选择使用BaseDT的常见数据集格式转换功能。详见\ `BaseDT的数据集格式转换 <https://xedu.readthedocs.io/zh/latest/basedt/introduction.html#id7>`__\ 部分。
+我们可以下载网上的数据集，改装生成我们需要的数据集格式。此时可以选择使用BaseDT的常见数据集格式转换功能。
 
 第一步：整理原始数据集
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -491,7 +491,7 @@ XEdu中MMEdu的MMDetection模块支持的数据集类型是COCO，如需训练�
 第二步：转换为COCO格式
 ^^^^^^^^^^^^^^^^^^^^^^
 
-使用BaseDT库将平台标注格式的数据集转换成COCO格式，可以使用如下代码：
+使用BaseDT库将平台标注格式的数据集转换成COCO格式，可以使用如下代码。如需了解更多BaseDT库数据集处理的功能，详见\ `BaseDT的数据集格式转换 <https://xedu.readthedocs.io/zh/latest/basedt/introduction.html#id7>`__\ 部分。
 
 .. code:: plain
 
