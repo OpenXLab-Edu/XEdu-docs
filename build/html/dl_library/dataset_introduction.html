@@ -53,9 +53,9 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">经典数据集</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#imagenet">ImageNet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">从零开始制作一个ImageNet格式数据集</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#basedtmake-dataset">（1）巧用BaseDT的make_dataset功能制作</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id7">（2）按照标准方式制作</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#xedu">（3）巧用XEdu自动补齐功能快速制作</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basedtmake-dataset">(1）巧用BaseDT的make_dataset功能制作</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">(2）按照标准方式制作</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#xedu">(3）巧用XEdu自动补齐功能快速制作</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#coco">COCO</a></li>
@@ -114,7 +114,7 @@ Challenge，每年举办一次，每次从ImageNet数据集中抽取部分样本
 <section id="id2">
 <h2>从零开始制作一个ImageNet格式数据集<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <section id="basedtmake-dataset">
-<h3>（1）巧用BaseDT的make_dataset功能制作<a class="headerlink" href="#basedtmake-dataset" title="Permalink to this headline"></a></h3>
+<h3>(1）巧用BaseDT的make_dataset功能制作<a class="headerlink" href="#basedtmake-dataset" title="Permalink to this headline"></a></h3>
 <section id="id3">
 <h4>第一步：整理图片<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h4>
 <p>首先新建一个images文件夹用于存放图片，然后开始采集图片，您可以用任何设备拍摄图像，也可以从视频中抽取帧图像，需要注意，这些图像可以被划分为多个类别。每个类别建立一个文件夹，文件夹名称为类别名称，将图片放在其中。</p>
@@ -158,7 +158,7 @@ Challenge，每年举办一次，每次从ImageNet数据集中抽取部分样本
 </section>
 </section>
 <section id="id7">
-<h3>（2）按照标准方式制作<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<h3>(2）按照标准方式制作<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
 <section id="id8">
 <span id="id9"></span><h4>第一步：整理图片<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h4>
 <p>您可以用任何设备拍摄图像，也可以从视频中抽取帧图像，需要注意，这些图像可以被划分为多个类别。每个类别建立一个文件夹，文件夹名称为类别名称，将图片放在其中。</p>
@@ -324,7 +324,7 @@ with open(set_path +&#39;test.txt&#39;,&#39;w&#39;) as f:
 </section>
 </section>
 <section id="xedu">
-<h3>（3）巧用XEdu自动补齐功能快速制作<a class="headerlink" href="#xedu" title="Permalink to this headline"></a></h3>
+<h3>(3）巧用XEdu自动补齐功能快速制作<a class="headerlink" href="#xedu" title="Permalink to this headline"></a></h3>
 <p>如果您觉得整理规范格式数据集有点困难，其实您只收集了图片按照类别存放，然后完成训练集（trainning_set）、验证集（val_set）和测试集（test_set）等的拆分，最后整理在一个大的文件夹下作为您的数据集也可以符合要求。此时指定数据集路径后同样可以训练模型，因为XEdu拥有检测数据集的功能，如您的数据集缺失txt文件，会自动帮您生成“classes.txt”，“val.txt”等（如存在对应的数据文件夹）开始训练。这些txt文件会生成在您指定的数据集路径下，即帮您补齐数据集。</p>
 </section>
 </section>

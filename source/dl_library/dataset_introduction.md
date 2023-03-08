@@ -13,7 +13,7 @@ XEdu中MMEdu的图像分类模块数据集类型是[ImageNet](https://xedu.readt
 
 ## 从零开始制作一个ImageNet格式数据集
 
-### （1）巧用BaseDT的make_dataset功能制作
+### (1）巧用BaseDT的make_dataset功能制作
 
 #### 第一步：整理图片
 
@@ -62,7 +62,7 @@ ds.make_dataset(r"catdog2", src_format="IMAGENET，",train_ratio = 0.8, test_rat
 
 注：网上下载的图像分类数据集也可使用上述方法完成数据集处理。
 
-### （2）按照标准方式制作
+### (2）按照标准方式制作
 
 #### 第一步：整理图片
 
@@ -237,7 +237,7 @@ with open(set_path +'test.txt','w') as f:
 
 最后，我们将这些文件放在一个文件夹中，命名为数据集的名称。这样，在训练的时候，只要通过`model.load_dataset`指定数据集的路径就可以了。
 
-### （3）巧用XEdu自动补齐功能快速制作
+### (3）巧用XEdu自动补齐功能快速制作
 
 如果您觉得整理规范格式数据集有点困难，其实您只收集了图片按照类别存放，然后完成训练集（trainning_set）、验证集（val_set）和测试集（test_set）等的拆分，最后整理在一个大的文件夹下作为您的数据集也可以符合要求。此时指定数据集路径后同样可以训练模型，因为XEdu拥有检测数据集的功能，如您的数据集缺失txt文件，会自动帮您生成“classes.txt”，“val.txt”等（如存在对应的数据文件夹）开始训练。这些txt文件会生成在您指定的数据集路径下，即帮您补齐数据集。
 
