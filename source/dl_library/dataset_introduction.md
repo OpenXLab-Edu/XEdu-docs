@@ -13,7 +13,7 @@ XEdu中MMEdu的图像分类模块数据集类型是[ImageNet](https://xedu.readt
 
 ## 从零开始制作一个ImageNet格式数据集
 
-### (1）巧用BaseDT的make_dataset功能制作
+### 选择1：巧用BaseDT的make_dataset函数制作
 
 #### 第一步：整理图片
 
@@ -56,13 +56,13 @@ ds = DataSet(r"my_dataset_catdog2") # 指定为生成数据集的路径
 ds.make_dataset(r"catdog2", src_format="IMAGENET，",train_ratio = 0.8, test_ratio = 0.1, val_ratio = 0.1)# 指定原始数据集的路径，数据集格式选择IMAGENET
 ```
 
-#### 第四步、检查数据集格式
+#### 第四步：检查数据集
 
-最后检查数据集格式转换是否已完成，将文件夹重新命名，在训练的时候，只要通过`model.load_dataset`指定数据集的路径就可以了。
+结合数据集检查提示对数据集进行调整，必要时可重做前几步，最后完成整个数据集制作。在训练的时候，只要通过`model.load_dataset`指定数据集的路径就可以了。
 
 注：网上下载的图像分类数据集也可使用上述方法完成数据集处理。
 
-### (2）按照标准方式制作
+### 选择2：按照标准方式制作
 
 #### 第一步：整理图片
 
@@ -237,9 +237,11 @@ with open(set_path +'test.txt','w') as f:
 
 最后，我们将这些文件放在一个文件夹中，命名为数据集的名称。这样，在训练的时候，只要通过`model.load_dataset`指定数据集的路径就可以了。
 
-### (3）巧用XEdu自动补齐功能快速制作
+### 选择3：巧用XEdu自动补齐功能快速制作
 
 如果您觉得整理规范格式数据集有点困难，其实您只收集了图片按照类别存放，然后完成训练集（trainning_set）、验证集（val_set）和测试集（test_set）等的拆分，最后整理在一个大的文件夹下作为您的数据集也可以符合要求。此时指定数据集路径后同样可以训练模型，因为XEdu拥有检测数据集的功能，如您的数据集缺失txt文件，会自动帮您生成“classes.txt”，“val.txt”等（如存在对应的数据文件夹）开始训练。这些txt文件会生成在您指定的数据集路径下，即帮您补齐数据集。
+
+> 选择2和选择3制作的数据集自查：数据集制作完成后如想要检查数据集，可使用BaseDT的[数据集格式检查](https://xedu.readthedocs.io/zh/latest/basedt/introduction.html#id9)功能，结合数据集检查提示对数据集进行调整，最后完成整个数据集制作。
 
 ## COCO
 
@@ -251,17 +253,17 @@ XEdu中MMEdu的MMDetection模块支持的数据集类型是COCO，如需训练�
 
 ## 从零开始制作一个COCO格式数据集
 
-### (1）OpenInnoLab版
+### 选择1：OpenInnoLab版（线上标注）
 
-#### 第一步、整理图片
+#### 第一步：整理图片
 
 新建一个images文件夹用于存放图片 ，根据需求按照自己喜欢的方式收集图片，图片中包含需要检测的信息即可。
 
-#### 第二步、标注图片
+#### 第二步：标注图片
 
 使用熟悉的标注方式标注图片，如可进入平台的在线工具-人工智能工坊-数据标注完成数据标注。跳转链接：https://www.openinnolab.org.cn/pjlab/projects/channel
 
-#### 第三步、转换成COCO格式
+#### 第三步：转换成COCO格式
 
 使用BaseDT库将平台标注格式的数据集转换成COCO格式，可以使用如下代码：
 
@@ -271,26 +273,26 @@ ds = DataSet(r"my_dataset") # 指定目标数据集
 ds.make_dataset(r"/data/HZQV42", src_format="INNOLAB",train_ratio = 0.8, test_ratio = 0.1, val_ratio = 0.1) # 仅需修改为待转格式的原始数据集路径（注意是整个数据集）
 ```
 
-#### 第四步、检查数据集格式
+#### 第四步：检查数据集格式
 
-最后检查数据集格式转换是否已完成，将文件夹重新命名，在训练的时候，只要通过`model.load_dataset`指定数据集的路径就可以了。
+结合数据集检查提示对数据集进行调整，必要时可重做前几步，最后完成整个数据集制作。在训练的时候，只要通过`model.load_dataset`指定数据集的路径就可以了。
 
 参考项目：https://www.openinnolab.org.cn/pjlab/project?id=63c4ad101dd9517dffdff539&sc=635638d69ed68060c638f979#public
 
-### (2）LabelMe版
+### 选择2：LabelMe版（本地标注）
 
-#### 第一步、整理图片
+#### 第一步：整理图片
 
 根据需求按照自己喜欢的方式收集图片，图片中包含需要检测的信息即可，可以使用ImageNet格式数据集整理图片的方式对收集的图片进行预处理。
 
-#### 第二步、标注图片
+#### 第二步：标注图片
 
 使用熟悉的标注方式标注图片，如可使用LabelMe批量打开图片文件夹的图片，进行标注并保存为json文件。
 
-- LabelMe：格式为LabelMe，提供了转VOC、COCO格式的脚本，可以标注矩形、圆形、线段、点。标注语义分割、实例分割数据集尤其推荐。
-- LabelMe安装与打开方式：`pip install labelme`安装完成后输入`labelme`即可打开。
+- LabelMe：麻省理工（MIT）的计算机科学和人工智能实验室（CSAIL）研发的图像标注工具，标注格式为LabelMe，网上较多LabelMe转VOC、COCO格式的脚本，可以标注矩形、圆形、线段、点。标注语义分割、实例分割数据集尤其推荐。
+- 安装与打开方式：`pip install labelme`安装完成后输入`labelme`即可打开。
 
-#### 第三步、转换成COCO标注格式
+#### 第三步：转换成COCO标注格式
 
 将LabelMe格式的标注文件转换成COCO标注格式，可以使用如下代码：
 
@@ -419,11 +421,11 @@ labelme_json = glob.glob('picture/*.json')  # 获取指定目录下的json格式
 labelme2coco(labelme_json, 'picture/new.json') # 指定生成文件路径
 ```
 
-#### 第四步、按照目录结构整理文件
+#### 第四步：按照目录结构整理文件
 
-创建两个文件夹“images”和“annotations”，分别用于存放图片以及标注信息。按照要求的目录结构，整理好文件夹的文件，最后将文件夹重新命名，在训练的时候，只要通过`model.load_dataset`指定数据集的路径就可以了。
+创建两个文件夹“images”和“annotations”，分别用于存放图片以及标注信息。按照要求的目录结构，整理好文件夹的文件，最后将文件夹重新命名，制作完成后如想要检查数据集，可使用BaseDT的[数据集格式检查](https://xedu.readthedocs.io/zh/latest/basedt/introduction.html#id9)功能，结合数据集检查提示对数据集进行调整，最后完成整个数据集制作。在训练的时候，只要通过`model.load_dataset`指定数据集的路径就可以了。
 
-### (3）改装网上下载的目标检测数据集
+### 选择3：改装网上下载的目标检测数据集
 
 网上也可以找到一些目标检测数据集，但是网上下载的数据集的格式可能不符合XEdu的需求。那么就需要进行数据集格式转换。
 
@@ -452,6 +454,6 @@ ds = DataSet(r"my_dataset") # 指定为新数据集路径
 ds.make_dataset(r"G:\\测试数据集\\fruit_voc", src_format="VOC",train_ratio = 0.8, test_ratio = 0.1, val_ratio = 0.1) # 指定待转格式的原始数据集路径，原始数据集格式，划分比例，默认比例为train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2
 ```
 
-#### 第三步、检查数据集格式
+#### 第三步：检查数据集
 
-最后检查数据集格式转换是否已完成，将文件夹重新命名，在训练的时候，只要通过`model.load_dataset`指定数据集的路径就可以了。
+结合数据集检查提示对数据集进行调整，必要时可重做前几步，最后完成整个数据集制作。在训练的时候，只要通过`model.load_dataset`指定数据集的路径就可以了。
