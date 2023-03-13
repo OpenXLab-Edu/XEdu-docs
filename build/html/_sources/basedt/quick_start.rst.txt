@@ -31,7 +31,9 @@ BaseDT提供了一个data模块，它包含了多个子模块和类，分别针�
 256)的图片，crop大小至(224,224)的图片和归一化的图片。
 
 .. figure:: ../images/basedt/图片处理示例图.JPEG
+   :alt: image
 
+   image
 
 2. 文本数据处理
 ~~~~~~~~~~~~~~~
@@ -47,7 +49,9 @@ BaseDT提供了一个data模块，它包含了多个子模块和类，分别针�
 可看到text中\ ``'city': 'Dubai'``\ 的\ ``'Dubai'``\ 向量化后变为1，\ ``'temperature': 33``\ 的33仍保留为原本数值。
 
 .. figure:: ../images/basedt/文本转换示例图.PNG
+   :alt: image
 
+   image
 
 3. 语音数据处理
 ~~~~~~~~~~~~~~~
@@ -88,18 +92,30 @@ BaseDT提供了一个DataSet类，它可以让你对不同类型和格式的数�
 
 BaseDT提供了XEdu支持的数据集格式检查功能。
 
+.. code:: python
+
+   from BaseDT.dataset import DataSet
+   ds = DataSet(r"my_dataset", "cls")
+   ds.check()
+
 格式正确提示：
 
 .. figure:: ../images/basedt/格式正确.png
+   :alt: image
 
+   image
 
 格式有误提示：
 
 .. figure:: ../images/basedt/格式错误1.png
+   :alt: image
 
+   image
 
 .. figure:: ../images/basedt/格式错误2.png
+   :alt: image
 
+   image
 
 3. 数据集格式转换
 ~~~~~~~~~~~~~~~~~
@@ -140,7 +156,9 @@ BaseDT提供了XEdu支持的数据集格式检查功能。
    ds.make_dataset(r"G:\\测试数据集\\fruit_voc", src_format="VOC",train_ratio = 0.8, test_ratio = 0.1, val_ratio = 0.1) # 指定待转格式的原始数据集路径，原始数据集格式，划分比例，默认比例为train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2
 
 .. figure:: ../images/basedt/voc2coco.png
+   :alt: image
 
+   image
 
 转换成功后，不仅将网上下载的数据集转换为了XEdu支持的数据集格式，并对训练集、测试集、验证集进行了重新划分。
 
@@ -156,7 +174,9 @@ BaseDT提供了XEdu支持的数据集格式检查功能。
    ds.make_dataset(r"/data/HZQV42", src_format="INNOLAB",train_ratio = 0.8, test_ratio = 0.1, val_ratio = 0.1) # 仅需修改为待转格式的原始数据集路径（注意是整个数据集）
 
 .. figure:: ../images/basedt/coco转换完成.png
+   :alt: image
 
+   image
 
 更多XEdu支持的数据集格式的介绍详见\ `数据集支持 <https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#id3>`__\ 部分。
 
@@ -181,7 +201,9 @@ BaseDT提供了一个plot模块，它可以让你对不同任务的数据进行�
    imshow_det_bboxes(img, bboxes = [[3,25,170,263,0.9]],labels = [0], class_names = ["cat"], score_thr = 0.8)
 
 .. figure:: ../images/basedt/绘制目标检测框.png
+   :alt: image
 
+   image
 
 3. 绘制分割任务的掩膜
 ~~~~~~~~~~~~~~~~~~~~~
@@ -207,7 +229,9 @@ BaseDT提供了一个io模块，用于支持数据的I/O设备的调用，它可
 录制的两秒音频图下如下图：
 
 .. figure:: ../images/basedt/音频图.png
+   :alt: image
 
+   image
 
 附录
 ----

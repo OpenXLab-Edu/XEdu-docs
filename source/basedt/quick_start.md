@@ -73,6 +73,12 @@ BaseDT提供了一个DataSet类，它可以让你对不同类型和格式的数�
 
 BaseDT提供了XEdu支持的数据集格式检查功能。
 
+```Python
+from BaseDT.dataset import DataSet
+ds = DataSet(r"my_dataset", "cls")
+ds.check()
+```
+
 格式正确提示：
 
 ![image](../images/basedt/格式正确.png)

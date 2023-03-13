@@ -97,7 +97,7 @@ BaseDT提供XEdu支持的数据集格式检查的功能。指定数据集路径�
 
 ```Python
 from BaseDT.dataset import DataSet
-ds = DataSet(r"C:\Users\76572\Desktop\my_dataset", "cls")
+ds = DataSet(r"my_dataset", "cls")
 ds.check()
 ```
 
