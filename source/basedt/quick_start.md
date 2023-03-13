@@ -75,7 +75,7 @@ BaseDT提供了一个DataSet类，它可以让你对不同类型和格式的数�
 
 ###  3. 数据集格式转换
 
-**针对网上下载的数据集，BaseDT可支持常见数据集格式（目前支持IMAGENET、VOC和COCO）的转换。**
+（1）针对网上下载的数据集，BaseDT可支持常见数据集格式（目前支持IMAGENET、VOC和COCO）的转换。
 
 首先需将网上下载的原始数据集做初步整理，整理规范如下：
 
@@ -114,7 +114,7 @@ ds.make_dataset(r"G:\\测试数据集\\fruit_voc", src_format="VOC",train_ratio 
 
 转换成功后，不仅将网上下载的数据集转换为了XEdu支持的数据集格式，并对训练集、测试集、验证集进行了重新划分。
 
-针对OpenInnoLab平台标注创建的数据集，也可以使用BaseDT直接转换为XEdu支持的数据集。
+（2）针对OpenInnoLab平台标注创建的数据集，也可以使用BaseDT直接转换为XEdu支持的数据集。
 
 **注：需新建一个images文件夹用于存放图片 ，再将images上传平台进行在线标注。**
 
