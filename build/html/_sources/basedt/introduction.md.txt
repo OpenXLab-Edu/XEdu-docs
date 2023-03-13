@@ -91,7 +91,21 @@ tensor_value = data.to_tensor()
 
 ### （2）数据集格式检查
 
-敬请期待。
+BaseDT提供XEdu支持的数据集格式检查的功能。指定数据集路径和数据集任务类别，即可输出检查结果，可根据提示对数据集做调整。
+
+**示例代码：**
+
+```Python
+from BaseDT.dataset import DataSet
+ds = DataSet(r"C:\Users\76572\Desktop\my_dataset", "cls")
+ds.check()
+```
+
+**参数详解：**
+
+`dataset_path`: 数据集路径。
+
+`dataset_type`: 数据集任务类别，如“cls”（图像分类）、“det”（目标检测），不设置也可以运行，仅会输出提示”数据集既不符合det也不符合cls“。如需输出详细信息，建议设置`dataset_type`。
 
 ### （3）数据集格式转换
 

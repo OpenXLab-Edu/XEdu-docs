@@ -178,7 +178,16 @@
 </section>
 <section id="id9">
 <h3>（2）数据集格式检查<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
-<p>敬请期待。</p>
+<p>BaseDT提供XEdu支持的数据集格式检查的功能。指定数据集路径和数据集任务类别，即可输出检查结果，可根据提示对数据集做调整。</p>
+<p><strong>示例代码：</strong></p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.dataset</span> <span class="kn">import</span> <span class="n">DataSet</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">DataSet</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\76572\Desktop\my_dataset&quot;</span><span class="p">,</span> <span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>参数详解：</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">dataset_path</span></code>: 数据集路径。</p>
+<p><code class="docutils literal notranslate"><span class="pre">dataset_type</span></code>: 数据集任务类别，如“cls”（图像分类）、“det”（目标检测），不设置也可以运行，仅会输出提示”数据集既不符合det也不符合cls“。如需输出详细信息，建议设置<code class="docutils literal notranslate"><span class="pre">dataset_type</span></code>。</p>
 </section>
 <section id="id10">
 <h3>（3）数据集格式转换<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
