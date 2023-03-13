@@ -49,7 +49,7 @@
 <li class="toctree-l2"><a class="reference internal" href="quick_start.html">快速上手BaseDT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation.html">BaseDT安装</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">揭秘BaseDT的强大功能</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">板块1 数据的处理</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">板块1：数据的处理</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">（1）图片数据处理</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id3">（2）文本数据处理</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id4">（3）语音数据处理</a></li>
@@ -57,18 +57,18 @@
 <li class="toctree-l4"><a class="reference internal" href="#id6">（5）模型部署数据处理</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">板块2 数据集的处理</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">板块2：数据集的处理</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id8">（1）常用数据集下载</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id9">（2）数据集格式检查</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id10">（3）数据集格式转换</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id11">板块3 数据的可视化</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id11">板块3：数据的可视化</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id12">（1）绘制分类任务混淆矩阵</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id13">（2）绘制目标检测任务的检测框</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#i-o">板块4 I/O设备</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#i-o">板块4：I/O设备</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id14">（1） 调用麦克风</a></li>
 </ul>
 </li>
@@ -110,7 +110,7 @@
 <h1>揭秘BaseDT的强大功能<a class="headerlink" href="#basedt" title="Permalink to this headline"></a></h1>
 <p>数据处理是机器学习和深度学习中不可或缺的一环，它直接影响着模型的性能和效果。然而，在实际应用中，我们常常面临着数据处理过程中的各种困难和挑战，比如数据格式不统一、数据质量低下、数据处理流程复杂等。为了解决这些问题，我们开发了BaseDT库。BaseDT是一个用Python编写的库，它可以让你用一行代码就完成数据的各种操作，比如resize、crop、normalize、转换格式等。无论你是处理图片数据、文本数据、语音数据，还是其他类型的数据，BaseDT都可以帮助你轻松地准备好你的数据集，并且保持部署模型时和推理时的pipeline一致。BaseDT还支持数据集的处理，例如数据集的下载、检查和转换。此外，BaseDT还支持数据的可视化和I/O设备的调用。BaseDT不仅是一个功能强大的库，也是一个易于使用和扩展的库。它可以让你专注于模型的构建和训练，而不用担心数据处理的问题。BaseDT是一个值得你尝试和信赖的库。</p>
 <section id="id1">
-<h2>板块1 数据的处理<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<h2>板块1：数据的处理<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <p>BaseDT提供了一个data模块，它包含了多个子模块和类，分别针对不同类型和格式的数据提供了处理功能。例如，ImageData子模块可以让你对图片数据进行resize、crop、normalize等操作；TextData子模块可以让你对文本数据进行分词、词向量化等操作；AudioData子模块可以让你对语音数据进行重采样、裁剪、增强等操作。</p>
 <section id="id2">
 <h3>（1）图片数据处理<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
@@ -170,7 +170,7 @@
 </section>
 </section>
 <section id="id7">
-<h2>板块2 数据集的处理<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h2>
+<h2>板块2：数据集的处理<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h2>
 <p>数据集的好坏决定了模型的训练结果，数据集的制作是深度学习模型训练的第一步。在实现一个深度学习项目时，除了搭建模型的网络结构，更重要的一点是处理好项目需要的数据集，那么就需要进行数据集处理。BaseDT提供了的DataSet类可支持对不同类型和格式的数据集进行处理。</p>
 <section id="id8">
 <h3>（1）常用数据集下载<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
@@ -197,7 +197,7 @@
 </section>
 </section>
 <section id="id11">
-<h2>板块3 数据的可视化<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h2>
+<h2>板块3：数据的可视化<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h2>
 <p>BaseDT提供了一个plot模块，它可以让你对不同任务的数据进行可视化，例如绘制分类任务的混淆矩阵、目标检测任务的目标框、分割任务的掩膜等。plot模块支持多种显示方式，让你可以方便地查看和分析图片、文本、语音等不同类型的数据。</p>
 <section id="id12">
 <h3>（1）绘制分类任务混淆矩阵<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h3>
@@ -222,7 +222,7 @@
 </section>
 </section>
 <section id="i-o">
-<h2>板块4 I/O设备<a class="headerlink" href="#i-o" title="Permalink to this headline"></a></h2>
+<h2>板块4：I/O设备<a class="headerlink" href="#i-o" title="Permalink to this headline"></a></h2>
 <p>BaseDT提供的io模块可支持数据的I/O设备的调用，它可以让你方便地从不同的来源获取和输出数据。例如，你可以用io模块中的MicroPhone类来调用麦克风录音，并且直接将录音转换成AudioData对象，进行后续的处理和分析。此外，BaseDT还支持其他多种I/O设备，比如摄像头、扫描仪、打印机等，让你可以轻松地处理各种类型和格式的数据。</p>
 <section id="id14">
 <h3>（1） 调用麦克风<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h3>
