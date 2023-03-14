@@ -1,5 +1,6 @@
 创意项目展示
 ==================
 .. toctree::
-   works/p1-dianlufuhaoshibiexiaozhushou.md
-   works/p2-shitoujiandaobupeiwan.md
+   works/p1-smartspeaker.md
+   works/p2-dianlufuhaoshibiexiaozhushou.md
+   works/p3-shitoujiandaobupeiwan.md
