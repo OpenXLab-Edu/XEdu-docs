@@ -111,11 +111,8 @@
 <p>语音的原始音频信号是一维信号，若使用其原始音频信号作为网络输入，信号长度较长，同时使用该输入对应的网络模型大小也会很大。若可以将一维信号变成类似于图像的二维信号，那么不仅可以使用各种轻量型卷积神经网络，也可以使用各种预训练ImageNet大规模数据集的模型。短时傅里叶变换(short-time
 Fourier transform,
 STFT)就是这样一种方法，STFT可以将一维信号变为二维信号，该二维信号叫做时频谱图，横坐标为时间，纵坐标为频率，颜色深度为对应时间和对应频率的大小，变换前后的信号如下图所示。最终此基础上使用图像分类的方法完成语音识别。</p>
-<figure class="align-default" id="id7">
-<img alt="image" src="../../_images/变换后图像.png" />
-<figcaption>
-<p><span class="caption-text">image</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
-</figcaption>
+<figure class="align-default">
+<img alt="../../_images/变换后图像.png" src="../../_images/变换后图像.png" />
 </figure>
 <p><strong>图1</strong> 变换前后信号</p>
 <p>3 AI模型的部署</p>

@@ -24,9 +24,7 @@ Fourier transform,
 STFT)就是这样一种方法，STFT可以将一维信号变为二维信号，该二维信号叫做时频谱图，横坐标为时间，纵坐标为频率，颜色深度为对应时间和对应频率的大小，变换前后的信号如下图所示。最终此基础上使用图像分类的方法完成语音识别。
 
 .. figure:: ../../images/support_resources/变换后图像.png
-   :alt: image
 
-   image
 
 **图1** 变换前后信号
 
