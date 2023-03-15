@@ -69,7 +69,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#id3">设计理念</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id4">模型结构</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id5">结论</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id8">参考文献</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">参考文献</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Yolov3.html">目标检测模型Yolov3</a></li>
@@ -97,7 +97,7 @@
           <li><a href="../network_introduction.html">经典网络模型介绍</a> &raquo;</li>
       <li>目标检测模型SSD</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../../_sources/dl_library/net/SSD_Lite.md.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/dl_library/net/SSD_Lite.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -107,10 +107,13 @@
              
   <section id="ssd">
 <h1>目标检测模型SSD<a class="headerlink" href="#ssd" title="Permalink to this headline"></a></h1>
-<p><a class="reference external" href="https://arxiv.org/pdf/1512.02325.pdf">SSD: Single Shot MultiBox Detector</a></p>
+<p><a class="reference external" href="https://arxiv.org/pdf/1512.02325.pdf">SSD: Single Shot MultiBox
+Detector</a></p>
 <section id="id1">
 <h2>介绍<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
-<p>SSD是ECCV 2016上提出的一种目标检测算法，截至目前是主要的检测框架之一，相比Faster RCNN有明显的速度优势，相比YOLO又有明显的mAP优势。</p>
+<p>SSD是ECCV
+2016上提出的一种目标检测算法，截至目前是主要的检测框架之一，相比Faster
+RCNN有明显的速度优势，相比YOLO又有明显的mAP优势。</p>
 </section>
 <section id="end-to-end">
 <h2>特点：end-to-end<a class="headerlink" href="#end-to-end" title="Permalink to this headline"></a></h2>
@@ -120,13 +123,17 @@
 <p>（2）one-stage方法：yolo和SSD</p>
 <p>直接通过主干网络给出类别位置信息，不需要区域生成</p>
 <p>下图是给出的几类算法的精度和速度差异。</p>
-<div align=center> <img src="https://img-blog.csdnimg.cn/c178909804b64dadbdb69c1a8ef75b6c.png" width="70%" /> </div></section>
+<figure class="align-default">
+<img alt="../../_images/ssd0.png" src="../../_images/ssd0.png" />
+</figure>
+</section>
 <section id="id2">
 <h2>优点<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p>从YOLO中继承了将detection转化为regression的思路，一次完成目标定位与分类</p></li>
 <li><p>基于Faster RCNN中的Anchor，提出了相似的prior box</p></li>
-<li><p>加入基于特征金字塔（Pyramidal Feature Hierarchy）的检测方式，即在不同感受野的feature map上预测目标</p></li>
+<li><p>加入基于特征金字塔（Pyramidal Feature
+Hierarchy）的检测方式，即在不同感受野的feature map上预测目标</p></li>
 <li><p>这些设计实现了简单的端到端的训练，而且即便使用低分辨率的输入图像也能得到高的精度</p></li>
 </ul>
 </section>
@@ -138,28 +145,35 @@ CNN网络一般前面的特征图比较大，后面会逐渐采用stride=2的卷
 <li><p>采用卷积进行检测
 SSD直接采用卷积对不同的特征图来进行提取检测结果。对于形状为mnp的特征图，只需要采用33p这样比较小的卷积核得到检测值。
 （每个添加的特征层使用一系列卷积滤波器可以产生一系列固定的预测。）</p></li>
-<li><p>设置先验框
-SSD借鉴faster rcnn中ancho理念，每个单元设置尺度或者长宽比不同的先验框，预测的是对于该单元格先验框的偏移量，以及每个类被预测反映框中该物体类别的置信度。</p></li>
+<li><p>设置先验框 SSD借鉴faster
+rcnn中ancho理念，每个单元设置尺度或者长宽比不同的先验框，预测的是对于该单元格先验框的偏移量，以及每个类被预测反映框中该物体类别的置信度。</p></li>
 </ul>
 </section>
 <section id="id4">
 <h2>模型结构<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
-<div align=center> <img src="https://img-blog.csdnimg.cn/64ec61436d224f7f8eea10b7c51f7ad3.png" width="70%" /> </div><p>VGG-Base作为基础框架用来提取图像的feature，Extra-Layers对VGG的feature做进一步处理，增加模型对图像的感受野，使得extra-layers得到的特征图承载更多抽象信息。待预测的特征图由六种特征图组成，6中特征图最终通过pred-layer得到预测框的坐标，置信度，类别信息。</p>
+<figure class="align-default">
+<img alt="../../_images/ssd1.png" src="../../_images/ssd1.png" />
+</figure>
+<p>VGG-Base作为基础框架用来提取图像的feature，Extra-Layers对VGG的feature做进一步处理，增加模型对图像的感受野，使得extra-layers得到的特征图承载更多抽象信息。待预测的特征图由六种特征图组成，6中特征图最终通过pred-layer得到预测框的坐标，置信度，类别信息。</p>
 </section>
 <section id="id5">
 <h2>结论<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
 <section id="id6">
-<h3>优点：<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
-<p>SSD算法的优点应该很明显：运行速度可以和YOLO媲美，检测精度可以和Faster RCNN媲美。</p>
-</section>
-<section id="id7">
-<h3>缺点：<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
-<p>需要人工设置prior box的min_size，max_size和aspect_ratio值。网络中prior box的基础大小和形状不能直接通过学习获得，而是需要手工设置。而网络中每一层feature使用的prior box大小和形状恰好都不一样，导致调试过程非常依赖经验。
-虽然使用了pyramdial feature hierarchy的思路，但是对于小目标的recall依然一般，这是由于SSD使用conv4_3低级feature去检测小目标，而低级特征卷积层数少，存在特征提取不充分的问题。</p>
-</section>
+<span id="id7"></span><h3>优点：<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<p>SSD算法的优点应该很明显：运行速度可以和YOLO媲美，检测精度可以和Faster
+RCNN媲美。</p>
 </section>
 <section id="id8">
-<h2>参考文献<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h2>
+<h3>缺点：<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
+<p>需要人工设置prior box的min_size，max_size和aspect_ratio值。网络中prior
+box的基础大小和形状不能直接通过学习获得，而是需要手工设置。而网络中每一层feature使用的prior
+box大小和形状恰好都不一样，导致调试过程非常依赖经验。
+虽然使用了pyramdial feature
+hierarchy的思路，但是对于小目标的recall依然一般，这是由于SSD使用conv4_3低级feature去检测小目标，而低级特征卷积层数少，存在特征提取不充分的问题。</p>
+</section>
+</section>
+<section id="id9">
+<h2>参考文献<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h2>
 <div class="highlight-bibtex notranslate"><div class="highlight"><pre><span></span><span class="nc">@article</span><span class="p">{</span><span class="nl">Liu_2016</span><span class="p">,</span><span class="w"></span>
 <span class="w">   </span><span class="na">title</span><span class="p">=</span><span class="s">{SSD: Single Shot MultiBox Detector}</span><span class="p">,</span><span class="w"></span>
 <span class="w">   </span><span class="na">journal</span><span class="p">=</span><span class="s">{ECCV}</span><span class="p">,</span><span class="w"></span>
