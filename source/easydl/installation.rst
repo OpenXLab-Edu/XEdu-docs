@@ -5,5 +5,7 @@ EasyDL系列工具内置在XEdu一键安装包中（如下图所示）。
 
 飞书网盘：https://p6bm2if73b.feishu.cn/drive/folder/fldcn67XTwhg8qIFCl8edJBZZQb
 
+下载一键安装包双击打开如下三个工具即可体验。
+
 .. figure:: ../images/easydl/easydl.png
 
