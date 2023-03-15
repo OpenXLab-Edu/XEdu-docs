@@ -251,7 +251,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>：指定使用的模型权重文件，默认参数为<code class="docutils literal notranslate"><span class="pre">None</span></code>，如果没有指定模型权重文件，那么我们将会使用默认的模型权重文件进行推理。</p>
 <p>执行上述代码之后的运行结果如下图：</p>
 <figure class="align-default">
-<img alt="../_images/cls_train.png" src="../_images/cls_train.png" />
+<img alt="../_images/cls模型训练.png" src="../_images/cls模型训练.png" />
 </figure>
 <p>而在<code class="docutils literal notranslate"><span class="pre">checkpoints\cls_model</span></code>文件夹中我们会发现多了两种文件，一个是<code class="docutils literal notranslate"><span class="pre">None.log.json</span></code>文件，它记录了我们模型在训练过程中的一些参数，比如说学习率<code class="docutils literal notranslate"><span class="pre">lr</span></code>，所用时间<code class="docutils literal notranslate"><span class="pre">time</span></code>，以及损失<code class="docutils literal notranslate"><span class="pre">loss</span></code>等；另一个文件是.pth文件，这个是我们在训练过程中所保存的模型。</p>
 </section>
@@ -267,7 +267,8 @@
 <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">)</span> <span class="c1"># 进行再训练</span>
 </pre></div>
 </div>
-<p>这里我们有一个参数在之前的<a class="reference external" href="####2.训练模型">训练模型</a>过程中没有详细说明，那就是<code class="docutils literal notranslate"><span class="pre">train</span></code>函数中的<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>参数，这个放到这里就比较好理解，它的意思是指定需要进行再训练的模型路径，当然你也可以根据你需要训练的不同模型而调整参数。</p>
+<p>这里我们有一个参数在之前的<a class="reference external" href="####2.训练模型">训练模型</a>过程中没有详细说明，那就是<code class="docutils literal notranslate"><span class="pre">train</span></code>函数中的<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>参数，这个放到这里就比较好理解，它的意思是指定需要进行再训练的模型路径，当然您也可以根据你需要训练的不同模型而调整参数。同时您也可以指定网上下载的某个预训练模型。借助在大型数据集上训练的预训练模型可以根据一系列任务的历史数据来对新的任务进行训练，而无需从头开始训练。它可以将一个大型数据集中的知识和技能转移到另一个任务上，从而大大节省训练时间。</p>
+<p>全新开始训练一个模型，一般要花较长时间。我们强烈建议在预训练模型的基础上继续训练，哪怕你要分类的数据集和预训练的数据集并不一样。基于预训练模型继续训练可起到加速训练的作用，通常会使得模型达到更好的效果。在学习资源下载处也提供了一些<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/support_resources/resources.html#id3">预训练模型和权重文件下载</a>途径。</p>
 </section>
 <section id="sota">
 <h3>4. 支持的SOTA模型<a class="headerlink" href="#sota" title="Permalink to this headline"></a></h3>
