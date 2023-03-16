@@ -66,7 +66,7 @@ XEdu中MMEdu的图像分类模块数据集类型是\ `ImageNet <https://xedu.rea
    from BaseDT.dataset import DataSet
    ds = DataSet(r"my_dataset_catdog2") # 指定为生成数据集的路径
    # 默认比例为train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2
-   ds.make_dataset(r"catdog2", src_format="IMAGENET，",train_ratio = 0.8, test_ratio = 0.1, val_ratio = 0.1)# 指定原始数据集的路径，数据集格式选择IMAGENET
+   ds.make_dataset(r"catdog2", src_format="IMAGENET",train_ratio = 0.8, test_ratio = 0.1, val_ratio = 0.1)# 指定原始数据集的路径，数据集格式选择IMAGENET
 
 第四步：检查数据集
 ^^^^^^^^^^^^^^^^^^
