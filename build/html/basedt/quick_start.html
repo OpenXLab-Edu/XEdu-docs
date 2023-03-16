@@ -134,11 +134,8 @@
 </div>
 <p>下图分别是原图片，resize大小至(256,
 256)的图片，crop大小至(224,224)的图片和归一化的图片。</p>
-<figure class="align-default" id="id19">
-<img alt="image" src="../_images/图片处理示例图.JPEG" />
-<figcaption>
-<p><span class="caption-text">image</span><a class="headerlink" href="#id19" title="Permalink to this image"></a></p>
-</figcaption>
+<figure class="align-default">
+<img alt="../_images/图片处理示例图.JPEG" src="../_images/图片处理示例图.JPEG" />
 </figure>
 </section>
 <section id="id5">
@@ -151,11 +148,8 @@
 </pre></div>
 </div>
 <p>可看到text中<code class="docutils literal notranslate"><span class="pre">'city':</span> <span class="pre">'Dubai'</span></code>的<code class="docutils literal notranslate"><span class="pre">'Dubai'</span></code>向量化后变为1，<code class="docutils literal notranslate"><span class="pre">'temperature':</span> <span class="pre">33</span></code>的33仍保留为原本数值。</p>
-<figure class="align-default" id="id20">
-<img alt="image" src="../_images/文本转换示例图.PNG" />
-<figcaption>
-<p><span class="caption-text">image</span><a class="headerlink" href="#id20" title="Permalink to this image"></a></p>
-</figcaption>
+<figure class="align-default">
+<img alt="../_images/文本转换示例图.PNG" src="../_images/文本转换示例图.PNG" />
 </figure>
 </section>
 <section id="id6">
@@ -194,24 +188,18 @@
 </pre></div>
 </div>
 <p>格式正确提示：</p>
-<figure class="align-default" id="id21">
-<img alt="image" src="../_images/格式正确.png" />
-<figcaption>
-<p><span class="caption-text">image</span><a class="headerlink" href="#id21" title="Permalink to this image"></a></p>
-</figcaption>
+<figure class="align-default">
+<img alt="../_images/格式正确.png" src="../_images/格式正确.png" />
 </figure>
 <p>格式有误提示：</p>
-<figure class="align-default" id="id22">
+<figure class="align-default" id="id19">
 <img alt="image" src="../_images/格式错误1.png" />
 <figcaption>
-<p><span class="caption-text">image</span><a class="headerlink" href="#id22" title="Permalink to this image"></a></p>
+<p><span class="caption-text">image</span><a class="headerlink" href="#id19" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
-<figure class="align-default" id="id23">
-<img alt="image" src="../_images/格式错误2.png" />
-<figcaption>
-<p><span class="caption-text">image</span><a class="headerlink" href="#id23" title="Permalink to this image"></a></p>
-</figcaption>
+<figure class="align-default">
+<img alt="../_images/格式错误2.png" src="../_images/格式错误2.png" />
 </figure>
 </section>
 <section id="id12">
@@ -245,11 +233,8 @@ classes.txt
 <span class="n">ds</span><span class="o">.</span><span class="n">make_dataset</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;G:</span><span class="se">\\</span><span class="s2">测试数据集</span><span class="se">\\</span><span class="s2">fruit_voc&quot;</span><span class="p">,</span> <span class="n">src_format</span><span class="o">=</span><span class="s2">&quot;VOC&quot;</span><span class="p">,</span><span class="n">train_ratio</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">test_ratio</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">val_ratio</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span> <span class="c1"># 指定待转格式的原始数据集路径，原始数据集格式，划分比例，默认比例为train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2</span>
 </pre></div>
 </div>
-<figure class="align-default" id="id24">
-<img alt="image" src="../_images/voc2coco.png" />
-<figcaption>
-<p><span class="caption-text">image</span><a class="headerlink" href="#id24" title="Permalink to this image"></a></p>
-</figcaption>
+<figure class="align-default">
+<img alt="../_images/voc2coco.png" src="../_images/voc2coco.png" />
 </figure>
 <p>转换成功后，不仅将网上下载的数据集转换为了XEdu支持的数据集格式，并对训练集、测试集、验证集进行了重新划分。</p>
 <p>（2）针对OpenInnoLab平台标注创建的数据集，也可以使用BaseDT直接转换为XEdu支持的数据集。</p>
@@ -260,13 +245,11 @@ classes.txt
 <span class="n">ds</span><span class="o">.</span><span class="n">make_dataset</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;/data/HZQV42&quot;</span><span class="p">,</span> <span class="n">src_format</span><span class="o">=</span><span class="s2">&quot;INNOLAB&quot;</span><span class="p">,</span><span class="n">train_ratio</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">test_ratio</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">val_ratio</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span> <span class="c1"># 仅需修改为待转格式的原始数据集路径（注意是整个数据集）</span>
 </pre></div>
 </div>
-<figure class="align-default" id="id25">
-<img alt="image" src="../_images/coco转换完成.png" />
-<figcaption>
-<p><span class="caption-text">image</span><a class="headerlink" href="#id25" title="Permalink to this image"></a></p>
-</figcaption>
+<figure class="align-default">
+<img alt="../_images/coco转换完成.png" src="../_images/coco转换完成.png" />
 </figure>
 <p>更多XEdu支持的数据集格式的介绍详见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#id3">数据集支持</a>部分。</p>
+<p><strong>用BaseDT库快速制作数据集体验项目</strong>：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=6412c95f79f259135f259f45&amp;backpath=/pjedu/userprofile">https://www.openinnolab.org.cn/pjlab/project?id=6412c95f79f259135f259f45&amp;backpath=/pjedu/userprofile</a>?slideKey=project#public</p>
 </section>
 </section>
 <section id="id13">
@@ -284,11 +267,8 @@ classes.txt
 <span class="n">imshow_det_bboxes</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">bboxes</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">3</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">170</span><span class="p">,</span><span class="mi">263</span><span class="p">,</span><span class="mf">0.9</span><span class="p">]],</span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">class_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;cat&quot;</span><span class="p">],</span> <span class="n">score_thr</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">)</span>
 </pre></div>
 </div>
-<figure class="align-default" id="id26">
-<img alt="image" src="../_images/绘制目标检测框.png" />
-<figcaption>
-<p><span class="caption-text">image</span><a class="headerlink" href="#id26" title="Permalink to this image"></a></p>
-</figcaption>
+<figure class="align-default">
+<img alt="../_images/绘制目标检测框.png" src="../_images/绘制目标检测框.png" />
 </figure>
 </section>
 <section id="id16">
@@ -309,11 +289,8 @@ classes.txt
 </pre></div>
 </div>
 <p>录制的两秒音频图下如下图：</p>
-<figure class="align-default" id="id27">
-<img alt="image" src="../_images/音频图.png" />
-<figcaption>
-<p><span class="caption-text">image</span><a class="headerlink" href="#id27" title="Permalink to this image"></a></p>
-</figcaption>
+<figure class="align-default">
+<img alt="../_images/音频图.png" src="../_images/音频图.png" />
 </figure>
 </section>
 </section>
