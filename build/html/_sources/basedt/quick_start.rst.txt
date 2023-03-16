@@ -102,9 +102,7 @@ BaseDT提供了XEdu支持的数据集格式检查功能。
 格式有误提示：
 
 .. figure:: ../images/basedt/格式错误1.png
-   :alt: image
 
-   image
 
 .. figure:: ../images/basedt/格式错误2.png
 
@@ -168,7 +166,7 @@ BaseDT提供了XEdu支持的数据集格式检查功能。
 
 更多XEdu支持的数据集格式的介绍详见\ `数据集支持 <https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#id3>`__\ 部分。
 
-**用BaseDT库快速制作数据集体验项目**\ ：https://www.openinnolab.org.cn/pjlab/project?id=6412c95f79f259135f259f45&backpath=/pjedu/userprofile?slideKey=project#public
+**用BaseDT库快速制作数据集体验项目**\ ：https://www.openinnolab.org.cn/pjlab/project?id=6412c95f79f259135f259f45&backpath=/pjedu/userprofile%3FslideKey=project#public
 
 数据的可视化
 ------------

@@ -144,7 +144,7 @@ ds.make_dataset(r"/data/HZQV42", src_format="INNOLAB",train_ratio = 0.8, test_ra
 
 更多XEdu支持的数据集格式的介绍详见[数据集支持](https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#id3)部分。
 
-**用BaseDT库快速制作数据集体验项目**：https://www.openinnolab.org.cn/pjlab/project?id=6412c95f79f259135f259f45&backpath=/pjedu/userprofile?slideKey=project#public
+**用BaseDT库快速制作数据集体验项目**：https://www.openinnolab.org.cn/pjlab/project?id=6412c95f79f259135f259f45&backpath=/pjedu/userprofile%3FslideKey=project#public
 
 ## 数据的可视化
 
