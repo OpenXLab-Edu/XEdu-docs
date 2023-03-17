@@ -101,7 +101,7 @@ AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pj
 
 数据集来源：上海科教版《人工智能初步》人教地图56-58页。
 
-项目地址：https://www.openinnolab.org.cn/pjlab/project?id=638028c0777c254264da4dd7&sc=62f34141bf4f550f3e926e0e#public
+项目地址：https://www.openinnolab.org.cn/pjlab/project?id=64140719ba932064ea956a3e&sc=635638d69ed68060c638f979#public
 
 #### 项目核心功能和实现效果展示：
 
@@ -281,7 +281,7 @@ model.save('mymodel2.pkl')
 
 本案例来源于人教地图版《人工智能初步》39-41页。
 
-项目地址：https://www.openinnolab.org.cn/pjlab/project?id=638daaaaaf104f69456a2eb2&sc=62f34141bf4f550f3e926e0e#public
+项目地址：https://www.openinnolab.org.cn/pjlab/project?id=64141e08cb63f030543bffff&sc=635638d69ed68060c638f979#public
 
 项目地址2（增加可视化版本）：https://www.openinnolab.org.cn/pjlab/project?id=6368a382bbcccd583a837a0e&sc=62f34141bf4f550f3e926e0e#public
 
