@@ -216,11 +216,8 @@
 <p>第1列：道路施工状况-(1) 未施工, (2) 施工；</p>
 <p>第2列：预计车流量 ；</p>
 <p>第3列：分类结果（道路能否通行）-(1) 不可通行, (2)可通行。</p>
-<figure class="align-default" id="id65">
-<img alt="screenshot-20221205-111611.png" src="https://www.openinnolab.org.cn/webdav/635638d69ed68060c638f979/638028c0777c254264da4dd7/current/assets/screenshot-20221205-111611.png" />
-<figcaption>
-<p><span class="caption-text">screenshot-20221205-111611.png</span><a class="headerlink" href="#id65" title="Permalink to this image"></a></p>
-</figcaption>
+<figure class="align-default">
+<img alt="https://www.openinnolab.org.cn/webdav/635638d69ed68060c638f979/638028c0777c254264da4dd7/current/assets/screenshot-20221205-111611.png" src="https://www.openinnolab.org.cn/webdav/635638d69ed68060c638f979/638028c0777c254264da4dd7/current/assets/screenshot-20221205-111611.png" />
 </figure>
 </section>
 <section id="id18">
@@ -312,7 +309,7 @@ Set）。项目核心功能是使用BaseML库搭建<a class="reference external"
 <section id="k">
 <h3>体验案例3. 用k近邻为参观者推荐场馆<a class="headerlink" href="#k" title="Permalink to this headline"></a></h3>
 <p>本案例来源于华师大出版社《人工智能初步》56-57页。</p>
-<p>项目地址：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=638da9a6be5e9c6ce28aebef&amp;sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=638da9a6be5e9c6ce28aebef&amp;sc=62f34141bf4f550f3e926e0e#public</a></p>
+<p>项目地址：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=6417d0477c99492cf1aa8ba6&amp;sc=635638d69ed68060c638f979#public">https://www.openinnolab.org.cn/pjlab/project?id=6417d0477c99492cf1aa8ba6&amp;sc=635638d69ed68060c638f979#public</a></p>
 <section id="id30">
 <span id="id31"></span><h4>项目核心功能：<a class="headerlink" href="#id30" title="Permalink to this headline"></a></h4>
 <p>使用BaseML来实现<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/baseml/introduction.html#k">k近邻（knn）</a>分类算法，为旅行者们推荐最适合他们的场馆。在项目实践中了解k近邻的工作原理，掌握使用BaseML进行k近邻分类的方法。</p>
@@ -350,6 +347,15 @@ Set）。项目核心功能是使用BaseML库搭建<a class="reference external"
 <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;mymodel.pkl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>使用BaseML特色功能进行评价指标可视化：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 评价指标可视化</span>
+<span class="n">model</span><span class="o">.</span><span class="n">metricplot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../_images/knn可视化.png" src="../_images/knn可视化.png" />
+</figure>
+<p>根据可视化生成的图例可以清晰呈现哪些类别预测错误以及预测的结果。如上图，正确答案是类别0，全部预测正确，而正确答案是类别1时有一半预测错了预测为2，正确答案是类别2的全部预测错误。</p>
 </section>
 <section id="id36">
 <span id="id37"></span><h5>2）模型推理<a class="headerlink" href="#id36" title="Permalink to this headline"></a></h5>

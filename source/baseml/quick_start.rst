@@ -137,9 +137,7 @@ AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pj
 第3列：分类结果（道路能否通行）-(1) 不可通行, (2)可通行。
 
 .. figure:: https://www.openinnolab.org.cn/webdav/635638d69ed68060c638f979/638028c0777c254264da4dd7/current/assets/screenshot-20221205-111611.png
-   :alt: screenshot-20221205-111611.png
 
-   screenshot-20221205-111611.png
 
 实现步骤：
 ^^^^^^^^^^
@@ -248,7 +246,7 @@ Set）。项目核心功能是使用BaseML库搭建\ `多层感知机 <https://x
 
 本案例来源于华师大出版社《人工智能初步》56-57页。
 
-项目地址：https://www.openinnolab.org.cn/pjlab/project?id=638da9a6be5e9c6ce28aebef&sc=62f34141bf4f550f3e926e0e#public
+项目地址：https://www.openinnolab.org.cn/pjlab/project?id=6417d0477c99492cf1aa8ba6&sc=635638d69ed68060c638f979#public
 
 .. _项目核心功能-1:
 
@@ -299,6 +297,18 @@ Set）。项目核心功能是使用BaseML库搭建\ `多层感知机 <https://x
    model.train()
    # 保存模型
    model.save('mymodel.pkl')
+
+使用BaseML特色功能进行评价指标可视化：
+
+::
+
+   # 评价指标可视化
+   model.metricplot()
+
+.. figure:: ../images/baseml/knn可视化.png
+
+
+根据可视化生成的图例可以清晰呈现哪些类别预测错误以及预测的结果。如上图，正确答案是类别0，全部预测正确，而正确答案是类别1时有一半预测错了预测为2，正确答案是类别2的全部预测错误。
 
 .. _模型推理-2:
 
