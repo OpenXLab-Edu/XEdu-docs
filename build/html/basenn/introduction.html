@@ -47,7 +47,7 @@
 <li class="toctree-l2"><a class="reference internal" href="installation.html">BaseNN安装或下载</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">BaseNN功能详解</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">BaseNN是什么？</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">BaseNN使用说明</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">解锁BaseNN使用方法</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id3">0. 引入包</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id4">1. 声明模型</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id5">2. 载入数据</a></li>
@@ -109,12 +109,12 @@
 <h1>BaseNN功能详解<a class="headerlink" href="#basenn" title="Permalink to this headline"></a></h1>
 <section id="id1">
 <h2>BaseNN是什么？<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
-<p>BaseNN是神经网络库，能够使用类似Keras却比Keras门口更低的的语法搭建神经网络模型。可支持逐层搭建神经网路，深入探究网络原理。如果有如下需求，可以优先选择BaseNN：</p>
+<p>BaseNN是神经网络库，能够使用类似Keras却比Keras门槛更低的的语法搭建神经网络模型。可支持逐层搭建神经网路，深入探究网络原理。如果有如下需求，可以优先选择BaseNN：</p>
 <p>a）简易和快速地搭建神经网络</p>
-<p>b）支持搭建CNN和RNN，或二者的结合</p>
+<p>b）支持搭建<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn">CNN和RNN</a>，或二者的结合</p>
 </section>
 <section id="id2">
-<h2>BaseNN使用说明<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<h2>解锁BaseNN使用方法<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <section id="id3">
 <h3>0. 引入包<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
@@ -186,7 +186,7 @@
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;Softmax&#39;</span><span class="p">)</span> <span class="c1"># [120, 3]</span>
 </pre></div>
 </div>
-<p>以上使用<code class="docutils literal notranslate"><span class="pre">add()</span></code>方法添加层，参数<code class="docutils literal notranslate"><span class="pre">layer='Linear'</span></code>表示添加的层是线性层，<code class="docutils literal notranslate"><span class="pre">size=(4,10)</span></code>表示该层输入维度为4，输出维度为10，<code class="docutils literal notranslate"><span class="pre">activation='ReLU'</span></code>表示使用ReLU激活函数。更详细<code class="docutils literal notranslate"><span class="pre">add()</span></code>方法使用可见附录1。</p>
+<p>以上使用<code class="docutils literal notranslate"><span class="pre">add()</span></code>方法添加层，参数<code class="docutils literal notranslate"><span class="pre">layer='Linear'</span></code>表示添加的层是线性层，<code class="docutils literal notranslate"><span class="pre">size=(4,10)</span></code>表示该层输入维度为4，输出维度为10，<code class="docutils literal notranslate"><span class="pre">activation='ReLU'</span></code>表示使用ReLU激活函数。更详细<code class="docutils literal notranslate"><span class="pre">`add()</span></code>方法 &lt;<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add">https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add</a>&gt;`__使用可见附录1。</p>
 </section>
 <section id="id7">
 <h3>4. 模型训练<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
@@ -218,7 +218,7 @@
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>为现有模型路径，当使用<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>参数时，模型基于一个已有的模型继续训练，不使用<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>参数时，模型从零开始训练。</p>
-<p>在做文本分类等NLP（自然语言处理）领域项目时，一般搭建RNN网络训练模型，训练数据是文本，训练的示例代码如下：</p>
+<p>在做文本识别等NLP（自然语言处理）领域项目时，一般搭建<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn">RNN网络</a>训练模型，训练数据是文本，训练的示例代码如下：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">word2idx</span><span class="o">=</span><span class="n">word2idx</span><span class="p">)</span> <span class="c1"># word2idx是词表（字典）</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;LSTM&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span><span class="mi">256</span><span class="p">),</span><span class="n">num_layers</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -459,7 +459,7 @@ Network，卷积神经网络）是深度学习中两个非常重要的神经网�
 </ul>
 <p>在这些序列数据中，每个数据点（单词、股票价格、音频帧等）都与序列中的其他数据点密切相关，因此需要使用序列模型（如RNN、LSTM等）进行处理和分析。</p>
 <p>CNN是一种用于处理图像和空间数据的神经网络模型。它的主要特点是利用卷积操作提取图像中的特征，并通过池化操作减小特征图的大小，最终通过全连接层进行分类或回归。CNN在图像分类、目标检测、图像分割等任务中表现出色。</p>
-<p>简单来说，RNN适用于序列数据处理，而CNN适用于图像和空间数据处理。但实际上，它们也可以互相组合使用，例如在图像描述生成任务中，可以使用CNN提取图像特征，然后使用RNN生成对应的文字描述。使用BaseNN搭建RNN和CNN模型的方式详见add()详细介绍。</p>
+<p>简单来说，RNN适用于序列数据处理，而CNN适用于图像和空间数据处理。但实际上，它们也可以互相组合使用，例如在图像描述生成任务中，可以使用CNN提取图像特征，然后使用RNN生成对应的文字描述。使用BaseNN搭建RNN和CNN模型的方式详见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add">add()详细</a>介绍。</p>
 </section>
 </section>
 </section>

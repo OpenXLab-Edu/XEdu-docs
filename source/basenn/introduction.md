@@ -2,13 +2,13 @@
 
 ## BaseNN是什么？
 
-BaseNN是神经网络库，能够使用类似Keras却比Keras门口更低的的语法搭建神经网络模型。可支持逐层搭建神经网路，深入探究网络原理。如果有如下需求，可以优先选择BaseNN：
+BaseNN是神经网络库，能够使用类似Keras却比Keras门槛更低的的语法搭建神经网络模型。可支持逐层搭建神经网路，深入探究网络原理。如果有如下需求，可以优先选择BaseNN：
 
 a）简易和快速地搭建神经网络
 
-b）支持搭建CNN和RNN，或二者的结合
+b）支持搭建[CNN和RNN](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn)，或二者的结合
 
-## BaseNN使用说明
+## 解锁BaseNN使用方法
 
 ### 0. 引入包
 
@@ -88,7 +88,7 @@ model.add(layer='Linear',size=(10, 5), activation='ReLU') # [120, 5]
 model.add(layer='Linear', size=(5, 3), activation='Softmax') # [120, 3]
 ```
 
-以上使用`add()`方法添加层，参数`layer='Linear'`表示添加的层是线性层，`size=(4,10)`表示该层输入维度为4，输出维度为10，`activation='ReLU'`表示使用ReLU激活函数。更详细`add()`方法使用可见附录1。
+以上使用`add()`方法添加层，参数`layer='Linear'`表示添加的层是线性层，`size=(4,10)`表示该层输入维度为4，输出维度为10，`activation='ReLU'`表示使用ReLU激活函数。更详细[`add()`方法](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add)使用可见附录1。
 
 ### 4. 模型训练
 
@@ -126,7 +126,7 @@ model.train(lr=0.01, epochs=1000, checkpoint=checkpoint)
 
 `checkpoint`为现有模型路径，当使用`checkpoint`参数时，模型基于一个已有的模型继续训练，不使用`checkpoint`参数时，模型从零开始训练。
 
-在做文本分类等NLP（自然语言处理）领域项目时，一般搭建RNN网络训练模型，训练数据是文本，训练的示例代码如下：
+在做文本识别等NLP（自然语言处理）领域项目时，一般搭建[RNN网络](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn)训练模型，训练数据是文本，训练的示例代码如下：
 
 ```
 model = nn()
@@ -355,5 +355,5 @@ RNN是一种用于处理序列数据的神经网络模型。它的特点是可�
 
 CNN是一种用于处理图像和空间数据的神经网络模型。它的主要特点是利用卷积操作提取图像中的特征，并通过池化操作减小特征图的大小，最终通过全连接层进行分类或回归。CNN在图像分类、目标检测、图像分割等任务中表现出色。
 
-简单来说，RNN适用于序列数据处理，而CNN适用于图像和空间数据处理。但实际上，它们也可以互相组合使用，例如在图像描述生成任务中，可以使用CNN提取图像特征，然后使用RNN生成对应的文字描述。使用BaseNN搭建RNN和CNN模型的方式详见add()详细介绍。
+简单来说，RNN适用于序列数据处理，而CNN适用于图像和空间数据处理。但实际上，它们也可以互相组合使用，例如在图像描述生成任务中，可以使用CNN提取图像特征，然后使用RNN生成对应的文字描述。使用BaseNN搭建RNN和CNN模型的方式详见[add()详细](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add)介绍。
 
