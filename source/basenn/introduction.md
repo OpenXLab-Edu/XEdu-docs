@@ -6,7 +6,7 @@ BaseNN是神经网络库，能够使用类似Keras却比Keras门口更低的的�
 
 a）简易和快速地搭建神经网络
 
-b）支持CNN和RNN，或二者的结合
+b）支持搭建CNN和RNN，或二者的结合
 
 ## BaseNN使用说明
 
@@ -180,7 +180,7 @@ model.save_fold = 'mn_ckpt'
 model.load("basenn.pth")
 ```
 
-参数为模型保存的路径，模型权重文件格式为`.pkl`文件格式，此格式可以理解为将python中的数组、列表等持久化地存储在硬盘上的一种方式。
+参数为模型保存的路径，模型权重文件格式为`.pth`文件格式。
 
 注：`train()`，`inference()`函数中也可通过参数控制模型的保存与加载，但这里也列出单独保存与加载模型的方法，以确保灵活性。
 
@@ -261,7 +261,7 @@ model.train(...,metrics=["mse"])
 
 ## 附录
 
-#### 1. add()详细介绍
+### 1. add()详细介绍
 
 此处以典型的LeNet5网络结构为例。注释标明了数据经过各层的尺寸变化。
 
@@ -297,11 +297,13 @@ AvgPool：平均池化层，需给定kernel_size。
 
 Linear：线性层，需给定size。
 
-搭建RNN网络（循环神经网络）：
+搭建RNN模型（循环神经网络）：
 
 ```
 model.add('LSTM',size=(128,256),num_layers=2)
 ```
+
+LSTM（Long Short-Term Memory，长短时记忆）是一种特殊的RNN（Recurrent Neural Network，循环神经网络）模型，主要用于处理序列数据。LSTM模型在自然语言处理、语音识别、时间序列预测等任务中被广泛应用，特别是在需要处理长序列数据时，LSTM模型可以更好地捕捉序列中的长程依赖关系。
 
 size的两个值：
 
@@ -309,7 +311,7 @@ size的两个值：
 
 第二个为隐藏层维度（hidden_dim)，即lstm隐藏层中神经元数量。
 
-#### 2. 支持的损失函数
+### 2. 支持的损失函数
 
 | 序号 | 损失函数                                                     |
 | ---- | :----------------------------------------------------------- |
@@ -334,3 +336,24 @@ size的两个值：
 | 19   | [nn.MultiMarginLoss](https://pytorch.org/docs/stable/generated/torch.nn.MultiMarginLoss.html#torch.nn.MultiMarginLoss) |
 | 20   | [nn.TripletMarginLoss](https://pytorch.org/docs/stable/generated/torch.nn.TripletMarginLoss.html#torch.nn.TripletMarginLoss) |
 | 21   | [nn.TripletMarginWithDistanceLoss](https://pytorch.org/docs/stable/generated/torch.nn.TripletMarginWithDistanceLoss.html#torch.nn.TripletMarginWithDistanceLoss) |
+
+### 3. RNN和CNN
+
+RNN（Recurrent Neural Network，循环神经网络）和CNN（Convolutional Neural Network，卷积神经网络）是深度学习中两个非常重要的神经网络模型。
+
+RNN是一种用于处理序列数据的神经网络模型。它的特点是可以将前面的输入信息保存下来，并在后面的计算中进行利用，从而实现对序列数据的建模。RNN在自然语言处理、语音识别、股票预测等任务中广泛应用。
+
+一些常见的序列数据：
+
+- 文本数据：一段话或一篇文章中的单词或字符序列
+- 时间序列数据：股票价格、气温、交通流量等随时间变化的数据
+- 语音数据：音频信号中的时域或频域特征序列
+- 生物信息学数据：DNA或RNA序列、蛋白质序列等
+- 符号序列：编码信息的二进制序列、信号编码序列等
+
+在这些序列数据中，每个数据点（单词、股票价格、音频帧等）都与序列中的其他数据点密切相关，因此需要使用序列模型（如RNN、LSTM等）进行处理和分析。
+
+CNN是一种用于处理图像和空间数据的神经网络模型。它的主要特点是利用卷积操作提取图像中的特征，并通过池化操作减小特征图的大小，最终通过全连接层进行分类或回归。CNN在图像分类、目标检测、图像分割等任务中表现出色。
+
+简单来说，RNN适用于序列数据处理，而CNN适用于图像和空间数据处理。但实际上，它们也可以互相组合使用，例如在图像描述生成任务中，可以使用CNN提取图像特征，然后使用RNN生成对应的文字描述。使用BaseNN搭建RNN和CNN模型的方式详见add()详细介绍。
+

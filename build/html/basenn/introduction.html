@@ -62,7 +62,12 @@
 <li class="toctree-l4"><a class="reference internal" href="#id16">11. 指定评价指标（选）</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id17">附录</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">附录</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#add">1. add()详细介绍</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18">2. 支持的损失函数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rnncnn">3. RNN和CNN</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -106,7 +111,7 @@
 <h2>BaseNN是什么？<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <p>BaseNN是神经网络库，能够使用类似Keras却比Keras门口更低的的语法搭建神经网络模型。可支持逐层搭建神经网路，深入探究网络原理。如果有如下需求，可以优先选择BaseNN：</p>
 <p>a）简易和快速地搭建神经网络</p>
-<p>b）支持CNN和RNN，或二者的结合</p>
+<p>b）支持搭建CNN和RNN，或二者的结合</p>
 </section>
 <section id="id2">
 <h2>BaseNN使用说明<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
@@ -256,7 +261,7 @@
 <span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;basenn.pth&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>参数为模型保存的路径，模型权重文件格式为<code class="docutils literal notranslate"><span class="pre">.pkl</span></code>文件格式，此格式可以理解为将python中的数组、列表等持久化地存储在硬盘上的一种方式。</p>
+<p>参数为模型保存的路径，模型权重文件格式为<code class="docutils literal notranslate"><span class="pre">.pth</span></code>文件格式。</p>
 <p>注：<code class="docutils literal notranslate"><span class="pre">train()</span></code>，<code class="docutils literal notranslate"><span class="pre">inference()</span></code>函数中也可通过参数控制模型的保存与加载，但这里也列出单独保存与加载模型的方法，以确保灵活性。</p>
 </section>
 <section id="id12">
@@ -323,6 +328,8 @@ model.train<span class="o">(</span>...<span class="o">)</span>
 </section>
 <section id="id17">
 <h2>附录<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h2>
+<section id="add">
+<h3>1. add()详细介绍<a class="headerlink" href="#add" title="Permalink to this headline"></a></h3>
 <p>此处以典型的LeNet5网络结构为例。注释标明了数据经过各层的尺寸变化。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Conv2D&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span><span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1"># [100, 3, 18, 18]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;MaxPool&#39;</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># [100, 3, 9, 9]</span>
@@ -347,13 +354,19 @@ kernel_size=(a,b)， (a,b)表示核的尺寸。</p>
 <p>MaxPool：最大池化层，需给定kernel_size。</p>
 <p>AvgPool：平均池化层，需给定kernel_size。</p>
 <p>Linear：线性层，需给定size。</p>
-<p>搭建RNN网络（循环神经网络）：</p>
+<p>搭建RNN模型（循环神经网络）：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;LSTM&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span><span class="mi">256</span><span class="p">),</span><span class="n">num_layers</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>LSTM（Long Short-Term Memory，长短时记忆）是一种特殊的RNN（Recurrent
+Neural
+Network，循环神经网络）模型，主要用于处理序列数据。LSTM模型在自然语言处理、语音识别、时间序列预测等任务中被广泛应用，特别是在需要处理长序列数据时，LSTM模型可以更好地捕捉序列中的长程依赖关系。</p>
 <p>size的两个值：</p>
 <p>第一个为嵌入层维度（embedding_dim)，即每一个字用多少维的向量来表示。</p>
 <p>第二个为隐藏层维度（hidden_dim)，即lstm隐藏层中神经元数量。</p>
+</section>
+<section id="id18">
+<h3>2. 支持的损失函数<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 2%" />
@@ -430,6 +443,24 @@ kernel_size=(a,b)， (a,b)表示核的尺寸。</p>
 </tr>
 </tbody>
 </table>
+</section>
+<section id="rnncnn">
+<h3>3. RNN和CNN<a class="headerlink" href="#rnncnn" title="Permalink to this headline"></a></h3>
+<p>RNN（Recurrent Neural Network，循环神经网络）和CNN（Convolutional Neural
+Network，卷积神经网络）是深度学习中两个非常重要的神经网络模型。</p>
+<p>RNN是一种用于处理序列数据的神经网络模型。它的特点是可以将前面的输入信息保存下来，并在后面的计算中进行利用，从而实现对序列数据的建模。RNN在自然语言处理、语音识别、股票预测等任务中广泛应用。</p>
+<p>一些常见的序列数据：</p>
+<ul class="simple">
+<li><p>文本数据：一段话或一篇文章中的单词或字符序列</p></li>
+<li><p>时间序列数据：股票价格、气温、交通流量等随时间变化的数据</p></li>
+<li><p>语音数据：音频信号中的时域或频域特征序列</p></li>
+<li><p>生物信息学数据：DNA或RNA序列、蛋白质序列等</p></li>
+<li><p>符号序列：编码信息的二进制序列、信号编码序列等</p></li>
+</ul>
+<p>在这些序列数据中，每个数据点（单词、股票价格、音频帧等）都与序列中的其他数据点密切相关，因此需要使用序列模型（如RNN、LSTM等）进行处理和分析。</p>
+<p>CNN是一种用于处理图像和空间数据的神经网络模型。它的主要特点是利用卷积操作提取图像中的特征，并通过池化操作减小特征图的大小，最终通过全连接层进行分类或回归。CNN在图像分类、目标检测、图像分割等任务中表现出色。</p>
+<p>简单来说，RNN适用于序列数据处理，而CNN适用于图像和空间数据处理。但实际上，它们也可以互相组合使用，例如在图像描述生成任务中，可以使用CNN提取图像特征，然后使用RNN生成对应的文字描述。使用BaseNN搭建RNN和CNN模型的方式详见add()详细介绍。</p>
+</section>
 </section>
 </section>
 
