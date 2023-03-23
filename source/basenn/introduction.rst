@@ -1,6 +1,18 @@
 BaseNN功能详解
 ==============
 
+BaseNN是什么？
+--------------
+
+BaseNN是神经网络库，能够使用类似Keras却比Keras门口更低的的语法搭建神经网络模型。可支持逐层搭建神经网路，深入探究网络原理。如果有如下需求，可以优先选择BaseNN：
+
+a）简易和快速地搭建神经网络
+
+b）支持CNN和RNN，或二者的结合
+
+BaseNN使用说明
+--------------
+
 0. 引入包
 ~~~~~~~~~
 
@@ -75,7 +87,7 @@ BaseNN功能详解
 3. 搭建模型
 ~~~~~~~~~~~
 
-逐层添加，搭建起模型结构。注释标明了数据经过各层的尺寸变化。
+逐层添加，搭建起模型结构，支持CNN（卷积神经网络）和RNN（循环神经网络）。注释标明了数据经过各层的尺寸变化。
 
 .. code:: python
 
@@ -124,42 +136,53 @@ BaseNN功能详解
 
 ``checkpoint``\ 为现有模型路径，当使用\ ``checkpoint``\ 参数时，模型基于一个已有的模型继续训练，不使用\ ``checkpoint``\ 参数时，模型从零开始训练。
 
-5. 使用现有模型直接推理
-~~~~~~~~~~~~~~~~~~~~~~~
+在做文本分类等NLP（自然语言处理）领域项目时，一般搭建RNN网络训练模型，训练数据是文本，训练的示例代码如下：
+
+::
+
+   model = nn()
+   model.load_dataset(x,y,word2idx=word2idx) # word2idx是词表（字典）
+   model.add('LSTM',size=(128,256),num_layers=2)
+   model.train(lr=0.001,epochs=1)
+
+5. 模型推理
+~~~~~~~~~~~
 
 可使用以下函数进行推理：
-
-.. code:: python
-
-   model.inference(data=test_x, checkpoint=checkpoint)
-
-参数\ ``data``\ 为待推理的测试数据数据，该参数必须传入值；
-
-``checkpoint``\ 为已有模型路径，即使用现有的模型进行推理。
 
 .. code:: python
 
    model = nn() # 声明模型
    checkpoint = 'checkpoints/iris_ckpt/basenn.pth' # 现有模型路径
    result = model.inference(data=test_x, checkpoint=checkpoint) # 直接推理
-   model.print_result() # 输出结果
+   model.print_result(result) # 输出字典格式结果
 
-6. 输出推理结果
-~~~~~~~~~~~~~~~
+参数\ ``data``\ 为待推理的测试数据数据，该参数必须传入值；
+
+``checkpoint``\ 为已有模型路径，即使用现有的模型进行推理。
+
+直接推理的输出结果数据类型为\ ``numpy``\ 的二维数组，表示各个样本的各个特征的置信度。
+
+输出字典格式结果的数据类型为字典，格式为{样本编号：{预测值：x，置信度：y}}。\ ``print_result()``\ 函数调用即输出，但也有返回值。
+
+文本数据的推理：
 
 .. code:: python
 
-   res = model.inference(test_x)
+   model = nn()
+   data = '长'
+   checkpoint = 'xxx.pth'
+   result = model.inference(data=data, checkpoint=checkpoint)
+   index = np.argmax(result[0]) # 取得概率最大的字的索引，当然也可以取别的，自行选择即可
+   word = model.idx2word[index] # 根据词表获得对应的字
 
-输出结果数据类型为\ ``numpy``\ 的二维数组，表示各个样本的各个特征的置信度。
+result为列表包含两个变量：[output, hidden]
 
-.. code:: python
+output为numpy数组，里面是一系列概率值，对应每个字的概率。
 
-   model.print_result() # 输出字典格式结果
+hidden为高维向量，存储上下文信息，代表“记忆”，所以生成单个字可以不传入hidden，但写诗需要循环传入之前输出的hidden。
 
-输出结果数据类型为字典，格式为{样本编号：{预测值：x，置信度：y}}。该函数调用即输出，但也有返回值。
-
-7. 模型的保存与加载
+6. 模型的保存与加载
 ~~~~~~~~~~~~~~~~~~~
 
 .. code:: python
@@ -173,7 +196,7 @@ BaseNN功能详解
 
 注：\ ``train()``\ ，\ ``inference()``\ 函数中也可通过参数控制模型的保存与加载，但这里也列出单独保存与加载模型的方法，以确保灵活性。
 
-8. 查看模型结构
+7. 查看模型结构
 ~~~~~~~~~~~~~~~
 
 .. code:: python
@@ -182,7 +205,7 @@ BaseNN功能详解
 
 无参数。
 
-9. 网络中特征可视化
+8. 网络中特征可视化
 ~~~~~~~~~~~~~~~~~~~
 
 BaseNN内置\ ``visual_feature``\ 函数可查看数据在网络中传递。
@@ -210,8 +233,8 @@ BaseNN内置\ ``visual_feature``\ 函数可查看数据在网络中传递。
    data = np.array(test_x[0]) # 指定数据,如测试数据的一行
    model.visual_feature(data)   # 特征的可视化
 
-10. 指定随机数种子（选）
-~~~~~~~~~~~~~~~~~~~~~~~~
+9. 指定随机数种子（选）
+~~~~~~~~~~~~~~~~~~~~~~~
 
 默认初始化是随机的，每次训练结果都不一样。可以可使用\ ``set_seed()``\ 函数设定随机数种子，使得训练结果可被其他人复现。一旦指定，则每次训练结果一致。使用方法如下：
 
@@ -225,7 +248,7 @@ BaseNN内置\ ``visual_feature``\ 函数可查看数据在网络中传递。
 
 注：设定随机数种子\ ``set_seed()``\ 应当在搭建网络\ ``add()``\ 之前。
 
-11. 指定损失函数（选）
+10. 指定损失函数（选）
 ~~~~~~~~~~~~~~~~~~~~~~
 
 默认的损失函数是交叉熵损失函数，允许选择不同的损失函数，支持的损失函数见附录。自选损失函数方法如下：
@@ -234,7 +257,7 @@ BaseNN内置\ ``visual_feature``\ 函数可查看数据在网络中传递。
 
    model.train(...,loss="CrossEntropyLoss")
 
-12. 指定评价指标（选）
+11. 指定评价指标（选）
 ~~~~~~~~~~~~~~~~~~~~~~
 
 默认的默认为准确率，允许选择其他的评价指标。支持的评价指标：acc（准确率），mae（平均绝对误差），mse（均方误差）。
@@ -295,6 +318,18 @@ MaxPool：最大池化层，需给定kernel_size。
 AvgPool：平均池化层，需给定kernel_size。
 
 Linear：线性层，需给定size。
+
+搭建RNN网络（循环神经网络）：
+
+::
+
+   model.add('LSTM',size=(128,256),num_layers=2)
+
+size的两个值：
+
+第一个为嵌入层维度（embedding_dim)，即每一个字用多少维的向量来表示。
+
+第二个为隐藏层维度（hidden_dim)，即lstm隐藏层中神经元数量。
 
 2. 支持的损失函数
 ^^^^^^^^^^^^^^^^^
