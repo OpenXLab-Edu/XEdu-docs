@@ -135,12 +135,12 @@ BaseNN功能详解
 
 参数\ ``data``\ 为待推理的测试数据数据，该参数必须传入值；
 
-``checkpoint``\ 为已有模型路径，即使用现有的模型进行推理，该参数可以不传入值，即直接使用训练出的模型做推理。
+``checkpoint``\ 为已有模型路径，即使用现有的模型进行推理。
 
 .. code:: python
 
    model = nn() # 声明模型
-   checkpoint = 'checkpoints/basenn.pkl' # 现有模型路径
+   checkpoint = 'checkpoints/iris_ckpt/basenn.pth' # 现有模型路径
    result = model.inference(data=test_x, checkpoint=checkpoint) # 直接推理
    model.print_result() # 输出结果
 
@@ -167,7 +167,7 @@ BaseNN功能详解
    # 保存
    model.save_fold = 'mn_ckpt'
    # 加载
-   model.load("basenn.pkl")
+   model.load("basenn.pth")
 
 参数为模型保存的路径，模型权重文件格式为\ ``.pkl``\ 文件格式，此格式可以理解为将python中的数组、列表等持久化地存储在硬盘上的一种方式。
 
@@ -194,7 +194,7 @@ BaseNN内置\ ``visual_feature``\ 函数可查看数据在网络中传递。
    import cv2
    from BaseNN import nn
    model = nn()
-   model.load('mn_ckpt/basenn.pkl')          # 保存的已训练模型载入
+   model.load('mn_ckpt/basenn.pth')          # 保存的已训练模型载入
    path = 'test_IMG/single_data.jpg'
    img = cv2.imread(path,flags = 0)          # 图片数据读取
    model.visual_feature(img,in1img = True)   # 特征的可视化
@@ -206,7 +206,7 @@ BaseNN内置\ ``visual_feature``\ 函数可查看数据在网络中传递。
    import numpy as np
    from BaseNN import nn
    model = nn()
-   model.load('checkpoints/iris_ckpt/basenn.pkl')          # 保存的已训练模型载入
+   model.load('checkpoints/iris_ckpt/basenn.pth')          # 保存的已训练模型载入
    data = np.array(test_x[0]) # 指定数据,如测试数据的一行
    model.visual_feature(data)   # 特征的可视化
 

@@ -218,9 +218,9 @@
 </pre></div>
 </div>
 <p>参数<code class="docutils literal notranslate"><span class="pre">data</span></code>为待推理的测试数据数据，该参数必须传入值；</p>
-<p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>为已有模型路径，即使用现有的模型进行推理，该参数可以不传入值，即直接使用训练出的模型做推理。</p>
+<p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>为已有模型路径，即使用现有的模型进行推理。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span> <span class="c1"># 声明模型</span>
-<span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/basenn.pkl&#39;</span> <span class="c1"># 现有模型路径</span>
+<span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/iris_ckpt/basenn.pth&#39;</span> <span class="c1"># 现有模型路径</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">test_x</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">)</span> <span class="c1"># 直接推理</span>
 <span class="n">model</span><span class="o">.</span><span class="n">print_result</span><span class="p">()</span> <span class="c1"># 输出结果</span>
 </pre></div>
@@ -242,7 +242,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 保存</span>
 <span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;mn_ckpt&#39;</span>
 <span class="c1"># 加载</span>
-<span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;basenn.pkl&quot;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;basenn.pth&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>参数为模型保存的路径，模型权重文件格式为<code class="docutils literal notranslate"><span class="pre">.pkl</span></code>文件格式，此格式可以理解为将python中的数组、列表等持久化地存储在硬盘上的一种方式。</p>
@@ -262,7 +262,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
 <span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
-<span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;mn_ckpt/basenn.pkl&#39;</span><span class="p">)</span>          <span class="c1"># 保存的已训练模型载入</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;mn_ckpt/basenn.pth&#39;</span><span class="p">)</span>          <span class="c1"># 保存的已训练模型载入</span>
 <span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;test_IMG/single_data.jpg&#39;</span>
 <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">flags</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>          <span class="c1"># 图片数据读取</span>
 <span class="n">model</span><span class="o">.</span><span class="n">visual_feature</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">in1img</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>   <span class="c1"># 特征的可视化</span>
@@ -272,7 +272,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
-<span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;checkpoints/iris_ckpt/basenn.pkl&#39;</span><span class="p">)</span>          <span class="c1"># 保存的已训练模型载入</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;checkpoints/iris_ckpt/basenn.pth&#39;</span><span class="p">)</span>          <span class="c1"># 保存的已训练模型载入</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">test_x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># 指定数据,如测试数据的一行</span>
 <span class="n">model</span><span class="o">.</span><span class="n">visual_feature</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>   <span class="c1"># 特征的可视化</span>
 </pre></div>

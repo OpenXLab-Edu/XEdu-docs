@@ -18,78 +18,45 @@ BaseNN可以方便地逐层搭建神经网路，深入探究网络原理。
 
 可以在命令行输入BaseNN查看安装的路径，在安装路径内，可以查看提供的更多demo案例。同时可查看附录。
 
-训练
-----
+挑战第一个BaseNN项目：搭建搭建鸢尾花分类模型
+--------------------------------------------
 
-0. 引入包
-~~~~~~~~~
+第0步 引入包
+~~~~~~~~~~~~
 
 .. code:: python
 
+   # 导入BaseNN库、numpy库，numpy库用于数据处理
    from BaseNN import nn
+   import numpy as np
 
-1. 声明模型
-~~~~~~~~~~~
+第1步 声明模型
+~~~~~~~~~~~~~~
 
 .. code:: python
 
    model = nn()
 
-2. 载入数据
-~~~~~~~~~~~
-
-此处采用lvis鸢尾花数据集和MNIST手写体数据集作为示例。
+第2步 载入数据
+~~~~~~~~~~~~~~
 
 读取并载入鸢尾花数据：
 
 .. code:: python
 
-   # 训练数据
+   # 读取训练数据
    train_path = '../dataset/iris/iris_training.csv' 
    x = np.loadtxt(train_path, dtype=float, delimiter=',',skiprows=1,usecols=range(0,4)) # 读取前四列，特征
    y = np.loadtxt(train_path, dtype=int, delimiter=',',skiprows=1,usecols=4) # 读取第五列，标签
-   # 测试数据
+   # 读取测试数据
    test_path = '../dataset/iris/iris_test.csv'
    test_x = np.loadtxt(test_path, dtype=float, delimiter=',',skiprows=1,usecols=range(0,4)) # 读取前四列，特征
    test_y = np.loadtxt(test_path, dtype=int, delimiter=',',skiprows=1,usecols=4) # 读取第五列，标签
    # 将数据载入
    model.load_dataset(x, y)
 
-读取并载入手写体数据：
-
-.. code:: python
-
-   # 定义读取训练数据的函数
-   def read_data(path):
-       data = []
-       label = []
-       dir_list = os.listdir(path)
-
-       # 将顺序读取的文件保存到该list中
-       for item in dir_list:
-           tpath = os.path.join(path,item)
-
-           # print(tpath)
-           for i in os.listdir(tpath):
-               # print(item)
-               img = cv2.imread(os.path.join(tpath,i))
-               imGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-               # print(img)
-               data.append(imGray)
-               label.append(int(item))
-       x = np.array(data)
-       y = np.array(label)
-
-       x = np.expand_dims(x, axis=1)
-       return x, y
-       
-   # 读取训练数据
-   train_x, train_y = read_data('../dataset/mnist/training_set')
-   # 载入数据
-   model.load_dataset(train_x, train_y) 
-
-3. 搭建模型
-~~~~~~~~~~~
+第3步 搭建模型
+~~~~~~~~~~~~~~
 
 逐层添加，搭建起模型结构。注释标明了数据经过各层的尺寸变化。
 
@@ -101,106 +68,62 @@ BaseNN可以方便地逐层搭建神经网路，深入探究网络原理。
 
 以上使用\ ``add()``\ 方法添加层，参数\ ``layer='Linear'``\ 表示添加的层是线性层，\ ``size=(4,10)``\ 表示该层输入维度为4，输出维度为10，\ ``activation='ReLU'``\ 表示使用ReLU激活函数。
 
-4. 模型训练
-~~~~~~~~~~~
+第4步 模型训练
+~~~~~~~~~~~~~~
 
 模型训练可以采用以下函数：
 
 .. code:: python
 
-   model.train(lr=0.01, epochs=500,checkpoint=checkpoint)
+   # 设置模型保存的路径
+   model.save_fold = 'checkpoints/iris_ckpt'
+   # 模型训练
+   model.train(lr=0.01, epochs=1000)
+
+也可以使用继续训练：
+
+::
+
+   checkpoint = 'checkpoints/basenn.pth'
+   model.train(lr=0.01, epochs=1000, checkpoint=checkpoint)
 
 参数\ ``lr``\ 为学习率，
 ``epochs``\ 为训练轮数，\ ``checkpoint``\ 为现有模型路径，当使用\ ``checkpoint``\ 参数时，模型基于一个已有的模型继续训练，不使用\ ``checkpoint``\ 参数时，模型从零开始训练。
 
-4.1 正常训练
-^^^^^^^^^^^^
+第5步 模型测试
+~~~~~~~~~~~~~~
+
+用某组测试数据查看模型效果。
 
 .. code:: python
 
-   model = nn() 
-   model.add(layer='Linear',size=(4, 10),activation='ReLU') # [120, 10]
-   model.add(layer='Linear',size=(10, 5), activation='ReLU') # [120, 5]
-   model.add(layer='Linear', size=(5, 3), activation='Softmax') # [120, 3]
-   model.load_dataset(x, y)
-   model.save_fold = 'checkpoints'
-   model.train(lr=0.01, epochs=1000)
-
-``model.save_fold``\ 表示训练出的模型文件保存的文件夹。
-
-4.2 继续训练
-^^^^^^^^^^^^
-
-.. code:: python
-
-   model = nn()
-   model.load_dataset(x, y)
-   model.save_fold = 'checkpoints'
-   checkpoint = 'checkpoints/basenn.pkl'
-   model.train(lr=0.01, epochs=1000, checkpoint=checkpoint)
-
-推理
-----
-
-使用现有模型直接推理
-~~~~~~~~~~~~~~~~~~~~
-
-可使用以下函数进行推理：
-
-.. code:: python
-
-   model.inference(data=test_x, checkpoint=checkpoint)
+   # 用某组测试数据查看模型效果
+   data = [test_x[0]]
+   checkpoint = 'checkpoints/iris_ckpt/basenn.pth'
+   res = model.inference(data=data, checkpoint=checkpoint)
+   model.print_result(res) # 输出字典格式结果
 
 参数\ ``data``\ 为待推理的测试数据数据，该参数必须传入值；
 
-``checkpoint``\ 为已有模型路径，即使用现有的模型进行推理，该参数可以不传入值，即直接使用训练出的模型做推理。
+``checkpoint``\ 为已有模型路径，即使用现有的模型进行推理。
+
+用测试数据查看模型效果。
 
 .. code:: python
 
-   model = nn() # 声明模型
-   checkpoint = 'checkpoints/basenn.pkl' # 现有模型路径
-   result = model.inference(data=test_x, checkpoint=checkpoint) # 直接推理
-   model.print_result() # 输出结果
+   # 用测试数据查看模型效果
+   res = model.inference(data=test_x, checkpoint=checkpoint)
+   model.print_result(res) # 输出字典格式结果
 
-输出推理结果
-~~~~~~~~~~~~
+   # 定义一个计算分类正确率的函数
+   def cal_accuracy(y, pred_y):
+       res = pred_y.argmax(axis=1)
+       tp = np.array(y)==np.array(res)
+       acc = np.sum(tp)/ y.shape[0]
+       return acc
 
-.. code:: python
-
-   res = model.inference(test_x)
-
-输出结果数据类型为\ ``numpy``\ 的二维数组，表示各个样本的各个特征的置信度。
-
-.. code:: python
-
-   model.print_result() # 输出字典格式结果
-
-输出结果数据类型为字典，格式为{样本编号：{预测值：x，置信度：y}}。该函数调用即输出，但也有返回值。
-
-模型的保存与加载
-~~~~~~~~~~~~~~~~
-
-.. code:: python
-
-   # 保存
-   model.save_fold = 'mn_ckpt'
-   # 加载
-   model.load("basenn.pkl")
-
-参数为模型保存的路径，模型权重文件格式为\ ``.pkl``\ 文件格式，此格式可以理解为将python中的数组、列表等持久化地存储在硬盘上的一种方式。
-
-注：\ ``train()``\ ，\ ``inference()``\ 函数中也可通过参数控制模型的保存与加载，但这里也列出单独保存与加载模型的方法，以确保灵活性。
-
-查看模型结构
-~~~~~~~~~~~~
-
-.. code:: python
-
-   model.print_model()
-
-无参数。
-
-完整测试用例可见BaseNN_demo.py文件。
+   # 计算分类正确率
+   print("分类正确率为：",cal_accuracy(test_y, res))
 
 快速体验
 --------
@@ -212,6 +135,8 @@ OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台�
 AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pjlab/ai/projects
 
 （用Chorm浏览器打开效果最佳）
+
+用BaseNN库搭建搭建鸢尾花分类模型项目地址：https://www.openinnolab.org.cn/pjlab/project?id=641bc2359c0eb14f22fdbbb1&sc=635638d69ed68060c638f979#public
 
 附录
 ----
@@ -260,7 +185,7 @@ AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pj
        # 将顺序读取的文件保存到该list中
        for item in dir_list:
            tpath = os.path.join(path,item)
-    
+
            # print(tpath)
            for i in os.listdir(tpath):
                # print(item)
@@ -272,10 +197,10 @@ AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pj
                label.append(int(item))
        x = np.array(data)
        y = np.array(label)
-    
+
        x = np.expand_dims(x, axis=1)
        return x, y
-
+       
    # 读取训练数据
    train_x, train_y = read_data('/data/QX8UBM/mnist_sample/training_set')
 
@@ -311,7 +236,7 @@ AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pj
    model = nn()
    model.load_dataset(train_x, train_y) 
    model.save_fold = 'checkpoints/mn_ckpt2' # 设置模型保存的新路径
-   checkpoint = 'checkpoints/mn_ckpt1/basenn.pkl'
+   checkpoint = 'checkpoints/mn_ckpt1/basenn.pth'
    model.train(lr=0.01, epochs=20, checkpoint=checkpoint)
 
 2）模型推理
@@ -323,7 +248,8 @@ AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pj
 
    # 用测试集查看模型效果
    test_x, test_y = read_data('/data/QX8UBM/mnist_sample/test_set') # 读取测试集数据
-   res = model.inference(data=test_x)
+   checkpoint = 'checkpoints/mn_ckpt1/basenn.pth'
+   res = model.inference(data=test_x, checkpoint=checkpoint)
    model.print_result(res) # 输出字典格式结果
 
 读取某张图片进行推理：
@@ -339,7 +265,8 @@ AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pj
    data.append(imGray)
    x = np.array(data)
    x = np.expand_dims(x, axis=1)
-   result = model.inference(data=x)
+   checkpoint = 'checkpoints/mn_ckpt1/basenn.pth'
+   result = model.inference(data=x, checkpoint=checkpoint)
    model.print_result(result) # 输出字典格式结果
 
 体验案例2. 一维卷积神经网络文本情感识别
