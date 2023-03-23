@@ -8,6 +8,8 @@ a）简易和快速地搭建神经网络
 
 b）支持搭建[CNN和RNN](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn)，或二者的结合
 
+c）同时支持CPU和GPU
+
 ## 解锁BaseNN使用方法
 
 ### 0. 引入包
@@ -120,7 +122,7 @@ model.train(lr=0.01, epochs=1000)
 model = nn()
 model.load_dataset(x, y)
 model.save_fold = 'checkpoints'
-checkpoint = 'checkpoints/basenn.pkl'
+checkpoint = 'checkpoints/basenn.pth'
 model.train(lr=0.01, epochs=1000, checkpoint=checkpoint)
 ```
 

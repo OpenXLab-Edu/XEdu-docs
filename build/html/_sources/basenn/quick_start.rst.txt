@@ -18,8 +18,8 @@ BaseNN可以方便地逐层搭建神经网路，深入探究网络原理。
 
 可以在命令行输入BaseNN查看安装的路径，在安装路径内，可以查看提供的更多demo案例。同时可查看附录。
 
-挑战第一个BaseNN项目：搭建搭建鸢尾花分类模型
---------------------------------------------
+第一个BaseNN项目：搭建搭建鸢尾花分类模型
+----------------------------------------
 
 第0步 引入包
 ~~~~~~~~~~~~
@@ -138,6 +138,95 @@ AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pj
 
 用BaseNN库搭建搭建鸢尾花分类模型项目地址：https://www.openinnolab.org.cn/pjlab/project?id=641bc2359c0eb14f22fdbbb1&sc=635638d69ed68060c638f979#public
 
+挑战使用BaseNN完成第一个自然语言处理项目：自动写诗机
+----------------------------------------------------
+
+.. _第0步-引入包-1:
+
+第0步 引入包
+~~~~~~~~~~~~
+
+.. code:: python
+
+   # 导入BaseNN库、numpy库，numpy库用于数据处理
+   from BaseNN import nn
+   import numpy as np
+
+.. _第1步-声明模型-1:
+
+第1步 声明模型
+~~~~~~~~~~~~~~
+
+.. code:: python
+
+   model = nn()
+
+.. _第2步-载入数据-1:
+
+第2步 载入数据
+~~~~~~~~~~~~~~
+
+tang.npz是本项目的文本数据，源于互联网，包括57580首唐诗。
+
+::
+
+   datas = np.load('tang.npz',allow_pickle=True)
+   data = datas['data'] 
+   print("第一条数据：",data[0]) # 观察第一条数据
+   word2idx = datas['word2ix'].item() # 汉字对应的索引
+   print("词表:",word2idx) 
+   idx2word = datas['ix2word'].item() # 索引对应的汉字
+   x, y = data[:,:-1], data[:, 1:]
+
+   model.load_dataset(x, y, word2idx=word2idx) # 载入数据
+
+第3步 搭建LSTM模型
+~~~~~~~~~~~~~~~~~~
+
+搭建模型只需加入LSTM层即可，其他层会自适应补充，其中num_layers参数为循环神经网络循环的次数。
+
+::
+
+   model.add('LSTM', size=(128,256),num_layers=2) 
+
+.. _第4步-模型训练-1:
+
+第4步 模型训练
+~~~~~~~~~~~~~~
+
+为了节省训练时间，可以选择继续训练。
+
+::
+
+   checkpoint = 'model.pth'
+   model.save_fold = 'checkpoints'
+   model.train(lr=0.005, epochs=1,batch_size=16, checkpoint=checkpoint)
+
+.. _第5步-模型测试-1:
+
+第5步 模型测试
+~~~~~~~~~~~~~~
+
+可以输入一个字输出下一个字。
+
+::
+
+   input = '长'
+   checkpoint = 'model.pth'
+   result = model.inference(data=input,checkpoint=checkpoint) # output是多维向量，接下来转化为汉字
+   output = result[0]
+   print("output: ",output)
+   index = np.argmax(output) # 找到概率最大的字的索引
+   w = model.ix2word[index] # 根据索引从词表中找到字
+   print("word:",w)
+
+拓展
+~~~~
+
+可以使用训练好的模型生成唐诗，生成藏头诗，做各种有意思的应用。
+
+更多内容详见用BaseNN实现自动写诗机项目，项目地址：https://www.openinnolab.org.cn/pjlab/project?id=641c00bbba932064ea962783&sc=635638d69ed68060c638f979#public
+
 附录
 ----
 
@@ -154,7 +243,9 @@ AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pj
 使用BaseNN库实现卷积神经网络搭建，完成手写图分类，数据集为MNIST数据集。
 
 .. figure:: https://www.openinnolab.org.cn/webdav/635638d69ed68060c638f979/638028ff777c254264da4e6f/current/assets/%E7%94%A8%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AE%9E%E7%8E%B0%E6%89%8B%E5%86%99%E4%BD%93%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE%E6%95%88%E6%9E%9C%E5%9B%BE%E7%89%87.PNG
+   :alt: 用卷积神经网络实现手写体分类项目效果图片.PNG
 
+   用卷积神经网络实现手写体分类项目效果图片.PNG
 
 实现步骤：
 ^^^^^^^^^^
@@ -389,7 +480,9 @@ AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pj
 文件中。或者使用Excel的公式来计算，再导出关键数据，如图所示。
 
 .. figure:: ../images/basenn/用Excel计算数据.png
+   :alt: image
 
+   image
 
 .. _网络搭建和模型训练-2:
 

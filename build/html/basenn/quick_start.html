@@ -47,7 +47,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id1">简介</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">安装</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">体验</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">挑战第一个BaseNN项目：搭建搭建鸢尾花分类模型</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">第一个BaseNN项目：搭建搭建鸢尾花分类模型</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id5">第0步 引入包</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id6">第1步 声明模型</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id7">第2步 载入数据</a></li>
@@ -57,10 +57,20 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#id11">快速体验</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">附录</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id13">体验案例1. 搭建卷积神经网络实现手写体分类</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id18">体验案例2. 一维卷积神经网络文本情感识别</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id26">体验案例3. 用神经网络计算前方障碍物方向</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">挑战使用BaseNN完成第一个自然语言处理项目：自动写诗机</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id13">第0步 引入包</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">第1步 声明模型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id17">第2步 载入数据</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lstm">第3步 搭建LSTM模型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">第4步 模型训练</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id21">第5步 模型测试</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id23">拓展</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id24">附录</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id25">体验案例1. 搭建卷积神经网络实现手写体分类</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id30">体验案例2. 一维卷积神经网络文本情感识别</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id38">体验案例3. 用神经网络计算前方障碍物方向</a></li>
 </ul>
 </li>
 </ul>
@@ -118,7 +128,7 @@
 <p>可以在命令行输入BaseNN查看安装的路径，在安装路径内，可以查看提供的更多demo案例。同时可查看附录。</p>
 </section>
 <section id="id4">
-<h2>挑战第一个BaseNN项目：搭建搭建鸢尾花分类模型<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
+<h2>第一个BaseNN项目：搭建搭建鸢尾花分类模型<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
 <section id="id5">
 <h3>第0步 引入包<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入BaseNN库、numpy库，numpy库用于数据处理</span>
@@ -215,22 +225,92 @@
 <p>用BaseNN库搭建搭建鸢尾花分类模型项目地址：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=641bc2359c0eb14f22fdbbb1&amp;sc=635638d69ed68060c638f979#public">https://www.openinnolab.org.cn/pjlab/project?id=641bc2359c0eb14f22fdbbb1&amp;sc=635638d69ed68060c638f979#public</a></p>
 </section>
 <section id="id12">
-<h2>附录<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h2>
+<h2>挑战使用BaseNN完成第一个自然语言处理项目：自动写诗机<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h2>
 <section id="id13">
-<h3>体验案例1. 搭建卷积神经网络实现手写体分类<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h3>
-<p>本案例来源于《人工智能初步》人教地图72页。</p>
-<p>项目地址：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=638028ff777c254264da4e6f&amp;sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=638028ff777c254264da4e6f&amp;sc=62f34141bf4f550f3e926e0e#public</a></p>
-<section id="id14">
-<h4>项目核心功能和实现效果展示：<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h4>
-<p>使用BaseNN库实现卷积神经网络搭建，完成手写图分类，数据集为MNIST数据集。</p>
-<figure class="align-default">
-<img alt="https://www.openinnolab.org.cn/webdav/635638d69ed68060c638f979/638028ff777c254264da4e6f/current/assets/%E7%94%A8%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AE%9E%E7%8E%B0%E6%89%8B%E5%86%99%E4%BD%93%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE%E6%95%88%E6%9E%9C%E5%9B%BE%E7%89%87.PNG" src="https://www.openinnolab.org.cn/webdav/635638d69ed68060c638f979/638028ff777c254264da4e6f/current/assets/%E7%94%A8%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AE%9E%E7%8E%B0%E6%89%8B%E5%86%99%E4%BD%93%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE%E6%95%88%E6%9E%9C%E5%9B%BE%E7%89%87.PNG" />
-</figure>
+<span id="id14"></span><h3>第0步 引入包<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入BaseNN库、numpy库，numpy库用于数据处理</span>
+<span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
 </section>
 <section id="id15">
-<h4>实现步骤：<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h4>
-<section id="id16">
-<h5>1）网络搭建和模型训练<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h5>
+<span id="id16"></span><h3>第1步 声明模型<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="id17">
+<span id="id18"></span><h3>第2步 载入数据<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h3>
+<p>tang.npz是本项目的文本数据，源于互联网，包括57580首唐诗。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">datas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;tang.npz&#39;</span><span class="p">,</span><span class="n">allow_pickle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">datas</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;第一条数据：&quot;</span><span class="p">,</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># 观察第一条数据</span>
+<span class="n">word2idx</span> <span class="o">=</span> <span class="n">datas</span><span class="p">[</span><span class="s1">&#39;word2ix&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="c1"># 汉字对应的索引</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;词表:&quot;</span><span class="p">,</span><span class="n">word2idx</span><span class="p">)</span>
+<span class="n">idx2word</span> <span class="o">=</span> <span class="n">datas</span><span class="p">[</span><span class="s1">&#39;ix2word&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="c1"># 索引对应的汉字</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">word2idx</span><span class="o">=</span><span class="n">word2idx</span><span class="p">)</span> <span class="c1"># 载入数据</span>
+</pre></div>
+</div>
+</section>
+<section id="lstm">
+<h3>第3步 搭建LSTM模型<a class="headerlink" href="#lstm" title="Permalink to this headline"></a></h3>
+<p>搭建模型只需加入LSTM层即可，其他层会自适应补充，其中num_layers参数为循环神经网络循环的次数。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;LSTM&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span><span class="mi">256</span><span class="p">),</span><span class="n">num_layers</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id19">
+<span id="id20"></span><h3>第4步 模型训练<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h3>
+<p>为了节省训练时间，可以选择继续训练。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;model.pth&#39;</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;checkpoints&#39;</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id21">
+<span id="id22"></span><h3>第5步 模型测试<a class="headerlink" href="#id21" title="Permalink to this headline"></a></h3>
+<p>可以输入一个字输出下一个字。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">input</span> <span class="o">=</span> <span class="s1">&#39;长&#39;</span>
+<span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;model.pth&#39;</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="nb">input</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">)</span> <span class="c1"># output是多维向量，接下来转化为汉字</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;output: &quot;</span><span class="p">,</span><span class="n">output</span><span class="p">)</span>
+<span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">output</span><span class="p">)</span> <span class="c1"># 找到概率最大的字的索引</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">ix2word</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="c1"># 根据索引从词表中找到字</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;word:&quot;</span><span class="p">,</span><span class="n">w</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id23">
+<h3>拓展<a class="headerlink" href="#id23" title="Permalink to this headline"></a></h3>
+<p>可以使用训练好的模型生成唐诗，生成藏头诗，做各种有意思的应用。</p>
+<p>更多内容详见用BaseNN实现自动写诗机项目，项目地址：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=641c00bbba932064ea962783&amp;sc=635638d69ed68060c638f979#public">https://www.openinnolab.org.cn/pjlab/project?id=641c00bbba932064ea962783&amp;sc=635638d69ed68060c638f979#public</a></p>
+</section>
+</section>
+<section id="id24">
+<h2>附录<a class="headerlink" href="#id24" title="Permalink to this headline"></a></h2>
+<section id="id25">
+<h3>体验案例1. 搭建卷积神经网络实现手写体分类<a class="headerlink" href="#id25" title="Permalink to this headline"></a></h3>
+<p>本案例来源于《人工智能初步》人教地图72页。</p>
+<p>项目地址：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=638028ff777c254264da4e6f&amp;sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=638028ff777c254264da4e6f&amp;sc=62f34141bf4f550f3e926e0e#public</a></p>
+<section id="id26">
+<h4>项目核心功能和实现效果展示：<a class="headerlink" href="#id26" title="Permalink to this headline"></a></h4>
+<p>使用BaseNN库实现卷积神经网络搭建，完成手写图分类，数据集为MNIST数据集。</p>
+<figure class="align-default" id="id48">
+<img alt="用卷积神经网络实现手写体分类项目效果图片.PNG" src="https://www.openinnolab.org.cn/webdav/635638d69ed68060c638f979/638028ff777c254264da4e6f/current/assets/%E7%94%A8%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AE%9E%E7%8E%B0%E6%89%8B%E5%86%99%E4%BD%93%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE%E6%95%88%E6%9E%9C%E5%9B%BE%E7%89%87.PNG" />
+<figcaption>
+<p><span class="caption-text">用卷积神经网络实现手写体分类项目效果图片.PNG</span><a class="headerlink" href="#id48" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id27">
+<h4>实现步骤：<a class="headerlink" href="#id27" title="Permalink to this headline"></a></h4>
+<section id="id28">
+<h5>1）网络搭建和模型训练<a class="headerlink" href="#id28" title="Permalink to this headline"></a></h5>
 <p>导入库：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入BaseNN库、os、cv2、numpy库，os、cv2、numpy库用于数据处理</span>
 <span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
@@ -301,8 +381,8 @@
 </pre></div>
 </div>
 </section>
-<section id="id17">
-<h5>2）模型推理<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h5>
+<section id="id29">
+<h5>2）模型推理<a class="headerlink" href="#id29" title="Permalink to this headline"></a></h5>
 <p>读取测试集所有图片进行推理：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 用测试集查看模型效果</span>
 <span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span> <span class="o">=</span> <span class="n">read_data</span><span class="p">(</span><span class="s1">&#39;/data/QX8UBM/mnist_sample/test_set&#39;</span><span class="p">)</span> <span class="c1"># 读取测试集数据</span>
@@ -329,19 +409,19 @@
 </section>
 </section>
 </section>
-<section id="id18">
-<h3>体验案例2. 一维卷积神经网络文本情感识别<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h3>
+<section id="id30">
+<h3>体验案例2. 一维卷积神经网络文本情感识别<a class="headerlink" href="#id30" title="Permalink to this headline"></a></h3>
 <p>本案例来源于《人工智能初步》人教地图版72-76页。</p>
 <p>项目地址：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=6379b63262c7304e16ed6d82&amp;sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=6379b63262c7304e16ed6d82&amp;sc=62f34141bf4f550f3e926e0e#public</a></p>
-<section id="id19">
-<h4>项目核心功能：<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h4>
+<section id="id31">
+<h4>项目核心功能：<a class="headerlink" href="#id31" title="Permalink to this headline"></a></h4>
 <p>完成了搭建一维卷积神经网络实现文本感情识别分类，代码使用BaseNN库实现，同时结合了Embedding层对单词文本进行向量化。</p>
 <p>数据集是imdb电影评论和情感分类数据集，来自斯坦福AI实验室平台，<a class="reference external" href="http://ai.stanford.edu/~amaas/data/sentiment/">http://ai.stanford.edu/~amaas/data/sentiment/</a>。</p>
 </section>
-<section id="id20">
-<span id="id21"></span><h4>实现步骤：<a class="headerlink" href="#id20" title="Permalink to this headline"></a></h4>
-<section id="id22">
-<span id="id23"></span><h5>1）网络搭建和模型训练<a class="headerlink" href="#id22" title="Permalink to this headline"></a></h5>
+<section id="id32">
+<span id="id33"></span><h4>实现步骤：<a class="headerlink" href="#id32" title="Permalink to this headline"></a></h4>
+<section id="id34">
+<span id="id35"></span><h5>1）网络搭建和模型训练<a class="headerlink" href="#id34" title="Permalink to this headline"></a></h5>
 <p>导入库：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入BaseNN库、numpy库用于数据处理</span>
 <span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
@@ -377,8 +457,8 @@
 </pre></div>
 </div>
 </section>
-<section id="id24">
-<span id="id25"></span><h5>2）模型推理<a class="headerlink" href="#id24" title="Permalink to this headline"></a></h5>
+<section id="id36">
+<span id="id37"></span><h5>2）模型推理<a class="headerlink" href="#id36" title="Permalink to this headline"></a></h5>
 <p>读取测试集所有数据进行推理：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#读取测试集数据</span>
 <span class="n">test_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;imdb/test_data.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
@@ -400,29 +480,32 @@
 </section>
 </section>
 </section>
-<section id="id26">
-<h3>体验案例3. 用神经网络计算前方障碍物方向<a class="headerlink" href="#id26" title="Permalink to this headline"></a></h3>
+<section id="id38">
+<h3>体验案例3. 用神经网络计算前方障碍物方向<a class="headerlink" href="#id38" title="Permalink to this headline"></a></h3>
 <p>本案例是一个跨学科项目，用神经网络来拟合三角函数。案例发表于2023年的《中国信息技术教育》杂志。</p>
 <p>项目地址：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=639d352b3791ab1c3aa8b987&amp;sc=635638d69ed68060c638f979#public">https://www.openinnolab.org.cn/pjlab/project?id=639d352b3791ab1c3aa8b987&amp;sc=635638d69ed68060c638f979#public</a></p>
-<section id="id27">
-<span id="id28"></span><h4>项目核心功能：<a class="headerlink" href="#id27" title="Permalink to this headline"></a></h4>
+<section id="id39">
+<span id="id40"></span><h4>项目核心功能：<a class="headerlink" href="#id39" title="Permalink to this headline"></a></h4>
 <p>用两个超声波传感器测量前方的障碍物距离，然后计算出障碍物所在的方向。这是一个跨学科项目，用神经网络来拟合三角函数。训练一个可以通过距离计算出坐标的神经网络模型，掌握使用BaseNN库搭建神经网络完成“回归”任务的流程。</p>
 </section>
-<section id="id29">
-<span id="id30"></span><h4>实现步骤：<a class="headerlink" href="#id29" title="Permalink to this headline"></a></h4>
-<section id="id31">
-<h5>1）数据采集<a class="headerlink" href="#id31" title="Permalink to this headline"></a></h5>
+<section id="id41">
+<span id="id42"></span><h4>实现步骤：<a class="headerlink" href="#id41" title="Permalink to this headline"></a></h4>
+<section id="id43">
+<h5>1）数据采集<a class="headerlink" href="#id43" title="Permalink to this headline"></a></h5>
 <p>我们有多种方式来采集数据。第一种是最真实的，即在障碍物和中点之间拉一条
 线，然后读取两个超声波传感器的数据，同时测量角度并记录。另一种是拉三条线，
 因为超声波传感器的数值和真实长度误差是很小的。
 当然，因为这一角度是可以用三角函数计算的，那么最方面的数据采集方式莫过于是用Python写一段代码，然后将一组数据输出到CSV
 文件中。或者使用Excel的公式来计算，再导出关键数据，如图所示。</p>
-<figure class="align-default">
-<img alt="../_images/用Excel计算数据.png" src="../_images/用Excel计算数据.png" />
+<figure class="align-default" id="id49">
+<img alt="image" src="../_images/用Excel计算数据.png" />
+<figcaption>
+<p><span class="caption-text">image</span><a class="headerlink" href="#id49" title="Permalink to this image"></a></p>
+</figcaption>
 </figure>
 </section>
-<section id="id32">
-<span id="id33"></span><h5>2）网络搭建和模型训练<a class="headerlink" href="#id32" title="Permalink to this headline"></a></h5>
+<section id="id44">
+<span id="id45"></span><h5>2）网络搭建和模型训练<a class="headerlink" href="#id44" title="Permalink to this headline"></a></h5>
 <p>训练数据由Excel的随机数结合三角函数公式产生。0-2为输入，3-9是各种输出的数据。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">train_path</span> <span class="o">=</span> <span class="s1">&#39;./data/train-full.csv&#39;</span>
@@ -447,8 +530,8 @@
 </pre></div>
 </div>
 </section>
-<section id="id34">
-<span id="id35"></span><h5>3）模型推理<a class="headerlink" href="#id34" title="Permalink to this headline"></a></h5>
+<section id="id46">
+<span id="id47"></span><h5>3）模型推理<a class="headerlink" href="#id46" title="Permalink to this headline"></a></h5>
 <p>读取测试数据进行模型推理，测试数据同样来自随机数。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 测试数据</span>
 <span class="n">test_path</span> <span class="o">=</span> <span class="s1">&#39;./data/test.csv&#39;</span>

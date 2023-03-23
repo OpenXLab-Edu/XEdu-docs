@@ -126,6 +126,77 @@ AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pj
 
 用BaseNN库搭建搭建鸢尾花分类模型项目地址：https://www.openinnolab.org.cn/pjlab/project?id=641bc2359c0eb14f22fdbbb1&sc=635638d69ed68060c638f979#public
 
+## 挑战使用BaseNN完成第一个自然语言处理项目：自动写诗机
+
+### 第0步 引入包
+
+```python
+# 导入BaseNN库、numpy库，numpy库用于数据处理
+from BaseNN import nn
+import numpy as np
+```
+
+### 第1步 声明模型
+
+```python
+model = nn()
+```
+
+### 第2步 载入数据
+
+tang.npz是本项目的文本数据，源于互联网，包括57580首唐诗。
+
+```
+datas = np.load('tang.npz',allow_pickle=True)
+data = datas['data'] 
+print("第一条数据：",data[0]) # 观察第一条数据
+word2idx = datas['word2ix'].item() # 汉字对应的索引
+print("词表:",word2idx) 
+idx2word = datas['ix2word'].item() # 索引对应的汉字
+x, y = data[:,:-1], data[:, 1:]
+
+model.load_dataset(x, y, word2idx=word2idx) # 载入数据
+```
+
+### 第3步 搭建LSTM模型
+
+搭建模型只需加入LSTM层即可，其他层会自适应补充，其中num_layers参数为循环神经网络循环的次数。
+
+```
+model.add('LSTM', size=(128,256),num_layers=2) 
+```
+
+### 第4步 模型训练
+
+为了节省训练时间，可以选择继续训练。
+
+```
+checkpoint = 'model.pth'
+model.save_fold = 'checkpoints'
+model.train(lr=0.005, epochs=1,batch_size=16, checkpoint=checkpoint)
+```
+
+### 第5步 模型测试
+
+可以输入一个字输出下一个字。
+
+```
+input = '长'
+checkpoint = 'model.pth'
+result = model.inference(data=input,checkpoint=checkpoint) # output是多维向量，接下来转化为汉字
+output = result[0]
+print("output: ",output)
+index = np.argmax(output) # 找到概率最大的字的索引
+w = model.ix2word[index] # 根据索引从词表中找到字
+print("word:",w)
+```
+
+### 拓展
+
+可以使用训练好的模型生成唐诗，生成藏头诗，做各种有意思的应用。
+
+更多内容详见用BaseNN实现自动写诗机项目，项目地址：https://www.openinnolab.org.cn/pjlab/project?id=641c00bbba932064ea962783&sc=635638d69ed68060c638f979#public
+
 ## 附录
 
 ### 体验案例1. 搭建卷积神经网络实现手写体分类
