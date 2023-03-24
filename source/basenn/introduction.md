@@ -30,9 +30,9 @@ model = nn()
 model.load_dataset(x, y)
 ```
 
-此处采用lvis鸢尾花数据集和MNIST手写体数据集作为示例。
+此处采用lvis鸢尾花数据集和MNIST手写体数字图像数据集作为示例。
 
-读取并载入鸢尾花数据：
+读取并载入鸢尾花数据集（鸢尾花数据集以鸢尾花的特征作为数据来源，数据集包含150个数据集，有4维，分为3类（setosa、versicolour、virginica），每类50个数据，每个数据包含4个属性，花萼长度、宽度和花瓣长度、宽度）：
 
 ```python
 # 训练数据
@@ -47,7 +47,7 @@ test_y = np.loadtxt(test_path, dtype=int, delimiter=',',skiprows=1,usecols=4) # 
 model.load_dataset(x, y)
 ```
 
-读取并载入手写体数据：
+读取并载入手写体图像数据集（数据集包含了0-9共10类手写数字图片，都是28x28大小的灰度图）：
 
 ```python
 # 定义读取训练数据的函数
@@ -88,6 +88,10 @@ model.load_dataset(train_x, train_y)
 model.add(layer='Linear',size=(4, 10),activation='ReLU') # [120, 10]
 model.add(layer='Linear',size=(10, 5), activation='ReLU') # [120, 5]
 model.add(layer='Linear', size=(5, 3), activation='Softmax') # [120, 3]
+
+model.add('LSTM',size=(128,256),num_layers=2)
+
+model.add('Conv2D', size=(1, 3),kernel_size=( 3, 3), activation='ReLU') # [100, 3, 18, 18]
 ```
 
 以上使用`add()`方法添加层，参数`layer='Linear'`表示添加的层是线性层，`size=(4,10)`表示该层输入维度为4，输出维度为10，`activation='ReLU'`表示使用ReLU激活函数。更详细[`add()`方法使用可见[附录1](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add)。
@@ -101,6 +105,8 @@ model.train(lr=0.01, epochs=500)
 ```
 
 参数`lr`为学习率，`epochs`为训练轮数。
+
+从训练类型的角度，可以分为正常训练和继续训练。
 
 #### 4.1 正常训练
 
@@ -128,7 +134,13 @@ model.train(lr=0.01, epochs=1000, checkpoint=checkpoint)
 
 `checkpoint`为现有模型路径，当使用`checkpoint`参数时，模型基于一个已有的模型继续训练，不使用`checkpoint`参数时，模型从零开始训练。
 
-在做文本识别等NLP（自然语言处理）领域项目时，一般搭建[RNN网络](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn)训练模型，训练数据是文本，训练的示例代码如下：
+### 5. 从数据类型看训练代码
+
+针对不同类型的数据类型，载入数据、搭建模型和模型训练的代码会略有不同。
+
+#### 5.1 文本
+
+在做文本识别等NLP（自然语言处理）领域项目时，一般搭建[RNN网络](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn)训练模型，训练数据是文本数据，模型训练的示例代码如下：
 
 ```
 model = nn()
@@ -137,7 +149,49 @@ model.add('LSTM',size=(128,256),num_layers=2)
 model.train(lr=0.001,epochs=1)
 ```
 
-### 5. 模型推理
+#### 5.2 图像
+
+针对图像数据可增加classes参数设置，模型训练的示例代码如下：
+
+```
+model = nn()
+model.load_dataset(x,y,classes=classes) # classes是类别列表（列表） //字典
+model.add('Conv2D',...)
+model.train(lr=0.01,epochs=1)
+```
+
+classes可传参数兼容列表，字典形式(以下三种形式均可)。
+
+```
+classes = ['cat','dog']
+classes = {0:'cat',1:'dog'}
+classes = {'cat':0, 'dog':1} # 与词表形式统一
+```
+
+注意：索引是数值类型（int)，类别名称是字符串（str)，即哪怕类别名也是数字0,1,...字典的键和值也有区别，例如：
+
+```
+# 正确示例
+classes = {0:'0',1:'1'} # 索引to类别
+classes = {'0':0, '1':1} # 类别to索引
+
+# 错误示例
+classes = {0:0,1:1} 
+classes = {'0':'0', '1':'1'} 
+```
+
+#### 5.3 特征
+
+针对特征数据，使用BaseNN各模块的示例代码即可。
+
+```
+model = nn()
+model.load_dataset(x,y)
+model.add('Linear',...)
+model.train(lr=0.01,epochs=1)
+```
+
+### 6. 模型推理
 
 可使用以下函数进行推理：
 
@@ -156,7 +210,7 @@ model.print_result(result) # 输出字典格式结果
 
 输出字典格式结果的数据类型为字典，格式为{样本编号：{预测值：x，置信度：y}}。`print_result()`函数调用即输出，但也有返回值。
 
-文本数据的推理：
+针对文本数据的推理：
 
 ```python
 model = nn()
@@ -173,7 +227,7 @@ output为numpy数组，里面是一系列概率值，对应每个字的概率。
 
 hidden为高维向量，存储上下文信息，代表“记忆”，所以生成单个字可以不传入hidden，但写诗需要循环传入之前输出的hidden。
 
-### 6. 模型的保存与加载
+### 7. 模型的保存与加载
 
 ```python
 # 保存
@@ -186,7 +240,7 @@ model.load("basenn.pth")
 
 注：`train()`，`inference()`函数中也可通过参数控制模型的保存与加载，但这里也列出单独保存与加载模型的方法，以确保灵活性。
 
-### 7. 查看模型结构
+### 8. 查看模型结构
 
 ```python
 model.print_model()
@@ -194,7 +248,7 @@ model.print_model()
 
 无参数。
 
-### 8. 网络中特征可视化
+### 9. 网络中特征可视化
 
 BaseNN内置`visual_feature`函数可查看数据在网络中传递。
 
@@ -221,7 +275,7 @@ data = np.array(test_x[0]) # 指定数据,如测试数据的一行
 model.visual_feature(data)   # 特征的可视化
 ```
 
-### 9. 指定随机数种子（选）
+### 10. 指定随机数种子（选）
 
 默认初始化是随机的，每次训练结果都不一样。可以可使用`set_seed()`函数设定随机数种子，使得训练结果可被其他人复现。一旦指定，则每次训练结果一致。使用方法如下：
 
@@ -235,7 +289,7 @@ model.train(...)
 
 注：设定随机数种子`set_seed()`应当在搭建网络`add()`之前。
 
-### 10. 指定损失函数（选）
+### 11. 指定损失函数（选）
 
 默认的损失函数是交叉熵损失函数，允许选择不同的损失函数，支持的损失函数见附录。自选损失函数方法如下：
 
@@ -243,7 +297,7 @@ model.train(...)
 model.train(...,loss="CrossEntropyLoss")
 ```
 
-### 11. 指定评价指标（选）
+### 12. 指定评价指标（选）
 
 默认的默认为准确率，允许选择其他的评价指标。支持的评价指标：acc（准确率），mae（平均绝对误差），mse（均方误差）。
 
@@ -359,3 +413,10 @@ CNN是一种用于处理图像和空间数据的神经网络模型。它的主�
 
 简单来说，RNN适用于序列数据处理，而CNN适用于图像和空间数据处理。但实际上，它们也可以互相组合使用，例如在图像描述生成任务中，可以使用CNN提取图像特征，然后使用RNN生成对应的文字描述。使用BaseNN搭建RNN和CNN模型的方式详见[add()详细](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add)介绍。
 
+### 4. 深度学习常见的数据类型
+
+图像数据：图像数据是深度学习应用中最常见的数据类型之一。图像数据通常表示为多维数组，每个数组元素代表一个像素的值。深度学习应用中常使用的图像数据格式包括JPEG、PNG、BMP等。
+
+文本数据：文本数据是指由字符组成的序列数据。在深度学习应用中，文本数据通常被表示为词向量或字符向量，用于输入到文本处理模型中。
+
+特征数据：特征数据指的是表示对象或事物的特征的数据，通常用于机器学习和数据挖掘。特征数据可以是数值型、离散型或者是二进制的，用于描述对象或事物的各种属性和特征。特征数据可以是手动设计的、自动提取的或者是混合的。在机器学习中，特征数据通常作为模型的输入，用于预测目标变量或者分类。
