@@ -136,7 +136,7 @@ model.train(lr=0.01, epochs=1000, checkpoint=checkpoint)
 
 ### 5. 从数据类型看训练代码
 
-针对不同类型的数据类型，载入数据、搭建模型和模型训练的代码会略有不同。
+针对不同类型的数据类型，载入数据、搭建模型和模型训练的代码会略有不同。深度学习常见的数据类型介绍详见[附录4](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#id23)。
 
 #### 5.1 文本
 
