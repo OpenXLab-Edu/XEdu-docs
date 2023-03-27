@@ -116,7 +116,7 @@ model.add(layer='Linear',size=(4, 10),activation='ReLU') # [120, 10]
 model.add(layer='Linear',size=(10, 5), activation='ReLU') # [120, 5]
 model.add(layer='Linear', size=(5, 3), activation='Softmax') # [120, 3]
 model.load_dataset(x, y)
-model.save_fold = 'checkpoints'
+model.save_fold = 'checkpoints' # 指定模型保存路径
 model.train(lr=0.01, epochs=1000)
 ```
 
@@ -127,8 +127,8 @@ model.train(lr=0.01, epochs=1000)
 ```python
 model = nn()
 model.load_dataset(x, y)
-model.save_fold = 'checkpoints'
-checkpoint = 'checkpoints/basenn.pth'
+model.save_fold = 'checkpoints/new_train' # 指定模型保存路径
+checkpoint = 'checkpoints/basenn.pth' # 指定已有模型的权重文件路径
 model.train(lr=0.01, epochs=1000, checkpoint=checkpoint)
 ```
 

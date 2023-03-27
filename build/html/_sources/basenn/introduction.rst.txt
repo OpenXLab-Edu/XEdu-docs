@@ -126,7 +126,7 @@ c）同时支持CPU和GPU
    model.add(layer='Linear',size=(10, 5), activation='ReLU') # [120, 5]
    model.add(layer='Linear', size=(5, 3), activation='Softmax') # [120, 3]
    model.load_dataset(x, y)
-   model.save_fold = 'checkpoints'
+   model.save_fold = 'checkpoints' # 指定模型保存路径
    model.train(lr=0.01, epochs=1000)
 
 ``model.save_fold``\ 表示训练出的模型文件保存的文件夹。
@@ -138,8 +138,8 @@ c）同时支持CPU和GPU
 
    model = nn()
    model.load_dataset(x, y)
-   model.save_fold = 'checkpoints'
-   checkpoint = 'checkpoints/basenn.pth'
+   model.save_fold = 'checkpoints/new_train' # 指定模型保存路径
+   checkpoint = 'checkpoints/basenn.pth' # 指定已有模型的权重文件路径
    model.train(lr=0.01, epochs=1000, checkpoint=checkpoint)
 
 ``checkpoint``\ 为现有模型路径，当使用\ ``checkpoint``\ 参数时，模型基于一个已有的模型继续训练，不使用\ ``checkpoint``\ 参数时，模型从零开始训练。
