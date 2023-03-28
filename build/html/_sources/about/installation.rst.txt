@@ -1,5 +1,5 @@
 XEdu的安装和下载
-==============
+================
 
 可选的安装方式
 --------------
@@ -342,7 +342,9 @@ docker容器镜像
 打开python终端，执行以下命令即可查看XEdu各模块库的版本。当前最新版本是0.04。
 
 .. figure:: ../images/mmedu/pip安装指南3.png
+   :alt: image
 
+   image
 
 注：目前版本MMEdu仅支持CPU。
 
@@ -354,3 +356,5 @@ docker容器镜像
 ::
 
    $ pip uninstall MMEdu
+   $ pip uninstall BaseNN
+   $ pip uninstall BaseML

@@ -311,4 +311,7 @@ $ pip install MMEdu==0.1.0rc0
 
 ```
 $ pip uninstall MMEdu
+$ pip uninstall BaseNN
+$ pip uninstall BaseML
 ```
+
