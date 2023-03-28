@@ -22,7 +22,6 @@ XEdu的安装和下载
 
 .. figure:: ../images/about/xedu一键安装包.png
 
-
 第二步：您可以根据个人喜好，选择自己习惯的IDE。
 
 1）使用XEdu自带的pyzo。
@@ -178,7 +177,7 @@ notebook，初始化完成后第二次可直接打开。
 
 XEdu一键安装包说明文档。
 
-体验pip安装
+使用pip安装
 -----------
 
 XEdu的MMEdu、BaseML、BaseNN等各模块库均已支持pip安装并会持续迭代。
@@ -342,9 +341,7 @@ docker容器镜像
 打开python终端，执行以下命令即可查看XEdu各模块库的版本。当前最新版本是0.04。
 
 .. figure:: ../images/mmedu/pip安装指南3.png
-   :alt: image
 
-   image
 
 注：目前版本MMEdu仅支持CPU。
 

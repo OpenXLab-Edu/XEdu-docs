@@ -159,7 +159,7 @@ XEdu
 
 XEdu一键安装包说明文档。
 
-## 体验pip安装
+## 使用pip安装
 
 XEdu的MMEdu、BaseML、BaseNN等各模块库均已支持pip安装并会持续迭代。
 
