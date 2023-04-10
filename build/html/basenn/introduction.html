@@ -58,9 +58,9 @@
 <li class="toctree-l4"><a class="reference internal" href="#id15">7. 模型的保存与加载</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id16">8. 查看模型结构</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id17">9. 网络中特征可视化</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id18">10. 指定随机数种子（选）</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id19">11. 指定损失函数（选）</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id20">12. 指定评价指标（选）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18">10. 自定义随机数种子</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">11. 自定义损失函数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id20">12. 自定义评价指标</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#id21">附录</a><ul>
@@ -346,7 +346,7 @@
 </div>
 </section>
 <section id="id18">
-<h3>10. 指定随机数种子（选）<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h3>
+<h3>10. 自定义随机数种子<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h3>
 <p>默认初始化是随机的，每次训练结果都不一样。可以可使用<code class="docutils literal notranslate"><span class="pre">set_seed()</span></code>函数设定随机数种子，使得训练结果可被其他人复现。一旦指定，则每次训练结果一致。使用方法如下：</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">model</span> <span class="o">=</span> nn<span class="o">()</span>
 model.set_seed<span class="o">(</span><span class="m">1235</span><span class="o">)</span>
@@ -358,15 +358,18 @@ model.train<span class="o">(</span>...<span class="o">)</span>
 <p>注：设定随机数种子<code class="docutils literal notranslate"><span class="pre">set_seed()</span></code>应当在搭建网络<code class="docutils literal notranslate"><span class="pre">add()</span></code>之前。</p>
 </section>
 <section id="id19">
-<h3>11. 指定损失函数（选）<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h3>
-<p>默认的损失函数是交叉熵损失函数，允许选择不同的损失函数，支持的损失函数见附录。自选损失函数方法如下：</p>
+<h3>11. 自定义损失函数<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h3>
+<p>损失函数（或称目标函数、优化评分函数）是编译模型时所需的参数之一。在机器学习和深度学习中，模型的训练通常涉及到一个优化过程，即通过不断调整模型的参数，使得模型在训练数据上的预测结果与实际结果的差距最小化。这个差距通常使用一个称为“损失函数”的指标来衡量。损失函数通常是一个关于模型参数的函数，用于度量模型预测结果与实际结果之间的差异。在模型训练过程中，模型会根据损失函数的值来调整自己的参数，以减小损失函数的值。</p>
+<p>默认的损失函数是交叉熵损失函数，允许选择不同的损失函数，支持的损失函数见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#id22">附录</a>。自选损失函数方法如下：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="o">...</span><span class="p">,</span><span class="n">loss</span><span class="o">=</span><span class="s2">&quot;CrossEntropyLoss&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="id20">
-<h3>12. 指定评价指标（选）<a class="headerlink" href="#id20" title="Permalink to this headline"></a></h3>
-<p>默认的默认为准确率，允许选择其他的评价指标。支持的评价指标：acc（准确率），mae（平均绝对误差），mse（均方误差）。</p>
+<h3>12. 自定义评价指标<a class="headerlink" href="#id20" title="Permalink to this headline"></a></h3>
+<p>评价指标用于评估当前训练模型的性能。当模型编译后，评价指标应该作为
+<code class="docutils literal notranslate"><span class="pre">metrics</span></code>
+的参数来输入。默认的默认为准确率，允许选择其他的评价指标。支持的评价指标：acc（准确率），mae（平均绝对误差），mse（均方误差）。</p>
 <p>自选评价指标方法如下：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="o">...</span><span class="p">,</span><span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;mse&quot;</span><span class="p">])</span>
 </pre></div>
