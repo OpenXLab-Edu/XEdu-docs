@@ -347,7 +347,7 @@ model.add(optimizer='SGD') # 设定优化器
 
 以下具体讲述各种层：
 
-Conv2D：卷积层（二维），需给定size，kernel_size。
+Conv2D：卷积层（二维），需给定size，kernel_size。同时支持搭建Conv1D（一维卷积层）。
 
 MaxPool：最大池化层，需给定kernel_size。
 

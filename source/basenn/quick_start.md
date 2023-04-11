@@ -203,7 +203,7 @@ print("word:",w)
 
 本案例来源于《人工智能初步》人教地图72页。
 
-项目地址：https://www.openinnolab.org.cn/pjlab/project?id=638028ff777c254264da4e6f&sc=62f34141bf4f550f3e926e0e#public
+项目地址：https://www.openinnolab.org.cn/pjlab/project?id=641d17e67c99492cf16d706f&sc=635638d69ed68060c638f979#public
 
 #### 项目核心功能和实现效果展示：
 
@@ -327,7 +327,7 @@ model.print_result(result) # 输出字典格式结果
 
 本案例来源于《人工智能初步》人教地图版72-76页。
 
-项目地址：https://www.openinnolab.org.cn/pjlab/project?id=6379b63262c7304e16ed6d82&sc=62f34141bf4f550f3e926e0e#public
+项目地址：https://www.openinnolab.org.cn/pjlab/project?id=638d8bd8be5e9c6ce28ad033&sc=635638d69ed68060c638f979#public
 
 #### 项目核心功能：
 
