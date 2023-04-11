@@ -41,7 +41,7 @@ OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台�
 
 项目链接：https://www.openinnolab.org.cn/pjlab/project?id=63801c0701df4535876b6a4e&sc=635638d69ed68060c638f979#public
 
-（用Chorm浏览器打开效果最佳）
+（用Chorme浏览器打开效果最佳）
 
 3. 加载数据集
 ~~~~~~~~~~~~~

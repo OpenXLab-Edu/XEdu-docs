@@ -134,7 +134,7 @@ OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台�
 
 AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pjlab/ai/projects
 
-（用Chorm浏览器打开效果最佳）
+（用Chorme浏览器打开效果最佳）
 
 用BaseNN库搭建搭建鸢尾花分类模型项目地址：https://www.openinnolab.org.cn/pjlab/project?id=641bc2359c0eb14f22fdbbb1&sc=635638d69ed68060c638f979#public
 
@@ -276,7 +276,7 @@ tang.npz是本项目的文本数据，源于互联网，包括57580首唐诗。
        # 将顺序读取的文件保存到该list中
        for item in dir_list:
            tpath = os.path.join(path,item)
-
+    
            # print(tpath)
            for i in os.listdir(tpath):
                # print(item)
@@ -288,10 +288,10 @@ tang.npz是本项目的文本数据，源于互联网，包括57580首唐诗。
                label.append(int(item))
        x = np.array(data)
        y = np.array(label)
-
+    
        x = np.expand_dims(x, axis=1)
        return x, y
-       
+
    # 读取训练数据
    train_x, train_y = read_data('/data/QX8UBM/mnist_sample/training_set')
 

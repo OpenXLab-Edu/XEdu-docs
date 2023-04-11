@@ -48,12 +48,12 @@
 <li class="toctree-l2"><a class="reference internal" href="mmclassification.html">解锁图像分类模块：MMClassification</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">揭秘目标检测模块：MMDetection</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">初识目标检测和MMDetection</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">使用说明</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">使用说明</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#cpu">1.直接推理（支持CPU）</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">2.训练模型</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">3.继续训练</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">2.训练模型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">3.继续训练</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sota">4.支持的SOTA模型</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id7">补充内容：再了解一下单目标检测和多目标检测</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">补充内容：再了解一下单目标检测和多目标检测</a></li>
 </ul>
 </li>
 </ul>
@@ -101,7 +101,7 @@
 <section id="id1">
 <h2>初识目标检测和MMDetection<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <p>相信你已经体验并完成了一些图像分类任务，但是图像分类任务在真实的场景中应用中，像只出现一只猫的图片情况较少，如果一张图片里有两只猫，图像分类的模型可能可以识别出是猫。但是如果是这张图又有猫又有狗，那图像分类模型就肯定识别不出来了。为了解决这一种问题，就出现了目标检测算法。对于图像分类任务来讲，AI仅需正确识别图片的类别即可。</p>
-<p>对于图像分类任务来讲，目标检测(Detection)任务有两个主要的子任务：<a href="#id2"><span class="problematic" id="id3">**</span></a>定位和分类*。定位任务是什么呢？
+<p>对于图像分类任务来讲，目标检测(Detection)任务有两个主要的子任务：<em>定位和分类</em>。定位任务是什么呢？
 定位是找到图像主体或者某个物体的位置，然后用一个框将其框起来。这个框可以是矩形的，也可以是多边形或者圆形的，通常用得最多的是矩形（如下图）。</p>
 <figure class="align-default">
 <img alt="../_images/image-20220408192155931.png" src="../_images/image-20220408192155931.png" />
@@ -113,8 +113,8 @@
 <p>那么MMEdu的目标检测模块MMDetection（简称det）的主要功能便是输出图片或视频中出现的多个对象名称，同时用方框框出对象所在方形区域。</p>
 <p>其支持的SOTA模型有FasterRCNN、Yolov3、SSD_Lite等，具体介绍详见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/mmdetection.html#sota">后文</a>。如需查看所有支持的SOTA模型，可使用<code class="docutils literal notranslate"><span class="pre">model.sota()</span></code>代码进行查看。</p>
 </section>
-<section id="id4">
-<h2>使用说明<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
+<section id="id2">
+<h2>使用说明<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <p>XEdu一键安装包中预置了MMEdu的det模块的示例代码（路径：/demo）、常用小数据集（路径：/dataset/det）,并且已经预训练了一些权重（路径：/checkpoints/det_model）。在demo文件夹中，还提供了一张测试图片，OpenInnoLab平台也公开了非常多目标检测任务的项目，体验了几个之后相信会对此模块有一定理解。</p>
 <p>下面我们将以车牌检测这个任务为例，介绍一下目标检测模块示例代码的用法，一起解锁第一个目标检测项目吧！</p>
 <section id="cpu">
@@ -202,8 +202,8 @@
 <p><code class="docutils literal notranslate"><span class="pre">save_fold</span></code>：保存的图片名，数据结构为字符串，默认参数为<code class="docutils literal notranslate"><span class="pre">'det_result'</span></code>，用户也可以定义为自己想要的名字。</p>
 </div>
 </section>
-<section id="id5">
-<h3>2.训练模型<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<section id="id3">
+<h3>2.训练模型<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
 <p>使用下面的代码即可简单体验MMDetection的训练过程，我们以车牌的识别为例，为您进行详细的介绍。</p>
 <p>在运行代码之前，您需要先拥有一个数据集，这里我们为您提供车牌检测数据集。</p>
 <p>数据集文件结构如下：</p>
@@ -288,8 +288,8 @@
 本批次模型在训练集上计算的损失值。loss是衡量模型在训练集上预测结果与真实结果之间差异的指标。</p>
 </div>
 </section>
-<section id="id6">
-<h3>3.继续训练<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<section id="id4">
+<h3>3.继续训练<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
 <p>在这一步中，我们会教您加载之前训练过的模型接着训练，如果您觉得之前训练的模型epoch数不够的话或者因为一些客观原因而不得不提前结束训练，相信下面的代码会帮到您。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">det</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;FasterRCNN&#39;</span><span class="p">)</span> <span class="c1"># 初始化实例模型</span>
 <span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># 进行车牌识别，此时只有一个类别。</span>
@@ -343,8 +343,8 @@
 </tbody>
 </table>
 </section>
-<section id="id7">
-<h3>补充内容：再了解一下单目标检测和多目标检测<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<section id="id5">
+<h3>补充内容：再了解一下单目标检测和多目标检测<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
 <p>根据图像中目标的数量，目标检测分为单目标检测和多目标检测，单目标检测顾名思义，就是识别图像中的单独的一个目标。如下图，就用红框框出了一只猫。</p>
 <figure class="align-default">
 <img alt="../_images/单目标检测.png" src="../_images/单目标检测.png" />
