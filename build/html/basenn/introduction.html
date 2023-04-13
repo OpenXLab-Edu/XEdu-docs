@@ -61,13 +61,14 @@
 <li class="toctree-l4"><a class="reference internal" href="#id18">10. 自定义随机数种子</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id19">11. 自定义损失函数</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id20">12. 自定义评价指标</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id21">13. 特征提取</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id21">附录</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id22">附录</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#add">1. add()详细介绍</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id22">2. 支持的损失函数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id23">2. 支持的损失函数</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rnncnn">3. RNN和CNN</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id23">4. 深度学习常见的数据类型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id24">4. 深度学习常见的数据类型</a></li>
 </ul>
 </li>
 </ul>
@@ -379,9 +380,23 @@ model.train<span class="o">(</span>...<span class="o">)</span>
 <p>回归：<code class="docutils literal notranslate"><span class="pre">model.train(...,loss=&quot;SmoothL1Loss&quot;,</span> <span class="pre">metrics=[&quot;mae&quot;])</span></code></p>
 <p>分类：<code class="docutils literal notranslate"><span class="pre">model.train(...,loss=&quot;CrossEntropyLoss&quot;,metrics=[&quot;acc&quot;])</span></code></p>
 </section>
-</section>
 <section id="id21">
-<h2>附录<a class="headerlink" href="#id21" title="Permalink to this headline"></a></h2>
+<h3>13. 特征提取<a class="headerlink" href="#id21" title="Permalink to this headline"></a></h3>
+<p>图像特征提取是计算机视觉中的重要研究领域之一，是计算机视觉中的一个关键步骤，它涉及将图像转换成一组有意义的特征向量，以便后续的图像分析和识别任务。CNN（卷积神经网络）特征提取方法是一种基于深度学习的特征提取方法，通过卷积层、池化层等多个网络层的处理，可以提取出具有高层次抽象能力的特征表示，被广泛应用于图像分类、目标检测等领域。</p>
+<p>BaseNN中提供了一个CNN特征提取工具，可使用BaeNN的<code class="docutils literal notranslate"><span class="pre">model.extract_feature()</span></code>函数通过指定预训练模型来提取图像特征，该函数可将一张图像提取为1000维的特征（这些预训练模型一般都是在imagenet上训练的千分类模型，所以输出特征的维度是1000维），输出一个1行1000列的数组。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 声明模型</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
+<span class="c1"># 读取图像文件</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;small/0/5818.png&#39;</span><span class="p">)</span>
+<span class="c1"># 指定resnet18提取图像特征</span>
+<span class="n">feature</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">extract_feature</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">pretrain</span><span class="o">=</span><span class="s1">&#39;resnet18&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>第一次下载预训练模型有点慢需要耐心等待，再次运行则无需下载。</p>
+</section>
+</section>
+<section id="id22">
+<h2>附录<a class="headerlink" href="#id22" title="Permalink to this headline"></a></h2>
 <section id="add">
 <h3>1. add()详细介绍<a class="headerlink" href="#add" title="Permalink to this headline"></a></h3>
 <p>此处以典型的LeNet5网络结构为例。注释标明了数据经过各层的尺寸变化。</p>
@@ -404,7 +419,7 @@ optimizer：为优化器类型，默认值为SGD，可选值包括SGD，Adam，A
 kw：关键字参数，包括与size相关的各种参数，常用的如size=(x,y)，x为输入维度，y为输出维度；
 kernel_size=(a,b)， (a,b)表示核的尺寸。</p>
 <p>以下具体讲述各种层：</p>
-<p>Conv2D：卷积层（二维），需给定size，kernel_size。</p>
+<p>Conv2D：卷积层（二维），需给定size，kernel_size。同时支持搭建Conv1D（一维卷积层）。</p>
 <p>MaxPool：最大池化层，需给定kernel_size。</p>
 <p>AvgPool：平均池化层，需给定kernel_size。</p>
 <p>Linear：线性层，需给定size。</p>
@@ -419,8 +434,8 @@ Network，循环神经网络）模型，主要用于处理序列数据。LSTM模
 <p>第一个为嵌入层维度（embedding_dim)，即每一个字用多少维的向量来表示。</p>
 <p>第二个为隐藏层维度（hidden_dim)，即lstm隐藏层中神经元数量。</p>
 </section>
-<section id="id22">
-<h3>2. 支持的损失函数<a class="headerlink" href="#id22" title="Permalink to this headline"></a></h3>
+<section id="id23">
+<h3>2. 支持的损失函数<a class="headerlink" href="#id23" title="Permalink to this headline"></a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 2%" />
@@ -515,8 +530,8 @@ Network，卷积神经网络）是深度学习中两个非常重要的神经网�
 <p>CNN是一种用于处理图像和空间数据的神经网络模型。它的主要特点是利用卷积操作提取图像中的特征，并通过池化操作减小特征图的大小，最终通过全连接层进行分类或回归。CNN在图像分类、目标检测、图像分割等任务中表现出色。</p>
 <p>简单来说，RNN适用于序列数据处理，而CNN适用于图像和空间数据处理。但实际上，它们也可以互相组合使用，例如在图像描述生成任务中，可以使用CNN提取图像特征，然后使用RNN生成对应的文字描述。使用BaseNN搭建RNN和CNN模型的方式详见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add">add()详细</a>介绍。</p>
 </section>
-<section id="id23">
-<h3>4. 深度学习常见的数据类型<a class="headerlink" href="#id23" title="Permalink to this headline"></a></h3>
+<section id="id24">
+<h3>4. 深度学习常见的数据类型<a class="headerlink" href="#id24" title="Permalink to this headline"></a></h3>
 <p>图像数据：图像数据是深度学习应用中最常见的数据类型之一。图像数据通常表示为多维数组，每个数组元素代表一个像素的值。深度学习应用中常使用的图像数据格式包括JPEG、PNG、BMP等。</p>
 <p>文本数据：文本数据是指由字符组成的序列数据。在深度学习应用中，文本数据通常被表示为词向量或字符向量，用于输入到文本处理模型中。</p>
 <p>特征数据：特征数据指的是表示对象或事物的特征的数据，通常用于机器学习和数据挖掘。特征数据可以是数值型、离散型或者是二进制的，用于描述对象或事物的各种属性和特征。特征数据可以是手动设计的、自动提取的或者是混合的。在机器学习中，特征数据通常作为模型的输入，用于预测目标变量或者分类。</p>

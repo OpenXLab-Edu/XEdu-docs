@@ -340,6 +340,24 @@ BaseNN内置\ ``visual_feature``\ 函数可查看数据在网络中传递。
 
 分类：\ ``model.train(...,loss="CrossEntropyLoss",metrics=["acc"])``
 
+13. 特征提取
+~~~~~~~~~~~~
+
+图像特征提取是计算机视觉中的重要研究领域之一，是计算机视觉中的一个关键步骤，它涉及将图像转换成一组有意义的特征向量，以便后续的图像分析和识别任务。CNN（卷积神经网络）特征提取方法是一种基于深度学习的特征提取方法，通过卷积层、池化层等多个网络层的处理，可以提取出具有高层次抽象能力的特征表示，被广泛应用于图像分类、目标检测等领域。
+
+BaseNN中提供了一个CNN特征提取工具，可使用BaeNN的\ ``model.extract_feature()``\ 函数通过指定预训练模型来提取图像特征，该函数可将一张图像提取为1000维的特征（这些预训练模型一般都是在imagenet上训练的千分类模型，所以输出特征的维度是1000维），输出一个1行1000列的数组。
+
+::
+
+   # 声明模型
+   model = nn()
+   # 读取图像文件
+   img = cv2.imread('small/0/5818.png')
+   # 指定resnet18提取图像特征
+   feature = model.extract_feature(img, pretrain='resnet18')
+
+第一次下载预训练模型有点慢需要耐心等待，再次运行则无需下载。
+
 附录
 ----
 
@@ -375,7 +393,7 @@ kernel_size=(a,b)， (a,b)表示核的尺寸。
 
 以下具体讲述各种层：
 
-Conv2D：卷积层（二维），需给定size，kernel_size。
+Conv2D：卷积层（二维），需给定size，kernel_size。同时支持搭建Conv1D（一维卷积层）。
 
 MaxPool：最大池化层，需给定kernel_size。
 
