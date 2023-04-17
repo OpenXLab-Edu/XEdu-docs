@@ -55,16 +55,12 @@ model.train()
 model.plot()
 ```
 
-![image](../images/baseml/模型可视化.png)
-
 ### 5. 评价指标可视化
 
 ```Python
 # 评价指标可视化
 model.metricplot()
 ```
-
-![image](../images/baseml/评价指标可视化.png)
 
 ## 快速体验推理过程可视化！
 

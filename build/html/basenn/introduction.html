@@ -325,7 +325,7 @@
 </section>
 <section id="id17">
 <h3>9. 网络中特征可视化<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h3>
-<p>BaseNN内置<code class="docutils literal notranslate"><span class="pre">visual_feature</span></code>函数可查看数据在网络中传递。</p>
+<p>BaseNN内置<code class="docutils literal notranslate"><span class="pre">visual_feature</span></code>函数可呈现数据在网络中传递的过程。特征可视化可以帮助我们更好地理解模型在处理数据时的内部工作原理，并通过这种方式来进一步提高模型的性能和效果。</p>
 <p>如输入数据为图片，指定图片和已经训练好的模型，可生成一张展示逐层网络特征传递的图片。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
 <span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
@@ -336,6 +336,9 @@
 <span class="n">model</span><span class="o">.</span><span class="n">visual_feature</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">in1img</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>   <span class="c1"># 特征的可视化</span>
 </pre></div>
 </div>
+<figure class="align-default">
+<img alt="../_images/特征可视化.png" src="../_images/特征可视化.png" />
+</figure>
 <p>如输入数据为一维数据，指定数据和已经训练好的模型，可生成一个txt文件展示经过各层后的输出。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
@@ -348,7 +351,7 @@
 </section>
 <section id="id18">
 <h3>10. 自定义随机数种子<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h3>
-<p>默认初始化是随机的，每次训练结果都不一样。可以可使用<code class="docutils literal notranslate"><span class="pre">set_seed()</span></code>函数设定随机数种子，使得训练结果可被其他人复现。一旦指定，则每次训练结果一致。使用方法如下：</p>
+<p>默认初始化是随机的，每次训练结果都不一样。可以使用<code class="docutils literal notranslate"><span class="pre">set_seed()</span></code>函数设定随机数种子，使得训练结果可被其他人复现。一旦指定，则每次训练结果一致。使用方法如下：</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">model</span> <span class="o">=</span> nn<span class="o">()</span>
 model.set_seed<span class="o">(</span><span class="m">1235</span><span class="o">)</span>
 model.add<span class="o">(</span>...<span class="o">)</span>
@@ -356,7 +359,7 @@ model.add<span class="o">(</span>...<span class="o">)</span>
 model.train<span class="o">(</span>...<span class="o">)</span>
 </pre></div>
 </div>
-<p>注：设定随机数种子<code class="docutils literal notranslate"><span class="pre">set_seed()</span></code>应当在搭建网络<code class="docutils literal notranslate"><span class="pre">add()</span></code>之前。</p>
+<p>注：设定随机数种子<code class="docutils literal notranslate"><span class="pre">set_seed()</span></code>应当在搭建网络<code class="docutils literal notranslate"><span class="pre">add()</span></code>之前。在搭建机器学习模型之前，通常建议设置随机数种子。这样做可以使得在每次运行时，生成的随机数序列都是相同的，从而使得模型的可重复性更高。这对于模型调试、验证模型效果、比较不同模型效果等方面都非常有帮助。随机数种子的选择通常应该是随意的，只要您能记住或记录下来使用的种子即可。并且，种子的选择并不会影响模型的效果，只会影响结果的可重复性。</p>
 </section>
 <section id="id19">
 <h3>11. 自定义损失函数<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h3>
