@@ -18,9 +18,13 @@ XEdu的安装和下载
 
 飞书网盘：https://p6bm2if73b.feishu.cn/drive/folder/fldcn67XTwhg8qIFCl8edJBZZQb
 
+百度网盘:https://pan.baidu.com/s/1UDt-GwHriCB_rewl8kCrUA?pwd=2022
+提取码:2022
+
 第一步：双击运行，将自解压为XEdu文件夹（注意！避免踩坑请安装到纯英文路径下）。
 
 .. figure:: ../images/about/xedu一键安装包.png
+
 
 第二步：您可以根据个人喜好，选择自己习惯的IDE。
 
@@ -29,6 +33,7 @@ XEdu的安装和下载
 pyzo是一款好用的Python轻量级IDE。其最突出的两个特点便是是简洁性和交互性。打开根目录下的“pyzo编辑器.exe”文件快捷方式即可打开pyzo，其指向envs文件夹下software中的pyzo。使用Pyzo打开“demo”文件夹中的py文件，如“MMEdu_cls_demo.py”，点击“运行”的“将文件作为脚本运行”即可运行代码，界面如下图所示。
 
 .. figure:: ../images/about/demo运行1.png
+
 
 
 2）使用MMEdu自带的Jupyter。
@@ -44,7 +49,9 @@ Notebook是基于网页的用于交互计算的应用程序。其可被应用于
 初始化完成（初始化界面自动消失）后打开根目录下的“jupyter编辑器.bat”，即自动启动浏览器并显示界面，如下图所示。
 
 .. figure:: ../images/about/jupyter运行.png
+   :alt: image
 
+   image
 
 使用常用工具栏对代码进行操作，如“运行”，可以在单元格中编写文本或者代码，执行代码的结果也将会在每个单元下方呈现。可以逐个运行单元格，每点击一次，仅运行一个单元格。单元格左侧[*]内的星号变为数字，表示该单元格运行完成。此时可打开“demo”文件夹中的ipynb文件，如“MMEdu_cls_notebook.ipynb”。
 

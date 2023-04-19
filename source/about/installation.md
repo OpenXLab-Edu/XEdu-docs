@@ -14,6 +14,8 @@
 
 飞书网盘：https://p6bm2if73b.feishu.cn/drive/folder/fldcn67XTwhg8qIFCl8edJBZZQb
 
+百度网盘:https://pan.baidu.com/s/1UDt-GwHriCB_rewl8kCrUA?pwd=2022 提取码:2022 
+
 第一步：双击运行，将自解压为XEdu文件夹（注意！避免踩坑请安装到纯英文路径下）。
 
 ![image](../images/about/xedu一键安装包.png)
