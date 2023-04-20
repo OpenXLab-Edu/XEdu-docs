@@ -16,7 +16,7 @@
 
 2022年7月，发布MMEdu 0.7版。
 
-2022年6月，发布MMEdu 0.6版，启动XEdu整体规划，增加了BaseNN和BaseNN。
+2022年6月，发布MMEdu 0.6版，启动XEdu整体规划，增加了BaseNN和BaseML。
 
 2022年5月，封装MMEdu一键安装包。
 
