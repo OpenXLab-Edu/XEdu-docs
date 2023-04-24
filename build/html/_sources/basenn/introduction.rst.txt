@@ -93,15 +93,15 @@ c）同时支持CPU和GPU
 
 .. code:: python
 
-   model.add(layer='Linear',size=(4, 10),activation='ReLU') # [120, 10]
-   model.add(layer='Linear',size=(10, 5), activation='ReLU') # [120, 5]
-   model.add(layer='Linear', size=(5, 3), activation='Softmax') # [120, 3]
+   model.add(layer='linear',size=(4, 10),activation='relu') # [120, 10]
+   model.add(layer='linear',size=(10, 5), activation='relu') # [120, 5]
+   model.add(layer='linear', size=(5, 3), activation='softmax') # [120, 3]
 
-   model.add('LSTM',size=(128,256),num_layers=2)
+   model.add('lstm',size=(128,256),num_layers=2)
 
-   model.add('Conv2D', size=(1, 3),kernel_size=( 3, 3), activation='ReLU') # [100, 3, 18, 18]
+   model.add('conv2d', size=(1, 3),kernel_size=( 3, 3), activation='relu') # [100, 3, 18, 18]
 
-以上使用\ ``add()``\ 方法添加层，参数\ ``layer='Linear'``\ 表示添加的层是线性层，\ ``size=(4,10)``\ 表示该层输入维度为4，输出维度为10，\ ``activation='ReLU'``\ 表示使用ReLU激活函数。更详细[\ ``add()``\ 方法使用可见\ `附录1 <https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add>`__\ 。
+以上使用\ ``add()``\ 方法添加层，参数\ ``layer='linear'``\ 表示添加的层是线性层，\ ``size=(4,10)``\ 表示该层输入维度为4，输出维度为10，\ ``activation='relu'``\ 表示使用relu激活函数。更详细[\ ``add()``\ 方法使用可见\ `附录1 <https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add>`__\ 。
 
 4. 模型训练
 ~~~~~~~~~~~
@@ -122,9 +122,9 @@ c）同时支持CPU和GPU
 .. code:: python
 
    model = nn() 
-   model.add(layer='Linear',size=(4, 10),activation='ReLU') # [120, 10]
-   model.add(layer='Linear',size=(10, 5), activation='ReLU') # [120, 5]
-   model.add(layer='Linear', size=(5, 3), activation='Softmax') # [120, 3]
+   model.add(layer='linear',size=(4, 10),activation='relu') # [120, 10]
+   model.add(layer='linear',size=(10, 5), activation='relu') # [120, 5]
+   model.add(layer='linear', size=(5, 3), activation='softmax') # [120, 3]
    model.load_dataset(x, y)
    model.save_fold = 'checkpoints' # 指定模型保存路径
    model.train(lr=0.01, epochs=1000)
@@ -158,7 +158,7 @@ c）同时支持CPU和GPU
 
    model = nn()
    model.load_dataset(x,y,word2idx=word2idx) # word2idx是词表（字典）
-   model.add('LSTM',size=(128,256),num_layers=2)
+   model.add('lstm',size=(128,256),num_layers=2)
    model.train(lr=0.001,epochs=1)
 
 5.2 图像
@@ -170,7 +170,7 @@ c）同时支持CPU和GPU
 
    model = nn()
    model.load_dataset(x,y,classes=classes) # classes是类别列表（列表） //字典
-   model.add('Conv2D',...)
+   model.add('conv2d',...)
    model.train(lr=0.01,epochs=1)
 
 classes可传参数兼容列表，字典形式(以下三种形式均可)。
@@ -283,7 +283,9 @@ BaseNN内置\ ``visual_feature``\ 函数可呈现数据在网络中传递的过�
    model.visual_feature(img,in1img = True)   # 特征的可视化
 
 .. figure:: ../images/basenn/特征可视化.png
+   :alt: image
 
+   image
 
 如输入数据为一维数据，指定数据和已经训练好的模型，可生成一个txt文件展示经过各层后的输出。
 
@@ -371,12 +373,12 @@ BaseNN中提供了一个CNN特征提取工具，可使用BaeNN的\ ``model.extra
 
 .. code:: python
 
-   model.add('Conv2D', size=(1, 3),kernel_size=( 3, 3), activation='ReLU') # [100, 3, 18, 18]
-   model.add('MaxPool', kernel_size=(2,2)) # [100, 3, 9, 9]
-   model.add('Conv2D', size=(3, 10), kernel_size=(3, 3), activation='ReLU') # [100, 10, 7, 7]
-   model.add('AvgPool', kernel_size=(2,2)) # [100, 10, 3, 3]
-   model.add('Linear', size=(90, 10), activation='ReLU') # [100, 10]
-   model.add('Linear', size=(10, 2), activation='Softmax') # [100,2]
+   model.add('conv2d', size=(1, 3),kernel_size=( 3, 3), activation='relu') # [100, 3, 18, 18]
+   model.add('maxpool', kernel_size=(2,2)) # [100, 3, 9, 9]
+   model.add('conv2d', size=(3, 10), kernel_size=(3, 3), activation='relu') # [100, 10, 7, 7]
+   model.add('avgpool', kernel_size=(2,2)) # [100, 10, 3, 3]
+   model.add('linear', size=(90, 10), activation='relu') # [100, 10]
+   model.add('linear', size=(10, 2), activation='softmax') # [100,2]
    model.add(optimizer='SGD') # 设定优化器
 
 添加层的方法为\ ``add(self, layer=None, activation=None, optimizer='SGD', **kw)``\ ，
@@ -396,23 +398,23 @@ kernel_size=(a,b)， (a,b)表示核的尺寸。
 
 以下具体讲述各种层：
 
-Conv2D：卷积层（二维），需给定size，kernel_size。同时支持搭建Conv1D（一维卷积层）。
+conv2d：卷积层（二维），需给定size，kernel_size。同时支持搭建conv1d（一维卷积层）。
 
-MaxPool：最大池化层，需给定kernel_size。
+maxpool：最大池化层，需给定kernel_size。
 
-AvgPool：平均池化层，需给定kernel_size。
+avgpool：平均池化层，需给定kernel_size。
 
-Linear：线性层，需给定size。
+linear：线性层，需给定size。
 
 搭建RNN模型（循环神经网络）：
 
 ::
 
-   model.add('LSTM',size=(128,256),num_layers=2)
+   model.add('lstm',size=(128,256),num_layers=2)
 
-LSTM（Long Short-Term Memory，长短时记忆）是一种特殊的RNN（Recurrent
+lstm（Long Short-Term Memory，长短时记忆）是一种特殊的RNN（Recurrent
 Neural
-Network，循环神经网络）模型，主要用于处理序列数据。LSTM模型在自然语言处理、语音识别、时间序列预测等任务中被广泛应用，特别是在需要处理长序列数据时，LSTM模型可以更好地捕捉序列中的长程依赖关系。
+Network，循环神经网络）模型，主要用于处理序列数据。lstm模型在自然语言处理、语音识别、时间序列预测等任务中被广泛应用，特别是在需要处理长序列数据时，lstm模型可以更好地捕捉序列中的长程依赖关系。
 
 size的两个值：
 

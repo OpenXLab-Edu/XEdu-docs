@@ -50,12 +50,12 @@
 <li class="toctree-l4"><a class="reference internal" href="#id4">正式版更新记录</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">2. 测试版</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">2. 测试版</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#xedu-0-1-0">XEdu 0.1.0版</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mmedu-pip-0-0-1">MMEdu pip-0.0.1版</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#xedu-0-0-1">XEdu 0.0.1版</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id7">0.7版</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id8">0.5版</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">0.7版</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">0.5版</a></li>
 </ul>
 </li>
 </ul>
@@ -114,23 +114,20 @@
 <h3>正式版更新记录<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
 <section id="mmedu">
 <h4>1）MMEdu<a class="headerlink" href="#mmedu" title="Permalink to this headline"></a></h4>
-<section id="v0-1-9-20230412">
-<h5>V0.1.9 20230412<a class="headerlink" href="#v0-1-9-20230412" title="Permalink to this headline"></a></h5>
+<section id="v0-1-8-20230423">
+<h5>V0.1.8 20230423<a class="headerlink" href="#v0-1-8-20230423" title="Permalink to this headline"></a></h5>
 <ol class="simple">
-<li><p>pth中存储的信息加上mmedu的版本号。</p></li>
+<li><p>pth存储信息完善；pth_info函数展示权重文件相关信息。</p></li>
+<li><p>合并git与飞书中的最新版本。</p></li>
+<li><p>更新cls和det转换生成内容以适配最新XEdu库。</p></li>
+<li><p>消除生成onnx权重大段warning。</p></li>
+<li><p>类别压入生成的权重。</p></li>
+<li><p>train()函数返回log。</p></li>
+<li><p>权重文件中保存版本号。</p></li>
 </ol>
 </section>
 <section id="v0-1-7-20230313">
 <h5>V0.1.7 20230313<a class="headerlink" href="#v0-1-7-20230313" title="Permalink to this headline"></a></h5>
-</section>
-<section id="v0-1-8-20230316">
-<h5>V0.1.8 20230316<a class="headerlink" href="#v0-1-8-20230316" title="Permalink to this headline"></a></h5>
-<ol class="simple">
-<li><p>pth存储信息完善；pth_info函数展示权重文件相关信息。</p></li>
-</ol>
-</section>
-<section id="id5">
-<h5>V0.1.7 20230313<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h5>
 <ol class="simple">
 <li><p>更新cls和det模型转换后生成的py文件内容。</p></li>
 </ol>
@@ -323,8 +320,8 @@
 </section>
 </section>
 </section>
-<section id="id6">
-<h2>2. 测试版<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h2>
+<section id="id5">
+<h2>2. 测试版<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
 <section id="xedu-0-1-0">
 <h3>XEdu 0.1.0版<a class="headerlink" href="#xedu-0-1-0" title="Permalink to this headline"></a></h3>
 <p>发布时间：2022.11</p>
@@ -340,13 +337,13 @@
 <p>发布时间：2022.6</p>
 <p>版本说明：重构目录结构，建立MMEdu和BaseML两大模块。</p>
 </section>
-<section id="id7">
-<h3>0.7版<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<section id="id6">
+<h3>0.7版<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
 <p>发布时间：2022.6</p>
 <p>版本说明：优化0.5版两个模块，新增自定义网络（BaseNN）模块。</p>
 </section>
-<section id="id8">
-<h3>0.5版<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
+<section id="id7">
+<h3>0.5版<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
 <p>发布时间：2022.4</p>
 <p>版本说明：整合图像分类（cls）、物体检测（det）两个核心模块，内置Pyzo、Jupyter，实现一键部署。</p>
 </section>

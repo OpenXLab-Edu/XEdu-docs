@@ -62,11 +62,11 @@ BaseNN可以方便地逐层搭建神经网路，深入探究网络原理。
 
 .. code:: python
 
-   model.add(layer='Linear',size=(4, 10),activation='ReLU') # [120, 10]
-   model.add(layer='Linear',size=(10, 5), activation='ReLU') # [120, 5]
-   model.add(layer='Linear', size=(5, 3), activation='Softmax') # [120, 3]
+   model.add(layer='linear',size=(4, 10),activation='relu') # [120, 10]
+   model.add(layer='linear',size=(10, 5), activation='relu') # [120, 5]
+   model.add(layer='linear', size=(5, 3), activation='softmax') # [120, 3]
 
-以上使用\ ``add()``\ 方法添加层，参数\ ``layer='Linear'``\ 表示添加的层是线性层，\ ``size=(4,10)``\ 表示该层输入维度为4，输出维度为10，\ ``activation='ReLU'``\ 表示使用ReLU激活函数。
+以上使用\ ``add()``\ 方法添加层，参数\ ``layer='linear'``\ 表示添加的层是线性层，\ ``size=(4,10)``\ 表示该层输入维度为4，输出维度为10，\ ``activation='relu'``\ 表示使用ReLU激活函数。
 
 第4步 模型训练
 ~~~~~~~~~~~~~~
@@ -183,11 +183,11 @@ tang.npz是本项目的文本数据，源于互联网，包括57580首唐诗。
 第3步 搭建LSTM模型
 ~~~~~~~~~~~~~~~~~~
 
-搭建模型只需加入LSTM层即可，其他层会自适应补充，其中num_layers参数为循环神经网络循环的次数。
+搭建模型只需加入lstm层即可，其他层会自适应补充，其中num_layers参数为循环神经网络循环的次数。
 
 ::
 
-   model.add('LSTM', size=(128,256),num_layers=2) 
+   model.add('lstm', size=(128,256),num_layers=2) 
 
 .. _第4步-模型训练-1:
 
@@ -243,6 +243,8 @@ tang.npz是本项目的文本数据，源于互联网，包括57580首唐诗。
 使用BaseNN库实现卷积神经网络搭建，完成手写图分类，数据集为MNIST数据集。
 
 .. figure:: https://www.openinnolab.org.cn/webdav/635638d69ed68060c638f979/638028ff777c254264da4e6f/current/assets/%E7%94%A8%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AE%9E%E7%8E%B0%E6%89%8B%E5%86%99%E4%BD%93%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE%E6%95%88%E6%9E%9C%E5%9B%BE%E7%89%87.PNG
+
+
 
 
 实现步骤：
@@ -303,13 +305,13 @@ tang.npz是本项目的文本数据，源于互联网，包括57580首唐诗。
    model.load_dataset(train_x, train_y) 
 
    # 搭建模型
-   model.add('Conv2D', size=(1, 6),kernel_size=( 5, 5), activation='ReLU') 
-   model.add('AvgPool', kernel_size=(2,2)) 
-   model.add('Conv2D', size=(6, 16), kernel_size=(5, 5), activation='ReLU')
-   model.add('AvgPool', kernel_size=(2,2)) 
-   model.add('Linear', size=(400, 120), activation='ReLU') 
-   model.add('Linear', size=(120, 84), activation='ReLU') 
-   model.add('Linear', size=(84, 10), activation='Softmax')
+   model.add('conv2d', size=(1, 6),kernel_size=( 5, 5), activation='relu') 
+   model.add('avgpool', kernel_size=(2,2)) 
+   model.add('conv2d', size=(6, 16), kernel_size=(5, 5), activation='relu')
+   model.add('avgpool', kernel_size=(2,2)) 
+   model.add('linear', size=(400, 120), activation='relu') 
+   model.add('linear', size=(120, 84), activation='relu') 
+   model.add('linear', size=(84, 10), activation='softmax')
    model.add(optimizer='SGD') # 设定优化器
 
    # 设置模型保存的路径
@@ -408,11 +410,11 @@ tang.npz是本项目的文本数据，源于互联网，包括57580首唐诗。
    model = nn() # 有Embedding层
    # 搭建模型
    model.add('Embedding', vocab_size = 10000, embedding_dim = 32)  # Embedding层，对实现文本任务十分重要，将one-hot编码转化为相关向量 输入大小（batch_size,512）输出大小（batch_size,32,510）
-   model.add('Conv1D', size=(32, 32),kernel_size=3, activation='ReLU') #一维卷积 输入大小（batch_size,32,510） 输出大小（batch_size,32,508）
-   model.add('Conv1D', size=(32, 64),kernel_size=3, activation='ReLU') #一维卷积 输入大小（batch_size,32,508） 输出大小（batch_size,64,506）
-   model.add('Mean') #全局池化 输入大小（batch_size,64,508）输出大小（batch_size,64）
-   model.add('Linear', size=(64, 128), activation='ReLU') #全连接层 输入大小（batch_size,64）输出大小（batch_size,128）
-   model.add('Linear', size=(128, 2), activation='softmax') #全连接层 输入大小（batch_size,128）输出大小（batch_size,2）
+   model.add('conv1d', size=(32, 32),kernel_size=3, activation='relu') #一维卷积 输入大小（batch_size,32,510） 输出大小（batch_size,32,508）
+   model.add('conv1d', size=(32, 64),kernel_size=3, activation='relu') #一维卷积 输入大小（batch_size,32,508） 输出大小（batch_size,64,506）
+   model.add('mean') #全局池化 输入大小（batch_size,64,508）输出大小（batch_size,64）
+   model.add('linear', size=(64, 128), activation='relu') #全连接层 输入大小（batch_size,64）输出大小（batch_size,128）
+   model.add('linear', size=(128, 2), activation='softmax') #全连接层 输入大小（batch_size,128）输出大小（batch_size,2）
 
    # 模型超参数设置和网络训练（训练时间较长, 可调整最大迭代次数减少训练时间）
    model.add(optimizer='Adam') #'SGD' , 'Adam' , 'Adagrad' , 'ASGD' 内置不同优化器
@@ -478,7 +480,9 @@ tang.npz是本项目的文本数据，源于互联网，包括57580首唐诗。
 文件中。或者使用Excel的公式来计算，再导出关键数据，如图所示。
 
 .. figure:: ../images/basenn/用Excel计算数据.png
+   :alt: image
 
+   image
 
 .. _网络搭建和模型训练-2:
 
@@ -501,10 +505,10 @@ tang.npz是本项目的文本数据，源于互联网，包括57580首唐诗。
    from BaseNN import nn
    model = nn() #声明模型 
    model.load_dataset(x, y) # 载入数据
-   model.add('Linear', size=(3, 30), activation='ReLU')  
-   model.add('Linear', size=(30, 10), activation='ReLU') 
-   model.add('Linear', size=(10, 5), activation='ReLU') 
-   model.add('Linear', size=(5, 1))
+   model.add('linear', size=(3, 30), activation='relu')  
+   model.add('linear', size=(30, 10), activation='relu') 
+   model.add('linear', size=(10, 5), activation='relu') 
+   model.add('linear', size=(5, 1))
    model.add(optimizer='SGD')
 
    # 设置模型保存的路径
