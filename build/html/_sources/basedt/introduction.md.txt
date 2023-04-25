@@ -109,7 +109,7 @@ ds.check()
 
 ### （3）数据集格式转换
 
-针对网上下载的常见格式的数据集和自己标注或整理的数据集（目前支持IMAGENET、VOC、COCO和OpenInnoLab在线标注格式），均可使用BaseDT完成格式转换。
+针对网上下载的常见格式的数据集和自己标注或整理的数据集（目前支持IMAGENET、VOC、COCO和OpenInnoLab在线标注格式），均可使用BaseDT完成格式转换。更多借助BaseDT完成数据集格式转换的说明详见[快速上手的数据集格式转换部分](https://xedu.readthedocs.io/zh/latest/basedt/quick_start.html#id12)。
 
 **示例代码：**
 
