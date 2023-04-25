@@ -112,7 +112,7 @@
 <h1>BaseNN功能详解<a class="headerlink" href="#basenn" title="Permalink to this headline"></a></h1>
 <section id="id1">
 <h2>BaseNN是什么？<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
-<p>BaseNN是神经网络库，能够使用类似Keras却比Keras门槛更低的的语法搭建神经网络模型。可支持逐层搭建神经网路，深入探究网络原理。如果有如下需求，可以优先选择BaseNN：</p>
+<p>BaseNN是神经网络库，能够使用类似Keras却比Keras门槛更低的的语法搭建神经网络模型。可支持逐层搭建神经网络，深入探究网络原理。如果有如下需求，可以优先选择BaseNN：</p>
 <p>a）简易和快速地搭建神经网络</p>
 <p>b）支持搭建<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn">CNN和RNN</a>，或二者的结合</p>
 <p>c）同时支持CPU和GPU</p>
@@ -336,11 +336,8 @@
 <span class="n">model</span><span class="o">.</span><span class="n">visual_feature</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">in1img</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>   <span class="c1"># 特征的可视化</span>
 </pre></div>
 </div>
-<figure class="align-default" id="id25">
-<img alt="image" src="../_images/特征可视化.png" />
-<figcaption>
-<p><span class="caption-text">image</span><a class="headerlink" href="#id25" title="Permalink to this image"></a></p>
-</figcaption>
+<figure class="align-default">
+<img alt="../_images/特征可视化.png" src="../_images/特征可视化.png" />
 </figure>
 <p>如输入数据为一维数据，指定数据和已经训练好的模型，可生成一个txt文件展示经过各层后的输出。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>

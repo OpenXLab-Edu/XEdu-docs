@@ -4,7 +4,7 @@ BaseNN功能详解
 BaseNN是什么？
 --------------
 
-BaseNN是神经网络库，能够使用类似Keras却比Keras门槛更低的的语法搭建神经网络模型。可支持逐层搭建神经网路，深入探究网络原理。如果有如下需求，可以优先选择BaseNN：
+BaseNN是神经网络库，能够使用类似Keras却比Keras门槛更低的的语法搭建神经网络模型。可支持逐层搭建神经网络，深入探究网络原理。如果有如下需求，可以优先选择BaseNN：
 
 a）简易和快速地搭建神经网络
 
@@ -283,9 +283,7 @@ BaseNN内置\ ``visual_feature``\ 函数可呈现数据在网络中传递的过�
    model.visual_feature(img,in1img = True)   # 特征的可视化
 
 .. figure:: ../images/basenn/特征可视化.png
-   :alt: image
 
-   image
 
 如输入数据为一维数据，指定数据和已经训练好的模型，可生成一个txt文件展示经过各层后的输出。
 
