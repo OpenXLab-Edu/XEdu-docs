@@ -52,10 +52,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#id6">5. 继续训练</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id7">6. 模型推理</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id8">7. 查看权重文件信息（拓展内容）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">8.返回日志信息（拓展内容）</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">下一个目标：使用MMEdu训练各种模型</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">MMEdu的简要总结</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">下一个目标：使用MMEdu训练各种模型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">MMEdu的简要总结</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="installation.html">MMEdu安装和下载</a></li>
@@ -197,9 +198,18 @@
 </pre></div>
 </div>
 </section>
-</section>
 <section id="id9">
-<h2>下一个目标：使用MMEdu训练各种模型<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h2>
+<h3>8.返回日志信息（拓展内容）<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
+<p>如需返回日志信息，可在训练时使用如下代码：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">xxx</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>返回的是日志文件中各行信息组成的列表。</p>
+</section>
+</section>
+<section id="id10">
+<h2>下一个目标：使用MMEdu训练各种模型<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h2>
 <p>我们的小目标就达成了！一个手写体数字识别模型就训练好了，此时你肯定还不过瘾，还想使用MMEdu基于各种数据集来训练模型去解决各种分类问题也很方便！只需要对手写体识别训练的代码稍作改动即可。首先思考自己想要解决的分类问题，收集数据并整理好数据集，如想要解决猫狗识别问题需准备猫狗数据集。</p>
 <p>那么可以打开<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63801c0701df4535876b6a4e&amp;sc=635638d69ed68060c638f979#public">《用MMEdu实现MNIST手写体数字识别（NOTEBOOK）》项目</a>中的“3.从mnist手写体数字识别到猫狗分类.ipynb”文件。而且还有更多案例可以参考，详见项目集区域，这里的AI特色工具专区展示了一些有助于深度学习和机器学习入门和进阶的案例。
 当然你也可以在AI项目工坊创建自己的项目，做自己的人工智能案例。MMEdu工具有<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/mmclassification.html#mmclassification">图像分类模块</a>、<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/mmdetection.html">目标检测模块</a>等模块，请继续阅读文档，了解并掌握MMEdu的各个模块。</p>
@@ -207,8 +217,8 @@
 <img alt="../_images/XEdu项目集.png" src="../_images/XEdu项目集.png" />
 </figure>
 </section>
-<section id="id10">
-<h2>MMEdu的简要总结<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h2>
+<section id="id11">
+<h2>MMEdu的简要总结<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h2>
 <p>MMEdu是针对青少年学习AI技术而设计的，其前身就是大名鼎鼎的OpenMMLab。MMEdu的语法非常简单，几句话就能完成训练和推理。如果你下载了<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/about/installation.html#id3">XEdu一键安装包</a>，还可以使用<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/easydl.html#easydl">Easytrain等可视化辅助工具</a>。有了MMEdu，你会发现AI模型训练原来这么简单。</p>
 </section>
 </section>
