@@ -59,10 +59,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#docker">3. 完整版安装之docker容器镜像</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id6">4. 查看MMEdu版本</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id7">5. 卸载MMEdu库</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">使用示例</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id9">更多示例</a></li>
-</ul>
-</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">MMEdu基本功能</a></li>
@@ -285,61 +281,6 @@ PyCharm环境路径配置如下图所示。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip uninstall MMEdu
 </pre></div>
 </div>
-</section>
-<section id="id8">
-<h2>使用示例<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h2>
-<p>推理：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
-<span class="n">img</span> <span class="o">=</span> <span class="s1">&#39;./img.png&#39;</span>
-<span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;ResNet18&#39;</span><span class="p">)</span>
-<span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;./latest.pth&#39;</span>
-<span class="n">class_path</span> <span class="o">=</span> <span class="s1">&#39;./classes.txt&#39;</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">img</span>\<span class="n">n</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span>\<span class="n">n</span> <span class="n">class_path</span><span class="o">=</span><span class="n">class_path</span>\<span class="n">ncheckpoint</span> <span class="o">=</span> <span class="n">checkpoint</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">print_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>典型训练：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
-<span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;ResNet18&#39;</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;./dataset&#39;</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;./my_model&#39;</span>
-<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">epochs</span><span class="o">=</span><span class="mi">10</span>\<span class="n">n</span> <span class="n">validate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>继续训练：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
-<span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;ResNet18&#39;</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;./dataset&#39;</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;./my_model&#39;</span>
-<span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;./latest.pth&#39;</span>
-<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">epochs</span><span class="o">=</span><span class="mi">10</span>\<span class="n">n</span> <span class="n">validate</span><span class="o">=</span><span class="kc">True</span>\<span class="n">n</span> <span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">)</span>
-</pre></div>
-</div>
-<section id="id9">
-<h3>更多示例<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
-<blockquote>
-<div><p>MMEdu库安装目录下有更多示例程序，可以通过如下方法找到.</p>
-</div></blockquote>
-<ol class="arabic simple">
-<li><p>进入Python终端，然后依次输入如下代码即可查看Python库所在的目录（site-packages）</p></li>
-</ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">MMEdu</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">MMEdu</span><span class="o">.</span><span class="n">__path__</span><span class="p">)</span>
-</pre></div>
-</div>
-<figure class="align-default">
-<img alt="../_images/pip安装指南1.png" src="../_images/pip安装指南1.png" />
-</figure>
-<ol class="arabic simple" start="2">
-<li><p>打开对应路径的文件夹，其中examples文件夹下即为所有内置的示例程序</p></li>
-</ol>
-<figure class="align-default">
-<img alt="../_images/pip安装指南2.png" src="../_images/pip安装指南2.png" />
-</figure>
-<p>注意：内置examples文件夹下的案例仅供参考使用，请勿直接改写其中文件。应在用户自己的工作目录下新建文件，并参考examples中的写法。</p>
-</section>
 </section>
 </section>
 

@@ -185,3 +185,86 @@ COCO数据集的标注信息存储在“annotations”文件夹中的\ ``json``\
    }]
 
 为了验证和测试，我们建议划分训练集、验证集和测试集，需要生成验证集valid和标注文件valid.json，测试集test和标注文件test.json，json文件的基本数据结构依然是COCO格式。制作一个COCO格式的数据集的步骤详见\ `深度学习知识库 <https://xedu.readthedocs.io/zh/latest/dl_library/dataset_introduction.html#id13>`__\ 。
+
+使用示例
+--------
+
+模型推理：
+~~~~~~~~~~
+
+.. code:: python
+
+   from MMEdu import MMClassification as cls
+   img = './img.png'
+   model = cls(backbone='ResNet18')
+   checkpoint = './latest.pth'
+   result = model.inference(image=img, show=True, checkpoint = checkpoint)
+   model.print_result(result)
+
+从零开始训练：
+~~~~~~~~~~~~~~
+
+.. code:: python
+
+   from MMEdu import MMClassification as cls
+   model = cls(backbone='ResNet18')
+   model.num_classes = 3
+   model.load_dataset(path='./dataset')
+   model.save_fold = './my_model'
+   model.train(epochs=10\n validate=True)
+
+继续训练：
+~~~~~~~~~~
+
+.. code:: python
+
+   from MMEdu import MMClassification as cls
+   model = cls(backbone='ResNet18')
+   model.num_classes = 3
+   model.load_dataset(path='./dataset')
+   model.save_fold = './my_model'
+   checkpoint = './latest.pth'
+   model.train(epochs=10, validate=True, checkpoint=checkpoint)
+
+查看权重文件信息（拓展内容）
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+模型训练好后生成了日志文件和（.pth）权重文件，可以使用如下代码查看权重文件信息。
+
+.. code:: python
+
+   pth_info(checkpoint) # 指定为pth权重文件路径
+
+返回日志信息（拓展内容）
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+如需返回日志信息，可在训练时使用如下代码：
+
+::
+
+   log = model.train(xxx)
+   print(log)
+
+返回的是日志文件中各行信息组成的列表。
+
+更多示例
+~~~~~~~~
+
+   MMEdu库安装目录下有更多示例程序，可以通过如下方法找到.
+
+1. 进入Python终端，然后依次输入如下代码即可查看Python库所在的目录（site-packages）
+
+::
+
+   import MMEdu
+   print(MMEdu.__path__)
+
+.. figure:: D:\XEdu-docs\source\images\mmedu\pip安装指南1.png
+
+
+2. 打开对应路径的文件夹，其中examples文件夹下即为所有内置的示例程序
+
+.. figure:: D:\XEdu-docs\source\images\mmedu\pip安装指南2.png
+
+
+注意：内置examples文件夹下的案例仅供参考使用，请勿直接改写其中文件。应在用户自己的工作目录下新建文件，并参考examples中的写法。
