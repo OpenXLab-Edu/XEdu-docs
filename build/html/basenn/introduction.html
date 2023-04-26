@@ -336,8 +336,11 @@
 <span class="n">model</span><span class="o">.</span><span class="n">visual_feature</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">in1img</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>   <span class="c1"># 特征的可视化</span>
 </pre></div>
 </div>
-<figure class="align-default">
-<img alt="../_images/特征可视化.png" src="../_images/特征可视化.png" />
+<figure class="align-default" id="id25">
+<img alt="image" src="../_images/特征可视化.png" />
+<figcaption>
+<p><span class="caption-text">image</span><a class="headerlink" href="#id25" title="Permalink to this image"></a></p>
+</figcaption>
 </figure>
 <p>如输入数据为一维数据，指定数据和已经训练好的模型，可生成一个txt文件展示经过各层后的输出。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -386,7 +389,7 @@ model.train<span class="o">(</span>...<span class="o">)</span>
 <section id="id21">
 <h3>13. 特征提取<a class="headerlink" href="#id21" title="Permalink to this headline"></a></h3>
 <p>图像特征提取是计算机视觉中的重要研究领域之一，是计算机视觉中的一个关键步骤，它涉及将图像转换成一组有意义的特征向量，以便后续的图像分析和识别任务。CNN（卷积神经网络）特征提取方法是一种基于深度学习的特征提取方法，通过卷积层、池化层等多个网络层的处理，可以提取出具有高层次抽象能力的特征表示，被广泛应用于图像分类、目标检测等领域。</p>
-<p>BaseNN中提供了一个CNN特征提取工具，可使用BaeNN的<code class="docutils literal notranslate"><span class="pre">model.extract_feature()</span></code>函数通过指定预训练模型来提取图像特征，该函数可将一张图像提取为1000维的特征（这些预训练模型一般都是在imagenet上训练的千分类模型，所以输出特征的维度是1000维），输出一个1行1000列的数组。</p>
+<p>BaseNN中提供了一个CNN特征提取工具，可使用BaeNN的<code class="docutils literal notranslate"><span class="pre">model.extract_feature()</span></code>函数通过指定预训练模型来提取图像特征，使用ResNet预训练模型可将一张图像提取为1000维的特征（该预训练模型是在imagenet上训练的千分类模型，所以输出特征的维度是1000维），输出一个1行1000列的数组。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 声明模型</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
 <span class="c1"># 读取图像文件</span>

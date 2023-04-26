@@ -64,9 +64,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#id5">模型推理：</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id6">从零开始训练：</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id7">继续训练：</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id8">查看权重文件信息（拓展内容）</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id9">返回日志信息（拓展内容）</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id10">更多示例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">更多示例：</a></li>
 </ul>
 </li>
 </ul>
@@ -350,43 +348,37 @@ categories [{
 </div>
 </section>
 <section id="id8">
-<h3>查看权重文件信息（拓展内容）<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
-<p>模型训练好后生成了日志文件和（.pth）权重文件，可以使用如下代码查看权重文件信息。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pth_info</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">)</span> <span class="c1"># 指定为pth权重文件路径</span>
-</pre></div>
-</div>
-</section>
-<section id="id9">
-<h3>返回日志信息（拓展内容）<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
-<p>如需返回日志信息，可在训练时使用如下代码：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">xxx</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>返回的是日志文件中各行信息组成的列表。</p>
-</section>
-<section id="id10">
-<h3>更多示例<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
-<blockquote>
-<div><p>MMEdu库安装目录下有更多示例程序，可以通过如下方法找到.</p>
-</div></blockquote>
-<ol class="arabic simple">
-<li><p>进入Python终端，然后依次输入如下代码即可查看Python库所在的目录（site-packages）</p></li>
+<h3>更多示例：<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
+<ol class="arabic">
+<li><p>查看MMEdu库所在的目录</p>
+<p>进入Python终端，然后依次输入如下代码即可查看Python库所在的目录（site-packages）。</p>
+</li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">MMEdu</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">MMEdu</span><span class="o">.</span><span class="n">__path__</span><span class="p">)</span>
 </pre></div>
 </div>
 <figure class="align-default">
-<img alt="D:XEdu-docssourceimagesmmedupip安装指南1.png" src="D:XEdu-docssourceimagesmmedupip安装指南1.png" />
+<img alt="../_images/pip安装指南1.png" src="../_images/pip安装指南1.png" />
 </figure>
-<ol class="arabic simple" start="2">
-<li><p>打开对应路径的文件夹，其中examples文件夹下即为所有内置的示例程序</p></li>
+<ol class="arabic" start="2">
+<li><p>查看权重文件信息</p>
+<p>模型训练好后生成了日志文件和（.pth）权重文件，可以使用如下代码查看权重文件信息。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pth_info</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">)</span> <span class="c1"># 指定为pth权重文件路径</span>
+</pre></div>
+</div>
+</li>
+<li><p>返回日志信息</p>
+<p>如需返回日志信息，可在训练时使用如下代码：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">xxx</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>返回的是日志文件中各行信息组成的列表。</p>
+</li>
+<li><p>打开github地址（<a class="reference external" href="https://github.com/OpenXLab-Edu/OpenMMLab-Edu">GitHub -
+OpenXLab-Edu/OpenMMLab-Edu</a>），可查看库文件原码和更多示例程序。</p></li>
 </ol>
-<figure class="align-default">
-<img alt="D:XEdu-docssourceimagesmmedupip安装指南2.png" src="D:XEdu-docssourceimagesmmedupip安装指南2.png" />
-</figure>
-<p>注意：内置examples文件夹下的案例仅供参考使用，请勿直接改写其中文件。应在用户自己的工作目录下新建文件，并参考examples中的写法。</p>
 </section>
 </section>
 </section>
