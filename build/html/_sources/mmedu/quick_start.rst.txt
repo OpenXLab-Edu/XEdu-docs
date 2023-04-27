@@ -22,7 +22,7 @@ MMEdu有多种\ `安装方式 <https://xedu.readthedocs.io/zh/latest/mmedu/insta
 
 OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台，满足青少年的AI学习和创作需求，支持在线编程。在“工具
 - 在线工具-
-人工智能工坊”中，可直接创建XEdu项目。OpenInnoLab平台网址：https://www.openinnolab.org.cn/（用Chorm浏览器打开效果最佳）。
+人工智能工坊”中，可直接创建XEdu项目。OpenInnoLab平台网址：https://www.openinnolab.org.cn/（用Chrome浏览器打开效果最佳）。
 
 .. figure:: ../images/mmedu/XEdu项目创建.gif
 
@@ -41,7 +41,7 @@ OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台�
 
 项目链接：https://www.openinnolab.org.cn/pjlab/project?id=63801c0701df4535876b6a4e&sc=635638d69ed68060c638f979#public
 
-（用Chorme浏览器打开效果最佳）
+（用Chrome浏览器打开效果最佳）
 
 3. 加载数据集
 ~~~~~~~~~~~~~
