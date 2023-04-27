@@ -315,6 +315,7 @@ categories [{
 <h2>使用示例<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
 <section id="id5">
 <h3>模型推理：<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<p>此处展示的是图像分类模型的模型推理的示例代码，如需了解更多模块的示例代码或想了解更多使用说明请看<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/mmclassification.html">后文</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
 <span class="n">img</span> <span class="o">=</span> <span class="s1">&#39;./img.png&#39;</span>
 <span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;ResNet18&#39;</span><span class="p">)</span>
@@ -326,17 +327,19 @@ categories [{
 </section>
 <section id="id6">
 <h3>从零开始训练：<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<p>此处展示的是图像分类模型的从零开始训练的示例代码，如需了解更多模块的示例代码或想了解更多使用说明请看<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/mmclassification.html">后文</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
 <span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;ResNet18&#39;</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;./dataset&#39;</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;./my_model&#39;</span>
-<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">epochs</span><span class="o">=</span><span class="mi">10</span>\<span class="n">n</span> <span class="n">validate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">validate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="id7">
 <h3>继续训练：<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<p>此处展示的是图像分类模型的继续训练的示例代码，如需了解更多模块的示例代码或想了解更多使用说明请看<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/mmclassification.html">后文</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
 <span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;ResNet18&#39;</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">3</span>

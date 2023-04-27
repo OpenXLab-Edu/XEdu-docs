@@ -192,6 +192,8 @@ COCO数据集的标注信息存储在“annotations”文件夹中的\ ``json``\
 模型推理：
 ~~~~~~~~~~
 
+此处展示的是图像分类模型的模型推理的示例代码，如需了解更多模块的示例代码或想了解更多使用说明请看\ `后文 <https://xedu.readthedocs.io/zh/latest/mmedu/mmclassification.html>`__\ 。
+
 .. code:: python
 
    from MMEdu import MMClassification as cls
@@ -204,6 +206,8 @@ COCO数据集的标注信息存储在“annotations”文件夹中的\ ``json``\
 从零开始训练：
 ~~~~~~~~~~~~~~
 
+此处展示的是图像分类模型的从零开始训练的示例代码，如需了解更多模块的示例代码或想了解更多使用说明请看\ `后文 <https://xedu.readthedocs.io/zh/latest/mmedu/mmclassification.html>`__\ 。
+
 .. code:: python
 
    from MMEdu import MMClassification as cls
@@ -211,10 +215,12 @@ COCO数据集的标注信息存储在“annotations”文件夹中的\ ``json``\
    model.num_classes = 3
    model.load_dataset(path='./dataset')
    model.save_fold = './my_model'
-   model.train(epochs=10\n validate=True)
+   model.train(epochs=10,validate=True)
 
 继续训练：
 ~~~~~~~~~~
+
+此处展示的是图像分类模型的继续训练的示例代码，如需了解更多模块的示例代码或想了解更多使用说明请看\ `后文 <https://xedu.readthedocs.io/zh/latest/mmedu/mmclassification.html>`__\ 。
 
 .. code:: python
 

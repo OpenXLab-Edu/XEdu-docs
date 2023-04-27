@@ -115,26 +115,7 @@ OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台�
 
 打开\ `《用MMEdu实现MNIST手写体数字识别（NOTEBOOK）》项目 <https://www.openinnolab.org.cn/pjlab/project?id=63801c0701df4535876b6a4e&sc=635638d69ed68060c638f979#public>`__\ 中的“2.mnist手写体数字识别-推理.ipynb”文件跟随说明完成推理代码运行。示例代码中共7行代码，完成了导入库、指定图片、实例化模型、指定模型保存的路径、开始推理、输出推理结果。根据推理结果可以完成各种其他输出。
 
-7. 查看权重文件信息（拓展内容）
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-模型训练好后生成了日志文件和（.pth）权重文件，可以使用如下代码查看权重文件信息。
-
-.. code:: python
-
-   pth_info(checkpoint) # 指定为pth权重文件路径
-
-8.返回日志信息（拓展内容）
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-如需返回日志信息，可在训练时使用如下代码：
-
-::
-
-   log = model.train(xxx)
-   print(log)
-
-返回的是日志文件中各行信息组成的列表。
+如需了解代码规则和参数信息，以及图像分类模块的更多使用说明，请看\ `后文 <https://xedu.readthedocs.io/zh/latest/mmedu/mmclassification.html#mmclassification>`__\ 。
 
 下一个目标：使用MMEdu训练各种模型
 ---------------------------------
