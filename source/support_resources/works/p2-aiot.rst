@@ -316,16 +316,16 @@ SIoT初始化：
    oled.DispChar(str('按下 A键 开始监听音频'), 0, 16, 1)
    oled.show()
 
-​ **oled.fill(0)：**\ 将屏幕背景填充为黑色，数字0代表黑色。
+oled.fill(0)：将屏幕背景填充为黑色，数字0代表黑色。
 
-​ **oled.DispChar(str(‘语音识别：SIOT模式’), 0, 0,
-1)：**\ 在坐标为(0,0)的位置上显示字符串“语音识别：SIOT模式”，数字1代表字体大小。
+oled.DispChar(str(‘语音识别：SIOT模式’), 0, 0,
+1)：在坐标为(0,0)的位置上显示字符串“语音识别：SIOT模式”，数字1代表字体大小。
 
-​ **oled.DispChar(str(‘按下 A键 开始监听音频’), 0, 16,
-1)：**\ 在坐标为(0,16)的位置上显示字符串“按下 A键
+oled.DispChar(str(‘按下 A键 开始监听音频’), 0, 16,
+1)：在坐标为(0,16)的位置上显示字符串“按下 A键
 开始监听音频”，数字1代表字体大小。
 
-​ **oled.show()：**\ 将以上修改后的内容显示在OLED屏幕上。
+oled.show()：将以上修改后的内容显示在OLED屏幕上。
 
 按键触发：
 
@@ -337,11 +337,11 @@ SIoT初始化：
        pass
    button_a.event_pressed = on_button_a_pressed
 
-​ \**def
-on_button_a_pressed(_)：**定义了一个名为on_button_a_pressed的函数，当A按钮被按下时会执行其中的代码。这个函数接收一个参数"\_“，但实际上并没有用到这个参数，所以在函数体内部使用了关键词”pass"表示什么也不做（因为这段代码只是个示例~）。
+def
+on_button_a_pressed(\ *)：定义了一个名为on_button_a_pressed的函数，当A按钮被按下时会执行其中的代码。这个函数接收一个参数"*\ “，但实际上并没有用到这个参数，所以在函数体内部使用了关键词”pass"表示什么也不做（因为这段代码只是个示例~）。
 
-​ **button_a.event_pressed =
-on_button_a_pressed：**\ 将on_button_a_pressed函数赋值给button_a的event_pressed属性，意味着当A按钮被按下时会触发该属性中存储的函数（即on_button_a_pressed函数）。
+button_a.event_pressed =
+on_button_a_pressed：将on_button_a_pressed函数赋值给button_a的event_pressed属性，意味着当A按钮被按下时会触发该属性中存储的函数（即on_button_a_pressed函数）。
 
 效果演示
 ~~~~~~~~
