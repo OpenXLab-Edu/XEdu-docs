@@ -451,7 +451,7 @@ tang.npz是本项目的文本数据，源于互联网，包括57580首唐诗。
 
 本案例是一个跨学科项目，用神经网络来拟合三角函数。案例发表于2023年的《中国信息技术教育》杂志。
 
-项目地址：https://www.openinnolab.org.cn/pjlab/project?id=639d352b3791ab1c3aa8b987&sc=635638d69ed68060c638f979#public
+项目地址：https://www.openinnolab.org.cn/pjlab/project?id=6444992a06618727bed5a67c&sc=635638d69ed68060c638f979#public
 
 .. _项目核心功能-1:
 
@@ -475,7 +475,9 @@ tang.npz是本项目的文本数据，源于互联网，包括57580首唐诗。
 文件中。或者使用Excel的公式来计算，再导出关键数据，如图所示。
 
 .. figure:: ../images/basenn/用Excel计算数据.png
+   :alt: image
 
+   image
 
 .. _网络搭建和模型训练-2:
 
