@@ -338,7 +338,7 @@ SIoT初始化：
    button_a.event_pressed = on_button_a_pressed
 
 ​ \**def
-on_button_a_pressed(_):：**定义了一个名为on_button_a_pressed的函数，当A按钮被按下时会执行其中的代码。这个函数接收一个参数"\_“，但实际上并没有用到这个参数，所以在函数体内部使用了关键词”pass"表示什么也不做（因为这段代码只是个示例~）。
+on_button_a_pressed(_)：**定义了一个名为on_button_a_pressed的函数，当A按钮被按下时会执行其中的代码。这个函数接收一个参数"\_“，但实际上并没有用到这个参数，所以在函数体内部使用了关键词”pass"表示什么也不做（因为这段代码只是个示例~）。
 
 ​ **button_a.event_pressed =
 on_button_a_pressed：**\ 将on_button_a_pressed函数赋值给button_a的event_pressed属性，意味着当A按钮被按下时会触发该属性中存储的函数（即on_button_a_pressed函数）。
