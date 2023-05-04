@@ -4,7 +4,7 @@
 得益与`OpenMMLab`系列工具的不断进步与发展。MMEdu通过集成OpenMMLab开源的`模型部署工具箱MMDeploy`和`模型压缩工具包MMRazor`，打通了从算法模型到应用程序这 “最后一公里”！ 今天我们将开启`AI模型部署`入门系列教程，在面向中小学AI教育的开发和学习工具 `XEdu` 的辅助下，介绍以下内容：
 
 - 模型转换
-- 模型量化
+- 模型量化（MMEdu暂未合并该功能）
 - 多模态交互
 
 > MMEdu已经可以帮助我diy自己的AI模型了，为什么要多此一举、徒增难度，来学习需要更多编程知识的模型部署模块？
@@ -70,7 +70,7 @@ MMEdu内置了一个`convert`函数实现了一键式模型转换，转换前先
 
 - 需要配置三个信息：
 
-  待转换的模型权重文件（`checkpoint`），图片分类的类别数量（`model.num_classes`）和输出的文件（`out_file`）。
+  待转换的模型权重文件（`checkpoint`）和输出的文件（`out_file`）。
 
 - 模型转换的典型代码：
 
@@ -80,14 +80,12 @@ model = cls(backbone='MobileNet')
 model.num_classes = 2
 checkpoint = 'checkpoints/cls_model/CatsDog/best_accuracy_top-1_epoch_2.pth'
 out_file="out_file/catdog.onnx"
-model.convert(checkpoint=checkpoint, backend="ONNX", out_file=out_file)
+model.convert(checkpoint=checkpoint, out_file=out_file)
 ```
 
 这段代码是完成分类模型的转换，接下来对为您`model.convert`函数的各个参数：
 
 `checkpoint`：选择想要进行模型转换的权重文件，以.pth为后缀。
-
-`backend`：模型转换的后端推理框架，目前支持ONNX，后续将陆续支持NCNN、TensorRT、OpenVINO等。
 
 `out_file`：模型转换后的输出文件路径。
 
@@ -100,7 +98,7 @@ model = det(backbone='SSD_Lite')
 model.num_classes = 80
 checkpoint = 'checkpoints/COCO-80/ssdlite.pth'
 out_file="out_file/COCO-80.onnx"
-model.convert(checkpoint=checkpoint, backend="ONNX", out_file=out_file)
+model.convert(checkpoint=checkpoint, out_file=out_file)
 ```
 
 现在，让我们从“[从零开始训练猫狗识别模型并完成模型转换](https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&sc=635638d69ed68060c638f979#public)”项目入手，见识一下使用MMEdu工具完成从模型训练到模型部署的基本流程吧！
@@ -148,7 +146,7 @@ model = cls(backbone='MobileNet')
 checkpoint = 'checkpoints/cls_model/CatsDog1/best_accuracy_top-1_epoch_1.pth'
 model.num_classes = 2
 out_file='out_file/cats_dogs.onnx'
-model.convert(checkpoint=checkpoint, backend="ONNX", out_file=out_file)
+model.convert(checkpoint=checkpoint, out_file=out_file)
 ```
 
 此时项目文件中的out_file文件夹下便生成了模型转换后生成的两个文件，可打开查看。一个是ONNX模型权重，一个是示例代码，示例代码稍作改动即可运行（需配合BaseData.py的BaseDT库）。
@@ -337,61 +335,45 @@ else:
 - 图像分类
 
 ```
-import onnxruntime as rt
-from BaseDT.data_image import ImageData
-import numpy as np
 import cv2
-
-class_names = []
-def infer(img, pth, backbone):
-    sess = rt.InferenceSession(pth, None)
-    input_name = sess.get_inputs()[0].name
-    out_name = sess.get_outputs()[0].name
-    dt = ImageData(img, backbone=backbone)
-    input_data = dt.to_tensor()
-    pred_onx = sess.run([out_name], {input_name: input_data})
-    ort_output = pred_onx[0]
-    idx = np.argmax(ort_output, axis=1)[0]
-    return [idx,ort_output[0][idx]]
-
-
+import numpy as np
+import onnxruntime as rt
+from BaseDT.data import ImageData, ModelData
+model_path = 'cls.onnx'
 cap = cv2.VideoCapture(0)
-ret, img = cap.read()
-backbone = 'MobileNet' #推理模型
-pth = 'cls/checkpoints/mobilenetv2.onnx' #权重文件
-res = infer(img, pth, backbone)
-print('result:' + class_names[res[0]] + ' , and acc:' + str(res[1]))
+sess = rt.InferenceSession(model_path, None)
+input_name = sess.get_inputs()[0].name
+output_name = sess.get_outputs()[0].name
+ret,img = cap.read()
 cap.release()
+dt = ImageData(img, backbone='MobileNet')
+pred_onx = sess.run([output_name], {input_name: dt.to_tensor()})
+class_names = ModelData(model_path).get_labels()
+ort_output = pred_onx[0]
+idx = np.argmax(ort_output, axis=1)[0]
+print('label:{}, acc:{}'.format(class_names[idx], ort_output[0][idx]))
 ```
 
 - 目标检测
 
 ```
-import onnxruntime as rt
 import cv2
-from BaseDT.data_image import ImageData
+import onnxruntime as rt
+from BaseDT.data import ImageData, ModelData
 from BaseDT.plot import imshow_det_bboxes
-
-class_names = []
-
-def infer(img, pth, backbone):
-    sess = rt.InferenceSession(pth, None)
-    input_name = sess.get_inputs()[0].name
-    output_names = [o.name for o in sess.get_outputs()]
-    dt = ImageData(img, backbone=backbone)
-    input_data = dt.to_tensor()
-    pred_onx = sess.run(output_names, {input_name: input_data})
-    boxes = pred_onx[0][0]
-    labels = pred_onx[1][0]
-    return [boxes,labels]
-
+model_path = 'det.onnx'
 cap = cv2.VideoCapture(0)
-ret, img = cap.read()
-backbone = 'SSD_Lite' #推理模型
-pth = 'det/checkpoints/coco.onnx' #权重文件
-res = infer(img, pth, backbone)
-imshow_det_bboxes(img, bboxes = res[0],labels = res[1], class_names = class_names, score_thr = 0.8) #根据需求修改阈值score_thr
+sess = rt.InferenceSession(model_path, None)
+input_name = sess.get_inputs()[0].name
+output_names = [o.name for o in sess.get_outputs()]
+ret,img = cap.read()
 cap.release()
+dt = ImageData(img, backbone='SSD_Lite')
+pred_onx = sess.run(output_names, {input_name: dt.to_tensor()})
+class_names = ModelData(model_path).get_labels()
+boxes = dt.map_orig_coords(pred_onx[0][0])
+labels = pred_onx[1][0]
+img = imshow_det_bboxes(img, bboxes=boxes, labels=labels, class_names=class_names, score_thr=0.8)
 ```
 
 ## What：什么现象与成果
@@ -1085,14 +1067,14 @@ __注：硬件测试模块持续更新中，如有更多硬件测试需求，请
 
 ## 更多模型部署项目
 
-猫狗分类小助手：https://www.openinnolab.org.cn/pjlab/project?id=63c3f52a1dd9517dffa1f513&sc=62f34141bf4f550f3e926e0e#public
+猫狗分类小助手：https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&backpath=/pjedu/userprofile%3FslideKey=project#public
 
-千物识别小助手：https://www.openinnolab.org.cn/pjlab/project?id=63c4106c2e26ff0a30cb440f&sc=62f34141bf4f550f3e926e0e#public
+千物识别小助手：https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&backpath=/pjlab/projects/list#public
 
-有无人检测小助手：https://www.openinnolab.org.cn/pjlab/project?id=63c4b6d22e26ff0a30f26ebc&sc=62f34141bf4f550f3e926e0e#public
+有无人检测小助手：https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&backpath=/pjlab/projects/list#public
 
 行空板上温州话识别：https://www.openinnolab.org.cn/pjlab/project?id=63b7c66e5e089d71e61d19a0&sc=62f34141bf4f550f3e926e0e#public
 
 树莓派与MMEdu：https://www.openinnolab.org.cn/pjlab/project?id=63bb8be4c437c904d8a90350&backpath=/pjlab/projects/list%3Fbackpath=/pjlab/ai/projects#public
 
-MMEdu模型在线转换：https://www.openinnolab.org.cn/pjlab/project?id=63a1a47e5e089d71e6c6f068&backpath=/pjlab/projects/list%3Fbackpath=/pjlab/ai/projects#public
+MMEdu模型在线转换：https://www.openinnolab.org.cn/pjlab/project?id=645110943c0e930cb55e859b&backpath=/pjlab/projects/list#public

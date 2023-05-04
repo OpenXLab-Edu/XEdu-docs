@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>“最后一公里”—XEdu助力AI模型部署 &mdash; OpenXLabEdu  documentation</title>
+  <title>最后一步：AI模型转换与部署 &mdash; OpenXLabEdu  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -28,11 +28,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -48,7 +52,7 @@
 <li class="toctree-l2"><a class="reference internal" href="mmclassification.html">解锁图像分类模块：MMClassification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mmdetection.html">揭秘目标检测模块：MMDetection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mmediting.html">图像处理模块：MMEditing</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">“最后一公里”—XEdu助力AI模型部署</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">最后一步：AI模型转换与部署</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#why">Why：为什么</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id1">为什么要进行模型转换</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id2">为什么要进行模型量化</a></li>
@@ -65,8 +69,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#id9">边、端设备测试结果</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id23">多模态交互</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id24">更多模型部署项目</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id27">多模态交互</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id28">更多模型部署项目</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="openmmlab.html">走向OpenMMLab</a></li>
@@ -94,9 +98,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../mmedu.html">计算机视觉库MMEdu</a> &raquo;</li>
-      <li>“最后一公里”—XEdu助力AI模型部署</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../mmedu.html">计算机视觉库MMEdu</a></li>
+      <li class="breadcrumb-item active">最后一步：AI模型转换与部署</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/mmedu/model_convert.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -106,15 +110,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="xeduai">
-<h1>“最后一公里”—XEdu助力AI模型部署<a class="headerlink" href="#xeduai" title="Permalink to this headline"></a></h1>
+  <section id="ai">
+<h1>最后一步：AI模型转换与部署<a class="headerlink" href="#ai" title="Permalink to this headline"></a></h1>
 <p>得益与<code class="docutils literal notranslate"><span class="pre">OpenMMLab</span></code>系列工具的不断进步与发展。MMEdu通过集成OpenMMLab开源的<code class="docutils literal notranslate"><span class="pre">模型部署工具箱MMDeploy</span></code>和<code class="docutils literal notranslate"><span class="pre">模型压缩工具包MMRazor</span></code>，打通了从算法模型到应用程序这
 “最后一公里”！
 今天我们将开启<code class="docutils literal notranslate"><span class="pre">AI模型部署</span></code>入门系列教程，在面向中小学AI教育的开发和学习工具
 <code class="docutils literal notranslate"><span class="pre">XEdu</span></code> 的辅助下，介绍以下内容：</p>
 <ul class="simple">
 <li><p>模型转换</p></li>
-<li><p>模型量化</p></li>
+<li><p>模型量化（MMEdu暂未合并该功能）</p></li>
 <li><p>多模态交互</p></li>
 </ul>
 <div class="admonition note">
@@ -130,6 +134,7 @@ Python 语言，除此之外不需要了解任何模型部署的知识。</p>
 <h2>Why：为什么<a class="headerlink" href="#why" title="Permalink to this headline"></a></h2>
 <section id="id1">
 <h3>为什么要进行模型转换<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<p>用MMEdu训练的模型，只能运行在安装了MMEdu环境的电脑吗？不，借助模型转换，MMEdu（包括BaseNN）训练的模型都可以转换为ONNX模型，然后部署在很多常见的电脑（开源硬件）上。</p>
 <p>模型转换是为了模型能在不同框架间流转。在实际应用时，模型转换几乎都用于工业部署，负责模型从训练框架到部署侧推理框架的连接。
 这是因为随着深度学习应用和技术的演进，训练框架和推理框架的职能已经逐渐分化。
 分布式、自动求导、混合精度……训练框架往往围绕着易用性，面向设计算法的研究员，以研究员能更快地生产高性能模型为目标。
@@ -190,7 +195,7 @@ PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架
 <p>分类的标签文件、待转换的模型权重文件。</p>
 </li>
 <li><p>需要配置三个信息：</p>
-<p>待转换的模型权重文件（<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>），图片分类的类别数量（<code class="docutils literal notranslate"><span class="pre">model.num_classes</span></code>）和输出的文件（<code class="docutils literal notranslate"><span class="pre">out_file</span></code>）。</p>
+<p>待转换的模型权重文件（<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>）和输出的文件（<code class="docutils literal notranslate"><span class="pre">out_file</span></code>）。</p>
 </li>
 <li><p>模型转换的典型代码：</p></li>
 </ul>
@@ -199,12 +204,11 @@ PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架
 <span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/cls_model/CatsDog/best_accuracy_top-1_epoch_2.pth&#39;</span>
 <span class="n">out_file</span><span class="o">=</span><span class="s2">&quot;out_file/catdog.onnx&quot;</span>
-<span class="n">model</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;ONNX&quot;</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>这段代码是完成分类模型的转换，接下来对为您<code class="docutils literal notranslate"><span class="pre">model.convert</span></code>函数的各个参数：</p>
 <p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>：选择想要进行模型转换的权重文件，以.pth为后缀。</p>
-<p><code class="docutils literal notranslate"><span class="pre">backend</span></code>：模型转换的后端推理框架，目前支持ONNX，后续将陆续支持NCNN、TensorRT、OpenVINO等。</p>
 <p><code class="docutils literal notranslate"><span class="pre">out_file</span></code>：模型转换后的输出文件路径。</p>
 <p>类似的，目标检测模型转换的示例代码如下：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMDetection</span> <span class="k">as</span> <span class="n">det</span>
@@ -212,7 +216,7 @@ PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架
 <span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">80</span>
 <span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/COCO-80/ssdlite.pth&#39;</span>
 <span class="n">out_file</span><span class="o">=</span><span class="s2">&quot;out_file/COCO-80.onnx&quot;</span>
-<span class="n">model</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;ONNX&quot;</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>现在，让我们从“<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&amp;sc=635638d69ed68060c638f979#public">从零开始训练猫狗识别模型并完成模型转换</a>”项目入手，见识一下使用MMEdu工具完成从模型训练到模型部署的基本流程吧！</p>
@@ -249,7 +253,7 @@ PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架
 <span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/cls_model/CatsDog1/best_accuracy_top-1_epoch_1.pth&#39;</span>
 <span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">out_file</span><span class="o">=</span><span class="s1">&#39;out_file/cats_dogs.onnx&#39;</span>
-<span class="n">model</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;ONNX&quot;</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>此时项目文件中的out_file文件夹下便生成了模型转换后生成的两个文件，可打开查看。一个是ONNX模型权重，一个是示例代码，示例代码稍作改动即可运行（需配合BaseData.py的BaseDT库）。</p>
@@ -424,61 +428,45 @@ PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架
 <ul class="simple">
 <li><p>图像分类</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">onnxruntime</span> <span class="k">as</span> <span class="nn">rt</span>
-<span class="kn">from</span> <span class="nn">BaseDT.data_image</span> <span class="kn">import</span> <span class="n">ImageData</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">cv2</span>
-
-<span class="n">class_names</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">def</span> <span class="nf">infer</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">pth</span><span class="p">,</span> <span class="n">backbone</span><span class="p">):</span>
-    <span class="n">sess</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">InferenceSession</span><span class="p">(</span><span class="n">pth</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    <span class="n">input_name</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">get_inputs</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
-    <span class="n">out_name</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">get_outputs</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
-    <span class="n">dt</span> <span class="o">=</span> <span class="n">ImageData</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">backbone</span><span class="o">=</span><span class="n">backbone</span><span class="p">)</span>
-    <span class="n">input_data</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">()</span>
-    <span class="n">pred_onx</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">out_name</span><span class="p">],</span> <span class="p">{</span><span class="n">input_name</span><span class="p">:</span> <span class="n">input_data</span><span class="p">})</span>
-    <span class="n">ort_output</span> <span class="o">=</span> <span class="n">pred_onx</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">ort_output</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="n">ort_output</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">idx</span><span class="p">]]</span>
-
-
+<span class="kn">import</span> <span class="nn">onnxruntime</span> <span class="k">as</span> <span class="nn">rt</span>
+<span class="kn">from</span> <span class="nn">BaseDT.data</span> <span class="kn">import</span> <span class="n">ImageData</span><span class="p">,</span> <span class="n">ModelData</span>
+<span class="n">model_path</span> <span class="o">=</span> <span class="s1">&#39;cls.onnx&#39;</span>
 <span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">ret</span><span class="p">,</span> <span class="n">img</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="n">backbone</span> <span class="o">=</span> <span class="s1">&#39;MobileNet&#39;</span> <span class="c1">#推理模型</span>
-<span class="n">pth</span> <span class="o">=</span> <span class="s1">&#39;cls/checkpoints/mobilenetv2.onnx&#39;</span> <span class="c1">#权重文件</span>
-<span class="n">res</span> <span class="o">=</span> <span class="n">infer</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">pth</span><span class="p">,</span> <span class="n">backbone</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;result:&#39;</span> <span class="o">+</span> <span class="n">class_names</span><span class="p">[</span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+</span> <span class="s1">&#39; , and acc:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">sess</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">InferenceSession</span><span class="p">(</span><span class="n">model_path</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">input_name</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">get_inputs</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
+<span class="n">output_name</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">get_outputs</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
+<span class="n">ret</span><span class="p">,</span><span class="n">img</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">ImageData</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;MobileNet&#39;</span><span class="p">)</span>
+<span class="n">pred_onx</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">output_name</span><span class="p">],</span> <span class="p">{</span><span class="n">input_name</span><span class="p">:</span> <span class="n">dt</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">()})</span>
+<span class="n">class_names</span> <span class="o">=</span> <span class="n">ModelData</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span><span class="o">.</span><span class="n">get_labels</span><span class="p">()</span>
+<span class="n">ort_output</span> <span class="o">=</span> <span class="n">pred_onx</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">ort_output</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;label:</span><span class="si">{}</span><span class="s1">, acc:</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">class_names</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">ort_output</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">idx</span><span class="p">]))</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>目标检测</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">onnxruntime</span> <span class="k">as</span> <span class="nn">rt</span>
-<span class="kn">import</span> <span class="nn">cv2</span>
-<span class="kn">from</span> <span class="nn">BaseDT.data_image</span> <span class="kn">import</span> <span class="n">ImageData</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">onnxruntime</span> <span class="k">as</span> <span class="nn">rt</span>
+<span class="kn">from</span> <span class="nn">BaseDT.data</span> <span class="kn">import</span> <span class="n">ImageData</span><span class="p">,</span> <span class="n">ModelData</span>
 <span class="kn">from</span> <span class="nn">BaseDT.plot</span> <span class="kn">import</span> <span class="n">imshow_det_bboxes</span>
-
-<span class="n">class_names</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="k">def</span> <span class="nf">infer</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">pth</span><span class="p">,</span> <span class="n">backbone</span><span class="p">):</span>
-    <span class="n">sess</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">InferenceSession</span><span class="p">(</span><span class="n">pth</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    <span class="n">input_name</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">get_inputs</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
-    <span class="n">output_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">o</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">sess</span><span class="o">.</span><span class="n">get_outputs</span><span class="p">()]</span>
-    <span class="n">dt</span> <span class="o">=</span> <span class="n">ImageData</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">backbone</span><span class="o">=</span><span class="n">backbone</span><span class="p">)</span>
-    <span class="n">input_data</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">()</span>
-    <span class="n">pred_onx</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">output_names</span><span class="p">,</span> <span class="p">{</span><span class="n">input_name</span><span class="p">:</span> <span class="n">input_data</span><span class="p">})</span>
-    <span class="n">boxes</span> <span class="o">=</span> <span class="n">pred_onx</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">labels</span> <span class="o">=</span> <span class="n">pred_onx</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">boxes</span><span class="p">,</span><span class="n">labels</span><span class="p">]</span>
-
+<span class="n">model_path</span> <span class="o">=</span> <span class="s1">&#39;det.onnx&#39;</span>
 <span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">ret</span><span class="p">,</span> <span class="n">img</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="n">backbone</span> <span class="o">=</span> <span class="s1">&#39;SSD_Lite&#39;</span> <span class="c1">#推理模型</span>
-<span class="n">pth</span> <span class="o">=</span> <span class="s1">&#39;det/checkpoints/coco.onnx&#39;</span> <span class="c1">#权重文件</span>
-<span class="n">res</span> <span class="o">=</span> <span class="n">infer</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">pth</span><span class="p">,</span> <span class="n">backbone</span><span class="p">)</span>
-<span class="n">imshow_det_bboxes</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">bboxes</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">labels</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">class_names</span> <span class="o">=</span> <span class="n">class_names</span><span class="p">,</span> <span class="n">score_thr</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">)</span> <span class="c1">#根据需求修改阈值score_thr</span>
+<span class="n">sess</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">InferenceSession</span><span class="p">(</span><span class="n">model_path</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">input_name</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">get_inputs</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
+<span class="n">output_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">o</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">sess</span><span class="o">.</span><span class="n">get_outputs</span><span class="p">()]</span>
+<span class="n">ret</span><span class="p">,</span><span class="n">img</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">ImageData</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;SSD_Lite&#39;</span><span class="p">)</span>
+<span class="n">pred_onx</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">output_names</span><span class="p">,</span> <span class="p">{</span><span class="n">input_name</span><span class="p">:</span> <span class="n">dt</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">()})</span>
+<span class="n">class_names</span> <span class="o">=</span> <span class="n">ModelData</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span><span class="o">.</span><span class="n">get_labels</span><span class="p">()</span>
+<span class="n">boxes</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">map_orig_coords</span><span class="p">(</span><span class="n">pred_onx</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">pred_onx</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">imshow_det_bboxes</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">bboxes</span><span class="o">=</span><span class="n">boxes</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">class_names</span><span class="o">=</span><span class="n">class_names</span><span class="p">,</span> <span class="n">score_thr</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -942,13 +930,7 @@ Precision)：平均精度，在不同recall下的最高precision的均值(一般
     <td>*</td>
   </tr>
 </tbody>
-</table><div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><em>吞吐量
-(图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现</em>。</p>
-<p>*：不建议部署，单张图片推理的时间超过30s。</p>
-</div>
-<ul class="simple">
+</table><ul class="simple">
 <li><p>目标检测</p></li>
 </ul>
 <table class="docutils align-default">
@@ -1025,11 +1007,10 @@ Precision)：平均精度，在不同recall下的最高precision的均值(一般
 </section>
 <section id="b">
 <h4>树莓派（4b）测试<a class="headerlink" href="#b" title="Permalink to this headline"></a></h4>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><em>Raspberry
-Pi。中文名为“树莓派”,简写为RPi，或者RasPi/RPi)是为学生计算机编程教育而设计，卡片式电脑，其系统基于Linux。</em></p>
-</div>
+<blockquote>
+<div><p>Raspberry
+Pi。中文名为“树莓派”,简写为RPi，或者RasPi/RPi)是为学生计算机编程教育而设计，卡片式电脑，其系统基于Linux。</p>
+</div></blockquote>
 <section id="id19">
 <span id="id20"></span><h5>软硬件环境<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h5>
 <ul class="simple">
@@ -1119,13 +1100,7 @@ Pi。中文名为“树莓派”,简写为RPi，或者RasPi/RPi)是为学生计�
     <td>0.44</td>
   </tr>
 </tbody>
-</table><div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><em>吞吐量
-(图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现</em>。</p>
-<p>*：不建议部署，单张图片推理的时间超过30s。</p>
-</div>
-<ul class="simple">
+</table><ul class="simple">
 <li><p>目标检测</p></li>
 </ul>
 <table class="docutils align-default">
@@ -1193,30 +1168,25 @@ Pi。中文名为“树莓派”,简写为RPi，或者RasPi/RPi)是为学生计�
     <td>0.34</td>
   </tr>
 </tbody>
-</table><div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>*：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本。</p>
-<p>**：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite。</p>
-</div>
-<p>注：硬件测试模块持续更新中，如有更多硬件测试需求，请通过issue联系我们。</p>
+</table><p><a href="#id23"><span class="problematic" id="id24">**</span></a>注：硬件测试模块持续更新中，如有更多硬件测试需求，请<a href="#id25"><span class="problematic" id="id26">**</span></a><a class="reference external" href="https://github.com/OpenXLab-Edu/XEdu-docs/issues">联系我们</a></p>
 </section>
 </section>
 </section>
 </section>
-<section id="id23">
-<h2>多模态交互<a class="headerlink" href="#id23" title="Permalink to this headline"></a></h2>
+<section id="id27">
+<h2>多模态交互<a class="headerlink" href="#id27" title="Permalink to this headline"></a></h2>
 <p>回顾用AI解决真实问题的流程图，我们已经介绍了收集数据、训练模型、模型推理和应用部署。结合项目设计，我们还会去思考如何通过摄像头获得图像，如何控制灯光发亮，如何操纵舵机，如何设计显示界面UI等需要使用输入设备和输出设备等来实现的交互设计，即对<code class="docutils literal notranslate"><span class="pre">多模态交互</span></code>的考量。</p>
 <img alt="image" src="../_images/用AI解决真实问题.JPG" />
 <p>更多传感器、执行器使用教程参见：<a class="reference external" href="https://wiki.dfrobot.com.cn/">DFRobot</a></p>
 </section>
-<section id="id24">
-<h2>更多模型部署项目<a class="headerlink" href="#id24" title="Permalink to this headline"></a></h2>
-<p>猫狗分类小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63c3f52a1dd9517dffa1f513&amp;sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=63c3f52a1dd9517dffa1f513&amp;sc=62f34141bf4f550f3e926e0e#public</a></p>
-<p>千物识别小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63c4106c2e26ff0a30cb440f&amp;sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=63c4106c2e26ff0a30cb440f&amp;sc=62f34141bf4f550f3e926e0e#public</a></p>
-<p>有无人检测小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63c4b6d22e26ff0a30f26ebc&amp;sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=63c4b6d22e26ff0a30f26ebc&amp;sc=62f34141bf4f550f3e926e0e#public</a></p>
+<section id="id28">
+<h2>更多模型部署项目<a class="headerlink" href="#id28" title="Permalink to this headline"></a></h2>
+<p>猫狗分类小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&amp;backpath=/pjedu/userprofile%3FslideKey=project#public">https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&amp;backpath=/pjedu/userprofile%3FslideKey=project#public</a></p>
+<p>千物识别小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&amp;backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&amp;backpath=/pjlab/projects/list#public</a></p>
+<p>有无人检测小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&amp;backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&amp;backpath=/pjlab/projects/list#public</a></p>
 <p>行空板上温州话识别：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63b7c66e5e089d71e61d19a0&amp;sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=63b7c66e5e089d71e61d19a0&amp;sc=62f34141bf4f550f3e926e0e#public</a></p>
 <p>树莓派与MMEdu：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63bb8be4c437c904d8a90350&amp;backpath=/pjlab/projects/list%3Fbackpath=/pjlab/ai/projects#public">https://www.openinnolab.org.cn/pjlab/project?id=63bb8be4c437c904d8a90350&amp;backpath=/pjlab/projects/list%3Fbackpath=/pjlab/ai/projects#public</a></p>
-<p>MMEdu模型在线转换：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63a1a47e5e089d71e6c6f068&amp;backpath=/pjlab/projects/list%3Fbackpath=/pjlab/ai/projects#public">https://www.openinnolab.org.cn/pjlab/project?id=63a1a47e5e089d71e6c6f068&amp;backpath=/pjlab/projects/list%3Fbackpath=/pjlab/ai/projects#public</a></p>
+<p>MMEdu模型在线转换：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=645110943c0e930cb55e859b&amp;backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=645110943c0e930cb55e859b&amp;backpath=/pjlab/projects/list#public</a></p>
 </section>
 </section>
 
