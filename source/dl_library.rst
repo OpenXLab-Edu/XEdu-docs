@@ -8,4 +8,8 @@
 
    dl_library/dataset_introduction.md
 
+   dl_library/howtomake_imagenet.md
+
+   dl_library/howtomake_coco.md
+
    dl_library/network_introduction.md

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>项目：结合SIoT的智能语音识别——让掌控板也能识别语音 &mdash; OpenXLabEdu  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="项目：电路符号识别小助手" href="p3-dianlufuhaoshibiexiaozhushou.html" />
+    <link rel="prev" title="项目：让行空板变身为智能音箱" href="p1-smartspeaker.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> OpenXLabEdu
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mmedu.html">计算机视觉库MMEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basenn.html">神经网络库BaseNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../baseml.html">传统机器学习库BaseML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../easydl.html">EasyDL系列无代码工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basedt.html">数据处理库BaseDT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scitech_tools.html">相关科创工具</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../support_resources.html">学习支持和资源获取</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../faq.html">常见问题解答</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../resources.html">学习资源下载</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../courses.html">在线学习课程</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../creative_works.html">创意项目展示</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="p1-smartspeaker.html">项目：让行空板变身为智能音箱</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">项目：结合SIoT的智能语音识别——让掌控板也能识别语音</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">一、项目概述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">二、项目设计</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">三、背景知识</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">四、项目实现</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="p3-dianlufuhaoshibiexiaozhushou.html">项目：电路符号识别小助手</a></li>
+<li class="toctree-l3"><a class="reference internal" href="p4-shitoujiandaobupeiwan.html">项目：设计“石头剪刀布”陪玩机器人</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../dl_library.html">深度学习知识库</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">OpenXLabEdu</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../support_resources.html">学习支持和资源获取</a> &raquo;</li>
+          <li><a href="../creative_works.html">创意项目展示</a> &raquo;</li>
+      <li>项目：结合SIoT的智能语音识别——让掌控板也能识别语音</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/support_resources/works/p2-aiot.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="siot">
+<h1>项目：结合SIoT的智能语音识别——让掌控板也能识别语音<a class="headerlink" href="#siot" title="Permalink to this headline"></a></h1>
+<section id="id1">
+<h2>一、项目概述<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<p>将音频文件转化为图片再进行识别，是中小学创客活动中常见的语音识别方式。
+掌控板因为不能直接部署AI模型，在智能系统中往往用来担任执行设备，即执行命令、显示信息的终端设备。本项目是一个结合掌控板与行空板的项目。对<a class="reference external" href="https://mp.weixin.qq.com/s/LT0M-d4BmgW36BCF-PahiA">蘑菇云社区发表的“AI助听器”项目</a>进行深度分析，挖掘
+了掌控板内置麦克风的功能，设计了利用掌控板录音、行空板推理的工作方式，并给出了标准化的参考代码，为中小学AI科创项目的开发提供了新方案。</p>
+<p>实现的功能是掌控板监听现实环境，当其分贝超过某一阈值时，掌控板开始进行录音，将掌控板收集到的语音信息通过SIoT传输至行空板，并在行空板上执行推理后将结果返回，掌控板监听SIoT消息后，将结果回显。</p>
+<figure class="align-default">
+<img alt="../../_images/siot架构图.png" src="../../_images/siot架构图.png" />
+</figure>
+<figure class="align-default">
+<img alt="../../_images/功能.png" src="../../_images/功能.png" />
+</figure>
+</section>
+<section id="id2">
+<h2>二、项目设计<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<p>将掌控板作为下位机，获取语音，通过<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/scitech_tools/siot.html">siot</a>协议（mqtt教育版）发送至行空板，行空板作为上位机，执行监听siot，语音转图像，onnx后端推理，发送执行命令等功能，结合传统物联网教学设计，形成一个完整的物联网语音读取，传输，识别和反馈的设计流程。</p>
+<figure class="align-default">
+<img alt="../../_images/实物图.jpg" src="../../_images/实物图.jpg" />
+</figure>
+</section>
+<section id="id3">
+<h2>三、背景知识<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<p><strong>音频信号：</strong>声音以音频信号的形式表示，音频信号具有频率、带宽、分贝等参数，音频信号一般可表示为振幅和时间的函数。这些声音有多种格式，因此计算机可以对其进行读取和分析。例如：mp3
+格式、WMA (Windows Media Audio) 格式、wav (Waveform Audio File) 格式。</p>
+<p><strong>时频谱图：</strong>时频谱图是一种用于分析信号在时间和频率上的变化的工具。它将信号在时间和频率上的特征展示在一个二维图上，可以帮助我们更好地理解信号的性质。时频谱图的横坐标是时间，纵坐标是频率，坐标点值为语音数据能量。由于是采用二维平面表达三维信息，所以能量值的大小是通过颜色来表示的，颜色深，表示该点的语音能量越强。语音的时域分析和频域分析是语音分析的两种重要方法，但是都存在着局限性。时域分析对语音信号的频率特性没有直观的了解，频域特性中又没有语音信号随时间的变化关系。而语谱图综合了时域和频域的优点，明显地显示出了语音频谱随时间的变化情况、语谱图的横轴为时间，纵轴为频率，任意给定频率成分在给定时刻的强弱用颜色深浅来表示。颜色深的，频谱值大，颜色浅的，频谱值小。语谱图上不同的黑白程度形成不同的纹路，称之为声纹，不同讲话者的声纹是不一样的，可用作声纹识别。</p>
+<p><strong>SIoT实现报文分片传输：</strong>SIoT分片传输报文是其提出的一种通信方案，旨在解决物联网设备通信中数据量过大、丢包率高等问题。在物联网中，设备之间需要进行数据传输，但是由于物联网设备的局限性，比如内存和带宽等方面的限制，导致数据传输时可能会遇到很多问题。比如，数据量太大可能无法一次性传输完毕，而且网络不稳定，有可能导致数据包丢失或损坏。为了解决这些问题，用SIOT实现了分片传输报文的概念，将一个数据包分成多个较小的数据块进行传输，同时利用校验和和序列号等机制保证数据的完整性和正确性，以提高数据传输的可靠性。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">binascii</span>
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">audio_bytes</span><span class="p">),</span> <span class="n">step_size</span><span class="p">):</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">binascii</span><span class="o">.</span><span class="n">b2a_base64</span><span class="p">(</span><span class="n">audio_bytes</span><span class="p">[</span><span class="n">index</span><span class="p">:</span><span class="nb">min</span><span class="p">(</span><span class="n">index</span><span class="o">+</span><span class="n">step_size</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">audio_bytes</span><span class="p">))])</span>
+    <span class="n">siot</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">IOT_pubTopic</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>其中，<strong>import binascii</strong>
+是Python内置模块之一，提供了二进制数据和ASCII字符串之间转换的函数。在上述代码中，它被用于将音频字节码转换为base64编码的ASCII字符串。这段代码的作用是将大型的音频文件分成若干个较小的块，每个块大小为
+<strong>step_size</strong>，然后通过<strong>SIOT</strong>协议发布到指定的主题
+<strong>IOT_pubTopic</strong>。在每次循环迭代时，使用 <strong>binascii.b2a_base64()</strong>
+函数将当前块转换为base64编码的ASCII字符串，并将其发布到指定主题。其中，
+<strong>min(index+step_size,len(audio_bytes))</strong> 用于确保最后一个块小于等于
+<strong>step_size</strong> 大小，以避免在分块时发生错误。</p>
+<p><strong>录制音频：</strong>使用掌控板中内置的<strong>audio</strong>模块进行音频的录制，其中
+<strong>duration</strong> 为想要录制的时间长度，一般设为1-2秒。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">audio</span><span class="o">.</span><span class="n">recorder_init</span><span class="p">(</span><span class="n">i2c</span><span class="p">)</span>
+<span class="n">audio</span><span class="o">.</span><span class="n">record</span><span class="p">(</span><span class="n">audio_file</span><span class="p">,</span> <span class="n">duration</span><span class="p">)</span>
+<span class="n">audio</span><span class="o">.</span><span class="n">recorder_deinit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>其中，<strong>audio.recorder_init(i2c)</strong>会初始化音频传感器并进行必要的设置。参数i2c指定了使用的
+I2C
+总线。该函数必须在使用录音功能之前调用一次，通常只需要调用一次。<strong>audio.record(audio_file,
+duration)</strong>用于开始录音，并将录制的音频写入到指定的文件中（例如wav格式的文件）。参数audio_file指定了输出的音频文件路径和名称，参数duration指定了录制音频的时长，单位为秒。<strong>audio.recorder_deinit()</strong>则是关闭并释放音频传感器所占用的资源。通常应该在完成录音后调用该函数来释放资源，避免资源浪费和程序崩溃。</p>
+<p><strong>音频监听：</strong>掌控板需要持续发送声音数据，行空板进行实时检测，如果检测到环境中的声音高于设定的阈值，就需要开始记录音频数据并在录制结束后，将其送进行音频预处理后送入推理机进行推理。如下图所示，当音频的能量进入阈值区域内中才开始录音。</p>
+<figure class="align-default">
+<img alt="../../_images/音频阈值.jpg" src="../../_images/音频阈值.jpg" />
+</figure>
+<p><strong>批量生成时频谱图：</strong>详情见
+<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63b7c66e5e089d71e61d19a0&amp;backpath=/pjlab/projects/list#public">行空板上温州话识别</a>
+和
+<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=6379b63262c7304e16ed6d82&amp;backpath=/pjlab/projects/list#public">用卷积神经网络实现温州话语音分类</a>。</p>
+<figure class="align-default">
+<img alt="../../_images/温州话识别效果展示.png" src="../../_images/温州话识别效果展示.png" />
+</figure>
+<p>通过上述两个项目中的内置脚本，可将音频文件，批量转换为时频谱图。具体来说即是将以音频格式为结尾的文件转换为以图像格式为结尾的文件，以期可用分类模型进行推理。</p>
+<p><img alt="image" src="../../_images/音频转图片.jpg" /><strong>wav音频预处理</strong>：要想将接收到的wav文件送入ONNXRruntime推理机进行推理，还需对得到的wav音频文件进行图像预处理，具体的函数参考如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">wav2tensor</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">backbone</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    对wav音频文件进行数据预处理，返回推理机需要的数据类型</span>
+<span class="sd">    :param file_path: wav音频文件地址</span>
+<span class="sd">    :param backbone: 推理机网络模型选择</span>
+<span class="sd">    :return:推理机需要的数据类型</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">viridis_cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+    <span class="n">color_map</span> <span class="o">=</span> <span class="n">viridis_cmap</span><span class="o">.</span><span class="n">colors</span>
+    <span class="n">color_map</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">color_map</span><span class="p">)</span> <span class="o">*</span> <span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+    <span class="n">fs</span> <span class="o">=</span> <span class="mi">16000</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">fs0</span><span class="p">,</span> <span class="n">wave</span> <span class="o">=</span> <span class="n">wav</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>  <span class="c1"># 读取原始采样频率和数据</span>
+        <span class="k">if</span> <span class="n">fs0</span> <span class="o">!=</span> <span class="n">fs</span><span class="p">:</span>  <span class="c1"># 如果采样频率不是16000则重采样</span>
+            <span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">wave</span><span class="p">)</span> <span class="o">*</span> <span class="n">fs</span> <span class="o">/</span> <span class="n">fs0</span><span class="p">)</span>  <span class="c1"># 计算目标采样点数</span>
+            <span class="n">wave</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">wave</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span>  <span class="c1"># 对数据进行重采样</span>
+    <span class="n">spec</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">melspectrogram</span><span class="p">(</span><span class="n">wave</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="n">fs</span><span class="p">,</span> <span class="n">n_fft</span><span class="o">=</span><span class="mi">512</span><span class="p">)</span>
+    <span class="n">spec</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">power_to_db</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="n">ref</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">)</span>
+
+    <span class="n">spec_new</span> <span class="o">=</span> <span class="p">(((</span><span class="n">spec</span> <span class="o">+</span> <span class="mi">80</span><span class="p">)</span> <span class="o">/</span> <span class="mi">80</span><span class="p">)</span> <span class="o">*</span> <span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+    <span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">spec_new</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">rgb_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">color_map</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">spec_new</span><span class="o">.</span><span class="n">flatten</span><span class="p">()])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+    <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">rgb_matrix</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">))</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="n">ImageData</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">backbone</span><span class="o">=</span><span class="n">backbone</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dt</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>这是一个用于对音频文件进行预处理的函数。它的作用是将音频信号转换为可以被深度学习模型使用的张量类型。函数接受两个参数：file_path（音频文件路径）和
+backbone（推理机网络模型选择），并返回推理机所需的数据类型。具体步骤如下：</p>
+<ol class="arabic simple">
+<li><p>从 matplotlib 库中获取 viridis 颜色映射，并转换为 numpy 数组类型。</p></li>
+<li><p>读取音频文件，如果采样频率不是16000则进行重采样。</p></li>
+<li><p>使用 librosa
+库提取音频信号的梅尔频谱图特征，并将其转换为以分贝为单位的特征矩阵。</p></li>
+<li><p>对梅尔频谱图进行归一化处理，并将其转换为 RGB 图像。</p></li>
+<li><p>将 RGB 图像转换为 ImageData 类型，并传入 backbone
+参数，得到最终的张量数据类型。</p></li>
+</ol>
+</section>
+<section id="id4">
+<h2>四、项目实现<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
+<section id="mmedu">
+<h3>第一步：使用MMEdu进行模型训练和模型转换<a class="headerlink" href="#mmedu" title="Permalink to this headline"></a></h3>
+<p>使用平台提供的
+<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63b7c66e5e089d71e61d19a0&amp;backpath=/pjlab/projects/list#public">行空板上温州话识别</a>
+和
+<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=6379b63262c7304e16ed6d82&amp;backpath=/pjlab/projects/list#public">用卷积神经网络实现温州话语音分类</a>的项目案例，进行数据收集，模型训练和转换的步骤，得到转换好的onnx模型下载保存至本地。</p>
+</section>
+<section id="id5">
+<h3>第二步：上位机（行空板端）程序制作<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<p>在这个系统中，行空板作为服务器（也称上位机）实时监听MQTT消息，将有效的语音转为图像后进行推理，再发送识别后的结果或者相应的命令。行空板除了能执行模型推理的工作外，其优势在于内置了SIoT服务器软件。SIoT是一款使用非常方便的MQTT服务器，不用设置就能直接使用。</p>
+<p>首先连接行空板并打开jupyter进行编程：</p>
+<p>通过USB串口连接行空板后，通过浏览器访问本地地址
+10.1.2.3，进入行空板编程的界面。如有问题可自行查找行空板说明教程。</p>
+<figure class="align-default">
+<img alt="../../_images/行空板编程显示界面.jpg" src="../../_images/行空板编程显示界面.jpg" />
+</figure>
+<p>设计程序逻辑：</p>
+<p>根据项目整体设计，通过流程图描述想要在上运行的程序逻辑，以进一步的清晰自己的程序想要实现的功能。</p>
+<figure class="align-default">
+<img alt="../../_images/行空板逻辑.png" src="../../_images/行空板逻辑.png" />
+</figure>
+<p>程序实现：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#实例化GUI类</span>
+<span class="n">gui</span><span class="o">=</span><span class="n">GUI</span><span class="p">()</span>
+<span class="n">gui</span><span class="o">.</span><span class="n">draw_text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;#4169E1&quot;</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;方言识别助手&quot;</span><span class="p">)</span>
+<span class="n">gui</span><span class="o">.</span><span class="n">draw_text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;#000000&quot;</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;通信模式：SIOT&quot;</span><span class="p">)</span>
+<span class="n">gui</span><span class="o">.</span><span class="n">draw_text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;#000000&quot;</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;状态：&quot;</span><span class="p">)</span>
+<span class="n">info_text</span> <span class="o">=</span> <span class="n">gui</span><span class="o">.</span><span class="n">draw_text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">info_text_1</span> <span class="o">=</span> <span class="n">gui</span><span class="o">.</span><span class="n">draw_text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">140</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+<span class="c1"># ONNX模型导入</span>
+<span class="n">sess</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">InferenceSession</span><span class="p">(</span><span class="s2">&quot;mobilenetv2.onnx&quot;</span><span class="p">)</span>
+
+<span class="c1"># SIOT参数设置</span>
+<span class="n">SERVER</span> <span class="o">=</span> <span class="s2">&quot;192.168.31.29&quot;</span>
+<span class="n">CLIENT_ID</span> <span class="o">=</span> <span class="s2">&quot;XEdu&quot;</span>
+<span class="n">IOT_recTopic</span>  <span class="o">=</span> <span class="s1">&#39;ailab/sensor1&#39;</span>
+<span class="n">IOT_pubTopic</span> <span class="o">=</span> <span class="s1">&#39;ailab/sensor2&#39;</span>
+<span class="n">IOT_UserName</span> <span class="o">=</span><span class="s1">&#39;siot&#39;</span>
+<span class="n">IOT_PassWord</span> <span class="o">=</span><span class="s1">&#39;dfrobot&#39;</span>
+
+<span class="c1"># SIOT接收步长与消息内容</span>
+<span class="n">step_size</span> <span class="o">=</span> <span class="mi">4096</span>
+<span class="n">message_tol</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;&#39;</span>
+
+<span class="c1"># 音频参数</span>
+<span class="n">viridis_cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+<span class="n">color_map</span> <span class="o">=</span> <span class="n">viridis_cmap</span><span class="o">.</span><span class="n">colors</span>
+<span class="n">color_map</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">color_map</span><span class="p">)</span> <span class="o">*</span> <span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+
+<span class="n">label</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;吃饭&quot;</span><span class="p">,</span> <span class="s2">&quot;回家&quot;</span><span class="p">,</span> <span class="s2">&quot;学校&quot;</span><span class="p">,</span> <span class="s2">&quot;看电视&quot;</span><span class="p">,</span> <span class="s2">&quot;睡觉&quot;</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">wav2tensor</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
+    <span class="n">wave</span> <span class="o">=</span> <span class="n">file_name</span>
+    <span class="n">fs</span> <span class="o">=</span> <span class="mi">16000</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">wave</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span> <span class="p">:</span>
+        <span class="n">fs0</span><span class="p">,</span> <span class="n">wave</span> <span class="o">=</span> <span class="n">wav</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">wave</span><span class="p">)</span> <span class="c1"># 读取原始采样频率和数据</span>
+        <span class="k">if</span> <span class="n">fs0</span> <span class="o">!=</span> <span class="n">fs</span><span class="p">:</span>        <span class="c1">#如果采样频率不是16000则重采样</span>
+            <span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">wave</span><span class="p">)</span> <span class="o">*</span> <span class="n">fs</span><span class="o">/</span> <span class="n">fs0</span><span class="p">)</span> <span class="c1"># 计算目标采样点数</span>
+            <span class="n">wave</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">wave</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span> <span class="c1"># 对数据进行重采样</span>
+    <span class="n">spec</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">melspectrogram</span><span class="p">(</span><span class="n">wave</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="n">fs</span><span class="p">,</span> <span class="n">n_fft</span><span class="o">=</span><span class="mi">512</span><span class="p">)</span>
+    <span class="n">spec</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">power_to_db</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="n">ref</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">)</span>
+
+    <span class="n">spec_new</span> <span class="o">=</span> <span class="p">(((</span><span class="n">spec</span><span class="o">+</span><span class="mi">80</span><span class="p">)</span><span class="o">/</span><span class="mi">80</span><span class="p">)</span><span class="o">*</span><span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+    <span class="n">h</span><span class="p">,</span><span class="n">w</span> <span class="o">=</span> <span class="n">spec_new</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">rgb_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">color_map</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">spec_new</span><span class="o">.</span><span class="n">flatten</span><span class="p">()])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+    <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">rgb_matrix</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">))</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="n">ImageData</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="n">backbone</span> <span class="o">=</span> <span class="s1">&#39;MobileNet&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dt</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">onnx_infer</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
+    <span class="n">input_name</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">get_inputs</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
+    <span class="n">out_name</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">get_outputs</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
+    <span class="n">input_data</span> <span class="o">=</span> <span class="n">wav2tensor</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+    <span class="n">pred_onx</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">out_name</span><span class="p">],</span> <span class="p">{</span><span class="n">input_name</span><span class="p">:</span><span class="n">input_data</span><span class="p">})</span>
+    <span class="n">ort_output</span> <span class="o">=</span> <span class="n">pred_onx</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">ort_output</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">info_text</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;结果：&#39;</span><span class="o">+</span> <span class="n">label</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+    <span class="n">info_text_1</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">140</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;置信度：&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">ort_output</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">idx</span><span class="p">],</span> <span class="mi">2</span><span class="p">)))</span>
+    <span class="n">str_pub</span> <span class="o">=</span> <span class="s1">&#39;结果：&#39;</span><span class="o">+</span> <span class="n">label</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; 置信度：&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">ort_output</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">idx</span><span class="p">],</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">str_pub</span><span class="p">)</span>
+    <span class="n">siot</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">IOT_pubTopic</span><span class="p">,</span> <span class="n">str_pub</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">file_save</span><span class="p">(</span><span class="n">message_tol</span><span class="p">):</span>
+    <span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;output.wav&quot;</span>
+    <span class="n">sample_width</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># 2字节的采样宽度</span>
+    <span class="n">sample_rate</span> <span class="o">=</span> <span class="mi">8000</span>  <span class="c1"># 采样率为44100Hz</span>
+    <span class="n">channels</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># 双声道</span>
+    <span class="k">with</span> <span class="n">wave</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">wav_file</span><span class="p">:</span>
+        <span class="n">wav_file</span><span class="o">.</span><span class="n">setnchannels</span><span class="p">(</span><span class="n">channels</span><span class="p">)</span>
+        <span class="n">wav_file</span><span class="o">.</span><span class="n">setsampwidth</span><span class="p">(</span><span class="n">sample_width</span><span class="p">)</span>
+        <span class="n">wav_file</span><span class="o">.</span><span class="n">setframerate</span><span class="p">(</span><span class="n">sample_rate</span><span class="p">)</span>
+        <span class="n">wav_file</span><span class="o">.</span><span class="n">writeframes</span><span class="p">(</span><span class="n">message_tol</span><span class="p">)</span>
+    <span class="n">wav_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">onnx_infer</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">EasyAIoT</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">userdata</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+    <span class="n">info_text</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;SIOT正在接收消息...&#39;</span><span class="p">)</span>
+    <span class="n">info_text_1</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">140</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="k">global</span> <span class="n">message_tol</span>
+    <span class="n">topic</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">topic</span>
+    <span class="n">payload</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+    <span class="n">receive_msg</span> <span class="o">=</span> <span class="n">binascii</span><span class="o">.</span><span class="n">a2b_base64</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">receive_msg</span><span class="p">,</span><span class="nb">bytes</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">receive_msg</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">message_tol</span> <span class="o">+=</span> <span class="n">receive_msg</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">receive_msg</span><span class="p">)</span><span class="o">!=</span> <span class="n">step_size</span><span class="p">:</span>
+            <span class="n">info_text</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;接收消息完毕，正在识别...&#39;</span><span class="p">)</span>
+            <span class="n">info_text_1</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">140</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="n">tmp_message</span> <span class="o">=</span> <span class="n">message_tol</span>
+            <span class="n">message_tol</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;&#39;</span>
+            <span class="c1"># 将接收到的结果保存至本地</span>
+            <span class="n">file_save</span><span class="p">(</span><span class="n">tmp_message</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">message_tol</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;&#39;</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">siot</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">CLIENT_ID</span><span class="p">,</span> <span class="n">SERVER</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">IOT_UserName</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">IOT_PassWord</span><span class="p">)</span>
+    <span class="n">siot</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+    <span class="n">info_text</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;SIOT已启动，等待消息接收&#39;</span><span class="p">)</span>
+    <span class="n">siot</span><span class="o">.</span><span class="n">loop</span><span class="p">()</span>
+    <span class="n">siot</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="n">IOT_recTopic</span><span class="p">,</span> <span class="n">EasyAIoT</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h3>第三步：下位机（掌控板）程序制作<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<p>掌控板作为终端（也可以称为下位机），主要任务是实时检测音频，并通过MQTT协议发送至行空板，并且实时监视服务器传送的消息，根据不同的指令执行相应的工作。我们设计返回的消息是一个列表，如“[‘sms’,‘敲门’]”表示有人敲门，“[‘sms’,‘哭声’]”表示有孩子在哭。然后根据不同的消息内容执行不同的工作。</p>
+<p>首先打开mPython连接掌控板进行编程：</p>
+<p>进入掌控板，通过USB串口进行设备的连接，成功连接后，mPython的中心会出现绿色圆圈，并显示已连接。如有问题可自行查找mPython和掌控板相关说明文档。</p>
+<figure class="align-default">
+<img alt="../../_images/打开mpython.jpg" src="../../_images/打开mpython.jpg" />
+</figure>
+<p>设计程序逻辑：</p>
+<p>根据项目整体设计，通过流程图描述想要在掌控板上运行的程序逻辑，以进一步的清晰自己的程序想要实现的功能。</p>
+<figure class="align-default">
+<img alt="../../_images/掌控板程序逻辑.png" src="../../_images/掌控板程序逻辑.png" />
+</figure>
+<p>下面编写代码，将程序逻辑中描述的内容通过代码编程的形式实现出来。</p>
+<p>启动并配置网络：</p>
+<p>这段代码导入network模块，进行wifi配置，目的是为了掌控板和行空板保持在同一局域网中，可以通过私网地址进行SIOT消息通信。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">network</span>
+<span class="n">my_wifi</span> <span class="o">=</span> <span class="n">wifi</span><span class="p">()</span>
+<span class="n">my_wifi</span><span class="o">.</span><span class="n">connectWiFi</span><span class="p">(</span><span class="s2">&quot;wifi名称&quot;</span><span class="p">,</span> <span class="s2">&quot;wifi密码&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>SIoT初始化：</p>
+<p>这段代码导入了一个名为“siot”的模块，该模块提供连接到物联网平台的功能。代码定义了几个变量，包括服务器的IP地址、客户端ID、发布和接收主题以及登录物联网平台的凭据。随后，创建了一个“iot”类的实例，其中传递了已定义的客户端ID和服务器IP地址，以及作为参数传递的登录凭据。调用此实例上的“connect()”方法，以建立与物联网平台的连接，然后调用“loop()”方法启动一个循环，监听来自订阅主题的传入消息。这段代码可以使用SIOT协议连接并与物联网平台通信。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">siot</span> <span class="kn">import</span> <span class="n">iot</span>
+<span class="n">SERVER</span> <span class="o">=</span> <span class="s2">&quot;192.168.31.29&quot;</span>
+<span class="n">CLIENT_ID</span> <span class="o">=</span> <span class="s2">&quot;XEdu&quot;</span>
+<span class="n">IOT_pubTopic</span>  <span class="o">=</span> <span class="s1">&#39;ailab/sensor1&#39;</span>
+<span class="n">IOT_recTopic</span>  <span class="o">=</span> <span class="s1">&#39;ailab/sensor2&#39;</span>
+<span class="n">IOT_UserName</span> <span class="o">=</span><span class="s1">&#39;siot&#39;</span>
+<span class="n">IOT_PassWord</span> <span class="o">=</span><span class="s1">&#39;dfrobot&#39;</span>
+</pre></div>
+</div>
+<p>界面UI：</p>
+<p>掌控板内置传统的OLED屏幕，可通过mPython内置的oled实例对掌控板的界面UI进行绘制，绘制的理念是简单化，传递程序流运行的整个流程，部分代码如下所示：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">DispChar</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="s1">&#39;语音识别：SIOT模式&#39;</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">DispChar</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="s1">&#39;按下 A键 开始监听音频&#39;</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>oled.fill(0)：将屏幕背景填充为黑色，数字0代表黑色。</p>
+<p>oled.DispChar(str(‘语音识别：SIOT模式’), 0, 0,
+1)：在坐标为(0,0)的位置上显示字符串“语音识别：SIOT模式”，数字1代表字体大小。</p>
+<p>oled.DispChar(str(‘按下 A键 开始监听音频’), 0, 16,
+1)：在坐标为(0,16)的位置上显示字符串“按下 A键
+开始监听音频”，数字1代表字体大小。</p>
+<p>oled.show()：将以上修改后的内容显示在OLED屏幕上。</p>
+<p>按键触发：</p>
+<p>掌控板内置了A和B键以供用户触发，下面给的示例主要是对Micro:bit上的A按钮进行操作的。参考代码如下所示：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">on_button_a_pressed</span><span class="p">(</span><span class="n">_</span><span class="p">):</span>
+    <span class="k">pass</span>
+<span class="n">button_a</span><span class="o">.</span><span class="n">event_pressed</span> <span class="o">=</span> <span class="n">on_button_a_pressed</span>
+</pre></div>
+</div>
+<p>def
+on_button_a_pressed(<em>)：定义了一个名为on_button_a_pressed的函数，当A按钮被按下时会执行其中的代码。这个函数接收一个参数”</em>“，但实际上并没有用到这个参数，所以在函数体内部使用了关键词”pass”表示什么也不做（因为这段代码只是个示例~）。</p>
+<p>button_a.event_pressed =
+on_button_a_pressed：将on_button_a_pressed函数赋值给button_a的event_pressed属性，意味着当A按钮被按下时会触发该属性中存储的函数（即on_button_a_pressed函数）。</p>
+</section>
+<section id="id7">
+<h3>效果演示<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<figure class="align-default">
+<img alt="../../_images/掌控板siot.gif" src="../../_images/掌控板siot.gif" />
+</figure>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="p1-smartspeaker.html" class="btn btn-neutral float-left" title="项目：让行空板变身为智能音箱" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="p3-dianlufuhaoshibiexiaozhushou.html" class="btn btn-neutral float-right" title="项目：电路符号识别小助手" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2023 OpenXLabEdu.All Rights Reserved.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

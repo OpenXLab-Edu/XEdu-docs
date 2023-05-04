@@ -134,79 +134,9 @@
 </section>
 <section id="id4">
 <h3>3. 可视化调用限制<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 11%" />
-<col style="width: 18%" />
-<col style="width: 8%" />
-<col style="width: 22%" />
-<col style="width: 41%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>可视化名称</strong></p></th>
-<th class="head"><p><strong>BaseML模块</strong></p></th>
-<th class="head"><p><strong>算法名</strong></p></th>
-<th class="head"><p><strong>特征个数限制</strong></p></th>
-<th class="head"><p><strong>备注</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>模型可视化</p></td>
-<td><p>Classification</p></td>
-<td><p>KNN</p></td>
-<td><p>≥2</p></td>
-<td><p>特征数量多于2维，默认取前2维可视化；类别数量多于5类，默认取前5类绘制</p></td>
-</tr>
-<tr class="row-odd"><td><p>SVM</p></td>
-<td><p>=2</p></td>
-<td><p>无</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>Regression</p></td>
-<td><p>LinearRegression</p></td>
-<td><p>=1</p></td>
-<td><p>无</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>Cluster</p></td>
-<td><p>Kmeans</p></td>
-<td><p>≥2</p></td>
-<td><p>特征数量多于2维，默认取前2维可视化；</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>DimentionReduction</p></td>
-<td><p>PCA</p></td>
-<td><p>无</p></td>
-<td><p>仅能降维到2维或3维</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>评价指标可视化</p></td>
-<td><p>Classification</p></td>
-<td><p>所有算法均可用</p></td>
-<td><p>无</p></td>
-<td><p>无</p></td>
-</tr>
-<tr class="row-even"><td><p>Regression</p></td>
-<td><p>除’Polynomial’外所有算法均可用</p></td>
-<td><p>无</p></td>
-<td><p>无</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>Cluster</p></td>
-<td><p>仅Kmeans可用</p></td>
-<td><p>无</p></td>
-<td><p>无</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>DimentionReduction</p></td>
-<td><p>所有算法均不可用</p></td>
-<td><p>无</p></td>
-<td><p>无</p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<figure class="align-default">
+<img alt="../_images/可视化调用限制.png" src="../_images/可视化调用限制.png" />
+</figure>
 </section>
 </section>
 <section id="id5">
@@ -245,9 +175,6 @@
 <span class="n">model</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
-<figure class="align-default">
-<img alt="../_images/模型可视化.png" src="../_images/模型可视化.png" />
-</figure>
 </section>
 <section id="id12">
 <span id="id13"></span><h3>5. 评价指标可视化<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h3>
@@ -255,9 +182,6 @@
 <span class="n">model</span><span class="o">.</span><span class="n">metricplot</span><span class="p">()</span>
 </pre></div>
 </div>
-<figure class="align-default">
-<img alt="../_images/评价指标可视化.png" src="../_images/评价指标可视化.png" />
-</figure>
 </section>
 </section>
 <section id="id14">

@@ -30,7 +30,7 @@ MMEdu全称为OpenMMLabEdu，是著名的计算机视觉开发工具OpenMMLab的
 
 2.神经网络开发库：BaseNN
 
-BaseNet是神经网络库，能够使用类似Keras的语法搭建神经网络模型。
+BaseNN是神经网络库，能够使用类似Keras的语法搭建神经网络模型。
 
 3.传统机器学习开发库：BaseML
 

@@ -16,7 +16,7 @@ MMEdu有多种[安装方式](https://xedu.readthedocs.io/zh/latest/mmedu/install
 
 ### 1. 在OpenInnoLab创建MMEdu项目
 
-OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台，满足青少年的AI学习和创作需求，支持在线编程。在“工具 - 在线工具- 人工智能工坊”中，可直接创建XEdu项目。OpenInnoLab平台网址：https://www.openinnolab.org.cn/（用Chorm浏览器打开效果最佳）。
+OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台，满足青少年的AI学习和创作需求，支持在线编程。在“工具 - 在线工具- 人工智能工坊”中，可直接创建XEdu项目。OpenInnoLab平台网址：https://www.openinnolab.org.cn/（用Chrome浏览器打开效果最佳）。
 
 ![image](../images/mmedu/XEdu项目创建.gif)
 
@@ -32,7 +32,7 @@ OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台�
 
 项目链接：https://www.openinnolab.org.cn/pjlab/project?id=63801c0701df4535876b6a4e&sc=635638d69ed68060c638f979#public
 
-（用Chorm浏览器打开效果最佳）
+（用Chrome浏览器打开效果最佳）
 
 ### 3. 加载数据集
 
@@ -65,7 +65,7 @@ model.save_fold = './my_model'
 model.train(epochs=10, validate=True)
 ```
 
-打开《用MMEdu实现MNIST手写体数字识别（NOTEBOOK）》项目中的"1.mnist手写体数字识别-训练.ipynb"文件跟随说明完成训练代码运行。示例代码中共6行代码，完成了导入库、实例化模型、配置基本信息（图片分类的类别数量（`model.num_classes`），模型保存的路径（`model.save_fold`）和数据集的路径（`model.load_dataset`）），开始训练模型。
+打开[《用MMEdu实现MNIST手写体数字识别（NOTEBOOK）》项目](https://www.openinnolab.org.cn/pjlab/project?id=63801c0701df4535876b6a4e&sc=635638d69ed68060c638f979#public)中的"1.mnist手写体数字识别-训练.ipynb"文件跟随说明完成训练代码运行。示例代码中共6行代码，完成了导入库、实例化模型、配置基本信息（图片分类的类别数量（`model.num_classes`），模型保存的路径（`model.save_fold`）和数据集的路径（`model.load_dataset`）），开始训练模型。
 
 ### 5. 继续训练
 
@@ -83,7 +83,7 @@ model.train(epochs=10, validate=True, checkpoint=checkpoint)
 
 **注意**：“继续训练”和“普通训练”的区别就在于`model.train()`函数中多了一个参数，即`checkpoint=checkpoint`。checkpoint的路径就来自之前训练的权重文件。
 
-推荐使用“继续训练”的方式，因为全新开始训练一个模型，一般要花较长时间。如果使用CPU训练，需要的时间就更长了。因此我们强烈建议在预训练模型的基础上继续训练。
+推荐使用“继续训练”的方式，因为全新开始训练一个模型，一般要花较长时间。如果使用CPU训练，需要的时间就更长了。因此我们强烈建议在预训练模型的基础上继续训练。可以指定网上下载的某个预训练模型。借助在大型数据集上训练的预训练模型可以根据一系列任务的历史数据来对新的任务进行训练，而无需从头开始训练。它可以将一个大型数据集中的知识和技能转移到另一个任务上，从而大大节省训练时间。 
 
 ### 6. 模型推理
 
@@ -94,21 +94,24 @@ from MMEdu import MMClassification as cls
 img = './img.png'
 model = cls(backbone='LeNet')
 checkpoint = './latest.pth'
-class_path = './classes.txt'
-result = model.inference(image=img, show=True, class_path=class_path,checkpoint = checkpoint)
+result = model.inference(image=img, show=True, checkpoint = checkpoint)
 model.print_result(result)
 ```
 
-打开《用MMEdu实现MNIST手写体数字识别（NOTEBOOK）》项目中的"2.mnist手写体数字识别-推理.ipynb"文件跟随说明完成推理代码运行。示例代码中共7行代码，完成了导入库、指定图片、实例化模型、指定模型保存的路径、开始推理、输出推理结果。根据推理结果可以完成各种其他输出。
+打开[《用MMEdu实现MNIST手写体数字识别（NOTEBOOK）》项目](https://www.openinnolab.org.cn/pjlab/project?id=63801c0701df4535876b6a4e&sc=635638d69ed68060c638f979#public)中的"2.mnist手写体数字识别-推理.ipynb"文件跟随说明完成推理代码运行。示例代码中共7行代码，完成了导入库、指定图片、实例化模型、指定模型保存的路径、开始推理、输出推理结果。根据推理结果可以完成各种其他输出。
+
+如需了解代码规则和参数信息，以及图像分类模块的更多使用说明，请看[后文](https://xedu.readthedocs.io/zh/latest/mmedu/mmclassification.html#mmclassification)。
+
+
 
 ## 下一个目标：使用MMEdu训练各种模型
 
 我们的小目标就达成了！一个手写体数字识别模型就训练好了，此时你肯定还不过瘾，还想使用MMEdu基于各种数据集来训练模型去解决各种分类问题也很方便！只需要对手写体识别训练的代码稍作改动即可。首先思考自己想要解决的分类问题，收集数据并整理好数据集，如想要解决猫狗识别问题需准备猫狗数据集。
 
-那么可以打开《用MMEdu实现MNIST手写体数字识别（NOTEBOOK）》项目中的"3.从mnist手写体数字识别到猫狗分类.ipynb"文件。而且还有更多案例可以参考，详见项目集区域，这里的AI特色工具专区展示了一些有助于深度学习和机器学习入门和进阶的案例。 当然你也可以在AI项目工坊创建自己的项目，做自己的人工智能案例。MMEdu工具有[图像分类模块](https://xedu.readthedocs.io/zh/latest/mmedu/mmclassification.html#mmclassification)、[目标检测模块](https://xedu.readthedocs.io/zh/latest/mmedu/mmdetection.html)等模块，请继续阅读文档，了解并掌握MMEdu的各个模块。
+那么可以打开[《用MMEdu实现MNIST手写体数字识别（NOTEBOOK）》项目](https://www.openinnolab.org.cn/pjlab/project?id=63801c0701df4535876b6a4e&sc=635638d69ed68060c638f979#public)中的"3.从mnist手写体数字识别到猫狗分类.ipynb"文件。而且还有更多案例可以参考，详见项目集区域，这里的AI特色工具专区展示了一些有助于深度学习和机器学习入门和进阶的案例。 当然你也可以在AI项目工坊创建自己的项目，做自己的人工智能案例。MMEdu工具有[图像分类模块](https://xedu.readthedocs.io/zh/latest/mmedu/mmclassification.html#mmclassification)、[目标检测模块](https://xedu.readthedocs.io/zh/latest/mmedu/mmdetection.html)等模块，请继续阅读文档，了解并掌握MMEdu的各个模块。
 
 ![image](../images/mmedu/XEdu项目集.png)
 
 ## MMEdu的简要总结
 
-MMEdu是针对青少年学习AI技术而设计的，其前身就是大名鼎鼎的OpenMMLab。MMEdu的语法非常简单，几句话就能完成训练和推理。如果你下载了一键安装包，还可以使用Easytrain等可视化辅助工具。有了MMEdu，你会发现AI模型训练原来这么简单。
+MMEdu是针对青少年学习AI技术而设计的，其前身就是大名鼎鼎的OpenMMLab。MMEdu的语法非常简单，几句话就能完成训练和推理。如果你下载了[XEdu一键安装包](https://xedu.readthedocs.io/zh/latest/about/installation.html#id3)，还可以使用[Easytrain等可视化辅助工具](https://xedu.readthedocs.io/zh/latest/easydl.html#easydl)。有了MMEdu，你会发现AI模型训练原来这么简单。

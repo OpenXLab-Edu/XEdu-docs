@@ -44,10 +44,10 @@ MMEdu的内置模块概述
 ================ ====== ================
 模块名称         简称   功能
 ================ ====== ================
-MMClassification MMCLS  图片分类
-MMDetection      MMDET  图片中的物体检测
-MMGeneration     MMGEN  GAN，风格化
-MMPose           MMPOSE 骨架
+MMClassification MMCls  图片分类
+MMDetection      MMDet  图片中的物体检测
+MMGeneration     MMGen  GAN，风格化
+MMPose           MMPose 骨架
 MMEditing              
 MMSegmentation          像素级识别
 ================ ====== ================
@@ -70,7 +70,7 @@ MMDetection      `FastRCNN <https://xedu.readthedocs.io/zh/latest/dl_library/net
 数据集支持
 ----------
 
-MMEdu系列提供了包括分类、检测等任务的若干数据集，存储在dataset文件夹下。
+MMEdu系列提供了包括分类、检测等任务的若干数据集，存储在XEdu一键安装包中的dataset文件夹下。MMEdu支持的数据集格式如下：
 
 1）ImageNet
 ~~~~~~~~~~~
@@ -123,7 +123,7 @@ classes.txt包含数据集类别标签信息，每行包含一个类别名称，
 
 注：真实标签的值应该位于\ ``[0,类别数目-1]``\ 之间。
 
-如果您觉得整理规范格式数据集有点困难，您只需收集完图片按照类别存放，然后完成训练集（trainning_set）、验证集（val_set）和测试集（test_set）等的拆分，整理在一个大的文件夹下作为你的数据集。此时指定数据集路径后同样可以训练模型，因为XEdu拥有检查数据集的功能，如您的数据集缺失txt文件，会自动帮您生成“classes.txt”，“val.txt”等（如存在对应的数据文件夹）开始训练。这些txt文件会生成你指定的数据集路径下，即帮您补齐数据集。完整的从零开始制作一个ImageNet格式的数据集的步骤详见\ `深度学习知识库 <https://xedu.readthedocs.io/zh/latest/dl_library/dataset_introduction.html#imagenet>`__\ 。
+如果您觉得整理规范格式数据集有点困难，您只需收集完图片按照类别存放，然后完成训练集（trainning_set）、验证集（val_set）和测试集（test_set）等的拆分，整理在一个大的文件夹下作为你的数据集。此时指定数据集路径后同样可以训练模型，因为XEdu拥有检查数据集的功能，如您的数据集缺失txt文件，会自动帮您生成“classes.txt”，“val.txt”等（如存在对应的数据文件夹）开始训练。这些txt文件会生成在您指定的数据集路径下，即帮您补齐数据集。完整的从零开始制作一个ImageNet格式的数据集的步骤详见\ `深度学习知识库 <https://xedu.readthedocs.io/zh/latest/dl_library/howtomake_imagenet.html#imagenet>`__\ 。
 
 2）COCO
 ~~~~~~~
@@ -184,4 +184,89 @@ COCO数据集的标注信息存储在“annotations”文件夹中的\ ``json``\
        "supercategory": str, # 类别所属的大类，如哈巴狗和狐狸犬都属于犬科这个大类
    }]
 
-制作一个COCO格式的数据集的步骤详见\ `深度学习知识库 <https://xedu.readthedocs.io/zh/latest/dl_library/dataset_introduction.html#coco>`__\ 。
+为了验证和测试，我们建议划分训练集、验证集和测试集，需要生成验证集valid和标注文件valid.json，测试集test和标注文件test.json，json文件的基本数据结构依然是COCO格式。制作一个COCO格式的数据集的步骤详见\ `深度学习知识库 <https://xedu.readthedocs.io/zh/latest/dl_library/howtomake_coco.html#coco>`__\ 。
+
+使用示例
+--------
+
+模型推理：
+~~~~~~~~~~
+
+此处展示的是图像分类模型的模型推理的示例代码，如需了解更多模块的示例代码或想了解更多使用说明请看\ `后文 <https://xedu.readthedocs.io/zh/latest/mmedu/mmclassification.html>`__\ 。
+
+.. code:: python
+
+   from MMEdu import MMClassification as cls
+   img = './img.png'
+   model = cls(backbone='ResNet18')
+   checkpoint = './latest.pth'
+   result = model.inference(image=img, show=True, checkpoint = checkpoint)
+   model.print_result(result)
+
+从零开始训练：
+~~~~~~~~~~~~~~
+
+此处展示的是图像分类模型的从零开始训练的示例代码，如需了解更多模块的示例代码或想了解更多使用说明请看\ `后文 <https://xedu.readthedocs.io/zh/latest/mmedu/mmclassification.html>`__\ 。
+
+.. code:: python
+
+   from MMEdu import MMClassification as cls
+   model = cls(backbone='ResNet18')
+   model.num_classes = 3
+   model.load_dataset(path='./dataset')
+   model.save_fold = './my_model'
+   model.train(epochs=10,validate=True)
+
+继续训练：
+~~~~~~~~~~
+
+此处展示的是图像分类模型的继续训练的示例代码，如需了解更多模块的示例代码或想了解更多使用说明请看\ `后文 <https://xedu.readthedocs.io/zh/latest/mmedu/mmclassification.html>`__\ 。
+
+.. code:: python
+
+   from MMEdu import MMClassification as cls
+   model = cls(backbone='ResNet18')
+   model.num_classes = 3
+   model.load_dataset(path='./dataset')
+   model.save_fold = './my_model'
+   checkpoint = './latest.pth'
+   model.train(epochs=10, validate=True, checkpoint=checkpoint)
+
+更多示例：
+~~~~~~~~~~
+
+1. 查看MMEdu库所在的目录
+
+   进入Python终端，然后依次输入如下代码即可查看Python库所在的目录（site-packages）。
+
+::
+
+   import MMEdu
+   print(MMEdu.__path__)
+
+.. figure:: ../images/mmedu/pip安装指南1.png
+   :alt: image
+
+   image
+
+2. 查看权重文件信息
+
+   模型训练好后生成了日志文件和（.pth）权重文件，可以使用如下代码查看权重文件信息。
+
+   .. code:: python
+
+      pth_info(checkpoint) # 指定为pth权重文件路径
+
+3. 返回日志信息
+
+   如需返回日志信息，可在训练时使用如下代码：
+
+   ::
+
+      log = model.train(xxx)
+      print(log)
+
+   返回的是日志文件中各行信息组成的列表。
+
+4. 打开github地址（\ `GitHub -
+   OpenXLab-Edu/OpenMMLab-Edu <https://github.com/OpenXLab-Edu/OpenMMLab-Edu>`__\ ），可查看库文件原码和更多示例程序。

@@ -16,17 +16,7 @@ BaseML中提供两种可视化方法：模型可视化及评价指标可视化�
 
 ### 3. 可视化调用限制
 
-| **可视化名称**     | **BaseML模块**                 | **算法名**     | **特征个数限制**                     | **备注**                                                     |
-| ------------------ | ------------------------------ | -------------- | ------------------------------------ | ------------------------------------------------------------ |
-| 模型可视化         | Classification                 | KNN            | ≥2                                   | 特征数量多于2维，默认取前2维可视化；类别数量多于5类，默认取前5类绘制 |
-| SVM                | =2                             | 无             |                                      |                                                              |
-| Regression         | LinearRegression               | =1             | 无                                   |                                                              |
-| Cluster            | Kmeans                         | ≥2             | 特征数量多于2维，默认取前2维可视化； |                                                              |
-| DimentionReduction | PCA                            | 无             | 仅能降维到2维或3维                   |                                                              |
-| 评价指标可视化     | Classification                 | 所有算法均可用 | 无                                   | 无                                                           |
-| Regression         | 除'Polynomial'外所有算法均可用 | 无             | 无                                   |                                                              |
-| Cluster            | 仅Kmeans可用                   | 无             | 无                                   |                                                              |
-| DimentionReduction | 所有算法均不可用               | 无             | 无                                   |                                                              |
+![image](../images/baseml/可视化调用限制.png)
 
 ## 快速体验训练过程可视化全流程！
 
@@ -65,16 +55,12 @@ model.train()
 model.plot()
 ```
 
-![image](../images/baseml/模型可视化.png)
-
 ### 5. 评价指标可视化
 
 ```Python
 # 评价指标可视化
 model.metricplot()
 ```
-
-![image](../images/baseml/评价指标可视化.png)
 
 ## 快速体验推理过程可视化！
 

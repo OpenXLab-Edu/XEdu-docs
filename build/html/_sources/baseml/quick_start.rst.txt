@@ -103,7 +103,7 @@ OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台�
 
 AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pjlab/ai/projects
 
-（用Chorm浏览器打开效果最佳）
+（用Chorme浏览器打开效果最佳）
 
 附录
 ----
@@ -115,7 +115,7 @@ AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pj
 
 数据集来源：上海科教版《人工智能初步》人教地图56-58页。
 
-项目地址：https://www.openinnolab.org.cn/pjlab/project?id=638028c0777c254264da4dd7&sc=62f34141bf4f550f3e926e0e#public
+项目地址：https://www.openinnolab.org.cn/pjlab/project?id=64140719ba932064ea956a3e&sc=635638d69ed68060c638f979#public
 
 项目核心功能和实现效果展示：
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -123,9 +123,7 @@ AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pj
 借助\ `决策树 <https://xedu.readthedocs.io/zh/latest/baseml/introduction.html#id5>`__\ 算法完成道路智能决策，可通过学习和实验了解决策树的工作原理，掌握决策树分类任务编程的流程。
 
 .. figure:: https://www.openinnolab.org.cn/webdav/635638d69ed68060c638f979/638028c0777c254264da4dd7/current/assets/%E5%88%A9%E7%94%A8%E5%8E%86%E5%8F%B2%E6%95%B0%E6%8D%AE%E7%94%9F%E6%88%90%E5%86%B3%E7%AD%96%E6%A0%91.png
-   :alt: 利用历史数据生成决策树.png
 
-   利用历史数据生成决策树.png
 
 数据说明：
 ^^^^^^^^^^
@@ -139,9 +137,7 @@ AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pj
 第3列：分类结果（道路能否通行）-(1) 不可通行, (2)可通行。
 
 .. figure:: https://www.openinnolab.org.cn/webdav/635638d69ed68060c638f979/638028c0777c254264da4dd7/current/assets/screenshot-20221205-111611.png
-   :alt: screenshot-20221205-111611.png
 
-   screenshot-20221205-111611.png
 
 实现步骤：
 ^^^^^^^^^^
@@ -250,7 +246,7 @@ Set）。项目核心功能是使用BaseML库搭建\ `多层感知机 <https://x
 
 本案例来源于华师大出版社《人工智能初步》56-57页。
 
-项目地址：https://www.openinnolab.org.cn/pjlab/project?id=638da9a6be5e9c6ce28aebef&sc=62f34141bf4f550f3e926e0e#public
+项目地址：https://www.openinnolab.org.cn/pjlab/project?id=6417d0477c99492cf1aa8ba6&sc=635638d69ed68060c638f979#public
 
 .. _项目核心功能-1:
 
@@ -302,6 +298,18 @@ Set）。项目核心功能是使用BaseML库搭建\ `多层感知机 <https://x
    # 保存模型
    model.save('mymodel.pkl')
 
+使用BaseML特色功能进行评价指标可视化：
+
+::
+
+   # 评价指标可视化
+   model.metricplot()
+
+.. figure:: ../images/baseml/knn可视化.png
+
+
+根据可视化生成的图例可以清晰呈现哪些类别预测错误以及预测的结果。如上图，正确答案是类别0，全部预测正确，而正确答案是类别1时有一半预测错了预测为2，正确答案是类别2的全部预测错误。
+
 .. _模型推理-2:
 
 2）模型推理
@@ -331,7 +339,7 @@ Set）。项目核心功能是使用BaseML库搭建\ `多层感知机 <https://x
 
 本案例来源于人教地图版《人工智能初步》39-41页。
 
-项目地址：https://www.openinnolab.org.cn/pjlab/project?id=638daaaaaf104f69456a2eb2&sc=62f34141bf4f550f3e926e0e#public
+项目地址：https://www.openinnolab.org.cn/pjlab/project?id=64141e08cb63f030543bffff&sc=635638d69ed68060c638f979#public
 
 项目地址2（增加可视化版本）：https://www.openinnolab.org.cn/pjlab/project?id=6368a382bbcccd583a837a0e&sc=62f34141bf4f550f3e926e0e#public
 

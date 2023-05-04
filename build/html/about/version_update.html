@@ -46,7 +46,7 @@
 <li class="toctree-l2"><a class="reference internal" href="team.html">了解开发和维护团队</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">版本更新记录</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id2">1. 正式版</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id3">开发计划：</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">开发计划</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id4">正式版更新记录</a></li>
 </ul>
 </li>
@@ -105,7 +105,7 @@
 <h2>1. 正式版<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <p>发布时间：2022年9月发布</p>
 <section id="id3">
-<h3>开发计划：<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<h3>开发计划<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
 <p>1.实现以pip方式安装。</p>
 <p>2.分MMEdu、BaseML、BaseNN三个功能模块。</p>
 <p>3.工具持续迭代。</p>
@@ -114,6 +114,30 @@
 <h3>正式版更新记录<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
 <section id="mmedu">
 <h4>1）MMEdu<a class="headerlink" href="#mmedu" title="Permalink to this headline"></a></h4>
+<section id="v0-1-920230423">
+<h5>V0.1.920230423<a class="headerlink" href="#v0-1-920230423" title="Permalink to this headline"></a></h5>
+<ol class="simple">
+<li><p>合并git与飞书中的最新版本。</p></li>
+<li><p>更新cls和det转换生成内容以适配最新XEdu库。</p></li>
+<li><p>消除生成onnx权重大段warning。</p></li>
+<li><p>类别压入生成的权重。</p></li>
+<li><p>train()函数返回log。</p></li>
+<li><p>权重文件中保存版本号。</p></li>
+</ol>
+</section>
+<section id="v0-1-8-20230316">
+<h5>V0.1.8 20230316<a class="headerlink" href="#v0-1-8-20230316" title="Permalink to this headline"></a></h5>
+<ol class="simple">
+<li><p>pth存储信息完善。</p></li>
+<li><p>pth_info函数展示权重文件相关信息。</p></li>
+</ol>
+</section>
+<section id="v0-1-7-20230313">
+<h5>V0.1.7 20230313<a class="headerlink" href="#v0-1-7-20230313" title="Permalink to this headline"></a></h5>
+<ol class="simple">
+<li><p>更新cls和det模型转换后生成的py文件内容。</p></li>
+</ol>
+</section>
 <section id="v0-1-6-20230302">
 <h5>V0.1.6 20230302<a class="headerlink" href="#v0-1-6-20230302" title="Permalink to this headline"></a></h5>
 <ol class="simple">
@@ -262,6 +286,19 @@
 </section>
 <section id="basenn">
 <h4>3）BaseNN<a class="headerlink" href="#basenn" title="Permalink to this headline"></a></h4>
+<section id="v0-0-7-20230322">
+<h5>V0.0.7 20230322<a class="headerlink" href="#v0-0-7-20230322" title="Permalink to this headline"></a></h5>
+<ol class="simple">
+<li><p>继续训练，特征可视化适配新的pth文件格式。</p></li>
+</ol>
+</section>
+<section id="v0-0-6-20230317">
+<h5>V0.0.6 20230317<a class="headerlink" href="#v0-0-6-20230317" title="Permalink to this headline"></a></h5>
+<ol class="simple">
+<li><p>保存模型文件由pkl统一为pth，加入pth_info()。</p></li>
+<li><p>加入RNN部分。</p></li>
+</ol>
+</section>
 <section id="v0-0-5-20221215">
 <h5>V0.0.5 20221215<a class="headerlink" href="#v0-0-5-20221215" title="Permalink to this headline"></a></h5>
 <ol class="simple">
