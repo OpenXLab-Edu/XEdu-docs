@@ -1,5 +1,5 @@
-“最后一公里”—XEdu助力AI模型部署
-===============================
+最后一步：AI模型转换与部署
+==========================
 
 得益与\ ``OpenMMLab``\ 系列工具的不断进步与发展。MMEdu通过集成OpenMMLab开源的\ ``模型部署工具箱MMDeploy``\ 和\ ``模型压缩工具包MMRazor``\ ，打通了从算法模型到应用程序这
 “最后一公里”！
@@ -7,12 +7,12 @@
 ``XEdu`` 的辅助下，介绍以下内容：
 
 -  模型转换
--  模型量化
+-  模型量化（MMEdu暂未合并该功能）
 -  多模态交互
 
-.. Note::
+..
 
-   *MMEdu已经可以帮助我diy自己的AI模型了，为什么要多此一举、徒增难度，来学习需要更多编程知识的模型部署模块？*
+   MMEdu已经可以帮助我diy自己的AI模型了，为什么要多此一举、徒增难度，来学习需要更多编程知识的模型部署模块？
 
 初学新知识，我们总会有困惑与畏难，好奇这项技术能否为我所用、产生效益，担心过程是否困难，付出与收获不成正比。没有关系！请让自己的思考凝聚成三个层面，即\ ``黄金圈法则：Why、How、What``\ ，来从如下的行文中去寻找答案。
 
@@ -30,40 +30,38 @@ Why：为什么
 为什么要进行模型转换
 ~~~~~~~~~~~~~~~~~~~~
 
+用MMEdu训练的模型，只能运行在安装了MMEdu环境的电脑吗？不，借助模型转换，MMEdu（包括BaseNN）训练的模型都可以转换为ONNX模型，然后部署在很多常见的电脑（开源硬件）上。
+
 模型转换是为了模型能在不同框架间流转。在实际应用时，模型转换几乎都用于工业部署，负责模型从训练框架到部署侧推理框架的连接。
 这是因为随着深度学习应用和技术的演进，训练框架和推理框架的职能已经逐渐分化。
 分布式、自动求导、混合精度……训练框架往往围绕着易用性，面向设计算法的研究员，以研究员能更快地生产高性能模型为目标。
 硬件指令集、预编译优化、量化算法……推理框架往往围绕着硬件平台的极致优化加速，面向工业落地，以模型能更快执行为目标。由于职能和侧重点不同，没有一个深度学习框架能面面俱到，完全一统训练侧和推理侧，而模型在各个框架内部的表示方式又千差万别，所以模型转换就被广泛需要了。
 
-.. Note::
-   *概括：训练框架大，塞不进两三百块钱买的硬件设备中，推理框架小，能在硬件设备上安装。要把训练出的模型翻译成推理框架能读懂的语言，才能在硬件设备上运行。*
+   概括：训练框架大，塞不进两三百块钱买的硬件设备中，推理框架小，能在硬件设备上安装。要把训练出的模型翻译成推理框架能读懂的语言，才能在硬件设备上运行
 
 为什么要进行模型量化
 ~~~~~~~~~~~~~~~~~~~~
 
 模型量化是指将深度学习模型中的参数、激活值等数据转化为更小的数据类型（通常是8位整数或者浮点数），以达到模型大小减小、计算速度加快、内存占用减小等优化目的的技术手段。模型量化有以下几个优点：减小模型大小、加速模型推理、减少内存占用等。因此，模型量化可以帮助提高深度学习模型的效率和性能，在实际应用中具有重要的价值和意义。
 
-.. Note::
-   *概括：对模型采用合适的量化，能在对准确率忽略不计的情况下，让模型更小、更快、更轻量。比如原先168
-   MB的模型量化后大小变为了42.6 MB，推理速度提高了两倍。*
+   概括：对模型采用合适的量化，能在对准确率忽略不计的情况下，让模型更小、更快、更轻量。比如原先168
+   MB的模型量化后大小变为了42.6 MB，推理速度提高了两倍。
 
 为什么要进行多模态交互
 ~~~~~~~~~~~~~~~~~~~~~~
 
 多模态交互是指利用多个感知通道（例如语音、图像、触觉、姿态等）进行交互的技术。多模态交互在人机交互、智能交通、健康医疗、教育培训等领域都有广泛的应用、在提高交互效率、用户体验、解决单模态限制和实现智能化交互等方面具有重要的作用和价值。
 
-.. Note::
-   *概括：给你的AI作品加点创客料。*
+   概括：给你的AI作品加点创客料
 
 什么是推理框架
 ~~~~~~~~~~~~~~
 
 深度学习推理框架是一种让深度学习算法在实时处理环境中提高性能的框架。常见的有\ `ONNXRuntime <https://github.com/microsoft/onnxruntime>`__\ 、\ `NCNN <https://github.com/Tencent/ncnn>`__\ 、\ `TensorRT <https://github.com/NVIDIA/TensorRT>`__\ 、\ `OpenVINO <https://github.com/openvinotoolkit/openvino>`__\ 等。
 
-.. Note::
-   *ONNXRuntime是微软推出的一款推理框架，支持多种运行后端包括CPU，GPU，TensorRT，DML等，是对ONNX模型最原生的支持。*
+   ONNXRuntime是微软推出的一款推理框架，支持多种运行后端包括CPU，GPU，TensorRT，DML等，是对ONNX模型最原生的支持。
 
-   *NCNN是腾讯公司开发的移动端平台部署工具，一个为手机端极致优化的高性能神经网络前向计算框架。NCNN仅用于推理，不支持学习。*
+   NCNN是腾讯公司开发的移动端平台部署工具，一个为手机端极致优化的高性能神经网络前向计算框架。NCNN仅用于推理，不支持学习。
 
 **值得注意的是，包括Pytorch、Tensorflow，以及国内的百度PaddlePaddle、华为的MindSpore等主流的深度学习框架都开发了工具链来回应这个Why。我们采用业界主流的方法，以更高代码封装度的形式来解决这一问题。接下来，且听我们对利用\ ``XEdu``\ 进行\ ``How怎么做``\ 的流程娓娓道来。**
 
@@ -72,11 +70,10 @@ How：怎么做
 
 总结一下Why中的回应，在软件工程中，部署指把开发完毕的软件投入使用的过程，包括环境配置、软件安装等步骤。类似地，对于深度学习模型来说，模型部署指让训练好的模型在特定环境中运行的过程。相比于软件部署，模型部署会面临更多的难题：
 
-.. Note::
-   1. *运行模型所需的环境难以配置。深度学习模型通常是由一些框架编写，比如
-      PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架不适合在手机、开发板等生产环境中安装。*
-   2. *深度学习模型的结构通常比较庞大，需要大量的算力才能满足实时运行的需求。模型的运行效率需要优化。
-      因为这些难题的存在，模型部署不能靠简单的环境配置与安装完成。*
+   1. 运行模型所需的环境难以配置。深度学习模型通常是由一些框架编写，比如
+      PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架不适合在手机、开发板等生产环境中安装。
+   2. 深度学习模型的结构通常比较庞大，需要大量的算力才能满足实时运行的需求。模型的运行效率需要优化。
+      因为这些难题的存在，模型部署不能靠简单的环境配置与安装完成。
 
 经过工业界和学术界数年的探索，结合\ ``XEdu``\ 的工具，展示模型部署一条流行的流水线：
 
@@ -96,7 +93,7 @@ MMEdu内置了一个\ ``convert``\ 函数实现了一键式模型转换，转换
 
 -  需要配置三个信息：
 
-   待转换的模型权重文件（\ ``checkpoint``\ ），图片分类的类别数量（\ ``model.num_classes``\ ）和输出的文件（\ ``out_file``\ ）。
+   待转换的模型权重文件（\ ``checkpoint``\ ）和输出的文件（\ ``out_file``\ ）。
 
 -  模型转换的典型代码：
 
@@ -107,13 +104,11 @@ MMEdu内置了一个\ ``convert``\ 函数实现了一键式模型转换，转换
    model.num_classes = 2
    checkpoint = 'checkpoints/cls_model/CatsDog/best_accuracy_top-1_epoch_2.pth'
    out_file="out_file/catdog.onnx"
-   model.convert(checkpoint=checkpoint, backend="ONNX", out_file=out_file)
+   model.convert(checkpoint=checkpoint, out_file=out_file)
 
 这段代码是完成分类模型的转换，接下来对为您\ ``model.convert``\ 函数的各个参数：
 
 ``checkpoint``\ ：选择想要进行模型转换的权重文件，以.pth为后缀。
-
-``backend``\ ：模型转换的后端推理框架，目前支持ONNX，后续将陆续支持NCNN、TensorRT、OpenVINO等。
 
 ``out_file``\ ：模型转换后的输出文件路径。
 
@@ -126,7 +121,7 @@ MMEdu内置了一个\ ``convert``\ 函数实现了一键式模型转换，转换
    model.num_classes = 80
    checkpoint = 'checkpoints/COCO-80/ssdlite.pth'
    out_file="out_file/COCO-80.onnx"
-   model.convert(checkpoint=checkpoint, backend="ONNX", out_file=out_file)
+   model.convert(checkpoint=checkpoint, out_file=out_file)
 
 现在，让我们从“\ `从零开始训练猫狗识别模型并完成模型转换 <https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&sc=635638d69ed68060c638f979#public>`__\ ”项目入手，见识一下使用MMEdu工具完成从模型训练到模型部署的基本流程吧！
 
@@ -174,7 +169,7 @@ MMEdu内置了一个\ ``convert``\ 函数实现了一键式模型转换，转换
    checkpoint = 'checkpoints/cls_model/CatsDog1/best_accuracy_top-1_epoch_1.pth'
    model.num_classes = 2
    out_file='out_file/cats_dogs.onnx'
-   model.convert(checkpoint=checkpoint, backend="ONNX", out_file=out_file)
+   model.convert(checkpoint=checkpoint, out_file=out_file)
 
 此时项目文件中的out_file文件夹下便生成了模型转换后生成的两个文件，可打开查看。一个是ONNX模型权重，一个是示例代码，示例代码稍作改动即可运行（需配合BaseData.py的BaseDT库）。
 
@@ -370,61 +365,45 @@ MMEdu内置了一个\ ``convert``\ 函数实现了一键式模型转换，转换
 
 ::
 
-   import onnxruntime as rt
-   from BaseDT.data_image import ImageData
-   import numpy as np
    import cv2
-
-   class_names = []
-   def infer(img, pth, backbone):
-       sess = rt.InferenceSession(pth, None)
-       input_name = sess.get_inputs()[0].name
-       out_name = sess.get_outputs()[0].name
-       dt = ImageData(img, backbone=backbone)
-       input_data = dt.to_tensor()
-       pred_onx = sess.run([out_name], {input_name: input_data})
-       ort_output = pred_onx[0]
-       idx = np.argmax(ort_output, axis=1)[0]
-       return [idx,ort_output[0][idx]]
-
-
+   import numpy as np
+   import onnxruntime as rt
+   from BaseDT.data import ImageData, ModelData
+   model_path = 'cls.onnx'
    cap = cv2.VideoCapture(0)
-   ret, img = cap.read()
-   backbone = 'MobileNet' #推理模型
-   pth = 'cls/checkpoints/mobilenetv2.onnx' #权重文件
-   res = infer(img, pth, backbone)
-   print('result:' + class_names[res[0]] + ' , and acc:' + str(res[1]))
+   sess = rt.InferenceSession(model_path, None)
+   input_name = sess.get_inputs()[0].name
+   output_name = sess.get_outputs()[0].name
+   ret,img = cap.read()
    cap.release()
+   dt = ImageData(img, backbone='MobileNet')
+   pred_onx = sess.run([output_name], {input_name: dt.to_tensor()})
+   class_names = ModelData(model_path).get_labels()
+   ort_output = pred_onx[0]
+   idx = np.argmax(ort_output, axis=1)[0]
+   print('label:{}, acc:{}'.format(class_names[idx], ort_output[0][idx]))
 
 -  目标检测
 
 ::
 
-   import onnxruntime as rt
    import cv2
-   from BaseDT.data_image import ImageData
+   import onnxruntime as rt
+   from BaseDT.data import ImageData, ModelData
    from BaseDT.plot import imshow_det_bboxes
-
-   class_names = []
-
-   def infer(img, pth, backbone):
-       sess = rt.InferenceSession(pth, None)
-       input_name = sess.get_inputs()[0].name
-       output_names = [o.name for o in sess.get_outputs()]
-       dt = ImageData(img, backbone=backbone)
-       input_data = dt.to_tensor()
-       pred_onx = sess.run(output_names, {input_name: input_data})
-       boxes = pred_onx[0][0]
-       labels = pred_onx[1][0]
-       return [boxes,labels]
-
+   model_path = 'det.onnx'
    cap = cv2.VideoCapture(0)
-   ret, img = cap.read()
-   backbone = 'SSD_Lite' #推理模型
-   pth = 'det/checkpoints/coco.onnx' #权重文件
-   res = infer(img, pth, backbone)
-   imshow_det_bboxes(img, bboxes = res[0],labels = res[1], class_names = class_names, score_thr = 0.8) #根据需求修改阈值score_thr
+   sess = rt.InferenceSession(model_path, None)
+   input_name = sess.get_inputs()[0].name
+   output_names = [o.name for o in sess.get_outputs()]
+   ret,img = cap.read()
    cap.release()
+   dt = ImageData(img, backbone='SSD_Lite')
+   pred_onx = sess.run(output_names, {input_name: dt.to_tensor()})
+   class_names = ModelData(model_path).get_labels()
+   boxes = dt.map_orig_coords(pred_onx[0][0])
+   labels = pred_onx[1][0]
+   img = imshow_det_bboxes(img, bboxes=boxes, labels=labels, class_names=class_names, score_thr=0.8)
 
 What：什么现象与成果
 --------------------
@@ -536,15 +515,15 @@ What：什么现象与成果
    </tbody>
    </table>
 
-.. Note::
+..
 
-   *ImageNet
+   ImageNet
    数据集：ImageNet项目是一个用于视觉对象识别软件研究的大型可视化数据库。ImageNet项目每年举办一次软件比赛，即\ ``ImageNet大规模视觉识别挑战赛``\ （ILSVRC），软件程序竞相正确分类检测物体和场景。
-   ImageNet挑战使用了一个“修剪”的1000个非重叠类的列表。2012年在解决ImageNet挑战方面取得了巨大的突破。*
+   ImageNet挑战使用了一个“修剪”的1000个非重叠类的列表。2012年在解决ImageNet挑战方面取得了巨大的突破
 
-   *准确度（Top-1）：排名第一的类别与实际结果相符的准确率。*
+   准确度（Top-1）：排名第一的类别与实际结果相符的准确率
 
-   *准确度（Top-5）：排名前五的类别包含实际结果的准确率。*
+   准确度（Top-5）：排名前五的类别包含实际结果的准确率
 
 -  目标检测
 
@@ -607,20 +586,20 @@ What：什么现象与成果
    </tbody>
    </table>
 
-.. Note::
+..
 
-   *COCO 数据集: MS COCO的全称是Microsoft Common Objects in
-   Context，起源于微软于2014年出资标注的Microsoft
+   COCO 数据集: MS
+   COCO的全称是\ ``Microsoft Common Objects in Context``\ ，起源于微软于2014年出资标注的Microsoft
    COCO数据集，与ImageNet竞赛一样，被视为是计算机视觉领域最受关注和最权威的比赛之一。
    COCO数据集是一个大型的、丰富的物体检测，分割和字幕数据集。这个数据集以scene
    understanding为目标，目前为止有语义分割的最大数据集，提供的类别有80
    类，有超过33 万张图片，其中20
-   万张有标注，整个数据集中个体的数目超过150 万个。*
+   万张有标注，整个数据集中个体的数目超过150 万个。
 
-   *AP (average
-   Precision)：平均精度，在不同recall下的最高precision的均值(一般会对各类别分别计算各自的AP)。*
+   AP (average
+   Precision)：平均精度，在不同recall下的最高precision的均值(一般会对各类别分别计算各自的AP)
 
-   *mAP（mean AP）:平均精度的均值，各类别的AP的均值*\ 。
+   mAP（mean AP）:平均精度的均值，各类别的AP的均值
 
 边、端设备测试结果
 ~~~~~~~~~~~~~~~~~~
@@ -628,8 +607,7 @@ What：什么现象与成果
 PC机测试
 ^^^^^^^^
 
-.. Note::
-   *用于模型训练的机器，性能较优，常见的操作系统有Windows和Linux*
+   用于模型训练的机器，性能较优，常见的操作系统有Windows和Linux
 
 .. _软硬件环境-1:
 
@@ -726,10 +704,12 @@ PC机测试
    </tbody>
    </table>
 
-.. Note::
-   *吞吐量
-   (图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现。*
+..
 
+   吞吐量
+   (图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现
+
+   \*：不建议部署，单张图片推理的时间超过30s
 
 -  目标检测
 
@@ -802,18 +782,17 @@ PC机测试
    </tbody>
    </table>
 
-.. Note::
+..
 
-   \*：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本。
+   \*：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本
 
-   \**：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite。
+   \**：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite
 
 行空板测试
 ^^^^^^^^^^
 
-.. Note::
-   *行空板,
-   青少年Python教学用开源硬件，解决Python教学难和使用门槛高的问题，旨在推动Python教学在青少年中的普及。官网：https://www.dfrobot.com.cn/*
+   行空板,
+   青少年Python教学用开源硬件，解决Python教学难和使用门槛高的问题，旨在推动Python教学在青少年中的普及。官网：\ https://www.dfrobot.com.cn/
 
 .. _软硬件环境-2:
 
@@ -911,12 +890,12 @@ PC机测试
    </tbody>
    </table>
 
-.. Note::
+..
 
-   *吞吐量
-   (图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现*\ 。
+   吞吐量
+   (图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现
 
-   \*：不建议部署，单张图片推理的时间超过30s。
+   \*：不建议部署，单张图片推理的时间超过30s
 
 -  目标检测
 
@@ -989,18 +968,17 @@ PC机测试
    </tbody>
    </table>
 
-.. Note::
+..
 
-   \*：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本。
+   \*：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本
 
-   \**：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite。
+   \**：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite
 
 树莓派（4b）测试
 ^^^^^^^^^^^^^^^^
 
-.. Note::
-   *Raspberry
-   Pi。中文名为“树莓派”,简写为RPi，或者RasPi/RPi)是为学生计算机编程教育而设计，卡片式电脑，其系统基于Linux。*
+   Raspberry
+   Pi。中文名为“树莓派”,简写为RPi，或者RasPi/RPi)是为学生计算机编程教育而设计，卡片式电脑，其系统基于Linux。
 
 .. _软硬件环境-3:
 
@@ -1098,12 +1076,12 @@ PC机测试
    </tbody>
    </table>
 
-.. Note::
+..
 
-   *吞吐量
-   (图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现*\ 。
+   吞吐量
+   (图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现
 
-   \*：不建议部署，单张图片推理的时间超过30s。
+   \*：量化后在树莓派上推理速度变慢
 
 -  目标检测
 
@@ -1176,13 +1154,13 @@ PC机测试
    </tbody>
    </table>
 
-.. Note::
+..
 
-   \*：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本。
+   \*：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本
 
-   \**：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite。
+   \**：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite
 
-注：硬件测试模块持续更新中，如有更多硬件测试需求，请通过issue联系我们。
+**注：硬件测试模块持续更新中，如有更多硬件测试需求，请\ **\ `联系我们 <https://github.com/OpenXLab-Edu/XEdu-docs/issues>`__
 
 多模态交互
 ----------
@@ -1197,14 +1175,14 @@ PC机测试
 更多模型部署项目
 ----------------
 
-猫狗分类小助手：\ https://www.openinnolab.org.cn/pjlab/project?id=63c3f52a1dd9517dffa1f513&sc=62f34141bf4f550f3e926e0e#public
+猫狗分类小助手：\ https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&backpath=/pjedu/userprofile%3FslideKey=project#public
 
-千物识别小助手：\ https://www.openinnolab.org.cn/pjlab/project?id=63c4106c2e26ff0a30cb440f&sc=62f34141bf4f550f3e926e0e#public
+千物识别小助手：\ https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&backpath=/pjlab/projects/list#public
 
-有无人检测小助手：\ https://www.openinnolab.org.cn/pjlab/project?id=63c4b6d22e26ff0a30f26ebc&sc=62f34141bf4f550f3e926e0e#public
+有无人检测小助手：\ https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&backpath=/pjlab/projects/list#public
 
 行空板上温州话识别：\ https://www.openinnolab.org.cn/pjlab/project?id=63b7c66e5e089d71e61d19a0&sc=62f34141bf4f550f3e926e0e#public
 
 树莓派与MMEdu：\ https://www.openinnolab.org.cn/pjlab/project?id=63bb8be4c437c904d8a90350&backpath=/pjlab/projects/list%3Fbackpath=/pjlab/ai/projects#public
 
-MMEdu模型在线转换：\ https://www.openinnolab.org.cn/pjlab/project?id=63a1a47e5e089d71e6c6f068&backpath=/pjlab/projects/list%3Fbackpath=/pjlab/ai/projects#public
+MMEdu模型在线转换：\ https://www.openinnolab.org.cn/pjlab/project?id=645110943c0e930cb55e859b&backpath=/pjlab/projects/list#public
