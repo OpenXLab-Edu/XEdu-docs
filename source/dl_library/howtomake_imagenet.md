@@ -1,6 +1,6 @@
 ## 从零开始制作一个ImageNet格式数据集
 
-## ImageNet格式数据集简介
+### ImageNet格式数据集简介
 
 ImageNet不仅是一个数据集、一项比赛，也是一种典型的数据集格式。分类任务中最经典的数据集类型就是[ImageNet格式](https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#imagenet)。
 
