@@ -18,7 +18,9 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="学习支持和资源获取" href="../support_resources.html" />
+    <link rel="prev" title="Web库Flask" href="flask.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -37,14 +39,32 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">目录</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basenn.html">神经网络库BaseNN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../baseml.html">传统机器学习库BaseML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basedt.html">数据处理库BaseDT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../scitech_tools.html">相关科创工具</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../scitech_tools.html">相关科创工具</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="data_labeling.html">数据集标注工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pywebio.html">Web库PyWebIO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="siot.html">MQTT库siot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pinpong.html">开源硬件库pinpong</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flask.html">Web库Flask</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Web库FastAPI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">1. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2. 安装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">3. 代码示例</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#webapi">3.1 一个简单的WebAPI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">3.2 上传一个文件</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#fastapi">4. 借助FastAPI部署智能应用</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../support_resources.html">学习支持和资源获取</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dl_library.html">深度学习知识库</a></li>
 </ul>
@@ -63,9 +83,10 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../scitech_tools.html">相关科创工具</a> &raquo;</li>
       <li>Web库FastAPI</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/scitech_tools/fastapi.md.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/scitech_tools/fastapi.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -77,9 +98,11 @@
 <h1>Web库FastAPI<a class="headerlink" href="#webfastapi" title="Permalink to this headline"></a></h1>
 <section id="id1">
 <h2>1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
-<p>FastAPI 是一种现代、快速（高性能）的 Web 框架，用于基于标准 Python 类型提示使用 Python 3.7+ 构建 API。 EasyAPI 基于该库开发。</p>
-<p>主要特点是： 快速、运行编码快、更少的错误、直观、简单、简短、健壮、基于行业标准。</p>
-<p>文档地址：https://fastapi.tiangolo.com/</p>
+<p>FastAPI 是一种现代、快速（高性能）的 Web 框架，用于基于标准 Python
+类型提示使用 Python 3.7+ 构建 API。 EasyAPI 基于该库开发。</p>
+<p>主要特点是：
+快速、运行编码快、更少的错误、直观、简单、简短、健壮、基于行业标准。</p>
+<p>文档地址：<a class="reference external" href="https://fastapi.tiangolo.com/">https://fastapi.tiangolo.com/</a></p>
 </section>
 <section id="id2">
 <h2>2. 安装<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
@@ -106,19 +129,25 @@
 <ul class="simple">
 <li><p>首先代码从fastapi模块中导入了FastAPI类，该类允许我们创建一个FastAPI实例。</p></li>
 <li><p>接着我们创建一个该类的实例。我们将其命名为app，可以使用它来定义路由和处理程序。</p></li>
-<li><p>然后我们使用 route() 装饰器来告诉 FastAPI 这个函数处理HTTP GET请求，并且根路径（/）应该映射到此函数。因此，当用户在浏览器中输入API的根URL时，将会执行 root() 函数。</p></li>
-<li><p>函数返回一个包含“Hello World”消息的字典。FastAPI将自动将此字典转换为JSON格式并发送回客户端。</p></li>
+<li><p>然后我们使用 route() 装饰器来告诉 FastAPI 这个函数处理HTTP
+GET请求，并且根路径（/）应该映射到此函数。因此，当用户在浏览器中输入API的根URL时，将会执行
+root() 函数。</p></li>
+<li><p>函数返回一个包含“Hello
+World”消息的字典。FastAPI将自动将此字典转换为JSON格式并发送回客户端。</p></li>
 <li><p>最后，调用 uvicorn.run() 方法来启动 Web 服务器。 它需要几个参数：</p>
 <ul>
 <li><p>app：要运行的 FastAPI 应用程序实例。</p></li>
-<li><p>host：服务器将在其上侦听传入请求的主机地址。 在这里，它被设置为 0.0.0.0，这意味着它将监听所有可用的网络接口。</p></li>
+<li><p>host：服务器将在其上侦听传入请求的主机地址。 在这里，它被设置为
+0.0.0.0，这意味着它将监听所有可用的网络接口。</p></li>
 <li><p>port：服务器将侦听传入请求的端口号。 在这里，它设置为 8089。</p></li>
 <li><p>workers：用于处理传入请求的工作进程数。 在这里，它被设置为 1。</p></li>
 </ul>
 </li>
 </ul>
 <p>执行运行命令后，FastAPI启动成功图如下：</p>
-<p><img alt="avatar" src="../build/html/_images/FastAPI%E5%90%AF%E5%8A%A8%E6%88%90%E5%8A%9F%E5%9B%BE.JPG" /></p>
+<figure class="align-default">
+<img alt="../_images/FastAPI启动成功图.JPG" src="../_images/FastAPI启动成功图.JPG" />
+</figure>
 </section>
 <section id="id4">
 <h3>3.2 上传一个文件<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
@@ -137,8 +166,11 @@
 <ul class="simple">
 <li><p>首先代码从fastapi模块中导入了FastAPI类，该类允许我们创建一个FastAPI实例。</p></li>
 <li><p>接着我们创建一个该类的实例。我们将其命名为app，可以使用它来定义路由和处理程序。</p></li>
-<li><p>然后我们使用 upload_file() 装饰器来告诉 FastAPI 这个函数处理HTTP GET请求，并且根路径（/upload）应该映射到此函数。因此，当用户在浏览器中输入API的根URL时，将会执行 upload_file() 函数。</p></li>
-<li><p>函数 <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span> <span class="pre">upload_file(files:</span> <span class="pre">UploadFile</span> <span class="pre">=</span> <span class="pre">File(...))</span></code> 处理了上传文件的请求并将文件保存到磁盘上，使用与请求中指定的相同的文件名。</p></li>
+<li><p>然后我们使用 upload_file() 装饰器来告诉 FastAPI 这个函数处理HTTP
+GET请求，并且根路径（/upload）应该映射到此函数。因此，当用户在浏览器中输入API的根URL时，将会执行
+upload_file() 函数。</p></li>
+<li><p>函数 <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span> <span class="pre">upload_file(files:</span> <span class="pre">UploadFile</span> <span class="pre">=</span> <span class="pre">File(...))</span></code>
+处理了上传文件的请求并将文件保存到磁盘上，使用与请求中指定的相同的文件名。</p></li>
 </ul>
 </section>
 </section>
@@ -148,20 +180,26 @@
 <p>这种做法和很多智能终端的工作原理是一样的。如小度、天猫精灵和小爱音箱等，自己都没有处理数据的能力，都要靠网络传送数据到服务器，然后才能正确和用户交流。目前中小学的很多AI应用，都是借助百度AI开放平台的。</p>
 <p>在Python编程中，我们通常使用函数最小化原则来设计和组织代码。该原则的核心思想是将一个功能封装到一个函数中，使其具有高内聚性和低耦合性，以提高代码的可维护性、可读性和可重用性。</p>
 <p>如果要借助FastAPI部署智能应用，可以考虑将其划分为三个主要的功能模块：文件传输、预处理和推理。对于每个功能模块，我们建议创建一个单独的函数来实现它。</p>
-<ul class="simple">
-<li><p>文件传输函数：负责从外部获取输入数据并将其保存至本地。这个函数可以处理各种不同类型的数据，例如图片、音频或文本等，并确保它们被正确地格式化和解码。一旦完成，该函数将返回一个数据对象，供后续的预处理和推理函数使用。在EasyAPI的设计中，通常使用 <code class="docutils literal notranslate"><span class="pre">3.2</span> <span class="pre">上传一个文件</span></code>中介绍的函数作为文件传输函数。</p></li>
+<ul>
+<li><p>文件传输函数：负责从外部获取输入数据并将其保存至本地。这个函数可以处理各种不同类型的数据，例如图片、音频或文本等，并确保它们被正确地格式化和解码。一旦完成，该函数将返回一个数据对象，供后续的预处理和推理函数使用。在EasyAPI的设计中，通常使用
+<code class="docutils literal notranslate"><span class="pre">3.2</span> <span class="pre">上传一个文件</span></code>中介绍的函数作为文件传输函数。</p></li>
 <li><p>预处理函数：负责将文件传输函数保存的文件加载为推理函数需要的格式，通常输入格式不一致但目标格式是一致的。</p></li>
-<li><p>推理函数：负责利用已经训练好的模型对输入数据进行预测和分类，并返回相应的结果。</p></li>
+<li><p>推理函数：负责利用已经训练好的模型对输入数据进行预测和分类，并返回相应的结果。</p>
+<figure class="align-default">
+<img alt="../_images/借助FastAPI部署智能应用.png" src="../_images/借助FastAPI部署智能应用.png" />
+</figure>
+</li>
 </ul>
-<div align="center">
-  <img src="../../build/html/_images/借助FastAPI部署智能应用.png" alt="avatar">
-</div></section>
+</section>
 </section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="flask.html" class="btn btn-neutral float-left" title="Web库Flask" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../support_resources.html" class="btn btn-neutral float-right" title="学习支持和资源获取" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

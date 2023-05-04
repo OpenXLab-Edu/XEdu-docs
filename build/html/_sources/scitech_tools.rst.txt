@@ -12,3 +12,5 @@
    scitech_tools/pinpong.md
 
    scitech_tools/flask.md
+
+   scitech_tools/fastapi.md
