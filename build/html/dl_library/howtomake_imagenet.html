@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>从零开始制作一个ImageNet格式数据集 &mdash; OpenXLabEdu  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="从零开始制作一个COCO格式数据集" href="howtomake_coco.html" />
+    <link rel="prev" title="经典数据集介绍" href="dataset_introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basenn.html">神经网络库BaseNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../baseml.html">传统机器学习库BaseML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basedt.html">数据处理库BaseDT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scitech_tools.html">相关科创工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support_resources.html">学习支持和资源获取</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../dl_library.html">深度学习知识库</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="parameter_explain.html">深度学习训练参数详解</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataset_introduction.html">经典数据集介绍</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">从零开始制作一个ImageNet格式数据集</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">ImageNet格式数据集简介</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basedtmake-dataset">选择1：巧用BaseDT的make_dataset函数制作</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">第一步：整理图片</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">第二步：制作类别说明文件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">第三步：生成数据集</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">第四步：检查数据集</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">选择2：按照标准方式制作</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id7">第一步：整理图片</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">第二步：划分训练集、验证集和测试集</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">第三步：生成标签文件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">第四步：给数据集命名</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#xedu">选择3：巧用XEdu自动补齐功能快速制作</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="howtomake_coco.html">从零开始制作一个COCO格式数据集</a></li>
+<li class="toctree-l2"><a class="reference internal" href="network_introduction.html">经典网络模型介绍</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenXLabEdu</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../dl_library.html">深度学习知识库</a> &raquo;</li>
+      <li>从零开始制作一个ImageNet格式数据集</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/dl_library/howtomake_imagenet.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="imagenet">
+<h1>从零开始制作一个ImageNet格式数据集<a class="headerlink" href="#imagenet" title="Permalink to this headline"></a></h1>
+</section>
+<section id="id1">
+<h1>ImageNet格式数据集简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h1>
+<p>ImageNet不仅是一个数据集、一项比赛，也是一种典型的数据集格式。分类任务中最经典的数据集类型就是<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#imagenet">ImageNet格式</a>。</p>
+<p>XEdu中MMEdu的图像分类模块数据集类型是<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#imagenet">ImageNet</a>，包含三个文件夹和三个文本文件，文件夹内，不同类别图片按照文件夹分门别类排好，通过trainning_set、val_set、test_set区分训练集、验证集和测试集。文本文件classes.txt说明类别名称与序号的对应关系，val.txt说明验证集图片路径与类别序号的对应关系，test.txt说明测试集图片路径与类别序号的对应关系。如需训练自己创建的数据集，数据集需转换成<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#imagenet">ImageNet格式</a>。这里，为您提供几种自己制作<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#coco">ImageNet格式</a>数据集的方法。</p>
+<section id="basedtmake-dataset">
+<h2>选择1：巧用BaseDT的make_dataset函数制作<a class="headerlink" href="#basedtmake-dataset" title="Permalink to this headline"></a></h2>
+<section id="id2">
+<h3>第一步：整理图片<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<p>首先新建一个images文件夹用于存放图片，然后开始采集图片，您可以用任何设备拍摄图像，也可以从视频中抽取帧图像，需要注意，这些图像可以被划分为多个类别。每个类别建立一个文件夹，文件夹名称为类别名称，将图片放在其中。</p>
+</section>
+<section id="id3">
+<h3>第二步：制作类别说明文件<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<p>在images文件夹同级目录下新建一个文本文件classes.txt，将类别名称写入，要求符合<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#imagenet">ImageNet格式</a>。</p>
+<p>参考示例如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span>
+<span class="n">dog</span>
+</pre></div>
+</div>
+<p>此时前两步整理的文件夹应是如下格式：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|---</span><span class="n">images</span>
+    <span class="o">|---</span><span class="n">class1</span>
+          <span class="o">|----</span><span class="n">xxx</span><span class="o">.</span><span class="n">jpg</span><span class="o">/</span><span class="n">png</span><span class="o">/....</span>
+    <span class="o">|---</span><span class="n">class2</span>
+          <span class="o">|----</span><span class="n">xxx</span><span class="o">.</span><span class="n">jpg</span><span class="o">/</span><span class="n">png</span><span class="o">/....</span>
+    <span class="o">|---</span><span class="n">class3</span>
+          <span class="o">|----</span><span class="n">xxx</span><span class="o">.</span><span class="n">jpg</span><span class="o">/</span><span class="n">png</span><span class="o">/....</span>
+    <span class="o">|---</span><span class="n">classN</span>
+          <span class="o">|----</span><span class="n">xxx</span><span class="o">.</span><span class="n">jpg</span><span class="o">/</span><span class="n">png</span><span class="o">/....</span>
+<span class="n">classes</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3>第三步：生成数据集<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<p>使用BaseDT库完成数据集制作。如需了解更多BaseDT库数据集处理的功能，详见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basedt/introduction.html#id7">BaseDT的数据集格式转换</a>部分。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.dataset</span> <span class="kn">import</span> <span class="n">DataSet</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">DataSet</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;my_dataset_catdog2&quot;</span><span class="p">)</span> <span class="c1"># 指定为生成数据集的路径</span>
+<span class="c1"># 默认比例为train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">make_dataset</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;catdog2&quot;</span><span class="p">,</span> <span class="n">src_format</span><span class="o">=</span><span class="s2">&quot;IMAGENET&quot;</span><span class="p">,</span><span class="n">train_ratio</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">test_ratio</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">val_ratio</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span><span class="c1"># 指定原始数据集的路径，数据集格式选择IMAGENET</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h3>第四步：检查数据集<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<p>结合数据集检查提示对数据集进行调整，必要时可重做前几步，最后完成整个数据集制作。在训练的时候，只要通过<code class="docutils literal notranslate"><span class="pre">model.load_dataset</span></code>指定数据集的路径就可以了。</p>
+<p>注：网上下载的图像分类数据集也可使用上述方法完成数据集处理。</p>
+</section>
+</section>
+<section id="id6">
+<h2>选择2：按照标准方式制作<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h2>
+<section id="id7">
+<span id="id8"></span><h3>第一步：整理图片<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<p>您可以用任何设备拍摄图像，也可以从视频中抽取帧图像，需要注意，这些图像可以被划分为多个类别。每个类别建立一个文件夹，文件夹名称为类别名称，将图片放在其中。</p>
+<p>接下来需要对图片进行尺寸、保存格式等的统一，简单情况下的参考代码如下：</p>
+<div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>from PIL import Image
+from torchvision import transforms
+import os
+
+def makeDir(folder_path):
+    if not os.path.exists(folder_path):  # 判断是否存在文件夹如果不存在则创建为文件夹
+        os.makedirs(folder_path)
+
+classes = os.listdir(&#39;./my_dataset/training_set&#39;)
+read_dir = &#39;./my_dataset/training_set/&#39; # 指定原始图片路径
+new_dir = &#39;./my_dataset/newtraining_set&#39;
+for cnt in range(len(classes)):
+    r_dir = read_dir + classes[cnt] + &#39;/&#39;
+    files = os.listdir(r_dir)
+    for index,file in enumerate(files):
+        img_path = r_dir + file
+        img = Image.open(img_path)   # 读取图片
+        resize = transforms.Resize([224, 224])
+        IMG = resize(img)
+        w_dir = new_dir + classes[cnt] + &#39;/&#39;
+        makeDir(w_dir)
+        save_path = w_dir + str(index)+&#39;.jpg&#39;
+        IMG = IMG.convert(&#39;RGB&#39;)
+        IMG.save(save_path)
+</pre></div>
+</div>
+</section>
+<section id="id9">
+<h3>第二步：划分训练集、验证集和测试集<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
+<p>根据整理的数据集大小，按照一定比例拆分训练集、验证集和测试集，可手动也可以使用如下代码将原始数据集按照“6:2:2”的比例拆分。</p>
+<div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>import os
+import shutil
+# 列出指定目录下的所有文件名，确定分类信息
+classes = os.listdir(&#39;./my_photo&#39;)
+
+# 定义创建目录的方法
+def makeDir(folder_path):
+    if not os.path.exists(folder_path):  # 判断是否存在文件夹如果不存在则创建为文件夹
+        os.makedirs(folder_path)
+
+# 指定文件目录
+read_dir = &#39;./my_photo/&#39; # 指定原始图片路径
+train_dir = &#39;./my_dataset/training_set/&#39; # 指定训练集路径
+test_dir = &#39;./my_dataset/test_set/&#39;# 指定测试集路径
+val_dir = &#39;./my_dataset/val_set/&#39;# 指定验证集路径
+
+for cnt in range(len(classes)):
+    r_dir = read_dir + classes[cnt] + &#39;/&#39;  # 指定原始数据某个分类的文件目录
+    files = os.listdir(r_dir)  # 列出某个分类的文件目录下的所有文件名
+    # files = files[:4000]
+    # 按照6:2:2拆分文件名
+    offset1 = int(len(files) * 0.6)
+    offset2 = int(len(files) * 0.8)
+    training_data = files[:offset1]
+    val_data = files[offset1:offset2]
+    test_data = files[offset2:]
+
+    # 根据拆分好的文件名新建文件目录放入图片
+    for index,fileName in enumerate(training_data):
+        w_dir = train_dir + classes[cnt] + &#39;/&#39;  # 指定训练集某个分类的文件目录
+        makeDir(w_dir)
+        # shutil.copy(r_dir + fileName,w_dir + classes[cnt] + str(index)+&#39;.jpg&#39;)
+        shutil.copy(r_dir + fileName, w_dir + str(index) + &#39;.jpg&#39;)
+    for index,fileName in enumerate(val_data):
+        w_dir = val_dir + classes[cnt] + &#39;/&#39;  # 指定测试集某个分类的文件目录
+        makeDir(w_dir)
+        # shutil.copy(r_dir + fileName, w_dir + classes[cnt] + str(index) + &#39;.jpg&#39;)
+        shutil.copy(r_dir + fileName, w_dir + str(index) + &#39;.jpg&#39;)
+    for index,fileName in enumerate(test_data):
+        w_dir = test_dir + classes[cnt] + &#39;/&#39;  # 指定验证集某个分类的文件目录
+        makeDir(w_dir)
+        # shutil.copy(r_dir + fileName, w_dir + classes[cnt] + str(index) + &#39;.jpg&#39;)
+        shutil.copy(r_dir + fileName, w_dir + str(index) + &#39;.jpg&#39;)
+</pre></div>
+</div>
+</section>
+<section id="id10">
+<h3>第三步：生成标签文件<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
+<p>划分完训练集、验证集和测试集，我们需要生成“classes.txt”，“val.txt”和“test.txt”。其中classes.txt包含数据集类别标签信息，每行包含一个类别名称，按照字母顺序排列。“val.txt”和“test.txt”这两个标签文件的要求是每一行都包含一个文件名和其相应的真实标签。</p>
+<p>可以手动完成，这里也为您提供一段用Python代码完成标签文件的程序如下所示，程序中设计了“val.txt”和“test.txt”这两个标签文件每行会包含类别名称、文件名和真实标签。</p>
+<div class="highlight-plain notranslate"><div class="highlight"><pre><span></span># 在windows测试通过
+import os
+# 列出指定目录下的所有文件名，确定类别名称
+classes = os.listdir(&#39;./my_dataset/training_set&#39;)
+# 打开指定文件，并写入类别名称
+with open(&#39;./my_dataset/classes.txt&#39;,&#39;w&#39;) as f:
+    for line in classes:
+        str_line = line +&#39;\n&#39;
+        f.write(str_line) # 文件写入str_line，即类别名称
+
+test_dir = &#39;./my_dataset/test_set/&#39; # 指定测试集文件路径
+# 打开指定文件，写入标签信息
+with open(&#39;./my_dataset/test.txt&#39;,&#39;w&#39;) as f:
+    for cnt in range(len(classes)):
+        t_dir = test_dir + classes[cnt]  # 指定测试集某个分类的文件目录
+        files = os.listdir(t_dir) # 列出当前类别的文件目录下的所有文件名
+        # print(files)
+        for line in files:
+            str_line = classes[cnt] + &#39;/&#39; + line + &#39; &#39;+str(cnt) +&#39;\n&#39;
+            f.write(str_line)
+
+val_dir = &#39;./my_dataset/val_set/&#39;  # 指定文件路径
+# 打开指定文件，写入标签信息
+with open(&#39;./my_dataset/val.txt&#39;, &#39;w&#39;) as f:
+    for cnt in range(len(classes)):
+        t_dir = val_dir + classes[cnt]  # 指定验证集某个分类的文件目录
+        files = os.listdir(t_dir)  # 列出当前类别的文件目录下的所有文件名
+        # print(files)
+        for line in files:
+            str_line = classes[cnt] + &#39;/&#39; + line + &#39; &#39; + str(cnt) + &#39;\n&#39;
+            f.write(str_line)  # 文件写入str_line，即标注信息
+</pre></div>
+</div>
+<p>如果您使用的是Mac系统，可以使用下面的代码。</p>
+<div class="highlight-plain notranslate"><div class="highlight"><pre><span></span># 本文件可以放在数据集的根目录下运行
+import os
+# 如果不是在数据集根目录下，可以指定路径
+set_path = &#39;./&#39;
+
+templist = os.listdir(set_path +&#39;training_set&#39;)
+# 处理mac的特殊文件夹
+classes = []
+for line in templist:
+    if line[0] !=&#39;.&#39;:
+        classes.append(line)
+
+with open(set_path +&#39;classes.txt&#39;,&#39;w&#39;) as f:
+    for line in classes:
+        str_line = line +&#39;\n&#39;
+        f.write(str_line) # 文件分行写入，即类别名称
+
+val_dir = set_path +&#39;val_set/&#39;  # 指定验证集文件路径
+# 打开指定文件，写入标签信息
+with open(set_path +&#39;val.txt&#39;, &#39;w&#39;) as f:
+    for cnt in range(len(classes)):
+        t_dir = val_dir + classes[cnt]  # 指定验证集某个分类的文件目录
+        files = os.listdir(t_dir)  # 列出当前类别的文件目录下的所有文件名
+        # print(files)
+        for line in files:
+            str_line = classes[cnt] + &#39;/&#39; + line + &#39; &#39; + str(cnt) + &#39;\n&#39;
+            f.write(str_line)  # 文件写入str_line，即标注信息
+
+test_dir = set_path +&#39;test_set/&#39; # 指定测试集文件路径
+# 打开指定文件，写入标签信息
+with open(set_path +&#39;test.txt&#39;,&#39;w&#39;) as f:
+    for cnt in range(len(classes)):
+        t_dir = test_dir + classes[cnt]  # 指定测试集某个分类的文件目录
+        files = os.listdir(t_dir) # 列出当前类别的文件目录下的所有文件名
+        # print(files)
+        for line in files:
+            str_line = classes[cnt] + &#39;/&#39; + line + &#39; &#39;+str(cnt) +&#39;\n&#39;
+            f.write(str_line)
+</pre></div>
+</div>
+</section>
+<section id="id11">
+<h3>第四步：给数据集命名<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h3>
+<p>最后，我们将这些文件放在一个文件夹中，命名为数据集的名称。这样，在训练的时候，只要通过<code class="docutils literal notranslate"><span class="pre">model.load_dataset</span></code>指定数据集的路径就可以了。</p>
+</section>
+</section>
+<section id="xedu">
+<h2>选择3：巧用XEdu自动补齐功能快速制作<a class="headerlink" href="#xedu" title="Permalink to this headline"></a></h2>
+<p>如果您觉得整理规范格式数据集有点困难，其实您只收集了图片按照类别存放，然后完成训练集（trainning_set）、验证集（val_set）和测试集（test_set）等的拆分，最后整理在一个大的文件夹下作为您的数据集也可以符合要求。此时指定数据集路径后同样可以训练模型，因为XEdu拥有检测数据集的功能，如您的数据集缺失txt文件，会自动帮您生成“classes.txt”，“val.txt”等（如存在对应的数据文件夹）开始训练。这些txt文件会生成在您指定的数据集路径下，即帮您补齐数据集。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>选择2和选择3制作的数据集自查：数据集制作完成后如想要检查数据集，可使用BaseDT的<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basedt/introduction.html#id9">数据集格式检查</a>功能，结合数据集检查提示对数据集进行调整，最后完成整个数据集制作。</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="dataset_introduction.html" class="btn btn-neutral float-left" title="经典数据集介绍" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="howtomake_coco.html" class="btn btn-neutral float-right" title="从零开始制作一个COCO格式数据集" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2023 OpenXLabEdu.All Rights Reserved.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

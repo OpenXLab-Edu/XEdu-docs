@@ -12,7 +12,7 @@ ImageNet 是目前世界上图像识别最大的数据库，有超过1500万张�
 
 ImageNet不仅是一个数据集、一项比赛，也是一种典型的数据集格式。分类任务中最经典的数据集类型就是[ImageNet格式](https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#imagenet)。
 
-XEdu中MMEdu的图像分类模块数据集类型是[ImageNet](https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#imagenet)，包含三个文件夹和三个文本文件，文件夹内，不同类别图片按照文件夹分门别类排好，通过trainning_set、val_set、test_set区分训练集、验证集和测试集。文本文件classes.txt说明类别名称与序号的对应关系，val.txt说明验证集图片路径与类别序号的对应关系，test.txt说明测试集图片路径与类别序号的对应关系。如需训练自己创建的数据集，数据集需转换成[ImageNet格式](https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#imagenet)。这里，为您提供几种自己制作[ImageNet格式](https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#coco)数据集的方法。
+XEdu中MMEdu的图像分类模块数据集类型是[ImageNet](https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#imagenet)，包含三个文件夹和三个文本文件，文件夹内，不同类别图片按照文件夹分门别类排好，通过trainning_set、val_set、test_set区分训练集、验证集和测试集。文本文件classes.txt说明类别名称与序号的对应关系，val.txt说明验证集图片路径与类别序号的对应关系，test.txt说明测试集图片路径与类别序号的对应关系。如需训练自己创建的数据集，数据集需转换成[ImageNet格式](https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#imagenet)。如何制作ImageNet格式数据集详见[后文](file:///D:/XEdu-docs/build/html/dl_library/howtomake_imagenet.html#imagenet)。
 
 
 ## COCO
@@ -21,10 +21,4 @@ MS COCO的全称是Microsoft Common Objects in Context，起源于微软于2014�
 
 COCO数据集是一个大型的、丰富的物体检测，分割和字幕数据集。这个数据集以scene understanding为目标，主要从复杂的日常场景中截取，图像中的目标通过精确的segmentation进行位置的标定。图像包括91类目标，328,000影像和2,500,000个label。目前为止有语义分割的最大数据集，提供的类别有80 类，有超过33 万张图片，其中20 万张有标注，整个数据集中个体的数目超过150 万个。
 
-XEdu中MMEdu的MMDetection模块支持的数据集类型是COCO，如需训练自己创建的数据集，数据集需转换成[COCO格式](https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#coco)。这里，为您提供几种自己制作[COCO格式](https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#coco)数据集的方法。
-
-
-## 如何制作数据集
-
-
-
+XEdu中MMEdu的MMDetection模块支持的数据集类型是[COCO](https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#coco)，如需训练自己创建的数据集，数据集需转换成[COCO格式](https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#coco)。如何制作COCO格式数据集详见[后文](file:///D:/XEdu-docs/build/html/dl_library/howtomake_coco.html#coco)。

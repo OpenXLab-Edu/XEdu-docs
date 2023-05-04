@@ -123,7 +123,7 @@ classes.txt包含数据集类别标签信息，每行包含一个类别名称，
 
 注：真实标签的值应该位于\ ``[0,类别数目-1]``\ 之间。
 
-如果您觉得整理规范格式数据集有点困难，您只需收集完图片按照类别存放，然后完成训练集（trainning_set）、验证集（val_set）和测试集（test_set）等的拆分，整理在一个大的文件夹下作为你的数据集。此时指定数据集路径后同样可以训练模型，因为XEdu拥有检查数据集的功能，如您的数据集缺失txt文件，会自动帮您生成“classes.txt”，“val.txt”等（如存在对应的数据文件夹）开始训练。这些txt文件会生成在您指定的数据集路径下，即帮您补齐数据集。完整的从零开始制作一个ImageNet格式的数据集的步骤详见\ `深度学习知识库 <https://xedu.readthedocs.io/zh/latest/dl_library/dataset_introduction.html#id2>`__\ 。
+如果您觉得整理规范格式数据集有点困难，您只需收集完图片按照类别存放，然后完成训练集（trainning_set）、验证集（val_set）和测试集（test_set）等的拆分，整理在一个大的文件夹下作为你的数据集。此时指定数据集路径后同样可以训练模型，因为XEdu拥有检查数据集的功能，如您的数据集缺失txt文件，会自动帮您生成“classes.txt”，“val.txt”等（如存在对应的数据文件夹）开始训练。这些txt文件会生成在您指定的数据集路径下，即帮您补齐数据集。完整的从零开始制作一个ImageNet格式的数据集的步骤详见\ `深度学习知识库 <https://xedu.readthedocs.io/zh/latest/dl_library/dataset_introduction.html#id2>`__\ 中的“如何制作一个数据集”。
 
 2）COCO
 ~~~~~~~

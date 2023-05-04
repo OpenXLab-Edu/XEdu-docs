@@ -19,7 +19,7 @@
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="快速体验EasyDL系列工具" href="easydl/quick_start.html" />
+    <link rel="next" title="EasyDL系列工具功能详解" href="easydl/introduction.html" />
     <link rel="prev" title="BaseML杀手锏：自带可视化部分" href="baseml/visualization.html" /> 
 </head>
 
@@ -45,9 +45,11 @@
 <li class="toctree-l1"><a class="reference internal" href="basenn.html">神经网络库BaseNN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="baseml.html">传统机器学习库BaseML</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">EasyDL系列无代码工具</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="easydl/quick_start.html">快速体验EasyDL系列工具</a></li>
-<li class="toctree-l2"><a class="reference internal" href="easydl/installation.html">EasyDL系列工具安装</a></li>
 <li class="toctree-l2"><a class="reference internal" href="easydl/introduction.html">EasyDL系列工具功能详解</a></li>
+<li class="toctree-l2"><a class="reference internal" href="easydl/howtoget.html">如何获取EasyDL系列工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="easydl/easytrain.html">EasyTrain（模型训练辅助工具）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="easydl/easyinfer.html">EasyInference（模型推理辅助工具）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="easydl/easyapi.html">EasyAPI（AI模型远程推理工具）</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="basedt.html">数据处理库BaseDT</a></li>
@@ -84,17 +86,29 @@
 <h1>EasyDL系列无代码工具<a class="headerlink" href="#easydl" title="Permalink to this headline"></a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="easydl/quick_start.html">快速体验EasyDL系列工具</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="easydl/quick_start.html#easytrainai">用EasyTrain训练第一个AI模型！</a></li>
-<li class="toctree-l2"><a class="reference internal" href="easydl/quick_start.html#easyinference">快速体验用EasyInference完成模型推理</a></li>
-<li class="toctree-l2"><a class="reference internal" href="easydl/quick_start.html#easyapi">启动EasyAPI实现无代码服务部署可视化界面</a></li>
-<li class="toctree-l2"><a class="reference internal" href="easydl/quick_start.html#id1">注意事项</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="easydl/installation.html">EasyDL系列工具安装</a></li>
 <li class="toctree-l1"><a class="reference internal" href="easydl/introduction.html">EasyDL系列工具功能详解</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="easydl/introduction.html#id1">初识EasyDL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="easydl/introduction.html#id2">核心功能</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="easydl/howtoget.html">如何获取EasyDL系列工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="easydl/easytrain.html">EasyTrain（模型训练辅助工具）</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="easydl/easytrain.html#id1">EasyTrain简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="easydl/easytrain.html#easytrainai">用EasyTrain训练第一个AI模型！</a></li>
+<li class="toctree-l2"><a class="reference internal" href="easydl/easytrain.html#id2">注意事项</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="easydl/easyinfer.html">EasyInference（模型推理辅助工具）</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="easydl/easyinfer.html#id1">EasyInference简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="easydl/easyinfer.html#id2">快速体验用EasyInference完成模型推理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="easydl/easyinfer.html#id3">注意事项</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="easydl/easyapi.html">EasyAPI（AI模型远程推理工具）</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="easydl/easyapi.html#easyapi">EasyAPI简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="easydl/easyapi.html#id1">EasyAPI的应用场景</a></li>
+<li class="toctree-l2"><a class="reference internal" href="easydl/easyapi.html#id3">启动EasyAPI实现无代码服务部署可视化界面</a></li>
+<li class="toctree-l2"><a class="reference internal" href="easydl/easyapi.html#id4">注意事项</a></li>
 </ul>
 </li>
 </ul>
@@ -106,7 +120,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="baseml/visualization.html" class="btn btn-neutral float-left" title="BaseML杀手锏：自带可视化部分" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="easydl/quick_start.html" class="btn btn-neutral float-right" title="快速体验EasyDL系列工具" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="easydl/introduction.html" class="btn btn-neutral float-right" title="EasyDL系列工具功能详解" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
