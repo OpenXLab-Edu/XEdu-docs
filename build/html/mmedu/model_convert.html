@@ -827,10 +827,11 @@ Precision)：平均精度，在不同recall下的最高precision的均值(一般
     <td>6</td>
   </tr>
 </tbody>
-</table><blockquote>
-<div><p>*：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本</p>
-<p>**：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite</p>
-</div></blockquote>
+</table><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>*：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本。</p>
+<p>**：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite。</p>
+</div>
 </section>
 </section>
 <section id="id14">
@@ -929,12 +930,7 @@ Precision)：平均精度，在不同recall下的最高precision的均值(一般
     <td>*</td>
   </tr>
 </tbody>
-</table><blockquote>
-<div><p>吞吐量
-(图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现</p>
-<p>*：不建议部署，单张图片推理的时间超过30s</p>
-</div></blockquote>
-<ul class="simple">
+</table><ul class="simple">
 <li><p>目标检测</p></li>
 </ul>
 <table class="docutils align-default">
