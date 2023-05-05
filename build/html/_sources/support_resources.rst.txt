@@ -7,6 +7,6 @@
 
    support_resources/resources.md
 
-   support_resources/courses.md
+   support_resources/courses.rst
 
-   support_resources/creative_works.md
+   support_resources/creative_works.rst
