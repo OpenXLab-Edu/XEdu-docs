@@ -115,59 +115,37 @@ def wav2tensor(file_path, backbone):
 
 ![image](../../images/support_resources/行空板逻辑.png)
 
-程序实现：
+下面编写代码，将程序逻辑中描述的内容通过代码编程的形式实现出来。
+
+SIOT初始化：
+
+这段代码导入了一个名为"siot"的模块，该模块提供连接到物联网平台的功能。代码定义了几个变量，包括服务器的IP地址、客户端ID、发布和接收主题以及登录物联网平台的凭据。随后，创建了一个"iot"类的实例，其中传递了已定义的客户端ID和服务器IP地址，以及作为参数传递的登录凭据。调用此实例上的"connect()"方法，以建立与物联网平台的连接，然后调用"loop()"方法启动一个循环，监听来自订阅主题的传入消息。这段代码可以使用SIOT协议连接并与物联网平台通信。
 
 ```
-#实例化GUI类
-gui=GUI()
-gui.draw_text(x=60, y=20,color="#4169E1", font_size=18,text="方言识别助手")
-gui.draw_text(x=60, y=60,color="#000000", font_size=10,text="通信模式：SIOT")
-gui.draw_text(x=20, y=100,color="#000000", font_size=10,text="状态：")
-info_text = gui.draw_text(x=60, y=100, color="red",font_size=10,text="")
-info_text_1 = gui.draw_text(x=60, y=140, color="red",font_size=10,text="")
-
-# ONNX模型导入
-sess = rt.InferenceSession("mobilenetv2.onnx")
-
-# SIOT参数设置
+from siot import iot
 SERVER = "192.168.31.29"
 CLIENT_ID = "XEdu"
-IOT_recTopic  = 'ailab/sensor1'
-IOT_pubTopic = 'ailab/sensor2'
+IOT_pubTopic  = 'ailab/sensor1'
+IOT_recTopic  = 'ailab/sensor2'
 IOT_UserName ='siot'
 IOT_PassWord ='dfrobot'
+```
 
-# SIOT接收步长与消息内容
-step_size = 4096
-message_tol = b''
+ONNX推理：
 
-# 音频参数
-viridis_cmap = plt.get_cmap('viridis')                   
-color_map = viridis_cmap.colors
-color_map = (np.array(color_map) * 255).astype(np.uint8)
+函数的作用是：使用预先训练好的模型（`sess`）对输入的音频文件（`file_name`）进行推断，并输出推断结果和置信度。
 
-label = ["吃饭", "回家", "学校", "看电视", "睡觉"]
+具体实现步骤如下：
 
-def wav2tensor(file_name):
-    wave = file_name
-    fs = 16000
-    if type(wave) == str :
-        fs0, wave = wav.read(wave) # 读取原始采样频率和数据
-        if fs0 != fs:        #如果采样频率不是16000则重采样
-            num = int(len(wave) * fs/ fs0) # 计算目标采样点数
-            wave = signal.resample(wave, num) # 对数据进行重采样
-    spec = librosa.feature.melspectrogram(wave, sr=fs, n_fft=512)
-    spec = librosa.power_to_db(spec, ref=np.max)
-    
-    spec_new = (((spec+80)/80)*255).astype(np.uint8)
-    h,w = spec_new.shape
-    rgb_matrix = np.array([color_map[i] for i in spec_new.flatten()]).reshape(h, w, 3)
-    
-    image = Image.fromarray(rgb_matrix.astype(np.uint8))
-    image = np.array(image)
-    dt = ImageData(image,backbone = 'MobileNet')
-    return dt.to_tensor()
+1. 获取输入（`input_name`）和输出（`out_name`）Tensor的名称。
+2. 将音频文件转换成Tensor格式（`input_data`）。
+3. 运行模型（`sess.run`），得到输出Tensor的值（`pred_onx`）。
+4. 从输出Tensor中找到最大值的索引（`idx`）。
+5. 根据索引在标签列表（`label`）中找到标签（`label[idx]`），并将其显示在界面上（`info_text`）。
+6. 计算置信度，并将其显示在界面上（`info_text_1`）。
+7. 构建一个字符串，包含结果和置信度，并通过MQTT发布到云端（`siot.publish`）。
 
+```
 def onnx_infer(file_name):
     input_name = sess.get_inputs()[0].name
     out_name = sess.get_outputs()[0].name
@@ -178,52 +156,8 @@ def onnx_infer(file_name):
     info_text.config(x=60, y=100, text='结果：'+ label[idx])
     info_text_1.config(x=60, y=140, text='置信度：' + str(round(ort_output[0][idx], 2)))
     str_pub = '结果：'+ label[idx] + ' 置信度：' + str(round(ort_output[0][idx], 2))
-    print(str_pub)
     siot.publish(IOT_pubTopic, str_pub)
-    
-
-def file_save(message_tol):
-    file_name = "output.wav"
-    sample_width = 2  # 2字节的采样宽度
-    sample_rate = 8000  # 采样率为44100Hz
-    channels = 1  # 双声道
-    with wave.open(file_name, "wb") as wav_file:
-        wav_file.setnchannels(channels)
-        wav_file.setsampwidth(sample_width)
-        wav_file.setframerate(sample_rate)
-        wav_file.writeframes(message_tol)
-    wav_file.close()
-    onnx_infer(file_name)
-    
-def EasyAIoT(client, userdata, msg):
-    info_text.config(x=60, y=100, text='SIOT正在接收消息...')
-    info_text_1.config(x=60, y=140, text='')
-    global message_tol
-    topic = msg.topic
-    payload = msg.payload.decode()
-    receive_msg = binascii.a2b_base64(payload)
-    if isinstance(receive_msg,bytes) and len(receive_msg) > 0:
-        message_tol += receive_msg
-        if len(receive_msg)!= step_size:
-            info_text.config(x=60, y=100, text='接收消息完毕，正在识别...')
-            info_text_1.config(x=60, y=140, text='')
-            tmp_message = message_tol
-            message_tol = b''
-            # 将接收到的结果保存至本地
-            file_save(tmp_message)
-    else:
-        message_tol = b''
-
-
-if __name__ == '__main__':
-    siot.init(CLIENT_ID, SERVER, user=IOT_UserName, password=IOT_PassWord)
-    siot.connect()
-    info_text.config(x=60, y=100, text='SIOT已启动，等待消息接收')
-    siot.loop()
-    siot.subscribe(IOT_recTopic, EasyAIoT)
 ```
-
-
 
 ### 第三步：下位机（掌控板）程序制作
 

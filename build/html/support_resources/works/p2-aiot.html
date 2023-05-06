@@ -216,66 +216,42 @@ backbone（推理机网络模型选择），并返回推理机所需的数据类
 <p>首先连接行空板并打开jupyter进行编程：</p>
 <p>通过USB串口连接行空板后，通过浏览器访问本地地址
 10.1.2.3，进入行空板编程的界面。如有问题可自行查找行空板说明教程。</p>
-<figure class="align-default">
-<img alt="../../_images/行空板编程显示界面.jpg" src="../../_images/行空板编程显示界面.jpg" />
+<figure class="align-default" id="id8">
+<img alt="image" src="../../_images/行空板编程显示界面.jpg" />
+<figcaption>
+<p><span class="caption-text">image</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
+</figcaption>
 </figure>
 <p>设计程序逻辑：</p>
 <p>根据项目整体设计，通过流程图描述想要在上运行的程序逻辑，以进一步的清晰自己的程序想要实现的功能。</p>
 <figure class="align-default">
 <img alt="../../_images/行空板逻辑.png" src="../../_images/行空板逻辑.png" />
 </figure>
-<p>程序实现：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#实例化GUI类</span>
-<span class="n">gui</span><span class="o">=</span><span class="n">GUI</span><span class="p">()</span>
-<span class="n">gui</span><span class="o">.</span><span class="n">draw_text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;#4169E1&quot;</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;方言识别助手&quot;</span><span class="p">)</span>
-<span class="n">gui</span><span class="o">.</span><span class="n">draw_text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;#000000&quot;</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;通信模式：SIOT&quot;</span><span class="p">)</span>
-<span class="n">gui</span><span class="o">.</span><span class="n">draw_text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;#000000&quot;</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;状态：&quot;</span><span class="p">)</span>
-<span class="n">info_text</span> <span class="o">=</span> <span class="n">gui</span><span class="o">.</span><span class="n">draw_text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-<span class="n">info_text_1</span> <span class="o">=</span> <span class="n">gui</span><span class="o">.</span><span class="n">draw_text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">140</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-
-<span class="c1"># ONNX模型导入</span>
-<span class="n">sess</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">InferenceSession</span><span class="p">(</span><span class="s2">&quot;mobilenetv2.onnx&quot;</span><span class="p">)</span>
-
-<span class="c1"># SIOT参数设置</span>
+<p>下面编写代码，将程序逻辑中描述的内容通过代码编程的形式实现出来。</p>
+<p>SIOT初始化：</p>
+<p>这段代码导入了一个名为“siot”的模块，该模块提供连接到物联网平台的功能。代码定义了几个变量，包括服务器的IP地址、客户端ID、发布和接收主题以及登录物联网平台的凭据。随后，创建了一个“iot”类的实例，其中传递了已定义的客户端ID和服务器IP地址，以及作为参数传递的登录凭据。调用此实例上的“connect()”方法，以建立与物联网平台的连接，然后调用“loop()”方法启动一个循环，监听来自订阅主题的传入消息。这段代码可以使用SIOT协议连接并与物联网平台通信。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">siot</span> <span class="kn">import</span> <span class="n">iot</span>
 <span class="n">SERVER</span> <span class="o">=</span> <span class="s2">&quot;192.168.31.29&quot;</span>
 <span class="n">CLIENT_ID</span> <span class="o">=</span> <span class="s2">&quot;XEdu&quot;</span>
-<span class="n">IOT_recTopic</span>  <span class="o">=</span> <span class="s1">&#39;ailab/sensor1&#39;</span>
-<span class="n">IOT_pubTopic</span> <span class="o">=</span> <span class="s1">&#39;ailab/sensor2&#39;</span>
+<span class="n">IOT_pubTopic</span>  <span class="o">=</span> <span class="s1">&#39;ailab/sensor1&#39;</span>
+<span class="n">IOT_recTopic</span>  <span class="o">=</span> <span class="s1">&#39;ailab/sensor2&#39;</span>
 <span class="n">IOT_UserName</span> <span class="o">=</span><span class="s1">&#39;siot&#39;</span>
 <span class="n">IOT_PassWord</span> <span class="o">=</span><span class="s1">&#39;dfrobot&#39;</span>
-
-<span class="c1"># SIOT接收步长与消息内容</span>
-<span class="n">step_size</span> <span class="o">=</span> <span class="mi">4096</span>
-<span class="n">message_tol</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;&#39;</span>
-
-<span class="c1"># 音频参数</span>
-<span class="n">viridis_cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
-<span class="n">color_map</span> <span class="o">=</span> <span class="n">viridis_cmap</span><span class="o">.</span><span class="n">colors</span>
-<span class="n">color_map</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">color_map</span><span class="p">)</span> <span class="o">*</span> <span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
-
-<span class="n">label</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;吃饭&quot;</span><span class="p">,</span> <span class="s2">&quot;回家&quot;</span><span class="p">,</span> <span class="s2">&quot;学校&quot;</span><span class="p">,</span> <span class="s2">&quot;看电视&quot;</span><span class="p">,</span> <span class="s2">&quot;睡觉&quot;</span><span class="p">]</span>
-
-<span class="k">def</span> <span class="nf">wav2tensor</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
-    <span class="n">wave</span> <span class="o">=</span> <span class="n">file_name</span>
-    <span class="n">fs</span> <span class="o">=</span> <span class="mi">16000</span>
-    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">wave</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span> <span class="p">:</span>
-        <span class="n">fs0</span><span class="p">,</span> <span class="n">wave</span> <span class="o">=</span> <span class="n">wav</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">wave</span><span class="p">)</span> <span class="c1"># 读取原始采样频率和数据</span>
-        <span class="k">if</span> <span class="n">fs0</span> <span class="o">!=</span> <span class="n">fs</span><span class="p">:</span>        <span class="c1">#如果采样频率不是16000则重采样</span>
-            <span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">wave</span><span class="p">)</span> <span class="o">*</span> <span class="n">fs</span><span class="o">/</span> <span class="n">fs0</span><span class="p">)</span> <span class="c1"># 计算目标采样点数</span>
-            <span class="n">wave</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">wave</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span> <span class="c1"># 对数据进行重采样</span>
-    <span class="n">spec</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">melspectrogram</span><span class="p">(</span><span class="n">wave</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="n">fs</span><span class="p">,</span> <span class="n">n_fft</span><span class="o">=</span><span class="mi">512</span><span class="p">)</span>
-    <span class="n">spec</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">power_to_db</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="n">ref</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">)</span>
-
-    <span class="n">spec_new</span> <span class="o">=</span> <span class="p">(((</span><span class="n">spec</span><span class="o">+</span><span class="mi">80</span><span class="p">)</span><span class="o">/</span><span class="mi">80</span><span class="p">)</span><span class="o">*</span><span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
-    <span class="n">h</span><span class="p">,</span><span class="n">w</span> <span class="o">=</span> <span class="n">spec_new</span><span class="o">.</span><span class="n">shape</span>
-    <span class="n">rgb_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">color_map</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">spec_new</span><span class="o">.</span><span class="n">flatten</span><span class="p">()])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-
-    <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">rgb_matrix</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">))</span>
-    <span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
-    <span class="n">dt</span> <span class="o">=</span> <span class="n">ImageData</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="n">backbone</span> <span class="o">=</span> <span class="s1">&#39;MobileNet&#39;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">dt</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">()</span>
-
-<span class="k">def</span> <span class="nf">onnx_infer</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
+</pre></div>
+</div>
+<p>ONNX推理：</p>
+<p>函数的作用是：使用预先训练好的模型（<code class="docutils literal notranslate"><span class="pre">sess</span></code>）对输入的音频文件（<code class="docutils literal notranslate"><span class="pre">file_name</span></code>）进行推断，并输出推断结果和置信度。</p>
+<p>具体实现步骤如下：</p>
+<ol class="arabic simple">
+<li><p>获取输入（<code class="docutils literal notranslate"><span class="pre">input_name</span></code>）和输出（<code class="docutils literal notranslate"><span class="pre">out_name</span></code>）Tensor的名称。</p></li>
+<li><p>将音频文件转换成Tensor格式（<code class="docutils literal notranslate"><span class="pre">input_data</span></code>）。</p></li>
+<li><p>运行模型（<code class="docutils literal notranslate"><span class="pre">sess.run</span></code>），得到输出Tensor的值（<code class="docutils literal notranslate"><span class="pre">pred_onx</span></code>）。</p></li>
+<li><p>从输出Tensor中找到最大值的索引（<code class="docutils literal notranslate"><span class="pre">idx</span></code>）。</p></li>
+<li><p>根据索引在标签列表（<code class="docutils literal notranslate"><span class="pre">label</span></code>）中找到标签（<code class="docutils literal notranslate"><span class="pre">label[idx]</span></code>），并将其显示在界面上（<code class="docutils literal notranslate"><span class="pre">info_text</span></code>）。</p></li>
+<li><p>计算置信度，并将其显示在界面上（<code class="docutils literal notranslate"><span class="pre">info_text_1</span></code>）。</p></li>
+<li><p>构建一个字符串，包含结果和置信度，并通过MQTT发布到云端（<code class="docutils literal notranslate"><span class="pre">siot.publish</span></code>）。</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">onnx_infer</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
     <span class="n">input_name</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">get_inputs</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
     <span class="n">out_name</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">get_outputs</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
     <span class="n">input_data</span> <span class="o">=</span> <span class="n">wav2tensor</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
@@ -285,49 +261,7 @@ backbone（推理机网络模型选择），并返回推理机所需的数据类
     <span class="n">info_text</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;结果：&#39;</span><span class="o">+</span> <span class="n">label</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
     <span class="n">info_text_1</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">140</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;置信度：&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">ort_output</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">idx</span><span class="p">],</span> <span class="mi">2</span><span class="p">)))</span>
     <span class="n">str_pub</span> <span class="o">=</span> <span class="s1">&#39;结果：&#39;</span><span class="o">+</span> <span class="n">label</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; 置信度：&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">ort_output</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">idx</span><span class="p">],</span> <span class="mi">2</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">str_pub</span><span class="p">)</span>
     <span class="n">siot</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">IOT_pubTopic</span><span class="p">,</span> <span class="n">str_pub</span><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">file_save</span><span class="p">(</span><span class="n">message_tol</span><span class="p">):</span>
-    <span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;output.wav&quot;</span>
-    <span class="n">sample_width</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># 2字节的采样宽度</span>
-    <span class="n">sample_rate</span> <span class="o">=</span> <span class="mi">8000</span>  <span class="c1"># 采样率为44100Hz</span>
-    <span class="n">channels</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># 双声道</span>
-    <span class="k">with</span> <span class="n">wave</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">wav_file</span><span class="p">:</span>
-        <span class="n">wav_file</span><span class="o">.</span><span class="n">setnchannels</span><span class="p">(</span><span class="n">channels</span><span class="p">)</span>
-        <span class="n">wav_file</span><span class="o">.</span><span class="n">setsampwidth</span><span class="p">(</span><span class="n">sample_width</span><span class="p">)</span>
-        <span class="n">wav_file</span><span class="o">.</span><span class="n">setframerate</span><span class="p">(</span><span class="n">sample_rate</span><span class="p">)</span>
-        <span class="n">wav_file</span><span class="o">.</span><span class="n">writeframes</span><span class="p">(</span><span class="n">message_tol</span><span class="p">)</span>
-    <span class="n">wav_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-    <span class="n">onnx_infer</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">EasyAIoT</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">userdata</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
-    <span class="n">info_text</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;SIOT正在接收消息...&#39;</span><span class="p">)</span>
-    <span class="n">info_text_1</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">140</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-    <span class="k">global</span> <span class="n">message_tol</span>
-    <span class="n">topic</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">topic</span>
-    <span class="n">payload</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
-    <span class="n">receive_msg</span> <span class="o">=</span> <span class="n">binascii</span><span class="o">.</span><span class="n">a2b_base64</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">receive_msg</span><span class="p">,</span><span class="nb">bytes</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">receive_msg</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">message_tol</span> <span class="o">+=</span> <span class="n">receive_msg</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">receive_msg</span><span class="p">)</span><span class="o">!=</span> <span class="n">step_size</span><span class="p">:</span>
-            <span class="n">info_text</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;接收消息完毕，正在识别...&#39;</span><span class="p">)</span>
-            <span class="n">info_text_1</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">140</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-            <span class="n">tmp_message</span> <span class="o">=</span> <span class="n">message_tol</span>
-            <span class="n">message_tol</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;&#39;</span>
-            <span class="c1"># 将接收到的结果保存至本地</span>
-            <span class="n">file_save</span><span class="p">(</span><span class="n">tmp_message</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">message_tol</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;&#39;</span>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">siot</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">CLIENT_ID</span><span class="p">,</span> <span class="n">SERVER</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">IOT_UserName</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">IOT_PassWord</span><span class="p">)</span>
-    <span class="n">siot</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
-    <span class="n">info_text</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;SIOT已启动，等待消息接收&#39;</span><span class="p">)</span>
-    <span class="n">siot</span><span class="o">.</span><span class="n">loop</span><span class="p">()</span>
-    <span class="n">siot</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="n">IOT_recTopic</span><span class="p">,</span> <span class="n">EasyAIoT</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
