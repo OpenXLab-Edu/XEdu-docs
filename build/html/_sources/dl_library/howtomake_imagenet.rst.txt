@@ -6,7 +6,7 @@ ImageNet格式数据集简介
 
 ImageNet不仅是一个数据集、一项比赛，也是一种典型的数据集格式。分类任务中最经典的数据集类型就是\ `ImageNet格式 <https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#imagenet>`__\ 。
 
-XEdu中MMEdu的图像分类模块数据集类型是\ `ImageNet <https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#imagenet>`__\ ，包含三个文件夹和三个文本文件，文件夹内，不同类别图片按照文件夹分门别类排好，通过trainning_set、val_set、test_set区分训练集、验证集和测试集。文本文件classes.txt说明类别名称与序号的对应关系，val.txt说明验证集图片路径与类别序号的对应关系，test.txt说明测试集图片路径与类别序号的对应关系。如需训练自己创建的数据集，数据集需转换成\ `ImageNet格式 <https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#imagenet>`__\ 。这里，为您提供几种自己制作\ `ImageNet格式 <https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#coco>`__\ 数据集的方法。
+XEdu中MMEdu的图像分类模块数据集类型是\ `ImageNet <https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#imagenet>`__\ ，包含三个文件夹和三个文本文件，文件夹内，不同类别图片按照文件夹分门别类排好，通过trainning_set、val_set、test_set区分训练集、验证集和测试集。文本文件classes.txt说明类别名称与序号的对应关系，val.txt说明验证集图片路径与类别序号的对应关系，test.txt说明测试集图片路径与类别序号的对应关系。如需训练自己创建的数据集，数据集需转换成\ `ImageNet格式 <https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#imagenet>`__\ 。这里，为您提供几种自己制作\ `ImageNet格式 <https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#imagenet>`__\ 数据集的方法。
 
 选择1：巧用BaseDT的make_dataset函数制作
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
