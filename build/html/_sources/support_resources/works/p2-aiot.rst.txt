@@ -143,9 +143,7 @@ backbone（推理机网络模型选择），并返回推理机所需的数据类
 10.1.2.3，进入行空板编程的界面。如有问题可自行查找行空板说明教程。
 
 .. figure:: ../../images/support_resources/行空板编程显示界面.jpg
-   :alt: image
 
-   image
 
 设计程序逻辑：
 
