@@ -202,9 +202,9 @@ det：
 
 ##### V0.0.4 20230426
 
-	1. log_plot接入train时日志导出。
-	1. 类名导出函数重命名为get_label。
-	1. 修复imshow_det_bboxes、map_orig_coords函数的一些漏洞
+1. log_plot接入train时日志导出。
+2. 类名导出函数重命名为get_label。
+3. 修复imshow_det_bboxes、map_orig_coords函数的一些漏洞。
 
 ##### V0.0.1 20230209
 
