@@ -198,13 +198,29 @@ det：
 
 ​	增加提取特征，可视化特征功能。
 
-#### 4）XEdu一键安装包
+#### 4）BaseDT
+
+##### V0.0.4 20230426
+
+	1. log_plot接入train时日志导出。
+	1. 类名导出函数重命名为get_label。
+	1. 修复imshow_det_bboxes、map_orig_coords函数的一些漏洞
+
+##### V0.0.1 20230209
+
+​	首次上源。
+
+#### 5）XEdu一键安装包
+
+##### V1.3 20230428
+
+​	更新demo文件，加入模型转换和部署部分的介绍
 
 ##### V1.1 20221220
 
-支持模块：MMEdu0.1.2（支持cls和det），BaseNN0.0.5，BaseML0.0.3（支持cls、reg和clt）
+​	支持模块：MMEdu0.1.2（支持cls和det），BaseNN0.0.5，BaseML0.0.3（支持cls、reg和clt）
 
-内置编辑器：jupyter、pyzo、三个可视化工具（EasyTrain、EasyInference和EasyAPI）
+​	内置编辑器：jupyter、pyzo、三个可视化工具（EasyTrain、EasyInference和EasyAPI）
 
 ## 2. 测试版
 
