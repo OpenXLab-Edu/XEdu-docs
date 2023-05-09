@@ -9,4 +9,4 @@
 预训练模型和权重文件下载
 ------------------------
 
-下载链接：https://p6bm2if73b.feishu.cn/drive/folder/fldcnVbZ8eC51fRwdfV2IL4YNSb
+下载链接：https://p6bm2if73b.feishu.cn/drive/folder/fldcnxios44vrIOV9Je3wPLmExf
