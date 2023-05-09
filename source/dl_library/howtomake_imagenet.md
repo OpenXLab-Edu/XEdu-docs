@@ -2,9 +2,9 @@
 
 ### ImageNet格式数据集简介
 
-ImageNet不仅是一个数据集、一项比赛，也是一种典型的数据集格式。分类任务中最经典的数据集类型就是[ImageNet格式](https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#imagenet)。
+ImageNet不仅是一个数据集、一项比赛，也是一种典型的数据集格式。分类任务中最经典的数据集类型就是[ImageNet格式](https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#imagenet)。
 
-XEdu中MMEdu的图像分类模块数据集类型是[ImageNet](https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#imagenet)，包含三个文件夹和三个文本文件，文件夹内，不同类别图片按照文件夹分门别类排好，通过trainning_set、val_set、test_set区分训练集、验证集和测试集。文本文件classes.txt说明类别名称与序号的对应关系，val.txt说明验证集图片路径与类别序号的对应关系，test.txt说明测试集图片路径与类别序号的对应关系。如需训练自己创建的数据集，数据集需转换成[ImageNet格式](https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#imagenet)。这里，为您提供几种自己制作[ImageNet格式](https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#imagenet)数据集的方法。
+XEdu中MMEdu的图像分类模块数据集类型是[ImageNet](https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#imagenet)，包含三个文件夹和三个文本文件，文件夹内，不同类别图片按照文件夹分门别类排好，通过trainning_set、val_set、test_set区分训练集、验证集和测试集。文本文件classes.txt说明类别名称与序号的对应关系，val.txt说明验证集图片路径与类别序号的对应关系，test.txt说明测试集图片路径与类别序号的对应关系。如需训练自己创建的数据集，数据集需转换成[ImageNet格式](https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#imagenet)。这里，为您提供几种自己制作[ImageNet格式](https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#imagenet)数据集的方法。
 
 ### 选择1：巧用BaseDT的make_dataset函数制作
 
@@ -14,7 +14,7 @@ XEdu中MMEdu的图像分类模块数据集类型是[ImageNet](https://xedu.readt
 
 #### 第二步：制作类别说明文件
 
-在images文件夹同级目录下新建一个文本文件classes.txt，将类别名称写入，要求符合[ImageNet格式](https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#imagenet)。
+在images文件夹同级目录下新建一个文本文件classes.txt，将类别名称写入，要求符合[ImageNet格式](https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#imagenet)。
 
 参考示例如下：
 
@@ -40,7 +40,7 @@ classes.txt
 
 #### 第三步：生成数据集
 
-使用BaseDT库完成数据集制作。如需了解更多BaseDT库数据集处理的功能，详见[BaseDT的数据集格式转换](https://xedu.readthedocs.io/zh/latest/basedt/introduction.html#id7)部分。
+使用BaseDT库完成数据集制作。如需了解更多BaseDT库数据集处理的功能，详见[BaseDT的数据集格式转换](https://xedu.readthedocs.io/zh/master/basedt/introduction.html#id7)部分。
 
 ```
 from BaseDT.dataset import DataSet
@@ -234,4 +234,4 @@ with open(set_path +'test.txt','w') as f:
 
 如果您觉得整理规范格式数据集有点困难，其实您只收集了图片按照类别存放，然后完成训练集（trainning_set）、验证集（val_set）和测试集（test_set）等的拆分，最后整理在一个大的文件夹下作为您的数据集也可以符合要求。此时指定数据集路径后同样可以训练模型，因为XEdu拥有检测数据集的功能，如您的数据集缺失txt文件，会自动帮您生成“classes.txt”，“val.txt”等（如存在对应的数据文件夹）开始训练。这些txt文件会生成在您指定的数据集路径下，即帮您补齐数据集。
 
-> 选择2和选择3制作的数据集自查：数据集制作完成后如想要检查数据集，可使用BaseDT的[数据集格式检查](https://xedu.readthedocs.io/zh/latest/basedt/introduction.html#id9)功能，结合数据集检查提示对数据集进行调整，最后完成整个数据集制作。
+> 选择2和选择3制作的数据集自查：数据集制作完成后如想要检查数据集，可使用BaseDT的[数据集格式检查](https://xedu.readthedocs.io/zh/master/basedt/introduction.html#id9)功能，结合数据集检查提示对数据集进行调整，最后完成整个数据集制作。

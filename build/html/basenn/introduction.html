@@ -114,7 +114,7 @@
 <h2>BaseNN是什么？<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <p>BaseNN是神经网络库，能够使用类似Keras却比Keras门槛更低的的语法搭建神经网络模型。可支持逐层搭建神经网络，深入探究网络原理。如果有如下需求，可以优先选择BaseNN：</p>
 <p>a）简易和快速地搭建神经网络</p>
-<p>b）支持搭建<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn">CNN和RNN</a>，或二者的结合</p>
+<p>b）支持搭建<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basenn/introduction.html#rnncnn">CNN和RNN</a>，或二者的结合</p>
 <p>c）同时支持CPU和GPU</p>
 </section>
 <section id="id2">
@@ -194,7 +194,7 @@
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;conv2d&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span><span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> <span class="c1"># [100, 3, 18, 18]</span>
 </pre></div>
 </div>
-<p>以上使用<code class="docutils literal notranslate"><span class="pre">add()</span></code>方法添加层，参数<code class="docutils literal notranslate"><span class="pre">layer='linear'</span></code>表示添加的层是线性层，<code class="docutils literal notranslate"><span class="pre">size=(4,10)</span></code>表示该层输入维度为4，输出维度为10，<code class="docutils literal notranslate"><span class="pre">activation='relu'</span></code>表示使用relu激活函数。更详细[<code class="docutils literal notranslate"><span class="pre">add()</span></code>方法使用可见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add">附录1</a>。</p>
+<p>以上使用<code class="docutils literal notranslate"><span class="pre">add()</span></code>方法添加层，参数<code class="docutils literal notranslate"><span class="pre">layer='linear'</span></code>表示添加的层是线性层，<code class="docutils literal notranslate"><span class="pre">size=(4,10)</span></code>表示该层输入维度为4，输出维度为10，<code class="docutils literal notranslate"><span class="pre">activation='relu'</span></code>表示使用relu激活函数。更详细[<code class="docutils literal notranslate"><span class="pre">add()</span></code>方法使用可见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basenn/introduction.html#add">附录1</a>。</p>
 </section>
 <section id="id7">
 <h3>4. 模型训练<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
@@ -231,10 +231,10 @@
 </section>
 <section id="id10">
 <h3>5. 从数据类型看训练代码<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
-<p>针对不同类型的数据类型，载入数据、搭建模型和模型训练的代码会略有不同。深度学习常见的数据类型介绍详见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#id23">附录4</a>。</p>
+<p>针对不同类型的数据类型，载入数据、搭建模型和模型训练的代码会略有不同。深度学习常见的数据类型介绍详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id23">附录4</a>。</p>
 <section id="id11">
 <h4>5.1 文本<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h4>
-<p>在做文本识别等NLP（自然语言处理）领域项目时，一般搭建<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn">RNN网络</a>训练模型，训练数据是文本数据，模型训练的示例代码如下：</p>
+<p>在做文本识别等NLP（自然语言处理）领域项目时，一般搭建<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basenn/introduction.html#rnncnn">RNN网络</a>训练模型，训练数据是文本数据，模型训练的示例代码如下：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">word2idx</span><span class="o">=</span><span class="n">word2idx</span><span class="p">)</span> <span class="c1"># word2idx是词表（字典）</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;lstm&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span><span class="mi">256</span><span class="p">),</span><span class="n">num_layers</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -367,7 +367,7 @@ model.train<span class="o">(</span>...<span class="o">)</span>
 <section id="id19">
 <h3>11. 自定义损失函数<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h3>
 <p>损失函数（或称目标函数、优化评分函数）是编译模型时所需的参数之一。在机器学习和深度学习中，模型的训练通常涉及到一个优化过程，即通过不断调整模型的参数，使得模型在训练数据上的预测结果与实际结果的差距最小化。这个差距通常使用一个称为“损失函数”的指标来衡量。损失函数通常是一个关于模型参数的函数，用于度量模型预测结果与实际结果之间的差异。在模型训练过程中，模型会根据损失函数的值来调整自己的参数，以减小损失函数的值。</p>
-<p>默认的损失函数是交叉熵损失函数，允许选择不同的损失函数，支持的损失函数见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#id22">附录</a>。自选损失函数方法如下：</p>
+<p>默认的损失函数是交叉熵损失函数，允许选择不同的损失函数，支持的损失函数见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id22">附录</a>。自选损失函数方法如下：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="o">...</span><span class="p">,</span><span class="n">loss</span><span class="o">=</span><span class="s2">&quot;CrossEntropyLoss&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -534,7 +534,7 @@ Network，卷积神经网络）是深度学习中两个非常重要的神经网�
 </ul>
 <p>在这些序列数据中，每个数据点（单词、股票价格、音频帧等）都与序列中的其他数据点密切相关，因此需要使用序列模型（如RNN、LSTM等）进行处理和分析。</p>
 <p>CNN是一种用于处理图像和空间数据的神经网络模型。它的主要特点是利用卷积操作提取图像中的特征，并通过池化操作减小特征图的大小，最终通过全连接层进行分类或回归。CNN在图像分类、目标检测、图像分割等任务中表现出色。</p>
-<p>简单来说，RNN适用于序列数据处理，而CNN适用于图像和空间数据处理。但实际上，它们也可以互相组合使用，例如在图像描述生成任务中，可以使用CNN提取图像特征，然后使用RNN生成对应的文字描述。使用BaseNN搭建RNN和CNN模型的方式详见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add">add()详细</a>介绍。</p>
+<p>简单来说，RNN适用于序列数据处理，而CNN适用于图像和空间数据处理。但实际上，它们也可以互相组合使用，例如在图像描述生成任务中，可以使用CNN提取图像特征，然后使用RNN生成对应的文字描述。使用BaseNN搭建RNN和CNN模型的方式详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basenn/introduction.html#add">add()详细</a>介绍。</p>
 </section>
 <section id="id24">
 <h3>4. 深度学习常见的数据类型<a class="headerlink" href="#id24" title="Permalink to this headline"></a></h3>

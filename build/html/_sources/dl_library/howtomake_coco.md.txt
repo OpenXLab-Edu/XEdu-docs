@@ -4,7 +4,7 @@
 
 COCO数据集是一个大型的、丰富的物体检测，分割和字幕数据集。这个数据集以scene understanding为目标，主要从复杂的日常场景中截取，图像中的目标通过精确的segmentation进行位置的标定。图像包括91类目标，328,000影像和2,500,000个label。目前为止有语义分割的最大数据集，提供的类别有80 类，有超过33 万张图片，其中20 万张有标注，整个数据集中个体的数目超过150 万个。
 
-XEdu中MMEdu的MMDetection模块支持的数据集类型是COCO，如需训练自己创建的数据集，数据集需转换成[COCO格式](https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#coco)。这里，为您提供几种自己制作[COCO格式](https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#coco)数据集的方法。
+XEdu中MMEdu的MMDetection模块支持的数据集类型是COCO，如需训练自己创建的数据集，数据集需转换成[COCO格式](https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#coco)。这里，为您提供几种自己制作[COCO格式](https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#coco)数据集的方法。
 
 ### 选择1：OpenInnoLab版（线上标注）
 
@@ -199,7 +199,7 @@ classes.txt
 
 #### 第二步：转换为COCO格式
 
-使用BaseDT库将平台标注格式的数据集转换成COCO格式，可以使用如下代码。如需了解更多BaseDT库数据集处理的功能，详见[BaseDT的数据集格式转换](https://xedu.readthedocs.io/zh/latest/basedt/introduction.html#id7)部分。
+使用BaseDT库将平台标注格式的数据集转换成COCO格式，可以使用如下代码。如需了解更多BaseDT库数据集处理的功能，详见[BaseDT的数据集格式转换](https://xedu.readthedocs.io/zh/master/basedt/introduction.html#id7)部分。
 
 ```plain
 from BaseDT.dataset import DataSet

@@ -120,7 +120,7 @@ AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pj
 项目核心功能和实现效果展示：
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-借助\ `决策树 <https://xedu.readthedocs.io/zh/latest/baseml/introduction.html#id5>`__\ 算法完成道路智能决策，可通过学习和实验了解决策树的工作原理，掌握决策树分类任务编程的流程。
+借助\ `决策树 <https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id5>`__\ 算法完成道路智能决策，可通过学习和实验了解决策树的工作原理，掌握决策树分类任务编程的流程。
 
 .. figure:: https://www.openinnolab.org.cn/webdav/635638d69ed68060c638f979/638028c0777c254264da4dd7/current/assets/%E5%88%A9%E7%94%A8%E5%8E%86%E5%8F%B2%E6%95%B0%E6%8D%AE%E7%94%9F%E6%88%90%E5%86%B3%E7%AD%96%E6%A0%91.png
 
@@ -185,7 +185,7 @@ AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pj
 0~9
 共10种数字的手写图片，每种数字一共有7000张图片，采集自不同书写风格的真实手写图片，一共70000张图片。70000张手写数字图片使用train_test_split方法划分为60000张训练集（Training
 Set）和10000张测试集（Test
-Set）。项目核心功能是使用BaseML库搭建\ `多层感知机 <https://xedu.readthedocs.io/zh/latest/baseml/introduction.html#mlp>`__\ 实现手写数字识别。
+Set）。项目核心功能是使用BaseML库搭建\ `多层感知机 <https://xedu.readthedocs.io/zh/master/baseml/introduction.html#mlp>`__\ 实现手写数字识别。
 
 .. _实现步骤-1:
 
@@ -253,7 +253,7 @@ Set）。项目核心功能是使用BaseML库搭建\ `多层感知机 <https://x
 项目核心功能：
 ^^^^^^^^^^^^^^
 
-使用BaseML来实现\ `k近邻（knn） <https://xedu.readthedocs.io/zh/latest/baseml/introduction.html#k>`__\ 分类算法，为旅行者们推荐最适合他们的场馆。在项目实践中了解k近邻的工作原理，掌握使用BaseML进行k近邻分类的方法。
+使用BaseML来实现\ `k近邻（knn） <https://xedu.readthedocs.io/zh/master/baseml/introduction.html#k>`__\ 分类算法，为旅行者们推荐最适合他们的场馆。在项目实践中了解k近邻的工作原理，掌握使用BaseML进行k近邻分类的方法。
 
 数据集来源：华师大出版社《人工智能初步》38页。
 
@@ -348,7 +348,7 @@ Set）。项目核心功能是使用BaseML库搭建\ `多层感知机 <https://x
 项目核心功能：
 ^^^^^^^^^^^^^^
 
-使用\ `线性回归 <https://xedu.readthedocs.io/zh/latest/baseml/introduction.html#id14>`__\ 预测蛋糕价格，案例场景贴近生活，可通过学习和实验了解线性回归的工作原理，掌握使用BaseML中的线性回归进行预测的方法。
+使用\ `线性回归 <https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id14>`__\ 预测蛋糕价格，案例场景贴近生活，可通过学习和实验了解线性回归的工作原理，掌握使用BaseML中的线性回归进行预测的方法。
 
 数据集来源：人教地图版《人工智能初步》39-41页。
 
@@ -411,7 +411,7 @@ Set）。项目核心功能是使用BaseML库搭建\ `多层感知机 <https://x
 项目核心功能：
 ^^^^^^^^^^^^^^
 
-使用BaseML中的Cluster模块进行聚类，使用matplotlib库对聚类结果进行可视化。该项目可根据同学所在位置，解决聚集点设定问题。可通过学习和实验了解KMeans的工作原理，掌握使用BaseML进行\ `k均值（KMeans） <https://xedu.readthedocs.io/zh/latest/baseml/introduction.html#id25>`__\ 聚类的方法。
+使用BaseML中的Cluster模块进行聚类，使用matplotlib库对聚类结果进行可视化。该项目可根据同学所在位置，解决聚集点设定问题。可通过学习和实验了解KMeans的工作原理，掌握使用BaseML进行\ `k均值（KMeans） <https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id25>`__\ 聚类的方法。
 
 数据集来源：自动生成。
 
@@ -497,7 +497,7 @@ Set）。项目核心功能是使用BaseML库搭建\ `多层感知机 <https://x
 项目核心功能：
 ^^^^^^^^^^^^^^
 
-使用BaseML中的Cluster模块进行聚类，使用matplotlib库对聚类结果进行可视化。该项目可根据车辆的品质，解决车辆分类问题，便于用户进行决策。可通过学习和实验了解KMeans的工作原理，掌握使用BaseML进行\ `k均值（KMeans） <https://xedu.readthedocs.io/zh/latest/baseml/introduction.html#id25>`__\ 聚类的方法。
+使用BaseML中的Cluster模块进行聚类，使用matplotlib库对聚类结果进行可视化。该项目可根据车辆的品质，解决车辆分类问题，便于用户进行决策。可通过学习和实验了解KMeans的工作原理，掌握使用BaseML进行\ `k均值（KMeans） <https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id25>`__\ 聚类的方法。
 
 数据集来源：上海科技教育出版社《人工智能初步》88页。
 

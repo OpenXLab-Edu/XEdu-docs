@@ -47,8 +47,8 @@ MMEdu内置了常见的SOTA模型，我们还在不断更新中。如需查看�
 
 | 模块名称         | 内置模型                                                     | 功能             |
 | ---------------- | ------------------------------------------------------------ | ---------------- |
-| MMClassification | [LeNet](https://xedu.readthedocs.io/zh/latest/dl_library/net/lenet5.html)、[ResNet18](https://xedu.readthedocs.io/zh/latest/dl_library/net/ResNet.html)、[ResNet50](https://xedu.readthedocs.io/zh/latest/dl_library/net/ResNet.html)、[MobileNet](https://xedu.readthedocs.io/zh/latest/dl_library/net/mobilenet.html) | 图片分类         |
-| MMDetection      | [FastRCNN](https://xedu.readthedocs.io/zh/latest/dl_library/net/FasterRCNN.html)、[SSD_Lite](https://xedu.readthedocs.io/zh/latest/dl_library/net/SSD_Lite.html)、[Yolov3](https://xedu.readthedocs.io/zh/latest/dl_library/net/Yolov3.html) | 图片中的物体检测 |
+| MMClassification | [LeNet](https://xedu.readthedocs.io/zh/master/dl_library/net/lenet5.html)、[ResNet18](https://xedu.readthedocs.io/zh/master/dl_library/net/ResNet.html)、[ResNet50](https://xedu.readthedocs.io/zh/master/dl_library/net/ResNet.html)、[MobileNet](https://xedu.readthedocs.io/zh/master/dl_library/net/mobilenet.html) | 图片分类         |
+| MMDetection      | [FastRCNN](https://xedu.readthedocs.io/zh/master/dl_library/net/FasterRCNN.html)、[SSD_Lite](https://xedu.readthedocs.io/zh/master/dl_library/net/SSD_Lite.html)、[Yolov3](https://xedu.readthedocs.io/zh/master/dl_library/net/Yolov3.html) | 图片中的物体检测 |
 
 注：对于这些SOTA模型的作用，请参考本文档的“深度学习知识库”部分的“经典网络模型介绍 ”。当然，通过“AI模型 + 关键词”的形式，你在很多搜索引擎中都能找到资料。
 

@@ -105,8 +105,8 @@
 <h1>从零开始制作一个ImageNet格式数据集<a class="headerlink" href="#imagenet" title="Permalink to this headline"></a></h1>
 <section id="id1">
 <h2>ImageNet格式数据集简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
-<p>ImageNet不仅是一个数据集、一项比赛，也是一种典型的数据集格式。分类任务中最经典的数据集类型就是<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#imagenet">ImageNet格式</a>。</p>
-<p>XEdu中MMEdu的图像分类模块数据集类型是<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#imagenet">ImageNet</a>，包含三个文件夹和三个文本文件，文件夹内，不同类别图片按照文件夹分门别类排好，通过trainning_set、val_set、test_set区分训练集、验证集和测试集。文本文件classes.txt说明类别名称与序号的对应关系，val.txt说明验证集图片路径与类别序号的对应关系，test.txt说明测试集图片路径与类别序号的对应关系。如需训练自己创建的数据集，数据集需转换成<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#imagenet">ImageNet格式</a>。这里，为您提供几种自己制作<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#imagenet">ImageNet格式</a>数据集的方法。</p>
+<p>ImageNet不仅是一个数据集、一项比赛，也是一种典型的数据集格式。分类任务中最经典的数据集类型就是<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#imagenet">ImageNet格式</a>。</p>
+<p>XEdu中MMEdu的图像分类模块数据集类型是<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#imagenet">ImageNet</a>，包含三个文件夹和三个文本文件，文件夹内，不同类别图片按照文件夹分门别类排好，通过trainning_set、val_set、test_set区分训练集、验证集和测试集。文本文件classes.txt说明类别名称与序号的对应关系，val.txt说明验证集图片路径与类别序号的对应关系，test.txt说明测试集图片路径与类别序号的对应关系。如需训练自己创建的数据集，数据集需转换成<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#imagenet">ImageNet格式</a>。这里，为您提供几种自己制作<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#imagenet">ImageNet格式</a>数据集的方法。</p>
 </section>
 <section id="basedtmake-dataset">
 <h2>选择1：巧用BaseDT的make_dataset函数制作<a class="headerlink" href="#basedtmake-dataset" title="Permalink to this headline"></a></h2>
@@ -116,7 +116,7 @@
 </section>
 <section id="id3">
 <h3>第二步：制作类别说明文件<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
-<p>在images文件夹同级目录下新建一个文本文件classes.txt，将类别名称写入，要求符合<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#imagenet">ImageNet格式</a>。</p>
+<p>在images文件夹同级目录下新建一个文本文件classes.txt，将类别名称写入，要求符合<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#imagenet">ImageNet格式</a>。</p>
 <p>参考示例如下：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span>
 <span class="n">dog</span>
@@ -138,7 +138,7 @@
 </section>
 <section id="id4">
 <h3>第三步：生成数据集<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
-<p>使用BaseDT库完成数据集制作。如需了解更多BaseDT库数据集处理的功能，详见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basedt/introduction.html#id7">BaseDT的数据集格式转换</a>部分。</p>
+<p>使用BaseDT库完成数据集制作。如需了解更多BaseDT库数据集处理的功能，详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basedt/introduction.html#id7">BaseDT的数据集格式转换</a>部分。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.dataset</span> <span class="kn">import</span> <span class="n">DataSet</span>
 <span class="n">ds</span> <span class="o">=</span> <span class="n">DataSet</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;my_dataset_catdog2&quot;</span><span class="p">)</span> <span class="c1"># 指定为生成数据集的路径</span>
 <span class="c1"># 默认比例为train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2</span>
@@ -323,7 +323,7 @@ with open(set_path +&#39;test.txt&#39;,&#39;w&#39;) as f:
 <p>如果您觉得整理规范格式数据集有点困难，其实您只收集了图片按照类别存放，然后完成训练集（trainning_set）、验证集（val_set）和测试集（test_set）等的拆分，最后整理在一个大的文件夹下作为您的数据集也可以符合要求。此时指定数据集路径后同样可以训练模型，因为XEdu拥有检测数据集的功能，如您的数据集缺失txt文件，会自动帮您生成“classes.txt”，“val.txt”等（如存在对应的数据文件夹）开始训练。这些txt文件会生成在您指定的数据集路径下，即帮您补齐数据集。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>选择2和选择3制作的数据集自查：数据集制作完成后如想要检查数据集，可使用BaseDT的<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basedt/introduction.html#id9">数据集格式检查</a>功能，结合数据集检查提示对数据集进行调整，最后完成整个数据集制作。</p>
+<p>选择2和选择3制作的数据集自查：数据集制作完成后如想要检查数据集，可使用BaseDT的<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basedt/introduction.html#id9">数据集格式检查</a>功能，结合数据集检查提示对数据集进行调整，最后完成整个数据集制作。</p>
 </div>
 </section>
 </section>

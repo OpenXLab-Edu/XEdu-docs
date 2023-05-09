@@ -60,8 +60,8 @@ MMEdu内置了常见的SOTA模型，我们还在不断更新中。如需查看�
 ================ =============================================================================================================================================================================================================================================================================================================================================== ================
 模块名称         内置模型                                                                                                                                                                                                                                                                                                                                        功能
 ================ =============================================================================================================================================================================================================================================================================================================================================== ================
-MMClassification `LeNet <https://xedu.readthedocs.io/zh/latest/dl_library/net/lenet5.html>`__\ 、\ `ResNet18 <https://xedu.readthedocs.io/zh/latest/dl_library/net/ResNet.html>`__\ 、\ `ResNet50 <https://xedu.readthedocs.io/zh/latest/dl_library/net/ResNet.html>`__\ 、\ `MobileNet <https://xedu.readthedocs.io/zh/latest/dl_library/net/mobilenet.html>`__ 图片分类
-MMDetection      `FastRCNN <https://xedu.readthedocs.io/zh/latest/dl_library/net/FasterRCNN.html>`__\ 、\ `SSD_Lite <https://xedu.readthedocs.io/zh/latest/dl_library/net/SSD_Lite.html>`__\ 、\ `Yolov3 <https://xedu.readthedocs.io/zh/latest/dl_library/net/Yolov3.html>`__                                                                                   图片中的物体检测
+MMClassification `LeNet <https://xedu.readthedocs.io/zh/master/dl_library/net/lenet5.html>`__\ 、\ `ResNet18 <https://xedu.readthedocs.io/zh/master/dl_library/net/ResNet.html>`__\ 、\ `ResNet50 <https://xedu.readthedocs.io/zh/master/dl_library/net/ResNet.html>`__\ 、\ `MobileNet <https://xedu.readthedocs.io/zh/master/dl_library/net/mobilenet.html>`__ 图片分类
+MMDetection      `FastRCNN <https://xedu.readthedocs.io/zh/master/dl_library/net/FasterRCNN.html>`__\ 、\ `SSD_Lite <https://xedu.readthedocs.io/zh/master/dl_library/net/SSD_Lite.html>`__\ 、\ `Yolov3 <https://xedu.readthedocs.io/zh/master/dl_library/net/Yolov3.html>`__                                                                                   图片中的物体检测
 ================ =============================================================================================================================================================================================================================================================================================================================================== ================
 
 注：对于这些SOTA模型的作用，请参考本文档的“深度学习知识库”部分的“经典网络模型介绍”。当然，通过“AI模型
@@ -123,7 +123,7 @@ classes.txt包含数据集类别标签信息，每行包含一个类别名称，
 
 注：真实标签的值应该位于\ ``[0,类别数目-1]``\ 之间。
 
-如果您觉得整理规范格式数据集有点困难，您只需收集完图片按照类别存放，然后完成训练集（trainning_set）、验证集（val_set）和测试集（test_set）等的拆分，整理在一个大的文件夹下作为你的数据集。此时指定数据集路径后同样可以训练模型，因为XEdu拥有检查数据集的功能，如您的数据集缺失txt文件，会自动帮您生成“classes.txt”，“val.txt”等（如存在对应的数据文件夹）开始训练。这些txt文件会生成在您指定的数据集路径下，即帮您补齐数据集。完整的从零开始制作一个ImageNet格式的数据集的步骤详见\ `深度学习知识库 <https://xedu.readthedocs.io/zh/latest/dl_library/howtomake_imagenet.html#imagenet>`__\ 。
+如果您觉得整理规范格式数据集有点困难，您只需收集完图片按照类别存放，然后完成训练集（trainning_set）、验证集（val_set）和测试集（test_set）等的拆分，整理在一个大的文件夹下作为你的数据集。此时指定数据集路径后同样可以训练模型，因为XEdu拥有检查数据集的功能，如您的数据集缺失txt文件，会自动帮您生成“classes.txt”，“val.txt”等（如存在对应的数据文件夹）开始训练。这些txt文件会生成在您指定的数据集路径下，即帮您补齐数据集。完整的从零开始制作一个ImageNet格式的数据集的步骤详见\ `深度学习知识库 <https://xedu.readthedocs.io/zh/master/dl_library/howtomake_imagenet.html#imagenet>`__\ 。
 
 2）COCO
 ~~~~~~~
@@ -184,7 +184,7 @@ COCO数据集的标注信息存储在“annotations”文件夹中的\ ``json``\
        "supercategory": str, # 类别所属的大类，如哈巴狗和狐狸犬都属于犬科这个大类
    }]
 
-为了验证和测试，我们建议划分训练集、验证集和测试集，需要生成验证集valid和标注文件valid.json，测试集test和标注文件test.json，json文件的基本数据结构依然是COCO格式。制作一个COCO格式的数据集的步骤详见\ `深度学习知识库 <https://xedu.readthedocs.io/zh/latest/dl_library/howtomake_coco.html#coco>`__\ 。
+为了验证和测试，我们建议划分训练集、验证集和测试集，需要生成验证集valid和标注文件valid.json，测试集test和标注文件test.json，json文件的基本数据结构依然是COCO格式。制作一个COCO格式的数据集的步骤详见\ `深度学习知识库 <https://xedu.readthedocs.io/zh/master/dl_library/howtomake_coco.html#coco>`__\ 。
 
 使用示例
 --------
@@ -192,7 +192,7 @@ COCO数据集的标注信息存储在“annotations”文件夹中的\ ``json``\
 模型推理：
 ~~~~~~~~~~
 
-此处展示的是图像分类模型的模型推理的示例代码，如需了解更多模块的示例代码或想了解更多使用说明请看\ `后文 <https://xedu.readthedocs.io/zh/latest/mmedu/mmclassification.html>`__\ 。
+此处展示的是图像分类模型的模型推理的示例代码，如需了解更多模块的示例代码或想了解更多使用说明请看\ `后文 <https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html>`__\ 。
 
 .. code:: python
 
@@ -206,7 +206,7 @@ COCO数据集的标注信息存储在“annotations”文件夹中的\ ``json``\
 从零开始训练：
 ~~~~~~~~~~~~~~
 
-此处展示的是图像分类模型的从零开始训练的示例代码，如需了解更多模块的示例代码或想了解更多使用说明请看\ `后文 <https://xedu.readthedocs.io/zh/latest/mmedu/mmclassification.html>`__\ 。
+此处展示的是图像分类模型的从零开始训练的示例代码，如需了解更多模块的示例代码或想了解更多使用说明请看\ `后文 <https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html>`__\ 。
 
 .. code:: python
 
@@ -220,7 +220,7 @@ COCO数据集的标注信息存储在“annotations”文件夹中的\ ``json``\
 继续训练：
 ~~~~~~~~~~
 
-此处展示的是图像分类模型的继续训练的示例代码，如需了解更多模块的示例代码或想了解更多使用说明请看\ `后文 <https://xedu.readthedocs.io/zh/latest/mmedu/mmclassification.html>`__\ 。
+此处展示的是图像分类模型的继续训练的示例代码，如需了解更多模块的示例代码或想了解更多使用说明请看\ `后文 <https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html>`__\ 。
 
 .. code:: python
 

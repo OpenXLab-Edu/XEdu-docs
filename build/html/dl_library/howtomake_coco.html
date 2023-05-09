@@ -111,7 +111,7 @@
 <section id="id1">
 <h2>COCO格式数据集简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <p>COCO数据集是一个大型的、丰富的物体检测，分割和字幕数据集。这个数据集以scene understanding为目标，主要从复杂的日常场景中截取，图像中的目标通过精确的segmentation进行位置的标定。图像包括91类目标，328,000影像和2,500,000个label。目前为止有语义分割的最大数据集，提供的类别有80 类，有超过33 万张图片，其中20 万张有标注，整个数据集中个体的数目超过150 万个。</p>
-<p>XEdu中MMEdu的MMDetection模块支持的数据集类型是COCO，如需训练自己创建的数据集，数据集需转换成<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#coco">COCO格式</a>。这里，为您提供几种自己制作<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#coco">COCO格式</a>数据集的方法。</p>
+<p>XEdu中MMEdu的MMDetection模块支持的数据集类型是COCO，如需训练自己创建的数据集，数据集需转换成<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#coco">COCO格式</a>。这里，为您提供几种自己制作<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#coco">COCO格式</a>数据集的方法。</p>
 </section>
 <section id="openinnolab">
 <h2>选择1：OpenInnoLab版（线上标注）<a class="headerlink" href="#openinnolab" title="Permalink to this headline"></a></h2>
@@ -303,7 +303,7 @@ classes.txt
 </section>
 <section id="id12">
 <h3>第二步：转换为COCO格式<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h3>
-<p>使用BaseDT库将平台标注格式的数据集转换成COCO格式，可以使用如下代码。如需了解更多BaseDT库数据集处理的功能，详见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basedt/introduction.html#id7">BaseDT的数据集格式转换</a>部分。</p>
+<p>使用BaseDT库将平台标注格式的数据集转换成COCO格式，可以使用如下代码。如需了解更多BaseDT库数据集处理的功能，详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basedt/introduction.html#id7">BaseDT的数据集格式转换</a>部分。</p>
 <div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>from BaseDT.dataset import DataSet
 ds = DataSet(r&quot;my_dataset&quot;) # 指定为新数据集路径
 ds.make_dataset(r&quot;G:\\测试数据集\\fruit_voc&quot;, src_format=&quot;VOC&quot;,train_ratio = 0.8, test_ratio = 0.1, val_ratio = 0.1) # 指定待转格式的原始数据集路径，原始数据集格式，划分比例，默认比例为train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2

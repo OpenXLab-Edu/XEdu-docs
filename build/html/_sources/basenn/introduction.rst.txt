@@ -8,7 +8,7 @@ BaseNN是神经网络库，能够使用类似Keras却比Keras门槛更低的的�
 
 a）简易和快速地搭建神经网络
 
-b）支持搭建\ `CNN和RNN <https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn>`__\ ，或二者的结合
+b）支持搭建\ `CNN和RNN <https://xedu.readthedocs.io/zh/master/basenn/introduction.html#rnncnn>`__\ ，或二者的结合
 
 c）同时支持CPU和GPU
 
@@ -101,7 +101,7 @@ c）同时支持CPU和GPU
 
    model.add('conv2d', size=(1, 3),kernel_size=( 3, 3), activation='relu') # [100, 3, 18, 18]
 
-以上使用\ ``add()``\ 方法添加层，参数\ ``layer='linear'``\ 表示添加的层是线性层，\ ``size=(4,10)``\ 表示该层输入维度为4，输出维度为10，\ ``activation='relu'``\ 表示使用relu激活函数。更详细[\ ``add()``\ 方法使用可见\ `附录1 <https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add>`__\ 。
+以上使用\ ``add()``\ 方法添加层，参数\ ``layer='linear'``\ 表示添加的层是线性层，\ ``size=(4,10)``\ 表示该层输入维度为4，输出维度为10，\ ``activation='relu'``\ 表示使用relu激活函数。更详细[\ ``add()``\ 方法使用可见\ `附录1 <https://xedu.readthedocs.io/zh/master/basenn/introduction.html#add>`__\ 。
 
 4. 模型训练
 ~~~~~~~~~~~
@@ -147,12 +147,12 @@ c）同时支持CPU和GPU
 5. 从数据类型看训练代码
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-针对不同类型的数据类型，载入数据、搭建模型和模型训练的代码会略有不同。深度学习常见的数据类型介绍详见\ `附录4 <https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#id23>`__\ 。
+针对不同类型的数据类型，载入数据、搭建模型和模型训练的代码会略有不同。深度学习常见的数据类型介绍详见\ `附录4 <https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id23>`__\ 。
 
 5.1 文本
 ^^^^^^^^
 
-在做文本识别等NLP（自然语言处理）领域项目时，一般搭建\ `RNN网络 <https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn>`__\ 训练模型，训练数据是文本数据，模型训练的示例代码如下：
+在做文本识别等NLP（自然语言处理）领域项目时，一般搭建\ `RNN网络 <https://xedu.readthedocs.io/zh/master/basenn/introduction.html#rnncnn>`__\ 训练模型，训练数据是文本数据，模型训练的示例代码如下：
 
 ::
 
@@ -318,7 +318,7 @@ BaseNN内置\ ``visual_feature``\ 函数可呈现数据在网络中传递的过�
 
 损失函数（或称目标函数、优化评分函数）是编译模型时所需的参数之一。在机器学习和深度学习中，模型的训练通常涉及到一个优化过程，即通过不断调整模型的参数，使得模型在训练数据上的预测结果与实际结果的差距最小化。这个差距通常使用一个称为“损失函数”的指标来衡量。损失函数通常是一个关于模型参数的函数，用于度量模型预测结果与实际结果之间的差异。在模型训练过程中，模型会根据损失函数的值来调整自己的参数，以减小损失函数的值。
 
-默认的损失函数是交叉熵损失函数，允许选择不同的损失函数，支持的损失函数见\ `附录 <https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#id22>`__\ 。自选损失函数方法如下：
+默认的损失函数是交叉熵损失函数，允许选择不同的损失函数，支持的损失函数见\ `附录 <https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id22>`__\ 。自选损失函数方法如下：
 
 ::
 
@@ -471,7 +471,7 @@ RNN是一种用于处理序列数据的神经网络模型。它的特点是可�
 
 CNN是一种用于处理图像和空间数据的神经网络模型。它的主要特点是利用卷积操作提取图像中的特征，并通过池化操作减小特征图的大小，最终通过全连接层进行分类或回归。CNN在图像分类、目标检测、图像分割等任务中表现出色。
 
-简单来说，RNN适用于序列数据处理，而CNN适用于图像和空间数据处理。但实际上，它们也可以互相组合使用，例如在图像描述生成任务中，可以使用CNN提取图像特征，然后使用RNN生成对应的文字描述。使用BaseNN搭建RNN和CNN模型的方式详见\ `add()详细 <https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add>`__\ 介绍。
+简单来说，RNN适用于序列数据处理，而CNN适用于图像和空间数据处理。但实际上，它们也可以互相组合使用，例如在图像描述生成任务中，可以使用CNN提取图像特征，然后使用RNN生成对应的文字描述。使用BaseNN搭建RNN和CNN模型的方式详见\ `add()详细 <https://xedu.readthedocs.io/zh/master/basenn/introduction.html#add>`__\ 介绍。
 
 4. 深度学习常见的数据类型
 ~~~~~~~~~~~~~~~~~~~~~~~~~

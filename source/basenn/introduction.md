@@ -6,7 +6,7 @@ BaseNN是神经网络库，能够使用类似Keras却比Keras门槛更低的的�
 
 a）简易和快速地搭建神经网络
 
-b）支持搭建[CNN和RNN](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn)，或二者的结合
+b）支持搭建[CNN和RNN](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#rnncnn)，或二者的结合
 
 c）同时支持CPU和GPU
 
@@ -432,7 +432,7 @@ RNN是一种用于处理序列数据的神经网络模型。它的特点是可�
 
 CNN是一种用于处理图像和空间数据的神经网络模型。它的主要特点是利用卷积操作提取图像中的特征，并通过池化操作减小特征图的大小，最终通过全连接层进行分类或回归。CNN在图像分类、目标检测、图像分割等任务中表现出色。
 
-简单来说，RNN适用于序列数据处理，而CNN适用于图像和空间数据处理。但实际上，它们也可以互相组合使用，例如在图像描述生成任务中，可以使用CNN提取图像特征，然后使用RNN生成对应的文字描述。使用BaseNN搭建RNN和CNN模型的方式详见[add()详细](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add)介绍。
+简单来说，RNN适用于序列数据处理，而CNN适用于图像和空间数据处理。但实际上，它们也可以互相组合使用，例如在图像描述生成任务中，可以使用CNN提取图像特征，然后使用RNN生成对应的文字描述。使用BaseNN搭建RNN和CNN模型的方式详见[add()详细](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#add)介绍。
 
 ### 4. 深度学习常见的数据类型
 

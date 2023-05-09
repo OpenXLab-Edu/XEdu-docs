@@ -12,7 +12,7 @@ GitHub：https://github.com/OpenXLab-Edu/OpenMMLab-Edu
 
 ## 小目标：使用MMEdu训练一个手写体数字识别模型！
 
-MMEdu有多种[安装方式](https://xedu.readthedocs.io/zh/latest/mmedu/installation.html#mmedu)，可以通过pip方式安装，也可以使用一键安装包。体验MMEdu的最快速方式是通过OpenInnoLab平台在线体验MMEdu。
+MMEdu有多种[安装方式](https://xedu.readthedocs.io/zh/master/mmedu/installation.html#mmedu)，可以通过pip方式安装，也可以使用一键安装包。体验MMEdu的最快速方式是通过OpenInnoLab平台在线体验MMEdu。
 
 ### 1. 在OpenInnoLab创建MMEdu项目
 
@@ -100,7 +100,7 @@ model.print_result(result)
 
 打开[《用MMEdu实现MNIST手写体数字识别（NOTEBOOK）》项目](https://www.openinnolab.org.cn/pjlab/project?id=63801c0701df4535876b6a4e&sc=635638d69ed68060c638f979#public)中的"2.mnist手写体数字识别-推理.ipynb"文件跟随说明完成推理代码运行。示例代码中共7行代码，完成了导入库、指定图片、实例化模型、指定模型保存的路径、开始推理、输出推理结果。根据推理结果可以完成各种其他输出。
 
-如需了解代码规则和参数信息，以及图像分类模块的更多使用说明，请看[后文](https://xedu.readthedocs.io/zh/latest/mmedu/mmclassification.html#mmclassification)。
+如需了解代码规则和参数信息，以及图像分类模块的更多使用说明，请看[后文](https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#mmclassification)。
 
 
 
@@ -108,10 +108,10 @@ model.print_result(result)
 
 我们的小目标就达成了！一个手写体数字识别模型就训练好了，此时你肯定还不过瘾，还想使用MMEdu基于各种数据集来训练模型去解决各种分类问题也很方便！只需要对手写体识别训练的代码稍作改动即可。首先思考自己想要解决的分类问题，收集数据并整理好数据集，如想要解决猫狗识别问题需准备猫狗数据集。
 
-那么可以打开[《用MMEdu实现MNIST手写体数字识别（NOTEBOOK）》项目](https://www.openinnolab.org.cn/pjlab/project?id=63801c0701df4535876b6a4e&sc=635638d69ed68060c638f979#public)中的"3.从mnist手写体数字识别到猫狗分类.ipynb"文件。而且还有更多案例可以参考，详见项目集区域，这里的AI特色工具专区展示了一些有助于深度学习和机器学习入门和进阶的案例。 当然你也可以在AI项目工坊创建自己的项目，做自己的人工智能案例。MMEdu工具有[图像分类模块](https://xedu.readthedocs.io/zh/latest/mmedu/mmclassification.html#mmclassification)、[目标检测模块](https://xedu.readthedocs.io/zh/latest/mmedu/mmdetection.html)等模块，请继续阅读文档，了解并掌握MMEdu的各个模块。
+那么可以打开[《用MMEdu实现MNIST手写体数字识别（NOTEBOOK）》项目](https://www.openinnolab.org.cn/pjlab/project?id=63801c0701df4535876b6a4e&sc=635638d69ed68060c638f979#public)中的"3.从mnist手写体数字识别到猫狗分类.ipynb"文件。而且还有更多案例可以参考，详见项目集区域，这里的AI特色工具专区展示了一些有助于深度学习和机器学习入门和进阶的案例。 当然你也可以在AI项目工坊创建自己的项目，做自己的人工智能案例。MMEdu工具有[图像分类模块](https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#mmclassification)、[目标检测模块](https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html)等模块，请继续阅读文档，了解并掌握MMEdu的各个模块。
 
 ![image](../images/mmedu/XEdu项目集.png)
 
 ## MMEdu的简要总结
 
-MMEdu是针对青少年学习AI技术而设计的，其前身就是大名鼎鼎的OpenMMLab。MMEdu的语法非常简单，几句话就能完成训练和推理。如果你下载了[XEdu一键安装包](https://xedu.readthedocs.io/zh/latest/about/installation.html#id3)，还可以使用[Easytrain等可视化辅助工具](https://xedu.readthedocs.io/zh/latest/easydl.html#easydl)。有了MMEdu，你会发现AI模型训练原来这么简单。
+MMEdu是针对青少年学习AI技术而设计的，其前身就是大名鼎鼎的OpenMMLab。MMEdu的语法非常简单，几句话就能完成训练和推理。如果你下载了[XEdu一键安装包](https://xedu.readthedocs.io/zh/master/about/installation.html#id3)，还可以使用[Easytrain等可视化辅助工具](https://xedu.readthedocs.io/zh/master/easydl.html#easydl)。有了MMEdu，你会发现AI模型训练原来这么简单。

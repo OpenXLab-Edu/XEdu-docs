@@ -112,7 +112,7 @@
 <img alt="../_images/目标检测概述.png" src="../_images/目标检测概述.png" />
 </figure>
 <p>那么MMEdu的目标检测模块MMDetection（简称det）的主要功能便是输出图片或视频中出现的多个对象名称，同时用方框框出对象所在方形区域。</p>
-<p>其支持的SOTA模型有FasterRCNN、Yolov3、SSD_Lite等，具体介绍详见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/mmdetection.html#sota">后文</a>。如需查看所有支持的SOTA模型，可使用<code class="docutils literal notranslate"><span class="pre">model.sota()</span></code>代码进行查看。</p>
+<p>其支持的SOTA模型有FasterRCNN、Yolov3、SSD_Lite等，具体介绍详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html#sota">后文</a>。如需查看所有支持的SOTA模型，可使用<code class="docutils literal notranslate"><span class="pre">model.sota()</span></code>代码进行查看。</p>
 </section>
 <section id="id2">
 <h2>使用说明<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
@@ -211,7 +211,7 @@
 <figure class="align-default">
 <img alt="../_images/det数据集格式.png" src="../_images/det数据集格式.png" />
 </figure>
-<p>车牌数据集符合MMEdu目标检测模块支持的数据集要求，文件夹中包含两个文件夹<code class="docutils literal notranslate"><span class="pre">annotations</span></code>和<code class="docutils literal notranslate"><span class="pre">images</span></code>，分别存储标注信息以及图片数据，每个文件夹下面有<code class="docutils literal notranslate"><span class="pre">train</span></code>和<code class="docutils literal notranslate"><span class="pre">valid</span></code>两个<code class="docutils literal notranslate"><span class="pre">json</span></code>文件。如您想要了解更多数据集格式的内容，可参考<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#coco">数据集支持</a>部分。</p>
+<p>车牌数据集符合MMEdu目标检测模块支持的数据集要求，文件夹中包含两个文件夹<code class="docutils literal notranslate"><span class="pre">annotations</span></code>和<code class="docutils literal notranslate"><span class="pre">images</span></code>，分别存储标注信息以及图片数据，每个文件夹下面有<code class="docutils literal notranslate"><span class="pre">train</span></code>和<code class="docutils literal notranslate"><span class="pre">valid</span></code>两个<code class="docutils literal notranslate"><span class="pre">json</span></code>文件。如您想要了解更多数据集格式的内容，可参考<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#coco">数据集支持</a>部分。</p>
 <p>训练代码如下：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">det</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;FasterRCNN&#39;</span><span class="p">)</span> <span class="c1"># 实例化模型，不指定参数即使用默认参数</span>
 <span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># 进行车牌识别，此时只有一个类别。</span>
@@ -301,7 +301,7 @@
 </pre></div>
 </div>
 <p>这里我们有一个参数在之前的<a class="reference external" href="####2.训练模型">训练模型</a>过程中没有提及，那就是<code class="docutils literal notranslate"><span class="pre">train</span></code>函数中的<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>参数，这个放到这里就比较好理解，它的意思是指定需要进行再训练的模型路径，当然你也可以根据你需要训练的不同模型而调整参数。同时您也可以指定网上下载的某个预训练模型。借助在大型数据集上训练的预训练模型可以根据一系列任务的历史数据来对新的任务进行训练，而无需从头开始训练。它可以将一个大型数据集中的知识和技能转移到另一个任务上，从而大大节省训练时间。</p>
-<p>全新开始训练一个模型，一般要花较长时间。我们强烈建议在预训练模型的基础上继续训练，哪怕你要分类的数据集和预训练的数据集并不一样。基于预训练模型继续训练可起到加速训练的作用，通常会使得模型达到更好的效果。在学习资源下载处也提供了一些<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/support_resources/resources.html#id3">预训练模型和权重文件下载</a>途径。</p>
+<p>全新开始训练一个模型，一般要花较长时间。我们强烈建议在预训练模型的基础上继续训练，哪怕你要分类的数据集和预训练的数据集并不一样。基于预训练模型继续训练可起到加速训练的作用，通常会使得模型达到更好的效果。在学习资源下载处也提供了一些<a class="reference external" href="https://xedu.readthedocs.io/zh/master/support_resources/resources.html#id3">预训练模型和权重文件下载</a>途径。</p>
 </section>
 <section id="sota">
 <h3>4.支持的SOTA模型<a class="headerlink" href="#sota" title="Permalink to this headline"></a></h3>
@@ -330,16 +330,16 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p>1</p></td>
-<td><p><a class="reference external" href="https://xedu.readthedocs.io/zh/latest/dl_library/net/SSD_Lite.html">SSD_Lite</a></p></td>
+<td><p><a class="reference external" href="https://xedu.readthedocs.io/zh/master/dl_library/net/SSD_Lite.html">SSD_Lite</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>2</p></td>
-<td><p><a class="reference external" href="https://xedu.readthedocs.io/zh/latest/dl_library/net/FasterRCNN.html">FasterRCNN</a></p></td>
+<td><p><a class="reference external" href="https://xedu.readthedocs.io/zh/master/dl_library/net/FasterRCNN.html">FasterRCNN</a></p></td>
 </tr>
 <tr class="row-even"><td><p>3</p></td>
-<td><p><a class="reference external" href="https://xedu.readthedocs.io/zh/latest/dl_library/net/Yolov3.html">Yolov3</a></p></td>
+<td><p><a class="reference external" href="https://xedu.readthedocs.io/zh/master/dl_library/net/Yolov3.html">Yolov3</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>4</p></td>
-<td><p><a class="reference external" href="https://xedu.readthedocs.io/zh/latest/dl_library/network_introduction.html">更多</a></p></td>
+<td><p><a class="reference external" href="https://xedu.readthedocs.io/zh/master/dl_library/network_introduction.html">更多</a></p></td>
 </tr>
 </tbody>
 </table>
