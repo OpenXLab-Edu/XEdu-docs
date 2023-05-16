@@ -212,9 +212,25 @@ det：
 
 #### 5）XEdu一键安装包
 
-##### V1.3 20230428
+##### V1.4 20230516
 
-​	更新demo文件，加入模型转换和部署部分的介绍
+​	支持模块：MMEdu0.1.13（支持cls和det），BaseNN0.0.9，BaseML0.0.6（支持cls、reg和clt）、BaseDT0.0.5（支持通用数据处理）
+
+​	内置编辑器：jupyter、pyzo、三个可视化工具（EasyTrain EasyInference EasyAPI）
+
+​	升级支持模型转换onnx、推理和部署语法精简，不再需要class_path。BaseML支持绘图。
+
+##### V1.3 20230416
+
+​	支持模块：MMEdu0.1.8（支持cls和det），BaseNN0.0.9，BaseML0.0.6（支持cls、reg和clt）、**BaseDT0.0.2（支持通用数据处理）**
+
+​	内置编辑器：jupyter、pyzo、三个可视化工具（EasyTrain EasyInference EasyAPI）
+
+##### V1.2 20230110
+
+​	支持模块：MMEdu0.1.4（支持 cls 和 det），BaseNN0.0.5，BaseML0.0.3（支持 cls、reg 和 clt） 
+
+​	内置编辑器：jupyter、pyzo、三个可视化工具（EasyTrain EasyInference EasyAPI） 
 
 ##### V1.1 20221220
 
