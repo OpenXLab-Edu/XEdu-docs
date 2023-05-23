@@ -50,7 +50,7 @@ MMEdu内置了常见的SOTA模型，我们还在不断更新中。如需查看�
 | MMClassification | [LeNet](https://xedu.readthedocs.io/zh/master/dl_library/net/lenet5.html)、[ResNet18](https://xedu.readthedocs.io/zh/master/dl_library/net/ResNet.html)、[ResNet50](https://xedu.readthedocs.io/zh/master/dl_library/net/ResNet.html)、[MobileNet](https://xedu.readthedocs.io/zh/master/dl_library/net/mobilenet.html) | 图片分类         |
 | MMDetection      | [FastRCNN](https://xedu.readthedocs.io/zh/master/dl_library/net/FasterRCNN.html)、[SSD_Lite](https://xedu.readthedocs.io/zh/master/dl_library/net/SSD_Lite.html)、[Yolov3](https://xedu.readthedocs.io/zh/master/dl_library/net/Yolov3.html) | 图片中的物体检测 |
 
-注：对于这些SOTA模型的作用，请参考本文档的“深度学习知识库”部分的“经典网络模型介绍 ”。当然，通过“AI模型 + 关键词”的形式，你在很多搜索引擎中都能找到资料。
+注：关于MMClassification支持的SOTA模型的比较可参考“解锁图像分类模块：MMClassification”中关于“[支持的SOTA模型](https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#sota)”的介绍，关于MMDetection支持的SOTA模型的比较可参考“揭秘目标检测模块：MMDetection”中关于“[支持的SOTA模型](https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html#sota)”的介绍。关于这些SOTA模型更具体的介绍，请参考本文档的“深度学习知识库”部分的“[经典网络模型介绍](https://xedu.readthedocs.io/zh/master/dl_library.html) ”。当然，通过“AI模型 + 关键词”的形式，你在很多搜索引擎中都能找到资料。
 
 ## 数据集支持
 
