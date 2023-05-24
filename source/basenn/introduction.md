@@ -84,7 +84,7 @@ model.load_dataset(train_x, train_y)
 
 ### 2.1 直接载入不同类型的数据
 
-如您对数据预处理有困难，在BaseNN 0.0.7版本起，我们增设了`load_img_data`、`load_tab_data`等（持续更新中）载入不同类型数据的函数。下面分数据类型进行说明：
+如您对数据预处理有困难，在BaseNN 0.1.0版本起，我们增设了`load_img_data`、`load_tab_data`等（持续更新中）载入不同类型数据的函数。下面分数据类型进行说明：
 
 #### 图片文件夹类型：
 
