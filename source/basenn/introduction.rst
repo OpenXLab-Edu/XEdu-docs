@@ -32,13 +32,17 @@ c）同时支持CPU和GPU
 2. 载入数据
 ~~~~~~~~~~~
 
+输入特征和对应的目标标签。
+
 ::
 
    model.load_dataset(x, y)
 
-此处采用lvis鸢尾花数据集和MNIST手写体数字图像数据集作为示例。
+使用上面这行代码载入数据前，一般需自行编写代码加载数据并做预处理以生成输入特征
+``x`` 和目标标签
+``y``\ ，此处采用lvis鸢尾花数据集和MNIST手写体数字图像数据集作为示例，当然如这步有困难可直接看下一步。
 
-读取并载入鸢尾花数据集（鸢尾花数据集以鸢尾花的特征作为数据来源，数据集包含150个数据集，有4维，分为3类（setosa、versicolour、virginica），每类50个数据，每个数据包含4个属性，花萼长度、宽度和花瓣长度、宽度）：
+读取并载入csv格式鸢尾花数据集（鸢尾花数据集以鸢尾花的特征作为数据来源，数据集包含150个数据集，有4维，分为3类（setosa、versicolour、virginica），每类50个数据，每个数据包含4个属性，花萼长度、宽度和花瓣长度、宽度）：
 
 .. code:: python
 
@@ -85,6 +89,40 @@ c）同时支持CPU和GPU
    train_x, train_y = read_data('../dataset/mnist/training_set')
    # 载入数据
    model.load_dataset(train_x, train_y) 
+
+2.1 直接载入不同类型的数据
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+如您对数据预处理有困难，在BaseNN
+0.0.7版本起，我们增设了\ ``load_img_data``\ 、\ ``load_tab_data``\ 等（持续更新中）载入不同类型数据的函数。下面分数据类型进行说明：
+
+图片文件夹类型：
+^^^^^^^^^^^^^^^^
+
+使用\ ``load_img_data``\ 函数即可完成载入数据。
+
+::
+
+   image_folder_data = './imagenet_data'
+   model.load_img_data(image_folder_data)
+
+参数说明：
+
+``train_val_ratio``\ ：0~1之间的浮点数，表示训练集的占比，默认为1。eg，数据集共1万张，train_val_ratio=0.8，则8000张训练集，2000张验证集。若传入大于1或小于0的错误比例，则参数值无效，默认整个数据集都可用于训练。此参数可用于拆分数据集为训练集和验证集。
+
+``color``\ ：“grayscale”“RGB”，或图片的颜色空间或色彩模式，可以根据具体的需求来选择适合的模式。如果将color参数设置为“grayscale”，表示希望将图像转换为灰度图像，仅包含亮度信息。如果将color参数设置为“RGB”，表示希望保留图像的红、绿、蓝三个通道的颜色信息，得到彩色图像。
+
+特征表格类型：
+^^^^^^^^^^^^^^
+
+使用\ ``load_tab_data``\ 函数即可完成载入数据。
+
+::
+
+   train_path = '../../dataset/iris/iris_training.csv'
+   model.load_tab_data(train_path)
+
+对表格的要求：csv格式，纵轴为样本，横轴为特征，第一行为表头，最后一列为标签。
 
 3. 搭建模型
 ~~~~~~~~~~~
@@ -144,12 +182,12 @@ c）同时支持CPU和GPU
 
 ``checkpoint``\ 为现有模型路径，当使用\ ``checkpoint``\ 参数时，模型基于一个已有的模型继续训练，不使用\ ``checkpoint``\ 参数时，模型从零开始训练。
 
-5. 从数据类型看训练代码
+5. 分数据类型看训练代码
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 针对不同类型的数据类型，载入数据、搭建模型和模型训练的代码会略有不同。深度学习常见的数据类型介绍详见\ `附录4 <https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#id23>`__\ 。
 
-5.1 文本
+文本类型
 ^^^^^^^^
 
 在做文本识别等NLP（自然语言处理）领域项目时，一般搭建\ `RNN网络 <https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn>`__\ 训练模型，训练数据是文本数据，模型训练的示例代码如下：
@@ -161,10 +199,29 @@ c）同时支持CPU和GPU
    model.add('lstm',size=(128,256),num_layers=2)
    model.train(lr=0.001,epochs=1)
 
-5.2 图像
+图片类型
 ^^^^^^^^
 
-针对图像数据可增加classes参数设置，模型训练的示例代码如下：
+针对图像数据可增加classes参数设置。
+
+直接指定图片文件夹完成模型训练的示例代码如下：
+
+.. code:: python
+
+   model = nn()
+   model.load_img_data("./mnist/training_set",color="grayscale",classes=classes)
+   model.add('Conv2D', size=(1, 6),kernel_size=( 5, 5), activation='ReLU') 
+   model.add('AvgPool', kernel_size=(2,2)) 
+   model.add('Conv2D', size=(6, 16), kernel_size=(5, 5), activation='ReLU') 
+   model.add('AvgPool', kernel_size=(2,2)) 
+   model.add('Linear', size=(256, 120), activation='ReLU')  
+   model.add('Linear', size=(120, 84), activation='ReLU') 
+   model.add('Linear', size=(84, 10), activation='Softmax')
+   model.add(optimizer='SGD')
+   model.save_fold = 'new_mn_ckpt'
+   model.train(lr=0.01, epochs=200, checkpoint="new_mn_ckpt/basenn.pth",classes=classes) # 继续训练
+
+如自己进行对图片数据处理后，使用\ ``load_dataset(x, y)``\ 载入数据，可使用如下代码：
 
 ::
 
@@ -193,10 +250,27 @@ classes可传参数兼容列表，字典形式(以下三种形式均可)。
    classes = {0:0,1:1} 
    classes = {'0':'0', '1':'1'} 
 
-5.3 特征
+特征类型
 ^^^^^^^^
 
-针对特征数据，使用BaseNN各模块的示例代码即可。
+直接指定csv格式的表格完成模型训练的示例代码如下：
+
+.. code:: python
+
+   model = nn()
+   train_path = '../../dataset/iris/iris_training.csv'
+   model.load_tab_data(train_path, batch_size=120)
+   model.add(layer='Linear',size=(4, 10),activation='ReLU') # [120, 10]
+   model.add(layer='Linear',size=(10, 5), activation='ReLU') # [120, 5]
+   model.add(layer='Linear', size=(5, 3), activation='Softmax') # [120, 3]
+   model.save_fold = 'iris_ckpt'
+   model.train(lr=0.01, epochs=500)
+
+对表格的要求：csv格式，纵轴为样本，横轴为特征，第一行为表头，最后一列为标签
+
+当然您也可以自行编写代码来加载数据并进行预处理，然后将生成的输入特征
+``x`` 和目标标签 ``y``
+传递给模型。针对特征数据，使用BaseNN各模块的示例代码即可。
 
 ::
 
@@ -217,7 +291,7 @@ classes可传参数兼容列表，字典形式(以下三种形式均可)。
    result = model.inference(data=test_x, checkpoint=checkpoint) # 直接推理
    model.print_result(result) # 输出字典格式结果
 
-参数\ ``data``\ 为待推理的测试数据数据，该参数必须传入值；
+参数\ ``data``\ 为待推理的测试数据数据，该参数必须传入值；推理可以传入numpy数组和文件路径，关于传入文件路径的模型推理，下一步详细说明。
 
 ``checkpoint``\ 为已有模型路径，即使用现有的模型进行推理。
 
@@ -225,7 +299,47 @@ classes可传参数兼容列表，字典形式(以下三种形式均可)。
 
 输出字典格式结果的数据类型为字典，格式为{样本编号：{预测值：x，置信度：y}}。\ ``print_result()``\ 函数调用即输出，但也有返回值。
 
+6.1 分数据类型看传入文件路径进行模型推理
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+除了numpy数组格式的特征数据，还可以传入文件路径进行模型推理，现在分数据类型说明。
+
+针对单个图片文件的推理：
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code:: python
+
+   model = nn()
+   test_x = "mnist/val_set/7/83.jpg"
+   result = model.inference(data=test_x, checkpoint="mn_ckpt/basenn.pth") # 推理整个测试集
+   model.print_result()
+
+针对图片文件夹的推理：
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. code:: python
+
+   model = nn()
+   test_x = "mnist/val_set/7"
+   result = model.inference(data=test_x, checkpoint="mn_ckpt/basenn.pth") # 推理整个测试集
+   model.print_result()
+
+针对特征表格文件的推理：
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code:: python
+
+   model = nn()
+   test_path = '../../dataset/iris/iris_test.csv'
+   res = model.inference(test_path, checkpoint="iris_ckpt/basenn.pth",label=True)
+   model.print_result(res)
+
+``label=True``\ ：csv文件中含标签列，比如iris_test.csv；False为没有标签，一般情况下测试集都是没有标签的，所以默认为False。
+
+c对表格文件的要求：csv格式，纵轴为样本，横轴为特征，第一行为表头，最后一列为标签
+
 针对文本数据的推理：
+^^^^^^^^^^^^^^^^^^^^
 
 .. code:: python
 
@@ -236,7 +350,7 @@ classes可传参数兼容列表，字典形式(以下三种形式均可)。
    index = np.argmax(result[0]) # 取得概率最大的字的索引，当然也可以取别的，自行选择即可
    word = model.idx2word[index] # 根据词表获得对应的字
 
-result为列表包含两个变量：[output, hidden]
+result为列表包含两个变量：[output, hidden]。
 
 output为numpy数组，里面是一系列概率值，对应每个字的概率。
 
