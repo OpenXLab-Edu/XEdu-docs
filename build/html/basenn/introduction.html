@@ -193,18 +193,18 @@
 0.0.7版本起，我们增设了<code class="docutils literal notranslate"><span class="pre">load_img_data</span></code>、<code class="docutils literal notranslate"><span class="pre">load_tab_data</span></code>等（持续更新中）载入不同类型数据的函数。下面分数据类型进行说明：</p>
 <section id="id7">
 <h4>图片文件夹类型：<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h4>
-<p>使用<code class="docutils literal notranslate"><span class="pre">load_img_data</span></code>函数即可完成载入数据。</p>
+<p>指定图片文件夹路径，再使用<code class="docutils literal notranslate"><span class="pre">load_img_data</span></code>函数即可完成载入数据。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">image_folder_data</span> <span class="o">=</span> <span class="s1">&#39;./imagenet_data&#39;</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_img_data</span><span class="p">(</span><span class="n">image_folder_data</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>参数说明：</p>
 <p><code class="docutils literal notranslate"><span class="pre">train_val_ratio</span></code>：0~1之间的浮点数，表示训练集的占比，默认为1。eg，数据集共1万张，train_val_ratio=0.8，则8000张训练集，2000张验证集。若传入大于1或小于0的错误比例，则参数值无效，默认整个数据集都可用于训练。此参数可用于拆分数据集为训练集和验证集。</p>
-<p><code class="docutils literal notranslate"><span class="pre">color</span></code>：“grayscale”“RGB”，或图片的颜色空间或色彩模式，可以根据具体的需求来选择适合的模式。如果将color参数设置为“grayscale”，表示希望将图像转换为灰度图像，仅包含亮度信息。如果将color参数设置为“RGB”，表示希望保留图像的红、绿、蓝三个通道的颜色信息，得到彩色图像。</p>
+<p><code class="docutils literal notranslate"><span class="pre">color</span></code>：设置为“grayscale”或“RGB”，表示图片的颜色空间或色彩模式，可以根据具体的需求来选择适合的模式。如果将color参数设置为“grayscale”，表示希望将图像转换为灰度图像，仅包含亮度信息。如果将color参数设置为“RGB”，表示希望保留图像的红、绿、蓝三个通道的颜色信息，得到彩色图像。</p>
 </section>
 <section id="id8">
 <h4>特征表格类型：<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h4>
-<p>使用<code class="docutils literal notranslate"><span class="pre">load_tab_data</span></code>函数即可完成载入数据。</p>
+<p>指定表格路径，再使用<code class="docutils literal notranslate"><span class="pre">load_tab_data</span></code>函数即可完成载入数据。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">train_path</span> <span class="o">=</span> <span class="s1">&#39;../../dataset/iris/iris_training.csv&#39;</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_tab_data</span><span class="p">(</span><span class="n">train_path</span><span class="p">)</span>
 </pre></div>
@@ -319,11 +319,11 @@
 <p>直接指定csv格式的表格完成模型训练的示例代码如下：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
 <span class="n">train_path</span> <span class="o">=</span> <span class="s1">&#39;../../dataset/iris/iris_training.csv&#39;</span>
-<span class="n">model</span><span class="o">.</span><span class="n">load_tab_data</span><span class="p">(</span><span class="n">train_path</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_tab_data</span><span class="p">(</span><span class="n">train_path</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1"># [120, 10]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1"># [120, 5]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;Softmax&#39;</span><span class="p">)</span> <span class="c1"># [120, 3]</span>
-<span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;iris_ckpt&#39;</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;./iris_ckpt&#39;</span>
 <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -334,6 +334,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span><span class="o">...</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;./iris_ckpt&#39;</span>
 <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span><span class="n">epochs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>

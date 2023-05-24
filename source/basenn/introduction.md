@@ -88,7 +88,7 @@ model.load_dataset(train_x, train_y)
 
 #### 图片文件夹类型：
 
-使用`load_img_data`函数即可完成载入数据。
+指定图片文件夹路径，再使用`load_img_data`函数即可完成载入数据。
 
 ```
 image_folder_data = './imagenet_data'
@@ -99,11 +99,11 @@ model.load_img_data(image_folder_data)
 
 `train_val_ratio`：0~1之间的浮点数，表示训练集的占比，默认为1。eg，数据集共1万张，train_val_ratio=0.8，则8000张训练集，2000张验证集。若传入大于1或小于0的错误比例，则参数值无效，默认整个数据集都可用于训练。此参数可用于拆分数据集为训练集和验证集。
 
-`color`："grayscale""RGB"，或图片的颜色空间或色彩模式，可以根据具体的需求来选择适合的模式。如果将color参数设置为"grayscale"，表示希望将图像转换为灰度图像，仅包含亮度信息。如果将color参数设置为"RGB"，表示希望保留图像的红、绿、蓝三个通道的颜色信息，得到彩色图像。
+`color`：设置为"grayscale"或"RGB"，表示图片的颜色空间或色彩模式，可以根据具体的需求来选择适合的模式。如果将color参数设置为"grayscale"，表示希望将图像转换为灰度图像，仅包含亮度信息。如果将color参数设置为"RGB"，表示希望保留图像的红、绿、蓝三个通道的颜色信息，得到彩色图像。
 
 #### 特征表格类型：
 
-使用`load_tab_data`函数即可完成载入数据。
+指定表格路径，再使用`load_tab_data`函数即可完成载入数据。
 
 ```
 train_path = '../../dataset/iris/iris_training.csv'
@@ -238,11 +238,11 @@ classes = {'0':'0', '1':'1'}
 ```python
 model = nn()
 train_path = '../../dataset/iris/iris_training.csv'
-model.load_tab_data(train_path, batch_size=120)
+model.load_tab_data(train_path)
 model.add(layer='Linear',size=(4, 10),activation='ReLU') # [120, 10]
 model.add(layer='Linear',size=(10, 5), activation='ReLU') # [120, 5]
 model.add(layer='Linear', size=(5, 3), activation='Softmax') # [120, 3]
-model.save_fold = 'iris_ckpt'
+model.save_fold = './iris_ckpt'
 model.train(lr=0.01, epochs=500)
 ```
 
@@ -254,6 +254,7 @@ model.train(lr=0.01, epochs=500)
 model = nn()
 model.load_dataset(x,y)
 model.add('Linear',...)
+model.save_fold = './iris_ckpt'
 model.train(lr=0.01,epochs=1)
 ```
 
