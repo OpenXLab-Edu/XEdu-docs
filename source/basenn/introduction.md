@@ -92,7 +92,7 @@ model.load_dataset(train_x, train_y)
 
 ```
 image_folder_data = './imagenet_data'
-model.load_img_data(image_folder_data)
+model.load_img_data(image_folder_data, batch_size=32)
 ```
 
 参数说明：
@@ -101,16 +101,20 @@ model.load_img_data(image_folder_data)
 
 `color`：设置为"grayscale"或"RGB"，表示图片的颜色空间或色彩模式，可以根据具体的需求来选择适合的模式。如果将color参数设置为"grayscale"，表示希望将图像转换为灰度图像，仅包含亮度信息。如果将color参数设置为"RGB"，表示希望保留图像的红、绿、蓝三个通道的颜色信息，得到彩色图像。
 
+`batch_size`：表示在一次训练中同时处理的样本数量。通常情况下，批量大小越大，模型的收敛速度越快，但内存和计算资源的需求也会相应增加。
+
 #### 特征表格类型：
 
 指定表格路径，再使用`load_tab_data`函数即可完成载入数据。
 
 ```
 train_path = '../../dataset/iris/iris_training.csv'
-model.load_tab_data(train_path)
+model.load_tab_data(train_path, batch_size=120)
 ```
 
 对表格的要求：csv格式，纵轴为样本，横轴为特征，第一行为表头，最后一列为标签。
+
+`batch_size`：表示在一次训练中同时处理的样本数量。通常情况下，批量大小越大，模型的收敛速度越快，但内存和计算资源的需求也会相应增加。
 
 ### 3. 搭建模型
 
@@ -189,7 +193,7 @@ model.train(lr=0.001,epochs=1)
 
 ```python
 model = nn()
-model.load_img_data("./mnist/training_set",color="grayscale",classes=classes)
+model.load_img_data("./mnist/training_set",color="grayscale",classes=classes, batch_size=32)
 model.add('Conv2D', size=(1, 6),kernel_size=( 5, 5), activation='ReLU') 
 model.add('AvgPool', kernel_size=(2,2)) 
 model.add('Conv2D', size=(6, 16), kernel_size=(5, 5), activation='ReLU') 
@@ -238,7 +242,7 @@ classes = {'0':'0', '1':'1'}
 ```python
 model = nn()
 train_path = '../../dataset/iris/iris_training.csv'
-model.load_tab_data(train_path)
+model.load_tab_data(train_path, batch_size=120)
 model.add(layer='Linear',size=(4, 10),activation='ReLU') # [120, 10]
 model.add(layer='Linear',size=(10, 5), activation='ReLU') # [120, 5]
 model.add(layer='Linear', size=(5, 3), activation='Softmax') # [120, 3]
@@ -246,7 +250,7 @@ model.save_fold = './iris_ckpt'
 model.train(lr=0.01, epochs=500)
 ```
 
-对表格的要求：csv格式，纵轴为样本，横轴为特征，第一行为表头，最后一列为标签
+对表格的要求：csv格式，纵轴为样本，横轴为特征，第一行为表头，最后一列为标签。
 
 当然您也可以自行编写代码来加载数据并进行预处理，然后将生成的输入特征 `x` 和目标标签 `y` 传递给模型。针对特征数据，使用BaseNN各模块的示例代码即可。
 
