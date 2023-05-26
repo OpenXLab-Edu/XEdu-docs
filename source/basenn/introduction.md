@@ -26,13 +26,47 @@ model = nn()
 
 ### 2. 载入数据
 
-输入特征和对应的目标标签。
+根据数据类型，选择使用`load_img_data`、`load_tab_data`等（持续更新中）直接载入不同类型数据的函数，在这些函数中封装了读取数据并进行预处理的功能。下面分数据类型进行说明：
+
+#### 图片文件夹类型：
+
+指定图片文件夹路径，再使用`load_img_data`函数即可完成载入数据。此处使用的是经典的MNIST手写体数字图像数据集。
+
+```
+image_folder_data = './imagenet_data'
+model.load_img_data(image_folder_data, batch_size=32)
+```
+
+参数说明：
+
+`train_val_ratio`：0~1之间的浮点数，表示训练集的占比，默认为1。eg，数据集共1万张，train_val_ratio=0.8，则8000张训练集，2000张验证集。若传入大于1或小于0的错误比例，则参数值无效，默认整个数据集都可用于训练。此参数可用于拆分数据集为训练集和验证集。
+
+`color`：设置为"grayscale"或"RGB"，表示图片的颜色空间或色彩模式，可以根据具体的需求来选择适合的模式。如果将color参数设置为"grayscale"，表示希望将图像转换为灰度图像，仅包含亮度信息。如果将color参数设置为"RGB"，表示希望保留图像的红、绿、蓝三个通道的颜色信息，得到彩色图像。
+
+`batch_size`：表示在一次训练中同时处理的样本数量。通常情况下，批量大小越大，模型的收敛速度越快，但内存和计算资源的需求也会相应增加。
+
+#### 特征表格类型：
+
+指定表格路径，再使用`load_tab_data`函数即可完成载入数据。此处我使用的是经典的lvis鸢尾花数据集。
+
+```
+train_path = '../../dataset/iris/iris_training.csv'
+model.load_tab_data(train_path, batch_size=120)
+```
+
+对表格的要求：csv格式，纵轴为样本，横轴为特征，第一行为表头，最后一列为标签。
+
+`batch_size`：表示在一次训练中同时处理的样本数量。通常情况下，批量大小越大，模型的收敛速度越快，但内存和计算资源的需求也会相应增加。
+
+#### 拓展：自行编写代码载入数据：
+
+如您自行编写代码加载数据并做预处理，生成输入numpy格式的特征 `x` 和目标标签 `y`，载入时可使用如下代码。
 
 ```
 model.load_dataset(x, y)
 ```
 
-使用上面这行代码载入数据前，一般需自行编写代码加载数据并做预处理以生成输入特征 `x` 和目标标签 `y`，此处采用lvis鸢尾花数据集和MNIST手写体数字图像数据集作为示例，当然如这步有困难可直接看下一步。
+此处采用lvis鸢尾花数据集和MNIST手写体数字图像数据集作为示例。
 
 读取并载入csv格式鸢尾花数据集（鸢尾花数据集以鸢尾花的特征作为数据来源，数据集包含150个数据集，有4维，分为3类（setosa、versicolour、virginica），每类50个数据，每个数据包含4个属性，花萼长度、宽度和花瓣长度、宽度）：
 
@@ -81,40 +115,6 @@ train_x, train_y = read_data('../dataset/mnist/training_set')
 # 载入数据
 model.load_dataset(train_x, train_y) 
 ```
-
-### 2.1 直接载入不同类型的数据
-
-如您对数据预处理有困难，在BaseNN 0.1.0版本起，我们增设了`load_img_data`、`load_tab_data`等（持续更新中）载入不同类型数据的函数。下面分数据类型进行说明：
-
-#### 图片文件夹类型：
-
-指定图片文件夹路径，再使用`load_img_data`函数即可完成载入数据。
-
-```
-image_folder_data = './imagenet_data'
-model.load_img_data(image_folder_data, batch_size=32)
-```
-
-参数说明：
-
-`train_val_ratio`：0~1之间的浮点数，表示训练集的占比，默认为1。eg，数据集共1万张，train_val_ratio=0.8，则8000张训练集，2000张验证集。若传入大于1或小于0的错误比例，则参数值无效，默认整个数据集都可用于训练。此参数可用于拆分数据集为训练集和验证集。
-
-`color`：设置为"grayscale"或"RGB"，表示图片的颜色空间或色彩模式，可以根据具体的需求来选择适合的模式。如果将color参数设置为"grayscale"，表示希望将图像转换为灰度图像，仅包含亮度信息。如果将color参数设置为"RGB"，表示希望保留图像的红、绿、蓝三个通道的颜色信息，得到彩色图像。
-
-`batch_size`：表示在一次训练中同时处理的样本数量。通常情况下，批量大小越大，模型的收敛速度越快，但内存和计算资源的需求也会相应增加。
-
-#### 特征表格类型：
-
-指定表格路径，再使用`load_tab_data`函数即可完成载入数据。
-
-```
-train_path = '../../dataset/iris/iris_training.csv'
-model.load_tab_data(train_path, batch_size=120)
-```
-
-对表格的要求：csv格式，纵轴为样本，横轴为特征，第一行为表头，最后一列为标签。
-
-`batch_size`：表示在一次训练中同时处理的样本数量。通常情况下，批量大小越大，模型的收敛速度越快，但内存和计算资源的需求也会相应增加。
 
 ### 3. 搭建模型
 
@@ -173,17 +173,6 @@ model.train(lr=0.01, epochs=1000, checkpoint=checkpoint)
 ### 5. 分数据类型看训练代码
 
 针对不同类型的数据类型，载入数据、搭建模型和模型训练的代码会略有不同。深度学习常见的数据类型介绍详见[附录4](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#id23)。
-
-#### 文本类型
-
-在做文本识别等NLP（自然语言处理）领域项目时，一般搭建[RNN网络](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn)训练模型，训练数据是文本数据，模型训练的示例代码如下：
-
-```
-model = nn()
-model.load_dataset(x,y,word2idx=word2idx) # word2idx是词表（字典）
-model.add('lstm',size=(128,256),num_layers=2)
-model.train(lr=0.001,epochs=1)
-```
 
 #### 图片类型
 
@@ -262,6 +251,17 @@ model.save_fold = './iris_ckpt'
 model.train(lr=0.01,epochs=1)
 ```
 
+#### 文本类型
+
+在做文本识别等NLP（自然语言处理）领域项目时，一般搭建[RNN网络](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn)训练模型，训练数据是文本数据，模型训练的示例代码如下：
+
+```
+model = nn()
+model.load_dataset(x,y,word2idx=word2idx) # word2idx是词表（字典）
+model.add('lstm',size=(128,256),num_layers=2)
+model.train(lr=0.001,epochs=1)
+```
+
 ### 6. 模型推理
 
 可使用以下函数进行推理：
@@ -273,17 +273,13 @@ result = model.inference(data=test_x, checkpoint=checkpoint) # 直接推理
 model.print_result(result) # 输出字典格式结果
 ```
 
-参数`data`为待推理的测试数据数据，该参数必须传入值；推理可以传入numpy数组和文件路径，关于传入文件路径的模型推理，下一步详细说明。
-
 `checkpoint`为已有模型路径，即使用现有的模型进行推理。
 
 直接推理的输出结果数据类型为`numpy`的二维数组，表示各个样本的各个特征的置信度。
 
 输出字典格式结果的数据类型为字典，格式为{样本编号：{预测值：x，置信度：y}}。`print_result()`函数调用即输出，但也有返回值。
 
-### 6.1 分数据类型看传入文件路径进行模型推理
-
-除了numpy数组格式的特征数据，还可以传入文件路径进行模型推理，现在分数据类型说明。
+参数`data`为待推理的测试数据数据，该参数必须传入值，可以传入numpy数组或文件路径。除了numpy数组格式的特征数据，还可以传入文件路径进行模型推理，下面我们分文件类型说明。
 
 #### 针对单个图片文件的推理：
 
@@ -327,11 +323,11 @@ index = np.argmax(result[0]) # 取得概率最大的字的索引，当然也可�
 word = model.idx2word[index] # 根据词表获得对应的字
 ```
 
-result为列表包含两个变量：[output, hidden]。
+`result`为列表包含两个变量：`[output, hidden]`。
 
-output为numpy数组，里面是一系列概率值，对应每个字的概率。
+`output`为numpy数组，里面是一系列概率值，对应每个字的概率。
 
-hidden为高维向量，存储上下文信息，代表“记忆”，所以生成单个字可以不传入hidden，但写诗需要循环传入之前输出的hidden。
+`hidden`为高维向量，存储上下文信息，代表“记忆”，所以生成单个字可以不传入hidden，但写诗需要循环传入之前输出的hidden。
 
 ### 7. 模型的保存与加载
 
