@@ -467,9 +467,7 @@ put_html(‘E = mc2’);
 尤其值得称赞的是，PyWebIO还支持MarkDown语法。除了输入输出，PyWebIO还支持布局、协程、数据可视化等特性。通过和其他库的配合，可以呈现更加酷炫的网页效果，如图2所示。
 
 .. figure:: ../../build/html/_static/pywebio图2.png
-   :alt: avatar
 
-   avatar
 
 图2 PyWebIO结合第三方库制作的数据可视化效果
 
