@@ -13,4 +13,6 @@
 
    scitech_tools/flask.md
 
-   scitech_tools/fastapi.md
+   scitech_tools/fastapi.md 
+
+   scitech_tools/gradio.md
