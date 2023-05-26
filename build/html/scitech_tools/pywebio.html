@@ -155,8 +155,11 @@
 </td></tr><tr class="row-odd"><td><p>Html代码</p>
 </td><td><p>put_html(‘E = mc2’);</p>
 </td></tr></tbody></table><p>尤其值得称赞的是，PyWebIO还支持MarkDown语法。除了输入输出，PyWebIO还支持布局、协程、数据可视化等特性。通过和其他库的配合，可以呈现更加酷炫的网页效果，如图2所示。</p>
-<figure class="align-default">
-<img alt="../_images/pywebio图2.png" src="../_images/pywebio图2.png" />
+<figure class="align-default" id="id4">
+<img alt="avatar" src="../_images/pywebio图2.png" />
+<figcaption>
+<p><span class="caption-text">avatar</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</figcaption>
 </figure>
 <p>图2 PyWebIO结合第三方库制作的数据可视化效果</p>
 <p>如果需要了解更多关于PyWebIO库的资源，请访问github或者官方文档。</p>
@@ -166,6 +169,27 @@
 <h2>4. 借助PyWebIO部署简易AI应用<a class="headerlink" href="#pywebioai" title="Permalink to this headline"></a></h2>
 <p>在人工智能教学过程中，我们常常为模型的部署而烦恼。如果训练出来的模型不能有效应用于生活，或者解决一些真实问题，则很难打动学生，激发学习兴趣。</p>
 <p>PyWebIO能够将AI模型快速“变身”为Web应用，上传一张照片就能输出识别结果，极大地提高了学生的学习收获感。</p>
+<p>例如可以设计一个函数classification实现上传图片文件-使用MMEdu训练的模型进行图片推理-输出推理结果，当然您需确保可以导入MMEdu库，且有MMEdu训练的模型，如何安装MMEdu和使用MMEdu训练模型，可参照<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu.html">前文</a>。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">classification</span><span class="p">():</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># 文件输入</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">file_upload</span><span class="p">(</span><span class="s2">&quot;请上传图片:&quot;</span><span class="p">)</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imdecode</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">),</span>
+                           <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_COLOR</span><span class="p">)</span>  <span class="c1"># s是一个文件对象，content是文件的二进制流，此方法将文件二进制流转换为np数组格式</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="s1">&#39;latest1.jpg&#39;</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>  <span class="c1"># 保存图片</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;LeNet&#39;</span><span class="p">)</span>
+        <span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;../checkpoints/cls_model/hand_gray/latest.pth&#39;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="s1">&#39;latest1.jpg&#39;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">checkpoint</span> <span class="o">=</span> <span class="n">checkpoint</span><span class="p">)</span>
+        <span class="n">chinese_result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">print_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+        <span class="c1"># 输出文本</span>
+        <span class="n">put_text</span><span class="p">(</span><span class="s2">&quot;推理结果：&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">chinese_result</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>再使用<code class="docutils literal notranslate"><span class="pre">start_server</span></code>方法将这个函数作为Web服务提供，设计端口号</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">start_server</span><span class="p">(</span><span class="n">classification</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">2222</span><span class="p">,</span> <span class="n">cdn</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 </section>
 

@@ -1,5 +1,5 @@
 Web库PyWebIO
-================
+============
 
 1. 简介
 -------
@@ -467,7 +467,9 @@ put_html(‘E = mc2’);
 尤其值得称赞的是，PyWebIO还支持MarkDown语法。除了输入输出，PyWebIO还支持布局、协程、数据可视化等特性。通过和其他库的配合，可以呈现更加酷炫的网页效果，如图2所示。
 
 .. figure:: ../../build/html/_static/pywebio图2.png
+   :alt: avatar
 
+   avatar
 
 图2 PyWebIO结合第三方库制作的数据可视化效果
 
@@ -481,3 +483,28 @@ put_html(‘E = mc2’);
 在人工智能教学过程中，我们常常为模型的部署而烦恼。如果训练出来的模型不能有效应用于生活，或者解决一些真实问题，则很难打动学生，激发学习兴趣。
 
 PyWebIO能够将AI模型快速“变身”为Web应用，上传一张照片就能输出识别结果，极大地提高了学生的学习收获感。
+
+例如可以设计一个函数classification实现上传图片文件-使用MMEdu训练的模型进行图片推理-输出推理结果，当然您需确保可以导入MMEdu库，且有MMEdu训练的模型，如何安装MMEdu和使用MMEdu训练模型，可参照\ `前文 <https://xedu.readthedocs.io/zh/master/mmedu.html>`__\ 。
+
+::
+
+   def classification():
+       while True:
+           # 文件输入
+           s = file_upload("请上传图片:")
+           img = cv2.imdecode(np.frombuffer(s['content'], np.uint8),
+                              cv2.IMREAD_COLOR)  # s是一个文件对象，content是文件的二进制流，此方法将文件二进制流转换为np数组格式
+           cv2.imwrite('latest1.jpg', img)  # 保存图片
+           model = cls(backbone='LeNet')
+           checkpoint = '../checkpoints/cls_model/hand_gray/latest.pth'
+           result = model.inference(image='latest1.jpg', show=False, checkpoint = checkpoint)
+           chinese_result = model.print_result(result)
+           # 输出文本
+           put_text("推理结果：", str(chinese_result))
+
+再使用\ ``start_server``\ 方法将这个函数作为Web服务提供，设计端口号
+
+::
+
+   if __name__ == '__main__':
+       start_server(classification, port=2222, cdn=False)
