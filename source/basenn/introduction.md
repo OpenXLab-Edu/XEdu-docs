@@ -26,15 +26,15 @@ model = nn()
 
 ### 2. 载入数据
 
-根据数据类型，选择使用`load_img_data`、`load_tab_data`等（持续更新中）直接载入不同类型数据的函数，在这些函数中封装了读取数据并进行预处理的功能。下面分数据类型进行说明：
+根据数据类型，可选择使用`load_img_data`、`load_tab_data`等（持续更新中）直接载入不同类型数据的函数，在这些函数中封装了读取数据并进行预处理的功能。下面分数据类型进行说明：
 
 #### 图片文件夹类型：
 
 指定图片文件夹路径，再使用`load_img_data`函数即可完成载入数据。此处使用的是经典的MNIST手写体数字图像数据集。
 
 ```
-image_folder_data = './imagenet_data'
-model.load_img_data(image_folder_data, batch_size=32)
+image_folder_data = '../../dataset/mnist/training_set'
+model.load_img_data(image_folder_data,color="grayscale",batch_size=1024)
 ```
 
 参数说明：
@@ -60,7 +60,7 @@ model.load_tab_data(train_path, batch_size=120)
 
 #### 拓展——自行编写代码载入数据：
 
-如您想要尝试自行编写代码加载数据并做预处理，需生成NumPy数组格式的特征 `x` 和目标标签 `y`（不同的框架和模型可能对输入数据的格式有所要求有所不同，这是BaseNN的要求），载入时可使用如下代码。
+如您想要尝试自行编写代码加载数据并做预处理，需生成NumPy数组格式的特征 `x` 和标签 `y`（不同的框架和模型可能对输入数据的格式有所要求有所不同，这是BaseNN的要求），载入时可使用如下代码。
 
 ```
 model.load_dataset(x, y)
@@ -128,9 +128,13 @@ model.load_dataset(train_x, train_y)
 model.add(layer='linear',size=(4, 10),activation='relu') # [120, 10]
 model.add(layer='linear',size=(10, 5), activation='relu') # [120, 5]
 model.add(layer='linear', size=(5, 3), activation='softmax') # [120, 3]
+```
 
+```
 model.add('lstm',size=(128,256),num_layers=2)
+```
 
+```
 model.add('conv2d', size=(1, 3),kernel_size=( 3, 3), activation='relu') # [100, 3, 18, 18]
 ```
 
@@ -148,7 +152,7 @@ model.train(lr=0.01, epochs=500)
 
 从训练类型的角度，可以分为正常训练和继续训练。
 
-#### 4.1 正常训练
+#### 正常训练
 
 ```python
 model = nn() 
@@ -162,7 +166,7 @@ model.train(lr=0.01, epochs=1000)
 
 `model.save_fold`表示训练出的模型文件保存的文件夹。
 
-#### 4.2 继续训练
+#### 继续训练
 
 ```python
 model = nn()

@@ -32,7 +32,7 @@ c）同时支持CPU和GPU
 2. 载入数据
 ~~~~~~~~~~~
 
-根据数据类型，选择使用\ ``load_img_data``\ 、\ ``load_tab_data``\ 等（持续更新中）直接载入不同类型数据的函数，在这些函数中封装了读取数据并进行预处理的功能。下面分数据类型进行说明：
+根据数据类型，可选择使用\ ``load_img_data``\ 、\ ``load_tab_data``\ 等（持续更新中）直接载入不同类型数据的函数，在这些函数中封装了读取数据并进行预处理的功能。下面分数据类型进行说明：
 
 图片文件夹类型：
 ^^^^^^^^^^^^^^^^
@@ -41,8 +41,8 @@ c）同时支持CPU和GPU
 
 ::
 
-   image_folder_data = './imagenet_data'
-   model.load_img_data(image_folder_data, batch_size=32)
+   image_folder_data = '../../dataset/mnist/training_set'
+   model.load_img_data(image_folder_data,color="grayscale",batch_size=1024)
 
 参数说明：
 
@@ -70,7 +70,7 @@ c）同时支持CPU和GPU
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 如您想要尝试自行编写代码加载数据并做预处理，需生成NumPy数组格式的特征
-``x`` 和目标标签
+``x`` 和标签
 ``y``\ （不同的框架和模型可能对输入数据的格式有所要求有所不同，这是BaseNN的要求），载入时可使用如下代码。
 
 ::
@@ -142,7 +142,11 @@ c）同时支持CPU和GPU
    model.add(layer='linear',size=(10, 5), activation='relu') # [120, 5]
    model.add(layer='linear', size=(5, 3), activation='softmax') # [120, 3]
 
+::
+
    model.add('lstm',size=(128,256),num_layers=2)
+
+::
 
    model.add('conv2d', size=(1, 3),kernel_size=( 3, 3), activation='relu') # [100, 3, 18, 18]
 
@@ -161,8 +165,8 @@ c）同时支持CPU和GPU
 
 从训练类型的角度，可以分为正常训练和继续训练。
 
-4.1 正常训练
-^^^^^^^^^^^^
+正常训练
+^^^^^^^^
 
 .. code:: python
 
@@ -176,8 +180,8 @@ c）同时支持CPU和GPU
 
 ``model.save_fold``\ 表示训练出的模型文件保存的文件夹。
 
-4.2 继续训练
-^^^^^^^^^^^^
+继续训练
+^^^^^^^^
 
 .. code:: python
 
