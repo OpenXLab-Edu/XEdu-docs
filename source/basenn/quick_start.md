@@ -8,6 +8,8 @@ BaseNN可以方便地逐层搭建神经网路，深入探究网络原理。
 
 `pip install basenn` 或 `pip install BaseNN`
 
+更新库文件：`pip install --upgrade BaseNN`
+
 
 ## 体验
 
@@ -33,19 +35,9 @@ model = nn()
 
 ### 第2步 载入数据
 
-读取并载入鸢尾花数据：
-
 ```python
-# 读取训练数据
-train_path = '../dataset/iris/iris_training.csv' 
-x = np.loadtxt(train_path, dtype=float, delimiter=',',skiprows=1,usecols=range(0,4)) # 读取前四列，特征
-y = np.loadtxt(train_path, dtype=int, delimiter=',',skiprows=1,usecols=4) # 读取第五列，标签
-# 读取测试数据
-test_path = '../dataset/iris/iris_test.csv'
-test_x = np.loadtxt(test_path, dtype=float, delimiter=',',skiprows=1,usecols=range(0,4)) # 读取前四列，特征
-test_y = np.loadtxt(test_path, dtype=int, delimiter=',',skiprows=1,usecols=4) # 读取第五列，标签
-# 将数据载入
-model.load_dataset(x, y)
+train_path = 'data/iris_training.csv'
+model.load_tab_data(train_path, batch_size=120)
 ```
 
 ### 第3步 搭建模型
@@ -82,6 +74,29 @@ model.train(lr=0.01, epochs=1000, checkpoint=checkpoint)
 
 ### 第5步 模型测试
 
+用测试数据查看模型效果。
+
+```python
+# 用测试数据查看模型效果
+model2 = nn()
+test_path = 'data/iris_test.csv'
+test_x = np.loadtxt(test_path, dtype=float, delimiter=',',skiprows=1,usecols=range(0,4)) 
+res = model2.inference(test_x, checkpoint="checkpoints/iris_ckpt/basenn.pth")
+model2.print_result(res)
+
+# 获取最后一列的真实值
+test_y = np.loadtxt(test_path, dtype=float, delimiter=',',skiprows=1,usecols=4) 
+# 定义一个计算分类正确率的函数
+def cal_accuracy(y, pred_y):
+    res = pred_y.argmax(axis=1)
+    tp = np.array(y)==np.array(res)
+    acc = np.sum(tp)/ y.shape[0]
+    return acc
+
+# 计算分类正确率
+print("分类正确率为：",cal_accuracy(test_y, res))
+```
+
 用某组测试数据查看模型效果。
 
 ```python
@@ -95,24 +110,6 @@ model.print_result(res) # 输出字典格式结果
 参数`data`为待推理的测试数据数据，该参数必须传入值；
 
 `checkpoint`为已有模型路径，即使用现有的模型进行推理。
-
-用测试数据查看模型效果。
-
-```python
-# 用测试数据查看模型效果
-res = model.inference(data=test_x, checkpoint=checkpoint)
-model.print_result(res) # 输出字典格式结果
-
-# 定义一个计算分类正确率的函数
-def cal_accuracy(y, pred_y):
-    res = pred_y.argmax(axis=1)
-    tp = np.array(y)==np.array(res)
-    acc = np.sum(tp)/ y.shape[0]
-    return acc
-
-# 计算分类正确率
-print("分类正确率为：",cal_accuracy(test_y, res))
-```
 
 ## 快速体验
 
