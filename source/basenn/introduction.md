@@ -182,11 +182,9 @@ model.train(lr=0.01, epochs=1000, checkpoint=checkpoint)
 
 针对不同类型的数据类型，载入数据、搭建模型和模型训练的代码会略有不同。深度学习常见的数据类型介绍详见[附录4](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#id23)。
 
-#### 图片类型
+#### 图片文件夹类型
 
-针对图像数据可增加classes参数设置。
-
-直接指定图片文件夹完成模型训练的示例代码如下：
+可直接指定图片文件夹，另外可增加classes参数设置，参考代码如下：
 
 ```python
 model = nn()
@@ -234,7 +232,7 @@ classes = {'0':'0', '1':'1'}
 
 #### 特征类型
 
-直接指定csv格式的表格完成模型训练的示例代码如下：
+可直接指定csv格式的表格完成模型训练，参考代码如下：
 
 ```python
 model = nn()
@@ -261,7 +259,7 @@ model.train(lr=0.01,epochs=1)
 
 #### 文本类型
 
-在做文本识别等NLP（自然语言处理）领域项目时，一般搭建[RNN网络](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn)训练模型，训练数据是文本数据，模型训练的示例代码如下：
+在做文本识别等NLP（自然语言处理）领域项目时，一般搭建[RNN网络](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn)训练模型，训练数据是文本数据，参考代码代码如下：
 
 ```
 model = nn()

@@ -198,12 +198,12 @@ c）同时支持CPU和GPU
 
 针对不同类型的数据类型，载入数据、搭建模型和模型训练的代码会略有不同。深度学习常见的数据类型介绍详见\ `附录4 <https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#id23>`__\ 。
 
-图片类型
-^^^^^^^^
+.. _图片文件夹类型-1:
 
-针对图像数据可增加classes参数设置。
+图片文件夹类型
+^^^^^^^^^^^^^^
 
-直接指定图片文件夹完成模型训练的示例代码如下：
+可直接指定图片文件夹，另外可增加classes参数设置，参考代码如下：
 
 .. code:: python
 
@@ -252,7 +252,7 @@ classes可传参数兼容列表，字典形式(以下三种形式均可)。
 特征类型
 ^^^^^^^^
 
-直接指定csv格式的表格完成模型训练的示例代码如下：
+可直接指定csv格式的表格完成模型训练，参考代码如下：
 
 .. code:: python
 
@@ -282,7 +282,7 @@ classes可传参数兼容列表，字典形式(以下三种形式均可)。
 文本类型
 ^^^^^^^^
 
-在做文本识别等NLP（自然语言处理）领域项目时，一般搭建\ `RNN网络 <https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn>`__\ 训练模型，训练数据是文本数据，模型训练的示例代码如下：
+在做文本识别等NLP（自然语言处理）领域项目时，一般搭建\ `RNN网络 <https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn>`__\ 训练模型，训练数据是文本数据，参考代码代码如下：
 
 ::
 
