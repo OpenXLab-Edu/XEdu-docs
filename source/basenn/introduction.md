@@ -190,7 +190,7 @@ model.train(lr=0.01, epochs=1000, checkpoint=checkpoint)
 
 ```python
 model = nn()
-model.load_img_data("./mnist/training_set",color="grayscale",classes=classes, batch_size=32)
+model.load_img_data("./mnist/training_set",color="grayscale",batch_size=32)
 model.add('Conv2D', size=(1, 6),kernel_size=( 5, 5), activation='ReLU') 
 model.add('AvgPool', kernel_size=(2,2)) 
 model.add('Conv2D', size=(6, 16), kernel_size=(5, 5), activation='ReLU') 
@@ -207,9 +207,9 @@ model.train(lr=0.01, epochs=200, checkpoint="new_mn_ckpt/basenn.pth",classes=cla
 
 ```
 model = nn()
-model.load_dataset(x,y,classes=classes) # classes是类别列表（列表） //字典
+model.load_dataset(x,y) # classes是类别列表（列表） //字典
 model.add('conv2d',...)
-model.train(lr=0.01,epochs=1)
+model.train(lr=0.01,epochs=1,classes=classes)
 ```
 
 classes可传参数兼容列表，字典形式(以下三种形式均可)。
