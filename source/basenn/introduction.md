@@ -58,9 +58,9 @@ model.load_tab_data(train_path, batch_size=120)
 
 `batch_size`：表示在一次训练中同时处理的样本数量。通常情况下，批量大小越大，模型的收敛速度越快，但内存和计算资源的需求也会相应增加。
 
-#### 拓展：自行编写代码载入数据：
+#### 拓展——自行编写代码载入数据：
 
-如您自行编写代码加载数据并做预处理，生成输入numpy格式的特征 `x` 和目标标签 `y`，载入时可使用如下代码。
+如您想要尝试自行编写代码加载数据并做预处理，需生成NumPy数组格式的特征 `x` 和目标标签 `y`（不同的框架和模型可能对输入数据的格式有所要求有所不同，这是BaseNN的要求），载入时可使用如下代码。
 
 ```
 model.load_dataset(x, y)
@@ -82,6 +82,8 @@ test_y = np.loadtxt(test_path, dtype=int, delimiter=',',skiprows=1,usecols=4) # 
 # 将数据载入
 model.load_dataset(x, y)
 ```
+
+上面这段代码使用了NumPy库加载和预处理lvis鸢尾花数据集。代码首先指定了训练数据集和测试数据集的路径，然后使用`np.loadtxt`函数从CSV文件中读取特征和标签数据，并存储在`x`和`y`变量中。测试数据也以相同的方式加载并存储在`test_x`和`test_y`变量中。最后，通过调用`model.load_dataset(x, y)`将数据集载入模型。
 
 读取并载入手写体图像数据集（数据集包含了0-9共10类手写数字图片，都是28x28大小的灰度图）：
 
@@ -115,6 +117,8 @@ train_x, train_y = read_data('../dataset/mnist/training_set')
 # 载入数据
 model.load_dataset(train_x, train_y) 
 ```
+
+上面这段代码中定义了一个名为`read_data`的函数，该函数用于从指定路径中读取MNIST训练数据。该函数首先遍历给定路径中的文件夹，然后读取每个文件夹中的图像数据，并将其转换为灰度图像。读取的图像数据被存储在`data`列表中，相应的标签存储在`label`列表中。最后，通过`np.array`将数据和标签转换为NumPy数组，并使用`np.expand_dims`函数在数据维度上进行扩展，以适应模型的输入要求。
 
 ### 3. 搭建模型
 
@@ -275,11 +279,11 @@ model.print_result(result) # 输出字典格式结果
 
 `checkpoint`为已有模型路径，即使用现有的模型进行推理。
 
-直接推理的输出结果数据类型为`numpy`的二维数组，表示各个样本的各个特征的置信度。
+直接推理的输出结果数据类型为`NumPy`的二维数组，表示各个样本的各个特征的置信度。
 
 输出字典格式结果的数据类型为字典，格式为{样本编号：{预测值：x，置信度：y}}。`print_result()`函数调用即输出，但也有返回值。
 
-参数`data`为待推理的测试数据数据，该参数必须传入值，可以传入numpy数组或文件路径。除了numpy数组格式的特征数据，还可以传入文件路径进行模型推理，下面我们分文件类型说明。
+参数`data`为待推理的测试数据数据，该参数必须传入值，可以传入NumPy数组或文件路径。除了NumPy数组格式的特征数据，还可以传入文件路径进行模型推理，下面我们分文件类型说明。
 
 #### 针对单个图片文件的推理：
 
@@ -325,7 +329,7 @@ word = model.idx2word[index] # 根据词表获得对应的字
 
 `result`为列表包含两个变量：`[output, hidden]`。
 
-`output`为numpy数组，里面是一系列概率值，对应每个字的概率。
+`output`为NumPy数组，里面是一系列概率值，对应每个字的概率。
 
 `hidden`为高维向量，存储上下文信息，代表“记忆”，所以生成单个字可以不传入hidden，但写诗需要循环传入之前输出的hidden。
 
@@ -371,7 +375,7 @@ model.visual_feature(img,in1img = True)   # 特征的可视化
 如输入数据为一维数据，指定数据和已经训练好的模型，可生成一个txt文件展示经过各层后的输出。
 
 ```
-import numpy as np
+import NumPy as np
 from BaseNN import nn
 model = nn()
 model.load('checkpoints/iris_ckpt/basenn.pth')          # 保存的已训练模型载入
@@ -460,13 +464,13 @@ model.add(optimizer='SGD') # 设定优化器
 
 参数:
 
-​	layer：层的类型，可选值包括Conv2D, MaxPool, AvgPool, Linear。
+layer：层的类型，可选值包括Conv2D, MaxPool, AvgPool, Linear。
 
-​	activation：激活函数类型，可选值包括ReLU，Softmax。
+activation：激活函数类型，可选值包括ReLU，Softmax。
 
-​	optimizer：为优化器类型，默认值为SGD，可选值包括SGD，Adam，Adagrad，ASGD。
+optimizer：为优化器类型，默认值为SGD，可选值包括SGD，Adam，Adagrad，ASGD。
 
-​	kw：关键字参数，包括与size相关的各种参数，常用的如size=(x,y)，x为输入维度，y为输出维度；					                     			kernel_size=(a,b)， (a,b)表示核的尺寸。
+kw：关键字参数，包括与size相关的各种参数，常用的如size=(x,y)，x为输入维度，y为输出维度；					                     			kernel_size=(a,b)， (a,b)表示核的尺寸。
 
 以下具体讲述各种层：
 
@@ -494,17 +498,17 @@ size的两个值：
 
 参数说明：
 
-​	input_size： 输入数据的特征维数，即每一个字用多少维的向量来表示，通常就是embedding_dim(词向量的维度)。
+input_size： 输入数据的特征维数，即每一个字用多少维的向量来表示，通常就是embedding_dim(词向量的维度)。
 
-​	hidden_size：LSTM中隐藏层的神经元数量。
+hidden_size：LSTM中隐藏层的神经元数量。
 
-​	num_layers：循环神经网络的层数。一般1~5，常用2、3层，太多层会大幅度影响训练速度和收敛难度。
+num_layers：循环神经网络的层数。一般1~5，常用2、3层，太多层会大幅度影响训练速度和收敛难度。
 
-​	bias：用不用偏置，default=True。
+bias：用不用偏置，default=True。
 
-​	dropout：默认是0，代表不用dropout。
+dropout：默认是0，代表不用dropout。
 
-​	bidirectional：默认是false，代表不用双向LSTM。
+bidirectional：默认是false，代表不用双向LSTM。
 
 以上仅是基本的模型架构。在实际使用中，可能需要调整模型的层数、节点数、激活函数等参数以达到最佳效果。
 
