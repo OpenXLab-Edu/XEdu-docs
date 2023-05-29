@@ -184,11 +184,11 @@ model.train(lr=0.01, epochs=1000, checkpoint=checkpoint)
 
 #### 图片文件夹类型
 
-可直接指定图片文件夹，另外可增加classes参数设置，参考代码如下：
+可直接指定图片文件夹，同时针对图片数据可增加classes参数设置（推理时会输出预测的类别名称，如不设置此参数则只输出类别标签），参考代码如下：
 
 ```python
 model = nn()
-model.load_img_data("./mnist/training_set",color="grayscale",batch_size=32)
+model.load_img_data("./mnist/training_set",color="grayscale",batch_size=32,classes=classes)
 model.add('Conv2D', size=(1, 6),kernel_size=( 5, 5), activation='ReLU') 
 model.add('AvgPool', kernel_size=(2,2)) 
 model.add('Conv2D', size=(6, 16), kernel_size=(5, 5), activation='ReLU') 
@@ -198,16 +198,16 @@ model.add('Linear', size=(120, 84), activation='ReLU')
 model.add('Linear', size=(84, 10), activation='Softmax')
 model.add(optimizer='SGD')
 model.save_fold = 'new_mn_ckpt'
-model.train(lr=0.01, epochs=200, checkpoint="new_mn_ckpt/basenn.pth",classes=classes) # 继续训练
+model.train(lr=0.01, epochs=200, checkpoint="new_mn_ckpt/basenn.pth") # 继续训练
 ```
 
 如自己进行对图片数据处理后，使用`load_dataset(x, y)`载入数据，可使用如下代码：
 
 ```
 model = nn()
-model.load_dataset(x,y) # classes是类别列表（列表） //字典
+model.load_dataset(x,y,classes=classes) # classes是类别列表（列表） //字典
 model.add('conv2d',...)
-model.train(lr=0.01,epochs=1,classes=classes)
+model.train(lr=0.01,epochs=1)
 ```
 
 classes可传参数兼容列表，字典形式(以下三种形式均可)。
