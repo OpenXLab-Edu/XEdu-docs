@@ -18,15 +18,11 @@
 
 ![image](../images/mmedu/MMEDU安装图1.png) 
 
-​    1）下载方式一
+​    1）下载方式（已并入XEdu）
 
-飞书网盘： https://p6bm2if73b.feishu.cn/drive/folder/fldcnfDtXSQx0PDuUGLWZlnVO3g
+飞书网盘：https://p6bm2if73b.feishu.cn/drive/folder/fldcn67XTwhg8qIFCl8edJBZZQb
 
-​    2）下载方式二
-
-百度网盘：https://pan.baidu.com/s/19lu12-T2GF_PiI3hMbtX-g?pwd=2022 
-
-​       提取码：2022
+百度网盘:https://pan.baidu.com/s/1UDt-GwHriCB_rewl8kCrUA?pwd=2022 提取码:2022 
 
 第二步：运行根目录的“steup.bat”文件，完成环境部署（如下图所示）。
 
@@ -70,8 +66,8 @@ Jupyter Notebook是基于网页的用于交互计算的应用程序。其可被�
 
 ### 1.2 pip安装
 
-当前，我们提供的MMEdu0.0.7版本的安装是基础版的pip安装包，可以使用如下命令安装：
-`pip install mmedu==0.0.7`或`pip install MMEdu==0.0.7`。
+可以使用如下命令安装：
+`pip install mmedu`或`pip install MMEdu`。
 
 ## 2. 完整版安装之pip安装
 
