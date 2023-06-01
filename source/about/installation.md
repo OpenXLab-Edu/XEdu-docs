@@ -279,13 +279,11 @@ $ pip install mmcv-full -f https://download.openmmlab.com/mmcv/dist/{cu_version}
 $ pip install mmcv-full==1.4.5 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.8.0/index.html
 ```
 
-最后安装MMEdu的rc版本，例如
+最后安装MMEdu。
 
 ```powershell
-$ pip install MMEdu==0.1.0rc0
+$ pip install MMEdu
 ```
-
-即可。
 
 ### 2. pip安装BaseML
 
