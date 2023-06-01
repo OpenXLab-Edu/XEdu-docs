@@ -213,6 +213,7 @@ PyCharm环境路径配置如下图所示。
    $ pip install mmcv-full==1.4.5 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.8.0/index.html
 
 最后安装MMEdu。
+
 .. code:: powershell
 
    $ pip install MMEdu
