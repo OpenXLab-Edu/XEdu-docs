@@ -21,4 +21,4 @@ A3：首先排查一下环境是否安装好了，看看cuda是否可用，如�
 
 Q4：XEdu有一直在更新吗？
 
-A4：XEdu一直在更新，迭代记录详见https://xedu.readthedocs.io/zh/master/about/version_update.html#id4，每次迭代后相关模块的教程也会及时配套更新。
+A4：XEdu一直在更新，迭代记录详见[正式版更新记录](https://xedu.readthedocs.io/zh/master/about/version_update.html#id4)，每次迭代后相关模块的教程也会及时配套更新。
