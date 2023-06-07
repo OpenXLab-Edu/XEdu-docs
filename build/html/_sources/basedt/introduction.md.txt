@@ -128,6 +128,32 @@ ds.make_dataset(r"G:\\测试数据集\\fruit_voc", src_format="VOC",train_ratio 
 
 `train_ratio , test_ratio, val_ratio`：训练集、测试集、验证集划分比例，默认比例为train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2。
 
+### （4）数据集拆分
+
+针对图像数据集，在上一步其实已有拆分数据集功能（使用train_ratio , test_ratio, val_ratio的设置），针对csv格式的表格数据集，可以使用BaseDT的split_tab_dataset()函数完成拆分。
+
+**示例代码：**
+
+```Python
+from BaseDT.dataset import split_tab_dataset
+path = "./iris/iris.csv"
+tx,ty,val_x,val_y = split_tab_dataset(path,data_column=range(0,4),label_column=4)
+```
+
+**参数详解：**
+
+`data_path`: csv文件路径（csv格式和以前一致，第一行为表头不读）。
+
+`data_column`: 文件中数据的列数，形式上可以是可迭代对象range(0,4)表示前四列，可以是列表[0,3]表示第一列和第四列，也可以是数字 4 表示第4列。 
+
+`label_column`: 文件中标签的列数，默认是-1，形式上与data_column一致。 train_val_ratio: 训练集的比重，默认是0.8。 `random_seed`: 随机数种子，默认42。设定相同的随机数种子使得划分结果可复现。 
+
+**返回值：** 
+
+四个numpy数组：训练数据，训练标签，验证数据，验证标签 。
+
+并且会将训练集和验证集保存为csv： 命名为"原文件名_train.csv"和"原文件名_val.csv"，表头为Feature1、Feature2、Feature3... Label1、Label2、Label3...
+
 ## 板块3：数据的可视化
 
 BaseDT提供了一个plot模块，它可以让你对不同任务的数据进行可视化，例如绘制分类任务的混淆矩阵、目标检测任务的目标框、分割任务的掩膜等。plot模块支持多种显示方式，让你可以方便地查看和分析图片、文本、语音等不同类型的数据。
