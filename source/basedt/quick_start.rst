@@ -168,6 +168,22 @@ BaseDT提供了XEdu支持的数据集格式检查功能。
 
 **用BaseDT完成数据集制作和格式检查体验项目**\ ：https://www.openinnolab.org.cn/pjlab/project?id=6412c95f79f259135f259f45&sc=635638d69ed68060c638f979#public
 
+4. 数据集拆分
+~~~~~~~~~~~~~
+
+一般训练前建议先完成数据集划分，即将数据集拆分为训练集和验证集，训练集用于训练模型，验证集用于评估模型的性能。针对CSV格式的数据集，可以使用BaseDT完成拆分。
+
+::
+
+   from BaseDT.dataset import split_tab_dataset
+   # 指定待拆分的csv数据集
+   path = "feature_data/mmpose_pose_train_feature.csv"
+   # 指定特征数据列、标签列、训练集比重，‘normalize=True’表示进行归一化处理
+   tx,ty,val_x,val_y = split_tab_dataset(path,data_column=range(1,35),label_column=35,train_val_ratio=0.8,normalize=True)
+
+.. figure:: ../images/basedt/csv数据集拆分.png
+
+
 数据的可视化
 ------------
 

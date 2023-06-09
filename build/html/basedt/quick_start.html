@@ -61,19 +61,20 @@
 <li class="toctree-l4"><a class="reference internal" href="#id10">1. 常用数据集下载</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id11">2. 数据集格式检查</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id12">3. 数据集格式转换</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">4. 数据集拆分</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id13">数据的可视化</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id14">1. 绘制分类任务混淆矩阵</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id15">2. 绘制目标检测任务的检测框</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id16">3. 绘制分割任务的掩膜</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">数据的可视化</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id15">1. 绘制分类任务混淆矩阵</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16">2. 绘制目标检测任务的检测框</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id17">3. 绘制分割任务的掩膜</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#i-o">轻松调用I/O设备</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id17">调用麦克风</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18">调用麦克风</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id18">附录</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">附录</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="installation.html">BaseDT安装</a></li>
@@ -248,16 +249,30 @@ classes.txt
 <p>更多XEdu支持的数据集格式的介绍详见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#id3">数据集支持</a>部分。</p>
 <p><strong>用BaseDT完成数据集制作和格式检查体验项目</strong>：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=6412c95f79f259135f259f45&amp;sc=635638d69ed68060c638f979#public">https://www.openinnolab.org.cn/pjlab/project?id=6412c95f79f259135f259f45&amp;sc=635638d69ed68060c638f979#public</a></p>
 </section>
-</section>
 <section id="id13">
-<h2>数据的可视化<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h2>
-<p>BaseDT提供了一个plot模块，它可以让你对不同任务的数据进行可视化。</p>
+<h3>4. 数据集拆分<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h3>
+<p>一般训练前建议先完成数据集划分，即将数据集拆分为训练集和验证集，训练集用于训练模型，验证集用于评估模型的性能。针对CSV格式的数据集，可以使用BaseDT完成拆分。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.dataset</span> <span class="kn">import</span> <span class="n">split_tab_dataset</span>
+<span class="c1"># 指定待拆分的csv数据集</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;feature_data/mmpose_pose_train_feature.csv&quot;</span>
+<span class="c1"># 指定特征数据列、标签列、训练集比重，‘normalize=True’表示进行归一化处理</span>
+<span class="n">tx</span><span class="p">,</span><span class="n">ty</span><span class="p">,</span><span class="n">val_x</span><span class="p">,</span><span class="n">val_y</span> <span class="o">=</span> <span class="n">split_tab_dataset</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">data_column</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">35</span><span class="p">),</span><span class="n">label_column</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span><span class="n">train_val_ratio</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../_images/csv数据集拆分.png" src="../_images/csv数据集拆分.png" />
+</figure>
+</section>
+</section>
 <section id="id14">
-<h3>1. 绘制分类任务混淆矩阵<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h3>
+<h2>数据的可视化<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h2>
+<p>BaseDT提供了一个plot模块，它可以让你对不同任务的数据进行可视化。</p>
+<section id="id15">
+<h3>1. 绘制分类任务混淆矩阵<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h3>
 <p>敬请期待。</p>
 </section>
-<section id="id15">
-<h3>2. 绘制目标检测任务的检测框<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h3>
+<section id="id16">
+<h3>2. 绘制目标检测任务的检测框<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.plot</span> <span class="kn">import</span> <span class="n">imshow_det_bboxes</span>
 <span class="n">img</span> <span class="o">=</span> <span class="s1">&#39;test.jpg&#39;</span>
 <span class="c1"># imshow_det_bboxes(图像， 框和得分，标签， 类别， 得分阈值)</span>
@@ -268,16 +283,16 @@ classes.txt
 <img alt="../_images/绘制目标检测框.png" src="../_images/绘制目标检测框.png" />
 </figure>
 </section>
-<section id="id16">
-<h3>3. 绘制分割任务的掩膜<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h3>
+<section id="id17">
+<h3>3. 绘制分割任务的掩膜<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h3>
 <p>敬请期待。</p>
 </section>
 </section>
 <section id="i-o">
 <h2>轻松调用I/O设备<a class="headerlink" href="#i-o" title="Permalink to this headline"></a></h2>
 <p>BaseDT提供了一个io模块，用于支持数据的I/O设备的调用，它可以让你方便地从不同的来源获取和输出数据。型和格式的数据。</p>
-<section id="id17">
-<h3>调用麦克风<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h3>
+<section id="id18">
+<h3>调用麦克风<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.io</span> <span class="kn">import</span> <span class="n">MicroPhone</span>
 <span class="c1"># 创建麦克风对象</span>
 <span class="n">microphone</span> <span class="o">=</span> <span class="n">MicroPhone</span><span class="p">()</span>
@@ -291,8 +306,8 @@ classes.txt
 </figure>
 </section>
 </section>
-<section id="id18">
-<h2>附录<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h2>
+<section id="id19">
+<h2>附录<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h2>
 <p>敬请期待。</p>
 </section>
 </section>
