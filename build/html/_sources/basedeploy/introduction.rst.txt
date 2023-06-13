@@ -18,7 +18,10 @@ BaseDeploy：服务于XEdu的模型部署工具
 
 -  图像分类
 
-|image| - 目标检测
+.. figure:: ../images/basedeploy/基本功能推理_图像分类.png
+
+
+-  目标检测
 
 .. figure:: ../images/basedeploy/基本功能推理_目标检测.png
 
@@ -232,7 +235,10 @@ FastAPI
 
 -  图像分类
 
-|image| - 目标检测
+.. figure:: ../images/basedeploy/EasyAPI_分类.JPG
+
+
+-  目标检测
 
 .. figure:: ../images/basedeploy/EasyAPI_检测.JPG
 
@@ -317,11 +323,9 @@ PywebIO：https://github.com/pywebio/PyWebIO
 
 Flask：https://github.com/pallets/flask
 
-.. |image| image:: ../images/basedeploy/基本功能推理_图像分类.png
 .. |image| image:: ../images/basedeploy/gradio_分类推理.JPG
 .. |image| image:: ../images/basedeploy/gradio_检测推理.JPG
 .. |image| image:: ../images/basedeploy/EasyAPI_命令行启动.JPG
-.. |image| image:: ../images/basedeploy/EasyAPI_分类.JPG
 .. |image| image:: ../images/basedeploy/pywebio_推理_1.JPG
 .. |image| image:: ../images/basedeploy/pywebio_推理_2.JPG
 

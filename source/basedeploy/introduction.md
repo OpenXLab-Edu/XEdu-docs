@@ -17,6 +17,9 @@ result = model.inference(dt, show=True)
 - 图像分类
 
 ![image](../images/basedeploy/基本功能推理_图像分类.png)
+
+
+
 - 目标检测
 
 ![image](../images/basedeploy/基本功能推理_目标检测.png)
@@ -48,6 +51,8 @@ result = model.inference(folder_path)
 
 ![image](../images/basedeploy/文件夹推理_分类.JPG)
 
+
+
 - 目标检测
 
 ![image](../images/basedeploy/文件夹推理_检测.JPG)
@@ -63,6 +68,8 @@ result = model.inference(folder_path, show=True, show_path=True)
 - 图像分类
 
 ![image](../images/basedeploy/路径显示_分类.JPG)
+
+
 
 - 目标检测
 
@@ -86,6 +93,8 @@ PIL方式适合Jupyter中进行交互，下面是一个
 
 ![image](../images/basedeploy/图像回传_分类_pil.JPG)
 
+
+
 - 目标检测
 
 ![image](../images/basedeploy/图像回传_检测_pil.JPG)
@@ -104,6 +113,8 @@ cv2.destroyAllWindows()
 ```
 ![image](../images/basedeploy/图像回传_分类_cv2.JPG)
 
+
+
 - 目标检测
 
 ![image](../images/basedeploy/图像回传_检测_cv2.JPG)
@@ -119,6 +130,8 @@ result = model.inference(img_path, show=True)
 - 图像分类
 
 ![image](../images/basedeploy/无信息ONNX推理_分类.JPG)
+
+
 
 - 目标检测
 
@@ -147,7 +160,9 @@ model.run_gradio()
 ```
 
 - 图像分类
-![image](../images/basedeploy/gradio_分类推理.JPG)
+  ![image](../images/basedeploy/gradio_分类推理.JPG)
+
+  
 
 - 目标检测
 ![image](../images/basedeploy/gradio_检测推理.JPG)
@@ -170,7 +185,7 @@ model.run_fastapi()
 port：设置启动`FastAPI`的端口号，默认为：`1956`。
 mode: 设置`FastAPI`的运行模式，可选参数为`json`和`img`，代表回传的内容为推理结果或推理后绘制的图片，于用户角度即为绘制图像操作在上位机还是下位机完成。
 score：设置绘图阈值，若高于阈值，才进行绘图操作，默认为：`0.65`。
- 
+
 
 运行后出现下图所示的内容，即代表`FastAPI`启动成功。
 ![image](../images/basedeploy/EasyAPI_命令行启动.JPG)
@@ -188,6 +203,9 @@ result = requests.post(url=url, files=files)
 - 图像分类
 
 ![image](../images/basedeploy/EasyAPI_分类.JPG)
+
+
+
 - 目标检测
 
 ![image](../images/basedeploy/EasyAPI_检测.JPG)
@@ -223,6 +241,8 @@ model = bd(ip_path, backend='siot')
 如上操作后，用户即可在用户端使用`model.inference`函数进行模型的推理了，使用方法遵循原有`inference`推理示例。
 
 ![image](../images/basedeploy/SIoT推理.JPG)
+
+
 
 用户端对服务端进行访问时，服务端也会同步打印推理结果，便于用户检查连接状况等。
 
