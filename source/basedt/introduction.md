@@ -81,6 +81,51 @@ tensor_value = data.to_tensor()
 
 `backbone`: 网络模型所使用地backbone名称。
 
+### （6）ONNX模型信息数据读取
+
+`MMEdu`在进行模型转换的时候，会将模型的关键信息（`模型功能`、`模型名称`和`类别信息`）等写入ONNX模型，`BaseDT.data`中的`ModelData`提供了模型信息的读取函数，通过该函数可快速读取中ONNX模型信息。
+
+```python
+from BaseDT.data import ModelData
+model = ModelData(model_path)
+```
+
+**参数详解：**
+
+`model_path`: MMEdu模型转换生成的onnx模型路径。
+
+`ModelData`中还提供了几个函数，以供用户获得对应的模型信息。
+
+- 使用`get_model_info`函数获得模型所有信息，返回值是一个字典。
+```python
+from BaseDT.data import ModelData
+model = ModelData(model_path)
+model.get_model_info()
+```
+
+- 使用`get_codebase`函数获得模型任务类型，返回值是一个字符串。
+```python
+from BaseDT.data import ModelData
+model = ModelData(model_path)
+model.get_codebase()
+```
+
+- 使用`get_labels`函数获得模型类别信息，返回值是一个列表，列表中包含类别信息的字符串，列表长度为类别数量。
+```python
+from BaseDT.data import ModelData
+model = ModelData(model_path)
+model.get_labels()
+```
+
+- 使用`get_modelname`函数获得模型名称，返回值是一个字符串。
+```python
+from BaseDT.data import ModelData
+model = ModelData(model_path)
+model.get_modelname()
+```
+
+
+
 ## 板块2：数据集的处理
 
 数据集的好坏决定了模型的训练结果，数据集的制作是深度学习模型训练的第一步。在实现一个深度学习项目时，除了搭建模型的网络结构，更重要的一点是处理好项目需要的数据集，那么就需要进行数据集处理。BaseDT提供了的DataSet类可支持对不同类型和格式的数据集进行处理。
@@ -188,6 +233,12 @@ imshow_det_bboxes(img, bboxes = [[3,25,170,263,0.9]],labels = [0], class_names =
 `class_names`: 每个类别的名称，这里只有一个名称，就是 “cat”。
 
 `score_thr`: 显示边界框的最小分数，这里是 0.8 ，表示只显示分数大于等于 0.8 的边界框。
+
+### （3）日志分析
+
+针对MMEdu训练训练日志，BaseDT的plot模块支持多种训练日志绘制方式，便于用户直观的对模型训练过程进行可视化分析。
+
+
 
 ## 板块4：I/O设备
 

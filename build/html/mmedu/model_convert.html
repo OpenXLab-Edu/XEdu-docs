@@ -76,6 +76,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../baseml.html">传统机器学习库BaseML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basedt.html">数据处理库BaseDT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basedeploy.html">模型部署库BaseDeploy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../scitech_tools.html">相关科创工具</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../support_resources.html">学习支持和资源获取</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dl_library.html">深度学习知识库</a></li>
@@ -422,47 +423,17 @@ PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架
 <p>为了便于部署代码的理解，我们提供了不同后端推理框架下的示例代码，以供用户参考使用</p>
 <p><strong>ONNXRuntime</strong></p>
 <ul class="simple">
-<li><p>图像分类</p></li>
+<li><p>图像分类和目标检测</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">onnxruntime</span> <span class="k">as</span> <span class="nn">rt</span>
-<span class="kn">from</span> <span class="nn">BaseDT.data</span> <span class="kn">import</span> <span class="n">ImageData</span><span class="p">,</span> <span class="n">ModelData</span>
-<span class="n">model_path</span> <span class="o">=</span> <span class="s1">&#39;cls.onnx&#39;</span>
+<span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
+<span class="n">model_path</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 <span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">sess</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">InferenceSession</span><span class="p">(</span><span class="n">model_path</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="n">input_name</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">get_inputs</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
-<span class="n">output_name</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">get_outputs</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
-<span class="n">ret</span><span class="p">,</span><span class="n">img</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">ret</span><span class="p">,</span> <span class="n">img</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">bd</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 <span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
-<span class="n">dt</span> <span class="o">=</span> <span class="n">ImageData</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;MobileNet&#39;</span><span class="p">)</span>
-<span class="n">pred_onx</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">output_name</span><span class="p">],</span> <span class="p">{</span><span class="n">input_name</span><span class="p">:</span> <span class="n">dt</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">()})</span>
-<span class="n">class_names</span> <span class="o">=</span> <span class="n">ModelData</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span><span class="o">.</span><span class="n">get_labels</span><span class="p">()</span>
-<span class="n">ort_output</span> <span class="o">=</span> <span class="n">pred_onx</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">ort_output</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;label:</span><span class="si">{}</span><span class="s1">, acc:</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">class_names</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">ort_output</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">idx</span><span class="p">]))</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>目标检测</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
-<span class="kn">import</span> <span class="nn">onnxruntime</span> <span class="k">as</span> <span class="nn">rt</span>
-<span class="kn">from</span> <span class="nn">BaseDT.data</span> <span class="kn">import</span> <span class="n">ImageData</span><span class="p">,</span> <span class="n">ModelData</span>
-<span class="kn">from</span> <span class="nn">BaseDT.plot</span> <span class="kn">import</span> <span class="n">imshow_det_bboxes</span>
-<span class="n">model_path</span> <span class="o">=</span> <span class="s1">&#39;det.onnx&#39;</span>
-<span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">sess</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">InferenceSession</span><span class="p">(</span><span class="n">model_path</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="n">input_name</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">get_inputs</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
-<span class="n">output_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">o</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">sess</span><span class="o">.</span><span class="n">get_outputs</span><span class="p">()]</span>
-<span class="n">ret</span><span class="p">,</span><span class="n">img</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
-<span class="n">dt</span> <span class="o">=</span> <span class="n">ImageData</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;SSD_Lite&#39;</span><span class="p">)</span>
-<span class="n">pred_onx</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">output_names</span><span class="p">,</span> <span class="p">{</span><span class="n">input_name</span><span class="p">:</span> <span class="n">dt</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">()})</span>
-<span class="n">class_names</span> <span class="o">=</span> <span class="n">ModelData</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span><span class="o">.</span><span class="n">get_labels</span><span class="p">()</span>
-<span class="n">boxes</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">map_orig_coords</span><span class="p">(</span><span class="n">pred_onx</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="n">pred_onx</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">imshow_det_bboxes</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">bboxes</span><span class="o">=</span><span class="n">boxes</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">class_names</span><span class="o">=</span><span class="n">class_names</span><span class="p">,</span> <span class="n">score_thr</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>

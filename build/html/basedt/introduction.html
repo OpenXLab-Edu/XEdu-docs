@@ -19,7 +19,7 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="相关科创工具" href="../scitech_tools.html" />
+    <link rel="next" title="模型部署库BaseDeploy" href="../basedeploy.html" />
     <link rel="prev" title="BaseDT安装" href="installation.html" /> 
 </head>
 
@@ -55,6 +55,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#id4">（3）语音数据处理</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id5">（4）通用数据处理</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id6">（5）模型部署数据处理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#onnx">（6）ONNX模型信息数据读取</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#id7">板块2：数据集的处理</a><ul>
@@ -67,16 +68,18 @@
 <li class="toctree-l3"><a class="reference internal" href="#id12">板块3：数据的可视化</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id13">（1）绘制分类任务混淆矩阵</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id14">（2）绘制目标检测任务的检测框</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">（3）日志分析</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#i-o">板块4：I/O设备</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id15">（1） 调用麦克风</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16">（1） 调用麦克风</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../basedeploy.html">模型部署库BaseDeploy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../scitech_tools.html">相关科创工具</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../support_resources.html">学习支持和资源获取</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dl_library.html">深度学习知识库</a></li>
@@ -169,6 +172,49 @@
 <p><code class="docutils literal notranslate"><span class="pre">img</span></code>: 一个np.ndarray对象或者一个图像文件的路径。</p>
 <p><code class="docutils literal notranslate"><span class="pre">backbone</span></code>: 网络模型所使用地backbone名称。</p>
 </section>
+<section id="onnx">
+<h3>（6）ONNX模型信息数据读取<a class="headerlink" href="#onnx" title="Permalink to this headline"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">MMEdu</span></code>在进行模型转换的时候，会将模型的关键信息（<code class="docutils literal notranslate"><span class="pre">模型功能</span></code>、<code class="docutils literal notranslate"><span class="pre">模型名称</span></code>和<code class="docutils literal notranslate"><span class="pre">类别信息</span></code>）等写入ONNX模型，<code class="docutils literal notranslate"><span class="pre">BaseDT.data</span></code>中的<code class="docutils literal notranslate"><span class="pre">ModelData</span></code>提供了模型信息的读取函数，通过该函数可快速读取中ONNX模型信息。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.data</span> <span class="kn">import</span> <span class="n">ModelData</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ModelData</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>参数详解：</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">model_path</span></code>: MMEdu模型转换生成的onnx模型路径。</p>
+<p><code class="docutils literal notranslate"><span class="pre">ModelData</span></code>中还提供了几个函数，以供用户获得对应的模型信息。</p>
+<ul class="simple">
+<li><p>使用<code class="docutils literal notranslate"><span class="pre">get_model_info</span></code>函数获得模型所有信息，返回值是一个字典。</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.data</span> <span class="kn">import</span> <span class="n">ModelData</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ModelData</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">get_model_info</span><span class="p">()</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>使用<code class="docutils literal notranslate"><span class="pre">get_codebase</span></code>函数获得模型任务类型，返回值是一个字符串。</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.data</span> <span class="kn">import</span> <span class="n">ModelData</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ModelData</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">get_codebase</span><span class="p">()</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>使用<code class="docutils literal notranslate"><span class="pre">get_labels</span></code>函数获得模型类别信息，返回值是一个列表，列表中包含类别信息的字符串，列表长度为类别数量。</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.data</span> <span class="kn">import</span> <span class="n">ModelData</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ModelData</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">get_labels</span><span class="p">()</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>使用<code class="docutils literal notranslate"><span class="pre">get_modelname</span></code>函数获得模型名称，返回值是一个字符串。</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.data</span> <span class="kn">import</span> <span class="n">ModelData</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ModelData</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">get_modelname</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
 </section>
 <section id="id7">
 <h2>板块2：数据集的处理<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h2>
@@ -248,12 +294,16 @@
 <p><code class="docutils literal notranslate"><span class="pre">class_names</span></code>: 每个类别的名称，这里只有一个名称，就是 “cat”。</p>
 <p><code class="docutils literal notranslate"><span class="pre">score_thr</span></code>: 显示边界框的最小分数，这里是 0.8 ，表示只显示分数大于等于 0.8 的边界框。</p>
 </section>
+<section id="id15">
+<h3>（3）日志分析<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h3>
+<p>针对MMEdu训练训练日志，BaseDT的plot模块支持多种训练日志绘制方式，便于用户直观的对模型训练过程进行可视化分析。</p>
+</section>
 </section>
 <section id="i-o">
 <h2>板块4：I/O设备<a class="headerlink" href="#i-o" title="Permalink to this headline"></a></h2>
 <p>BaseDT提供的io模块可支持数据的I/O设备的调用，它可以让你方便地从不同的来源获取和输出数据。例如，你可以用io模块中的MicroPhone类来调用麦克风录音，并且直接将录音转换成AudioData对象，进行后续的处理和分析。此外，BaseDT还支持其他多种I/O设备，比如摄像头、扫描仪、打印机等，让你可以轻松地处理各种类型和格式的数据。</p>
-<section id="id15">
-<h3>（1） 调用麦克风<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h3>
+<section id="id16">
+<h3>（1） 调用麦克风<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h3>
 <p>针对麦克风设备，BaseDT可调用麦克风，并用其录音。</p>
 <p><strong>示例代码：</strong></p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.io</span> <span class="kn">import</span> <span class="n">MicroPhone</span>
@@ -274,7 +324,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="installation.html" class="btn btn-neutral float-left" title="BaseDT安装" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../scitech_tools.html" class="btn btn-neutral float-right" title="相关科创工具" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../basedeploy.html" class="btn btn-neutral float-right" title="模型部署库BaseDeploy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

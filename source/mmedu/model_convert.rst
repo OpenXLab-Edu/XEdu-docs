@@ -366,49 +366,19 @@ MMEdu内置了一个\ ``convert``\ 函数实现了一键式模型转换，转换
 
 **ONNXRuntime**
 
--  图像分类
+-  图像分类和目标检测
 
 ::
 
    import cv2
-   import numpy as np
-   import onnxruntime as rt
-   from BaseDT.data import ImageData, ModelData
-   model_path = 'cls.onnx'
+   import BaseDeploy as bd
+   model_path = ''
    cap = cv2.VideoCapture(0)
-   sess = rt.InferenceSession(model_path, None)
-   input_name = sess.get_inputs()[0].name
-   output_name = sess.get_outputs()[0].name
-   ret,img = cap.read()
+   ret, img = cap.read()
+   model = bd(model_path)
+   result = model.inference(img)
+   print(result)
    cap.release()
-   dt = ImageData(img, backbone='MobileNet')
-   pred_onx = sess.run([output_name], {input_name: dt.to_tensor()})
-   class_names = ModelData(model_path).get_labels()
-   ort_output = pred_onx[0]
-   idx = np.argmax(ort_output, axis=1)[0]
-   print('label:{}, acc:{}'.format(class_names[idx], ort_output[0][idx]))
-
--  目标检测
-
-::
-
-   import cv2
-   import onnxruntime as rt
-   from BaseDT.data import ImageData, ModelData
-   from BaseDT.plot import imshow_det_bboxes
-   model_path = 'det.onnx'
-   cap = cv2.VideoCapture(0)
-   sess = rt.InferenceSession(model_path, None)
-   input_name = sess.get_inputs()[0].name
-   output_names = [o.name for o in sess.get_outputs()]
-   ret,img = cap.read()
-   cap.release()
-   dt = ImageData(img, backbone='SSD_Lite')
-   pred_onx = sess.run(output_names, {input_name: dt.to_tensor()})
-   class_names = ModelData(model_path).get_labels()
-   boxes = dt.map_orig_coords(pred_onx[0][0])
-   labels = pred_onx[1][0]
-   img = imshow_det_bboxes(img, bboxes=boxes, labels=labels, class_names=class_names, score_thr=0.8)
 
 What：什么现象与成果
 --------------------

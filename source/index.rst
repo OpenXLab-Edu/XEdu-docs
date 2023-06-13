@@ -17,6 +17,7 @@ OpenXLabEdu帮助文档
    baseml
    easydl
    basedt
+   basedeploy
    scitech_tools
    support_resources
    dl_library
