@@ -192,9 +192,15 @@ Gradio
    model = bd(model_path)
    model.run_gradio()
 
--  图像分类 |image|
+-  图像分类
 
--  目标检测 |image|
+.. figure:: ../images/basedeploy/gradio_分类推理.JPG
+
+
+-  目标检测
+
+.. figure:: ../images/basedeploy/gradio_检测推理.JPG
+
 
 FastAPI
 ~~~~~~~
@@ -203,7 +209,11 @@ FastAPI
   API。它是基于 Python
   类型提示和异步编程的优势，提供了快速、易于使用和具有强大功能的开发体验。\ ``BaseDeploy``\ 通过对\ ``FastAPI``\ 的集成，可一键启动接口，并支持json或file的回传形式，用户可自行选择。
 | 值得注意的是，由于\ ``FastAPI``\ 本身的限制，目前暂不支持在\ ``Jupyter``\ 中调用该函数。
-  #### 如何使用 - 基本方法
+
+如何使用
+^^^^^^^^^
+
+-  基本方法
 
 .. code:: python
 
@@ -218,7 +228,9 @@ FastAPI
   设置\ ``FastAPI``\ 的运行模式，可选参数为\ ``json``\ 和\ ``img``\ ，代表回传的内容为推理结果或推理后绘制的图片，于用户角度即为绘制图像操作在上位机还是下位机完成。
   score：设置绘图阈值，若高于阈值，才进行绘图操作，默认为：\ ``0.65``\ 。
 
-运行后出现下图所示的内容，即代表\ ``FastAPI``\ 启动成功。 |image|
+运行后出现下图所示的内容，即代表\ ``FastAPI``\ 启动成功。 
+
+.. figure:: ../images/basedeploy/EasyAPI_命令行启动.JPG
 
 如何调用接口
 ^^^^^^^^^^^^
@@ -308,7 +320,9 @@ port：设置启动\ ``PywebIO``\ 的端口号，默认为：\ ``1956``\ 。
 
 -  推理示例
 
-|image| |image|
+.. figure:: ../images/basedeploy/pywebio_推理_1.JPG
+
+.. figure:: ../images/basedeploy/pywebio_推理_2.JPG
 
 参考链接
 --------
