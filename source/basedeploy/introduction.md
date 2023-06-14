@@ -31,19 +31,26 @@ result = model.inference(dt, show=True)
 `BaseDeploy`提供多种便于模型部署的函数，包括了推理与相关库启动部署。
 
 ### 推理功能
-`BaseDeploy`通过`model.inference`函数封装实现推理功能。 \
+`BaseDeploy`通过`model.inference`函数封装实现推理功能。 
 
 ```python
 model.inference(input_data, show, get_img, score, show_path)
-
-input_data: 可以为图片路径，文件夹路径，BaseDT预处理后的路径，CV2摄像头拍摄的图片
-show：是否在Jupyter界面中显示图片，默认为：False
-get_img：得到回传图片做二次操作，默认为：None，可选参数为`pil`和`cv2`
-score：置信度，无论是分类任务还是检测任务，高于score的置信度的图片才被绘制，默认为0.65
-show_path：是否显示图片路径，默认为False
 ```
 
+参数说明如下：
+
+`input_data`: 可以为图片路径，文件夹路径，BaseDT预处理后的路径，CV2摄像头拍摄的图片。
+
+`show`：是否在Jupyter界面中显示图片，默认为：False。
+
+`get_img`：得到回传图片做二次操作，默认为：None，可选参数为`pil`和`cv2`。
+
+`score`：识别阈值，无论是分类任务还是检测任务，高于score的置信度的图片才会被输出到推理结果，默认为0.65。
+
+`show_path`：是否显示图片路径，默认为False
+
 #### 文件夹推理
+
 `BaseDeploy`提供对文件夹中的图片推理的功能
 ```python
 import BaseDeploy as bd

@@ -131,15 +131,16 @@
 <div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>通过<code class="docutils literal notranslate"><span class="pre">model.inference</span></code>函数封装实现推理功能。</div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>model.inference(input_data, show, get_img, score, show_path)
-
-input_data: 可以为图片路径，文件夹路径，BaseDT预处理后的路径，CV2摄像头拍摄的图片
-show：是否在Jupyter界面中显示图片，默认为：False
-get_img：得到回传图片做二次操作，默认为：None，可选参数为`pil`和`cv2`
-score：置信度，无论是分类任务还是检测任务，高于score的置信度的图片才被绘制，默认为0.65
-show_path：是否显示图片路径，默认为False
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span> <span class="n">show</span><span class="p">,</span> <span class="n">get_img</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="n">show_path</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>参数说明如下：</p>
+<p><code class="docutils literal notranslate"><span class="pre">input_data</span></code>:
+可以为图片路径，文件夹路径，BaseDT预处理后的路径，CV2摄像头拍摄的图片。</p>
+<p><code class="docutils literal notranslate"><span class="pre">show</span></code>：是否在Jupyter界面中显示图片，默认为：False。</p>
+<p><code class="docutils literal notranslate"><span class="pre">get_img</span></code>：得到回传图片做二次操作，默认为：None，可选参数为<code class="docutils literal notranslate"><span class="pre">pil</span></code>和<code class="docutils literal notranslate"><span class="pre">cv2</span></code>。</p>
+<p><code class="docutils literal notranslate"><span class="pre">score</span></code>：识别阈值，无论是分类任务还是检测任务，高于score的置信度的图片才会被输出到推理结果，默认为0.65。</p>
+<p><code class="docutils literal notranslate"><span class="pre">show_path</span></code>：是否显示图片路径，默认为False</p>
 <section id="id4">
 <h4>文件夹推理<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>提供对文件夹中的图片推理的功能</p>
