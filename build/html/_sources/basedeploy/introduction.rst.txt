@@ -183,7 +183,10 @@ Gradio
 
 Gradio
 是一种简单易用的Web界面工具，它可以让你快速地将模型部署到Web应用程序中。\ ``BaseDeploy``\ 通过对\ ``Gradio``\ 进行封装，一键启动。为了保证\ ``BaseDeploy``\ 的轻量性，\ ``Gradio``\ 库在安装时并不会被同步安装，如想使用该功能在使用前请使用\ ``pip3 install gradio``\ 进行依赖库的安装。
-#### 如何使用
+
+如何使用
+^^^^^^^^^^
+
 ``BaseDeploy``\ 支持在载入模型后使用\ ``run_gradio``\ 函数一键启动，启动后输入界面可选择两个参数，一是点击后选择路径，二是设置\ ``score``\ ，低于\ ``score``\ 的图片将不会被绘制，详情可见运行后日志。
 
 .. code:: python
@@ -194,13 +197,12 @@ Gradio
 
 -  图像分类
 
-.. figure:: ../images/basedeploy/gradio_分类推理.JPG
+.. figure:: ../gradio_分类推理.JPG
 
 
 -  目标检测
 
 .. figure:: ../images/basedeploy/gradio_检测推理.JPG
-
 
 FastAPI
 ~~~~~~~
@@ -209,11 +211,7 @@ FastAPI
   API。它是基于 Python
   类型提示和异步编程的优势，提供了快速、易于使用和具有强大功能的开发体验。\ ``BaseDeploy``\ 通过对\ ``FastAPI``\ 的集成，可一键启动接口，并支持json或file的回传形式，用户可自行选择。
 | 值得注意的是，由于\ ``FastAPI``\ 本身的限制，目前暂不支持在\ ``Jupyter``\ 中调用该函数。
-
-如何使用
-^^^^^^^^^
-
--  基本方法
+  #### 如何使用 - 基本方法
 
 .. code:: python
 
@@ -337,9 +335,17 @@ PywebIO：https://github.com/pywebio/PyWebIO
 
 Flask：https://github.com/pallets/flask
 
-.. |image| image:: ../images/basedeploy/gradio_分类推理.JPG
-.. |image| image:: ../images/basedeploy/gradio_检测推理.JPG
-.. |image| image:: ../images/basedeploy/EasyAPI_命令行启动.JPG
-.. |image| image:: ../images/basedeploy/pywebio_推理_1.JPG
-.. |image| image:: ../images/basedeploy/pywebio_推理_2.JPG
+更多模型部署相关项目
+--------------------
+
+猫狗分类小助手：https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&backpath=/pjedu/userprofile%3FslideKey=project#public
+
+千物识别小助手：https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&backpath=/pjlab/projects/list#public
+
+有无人检测小助手：https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&backpath=/pjlab/projects/list#public
+
+树莓派与MMEdu：https://www.openinnolab.org.cn/pjlab/project?id=63bb8be4c437c904d8a90350&backpath=/pjlab/projects/list%3Fbackpath=/pjlab/ai/projects#public
+
+MMEdu模型在线转换：https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&sc=62f34141bf4f550f3e926e0e#public
+
 

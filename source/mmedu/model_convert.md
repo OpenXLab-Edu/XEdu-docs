@@ -1,4 +1,4 @@
-# 最后一步：AI模型转换与部署
+# 最后一步：AI模型转换
 
 
 得益于`OpenMMLab`系列工具的不断进步与发展。MMEdu通过集成OpenMMLab开源的`模型部署工具箱MMDeploy`和`模型压缩工具包MMRazor`，打通了从算法模型到应用程序这 “最后一公里”！ 今天我们将开启`AI模型部署`入门系列教程，在面向中小学AI教育的开发和学习工具 `XEdu` 的辅助下，介绍以下内容：
@@ -61,14 +61,14 @@
 
 这一条流水线解决了模型部署中的两大问题：使用对接深度学习框架和推理引擎的中间表示，开发者不必担心如何在新环境中运行各个复杂的框架；通过中间表示的网络结构优化和推理引擎对运算的底层优化，模型的运算效率大幅提升。
 
-### 用MMEdu进行模型转换
+### 借助MMEdu完成模型转换
 MMEdu内置了一个`convert`函数实现了一键式模型转换，转换前先了解一下转换要做的事情吧。
 
 - 转换准备：
 
-  分类的标签文件、待转换的模型权重文件。
+  待转换的模型权重文件（用MMEdu训练）。
 
-- 需要配置三个信息：
+- 需要配置两个信息：
 
   待转换的模型权重文件（`checkpoint`）和输出的文件（`out_file`）。
 
@@ -77,9 +77,8 @@ MMEdu内置了一个`convert`函数实现了一键式模型转换，转换前先
 ```
 from MMEdu import MMClassification as cls
 model = cls(backbone='MobileNet')
-model.num_classes = 2
 checkpoint = 'checkpoints/cls_model/CatsDog/best_accuracy_top-1_epoch_2.pth'
-out_file="out_file/catdog.onnx"
+out_file="catdog.onnx"
 model.convert(checkpoint=checkpoint, out_file=out_file)
 ```
 
@@ -95,11 +94,34 @@ model.convert(checkpoint=checkpoint, out_file=out_file)
 ```
 from MMEdu import MMDetection as det
 model = det(backbone='SSD_Lite')
-model.num_classes = 80
 checkpoint = 'checkpoints/COCO-80/ssdlite.pth'
-out_file="out_file/COCO-80.onnx"
+out_file="COCO-80.onnx"
 model.convert(checkpoint=checkpoint, out_file=out_file)
 ```
+
+参考项目：
+
+https://www.openinnolab.org.cn/pjlab/project?id=645110943c0e930cb55e859b&sc=62f34141bf4f550f3e926e0e#public
+
+### 借助BaseDeploy完成模型部署
+
+`XEdu`团队推出了模型部署工具`BaseDeploy`，可以轻松完成模型部署。对MMEdu训练的模型完成转换后，生成ONNX模型，可借助`BaseDeploy`库部署到硬件上。
+
+示例代码如下：
+
+```
+import cv2
+import BaseDeploy as bd
+model_path = 'cls.onnx'
+cap = cv2.VideoCapture(0)
+ret, img = cap.read()
+model = bd(model_path)
+result = model.inference(img)
+print(result)
+cap.release()
+```
+
+更多关于BaseDePloy库的介绍和使用说明详见[BaseDeploy：服务于XEdu的模型部署工具](https://xedu.readthedocs.io/zh/master/basedeploy/introduction.html#basedeploy-xedu)。
 
 现在，让我们从“[从零开始训练猫狗识别模型并完成模型转换](https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&sc=635638d69ed68060c638f979#public)”项目入手，见识一下使用MMEdu工具完成从模型训练到模型部署的基本流程吧！
 
@@ -114,7 +136,6 @@ model.convert(checkpoint=checkpoint, out_file=out_file)
 ```
 from MMEdu import MMClassification as cls
 model = cls(backbone='MobileNet')
-model.num_classes = 2
 model.load_dataset(path='/data/TC4V0D/CatsDogsSample') 
 model.save_fold = 'checkpoints/cls_model/CatsDog1' 
 model.train(epochs=5, checkpoint='checkpoints/pretrain_model/mobilenet_v2.pth' ,batch_size=4, lr=0.001, validate=True,device='cuda')
@@ -144,17 +165,44 @@ else:
 from MMEdu import MMClassification as cls
 model = cls(backbone='MobileNet')
 checkpoint = 'checkpoints/cls_model/CatsDog1/best_accuracy_top-1_epoch_1.pth'
-model.num_classes = 2
 out_file='out_file/cats_dogs.onnx'
 model.convert(checkpoint=checkpoint, out_file=out_file)
 ```
 
 此时项目文件中的out_file文件夹下便生成了模型转换后生成的两个文件，可打开查看。一个是ONNX模型权重，一个是示例代码，示例代码稍作改动即可运行（需配合BaseData.py的BaseDT库）。
 
+- 硬件上需安装的库：
 
-**5.模型转换在线版**
+  BaseDeploy
+  
+- 需上传到硬件的文件：
 
-除了模型转换本地版，MMDeploy还推出了模型转换工具网页版本，支持更多后端推理框架，具体使用步骤如下。
+  1）out_file文件夹（内含模型转换生成的两个文件）。
+  
+  新建一个代码文件，将out_file文件夹中的py文件中的代码稍作修改用于代码运行（当然也可以直接运行）。
+
+示例代码：
+
+```
+import cv2
+import BaseDeploy as bd
+model_path = 'out_file/cats_dogs.onnx'
+cap = cv2.VideoCapture(0)
+ret, img = cap.read()
+model = bd(model_path)
+result = model.inference(img)
+print(result)
+
+if result['预测结果'] == 'dog':
+    print('这是小狗，汪汪汪！')
+else:
+    print('这是小猫，喵喵喵！')
+cap.release()
+```
+
+**拓展：模型转换在线版**
+
+MMDeploy还推出了模型转换工具网页版本，支持更多后端推理框架，具体使用步骤如下。
 
 - 点击[MMDeploy硬件模型库](https://platform.openmmlab.com/deploee)，后选择模型转换
 
@@ -275,6 +323,7 @@ model.convert(checkpoint=checkpoint, out_file=out_file)
 </tbody>
 </table>
 
+
 - 选择需要的目标runtime，可选的有`ncnn`,`ort1.8.1(onnxruntime)`,`openvino`等，点击提交任务
 
 ![image](../images/model_convert/网页版使用步骤4.png)
@@ -288,63 +337,6 @@ model.convert(checkpoint=checkpoint, out_file=out_file)
 
 ![image](../images/model_convert/网页版使用步骤6.png)
 
-**6.模型部署**
-
-- 硬件上需安装的库：
-
-  onnxruntime
-  
-- 需上传到硬件的文件：
-
-  1）out_file文件夹（内含模型转换生成的两个文件）。
-  
-  2）BaseData.py，用于数据预处理。
-  
-  新建一个代码文件，将out_file文件夹中的py文件中的代码稍作修改用于代码运行。
-
-示例代码：
-
-```
-import onnxruntime as rt
-import BaseData
-import numpy as np
-tag = ['cat', 'dog']
-sess = rt.InferenceSession('out_file/catdog.onnx', None)
-
-input_name = sess.get_inputs()[0].name
-out_name = sess.get_outputs()[0].name
-
-dt = BaseData.ImageData('/data/TC4V0D/CatsDogsSample/test_set/cat/cat26.jpg', backbone='MobileNet')
-
-input_data = dt.to_tensor()
-pred_onx = sess.run([out_name], {input_name: input_data})
-ort_output = pred_onx[0]
-idx = np.argmax(ort_output, axis=1)[0]
-
-if tag[idx] == 'dog':
-    print('这是小狗，汪汪汪！')
-else:
-    print('这是小猫，喵喵喵！')
-```
-
-**7.代码规范性**
-
-为了便于部署代码的理解，我们提供了不同后端推理框架下的示例代码，以供用户参考使用
-
-**ONNXRuntime**
-- 图像分类和目标检测
-
-```
-import cv2
-import BaseDeploy as bd
-model_path = ''
-cap = cv2.VideoCapture(0)
-ret, img = cap.read()
-model = bd(model_path)
-result = model.inference(img)
-print(result)
-cap.release()
-```
 
 
 ## What：什么现象与成果
@@ -1036,7 +1028,7 @@ __注：硬件测试模块持续更新中，如有更多硬件测试需求，请
 更多传感器、执行器使用教程参见：[DFRobot](https://wiki.dfrobot.com.cn/)
 
 
-## 更多模型部署项目
+## 更多模型转换相关项目
 
 猫狗分类小助手：https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&backpath=/pjedu/userprofile%3FslideKey=project#public
 
@@ -1044,8 +1036,4 @@ __注：硬件测试模块持续更新中，如有更多硬件测试需求，请
 
 有无人检测小助手：https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&backpath=/pjlab/projects/list#public
 
-行空板上温州话识别：https://www.openinnolab.org.cn/pjlab/project?id=63b7c66e5e089d71e61d19a0&sc=62f34141bf4f550f3e926e0e#public
-
-树莓派与MMEdu：https://www.openinnolab.org.cn/pjlab/project?id=63bb8be4c437c904d8a90350&backpath=/pjlab/projects/list%3Fbackpath=/pjlab/ai/projects#public
-
-MMEdu模型在线转换：https://www.openinnolab.org.cn/pjlab/project?id=645110943c0e930cb55e859b&backpath=/pjlab/projects/list#public
+MMEdu模型在线转换：https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&sc=62f34141bf4f550f3e926e0e#public

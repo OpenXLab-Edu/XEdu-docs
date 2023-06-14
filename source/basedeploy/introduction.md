@@ -24,7 +24,10 @@ result = model.inference(dt, show=True)
 
 ![image](../images/basedeploy/基本功能推理_目标检测.png)
 
+
+
 ## 基本功能
+
 `BaseDeploy`提供多种便于模型部署的函数，包括了推理与相关库启动部署。
 
 ### 推理功能
@@ -57,7 +60,10 @@ result = model.inference(folder_path)
 
 ![image](../images/basedeploy/文件夹推理_检测.JPG)
 
+
+
 #### 图片路径显示
+
 将`show_path`设置为True，即可以`文件名+推理结果`作为最终的消息回显（该功能仅对以路径形式传入的方式有效）
 ```python
 import BaseDeploy as bd
@@ -75,7 +81,10 @@ result = model.inference(folder_path, show=True, show_path=True)
 
 ![image](../images/basedeploy/路径显示_检测.JPG)
 
+
+
 #### 图像回传
+
 `get_img`参数默认为None，可选参数为`pil`和`cv2`，目的是用户可以通过得到的图片二次创作。
 ```python
 import BaseDeploy as bd
@@ -99,7 +108,10 @@ PIL方式适合Jupyter中进行交互，下面是一个
 
 ![image](../images/basedeploy/图像回传_检测_pil.JPG)
 
+
+
 ##### cv2方式
+
 cv2方式适合调用屏幕显示等操作。
 ```python
 import BaseDeploy as bd
@@ -119,7 +131,10 @@ cv2.destroyAllWindows()
 
 ![image](../images/basedeploy/图像回传_检测_cv2.JPG)
 
+
+
 #### 未知ONNX模型的解析
+
 `BaseDeploy`为适配图像任务，可自动解析未经`XEdu`标记的ONNX模型的输入张量尺寸，并进行图像预处理和输出后处理，输出结果将不会带有类别信息。
 
 ```python
@@ -137,6 +152,8 @@ result = model.inference(img_path, show=True)
 
 ![image](../images/basedeploy/无信息ONNX推理_检测.JPG)
 
+
+
 此外，`BaseDeploy`还提供`diy_inference`函数，供用户推理特殊的ONNX模型，其推理的前处理和后处理需要用户自行实现。
 
 ```python
@@ -146,7 +163,10 @@ result = model.diy_inference(input_data)
 ```
 ![image](../images/basedeploy/diy_infer.JPG)
 
+
+
 ## 与其他库配合的部署
+
 `BaseDeploy`通过`model.run()`调用内置的多种部署工具，包括`Gradio`，`EasyAPI`，`SIOT`和`PywebIO`等，实现模型即黑箱的功能，把AI推理简单的视作一个函数。
 
 ### Gradio
@@ -167,7 +187,10 @@ model.run_gradio()
 - 目标检测
 ![image](../images/basedeploy/gradio_检测推理.JPG)
 
+
+
 ### FastAPI
+
 `FastAPI` 是一个Python Web 框架，用于构建高性能的 Web 应用程序和 API。它是基于 Python 类型提示和异步编程的优势，提供了快速、易于使用和具有强大功能的开发体验。`BaseDeploy`通过对`FastAPI`的集成，可一键启动接口，并支持json或file的回传形式，用户可自行选择。\
 值得注意的是，由于`FastAPI`本身的限制，目前暂不支持在`Jupyter`中调用该函数。
 #### 如何使用
@@ -186,11 +209,13 @@ port：设置启动`FastAPI`的端口号，默认为：`1956`。
 mode: 设置`FastAPI`的运行模式，可选参数为`json`和`img`，代表回传的内容为推理结果或推理后绘制的图片，于用户角度即为绘制图像操作在上位机还是下位机完成。
 score：设置绘图阈值，若高于阈值，才进行绘图操作，默认为：`0.65`。
 
-
 运行后出现下图所示的内容，即代表`FastAPI`启动成功。
 ![image](../images/basedeploy/EasyAPI_命令行启动.JPG)
 
+
+
 #### 如何调用接口
+
 在用户端如需调用`EasyAPI`启动的接口，仅需设置接口地址`url`和图片路径`img_path`。
 ```python
 import requests
@@ -209,6 +234,7 @@ result = requests.post(url=url, files=files)
 - 目标检测
 
 ![image](../images/basedeploy/EasyAPI_检测.JPG)
+
 
 
 ### SIOT
@@ -248,7 +274,10 @@ model = bd(ip_path, backend='siot')
 
 ![image](../images/basedeploy/SIoT_服务端.JPG)
 
+
+
 ### PywebIO
+
 `PyWebIO`是一个用于构建交互式Web应用程序的Python库。它提供了一组简单且直观的函数和装饰器，使得开发人员可以在Web浏览器中使用Python来创建丰富的用户界面和交互体验，而无需编写HTML、CSS或JavaScript代码。`BaseDeploy`通过对`PywebIO`的封装，支持一键启动推理服务界面。
 值得注意的是，由于`Pywebio`本身的限制，目前暂不支持在`Jupyter`中调用该函数。
 - 基本方法
@@ -269,10 +298,13 @@ port：设置启动`PywebIO`的端口号，默认为：`1956`。
 
 ![image](../images/basedeploy/PywebIO_命令行启动.JPG)
 
+
+
 - 推理示例
 
 ![image](../images/basedeploy/pywebio_推理_1.JPG)
 ![image](../images/basedeploy/pywebio_推理_2.JPG)
+
 
 
 ## 参考链接
@@ -286,3 +318,17 @@ SIOT：https://github.com/vvlink/SIoT
 PywebIO：https://github.com/pywebio/PyWebIO
 
 Flask：https://github.com/pallets/flask
+
+
+
+## 更多模型部署相关项目
+
+猫狗分类小助手：https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&backpath=/pjedu/userprofile%3FslideKey=project#public
+
+千物识别小助手：https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&backpath=/pjlab/projects/list#public
+
+有无人检测小助手：https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&backpath=/pjlab/projects/list#public
+
+树莓派与MMEdu：https://www.openinnolab.org.cn/pjlab/project?id=63bb8be4c437c904d8a90350&backpath=/pjlab/projects/list%3Fbackpath=/pjlab/ai/projects#public
+
+MMEdu模型在线转换：https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&sc=62f34141bf4f550f3e926e0e#public

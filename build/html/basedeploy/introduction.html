@@ -62,6 +62,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#id11">参考链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">更多模型部署相关项目</a></li>
 </ul>
 </li>
 </ul>
@@ -269,9 +270,10 @@ show_path：是否显示图片路径，默认为False
 <section id="gradio">
 <h3>Gradio<a class="headerlink" href="#gradio" title="Permalink to this headline"></a></h3>
 <p>Gradio
-是一种简单易用的Web界面工具，它可以让你快速地将模型部署到Web应用程序中。<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>通过对<code class="docutils literal notranslate"><span class="pre">Gradio</span></code>进行封装，一键启动。为了保证<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>的轻量性，<code class="docutils literal notranslate"><span class="pre">Gradio</span></code>库在安装时并不会被同步安装，如想使用该功能在使用前请使用<code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">gradio</span></code>进行依赖库的安装。
-#### 如何使用
-<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>支持在载入模型后使用<code class="docutils literal notranslate"><span class="pre">run_gradio</span></code>函数一键启动，启动后输入界面可选择两个参数，一是点击后选择路径，二是设置<code class="docutils literal notranslate"><span class="pre">score</span></code>，低于<code class="docutils literal notranslate"><span class="pre">score</span></code>的图片将不会被绘制，详情可见运行后日志。</p>
+是一种简单易用的Web界面工具，它可以让你快速地将模型部署到Web应用程序中。<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>通过对<code class="docutils literal notranslate"><span class="pre">Gradio</span></code>进行封装，一键启动。为了保证<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>的轻量性，<code class="docutils literal notranslate"><span class="pre">Gradio</span></code>库在安装时并不会被同步安装，如想使用该功能在使用前请使用<code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">gradio</span></code>进行依赖库的安装。</p>
+<section id="id8">
+<h4>如何使用<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>支持在载入模型后使用<code class="docutils literal notranslate"><span class="pre">run_gradio</span></code>函数一键启动，启动后输入界面可选择两个参数，一是点击后选择路径，二是设置<code class="docutils literal notranslate"><span class="pre">score</span></code>，低于<code class="docutils literal notranslate"><span class="pre">score</span></code>的图片将不会被绘制，详情可见运行后日志。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">bd</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">run_gradio</span><span class="p">()</span>
@@ -281,7 +283,7 @@ show_path：是否显示图片路径，默认为False
 <li><p>图像分类</p></li>
 </ul>
 <figure class="align-default">
-<img alt="../_images/gradio_分类推理.JPG" src="../_images/gradio_分类推理.JPG" />
+<img alt="gradio_分类推理.JPG" src="gradio_分类推理.JPG" />
 </figure>
 <ul class="simple">
 <li><p>目标检测</p></li>
@@ -290,19 +292,16 @@ show_path：是否显示图片路径，默认为False
 <img alt="../_images/gradio_检测推理.JPG" src="../_images/gradio_检测推理.JPG" />
 </figure>
 </section>
+</section>
 <section id="fastapi">
 <h3>FastAPI<a class="headerlink" href="#fastapi" title="Permalink to this headline"></a></h3>
 <div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">FastAPI</span></code> 是一个Python Web 框架，用于构建高性能的 Web 应用程序和
 API。它是基于 Python
 类型提示和异步编程的优势，提供了快速、易于使用和具有强大功能的开发体验。<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>通过对<code class="docutils literal notranslate"><span class="pre">FastAPI</span></code>的集成，可一键启动接口，并支持json或file的回传形式，用户可自行选择。</div>
-<div class="line">值得注意的是，由于<code class="docutils literal notranslate"><span class="pre">FastAPI</span></code>本身的限制，目前暂不支持在<code class="docutils literal notranslate"><span class="pre">Jupyter</span></code>中调用该函数。</div>
+<div class="line">值得注意的是，由于<code class="docutils literal notranslate"><span class="pre">FastAPI</span></code>本身的限制，目前暂不支持在<code class="docutils literal notranslate"><span class="pre">Jupyter</span></code>中调用该函数。
+#### 如何使用 - 基本方法</div>
 </div>
-<section id="id8">
-<h4>如何使用<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h4>
-<ul class="simple">
-<li><p>基本方法</p></li>
-</ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">bd</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">run_fastapi</span><span class="p">()</span>
@@ -321,7 +320,6 @@ score：设置绘图阈值，若高于阈值，才进行绘图操作，默认为
 <figure class="align-default">
 <img alt="../_images/EasyAPI_命令行启动.JPG" src="../_images/EasyAPI_命令行启动.JPG" />
 </figure>
-</section>
 <section id="id9">
 <h4>如何调用接口<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h4>
 <p>在用户端如需调用<code class="docutils literal notranslate"><span class="pre">EasyAPI</span></code>启动的接口，仅需设置接口地址<code class="docutils literal notranslate"><span class="pre">url</span></code>和图片路径<code class="docutils literal notranslate"><span class="pre">img_path</span></code>。</p>
@@ -417,6 +415,14 @@ score：设置绘图阈值，若高于阈值，才进行绘图操作，默认为
 <p>SIOT：<a class="reference external" href="https://github.com/vvlink/SIoT">https://github.com/vvlink/SIoT</a></p>
 <p>PywebIO：<a class="reference external" href="https://github.com/pywebio/PyWebIO">https://github.com/pywebio/PyWebIO</a></p>
 <p>Flask：<a class="reference external" href="https://github.com/pallets/flask">https://github.com/pallets/flask</a></p>
+</section>
+<section id="id12">
+<h2>更多模型部署相关项目<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h2>
+<p>猫狗分类小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&amp;backpath=/pjedu/userprofile%3FslideKey=project#public">https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&amp;backpath=/pjedu/userprofile%3FslideKey=project#public</a></p>
+<p>千物识别小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&amp;backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&amp;backpath=/pjlab/projects/list#public</a></p>
+<p>有无人检测小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&amp;backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&amp;backpath=/pjlab/projects/list#public</a></p>
+<p>树莓派与MMEdu：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63bb8be4c437c904d8a90350&amp;backpath=/pjlab/projects/list%3Fbackpath=/pjlab/ai/projects#public">https://www.openinnolab.org.cn/pjlab/project?id=63bb8be4c437c904d8a90350&amp;backpath=/pjlab/projects/list%3Fbackpath=/pjlab/ai/projects#public</a></p>
+<p>MMEdu模型在线转换：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&amp;sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&amp;sc=62f34141bf4f550f3e926e0e#public</a></p>
 </section>
 </section>
 
