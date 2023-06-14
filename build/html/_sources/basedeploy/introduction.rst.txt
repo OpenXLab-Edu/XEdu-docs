@@ -204,7 +204,7 @@ Gradio
 
 -  图像分类
 
-.. figure:: ../gradio_分类推理.JPG
+.. figure:: ../images/basedeploy/gradio_分类推理.JPG
 
 
 -  目标检测
