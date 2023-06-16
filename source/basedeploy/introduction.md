@@ -10,6 +10,7 @@
 
 本段代码实现的功能是将`BaseDT`预处理好后的图片传入`BaseDeploy`推理函数进行推理，并将推理结果返回。
 ```python
+model_path = `./mymodel.onnx`
 from BaseDT.data import ImageData
 import BaseDeploy as bd
 dt = ImageData(img_path, backbone='训练的模型名称，例如MobileNet')
@@ -20,6 +21,7 @@ result = model.inference(dt)
 示例代码二：
 本段代码实现的功能是将图片路径传入`BaseDeploy`推理函数进行推理，并将推理结果返回。
 ```python
+model_path = `./mymodel.onnx`
 import BaseDeploy as bd
 model = bd(model_path)
 result = model.inference(img_path)
@@ -28,6 +30,7 @@ result = model.inference(img_path)
 示例代码三：
 本段代码实现的功能是将cv2调用摄像头拍摄的图片传入`BaseDeploy`推理函数进行推理，并将推理结果返回。
 ```python
+model_path = `./mymodel.onnx`
 import cv2
 cap = cv2.VideoCapture(0)
 ret, img = cap.read()
@@ -218,7 +221,7 @@ cv2.destroyAllWindows()
 
 
 
-#### 未知ONNX模型的解析
+#### 一般ONNX模型的解析
 
 `BaseDeploy`为适配图像任务，可自动解析未经`XEdu`标记的ONNX模型的输入张量尺寸，并进行图像预处理和输出后处理，输出结果将不会带有类别信息。
 
@@ -267,7 +270,7 @@ result = model.diy_inference(input_data)
 
 ## 与其他库配合的部署
 
-`BaseDeploy`通过`model.run()`调用内置的多种部署工具，包括`Gradio`，`EasyAPI`，`SIOT`和`PywebIO`等，实现模型即黑箱的功能，把AI推理简单的视作一个函数。
+`BaseDeploy`通过`model.run()`调用内置的多种部署工具，包括`Gradio`，`EasyAPI`，`SIoT`和`PywebIO`等，实现模型即黑箱的功能，把AI推理简单的视作一个函数。
 
 ### Gradio
 Gradio 是一种简单易用的Web界面工具，它可以让你快速地将模型部署到Web应用程序中。`BaseDeploy`通过对`Gradio`进行封装，一键启动。为了保证`BaseDeploy`的轻量性，`Gradio`库在安装时并不会被同步安装，如想使用该功能在使用前请使用`pip3 install gradio`进行依赖库的安装。
@@ -337,7 +340,7 @@ result = requests.post(url=url, files=files)
 
 
 
-### SIOT
+### SIoT
 
 `SIoT`为“虚谷物联”项目的核心软件，是为了帮助中小学生理解物联网原理，并且能够基于物联网技术开发各种创意应用。因为其重点关注物联网数据的收集和导出，是采集科学数据的最好选择之一。
 
@@ -348,32 +351,17 @@ result = requests.post(url=url, files=files)
 要想使用`SIoT`，需要一个`SIoT服务端`的`IP地址`，以及使用`BaseDeploy`启动监听和传输推理的服务。
 
 - 服务端
-服务端需要按照`BaseDeploy`的导入模型的方式定义一个模型，并使用`use_siot`函数启动siot的消息监听功能。
+服务端需要按照`BaseDeploy`的导入模型的方式定义一个模型，并使用`use_siot`函数启动siot的消息监听功能。默认监听本地的ip地址`127.0.0.1`，如需更换监听的ip地址，可设置`model.run_siot(ip=ip地址)`
 
 ```python
 import BaseDeploy as bd
 model = bd(model_path)
-model.run_siot(ip=ip_path, mode='infer')
+model.run_siot()
 ```
-
-- 用户端
-用户端选用`SIoT`进行推理，不再需要导入`ONNX`模型，故在初始化时仅需将推理后端选为`SIoT`即可。
-
-```python
-import BaseDeploy as bd
-model = bd(ip_path, backend='siot')
-```
-
-如上操作后，用户即可在用户端使用`model.inference`函数进行模型的推理了，使用方法遵循原有`inference`推理示例。
-
-![image](../images/basedeploy/SIoT推理.JPG)
-
-
 
 用户端对服务端进行访问时，服务端也会同步打印推理结果，便于用户检查连接状况等。
 
 ![image](../images/basedeploy/SIoT_服务端.JPG)
-
 
 
 ### PywebIO
