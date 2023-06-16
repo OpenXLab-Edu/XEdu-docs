@@ -6,13 +6,36 @@
 
 `BaseDeploy`通过传入模型的路径加载为一个模型，通过`model.inference`即可完成模型的推理。
 
+示例代码一：
+
+本段代码实现的功能是将`BaseDT`预处理好后的图片传入`BaseDeploy`推理函数进行推理，并将推理结果返回。
 ```python
 from BaseDT.data import ImageData
 import BaseDeploy as bd
 dt = ImageData(img_path, backbone='训练的模型名称，例如MobileNet')
 model = bd(model_path)
-result = model.inference(dt, show=True)
+result = model.inference(dt)
 ```
+
+示例代码二：
+本段代码实现的功能是将图片路径传入`BaseDeploy`推理函数进行推理，并将推理结果返回。
+```python
+import BaseDeploy as bd
+model = bd(model_path)
+result = model.inference(img_path)
+```
+
+示例代码三：
+本段代码实现的功能是将cv2调用摄像头拍摄的图片传入`BaseDeploy`推理函数进行推理，并将推理结果返回。
+```python
+import cv2
+cap = cv2.VideoCapture(0)
+ret, img = cap.read()
+import BaseDeploy as bd
+model = bd(model_path)
+result = model.inference(img)
+```
+
 
 - 图像分类
 
@@ -31,7 +54,7 @@ result = model.inference(dt, show=True)
 `BaseDeploy`提供多种便于模型部署的函数，包括了推理与相关库启动部署。
 
 ### 推理功能
-`BaseDeploy`通过`model.inference`函数封装实现推理功能。 
+`BaseDeploy`对不同任务的模型进行统一的推理管理，对于用户来说仅需更换onnx模型的路径，`BaseDeploy`会自动匹配对应的任务类型，并将推理和显示的内部流程进行封装。
 
 ```python
 model.inference(input_data, show, get_img, score, show_path)
@@ -57,6 +80,14 @@ import BaseDeploy as bd
 model = bd(model_path)
 result = model.inference(folder_path)
 ```
+
+参数说明如下：
+
+`model_path`：ONNX模型的路径。
+
+`folder_path`：待推理的文件夹路径，文件夹中的文件需是图片。
+
+
 - 图像分类
 
 ![image](../images/basedeploy/文件夹推理_分类.JPG)
@@ -103,6 +134,16 @@ plt.imshow(img)
 plt.axis('off')
 plt.show()
 ```
+
+参数说明如下：
+
+`model_path`：ONNX模型的路径。
+
+`img_path`：待推理的图片路径。
+
+`get_img`：`model.inference`中内置的参数，设为`pil`表示回传的图片可供`pil`显示。
+
+
 ##### PIL方式
 PIL方式适合Jupyter中进行交互，下面是一个
 - 图像分类
@@ -130,8 +171,19 @@ cv2.imshow("Image", img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
-![image](../images/basedeploy/图像回传_分类_cv2.JPG)
 
+参数说明如下：
+
+`model_path`：ONNX模型的路径。
+
+`img_path`：待推理的图片路径。
+
+`get_img`：`model.inference`中内置的参数，设为`cv2`表示回传的图片可供`cv2`显示。
+
+
+- 图像分类
+
+![image](../images/basedeploy/图像回传_分类_cv2.JPG)
 
 
 - 目标检测
@@ -147,8 +199,15 @@ cv2.destroyAllWindows()
 ```python
 import BaseDeploy as bd
 model = bd(model_path)
-result = model.inference(img_path, show=True)
+result = model.inference(img_path)
 ```
+
+参数说明如下：
+
+`model_path`：ONNX模型的路径，目前仅支持图像分类和目标检测的模型解析。
+
+`img_path`：待推理的图片路径。
+
 - 图像分类
 
 ![image](../images/basedeploy/无信息ONNX推理_分类.JPG)
@@ -168,8 +227,16 @@ import BaseDeploy as bd
 model = bd(model_path)
 result = model.diy_inference(input_data)
 ```
-![image](../images/basedeploy/diy_infer.JPG)
 
+参数说明如下：
+
+`model_path`：ONNX模型的路径。
+
+`img_path`：待推理的图片路径。
+
+`input_data`：用户自定义前处理好后的张量，请将其保持与模型输入节点需要的张量形状一致。
+
+![image](../images/basedeploy/diy_infer.JPG)
 
 
 ## 与其他库配合的部署
@@ -303,6 +370,7 @@ port：设置启动`PywebIO`的端口号，默认为：`1956`。
 
 运行后出现下图所示的内容，即代表`PywebIO`启动成功。
 
+
 ![image](../images/basedeploy/PywebIO_命令行启动.JPG)
 
 
@@ -310,6 +378,8 @@ port：设置启动`PywebIO`的端口号，默认为：`1956`。
 - 推理示例
 
 ![image](../images/basedeploy/pywebio_推理_1.JPG)
+
+
 ![image](../images/basedeploy/pywebio_推理_2.JPG)
 
 
