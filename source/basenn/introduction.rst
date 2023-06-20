@@ -639,83 +639,31 @@ bidirectional：默认是false，代表不用双向LSTM。
 2. 支持的损失函数
 ~~~~~~~~~~~~~~~~~
 
-+------+--------------------------------------------------------------+
-| 序号 | 损失函数                                                     |
-+======+==============================================================+
-| 1    | `nn.L1Loss <https://pytorch.org/do                           |
-|      | cs/stable/generated/torch.nn.L1Loss.html#torch.nn.L1Loss>`__ |
-+------+--------------------------------------------------------------+
-| 2    | `nn.MSELoss <https://pytorch.org/docs                        |
-|      | /stable/generated/torch.nn.MSELoss.html#torch.nn.MSELoss>`__ |
-+------+--------------------------------------------------------------+
-| 3    | `nn.                                                         |
-|      | CrossEntropyLoss <https://pytorch.org/docs/stable/generated/ |
-|      | torch.nn.CrossEntropyLoss.html#torch.nn.CrossEntropyLoss>`__ |
-+------+--------------------------------------------------------------+
-| 4    | `nn.CTCLoss <https://pytorch.org/docs                        |
-|      | /stable/generated/torch.nn.CTCLoss.html#torch.nn.CTCLoss>`__ |
-+------+--------------------------------------------------------------+
-| 5    | `nn.NLLLoss <https://pytorch.org/docs                        |
-|      | /stable/generated/torch.nn.NLLLoss.html#torch.nn.NLLLoss>`__ |
-+------+--------------------------------------------------------------+
-| 6    | `nn.PoissonNLLLoss <https://pytorch.org/docs/stable/genera   |
-|      | ted/torch.nn.PoissonNLLLoss.html#torch.nn.PoissonNLLLoss>`__ |
-+------+--------------------------------------------------------------+
-| 7    | `                                                            |
-|      | nn.GaussianNLLLoss <https://pytorch.org/docs/stable/generate |
-|      | d/torch.nn.GaussianNLLLoss.html#torch.nn.GaussianNLLLoss>`__ |
-+------+--------------------------------------------------------------+
-| 8    | `nn.KLDivLoss <https://pytorch.org/docs/sta                  |
-|      | ble/generated/torch.nn.KLDivLoss.html#torch.nn.KLDivLoss>`__ |
-+------+--------------------------------------------------------------+
-| 9    | `nn.BCELoss <https://pytorch.org/docs                        |
-|      | /stable/generated/torch.nn.BCELoss.html#torch.nn.BCELoss>`__ |
-+------+--------------------------------------------------------------+
-| 10   | `nn.BCE                                                      |
-|      | WithLogitsLoss <https://pytorch.org/docs/stable/generated/to |
-|      | rch.nn.BCEWithLogitsLoss.html#torch.nn.BCEWithLogitsLoss>`__ |
-+------+--------------------------------------------------------------+
-| 11   | `nn.Mar                                                      |
-|      | ginRankingLoss <https://pytorch.org/docs/stable/generated/to |
-|      | rch.nn.MarginRankingLoss.html#torch.nn.MarginRankingLoss>`__ |
-+------+--------------------------------------------------------------+
-| 12   | `nn.HingeE                                                   |
-|      | mbeddingLoss <https://pytorch.org/docs/stable/generated/torc |
-|      | h.nn.HingeEmbeddingLoss.html#torch.nn.HingeEmbeddingLoss>`__ |
-+------+--------------------------------------------------------------+
-| 13   | `nn.MultiLabelMa                                             |
-|      | rginLoss <https://pytorch.org/docs/stable/generated/torch.nn |
-|      | .MultiLabelMarginLoss.html#torch.nn.MultiLabelMarginLoss>`__ |
-+------+--------------------------------------------------------------+
-| 14   | `nn.HuberLoss <https://pytorch.org/docs/sta                  |
-|      | ble/generated/torch.nn.HuberLoss.html#torch.nn.HuberLoss>`__ |
-+------+--------------------------------------------------------------+
-| 15   | `nn.SmoothL1Loss <https://pytorch.org/docs/stable/ge         |
-|      | nerated/torch.nn.SmoothL1Loss.html#torch.nn.SmoothL1Loss>`__ |
-+------+--------------------------------------------------------------+
-| 16   | `nn.SoftMarginLoss <https://pytorch.org/docs/stable/genera   |
-|      | ted/torch.nn.SoftMarginLoss.html#torch.nn.SoftMarginLoss>`__ |
-+------+--------------------------------------------------------------+
-| 17   | `nn.MultiLabelSoftMarginLoss                                 |
-|      |  <https://pytorch.org/docs/stable/generated/torch.nn.MultiLa |
-|      | belSoftMarginLoss.html#torch.nn.MultiLabelSoftMarginLoss>`__ |
-+------+--------------------------------------------------------------+
-| 18   | `nn.CosineEmb                                                |
-|      | eddingLoss <https://pytorch.org/docs/stable/generated/torch. |
-|      | nn.CosineEmbeddingLoss.html#torch.nn.CosineEmbeddingLoss>`__ |
-+------+--------------------------------------------------------------+
-| 19   | `                                                            |
-|      | nn.MultiMarginLoss <https://pytorch.org/docs/stable/generate |
-|      | d/torch.nn.MultiMarginLoss.html#torch.nn.MultiMarginLoss>`__ |
-+------+--------------------------------------------------------------+
-| 20   | `nn.Tri                                                      |
-|      | pletMarginLoss <https://pytorch.org/docs/stable/generated/to |
-|      | rch.nn.TripletMarginLoss.html#torch.nn.TripletMarginLoss>`__ |
-+------+--------------------------------------------------------------+
-| 21   | `nn.TripletMarginWithDistanceLoss <https://                  |
-|      | pytorch.org/docs/stable/generated/torch.nn.TripletMarginWith |
-|      | DistanceLoss.html#torch.nn.TripletMarginWithDistanceLoss>`__ |
-+------+--------------------------------------------------------------+
+==== ===================================================================================================================================================================
+序号 损失函数
+==== ===================================================================================================================================================================
+1    `nn.L1Loss <https://pytorch.org/docs/stable/generated/torch.nn.L1Loss.html#torch.nn.L1Loss>`__
+2    `nn.MSELoss <https://pytorch.org/docs/stable/generated/torch.nn.MSELoss.html#torch.nn.MSELoss>`__
+3    `nn.CrossEntropyLoss <https://pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html#torch.nn.CrossEntropyLoss>`__
+4    `nn.CTCLoss <https://pytorch.org/docs/stable/generated/torch.nn.CTCLoss.html#torch.nn.CTCLoss>`__
+5    `nn.NLLLoss <https://pytorch.org/docs/stable/generated/torch.nn.NLLLoss.html#torch.nn.NLLLoss>`__
+6    `nn.PoissonNLLLoss <https://pytorch.org/docs/stable/generated/torch.nn.PoissonNLLLoss.html#torch.nn.PoissonNLLLoss>`__
+7    `nn.GaussianNLLLoss <https://pytorch.org/docs/stable/generated/torch.nn.GaussianNLLLoss.html#torch.nn.GaussianNLLLoss>`__
+8    `nn.KLDivLoss <https://pytorch.org/docs/stable/generated/torch.nn.KLDivLoss.html#torch.nn.KLDivLoss>`__
+9    `nn.BCELoss <https://pytorch.org/docs/stable/generated/torch.nn.BCELoss.html#torch.nn.BCELoss>`__
+10   `nn.BCEWithLogitsLoss <https://pytorch.org/docs/stable/generated/torch.nn.BCEWithLogitsLoss.html#torch.nn.BCEWithLogitsLoss>`__
+11   `nn.MarginRankingLoss <https://pytorch.org/docs/stable/generated/torch.nn.MarginRankingLoss.html#torch.nn.MarginRankingLoss>`__
+12   `nn.HingeEmbeddingLoss <https://pytorch.org/docs/stable/generated/torch.nn.HingeEmbeddingLoss.html#torch.nn.HingeEmbeddingLoss>`__
+13   `nn.MultiLabelMarginLoss <https://pytorch.org/docs/stable/generated/torch.nn.MultiLabelMarginLoss.html#torch.nn.MultiLabelMarginLoss>`__
+14   `nn.HuberLoss <https://pytorch.org/docs/stable/generated/torch.nn.HuberLoss.html#torch.nn.HuberLoss>`__
+15   `nn.SmoothL1Loss <https://pytorch.org/docs/stable/generated/torch.nn.SmoothL1Loss.html#torch.nn.SmoothL1Loss>`__
+16   `nn.SoftMarginLoss <https://pytorch.org/docs/stable/generated/torch.nn.SoftMarginLoss.html#torch.nn.SoftMarginLoss>`__
+17   `nn.MultiLabelSoftMarginLoss <https://pytorch.org/docs/stable/generated/torch.nn.MultiLabelSoftMarginLoss.html#torch.nn.MultiLabelSoftMarginLoss>`__
+18   `nn.CosineEmbeddingLoss <https://pytorch.org/docs/stable/generated/torch.nn.CosineEmbeddingLoss.html#torch.nn.CosineEmbeddingLoss>`__
+19   `nn.MultiMarginLoss <https://pytorch.org/docs/stable/generated/torch.nn.MultiMarginLoss.html#torch.nn.MultiMarginLoss>`__
+20   `nn.TripletMarginLoss <https://pytorch.org/docs/stable/generated/torch.nn.TripletMarginLoss.html#torch.nn.TripletMarginLoss>`__
+21   `nn.TripletMarginWithDistanceLoss <https://pytorch.org/docs/stable/generated/torch.nn.TripletMarginWithDistanceLoss.html#torch.nn.TripletMarginWithDistanceLoss>`__
+==== ===================================================================================================================================================================
 
 .. _3-rnn和cnn:
 
