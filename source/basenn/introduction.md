@@ -45,6 +45,50 @@ model.load_img_data(image_folder_data,color="grayscale",batch_size=1024)
 
 `batch_size`：表示在一次训练中同时处理的样本数量。通常情况下，批量大小越大，模型的收敛速度越快，但内存和计算资源的需求也会相应增加。
 
+#### 数据集预处理：
+除了使用BaseDT对数据进行预处理意外，我们还可以通过使用torchvision直接将数据处理的方式与数据集一齐载入模型之中。
+
+导入包
+```
+from torchvision.transforms import transforms
+```
+
+我们可以使用参数表示训练前对我们需要对数据进行的预处理
+
+此处为对数据进行单个步骤的简单处理
+
+```
+tran1 = transforms.Resize([128,128])
+```
+
+若要对数据进行多次处理的复杂操作，可以采用如下代码，将多个处理方式按顺序输入，在执行时这些操作也会被按顺序执行
+
+```
+tran2 = transforms.Compose([
+    transforms.RandomResizedCrop(224),
+    transforms.RandomHorizontalFlip(),
+    transforms.ToTensor(),
+    transforms.Normalize([0.485, 0.456, 0.406],[0.229, 0.224, 0.225])
+])
+```
+
+方法说明:
+`Resize()`:对图片尺寸进行缩放
+
+`RandomResizedCrop()`:对图片尺寸进行随机缩放后裁剪为固定尺寸
+
+`RandomHorizontalFlip()`:随机对图片进行水平翻转
+
+`ToTensor()`:将图片转为张量
+
+`Normalize()`:将图片归一化
+
+最后在载入数据集时，将设置好的想要使用的数据处理方式作为参数与数据集一起传入模型中
+
+```
+model.load_img_data(img_folder_data, transform = tran1)
+```
+
 #### 特征表格类型：
 
 指定表格路径，再使用`load_tab_data`函数即可完成载入数据。此处我使用的是经典的lvis鸢尾花数据集。
@@ -567,4 +611,3 @@ CNN是一种用于处理图像和空间数据的神经网络模型。例如图�
 文本数据：文本数据是指由字符组成的序列数据。在深度学习应用中，文本数据通常被表示为词向量或字符向量，用于输入到文本处理模型中。
 
 特征数据：特征数据指的是表示对象或事物的特征的数据，通常用于机器学习和数据挖掘。特征数据可以是数值型、离散型或者是二进制的，用于描述对象或事物的各种属性和特征。特征数据可以是手动设计的、自动提取的或者是混合的。在机器学习中，特征数据通常作为模型的输入，用于预测目标变量或者分类。
-
