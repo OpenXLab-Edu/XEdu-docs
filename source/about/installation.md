@@ -16,35 +16,41 @@
 
 百度网盘:https://pan.baidu.com/s/1UDt-GwHriCB_rewl8kCrUA?pwd=2022 提取码:2022 
 
-第一步：双击运行，将自解压为XEdu文件夹（注意！避免踩坑请安装到纯英文路径下）。
+第一步：双击运行，将自解压为XEdu文件夹（注意！避免踩坑推荐安装到纯英文路径下）。
 
-![image](../images/about/xedu一键安装包.png)
+![image](../images/about/XEDU安装图1.png)
 
 第二步：您可以根据个人喜好，选择自己习惯的IDE。
 
-1）使用XEdu自带的pyzo。
+1）使用XEdu自带的Thonny。
 
-pyzo是一款好用的Python轻量级IDE。其最突出的两个特点便是是简洁性和交互性。打开根目录下的“pyzo编辑器.exe”文件快捷方式即可打开pyzo，其指向envs文件夹下software中的pyzo。使用Pyzo打开“demo”文件夹中的py文件，如“MMEdu_cls_demo.py”，点击“运行”的“将文件作为脚本运行”即可运行代码，界面如下图所示。
+Thonny是一款好用的Python轻量级IDE。其最突出的两个特点便是是简洁性和交互性。打开根目录下的“Thonny编辑器.exe”文件快捷方式即可打开Thonny。使用PThonny打开“demo”文件夹中的py文件，如“MMEdu_cls_demo.py”，点击“运行”的“将文件作为脚本运行”即可运行代码，界面如下图所示。
 
-![image](../images/about/demo运行1.png)
+![image](../images/about/XEDU安装图4.png)
 
 2）使用MMEdu自带的Jupyter。
 
 Jupyter Notebook是基于网页的用于交互计算的应用程序。其可被应用于全过程计算：开发、文档编写、运行代码和展示结果。它相对简单，对用户也更加友好，适合初学者。
 
-**打开jupyter，首先需先双击“jupyter初始化.bat”完成初始化（注意！不要以管理员身份运行）。初始化完成方可使用jupyter。**初始化完成后第二次可直接打开。
+打开根目录下的“jupyter编辑器.bat”，即自动启动浏览器并显示界面，如下图所示。
 
-![image](../images/about/xedu初始化.png)
-
-初始化完成（初始化界面自动消失）后打开根目录下的“jupyter编辑器.bat”，即自动启动浏览器并显示界面，如下图所示。
-
-![image](../images/about/jupyter运行.png)
+![image](../images/about/XEDU安装图3.png)
 
 使用常用工具栏对代码进行操作，如“运行”，可以在单元格中编写文本或者代码，执行代码的结果也将会在每个单元下方呈现。可以逐个运行单元格，每点击一次，仅运行一个单元格。单元格左侧[*]内的星号变为数字，表示该单元格运行完成。此时可打开“demo”文件夹中的ipynb文件，如“MMEdu_cls_notebook.ipynb”。
 
 ![image](../images/about/jupyter运行1.png)
 
-3）使用其他IDE。
+
+3）使用cmd安装用户库。
+
+python中最常用的库管理工具pip，可以使用cmd命令行来运行，打开根目录下的“启动cmd.bat”可以打开cmd命令行界面，如下图所示。
+
+![image](../images/about/XEDU安装图2.png)
+
+在其中输入想要安装的库文件即可，如“pip install rarfile”。
+
+
+4）使用其他IDE。
 
 如果您需要使用其他IDE，那么需要您自己配置Python编译器，配置方法如下。
 
@@ -85,20 +91,19 @@ XEdu一键安装版是一个压缩包，解压后即可使用。
 XEdu的根目录结构如下：
 
 ```plain
-XEdu
-├── checkpoints
-├── dataset
-├── demo
-├── envs
-├── HowToStart
-├── visualization
-├── EasyAPI.bat
-├── EasyInference.bat
-├── EasyTrain.bat
-├── jupyter编辑器.bat
-├── jupyter初始化.bat
-├── pyzo编辑器.exe
-├── XEdu1.0简介.pdf
+   XEdu
+   ├── checkpoints
+   ├── dataset
+   ├── demo
+   ├── envs
+   ├── visualization
+   ├── EasyAPI.bat
+   ├── EasyInference.bat
+   ├── EasyTrain.bat
+   ├── jupyter编辑器.bat
+   ├── Thonny编辑器.exe
+   ├── 启动cmd.bat
+   ├── XEdu简介 v1.5.pdf
 ```
 
 接下来对每层子目录进行介绍。
@@ -131,13 +136,13 @@ XEdu
 
 支持无代码WebAPI部署的可视化工具。
 
-主要功能包括：1）选择功能（图像分类、目标检测）；2）选择算法和权重文件；3）选择分类信息；4）启动Web服务（生成代码）；5）提供HttpPost（基于request）的范例；6）测试。
+主要功能包括：1）选择功能（图像分类、目标检测）；2）选择算法和权重文件；3）启动Web服务（生成代码）；4）提供HttpPost（基于request）的范例；5）测试。
 
 **EasyInference.bat：**
 
 支持无代码推理的可视化工具。
 
-主要功能包括：1）选择功能（图像分类、目标检测）；2）选择算法和权重文件；3）选择分类信息；4）选择输入图片；5）开始推理（ 出现推理原始信息和解释）；6）查看代码（查看相应的Python推理代码）。
+主要功能包括：1）选择功能（图像分类、目标检测）；2）选择算法和权重文件；3）选择输入图片；4）开始推理（ 出现推理原始信息和解释）；5）查看代码（查看相应的Python推理代码）。
 
 **EasyTrain.bat：**
 
@@ -153,11 +158,11 @@ XEdu
 
 双击完成jupyter初始化环境部署。
 
-**pyzo编辑器.exe：**
+**Thonny编辑器.exe：**
 
-双击打开即运行pyzo，一款轻量级Python IDE。
+双击打开即运行Thonny，一款轻量级Python IDE。
 
-**XEdu1.0简介.pdf：**
+**XEdu简介 v1.5.pdf：**
 
 XEdu一键安装包说明文档。
 
