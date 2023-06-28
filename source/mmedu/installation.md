@@ -14,9 +14,11 @@
 
 为方便中小学教学，MMEdu团队提供了一键安装包。只要下载并解压即可直接使用。
 
+**现MMEdu一键安装包已升级为XEdu一键安装包，下文提到的MMEdu文件，可以理解为XEdu一键安装包。**
+
 第一步：下载MMEdu最新版文件，并解压到本地，文件夹目录结构如下图所示。
 
-![image](../images/mmedu/MMEDU安装图1.png) 
+![image](../images/mmedu/XEDU安装图1.png) 
 
 ​    1）下载方式（已并入XEdu）
 
@@ -24,23 +26,19 @@
 
 百度网盘:https://pan.baidu.com/s/1UDt-GwHriCB_rewl8kCrUA?pwd=2022 提取码:2022 
 
-第二步：运行根目录的“steup.bat”文件，完成环境部署（如下图所示）。
+第二步：您可以根据个人喜好，选择自己习惯的IDE。
 
-![image](../images/mmedu/MMEDU安装图2.png)
+1）使用MMEdu(XEdu)自带的Thonny。
 
-第三步：您可以根据个人喜好，选择自己习惯的IDE。
+Thonny是一款好用的Python轻量级IDE。其最突出的两个特点便是是简洁性和交互性。打开根目录下的Thonny编辑器.bat文件快捷方式即可打开Thonny。使用Thonny打开“demo”文件夹中的py文件，如“MMEdu_cls_demo.py”，点击“运行”的“将文件作为脚本运行”即可运行代码，界面如下图所示。
 
-1）使用MMEdu自带的Pyzo。
+![image](../images/mmedu/XEDU安装图4.png)
 
-Pyzo是一款好用的Python轻量级IDE。其最突出的两个特点便是是简洁性和交互性。打开根目录下的pyzo.exe文件快捷方式即可打开pyzo，其指向“Tools”中的“pyzo.exe”。使用Pyzo打开“demo”文件夹中的py文件，如“cls_demo.py”，点击“运行”的“将文件作为脚本运行”即可运行代码，界面如下图所示。
-
-![image](../images/mmedu/MMEDU安装图3.png)
-
-2）使用MMEdu自带的Jupyter。
+2）使用MMEdu(XEdu)自带的Jupyter。
 
 Jupyter Notebook是基于网页的用于交互计算的应用程序。其可被应用于全过程计算：开发、文档编写、运行代码和展示结果。它相对简单，对用户也更加友好，适合初学者。打开根目录下的“run_jupyter.bat”，即自动启动浏览器并显示界面，如下图所示。
 
-![image](../images/mmedu/MMEDU安装图4.png)
+![image](../images/mmedu/XEDU安装图3.png)
 
 使用常用工具栏对代码进行操作，如“运行”，可以在单元格中编写文本或者代码（如下图中写了`print("hello")`代码的位置），执行代码的结果也将会在每个单元下方呈现。可以逐个运行单元格，每点击一次，仅运行一个单元格。单元格左侧[*]内的星号变为数字，表示该单元格运行完成。此时可打开“demo”文件夹中的ipynb文件，如“cls_notebook.ipynb”。
 
@@ -61,6 +59,14 @@ Jupyter Notebook是基于网页的用于交互计算的应用程序。其可被�
 - 执行demo文件 
 
 用IDE打开解压路径下的py文件，如“cls_demo.py”，点击“运行”。运行效果应和pyzo一样。
+
+4）使用cmd安装用户库。
+
+python中最常用的库管理工具pip，可以使用cmd命令行来运行，打开根目录下的“启动cmd.bat”可以打开cmd命令行界面，如下图所示。
+
+![image](../images/mmedu/XEDU安装图2.png)
+
+在其中输入想要安装的库文件即可，如“pip install rarfile”。
 
 **在2022年9月后，不再维护MMEdu一键安装包，统一更新为XEdu。XEdu于22年9月在世界人工智能大会正式发布，分MMEdu、BaseML、BaseNN三个功能模块，除了一键安装包，同时实现以pip方式安装。**
 
