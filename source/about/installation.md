@@ -28,7 +28,7 @@ Thonny是一款好用的Python轻量级IDE。其最突出的两个特点便是�
 
 ![image](../images/about/XEDU安装图4.png)
 
-2）使用MMEdu自带的Jupyter。
+2）使用XEdu自带的Jupyter。
 
 Jupyter Notebook是基于网页的用于交互计算的应用程序。其可被应用于全过程计算：开发、文档编写、运行代码和展示结果。它相对简单，对用户也更加友好，适合初学者。
 
