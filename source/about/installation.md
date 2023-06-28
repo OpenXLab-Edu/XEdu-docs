@@ -24,7 +24,7 @@
 
 1）使用XEdu自带的Thonny。
 
-Thonny是一款好用的Python轻量级IDE。其最突出的两个特点便是是简洁性和交互性。打开根目录下的“Thonny编辑器.exe”文件快捷方式即可打开Thonny。使用PThonny打开“demo”文件夹中的py文件，如“MMEdu_cls_demo.py”，点击“运行”的“将文件作为脚本运行”即可运行代码，界面如下图所示。
+Thonny是一款好用的Python轻量级IDE。其最突出的两个特点便是是简洁性和交互性。打开根目录下的“Thonny编辑器.bat”文件快捷方式即可打开Thonny。使用PThonny打开“demo”文件夹中的py文件，如“MMEdu_cls_demo.py”，点击“运行”的“将文件作为脚本运行”即可运行代码，界面如下图所示。
 
 ![image](../images/about/XEDU安装图4.png)
 
@@ -62,7 +62,7 @@ python中最常用的库管理工具pip，可以使用cmd命令行来运行，�
 
 - 执行demo文件 
 
-用IDE打开解压路径下的py文件，如“cls_demo.py”，点击“运行”。运行效果应和pyzo一样。
+用IDE打开解压路径下的py文件，如“cls_demo.py”，点击“运行”。运行效果应和Thonny一样。
 
 第四步：“EasyTrain.bat”、“EasyInference.bat”、“EasyAPI.bat”体验。
 
@@ -101,7 +101,7 @@ XEdu的根目录结构如下：
    ├── EasyInference.bat
    ├── EasyTrain.bat
    ├── jupyter编辑器.bat
-   ├── Thonny编辑器.exe
+   ├── Thonny编辑器.bat
    ├── 启动cmd.bat
    ├── XEdu简介 v1.5.pdf
 ```
@@ -118,7 +118,7 @@ XEdu的根目录结构如下：
 
 **demo目录：**
 
-存放各个模块的测试程序，如“cls_demo.py”，并提供了测试图片。测试程序包括`py`文件和`ipynb`文件，可支持各种“Python IDE”和“jupyter notebook”运行，可运行根目录的“pyzo编辑器.exe”和“jupyter编辑器.bat”后打开测试程序。
+存放各个模块的测试程序，如“cls_demo.py”，并提供了测试图片。测试程序包括`py`文件和`ipynb`文件，可支持各种“Python IDE”和“jupyter notebook”运行，可运行根目录的“Thonny编辑器.bat”和“jupyter编辑器.bat”后打开测试程序。
 
 **envs目录：**
 
@@ -158,7 +158,7 @@ XEdu的根目录结构如下：
 
 双击完成jupyter初始化环境部署。
 
-**Thonny编辑器.exe：**
+**Thonny编辑器.bat：**
 
 双击打开即运行Thonny，一款轻量级Python IDE。
 
