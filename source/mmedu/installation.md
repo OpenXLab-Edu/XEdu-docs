@@ -58,7 +58,7 @@ Jupyter Notebook是基于网页的用于交互计算的应用程序。其可被�
 
 - 执行demo文件 
 
-用IDE打开解压路径下的py文件，如“cls_demo.py”，点击“运行”。运行效果应和pyzo一样。
+用IDE打开解压路径下的py文件，如“cls_demo.py”，点击“运行”。运行效果应和Thonny一样。
 
 4）使用cmd安装用户库。
 
