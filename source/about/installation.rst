@@ -21,18 +21,18 @@ XEdu的安装和下载
 百度网盘:https://pan.baidu.com/s/1UDt-GwHriCB_rewl8kCrUA?pwd=2022
 提取码:2022
 
-第一步：双击运行，将自解压为XEdu文件夹（注意！避免踩坑请安装到纯英文路径下）。
+第一步：双击运行，将自解压为XEdu文件夹（注意！避免踩坑推荐安装到纯英文路径下）。
 
-.. figure:: ../images/about/xedu一键安装包.png
+.. figure:: ../images/about/XEDU安装图1.png
 
 
 第二步：您可以根据个人喜好，选择自己习惯的IDE。
 
-1）使用XEdu自带的pyzo。
+1）使用XEdu自带的Thonny。
 
-pyzo是一款好用的Python轻量级IDE。其最突出的两个特点便是是简洁性和交互性。打开根目录下的“pyzo编辑器.exe”文件快捷方式即可打开pyzo，其指向envs文件夹下software中的pyzo。使用Pyzo打开“demo”文件夹中的py文件，如“MMEdu_cls_demo.py”，点击“运行”的“将文件作为脚本运行”即可运行代码，界面如下图所示。
+Thonny是一款好用的Python轻量级IDE。其最突出的两个特点便是是简洁性和交互性。打开根目录下的“Thonny编辑器.exe”文件快捷方式即可打开Thonny。使用PThonny打开“demo”文件夹中的py文件，如“MMEdu_cls_demo.py”，点击“运行”的“将文件作为脚本运行”即可运行代码，界面如下图所示。
 
-.. figure:: ../images/about/demo运行1.png
+.. figure:: ../images/about/XEDU安装图4.png
 
 
 
@@ -41,14 +41,9 @@ pyzo是一款好用的Python轻量级IDE。其最突出的两个特点便是是�
 Jupyter
 Notebook是基于网页的用于交互计算的应用程序。其可被应用于全过程计算：开发、文档编写、运行代码和展示结果。它相对简单，对用户也更加友好，适合初学者。
 
-**打开jupyter，首先需先双击“jupyter初始化.bat”完成初始化（注意！不要以管理员身份运行）。初始化完成方可使用jupyter。**\ 初始化完成后第二次可直接打开。
+打开根目录下的“jupyter编辑器.bat”，即自动启动浏览器并显示界面，如下图所示。
 
-.. figure:: ../images/about/xedu初始化.png
-
-
-初始化完成（初始化界面自动消失）后打开根目录下的“jupyter编辑器.bat”，即自动启动浏览器并显示界面，如下图所示。
-
-.. figure:: ../images/about/jupyter运行.png
+.. figure:: ../images/about/XEDU安装图3.png
    :alt: image
 
    image
@@ -58,7 +53,16 @@ Notebook是基于网页的用于交互计算的应用程序。其可被应用于
 .. figure:: ../images/about/jupyter运行1.png
 
 
-3）使用其他IDE。
+3）使用cmd安装用户库。
+
+python中最常用的库管理工具pip，可以使用cmd命令行来运行，打开根目录下的“启动cmd.bat”可以打开cmd命令行界面，如下图所示。
+
+.. figure:: ../images/about/XEDU安装图2.png
+
+在其中输入想要安装的库文件即可，如“pip install rarfile”。
+
+
+4）使用其他IDE。
 
 如果您需要使用其他IDE，那么需要您自己配置Python编译器，配置方法如下。
 
@@ -109,15 +113,14 @@ XEdu的根目录结构如下：
    ├── dataset
    ├── demo
    ├── envs
-   ├── HowToStart
    ├── visualization
    ├── EasyAPI.bat
    ├── EasyInference.bat
    ├── EasyTrain.bat
    ├── jupyter编辑器.bat
-   ├── jupyter初始化.bat
-   ├── pyzo编辑器.exe
-   ├── XEdu1.0简介.pdf
+   ├── Thonny编辑器.exe
+   ├── 启动cmd.bat
+   ├── XEdu简介 v1.5.pdf
 
 接下来对每层子目录进行介绍。
 
@@ -138,10 +141,6 @@ notebook”运行，可运行根目录的“pyzo编辑器.exe”和“jupyter编
 **envs目录：**
 
 存放XEdu各模块运行所需的环境和中小学课程常用的库。
-
-**HowToStart目录：**
-
-存放各个模块的使用教程文档，如“MMClassfication使用教程.md”，文档提供了代码详细说明、参数说明与使用等。同时github上此目录下还存放了OpenMMLab各个模块的开发文档供感兴趣的老师和同学参考，如“OpenMMLab_MMClassification.md”，提供了模块介绍、不同函数使用、深度魔改、添加网络等。
 
 **visualization目录：**
 
@@ -176,11 +175,11 @@ notebook，初始化完成后第二次可直接打开。
 
 双击完成jupyter初始化环境部署。
 
-**pyzo编辑器.exe：**
+**Thonny编辑器.exe：**
 
-双击打开即运行pyzo，一款轻量级Python IDE。
+双击打开即运行Thonny，一款轻量级Python IDE。
 
-**XEdu1.0简介.pdf：**
+**XEdu简介 v1.5.pdf：**
 
 XEdu一键安装包说明文档。
 
