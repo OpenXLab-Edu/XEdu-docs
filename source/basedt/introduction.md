@@ -238,6 +238,22 @@ imshow_det_bboxes(img, bboxes = [[3,25,170,263,0.9]],labels = [0], class_names =
 
 针对MMEdu训练训练日志，BaseDT的plot模块支持多种训练日志绘制方式，便于用户直观的对模型训练过程进行可视化分析。
 
+`BaseDT`中的`plot`模块提供`plot_log`函数，支持对训练日志中的损失函数进行绘制。
+
+```
+log_path = 'path/to/my_log.json'
+
+from BaseDT.plot import plot_log
+plot_log(log_path)
+```
+
+参数说明：
+
+`log_path`：日志文件路径，或MMEdu的train函数回传的字典。
+
+`title`：标题名称，可自定义输入。默认为`loss_draw`。
+
+`plot_list`：绘图键值，可选择需要绘制损失的键，常见的键有`loss`、`loss_bbox`、`loss_cls`，默认仅绘制`loss`。
 
 
 ## 板块4：I/O设备
