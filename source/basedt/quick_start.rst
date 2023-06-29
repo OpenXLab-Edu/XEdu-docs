@@ -236,6 +236,28 @@ BaseDT提供了一个plot模块，它可以让你对不同任务的数据进行�
 
 敬请期待。
 
+.. _4-绘制训练日志损失函数:
+
+4. 绘制训练日志损失函数
+~~~~~~~~~~~~~~~~~~~~~~~
+
+``BaseDT``\ 中的\ ``plot``\ 模块提供\ ``plot_log``\ 函数，支持对训练日志中的损失函数进行绘制。
+
+::
+
+   log_path = 'path/to/my_log.json'
+
+   from BaseDT.plot import plot_log
+   plot_log(log_path)
+
+参数说明：
+
+``log_path``\ ：日志文件路径，或MMEdu的train函数回传的字典。
+
+``title``\ ：标题名称，可自定义输入。默认为\ ``loss_draw``\ 。
+
+``plot_list``\ ：绘图键值，可选择需要绘制损失的键，默认仅绘制\ ``loss``\ 。
+
 轻松调用I/O设备
 ---------------
 
