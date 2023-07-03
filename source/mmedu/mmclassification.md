@@ -10,109 +10,7 @@ XEdu一键安装包中预置了MMEdu的cls模块的示例代码（路径：/demo
 
 下面我们将以“石头剪刀布”手势识别这个任务为例，介绍一下图像分类模块示例代码的用法，解锁图像分类模块的同时也一起完成一个新的图像分类项目吧！
 
-#### 1. 直接推理（支持CPU）
-
-如果想快速上手体验MMClassification的话，我们建议您使用我们已经预训练好的模型和权重文件进行推理，提供一张图片测试推理的准确度。
-
-示例代码如下:
-
-```python
-from MMEdu import MMClassification as cls  # 导入mmcls模块
-img = 'testrock01-02.png' # 指定进行推理的图片路径，我们使用demo文件夹中提供的图片
-model = cls(backbone='LeNet') # 实例化MMClassification模型
-model.checkpoint='../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的模型权重文件
-result = model.inference(image=img, show=True, checkpoint=checkpoint) # 在CPU上进行推理
-model.print_result() # 输出结果
-# 同时您可以修改show的值来决定是否需要显示结果图片，此处默认显示结果图片
-```
-
-运行结果如图：
-
-![image](../../build/html/_static/cls_result.png)
-
-推理结果图片（带标签的图片）会以原来的文件名称保存在`demo`文件夹下的`cls_result`文件夹下，如果在`demo`下没有发现该文件夹，不用担心，系统会自动建立。当然，您可以自己指定保存文件夹的名称。
-
-您也可以将收集的图片放在一个文件夹下，然后指定文件夹路径进行一组图片的**批量推理**。如在`demo`文件夹下新建一个`cls_testIMG`文件夹放图片，批量推理的示例代码如下。
-
-```python
-img = 'cls_testIMG/' # 指定进行推理的一组图片的路径
-model = cls(backbone='LeNet') # 实例化MMClassification模型
-model.checkpoint='../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的模型权重文件
-result = model.inference(image=img, show=True, checkpoint=checkpoint) # 在CPU上进行推理
-model.print_result(result) # 输出结果
-# 同时您可以修改show的值来决定是否需要显示结果图片，此处默认显示结果图片
-```
-
-您会发现当前目录下`‘cls_result’`文件夹里出现了这组图片的推理结果图，每张图片的结果与您收集的图片同名，到这个文件夹下查看推理结果。
-
-接下来对为您讲述推理代码规则：
-
-- **图片准备**
-
-```python
-img = 'testrock01-02.png' # 指定推理图片的路径，直接在代码所在的demo文件夹中选择图片
-```
-
-如果使用自己的图片的话，只需要修改img的路径即可（绝对路径和相对路径均可）
-
-- **实例化模型**
-
-```python
-model = cls(backbone='LeNet') # 实例化MMClassification模型
-```
-
-这里对于`MMClassification`模型提供的参数进行解释，`MMClassification`支持传入的参数是`backbone`。
-
-`backbone`：指定使用的`MMClassification`模型，默认参数是`'LeNet'`，当然读者可以自行修改该参数以使用不同模型。
-
-- **模型推理**
-
-```python
-model.inference(image=img, show=True, checkpoint=checkpoint) # 在cpu上进行推理
-```
-
-将所需要推理图片的路径传入`inference`函数中即可进行推理，我们这里传入了四个参数，`image`代表的就是推理图片的路径，`show`代表是否需要显示结果图片，`class_path`代表训练集的路径，`checkpoint`代表指定使用的模型权重文件。
-
-> **参数详解**
->
-> 在MMClassification中对于`inference`函数还有其他的传入参数，在这里进行说明：
->
-> `device`：推理所用的设备，默认为`'cpu'`，如果电脑支持GPU，也可以将参数修改为`'cuda'`，使用GPU进行推理。
->
-> `checkpoint`：指定使用的模型权重文件，默认参数为`None`，如果没有指定模型权重文件，那么我们将会使用默认的模型权重文件进行推理。
->
-> `image`：推理图片的路径。
->
-> `show`：布尔值，默认为`True`，表示推理后是否显示推理结果
->
-> `save_fold`：保存的图片名，数据结构为字符串，默认参数为`'cls_result'`，用户也可以定义为自己想要的名字。
-
-- **快速推理**
-
-针对部分用户希望加快推理速度的需求，设计了`fast_inference`函数，主要方法是使用`load_checkpoint`提前加载权重文件。
-
-```
-model.load_checkpoint(checkpoint=checkpoint)
-result = model.fast_inference(image=img)
-```
-
-> **参数详解**
->
-> `load_checkpoint`函数的传入参数：
->
-> `device`：推理所用的设备，默认为`'cpu'`，如果电脑支持GPU，也可以将参数修改为`'cuda'`，使用GPU进行推理。
->
-> `checkpoint`：指定使用的模型权重文件，默认参数为`None`，如果没有指定模型权重文件，那么我们将会使用默认的模型权重文件进行推理。
->
-> `fast_inference`函数的传入参数：
->
-> `image`：推理图片的路径。
->
-> `show`：布尔值，默认为`True`，表示推理后是否显示推理结果。
->
-> `save_fold`：保存的图片名，数据结构为字符串，默认参数为`'cls_result'`，用户也可以定义为自己想要的名字。
-
-#### 2. 训练模型
+#### 1. 模型训练
 
 使用下面的代码即可简单体验MMClassification的训练过程，我们会为您进行详细的介绍。
 
@@ -229,6 +127,110 @@ model.train(epochs=10, validate=True) # 设定训练的epoch次数以及是否�
 > `memory`: 训练时占据内存或现存的大小。
 >
 > `loss`: 本批次模型在训练集上计算的损失值。loss是衡量模型在训练集上预测结果与真实结果之间差异的指标。不同类型的模型（如分类、回归、生成等）使用不同的loss函数来优化模型，MMEdu的图像分类模型一般使用交叉熵损失函数。通常情况下，训练过程中的loss会逐渐下降，表示模型在逐步学习优化。
+
+
+
+#### 2. 模型推理
+
+当完成模型训练，可使用训练好的模型对新图片进行模型推理。当然如果想快速上手体验MMClassification的图像分类，可直接使用我们已经预训练好的模型和权重文件进行推理，提供一张图片测试推理的准确度。
+
+示例代码如下:
+
+```python
+from MMEdu import MMClassification as cls  # 导入mmcls模块
+img = 'testrock01-02.png' # 指定进行推理的图片路径，我们使用demo文件夹中提供的图片
+model = cls(backbone='LeNet') # 实例化MMClassification模型
+model.checkpoint='../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的模型权重文件
+result = model.inference(image=img, show=True, checkpoint=checkpoint) # 在CPU上进行推理
+model.print_result() # 输出结果
+# 同时您可以修改show的值来决定是否需要显示结果图片，此处默认显示结果图片
+```
+
+运行结果如图：
+
+![image](../../build/html/_static/cls_result.png)
+
+推理结果图片（带标签的图片）会以原来的文件名称保存在代码文件的同级目录下的`cls_result`文件夹下，如果运行代码前没有发现该文件夹，不用担心，系统会自动建立。当然，您可以自己指定保存文件夹的名称。
+
+您也可以将收集的图片放在一个文件夹下，然后指定文件夹路径进行一组图片的**批量推理**。如在`demo`文件夹下新建一个`cls_testIMG`文件夹放图片，批量推理的示例代码如下。
+
+```python
+img = 'cls_testIMG/' # 指定进行推理的一组图片的路径
+model = cls(backbone='LeNet') # 实例化MMClassification模型
+model.checkpoint='../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的模型权重文件
+result = model.inference(image=img, show=True, checkpoint=checkpoint) # 在CPU上进行推理
+model.print_result(result) # 输出结果
+# 同时您可以修改show的值来决定是否需要显示结果图片，此处默认显示结果图片
+```
+
+您会发现当前目录下`‘cls_result’`文件夹里出现了这组图片的推理结果图，每张图片的结果与您收集的图片同名，到这个文件夹下查看推理结果。
+
+接下来对为您讲述推理代码规则：
+
+- **图片准备**
+
+```python
+img = 'testrock01-02.png' # 指定推理图片的路径，直接在代码所在的demo文件夹中选择图片
+```
+
+如果使用自己的图片的话，只需要修改img的路径即可（绝对路径和相对路径均可）
+
+- **实例化模型**
+
+```python
+model = cls(backbone='LeNet') # 实例化MMClassification模型
+```
+
+这里对于`MMClassification`模型提供的参数进行解释，`MMClassification`支持传入的参数是`backbone`。
+
+`backbone`：指定使用的`MMClassification`模型，默认参数是`'LeNet'`，当然读者可以自行修改该参数以使用不同模型。
+
+- **模型推理**
+
+```python
+model.inference(image=img, show=True, checkpoint=checkpoint) # 在cpu上进行推理
+```
+
+将所需要推理图片的路径传入`inference`函数中即可进行推理，我们这里传入了四个参数，`image`代表的就是推理图片的路径，`show`代表是否需要显示结果图片，`class_path`代表训练集的路径，`checkpoint`代表指定使用的模型权重文件。
+
+> **参数详解**
+>
+> 在MMClassification中对于`inference`函数还有其他的传入参数，在这里进行说明：
+>
+> `device`：推理所用的设备，默认为`'cpu'`，如果电脑支持GPU，也可以将参数修改为`'cuda'`，使用GPU进行推理。
+>
+> `checkpoint`：指定使用的模型权重文件，默认参数为`None`，如果没有指定模型权重文件，那么我们将会使用默认的模型权重文件进行推理。
+>
+> `image`：推理图片的路径。
+>
+> `show`：布尔值，默认为`True`，表示推理后是否显示推理结果
+>
+> `save_fold`：保存的图片名，数据结构为字符串，默认参数为`'cls_result'`，用户也可以定义为自己想要的名字。
+
+- **快速推理**
+
+针对部分用户希望加快推理速度的需求，设计了`fast_inference`函数，主要方法是使用`load_checkpoint`提前加载权重文件。
+
+```
+model.load_checkpoint(checkpoint=checkpoint)
+result = model.fast_inference(image=img)
+```
+
+> **参数详解**
+>
+> `load_checkpoint`函数的传入参数：
+>
+> `device`：推理所用的设备，默认为`'cpu'`，如果电脑支持GPU，也可以将参数修改为`'cuda'`，使用GPU进行推理。
+>
+> `checkpoint`：指定使用的模型权重文件，默认参数为`None`，如果没有指定模型权重文件，那么我们将会使用默认的模型权重文件进行推理。
+>
+> `fast_inference`函数的传入参数：
+>
+> `image`：推理图片的路径。
+>
+> `show`：布尔值，默认为`True`，表示推理后是否显示推理结果。
+>
+> `save_fold`：保存的图片名，数据结构为字符串，默认参数为`'cls_result'`，用户也可以定义为自己想要的名字。
 
 
 

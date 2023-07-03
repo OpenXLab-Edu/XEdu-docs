@@ -297,6 +297,17 @@
 <section id="id15">
 <h3>（3）日志分析<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h3>
 <p>针对MMEdu训练训练日志，BaseDT的plot模块支持多种训练日志绘制方式，便于用户直观的对模型训练过程进行可视化分析。</p>
+<p><code class="docutils literal notranslate"><span class="pre">BaseDT</span></code>中的<code class="docutils literal notranslate"><span class="pre">plot</span></code>模块提供<code class="docutils literal notranslate"><span class="pre">plot_log</span></code>函数，支持对训练日志中的损失函数进行绘制。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log_path</span> <span class="o">=</span> <span class="s1">&#39;path/to/my_log.json&#39;</span>
+
+<span class="kn">from</span> <span class="nn">BaseDT.plot</span> <span class="kn">import</span> <span class="n">plot_log</span>
+<span class="n">plot_log</span><span class="p">(</span><span class="n">log_path</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>参数说明：</p>
+<p><code class="docutils literal notranslate"><span class="pre">log_path</span></code>：日志文件路径，或MMEdu的train函数回传的字典。</p>
+<p><code class="docutils literal notranslate"><span class="pre">title</span></code>：标题名称，可自定义输入。默认为<code class="docutils literal notranslate"><span class="pre">loss_draw</span></code>。</p>
+<p><code class="docutils literal notranslate"><span class="pre">plot_list</span></code>：绘图键值，可选择需要绘制损失的键，常见的键有<code class="docutils literal notranslate"><span class="pre">loss</span></code>、<code class="docutils literal notranslate"><span class="pre">loss_bbox</span></code>、<code class="docutils literal notranslate"><span class="pre">loss_cls</span></code>，默认仅绘制<code class="docutils literal notranslate"><span class="pre">loss</span></code>。</p>
 </section>
 </section>
 <section id="i-o">

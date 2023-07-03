@@ -54,15 +54,15 @@
 <li class="toctree-l4"><a class="reference internal" href="#id3">推理功能</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">与其他库配合的部署</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">与其他库配合的部署</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#gradio">Gradio</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#fastapi">FastAPI</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#siot">SIOT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#siot">SIoT</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pywebio">PywebIO</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id11">参考链接</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">更多模型部署相关项目</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">参考链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">更多模型部署相关项目</a></li>
 </ul>
 </li>
 </ul>
@@ -103,34 +103,50 @@
 <section id="id1">
 <h2>快速开始<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>通过传入模型的路径加载为一个模型，通过<code class="docutils literal notranslate"><span class="pre">model.inference</span></code>即可完成模型的推理。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.data</span> <span class="kn">import</span> <span class="n">ImageData</span>
-<span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
-<span class="n">dt</span> <span class="o">=</span> <span class="n">ImageData</span><span class="p">(</span><span class="n">img_path</span><span class="p">,</span> <span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;训练的模型名称，例如MobileNet&#39;</span><span class="p">)</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">bd</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<p>示例代码一：</p>
+<p>本段代码实现的功能是将<code class="docutils literal notranslate"><span class="pre">BaseDT</span></code>预处理好后的图片传入<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>推理函数进行推理，并将推理结果返回。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>model_path = `./mymodel.onnx`
+from BaseDT.data import ImageData
+import BaseDeploy as bd
+dt = ImageData(img_path, backbone=&#39;训练的模型名称，例如MobileNet&#39;)
+model = bd(model_path)
+result = model.inference(dt)
+</pre></div>
+</div>
+<p>示例代码二：
+本段代码实现的功能是将图片路径传入<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>推理函数进行推理，并将推理结果返回。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>model_path = `./mymodel.onnx`
+import BaseDeploy as bd
+model = bd(model_path)
+result = model.inference(img_path)
+</pre></div>
+</div>
+<p>示例代码三：
+本段代码实现的功能是将cv2调用摄像头拍摄的图片传入<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>推理函数进行推理，并将推理结果返回。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>model_path = `./mymodel.onnx`
+import cv2
+cap = cv2.VideoCapture(0)
+ret, img = cap.read()
+import BaseDeploy as bd
+model = bd(model_path)
+result = model.inference(img)
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>图像分类</p></li>
 </ul>
-<figure class="align-default">
-<img alt="../_images/基本功能推理_图像分类.png" src="../_images/基本功能推理_图像分类.png" />
-</figure>
+<img alt="image" src="../_images/基本功能推理_图像分类.png" />
 <ul class="simple">
 <li><p>目标检测</p></li>
 </ul>
-<figure class="align-default">
-<img alt="../_images/基本功能推理_目标检测.png" src="../_images/基本功能推理_目标检测.png" />
-</figure>
+<img alt="image" src="../_images/基本功能推理_目标检测.png" />
 </section>
 <section id="id2">
 <h2>基本功能<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>提供多种便于模型部署的函数，包括了推理与相关库启动部署。</p>
 <section id="id3">
 <h3>推理功能<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
-<div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>通过<code class="docutils literal notranslate"><span class="pre">model.inference</span></code>函数封装实现推理功能。</div>
-</div>
+<p><code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>对不同任务的模型进行统一的推理管理，对于用户来说仅需更换onnx模型的路径，<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>会自动匹配对应的任务类型，并将推理和显示的内部流程进行封装。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span> <span class="n">show</span><span class="p">,</span> <span class="n">get_img</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="n">show_path</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -142,28 +158,54 @@
 <p><code class="docutils literal notranslate"><span class="pre">score</span></code>：识别阈值，无论是分类任务还是检测任务，高于score的置信度的图片才会被输出到推理结果，默认为0.65。</p>
 <p><code class="docutils literal notranslate"><span class="pre">show_path</span></code>：是否显示图片路径，默认为False</p>
 <section id="id4">
-<h4>文件夹推理<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h4>
+<h4>返回参数说明<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h4>
+<p>通过BaseDeploy的模型完成推理后，输出的格式为列表，列表中套字典</p>
+<ul class="simple">
+<li><p>图像分类
+对于目标检测任务字典保存的键为<code class="docutils literal notranslate"><span class="pre">标签</span></code>，<code class="docutils literal notranslate"><span class="pre">置信度</span></code>，<code class="docutils literal notranslate"><span class="pre">预测结果</span></code>，推理结果result如下：</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;标签&#39;</span><span class="p">:</span> <span class="mi">215</span><span class="p">,</span> <span class="s1">&#39;置信度&#39;</span><span class="p">:</span> <span class="mf">0.23003787</span><span class="p">,</span> <span class="s1">&#39;预测结果&#39;</span><span class="p">:</span> <span class="s1">&#39;Brittany spaniel&#39;</span><span class="p">}]</span>
+</pre></div>
+</div>
+<p>result
+为一个列表，其长度为1，列表中的值为字典，字典中包含这张图片推理后的标签、置信度和预测结果。</p>
+<ul class="simple">
+<li><p>目标检测</p></li>
+</ul>
+<p>对于目标检测任务字典保存的键为<code class="docutils literal notranslate"><span class="pre">标签</span></code>，<code class="docutils literal notranslate"><span class="pre">置信度</span></code>，<code class="docutils literal notranslate"><span class="pre">预测结果</span></code>，<code class="docutils literal notranslate"><span class="pre">坐标</span></code>，推理结果result如下：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;标签&#39;</span><span class="p">:</span> <span class="mi">67</span><span class="p">,</span> <span class="s1">&#39;置信度&#39;</span><span class="p">:</span> <span class="mf">0.8131059408187866</span><span class="p">,</span> <span class="s1">&#39;预测结果&#39;</span><span class="p">:</span> <span class="s1">&#39;cell phone&#39;</span><span class="p">,</span> <span class="s1">&#39;坐标&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;x1&#39;</span><span class="p">:</span> <span class="mi">229</span><span class="p">,</span> <span class="s1">&#39;y1&#39;</span><span class="p">:</span> <span class="mi">113</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">:</span> <span class="mi">352</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">:</span> <span class="mi">441</span><span class="p">}},</span> <span class="p">{</span><span class="s1">&#39;标签&#39;</span><span class="p">:</span> <span class="mi">67</span><span class="p">,</span> <span class="s1">&#39;置信度&#39;</span><span class="p">:</span> <span class="mf">0.7117214202880859</span><span class="p">,</span> <span class="s1">&#39;预测结果&#39;</span><span class="p">:</span> <span class="s1">&#39;cell phone&#39;</span><span class="p">,</span> <span class="s1">&#39;坐标&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;x1&#39;</span><span class="p">:</span> <span class="mi">443</span><span class="p">,</span> <span class="s1">&#39;y1&#39;</span><span class="p">:</span> <span class="mi">103</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">:</span> <span class="mi">615</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">:</span> <span class="mi">447</span><span class="p">}},</span> <span class="p">{</span><span class="s1">&#39;标签&#39;</span><span class="p">:</span> <span class="mi">67</span><span class="p">,</span> <span class="s1">&#39;置信度&#39;</span><span class="p">:</span> <span class="mf">0.6600658297538757</span><span class="p">,</span> <span class="s1">&#39;预测结果&#39;</span><span class="p">:</span> <span class="s1">&#39;cell phone&#39;</span><span class="p">,</span> <span class="s1">&#39;坐标&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;x1&#39;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;y1&#39;</span><span class="p">:</span> <span class="mi">142</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">:</span> <span class="mi">144</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">:</span> <span class="mi">479</span><span class="p">}}]</span>
+</pre></div>
+</div>
+<p>result
+为一个列表，其长度为3，可通过result[0]，result[1]，result[2]得到，列表中的值为字典，字典中包含一个检测框中的标签、置信度、预测结果和检测框的四角坐标。
+示例，打印result中的预测结果：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;预测结果&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h4>文件夹推理<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>提供对文件夹中的图片推理的功能</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">bd</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">folder_path</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>参数说明如下：</p>
+<p><code class="docutils literal notranslate"><span class="pre">model_path</span></code>：ONNX模型的路径。</p>
+<p><code class="docutils literal notranslate"><span class="pre">folder_path</span></code>：待推理的文件夹路径，文件夹中的文件需是图片。</p>
 <ul class="simple">
 <li><p>图像分类</p></li>
 </ul>
-<figure class="align-default">
-<img alt="../_images/文件夹推理_分类.JPG" src="../_images/文件夹推理_分类.JPG" />
-</figure>
+<img alt="image" src="../_images/文件夹推理_分类.JPG" />
 <ul class="simple">
 <li><p>目标检测</p></li>
 </ul>
-<figure class="align-default">
-<img alt="../_images/文件夹推理_检测.JPG" src="../_images/文件夹推理_检测.JPG" />
-</figure>
+<img alt="image" src="../_images/文件夹推理_检测.JPG" />
 </section>
-<section id="id5">
-<h4>图片路径显示<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h4>
+<section id="id6">
+<h4>图片路径显示<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h4>
 <p>将<code class="docutils literal notranslate"><span class="pre">show_path</span></code>设置为True，即可以<code class="docutils literal notranslate"><span class="pre">文件名+推理结果</span></code>作为最终的消息回显（该功能仅对以路径形式传入的方式有效）</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">bd</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
@@ -173,18 +215,14 @@
 <ul class="simple">
 <li><p>图像分类</p></li>
 </ul>
-<figure class="align-default">
-<img alt="../_images/路径显示_分类.JPG" src="../_images/路径显示_分类.JPG" />
-</figure>
+<img alt="image" src="../_images/路径显示_分类.JPG" />
 <ul class="simple">
 <li><p>目标检测</p></li>
 </ul>
-<figure class="align-default">
-<img alt="../_images/路径显示_检测.JPG" src="../_images/路径显示_检测.JPG" />
-</figure>
+<img alt="image" src="../_images/路径显示_检测.JPG" />
 </section>
-<section id="id6">
-<h4>图像回传<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h4>
+<section id="id7">
+<h4>图像回传<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">get_img</span></code>参数默认为None，可选参数为<code class="docutils literal notranslate"><span class="pre">pil</span></code>和<code class="docutils literal notranslate"><span class="pre">cv2</span></code>，目的是用户可以通过得到的图片二次创作。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">bd</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
@@ -196,18 +234,21 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p>参数说明如下：</p>
+<p><code class="docutils literal notranslate"><span class="pre">model_path</span></code>：ONNX模型的路径。</p>
+<p><code class="docutils literal notranslate"><span class="pre">img_path</span></code>：待推理的图片路径。</p>
+<p><code class="docutils literal notranslate"><span class="pre">get_img</span></code>：<code class="docutils literal notranslate"><span class="pre">model.inference</span></code>中内置的参数，设为<code class="docutils literal notranslate"><span class="pre">pil</span></code>表示回传的图片可供<code class="docutils literal notranslate"><span class="pre">pil</span></code>显示。</p>
 <section id="pil">
 <h5>PIL方式<a class="headerlink" href="#pil" title="Permalink to this headline"></a></h5>
-<p>PIL方式适合Jupyter中进行交互，下面是一个 - 图像分类</p>
-<figure class="align-default">
-<img alt="../_images/图像回传_分类_pil.JPG" src="../_images/图像回传_分类_pil.JPG" />
-</figure>
+<p>PIL方式适合Jupyter中进行交互，下面是一个</p>
+<ul class="simple">
+<li><p>图像分类</p></li>
+</ul>
+<img alt="image" src="../_images/图像回传_分类_pil.JPG" />
 <ul class="simple">
 <li><p>目标检测</p></li>
 </ul>
-<figure class="align-default">
-<img alt="../_images/图像回传_检测_pil.JPG" src="../_images/图像回传_检测_pil.JPG" />
-</figure>
+<img alt="image" src="../_images/图像回传_检测_pil.JPG" />
 </section>
 <section id="cv2">
 <h5>cv2方式<a class="headerlink" href="#cv2" title="Permalink to this headline"></a></h5>
@@ -222,58 +263,62 @@
 <span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
 </pre></div>
 </div>
-<figure class="align-default">
-<img alt="../_images/图像回传_分类_cv2.JPG" src="../_images/图像回传_分类_cv2.JPG" />
-</figure>
-<ul class="simple">
-<li><p>目标检测</p></li>
-</ul>
-<figure class="align-default">
-<img alt="../_images/图像回传_检测_cv2.JPG" src="../_images/图像回传_检测_cv2.JPG" />
-</figure>
-</section>
-</section>
-<section id="onnx">
-<h4>未知ONNX模型的解析<a class="headerlink" href="#onnx" title="Permalink to this headline"></a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>为适配图像任务，可自动解析未经<code class="docutils literal notranslate"><span class="pre">XEdu</span></code>标记的ONNX模型的输入张量尺寸，并进行图像预处理和输出后处理，输出结果将不会带有类别信息。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">bd</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">img_path</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
+<p>参数说明如下：</p>
+<p><code class="docutils literal notranslate"><span class="pre">model_path</span></code>：ONNX模型的路径。</p>
+<p><code class="docutils literal notranslate"><span class="pre">img_path</span></code>：待推理的图片路径。</p>
+<p><code class="docutils literal notranslate"><span class="pre">get_img</span></code>：<code class="docutils literal notranslate"><span class="pre">model.inference</span></code>中内置的参数，设为<code class="docutils literal notranslate"><span class="pre">cv2</span></code>表示回传的图片可供<code class="docutils literal notranslate"><span class="pre">cv2</span></code>显示。</p>
 <ul class="simple">
 <li><p>图像分类</p></li>
 </ul>
-<figure class="align-default">
-<img alt="../_images/无信息ONNX推理_分类.JPG" src="../_images/无信息ONNX推理_分类.JPG" />
-</figure>
+<img alt="image" src="../_images/图像回传_分类_cv2.JPG" />
 <ul class="simple">
 <li><p>目标检测</p></li>
 </ul>
-<figure class="align-default">
-<img alt="../_images/无信息ONNX推理_检测.JPG" src="../_images/无信息ONNX推理_检测.JPG" />
-</figure>
+<img alt="image" src="../_images/图像回传_检测_cv2.JPG" />
+</section>
+</section>
+<section id="onnx">
+<h4>一般ONNX模型的解析<a class="headerlink" href="#onnx" title="Permalink to this headline"></a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>为适配图像任务，可自动解析未经<code class="docutils literal notranslate"><span class="pre">XEdu</span></code>标记的ONNX模型的输入张量尺寸，并进行图像预处理和输出后处理，输出结果将不会带有类别信息。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">bd</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>参数说明如下：</p>
+<p><code class="docutils literal notranslate"><span class="pre">model_path</span></code>：ONNX模型的路径，目前仅支持图像分类和目标检测的模型解析。</p>
+<p><code class="docutils literal notranslate"><span class="pre">img_path</span></code>：待推理的图片路径。</p>
+<ul class="simple">
+<li><p>图像分类</p></li>
+</ul>
+<img alt="image" src="../_images/无信息ONNX推理_分类.JPG" />
+<ul class="simple">
+<li><p>目标检测</p></li>
+</ul>
+<img alt="image" src="../_images/无信息ONNX推理_检测.JPG" />
 <p>此外，<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>还提供<code class="docutils literal notranslate"><span class="pre">diy_inference</span></code>函数，供用户推理特殊的ONNX模型，其推理的前处理和后处理需要用户自行实现。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">bd</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">diy_inference</span><span class="p">(</span><span class="n">input_data</span><span class="p">)</span>
 </pre></div>
 </div>
-<figure class="align-default">
-<img alt="../_images/diy_infer.JPG" src="../_images/diy_infer.JPG" />
-</figure>
+<p>参数说明如下：</p>
+<p><code class="docutils literal notranslate"><span class="pre">model_path</span></code>：ONNX模型的路径。</p>
+<p><code class="docutils literal notranslate"><span class="pre">img_path</span></code>：待推理的图片路径。</p>
+<p><code class="docutils literal notranslate"><span class="pre">input_data</span></code>：用户自定义前处理好后的张量，请将其保持与模型输入节点需要的张量形状一致。</p>
+<img alt="image" src="../_images/diy_infer.JPG" />
 </section>
 </section>
 </section>
-<section id="id7">
-<h2>与其他库配合的部署<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>通过<code class="docutils literal notranslate"><span class="pre">model.run()</span></code>调用内置的多种部署工具，包括<code class="docutils literal notranslate"><span class="pre">Gradio</span></code>，<code class="docutils literal notranslate"><span class="pre">EasyAPI</span></code>，<code class="docutils literal notranslate"><span class="pre">SIOT</span></code>和<code class="docutils literal notranslate"><span class="pre">PywebIO</span></code>等，实现模型即黑箱的功能，把AI推理简单的视作一个函数。</p>
+<section id="id8">
+<h2>与其他库配合的部署<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>通过<code class="docutils literal notranslate"><span class="pre">model.run()</span></code>调用内置的多种部署工具，包括<code class="docutils literal notranslate"><span class="pre">Gradio</span></code>，<code class="docutils literal notranslate"><span class="pre">EasyAPI</span></code>，<code class="docutils literal notranslate"><span class="pre">SIoT</span></code>和<code class="docutils literal notranslate"><span class="pre">PywebIO</span></code>等，实现模型即黑箱的功能，把AI推理简单的视作一个函数。</p>
 <section id="gradio">
 <h3>Gradio<a class="headerlink" href="#gradio" title="Permalink to this headline"></a></h3>
 <p>Gradio
 是一种简单易用的Web界面工具，它可以让你快速地将模型部署到Web应用程序中。<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>通过对<code class="docutils literal notranslate"><span class="pre">Gradio</span></code>进行封装，一键启动。为了保证<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>的轻量性，<code class="docutils literal notranslate"><span class="pre">Gradio</span></code>库在安装时并不会被同步安装，如想使用该功能在使用前请使用<code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">gradio</span></code>进行依赖库的安装。</p>
-<section id="id8">
-<h4>如何使用<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h4>
+<section id="id9">
+<h4>如何使用<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>支持在载入模型后使用<code class="docutils literal notranslate"><span class="pre">run_gradio</span></code>函数一键启动，启动后输入界面可选择两个参数，一是点击后选择路径，二是设置<code class="docutils literal notranslate"><span class="pre">score</span></code>，低于<code class="docutils literal notranslate"><span class="pre">score</span></code>的图片将不会被绘制，详情可见运行后日志。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">bd</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
@@ -281,17 +326,9 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>图像分类</p></li>
+<li><p>图像分类 <img alt="image" src="../_images/gradio_分类推理.JPG" /></p></li>
+<li><p>目标检测 <img alt="image1" src="../_images/gradio_检测推理.JPG" /></p></li>
 </ul>
-<figure class="align-default">
-<img alt="../_images/gradio_分类推理.JPG" src="../_images/gradio_分类推理.JPG" />
-</figure>
-<ul class="simple">
-<li><p>目标检测</p></li>
-</ul>
-<figure class="align-default">
-<img alt="../_images/gradio_检测推理.JPG" src="../_images/gradio_检测推理.JPG" />
-</figure>
 </section>
 </section>
 <section id="fastapi">
@@ -300,9 +337,13 @@
 <div class="line"><code class="docutils literal notranslate"><span class="pre">FastAPI</span></code> 是一个Python Web 框架，用于构建高性能的 Web 应用程序和
 API。它是基于 Python
 类型提示和异步编程的优势，提供了快速、易于使用和具有强大功能的开发体验。<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>通过对<code class="docutils literal notranslate"><span class="pre">FastAPI</span></code>的集成，可一键启动接口，并支持json或file的回传形式，用户可自行选择。</div>
-<div class="line">值得注意的是，由于<code class="docutils literal notranslate"><span class="pre">FastAPI</span></code>本身的限制，目前暂不支持在<code class="docutils literal notranslate"><span class="pre">Jupyter</span></code>中调用该函数。
-#### 如何使用 - 基本方法</div>
+<div class="line">值得注意的是，由于<code class="docutils literal notranslate"><span class="pre">FastAPI</span></code>本身的限制，目前暂不支持在<code class="docutils literal notranslate"><span class="pre">Jupyter</span></code>中调用该函数。</div>
 </div>
+<section id="id10">
+<span id="id11"></span><h4>如何使用<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p>基本方法</p></li>
+</ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">bd</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">run_fastapi</span><span class="p">()</span>
@@ -317,12 +358,10 @@ API。它是基于 Python
 设置<code class="docutils literal notranslate"><span class="pre">FastAPI</span></code>的运行模式，可选参数为<code class="docutils literal notranslate"><span class="pre">json</span></code>和<code class="docutils literal notranslate"><span class="pre">img</span></code>，代表回传的内容为推理结果或推理后绘制的图片，于用户角度即为绘制图像操作在上位机还是下位机完成。
 score：设置绘图阈值，若高于阈值，才进行绘图操作，默认为：<code class="docutils literal notranslate"><span class="pre">0.65</span></code>。</div>
 </div>
-<p>运行后出现下图所示的内容，即代表<code class="docutils literal notranslate"><span class="pre">FastAPI</span></code>启动成功。</p>
-<figure class="align-default">
-<img alt="../_images/EasyAPI_命令行启动.JPG" src="../_images/EasyAPI_命令行启动.JPG" />
-</figure>
-<section id="id9">
-<h4>如何调用接口<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h4>
+<p>运行后出现下图所示的内容，即代表<code class="docutils literal notranslate"><span class="pre">FastAPI</span></code>启动成功。 <img alt="image2" src="../_images/EasyAPI_命令行启动.JPG" /></p>
+</section>
+<section id="id12">
+<h4>如何调用接口<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h4>
 <p>在用户端如需调用<code class="docutils literal notranslate"><span class="pre">EasyAPI</span></code>启动的接口，仅需设置接口地址<code class="docutils literal notranslate"><span class="pre">url</span></code>和图片路径<code class="docutils literal notranslate"><span class="pre">img_path</span></code>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://192.168.31.38:1956/upload&quot;</span>
@@ -334,56 +373,40 @@ score：设置绘图阈值，若高于阈值，才进行绘图操作，默认为
 <ul class="simple">
 <li><p>图像分类</p></li>
 </ul>
-<figure class="align-default">
-<img alt="../_images/EasyAPI_分类.JPG" src="../_images/EasyAPI_分类.JPG" />
-</figure>
+<img alt="image" src="../_images/EasyAPI_分类.JPG" />
 <ul class="simple">
 <li><p>目标检测</p></li>
 </ul>
-<figure class="align-default">
-<img alt="../_images/EasyAPI_检测.JPG" src="../_images/EasyAPI_检测.JPG" />
-</figure>
+<img alt="image" src="../_images/EasyAPI_检测.JPG" />
 </section>
 </section>
 <section id="siot">
-<h3>SIOT<a class="headerlink" href="#siot" title="Permalink to this headline"></a></h3>
+<h3>SIoT<a class="headerlink" href="#siot" title="Permalink to this headline"></a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">SIoT</span></code>为“虚谷物联”项目的核心软件，是为了帮助中小学生理解物联网原理，并且能够基于物联网技术开发各种创意应用。因为其重点关注物联网数据的收集和导出，是采集科学数据的最好选择之一。</p>
 <p><code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>通过对<code class="docutils literal notranslate"><span class="pre">SIoT</span></code>进行封装，支持一键将后端推理从本地迁移至启动SIoT推理服务的程序。</p>
-<section id="id10">
-<h4>如何使用<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h4>
+<section id="id13">
+<span id="id14"></span><h4>如何使用<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h4>
 <p>要想使用<code class="docutils literal notranslate"><span class="pre">SIoT</span></code>，需要一个<code class="docutils literal notranslate"><span class="pre">SIoT服务端</span></code>的<code class="docutils literal notranslate"><span class="pre">IP地址</span></code>，以及使用<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>启动监听和传输推理的服务。</p>
 <ul class="simple">
 <li><p>服务端
-服务端需要按照<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>的导入模型的方式定义一个模型，并使用<code class="docutils literal notranslate"><span class="pre">use_siot</span></code>函数启动siot的消息监听功能。</p></li>
+服务端需要按照<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>的导入模型的方式定义一个模型，并使用<code class="docutils literal notranslate"><span class="pre">use_siot</span></code>函数启动siot的消息监听功能。默认监听本地的ip地址<code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code>，如需更换监听的ip地址，可设置<code class="docutils literal notranslate"><span class="pre">model.run_siot(ip=ip地址)</span></code></p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">bd</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">run_siot</span><span class="p">(</span><span class="n">ip</span><span class="o">=</span><span class="n">ip_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;infer&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">run_siot</span><span class="p">()</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>用户端
-用户端选用<code class="docutils literal notranslate"><span class="pre">SIoT</span></code>进行推理，不再需要导入<code class="docutils literal notranslate"><span class="pre">ONNX</span></code>模型，故在初始化时仅需将推理后端选为<code class="docutils literal notranslate"><span class="pre">SIoT</span></code>即可。</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">bd</span><span class="p">(</span><span class="n">ip_path</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s1">&#39;siot&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>如上操作后，用户即可在用户端使用<code class="docutils literal notranslate"><span class="pre">model.inference</span></code>函数进行模型的推理了，使用方法遵循原有<code class="docutils literal notranslate"><span class="pre">inference</span></code>推理示例。</p>
-<figure class="align-default">
-<img alt="../_images/SIoT推理.JPG" src="../_images/SIoT推理.JPG" />
-</figure>
 <p>用户端对服务端进行访问时，服务端也会同步打印推理结果，便于用户检查连接状况等。</p>
-<figure class="align-default">
-<img alt="../_images/SIoT_服务端.JPG" src="../_images/SIoT_服务端.JPG" />
-</figure>
+<img alt="image" src="../_images/SIoT_服务端.JPG" />
 </section>
 </section>
 <section id="pywebio">
 <h3>PywebIO<a class="headerlink" href="#pywebio" title="Permalink to this headline"></a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">PyWebIO</span></code>是一个用于构建交互式Web应用程序的Python库。它提供了一组简单且直观的函数和装饰器，使得开发人员可以在Web浏览器中使用Python来创建丰富的用户界面和交互体验，而无需编写HTML、CSS或JavaScript代码。<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>通过对<code class="docutils literal notranslate"><span class="pre">PywebIO</span></code>的封装，支持一键启动推理服务界面。
-值得注意的是，由于<code class="docutils literal notranslate"><span class="pre">Pywebio</span></code>本身的限制，目前暂不支持在<code class="docutils literal notranslate"><span class="pre">Jupyter</span></code>中调用该函数。
-- 基本方法</p>
+值得注意的是，由于<code class="docutils literal notranslate"><span class="pre">Pywebio</span></code>本身的限制，目前暂不支持在<code class="docutils literal notranslate"><span class="pre">Jupyter</span></code>中调用该函数。</p>
+<ul class="simple">
+<li><p>基本方法</p></li>
+</ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">bd</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">run_pywebio</span><span class="p">()</span>
@@ -395,30 +418,24 @@ score：设置绘图阈值，若高于阈值，才进行绘图操作，默认为
 <p><code class="docutils literal notranslate"><span class="pre">run_pywebio</span></code>函数的可设置参数有：<code class="docutils literal notranslate"><span class="pre">port</span></code>。下面是参数的使用解释：</p>
 <p>port：设置启动<code class="docutils literal notranslate"><span class="pre">PywebIO</span></code>的端口号，默认为：<code class="docutils literal notranslate"><span class="pre">1956</span></code>。</p>
 <p>运行后出现下图所示的内容，即代表<code class="docutils literal notranslate"><span class="pre">PywebIO</span></code>启动成功。</p>
-<figure class="align-default">
-<img alt="../_images/PywebIO_命令行启动.JPG" src="../_images/PywebIO_命令行启动.JPG" />
-</figure>
+<img alt="image" src="../_images/PywebIO_命令行启动.JPG" />
 <ul class="simple">
 <li><p>推理示例</p></li>
 </ul>
-<figure class="align-default">
-<img alt="../_images/pywebio_推理_1.JPG" src="../_images/pywebio_推理_1.JPG" />
-</figure>
-<figure class="align-default">
-<img alt="../_images/pywebio_推理_2.JPG" src="../_images/pywebio_推理_2.JPG" />
-</figure>
+<img alt="image" src="../_images/pywebio_推理_1.JPG" />
+<img alt="image" src="../_images/pywebio_推理_2.JPG" />
 </section>
 </section>
-<section id="id11">
-<h2>参考链接<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h2>
+<section id="id15">
+<h2>参考链接<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h2>
 <p>Gradio：<a class="reference external" href="https://github.com/gradio-app/gradio">https://github.com/gradio-app/gradio</a></p>
 <p>FastAPI：<a class="reference external" href="https://github.com/tiangolo/fastapi">https://github.com/tiangolo/fastapi</a></p>
 <p>SIOT：<a class="reference external" href="https://github.com/vvlink/SIoT">https://github.com/vvlink/SIoT</a></p>
 <p>PywebIO：<a class="reference external" href="https://github.com/pywebio/PyWebIO">https://github.com/pywebio/PyWebIO</a></p>
 <p>Flask：<a class="reference external" href="https://github.com/pallets/flask">https://github.com/pallets/flask</a></p>
 </section>
-<section id="id12">
-<h2>更多模型部署相关项目<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h2>
+<section id="id16">
+<h2>更多模型部署相关项目<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h2>
 <p>猫狗分类小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&amp;backpath=/pjedu/userprofile%3FslideKey=project#public">https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&amp;backpath=/pjedu/userprofile%3FslideKey=project#public</a></p>
 <p>千物识别小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&amp;backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&amp;backpath=/pjlab/projects/list#public</a></p>
 <p>有无人检测小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&amp;backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&amp;backpath=/pjlab/projects/list#public</a></p>

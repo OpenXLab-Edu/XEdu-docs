@@ -51,30 +51,31 @@
 <li class="toctree-l3"><a class="reference internal" href="#id2">安装</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">数据的处理</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id4">1. 图片数据处理</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">2. 文本数据处理</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">3. 语音数据处理</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id7">4. 通用数据处理</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id8">5. 模型部署数据处理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">2. 文本数据处理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">3. 语音数据处理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">4. 通用数据处理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">5. 模型部署数据处理</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">数据集处理</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id10">1. 常用数据集下载</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id11">2. 数据集格式检查</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id12">3. 数据集格式转换</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id13">4. 数据集拆分</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">数据集处理</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id15">1. 常用数据集下载</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id17">2. 数据集格式检查</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">3. 数据集格式转换</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id21">4. 数据集拆分</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id14">数据的可视化</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id15">1. 绘制分类任务混淆矩阵</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id16">2. 绘制目标检测任务的检测框</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id17">3. 绘制分割任务的掩膜</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id23">数据的可视化</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id24">1. 绘制分类任务混淆矩阵</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id26">2. 绘制目标检测任务的检测框</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id28">3. 绘制分割任务的掩膜</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id30">4. 日志分析</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#i-o">轻松调用I/O设备</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id18">调用麦克风</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id32">调用麦克风</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id19">附录</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id33">附录</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="installation.html">BaseDT安装</a></li>
@@ -126,8 +127,8 @@
 <h2>数据的处理<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
 <p>BaseDT提供了一个data模块，它包含了多个子模块和类，分别针对不同类型和格式的数据提供了处理功能。</p>
 <section id="id4">
-<h3>1. 图片数据处理<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.data</span> <span class="kn">import</span> <span class="n">ImageData</span>
+<span id="id5"></span><h3>1. 图片数据处理<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.data</span> <span class="kn">import</span> <span class="n">ImageData</span>
 <span class="c1">#图片路径，修改为对应路径</span>
 <span class="n">img</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;D:\PythonProject\OpenDataLab-Edu\dataset\cat2.jpg&quot;</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">ImageData</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">),</span> <span class="n">crop_size</span><span class="o">=</span><span class="p">(</span><span class="mi">224</span><span class="p">,</span><span class="mi">224</span><span class="p">),</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="c1">#</span>
@@ -136,13 +137,11 @@
 </div>
 <p>下图分别是原图片，resize大小至(256,
 256)的图片，crop大小至(224,224)的图片和归一化的图片。</p>
-<figure class="align-default">
-<img alt="../_images/图片处理示例图.JPEG" src="../_images/图片处理示例图.JPEG" />
-</figure>
+<img alt="image" src="../_images/图片处理示例图.JPEG" />
 </section>
-<section id="id5">
-<h3>2. 文本数据处理<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.data</span> <span class="kn">import</span> <span class="n">TextData</span>
+<section id="id6">
+<span id="id7"></span><h3>2. 文本数据处理<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.data</span> <span class="kn">import</span> <span class="n">TextData</span>
 <span class="c1"># 文本数据，字典类型</span>
 <span class="n">texts</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="s1">&#39;Dubai&#39;</span><span class="p">,</span> <span class="s1">&#39;temperature&#39;</span><span class="p">:</span> <span class="mi">33</span><span class="p">}</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">TextData</span><span class="p">(</span><span class="n">texts</span><span class="p">,</span> <span class="n">vectorize</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
@@ -150,62 +149,54 @@
 </pre></div>
 </div>
 <p>可看到text中<code class="docutils literal notranslate"><span class="pre">'city':</span> <span class="pre">'Dubai'</span></code>的<code class="docutils literal notranslate"><span class="pre">'Dubai'</span></code>向量化后变为1，<code class="docutils literal notranslate"><span class="pre">'temperature':</span> <span class="pre">33</span></code>的33仍保留为原本数值。</p>
-<figure class="align-default">
-<img alt="../_images/文本转换示例图.PNG" src="../_images/文本转换示例图.PNG" />
-</figure>
-</section>
-<section id="id6">
-<h3>3. 语音数据处理<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
-<p>敬请期待。</p>
-</section>
-<section id="id7">
-<h3>4. 通用数据处理<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
-<p>敬请期待。</p>
+<img alt="image" src="../_images/文本转换示例图.PNG" />
 </section>
 <section id="id8">
-<h3>5. 模型部署数据处理<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.data</span> <span class="kn">import</span> <span class="n">ImageData</span>
+<span id="id9"></span><h3>3. 语音数据处理<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
+<p>敬请期待。</p>
+</section>
+<section id="id10">
+<span id="id11"></span><h3>4. 通用数据处理<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
+<p>敬请期待。</p>
+</section>
+<section id="id12">
+<span id="id13"></span><h3>5. 模型部署数据处理<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h3>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.data</span> <span class="kn">import</span> <span class="n">ImageData</span>
 <span class="n">img</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;D:\PythonProject\OpenDataLab-Edu\dataset\cat2.jpg&quot;</span> <span class="c1">#修改为对应路径</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">ImageData</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">backbone</span> <span class="o">=</span> <span class="s2">&quot;MobileNet&quot;</span><span class="p">)</span>
 <span class="n">tensor_value</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>该代码表示使用“MobileNet”网络模型训练时的数据处理，并将数据转化为网络模型可处理的张量。</p>
+<p>该代码表示使用”MobileNet”网络模型训练时的数据处理，并将数据转化为网络模型可处理的张量。</p>
 <p>通过使用BaseDT库，我们可以大大简化网络模型部署时所需地数据处理过程，并且保证与训练时相同或类似地pipeline一致性。</p>
 </section>
 </section>
-<section id="id9">
-<h2>数据集处理<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h2>
+<section id="id14">
+<h2>数据集处理<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h2>
 <p>BaseDT提供了一个DataSet类，它可以让你对不同类型和格式的数据集进行处理。</p>
-<section id="id10">
-<h3>1. 常用数据集下载<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
+<section id="id15">
+<span id="id16"></span><h3>1. 常用数据集下载<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h3>
 <p>敬请期待。</p>
 </section>
-<section id="id11">
-<h3>2. 数据集格式检查<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h3>
+<section id="id17">
+<span id="id18"></span><h3>2. 数据集格式检查<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h3>
 <p>BaseDT提供了XEdu支持的数据集格式检查功能。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.dataset</span> <span class="kn">import</span> <span class="n">DataSet</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.dataset</span> <span class="kn">import</span> <span class="n">DataSet</span>
 <span class="n">ds</span> <span class="o">=</span> <span class="n">DataSet</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;my_dataset&quot;</span><span class="p">,</span> <span class="s2">&quot;cls&quot;</span><span class="p">)</span>
 <span class="n">ds</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>格式正确提示：</p>
-<figure class="align-default">
-<img alt="../_images/格式正确.png" src="../_images/格式正确.png" />
-</figure>
+<img alt="image" src="../_images/格式正确.png" />
 <p>格式有误提示：</p>
-<figure class="align-default">
-<img alt="../_images/格式错误1.png" src="../_images/格式错误1.png" />
-</figure>
-<figure class="align-default">
-<img alt="../_images/格式错误2.png" src="../_images/格式错误2.png" />
-</figure>
+<img alt="image" src="../_images/格式错误1.png" />
+<img alt="image" src="../_images/格式错误2.png" />
 </section>
-<section id="id12">
-<h3>3. 数据集格式转换<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h3>
+<section id="id19">
+<span id="id20"></span><h3>3. 数据集格式转换<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h3>
 <p>（1）针对网上下载的数据集，BaseDT可支持常见数据集格式（目前支持IMAGENET、VOC和COCO）的转换。</p>
 <p>首先需将网上下载的原始数据集做初步整理，整理规范如下：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>原数据集（目标检测）
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span>原数据集（目标检测）
 |---annotations
       |----xxx.json/xxx.xml/xxx.txt
 |---images
@@ -232,26 +223,22 @@ classes.txt
 <span class="n">ds</span><span class="o">.</span><span class="n">make_dataset</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;G:</span><span class="se">\\</span><span class="s2">测试数据集</span><span class="se">\\</span><span class="s2">fruit_voc&quot;</span><span class="p">,</span> <span class="n">src_format</span><span class="o">=</span><span class="s2">&quot;VOC&quot;</span><span class="p">,</span><span class="n">train_ratio</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">test_ratio</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">val_ratio</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span> <span class="c1"># 指定待转格式的原始数据集路径，原始数据集格式，划分比例，默认比例为train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2</span>
 </pre></div>
 </div>
-<figure class="align-default">
-<img alt="../_images/voc2coco.png" src="../_images/voc2coco.png" />
-</figure>
+<img alt="image" src="../_images/voc2coco.png" />
 <p>转换成功后，不仅将网上下载的数据集转换为了XEdu支持的数据集格式，并对训练集、测试集、验证集进行了重新划分。</p>
 <p>（2）针对OpenInnoLab平台标注创建的数据集，也可以使用BaseDT直接转换为XEdu支持的数据集。</p>
 <p><strong>注：需新建一个images文件夹用于存放图片
 ，再将images上传平台进行在线标注。</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.dataset</span> <span class="kn">import</span> <span class="n">DataSet</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.dataset</span> <span class="kn">import</span> <span class="n">DataSet</span>
 <span class="n">ds</span> <span class="o">=</span> <span class="n">DataSet</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;my_dataset&quot;</span><span class="p">)</span> <span class="c1"># 指定目标数据集</span>
 <span class="n">ds</span><span class="o">.</span><span class="n">make_dataset</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;/data/HZQV42&quot;</span><span class="p">,</span> <span class="n">src_format</span><span class="o">=</span><span class="s2">&quot;INNOLAB&quot;</span><span class="p">,</span><span class="n">train_ratio</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">test_ratio</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">val_ratio</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span> <span class="c1"># 仅需修改为待转格式的原始数据集路径（注意是整个数据集）</span>
 </pre></div>
 </div>
-<figure class="align-default">
-<img alt="../_images/coco转换完成.png" src="../_images/coco转换完成.png" />
-</figure>
+<img alt="image" src="../_images/coco转换完成.png" />
 <p>更多XEdu支持的数据集格式的介绍详见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#id3">数据集支持</a>部分。</p>
 <p><strong>用BaseDT完成数据集制作和格式检查体验项目</strong>：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=6412c95f79f259135f259f45&amp;sc=635638d69ed68060c638f979#public">https://www.openinnolab.org.cn/pjlab/project?id=6412c95f79f259135f259f45&amp;sc=635638d69ed68060c638f979#public</a></p>
 </section>
-<section id="id13">
-<h3>4. 数据集拆分<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h3>
+<section id="id21">
+<span id="id22"></span><h3>4. 数据集拆分<a class="headerlink" href="#id21" title="Permalink to this headline"></a></h3>
 <p>一般训练前建议先完成数据集划分，即将数据集拆分为训练集和验证集，训练集用于训练模型，验证集用于评估模型的性能。针对CSV格式的数据集，可以使用BaseDT完成拆分。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.dataset</span> <span class="kn">import</span> <span class="n">split_tab_dataset</span>
 <span class="c1"># 指定待拆分的csv数据集</span>
@@ -260,41 +247,46 @@ classes.txt
 <span class="n">tx</span><span class="p">,</span><span class="n">ty</span><span class="p">,</span><span class="n">val_x</span><span class="p">,</span><span class="n">val_y</span> <span class="o">=</span> <span class="n">split_tab_dataset</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">data_column</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">35</span><span class="p">),</span><span class="n">label_column</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span><span class="n">train_val_ratio</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<figure class="align-default">
-<img alt="../_images/csv数据集拆分.png" src="../_images/csv数据集拆分.png" />
-</figure>
+<img alt="image" src="../_images/csv数据集拆分.png" />
 </section>
 </section>
-<section id="id14">
-<h2>数据的可视化<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h2>
+<section id="id23">
+<h2>数据的可视化<a class="headerlink" href="#id23" title="Permalink to this headline"></a></h2>
 <p>BaseDT提供了一个plot模块，它可以让你对不同任务的数据进行可视化。</p>
-<section id="id15">
-<h3>1. 绘制分类任务混淆矩阵<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h3>
+<section id="id24">
+<span id="id25"></span><h3>1. 绘制分类任务混淆矩阵<a class="headerlink" href="#id24" title="Permalink to this headline"></a></h3>
 <p>敬请期待。</p>
 </section>
-<section id="id16">
-<h3>2. 绘制目标检测任务的检测框<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.plot</span> <span class="kn">import</span> <span class="n">imshow_det_bboxes</span>
+<section id="id26">
+<span id="id27"></span><h3>2. 绘制目标检测任务的检测框<a class="headerlink" href="#id26" title="Permalink to this headline"></a></h3>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.plot</span> <span class="kn">import</span> <span class="n">imshow_det_bboxes</span>
 <span class="n">img</span> <span class="o">=</span> <span class="s1">&#39;test.jpg&#39;</span>
 <span class="c1"># imshow_det_bboxes(图像， 框和得分，标签， 类别， 得分阈值)</span>
 <span class="n">imshow_det_bboxes</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">bboxes</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">3</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">170</span><span class="p">,</span><span class="mi">263</span><span class="p">,</span><span class="mf">0.9</span><span class="p">]],</span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">class_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;cat&quot;</span><span class="p">],</span> <span class="n">score_thr</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">)</span>
 </pre></div>
 </div>
-<figure class="align-default">
-<img alt="../_images/绘制目标检测框.png" src="../_images/绘制目标检测框.png" />
-</figure>
+<img alt="image" src="../_images/绘制目标检测框.png" />
 </section>
-<section id="id17">
-<h3>3. 绘制分割任务的掩膜<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h3>
+<section id="id28">
+<span id="id29"></span><h3>3. 绘制分割任务的掩膜<a class="headerlink" href="#id28" title="Permalink to this headline"></a></h3>
 <p>敬请期待。</p>
+</section>
+<section id="id30">
+<span id="id31"></span><h3>4. 日志分析<a class="headerlink" href="#id30" title="Permalink to this headline"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">BaseDT</span></code>中的<code class="docutils literal notranslate"><span class="pre">plot</span></code>模块提供<code class="docutils literal notranslate"><span class="pre">plot_log</span></code>函数，支持对训练日志中的损失函数进行绘制。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.plot</span> <span class="kn">import</span> <span class="n">plot_log</span>
+<span class="n">plot_log</span><span class="p">(</span><span class="n">log_path</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="image" src="../_images/日志绘制图.png" />
 </section>
 </section>
 <section id="i-o">
 <h2>轻松调用I/O设备<a class="headerlink" href="#i-o" title="Permalink to this headline"></a></h2>
 <p>BaseDT提供了一个io模块，用于支持数据的I/O设备的调用，它可以让你方便地从不同的来源获取和输出数据。型和格式的数据。</p>
-<section id="id18">
-<h3>调用麦克风<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.io</span> <span class="kn">import</span> <span class="n">MicroPhone</span>
+<section id="id32">
+<h3>调用麦克风<a class="headerlink" href="#id32" title="Permalink to this headline"></a></h3>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.io</span> <span class="kn">import</span> <span class="n">MicroPhone</span>
 <span class="c1"># 创建麦克风对象</span>
 <span class="n">microphone</span> <span class="o">=</span> <span class="n">MicroPhone</span><span class="p">()</span>
 <span class="c1"># 录音两秒</span>
@@ -302,13 +294,11 @@ classes.txt
 </pre></div>
 </div>
 <p>录制的两秒音频图下如下图：</p>
-<figure class="align-default">
-<img alt="../_images/音频图.png" src="../_images/音频图.png" />
-</figure>
+<img alt="image" src="../_images/音频图.png" />
 </section>
 </section>
-<section id="id19">
-<h2>附录<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h2>
+<section id="id33">
+<h2>附录<a class="headerlink" href="#id33" title="Permalink to this headline"></a></h2>
 <p>敬请期待。</p>
 </section>
 </section>

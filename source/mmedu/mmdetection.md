@@ -24,114 +24,7 @@ XEdu一键安装包中预置了MMEdu的det模块的示例代码（路径：/demo
 
 下面我们将以车牌检测这个任务为例，介绍一下目标检测模块示例代码的用法，一起解锁第一个目标检测项目吧！
 
-#### 1.直接推理（支持CPU）
-
-如果想快速上手体验MMDetection的话，我们建议您使用我们已经预训练好的模型和权重文件进行推理，提供一张图片测试推理的准确度。
-
-
-示例代码如下:
-
-```python
-from MMEdu import MMDetection as det # 导入mmdet模块
-img = 'car_plate.png' # 指定进行推理的图片路径，我们使用demo文件夹中提供的图片
-model = det(backbone="FasterRCNN") # 实例化MMDetection模型
-checkpoint = '../checkpoints/det_model/plate/latest.pth' # 指定使用的模型权重文件
-result = model.inference(image=img, show=True, checkpoint_path = checkpoint) # 在CPU上进行推理
-model.print_result() # 输出结果
-# 同时您可以修改show的值来决定是否需要显示结果图片，此处默认显示结果图片
-```
-
-运行结果如图：
-
-![image-20220408210420560](../../build/html/_static/image-20220408191108835.png)
-
-推理结果图片（带标签的图片）会以原本的文件名称保存在`demo`文件夹下的`det_result`文件夹下，如果在`demo`下没有发现该文件夹，不用担心，系统会自动建立。当然，您可以自己指定保存文件夹的名称。
-
-您也可以将收集的图片放在一个文件夹下，然后指定文件夹路径进行一组图片的**批量推理**。如在demo文件夹下新建一个det_testIMG文件夹放图片，批量推理的示例代码如下。
-
-~~~python
-img = 'det_testIMG/' # 指定进行推理的一组图片的路径
-model = det(backbone="FasterRCNN") # 实例化MMDetection模型
-checkpoint = '../checkpoints/det_model/plate/latest.pth' # 指定使用的模型权重文件
-result = model.inference(image=img, show=True, checkpoint_path = checkpoint) # 在CPU上进行推理
-model.print_result() # 输出结果
-# 同时您可以修改show的值来决定是否需要显示结果图片，此处默认显示结果图片
-~~~
-
-您会发现当前目录下`‘det_result’`文件夹里出现了这组图片的推理结果图，每张图片的结果与您收集的图片同名，您可以到这个文件夹下查看推理结果。
-
-接下来对为您讲述推理代码规则：
-
-- **图片准备**
-
-```python
-img = 'car_plate.png' # 指定推理图片的路径，直接在代码所在的demo文件夹中选择图片
-```
-
-如果使用自己的图片的话，只需要修改img的路径即可（绝对路径和相对路径均可）。
-
-- **实例化模型**
-
-```python
-model = det(backbone='FasterRCNN') # 实例化MMDetection模型
-```
-
-这里对于`MMDetection`模型提供的参数进行解释，`MMDetection`支持传入的参数是`backbone`。
-
-`backbone`：指定使用的`MMDetection`模型，默认使用 `'FasterRCNN'`，当然读者可以自行修改该参数以使用不同模型。
-
-- **模型推理**
-
-```python
-model.inference(image=img, show=True, checkpoint_path = checkpoint) # 在CPU上进行推理
-```
-
-将所需要推理图片的路径传入`inference`函数中即可进行推理，我们这里传入了四个参数，`image`代表的就是推理图片的路径，`show`代表是否需要显示结果图片，`checkpoint`代表指定使用的模型权重文件。
-
-> **参数详解**
->
-> 在Detection_Edu中对于`inference`函数还有其他的传入参数，在这里进行说明：
->
-> `device`：推理所用的设备，默认为`'cpu'`，如果电脑支持GPU，也可以将参数修改为`'cuda:0'`，使用GPU进行推理。
->
-> `checkpoint`：指定使用的模型权重文件，默认参数为`None`，如果没有指定模型权重文件，那么我们将会使用默认的模型权重文件进行推理。 
->
-> `image`：推理图片的路径。
->
-> `show`：布尔值，默认为`True`，表示推理后是否显示推理结果。
->
-> `rpn_threshold` & `rcnn_threshold`: 0～1之间的数值。由于FasterRCNN为一个两阶段的检测模型，这两个参数分别表示两个阶段对于检测框的保留程度，高于这个数值的框将会被保留（这里如果同学们设置过低，也可能会发现图中出现了多个框）。
->
-> `save_fold`：保存的图片名，数据结构为字符串，默认参数为`'det_result'`，用户也可以定义为自己想要的名字。
->
-> （最后两个参数的使用，我们将在下一部分进行详细举例解释）。
-
-- **快速推理**
-
-针对部分用户希望加快推理速度的需求，设计了`fast_inference`函数，主要方法是使用`load_checkpoint`提前加载权重文件。
-
-```
-model.load_checkpoint(checkpoint=checkpoint)
-result = model.fast_inference(image=img)
-```
-
-> **参数详解**
->
-> `load_checkpoint`函数的传入参数：
->
-> `device`：推理所用的设备，默认为`'cpu'`，如果电脑支持GPU，也可以将参数修改为`'cuda'`，使用GPU进行推理。
->
-> `checkpoint`：指定使用的模型权重文件，默认参数为`None`，如果没有指定模型权重文件，那么我们将会使用默认的模型权重文件进行推理。
->
-> `fast_inference`函数的传入参数：
->
-> `image`：推理图片的路径。
->
-> `show`：布尔值，默认为`True`，表示推理后是否显示推理结果。
->
-> `save_fold`：保存的图片名，数据结构为字符串，默认参数为`'det_result'`，用户也可以定义为自己想要的名字。
-
-#### 2.训练模型
+#### 1.模型训练
 
 使用下面的代码即可简单体验MMDetection的训练过程，我们以车牌的识别为例，为您进行详细的介绍。
 
@@ -241,6 +134,117 @@ model.train(epochs=10, validate=True) # 设定训练的epoch次数以及是否�
 > `bbox_mAP`：对目标检测任务，`bbox_mAP`可用来衡量检测准确度，指模型预测的边界框和真实边界框之间的重合度。
 >
 > `loss`: 本批次模型在训练集上计算的损失值。loss是衡量模型在训练集上预测结果与真实结果之间差异的指标。
+
+
+
+#### 2.直接推理（支持CPU）
+
+当完成模型训练，可使用训练好的模型对新图片进行模型推理。当然如果想快速上手体验MMDetection的目标检测，可直接使用我们已经预训练好的模型和权重文件进行推理，提供一张图片测试推理的准确度。
+
+
+示例代码如下:
+
+```python
+from MMEdu import MMDetection as det # 导入mmdet模块
+img = 'car_plate.png' # 指定进行推理的图片路径，我们使用demo文件夹中提供的图片
+model = det(backbone="FasterRCNN") # 实例化MMDetection模型
+checkpoint = '../checkpoints/det_model/plate/latest.pth' # 指定使用的模型权重文件
+result = model.inference(image=img, show=True, checkpoint_path = checkpoint) # 在CPU上进行推理
+model.print_result() # 输出结果
+# 同时您可以修改show的值来决定是否需要显示结果图片，此处默认显示结果图片
+```
+
+运行结果如图：
+
+![image-20220408210420560](../../build/html/_static/image-20220408191108835.png)
+
+推理结果图片（带标签的图片）会以原本的文件名称保存在代码文件的同级目录下的`det_result`文件夹下，如果运行前没有发现该文件夹，不用担心，系统会自动建立。当然，您可以自己指定保存文件夹的名称。
+
+您也可以将收集的图片放在一个文件夹下，然后指定文件夹路径进行一组图片的**批量推理**。如在demo文件夹下新建一个det_testIMG文件夹放图片，批量推理的示例代码如下。
+
+~~~python
+img = 'det_testIMG/' # 指定进行推理的一组图片的路径
+model = det(backbone="FasterRCNN") # 实例化MMDetection模型
+checkpoint = '../checkpoints/det_model/plate/latest.pth' # 指定使用的模型权重文件
+result = model.inference(image=img, show=True, checkpoint_path = checkpoint) # 在CPU上进行推理
+model.print_result() # 输出结果
+# 同时您可以修改show的值来决定是否需要显示结果图片，此处默认显示结果图片
+~~~
+
+您会发现当前目录下`‘det_result’`文件夹里出现了这组图片的推理结果图，每张图片的结果与您收集的图片同名，您可以到这个文件夹下查看推理结果。
+
+接下来对为您讲述推理代码规则：
+
+- **图片准备**
+
+```python
+img = 'car_plate.png' # 指定推理图片的路径，直接在代码所在的demo文件夹中选择图片
+```
+
+如果使用自己的图片的话，只需要修改img的路径即可（绝对路径和相对路径均可）。
+
+- **实例化模型**
+
+```python
+model = det(backbone='FasterRCNN') # 实例化MMDetection模型
+```
+
+这里对于`MMDetection`模型提供的参数进行解释，`MMDetection`支持传入的参数是`backbone`。
+
+`backbone`：指定使用的`MMDetection`模型，默认使用 `'FasterRCNN'`，当然读者可以自行修改该参数以使用不同模型。
+
+- **模型推理**
+
+```python
+model.inference(image=img, show=True, checkpoint_path = checkpoint) # 在CPU上进行推理
+```
+
+将所需要推理图片的路径传入`inference`函数中即可进行推理，我们这里传入了四个参数，`image`代表的就是推理图片的路径，`show`代表是否需要显示结果图片，`checkpoint`代表指定使用的模型权重文件。
+
+> **参数详解**
+>
+> 在Detection_Edu中对于`inference`函数还有其他的传入参数，在这里进行说明：
+>
+> `device`：推理所用的设备，默认为`'cpu'`，如果电脑支持GPU，也可以将参数修改为`'cuda:0'`，使用GPU进行推理。
+>
+> `checkpoint`：指定使用的模型权重文件，默认参数为`None`，如果没有指定模型权重文件，那么我们将会使用默认的模型权重文件进行推理。 
+>
+> `image`：推理图片的路径。
+>
+> `show`：布尔值，默认为`True`，表示推理后是否显示推理结果。
+>
+> `rpn_threshold` & `rcnn_threshold`: 0～1之间的数值。由于FasterRCNN为一个两阶段的检测模型，这两个参数分别表示两个阶段对于检测框的保留程度，高于这个数值的框将会被保留（这里如果同学们设置过低，也可能会发现图中出现了多个框）。
+>
+> `save_fold`：保存的图片名，数据结构为字符串，默认参数为`'det_result'`，用户也可以定义为自己想要的名字。
+>
+> （最后两个参数的使用，我们将在下一部分进行详细举例解释）。
+
+- **快速推理**
+
+针对部分用户希望加快推理速度的需求，设计了`fast_inference`函数，主要方法是使用`load_checkpoint`提前加载权重文件。
+
+```
+model.load_checkpoint(checkpoint=checkpoint)
+result = model.fast_inference(image=img)
+```
+
+> **参数详解**
+>
+> `load_checkpoint`函数的传入参数：
+>
+> `device`：推理所用的设备，默认为`'cpu'`，如果电脑支持GPU，也可以将参数修改为`'cuda'`，使用GPU进行推理。
+>
+> `checkpoint`：指定使用的模型权重文件，默认参数为`None`，如果没有指定模型权重文件，那么我们将会使用默认的模型权重文件进行推理。
+>
+> `fast_inference`函数的传入参数：
+>
+> `image`：推理图片的路径。
+>
+> `show`：布尔值，默认为`True`，表示推理后是否显示推理结果。
+>
+> `save_fold`：保存的图片名，数据结构为字符串，默认参数为`'det_result'`，用户也可以定义为自己想要的名字。
+
+
 
 
 #### 3.继续训练
