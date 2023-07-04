@@ -86,23 +86,12 @@ gr.Interface(fn=predict, inputs=image, outputs=gr.outputs.Textbox()).launch()
 
 ```
 import gradio as gr
-import numpy as np
-import onnxruntime as rt
-from BaseDT.data import ImageData, ModelData
+import BaseDeploy as bd
 model_path = 'cls.onnx'
-sess = rt.InferenceSession(model_path, None)
-input_name = sess.get_inputs()[0].name
-output_name = sess.get_outputs()[0].name
-class_names = ModelData(model_path).get_labels()
 def predict(img):
-    dt = ImageData(img, backbone='MobileNet')
-    pred_onx = sess.run([output_name], {input_name: dt.to_tensor()})
-    class_names = ModelData(model_path).get_labels()
-    ort_output = pred_onx[0]
-    idx = np.argmax(ort_output, axis=1)[0]
-    result = 'label:{}, acc:{}'.format(class_names[idx], ort_output[0][idx])
+    model = bd(model_path)
+    result = model.inference(img)
     return result
-
 image = gr.inputs.Image(type="filepath")
 gr.Interface(fn=predict, inputs=image, outputs=gr.outputs.Textbox()).launch()
 ```
