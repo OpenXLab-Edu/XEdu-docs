@@ -113,6 +113,4 @@ Exchange）是一个开放的、跨平台的深度学习模型表示和转换框
 运行效果如下：
 
 .. figure:: ../images/scitech_tools/gradio示例3.png
-   :alt: image
 
-   image
