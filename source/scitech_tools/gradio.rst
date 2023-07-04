@@ -37,7 +37,9 @@ Gradio可以采用pip命令安装，具体如下：
 上面的示例中，定义了一个名为“greet”的函数，它接受一个名字作为输入，并返回一个带有问候语的字符串。然后使用\ ``gr.Interface``\ 创建一个接口，指定输入类型为文本，输出类型也为文本。最后，使用\ ``launch``\ 方法来启动界面。运行效果如下：
 
 .. figure:: ../images/scitech_tools/gradio示例1.png
+   :alt: image
 
+   image
 
 4. 借助Gradio部署简易AI应用
 ---------------------------
@@ -64,7 +66,9 @@ Gradio提供了多种部署选项，使您能够将您的智能应用部署到�
 运行效果如下：
 
 .. figure:: ../images/scitech_tools/gradio示例2.png
+   :alt: image
 
+   image
 
 您可以根据您的模型进行相应的修改和调整，以适应您的需求。例如对输出结果做一些修饰，参考代码如下：
 
@@ -92,7 +96,7 @@ Gradio提供了多种部署选项，使您能够将您的智能应用部署到�
 使用Gradio部署ONNX模型也是非常简单的，示例代码如下：
 
 补充：ONNX（Open Neural Network
-Exchange）是一个开放的、跨平台的深度学习模型表示和转换框架。它的目标是解决不同深度学习框架之间的模型兼容性问题，关于基于MMEdu训练的模型转换为ONNX的说明可见\ `最后一步：AI模型转换与部署 <https://xedu.readthedocs.io/zh/master/mmedu/model_convert.html#ai>`__\ 。
+Exchange）是一个开放的、跨平台的深度学习模型表示和转换框架。它的目标是解决不同深度学习框架之间的模型兼容性问题，此处使用的ONNX模型推理的代码是借助XEdu团队推出的\ ``模型部署工具``\ `BaseDeploy <https://xedu.readthedocs.io/zh/master/basedeploy/introduction.html>`__\ ，代码较为简洁。关于基于MMEdu训练的模型转换为ONNX的说明可见\ `最后一步：AI模型转换与部署 <https://xedu.readthedocs.io/zh/master/mmedu/model_convert.html#ai>`__\ 。
 
 ::
 
@@ -109,4 +113,6 @@ Exchange）是一个开放的、跨平台的深度学习模型表示和转换框
 运行效果如下：
 
 .. figure:: ../images/scitech_tools/gradio示例3.png
+   :alt: image
 
+   image
