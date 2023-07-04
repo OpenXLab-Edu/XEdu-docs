@@ -50,10 +50,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#id1">初识目标检测和MMDetection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">使用说明</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id3">1.模型训练</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#cpu">2.模型推理（支持CPU）</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">3.继续训练</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">2.模型推理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">3.继续训练</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sota">4.支持的SOTA模型</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">补充内容：再了解一下单目标检测和多目标检测</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">补充内容：再了解一下单目标检测和多目标检测</a></li>
 </ul>
 </li>
 </ul>
@@ -205,8 +205,8 @@
 本批次模型在训练集上计算的损失值。loss是衡量模型在训练集上预测结果与真实结果之间差异的指标。</p>
 </div>
 </section>
-<section id="cpu">
-<h3>2.模型推理（支持CPU）<a class="headerlink" href="#cpu" title="Permalink to this headline"></a></h3>
+<section id="id4">
+<h3>2.模型推理<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
 <p>当完成模型训练，可使用训练好的模型对新图片进行模型推理。当然如果想快速上手体验MMDetection的目标检测，可直接使用我们已经预训练好的模型和权重文件进行推理，提供一张图片测试推理的准确度。</p>
 <p>示例代码如下:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMDetection</span> <span class="k">as</span> <span class="n">det</span> <span class="c1"># 导入mmdet模块</span>
@@ -290,8 +290,8 @@
 <p><code class="docutils literal notranslate"><span class="pre">save_fold</span></code>：保存的图片名，数据结构为字符串，默认参数为<code class="docutils literal notranslate"><span class="pre">'det_result'</span></code>，用户也可以定义为自己想要的名字。</p>
 </div>
 </section>
-<section id="id4">
-<h3>3.继续训练<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<section id="id5">
+<h3>3.继续训练<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
 <p>在这一步中，我们会教您加载之前训练过的模型接着训练，如果您觉得之前训练的模型epoch数不够的话或者因为一些客观原因而不得不提前结束训练，相信下面的代码会帮到您。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">det</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;FasterRCNN&#39;</span><span class="p">)</span> <span class="c1"># 初始化实例模型</span>
 <span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># 进行车牌识别，此时只有一个类别。</span>
@@ -345,8 +345,8 @@
 </tbody>
 </table>
 </section>
-<section id="id5">
-<h3>补充内容：再了解一下单目标检测和多目标检测<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<section id="id6">
+<h3>补充内容：再了解一下单目标检测和多目标检测<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
 <p>根据图像中目标的数量，目标检测分为单目标检测和多目标检测，单目标检测顾名思义，就是识别图像中的单独的一个目标。如下图，就用红框框出了一只猫。</p>
 <figure class="align-default">
 <img alt="../_images/单目标检测.png" src="../_images/单目标检测.png" />
