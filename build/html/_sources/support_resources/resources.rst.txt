@@ -10,3 +10,8 @@
 ------------------------
 
 下载链接：https://p6bm2if73b.feishu.cn/drive/folder/fldcnxios44vrIOV9Je3wPLmExf
+
+ONNX模型下载
+------------
+
+下载链接：https://aicarrier.feishu.cn/drive/folder/NozifkbMKlojyodZVpDcYdvonR8

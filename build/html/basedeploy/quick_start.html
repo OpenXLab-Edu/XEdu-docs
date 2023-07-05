@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>快速体验BaseDeploy &mdash; OpenXLabEdu  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basenn.html">神经网络库BaseNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../baseml.html">传统机器学习库BaseML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basedt.html">数据处理库BaseDT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basedeploy.html">模型部署库BaseDeploy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scitech_tools.html">相关科创工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support_resources.html">学习支持和资源获取</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dl_library.html">深度学习知识库</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenXLabEdu</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>快速体验BaseDeploy</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/basedeploy/quick_start.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="basedeploy">
+<h1>快速体验BaseDeploy<a class="headerlink" href="#basedeploy" title="Permalink to this headline"></a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">XEdu</span></code>团队推出的模型部署工具<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>，其代码风格向<code class="docutils literal notranslate"><span class="pre">MMEdu</span></code>对齐，通过对推理核心代码的封装，目标是用户能够更加专注于科创作品功能的设计，而将AI模块作为接口的黑盒，能够对其返回的结果进行二次创作。</p>
+<p><code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>通过传入<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/model_convert.html#id4">ONNX模型</a>的路径加载为一个模型，通过<code class="docutils literal notranslate"><span class="pre">model.inference</span></code>即可完成模型的推理，从而可实现借助BaseDeploy完成模型部署。</p>
+<section id="id1">
+<h2>示例代码<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<p>示例代码一：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>from BaseDT.data import ImageData
+import BaseDeploy as bd
+model_path = `./mymodel.onnx`
+dt = ImageData(img_path, backbone=&#39;训练的模型名称，例如MobileNet&#39;)
+model = bd(model_path)
+result = model.inference(dt)
+</pre></div>
+</div>
+<p>本段代码实现的功能是将<code class="docutils literal notranslate"><span class="pre">BaseDT</span></code>预处理好后的图片传入<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>推理函数进行推理，并将推理结果返回。关于BaseDT处理图片的说明详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basedt/quick_start.html#id12">BaseDT部分</a>。</p>
+<p>示例代码二：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>import BaseDeploy as bd
+model_path = `./mymodel.onnx`
+model = bd(model_path)
+result = model.inference(img_path)
+</pre></div>
+</div>
+<p>本段代码实现的功能是将图片路径传入<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>推理函数进行推理，并将推理结果返回。</p>
+<p>示例代码三：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>import cv2
+import BaseDeploy as bd
+model_path = `./mymodel.onnx`
+cap = cv2.VideoCapture(0)
+ret, img = cap.read()
+model = bd(model_path)
+result = model.inference(img)
+cap.release()
+</pre></div>
+</div>
+<p>本段代码实现的功能是将cv2调用摄像头拍摄的图片传入<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>推理函数进行推理，并将推理结果返回。此处代码与<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/model_convert.html#mmedu">借助MMEdu完成模型转换</a>后生成的示例代码非常相似。</p>
+<p>实现效果如下：</p>
+<ul class="simple">
+<li><p>图像分类</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../_images/基本功能推理_图像分类.png" src="../_images/基本功能推理_图像分类.png" />
+</figure>
+<ul class="simple">
+<li><p>目标检测</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../_images/基本功能推理_目标检测.png" src="../_images/基本功能推理_目标检测.png" />
+</figure>
+</section>
+<section id="id2">
+<h2>更多模型部署相关项目<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<p>猫狗分类小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&amp;backpath=/pjedu/userprofile%3FslideKey=project#public">https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&amp;backpath=/pjedu/userprofile%3FslideKey=project#public</a></p>
+<p>千物识别小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&amp;backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&amp;backpath=/pjlab/projects/list#public</a></p>
+<p>有无人检测小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&amp;backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&amp;backpath=/pjlab/projects/list#public</a></p>
+<p>树莓派与MMEdu：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=64992a4dc0b7072a267541f4&amp;sc=635638d69ed68060c638f979#public">https://www.openinnolab.org.cn/pjlab/project?id=64992a4dc0b7072a267541f4&amp;sc=635638d69ed68060c638f979#public</a></p>
+<p>MMEdu模型在线转换：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=645110943c0e930cb55e859b&amp;sc=635638d69ed68060c638f979#public">https://www.openinnolab.org.cn/pjlab/project?id=645110943c0e930cb55e859b&amp;sc=635638d69ed68060c638f979#public</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2023 OpenXLabEdu.All Rights Reserved.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
