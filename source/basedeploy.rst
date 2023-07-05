@@ -5,6 +5,8 @@
 
    basedeploy/installation.md
 
+   basedeploy/quick_start.md
+
    basedeploy/introduction.md
 
 
