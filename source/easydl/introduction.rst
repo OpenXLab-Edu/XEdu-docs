@@ -67,5 +67,5 @@ EasyAPI是XEdu提供的无代码接口部署工具系列。利用EasyAPI，可�
 
 ④在界面中跳转到Web服务的网页
 
-.. figure:: ../images/easydl/4.png
+.. figure:: ../images/easydl/4.PNG
 
