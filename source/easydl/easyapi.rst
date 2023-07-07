@@ -32,7 +32,7 @@ EasyAPI界面启动之后在下拉框中选择问题类型为分类或者检测�
 
 点击生成代码会在上方Code呈现代码，有需要的用户也可以复制到本地运行。
 
-.. figure:: ../images/easydl/API_code.png
+.. figure:: ../images/easydl/API_code.PNG
 
 
 运行代码会看到EasyAPI界面打开的同时运行的cmd.exe框内会有呈现运行后台，此时点击打开网页。
