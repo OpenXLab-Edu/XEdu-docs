@@ -28,9 +28,9 @@ OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台�
 
 ### 2. 克隆项目
 
-强烈建议直接“克隆”《用MMEdu实现MNIST手写体数字识别（NOTEBOOK）》项目。
+强烈建议直接“克隆”《用MMEdu实现MNIST手写体数字识别（XEdu官方版）》项目。
 
-项目链接：https://www.openinnolab.org.cn/pjlab/project?id=63801c0701df4535876b6a4e&sc=635638d69ed68060c638f979#public
+项目链接：https://www.openinnolab.org.cn/pjlab/project?id=64a3c64ed6c5dc7310302853&sc=635638d69ed68060c638f979#public
 
 （用Chrome浏览器打开效果最佳）
 
@@ -65,7 +65,7 @@ model.save_fold = './my_model'
 model.train(epochs=10, validate=True)
 ```
 
-打开[《用MMEdu实现MNIST手写体数字识别（NOTEBOOK）》项目](https://www.openinnolab.org.cn/pjlab/project?id=63801c0701df4535876b6a4e&sc=635638d69ed68060c638f979#public)中的"1.mnist手写体数字识别-训练.ipynb"文件跟随说明完成训练代码运行。示例代码中共6行代码，完成了导入库、实例化模型、配置基本信息（图片分类的类别数量（`model.num_classes`），模型保存的路径（`model.save_fold`）和数据集的路径（`model.load_dataset`）），开始训练模型。
+打开[《用MMEdu实现MNIST手写体数字识别（XEdu官方版）》项目](https://www.openinnolab.org.cn/pjlab/project?id=64a3c64ed6c5dc7310302853&sc=635638d69ed68060c638f979#public)中的"1.mnist手写体数字识别-训练.ipynb"文件跟随说明完成训练代码运行。示例代码中共6行代码，完成了导入库、实例化模型、配置基本信息（图片分类的类别数量（`model.num_classes`），模型保存的路径（`model.save_fold`）和数据集的路径（`model.load_dataset`）），开始训练模型。
 
 ### 5. 继续训练
 
