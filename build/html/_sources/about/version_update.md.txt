@@ -10,7 +10,7 @@
 
 2.分MMEdu、BaseML、BaseNN三个功能模块。
 
-3.工具持续迭代。
+3.工具持续迭代，增加了模型部署库BaseDeploy和数据处理库BaseDT。
 
 ### 正式版更新记录
 
