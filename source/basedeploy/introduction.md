@@ -26,7 +26,19 @@ model.inference(input_data, show, get_img, score, show_path)
 `show_path`：是否显示图片路径，默认为False。
 
 #### 返回参数说明
-通过BaseDeploy的模型完成推理后，输出的格式为列表，列表中套字典
+通过BaseDeploy的模型完成推理后，输出的格式与onnx推理保持一致，用户可自行进行推理结果后处理操作或使用内置的`model.print_result`函数进行推理结果格式化。
+
+### 格式化推理结果
+
+为了便于用户查看推理结果，`BaseDeploy`提供`model.print_result`函数供用户进行推理结果格式化操作。
+
+```python
+model.print_result(pred_onx)
+```
+
+参数说明如下：
+
+`pred_onx`：`model.inference`函数对输入进行推理后返回的输出。
 
 - 图像分类
 对于目标检测任务字典保存的键为`标签`，`置信度`，`预测结果`，推理结果result如下：
@@ -349,7 +361,45 @@ port：设置启动`PywebIO`的端口号，默认为：`1956`。
 
 ![image](../images/basedeploy/pywebio_推理_2.JPG)
 
+### Mind+中的BaseDeploy积木块
 
+使用Mind+V1.7.2及以上版本，在python模式用户库中加载此扩展，AI模型部署工具库。
+
+Gitee链接：https://gitee.com/liliang9693/ext-BaseDeploy
+
+#### 使用说明
+
+##### 第一步：加载积木库
+
+- 如果联网情况下，打开Mind+用户库粘贴本仓库的链接即可加载：
+
+![image](../images/basedeploy/在线加载积木库.png)
+
+- 如果电脑未联网，则可以下载本仓库的文件，然后打开Mind+用户库选择导入用户库，选择`.mpext`文件即可
+
+![image](../images/basedeploy/离线加载积木库_1.png)
+
+![image](../images/basedeploy/离线加载积木库_2.png)
+
+##### 第二步：安装python库
+
+打开库管理，输入BaseDeploy运行，提示successfully即可。
+
+注：WARNING是提醒，可以忽略；请及时更新BaseDeploy和BaseDT用户库，以获得更稳定、更强大的模型部署使用体验。
+
+![image](../images/basedeploy/安装库.png)
+
+##### 第三步：导入模型
+
+将onnx模型文件拖到项目中的文件中。
+
+![image](../images/basedeploy/导入模型.png)
+
+##### 第四步：开始编程！
+
+至此，即可拖动积木块开始快乐编程啦，运行示例如下：
+
+![image](../images/basedeploy/运行示例.png)
 
 ## 参考链接
 
@@ -363,5 +413,5 @@ PywebIO：https://github.com/pywebio/PyWebIO
 
 Flask：https://github.com/pallets/flask
 
-
+Mind+：https://mindplus.cc/
 
