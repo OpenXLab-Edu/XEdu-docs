@@ -113,7 +113,7 @@ BaseNN可以方便地逐层搭建神经网路，深入探究网络原理。
 .. code:: python
 
    # 用某组测试数据查看模型效果
-   data = [test_x[0]]
+   data = np.array([test_x[0]])
    checkpoint = 'checkpoints/iris_ckpt/basenn.pth'
    res = model.inference(data=data, checkpoint=checkpoint)
    model.print_result(res) # 输出字典格式结果
@@ -249,108 +249,78 @@ tang.npz是本项目的文本数据，源于互联网，包括57580首唐诗。
 
 ::
 
-   # 导入BaseNN库、os、cv2、numpy库，os、cv2、numpy库用于数据处理
+   # 导入BaseNN库
    from BaseNN import nn
-   import os
-   import cv2
-   import numpy as np
 
 读取数据：
 
 ::
 
-   # 定义读取训练数据的函数
-   def read_data(path):
-       data = []
-       label = []
-       dir_list = os.listdir(path)
+   # 模型载入数据
+   model.load_img_data("/data/MELLBZ/mnist/training_set",color="grayscale",batch_size=10000)
 
-       # 将顺序读取的文件保存到该list中
-       for item in dir_list:
-           tpath = os.path.join(path,item)
-    
-           # print(tpath)
-           for i in os.listdir(tpath):
-               # print(item)
-               img = cv2.imread(os.path.join(tpath,i))
-               img = cv2.resize(img,(32,32))
-               imGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-               # print(img)
-               data.append(imGray)
-               label.append(int(item))
-       x = np.array(data)
-       y = np.array(label)
-    
-       x = np.expand_dims(x, axis=1)
-       return x, y
-
-   # 读取训练数据
-   train_x, train_y = read_data('/data/QX8UBM/mnist_sample/training_set')
-
-从零开始训练：
+搭建网络开始训练：
 
 ::
 
    # 声明模型
    model = nn()
-   # 载入数据
-   model.load_dataset(train_x, train_y) 
+   # 自己搭建网络（我们搭建的是LeNet网络，可改变参数搭建自己的网络）
+   model.add('Conv2D', size=(1, 6),kernel_size=(5, 5), activation='ReLU') 
+   model.add('MaxPool', kernel_size=(2,2)) 
+   model.add('Conv2D', size=(6, 16), kernel_size=(5, 5), activation='ReLU')
+   model.add('MaxPool', kernel_size=(2,2)) 
+   model.add('Linear', size=(256, 120), activation='ReLU') 
+   model.add('Linear', size=(120, 84), activation='ReLU') 
+   model.add('Linear', size=(84, 10), activation='Softmax') 
 
-   # 搭建模型
-   model.add('conv2d', size=(1, 6),kernel_size=( 5, 5), activation='relu') 
-   model.add('avgpool', kernel_size=(2,2)) 
-   model.add('conv2d', size=(6, 16), kernel_size=(5, 5), activation='relu')
-   model.add('avgpool', kernel_size=(2,2)) 
-   model.add('linear', size=(400, 120), activation='relu') 
-   model.add('linear', size=(120, 84), activation='relu') 
-   model.add('linear', size=(84, 10), activation='softmax')
-   model.add(optimizer='SGD') # 设定优化器
-
-   # 设置模型保存的路径
-   model.save_fold = 'checkpoints/mn_ckpt1'
-   # 模型训练
-   model.train(lr=0.01, epochs=30)
-
-继续训练：
-
-::
-
-   # 继续训练
-   model = nn()
-   model.load_dataset(train_x, train_y) 
-   model.save_fold = 'checkpoints/mn_ckpt2' # 设置模型保存的新路径
-   checkpoint = 'checkpoints/mn_ckpt1/basenn.pth'
-   model.train(lr=0.01, epochs=20, checkpoint=checkpoint)
+   # 模型超参数设置和网络训练
+   model.optimizer = 'Adam' #'SGD' , 'Adam' , 'Adagrad' , 'ASGD' 内置不同优化器
+   learn_rate = 0.001 #学习率
+   max_epoch = 100 # 最大迭代次数
+   model.save_fold = 'mn_ckpt' # 模型保存路径
+   model.train(lr=learn_rate, epochs=max_epoch) # 直接训练
 
 2）模型推理
 '''''''''''
-
-读取测试集所有图片进行推理：
-
-::
-
-   # 用测试集查看模型效果
-   test_x, test_y = read_data('/data/QX8UBM/mnist_sample/test_set') # 读取测试集数据
-   checkpoint = 'checkpoints/mn_ckpt1/basenn.pth'
-   res = model.inference(data=test_x, checkpoint=checkpoint)
-   model.print_result(res) # 输出字典格式结果
 
 读取某张图片进行推理：
 
 ::
 
-   # 用测试集某张图片查看模型效果
-   img = '/data/QX8UBM/mnist_sample/test_set/0/0.jpg' # 指定一张图片
-   data = []
-   im = cv2.imread(img)
-   im = cv2.resize(im,(32,32))
-   imGray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
-   data.append(imGray)
-   x = np.array(data)
-   x = np.expand_dims(x, axis=1)
-   checkpoint = 'checkpoints/mn_ckpt1/basenn.pth'
-   result = model.inference(data=x, checkpoint=checkpoint)
-   model.print_result(result) # 输出字典格式结果
+   # 单张图片的推理
+   path = 'test_IMG/single_data.jpg'
+   checkpoint = 'mn_ckpt/basenn.pth' # 现有模型路径
+   y_pred = model.inference(data=path, checkpoint=checkpoint)
+   model.print_result()
+
+   # 输出结果
+   res = y_pred.argmax(axis=1)
+   print('此手写体的数字是：',res[0])
+
+定义一个准确率计算函数，读取测试集所有图片进行推理并计算准确率。
+
+::
+
+   # 计算准确率函数
+   def cal_accuracy(y, pred_y):
+       res = pred_y.argmax(axis=1)
+       tp = np.array(y)==np.array(res)
+       acc = np.sum(tp)/ y.shape[0]
+       return acc
+
+   import torch
+   from BaseNN import nn
+   import numpy as np
+   # 推理验证集
+   m = nn()
+   val_data = m.load_img_data('/data/MELLBZ/mnist/val_set',color="grayscale",batch_size=20000)
+   checkpoint_path = 'mn_ckpt/basenn.pth' # 载入模型
+
+   for x, y in val_data:
+       res = m.inference(x, checkpoint=checkpoint_path)
+       acc=cal_accuracy(y,res)
+       print('验证集准确率: {:.2f}%'.format(100.0 * acc))
 
 体验案例2. 一维卷积神经网络文本情感识别
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

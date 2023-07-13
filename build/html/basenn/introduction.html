@@ -386,7 +386,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>为已有模型路径，即使用现有的模型进行推理。</p>
 <p>直接推理的输出结果数据类型为<code class="docutils literal notranslate"><span class="pre">NumPy</span></code>的二维数组，表示各个样本的各个特征的置信度。</p>
 <p>输出字典格式结果的数据类型为字典，格式为{样本编号：{预测值：x，置信度：y}}。<code class="docutils literal notranslate"><span class="pre">print_result()</span></code>函数调用即输出，但也有返回值。</p>
-<p>参数<code class="docutils literal notranslate"><span class="pre">data</span></code>为待推理的测试数据数据，该参数必须传入值，可以传入NumPy数组或文件路径。除了NumPy数组格式的特征数据，还可以传入文件路径进行模型推理，下面我们分文件类型说明。</p>
+<p>参数<code class="docutils literal notranslate"><span class="pre">data</span></code>为待推理的测试数据数据，该参数必须传入值，可以传入NumPy数组或文件路径或者dataloader类型的数据，也可以传入list（最终还是会转成numpy数组）。除了NumPy数组格式和list数组格式的特征数据，以及传入dataloader类型的数据进行批量的模型推理外，还可以传入文件路径进行模型推理，下面我们分文件类型说明。</p>
 <section id="id20">
 <h4>针对单个图片文件的推理：<a class="headerlink" href="#id20" title="Permalink to this headline"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
