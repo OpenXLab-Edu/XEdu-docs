@@ -6,7 +6,9 @@ MQTT是最常用的物联网协议之一。但是，MQTT的官方Python库明显
 
 需要强调的是，siot库同时支持MicroPython，语法完全一致。 
 
-GitHub地址：https://github.com/vvlink/SIoT/tree/master/siot-lib
+GitHub地址：https://github.com/vvlink/SIoT/tree/master/Python_lib/siot
+
+SIoT文档地址：https://siot.readthedocs.io/zh_CN/latest/
 
 ## 2. 安装
 
