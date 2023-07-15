@@ -34,6 +34,13 @@ iface.launch()
 
 ![image](../images/scitech_tools/gradio示例1.png)
 
+在网页中输入文字“xedu”后即可输出“Hello xedu”。函数“greet”的参数就是input的信息，返回的信息就输出到网页，好容易理解。
+
+** 技巧强调 **
+
+我们知道浦育平台的容器是“藏”在网页背后的虚拟服务器（电脑），网页和Notebook作为交互接口，我们没有办法直接连接访问。而只要在launch()中增加参数“share=True”，就可以穿透内网直接用域名访问。也就是说，你随时可以把这个代码成为一个网页服务，让所有人都能访问！
+
+
 ## 4. 借助Gradio部署简易AI应用
 
 Gradio提供了多种部署选项，使您能够将您的智能应用部署到各种环境中。您可以将您的智能应用程序共享给其他人使用，无论是作为演示、原型验证还是实际应用。Gradio使部署变得简单而高效，让您能够专注于构建优秀的机器学习模型和交互式界面。
@@ -46,12 +53,13 @@ Gradio提供了多种部署选项，使您能够将您的智能应用部署到�
 import gradio as gr
 from MMEdu import MMClassification as cls
 model = cls(backbone = 'LeNet')
-checkpoint='checkpoints/cls_model/hand_gray/latest.pth'
+checkpoint='best_accuracy_top-5_epoch_4.pth'
 def predict(img):
     result = model.inference(image=img, show=False, checkpoint=checkpoint)
     return str(result)
 image = gr.inputs.Image(type="filepath")
-gr.Interface(fn=predict, inputs=image, outputs=gr.outputs.Textbox()).launch()
+iface = gr.Interface(fn=predict, inputs=image, outputs=gr.outputs.Textbox())
+iface.launch(share=True)
 ```
 
 运行效果如下：
@@ -75,7 +83,8 @@ def predict(img):
     return text
 
 image = gr.inputs.Image(type="filepath")
-gr.Interface(fn=predict, inputs=image, outputs=gr.outputs.Textbox()).launch()
+iface = gr.Interface(fn=predict, inputs=image, outputs=gr.outputs.Textbox())
+iface.launch(share=True)
 ```
 
 ### 借助Gradio部署ONNX模型
@@ -93,7 +102,8 @@ def predict(img):
     result = model.inference(img)
     return result
 image = gr.inputs.Image(type="filepath")
-gr.Interface(fn=predict, inputs=image, outputs=gr.outputs.Textbox()).launch()
+iface = gr.Interface(fn=predict, inputs=image, outputs=gr.outputs.Textbox())
+iface.launch(share=True)
 ```
 
 运行效果如下：
