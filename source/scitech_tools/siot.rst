@@ -9,7 +9,9 @@ paho写的一个Python库，为了让初学者能够写出更加简洁、优雅�
 
 需要强调的是，siot库同时支持MicroPython，语法完全一致。
 
-GitHub地址：https://github.com/vvlink/SIoT/tree/master/siot-lib
+GitHub地址：https://github.com/vvlink/SIoT/tree/master/Python_lib/siot
+
+SIoT文档地址：https://siot.readthedocs.io/zh_CN/latest/
 
 2. 安装
 -------
