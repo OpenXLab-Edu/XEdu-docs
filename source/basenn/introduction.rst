@@ -568,7 +568,7 @@ BaseNN中提供了一个CNN特征提取工具，可使用BaeNN的\ ``model.extra
 
 参数:
 
-layer：层的类型，可选值包括Conv2D, MaxPool, AvgPool, Linear。
+layer：层的类型，可选值包括Conv2D, MaxPool, AvgPool, Linear, Dropout。
 
 activation：激活函数类型，可选值包括ReLU，Softmax。
 
@@ -586,6 +586,8 @@ maxpool：最大池化层，需给定kernel_size。
 avgpool：平均池化层，需给定kernel_size。
 
 linear：线性层，需给定size。
+
+dropout：随机失活层，需给定p（概率）。
 
 再以RNN模型（循环神经网络）为例进行详细说明：
 
