@@ -549,7 +549,7 @@ BaseNN中提供了一个CNN特征提取工具，可使用BaeNN的\ ``model.extra
 
 循环神经网络是一类以序列数据为输入，在序列的演进方向进行递归且所有节点（循环单元）按链式连接的递归神经网络。RNN在自然语言处理问题中有得到应用，也被用于与自然语言处理有关的异常值检测问题，例如社交网络中虚假信息/账号的检测。NN与卷积神经网络向结合的系统可被应用于在计算机视觉问题，例如在字符识别中，有研究使用卷积神经网络对包含字符的图像进行特征提取，并将特征输入LSTM进行序列标注。
 
-::
+.. code:: python
 
    model = nn()
    model.load_npz_data("./dataset.npz",batch_size=50,classes=["waving", "walking", "stretching"])
@@ -569,7 +569,7 @@ BaseNN中提供了一个CNN特征提取工具，可使用BaeNN的\ ``model.extra
    model.add(activation='Softmax')
    model.save_fold = "action_ckpt2"
 
-以上使用\ ``add()``\ 方法添加层，参数\ ``layer='linear'``\ 表示添加的层是线性层，\ ``size=(256,256)``\ 表示该层输入维度为256，输出维度为256，\ ``activation='Softmax'``\ 表示使用softmax激活函数。更详细[\ ``add()``\ 方法使用可见\ `附录1 <https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add>`__\ 。
+以上使用\ ``add()``\ 方法添加层，参数\ ``layer='linear'``\ 表示添加的层是线性层，\ ``size=(256,256)``\ 表示该层输入维度为256，输出维度为256，\ ``activation='Softmax'``\ 表示使用softmax激活函数。更详细\ ``add()``\ 方法使用可见\ `附录1 <https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add>`__\ 。
 
 附录
 ----
