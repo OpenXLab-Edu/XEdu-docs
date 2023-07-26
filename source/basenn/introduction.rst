@@ -551,23 +551,23 @@ BaseNN中提供了一个CNN特征提取工具，可使用BaeNN的\ ``model.extra
 
 .. code:: python
 
-model = nn()
-model.load_npz_data("./dataset.npz",batch_size=50,classes=["waving", "walking", "stretching"])
-model.add('lstm', size=(132,128))
-model.add('Dropout',p=0.2)
-model.add('lstm', size=(128,256))
-model.add('Dropout',p=0.2)
-model.add('unsqueeze')
-model.add('lstm', size=(256,256))
-model.add('squeeze')
-model.add('BatchNorm1d', size=256)
-
-model.add('linear',  size=(256, 256))
-model.add('Linear',  size=(256, 128))
-model.add('linear',  size=(128, 64))
-model.add('Linear',  size=(64, 3))
-model.add(activation='Softmax')
-model.save_fold = "action_ckpt2"
+   model = nn()
+   model.load_npz_data("./dataset.npz",batch_size=50,classes=["waving", "walking", "stretching"])
+   model.add('lstm', size=(132,128))
+   model.add('Dropout',p=0.2)
+   model.add('lstm', size=(128,256))
+   model.add('Dropout',p=0.2)
+   model.add('unsqueeze')
+   model.add('lstm', size=(256,256))
+   model.add('squeeze')
+   model.add('BatchNorm1d', size=256)
+   
+   model.add('linear',  size=(256, 256))
+   model.add('Linear',  size=(256, 128))
+   model.add('linear',  size=(128, 64))
+   model.add('Linear',  size=(64, 3))
+   model.add(activation='Softmax')
+   model.save_fold = "action_ckpt2"
 
 以上使用\ ``add()``\ 方法添加层，参数\ ``layer='linear'``\ 表示添加的层是线性层，\ ``size=(256,256)``\ 表示该层输入维度为256，输出维度为256，\ ``activation='Softmax'``\ 表示使用softmax激活函数。更详细[\ ``add()``\ 方法使用可见\ `附录1 <https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add>`__\ 。
 
