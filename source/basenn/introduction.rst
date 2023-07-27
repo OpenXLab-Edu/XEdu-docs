@@ -544,15 +544,15 @@ BaseNN中提供了一个CNN特征提取工具，可使用BaeNN的\ ``model.extra
 
 第一次下载预训练模型有点慢需要耐心等待，再次运行则无需下载。
 
-14. RNN模型搭建
+14. RNN模型搭建简单指南
 ~~~~~~~~~~~
 
 循环神经网络是一类以序列数据为输入，在序列的演进方向进行递归且所有节点（循环单元）按链式连接的递归神经网络。RNN在自然语言处理问题中有得到应用，也被用于与自然语言处理有关的异常值检测问题，例如社交网络中虚假信息/账号的检测。NN与卷积神经网络向结合的系统可被应用于在计算机视觉问题，例如在字符识别中，有研究使用卷积神经网络对包含字符的图像进行特征提取，并将特征输入LSTM进行序列标注。
 
+下为搭建RNN神经网络的一般流程：
+
 .. code:: python
 
-   model = nn()
-   model.load_npz_data("./dataset.npz",batch_size=50,classes=["waving", "walking", "stretching"])
    model.add('lstm', size=(132,128))
    model.add('Dropout',p=0.2)
    model.add('lstm', size=(128,256))
@@ -567,9 +567,57 @@ BaseNN中提供了一个CNN特征提取工具，可使用BaeNN的\ ``model.extra
    model.add('linear',  size=(128, 64))
    model.add('Linear',  size=(64, 3))
    model.add(activation='Softmax')
-   model.save_fold = "action_ckpt2"
 
 以上使用\ ``add()``\ 方法添加层，参数\ ``layer='linear'``\ 表示添加的层是线性层，\ ``size=(256,256)``\ 表示该层输入维度为256，输出维度为256，\ ``activation='Softmax'``\ 表示使用softmax激活函数。更详细\ ``add()``\ 方法使用可见\ `附录1 <https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add>`__\ 。
+
+在搭建RNN时，一般第一层需要设置为\ ``lstm``\层，需要注意的是\ ``size=(132,128)``\表示该层输入维度为132，输出维度为128，输入维度应与数据集维度相同。
+
+\ ``Dropout``\层的作用为随机关闭一些神经元，避免过拟合。其中参数\ ``p``\表示关闭神经元的比例，比如此处 p=0.2 表示有随机20%的神经元会被关闭。这种网络层是为了优化效果，避免过拟合而加入的，不是必需的，因此可以尝试修改p的值甚至删掉这个层观察比较效果差距。
+
+\ ``squeeze``\与\ ``unsqueeze``\层两个神经网络层并不常见，其作用为对数据的升降维度进行处理。squeeze的操作为压缩维度，unsqueez的操作为扩充维度。这种网络层是为了确保数据在层间正常流动，是必需的，如果想要自行调整，可能需要对数据经过每一层之后的维度变化有充分了解，在此之前，保持原样即可。
+
+\ ``Batchnorm1d``\的作用是对一维数据做归一化。参数中size值表示输入数据的维度（注意和上一层的输出以及下一层的输入一致即可）。这种网络层是也为了优化效果而加入的，不是必需的，没有这个层也可以正常训练，但由于去掉这个网络层后效果下降的会非常明显，所以不建议删掉这个层。
+
+如果对pytorch比较熟悉，想要自行添加比较复杂的模块，也可以自定义（BaseNN兼容pytorch搭的网络结构），例如，搭建一个与上述动作识别网络一致的自定义模块：
+
+.. code:: python
+
+   import torch class LSTM_model(torch.nn.Module): 
+      def __init__(self, actions):
+         super(LSTM_model, self).__init__() self.actions = actions
+         self.lstm1 = torch.nn.LSTM(132, 128, batch_first=True, bidirectional=False)
+         self.dropout1 = torch.nn.Dropout(0.2)
+         self.lstm2 = torch.nn.LSTM(128, 256, batch_first=True, bidirectional=False)
+         self.dropout2 = torch.nn.Dropout(0.2)
+         self.lstm3 = torch.nn.LSTM(256, 256, batch_first=True, bidirectional=False)
+         self.bn = torch.nn.BatchNorm1d(256)
+         self.dense1 = torch.nn.Linear(256, 256)
+         self.dense2 = torch.nn.Linear(256, 128)
+         self.dense3 = torch.nn.Linear(128, 64)
+         self.dense4 = torch.nn.Linear(64, actions.shape[0])
+         self.softmax = torch.nn.Softmax(dim=1)
+
+      def forward(self, x):
+         x, _ = self.lstm1(x)
+         x = self.dropout1(x)
+         x, _ = self.lstm2(x)
+         x = self.dropout2(x)
+         x, _ = self.lstm3(x[:, -1, :].unsqueeze(1))
+         x = self.bn(x.squeeze())
+         x = self.dense1(x)
+         x = self.dense2(x)
+         x = self.dense3(x)
+         x = self.dense4(x)
+         x = self.softmax(x)
+         return x
+      actions = np.array(["walking","boxing","handwaving"])
+      my_model = LSTM_model(actions)
+
+创建好这样的自定义模块之后，就可以按照常规方法添加这个模型到basenn中了。
+
+.. code:: python
+
+   model.add(my_model)
 
 附录
 ----
