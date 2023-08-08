@@ -90,8 +90,8 @@ python中最常用的库管理工具pip，可以使用cmd命令行来运行，�
 
 在这一步中，可能会有运行失败的情况，通常是由于依赖库安装失败导致的。
 
-如果提示mmcv相关的错误，可以尝试用：\ ``pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/index.html``\ 
- 推荐使用Python3.8 （64位）来进行安装。
+如果提示 **mmcv相关的错误**，可以尝试用：\ ``pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/index.html``\ 
+**推荐使用Python3.8 （64位）来进行安装** 。
 
 如果仍然没有解决，请先卸载mmcv-full，然后再次安装。
 
@@ -99,7 +99,7 @@ python中最常用的库管理工具pip，可以使用cmd命令行来运行，�
 
 第二步： \ ``pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/index.html``\ 
 
-该版本不支持CPU训练检测模型，要想支持，需要升级mmdet库至2.23.0，具体步骤如下：
+该版本 **不支持CPU训练检测模型**，要想支持，需要升级mmdet库至2.23.0，具体步骤如下：
 
 第一步：\ ``pip uninstall mmdet pycocotools-windows -y``\ 
 
@@ -109,7 +109,7 @@ python中最常用的库管理工具pip，可以使用cmd命令行来运行，�
 
 第三步：\ ``pip install mmdet==2.23.0``\ 
 
-如果想要升级为GPU版本，可以将torch、torchvision和mmcv-full做一次升级。步骤如下：
+如果想要 **升级为GPU版本**，可以将torch、torchvision和mmcv-full做一次升级。步骤如下：
 
 第一步：确认安装好与电脑GPU适配的CUDA驱动（这里以cuda10.1为例）
 
