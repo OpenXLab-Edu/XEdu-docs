@@ -58,7 +58,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id1">1. 简介</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">2. 安装</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">3. 代码示例</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#gradioai">4. 借助Gradio部署简易AI应用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#gradioai">1. 借助Gradio部署简易AI应用</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#gradiommedu">借助Gradio部署MMEdu模型</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#gradioonnx">借助Gradio部署ONNX模型</a></li>
 </ul>
@@ -124,15 +124,16 @@
 </pre></div>
 </div>
 <p>上面的示例中，定义了一个名为“greet”的函数，它接受一个名字作为输入，并返回一个带有问候语的字符串。然后使用<code class="docutils literal notranslate"><span class="pre">gr.Interface</span></code>创建一个接口，指定输入类型为文本，输出类型也为文本。最后，使用<code class="docutils literal notranslate"><span class="pre">launch</span></code>方法来启动界面。运行效果如下：</p>
-<figure class="align-default" id="id4">
-<img alt="image" src="../_images/gradio示例1.png" />
-<figcaption>
-<p><span class="caption-text">image</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
-</figcaption>
+<figure class="align-default">
+<img alt="../_images/gradio示例1.png" src="../_images/gradio示例1.png" />
 </figure>
+<p>在网页中输入文字“xedu”后即可输出“Hello
+xedu”。函数“greet”的参数就是input的信息，返回的信息就输出到网页，好容易理解。</p>
+<p>** 技巧强调 **</p>
+<p>我们知道浦育平台的容器是“藏”在网页背后的虚拟服务器（电脑），网页和Notebook作为交互接口，我们没有办法直接连接访问。而只要在launch()中增加参数“share=True”，就可以穿透内网直接用域名访问。也就是说，你随时可以把这个代码成为一个网页服务，让所有人都能访问！</p>
 </section>
 <section id="gradioai">
-<h2>4. 借助Gradio部署简易AI应用<a class="headerlink" href="#gradioai" title="Permalink to this headline"></a></h2>
+<h2>1. 借助Gradio部署简易AI应用<a class="headerlink" href="#gradioai" title="Permalink to this headline"></a></h2>
 <p>Gradio提供了多种部署选项，使您能够将您的智能应用部署到各种环境中。您可以将您的智能应用程序共享给其他人使用，无论是作为演示、原型验证还是实际应用。Gradio使部署变得简单而高效，让您能够专注于构建优秀的机器学习模型和交互式界面。</p>
 <section id="gradiommedu">
 <h3>借助Gradio部署MMEdu模型<a class="headerlink" href="#gradiommedu" title="Permalink to this headline"></a></h3>
@@ -140,20 +141,18 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gradio</span> <span class="k">as</span> <span class="nn">gr</span>
 <span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
 <span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span> <span class="o">=</span> <span class="s1">&#39;LeNet&#39;</span><span class="p">)</span>
-<span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;checkpoints/cls_model/hand_gray/latest.pth&#39;</span>
+<span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;best_accuracy_top-5_epoch_4.pth&#39;</span>
 <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">img</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;filepath&quot;</span><span class="p">)</span>
-<span class="n">gr</span><span class="o">.</span><span class="n">Interface</span><span class="p">(</span><span class="n">fn</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">Textbox</span><span class="p">())</span><span class="o">.</span><span class="n">launch</span><span class="p">()</span>
+<span class="n">iface</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Interface</span><span class="p">(</span><span class="n">fn</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">Textbox</span><span class="p">())</span>
+<span class="n">iface</span><span class="o">.</span><span class="n">launch</span><span class="p">(</span><span class="n">share</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>运行效果如下：</p>
-<figure class="align-default" id="id5">
-<img alt="image" src="../_images/gradio示例2.png" />
-<figcaption>
-<p><span class="caption-text">image</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
-</figcaption>
+<figure class="align-default">
+<img alt="../_images/gradio示例2.png" src="../_images/gradio示例2.png" />
 </figure>
 <p>您可以根据您的模型进行相应的修改和调整，以适应您的需求。例如对输出结果做一些修饰，参考代码如下：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gradio</span> <span class="k">as</span> <span class="nn">gr</span>
@@ -170,7 +169,8 @@
     <span class="k">return</span> <span class="n">text</span>
 
 <span class="n">image</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;filepath&quot;</span><span class="p">)</span>
-<span class="n">gr</span><span class="o">.</span><span class="n">Interface</span><span class="p">(</span><span class="n">fn</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">Textbox</span><span class="p">())</span><span class="o">.</span><span class="n">launch</span><span class="p">()</span>
+<span class="n">iface</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Interface</span><span class="p">(</span><span class="n">fn</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">Textbox</span><span class="p">())</span>
+<span class="n">iface</span><span class="o">.</span><span class="n">launch</span><span class="p">(</span><span class="n">share</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -178,7 +178,7 @@
 <h3>借助Gradio部署ONNX模型<a class="headerlink" href="#gradioonnx" title="Permalink to this headline"></a></h3>
 <p>使用Gradio部署ONNX模型也是非常简单的，示例代码如下：</p>
 <p>补充：ONNX（Open Neural Network
-Exchange）是一个开放的、跨平台的深度学习模型表示和转换框架。它的目标是解决不同深度学习框架之间的模型兼容性问题，此处使用的ONNX模型推理的代码是借助XEdu团队推出的模型部署工具 <a class="reference external" href="https://xedu.readthedocs.io/zh/master/basedeploy/introduction.html">BaseDeploy</a>，代码较为简洁。关于基于MMEdu训练的模型转换为ONNX的说明可见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/model_convert.html#ai">最后一步：AI模型转换与部署</a>。</p>
+Exchange）是一个开放的、跨平台的深度学习模型表示和转换框架。它的目标是解决不同深度学习框架之间的模型兼容性问题，此处使用的ONNX模型推理的代码是借助XEdu团队推出的模型部署工具<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basedeploy/introduction.html">BaseDeploy</a>，代码较为简洁。关于基于MMEdu训练的模型转换为ONNX的说明可见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/model_convert.html#ai">最后一步：AI模型转换与部署</a>。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gradio</span> <span class="k">as</span> <span class="nn">gr</span>
 <span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
 <span class="n">model_path</span> <span class="o">=</span> <span class="s1">&#39;cls.onnx&#39;</span>
@@ -187,7 +187,8 @@ Exchange）是一个开放的、跨平台的深度学习模型表示和转换框
     <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">result</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;filepath&quot;</span><span class="p">)</span>
-<span class="n">gr</span><span class="o">.</span><span class="n">Interface</span><span class="p">(</span><span class="n">fn</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">Textbox</span><span class="p">())</span><span class="o">.</span><span class="n">launch</span><span class="p">()</span>
+<span class="n">iface</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Interface</span><span class="p">(</span><span class="n">fn</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">Textbox</span><span class="p">())</span>
+<span class="n">iface</span><span class="o">.</span><span class="n">launch</span><span class="p">(</span><span class="n">share</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>运行效果如下：</p>

@@ -18,9 +18,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="MMEdu基本功能" href="introduction.html" />
-    <link rel="prev" title="快速体验MMEdu，开始！" href="quick_start.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -39,36 +37,9 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">目录</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="quick_start.html">快速体验MMEdu，开始！</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">MMEdu安装和下载</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">快速了解安装方式</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">1. 基础版的安装</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id3">1.1 一键安装包</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pip">1.2 pip安装</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">2. 完整版安装之pip安装</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id5">2.1 准备工作</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#mmedu-cpu">2.2 安装MMEdu(CPU版本)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#mmedu-gpu">2.3 安装MMEdu(GPU版本)</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#docker">3. 完整版安装之docker容器镜像</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">4. 查看MMEdu版本</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">5. 卸载MMEdu库</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html">MMEdu基本功能</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mmclassification.html">解锁图像分类模块：MMClassification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mmdetection.html">揭秘目标检测模块：MMDetection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mmediting.html">图像处理模块：MMEditing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="model_convert.html">最后一步：AI模型转换</a></li>
-<li class="toctree-l2"><a class="reference internal" href="openmmlab.html">走向OpenMMLab</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basenn.html">神经网络库BaseNN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../baseml.html">传统机器学习库BaseML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a></li>
@@ -93,10 +64,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../mmedu.html">计算机视觉库MMEdu</a> &raquo;</li>
       <li>MMEdu安装和下载</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/mmedu/installation.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/mmedu/installation_old.md.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -117,74 +87,43 @@
 <section id="id3">
 <h3>1.1 一键安装包<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
 <p>为方便中小学教学，MMEdu团队提供了一键安装包。只要下载并解压即可直接使用。</p>
-<p><strong>现MMEdu一键安装包已升级为XEdu一键安装包，下文提到的MMEdu文件，应理解为XEdu一键安装包。</strong></p>
-<p>第一步：下载MMEdu（XEdu）最新版文件，并安装到本地，双击exe文件，选择安装路径后，点击Extract即可，安装后自动生成XEdu文件夹，文件夹内目录结构如下图所示。</p>
-<figure class="align-default">
-<img alt="../_images/XEDU安装图11.png" src="../_images/XEDU安装图11.png" />
-</figure>
-<p>​ 1）下载方式（即XEdu下载方式）</p>
-<p>飞书网盘：<a class="reference external" href="https://p6bm2if73b.feishu.cn/drive/folder/fldcn67XTwhg8qIFCl8edJBZZQb">https://p6bm2if73b.feishu.cn/drive/folder/fldcn67XTwhg8qIFCl8edJBZZQb</a></p>
-<p>百度网盘:<a class="reference external" href="https://pan.baidu.com/s/1UDt-GwHriCB_rewl8kCrUA?pwd=2022">https://pan.baidu.com/s/1UDt-GwHriCB_rewl8kCrUA?pwd=2022</a> 提取码:2022</p>
+<p><strong>现MMEdu一键安装包已升级为XEdu一键安装包，下文提到的MMEdu文件，可以理解为XEdu一键安装包。</strong></p>
+<p>第一步：下载MMEdu最新版文件，并解压到本地，文件夹目录结构如下图所示。</p>
+<p><img alt="image" src="images/mmedu/XEDU%E5%AE%89%E8%A3%85%E5%9B%BE1.png" /></p>
+<p>​    1）下载方式（已并入XEdu）</p>
+<p>飞书网盘：https://p6bm2if73b.feishu.cn/drive/folder/fldcn67XTwhg8qIFCl8edJBZZQb</p>
+<p>百度网盘:https://pan.baidu.com/s/1UDt-GwHriCB_rewl8kCrUA?pwd=2022 提取码:2022</p>
 <p>第二步：您可以根据个人喜好，选择自己习惯的IDE。</p>
-<p>1）使用MMEdu（XEdu）自带的Thonny。</p>
-<p>Thonny是一款好用的Python轻量级IDE。其最突出的两个特点便是是简洁性和交互性。打开根目录下的Thonny.bat文件快捷方式即可打开。使用Thonny打开“demo”文件夹中的py文件，如“MMEdu_cls_demo.py”，点击“运行”的“将文件作为脚本运行”即可运行代码，界面如下图所示。</p>
-<figure class="align-default">
-<img alt="../_images/XEDU安装图41.png" src="../_images/XEDU安装图41.png" />
-</figure>
-<p>2）使用MMEdu（XEdu）自带的Jupyter。</p>
-<p>Jupyter
-Notebook是基于网页的用于交互计算的应用程序。其可被应用于全过程计算：开发、文档编写、运行代码和展示结果。它相对简单，对用户也更加友好，适合初学者。打开根目录下的“jupyter编辑器.bat”，即自动启动浏览器并显示界面，如下图所示。</p>
-<figure class="align-default">
-<img alt="../_images/XEDU安装图31.png" src="../_images/XEDU安装图31.png" />
-</figure>
+<p>1）使用MMEdu(XEdu)自带的Thonny。</p>
+<p>Thonny是一款好用的Python轻量级IDE。其最突出的两个特点便是是简洁性和交互性。打开根目录下的Thonny编辑器.bat文件快捷方式即可打开Thonny。使用Thonny打开“demo”文件夹中的py文件，如“MMEdu_cls_demo.py”，点击“运行”的“将文件作为脚本运行”即可运行代码，界面如下图所示。</p>
+<p><img alt="image" src="images/mmedu/XEDU%E5%AE%89%E8%A3%85%E5%9B%BE4.png" /></p>
+<p>2）使用MMEdu(XEdu)自带的Jupyter。</p>
+<p>Jupyter Notebook是基于网页的用于交互计算的应用程序。其可被应用于全过程计算：开发、文档编写、运行代码和展示结果。它相对简单，对用户也更加友好，适合初学者。打开根目录下的“run_jupyter.bat”，即自动启动浏览器并显示界面，如下图所示。</p>
+<p><img alt="image" src="images/mmedu/XEDU%E5%AE%89%E8%A3%85%E5%9B%BE3.png" /></p>
 <p>使用常用工具栏对代码进行操作，如“运行”，可以在单元格中编写文本或者代码（如下图中写了<code class="docutils literal notranslate"><span class="pre">print(&quot;hello&quot;)</span></code>代码的位置），执行代码的结果也将会在每个单元下方呈现。可以逐个运行单元格，每点击一次，仅运行一个单元格。单元格左侧[*]内的星号变为数字，表示该单元格运行完成。此时可打开“demo”文件夹中的ipynb文件，如“cls_notebook.ipynb”。</p>
-<figure class="align-default">
-<img alt="../_images/MMEDU安装图5.png" src="../_images/MMEDU安装图5.png" />
-</figure>
+<p><img alt="image" src="images/mmedu/MMEDU%E5%AE%89%E8%A3%85%E5%9B%BE5.png" /></p>
 <p>3）使用其他IDE。</p>
 <p>如果您需要使用其他IDE，那么需要您自己配置Python编译器，配置方法如下。</p>
 <ul class="simple">
 <li><p>配置环境路径</p></li>
 </ul>
 <p>①打开您的IDE，如PyCharm、Thonny等。</p>
-<p>②配置Python编译器，路径为解压路径下的“MMEdu”文件夹下的“mmedu”文件夹中的“python.exe”文件。
-PyCharm环境路径配置如下图所示。</p>
-<figure class="align-default">
-<img alt="../_images/MMEDU安装图6.png" src="../_images/MMEDU安装图6.png" />
-</figure>
+<p>②配置Python编译器，路径为解压路径下的“MMEdu”文件夹下的“mmedu”文件夹中的“python.exe”文件。 PyCharm环境路径配置如下图所示。</p>
+<p><img alt="image" src="images/mmedu/MMEDU%E5%AE%89%E8%A3%85%E5%9B%BE6.png" /></p>
 <ul class="simple">
 <li><p>执行demo文件</p></li>
 </ul>
-<p>用IDE打开解压路径下的py文件，如“cls_demo.py”，点击“运行”。运行效果应和pyzo一样。</p>
+<p>用IDE打开解压路径下的py文件，如“cls_demo.py”，点击“运行”。运行效果应和Thonny一样。</p>
 <p>4）使用cmd安装用户库。</p>
 <p>python中最常用的库管理工具pip，可以使用cmd命令行来运行，打开根目录下的“启动cmd.bat”可以打开cmd命令行界面，如下图所示。</p>
-<figure class="align-default">
-<img alt="../_images/XEDU安装图21.png" src="../_images/XEDU安装图21.png" />
-</figure>
+<p><img alt="image" src="images/mmedu/XEDU%E5%AE%89%E8%A3%85%E5%9B%BE2.png" /></p>
 <p>在其中输入想要安装的库文件即可，如“pip install rarfile”。</p>
-<p><strong>在2022年9月后，不再维护MMEdu一键安装包，统一更新为XEdu。XEdu于22年9月在世界人工智能大会正式发布，分MMEdu、BaseML、BaseNN三个功能模块，除了一键安装包，同时实现以pip方式安装。</strong>
-如<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">BaseML</span> <span class="pre">BaseNN</span> <span class="pre">BaseDT</span> <span class="pre">BaseDeploy</span> <span class="pre">MMEdu</span></code></p>
+<p><strong>在2022年9月后，不再维护MMEdu一键安装包，统一更新为XEdu。XEdu于22年9月在世界人工智能大会正式发布，分MMEdu、BaseML、BaseNN三个功能模块，除了一键安装包，同时实现以pip方式安装。</strong></p>
 </section>
 <section id="pip">
 <h3>1.2 pip安装<a class="headerlink" href="#pip" title="Permalink to this headline"></a></h3>
-<p>当前，我们提供的MMEdu0.0.7版本的安装是基础版的pip安装包，可以使用如下命令安装：
+<p>可以使用如下命令安装：
 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">mmedu</span></code>或<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">MMEdu</span></code>。</p>
-<p>在这一步中，可能会有运行失败的情况，通常是由于依赖库安装失败导致的。</p>
-<p>如果提示 <strong>mmcv相关的错误</strong>，可以尝试用：<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">MMEdu</span> <span class="pre">-f</span> <span class="pre">https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/index.html</span></code><strong>推荐使用Python3.8 （64位）来进行安装</strong> 。</p>
-<p>如果仍然没有解决，请先卸载mmcv-full，然后再次安装。</p>
-<p>第一步：<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">uninstall</span> <span class="pre">mmcv-full</span> <span class="pre">-y</span></code></p>
-<p>第二步： <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">MMEdu</span> <span class="pre">-f</span> <span class="pre">https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/index.html</span></code></p>
-<p>该版本 <strong>不支持CPU训练检测模型</strong>，要想支持，需要升级mmdet库至2.23.0，具体步骤如下：</p>
-<p>第一步：<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">uninstall</span> <span class="pre">mmdet</span> <span class="pre">pycocotools-windows</span> <span class="pre">-y</span></code></p>
-<p>第二步：<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pycocotools</span></code></p>
-<p>如果失败，可以考虑以下两种方案 ①下载whl进行本地安装（见https://aicarrier.feishu.cn/docx/K0D6d8VHLoN1zoxDb72cBlKynjc）； ②安装Visual Studio进行编译安装。</p>
-<p>第三步：<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">mmdet==2.23.0</span></code></p>
-<p>如果想要 <strong>升级为GPU版本</strong>，可以将torch、torchvision和mmcv-full做一次升级。步骤如下：</p>
-<p>第一步：确认安装好与电脑GPU适配的CUDA驱动（这里以cuda10.1为例）</p>
-<p>第二步：卸载当前安装的版本：<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">uninstall</span> <span class="pre">torch</span> <span class="pre">torchvision</span> <span class="pre">mmcv-full</span> <span class="pre">-y</span></code></p>
-<p>第三步：安装合适的版本：<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">torch==1.8.1+cu101</span> <span class="pre">torchvision==0.9.1+cu101</span> <span class="pre">torchaudio==0.8.1</span> <span class="pre">-f</span> <span class="pre">https://download.pytorch.org/whl/torch_stable.html</span></code></p>
-<p>第四步：安装合适的mmcv-full：<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">MMEdu</span> <span class="pre">-f</span> <span class="pre">https://download.openmmlab.com/mmcv/dist/cu101/torch1.8.0/index.html</span></code></p>
-<p>至此，已经完成了对MMEdu的GPU升级。</p>
 </section>
 </section>
 <section id="id4">
@@ -196,32 +135,26 @@ PyCharm环境路径配置如下图所示。</p>
 <h4>2.1.1 安装Anaconda<a class="headerlink" href="#anaconda" title="Permalink to this headline"></a></h4>
 <p>若您已经安装好conda，该步骤可跳过。</p>
 <p><strong>下载</strong></p>
-<p>首先打开Anaconda官网：<a class="reference external" href="https://www.anaconda.com/">https://www.anaconda.com/</a></p>
+<p>首先打开Anaconda官网：https://www.anaconda.com/</p>
 <p>点击<code class="docutils literal notranslate"><span class="pre">Download</span></code>开始下载，下载完成后得到exe文件。</p>
 <p><strong>安装</strong></p>
 <p>双击exe文件即可开始安装（一般下载完成后会自动打开安装界面无需点击exe文件，若没有自动打开安装页面再点击此exe文件）。</p>
-<p>打开安装界面后，依次选择<code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">Agree</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">All</span> <span class="pre">Users</span></code>
--&gt; <code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Next</span></code>
--&gt; <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Anaconda3</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">system</span> <span class="pre">PATH</span> <span class="pre">environment</span> <span class="pre">variable</span></code> -&gt;
-<code class="docutils literal notranslate"><span class="pre">Install</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Finish</span></code></p>
+<p>打开安装界面后，依次选择<code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt;<code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">Agree</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">All</span> <span class="pre">Users</span></code> -&gt;<code class="docutils literal notranslate"><span class="pre">Next</span></code>-&gt;<code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt;<code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Anaconda3</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">system</span> <span class="pre">PATH</span> <span class="pre">environment</span> <span class="pre">variable</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Install</span></code> -&gt;<code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt;<code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt;<code class="docutils literal notranslate"><span class="pre">Finish</span></code></p>
 </section>
 <section id="python">
 <h4>3.1.2 安装python编辑器<a class="headerlink" href="#python" title="Permalink to this headline"></a></h4>
 <p>若您已经安装好合适的python编辑器，该步骤可跳过。</p>
 <p>此处以安装Thonny为例，其他编辑器例如Pycharm，VScode等也支持，用户自行配置好Python编译器即可。</p>
 <p><strong>下载</strong></p>
-<p>首先打开Thonny官网：<a class="reference external" href="https://thonny.org/">https://thonny.org/</a></p>
+<p>首先打开Thonny官网：https://thonny.org/</p>
 <p>右上角选择合适的操作系统点击下载，此处以windows为例</p>
 <p><strong>安装</strong></p>
 <p>双击exe文件即可开始安装（一般下载完成后会自动打开安装界面无需点击exe文件，若没有自动打开安装页面再点击此exe文件）</p>
-<p>打开安装界面后，依次选择<code class="docutils literal notranslate"><span class="pre">Install</span> <span class="pre">for</span> <span class="pre">me</span> <span class="pre">only</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt;
-<code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Install</span></code> -&gt;
-<code class="docutils literal notranslate"><span class="pre">Finish</span></code></p>
+<p>打开安装界面后，依次选择<code class="docutils literal notranslate"><span class="pre">Install</span> <span class="pre">for</span> <span class="pre">me</span> <span class="pre">only</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt;  <code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Install</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Finish</span></code></p>
 <p><strong>运行</strong></p>
 <p>在安装好Thonny之后，在第一次运行的时候，会提示选择界面语言和初始设置，选择‘Standard’模式即可。</p>
 <p><strong>配置Thonny的Python解释器</strong></p>
-<p>点击Thonny主界面右下角的Python版本号，可以选择对应的Python解释器，第一次配置点击<code class="docutils literal notranslate"><span class="pre">Configure</span> <span class="pre">inter</span> <span class="pre">preter</span></code>，弹出的窗口中，第一个下拉栏选择<code class="docutils literal notranslate"><span class="pre">可选的python3解释器或虚拟环境</span></code>，
-第二个下拉栏找到自己之前安装的anaconda环境中的python解释器位置。点击确认即可使用该python解释器。</p>
+<p>点击Thonny主界面右下角的Python版本号，可以选择对应的Python解释器，第一次配置点击<code class="docutils literal notranslate"><span class="pre">Configure</span> <span class="pre">inter</span> <span class="pre">preter</span></code>，弹出的窗口中，第一个下拉栏选择<code class="docutils literal notranslate"><span class="pre">可选的python3解释器或虚拟环境</span></code>， 第二个下拉栏找到自己之前安装的anaconda环境中的python解释器位置。点击确认即可使用该python解释器。</p>
 </section>
 </section>
 <section id="mmedu-cpu">
@@ -258,7 +191,7 @@ PyCharm环境路径配置如下图所示。</p>
 </section>
 <section id="mmedu-gpu">
 <h3>2.3 安装MMEdu(GPU版本)<a class="headerlink" href="#mmedu-gpu" title="Permalink to this headline"></a></h3>
-<p>首先安装对应自己cuda版本的pytorch，安装命令可在以下网址中进行查询：<a class="reference external" href="https://pytorch.org/get-started/locally/">https://pytorch.org/get-started/locally/</a></p>
+<p>首先安装对应自己cuda版本的pytorch，安装命令可在以下网址中进行查询：https://pytorch.org/get-started/locally/</p>
 <p>可以在命令行中使用<code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code>指令查询自己的cuda版本。</p>
 <p>例如，若cuda版本为10.1，想要安装1.8.1版本的pytorch，则安装命令为：</p>
 <div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="p">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">torch</span><span class="p">==</span><span class="n">1</span><span class="p">.</span><span class="n">8</span><span class="p">.</span><span class="n">1</span><span class="p">+</span><span class="n">cu101</span> <span class="n">torchvision</span><span class="p">==</span><span class="n">0</span><span class="p">.</span><span class="n">9</span><span class="p">.</span><span class="n">1</span><span class="p">+</span><span class="n">cu101</span> <span class="n">torchaudio</span><span class="p">==</span><span class="n">0</span><span class="p">.</span><span class="n">8</span><span class="p">.</span><span class="n">1</span> <span class="o">-f</span> <span class="n">https</span><span class="p">://</span><span class="n">download</span><span class="p">.</span><span class="n">pytorch</span><span class="p">.</span><span class="n">org</span><span class="p">/</span><span class="n">whl</span><span class="p">/</span><span class="n">torch_stable</span><span class="p">.</span><span class="n">html</span>
@@ -268,10 +201,8 @@ PyCharm环境路径配置如下图所示。</p>
 <div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="p">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">mmcv-full</span> <span class="o">-f</span> <span class="n">https</span><span class="p">://</span><span class="n">download</span><span class="p">.</span><span class="n">openmmlab</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">mmcv</span><span class="p">/</span><span class="n">dist</span><span class="p">/{</span><span class="n">cu_version</span><span class="p">}/{</span><span class="n">torch_version</span><span class="p">}/</span><span class="n">index</span><span class="p">.</span><span class="n">html</span>
 </pre></div>
 </div>
-<p>其中 <code class="docutils literal notranslate"><span class="pre">{cu_version}</span></code> 和 <code class="docutils literal notranslate"><span class="pre">{torch_version}</span></code>
-根据自身需求替换成实际的版本号。</p>
-<p>例如想安装和 <code class="docutils literal notranslate"><span class="pre">CUDA</span> <span class="pre">10.1</span></code>、<code class="docutils literal notranslate"><span class="pre">PyTorch</span> <span class="pre">1.8.0</span></code> 兼容的
-<code class="docutils literal notranslate"><span class="pre">mmcv-full</span></code>，使用如下替换过的命令</p>
+<p>其中 <code class="docutils literal notranslate"><span class="pre">{cu_version}</span></code> 和 <code class="docutils literal notranslate"><span class="pre">{torch_version}</span></code> 根据自身需求替换成实际的版本号。</p>
+<p>例如想安装和 <code class="docutils literal notranslate"><span class="pre">CUDA</span> <span class="pre">10.1</span></code>、<code class="docutils literal notranslate"><span class="pre">PyTorch</span> <span class="pre">1.8.0</span></code> 兼容的 <code class="docutils literal notranslate"><span class="pre">mmcv-full</span></code>，使用如下替换过的命令</p>
 <div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="p">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">mmcv-full</span><span class="p">==</span><span class="n">1</span><span class="p">.</span><span class="n">4</span><span class="p">.</span><span class="n">5</span> <span class="o">-f</span> <span class="n">https</span><span class="p">://</span><span class="n">download</span><span class="p">.</span><span class="n">openmmlab</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">mmcv</span><span class="p">/</span><span class="n">dist</span><span class="p">/</span><span class="n">cu101</span><span class="p">/</span><span class="n">torch1</span><span class="p">.</span><span class="n">8</span><span class="p">.</span><span class="n">0</span><span class="p">/</span><span class="n">index</span><span class="p">.</span><span class="n">html</span>
 </pre></div>
 </div>
@@ -288,9 +219,7 @@ PyCharm环境路径配置如下图所示。</p>
 <section id="id6">
 <h2>4. 查看MMEdu版本<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h2>
 <p>打开python终端，执行以下命令即可查看MMEdu版本。当前最新版本是0.04。</p>
-<figure class="align-default">
-<img alt="../_images/pip安装指南3.png" src="../_images/pip安装指南3.png" />
-</figure>
+<p><img alt="image" src="images/mmedu/pip%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%973.png" /></p>
 <p>注：目前版本MMEdu仅支持CPU。</p>
 </section>
 <section id="id7">
@@ -305,10 +234,7 @@ PyCharm环境路径配置如下图所示。</p>
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="quick_start.html" class="btn btn-neutral float-left" title="快速体验MMEdu，开始！" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="introduction.html" class="btn btn-neutral float-right" title="MMEdu基本功能" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 

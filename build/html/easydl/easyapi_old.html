@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EasyAPI（AI模型远程推理工具） &mdash; OpenXLabEdu  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basenn.html">神经网络库BaseNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../baseml.html">传统机器学习库BaseML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basedt.html">数据处理库BaseDT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basedeploy.html">模型部署库BaseDeploy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scitech_tools.html">相关科创工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support_resources.html">学习支持和资源获取</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dl_library.html">深度学习知识库</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenXLabEdu</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>EasyAPI（AI模型远程推理工具）</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/easydl/easyapi_old.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="easyapi-ai">
+<h1>EasyAPI（AI模型远程推理工具）<a class="headerlink" href="#easyapi-ai" title="Permalink to this headline"></a></h1>
+<section id="easyapi">
+<h2>EasyAPI简介<a class="headerlink" href="#easyapi" title="Permalink to this headline"></a></h2>
+<p>EasyAPI是无代码的MMEdu模型推理（部署）工具，不需要编写一行代码，即可搭建出一个类似百度开放平台的API平台。</p>
+<p>如果你训练的模型无法运行在某一创客作品的开源硬件上，那么就需要EasyAPI的帮忙了。</p>
+</section>
+<section id="id1">
+<h2>EasyAPI的应用场景<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<section id="id2">
+<h3>应用场景1：行空板+掌控板<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<p>行空板可以运行ONNX，你可以利用EasyAPI生成参考代码，然后在行空板上运行。掌控板可以用HTTP的方式远程发送图片或者音频，行空板推理后返回结果信息。</p>
+</section>
+<section id="pc">
+<h3>应用场景2：行空板+PC<a class="headerlink" href="#pc" title="Permalink to this headline"></a></h3>
+<p>行空板拍摄照片，然后发送到PC（算力服务器）上推理。</p>
+</section>
+</section>
+<section id="id3">
+<h2>启动EasyAPI实现无代码服务部署可视化界面<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<p>EasyAPI界面启动之后在下拉框中选择问题类型为分类或者检测。</p>
+<p>在选择了问题类型之后，下面的“算法类型”也会对应的更改。</p>
+<p>选择权重文件、类别文件、推理结果保存路径、推理所用设备。</p>
+<p>点击生成代码会在上方Code呈现代码，有需要的用户也可以复制到本地运行。</p>
+<p><img alt="image" src="../_images/API_code.png" /></p>
+<p>运行代码会看到EasyAPI界面打开的同时运行的cmd.exe框内会有呈现运行后台，此时点击打开网页。</p>
+<p><img alt="image" src="images/easydl/API%E8%BF%90%E8%A1%8C%E5%90%8E%E5%8F%B0.png" /></p>
+<p>网页界面如下图所示。用户可指定类别的图片进行识别。此外，EasyAPI还提供了一个接口地址，可通过POST请求进行图像发送-服务器推理识别-结果放回的数据通路。如果手机和启动EasyAPI服务的电脑在同一wifi下，手机端还可以直接输入可视化网页连接来访问该服务，可以实现一个手机拍照，识别推理结果返回显示的功能。</p>
+<p><img alt="image" src="images/easydl/API%E6%B5%8B%E8%AF%95.png" /></p>
+</section>
+<section id="id4">
+<h2>注意事项<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>一部分参数有范围，例如学习率只能为正值，轮数只能为正整数，请选择合理范围的参数。</p></li>
+<li><p>关于设备类型，如果没有安装GPU版本的XEdu各模块，则不能以cuda设备运行，只能选择cpu。</p></li>
+<li><p>请选择空文件夹进行结果的保存，原因已经解释过。</p></li>
+<li><p>请确认推理时选择的网络是否与权重文件匹配，如果不匹配会报错。</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2023 OpenXLabEdu.All Rights Reserved.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

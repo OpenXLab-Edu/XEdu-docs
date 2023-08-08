@@ -37,11 +37,16 @@ Gradio可以采用pip命令安装，具体如下：
 上面的示例中，定义了一个名为“greet”的函数，它接受一个名字作为输入，并返回一个带有问候语的字符串。然后使用\ ``gr.Interface``\ 创建一个接口，指定输入类型为文本，输出类型也为文本。最后，使用\ ``launch``\ 方法来启动界面。运行效果如下：
 
 .. figure:: ../images/scitech_tools/gradio示例1.png
-   :alt: image
 
-   image
 
-4. 借助Gradio部署简易AI应用
+在网页中输入文字“xedu”后即可输出“Hello
+xedu”。函数“greet”的参数就是input的信息，返回的信息就输出到网页，好容易理解。
+
+\*\* 技巧强调 \*\*
+
+我们知道浦育平台的容器是“藏”在网页背后的虚拟服务器（电脑），网页和Notebook作为交互接口，我们没有办法直接连接访问。而只要在launch()中增加参数“share=True”，就可以穿透内网直接用域名访问。也就是说，你随时可以把这个代码成为一个网页服务，让所有人都能访问！
+
+1. 借助Gradio部署简易AI应用
 ---------------------------
 
 Gradio提供了多种部署选项，使您能够将您的智能应用部署到各种环境中。您可以将您的智能应用程序共享给其他人使用，无论是作为演示、原型验证还是实际应用。Gradio使部署变得简单而高效，让您能够专注于构建优秀的机器学习模型和交互式界面。
@@ -56,19 +61,18 @@ Gradio提供了多种部署选项，使您能够将您的智能应用部署到�
    import gradio as gr
    from MMEdu import MMClassification as cls
    model = cls(backbone = 'LeNet')
-   checkpoint='checkpoints/cls_model/hand_gray/latest.pth'
+   checkpoint='best_accuracy_top-5_epoch_4.pth'
    def predict(img):
        result = model.inference(image=img, show=False, checkpoint=checkpoint)
        return str(result)
    image = gr.inputs.Image(type="filepath")
-   gr.Interface(fn=predict, inputs=image, outputs=gr.outputs.Textbox()).launch()
+   iface = gr.Interface(fn=predict, inputs=image, outputs=gr.outputs.Textbox())
+   iface.launch(share=True)
 
 运行效果如下：
 
 .. figure:: ../images/scitech_tools/gradio示例2.png
-   :alt: image
 
-   image
 
 您可以根据您的模型进行相应的修改和调整，以适应您的需求。例如对输出结果做一些修饰，参考代码如下：
 
@@ -88,7 +92,8 @@ Gradio提供了多种部署选项，使您能够将您的智能应用部署到�
        return text
 
    image = gr.inputs.Image(type="filepath")
-   gr.Interface(fn=predict, inputs=image, outputs=gr.outputs.Textbox()).launch()
+   iface = gr.Interface(fn=predict, inputs=image, outputs=gr.outputs.Textbox())
+   iface.launch(share=True)
 
 借助Gradio部署ONNX模型
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -96,7 +101,7 @@ Gradio提供了多种部署选项，使您能够将您的智能应用部署到�
 使用Gradio部署ONNX模型也是非常简单的，示例代码如下：
 
 补充：ONNX（Open Neural Network
-Exchange）是一个开放的、跨平台的深度学习模型表示和转换框架。它的目标是解决不同深度学习框架之间的模型兼容性问题，此处使用的ONNX模型推理的代码是借助XEdu团队推出的模型部署工具 `BaseDeploy <https://xedu.readthedocs.io/zh/master/basedeploy/introduction.html>`__\ ，代码较为简洁。关于基于MMEdu训练的模型转换为ONNX的说明可见\ `最后一步：AI模型转换与部署 <https://xedu.readthedocs.io/zh/master/mmedu/model_convert.html#ai>`__\ 。
+Exchange）是一个开放的、跨平台的深度学习模型表示和转换框架。它的目标是解决不同深度学习框架之间的模型兼容性问题，此处使用的ONNX模型推理的代码是借助XEdu团队推出的模型部署工具\ `BaseDeploy <https://xedu.readthedocs.io/zh/master/basedeploy/introduction.html>`__\ ，代码较为简洁。关于基于MMEdu训练的模型转换为ONNX的说明可见\ `最后一步：AI模型转换与部署 <https://xedu.readthedocs.io/zh/master/mmedu/model_convert.html#ai>`__\ 。
 
 ::
 
@@ -108,7 +113,8 @@ Exchange）是一个开放的、跨平台的深度学习模型表示和转换框
        result = model.inference(img)
        return result
    image = gr.inputs.Image(type="filepath")
-   gr.Interface(fn=predict, inputs=image, outputs=gr.outputs.Textbox()).launch()
+   iface = gr.Interface(fn=predict, inputs=image, outputs=gr.outputs.Textbox())
+   iface.launch(share=True)
 
 运行效果如下：
 
