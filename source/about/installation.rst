@@ -279,6 +279,8 @@ XEdu的MMEdu、BaseML、BaseNN等各模块库均已支持pip安装并会持续�
    $ conda activate your_env_name
    $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/index.html
 
+如使用MMEdu的MMDet模块出现问题，可见后文[关于pip安装MMEdu的详细说明](https://xedu.readthedocs.io/zh/master/mmedu/installation.html#pip)
+
 1.3 安装MMEdu(GPU版本)
 ^^^^^^^^^^^^^^^^^^^^^^
 
