@@ -105,7 +105,7 @@ python中最常用的库管理工具pip，可以使用cmd命令行来运行，�
 
 第二步：\ ``pip install pycocotools``\ 
 
-如果失败，可以考虑以下两种方案 ①下载whl进行本地安装（见https://aicarrier.feishu.cn/docx/K0D6d8VHLoN1zoxDb72cBlKynjc）； ②安装Visual Studio进行编译安装。
+如果失败，可以考虑以下两种方案 ①下载whl进行本地安装（见 https://aicarrier.feishu.cn/docx/K0D6d8VHLoN1zoxDb72cBlKynjc）； ②安装Visual Studio进行编译安装。
 
 第三步：\ ``pip install mmdet==2.23.0``\ 
 

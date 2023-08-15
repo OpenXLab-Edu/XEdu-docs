@@ -62,12 +62,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#id28">11. 自定义损失函数</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id29">12. 自定义评价指标</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cnn">13. CNN特征提取</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rnn">14. RNN模型搭建简单指南</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#id30">附录</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#add">1. add()详细介绍</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id31">2. 支持的损失函数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id31">1. 支持的损失函数</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rnncnn">3. RNN和CNN</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id32">4. 深度学习常见的数据类型</a></li>
 </ul>
@@ -137,7 +136,7 @@
 <h3>2. 载入数据<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
 <p>根据数据类型，可选择使用<code class="docutils literal notranslate"><span class="pre">load_img_data</span></code>、<code class="docutils literal notranslate"><span class="pre">load_tab_data</span></code>等（持续更新中）直接载入不同类型数据的函数，在这些函数中封装了读取数据并进行预处理的功能。下面分数据类型进行说明：</p>
 <section id="id6">
-<h4>图片文件夹类型：<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h4>
+<h4>针对图片文件夹类型的数据：<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h4>
 <p>指定图片文件夹路径，再使用<code class="docutils literal notranslate"><span class="pre">load_img_data</span></code>函数即可完成载入数据。此处使用的是经典的MNIST手写体数字图像数据集。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">image_folder_data</span> <span class="o">=</span> <span class="s1">&#39;../../dataset/mnist/training_set&#39;</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_img_data</span><span class="p">(</span><span class="n">image_folder_data</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;grayscale&quot;</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">)</span>
@@ -148,8 +147,8 @@
 <p><code class="docutils literal notranslate"><span class="pre">color</span></code>：设置为“grayscale”或“RGB”，表示图片的颜色空间或色彩模式，可以根据具体的需求来选择适合的模式。如果将color参数设置为“grayscale”，表示希望将图像转换为灰度图像，仅包含亮度信息。如果将color参数设置为“RGB”，表示希望保留图像的红、绿、蓝三个通道的颜色信息，得到彩色图像。</p>
 <p><code class="docutils literal notranslate"><span class="pre">batch_size</span></code>：表示在一次训练中同时处理的样本数量。通常情况下，批量大小越大，模型的收敛速度越快，但内存和计算资源的需求也会相应增加。</p>
 <section id="id7">
-<h5>图片数据集预处理：<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h5>
-<p>如需对图像数据集进行预处理，如做尺寸调整，可使用torchvision对图片数据集进行预处理再载入模型进行训练。</p>
+<h5>关于图片数据集预处理：<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h5>
+<p>载入图片数据前如需对图像数据集进行预处理，例如做尺寸调整，可先使用torchvision对图片数据集进行预处理再载入模型进行训练。</p>
 <p>导入包</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torchvision.transforms</span> <span class="kn">import</span> <span class="n">transforms</span>
 </pre></div>
@@ -180,7 +179,7 @@
 </section>
 </section>
 <section id="id8">
-<h4>特征表格类型：<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h4>
+<h4>针对特征表格类型的数据：<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h4>
 <p>指定表格路径，再使用<code class="docutils literal notranslate"><span class="pre">load_tab_data</span></code>函数即可完成载入数据。此处我使用的是经典的lvis鸢尾花数据集。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">train_path</span> <span class="o">=</span> <span class="s1">&#39;../../dataset/iris/iris_training.csv&#39;</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_tab_data</span><span class="p">(</span><span class="n">train_path</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
@@ -190,7 +189,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">batch_size</span></code>：表示在一次训练中同时处理的样本数量。通常情况下，批量大小越大，模型的收敛速度越快，但内存和计算资源的需求也会相应增加。</p>
 </section>
 <section id="npz">
-<h4>NPZ数据集类型：<a class="headerlink" href="#npz" title="Permalink to this headline"></a></h4>
+<h4>针对NPZ数据集类型的数据：<a class="headerlink" href="#npz" title="Permalink to this headline"></a></h4>
 <p>指定NPZ数据集路径，再使用<code class="docutils literal notranslate"><span class="pre">load_npz_data</span></code>函数即可完成载入数据。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">train_path</span> <span class="o">=</span> <span class="s1">&#39;../../dataset/dataset.npz&#39;</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_tab_data</span><span class="p">(</span><span class="n">train_path</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span><span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;walking&quot;</span><span class="p">,</span><span class="s2">&quot;waving&quot;</span><span class="p">,</span><span class="s2">&quot;stretching&quot;</span><span class="p">])</span>
@@ -535,8 +534,55 @@ model.train<span class="o">(</span>...<span class="o">)</span>
 </div>
 <p>第一次下载预训练模型有点慢需要耐心等待，再次运行则无需下载。</p>
 </section>
+</section>
+<section id="id30">
+<h2>附录<a class="headerlink" href="#id30" title="Permalink to this headline"></a></h2>
+<section id="add">
+<h3>1. add()详细介绍<a class="headerlink" href="#add" title="Permalink to this headline"></a></h3>
+<p>使用BaseNN可以轻易地创建深度学习模型。不同类型的神经网络适用于不同类型的问题，比如CNN通常用于处理图像问题，RNN通常用于处理序列问题，全连接神经网络可以应用于各种问题。</p>
+<p>首先以典型的LeNet5网络结构为例。注释标明了数据经过各层的尺寸变化。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;conv2d&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span><span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> <span class="c1"># [100, 3, 18, 18]</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;maxpool&#39;</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># [100, 3, 9, 9]</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;conv2d&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> <span class="c1"># [100, 10, 7, 7]</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;avgpool&#39;</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># [100, 10, 3, 3]</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> <span class="c1"># [100, 10]</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">)</span> <span class="c1"># [100,2]</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;SGD&#39;</span><span class="p">)</span> <span class="c1"># 设定优化器</span>
+</pre></div>
+</div>
+<p>添加层的方法为<code class="docutils literal notranslate"><span class="pre">add(self,</span> <span class="pre">layer=None,</span> <span class="pre">activation=None,</span> <span class="pre">optimizer='SGD',</span> <span class="pre">**kw)</span></code>，</p>
+<p>参数说明:</p>
+<p>layer：层的类型，可选值包括Conv2D, MaxPool, AvgPool, Linear。</p>
+<p>activation：激活函数类型，可选值包括ReLU，Softmax。</p>
+<p>optimizer：为优化器类型，默认值为SGD，可选值包括SGD，Adam，Adagrad，ASGD。</p>
+<p>kw：关键字参数，包括与size相关的各种参数，常用的如size=(x,y)，x为输入维度，y为输出维度；
+kernel_size=(a,b)， (a,b)表示核的尺寸。</p>
+<p>以下具体讲述各种层：</p>
+<p>conv2d：卷积层（二维），需给定size，kernel_size。同时支持搭建conv1d（一维卷积层）。</p>
+<p>maxpool：最大池化层，需给定kernel_size。</p>
+<p>avgpool：平均池化层，需给定kernel_size。</p>
+<p>linear：线性层，需给定size。</p>
+<p>再以RNN模型（循环神经网络）为例进行详细说明：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;lstm&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span><span class="mi">256</span><span class="p">),</span><span class="n">num_layers</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>lstm（Long Short-Term Memory，长短时记忆）是一种特殊的RNN（Recurrent
+Neural
+Network，循环神经网络）模型，主要用于处理序列数据。lstm模型在自然语言处理、语音识别、时间序列预测等任务中被广泛应用，特别是在需要处理长序列数据时，lstm模型可以更好地捕捉序列中的长程依赖关系。</p>
+<p>size的两个值：</p>
+<p>第一个为嵌入层维度（embedding_dim)，</p>
+<p>第二个为隐藏层维度（hidden_dim)，即lstm隐藏层中神经元数量。</p>
+<p>参数说明：</p>
+<p>input_size：
+输入数据的特征维数，即每一个字用多少维的向量来表示，通常就是embedding_dim(词向量的维度)。</p>
+<p>hidden_size：LSTM中隐藏层的神经元数量。</p>
+<p>num_layers：循环神经网络的层数。一般1~5，常用2、3层，太多层会大幅度影响训练速度和收敛难度。</p>
+<p>bias：用不用偏置，default=True。</p>
+<p>dropout：默认是0，代表不用dropout。</p>
+<p>bidirectional：默认是false，代表不用双向LSTM。</p>
+<p>以上仅是基本的模型架构。在实际使用中，可能需要调整模型的层数、节点数、激活函数等参数以达到最佳效果。</p>
 <section id="rnn">
-<h3>14. RNN模型搭建简单指南<a class="headerlink" href="#rnn" title="Permalink to this headline"></a></h3>
+<h4>拓展–RNN模型搭建简单指南：<a class="headerlink" href="#rnn" title="Permalink to this headline"></a></h4>
 <p>循环神经网络是一类以序列数据为输入，在序列的演进方向进行递归且所有节点（循环单元）按链式连接的递归神经网络。RNN在自然语言处理问题中有得到应用，也被用于与自然语言处理有关的异常值检测问题，例如社交网络中虚假信息/账号的检测。NN与卷积神经网络向结合的系统可被应用于在计算机视觉问题，例如在字符识别中，有研究使用卷积神经网络对包含字符的图像进行特征提取，并将特征输入LSTM进行序列标注。</p>
 <p>下为搭建RNN神经网络的一般流程：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;lstm&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">132</span><span class="p">,</span><span class="mi">128</span><span class="p">))</span>
@@ -599,55 +645,8 @@ model.train<span class="o">(</span>...<span class="o">)</span>
 </div>
 </section>
 </section>
-<section id="id30">
-<h2>附录<a class="headerlink" href="#id30" title="Permalink to this headline"></a></h2>
-<section id="add">
-<h3>1. add()详细介绍<a class="headerlink" href="#add" title="Permalink to this headline"></a></h3>
-<p>使用BaseNN可以轻易地创建深度学习模型。不同类型的神经网络适用于不同类型的问题，比如CNN通常用于处理图像问题，RNN通常用于处理序列问题，全连接神经网络可以应用于各种问题。</p>
-<p>首先以典型的LeNet5网络结构为例。注释标明了数据经过各层的尺寸变化。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;conv2d&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span><span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> <span class="c1"># [100, 3, 18, 18]</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;maxpool&#39;</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># [100, 3, 9, 9]</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;conv2d&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> <span class="c1"># [100, 10, 7, 7]</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;avgpool&#39;</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># [100, 10, 3, 3]</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> <span class="c1"># [100, 10]</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">)</span> <span class="c1"># [100,2]</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;SGD&#39;</span><span class="p">)</span> <span class="c1"># 设定优化器</span>
-</pre></div>
-</div>
-<p>添加层的方法为<code class="docutils literal notranslate"><span class="pre">add(self,</span> <span class="pre">layer=None,</span> <span class="pre">activation=None,</span> <span class="pre">optimizer='SGD',</span> <span class="pre">**kw)</span></code>，</p>
-<p>参数:</p>
-<p>layer：层的类型，可选值包括Conv2D, MaxPool, AvgPool, Linear。</p>
-<p>activation：激活函数类型，可选值包括ReLU，Softmax。</p>
-<p>optimizer：为优化器类型，默认值为SGD，可选值包括SGD，Adam，Adagrad，ASGD。</p>
-<p>kw：关键字参数，包括与size相关的各种参数，常用的如size=(x,y)，x为输入维度，y为输出维度；
-kernel_size=(a,b)， (a,b)表示核的尺寸。</p>
-<p>以下具体讲述各种层：</p>
-<p>conv2d：卷积层（二维），需给定size，kernel_size。同时支持搭建conv1d（一维卷积层）。</p>
-<p>maxpool：最大池化层，需给定kernel_size。</p>
-<p>avgpool：平均池化层，需给定kernel_size。</p>
-<p>linear：线性层，需给定size。</p>
-<p>再以RNN模型（循环神经网络）为例进行详细说明：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;lstm&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span><span class="mi">256</span><span class="p">),</span><span class="n">num_layers</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>lstm（Long Short-Term Memory，长短时记忆）是一种特殊的RNN（Recurrent
-Neural
-Network，循环神经网络）模型，主要用于处理序列数据。lstm模型在自然语言处理、语音识别、时间序列预测等任务中被广泛应用，特别是在需要处理长序列数据时，lstm模型可以更好地捕捉序列中的长程依赖关系。</p>
-<p>size的两个值：</p>
-<p>第一个为嵌入层维度（embedding_dim)，</p>
-<p>第二个为隐藏层维度（hidden_dim)，即lstm隐藏层中神经元数量。</p>
-<p>参数说明：</p>
-<p>input_size：
-输入数据的特征维数，即每一个字用多少维的向量来表示，通常就是embedding_dim(词向量的维度)。</p>
-<p>hidden_size：LSTM中隐藏层的神经元数量。</p>
-<p>num_layers：循环神经网络的层数。一般1~5，常用2、3层，太多层会大幅度影响训练速度和收敛难度。</p>
-<p>bias：用不用偏置，default=True。</p>
-<p>dropout：默认是0，代表不用dropout。</p>
-<p>bidirectional：默认是false，代表不用双向LSTM。</p>
-<p>以上仅是基本的模型架构。在实际使用中，可能需要调整模型的层数、节点数、激活函数等参数以达到最佳效果。</p>
-</section>
 <section id="id31">
-<h3>2. 支持的损失函数<a class="headerlink" href="#id31" title="Permalink to this headline"></a></h3>
+<h3>1. 支持的损失函数<a class="headerlink" href="#id31" title="Permalink to this headline"></a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 2%" />
