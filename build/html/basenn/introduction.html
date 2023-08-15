@@ -552,7 +552,7 @@ model.train<span class="o">(</span>...<span class="o">)</span>
 </div>
 <p>添加层的方法为<code class="docutils literal notranslate"><span class="pre">add(self,</span> <span class="pre">layer=None,</span> <span class="pre">activation=None,</span> <span class="pre">optimizer='SGD',</span> <span class="pre">**kw)</span></code>，</p>
 <p>参数说明:</p>
-<p>layer：层的类型，可选值包括Conv2D, MaxPool, AvgPool, Linear。</p>
+<p>layer：层的类型，可选值包括Conv2D, MaxPool, AvgPool, Linear, Dropout。</p>
 <p>activation：激活函数类型，可选值包括ReLU，Softmax。</p>
 <p>optimizer：为优化器类型，默认值为SGD，可选值包括SGD，Adam，Adagrad，ASGD。</p>
 <p>kw：关键字参数，包括与size相关的各种参数，常用的如size=(x,y)，x为输入维度，y为输出维度；
@@ -562,6 +562,7 @@ kernel_size=(a,b)， (a,b)表示核的尺寸。</p>
 <p>maxpool：最大池化层，需给定kernel_size。</p>
 <p>avgpool：平均池化层，需给定kernel_size。</p>
 <p>linear：线性层，需给定size。</p>
+<p>dropout：随机失活层，需给定p（概率）。作用为随机关闭一些神经元，避免过拟合。其中参数<code class="docutils literal notranslate"><span class="pre">p</span></code>表示关闭神经元的比例，比如此处 p=0.2 表示有随机20%的神经元会被关闭。这种网络层是为了优化效果，避免过拟合而加入的，不是必需的，因此可以尝试修改p的值甚至删掉这个层观察比较效果差距。</p>
 <p>再以RNN模型（循环神经网络）为例进行详细说明：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;lstm&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span><span class="mi">256</span><span class="p">),</span><span class="n">num_layers</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
@@ -570,15 +571,15 @@ kernel_size=(a,b)， (a,b)表示核的尺寸。</p>
 Neural
 Network，循环神经网络）模型，主要用于处理序列数据。lstm模型在自然语言处理、语音识别、时间序列预测等任务中被广泛应用，特别是在需要处理长序列数据时，lstm模型可以更好地捕捉序列中的长程依赖关系。</p>
 <p>size的两个值：</p>
-<p>第一个为嵌入层维度（embedding_dim)，</p>
-<p>第二个为隐藏层维度（hidden_dim)，即lstm隐藏层中神经元数量。</p>
+<p>第一个为嵌入层维度(embedding_dim)，</p>
+<p>第二个为隐藏层维度(hidden_dim)，即lstm隐藏层中神经元数量。</p>
 <p>参数说明：</p>
 <p>input_size：
 输入数据的特征维数，即每一个字用多少维的向量来表示，通常就是embedding_dim(词向量的维度)。</p>
 <p>hidden_size：LSTM中隐藏层的神经元数量。</p>
 <p>num_layers：循环神经网络的层数。一般1~5，常用2、3层，太多层会大幅度影响训练速度和收敛难度。</p>
 <p>bias：用不用偏置，default=True。</p>
-<p>dropout：默认是0，代表不用dropout。</p>
+<p>dropout：随机失活层，默认是0，代表不用dropout。作用为随机关闭一些神经元，避免过拟合。其中参数<code class="docutils literal notranslate"><span class="pre">p</span></code>表示关闭神经元的比例，比如此处 p=0.2 表示有随机20%的神经元会被关闭。这种网络层是为了优化效果，避免过拟合而加入的，不是必需的，因此可以尝试修改p的值甚至删掉这个层观察比较效果差距。</p>
 <p>bidirectional：默认是false，代表不用双向LSTM。</p>
 <p>以上仅是基本的模型架构。在实际使用中，可能需要调整模型的层数、节点数、激活函数等参数以达到最佳效果。</p>
 <section id="rnn">

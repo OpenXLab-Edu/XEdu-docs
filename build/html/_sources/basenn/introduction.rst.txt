@@ -568,7 +568,7 @@ BaseNN中提供了一个CNN特征提取工具，可使用BaeNN的\ ``model.extra
 
 参数说明:
 
-layer：层的类型，可选值包括Conv2D, MaxPool, AvgPool, Linear。
+layer：层的类型，可选值包括Conv2D, MaxPool, AvgPool, Linear, Dropout。
 
 activation：激活函数类型，可选值包括ReLU，Softmax。
 
@@ -587,6 +587,8 @@ avgpool：平均池化层，需给定kernel_size。
 
 linear：线性层，需给定size。
 
+dropout：随机失活层，需给定p（概率）。作用为随机关闭一些神经元，避免过拟合。其中参数\ ``p``\表示关闭神经元的比例，比如此处 p=0.2 表示有随机20%的神经元会被关闭。这种网络层是为了优化效果，避免过拟合而加入的，不是必需的，因此可以尝试修改p的值甚至删掉这个层观察比较效果差距。
+
 再以RNN模型（循环神经网络）为例进行详细说明：
 
 ::
@@ -599,9 +601,9 @@ Network，循环神经网络）模型，主要用于处理序列数据。lstm模
 
 size的两个值：
 
-第一个为嵌入层维度（embedding_dim)，
+第一个为嵌入层维度(embedding_dim)，
 
-第二个为隐藏层维度（hidden_dim)，即lstm隐藏层中神经元数量。
+第二个为隐藏层维度(hidden_dim)，即lstm隐藏层中神经元数量。
 
 参数说明：
 
@@ -614,7 +616,7 @@ num_layers：循环神经网络的层数。一般1~5，常用2、3层，太多�
 
 bias：用不用偏置，default=True。
 
-dropout：默认是0，代表不用dropout。
+dropout：随机失活层，默认是0，代表不用dropout。作用为随机关闭一些神经元，避免过拟合。其中参数\ ``p``\表示关闭神经元的比例，比如此处 p=0.2 表示有随机20%的神经元会被关闭。这种网络层是为了优化效果，避免过拟合而加入的，不是必需的，因此可以尝试修改p的值甚至删掉这个层观察比较效果差距。
 
 bidirectional：默认是false，代表不用双向LSTM。
 
