@@ -2,15 +2,15 @@ XEdu的安装和下载
 ================
 
 可选的安装方式
---------------
+==============
 
 为了满足广大中小学师生的需求，XEdu安装方式分为一键安装包安装和pip安装。一键安装包版包含MMEdu、BaseML、BaseNN三个模块的基础功能，同时内置了一套EasyDL系列工具，分“EasyTrain.bat”、“EasyInference.bat”和“EasyAPI.bat”这三个可视化工具，定期更新。pip安装方式需用户自己分模块安装，各模块更新同步工具开发进度。后续还将推出docker容器镜像，敬请期待。
 
 初学者安装强推!!!不会让人失望的一键安装包
------------------------------------------
+=========================================
 
 即刻体验XEdu一键安装包，开始！
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------
 
 下载工具：XEdu一键安装包
 
@@ -18,7 +18,7 @@ XEdu的安装和下载
 
 飞书网盘：https://p6bm2if73b.feishu.cn/drive/folder/fldcn67XTwhg8qIFCl8edJBZZQb
 
-百度网盘:https://pan.baidu.com/s/1UDt-GwHriCB_rewl8kCrUA?pwd=2022
+百度网盘:\ https://pan.baidu.com/s/1UDt-GwHriCB_rewl8kCrUA?pwd=2022
 提取码:2022
 
 第一步：双击运行，将自解压为XEdu文件夹（注意！避免踩坑推荐安装到纯英文路径下）。
@@ -34,6 +34,7 @@ Thonny是一款好用的Python轻量级IDE。其最突出的两个特点便是�
 
 .. figure:: ../images/about/XEDU安装图4.png
 
+
 2）使用XEdu自带的Jupyter。
 
 Jupyter
@@ -42,7 +43,7 @@ Notebook是基于网页的用于交互计算的应用程序。其可被应用于
 打开根目录下的“jupyter编辑器.bat”，即自动启动浏览器并显示界面，如下图所示。
 
 .. figure:: ../images/about/XEDU安装图3.png
-   :alt: image
+
 
 使用常用工具栏对代码进行操作，如“运行”，可以在单元格中编写文本或者代码，执行代码的结果也将会在每个单元下方呈现。可以逐个运行单元格，每点击一次，仅运行一个单元格。单元格左侧[*]内的星号变为数字，表示该单元格运行完成。此时可打开“demo”文件夹中的ipynb文件，如“MMEdu_cls_notebook.ipynb”。
 
@@ -55,8 +56,8 @@ python中最常用的库管理工具pip，可以使用cmd命令行来运行，�
 
 .. figure:: ../images/about/XEDU安装图2.png
 
-在其中输入想要安装的库文件即可，如“pip install rarfile”。
 
+在其中输入想要安装的库文件即可，如“pip install rarfile”。
 
 4）使用其他IDE。
 
@@ -96,7 +97,7 @@ XEdu一键安装包内置了一套EasyDL系列工具，分“EasyTrain.bat”、
 更多EasyDL系列工具详见\ `EasyDL系列无代码工具 <https://xedu.readthedocs.io/zh/latest/easydl.html#easydl>`__\ 。
 
 揭秘一键安装包功能
-~~~~~~~~~~~~~~~~~~
+------------------
 
 XEdu一键安装版是一个压缩包，解压后即可使用。
 
@@ -174,7 +175,7 @@ notebook”运行，可运行根目录的“Thonny编辑器.bat”和“jupyter�
 XEdu一键安装包说明文档。
 
 使用pip安装
------------
+===========
 
 XEdu的MMEdu、BaseML、BaseNN等各模块库均已支持pip安装并会持续迭代。
 
@@ -187,7 +188,7 @@ XEdu的MMEdu、BaseML、BaseNN等各模块库均已支持pip安装并会持续�
 强烈推荐你在Anaconda的基础上安装MMEdu，可以避免很多的版本冲突问题。
 
 1）安装Anaconda
-'''''''''''''''
+^^^^^^^^^^^^^^^
 
 若您已经安装好conda，该步骤可跳过。
 
@@ -207,7 +208,7 @@ XEdu的MMEdu、BaseML、BaseNN等各模块库均已支持pip安装并会持续�
 ``Install`` -> ``Next`` -> ``Next`` -> ``Finish`` 
 
 2）安装python编辑器
-'''''''''''''''''''
+^^^^^^^^^^^^^^^^^^^
 
 若您已经安装好合适的python编辑器，该步骤可跳过。
 
@@ -229,7 +230,7 @@ XEdu的MMEdu、BaseML、BaseNN等各模块库均已支持pip安装并会持续�
 
 **运行**
 
-在安装好Thonny之后，在第一次运行的时候，会提示选择界面语言和初始设置，选择‘Standard’模式即可。
+在安装好Thonny之后，在第一次运行的时候，会提示选择界面语言和初始设置，选择’Standard’模式即可。
 
 **配置Thonny的Python解释器**
 
@@ -237,10 +238,10 @@ XEdu的MMEdu、BaseML、BaseNN等各模块库均已支持pip安装并会持续�
 第二个下拉栏找到自己之前安装的anaconda环境中的python解释器位置。点击确认即可使用该python解释器。
 
 1.2 安装MMEdu(CPU版本)
-^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~
 
 1）Linux安装MMEdu
-'''''''''''''''''
+^^^^^^^^^^^^^^^^^
 
 点击鼠标右键，打开终端。
 
@@ -261,7 +262,7 @@ XEdu的MMEdu、BaseML、BaseNN等各模块库均已支持pip安装并会持续�
 注：请将命令中的“your_env_name”换成你喜欢的名称，如“mmedu”。
 
 2）Windows安装MMEdu
-'''''''''''''''''''
+^^^^^^^^^^^^^^^^^^^
 
 同时按下win+r，输入cmd，回车，打开一个命令行窗口。
 
@@ -282,7 +283,7 @@ XEdu的MMEdu、BaseML、BaseNN等各模块库均已支持pip安装并会持续�
 如使用MMEdu的MMDet模块出现问题，可见后文\ `关于pip安装MMEdu的详细说明 <https://xedu.readthedocs.io/zh/master/mmedu/installation.html#pip>`__\ 。
 
 1.3 安装MMEdu(GPU版本)
-^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~
 
 首先安装对应自己cuda版本的pytorch，安装命令可在以下网址中进行查询：https://pytorch.org/get-started/locally/
 
@@ -316,8 +317,7 @@ XEdu的MMEdu、BaseML、BaseNN等各模块库均已支持pip安装并会持续�
 
    $ pip install MMEdu
 
-
-1. pip安装BaseML
+2. pip安装BaseML
 ~~~~~~~~~~~~~~~~
 
 ``pip install baseml`` 或 ``pip install BaseML``
@@ -325,15 +325,17 @@ XEdu的MMEdu、BaseML、BaseNN等各模块库均已支持pip安装并会持续�
 3. pip安装BaseNN
 ~~~~~~~~~~~~~~~~
 
+--------------
+
 ``pip install basenn`` 或 ``pip install BaseNN``
 
 docker容器镜像
---------------
+==============
 
 敬请期待
 
 如何快速查看XEdu各模块库的版本
-------------------------------
+==============================
 
 打开python终端，执行以下命令即可查看XEdu各模块库的版本。当前最新版本是0.04。
 
@@ -343,7 +345,7 @@ docker容器镜像
 注：目前版本MMEdu仅支持CPU。
 
 如何卸载XEdu各模块库
---------------------
+====================
 
 如果XEdu某模块库出现异常情况，可以尝试使用\ ``uninstall``\ 命令卸载，然后再使用install命令安装。参考代码：
 

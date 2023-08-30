@@ -16,15 +16,15 @@ EasyInference页面的左侧还是基本的参数选择，包括问题类型，�
 
 如果选择推理单张图片，请选择一张图片，格式支持jpg，jpeg，png。请注意，即使多选，也只会推理第一张。如果发现文件夹中并没有想要的图片，再确认该图片确实在此路径下后，可以通过尝试更改查找时文件的后缀名（如下图所示）来寻找图片。
 
-![](../images/easydl/infselsingle.PNG)
+![image](../images/easydl/infselsingle.PNG)
 
 如果是选择文件夹，选择该文件夹即可。
 
-![](../images/easydl/infselfolder.PNG)
+![image](../images/easydl/infselfolder.PNG)
 
 如果问题类型为检测，则会多出两个参数选择，分别是rpn阈值和rcnn阈值，请选择0-1之内的数字。
 
-![](../images/easydl/infmoreparam.PNG)
+![image](../images/easydl/infmoreparam.PNG)
 
 点击"生成代码"后，代码会保存在`inference_code.py`中，并且在界面中显示。
 

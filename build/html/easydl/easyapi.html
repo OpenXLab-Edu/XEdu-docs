@@ -46,20 +46,25 @@
 <li class="toctree-l1"><a class="reference internal" href="../baseml.html">传统机器学习库BaseML</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">EasyDL系列工具功能详解</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#id1">初识EasyDL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="howtoget.html">如何获取EasyDL系列工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="easytrain.html">EasyTrain（模型训练辅助工具）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="easytrain.html#id1">EasyTrain简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="easytrain.html#easytrainai">用EasyTrain训练第一个AI模型！</a></li>
+<li class="toctree-l2"><a class="reference internal" href="easytrain.html#id2">注意事项</a></li>
 <li class="toctree-l2"><a class="reference internal" href="easyinfer.html">EasyInference（模型推理辅助工具）</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">EasyAPI（AI模型远程推理工具）</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#easyapi">EasyAPI简介</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">EasyAPI的应用场景</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">应用场景1：行空板+掌控板</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pc">应用场景2：行空板+PC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="easyinfer.html#id1">EasyInference简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="easyinfer.html#id2">快速体验用EasyInference完成模型推理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="easyinfer.html#id3">注意事项</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">EasyAPI（AI模型远程推理工具）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#easyapi">EasyAPI简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">EasyAPI的应用场景</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">应用场景1：行空板+掌控板</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pc">应用场景2：行空板+PC</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">启动EasyAPI实现无代码服务部署可视化界面</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">注意事项</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">启动EasyAPI实现无代码服务部署可视化界面</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">注意事项</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../basedt.html">数据处理库BaseDT</a></li>
@@ -96,24 +101,25 @@
              
   <section id="easyapi-ai">
 <h1>EasyAPI（AI模型远程推理工具）<a class="headerlink" href="#easyapi-ai" title="Permalink to this headline"></a></h1>
+</section>
 <section id="easyapi">
-<h2>EasyAPI简介<a class="headerlink" href="#easyapi" title="Permalink to this headline"></a></h2>
+<h1>EasyAPI简介<a class="headerlink" href="#easyapi" title="Permalink to this headline"></a></h1>
 <p>EasyAPI是无代码的MMEdu模型推理（部署）工具，不需要编写一行代码，即可搭建出一个类似百度开放平台的API平台。</p>
 <p>如果你训练的模型无法运行在某一创客作品的开源硬件上，那么就需要EasyAPI的帮忙了。</p>
 </section>
 <section id="id1">
-<h2>EasyAPI的应用场景<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<h1>EasyAPI的应用场景<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h1>
 <section id="id2">
-<h3>应用场景1：行空板+掌控板<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<h2>应用场景1：行空板+掌控板<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <p>行空板可以运行ONNX，你可以利用EasyAPI生成参考代码，然后在行空板上运行。掌控板可以用HTTP的方式远程发送图片或者音频，行空板推理后返回结果信息。</p>
 </section>
 <section id="pc">
-<h3>应用场景2：行空板+PC<a class="headerlink" href="#pc" title="Permalink to this headline"></a></h3>
+<h2>应用场景2：行空板+PC<a class="headerlink" href="#pc" title="Permalink to this headline"></a></h2>
 <p>行空板拍摄照片，然后发送到PC（算力服务器）上推理。</p>
 </section>
 </section>
 <section id="id3">
-<h2>启动EasyAPI实现无代码服务部署可视化界面<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<h1>启动EasyAPI实现无代码服务部署可视化界面<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h1>
 <p>EasyAPI界面启动之后在下拉框中选择问题类型为分类或者检测。</p>
 <p>在选择了问题类型之后，下面的“算法类型”也会对应的更改。</p>
 <p>选择权重文件、类别文件、推理结果保存路径、推理所用设备。</p>
@@ -131,14 +137,13 @@
 </figure>
 </section>
 <section id="id4">
-<h2>注意事项<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
+<h1>注意事项<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h1>
 <ul class="simple">
 <li><p>一部分参数有范围，例如学习率只能为正值，轮数只能为正整数，请选择合理范围的参数。</p></li>
 <li><p>关于设备类型，如果没有安装GPU版本的XEdu各模块，则不能以cuda设备运行，只能选择cpu。</p></li>
 <li><p>请选择空文件夹进行结果的保存，原因已经解释过。</p></li>
 <li><p>请确认推理时选择的网络是否与权重文件匹配，如果不匹配会报错。</p></li>
 </ul>
-</section>
 </section>
 
 

@@ -2,7 +2,7 @@ MMEdu安装和下载
 ===============
 
 快速了解安装方式
-----------------
+================
 
 根据对算力的依赖程度，MMEdu分为两个版本，分别是：基础版和完整版。
 
@@ -25,12 +25,12 @@ MMEdu安装和下载
 .. figure:: ../images/mmedu/XEDU安装图1.png
 
 
-​ 1）下载方式（即XEdu下载方式）
+1）下载方式（即XEdu下载方式）
 
 飞书网盘：https://p6bm2if73b.feishu.cn/drive/folder/fldcn67XTwhg8qIFCl8edJBZZQb
 
-百度网盘:https://pan.baidu.com/s/1UDt-GwHriCB_rewl8kCrUA?pwd=2022 提取码:2022 
-
+百度网盘:\ https://pan.baidu.com/s/1UDt-GwHriCB_rewl8kCrUA?pwd=2022
+提取码:2022
 
 第二步：您可以根据个人喜好，选择自己习惯的IDE。
 
@@ -67,6 +67,7 @@ PyCharm环境路径配置如下图所示。
 
 .. figure:: ../images/mmedu/MMEDU安装图6.png
 
+
 -  执行demo文件
 
 用IDE打开解压路径下的py文件，如“cls_demo.py”，点击“运行”。运行效果应和pyzo一样。
@@ -77,12 +78,11 @@ python中最常用的库管理工具pip，可以使用cmd命令行来运行，�
 
 .. figure:: ../images/mmedu/XEDU安装图2.png
 
+
 在其中输入想要安装的库文件即可，如“pip install rarfile”。
 
 **在2022年9月后，不再维护MMEdu一键安装包，统一更新为XEdu。XEdu于22年9月在世界人工智能大会正式发布，分MMEdu、BaseML、BaseNN三个功能模块，除了一键安装包，同时实现以pip方式安装。**
-如\ ``pip install BaseML BaseNN BaseDT BaseDeploy MMEdu``\
-
-1.2 pip安装
+如\ ``pip install BaseML BaseNN BaseDT BaseDeploy MMEdu`` 1.2 pip安装
 ~~~~~~~~~~~
 
 当前，我们提供的MMEdu0.0.7版本的安装是基础版的pip安装包，可以使用如下命令安装：
@@ -90,34 +90,40 @@ python中最常用的库管理工具pip，可以使用cmd命令行来运行，�
 
 在这一步中，可能会有运行失败的情况，通常是由于依赖库安装失败导致的。
 
-如果提示 **mmcv相关的错误**，可以尝试用：\ ``pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/index.html``\ 
+如果提示
+**mmcv相关的错误**\ ，可以尝试用：\ ``pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/index.html``
 **推荐使用Python3.8 （64位）来进行安装** 。
 
 如果仍然没有解决，请先卸载mmcv-full，然后再次安装。
 
-第一步：\ ``pip uninstall mmcv-full -y``\ 
+第一步：\ ``pip uninstall mmcv-full -y``
 
-第二步： \ ``pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/index.html``\ 
+第二步：
+``pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/index.html``
 
-该版本 **不支持CPU训练检测模型**，要想支持，需要升级mmdet库至2.23.0，具体步骤如下：
+该版本
+**不支持CPU训练检测模型**\ ，要想支持，需要升级mmdet库至2.23.0，具体步骤如下：
 
-第一步：\ ``pip uninstall mmdet pycocotools-windows -y``\ 
+第一步：\ ``pip uninstall mmdet pycocotools-windows -y``
 
-第二步：\ ``pip install pycocotools``\ 
+第二步：\ ``pip install pycocotools``
 
-如果失败，可以考虑以下两种方案 ①下载whl进行本地安装（见 https://aicarrier.feishu.cn/docx/K0D6d8VHLoN1zoxDb72cBlKynjc）； ②安装Visual Studio进行编译安装。
+如果失败，可以考虑以下两种方案 ①下载whl进行本地安装（见
+https://aicarrier.feishu.cn/docx/K0D6d8VHLoN1zoxDb72cBlKynjc\ ）；
+②安装Visual Studio进行编译安装。
 
-第三步：\ ``pip install mmdet==2.23.0``\ 
+第三步：\ ``pip install mmdet==2.23.0``
 
-如果想要 **升级为GPU版本**，可以将torch、torchvision和mmcv-full做一次升级。步骤如下：
+如果想要
+**升级为GPU版本**\ ，可以将torch、torchvision和mmcv-full做一次升级。步骤如下：
 
 第一步：确认安装好与电脑GPU适配的CUDA驱动（这里以cuda10.1为例）
 
-第二步：卸载当前安装的版本：\ ``pip uninstall torch torchvision mmcv-full -y``\ 
+第二步：卸载当前安装的版本：\ ``pip uninstall torch torchvision mmcv-full -y``
 
-第三步：安装合适的版本：\ ``pip install torch==1.8.1+cu101 torchvision==0.9.1+cu101 torchaudio==0.8.1 -f https://download.pytorch.org/whl/torch_stable.html``\ 
+第三步：安装合适的版本：\ ``pip install torch==1.8.1+cu101 torchvision==0.9.1+cu101 torchaudio==0.8.1 -f https://download.pytorch.org/whl/torch_stable.html``
 
-第四步：安装合适的mmcv-full：\ ``pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.8.0/index.html``\ 
+第四步：安装合适的mmcv-full：\ ``pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.8.0/index.html``
 
 至此，已经完成了对MMEdu的GPU升级。
 
@@ -130,7 +136,7 @@ python中最常用的库管理工具pip，可以使用cmd命令行来运行，�
 强烈推荐你在Anaconda的基础上安装MMEdu，可以避免很多的版本冲突问题。
 
 2.1.1 安装Anaconda
-^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 若您已经安装好conda，该步骤可跳过。
 
@@ -150,7 +156,7 @@ python中最常用的库管理工具pip，可以使用cmd命令行来运行，�
 ``Install`` -> ``Next`` -> ``Next`` -> ``Finish`` 
 
 3.1.2 安装python编辑器
-^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~
 
 若您已经安装好合适的python编辑器，该步骤可跳过。
 
@@ -168,11 +174,11 @@ python中最常用的库管理工具pip，可以使用cmd命令行来运行，�
 
 打开安装界面后，依次选择\ ``Install for me only`` -> ``Next`` -> 
 ``Next`` -> ``Next`` -> ``Next`` -> ``Next`` -> ``Install`` -> 
-``Finish`` 
+``Finish``
 
 **运行**
 
-在安装好Thonny之后，在第一次运行的时候，会提示选择界面语言和初始设置，选择‘Standard’模式即可。
+在安装好Thonny之后，在第一次运行的时候，会提示选择界面语言和初始设置，选择’Standard’模式即可。
 
 **配置Thonny的Python解释器**
 
@@ -180,10 +186,10 @@ python中最常用的库管理工具pip，可以使用cmd命令行来运行，�
 第二个下拉栏找到自己之前安装的anaconda环境中的python解释器位置。点击确认即可使用该python解释器。
 
 2.2 安装MMEdu(CPU版本)
-~~~~~~~~~~~~~~~~~~~~~~
+----------------------
 
 2.2.1 Linux安装MMEdu
-^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~
 
 点击鼠标右键，打开终端。
 
@@ -204,7 +210,7 @@ python中最常用的库管理工具pip，可以使用cmd命令行来运行，�
 注：请将命令中的“your_env_name”换成你喜欢的名称，如“mmedu”。
 
 2.2.2 Windows安装MMEdu
-^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~
 
 同时按下win+r，输入cmd，回车，打开一个命令行窗口。
 
@@ -223,7 +229,7 @@ python中最常用的库管理工具pip，可以使用cmd命令行来运行，�
    $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/index.html
 
 2.3 安装MMEdu(GPU版本)
-~~~~~~~~~~~~~~~~~~~~~~
+----------------------
 
 首先安装对应自己cuda版本的pytorch，安装命令可在以下网址中进行查询：https://pytorch.org/get-started/locally/
 
