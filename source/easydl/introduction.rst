@@ -27,10 +27,7 @@ EasyTrain是XEdu提供的无代码模型训练工具。利用EasyTrain，可以�
 
 ④集成开始训练与结束训练按钮，并实时显示loss曲线
 
-.. figure:: ../images/easydl/1.PNG
-   :alt: image
-
-   image
+|image0|
 
 2. EasyInference
 ~~~~~~~~~~~~~~~~
@@ -48,10 +45,7 @@ EasyInference是XEdu提供的无代码模型训练工具。利用EasyInference�
 
 ④推理代码生成与查看
 
-.. figure:: ../images/easydl/3.PNG
-   :alt: image
-
-   image
+|image1|
 
 3. EasyAPI
 ~~~~~~~~~~
@@ -71,7 +65,8 @@ EasyAPI是XEdu提供的无代码接口部署工具系列。利用EasyAPI，可�
 
 ④在界面中跳转到Web服务的网页
 
-.. figure:: ../images/easydl/4.PNG
-   :alt: image
+|image2|
 
-   image
+.. |image0| image:: ../images/easydl/1.PNG
+.. |image1| image:: ../images/easydl/3.PNG
+.. |image2| image:: ../images/easydl/4.PNG
