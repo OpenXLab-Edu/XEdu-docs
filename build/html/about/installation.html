@@ -53,10 +53,26 @@
 <li class="toctree-l3"><a class="reference internal" href="#id4">揭秘一键安装包功能</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#pip">使用pip安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pip">使用pip安装</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pipmmedu">1. pip安装MMEdu</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">1.1 准备工作</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#anaconda">1）安装Anaconda</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#python">2）安装python编辑器</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#mmedu-cpu">1.2 安装MMEdu(CPU版本)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#linuxmmedu">1）Linux安装MMEdu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#windowsmmedu">2）Windows安装MMEdu</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#mmedu-gpu">1.3 安装MMEdu(GPU版本)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pipbaseml">2. pip安装BaseML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pipbasenn">3. pip安装BaseNN</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#docker">docker容器镜像</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">如何快速查看XEdu各模块库的版本</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">如何卸载XEdu各模块库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">如何快速查看XEdu各模块库的版本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">如何卸载XEdu各模块库</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
@@ -112,46 +128,21 @@
 <p>百度网盘:<a class="reference external" href="https://pan.baidu.com/s/1UDt-GwHriCB_rewl8kCrUA?pwd=2022">https://pan.baidu.com/s/1UDt-GwHriCB_rewl8kCrUA?pwd=2022</a>
 提取码:2022</p>
 <p>第一步：双击运行，将自解压为XEdu文件夹（注意！避免踩坑推荐安装到纯英文路径下）。</p>
-<figure class="align-default" id="id7">
-<img alt="image" src="../_images/XEDUinstall1.png" />
-<figcaption>
-<p><span class="caption-text">image</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
-</figcaption>
-</figure>
+<p><img alt="image0" src="../_images/XEDUinstall1.png" /></p>
 <p>第二步：您可以根据个人喜好，选择自己习惯的IDE。</p>
 <p>1）使用XEdu自带的Thonny。</p>
 <p>Thonny是一款好用的Python轻量级IDE。其最突出的两个特点便是是简洁性和交互性。打开根目录下的“Thonny编辑器.bat”文件快捷方式即可打开Thonny。使用Thonny打开“demo”文件夹中的py文件，如“MMEdu_cls_demo.py”，点击“运行”的“将文件作为脚本运行”即可运行代码，界面如下图所示。</p>
-<figure class="align-default" id="id8">
-<img alt="image" src="../_images/XEDUinstall4.png" />
-<figcaption>
-<p><span class="caption-text">image</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
-</figcaption>
-</figure>
+<p><img alt="image1" src="../_images/XEDUinstall4.png" /></p>
 <p>2）使用XEdu自带的Jupyter。</p>
 <p>Jupyter
 Notebook是基于网页的用于交互计算的应用程序。其可被应用于全过程计算：开发、文档编写、运行代码和展示结果。它相对简单，对用户也更加友好，适合初学者。</p>
 <p>打开根目录下的“jupyter编辑器.bat”，即自动启动浏览器并显示界面，如下图所示。</p>
-<figure class="align-default" id="id9">
-<img alt="image" src="../_images/XEDUinstall3.png" />
-<figcaption>
-<p><span class="caption-text">image</span><a class="headerlink" href="#id9" title="Permalink to this image"></a></p>
-</figcaption>
-</figure>
+<p><img alt="image2" src="../_images/XEDUinstall3.png" /></p>
 <p>使用常用工具栏对代码进行操作，如“运行”，可以在单元格中编写文本或者代码，执行代码的结果也将会在每个单元下方呈现。可以逐个运行单元格，每点击一次，仅运行一个单元格。单元格左侧[*]内的星号变为数字，表示该单元格运行完成。此时可打开“demo”文件夹中的ipynb文件，如“MMEdu_cls_notebook.ipynb”。</p>
-<figure class="align-default" id="id10">
-<img alt="image" src="../_images/jupyter1.png" />
-<figcaption>
-<p><span class="caption-text">image</span><a class="headerlink" href="#id10" title="Permalink to this image"></a></p>
-</figcaption>
-</figure>
+<p><img alt="image3" src="../_images/jupyter1.png" /></p>
 <p>3）使用cmd安装用户库。</p>
 <p>python中最常用的库管理工具pip，可以使用cmd命令行来运行，打开根目录下的“启动cmd.bat”可以打开cmd命令行界面，如下图所示。</p>
-<figure class="align-default" id="id11">
-<img alt="image" src="../_images/XEDUinstall2.png" />
-<figcaption>
-<p><span class="caption-text">image</span><a class="headerlink" href="#id11" title="Permalink to this image"></a></p>
-</figcaption>
-</figure>
+<p><img alt="image4" src="../_images/XEDUinstall2.png" /></p>
 <p>在其中输入想要安装的库文件即可，如“pip install rarfile”。</p>
 <p>4）使用其他IDE。</p>
 <p>如果您需要使用其他IDE，那么需要您自己配置Python编译器，配置方法如下。</p>
@@ -168,26 +159,11 @@ Notebook是基于网页的用于交互计算的应用程序。其可被应用于
 <p>XEdu一键安装包内置了一套EasyDL系列工具，分“EasyTrain.bat”、“EasyInference.bat”和“EasyAPI.bat”这三个可视化工具。</p>
 <p>双击即可体验，体验时操作根据界面完成即可。</p>
 <p>①双击“EasyTrain.bat”，根据界面完成训练；</p>
-<figure class="align-default" id="id12">
-<img alt="image" src="../_images/EasyTrain.png" />
-<figcaption>
-<p><span class="caption-text">image</span><a class="headerlink" href="#id12" title="Permalink to this image"></a></p>
-</figcaption>
-</figure>
+<p><img alt="image5" src="../_images/EasyTrain.png" /></p>
 <p>②双击“EasyInference.bat”，根据界面完成推理；</p>
-<figure class="align-default" id="id13">
-<img alt="image" src="../_images/EasyInference.png" />
-<figcaption>
-<p><span class="caption-text">image</span><a class="headerlink" href="#id13" title="Permalink to this image"></a></p>
-</figcaption>
-</figure>
+<p><img alt="image6" src="../_images/EasyInference.png" /></p>
 <p>③双击“EasyAPI.bat”，根据界面完成服务部署。</p>
-<figure class="align-default" id="id14">
-<img alt="image" src="../_images/EasyAPI.png" />
-<figcaption>
-<p><span class="caption-text">image</span><a class="headerlink" href="#id14" title="Permalink to this image"></a></p>
-</figcaption>
-</figure>
+<p><img alt="image7" src="../_images/EasyAPI.png" /></p>
 <p>更多EasyDL系列工具详见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/easydl.html#easydl">EasyDL系列无代码工具</a>。</p>
 </section>
 <section id="id4">
@@ -243,7 +219,14 @@ notebook”运行，可运行根目录的“Thonny编辑器.bat”和“jupyter�
 <section id="pip">
 <h1>使用pip安装<a class="headerlink" href="#pip" title="Permalink to this headline"></a></h1>
 <p>XEdu的MMEdu、BaseML、BaseNN等各模块库均已支持pip安装并会持续迭代。</p>
+<section id="pipmmedu">
+<h2>1. pip安装MMEdu<a class="headerlink" href="#pipmmedu" title="Permalink to this headline"></a></h2>
+<section id="id5">
+<h3>1.1 准备工作<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
 <p>强烈推荐你在Anaconda的基础上安装MMEdu，可以避免很多的版本冲突问题。</p>
+</section>
+<section id="anaconda">
+<h3>1）安装Anaconda<a class="headerlink" href="#anaconda" title="Permalink to this headline"></a></h3>
 <p>若您已经安装好conda，该步骤可跳过。</p>
 <p><strong>下载</strong></p>
 <p>首先打开Anaconda官网：<a class="reference external" href="https://www.anaconda.com/">https://www.anaconda.com/</a></p>
@@ -254,6 +237,9 @@ notebook”运行，可运行根目录的“Thonny编辑器.bat”和“jupyter�
 <code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt;
 <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Anaconda3</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">system</span> <span class="pre">PATH</span> <span class="pre">environment</span> <span class="pre">variable</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Install</span></code>
 -&gt; <code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Finish</span></code></p>
+</section>
+<section id="python">
+<h3>2）安装python编辑器<a class="headerlink" href="#python" title="Permalink to this headline"></a></h3>
 <p>若您已经安装好合适的python编辑器，该步骤可跳过。</p>
 <p>此处以安装Thonny为例，其他编辑器例如Pycharm，VScode等也支持，用户自行配置好Python编译器即可。</p>
 <p><strong>下载</strong></p>
@@ -269,6 +255,12 @@ notebook”运行，可运行根目录的“Thonny编辑器.bat”和“jupyter�
 <p><strong>配置Thonny的Python解释器</strong></p>
 <p>点击Thonny主界面右下角的Python版本号，可以选择对应的Python解释器，第一次配置点击<code class="docutils literal notranslate"><span class="pre">Configure</span> <span class="pre">inter</span> <span class="pre">preter</span></code>，弹出的窗口中，第一个下拉栏选择<code class="docutils literal notranslate"><span class="pre">可选的python3解释器或虚拟环境</span></code>，
 第二个下拉栏找到自己之前安装的anaconda环境中的python解释器位置。点击确认即可使用该python解释器。</p>
+</section>
+</section>
+<section id="mmedu-cpu">
+<h2>1.2 安装MMEdu(CPU版本)<a class="headerlink" href="#mmedu-cpu" title="Permalink to this headline"></a></h2>
+<section id="linuxmmedu">
+<h3>1）Linux安装MMEdu<a class="headerlink" href="#linuxmmedu" title="Permalink to this headline"></a></h3>
 <p>点击鼠标右键，打开终端。</p>
 <p>终端中输入pip install MMEdu即可安装。</p>
 <div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="p">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">MMEdu</span>
@@ -281,6 +273,9 @@ notebook”运行，可运行根目录的“Thonny编辑器.bat”和“jupyter�
 </pre></div>
 </div>
 <p>注：请将命令中的“your_env_name”换成你喜欢的名称，如“mmedu”。</p>
+</section>
+<section id="windowsmmedu">
+<h3>2）Windows安装MMEdu<a class="headerlink" href="#windowsmmedu" title="Permalink to this headline"></a></h3>
 <p>同时按下win+r，输入cmd，回车，打开一个命令行窗口。</p>
 <p>在命令行中使用pip安装即可。</p>
 <div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="p">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">MMEdu</span> <span class="o">-f</span> <span class="n">https</span><span class="p">://</span><span class="n">download</span><span class="p">.</span><span class="n">openmmlab</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">mmcv</span><span class="p">/</span><span class="n">dist</span><span class="p">/</span><span class="n">cpu</span><span class="p">/</span><span class="n">torch1</span><span class="p">.</span><span class="n">8</span><span class="p">.</span><span class="n">0</span><span class="p">/</span><span class="n">index</span><span class="p">.</span><span class="n">html</span>
@@ -293,6 +288,10 @@ notebook”运行，可运行根目录的“Thonny编辑器.bat”和“jupyter�
 </pre></div>
 </div>
 <p>如使用MMEdu的MMDet模块出现问题，可见后文<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/installation.html#pip">关于pip安装MMEdu的详细说明</a>。</p>
+</section>
+</section>
+<section id="mmedu-gpu">
+<h2>1.3 安装MMEdu(GPU版本)<a class="headerlink" href="#mmedu-gpu" title="Permalink to this headline"></a></h2>
 <p>首先安装对应自己cuda版本的pytorch，安装命令可在以下网址中进行查询：<a class="reference external" href="https://pytorch.org/get-started/locally/">https://pytorch.org/get-started/locally/</a></p>
 <p>可以在命令行中使用<code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code>指令查询自己的cuda版本。</p>
 <p>例如，若cuda版本为10.1，想要安装1.8.1版本的pytorch，则安装命令为：</p>
@@ -314,27 +313,29 @@ notebook”运行，可运行根目录的“Thonny编辑器.bat”和“jupyter�
 <div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="p">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">MMEdu</span>
 </pre></div>
 </div>
+</section>
+<section id="pipbaseml">
+<h2>2. pip安装BaseML<a class="headerlink" href="#pipbaseml" title="Permalink to this headline"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">baseml</span></code> 或 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">BaseML</span></code></p>
+</section>
+<section id="pipbasenn">
+<h2>3. pip安装BaseNN<a class="headerlink" href="#pipbasenn" title="Permalink to this headline"></a></h2>
 <hr class="docutils" />
 <p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">basenn</span></code> 或 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">BaseNN</span></code></p>
+</section>
 </section>
 <section id="docker">
 <h1>docker容器镜像<a class="headerlink" href="#docker" title="Permalink to this headline"></a></h1>
 <p>敬请期待</p>
 </section>
-<section id="id5">
-<h1>如何快速查看XEdu各模块库的版本<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h1>
+<section id="id6">
+<h1>如何快速查看XEdu各模块库的版本<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h1>
 <p>打开python终端，执行以下命令即可查看XEdu各模块库的版本。当前最新版本是0.04。</p>
-<figure class="align-default" id="id15">
-<img alt="image" src="../_images/pip3.png" />
-<figcaption>
-<p><span class="caption-text">image</span><a class="headerlink" href="#id15" title="Permalink to this image"></a></p>
-</figcaption>
-</figure>
+<p><img alt="image8" src="../_images/pip3.png" /></p>
 <p>注：目前版本MMEdu仅支持CPU。</p>
 </section>
-<section id="id6">
-<h1>如何卸载XEdu各模块库<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h1>
+<section id="id7">
+<h1>如何卸载XEdu各模块库<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h1>
 <p>如果XEdu某模块库出现异常情况，可以尝试使用<code class="docutils literal notranslate"><span class="pre">uninstall</span></code>命令卸载，然后再使用install命令安装。参考代码：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip uninstall MMEdu
 $ pip uninstall BaseNN
