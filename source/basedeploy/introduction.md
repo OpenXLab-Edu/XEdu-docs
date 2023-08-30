@@ -82,13 +82,13 @@ result = model.inference(folder_path)
 
 - 图像分类
 
-![image](../images/basedeploy/文件夹推理_分类.JPG)
+![](../images/basedeploy/dir_cls.JPG)
 
 
 
 - 目标检测
 
-![image](../images/basedeploy/文件夹推理_检测.JPG)
+![](../images/basedeploy/dir_detect.JPG)
 
 
 
@@ -103,13 +103,13 @@ result = model.inference(folder_path, show=True, show_path=True)
 
 - 图像分类
 
-![image](../images/basedeploy/路径显示_分类.JPG)
+![](../images/basedeploy/path_cls.JPG)
 
 
 
 - 目标检测
 
-![image](../images/basedeploy/路径显示_检测.JPG)
+![](../images/basedeploy/path_detect.JPG)
 
 
 
@@ -142,13 +142,13 @@ plt.show()
 PIL方式适合Jupyter中进行交互，下面是相关示例说明。
 - 图像分类
 
-![image](../images/basedeploy/图像回传_分类_pil.JPG)
+![](../images/basedeploy/back_cls_pil.JPG)
 
 
 
 - 目标检测
 
-![image](../images/basedeploy/图像回传_检测_pil.JPG)
+![](../images/basedeploy/back_detect_pil.JPG)
 
 
 
@@ -177,12 +177,12 @@ cv2.destroyAllWindows()
 
 - 图像分类
 
-![image](../images/basedeploy/图像回传_分类_cv2.JPG)
+![](../images/basedeploy/back_cls_cv2.JPG)
 
 
 - 目标检测
 
-![image](../images/basedeploy/图像回传_检测_cv2.JPG)
+![](../images/basedeploy/back_detect_cv2.JPG)
 
 
 
@@ -204,13 +204,13 @@ result = model.inference(img_path)
 
 - 图像分类
 
-![image](../images/basedeploy/无信息ONNX推理_分类.JPG)
+![](../images/basedeploy/ONNX_cls.JPG)
 
 
 
 - 目标检测
 
-![image](../images/basedeploy/无信息ONNX推理_检测.JPG)
+![](../images/basedeploy/ONNX_detect.JPG)
 
 
 
@@ -230,7 +230,7 @@ result = model.diy_inference(input_data)
 
 `input_data`：用户自定义前处理好后的张量，请将其保持与模型输入节点需要的张量形状一致。
 
-![image](../images/basedeploy/diy_infer.JPG)
+![](../images/basedeploy/diy_infer.JPG)
 
 
 ### 与其他库配合的部署
@@ -249,12 +249,12 @@ model.run_gradio()
 
 - 图像分类
   
-- ![image](../images/basedeploy/gradio_分类推理.JPG)
+- ![](../images/basedeploy/gradio_clsinfer.JPG)
   
   
   
 - 目标检测
-![image](../images/basedeploy/gradio_检测推理.JPG)
+![](../images/basedeploy/gradio_detectinfer.JPG)
 
 
 
@@ -279,7 +279,7 @@ model.run_fastapi()
 `score`：设置绘图阈值，若高于阈值，才进行绘图操作，默认为：`0.65`。
 
 运行后出现下图所示的内容，即代表`FastAPI`启动成功。
-![image](../images/basedeploy/EasyAPI_命令行启动.JPG)
+![](../images/basedeploy/FastAPI_command_start.JPG)
 
 
 
@@ -296,13 +296,13 @@ result = requests.post(url=url, files=files)
 
 - 图像分类
 
-![image](../images/basedeploy/EasyAPI_分类.JPG)
+![](../images/basedeploy/FastAPI_cls.JPG)
 
 
 
 - 目标检测
 
-![image](../images/basedeploy/EasyAPI_检测.JPG)
+![](../images/basedeploy/FastAPI_detect.JPG)
 
 
 
@@ -325,7 +325,7 @@ model.run_siot()
 
 用户端对服务端进行访问时，服务端也会同步打印推理结果，便于用户检查连接状况等。
 
-![image](../images/basedeploy/SIoT_服务端.JPG)
+![](../images/basedeploy/SIoT_server.JPG)
 
 
 #### PywebIO
@@ -350,16 +350,16 @@ port：设置启动`PywebIO`的端口号，默认为：`1956`。
 运行后出现下图所示的内容，即代表`PywebIO`启动成功。
 
 
-![image](../images/basedeploy/PywebIO_命令行启动.JPG)
+![](../images/basedeploy/PywebIO_command_start.JPG)
 
 
 
 - 推理示例
 
-![image](../images/basedeploy/pywebio_推理_1.JPG)
+![](../images/basedeploy/pywebio_infer_1.JPG)
 
 
-![image](../images/basedeploy/pywebio_推理_2.JPG)
+![](../images/basedeploy/pywebio_infer_2.JPG)
 
 ### Mind+中的BaseDeploy积木块
 
@@ -373,13 +373,13 @@ Gitee链接：https://gitee.com/liliang9693/ext-BaseDeploy
 
 - 如果联网情况下，打开Mind+用户库粘贴本仓库的链接即可加载：
 
-![image](../images/basedeploy/在线加载积木库.png)
+![](../images/basedeploy/online_block.png)
 
 - 如果电脑未联网，则可以下载本仓库的文件，然后打开Mind+用户库选择导入用户库，选择`.mpext`文件即可
 
-![image](../images/basedeploy/离线加载积木库_1.png)
+![](../images/basedeploy/offline_block_1.png)
 
-![image](../images/basedeploy/离线加载积木库_2.png)
+![](../images/basedeploy/offline_block_2.png)
 
 ##### 第二步：安装python库
 
@@ -387,19 +387,19 @@ Gitee链接：https://gitee.com/liliang9693/ext-BaseDeploy
 
 注：WARNING是提醒，可以忽略；请及时更新BaseDeploy和BaseDT用户库，以获得更稳定、更强大的模型部署使用体验。
 
-![image](../images/basedeploy/安装库.png)
+![](../images/basedeploy/install_lab.png)
 
 ##### 第三步：导入模型
 
 将onnx模型文件拖到项目中的文件中。
 
-![image](../images/basedeploy/导入模型.png)
+![](../images/basedeploy/import.png)
 
 ##### 第四步：开始编程！
 
 至此，即可拖动积木块开始快乐编程啦，运行示例如下：
 
-![image](../images/basedeploy/运行示例.png)
+![](../images/basedeploy/case.png)
 
 ## 参考链接
 

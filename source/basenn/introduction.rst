@@ -35,11 +35,11 @@ c）同时支持CPU和GPU
 根据数据类型，可选择使用\ ``load_img_data``\ 、\ ``load_tab_data``\ 等（持续更新中）直接载入不同类型数据的函数，在这些函数中封装了读取数据并进行预处理的功能。下面分数据类型进行说明：
 
 针对图片文件夹类型的数据：
-^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 指定图片文件夹路径，再使用\ ``load_img_data``\ 函数即可完成载入数据。此处使用的是经典的MNIST手写体数字图像数据集。
 
-::
+.. code:: python
 
    image_folder_data = '../../dataset/mnist/training_set'
    model.load_img_data(image_folder_data,color="grayscale",batch_size=1024)
@@ -48,18 +48,18 @@ c）同时支持CPU和GPU
 
 ``train_val_ratio``\ ：0~1之间的浮点数，表示训练集的占比，默认为1。eg，数据集共1万张，train_val_ratio=0.8，则8000张训练集，2000张验证集。若传入大于1或小于0的错误比例，则参数值无效，默认整个数据集都可用于训练。此参数可用于拆分数据集为训练集和验证集。
 
-``color``\ ：设置为“grayscale”或“RGB”，表示图片的颜色空间或色彩模式，可以根据具体的需求来选择适合的模式。如果将color参数设置为“grayscale”，表示希望将图像转换为灰度图像，仅包含亮度信息。如果将color参数设置为“RGB”，表示希望保留图像的红、绿、蓝三个通道的颜色信息，得到彩色图像。
+``color``\ ：设置为”grayscale”或”RGB”，表示图片的颜色空间或色彩模式，可以根据具体的需求来选择适合的模式。如果将color参数设置为”grayscale”，表示希望将图像转换为灰度图像，仅包含亮度信息。如果将color参数设置为”RGB”，表示希望保留图像的红、绿、蓝三个通道的颜色信息，得到彩色图像。
 
 ``batch_size``\ ：表示在一次训练中同时处理的样本数量。通常情况下，批量大小越大，模型的收敛速度越快，但内存和计算资源的需求也会相应增加。
 
 关于图片数据集预处理：
-''''''''''''''''''
+''''''''''''''''''''''
 
 载入图片数据前如需对图像数据集进行预处理，例如做尺寸调整，可先使用torchvision对图片数据集进行预处理再载入模型进行训练。
 
 导入包
 
-::
+.. code:: python
 
    from torchvision.transforms import transforms
 
@@ -67,13 +67,13 @@ c）同时支持CPU和GPU
 
 此处为对数据进行单个步骤的简单处理。
 
-::
+.. code:: python
 
    tran1 = transforms.Resize([128,128])
 
 若要对数据进行多次处理的复杂操作，可以采用如下代码，将多个处理方式按顺序输入，在执行时这些操作也会被按顺序执行。
 
-::
+.. code:: python
 
    tran2 = transforms.Compose([
        transforms.RandomResizedCrop(224),
@@ -94,16 +94,16 @@ c）同时支持CPU和GPU
 
 最后在载入数据集时，将设置好的想要使用的数据处理方式作为参数与数据集一起传入模型中。
 
-::
+.. code:: python
 
    model.load_img_data(img_folder_data, transform = tran1)
 
 针对特征表格类型的数据：
-^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 指定表格路径，再使用\ ``load_tab_data``\ 函数即可完成载入数据。此处我使用的是经典的lvis鸢尾花数据集。
 
-::
+.. code:: python
 
    train_path = '../../dataset/iris/iris_training.csv'
    model.load_tab_data(train_path, batch_size=120)
@@ -113,20 +113,20 @@ c）同时支持CPU和GPU
 ``batch_size``\ ：表示在一次训练中同时处理的样本数量。通常情况下，批量大小越大，模型的收敛速度越快，但内存和计算资源的需求也会相应增加。
 
 针对NPZ数据集类型的数据：
-^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 指定NPZ数据集路径，再使用\ ``load_npz_data``\ 函数即可完成载入数据。
 
-::
+.. code:: python
 
    train_path = '../../dataset/dataset.npz'
    model.load_tab_data(train_path, batch_size=5000,classes=["walking","waving","stretching"])
 
-对NPZ数据集的要求：npz格式，其中至少应该拥有两个键，分别为\ ``data``\与\ ``label``\，其中\ ``data``\中存储的应为训练数据信息，\ ``label``\中存储的应为数据所对应的标签信息（应为数组形式）。
+对NPZ数据集的要求：npz格式，其中至少应该拥有两个键，分别为\ ``data``\ 与\ ``label``\ ，其中\ ``data``\ 中存储的应为训练数据信息，\ ``label``\ 中存储的应为数据所对应的标签信息（应为数组形式）。
 
 ``batch_size``\ ：表示在一次训练中同时处理的样本数量。通常情况下，批量大小越大，模型的收敛速度越快，但内存和计算资源的需求也会相应增加。
 
-``classes``\ ：表示数据集中的\ ``label``\中存储的数组各个位置标签所代表的意义。可以不传入，若不传入，则推理结果将会是认为结果的下标。若传入，则推理结果将自动转化为将原结果作为下标的数组中的对应内容。
+``classes``\ ：表示数据集中的\ ``label``\ 中存储的数组各个位置标签所代表的意义。可以不传入，若不传入，则推理结果将会是认为结果的下标。若传入，则推理结果将自动转化为将原结果作为下标的数组中的对应内容。
 
 拓展——自行编写代码载入数据：
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -135,7 +135,7 @@ c）同时支持CPU和GPU
 ``x`` 和标签
 ``y``\ （不同的框架和模型可能对输入数据的格式有所要求有所不同，这是BaseNN的要求），载入时可使用如下代码。
 
-::
+.. code:: python
 
    model.load_dataset(x, y)
 
@@ -185,7 +185,7 @@ c）同时支持CPU和GPU
 
        x = np.expand_dims(x, axis=1)
        return x, y
-       
+
    # 读取训练数据
    train_x, train_y = read_data('../dataset/mnist/training_set')
    # 载入数据
@@ -204,15 +204,13 @@ c）同时支持CPU和GPU
    model.add(layer='linear',size=(10, 5), activation='relu') # [120, 5]
    model.add(layer='linear', size=(5, 3), activation='softmax') # [120, 3]
 
-::
+.. code:: python
 
    model.add('lstm',size=(128,256),num_layers=2)
 
-::
-
    model.add('conv2d', size=(1, 3),kernel_size=( 3, 3), activation='relu') # [100, 3, 18, 18]
 
-以上使用\ ``add()``\ 方法添加层，参数\ ``layer='linear'``\ 表示添加的层是线性层，\ ``size=(4,10)``\ 表示该层输入维度为4，输出维度为10，\ ``activation='relu'``\ 表示使用relu激活函数。更详细[\ ``add()``\ 方法使用可见\ `附录1 <https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add>`__\ 。
+以上使用\ ``add()``\ 方法添加层，参数\ ``layer='linear'``\ 表示添加的层是线性层，\ ``size=(4,10)``\ 表示该层输入维度为4，输出维度为10，\ ``activation='relu'``\ 表示使用relu激活函数。更详细[``add()``\ 方法使用可见\ `附录1 <https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add>`__\ 。
 
 4. 模型训练
 ~~~~~~~~~~~
@@ -260,8 +258,6 @@ c）同时支持CPU和GPU
 
 针对不同类型的数据类型，载入数据、搭建模型和模型训练的代码会略有不同。深度学习常见的数据类型介绍详见\ `附录4 <https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#id23>`__\ 。
 
-.. _图片文件夹类型-1:
-
 图片文件夹类型
 ^^^^^^^^^^^^^^
 
@@ -284,7 +280,7 @@ c）同时支持CPU和GPU
 
 如自己进行对图片数据处理后，使用\ ``load_dataset(x, y)``\ 载入数据，可使用如下代码：
 
-::
+.. code:: python
 
    model = nn()
    model.load_dataset(x,y,classes=classes) # classes是类别列表（列表） //字典
@@ -293,7 +289,7 @@ c）同时支持CPU和GPU
 
 classes可传参数兼容列表，字典形式(以下三种形式均可)。
 
-::
+.. code:: python
 
    classes = ['cat','dog']
    classes = {0:'cat',1:'dog'}
@@ -301,7 +297,7 @@ classes可传参数兼容列表，字典形式(以下三种形式均可)。
 
 注意：索引是数值类型（int)，类别名称是字符串（str)，即哪怕类别名也是数字0,1,…字典的键和值也有区别，例如：
 
-::
+.. code:: python
 
    # 正确示例
    classes = {0:'0',1:'1'} # 索引to类别
@@ -333,7 +329,7 @@ classes可传参数兼容列表，字典形式(以下三种形式均可)。
 ``x`` 和目标标签 ``y``
 传递给模型。针对特征数据，使用BaseNN各模块的示例代码即可。
 
-::
+.. code:: python
 
    model = nn()
    model.load_dataset(x,y)
@@ -346,7 +342,7 @@ classes可传参数兼容列表，字典形式(以下三种形式均可)。
 
 在做文本识别等NLP（自然语言处理）领域项目时，一般搭建\ `RNN网络 <https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn>`__\ 训练模型，训练数据是文本数据，参考代码代码如下：
 
-::
+.. code:: python
 
    model = nn()
    model.load_dataset(x,y,word2idx=word2idx) # word2idx是词表（字典）
@@ -423,7 +419,7 @@ c对表格文件的要求：csv格式，纵轴为样本，横轴为特征，第�
 
 ``output``\ 为NumPy数组，里面是一系列概率值，对应每个字的概率。
 
-``hidden``\ 为高维向量，存储上下文信息，代表“记忆”，所以生成单个字可以不传入hidden，但写诗需要循环传入之前输出的hidden。
+``hidden``\ 为高维向量，存储上下文信息，代表”记忆”，所以生成单个字可以不传入hidden，但写诗需要循环传入之前输出的hidden。
 
 7. 模型的保存与加载
 ~~~~~~~~~~~~~~~~~~~
@@ -455,7 +451,7 @@ BaseNN内置\ ``visual_feature``\ 函数可呈现数据在网络中传递的过�
 
 如输入数据为图片，指定图片和已经训练好的模型，可生成一张展示逐层网络特征传递的图片。
 
-::
+.. code:: python
 
    import cv2
    from BaseNN import nn
@@ -465,12 +461,11 @@ BaseNN内置\ ``visual_feature``\ 函数可呈现数据在网络中传递的过�
    img = cv2.imread(path,flags = 0)          # 图片数据读取
    model.visual_feature(img,in1img = True)   # 特征的可视化
 
-.. figure:: ../images/basenn/特征可视化.png
-
+|image1|
 
 如输入数据为一维数据，指定数据和已经训练好的模型，可生成一个txt文件展示经过各层后的输出。
 
-::
+.. code:: python
 
    import NumPy as np
    from BaseNN import nn
@@ -484,7 +479,7 @@ BaseNN内置\ ``visual_feature``\ 函数可呈现数据在网络中传递的过�
 
 默认初始化是随机的，每次训练结果都不一样。可以使用\ ``set_seed()``\ 函数设定随机数种子，使得训练结果可被其他人复现。一旦指定，则每次训练结果一致。使用方法如下：
 
-.. code:: shell
+.. code:: python
 
    model = nn()
    model.set_seed(1235)
@@ -497,11 +492,11 @@ BaseNN内置\ ``visual_feature``\ 函数可呈现数据在网络中传递的过�
 11. 自定义损失函数
 ~~~~~~~~~~~~~~~~~~
 
-损失函数（或称目标函数、优化评分函数）是编译模型时所需的参数之一。在机器学习和深度学习中，模型的训练通常涉及到一个优化过程，即通过不断调整模型的参数，使得模型在训练数据上的预测结果与实际结果的差距最小化。这个差距通常使用一个称为“损失函数”的指标来衡量。损失函数通常是一个关于模型参数的函数，用于度量模型预测结果与实际结果之间的差异。在模型训练过程中，模型会根据损失函数的值来调整自己的参数，以减小损失函数的值。
+损失函数（或称目标函数、优化评分函数）是编译模型时所需的参数之一。在机器学习和深度学习中，模型的训练通常涉及到一个优化过程，即通过不断调整模型的参数，使得模型在训练数据上的预测结果与实际结果的差距最小化。这个差距通常使用一个称为”损失函数”的指标来衡量。损失函数通常是一个关于模型参数的函数，用于度量模型预测结果与实际结果之间的差异。在模型训练过程中，模型会根据损失函数的值来调整自己的参数，以减小损失函数的值。
 
 默认的损失函数是交叉熵损失函数，允许选择不同的损失函数，支持的损失函数见\ `附录 <https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#id22>`__\ 。自选损失函数方法如下：
 
-::
+.. code:: python
 
    model.train(...,loss="CrossEntropyLoss")
 
@@ -514,7 +509,7 @@ BaseNN内置\ ``visual_feature``\ 函数可呈现数据在网络中传递的过�
 
 自选评价指标方法如下：
 
-::
+.. code:: python
 
    model.train(...,metrics=["mse"])
 
@@ -533,7 +528,7 @@ BaseNN内置\ ``visual_feature``\ 函数可呈现数据在网络中传递的过�
 
 BaseNN中提供了一个CNN特征提取工具，可使用BaeNN的\ ``model.extract_feature()``\ 函数通过指定预训练模型来提取图像特征，使用ResNet预训练模型可将一张图像提取为1000维的特征（该预训练模型是在imagenet上训练的千分类模型，所以输出特征的维度是1000维），输出一个1行1000列的数组。
 
-::
+.. code:: python
 
    # 声明模型
    model = nn()
@@ -587,11 +582,13 @@ avgpool：平均池化层，需给定kernel_size。
 
 linear：线性层，需给定size。
 
-dropout：随机失活层，需给定p（概率）。作用为随机关闭一些神经元，避免过拟合。其中参数\ ``p``\表示关闭神经元的比例，比如此处 p=0.2 表示有随机20%的神经元会被关闭。这种网络层是为了优化效果，避免过拟合而加入的，不是必需的，因此可以尝试修改p的值甚至删掉这个层观察比较效果差距。
+dropout：随机失活层，需给定p（概率）。作用为随机关闭一些神经元，避免过拟合。其中参数\ ``p``\ 表示关闭神经元的比例，比如此处
+p=0.2
+表示有随机20%的神经元会被关闭。这种网络层是为了优化效果，避免过拟合而加入的，不是必需的，因此可以尝试修改p的值甚至删掉这个层观察比较效果差距。
 
 再以RNN模型（循环神经网络）为例进行详细说明：
 
-::
+.. code:: python
 
    model.add('lstm',size=(128,256),num_layers=2)
 
@@ -616,15 +613,16 @@ num_layers：循环神经网络的层数。一般1~5，常用2、3层，太多�
 
 bias：用不用偏置，default=True。
 
-dropout：随机失活层，默认是0，代表不用dropout。作用为随机关闭一些神经元，避免过拟合。其中参数\ ``p``\表示关闭神经元的比例，比如此处 p=0.2 表示有随机20%的神经元会被关闭。这种网络层是为了优化效果，避免过拟合而加入的，不是必需的，因此可以尝试修改p的值甚至删掉这个层观察比较效果差距。
+dropout：随机失活层，默认是0，代表不用dropout。作用为随机关闭一些神经元，避免过拟合。其中参数\ ``p``\ 表示关闭神经元的比例，比如此处
+p=0.2
+表示有随机20%的神经元会被关闭。这种网络层是为了优化效果，避免过拟合而加入的，不是必需的，因此可以尝试修改p的值甚至删掉这个层观察比较效果差距。
 
 bidirectional：默认是false，代表不用双向LSTM。
 
 以上仅是基本的模型架构。在实际使用中，可能需要调整模型的层数、节点数、激活函数等参数以达到最佳效果。
 
-
 拓展--RNN模型搭建简单指南：
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 循环神经网络是一类以序列数据为输入，在序列的演进方向进行递归且所有节点（循环单元）按链式连接的递归神经网络。RNN在自然语言处理问题中有得到应用，也被用于与自然语言处理有关的异常值检测问题，例如社交网络中虚假信息/账号的检测。NN与卷积神经网络向结合的系统可被应用于在计算机视觉问题，例如在字符识别中，有研究使用卷积神经网络对包含字符的图像进行特征提取，并将特征输入LSTM进行序列标注。
 
@@ -640,7 +638,7 @@ bidirectional：默认是false，代表不用双向LSTM。
    model.add('lstm', size=(256,256))
    model.add('squeeze')
    model.add('BatchNorm1d', size=256)
-   
+
    model.add('linear',  size=(256, 256))
    model.add('Linear',  size=(256, 128))
    model.add('linear',  size=(128, 64))
@@ -649,13 +647,15 @@ bidirectional：默认是false，代表不用双向LSTM。
 
 以上使用\ ``add()``\ 方法添加层，参数\ ``layer='linear'``\ 表示添加的层是线性层，\ ``size=(256,256)``\ 表示该层输入维度为256，输出维度为256，\ ``activation='Softmax'``\ 表示使用softmax激活函数。更详细\ ``add()``\ 方法使用可见\ `附录1 <https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add>`__\ 。
 
-在搭建RNN时，一般第一层需要设置为\ ``lstm``\层，需要注意的是\ ``size=(132,128)``\表示该层输入维度为132，输出维度为128，输入维度应与数据集维度相同。
+在搭建RNN时，一般第一层需要设置为\ ``lstm``\ 层，需要注意的是\ ``size=(132,128)``\ 表示该层输入维度为132，输出维度为128，输入维度应与数据集维度相同。
 
-\ ``Dropout``\层的作用为随机关闭一些神经元，避免过拟合。其中参数\ ``p``\表示关闭神经元的比例，比如此处 p=0.2 表示有随机20%的神经元会被关闭。这种网络层是为了优化效果，避免过拟合而加入的，不是必需的，因此可以尝试修改p的值甚至删掉这个层观察比较效果差距。
+``Dropout``\ 层的作用为随机关闭一些神经元，避免过拟合。其中参数\ ``p``\ 表示关闭神经元的比例，比如此处
+p=0.2
+表示有随机20%的神经元会被关闭。这种网络层是为了优化效果，避免过拟合而加入的，不是必需的，因此可以尝试修改p的值甚至删掉这个层观察比较效果差距。
 
-\ ``squeeze``\与\ ``unsqueeze``\层两个神经网络层并不常见，其作用为对数据的升降维度进行处理。squeeze的操作为压缩维度，unsqueez的操作为扩充维度。这种网络层是为了确保数据在层间正常流动，是必需的，如果想要自行调整，可能需要对数据经过每一层之后的维度变化有充分了解，在此之前，保持原样即可。
+``squeeze``\ 与\ ``unsqueeze``\ 层两个神经网络层并不常见，其作用为对数据的升降维度进行处理。squeeze的操作为压缩维度，unsqueez的操作为扩充维度。这种网络层是为了确保数据在层间正常流动，是必需的，如果想要自行调整，可能需要对数据经过每一层之后的维度变化有充分了解，在此之前，保持原样即可。
 
-\ ``Batchnorm1d``\的作用是对一维数据做归一化。参数中size值表示输入数据的维度（注意和上一层的输出以及下一层的输入一致即可）。这种网络层是也为了优化效果而加入的，不是必需的，没有这个层也可以正常训练，但由于去掉这个网络层后效果下降的会非常明显，所以不建议删掉这个层。
+``Batchnorm1d``\ 的作用是对一维数据做归一化。参数中size值表示输入数据的维度（注意和上一层的输出以及下一层的输入一致即可）。这种网络层是也为了优化效果而加入的，不是必需的，没有这个层也可以正常训练，但由于去掉这个网络层后效果下降的会非常明显，所以不建议删掉这个层。
 
 如果对pytorch比较熟悉，想要自行添加比较复杂的模块，也可以自定义（BaseNN兼容pytorch搭的网络结构），例如，搭建一个与上述动作识别网络一致的自定义模块：
 
@@ -698,40 +698,818 @@ bidirectional：默认是false，代表不用双向LSTM。
 
    model.add(my_model)
 
-1. 支持的损失函数
+2. 支持的损失函数
 ~~~~~~~~~~~~~~~~~
 
-==== ===================================================================================================================================================================
-序号 损失函数
-==== ===================================================================================================================================================================
-1    `nn.L1Loss <https://pytorch.org/docs/stable/generated/torch.nn.L1Loss.html#torch.nn.L1Loss>`__
-2    `nn.MSELoss <https://pytorch.org/docs/stable/generated/torch.nn.MSELoss.html#torch.nn.MSELoss>`__
-3    `nn.CrossEntropyLoss <https://pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html#torch.nn.CrossEntropyLoss>`__
-4    `nn.CTCLoss <https://pytorch.org/docs/stable/generated/torch.nn.CTCLoss.html#torch.nn.CTCLoss>`__
-5    `nn.NLLLoss <https://pytorch.org/docs/stable/generated/torch.nn.NLLLoss.html#torch.nn.NLLLoss>`__
-6    `nn.PoissonNLLLoss <https://pytorch.org/docs/stable/generated/torch.nn.PoissonNLLLoss.html#torch.nn.PoissonNLLLoss>`__
-7    `nn.GaussianNLLLoss <https://pytorch.org/docs/stable/generated/torch.nn.GaussianNLLLoss.html#torch.nn.GaussianNLLLoss>`__
-8    `nn.KLDivLoss <https://pytorch.org/docs/stable/generated/torch.nn.KLDivLoss.html#torch.nn.KLDivLoss>`__
-9    `nn.BCELoss <https://pytorch.org/docs/stable/generated/torch.nn.BCELoss.html#torch.nn.BCELoss>`__
-10   `nn.BCEWithLogitsLoss <https://pytorch.org/docs/stable/generated/torch.nn.BCEWithLogitsLoss.html#torch.nn.BCEWithLogitsLoss>`__
-11   `nn.MarginRankingLoss <https://pytorch.org/docs/stable/generated/torch.nn.MarginRankingLoss.html#torch.nn.MarginRankingLoss>`__
-12   `nn.HingeEmbeddingLoss <https://pytorch.org/docs/stable/generated/torch.nn.HingeEmbeddingLoss.html#torch.nn.HingeEmbeddingLoss>`__
-13   `nn.MultiLabelMarginLoss <https://pytorch.org/docs/stable/generated/torch.nn.MultiLabelMarginLoss.html#torch.nn.MultiLabelMarginLoss>`__
-14   `nn.HuberLoss <https://pytorch.org/docs/stable/generated/torch.nn.HuberLoss.html#torch.nn.HuberLoss>`__
-15   `nn.SmoothL1Loss <https://pytorch.org/docs/stable/generated/torch.nn.SmoothL1Loss.html#torch.nn.SmoothL1Loss>`__
-16   `nn.SoftMarginLoss <https://pytorch.org/docs/stable/generated/torch.nn.SoftMarginLoss.html#torch.nn.SoftMarginLoss>`__
-17   `nn.MultiLabelSoftMarginLoss <https://pytorch.org/docs/stable/generated/torch.nn.MultiLabelSoftMarginLoss.html#torch.nn.MultiLabelSoftMarginLoss>`__
-18   `nn.CosineEmbeddingLoss <https://pytorch.org/docs/stable/generated/torch.nn.CosineEmbeddingLoss.html#torch.nn.CosineEmbeddingLoss>`__
-19   `nn.MultiMarginLoss <https://pytorch.org/docs/stable/generated/torch.nn.MultiMarginLoss.html#torch.nn.MultiMarginLoss>`__
-20   `nn.TripletMarginLoss <https://pytorch.org/docs/stable/generated/torch.nn.TripletMarginLoss.html#torch.nn.TripletMarginLoss>`__
-21   `nn.TripletMarginWithDistanceLoss <https://pytorch.org/docs/stable/generated/torch.nn.TripletMarginWithDistanceLoss.html#torch.nn.TripletMarginWithDistanceLoss>`__
-==== ===================================================================================================================================================================
+.. raw:: html
+
+   <table class="docutils align-default">
+
+.. raw:: html
+
+   <thead>
+
+.. raw:: html
+
+   <tr class="row-odd">
+
+.. raw:: html
+
+   <th class="head">
+
+序号
+
+.. raw:: html
+
+   </th>
+
+.. raw:: html
+
+   <th class="head">
+
+损失函数
+
+.. raw:: html
+
+   </th>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </thead>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td rowspan="6">
+
+1
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+nn.L1Loss
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td rowspan="6">
+
+2
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+nn.MSELoss
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td rowspan="6">
+
+3
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+nn.CrossEntropyLoss
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td rowspan="6">
+
+4
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+nn.CTCLoss
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td rowspan="6">
+
+5
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+nn.NLLLoss
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td rowspan="6">
+
+6
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+nn.PoissonNLLLoss
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td rowspan="6">
+
+7
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+nn.GaussianNLLLoss
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td rowspan="6">
+
+8
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+nn.KLDivLoss
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td rowspan="6">
+
+9
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+nn.BCELoss
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td rowspan="6">
+
+10
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+nn.BCEWithLogitsLoss
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td rowspan="6">
+
+11
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+nn.MarginRankingLoss
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td rowspan="6">
+
+12
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+nn.HingeEmbeddingLoss
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td rowspan="6">
+
+13
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+nn.MultiLabelMarginLoss
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td rowspan="6">
+
+14
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+nn.HuberLoss
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td rowspan="6">
+
+15
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+nn.SmoothL1Loss
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td rowspan="6">
+
+16
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+nn.SoftMarginLoss
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td rowspan="6">
+
+17
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+nn.MultiLabelSoftMarginLoss
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td rowspan="6">
+
+18
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+nn.CosineEmbeddingLoss
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td rowspan="6">
+
+19
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+nn.MultiMarginLoss
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td rowspan="6">
+
+20
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+nn.TripletMarginLoss
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td rowspan="6">
+
+21
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+nn.TripletMarginWithDistanceLoss
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   </table>
 
 3. RNN和CNN
 ~~~~~~~~~~~
 
-RNN（Recurrent Neural Network，循环神经网络）和CNN（Convolutional Neural
-Network，卷积神经网络）是深度学习中两个非常重要的神经网络模型。
+RNN（Recurrent Neural Network，循环神经网络）和CNN（Convolutional
+NeuralNetwork，卷积神经网络）是深度学习中两个非常重要的神经网络模型。
 
 RNN是一种用于处理序列数据的神经网络模型。它的特点是可以将前面的输入信息保存下来，并在后面的计算中进行利用，从而实现对序列数据的建模。RNN在自然语言处理、语音识别、股票预测等任务中广泛应用。RNN对具有序列特性的数据非常有效，它能挖掘数据中的时序信息以及语义信息。它有记忆功能，可以记住序列中前面的信息，并用这些信息影响后续的输出。这就像我们人类在阅读一段文字时，会记住前面的内容，以帮助理解后面的内容一样。
 
@@ -749,7 +1527,6 @@ CNN是一种用于处理图像和空间数据的神经网络模型。例如图�
 
 简单来说，RNN适用于序列数据处理，而CNN适用于图像和空间数据处理。但实际上，它们也可以互相组合使用，例如在图像描述生成任务中，可以使用CNN提取图像特征，然后使用RNN生成对应的文字描述。使用BaseNN搭建RNN和CNN模型的方式详见\ `add()详细 <https://xedu.readthedocs.io/zh/master/basenn/introduction.html#add>`__\ 介绍。
 
-   
 4. 深度学习常见的数据类型
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -758,3 +1535,5 @@ CNN是一种用于处理图像和空间数据的神经网络模型。例如图�
 文本数据：文本数据是指由字符组成的序列数据。在深度学习应用中，文本数据通常被表示为词向量或字符向量，用于输入到文本处理模型中。
 
 特征数据：特征数据指的是表示对象或事物的特征的数据，通常用于机器学习和数据挖掘。特征数据可以是数值型、离散型或者是二进制的，用于描述对象或事物的各种属性和特征。特征数据可以是手动设计的、自动提取的或者是混合的。在机器学习中，特征数据通常作为模型的输入，用于预测目标变量或者分类。
+
+.. |image1| image:: ../images/basenn/visualization.png

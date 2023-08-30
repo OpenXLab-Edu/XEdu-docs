@@ -50,13 +50,13 @@ cap.release()
 
 - 图像分类
 
-![image](../images/basedeploy/基本功能推理_图像分类.png)
+![](../images/basedeploy/base_cls.png)
 
 
 
 - 目标检测
 
-![image](../images/basedeploy/基本功能推理_目标检测.png)
+![](../images/basedeploy/base_detect.png)
 
 ## 更多模型部署相关项目
 

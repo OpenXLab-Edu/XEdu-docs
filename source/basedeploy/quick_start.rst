@@ -51,13 +51,11 @@
 
 -  图像分类
 
-.. figure:: ../images/basedeploy/基本功能推理_图像分类.png
-
+|image1|
 
 -  目标检测
 
-.. figure:: ../images/basedeploy/基本功能推理_目标检测.png
-
+|image2|
 
 更多模型部署相关项目
 --------------------
@@ -71,3 +69,6 @@
 树莓派与MMEdu：https://www.openinnolab.org.cn/pjlab/project?id=64992a4dc0b7072a267541f4&sc=635638d69ed68060c638f979#public
 
 MMEdu模型在线转换：https://www.openinnolab.org.cn/pjlab/project?id=645110943c0e930cb55e859b&sc=635638d69ed68060c638f979#public
+
+.. |image1| image:: ../images/basedeploy/base_cls.png
+.. |image2| image:: ../images/basedeploy/base_detect.png

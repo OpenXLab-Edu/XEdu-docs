@@ -16,7 +16,7 @@ BaseML中提供两种可视化方法：模型可视化及评价指标可视化�
 
 ### 3. 可视化调用限制
 
-![image](../images/baseml/可视化调用限制.png)
+![](../images/baseml/limit.png)
 
 ## 快速体验训练过程可视化全流程！
 

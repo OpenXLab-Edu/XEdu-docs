@@ -94,13 +94,11 @@ result
 
 -  图像分类
 
-.. image:: ../images/basedeploy/文件夹推理_分类.JPG
-   :alt: image
+|image1|
 
 -  目标检测
 
-.. image:: ../images/basedeploy/文件夹推理_检测.JPG
-   :alt: image
+|image2|
 
 图片路径显示
 ^^^^^^^^^^^^
@@ -115,13 +113,11 @@ result
 
 -  图像分类
 
-.. image:: ../images/basedeploy/路径显示_分类.JPG
-   :alt: image
+|image3|
 
 -  目标检测
 
-.. image:: ../images/basedeploy/路径显示_检测.JPG
-   :alt: image
+|image4|
 
 图像回传
 ^^^^^^^^
@@ -151,17 +147,13 @@ result
 PIL方式
 '''''''
 
-PIL方式适合Jupyter中进行交互，下面是相关示例说明。
+PIL方式适合Jupyter中进行交互，下面是相关示例说明。 - 图像分类
 
--  图像分类
-
-.. image:: ../images/basedeploy/图像回传_分类_pil.JPG
-   :alt: image
+|image5|
 
 -  目标检测
 
-.. image:: ../images/basedeploy/图像回传_检测_pil.JPG
-   :alt: image
+|image6|
 
 cv2方式
 '''''''
@@ -189,13 +181,11 @@ cv2方式适合调用屏幕显示等操作。
 
 -  图像分类
 
-.. image:: ../images/basedeploy/图像回传_分类_cv2.JPG
-   :alt: image
+|image7|
 
 -  目标检测
 
-.. image:: ../images/basedeploy/图像回传_检测_cv2.JPG
-   :alt: image
+|image8|
 
 拓展：一般ONNX模型的解析
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -216,13 +206,11 @@ cv2方式适合调用屏幕显示等操作。
 
 -  图像分类
 
-.. image:: ../images/basedeploy/无信息ONNX推理_分类.JPG
-   :alt: image
+|image9|
 
 -  目标检测
 
-.. image:: ../images/basedeploy/无信息ONNX推理_检测.JPG
-   :alt: image
+|image10|
 
 此外，\ ``BaseDeploy``\ 还提供\ ``diy_inference``\ 函数，供用户推理特殊的ONNX模型，其推理的前处理和后处理需要用户自行实现。
 
@@ -240,8 +228,7 @@ cv2方式适合调用屏幕显示等操作。
 
 ``input_data``\ ：用户自定义前处理好后的张量，请将其保持与模型输入节点需要的张量形状一致。
 
-.. image:: ../images/basedeploy/diy_infer.JPG
-   :alt: image
+|image11|
 
 与其他库配合的部署
 ~~~~~~~~~~~~~~~~~~
@@ -264,10 +251,9 @@ Gradio
 
 -  图像分类
 
--  .. image:: ../images/basedeploy/gradio_分类推理.JPG
-      :alt: image
+-  |image12|
 
--  目标检测 |image|
+-  目标检测 |image13|
 
 FastAPI
 ^^^^^^^
@@ -293,7 +279,7 @@ API。它是基于 Python
 设置\ ``FastAPI``\ 的运行模式，可选参数为\ ``json``\ 和\ ``img``\ ，代表回传的内容为推理结果或推理后绘制的图片，于用户角度即为绘制图像操作在上位机还是下位机完成。
 ``score``\ ：设置绘图阈值，若高于阈值，才进行绘图操作，默认为：\ ``0.65``\ 。
 
-运行后出现下图所示的内容，即代表\ ``FastAPI``\ 启动成功。 |image1|
+运行后出现下图所示的内容，即代表\ ``FastAPI``\ 启动成功。 |image14|
 
 如何调用接口
 ''''''''''''
@@ -310,13 +296,11 @@ API。它是基于 Python
 
 -  图像分类
 
-.. image:: ../images/basedeploy/EasyAPI_分类.JPG
-   :alt: image
+|image15|
 
 -  目标检测
 
-.. image:: ../images/basedeploy/EasyAPI_检测.JPG
-   :alt: image
+|image16|
 
 SIoT
 ^^^^
@@ -338,8 +322,7 @@ SIoT
 
 用户端对服务端进行访问时，服务端也会同步打印推理结果，便于用户检查连接状况等。
 
-.. image:: ../images/basedeploy/SIoT_服务端.JPG
-   :alt: image
+|image17|
 
 PywebIO
 ^^^^^^^
@@ -363,23 +346,20 @@ port：设置启动\ ``PywebIO``\ 的端口号，默认为：\ ``1956``\ 。
 
 运行后出现下图所示的内容，即代表\ ``PywebIO``\ 启动成功。
 
-.. image:: ../images/basedeploy/PywebIO_命令行启动.JPG
-   :alt: image
+|image18|
 
 -  推理示例
 
-.. image:: ../images/basedeploy/pywebio_推理_1.JPG
-   :alt: image
+|image19|
 
-.. image:: ../images/basedeploy/pywebio_推理_2.JPG
-   :alt: image
+|image20|
 
 Mind+中的BaseDeploy积木块
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 使用Mind+V1.7.2及以上版本，在python模式用户库中加载此扩展，AI模型部署工具库。
 
-Gitee链接：\ https://gitee.com/liliang9693/ext-BaseDeploy
+Gitee链接：https://gitee.com/liliang9693/ext-BaseDeploy
 
 使用说明
 ^^^^^^^^
@@ -389,16 +369,13 @@ Gitee链接：\ https://gitee.com/liliang9693/ext-BaseDeploy
 
 -  如果联网情况下，打开Mind+用户库粘贴本仓库的链接即可加载：
 
-.. image:: ../images/basedeploy/在线加载积木库.png
-   :alt: image
+|image21|
 
 -  如果电脑未联网，则可以下载本仓库的文件，然后打开Mind+用户库选择导入用户库，选择\ ``.mpext``\ 文件即可
 
-.. image:: ../images/basedeploy/离线加载积木库_1.png
-   :alt: image
+|image22|
 
-.. image:: ../images/basedeploy/离线加载积木库_2.png
-   :alt: image
+|image23|
 
 第二步：安装python库
 ''''''''''''''''''''
@@ -407,39 +384,60 @@ Gitee链接：\ https://gitee.com/liliang9693/ext-BaseDeploy
 
 注：WARNING是提醒，可以忽略；请及时更新BaseDeploy和BaseDT用户库，以获得更稳定、更强大的模型部署使用体验。
 
-.. image:: ../images/basedeploy/安装库.png
-   :alt: image
+|image24|
 
 第三步：导入模型
 ''''''''''''''''
 
 将onnx模型文件拖到项目中的文件中。
 
-.. image:: ../images/basedeploy/导入模型.png
-   :alt: image
+|image25|
 
 第四步：开始编程！
 ''''''''''''''''''
 
 至此，即可拖动积木块开始快乐编程啦，运行示例如下：
 
-.. image:: ../images/basedeploy/运行示例.png
-   :alt: image
+|image26|
 
 参考链接
 --------
 
-Gradio：\ https://github.com/gradio-app/gradio
+Gradio：https://github.com/gradio-app/gradio
 
-FastAPI：\ https://github.com/tiangolo/fastapi
+FastAPI：https://github.com/tiangolo/fastapi
 
-SIOT：\ https://github.com/vvlink/SIoT
+SIOT：https://github.com/vvlink/SIoT
 
-PywebIO：\ https://github.com/pywebio/PyWebIO
+PywebIO：https://github.com/pywebio/PyWebIO
 
-Flask：\ https://github.com/pallets/flask
+Flask：https://github.com/pallets/flask
 
-Mind+：\ https://mindplus.cc/
+Mind+：https://mindplus.cc/
 
-.. |image| image:: ../images/basedeploy/gradio_检测推理.JPG
-.. |image1| image:: ../images/basedeploy/EasyAPI_命令行启动.JPG
+.. |image1| image:: ../images/basedeploy/dir_cls.JPG
+.. |image2| image:: ../images/basedeploy/dir_detect.JPG
+.. |image3| image:: ../images/basedeploy/path_cls.JPG
+.. |image4| image:: ../images/basedeploy/path_detect.JPG
+.. |image5| image:: ../images/basedeploy/back_cls_pil.JPG
+.. |image6| image:: ../images/basedeploy/back_detect_pil.JPG
+.. |image7| image:: ../images/basedeploy/back_cls_cv2.JPG
+.. |image8| image:: ../images/basedeploy/back_detect_cv2.JPG
+.. |image9| image:: ../images/basedeploy/ONNX_cls.JPG
+.. |image10| image:: ../images/basedeploy/ONNX_detect.JPG
+.. |image11| image:: ../images/basedeploy/diy_infer.JPG
+.. |image12| image:: ../images/basedeploy/gradio_clsinfer.JPG
+.. |image13| image:: ../images/basedeploy/gradio_detectinfer.JPG
+.. |image14| image:: ../images/basedeploy/FastAPI_command_start.JPG
+.. |image15| image:: ../images/basedeploy/FastAPI_cls.JPG
+.. |image16| image:: ../images/basedeploy/FastAPI_detect.JPG
+.. |image17| image:: ../images/basedeploy/SIoT_server.JPG
+.. |image18| image:: ../images/basedeploy/PywebIO_command_start.JPG
+.. |image19| image:: ../images/basedeploy/pywebio_infer_1.JPG
+.. |image20| image:: ../images/basedeploy/pywebio_infer_2.JPG
+.. |image21| image:: ../images/basedeploy/online_block.png
+.. |image22| image:: ../images/basedeploy/offline_block_1.png
+.. |image23| image:: ../images/basedeploy/offline_block_2.png
+.. |image24| image:: ../images/basedeploy/install_lab.png
+.. |image25| image:: ../images/basedeploy/import.png
+.. |image26| image:: ../images/basedeploy/case.png
