@@ -105,47 +105,29 @@
 <section id="easytrainai">
 <h1>用EasyTrain训练第一个AI模型！<a class="headerlink" href="#easytrainai" title="Permalink to this headline"></a></h1>
 <p>EasyTrain界面打开之后在下拉框中选择问题类型为分类或者检测。</p>
-<figure class="align-default" id="id3">
-<img alt="image" src="../_images/probtype.PNG" />
-<figcaption>
-<p><span class="caption-text">image</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
-</figcaption>
+<figure class="align-default">
+<img alt="../_images/probtype.PNG" src="../_images/probtype.PNG" />
 </figure>
 <p>在选择了问题类型之后，下面的“算法类型”也会对应的更改。</p>
-<figure class="align-default" id="id4">
-<img alt="image" src="../_images/algotype1.PNG" />
-<figcaption>
-<p><span class="caption-text">image</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
-</figcaption>
+<figure class="align-default">
+<img alt="../_images/algotype1.PNG" src="../_images/algotype1.PNG" />
 </figure>
 <p>在训练中要指定训练结果的保存路径和数据集路径，在选择了路径后，按钮文本会变成“重新选择”。如果训练新的模型，请尽量把结果保存在新的空文件夹中，否则不同训练问题的自动保存模型会冲突。</p>
-<figure class="align-default" id="id5">
-<img alt="image" src="../_images/trpath.PNG" />
-<figcaption>
-<p><span class="caption-text">image</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
-</figcaption>
+<figure class="align-default">
+<img alt="../_images/trpath.PNG" src="../_images/trpath.PNG" />
 </figure>
 <p>训练的轮数，学习率，类别数量，使用设备等参数也可以调节，点击“更多参数”按钮可以修改更多的参数。一部分参数有范围，限定数字等要求。并且请选择合理的数值。如果是用不到的参数，建议不要修改，采用默认值。特别地，类别默认为-1是允许的，表示默认读取<code class="docutils literal notranslate"><span class="pre">class.txt</span></code>中的类别，修改之后需要填成正确的类数量。</p>
-<figure class="align-default" id="id6">
-<img alt="image" src="../_images/trparam.PNG" />
-<figcaption>
-<p><span class="caption-text">image</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
-</figcaption>
+<figure class="align-default">
+<img alt="../_images/trparam.PNG" src="../_images/trparam.PNG" />
 </figure>
 <p>在更多参数中做出修改后，请点击“保存修改”将其保存。</p>
-<figure class="align-default" id="id7">
-<img alt="image" src="../_images/trmoreparam.PNG" />
-<figcaption>
-<p><span class="caption-text">image</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
-</figcaption>
+<figure class="align-default">
+<img alt="../_images/trmoreparam.PNG" src="../_images/trmoreparam.PNG" />
 </figure>
 <p>在修改好自己的参数后，点击左下角的“代码生成”，可以生成训练代码，生成代码之后才可以训练。
 生成的代码会显示在上方的代码框，并且保存到<code class="docutils literal notranslate"><span class="pre">train_code.py</span></code>中，请不要随意修改。</p>
-<figure class="align-default" id="id8">
-<img alt="image" src="../_images/trgenecode.PNG" />
-<figcaption>
-<p><span class="caption-text">image</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
-</figcaption>
+<figure class="align-default">
+<img alt="../_images/trgenecode.PNG" src="../_images/trgenecode.PNG" />
 </figure>
 <p>代码生成之后点击“开始训练”按钮即可开始训练，训练过程中主界面依旧可以正常运行，但是为了程序的稳定性和速度，不建议进行额外操作。
 在开始训练后，停止训练会短暂地卡顿，随后停止。</p>

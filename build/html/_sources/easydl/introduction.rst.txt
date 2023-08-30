@@ -49,6 +49,8 @@ EasyInference是XEdu提供的无代码模型训练工具。利用EasyInference�
 .. figure:: ../images/easydl/3.PNG
 
 
+
+
 3. EasyAPI
 ~~~~~~~~~~
 
