@@ -2,7 +2,7 @@ EasyDL系列工具功能详解
 ======================
 
 初识EasyDL
-==========
+----------
 
 EasyDL系列工具是由上海人工智能实验室智能教育中心打造的面向0基础或者较低基础的中小学生的无代码可视化工具。一个step-by-step的无代码（傻瓜化）模型训练和推理辅助工具，基于MMEdu开发。既可以独立下载（安装时提示需要XEdu环境），又内置在XEdu的一键安装包中。旨在让代码能力不强的初学者也能体验到人工智能的训练与学习，并且可以看到基于XEdu编写格式的训练、推理及部署的代码。
 
@@ -28,7 +28,9 @@ EasyTrain是XEdu提供的无代码模型训练工具。利用EasyTrain，可以�
 ④集成开始训练与结束训练按钮，并实时显示loss曲线
 
 .. figure:: ../images/easydl/1.PNG
+   :alt: image
 
+   image
 
 2. EasyInference
 ~~~~~~~~~~~~~~~~
@@ -47,9 +49,9 @@ EasyInference是XEdu提供的无代码模型训练工具。利用EasyInference�
 ④推理代码生成与查看
 
 .. figure:: ../images/easydl/3.PNG
+   :alt: image
 
-
-
+   image
 
 3. EasyAPI
 ~~~~~~~~~~
@@ -70,4 +72,6 @@ EasyAPI是XEdu提供的无代码接口部署工具系列。利用EasyAPI，可�
 ④在界面中跳转到Web服务的网页
 
 .. figure:: ../images/easydl/4.PNG
+   :alt: image
 
+   image
