@@ -22,8 +22,7 @@ MMEdu安装和下载
 
 第一步：下载MMEdu（XEdu）最新版文件，并安装到本地，双击exe文件，选择安装路径后，点击Extract即可，安装后自动生成XEdu文件夹，文件夹内目录结构如下图所示。
 
-.. figure:: ../images/mmedu/XEDU安装图1.png
-
+|image0|
 
 1）下载方式（即XEdu下载方式）
 
@@ -39,7 +38,9 @@ MMEdu安装和下载
 Thonny是一款好用的Python轻量级IDE。其最突出的两个特点便是是简洁性和交互性。打开根目录下的Thonny.bat文件快捷方式即可打开。使用Thonny打开“demo”文件夹中的py文件，如“MMEdu_cls_demo.py”，点击“运行”的“将文件作为脚本运行”即可运行代码，界面如下图所示。
 
 .. figure:: ../images/mmedu/XEDU安装图4.png
+   :alt: image
 
+   image
 
 2）使用MMEdu（XEdu）自带的Jupyter。
 
@@ -47,12 +48,16 @@ Jupyter
 Notebook是基于网页的用于交互计算的应用程序。其可被应用于全过程计算：开发、文档编写、运行代码和展示结果。它相对简单，对用户也更加友好，适合初学者。打开根目录下的“jupyter编辑器.bat”，即自动启动浏览器并显示界面，如下图所示。
 
 .. figure:: ../images/mmedu/XEDU安装图3.png
+   :alt: image
 
+   image
 
 使用常用工具栏对代码进行操作，如“运行”，可以在单元格中编写文本或者代码（如下图中写了\ ``print("hello")``\ 代码的位置），执行代码的结果也将会在每个单元下方呈现。可以逐个运行单元格，每点击一次，仅运行一个单元格。单元格左侧[*]内的星号变为数字，表示该单元格运行完成。此时可打开“demo”文件夹中的ipynb文件，如“cls_notebook.ipynb”。
 
 .. figure:: ../images/mmedu/MMEDU安装图5.png
+   :alt: image
 
+   image
 
 3）使用其他IDE。
 
@@ -66,7 +71,9 @@ Notebook是基于网页的用于交互计算的应用程序。其可被应用于
 PyCharm环境路径配置如下图所示。
 
 .. figure:: ../images/mmedu/MMEDU安装图6.png
+   :alt: image
 
+   image
 
 -  执行demo文件
 
@@ -77,7 +84,9 @@ PyCharm环境路径配置如下图所示。
 python中最常用的库管理工具pip，可以使用cmd命令行来运行，打开根目录下的“启动cmd.bat”可以打开cmd命令行界面，如下图所示。
 
 .. figure:: ../images/mmedu/XEDU安装图2.png
+   :alt: image
 
+   image
 
 在其中输入想要安装的库文件即可，如“pip install rarfile”。
 
@@ -150,10 +159,10 @@ https://aicarrier.feishu.cn/docx/K0D6d8VHLoN1zoxDb72cBlKynjc\ ）；
 
 双击exe文件即可开始安装（一般下载完成后会自动打开安装界面无需点击exe文件，若没有自动打开安装页面再点击此exe文件）。
 
-打开安装界面后，依次选择\ ``Next`` -> ``I Agree`` -> ``All Users`` 
--> ``Next`` -> ``Next`` 
--> ``Add Anaconda3 to the system PATH environment variable`` -> 
-``Install`` -> ``Next`` -> ``Next`` -> ``Finish`` 
+打开安装界面后，依次选择\ ``Next`` -> ``I Agree`` -> ``All Users`` ->
+``Next`` -> ``Next`` ->
+``Add Anaconda3 to the system PATH environment variable`` -> ``Install``
+-> ``Next`` -> ``Next`` -> ``Finish``
 
 3.1.2 安装python编辑器
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -172,8 +181,8 @@ https://aicarrier.feishu.cn/docx/K0D6d8VHLoN1zoxDb72cBlKynjc\ ）；
 
 双击exe文件即可开始安装（一般下载完成后会自动打开安装界面无需点击exe文件，若没有自动打开安装页面再点击此exe文件）
 
-打开安装界面后，依次选择\ ``Install for me only`` -> ``Next`` -> 
-``Next`` -> ``Next`` -> ``Next`` -> ``Next`` -> ``Install`` -> 
+打开安装界面后，依次选择\ ``Install for me only`` -> ``Next`` ->
+``Next`` -> ``Next`` -> ``Next`` -> ``Next`` -> ``Install`` ->
 ``Finish``
 
 **运行**
@@ -274,7 +283,9 @@ https://aicarrier.feishu.cn/docx/K0D6d8VHLoN1zoxDb72cBlKynjc\ ）；
 打开python终端，执行以下命令即可查看MMEdu版本。当前最新版本是0.04。
 
 .. figure:: ../images/mmedu/pip安装指南3.png
+   :alt: image
 
+   image
 
 注：目前版本MMEdu仅支持CPU。
 
@@ -286,3 +297,5 @@ https://aicarrier.feishu.cn/docx/K0D6d8VHLoN1zoxDb72cBlKynjc\ ）；
 ::
 
    $ pip uninstall MMEdu
+
+.. |image0| image:: ../images/mmedu/XEDUinstallp1.png
