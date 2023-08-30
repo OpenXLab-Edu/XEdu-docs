@@ -23,8 +23,7 @@
 Fourier transform,
 STFT)就是这样一种方法，STFT可以将一维信号变为二维信号，该二维信号叫做时频谱图，横坐标为时间，纵坐标为频率，颜色深度为对应时间和对应频率的大小，变换前后的信号如下图所示。最终此基础上使用图像分类的方法完成语音识别。
 
-.. figure:: ../../images/support_resources/变换后图像.png
-
+|image1|
 
 **图1** 变换前后信号
 
@@ -32,8 +31,7 @@ STFT)就是这样一种方法，STFT可以将一维信号变为二维信号，�
 
 在离线状态下利用MMEdu训练一个高性能的轻量级模型，再使用行空板，完成一个智能方言小助手的项目，并对不同的方言语音任务做出智能输出。其工作流程图如图2：
 
-.. figure:: ../../images/support_resources/智能音箱工作图.PNG
-
+|image2|
 
 **图2** 智能方言小助手工作流程图
 
@@ -66,8 +64,7 @@ STFT)就是这样一种方法，STFT可以将一维信号变为二维信号，�
 5. 在测试集中评估迁移学习模型的性能，确定模型对以前未见过的数据进行分类的能力。
 6. 如有必要，可通过调整其超参数、添加或删除网络层来进一步提高模型性能。
 
-.. figure:: ../../images/support_resources/模型训练图.png
-
+|image3|
 
 **图3** 模型训练流程图
 
@@ -133,8 +130,7 @@ STFT)就是这样一种方法，STFT可以将一维信号变为二维信号，�
 
 其结果如下图所示：
 
-.. figure:: ../../images/support_resources/智能语音助手.png
-
+|image4|
 
 五、总结
 --------
@@ -147,3 +143,8 @@ STFT)就是这样一种方法，STFT可以将一维信号变为二维信号，�
 ----------
 
 [1]谢作如,胡君豪.让行空板变身为能识别方言的智能音箱[J].中国信息技术教育,2023(01):93-95.
+
+.. |image1| image:: ../../images/support_resources/after_trans.png
+.. |image2| image:: ../../images/support_resources/smart_loudspeaker_box.PNG
+.. |image3| image:: ../../images/support_resources/training_flow.png
+.. |image4| image:: ../../images/support_resources/IntelligentVoiceAssistant.png
