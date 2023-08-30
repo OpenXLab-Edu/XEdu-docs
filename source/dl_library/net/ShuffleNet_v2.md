@@ -18,7 +18,7 @@ ShuffleNet_v2中提出了一个关键点，之前的轻量级网络都是通过�
 
 $MAC≥2hw\sqrt{c_{1}c_{2}}+c_{1}c_{2}≥2\sqrt{hwB}+\frac{B}{hw}$，其中$B = hwc_{1}c_{2}$。因此，MAC有一个由FLOPs给出的下限。当输入和输出通道的数量相等时，它达到下界。
 
-![image](../../images/dl_library/shuff0.png)
+![](../../images/dl_library/shuff0.png)
 
 表中实验通过改变比率c1: c2报告了在固定总FLOPs时的运行速度。可见，当c1: c2接近1:1时，MAC变小，网络评估速度加快。
 
@@ -28,7 +28,7 @@ $MAC≥2hw\sqrt{c_{1}c_{2}}+c_{1}c_{2}≥2\sqrt{hwB}+\frac{B}{hw}$，其中$B = 
 
 $MAC=hw(c_{1}+c_{2})+\frac{c_{1}c_{2}}{g}=hwc_{1}+\frac{Bg}{c_{1}}+\frac{B}{hw}$，其中g为分组数，$B=\frac{hwc_{1}c_{2}}{g}$为FLOPs。不难看出，给定固定的输入形状$c_{1}*h*w$，计算代价B, MAC随着g的增长而增加。
 
-![image](../../images/dl_library/shuff1.png)
+![](../../images/dl_library/shuff1.png)
 
 很明显，使用大量的组数会显著降低运行速度。例如，在GPU上使用8group比使用1group(标准密集卷积)慢两倍以上，在ARM上慢30%。这主要是由于MAC的增加。所以使用比较大组去进行组卷积是不明智的。对速度会造成比较大的影响。
 
@@ -36,11 +36,11 @@ $MAC=hw(c_{1}+c_{2})+\frac{c_{1}c_{2}}{g}=hwc_{1}+\frac{Bg}{c_{1}}+\frac{B}{hw}$
 
 虽然这种碎片化结构已经被证明有利于提高准确性，但它可能会降低效率，因为它对GPU等具有强大并行计算能力的设备不友好。它还引入了额外的开销，比如内核启动和同步。
 
-![image](../../images/dl_library/shuff2.png)
+![](../../images/dl_library/shuff2.png)
 
 为了量化网络分片如何影响效率，我们评估了一系列不同分片程度的网络块。具体来说,每个构造块由1到4个1 × 1的卷积组成，这些卷积是按顺序或平行排列的。每个块重复堆叠10次。块结构上图所示。
 
-![image](../../images/dl_library/shuff3.png)
+![](../../images/dl_library/shuff3.png)
 
 表中实验结果显示，在GPU上碎片化明显降低了速度，如4-fragment结构比1-fragment慢3倍。在ARM上，速度降低相对较小。
 
@@ -48,11 +48,11 @@ $MAC=hw(c_{1}+c_{2})+\frac{c_{1}c_{2}}{g}=hwc_{1}+\frac{Bg}{c_{1}}+\frac{B}{hw}$
 
 ### 4：Element-wise操作带来的影响是不可忽视的
 
-![image](../../images/dl_library/shuff4.png)
+![](../../images/dl_library/shuff4.png)
 
 轻量级模型中，元素操作占用了相当多的时间，特别是在GPU上。这里的元素操作符包括ReLU、AddTensor、AddBias等。将depthwise convolution作为一个element-wise operator，因为它的MAC/FLOPs比率也很高。
 
-![image](../../images/dl_library/shuff5.png)
+![](../../images/dl_library/shuff5.png)
 
 可以看见表中报告了不同变体的运行时间并能观察到，在移除ReLU和shortcut后，GPU和ARM都获得了大约20%的加速。
 
@@ -76,7 +76,7 @@ both pointwise group convolutions与bottleneck structures均增加了MAC，与G1
 
 其中图c对应stride=1的情况，图d对应stride=2的情况。
 
-![image](../../images/dl_library/shuff6.png)
+![](../../images/dl_library/shuff6.png)
 
 为此，ShuffleNetV2做出了改进，如图( c )所示，在每个单元的开始，c特征通道的输入被分为两个分支（在ShuffleNetV2中这里是对channels均分成两半）。根据G3，不能使用太多的分支，所以其中一个分支不作改变，另外的一个分支由三个卷积组成，它们具有相同的输入和输出通道以满足G1。两个1 × 1卷积不再是组卷积，而改变为普通的1x1卷积操作，这是为了遵循G2（需要考虑组的代价）。卷积后，两个分支被连接起来，而不是相加(G4)。因此，通道的数量保持不变(G1)。然后使用与ShuffleNetV1中相同的“channels shuffle”操作来启用两个分支之间的信息通信。需要注意，ShuffleNet v1中的“Add”操作不再存在。像ReLU和depthwise convolutions 这样的元素操作只存在于一个分支中。
 
@@ -84,7 +84,7 @@ both pointwise group convolutions与bottleneck structures均增加了MAC，与G1
 
 总体网络结构类似于ShuffleNet v1，如表所示。只有一个区别:在全局平均池之前增加了一个1 × 1的卷积层来混合特性，这在ShuffleNet v1中是没有的。与下图类似，每个block中的通道数量被缩放，生成不同复杂度的网络，标记为0.5x，1x，1.5x，2x。
 
-![image](../../images/dl_library/shuff7.png)
+![](../../images/dl_library/shuff7.png)
 
 ## 总结 
 ShuffleNet v2不仅高效，而且准确。主要有两个原因：
