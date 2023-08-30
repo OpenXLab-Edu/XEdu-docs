@@ -15,7 +15,7 @@
 
 **行空板上部署MMEdu训练模型效果示例：**
 
-![image](../images/model_convert/部署演示.gif)
+![](../images/model_convert/DeploymentDemonstration.gif)
 
 ## Why：为什么
 ### 为什么要进行模型转换
@@ -56,7 +56,7 @@
 
 经过工业界和学术界数年的探索，结合`XEdu`的工具，展示模型部署一条流行的流水线：
 
-![image](../images/model_convert/XEdu模型部署全链路pipeline.JPG)
+![](../images/model_convert/XEduPipeline.JPG)
 
 
 这一条流水线解决了模型部署中的两大问题：使用对接深度学习框架和推理引擎的中间表示，开发者不必担心如何在新环境中运行各个复杂的框架；通过中间表示的网络结构优化和推理引擎对运算的底层优化，模型的运算效率大幅提升。
@@ -206,15 +206,15 @@ MMDeploy还推出了模型转换工具网页版本，支持更多后端推理框
 
 - 点击[MMDeploy硬件模型库](https://platform.openmmlab.com/deploee)，后选择模型转换
 
-![image](../images/model_convert/网页版使用步骤1.png)
+![](../images/model_convert/Web1.png)
 
 - 点击新建转换任务
 
-![image](../images/model_convert/网页版使用步骤2.png)
+![](../images/model_convert/Web2.png)
 
 - 选择需要转换的模型类型、模型训练配置，并点击`上传模型`上传本地训练好的.pth权重文件，具体的选项如下表所示
 
-![image](../images/model_convert/网页版使用步骤3.png)
+![](../images/model_convert/Web3.png)
 
 <table class="docutils align-default">
 <thead>
@@ -326,16 +326,16 @@ MMDeploy还推出了模型转换工具网页版本，支持更多后端推理框
 
 - 选择需要的目标runtime，可选的有`ncnn`,`ort1.8.1(onnxruntime)`,`openvino`等，点击提交任务
 
-![image](../images/model_convert/网页版使用步骤4.png)
+![](../images/model_convert/Web4.png)
 
 
 - 点击提交任务后，状态会变为排队中，或处理中，如果转换失败会提示错误日志，根据错误日志提示修改，像下图错误的原因是使用ResNet50（分类）的权重，可对应的OpenMMLab算法误选为了mmdet（检测）的，所以提示的错误是找不到配置文件
 
-![image](../images/model_convert/网页版使用步骤5.png)
+![](../images/model_convert/Web5.png)
 
 - 转换成功后，点击`下载模型`即可使用
 
-![image](../images/model_convert/网页版使用步骤6.png)
+![](../images/model_convert/Web6.png)
 
 
 
@@ -1022,7 +1022,7 @@ __注：硬件测试模块持续更新中，如有更多硬件测试需求，请
 ## 多模态交互
 回顾用AI解决真实问题的流程图，我们已经介绍了收集数据、训练模型、模型推理和应用部署。结合项目设计，我们还会去思考如何通过摄像头获得图像，如何控制灯光发亮，如何操纵舵机，如何设计显示界面UI等需要使用输入设备和输出设备等来实现的交互设计，即对`多模态交互`的考量。
 
-![image](../images/model_convert/用AI解决真实问题.JPG)
+![](../images/model_convert/SolveRealProblemsWithAI.JPG)
 
 
 更多传感器、执行器使用教程参见：[DFRobot](https://wiki.dfrobot.com.cn/)

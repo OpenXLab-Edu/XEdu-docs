@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>走向OpenMMLab &mdash; OpenXLabEdu  documentation</title>
@@ -11,10 +11,11 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -28,11 +29,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -54,7 +59,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id1">OpenMMLab简介</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">训练参数详解</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">如果查看准确率</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">日志文件解读</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">日志文件解读</a></li>
 </ul>
 </li>
 </ul>
@@ -82,9 +87,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../mmedu.html">计算机视觉库MMEdu</a> &raquo;</li>
-      <li>走向OpenMMLab</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../mmedu.html">计算机视觉库MMEdu</a></li>
+      <li class="breadcrumb-item active">走向OpenMMLab</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/mmedu/openmmlab.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -95,9 +100,9 @@
            <div itemprop="articleBody">
              
   <section id="openmmlab">
-<h1>走向OpenMMLab<a class="headerlink" href="#openmmlab" title="Permalink to this headline"></a></h1>
+<h1>走向OpenMMLab<a class="headerlink" href="#openmmlab" title="Permalink to this heading"></a></h1>
 <section id="id1">
-<h2>OpenMMLab简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<h2>OpenMMLab简介<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p>当你打开这个页面，说明MMEdu已经入门，并期望使用更多的参数，训练出更好的模型。</p>
 <p>MMEdu源自OpenMMLab。OpenMMLab（浦视）是上海人工智能实验室的计算机视觉算法开源体系
 OpenMMLab是深度学习时代全球领域最全面、最具影响力的视觉算法开源项目，全球最大最全的开源计算机视觉算法库，为学术和产业界提供一个可跨方向、结构精良、易复现的统一算法工具库。</p>
@@ -110,7 +115,7 @@ OpenMMLab是深度学习时代全球领域最全面、最具影响力的视觉�
 <p>OpenMMLab官方地址：<a class="reference external" href="https://openmmlab.com/">https://openmmlab.com/</a></p>
 </section>
 <section id="id2">
-<h2>训练参数详解<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<h2>训练参数详解<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">train</span></code>函数支持很多参数，为了降低难度，MMEdu已经给绝大多数的参数设置了默认值。根据具体的情况修改参数，可能会得到更好的训练效果。下面来详细说明<code class="docutils literal notranslate"><span class="pre">train</span></code>函数的各个参数。</p>
 <p><code class="docutils literal notranslate"><span class="pre">epochs</span></code>：默认参数为<code class="docutils literal notranslate"><span class="pre">100</span></code>，用于指定训练的轮次，而在上述代码中我们设置为<code class="docutils literal notranslate"><span class="pre">10</span></code>。</p>
 <p><code class="docutils literal notranslate"><span class="pre">batch_size</span></code>：批大小，一次训练所选取的样本数，指每次训练在训练集中取batch_size个样本训练。默认参数为<code class="docutils literal notranslate"><span class="pre">None</span></code>，如为<code class="docutils literal notranslate"><span class="pre">None</span></code>则默认为对应网络配置文件中设置的<code class="docutils literal notranslate"><span class="pre">samples_per_gpu</span></code>的值，用于指定一次训练所选取的样本数。当训练集样本非常多时，直接将这些数据输入到神经网络的话会导致计算量非常大，容易因内存不足导致内核挂掉，因此可引入<code class="docutils literal notranslate"><span class="pre">batch_size</span></code>参数的设置。关于<code class="docutils literal notranslate"><span class="pre">batch_size</span></code>的取值范围，应该大于类别数，小于样本数，且由于GPU对2的幂次的<code class="docutils literal notranslate"><span class="pre">batch</span></code>可以发挥更佳的性能，因此设置成16、32、64、128…时往往要比设置为整10、整100的倍数时表现更优。</p>
@@ -125,21 +130,24 @@ OpenMMLab是深度学习时代全球领域最全面、最具影响力的视觉�
 <p><code class="docutils literal notranslate"><span class="pre">lr</span></code>：学习率，默认参数为<code class="docutils literal notranslate"><span class="pre">1e-2</span></code>即<code class="docutils literal notranslate"><span class="pre">0.01</span></code>，指定模型进行梯度下降时的步长。简单解释就是，学习率过小，训练过程会很缓慢，学习率过大时，模型精度会降低。</p>
 <p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>：指定使用的模型权重文件，默认参数为<code class="docutils literal notranslate"><span class="pre">None</span></code>，如果没有指定模型权重文件，那么我们将会使用默认的模型权重文件进行推理。</p>
 <p>执行上述代码之后的运行结果如下图：</p>
-<figure class="align-default">
-<img alt="../_images/cls模型训练.png" src="../_images/cls模型训练.png" />
+<figure class="align-default" id="id5">
+<img alt="image" src="images/mmedu/cls模型训练.png" />
+<figcaption>
+<p><span class="caption-text">image</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+</figcaption>
 </figure>
 <p>而在<code class="docutils literal notranslate"><span class="pre">checkpoints\cls_model</span></code>文件夹中我们会发现多了两种文件，一个是<code class="docutils literal notranslate"><span class="pre">***.log.json</span></code>文件，它记录了我们模型在训练过程中的一些参数，比如说学习率<code class="docutils literal notranslate"><span class="pre">lr</span></code>，所用时间<code class="docutils literal notranslate"><span class="pre">time</span></code>，以及损失<code class="docutils literal notranslate"><span class="pre">loss</span></code>等；另一个文件是.pth文件，这个是我们在训练过程中所保存的模型。</p>
 </section>
 <section id="id3">
-<h2>如果查看准确率<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
-<p>方式一：通过训练输出（如上图），运行训练代码时输出项里会出现学习率lr，所用时间time，以及损失loss，每一轮在验证上的accuracy_top-<a href="#id4"><span class="problematic" id="id5">**</span></a>等。</p>
+<h2>如果查看准确率<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>方式一：通过训练输出（如上图），运行训练代码时输出项里会出现学习率lr，所用时间time，以及损失loss，每一轮在验证上的accuracy_top-**等。</p>
 <p>方式二：通过日志文件，在训练过程中我们会发现模型保存路径下（代码中指定指定）出现一个*.log.json文件，这就是日志文件，它记录了我们模型在训练过程中的一些信息。</p>
-<p>当您启动验证集验证，即设置“validate=True”，表示每轮（每个epoch）训练后，在验证集（val_set）上测试一次准确率。那么每一轮训练结束时会呈现一次准确率，并且会生成best_accuracy_top-<a href="#id6"><span class="problematic" id="id7">*</span></a>.pth权重文件即最佳准确率权重文件。</p>
+<p>当您启动验证集验证，即设置“validate=True”，表示每轮（每个epoch）训练后，在验证集（val_set）上测试一次准确率。那么每一轮训练结束时会呈现一次准确率，并且会生成best_accuracy_top-*.pth权重文件即最佳准确率权重文件。</p>
 <p>accuracy_top-1：对一张图片，如果你的预测结果中概率最大的那个分类正确，则认为正确，再根据分类正确的样本数除以所有的样本数计算得到的准确率。</p>
 <p>accuracy_top-5：对一张图片，如果预测概率前五名的答案中出现了正确答案，便认为正确，再根据分类正确的样本数除以所有的样本数计算得到的准确率，在MMClassification中，如果类别数量大于5会启动accuracy_top-5准确率。</p>
 </section>
-<section id="id8">
-<h2>日志文件解读<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h2>
+<section id="id4">
+<h2>日志文件解读<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">Epoch[1][10/838]</span></code>:
 1表示当前是第1个epoch，而10/838表示当前正在处理第10个批次，一共有838个批次。在深度学习模型的训练过程中，通常会将训练数据集分成若干个批次，每个批次包含一定数量的样本（每批次样本数和batch_size设置相关），训练时会使用这些批次逐步迭代来更新模型的参数。</p>
 <p><code class="docutils literal notranslate"><span class="pre">lr</span></code>: 学习率。</p>

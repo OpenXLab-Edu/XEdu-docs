@@ -6,11 +6,11 @@
 
 对于图像分类任务来讲，目标检测(Detection)任务有两个主要的子任务：*定位和分类*。定位任务是什么呢？ 定位是找到图像主体或者某个物体的位置，然后用一个框将其框起来。这个框可以是矩形的，也可以是多边形或者圆形的，通常用得最多的是矩形（如下图）。
 
-![image-20220408210420560](../../build/html/_static/image-20220408192155931.png)
+![](../images/mmedu/image-20220408192155931.png)
 
 总的来说，目标检测任务是图像分类任务的进阶任务，图像分类任务只有一个子任务：分类，目标检测任务有两个任务：定位和分类，按照**图像中目标的数量**可分为单目标检测和多目标检测。目标检测任务比起分类任务多出来了一个将目标框起来的步骤。
 
-![image](../images/mmedu/目标检测概述.png)
+![](../images/mmedu/ObjectDetectionOverview.png)
 
 
 
@@ -33,7 +33,7 @@ XEdu一键安装包中预置了MMEdu的det模块的示例代码（路径：/demo
 
 数据集文件结构如下：
 
-![image](../images/mmedu/det数据集格式.png)
+![](../images/mmedu/detDataSetFormat.png)
 
 车牌数据集符合MMEdu目标检测模块支持的数据集要求，文件夹中包含两个文件夹`annotations`和`images`，分别存储标注信息以及图片数据，每个文件夹下面有`train`和`valid`两个`json`文件。如您想要了解更多数据集格式的内容，可参考[数据集支持](https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#coco)部分。
 
@@ -111,7 +111,7 @@ model.train(epochs=10, validate=True) # 设定训练的epoch次数以及是否�
 
 执行上述代码之后的运行结果如下图:
 
-![image](../images/mmedu/det模型训练日志.png)
+![](../images/mmedu/detModelTrainingLog.png)
 
 此时，打开model.save_fold指定的checkpoints/det_model/plate文件夹，我们会发现多了两种文件，一种是`**.log.json`日志文件，它记录了我们模型在训练过程中的一些参数，比如说学习率`lr`，所用时间`time`，损失`loss`，以及评估指标`bbox_mAP`等；另一种文件是`.pth`文件，这个是我们在训练过程中所保存的模型权重文件，分为按照训练轮次生成的权重文件`epoch_x.pth`和一个`best_bbox_mAP_epoch_**.pth`权重文件，`best_bbox_mAP_epoch_**.pth`权重文件即目前为止准确率最高的权重。
 
@@ -156,7 +156,7 @@ model.print_result() # 输出结果
 
 运行结果如图：
 
-![image-20220408210420560](../../build/html/_static/image-20220408191108835.png)
+![](../images/mmedu/image-20220408191108835.png)
 
 推理结果图片（带标签的图片）会以原本的文件名称保存在代码文件的同级目录下的`det_result`文件夹下，如果运行前没有发现该文件夹，不用担心，系统会自动建立。当然，您可以自己指定保存文件夹的名称。
 
@@ -293,11 +293,11 @@ model.train(epochs=3, validate=True, checkpoint=checkpoint) # 进行再训练
 
 根据图像中目标的数量，目标检测分为单目标检测和多目标检测，单目标检测顾名思义，就是识别图像中的单独的一个目标。如下图，就用红框框出了一只猫。
 
-![image](../images/mmedu/单目标检测.png)
+![](../images/mmedu/SingleTargetDetection.png)
 
 多目标检测就像下面这张图，识别图中的多个目标，在下图中分别用红色的框框出来了猫和绿色的框框出来了狗。多目标检测通常比单目标检测更难，因为它需要同时处理多个目标。但是，多目标检测在很多场景中都是必要的。
 
-![image](../images/mmedu/多目标检测.png)
+![](../images/mmedu/Multi-targetDetection.png)
 
 **小问题：单目标检测一定是只有一个类别吗？多目标检测一定是多个类别吗？**
 

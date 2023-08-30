@@ -24,13 +24,11 @@ OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台�
 - 在线工具-
 人工智能工坊”中，可直接创建XEdu项目。OpenInnoLab平台网址：https://www.openinnolab.org.cn/（用Chrome浏览器打开效果最佳）。
 
-.. figure:: ../images/mmedu/XEdu项目创建.gif
-
+|image1|
 
 在“项目-更多”中，搜索”MMEdu“，可找到所有与MMEdu相关的项目直接克隆，项目所有人为XEdu的项目是XEdu研发团队原创并公开的项目，其他项目是MMEdu使用者公开的项目，如初次使用MMEdu，建议直接克隆XEdu名下的MMEdu相关项目。
 
-.. figure:: ../images/mmedu/quick_start_01.png
-
+|image2|
 
 下面以“手写体识别”为例来介绍从零开始训练一个AI模型的过程。
 
@@ -52,11 +50,9 @@ OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台�
 
 -  在数据集上方点击“右键”，选择“复制文件路径”。接下来，你就可以通过这个路径来访问你的数据集。比如，我得到的文件路径是：\ ``/data/QX8UBM/mnist_sample``\ 。
 
-.. figure:: ../images/mmedu/quick_start_02.png
+|image3|
 
-
-.. figure:: ../images/mmedu/quick_start_03.png
-
+|image4|
 
 **新手提问1：** 我要使用自己的数据集怎么办？为什么会这么麻烦？
 
@@ -78,7 +74,7 @@ OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台�
    model.save_fold = './my_model'
    model.train(epochs=10, validate=True)
 
-打开\ `《用MMEdu实现MNIST手写体数字识别（XEdu官方版）》项目 <https://www.openinnolab.org.cn/pjlab/project?id=64a3c64ed6c5dc7310302853&sc=635638d69ed68060c638f979#public>`__\ 中的“1.mnist手写体数字识别-训练.ipynb”文件跟随说明完成训练代码运行。示例代码中共6行代码，完成了导入库、实例化模型、配置基本信息（图片分类的类别数量（\ ``model.num_classes``\ ），模型保存的路径（\ ``model.save_fold``\ ）和数据集的路径（\ ``model.load_dataset``\ ）），开始训练模型。
+打开\ `《用MMEdu实现MNIST手写体数字识别（XEdu官方版）》项目 <https://www.openinnolab.org.cn/pjlab/project?id=64a3c64ed6c5dc7310302853&sc=635638d69ed68060c638f979#public>`__\ 中的”1.mnist手写体数字识别-训练.ipynb”文件跟随说明完成训练代码运行。示例代码中共6行代码，完成了导入库、实例化模型、配置基本信息（图片分类的类别数量（\ ``model.num_classes``\ ），模型保存的路径（\ ``model.save_fold``\ ）和数据集的路径（\ ``model.load_dataset``\ ）），开始训练模型。
 
 5. 继续训练
 ~~~~~~~~~~~
@@ -113,7 +109,7 @@ OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台�
    result = model.inference(image=img, show=True, checkpoint = checkpoint)
    model.print_result(result)
 
-打开\ `《用MMEdu实现MNIST手写体数字识别（NOTEBOOK）》项目 <https://www.openinnolab.org.cn/pjlab/project?id=63801c0701df4535876b6a4e&sc=635638d69ed68060c638f979#public>`__\ 中的“2.mnist手写体数字识别-推理.ipynb”文件跟随说明完成推理代码运行。示例代码中共7行代码，完成了导入库、指定图片、实例化模型、指定模型保存的路径、开始推理、输出推理结果。根据推理结果可以完成各种其他输出。
+打开\ `《用MMEdu实现MNIST手写体数字识别（NOTEBOOK）》项目 <https://www.openinnolab.org.cn/pjlab/project?id=63801c0701df4535876b6a4e&sc=635638d69ed68060c638f979#public>`__\ 中的”2.mnist手写体数字识别-推理.ipynb”文件跟随说明完成推理代码运行。示例代码中共7行代码，完成了导入库、指定图片、实例化模型、指定模型保存的路径、开始推理、输出推理结果。根据推理结果可以完成各种其他输出。
 
 如需了解代码规则和参数信息，以及图像分类模块的更多使用说明，请看\ `后文 <https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#mmclassification>`__\ 。
 
@@ -122,13 +118,18 @@ OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台�
 
 我们的小目标就达成了！一个手写体数字识别模型就训练好了，此时你肯定还不过瘾，还想使用MMEdu基于各种数据集来训练模型去解决各种分类问题也很方便！只需要对手写体识别训练的代码稍作改动即可。首先思考自己想要解决的分类问题，收集数据并整理好数据集，如想要解决猫狗识别问题需准备猫狗数据集。
 
-那么可以打开\ `《用MMEdu实现MNIST手写体数字识别（NOTEBOOK）》项目 <https://www.openinnolab.org.cn/pjlab/project?id=63801c0701df4535876b6a4e&sc=635638d69ed68060c638f979#public>`__\ 中的“3.从mnist手写体数字识别到猫狗分类.ipynb”文件。而且还有更多案例可以参考，详见项目集区域，这里的AI特色工具专区展示了一些有助于深度学习和机器学习入门和进阶的案例。
+那么可以打开\ `《用MMEdu实现MNIST手写体数字识别（NOTEBOOK）》项目 <https://www.openinnolab.org.cn/pjlab/project?id=63801c0701df4535876b6a4e&sc=635638d69ed68060c638f979#public>`__\ 中的”3.从mnist手写体数字识别到猫狗分类.ipynb”文件。而且还有更多案例可以参考，详见项目集区域，这里的AI特色工具专区展示了一些有助于深度学习和机器学习入门和进阶的案例。
 当然你也可以在AI项目工坊创建自己的项目，做自己的人工智能案例。MMEdu工具有\ `图像分类模块 <https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#mmclassification>`__\ 、\ `目标检测模块 <https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html>`__\ 等模块，请继续阅读文档，了解并掌握MMEdu的各个模块。
 
-.. figure:: ../images/mmedu/XEdu项目集.png
-
+|image5|
 
 MMEdu的简要总结
 ---------------
 
 MMEdu是针对青少年学习AI技术而设计的，其前身就是大名鼎鼎的OpenMMLab。MMEdu的语法非常简单，几句话就能完成训练和推理。如果你下载了\ `XEdu一键安装包 <https://xedu.readthedocs.io/zh/master/about/installation.html#id3>`__\ ，还可以使用\ `Easytrain等可视化辅助工具 <https://xedu.readthedocs.io/zh/master/easydl.html#easydl>`__\ 。有了MMEdu，你会发现AI模型训练原来这么简单。
+
+.. |image1| image:: ../images/mmedu/XEduProjecCreation.gif
+.. |image2| image:: ../images/mmedu/quick_start_01.png
+.. |image3| image:: ../images/mmedu/quick_start_02.png
+.. |image4| image:: ../images/mmedu/quick_start_03.png
+.. |image5| image:: ../images/mmedu/XEduItemSet.png

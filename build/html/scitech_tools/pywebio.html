@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Web库PyWebIO &mdash; OpenXLabEdu  documentation</title>
@@ -11,10 +11,11 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -28,11 +29,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -80,9 +85,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../scitech_tools.html">相关科创工具</a> &raquo;</li>
-      <li>Web库PyWebIO</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../scitech_tools.html">相关科创工具</a></li>
+      <li class="breadcrumb-item active">Web库PyWebIO</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/scitech_tools/pywebio.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -93,14 +98,14 @@
            <div itemprop="articleBody">
              
   <section id="webpywebio">
-<h1>Web库PyWebIO<a class="headerlink" href="#webpywebio" title="Permalink to this headline"></a></h1>
+<h1>Web库PyWebIO<a class="headerlink" href="#webpywebio" title="Permalink to this heading"></a></h1>
 <section id="id1">
-<h2>1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<h2>1. 简介<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p>顾名思义，PyWebIO库是一个基于Web方式来实现输入输出（I/O）的Python库。这是北京航空航天大学在读研究生王伟民同学用业余时间写的库。目前在GitHbu上获得了高达1.6K的Star。它允许用户像编写终端脚本一样来编写Web应用或基于浏览器的GUI应用，而无需具备HTML和JS的相关知识。</p>
 <p>Github地址：<a class="reference external" href="https://github.com/wang0618/PyWebIO">https://github.com/wang0618/PyWebIO</a></p>
 </section>
 <section id="id2">
-<h2>2. 安装<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<h2>2. 安装<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
 <p>PyWebIO可以采用pip命令安装，具体如下：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">PyWebIO</span>
 </pre></div>
@@ -108,7 +113,7 @@
 <p>注：MMEdu中已经内置了PyWebIO库。</p>
 </section>
 <section id="id3">
-<h2>3. 代码示例<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<h2>3. 代码示例<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
 <p>PyWebIO提供了一系列命令式的交互函数来在浏览器上获取用户输入和进行输出，相当于将浏览器变成了一个“富文本终端”。如：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pywebio.input</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">pywebio.output</span> <span class="kn">import</span> <span class="o">*</span>
@@ -119,9 +124,7 @@
 </pre></div>
 </div>
 <p>运行这段代码后，浏览器会自动打开一个本地的网址，出现这样的界面。</p>
-<figure class="align-default">
-<img alt="../_images/pywebio图1.png" src="../_images/pywebio图1.png" />
-</figure>
+<p><img alt="image1" src="../_images/pywebio1.png" /></p>
 <p>图1 初始网页界面</p>
 <p>输入姓名再点击“提交”按钮，网页上就会输出相应的文字。这种基于Web页面的“交互”，体验比黑乎乎的终端界面要好很多。</p>
 <p>PyWebIO支持常见的网页控件。既然PyWebI的定位就是输入和输出，那么也可以将网页控件分为这两类，部分控件的说明如表1所示。</p>
@@ -156,15 +159,13 @@
 </td></tr><tr class="row-odd"><td><p>Html代码</p>
 </td><td><p>put_html(‘E = mc2’);</p>
 </td></tr></tbody></table><p>尤其值得称赞的是，PyWebIO还支持MarkDown语法。除了输入输出，PyWebIO还支持布局、协程、数据可视化等特性。通过和其他库的配合，可以呈现更加酷炫的网页效果，如图2所示。</p>
-<figure class="align-default">
-<img alt="../_images/pywebio图2.png" src="../_images/pywebio图2.png" />
-</figure>
+<p><img alt="image2" src="../_images/pywebio2.png" /></p>
 <p>图2 PyWebIO结合第三方库制作的数据可视化效果</p>
 <p>如果需要了解更多关于PyWebIO库的资源，请访问github或者官方文档。</p>
 <p>文档地址：<a class="reference external" href="https://pywebio.readthedocs.io/">https://pywebio.readthedocs.io/</a></p>
 </section>
 <section id="pywebioai">
-<h2>4. 借助PyWebIO部署简易AI应用<a class="headerlink" href="#pywebioai" title="Permalink to this headline"></a></h2>
+<h2>4. 借助PyWebIO部署简易AI应用<a class="headerlink" href="#pywebioai" title="Permalink to this heading"></a></h2>
 <p>在人工智能教学过程中，我们常常为模型的部署而烦恼。如果训练出来的模型不能有效应用于生活，或者解决一些真实问题，则很难打动学生，激发学习兴趣。</p>
 <p>PyWebIO能够将AI模型快速“变身”为Web应用，上传一张照片就能输出识别结果，极大地提高了学生的学习收获感。</p>
 <p>例如可以设计一个函数classification实现上传图片文件-使用MMEdu训练的模型进行图片推理-输出推理结果，当然您需确保可以导入MMEdu库，且有MMEdu训练的模型，如何安装MMEdu和使用MMEdu训练模型，可参照<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu.html">前文</a>。</p>

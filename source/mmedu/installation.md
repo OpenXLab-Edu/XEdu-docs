@@ -19,7 +19,9 @@
 
 第一步：下载MMEdu（XEdu）最新版文件，并安装到本地，双击exe文件，选择安装路径后，点击Extract即可，安装后自动生成XEdu文件夹，文件夹内目录结构如下图所示。
 
+
 ![](../images/mmedu/XEDUinstallp1.png)
+
 
  1）下载方式（即XEdu下载方式）
 
@@ -34,18 +36,18 @@
 
 Thonny是一款好用的Python轻量级IDE。其最突出的两个特点便是是简洁性和交互性。打开根目录下的Thonny.bat文件快捷方式即可打开。使用Thonny打开"demo"文件夹中的py文件，如"MMEdu\_cls\_demo.py"，点击"运行"的"将文件作为脚本运行"即可运行代码，界面如下图所示。
 
-![image](../images/mmedu/XEDU安装图4.png)
+![](../images/mmedu/XEDUinstallp4.png)
 
 2）使用MMEdu（XEdu）自带的Jupyter。
 
 Jupyter
 Notebook是基于网页的用于交互计算的应用程序。其可被应用于全过程计算：开发、文档编写、运行代码和展示结果。它相对简单，对用户也更加友好，适合初学者。打开根目录下的"jupyter编辑器.bat"，即自动启动浏览器并显示界面，如下图所示。
 
-![image](../images/mmedu/XEDU安装图3.png)
+![](../images/mmedu/XEDUinstallp3.png)
 
 使用常用工具栏对代码进行操作，如"运行"，可以在单元格中编写文本或者代码（如下图中写了`print("hello")`代码的位置），执行代码的结果也将会在每个单元下方呈现。可以逐个运行单元格，每点击一次，仅运行一个单元格。单元格左侧\[\*\]内的星号变为数字，表示该单元格运行完成。此时可打开"demo"文件夹中的ipynb文件，如"cls\_notebook.ipynb"。
 
-![image](../images/mmedu/MMEDU安装图5.png)
+![](../images/mmedu/MMEDUinstallp5.png)
 
 3）使用其他IDE。
 
@@ -58,7 +60,7 @@ Notebook是基于网页的用于交互计算的应用程序。其可被应用于
 ②配置Python编译器，路径为解压路径下的"MMEdu"文件夹下的"mmedu"文件夹中的"python.exe"文件。
 PyCharm环境路径配置如下图所示。
 
-![image](../images/mmedu/MMEDU安装图6.png)
+![](../images/mmedu/MMEDUinstallp6.png)
 
 -   执行demo文件
 
@@ -68,7 +70,7 @@ PyCharm环境路径配置如下图所示。
 
 python中最常用的库管理工具pip，可以使用cmd命令行来运行，打开根目录下的"启动cmd.bat"可以打开cmd命令行界面，如下图所示。
 
-![image](../images/mmedu/XEDU安装图2.png)
+![](../images/mmedu/XEDUinstallp2.png)
 
 在其中输入想要安装的库文件即可，如"pip install rarfile"。
 
@@ -252,9 +254,9 @@ $ pip install MMEdu
 
 ## 4. 查看MMEdu版本
 
-打开python终端，执行以下命令即可查看MMEdu版本。当前最新版本是0.04。
+打开python终端，执行以下命令即可查看MMEdu版本。当前最新版本是0.1.21。
 
-![image](../images/mmedu/pip3.png)
+![](../images/mmedu/pip3.png)
 
 注：目前版本MMEdu仅支持CPU。
 

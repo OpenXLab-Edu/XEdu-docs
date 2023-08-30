@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BaseNN功能详解 &mdash; OpenXLabEdu  documentation</title>
@@ -11,10 +11,11 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -28,11 +29,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -97,9 +102,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../basenn.html">神经网络库BaseNN</a> &raquo;</li>
-      <li>BaseNN功能详解</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../basenn.html">神经网络库BaseNN</a></li>
+      <li class="breadcrumb-item active">BaseNN功能详解</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/basenn/introduction.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -110,33 +115,33 @@
            <div itemprop="articleBody">
              
   <section id="basenn">
-<h1>BaseNN功能详解<a class="headerlink" href="#basenn" title="Permalink to this headline"></a></h1>
+<h1>BaseNN功能详解<a class="headerlink" href="#basenn" title="Permalink to this heading"></a></h1>
 <section id="id1">
-<h2>BaseNN是什么？<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<h2>BaseNN是什么？<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p>BaseNN是神经网络库，能够使用类似Keras却比Keras门槛更低的的语法搭建神经网络模型。可支持逐层搭建神经网络，深入探究网络原理。如果有如下需求，可以优先选择BaseNN：</p>
 <p>a）简易和快速地搭建神经网络</p>
 <p>b）支持搭建<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basenn/introduction.html#rnncnn">CNN和RNN</a>，或二者的结合</p>
 <p>c）同时支持CPU和GPU</p>
 </section>
 <section id="id2">
-<h2>解锁BaseNN使用方法<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<h2>解锁BaseNN使用方法<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
 <section id="id3">
-<h3>0. 引入包<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<h3>0. 引入包<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
 </pre></div>
 </div>
 </section>
 <section id="id4">
-<h3>1. 声明模型<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<h3>1. 声明模型<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
 <section id="id5">
-<h3>2. 载入数据<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<h3>2. 载入数据<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
 <p>根据数据类型，可选择使用<code class="docutils literal notranslate"><span class="pre">load_img_data</span></code>、<code class="docutils literal notranslate"><span class="pre">load_tab_data</span></code>等（持续更新中）直接载入不同类型数据的函数，在这些函数中封装了读取数据并进行预处理的功能。下面分数据类型进行说明：</p>
 <section id="id6">
-<h4>针对图片文件夹类型的数据：<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h4>
+<h4>针对图片文件夹类型的数据：<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h4>
 <p>指定图片文件夹路径，再使用<code class="docutils literal notranslate"><span class="pre">load_img_data</span></code>函数即可完成载入数据。此处使用的是经典的MNIST手写体数字图像数据集。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">image_folder_data</span> <span class="o">=</span> <span class="s1">&#39;../../dataset/mnist/training_set&#39;</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_img_data</span><span class="p">(</span><span class="n">image_folder_data</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;grayscale&quot;</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">)</span>
@@ -147,7 +152,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">color</span></code>：设置为“grayscale”或“RGB”，表示图片的颜色空间或色彩模式，可以根据具体的需求来选择适合的模式。如果将color参数设置为“grayscale”，表示希望将图像转换为灰度图像，仅包含亮度信息。如果将color参数设置为“RGB”，表示希望保留图像的红、绿、蓝三个通道的颜色信息，得到彩色图像。</p>
 <p><code class="docutils literal notranslate"><span class="pre">batch_size</span></code>：表示在一次训练中同时处理的样本数量。通常情况下，批量大小越大，模型的收敛速度越快，但内存和计算资源的需求也会相应增加。</p>
 <section id="id7">
-<h5>关于图片数据集预处理：<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h5>
+<h5>关于图片数据集预处理：<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h5>
 <p>载入图片数据前如需对图像数据集进行预处理，例如做尺寸调整，可先使用torchvision对图片数据集进行预处理再载入模型进行训练。</p>
 <p>导入包</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torchvision.transforms</span> <span class="kn">import</span> <span class="n">transforms</span>
@@ -179,7 +184,7 @@
 </section>
 </section>
 <section id="id8">
-<h4>针对特征表格类型的数据：<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h4>
+<h4>针对特征表格类型的数据：<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h4>
 <p>指定表格路径，再使用<code class="docutils literal notranslate"><span class="pre">load_tab_data</span></code>函数即可完成载入数据。此处我使用的是经典的lvis鸢尾花数据集。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">train_path</span> <span class="o">=</span> <span class="s1">&#39;../../dataset/iris/iris_training.csv&#39;</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_tab_data</span><span class="p">(</span><span class="n">train_path</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
@@ -189,7 +194,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">batch_size</span></code>：表示在一次训练中同时处理的样本数量。通常情况下，批量大小越大，模型的收敛速度越快，但内存和计算资源的需求也会相应增加。</p>
 </section>
 <section id="npz">
-<h4>针对NPZ数据集类型的数据：<a class="headerlink" href="#npz" title="Permalink to this headline"></a></h4>
+<h4>针对NPZ数据集类型的数据：<a class="headerlink" href="#npz" title="Permalink to this heading"></a></h4>
 <p>指定NPZ数据集路径，再使用<code class="docutils literal notranslate"><span class="pre">load_npz_data</span></code>函数即可完成载入数据。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">train_path</span> <span class="o">=</span> <span class="s1">&#39;../../dataset/dataset.npz&#39;</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_tab_data</span><span class="p">(</span><span class="n">train_path</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span><span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;walking&quot;</span><span class="p">,</span><span class="s2">&quot;waving&quot;</span><span class="p">,</span><span class="s2">&quot;stretching&quot;</span><span class="p">])</span>
@@ -200,7 +205,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">classes</span></code>：表示数据集中的<code class="docutils literal notranslate"><span class="pre">label</span></code>中存储的数组各个位置标签所代表的意义。可以不传入，若不传入，则推理结果将会是认为结果的下标。若传入，则推理结果将自动转化为将原结果作为下标的数组中的对应内容。</p>
 </section>
 <section id="id9">
-<h4>拓展——自行编写代码载入数据：<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h4>
+<h4>拓展——自行编写代码载入数据：<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h4>
 <p>如您想要尝试自行编写代码加载数据并做预处理，需生成NumPy数组格式的特征
 <code class="docutils literal notranslate"><span class="pre">x</span></code> 和标签
 <code class="docutils literal notranslate"><span class="pre">y</span></code>（不同的框架和模型可能对输入数据的格式有所要求有所不同，这是BaseNN的要求），载入时可使用如下代码。</p>
@@ -257,7 +262,7 @@
 </section>
 </section>
 <section id="id10">
-<h3>3. 搭建模型<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
+<h3>3. 搭建模型<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h3>
 <p>逐层添加，搭建起模型结构，支持CNN（卷积神经网络）和RNN（循环神经网络）。注释标明了数据经过各层的尺寸变化。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> <span class="c1"># [120, 10]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> <span class="c1"># [120, 5]</span>
@@ -273,7 +278,7 @@
 <p>以上使用<code class="docutils literal notranslate"><span class="pre">add()</span></code>方法添加层，参数<code class="docutils literal notranslate"><span class="pre">layer='linear'</span></code>表示添加的层是线性层，<code class="docutils literal notranslate"><span class="pre">size=(4,10)</span></code>表示该层输入维度为4，输出维度为10，<code class="docutils literal notranslate"><span class="pre">activation='relu'</span></code>表示使用relu激活函数。更详细[<code class="docutils literal notranslate"><span class="pre">add()</span></code>方法使用可见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add">附录1</a>。</p>
 </section>
 <section id="id11">
-<h3>4. 模型训练<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h3>
+<h3>4. 模型训练<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h3>
 <p>模型训练可以采用以下函数：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
 </pre></div>
@@ -281,7 +286,7 @@
 <p>参数<code class="docutils literal notranslate"><span class="pre">lr</span></code>为学习率，<code class="docutils literal notranslate"><span class="pre">epochs</span></code>为训练轮数。</p>
 <p>从训练类型的角度，可以分为正常训练和继续训练。</p>
 <section id="id12">
-<h4>正常训练<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h4>
+<h4>正常训练<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> <span class="c1"># [120, 10]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> <span class="c1"># [120, 5]</span>
@@ -294,7 +299,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">model.save_fold</span></code>表示训练出的模型文件保存的文件夹。</p>
 </section>
 <section id="id13">
-<h4>继续训练<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h4>
+<h4>继续训练<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/new_train&#39;</span> <span class="c1"># 指定模型保存路径</span>
@@ -306,10 +311,10 @@
 </section>
 </section>
 <section id="id14">
-<h3>5. 分数据类型看训练代码<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h3>
+<h3>5. 分数据类型看训练代码<a class="headerlink" href="#id14" title="Permalink to this heading"></a></h3>
 <p>针对不同类型的数据类型，载入数据、搭建模型和模型训练的代码会略有不同。深度学习常见的数据类型介绍详见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#id23">附录4</a>。</p>
 <section id="id15">
-<span id="id16"></span><h4>图片文件夹类型<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h4>
+<span id="id16"></span><h4>图片文件夹类型<a class="headerlink" href="#id15" title="Permalink to this heading"></a></h4>
 <p>可直接指定图片文件夹，同时针对图片数据可增加classes参数设置（推理时会输出预测的类别名称，如不设置此参数则只输出类别标签），参考代码如下：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_img_data</span><span class="p">(</span><span class="s2">&quot;./mnist/training_set&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;grayscale&quot;</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span><span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">)</span>
@@ -350,7 +355,7 @@
 </div>
 </section>
 <section id="id17">
-<h4>特征类型<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h4>
+<h4>特征类型<a class="headerlink" href="#id17" title="Permalink to this heading"></a></h4>
 <p>可直接指定csv格式的表格完成模型训练，参考代码如下：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
 <span class="n">train_path</span> <span class="o">=</span> <span class="s1">&#39;../../dataset/iris/iris_training.csv&#39;</span>
@@ -375,7 +380,7 @@
 </div>
 </section>
 <section id="id18">
-<h4>文本类型<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h4>
+<h4>文本类型<a class="headerlink" href="#id18" title="Permalink to this heading"></a></h4>
 <p>在做文本识别等NLP（自然语言处理）领域项目时，一般搭建<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn">RNN网络</a>训练模型，训练数据是文本数据，参考代码代码如下：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">word2idx</span><span class="o">=</span><span class="n">word2idx</span><span class="p">)</span> <span class="c1"># word2idx是词表（字典）</span>
@@ -386,7 +391,7 @@
 </section>
 </section>
 <section id="id19">
-<h3>6. 模型推理<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h3>
+<h3>6. 模型推理<a class="headerlink" href="#id19" title="Permalink to this heading"></a></h3>
 <p>可使用以下函数进行推理：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span> <span class="c1"># 声明模型</span>
 <span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/iris_ckpt/basenn.pth&#39;</span> <span class="c1"># 现有模型路径</span>
@@ -399,7 +404,7 @@
 <p>输出字典格式结果的数据类型为字典，格式为{样本编号：{预测值：x，置信度：y}}。<code class="docutils literal notranslate"><span class="pre">print_result()</span></code>函数调用即输出，但也有返回值。</p>
 <p>参数<code class="docutils literal notranslate"><span class="pre">data</span></code>为待推理的测试数据数据，该参数必须传入值，可以传入NumPy数组或文件路径或者dataloader类型的数据，也可以传入list（最终还是会转成numpy数组）。除了NumPy数组格式和list数组格式的特征数据，以及传入dataloader类型的数据进行批量的模型推理外，还可以传入文件路径进行模型推理，下面我们分文件类型说明。</p>
 <section id="id20">
-<h4>针对单个图片文件的推理：<a class="headerlink" href="#id20" title="Permalink to this headline"></a></h4>
+<h4>针对单个图片文件的推理：<a class="headerlink" href="#id20" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
 <span class="n">test_x</span> <span class="o">=</span> <span class="s2">&quot;mnist/val_set/7/83.jpg&quot;</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">test_x</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="s2">&quot;mn_ckpt/basenn.pth&quot;</span><span class="p">)</span> <span class="c1"># 推理整个测试集</span>
@@ -408,7 +413,7 @@
 </div>
 </section>
 <section id="id21">
-<h4>针对图片文件夹的推理：<a class="headerlink" href="#id21" title="Permalink to this headline"></a></h4>
+<h4>针对图片文件夹的推理：<a class="headerlink" href="#id21" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
 <span class="n">test_x</span> <span class="o">=</span> <span class="s2">&quot;mnist/val_set/7&quot;</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">test_x</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="s2">&quot;mn_ckpt/basenn.pth&quot;</span><span class="p">)</span> <span class="c1"># 推理整个测试集</span>
@@ -417,7 +422,7 @@
 </div>
 </section>
 <section id="id22">
-<h4>针对特征表格文件的推理：<a class="headerlink" href="#id22" title="Permalink to this headline"></a></h4>
+<h4>针对特征表格文件的推理：<a class="headerlink" href="#id22" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
 <span class="n">test_path</span> <span class="o">=</span> <span class="s1">&#39;../../dataset/iris/iris_test.csv&#39;</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">test_path</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="s2">&quot;iris_ckpt/basenn.pth&quot;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -428,7 +433,7 @@
 <p>c对表格文件的要求：csv格式，纵轴为样本，横轴为特征，第一行为表头，最后一列为标签</p>
 </section>
 <section id="id23">
-<h4>针对文本数据的推理：<a class="headerlink" href="#id23" title="Permalink to this headline"></a></h4>
+<h4>针对文本数据的推理：<a class="headerlink" href="#id23" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
 <span class="n">data</span> <span class="o">=</span> <span class="s1">&#39;长&#39;</span>
 <span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;xxx.pth&#39;</span>
@@ -443,7 +448,7 @@
 </section>
 </section>
 <section id="id24">
-<h3>7. 模型的保存与加载<a class="headerlink" href="#id24" title="Permalink to this headline"></a></h3>
+<h3>7. 模型的保存与加载<a class="headerlink" href="#id24" title="Permalink to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 保存</span>
 <span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;mn_ckpt&#39;</span>
 <span class="c1"># 加载</span>
@@ -454,14 +459,14 @@
 <p>注：<code class="docutils literal notranslate"><span class="pre">train()</span></code>，<code class="docutils literal notranslate"><span class="pre">inference()</span></code>函数中也可通过参数控制模型的保存与加载，但这里也列出单独保存与加载模型的方法，以确保灵活性。</p>
 </section>
 <section id="id25">
-<h3>8. 查看模型结构<a class="headerlink" href="#id25" title="Permalink to this headline"></a></h3>
+<h3>8. 查看模型结构<a class="headerlink" href="#id25" title="Permalink to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">print_model</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>无参数。</p>
 </section>
 <section id="id26">
-<h3>9. 网络中特征可视化<a class="headerlink" href="#id26" title="Permalink to this headline"></a></h3>
+<h3>9. 网络中特征可视化<a class="headerlink" href="#id26" title="Permalink to this heading"></a></h3>
 <p>BaseNN内置<code class="docutils literal notranslate"><span class="pre">visual_feature</span></code>函数可呈现数据在网络中传递的过程。特征可视化可以帮助我们更好地理解模型在处理数据时的内部工作原理，并通过这种方式来进一步提高模型的性能和效果。</p>
 <p>如输入数据为图片，指定图片和已经训练好的模型，可生成一张展示逐层网络特征传递的图片。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
@@ -474,7 +479,7 @@
 </pre></div>
 </div>
 <figure class="align-default">
-<img alt="../_images/特征可视化.png" src="../_images/特征可视化.png" />
+<img alt="../_images/%E7%89%B9%E5%BE%81%E5%8F%AF%E8%A7%86%E5%8C%96.png" src="../_images/%E7%89%B9%E5%BE%81%E5%8F%AF%E8%A7%86%E5%8C%96.png" />
 </figure>
 <p>如输入数据为一维数据，指定数据和已经训练好的模型，可生成一个txt文件展示经过各层后的输出。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">NumPy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -487,9 +492,9 @@
 </div>
 </section>
 <section id="id27">
-<h3>10. 自定义随机数种子<a class="headerlink" href="#id27" title="Permalink to this headline"></a></h3>
+<h3>10. 自定义随机数种子<a class="headerlink" href="#id27" title="Permalink to this heading"></a></h3>
 <p>默认初始化是随机的，每次训练结果都不一样。可以使用<code class="docutils literal notranslate"><span class="pre">set_seed()</span></code>函数设定随机数种子，使得训练结果可被其他人复现。一旦指定，则每次训练结果一致。使用方法如下：</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">model</span> <span class="o">=</span> nn<span class="o">()</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>nn<span class="o">()</span>
 model.set_seed<span class="o">(</span><span class="m">1235</span><span class="o">)</span>
 model.add<span class="o">(</span>...<span class="o">)</span>
 ...
@@ -499,7 +504,7 @@ model.train<span class="o">(</span>...<span class="o">)</span>
 <p>注：设定随机数种子<code class="docutils literal notranslate"><span class="pre">set_seed()</span></code>应当在搭建网络<code class="docutils literal notranslate"><span class="pre">add()</span></code>之前。在搭建机器学习模型之前，通常建议设置随机数种子。这样做可以使得在每次运行时，生成的随机数序列都是相同的，从而使得模型的可重复性更高。这对于模型调试、验证模型效果、比较不同模型效果等方面都非常有帮助。随机数种子的选择通常应该是随意的，只要您能记住或记录下来使用的种子即可。并且，种子的选择并不会影响模型的效果，只会影响结果的可重复性。</p>
 </section>
 <section id="id28">
-<h3>11. 自定义损失函数<a class="headerlink" href="#id28" title="Permalink to this headline"></a></h3>
+<h3>11. 自定义损失函数<a class="headerlink" href="#id28" title="Permalink to this heading"></a></h3>
 <p>损失函数（或称目标函数、优化评分函数）是编译模型时所需的参数之一。在机器学习和深度学习中，模型的训练通常涉及到一个优化过程，即通过不断调整模型的参数，使得模型在训练数据上的预测结果与实际结果的差距最小化。这个差距通常使用一个称为“损失函数”的指标来衡量。损失函数通常是一个关于模型参数的函数，用于度量模型预测结果与实际结果之间的差异。在模型训练过程中，模型会根据损失函数的值来调整自己的参数，以减小损失函数的值。</p>
 <p>默认的损失函数是交叉熵损失函数，允许选择不同的损失函数，支持的损失函数见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#id22">附录</a>。自选损失函数方法如下：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="o">...</span><span class="p">,</span><span class="n">loss</span><span class="o">=</span><span class="s2">&quot;CrossEntropyLoss&quot;</span><span class="p">)</span>
@@ -507,7 +512,7 @@ model.train<span class="o">(</span>...<span class="o">)</span>
 </div>
 </section>
 <section id="id29">
-<h3>12. 自定义评价指标<a class="headerlink" href="#id29" title="Permalink to this headline"></a></h3>
+<h3>12. 自定义评价指标<a class="headerlink" href="#id29" title="Permalink to this heading"></a></h3>
 <p>评价指标用于评估当前训练模型的性能。当模型编译后，评价指标应该作为
 <code class="docutils literal notranslate"><span class="pre">metrics</span></code>
 的参数来输入。默认的默认为准确率，允许选择其他的评价指标。支持的评价指标：acc（准确率），mae（平均绝对误差），mse（均方误差）。</p>
@@ -521,7 +526,7 @@ model.train<span class="o">(</span>...<span class="o">)</span>
 <p>分类：<code class="docutils literal notranslate"><span class="pre">model.train(...,loss=&quot;CrossEntropyLoss&quot;,metrics=[&quot;acc&quot;])</span></code></p>
 </section>
 <section id="cnn">
-<h3>13. CNN特征提取<a class="headerlink" href="#cnn" title="Permalink to this headline"></a></h3>
+<h3>13. CNN特征提取<a class="headerlink" href="#cnn" title="Permalink to this heading"></a></h3>
 <p>图像特征提取是计算机视觉中的重要研究领域之一，是计算机视觉中的一个关键步骤，它涉及将图像转换成一组有意义的特征向量，以便后续的图像分析和识别任务。CNN（卷积神经网络）特征提取方法是一种基于深度学习的特征提取方法，通过卷积层、池化层等多个网络层的处理，可以提取出具有高层次抽象能力的特征表示，被广泛应用于图像分类、目标检测等领域。</p>
 <p>BaseNN中提供了一个CNN特征提取工具，可使用BaeNN的<code class="docutils literal notranslate"><span class="pre">model.extract_feature()</span></code>函数通过指定预训练模型来提取图像特征，使用ResNet预训练模型可将一张图像提取为1000维的特征（该预训练模型是在imagenet上训练的千分类模型，所以输出特征的维度是1000维），输出一个1行1000列的数组。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 声明模型</span>
@@ -536,9 +541,9 @@ model.train<span class="o">(</span>...<span class="o">)</span>
 </section>
 </section>
 <section id="id30">
-<h2>附录<a class="headerlink" href="#id30" title="Permalink to this headline"></a></h2>
+<h2>附录<a class="headerlink" href="#id30" title="Permalink to this heading"></a></h2>
 <section id="add">
-<h3>1. add()详细介绍<a class="headerlink" href="#add" title="Permalink to this headline"></a></h3>
+<h3>1. add()详细介绍<a class="headerlink" href="#add" title="Permalink to this heading"></a></h3>
 <p>使用BaseNN可以轻易地创建深度学习模型。不同类型的神经网络适用于不同类型的问题，比如CNN通常用于处理图像问题，RNN通常用于处理序列问题，全连接神经网络可以应用于各种问题。</p>
 <p>首先以典型的LeNet5网络结构为例。注释标明了数据经过各层的尺寸变化。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;conv2d&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span><span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> <span class="c1"># [100, 3, 18, 18]</span>
@@ -583,7 +588,7 @@ Network，循环神经网络）模型，主要用于处理序列数据。lstm模
 <p>bidirectional：默认是false，代表不用双向LSTM。</p>
 <p>以上仅是基本的模型架构。在实际使用中，可能需要调整模型的层数、节点数、激活函数等参数以达到最佳效果。</p>
 <section id="rnn">
-<h4>拓展–RNN模型搭建简单指南：<a class="headerlink" href="#rnn" title="Permalink to this headline"></a></h4>
+<h4>拓展–RNN模型搭建简单指南：<a class="headerlink" href="#rnn" title="Permalink to this heading"></a></h4>
 <p>循环神经网络是一类以序列数据为输入，在序列的演进方向进行递归且所有节点（循环单元）按链式连接的递归神经网络。RNN在自然语言处理问题中有得到应用，也被用于与自然语言处理有关的异常值检测问题，例如社交网络中虚假信息/账号的检测。NN与卷积神经网络向结合的系统可被应用于在计算机视觉问题，例如在字符识别中，有研究使用卷积神经网络对包含字符的图像进行特征提取，并将特征输入LSTM进行序列标注。</p>
 <p>下为搭建RNN神经网络的一般流程：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;lstm&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">132</span><span class="p">,</span><span class="mi">128</span><span class="p">))</span>
@@ -647,12 +652,8 @@ Network，循环神经网络）模型，主要用于处理序列数据。lstm模
 </section>
 </section>
 <section id="id31">
-<h3>1. 支持的损失函数<a class="headerlink" href="#id31" title="Permalink to this headline"></a></h3>
+<h3>1. 支持的损失函数<a class="headerlink" href="#id31" title="Permalink to this heading"></a></h3>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 2%" />
-<col style="width: 98%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>序号</p></th>
 <th class="head"><p>损失函数</p></th>
@@ -726,7 +727,7 @@ Network，循环神经网络）模型，主要用于处理序列数据。lstm模
 </table>
 </section>
 <section id="rnncnn">
-<h3>3. RNN和CNN<a class="headerlink" href="#rnncnn" title="Permalink to this headline"></a></h3>
+<h3>3. RNN和CNN<a class="headerlink" href="#rnncnn" title="Permalink to this heading"></a></h3>
 <p>RNN（Recurrent Neural Network，循环神经网络）和CNN（Convolutional Neural
 Network，卷积神经网络）是深度学习中两个非常重要的神经网络模型。</p>
 <p>RNN是一种用于处理序列数据的神经网络模型。它的特点是可以将前面的输入信息保存下来，并在后面的计算中进行利用，从而实现对序列数据的建模。RNN在自然语言处理、语音识别、股票预测等任务中广泛应用。RNN对具有序列特性的数据非常有效，它能挖掘数据中的时序信息以及语义信息。它有记忆功能，可以记住序列中前面的信息，并用这些信息影响后续的输出。这就像我们人类在阅读一段文字时，会记住前面的内容，以帮助理解后面的内容一样。</p>
@@ -743,7 +744,7 @@ Network，卷积神经网络）是深度学习中两个非常重要的神经网�
 <p>简单来说，RNN适用于序列数据处理，而CNN适用于图像和空间数据处理。但实际上，它们也可以互相组合使用，例如在图像描述生成任务中，可以使用CNN提取图像特征，然后使用RNN生成对应的文字描述。使用BaseNN搭建RNN和CNN模型的方式详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basenn/introduction.html#add">add()详细</a>介绍。</p>
 </section>
 <section id="id32">
-<h3>4. 深度学习常见的数据类型<a class="headerlink" href="#id32" title="Permalink to this headline"></a></h3>
+<h3>4. 深度学习常见的数据类型<a class="headerlink" href="#id32" title="Permalink to this heading"></a></h3>
 <p>图像数据：图像数据是深度学习应用中最常见的数据类型之一。图像数据通常表示为多维数组，每个数组元素代表一个像素的值。深度学习应用中常使用的图像数据格式包括JPEG、PNG、BMP等。</p>
 <p>文本数据：文本数据是指由字符组成的序列数据。在深度学习应用中，文本数据通常被表示为词向量或字符向量，用于输入到文本处理模型中。</p>
 <p>特征数据：特征数据指的是表示对象或事物的特征的数据，通常用于机器学习和数据挖掘。特征数据可以是数值型、离散型或者是二进制的，用于描述对象或事物的各种属性和特征。特征数据可以是手动设计的、自动提取的或者是混合的。在机器学习中，特征数据通常作为模型的输入，用于预测目标变量或者分类。</p>

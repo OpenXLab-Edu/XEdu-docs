@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>最后一步：AI模型转换 &mdash; OpenXLabEdu  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenXLabEdu
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basenn.html">神经网络库BaseNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../baseml.html">传统机器学习库BaseML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basedt.html">数据处理库BaseDT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basedeploy.html">模型部署库BaseDeploy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scitech_tools.html">相关科创工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support_resources.html">学习支持和资源获取</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dl_library.html">深度学习知识库</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenXLabEdu</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">最后一步：AI模型转换</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/mmedu/0model_convert.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ai">
+<h1>最后一步：AI模型转换<a class="headerlink" href="#ai" title="Permalink to this heading"></a></h1>
+<p>得益于<code class="docutils literal notranslate"><span class="pre">OpenMMLab</span></code>系列工具的不断进步与发展。MMEdu通过集成OpenMMLab开源的<code class="docutils literal notranslate"><span class="pre">模型部署工具箱MMDeploy</span></code>和<code class="docutils literal notranslate"><span class="pre">模型压缩工具包MMRazor</span></code>，打通了从算法模型到应用程序这
+“最后一公里”！
+今天我们将开启<code class="docutils literal notranslate"><span class="pre">AI模型部署</span></code>入门系列教程，在面向中小学AI教育的开发和学习工具
+<code class="docutils literal notranslate"><span class="pre">XEdu</span></code> 的辅助下，介绍以下内容：</p>
+<ul class="simple">
+<li><p>模型转换</p></li>
+<li><p>模型量化（MMEdu暂未合并该功能）</p></li>
+<li><p>多模态交互</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>MMEdu已经可以帮助我diy自己的AI模型了，为什么要多此一举、徒增难度，来学习需要更多编程知识的模型部署模块？</p>
+</div>
+<p>初学新知识，我们总会有困惑与畏难，好奇这项技术能否为我所用、产生效益，担心过程是否困难，付出与收获不成正比。没有关系！请让自己的思考凝聚成三个层面，即<code class="docutils literal notranslate"><span class="pre">黄金圈法则：Why、How、What</span></code>，来从如下的行文中去寻找答案。</p>
+<p>希望通过本系列教程，带领大家学会如何把自己使用<code class="docutils literal notranslate"><span class="pre">MMEdu</span></code>训练的计算机视觉任务<code class="docutils literal notranslate"><span class="pre">SOTA模型</span></code>部署到<code class="docutils literal notranslate"><span class="pre">ONNXRuntime</span></code>、<code class="docutils literal notranslate"><span class="pre">NCNN</span></code>等各个推理引擎上。我们默认大家熟悉
+Python 语言，除此之外不需要了解任何模型部署的知识。</p>
+<p><strong>行空板上部署MMEdu训练模型效果示例：</strong></p>
+<figure class="align-default">
+<img alt="../_images/%E9%83%A8%E7%BD%B2%E6%BC%94%E7%A4%BA.gif" src="../_images/%E9%83%A8%E7%BD%B2%E6%BC%94%E7%A4%BA.gif" />
+</figure>
+<section id="why">
+<h2>Why：为什么<a class="headerlink" href="#why" title="Permalink to this heading"></a></h2>
+<section id="id1">
+<h3>为什么要进行模型转换<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<p>用MMEdu训练的模型，只能运行在安装了MMEdu环境的电脑吗？不，借助模型转换，MMEdu（包括BaseNN）训练的模型都可以转换为ONNX模型，然后部署在很多常见的电脑（开源硬件）上。</p>
+<p>模型转换是为了模型能在不同框架间流转。在实际应用时，模型转换几乎都用于工业部署，负责模型从训练框架到部署侧推理框架的连接。
+这是因为随着深度学习应用和技术的演进，训练框架和推理框架的职能已经逐渐分化。
+分布式、自动求导、混合精度……训练框架往往围绕着易用性，面向设计算法的研究员，以研究员能更快地生产高性能模型为目标。
+硬件指令集、预编译优化、量化算法……推理框架往往围绕着硬件平台的极致优化加速，面向工业落地，以模型能更快执行为目标。由于职能和侧重点不同，没有一个深度学习框架能面面俱到，完全一统训练侧和推理侧，而模型在各个框架内部的表示方式又千差万别，所以模型转换就被广泛需要了。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>概括：训练框架大，塞不进两三百块钱买的硬件设备中，推理框架小，能在硬件设备上安装。要把训练出的模型翻译成推理框架能读懂的语言，才能在硬件设备上运行</p>
+</div>
+</section>
+<section id="id2">
+<h3>为什么要进行模型量化<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<p>模型量化是指将深度学习模型中的参数、激活值等数据转化为更小的数据类型（通常是8位整数或者浮点数），以达到模型大小减小、计算速度加快、内存占用减小等优化目的的技术手段。模型量化有以下几个优点：减小模型大小、加速模型推理、减少内存占用等。因此，模型量化可以帮助提高深度学习模型的效率和性能，在实际应用中具有重要的价值和意义。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>概括：对模型采用合适的量化，能在对准确率忽略不计的情况下，让模型更小、更快、更轻量。比如原先168
+MB的模型量化后大小变为了42.6 MB，推理速度提高了两倍。</p>
+</div>
+</section>
+<section id="id3">
+<h3>为什么要进行多模态交互<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<p>多模态交互是指利用多个感知通道（例如语音、图像、触觉、姿态等）进行交互的技术。多模态交互在人机交互、智能交通、健康医疗、教育培训等领域都有广泛的应用、在提高交互效率、用户体验、解决单模态限制和实现智能化交互等方面具有重要的作用和价值。
+&gt;概括：给你的AI作品加点创客料 &gt;</p>
+</section>
+<section id="id4">
+<h3>什么是推理框架<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<p>深度学习推理框架是一种让深度学习算法在实时处理环境中提高性能的框架。常见的有<a class="reference external" href="https://github.com/microsoft/onnxruntime">ONNXRuntime</a>、<a class="reference external" href="https://github.com/Tencent/ncnn">NCNN</a>、<a class="reference external" href="https://github.com/NVIDIA/TensorRT">TensorRT</a>、<a class="reference external" href="https://github.com/openvinotoolkit/openvino">OpenVINO</a>等。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ONNXRuntime是微软推出的一款推理框架，支持多种运行后端包括CPU，GPU，TensorRT，DML等，是对ONNX模型最原生的支持。</p>
+<p>NCNN是腾讯公司开发的移动端平台部署工具，一个为手机端极致优化的高性能神经网络前向计算框架。NCNN仅用于推理，不支持学习。</p>
+</div>
+<p><strong>值得注意的是，包括Pytorch、Tensorflow，以及国内的百度PaddlePaddle、华为的MindSpore等主流的深度学习框架都开发了工具链来回应这个Why。我们采用业界主流的方法，以更高代码封装度的形式来解决这一问题。接下来，且听我们对利用``XEdu``进行``How怎么做``的流程娓娓道来。</strong></p>
+</section>
+</section>
+<section id="how">
+<h2>How：怎么做<a class="headerlink" href="#how" title="Permalink to this heading"></a></h2>
+<p>总结一下Why中的回应，在软件工程中，部署指把开发完毕的软件投入使用的过程，包括环境配置、软件安装等步骤。类似地，对于深度学习模型来说，模型部署指让训练好的模型在特定环境中运行的过程。相比于软件部署，模型部署会面临更多的难题：</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>运行模型所需的环境难以配置。深度学习模型通常是由一些框架编写，比如
+PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架不适合在手机、开发板等生产环境中安装。</p></li>
+<li><p>深度学习模型的结构通常比较庞大，需要大量的算力才能满足实时运行的需求。模型的运行效率需要优化。
+因为这些难题的存在，模型部署不能靠简单的环境配置与安装完成。</p></li>
+</ol>
+</div>
+<p>经过工业界和学术界数年的探索，结合<code class="docutils literal notranslate"><span class="pre">XEdu</span></code>的工具，展示模型部署一条流行的流水线：</p>
+<figure class="align-default">
+<img alt="../_images/XEdu%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2%E5%85%A8%E9%93%BE%E8%B7%AFpipeline.JPG" src="../_images/XEdu%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2%E5%85%A8%E9%93%BE%E8%B7%AFpipeline.JPG" />
+</figure>
+<p>这一条流水线解决了模型部署中的两大问题：使用对接深度学习框架和推理引擎的中间表示，开发者不必担心如何在新环境中运行各个复杂的框架；通过中间表示的网络结构优化和推理引擎对运算的底层优化，模型的运算效率大幅提升。</p>
+<section id="mmedu">
+<h3>借助MMEdu完成模型转换<a class="headerlink" href="#mmedu" title="Permalink to this heading"></a></h3>
+<p>MMEdu内置了一个<code class="docutils literal notranslate"><span class="pre">convert</span></code>函数实现了一键式模型转换，转换前先了解一下转换要做的事情吧。</p>
+<ul>
+<li><p>转换准备：</p>
+<p>待转换的模型权重文件（用MMEdu训练）。</p>
+</li>
+<li><p>需要配置两个信息：</p>
+<p>待转换的模型权重文件（<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>）和输出的文件（<code class="docutils literal notranslate"><span class="pre">out_file</span></code>）。</p>
+</li>
+<li><p>模型转换的典型代码：</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
+<span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;MobileNet&#39;</span><span class="p">)</span>
+<span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/cls_model/CatsDog/best_accuracy_top-1_epoch_2.pth&#39;</span>
+<span class="n">out_file</span><span class="o">=</span><span class="s2">&quot;catdog.onnx&quot;</span>
+<span class="n">model</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这段代码是完成分类模型的转换，接下来对为您<code class="docutils literal notranslate"><span class="pre">model.convert</span></code>函数的各个参数：</p>
+<p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>：选择想要进行模型转换的权重文件，以.pth为后缀。</p>
+<p><code class="docutils literal notranslate"><span class="pre">out_file</span></code>：模型转换后的输出文件路径。</p>
+<p>类似的，目标检测模型转换的示例代码如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMDetection</span> <span class="k">as</span> <span class="n">det</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">det</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;SSD_Lite&#39;</span><span class="p">)</span>
+<span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/COCO-80/ssdlite.pth&#39;</span>
+<span class="n">out_file</span><span class="o">=</span><span class="s2">&quot;COCO-80.onnx&quot;</span>
+<span class="n">model</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>参考项目：</p>
+<p><a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=645110943c0e930cb55e859b&amp;sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=645110943c0e930cb55e859b&amp;sc=62f34141bf4f550f3e926e0e#public</a></p>
+</section>
+<section id="basedeploy">
+<h3>借助BaseDeploy完成模型部署<a class="headerlink" href="#basedeploy" title="Permalink to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">XEdu</span></code>团队推出了模型部署工具<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>，可以轻松完成模型部署。对MMEdu训练的模型完成转换后，生成ONNX模型，可借助<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>库部署到硬件上。</p>
+<p>示例代码如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
+<span class="n">model_path</span> <span class="o">=</span> <span class="s1">&#39;cls.onnx&#39;</span>
+<span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ret</span><span class="p">,</span> <span class="n">img</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">bd</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>更多关于BaseDePloy库的介绍和使用说明详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basedeploy/introduction.html#basedeploy-xedu">BaseDeploy：服务于XEdu的模型部署工具</a>。</p>
+<p>现在，让我们从“<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&amp;sc=635638d69ed68060c638f979#public">从零开始训练猫狗识别模型并完成模型转换</a>”项目入手，见识一下使用MMEdu工具完成从模型训练到模型部署的基本流程吧！</p>
+<p><strong>1.准备数据集</strong></p>
+<p>思考自己想要解决的分类问题后，首先收集数据并整理好数据集，如想要解决猫狗识别问题需准备猫狗数据集。</p>
+<p><strong>2.模型训练</strong></p>
+<p>全新开始训练一个模型，一般要花较长时间。因此我们强烈建议在预训练模型的基础上继续训练，哪怕你要分类的数据集和预训练的数据集并不一样。如下代码使用基于MobileNet网络训练的猫狗识别预训练模型，在这个预训练模型基础上继续训练。基于预训练模型继续训练可起到加速训练的作用，通常会使得模型达到更好的效果。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
+<span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;MobileNet&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;/data/TC4V0D/CatsDogsSample&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/cls_model/CatsDog1&#39;</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">epochs</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;checkpoints/pretrain_model/mobilenet_v2.pth&#39;</span> <span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">device</span><span class="o">=</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>3.推理部署</strong></p>
+<p>使用MMEdu图像分类模块模型推理的示例代码完成模型推理。返回的数据类型是一个字典列表（很多个字典组成的列表）类型的变量，内置的字典表示分类的结果，如“<code class="docutils literal notranslate"><span class="pre">{'标签':</span> <span class="pre">0,</span> <span class="pre">'置信度':</span> <span class="pre">0.9417100548744202,</span> <span class="pre">'预测结果':</span> <span class="pre">'cat'}</span></code>”，我们可以用字典访问其中的元素。巧用预测结果设置一些输出。如：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
+<span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;MobileNet&#39;</span><span class="p">)</span>
+<span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/cls_model/CatsDog1/best_accuracy_top-1_epoch_1.pth&#39;</span>
+<span class="n">img_path</span> <span class="o">=</span> <span class="s1">&#39;/data/TC4V0D/CatsDogsSample/test_set/cat/cat0.jpg&#39;</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">img_path</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">checkpoint</span> <span class="o">=</span> <span class="n">checkpoint</span><span class="p">,</span><span class="n">device</span><span class="o">=</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">print_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;标签（序号）为：&#39;</span><span class="p">,</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;标签&#39;</span><span class="p">])</span>
+<span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;标签&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;这是小猫，喵喵喵！&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;这是小猫，喵喵喵！&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>4.模型转换</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
+<span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;MobileNet&#39;</span><span class="p">)</span>
+<span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/cls_model/CatsDog1/best_accuracy_top-1_epoch_1.pth&#39;</span>
+<span class="n">out_file</span><span class="o">=</span><span class="s1">&#39;out_file/cats_dogs.onnx&#39;</span>
+<span class="n">model</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>此时项目文件中的out_file文件夹下便生成了模型转换后生成的两个文件，可打开查看。一个是ONNX模型权重，一个是示例代码，示例代码稍作改动即可运行（需配合BaseData.py的BaseDT库）。</p>
+<ul>
+<li><p>硬件上需安装的库：</p>
+<p>BaseDeploy</p>
+</li>
+<li><p>需上传到硬件的文件：</p>
+<p>1）out_file文件夹（内含模型转换生成的两个文件）。</p>
+<p>新建一个代码文件，将out_file文件夹中的py文件中的代码稍作修改用于代码运行（当然也可以直接运行）。</p>
+</li>
+</ul>
+<p>示例代码：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
+<span class="n">model_path</span> <span class="o">=</span> <span class="s1">&#39;out_file/cats_dogs.onnx&#39;</span>
+<span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ret</span><span class="p">,</span> <span class="n">img</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">bd</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;预测结果&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;dog&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;这是小狗，汪汪汪！&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;这是小猫，喵喵喵！&#39;</span><span class="p">)</span>
+<span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>拓展：模型转换在线版</strong></p>
+<p>MMDeploy还推出了模型转换工具网页版本，支持更多后端推理框架，具体使用步骤如下。</p>
+<ul class="simple">
+<li><p>点击<a class="reference external" href="https://platform.openmmlab.com/deploee">MMDeploy硬件模型库</a>，后选择模型转换</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../_images/%E7%BD%91%E9%A1%B5%E7%89%88%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A41.png" src="../_images/%E7%BD%91%E9%A1%B5%E7%89%88%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A41.png" />
+</figure>
+<ul class="simple">
+<li><p>点击新建转换任务</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../_images/%E7%BD%91%E9%A1%B5%E7%89%88%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A42.png" src="../_images/%E7%BD%91%E9%A1%B5%E7%89%88%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A42.png" />
+</figure>
+<ul class="simple">
+<li><p>选择需要转换的模型类型、模型训练配置，并点击<code class="docutils literal notranslate"><span class="pre">上传模型</span></code>上传本地训练好的.pth权重文件，具体的选项如下表所示</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../_images/%E7%BD%91%E9%A1%B5%E7%89%88%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A43.png" src="../_images/%E7%BD%91%E9%A1%B5%E7%89%88%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A43.png" />
+</figure>
+<table class="docutils align-default"><thead><tr><th rowspan="2"><p>MMEdu模型名称</p>
+</th><th rowspan="2"><p>功能</p>
+</th><th rowspan="2"><p>OpenMMlab算法</p>
+</th><th rowspan="10"><p>模型训练配置</p>
+</th></tr></thead><tbody align="center"><tr><td class="tg-zk71"><p>MobileNet</p>
+</td><td><p>图像分类</p>
+</td><td><p>mmcls v1.0.0rc5</p>
+</td><td><p>configs/mobilenet_v2/mobilenet-v2_8xb32_in1k.py</p>
+</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>RegNet</p>
+</td><td><p>图像分类</p>
+</td><td><p>mmcls v1.0.0rc5</p>
+</td><td><p>configs/regnet/regnetx-400mf_8xb128_in1k.py</p>
+</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>RepVGG</p>
+</td><td><p>图像分类</p>
+</td><td><p>mmcls v1.0.0rc5</p>
+</td><td><p>configs/repvgg/deploy/repvgg-A0_deploy_4xb64-coslr-120e_in1k.py</p>
+</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>ResNeXt</p>
+</td><td><p>图像分类</p>
+</td><td><p>mmcls v1.0.0rc5</p>
+</td><td><p>configs/resnext/resnext50-32x4d_8xb32_in1k.py</p>
+</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>ResNet18</p>
+</td><td><p>图像分类</p>
+</td><td><p>mmcls v1.0.0rc5</p>
+</td><td><p>configs/resnet/resnet18_8xb32_in1k.py</p>
+</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>ResNet50</p>
+</td><td><p>图像分类</p>
+</td><td><p>mmcls v1.0.0rc5</p>
+</td><td><p>configs/resnet/resnet50_8xb32_in1k.py</p>
+</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>ShuffleNet_v2</p>
+</td><td><p>图像分类</p>
+</td><td><p>mmcls v1.0.0rc5</p>
+</td><td><p>configs/shufflenet_v2/shufflenet-v2-1x_16xb64_in1k.py</p>
+</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>VGG</p>
+</td><td><p>图像分类</p>
+</td><td><p>mmcls v1.0.0rc5</p>
+</td><td><p>configs/vgg/vgg19_8xb32_in1k.py</p>
+</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>FasterRCNN</p>
+</td><td><p>目标检测</p>
+</td><td><p>mmdet-det v3.0.0rc5</p>
+</td><td><p>configs/faster_rcnn/faster_rcnn_r50_fpn_1x_coco.py</p>
+</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>Mask_RCNN</p>
+</td><td><p>目标检测</p>
+</td><td><p>mmdet-det v3.0.0rc5</p>
+</td><td><p>configs/mask_rcnn/mask_rcnn_r50_fpn_1x_coco.py</p>
+</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>SSD_Lite</p>
+</td><td><p>目标检测</p>
+</td><td><p>mmdet-det v3.0.0rc5</p>
+</td><td><p>configs/ssd/ssdlite_mobilenetv2_scratch_600e_coco.py</p>
+</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>Yolov3</p>
+</td><td><p>目标检测</p>
+</td><td><p>mmdet-det v3.0.0rc5</p>
+</td><td><p>configs/yolo/yolov3_d53_320_273e_coco.py</p>
+</td></tr></tbody></table><ul class="simple">
+<li><p>选择需要的目标runtime，可选的有<code class="docutils literal notranslate"><span class="pre">ncnn</span></code>,<code class="docutils literal notranslate"><span class="pre">ort1.8.1(onnxruntime)</span></code>,<code class="docutils literal notranslate"><span class="pre">openvino</span></code>等，点击提交任务</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../_images/%E7%BD%91%E9%A1%B5%E7%89%88%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A44.png" src="../_images/%E7%BD%91%E9%A1%B5%E7%89%88%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A44.png" />
+</figure>
+<ul class="simple">
+<li><p>点击提交任务后，状态会变为排队中，或处理中，如果转换失败会提示错误日志，根据错误日志提示修改，像下图错误的原因是使用ResNet50（分类）的权重，可对应的OpenMMLab算法误选为了mmdet（检测）的，所以提示的错误是找不到配置文件</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../_images/%E7%BD%91%E9%A1%B5%E7%89%88%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A45.png" src="../_images/%E7%BD%91%E9%A1%B5%E7%89%88%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A45.png" />
+</figure>
+<ul class="simple">
+<li><p>转换成功后，点击<code class="docutils literal notranslate"><span class="pre">下载模型</span></code>即可使用</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../_images/%E7%BD%91%E9%A1%B5%E7%89%88%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A46.png" src="../_images/%E7%BD%91%E9%A1%B5%E7%89%88%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A46.png" />
+</figure>
+</section>
+</section>
+<section id="what">
+<h2>What：什么现象与成果<a class="headerlink" href="#what" title="Permalink to this heading"></a></h2>
+<section id="id5">
+<h3>精度测试结果<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<section id="id6">
+<h4>软硬件环境<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h4>
+<ul class="simple">
+<li><p>操作系统：Ubuntu 16.04</p></li>
+<li><p>系统位数：64</p></li>
+<li><p>处理器：Intel i7-11700 &#64; 2.50GHz * 16</p></li>
+<li><p>显卡：GeForce GTX 1660Ti</p></li>
+<li><p>推理框架：ONNXRuntime == 1.13.1</p></li>
+<li><p>数据处理工具：BaseDT == 0.0.1</p></li>
+</ul>
+</section>
+<section id="id7">
+<h4>配置<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h4>
+<ul class="simple">
+<li><p>静态图导出</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">batch</span></code>大小为1</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BaseDT</span></code>内置<code class="docutils literal notranslate"><span class="pre">ImageData</span></code>工具进行数据预处理</p></li>
+</ul>
+</section>
+<section id="id8">
+<h4>精度测试结果汇总<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h4>
+<ul class="simple">
+<li><p>图像分类</p></li>
+</ul>
+<table class="docutils align-default"><thead><tr><th rowspan="2"><p>模型</p>
+</th><th rowspan="2"><p>数据集</p>
+</th><th rowspan="1" colspan="2"><p>权重大小</p>
+</th><th rowspan="1" colspan="2"><p>精度（TOP-1）</p>
+</th><th rowspan="1" colspan="2"><p>精度（TOP-5）</p>
+</th></tr><tr><th colspan="1"><p>FP32</p>
+</th><th colspan="1"><p>INT8</p>
+</th><th colspan="1"><p>FP32</p>
+</th><th colspan="1"><p>INT8</p>
+</th><th colspan="1"><p>FP32</p>
+</th><th colspan="1"><p>INT8</p>
+</th></tr></thead><tbody align="center"><tr><td class="tg-zk71"><p>MobileNet</p>
+</td><td><p>ImageNet</p>
+</td><td><p>13.3 MB</p>
+</td><td><p>3.5 MB</p>
+</td><td><p>70.94%</p>
+</td><td><p>68.30%</p>
+</td><td><p>89.99%</p>
+</td><td><p>88.44%</p>
+</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>ResNet18</p>
+</td><td><p>ImageNet</p>
+</td><td><p>44.7 MB</p>
+</td><td></td><td><p>69.93%</p>
+</td><td></td><td><p>89.29%</p>
+</td><td></td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>ResNet50</p>
+</td><td><p>ImageNet</p>
+</td><td><p>97.8 MB</p>
+</td><td><p>24.6 MB</p>
+</td><td><p>74.93%</p>
+</td><td><p>74.77%</p>
+</td><td><p>92.38%</p>
+</td><td><p>92.32%</p>
+</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>ShuffleNet_v2</p>
+</td><td><p>ImageNet</p>
+</td><td><p>9.2 MB</p>
+</td><td><p>2.28 MB</p>
+</td><td><p>69.36%</p>
+</td><td><p>66.15%</p>
+</td><td><p>88.32%</p>
+</td><td><p>86.34%</p>
+</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>VGG</p>
+</td><td><p>ImageNet</p>
+</td><td><p>527.8 MB</p>
+</td><td><p>101.1 MB</p>
+</td><td><p>72.62%</p>
+</td><td><p>72.32%</p>
+</td><td><p>91.14%</p>
+</td><td><p>90.97%</p>
+</td></tr></tbody></table><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ImageNet
+数据集：ImageNet项目是一个用于视觉对象识别软件研究的大型可视化数据库。ImageNet项目每年举办一次软件比赛，即<code class="docutils literal notranslate"><span class="pre">ImageNet大规模视觉识别挑战赛</span></code>（ILSVRC），软件程序竞相正确分类检测物体和场景。
+ImageNet挑战使用了一个“修剪”的1000个非重叠类的列表。2012年在解决ImageNet挑战方面取得了巨大的突破</p>
+<p>准确度（Top-1）：排名第一的类别与实际结果相符的准确率</p>
+<p>准确度（Top-5）：排名前五的类别包含实际结果的准确率</p>
+</div>
+<ul class="simple">
+<li><p>目标检测</p></li>
+</ul>
+<table class="docutils align-default"><thead><tr><th rowspan="2"><p>模型</p>
+</th><th rowspan="2"><p>数据集</p>
+</th><th rowspan="1" colspan="2"><p>权重大小</p>
+</th><th rowspan="1" colspan="2"><p>精度（mAP）</p>
+</th></tr><tr><th colspan="1"><p>FP32</p>
+</th><th colspan="1"><p>INT8</p>
+</th><th colspan="1"><p>FP32</p>
+</th><th colspan="1"><p>INT8</p>
+</th></tr></thead><tbody align="center"><tr><td class="tg-zk71"><p>SSD_Lite</p>
+</td><td><p>COCO</p>
+</td><td><p>28.1 MB</p>
+</td><td><p>8.5 MB</p>
+</td><td><p>0.2303</p>
+</td><td><p>0.2285</p>
+</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>FasterRCNN</p>
+</td><td><p>COCO</p>
+</td><td><p>168.5 MB</p>
+</td><td><p>42.6 MB</p>
+</td><td><p>0.3437</p>
+</td><td><p>0.3399</p>
+</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>Mask_RCNN</p>
+</td><td><p>COCO</p>
+</td><td><p>169.7 MB</p>
+</td><td><p>45.9 MB</p>
+</td><td><p>0.3372</p>
+</td><td><p>0.3340</p>
+</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>Yolov3</p>
+</td><td><p>COCO</p>
+</td><td><p>237 MB</p>
+</td><td><p>61 MB</p>
+</td><td><p>0.2874</p>
+</td><td><p>0.2688</p>
+</td></tr></tbody></table><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>COCO 数据集: MS
+COCO的全称是<code class="docutils literal notranslate"><span class="pre">Microsoft</span> <span class="pre">Common</span> <span class="pre">Objects</span> <span class="pre">in</span> <span class="pre">Context</span></code>，起源于微软于2014年出资标注的Microsoft
+COCO数据集，与ImageNet竞赛一样，被视为是计算机视觉领域最受关注和最权威的比赛之一。
+COCO数据集是一个大型的、丰富的物体检测，分割和字幕数据集。这个数据集以scene
+understanding为目标，目前为止有语义分割的最大数据集，提供的类别有80
+类，有超过33 万张图片，其中20
+万张有标注，整个数据集中个体的数目超过150 万个。</p>
+<p>AP (average
+Precision)：平均精度，在不同recall下的最高precision的均值(一般会对各类别分别计算各自的AP)</p>
+<p>mAP（mean AP）:平均精度的均值，各类别的AP的均值</p>
+</div>
+</section>
+</section>
+<section id="id9">
+<h3>边、端设备测试结果<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
+<section id="pc">
+<h4>PC机测试<a class="headerlink" href="#pc" title="Permalink to this heading"></a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>用于模型训练的机器，性能较优，常见的操作系统有Windows和Linux</p>
+<p class="rubric" id="id10">软硬件环境</p>
+<ul class="simple">
+<li><p>操作系统：Ubuntu 16.04</p></li>
+<li><p>系统位数：64</p></li>
+<li><p>处理器：Intel i7-11700 &#64; 2.50GHz * 16</p></li>
+<li><p>显卡：GeForce GTX 1660Ti</p></li>
+<li><p>推理框架：ONNXRuntime == 1.13.1</p></li>
+<li><p>数据处理工具：BaseDT == 0.0.1</p></li>
+</ul>
+</div>
+<section id="id11">
+<span id="id12"></span><h5>配置<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h5>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">静态图</span></code>导出</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">batch</span></code>大小为1</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BaseDT</span></code>内置<code class="docutils literal notranslate"><span class="pre">ImageData</span></code>工具进行数据预处理</p></li>
+<li><p>测试时，计算各个数据集中 10 张图片的平均耗时</p></li>
+</ul>
+<p>下面是我们环境中的测试结果：</p>
+<ul class="simple">
+<li><p>图像分类</p></li>
+</ul>
+<table class="docutils align-default"><thead><tr><th rowspan="2"><p>模型</p>
+</th><th rowspan="2"><p>数据集</p>
+</th><th rowspan="1" colspan="2"><p>权重大小</p>
+</th><th rowspan="1" colspan="2"><p>吞吐量 (图片数/每秒)</p>
+</th></tr><tr><th colspan="1"><p>FP32</p>
+</th><th colspan="1"><p>INT8</p>
+</th><th colspan="1"><p>FP32</p>
+</th><th colspan="1"><p>INT8</p>
+</th></tr></thead><tbody align="center"><tr><td class="tg-zk71"><p>MobileNet</p>
+</td><td><p>ImageNet</p>
+</td><td><p>13.3 MB</p>
+</td><td><p>3.5 MB</p>
+</td><td><p>201</p>
+</td><td><p>217</p>
+</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>ResNet18</p>
+</td><td><p>ImageNet</p>
+</td><td><p>44.7 MB</p>
+</td><td></td><td><p>62</p>
+</td><td></td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>ResNet50</p>
+</td><td><p>ImageNet</p>
+</td><td><p>97.8 MB</p>
+</td><td><p>24.6 MB</p>
+</td><td><p>29</p>
+</td><td><p>43</p>
+</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>ShuffleNet_v2</p>
+</td><td><p>ImageNet</p>
+</td><td><p>9.2 MB</p>
+</td><td><p>2.28 MB</p>
+</td><td><p>244</p>
+</td><td><p>278</p>
+</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>VGG</p>
+</td><td><p>ImageNet</p>
+</td><td><p>527.8 MB</p>
+</td><td><p>101.1 MB</p>
+</td><td><p>6</p>
+</td><td><p>15</p>
+</td></tr></tbody></table><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>吞吐量
+(图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现</p>
+<p>*：不建议部署，单张图片推理的时间超过30s</p>
+</div>
+<ul>
+<li><p>目标检测</p>
+<table class="docutils align-default"><thead><tr><th rowspan="2"><p>模型</p>
+</th><th rowspan="2"><p>数据集</p>
+</th><th rowspan="1" colspan="2"><p>权重大小</p>
+</th><th rowspan="1" colspan="2"><p>吞吐量 (图片数/每秒)</p>
+</th></tr><tr><th colspan="1"><p>FP32</p>
+</th><th colspan="1"><p>INT8</p>
+</th><th colspan="1"><p>FP32</p>
+</th><th colspan="1"><p>INT8</p>
+</th></tr></thead><tbody align="center"><tr><td class="tg-zk71"><p>SSD_Lite*</p>
+</td><td><p>COCO</p>
+</td><td><p>28.1 MB</p>
+</td><td><p>8.5 MB</p>
+</td><td><p>37</p>
+</td><td><p>53</p>
+</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>SSD_Lite**</p>
+</td><td><p>COCO</p>
+</td><td><p>28.1 MB</p>
+</td><td><p>8.5 MB</p>
+</td><td></td><td></td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>FasterRCNN</p>
+</td><td><p>COCO</p>
+</td><td><p>168.5 MB</p>
+</td><td><p>42.6 MB</p>
+</td><td></td><td></td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>Mask_RCNN</p>
+</td><td><p>COCO</p>
+</td><td><p>169.7 MB</p>
+</td><td><p>45.9 MB</p>
+</td><td></td><td></td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>Yolov3</p>
+</td><td><p>COCO</p>
+</td><td><p>237 MB</p>
+</td><td><p>61 MB</p>
+</td><td><p>3</p>
+</td><td><p>6</p>
+</td></tr></tbody></table></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>*：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本</p>
+<p>**：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite</p>
+</div>
+</section>
+</section>
+<section id="id13">
+<h4>行空板测试<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>行空板,
+青少年Python教学用开源硬件，解决Python教学难和使用门槛高的问题，旨在推动Python教学在青少年中的普及。官网：<a class="reference external" href="https://www.dfrobot.com.cn/">https://www.dfrobot.com.cn/</a>
+##### 软硬件环境 - 操作系统：Linux - 系统位数：64 -
+处理器：4核单板AArch64 1.20GHz - 内存：512MB - 硬盘：16GB -
+推理框架：ONNXRuntime == 1.13.1 - 数据处理工具：BaseDT == 0.0.1 #####
+配置 - <code class="docutils literal notranslate"><span class="pre">静态图</span></code>导出 - <code class="docutils literal notranslate"><span class="pre">batch</span></code>大小为1 -
+<code class="docutils literal notranslate"><span class="pre">BaseDT</span></code>内置<code class="docutils literal notranslate"><span class="pre">ImageData</span></code>工具进行数据预处理 -
+测试时，计算各个数据集中 10 张图片的平均耗时</p>
+</div>
+<p>下面是我们环境中的测试结果：</p>
+<ul class="simple">
+<li><p>图像分类</p></li>
+</ul>
+<table class="docutils align-default"><thead><tr><th rowspan="2"><p>模型</p>
+</th><th rowspan="2"><p>数据集</p>
+</th><th rowspan="1" colspan="2"><p>权重大小</p>
+</th><th rowspan="1" colspan="2"><p>吞吐量 (图片数/每秒)</p>
+</th></tr><tr><th colspan="1"><p>FP32</p>
+</th><th colspan="1"><p>INT8</p>
+</th><th colspan="1"><p>FP32</p>
+</th><th colspan="1"><p>INT8</p>
+</th></tr></thead><tbody align="center"><tr><td class="tg-zk71"><p>MobileNet</p>
+</td><td><p>ImageNet</p>
+</td><td><p>13.3 MB</p>
+</td><td><p>3.5 MB</p>
+</td><td><p>1.77</p>
+</td><td><p>4.94</p>
+</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>ResNet18</p>
+</td><td><p>ImageNet</p>
+</td><td><p>44.7 MB</p>
+</td><td></td><td><p>0.46</p>
+</td><td></td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>ResNet50</p>
+</td><td><p>ImageNet</p>
+</td><td><p>97.8 MB</p>
+</td><td><p>24.6 MB</p>
+</td><td><p>0.22</p>
+</td><td><p>0.58</p>
+</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>ShuffleNet_v2</p>
+</td><td><p>ImageNet</p>
+</td><td><p>9.2 MB</p>
+</td><td><p>2.28 MB</p>
+</td><td><p>3.97</p>
+</td><td><p>8.51</p>
+</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>VGG</p>
+</td><td><p>ImageNet</p>
+</td><td><p>527.8 MB</p>
+</td><td><p>101.1 MB</p>
+</td><td><p>*</p>
+</td><td><p>*</p>
+</td></tr></tbody></table><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>吞吐量
+(图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现</p>
+<p>*：不建议部署，单张图片推理的时间超过30s</p>
+</div>
+<ul>
+<li><p>目标检测</p>
+<table class="docutils align-default"><thead><tr><th rowspan="2"><p>模型</p>
+</th><th rowspan="2"><p>数据集</p>
+</th><th rowspan="1" colspan="2"><p>权重大小</p>
+</th><th rowspan="1" colspan="2"><p>吞吐量 (图片数/每秒)</p>
+</th></tr><tr><th colspan="1"><p>FP32</p>
+</th><th colspan="1"><p>INT8</p>
+</th><th colspan="1"><p>FP32</p>
+</th><th colspan="1"><p>INT8</p>
+</th></tr></thead><tbody align="center"><tr><td class="tg-zk71"><p>SSD_Lite*</p>
+</td><td><p>COCO</p>
+</td><td><p>28.1 MB</p>
+</td><td><p>8.5 MB</p>
+</td><td><p>0.55</p>
+</td><td><p>1.30</p>
+</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>SSD_Lite**</p>
+</td><td><p>COCO</p>
+</td><td><p>28.1 MB</p>
+</td><td><p>8.5 MB</p>
+</td><td></td><td></td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>FasterRCNN</p>
+</td><td><p>COCO</p>
+</td><td><p>168.5 MB</p>
+</td><td><p>42.6 MB</p>
+</td><td></td><td></td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>Mask_RCNN</p>
+</td><td><p>COCO</p>
+</td><td><p>169.7 MB</p>
+</td><td><p>45.9 MB</p>
+</td><td></td><td></td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>Yolov3</p>
+</td><td><p>COCO</p>
+</td><td><p>237 MB</p>
+</td><td><p>61 MB</p>
+</td><td><p>0.026</p>
+</td><td><p>0.066</p>
+</td></tr></tbody></table></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>*：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本</p>
+<p>**：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite</p>
+</div>
+</section>
+<section id="b">
+<h4>树莓派（4b）测试<a class="headerlink" href="#b" title="Permalink to this heading"></a></h4>
+<blockquote>
+<div><p>Raspberry
+Pi。中文名为“树莓派”,简写为RPi，或者RasPi/RPi)是为学生计算机编程教育而设计，卡片式电脑，其系统基于Linux。
+##### 软硬件环境 - 操作系统：Linux - 系统位数：32 - 处理器：BCM2711
+四核 Cortex-A72(ARM v8) &#64;1.5GHz - 内存：4G - 硬盘：16G -
+推理框架：ONNXRuntime == 1.13.1 - 数据处理工具：BaseDT == 0.0.1 #####
+配置 - <code class="docutils literal notranslate"><span class="pre">静态图</span></code>导出 - <code class="docutils literal notranslate"><span class="pre">batch</span></code>大小为1 -
+<code class="docutils literal notranslate"><span class="pre">BaseDT</span></code>内置<code class="docutils literal notranslate"><span class="pre">ImageData</span></code>工具进行数据预处理 -
+测试时，计算各个数据集中 10 张图片的平均耗时</p>
+</div></blockquote>
+<p>下面是我们环境中的测试结果：</p>
+<ul class="simple">
+<li><p>图像分类</p></li>
+</ul>
+<table class="docutils align-default"><thead><tr><th rowspan="2"><p>模型</p>
+</th><th rowspan="2"><p>数据集</p>
+</th><th rowspan="1" colspan="2"><p>权重大小</p>
+</th><th rowspan="1" colspan="2"><p>吞吐量 (图片数/每秒)</p>
+</th></tr><tr><th colspan="1"><p>FP32</p>
+</th><th colspan="1"><p>INT8</p>
+</th><th colspan="1"><p>FP32</p>
+</th><th colspan="1"><p>INT8</p>
+</th></tr></thead><tbody align="center"><tr><td class="tg-zk71"><p>MobileNet</p>
+</td><td><p>ImageNet</p>
+</td><td><p>13.3 MB</p>
+</td><td><p>3.5 MB</p>
+</td><td><p>6.45</p>
+</td><td></td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>ResNet18</p>
+</td><td><p>ImageNet</p>
+</td><td><p>44.7 MB</p>
+</td><td></td><td><p>3.20</p>
+</td><td></td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>ResNet50</p>
+</td><td><p>ImageNet</p>
+</td><td><p>97.8 MB</p>
+</td><td><p>24.6 MB</p>
+</td><td><p>1.48</p>
+</td><td><p>2.91</p>
+</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>ShuffleNet_v2</p>
+</td><td><p>ImageNet</p>
+</td><td><p>9.2 MB</p>
+</td><td><p>2.28 MB</p>
+</td><td><p>19.11</p>
+</td><td><p>10.85*</p>
+</td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>VGG</p>
+</td><td><p>ImageNet</p>
+</td><td><p>527.8 MB</p>
+</td><td><p>101.1 MB</p>
+</td><td><p>0.43</p>
+</td><td><p>0.44</p>
+</td></tr></tbody></table><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>吞吐量
+(图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现</p>
+<p>*：量化后在树莓派上推理速度变慢</p>
+</div>
+<ul class="simple">
+<li><p>目标检测</p></li>
+</ul>
+<table class="docutils align-default"><thead><tr><th rowspan="2"><p>模型</p>
+</th><th rowspan="2"><p>数据集</p>
+</th><th rowspan="1" colspan="2"><p>权重大小</p>
+</th><th rowspan="1" colspan="2"><p>吞吐量 (图片数/每秒)</p>
+</th></tr><tr><th colspan="1"><p>FP32</p>
+</th><th colspan="1"><p>INT8</p>
+</th><th colspan="1"><p>FP32</p>
+</th><th colspan="1"><p>INT8</p>
+</th></tr></thead><tbody align="center"><tr><td class="tg-zk71"><p>SSD_Lite*</p>
+</td><td><p>COCO</p>
+</td><td><p>28.1 MB</p>
+</td><td><p>8.5 MB</p>
+</td><td><p>2.55</p>
+</td><td></td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>SSD_Lite**</p>
+</td><td><p>COCO</p>
+</td><td></td><td></td><td></td><td></td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>FasterRCNN</p>
+</td><td><p>COCO</p>
+</td><td><p>168.5 MB</p>
+</td><td><p>42.6 MB</p>
+</td><td></td><td></td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>Mask_RCNN</p>
+</td><td><p>COCO</p>
+</td><td><p>169.7 MB</p>
+</td><td><p>45.9 MB</p>
+</td><td></td><td></td></tr></tbody><tbody align="center"><tr><td class="tg-zk71"><p>Yolov3</p>
+</td><td><p>COCO</p>
+</td><td><p>237 MB</p>
+</td><td><p>61 MB</p>
+</td><td><p>0.21</p>
+</td><td><p>0.34</p>
+</td></tr></tbody></table><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>*：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本</p>
+<p>**：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite</p>
+</div>
+<p><a href="#id14"><span class="problematic" id="id15">**</span></a>注：硬件测试模块持续更新中，如有更多硬件测试需求，请<a href="#id16"><span class="problematic" id="id17">**</span></a><a class="reference external" href="https://github.com/OpenXLab-Edu/XEdu-docs/issues">联系我们</a></p>
+</section>
+</section>
+</section>
+<section id="id18">
+<h2>多模态交互<a class="headerlink" href="#id18" title="Permalink to this heading"></a></h2>
+<p>回顾用AI解决真实问题的流程图，我们已经介绍了收集数据、训练模型、模型推理和应用部署。结合项目设计，我们还会去思考如何通过摄像头获得图像，如何控制灯光发亮，如何操纵舵机，如何设计显示界面UI等需要使用输入设备和输出设备等来实现的交互设计，即对<code class="docutils literal notranslate"><span class="pre">多模态交互</span></code>的考量。</p>
+<figure class="align-default">
+<img alt="../_images/%E7%94%A8AI%E8%A7%A3%E5%86%B3%E7%9C%9F%E5%AE%9E%E9%97%AE%E9%A2%98.JPG" src="../_images/%E7%94%A8AI%E8%A7%A3%E5%86%B3%E7%9C%9F%E5%AE%9E%E9%97%AE%E9%A2%98.JPG" />
+</figure>
+<p>更多传感器、执行器使用教程参见：<a class="reference external" href="https://wiki.dfrobot.com.cn/">DFRobot</a></p>
+</section>
+<section id="id19">
+<h2>更多模型转换相关项目<a class="headerlink" href="#id19" title="Permalink to this heading"></a></h2>
+<p>猫狗分类小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&amp;backpath=/pjedu/userprofile%3FslideKey=project#public">https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&amp;backpath=/pjedu/userprofile%3FslideKey=project#public</a></p>
+<p>千物识别小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&amp;backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&amp;backpath=/pjlab/projects/list#public</a></p>
+<p>有无人检测小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&amp;backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&amp;backpath=/pjlab/projects/list#public</a></p>
+<p>MMEdu模型在线转换：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&amp;sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&amp;sc=62f34141bf4f550f3e926e0e#public</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2023 OpenXLabEdu.All Rights Reserved.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

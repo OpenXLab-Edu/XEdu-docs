@@ -48,7 +48,7 @@ MMClassification MMCls  图片分类
 MMDetection      MMDet  图片中的物体检测
 MMGeneration     MMGen  GAN，风格化
 MMPose           MMPose 骨架
-MMEditing              
+MMEditing               
 MMSegmentation          像素级识别
 ================ ====== ================
 
@@ -57,15 +57,28 @@ MMEdu的内置SOTA模型
 
 MMEdu内置了常见的SOTA模型，我们还在不断更新中。如需查看所有支持的SOTA模型，可使用\ ``model.sota()``\ 代码进行查看。
 
-================ =============================================================================================================================================================================================================================================================================================================================================== ================
-模块名称         内置模型                                                                                                                                                                                                                                                                                                                                        功能
-================ =============================================================================================================================================================================================================================================================================================================================================== ================
-MMClassification `LeNet <https://xedu.readthedocs.io/zh/master/dl_library/net/lenet5.html>`__\ 、\ `ResNet18 <https://xedu.readthedocs.io/zh/master/dl_library/net/ResNet.html>`__\ 、\ `ResNet50 <https://xedu.readthedocs.io/zh/master/dl_library/net/ResNet.html>`__\ 、\ `MobileNet <https://xedu.readthedocs.io/zh/master/dl_library/net/mobilenet.html>`__ 图片分类
-MMDetection      `FastRCNN <https://xedu.readthedocs.io/zh/master/dl_library/net/FasterRCNN.html>`__\ 、\ `SSD_Lite <https://xedu.readthedocs.io/zh/master/dl_library/net/SSD_Lite.html>`__\ 、\ `Yolov3 <https://xedu.readthedocs.io/zh/master/dl_library/net/Yolov3.html>`__                                                                                   图片中的物体检测
-================ =============================================================================================================================================================================================================================================================================================================================================== ================
++-----------+---------------------------------------------+-----------+
+| 模块名称  | 内置模型                                    | 功能      |
++===========+=============================================+===========+
+| MMClass   | `LeNet <https://xedu.readthedocs.io/z       | 图片分类  |
+| ification | h/master/dl_library/net/lenet5.html>`__\ 、 |           |
+|           | \ `ResNet18 <https://xedu.readthedocs.io/z  |           |
+|           | h/master/dl_library/net/ResNet.html>`__\ 、 |           |
+|           | \ `ResNet50 <https://xedu.readthedocs.io/z  |           |
+|           | h/master/dl_library/net/ResNet.html>`__\ 、 |           |
+|           | \ `MobileNet <https://xedu.readthedocs.io/  |           |
+|           | zh/master/dl_library/net/mobilenet.html>`__ |           |
++-----------+---------------------------------------------+-----------+
+| MM        | `FastRCNN <https://xedu.readthedocs.io      | 图片中的  |
+| Detection | /zh/master/dl_library/net/FasterRCNN.html>` | 物体检测  |
+|           | __\ 、\ `SSD_Lite <https://xedu.readthedocs |           |
+|           | .io/zh/master/dl_library/net/SSD_Lite.html> |           |
+|           | `__\ 、\ `Yolov3 <https://xedu.readthedocs. |           |
+|           | io/zh/master/dl_library/net/Yolov3.html>`__ |           |
++-----------+---------------------------------------------+-----------+
 
-注：关于MMClassification支持的SOTA模型的比较可参考“解锁图像分类模块：MMClassification”中关于“`支持的SOTA模型 <https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#sota>`__”的介绍，关于MMDetection支持的SOTA模型的比较可参考“揭秘目标检测模块：MMDetection”中关于“`支持的SOTA模型 <https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html#sota>`__”的介绍。关于这些SOTA模型更具体的介绍，请参考本文档的“深度学习知识库”部分的“`经典网络模型介绍 <https://xedu.readthedocs.io/zh/master/dl_library.html>`__”。当然，通过“AI模型
-+ 关键词”的形式，你在很多搜索引擎中都能找到资料。
+注：关于MMClassification支持的SOTA模型的比较可参考“解锁图像分类模块：MMClassification”中关于“\ `支持的SOTA模型 <https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#sota>`__\ ”的介绍，关于MMDetection支持的SOTA模型的比较可参考“揭秘目标检测模块：MMDetection”中关于“\ `支持的SOTA模型 <https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html#sota>`__\ ”的介绍。关于这些SOTA模型更具体的介绍，请参考本文档的“深度学习知识库”部分的“\ `经典网络模型介绍 <https://xedu.readthedocs.io/zh/master/dl_library.html>`__
+”。当然，通过“AI模型 + 关键词”的形式，你在很多搜索引擎中都能找到资料。
 
 数据集支持
 ----------
@@ -245,7 +258,9 @@ COCO数据集的标注信息存储在“annotations”文件夹中的\ ``json``\
    print(MMEdu.__path__)
 
 .. figure:: ../images/mmedu/pip安装指南1.png
+   :alt: image
 
+   image
 
 2. 查看权重文件信息
 

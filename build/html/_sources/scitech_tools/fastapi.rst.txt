@@ -58,8 +58,7 @@ FastAPI 是一种现代、快速（高性能）的 Web 框架，用于基于标�
 
 执行运行命令后，FastAPI启动成功图如下：
 
-.. figure:: ../images/scitech_tools/FastAPI启动成功图.JPG
-
+|image1|
 
 3.2 上传一个文件
 ~~~~~~~~~~~~~~~~
@@ -104,5 +103,7 @@ FastAPI 是一种现代、快速（高性能）的 Web 框架，用于基于标�
 
 -  推理函数：负责利用已经训练好的模型对输入数据进行预测和分类，并返回相应的结果。
 
-   .. figure:: ../images/scitech_tools/借助FastAPI部署智能应用.png
+|image2|
 
+.. |image1| image:: ../images/scitech_tools/FastAPIstart.JPG
+.. |image2| image:: ../images/scitech_tools/FastAPIdeploy.png

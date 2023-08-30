@@ -55,10 +55,11 @@ BaseML是传统机器学习库，类似Sklearn，使用了与MMEdu同样的语�
 
 规划中的库还有OpenDILabEdu和OpenDataLabEdu，从名称可以看出源自上海人工智能实验室的各种工具。
 
-.. figure:: ../images/about/xedu规划.png
-
+|image0|
 
 XEdu的愿景
 ----------
 
 “接地气，望云端”，开源科创团队期望XEdu是一款适合中小学生入门，同时又能编写出可以“真正运行”的AI代码的人工智能开发工具，让学生能够通过完成各种AI实验，亲历从收集数据到训练深度学习模型的过程，并能够通过训练AI模型、部署智能信息系统的方式，解决生活中的真实问题。
+
+.. |image0| image:: ../images/about/xedu_plan.png

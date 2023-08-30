@@ -10,9 +10,7 @@
 -  模型量化（MMEdu暂未合并该功能）
 -  多模态交互
 
-
-
-.. Note::
+..
 
    MMEdu已经可以帮助我diy自己的AI模型了，为什么要多此一举、徒增难度，来学习需要更多编程知识的模型部署模块？
 
@@ -23,8 +21,7 @@ Python 语言，除此之外不需要了解任何模型部署的知识。
 
 **行空板上部署MMEdu训练模型效果示例：**
 
-.. figure:: ../images/model_convert/部署演示.gif
-
+|image1|
 
 Why：为什么
 -----------
@@ -39,15 +36,12 @@ Why：为什么
 分布式、自动求导、混合精度……训练框架往往围绕着易用性，面向设计算法的研究员，以研究员能更快地生产高性能模型为目标。
 硬件指令集、预编译优化、量化算法……推理框架往往围绕着硬件平台的极致优化加速，面向工业落地，以模型能更快执行为目标。由于职能和侧重点不同，没有一个深度学习框架能面面俱到，完全一统训练侧和推理侧，而模型在各个框架内部的表示方式又千差万别，所以模型转换就被广泛需要了。
 
-.. Note::
    概括：训练框架大，塞不进两三百块钱买的硬件设备中，推理框架小，能在硬件设备上安装。要把训练出的模型翻译成推理框架能读懂的语言，才能在硬件设备上运行
 
 为什么要进行模型量化
 ~~~~~~~~~~~~~~~~~~~~
 
 模型量化是指将深度学习模型中的参数、激活值等数据转化为更小的数据类型（通常是8位整数或者浮点数），以达到模型大小减小、计算速度加快、内存占用减小等优化目的的技术手段。模型量化有以下几个优点：减小模型大小、加速模型推理、减少内存占用等。因此，模型量化可以帮助提高深度学习模型的效率和性能，在实际应用中具有重要的价值和意义。
-
-.. Note::
 
    概括：对模型采用合适的量化，能在对准确率忽略不计的情况下，让模型更小、更快、更轻量。比如原先168
    MB的模型量化后大小变为了42.6 MB，推理速度提高了两倍。
@@ -63,8 +57,6 @@ Why：为什么
 
 深度学习推理框架是一种让深度学习算法在实时处理环境中提高性能的框架。常见的有\ `ONNXRuntime <https://github.com/microsoft/onnxruntime>`__\ 、\ `NCNN <https://github.com/Tencent/ncnn>`__\ 、\ `TensorRT <https://github.com/NVIDIA/TensorRT>`__\ 、\ `OpenVINO <https://github.com/openvinotoolkit/openvino>`__\ 等。
 
-.. Note::
-
    ONNXRuntime是微软推出的一款推理框架，支持多种运行后端包括CPU，GPU，TensorRT，DML等，是对ONNX模型最原生的支持。
 
    NCNN是腾讯公司开发的移动端平台部署工具，一个为手机端极致优化的高性能神经网络前向计算框架。NCNN仅用于推理，不支持学习。
@@ -76,8 +68,6 @@ How：怎么做
 
 总结一下Why中的回应，在软件工程中，部署指把开发完毕的软件投入使用的过程，包括环境配置、软件安装等步骤。类似地，对于深度学习模型来说，模型部署指让训练好的模型在特定环境中运行的过程。相比于软件部署，模型部署会面临更多的难题：
 
-.. Note::
-
    1. 运行模型所需的环境难以配置。深度学习模型通常是由一些框架编写，比如
       PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架不适合在手机、开发板等生产环境中安装。
    2. 深度学习模型的结构通常比较庞大，需要大量的算力才能满足实时运行的需求。模型的运行效率需要优化。
@@ -85,8 +75,7 @@ How：怎么做
 
 经过工业界和学术界数年的探索，结合\ ``XEdu``\ 的工具，展示模型部署一条流行的流水线：
 
-.. figure:: ../images/model_convert/XEdu模型部署全链路pipeline.JPG
-
+|image2|
 
 这一条流水线解决了模型部署中的两大问题：使用对接深度学习框架和推理引擎的中间表示，开发者不必担心如何在新环境中运行各个复杂的框架；通过中间表示的网络结构优化和推理引擎对运算的底层优化，模型的运算效率大幅提升。
 
@@ -154,7 +143,7 @@ https://www.openinnolab.org.cn/pjlab/project?id=645110943c0e930cb55e859b&sc=62f3
 
 更多关于BaseDePloy库的介绍和使用说明详见\ `BaseDeploy：服务于XEdu的模型部署工具 <https://xedu.readthedocs.io/zh/master/basedeploy/introduction.html#basedeploy-xedu>`__\ 。
 
-现在，让我们从“`从零开始训练猫狗识别模型并完成模型转换 <https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&sc=635638d69ed68060c638f979#public>`__”项目入手，见识一下使用MMEdu工具完成从模型训练到模型部署的基本流程吧！
+现在，让我们从“\ `从零开始训练猫狗识别模型并完成模型转换 <https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&sc=635638d69ed68060c638f979#public>`__\ ”项目入手，见识一下使用MMEdu工具完成从模型训练到模型部署的基本流程吧！
 
 **1.准备数据集**
 
@@ -174,7 +163,7 @@ https://www.openinnolab.org.cn/pjlab/project?id=645110943c0e930cb55e859b&sc=62f3
 
 **3.推理部署**
 
-使用MMEdu图像分类模块模型推理的示例代码完成模型推理。返回的数据类型是一个字典列表（很多个字典组成的列表）类型的变量，内置的字典表示分类的结果，如“``{'标签': 0, '置信度': 0.9417100548744202, '预测结果': 'cat'}``”，我们可以用字典访问其中的元素。巧用预测结果设置一些输出。如：
+使用MMEdu图像分类模块模型推理的示例代码完成模型推理。返回的数据类型是一个字典列表（很多个字典组成的列表）类型的变量，内置的字典表示分类的结果，如“\ ``{'标签': 0, '置信度': 0.9417100548744202, '预测结果': 'cat'}``\ ”，我们可以用字典访问其中的元素。巧用预测结果设置一些输出。如：
 
 ::
 
@@ -237,18 +226,15 @@ MMDeploy还推出了模型转换工具网页版本，支持更多后端推理框
 
 -  点击\ `MMDeploy硬件模型库 <https://platform.openmmlab.com/deploee>`__\ ，后选择模型转换
 
-.. figure:: ../images/model_convert/网页版使用步骤1.png
-
+|image3|
 
 -  点击新建转换任务
 
-.. figure:: ../images/model_convert/网页版使用步骤2.png
-
+|image4|
 
 -  选择需要转换的模型类型、模型训练配置，并点击\ ``上传模型``\ 上传本地训练好的.pth权重文件，具体的选项如下表所示
 
-.. figure:: ../images/model_convert/网页版使用步骤3.png
-
+|image5|
 
 .. raw:: html
 
@@ -988,18 +974,15 @@ configs/yolo/yolov3_d53_320_273e_coco.py
 
 -  选择需要的目标runtime，可选的有\ ``ncnn``,\ ``ort1.8.1(onnxruntime)``,\ ``openvino``\ 等，点击提交任务
 
-.. figure:: ../images/model_convert/网页版使用步骤4.png
-
+|image6|
 
 -  点击提交任务后，状态会变为排队中，或处理中，如果转换失败会提示错误日志，根据错误日志提示修改，像下图错误的原因是使用ResNet50（分类）的权重，可对应的OpenMMLab算法误选为了mmdet（检测）的，所以提示的错误是找不到配置文件
 
-.. figure:: ../images/model_convert/网页版使用步骤5.png
-
+|image7|
 
 -  转换成功后，点击\ ``下载模型``\ 即可使用
 
-.. figure:: ../images/model_convert/网页版使用步骤6.png
-
+|image8|
 
 What：什么现象与成果
 --------------------
@@ -1645,7 +1628,7 @@ ImageNet
 
    </table>
 
-.. Note::
+..
 
    ImageNet
    数据集：ImageNet项目是一个用于视觉对象识别软件研究的大型可视化数据库。ImageNet项目每年举办一次软件比赛，即\ ``ImageNet大规模视觉识别挑战赛``\ （ILSVRC），软件程序竞相正确分类检测物体和场景。
@@ -2073,7 +2056,7 @@ COCO
 
    </table>
 
-.. Note::
+..
 
    COCO 数据集: MS
    COCO的全称是\ ``Microsoft Common Objects in Context``\ ，起源于微软于2014年出资标注的Microsoft
@@ -2093,8 +2076,6 @@ COCO
 
 PC机测试
 ^^^^^^^^
-
-.. Note::
 
    用于模型训练的机器，性能较优，常见的操作系统有Windows和Linux
 
@@ -2610,7 +2591,7 @@ ImageNet
 
    </table>
 
-.. Note::
+..
 
    吞吐量
    (图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现
@@ -3099,16 +3080,14 @@ ImageNet
 
       </table>
 
-.. Note::
+..
 
    \*：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本
 
-   \**：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite
+   \*\*：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite
 
 行空板测试
 ^^^^^^^^^^
-
-.. Note::
 
    行空板,
    青少年Python教学用开源硬件，解决Python教学难和使用门槛高的问题，旨在推动Python教学在青少年中的普及。官网：https://www.dfrobot.com.cn/
@@ -3611,7 +3590,7 @@ ImageNet
 
    </table>
 
-.. Note::
+..
 
    吞吐量
    (图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现
@@ -4100,11 +4079,11 @@ ImageNet
 
       </table>
 
-.. Note::
+..
 
    \*：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本
 
-   \**：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite
+   \*\*：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite
 
 树莓派（4b）测试
 ^^^^^^^^^^^^^^^^
@@ -4608,7 +4587,7 @@ ImageNet
 
    </table>
 
-.. Note::
+..
 
    吞吐量
    (图片数/每秒)：表示每秒模型能够识别的图片总数，常用来评估模型的表现
@@ -5091,11 +5070,11 @@ COCO
 
    </table>
 
-.. Note::
+..
 
    \*：后端支持网络为MobileNetv1，性能弱于以MobileNetv2为后端推理框架的版本
 
-   \**：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite
+   \*\*：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite
 
 **注：硬件测试模块持续更新中，如有更多硬件测试需求，请\ **\ `联系我们 <https://github.com/OpenXLab-Edu/XEdu-docs/issues>`__
 
@@ -5104,8 +5083,7 @@ COCO
 
 回顾用AI解决真实问题的流程图，我们已经介绍了收集数据、训练模型、模型推理和应用部署。结合项目设计，我们还会去思考如何通过摄像头获得图像，如何控制灯光发亮，如何操纵舵机，如何设计显示界面UI等需要使用输入设备和输出设备等来实现的交互设计，即对\ ``多模态交互``\ 的考量。
 
-.. figure:: ../images/model_convert/用AI解决真实问题.JPG
-
+|image9|
 
 更多传感器、执行器使用教程参见：\ `DFRobot <https://wiki.dfrobot.com.cn/>`__
 
@@ -5119,3 +5097,13 @@ COCO
 有无人检测小助手：https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&backpath=/pjlab/projects/list#public
 
 MMEdu模型在线转换：https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&sc=62f34141bf4f550f3e926e0e#public
+
+.. |image1| image:: ../images/model_convert/DeploymentDemonstration.gif
+.. |image2| image:: ../images/model_convert/XEduPipeline.JPG
+.. |image3| image:: ../images/model_convert/Web1.png
+.. |image4| image:: ../images/model_convert/Web2.png
+.. |image5| image:: ../images/model_convert/Web3.png
+.. |image6| image:: ../images/model_convert/Web4.png
+.. |image7| image:: ../images/model_convert/Web5.png
+.. |image8| image:: ../images/model_convert/Web6.png
+.. |image9| image:: ../images/model_convert/SolveRealProblemsWithAI.JPG

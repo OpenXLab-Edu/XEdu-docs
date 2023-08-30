@@ -35,8 +35,7 @@ PyWebIO提供了一系列命令式的交互函数来在浏览器上获取用户�
 
 运行这段代码后，浏览器会自动打开一个本地的网址，出现这样的界面。
 
-.. figure:: ../../build/html/_static/pywebio图1.png
-
+|image1|
 
 图1 初始网页界面
 
@@ -466,8 +465,7 @@ put_html(‘E = mc2’);
 
 尤其值得称赞的是，PyWebIO还支持MarkDown语法。除了输入输出，PyWebIO还支持布局、协程、数据可视化等特性。通过和其他库的配合，可以呈现更加酷炫的网页效果，如图2所示。
 
-.. figure:: ../../build/html/_static/pywebio图2.png
-
+|image2|
 
 图2 PyWebIO结合第三方库制作的数据可视化效果
 
@@ -506,3 +504,6 @@ PyWebIO能够将AI模型快速“变身”为Web应用，上传一张照片就�
 
    if __name__ == '__main__':
        start_server(classification, port=2222, cdn=False)
+
+.. |image1| image:: ../images/scitech_tools/pywebio1.png
+.. |image2| image:: ../images/scitech_tools/pywebio2.png

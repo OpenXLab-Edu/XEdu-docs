@@ -50,8 +50,47 @@ Flask是一个轻量级的可定制框架，使用Python语言编写，较其他
 3.2 上传一个文件
 ~~~~~~~~~~~~~~~~
 
+.. code:: python
+
+   from flask import Flask, request
+   import os
+   app = Flask(__name__)
+   UPLOAD_FOLDER = 'uploads'
+
+   @app.route('/upload', methods=['POST'])
+   def upload_file():
+       if 'file' not in request.files:
+           return '没有文件上传', 400
+
+       file = request.files['file']
+       if file.filename == '':
+           return '没有选择文件', 400
+
+       if file:
+           file.save(os.path.join(UPLOAD_FOLDER, file.filename))
+           return '文件上传成功', 200
+
+   if __name__ == '__main__':
+       if not os.path.exists(UPLOAD_FOLDER):
+           os.makedirs(UPLOAD_FOLDER)
+       app.run(debug=True)
+
 3.3 一个简单的WebAPI
 ~~~~~~~~~~~~~~~~~~~~
+
+.. code:: python
+
+   from flask import Flask, jsonify, request
+
+   app = Flask(__name__)
+
+   @app.route('/api', methods=['GET'])
+   def api():
+       name = request.args.get('name', 'World')
+       return jsonify({'message': f'Hello, {name}!'})
+
+   if __name__ == '__main__':
+       app.run(debug=True)
 
 4. 借助Flask部署智能应用
 ------------------------
@@ -60,5 +99,6 @@ Flask是一个轻量级的可定制框架，使用Python语言编写，较其他
 
 这种做法和很多智能终端的工作原理是一样的。如小度、天猫精灵和小爱音箱等，自己都没有处理数据的能力，都要靠网络传送数据到服务器，然后才能正确和用户交流。目前中小学的很多AI应用，都是借助百度AI开放平台的。
 
-.. figure:: ../../build/html/_static/flask简介图1.jpeg
+|image1|
 
+.. |image1| image:: ../images/scitech_tools/flaskintro1.jpeg

@@ -1,3 +1,7 @@
+.. role:: raw-latex(raw)
+   :format: latex
+..
+
 图像分类模型RegNet
 ==================
 
@@ -9,19 +13,16 @@
 
 RegNet是何凯明大神团队提出的用NAS得到的分类网络，该网络在轻量级网络领域，低FLOPs的RegNet模型也能达到很好的效果，和MobileNetV2以及ShuffleNetV2性能有的一比
 
-.. figure:: ../../images/dl_library/regnet0.png
-
+|image1|
 
 与当时分类网络的天花板EfficientNet对比，可以看到RegNetY-8.0GF的错误率比EfficientNet-B5更低，且推理速度(infer)快五倍。
 
-.. figure:: ../../images/dl_library/regnet1.png
-
+|image2|
 
 RegNet网络结构
 --------------
 
-.. figure:: ../../images/dl_library/regnet2.png
-
+|image3|
 
 图中展示了网络主要由三部分组成，stem、body和head。
 
@@ -36,8 +37,7 @@ RegNet网络结构
 block with group
 convolution即带有组卷积的残差结构（和ResNext的block类似），如下图所示，左图为block的stride=1的情况，右图为block的stride=2的情况：
 
-.. figure:: ../../images/dl_library/regnet3.png
-
+|image4|
 
 由图可知，主分支都是一个1x1的卷积（包括bn和relu）、一个3x3的group卷积（包括bn和relu）、再接一个1x1的卷积（包括bn）。shortcut捷径分支上当stride=1时不做任何处理，当stride=2时通过一个1x1的卷积（包括bn）进行下采样。图中的r代表分辨率简单理解为特征矩阵的高、宽，当步距s等于1时，输入输出的r保持不变，当s等于2时，输出的r为输入的一半。w代表特征矩阵的channel（注意当s=2时，输入的是\ :math:`w_{i-1}`,
 输出的是\ :math:`w_i`\ 即chennel会发生变化）。g代表group卷积中每个group的group
@@ -55,8 +55,7 @@ ratio），此时的设计空间记为\ :math:`AnyNetX_B`\ ，然后在\ :math:`
 sampling采样方法分别采样500的模型，并在imagenet上训练10个epochs，绘制的error-cumulative
 prob.对比如下图所示：
 
-.. figure:: ../../images/dl_library/regnet4.png
-
+|image5|
 
 通过上图可以发现，将所有stage中的block的\ :math:`b_i`\ 都设置为同一个参数b（shared
 bottleneck ratio）后并没有什么明显的变化。
@@ -76,3 +75,9 @@ bottleneck ratio）后并没有什么明显的变化。
        archivePrefix={arXiv},
        primaryClass={cs.CV}
    }
+
+.. |image1| image:: ../../images/dl_library/regnet0.png
+.. |image2| image:: ../../images/dl_library/regnet1.png
+.. |image3| image:: ../../images/dl_library/regnet2.png
+.. |image4| image:: ../../images/dl_library/regnet3.png
+.. |image5| image:: ../../images/dl_library/regnet4.png

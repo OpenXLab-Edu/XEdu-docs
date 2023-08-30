@@ -13,8 +13,9 @@ GitHub地址：https://github.com/vvlink/SIoT/tree/master/Python_lib/siot
 
 SIoT文档地址：https://siot.readthedocs.io/zh_CN/latest/
 
-2. 安装
--------
+SIoT V2
+新增了可视化面板，全新升级，性能提升，可以支持更快的速度，同时使用QOS区分了快速数据以及存入数据的数据以应对不同的使用场景，网页界面也进行了更新更美观。具体可以参见：https://mindplus.dfrobot.com.cn/dashboard
+## 2. 安装
 
 可以使用使用pip命令安装siot库。
 
@@ -111,6 +112,14 @@ SIoT文档地址：https://siot.readthedocs.io/zh_CN/latest/
 
 当物联网遇上人工智能，就形成了智联网。当学生训练出一个AI模型，就可以通过物联网设备进行多模态交互。
 
-1）远程感知。
+1）远程感知
 
-2）远程控制。
+mind+远程图传案例：https://mindplus.dfrobot.com.cn/dashboard#target_16
+
+2）远程控制
+
+mind+控制LED灯案例：https://mindplus.dfrobot.com.cn/dashboard#target_14
+
+3）可视化展示
+
+mind+可视化面板案例：https://mindplus.dfrobot.com.cn/dashboard#target_15

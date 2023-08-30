@@ -26,8 +26,7 @@ RCNN有明显的速度优势，相比YOLO又有明显的mAP优势。
 
 下图是给出的几类算法的精度和速度差异。
 
-.. figure:: ../../images/dl_library/ssd0.png
-
+|image1|
 
 优点
 ----
@@ -54,8 +53,7 @@ RCNN有明显的速度优势，相比YOLO又有明显的mAP优势。
 模型结构
 --------
 
-.. figure:: ../../images/dl_library/ssd1.png
-
+|image2|
 
 VGG-Base作为基础框架用来提取图像的feature，Extra-Layers对VGG的feature做进一步处理，增加模型对图像的感受野，使得extra-layers得到的特征图承载更多抽象信息。待预测的特征图由六种特征图组成，6中特征图最终通过pred-layer得到预测框的坐标，置信度，类别信息。
 
@@ -90,3 +88,6 @@ hierarchy的思路，但是对于小目标的recall依然一般，这是由于SS
       author={Liu, Wei and Anguelov, Dragomir and Erhan, Dumitru and Szegedy, Christian and Reed, Scott and Fu, Cheng-Yang and Berg, Alexander C.},
       year={2016},
    }
+
+.. |image1| image:: ../../images/dl_library/ssd0.png
+.. |image2| image:: ../../images/dl_library/ssd1.png

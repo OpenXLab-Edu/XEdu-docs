@@ -27,8 +27,7 @@ map的空间大小，1×1卷积的FLOPs为\ :math:`B = h*w*c_{1}*c_{2}`\ 。内�
 
 :math:`MAC≥2hw\sqrt{c_{1}c_{2}}+c_{1}c_{2}≥2\sqrt{hwB}+\frac{B}{hw}`\ ，其中\ :math:`B = hwc_{1}c_{2}`\ 。因此，MAC有一个由FLOPs给出的下限。当输入和输出通道的数量相等时，它达到下界。
 
-.. figure:: ../../images/dl_library/shuff0.png
-
+|image1|
 
 表中实验通过改变比率c1: c2报告了在固定总FLOPs时的运行速度。可见，当c1:
 c2接近1:1时，MAC变小，网络评估速度加快。
@@ -41,8 +40,7 @@ c2接近1:1时，MAC变小，网络评估速度加快。
 :math:`MAC=hw(c_{1}+c_{2})+\frac{c_{1}c_{2}}{g}=hwc_{1}+\frac{Bg}{c_{1}}+\frac{B}{hw}`\ ，其中g为分组数，\ :math:`B=\frac{hwc_{1}c_{2}}{g}`\ 为FLOPs。不难看出，给定固定的输入形状\ :math:`c_{1}*h*w`\ ，计算代价B,
 MAC随着g的增长而增加。
 
-.. figure:: ../../images/dl_library/shuff1.png
-
+|image2|
 
 很明显，使用大量的组数会显著降低运行速度。例如，在GPU上使用8group比使用1group(标准密集卷积)慢两倍以上，在ARM上慢30%。这主要是由于MAC的增加。所以使用比较大组去进行组卷积是不明智的。对速度会造成比较大的影响。
 
@@ -51,15 +49,13 @@ MAC随着g的增长而增加。
 
 虽然这种碎片化结构已经被证明有利于提高准确性，但它可能会降低效率，因为它对GPU等具有强大并行计算能力的设备不友好。它还引入了额外的开销，比如内核启动和同步。
 
-.. figure:: ../../images/dl_library/shuff2.png
-
+|image3|
 
 为了量化网络分片如何影响效率，我们评估了一系列不同分片程度的网络块。具体来说,每个构造块由1到4个1
 ×
 1的卷积组成，这些卷积是按顺序或平行排列的。每个块重复堆叠10次。块结构上图所示。
 
-.. figure:: ../../images/dl_library/shuff3.png
-
+|image4|
 
 表中实验结果显示，在GPU上碎片化明显降低了速度，如4-fragment结构比1-fragment慢3倍。在ARM上，速度降低相对较小。
 
@@ -68,14 +64,12 @@ MAC随着g的增长而增加。
 4：Element-wise操作带来的影响是不可忽视的
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. figure:: ../../images/dl_library/shuff4.png
-
+|image5|
 
 轻量级模型中，元素操作占用了相当多的时间，特别是在GPU上。这里的元素操作符包括ReLU、AddTensor、AddBias等。将depthwise
 convolution作为一个element-wise operator，因为它的MAC/FLOPs比率也很高。
 
-.. figure:: ../../images/dl_library/shuff5.png
-
+|image6|
 
 可以看见表中报告了不同变体的运行时间并能观察到，在移除ReLU和shortcut后，GPU和ARM都获得了大约20%的加速。
 
@@ -107,8 +101,7 @@ add操作也是不可取的，违反了G4。因此，要实现高模型容量和
 
 其中图c对应stride=1的情况，图d对应stride=2的情况。
 
-.. figure:: ../../images/dl_library/shuff6.png
-
+|image7|
 
 为此，ShuffleNetV2做出了改进，如图( c
 )所示，在每个单元的开始，c特征通道的输入被分为两个分支（在ShuffleNetV2中这里是对channels均分成两半）。根据G3，不能使用太多的分支，所以其中一个分支不作改变，另外的一个分支由三个卷积组成，它们具有相同的输入和输出通道以满足G1。两个1
@@ -127,8 +120,7 @@ v1，如表所示。只有一个区别:在全局平均池之前增加了一个1 
 1的卷积层来混合特性，这在ShuffleNet
 v1中是没有的。与下图类似，每个block中的通道数量被缩放，生成不同复杂度的网络，标记为0.5x，1x，1.5x，2x。
 
-.. figure:: ../../images/dl_library/shuff7.png
-
+|image8|
 
 .. _总结-1:
 
@@ -152,3 +144,12 @@ ShuffleNet v2不仅高效，而且准确。主要有两个原因：
      pages={116--131},
      year={2018}
    }
+
+.. |image1| image:: ../../images/dl_library/shuff0.png
+.. |image2| image:: ../../images/dl_library/shuff1.png
+.. |image3| image:: ../../images/dl_library/shuff2.png
+.. |image4| image:: ../../images/dl_library/shuff3.png
+.. |image5| image:: ../../images/dl_library/shuff4.png
+.. |image6| image:: ../../images/dl_library/shuff5.png
+.. |image7| image:: ../../images/dl_library/shuff6.png
+.. |image8| image:: ../../images/dl_library/shuff7.png
