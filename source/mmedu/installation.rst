@@ -282,7 +282,7 @@ https://aicarrier.feishu.cn/docx/K0D6d8VHLoN1zoxDb72cBlKynjc\ ）；
 
 打开python终端，执行以下命令即可查看MMEdu版本。当前最新版本是0.04。
 
-.. figure:: ../images/mmedu/pip安装指南3.png
+.. figure:: ../images/mmedu/pip3.png
    :alt: image
 
    image

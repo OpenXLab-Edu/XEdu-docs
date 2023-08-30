@@ -254,7 +254,7 @@ $ pip install MMEdu
 
 打开python终端，执行以下命令即可查看MMEdu版本。当前最新版本是0.04。
 
-![image](../images/mmedu/pip安装指南3.png)
+![image](../images/mmedu/pip3.png)
 
 注：目前版本MMEdu仅支持CPU。
 
