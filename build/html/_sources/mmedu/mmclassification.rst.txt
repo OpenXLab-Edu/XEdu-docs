@@ -2,19 +2,19 @@
 ==================================
 
 初识MMClassification
-~~~~~~~~~~~~~~~~~~~~
+--------------------
 
 MMClassifiation（简称cls）的主要功能是对图像进行分类。其支持的SOTA模型有LeNet、MobileNet、ResNet18、ResNet50等，具体介绍详见\ `后文 <https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#sota>`__\ 。如需查看所有支持的SOTA模型，可使用\ ``model.sota()``\ 代码进行查看。
 
 使用说明
-~~~~~~~~
+--------
 
 XEdu一键安装包中预置了MMEdu的cls模块的示例代码（路径：/demo）、常用小数据集（路径：/dataset/cls）,并且已经预训练了一些权重（路径：/checkpoints/cls_model）。在demo文件夹中，还提供了一张测试图片，OpenInnoLab平台也公开了非常多图像分类任务的项目，体验了几个之后相信会对此模块有一定理解。
 
 下面我们将以“石头剪刀布”手势识别这个任务为例，介绍一下图像分类模块示例代码的用法，解锁图像分类模块的同时也一起完成一个新的图像分类项目吧！
 
 1. 模型训练
-^^^^^^^^^^^
+~~~~~~~~~~~
 
 使用下面的代码即可简单体验MMClassification的训练过程，我们会为您进行详细的介绍。
 
@@ -22,8 +22,7 @@ XEdu一键安装包中预置了MMEdu的cls模块的示例代码（路径：/demo
 
 数据集文件结构如下:
 
-.. figure:: ../../build/html/_static/cls_dataset.png
-
+|image0|
 
 **hand_gray**\ 数据集符合MMEdu图像分类模块支持的数据集要求，文件夹中包含三个图片文件夹，\ ``test_set``,\ ``training_set``,\ ``val_set``\ 分别存储测试集，训练集和验证集的图片；以及三个\ ``txt``\ 文件，\ ``classes.txt``\ 记录该数据集的类别，\ ``test.txt``\ 和\ ``val.txt``\ 分别记录测试集和验证集的图片名。如您想要了解更多数据集格式的内容，可参考\ `数据集支持 <https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#id3>`__\ 部分。
 
@@ -69,7 +68,6 @@ XEdu一键安装包中预置了MMEdu的cls模块的示例代码（路径：/demo
 
 表示训练10个轮次，并在训练结束后用校验集进行评估。
 
-.. Note::   
    **参数详解**
 
    ``train``\ 函数支持很多参数，为了降低难度，MMEdu已经给绝大多数的参数设置了默认值。根据具体的情况修改参数，可能会得到更好的训练效果。下面来详细说明\ ``train``\ 函数的各个参数。
@@ -100,12 +98,10 @@ XEdu一键安装包中预置了MMEdu的cls模块的示例代码（路径：/demo
 
 执行上述代码之后的运行结果如下图：
 
-.. figure:: ../images/mmedu/cls模型训练.png
-
+|image1|
 
 而在\ ``checkpoints\cls_model``\ 文件夹中我们会发现多了两种文件，一个是\ ``***.log.json``\ 文件，它记录了我们模型在训练过程中的一些参数，比如说学习率\ ``lr``\ ，所用时间\ ``time``\ ，以及损失\ ``loss``\ 等；另一个文件是.pth文件，这个是我们在训练过程中所保存的模型。
 
-.. Note::   
    **准确率怎么看？**
 
    方式一：通过训练输出（如上图），运行训练代码时输出项里会出现学习率lr，所用时间time，以及损失loss，每一轮在验证上的accuracy_top-**等。
@@ -118,7 +114,7 @@ XEdu一键安装包中预置了MMEdu的cls模块的示例代码（路径：/demo
 
    accuracy_top-5：对一张图片，如果预测概率前五名的答案中出现了正确答案，便认为正确，再根据分类正确的样本数除以所有的样本数计算得到的准确率，在MMClassification中，如果类别数量大于5会启动accuracy_top-5准确率。
 
-.. Note::   
+..
 
    **日志文件解读**
 
@@ -139,7 +135,7 @@ XEdu一键安装包中预置了MMEdu的cls模块的示例代码（路径：/demo
    本批次模型在训练集上计算的损失值。loss是衡量模型在训练集上预测结果与真实结果之间差异的指标。不同类型的模型（如分类、回归、生成等）使用不同的loss函数来优化模型，MMEdu的图像分类模型一般使用交叉熵损失函数。通常情况下，训练过程中的loss会逐渐下降，表示模型在逐步学习优化。
 
 2. 模型推理
-^^^^^^^^^^^
+~~~~~~~~~~~
 
 当完成模型训练，可使用训练好的模型对新图片进行模型推理。当然如果想快速上手体验MMClassification的图像分类，可直接使用我们已经预训练好的模型和权重文件进行推理，提供一张图片测试推理的准确度。
 
@@ -158,7 +154,9 @@ XEdu一键安装包中预置了MMEdu的cls模块的示例代码（路径：/demo
 运行结果如图：
 
 .. figure:: ../../build/html/_static/cls_result.png
+   :alt: image
 
+   image
 
 推理结果图片（带标签的图片）会以原来的文件名称保存在代码文件的同级目录下的\ ``cls_result``\ 文件夹下，如果运行代码前没有发现该文件夹，不用担心，系统会自动建立。当然，您可以自己指定保存文件夹的名称。
 
@@ -203,7 +201,6 @@ XEdu一键安装包中预置了MMEdu的cls模块的示例代码（路径：/demo
 
 将所需要推理图片的路径传入\ ``inference``\ 函数中即可进行推理，我们这里传入了四个参数，\ ``image``\ 代表的就是推理图片的路径，\ ``show``\ 代表是否需要显示结果图片，\ ``class_path``\ 代表训练集的路径，\ ``checkpoint``\ 代表指定使用的模型权重文件。
 
-.. Note::   
    **参数详解**
 
    在MMClassification中对于\ ``inference``\ 函数还有其他的传入参数，在这里进行说明：
@@ -227,7 +224,7 @@ XEdu一键安装包中预置了MMEdu的cls模块的示例代码（路径：/demo
    model.load_checkpoint(checkpoint=checkpoint)
    result = model.fast_inference(image=img)
 
-.. Note::   
+..
 
    **参数详解**
 
@@ -246,7 +243,7 @@ XEdu一键安装包中预置了MMEdu的cls模块的示例代码（路径：/demo
    ``save_fold``\ ：保存的图片名，数据结构为字符串，默认参数为\ ``'cls_result'``\ ，用户也可以定义为自己想要的名字。
 
 3. 继续训练
-^^^^^^^^^^^
+~~~~~~~~~~~
 
 在这一步中，我们会教您加载之前训练过的模型接着训练，如果您觉得之前训练的模型epoch数不够的话或者因为一些客观原因而不得不提前结束训练，相信下面的代码会帮到您。
 
@@ -265,7 +262,7 @@ XEdu一键安装包中预置了MMEdu的cls模块的示例代码（路径：/demo
 全新开始训练一个模型，一般要花较长时间。我们强烈建议在预训练模型的基础上继续训练，哪怕你要分类的数据集和预训练的数据集并不一样。基于预训练模型继续训练可起到加速训练的作用，通常会使得模型达到更好的效果。在学习资源下载处也提供了一些\ `预训练模型和权重文件下载 <https://xedu.readthedocs.io/zh/master/support_resources/resources.html#id3>`__\ 途径。
 
 4. 支持的SOTA模型
-^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~
 
 目前MMClassifiation支持的SOTA模型有LeNet、MobileNet、ResNet18、ResNet50等，如需查看所有支持的SOTA模型，可使用\ ``model.sota()``\ 代码进行查看。这些模型的作用和适用场景简介如下。
 
@@ -293,3 +290,6 @@ LeNet是一种简单的深度卷积神经网络，他的特色就是参数量少
 3    `ResNet <https://xedu.readthedocs.io/zh/master/dl_library/net/ResNet.html>`__
 4    `更多 <https://xedu.readthedocs.io/zh/master/dl_library/network_introduction.html>`__
 ==== =====================================================================================
+
+.. |image0| image:: ../../build/html/_static/cls_dataset.png
+.. |image1| image:: ../images/mmedu/cls模型训练.png

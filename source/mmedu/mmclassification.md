@@ -18,7 +18,7 @@ XEdu一键安装包中预置了MMEdu的cls模块的示例代码（路径：/demo
 
 数据集文件结构如下:
 
-![image-dataset](../../build/html/_static/cls_dataset.png)
+![](../../build/html/_static/cls_dataset.png)
 
 **hand_gray**数据集符合MMEdu图像分类模块支持的数据集要求，文件夹中包含三个图片文件夹，`test_set`,`training_set`,`val_set`分别存储测试集，训练集和验证集的图片；以及三个`txt`文件，`classes.txt`记录该数据集的类别，`test.txt`和`val.txt`分别记录测试集和验证集的图片名。如您想要了解更多数据集格式的内容，可参考[数据集支持](https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#id3)部分。
 
@@ -94,7 +94,7 @@ model.train(epochs=10, validate=True) # 设定训练的epoch次数以及是否�
 
 执行上述代码之后的运行结果如下图：
 
-![image](../images/mmedu/cls模型训练.png)
+![](../images/mmedu/cls模型训练.png)
 
 而在`checkpoints\cls_model`文件夹中我们会发现多了两种文件，一个是`***.log.json`文件，它记录了我们模型在训练过程中的一些参数，比如说学习率`lr`，所用时间`time`，以及损失`loss`等；另一个文件是.pth文件，这个是我们在训练过程中所保存的模型。
 
