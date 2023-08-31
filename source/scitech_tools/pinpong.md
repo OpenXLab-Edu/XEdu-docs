@@ -6,7 +6,7 @@ pinpong库是一个基于Firmata协议开发的Python硬件控制库。借助于
 
 pinpong库的原理是给开源硬件烧录一个特定的固件，使其可以通过串口与电脑通讯，执行各种命令。pinpong库的名称由“Pin”和“Pong”组成，“Pin”指引脚，“pinpong”为“乒乓球”的谐音，指信号的往复。目前pinpong库支持Arduino、掌控板、micro:bit等开源硬件，同时支持虚谷号、树莓派和拿铁熊猫等。
 
-github地址：https://github.com/DFRobot/pinpong-docs
+GitHub地址：[https://github.com/DFRobot/pinpong-docs](https://github.com/DFRobot/pinpong-docs)
 
 ## 2. 安装
 
@@ -157,7 +157,7 @@ while True:
 
 更多代码请访问官方文档。
 
-官方文档地址：https://pinpong.readthedocs.io/
+官方文档地址：[https://pinpong.readthedocs.io/](https://pinpong.readthedocs.io/)
 
 ## 4. 借助pinpong开发智能作品
 

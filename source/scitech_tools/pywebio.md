@@ -4,7 +4,7 @@
 
 顾名思义，PyWebIO库是一个基于Web方式来实现输入输出（I/O）的Python库。这是北京航空航天大学在读研究生王伟民同学用业余时间写的库。目前在GitHbu上获得了高达1.6K的Star。它允许用户像编写终端脚本一样来编写Web应用或基于浏览器的GUI应用，而无需具备HTML和JS的相关知识。
 
-Github地址：https://github.com/wang0618/PyWebIO
+Github地址：[https://github.com/wang0618/PyWebIO](https://github.com/wang0618/PyWebIO)
 
 ## 2. 安装
 
@@ -116,7 +116,7 @@ PyWebIO支持常见的网页控件。既然PyWebI的定位就是输入和输出�
 
 如果需要了解更多关于PyWebIO库的资源，请访问github或者官方文档。
 
-文档地址：https://pywebio.readthedocs.io/
+文档地址：[https://pywebio.readthedocs.io/](https://pywebio.readthedocs.io/)
 
 ## 4. 借助PyWebIO部署简易AI应用
 
