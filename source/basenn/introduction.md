@@ -92,7 +92,7 @@ model.load_img_data(img_folder_data, transform = tran1)
 
 #### 针对特征表格类型的数据：
 
-指定表格路径，再使用`load_tab_data`函数即可完成载入数据。此处我使用的是经典的lvis鸢尾花数据集。
+指定表格路径，再使用`load_tab_data`函数即可完成载入数据。此处我使用的是经典的Iris鸢尾花数据集。
 
 ```python
 train_path = '../../dataset/iris/iris_training.csv'
@@ -128,7 +128,7 @@ model.load_tab_data(train_path, batch_size=5000,classes=["walking","waving","str
 model.load_dataset(x, y)
 ```
 
-此处采用lvis鸢尾花数据集和MNIST手写体数字图像数据集作为示例。
+此处采用Iris鸢尾花数据集和MNIST手写体数字图像数据集作为示例。
 
 读取并载入csv格式鸢尾花数据集（鸢尾花数据集以鸢尾花的特征作为数据来源，数据集包含150个数据集，有4维，分为3类（setosa、versicolour、virginica），每类50个数据，每个数据包含4个属性，花萼长度、宽度和花瓣长度、宽度）：
 
@@ -145,7 +145,7 @@ test_y = np.loadtxt(test_path, dtype=int, delimiter=',',skiprows=1,usecols=4) # 
 model.load_dataset(x, y)
 ```
 
-上面这段代码使用了NumPy库加载和预处理lvis鸢尾花数据集。代码首先指定了训练数据集和测试数据集的路径，然后使用`np.loadtxt`函数从CSV文件中读取特征和标签数据，并存储在`x`和`y`变量中。测试数据也以相同的方式加载并存储在`test_x`和`test_y`变量中。最后，通过调用`model.load_dataset(x, y)`将数据集载入模型。
+上面这段代码使用了NumPy库加载和预处理Iris鸢尾花数据集。代码首先指定了训练数据集和测试数据集的路径，然后使用`np.loadtxt`函数从CSV文件中读取特征和标签数据，并存储在`x`和`y`变量中。测试数据也以相同的方式加载并存储在`test_x`和`test_y`变量中。最后，通过调用`model.load_dataset(x, y)`将数据集载入模型。
 
 读取并载入手写体图像数据集（数据集包含了0-9共10类手写数字图片，都是28x28大小的灰度图）：
 
@@ -619,7 +619,7 @@ model.add(activation='Softmax')
 p=0.2
 表示有随机20%的神经元会被关闭。这种网络层是为了优化效果，避免过拟合而加入的，不是必需的，因此可以尝试修改p的值甚至删掉这个层观察比较效果差距。
 
-`squeeze`与`unsqueeze`层两个神经网络层并不常见，其作用为对数据的升降维度进行处理。squeeze的操作为压缩维度，unsqueez的操作为扩充维度。这种网络层是为了确保数据在层间正常流动，是必需的，如果想要自行调整，可能需要对数据经过每一层之后的维度变化有充分了解，在此之前，保持原样即可。
+`squeeze`与`unsqueeze`层两个神经网络层并不常见，其作用为对数据的升降维度进行处理。squeeze的操作为压缩维度，unsqueeze的操作为扩充维度。这种网络层是为了确保数据在层间正常流动，是必需的，如果想要自行调整，可能需要对数据经过每一层之后的维度变化有充分了解，在此之前，保持原样即可。
 
 `Batchnorm1d`的作用是对一维数据做归一化。参数中size值表示输入数据的维度（注意和上一层的输出以及下一层的输入一致即可）。这种网络层是也为了优化效果而加入的，不是必需的，没有这个层也可以正常训练，但由于去掉这个网络层后效果下降的会非常明显，所以不建议删掉这个层。
 
