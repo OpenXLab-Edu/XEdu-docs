@@ -6,7 +6,7 @@ FastAPI 是一种现代、快速（高性能）的 Web 框架，用于基于标�
 
 主要特点是： 快速、运行编码快、更少的错误、直观、简单、简短、健壮、基于行业标准。
 
-文档地址：https://fastapi.tiangolo.com/
+文档地址：[https://fastapi.tiangolo.com/](https://fastapi.tiangolo.com/)
 
 ## 2. 安装
 

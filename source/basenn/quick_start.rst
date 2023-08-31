@@ -165,7 +165,7 @@ AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pj
 
 tang.npz是本项目的文本数据，源于互联网，包括57580首唐诗。
 
-::
+.. code:: python
 
    datas = np.load('tang.npz',allow_pickle=True)
    data = datas['data'] 
@@ -182,7 +182,7 @@ tang.npz是本项目的文本数据，源于互联网，包括57580首唐诗。
 
 搭建模型只需加入lstm层即可，其他层会自适应补充，其中num_layers参数为循环神经网络循环的次数。
 
-::
+.. code:: python
 
    model.add('lstm', size=(128,256),num_layers=2) 
 
@@ -193,7 +193,7 @@ tang.npz是本项目的文本数据，源于互联网，包括57580首唐诗。
 
 为了节省训练时间，可以选择继续训练。
 
-::
+.. code:: python
 
    checkpoint = 'model.pth'
    model.save_fold = 'checkpoints'
@@ -236,8 +236,7 @@ tang.npz是本项目的文本数据，源于互联网，包括57580首唐诗。
 
 实现效果：
 
-.. figure:: ../images/basenn/卷积实现手写数字分类.png
-
+|image1|
 
 实现步骤：
 ^^^^^^^^^^
@@ -441,8 +440,7 @@ tang.npz是本项目的文本数据，源于互联网，包括57580首唐诗。
 当然，因为这一角度是可以用三角函数计算的，那么最方面的数据采集方式莫过于是用Python写一段代码，然后将一组数据输出到CSV
 文件中。或者使用Excel的公式来计算，再导出关键数据，如图所示。
 
-.. figure:: ../images/basenn/用Excel计算数据.png
-
+|image2|
 
 .. _网络搭建和模型训练-2:
 
@@ -491,3 +489,6 @@ tang.npz是本项目的文本数据，源于互联网，包括57580首唐诗。
    test_y = np.loadtxt(test_path, dtype=float, delimiter=',',skiprows=1,usecols=[3]) # 读取第4列
    result = model.inference(data=test_x) # 对该数据进行预测
    print(np.arccos(result)/np.pi*180)
+
+.. |image1| image:: ../images/basenn/six.png
+.. |image2| image:: ../images/basenn/excel.png

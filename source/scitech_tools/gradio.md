@@ -4,9 +4,9 @@
 
 Gradio是一个开源库，用于快速原型设计和部署机器学习模型的交互式界面。它提供了简单易用的接口，让用户能够轻松创建和展示机器学习模型，以及与其交互。
 
-gitee地址：https://gitee.com/mirrors/gradio
+gitee地址：[https://gitee.com/mirrors/gradio](https://gitee.com/mirrors/gradio)
 
-官方文档：https://gradio.app/docs/
+官方文档：[https://gradio.app/docs/](https://gradio.app/docs/)
 
 ## 2. 安装
 

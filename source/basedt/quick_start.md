@@ -24,7 +24,7 @@ data.show()
 
 下图分别是原图片，resize大小至(256, 256)的图片，crop大小至(224,224)的图片和归一化的图片。
 
-![image](../images/basedt/图片处理示例图.JPEG)
+![](../images/basedt/pic_case.JPEG)
 
 ### 2. 文本数据处理
 
@@ -38,7 +38,7 @@ print(data.value)
 
 可看到text中`'city': 'Dubai'`的`'Dubai'`向量化后变为1，`'temperature': 33`的33仍保留为原本数值。
 
-![image](../images/basedt/文本转换示例图.PNG)
+![](../images/basedt/text_trans_case.PNG)
 
 ###  3. 语音数据处理
 
@@ -81,13 +81,13 @@ ds.check()
 
 格式正确提示：
 
-![image](../images/basedt/格式正确.png)
+![](../images/basedt/form_right.png)
 
 格式有误提示：
 
-![image](../images/basedt/格式错误1.png)
+![](../images/basedt/formerror1.png)
 
-![image](../images/basedt/格式错误2.png)
+![](../images/basedt/formerror2.png)
 
 ###  3. 数据集格式转换
 
@@ -126,7 +126,7 @@ ds = DataSet(r"my_dataset") # 指定为新数据集路径
 ds.make_dataset(r"G:\\测试数据集\\fruit_voc", src_format="VOC",train_ratio = 0.8, test_ratio = 0.1, val_ratio = 0.1) # 指定待转格式的原始数据集路径，原始数据集格式，划分比例，默认比例为train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2
 ```
 
-![image](../images/basedt/voc2coco.png)
+![](../images/basedt/voc2coco.png)
 
 转换成功后，不仅将网上下载的数据集转换为了XEdu支持的数据集格式，并对训练集、测试集、验证集进行了重新划分。
 
@@ -140,7 +140,7 @@ ds = DataSet(r"my_dataset") # 指定目标数据集
 ds.make_dataset(r"/data/HZQV42", src_format="INNOLAB",train_ratio = 0.8, test_ratio = 0.1, val_ratio = 0.1) # 仅需修改为待转格式的原始数据集路径（注意是整个数据集）
 ```
 
-![image](../images/basedt/coco转换完成.png)
+![](../images/basedt/cocotransok.png)
 
 更多XEdu支持的数据集格式的介绍详见[数据集支持](https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#id3)部分。
 
@@ -158,7 +158,7 @@ path = "feature_data/mmpose_pose_train_feature.csv"
 tx,ty,val_x,val_y = split_tab_dataset(path,data_column=range(1,35),label_column=35,train_val_ratio=0.8,normalize=True)
 ```
 
-![image](../images/basedt/csv数据集拆分.png)
+![](../images/basedt/csvdataset_split.png)
 
 ## 数据的可视化
 
@@ -177,7 +177,7 @@ img = 'test.jpg'
 imshow_det_bboxes(img, bboxes = [[3,25,170,263,0.9]],labels = [0], class_names = ["cat"], score_thr = 0.8)
 ```
 
-![image](../images/basedt/绘制目标检测框.png)
+![](../images/basedt/draw_square.png)
 
 ###  3. 绘制分割任务的掩膜
 
@@ -192,7 +192,7 @@ from BaseDT.plot import plot_log
 plot_log(log_path)
 ```
 
-![image](../images/basedt/日志绘制图.png)
+![](../images/basedt/log_pic.png)
 
 ## 轻松调用I/O设备
 
@@ -210,7 +210,7 @@ audio_data = microphone.record_audio(time = 2)
 
 录制的两秒音频图下如下图：
 
-![image](../images/basedt/音频图.png)
+![](../images/basedt/vedio.png)
 
 ##  附录
 
