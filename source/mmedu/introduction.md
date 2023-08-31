@@ -70,6 +70,8 @@ MMEdu基于OpenMMLab的基础上开发，因为面向中小学，优先选择支
     <tbody>
         <tr class="row-even">
             <td>MMEditing</td>
+            <td></td>
+            <td></td>
         </tr>
     </tbody>
     <tbody>
