@@ -43,7 +43,7 @@ OpenMMLab官方地址：[https://openmmlab.com/](https://openmmlab.com/)
 
 执行上述代码之后的运行结果如下图：
 
-![image](../images/mmedu/cls模型训练.png)
+![](../images/mmedu/clsModelTrain.png)
 
 而在`checkpoints\cls_model`文件夹中我们会发现多了两种文件，一个是`***.log.json`文件，它记录了我们模型在训练过程中的一些参数，比如说学习率`lr`，所用时间`time`，以及损失`loss`等；另一个文件是.pth文件，这个是我们在训练过程中所保存的模型。
 

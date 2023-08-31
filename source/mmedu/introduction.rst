@@ -41,41 +41,464 @@ MMEdu基于OpenMMLab的基础上开发，因为面向中小学，优先选择支
 MMEdu的内置模块概述
 -------------------
 
-================ ====== ================
-模块名称         简称   功能
-================ ====== ================
-MMClassification MMCls  图片分类
-MMDetection      MMDet  图片中的物体检测
-MMGeneration     MMGen  GAN，风格化
-MMPose           MMPose 骨架
-MMEditing               
-MMSegmentation          像素级识别
-================ ====== ================
+.. raw:: html
+
+   <table class="docutils align-default">
+
+.. raw:: html
+
+   <thead>
+
+.. raw:: html
+
+   <tr class="row-odd">
+
+.. raw:: html
+
+   <th class="head">
+
+模块名称
+
+.. raw:: html
+
+   </th>
+
+.. raw:: html
+
+   <th class="head">
+
+简称
+
+.. raw:: html
+
+   </th>
+
+.. raw:: html
+
+   <th class="head">
+
+功能
+
+.. raw:: html
+
+   </th>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </thead>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td>
+
+MMClassification
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+MMCls
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+图片分类
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td>
+
+MMDetection
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+MMDet
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+图片中的物体检测
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td>
+
+MMGeneration
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+MMGen
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+GAN，风格化
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td>
+
+MMPose
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+MMPose
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+骨架
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td>
+
+MMEditing
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td>
+
+MMSegmentation
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+像素级识别
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   </table>
 
 MMEdu的内置SOTA模型
 -------------------
 
 MMEdu内置了常见的SOTA模型，我们还在不断更新中。如需查看所有支持的SOTA模型，可使用\ ``model.sota()``\ 代码进行查看。
 
-+-----------+---------------------------------------------+-----------+
-| 模块名称  | 内置模型                                    | 功能      |
-+===========+=============================================+===========+
-| MMClass   | `LeNet <https://xedu.readthedocs.io/z       | 图片分类  |
-| ification | h/master/dl_library/net/lenet5.html>`__\ 、 |           |
-|           | \ `ResNet18 <https://xedu.readthedocs.io/z  |           |
-|           | h/master/dl_library/net/ResNet.html>`__\ 、 |           |
-|           | \ `ResNet50 <https://xedu.readthedocs.io/z  |           |
-|           | h/master/dl_library/net/ResNet.html>`__\ 、 |           |
-|           | \ `MobileNet <https://xedu.readthedocs.io/  |           |
-|           | zh/master/dl_library/net/mobilenet.html>`__ |           |
-+-----------+---------------------------------------------+-----------+
-| MM        | `FastRCNN <https://xedu.readthedocs.io      | 图片中的  |
-| Detection | /zh/master/dl_library/net/FasterRCNN.html>` | 物体检测  |
-|           | __\ 、\ `SSD_Lite <https://xedu.readthedocs |           |
-|           | .io/zh/master/dl_library/net/SSD_Lite.html> |           |
-|           | `__\ 、\ `Yolov3 <https://xedu.readthedocs. |           |
-|           | io/zh/master/dl_library/net/Yolov3.html>`__ |           |
-+-----------+---------------------------------------------+-----------+
+.. raw:: html
+
+   <table class="docutils align-default">
+
+.. raw:: html
+
+   <thead>
+
+.. raw:: html
+
+   <tr class="row-odd">
+
+.. raw:: html
+
+   <th class="head">
+
+模块名称
+
+.. raw:: html
+
+   </th>
+
+.. raw:: html
+
+   <th class="head">
+
+内置模型
+
+.. raw:: html
+
+   </th>
+
+.. raw:: html
+
+   <th class="head">
+
+功能
+
+.. raw:: html
+
+   </th>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </thead>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td>
+
+MMClassification
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+LeNet、ResNet18、ResNet50、MobileNet
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+图片分类
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td>
+
+MMDetection
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+FastRCNN、SSD_Lite、Yolov3
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+图片中的物体检测
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   </table>
 
 注：关于MMClassification支持的SOTA模型的比较可参考“解锁图像分类模块：MMClassification”中关于“\ `支持的SOTA模型 <https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#sota>`__\ ”的介绍，关于MMDetection支持的SOTA模型的比较可参考“揭秘目标检测模块：MMDetection”中关于“\ `支持的SOTA模型 <https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html#sota>`__\ ”的介绍。关于这些SOTA模型更具体的介绍，请参考本文档的“深度学习知识库”部分的“\ `经典网络模型介绍 <https://xedu.readthedocs.io/zh/master/dl_library.html>`__
 ”。当然，通过“AI模型 + 关键词”的形式，你在很多搜索引擎中都能找到资料。
@@ -257,12 +680,9 @@ COCO数据集的标注信息存储在“annotations”文件夹中的\ ``json``\
    import MMEdu
    print(MMEdu.__path__)
 
-.. figure:: ../images/mmedu/pip安装指南1.png
-   :alt: image
+|image1|
 
-   image
-
-2. 查看权重文件信息
+1. 查看权重文件信息
 
    模型训练好后生成了日志文件和（.pth）权重文件，可以使用如下代码查看权重文件信息。
 
@@ -270,7 +690,7 @@ COCO数据集的标注信息存储在“annotations”文件夹中的\ ``json``\
 
       pth_info(checkpoint) # 指定为pth权重文件路径
 
-3. 返回日志信息
+2. 返回日志信息
 
    如需返回日志信息，可在训练时使用如下代码：
 
@@ -281,5 +701,7 @@ COCO数据集的标注信息存储在“annotations”文件夹中的\ ``json``\
 
    返回的是日志文件中各行信息组成的列表。
 
-4. 打开github地址（\ `GitHub -
+3. 打开github地址（\ `GitHub -
    OpenXLab-Edu/OpenMMLab-Edu <https://github.com/OpenXLab-Edu/OpenMMLab-Edu>`__\ ），可查看库文件原码和更多示例程序。
+
+.. |image1| image:: ../images/mmedu/pip1.png

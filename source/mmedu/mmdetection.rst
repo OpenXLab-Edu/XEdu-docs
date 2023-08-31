@@ -286,22 +286,193 @@ XEdu一键安装包中预置了MMEdu的det模块的示例代码（路径：/demo
 
 只进行一次检测，速度较快，适用于稍微大的目标检测问题。
 
-+---+------------------------------------------------------------------+
-| 序 | SOTA模型介绍                                                    |
-| 号 |                                                                 |
-+===+==================================================================+
-| 1 | `SSD_Lite <https:                                                |
-|   | //xedu.readthedocs.io/zh/master/dl_library/net/SSD_Lite.html>`__ |
-+---+------------------------------------------------------------------+
-| 2 | `FasterRCNN <https://                                            |
-|   | xedu.readthedocs.io/zh/master/dl_library/net/FasterRCNN.html>`__ |
-+---+------------------------------------------------------------------+
-| 3 | `Yolov3 <http                                                    |
-|   | s://xedu.readthedocs.io/zh/master/dl_library/net/Yolov3.html>`__ |
-+---+------------------------------------------------------------------+
-| 4 | `更多 <https://xedu.r                                            |
-|   | eadthedocs.io/zh/master/dl_library/network_introduction.html>`__ |
-+---+------------------------------------------------------------------+
+.. raw:: html
+
+   <table class="docutils align-default">
+
+.. raw:: html
+
+   <thead>
+
+.. raw:: html
+
+   <tr class="row-odd">
+
+.. raw:: html
+
+   <th class="head">
+
+序号
+
+.. raw:: html
+
+   </th>
+
+.. raw:: html
+
+   <th class="head">
+
+SOTA模型介绍
+
+.. raw:: html
+
+   </th>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </thead>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td>
+
+1
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+SSD_Lite
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td>
+
+2
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+FasterRCNN
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td>
+
+3
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+Yolov3
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td>
+
+4
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+更多
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   </table>
 
 补充内容：再了解一下单目标检测和多目标检测
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

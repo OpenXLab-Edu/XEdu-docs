@@ -280,13 +280,38 @@ model.train(epochs=3, validate=True, checkpoint=checkpoint) # 进行再训练
 
 只进行一次检测，速度较快，适用于稍微大的目标检测问题。
 
-| 序号 | SOTA模型介绍                                                 |
-| ---- | :----------------------------------------------------------- |
-| 1    | [SSD_Lite](https://xedu.readthedocs.io/zh/master/dl_library/net/SSD_Lite.html) |
-| 2    | [FasterRCNN](https://xedu.readthedocs.io/zh/master/dl_library/net/FasterRCNN.html) |
-| 3    | [Yolov3](https://xedu.readthedocs.io/zh/master/dl_library/net/Yolov3.html) |
-| 4    | [更多](https://xedu.readthedocs.io/zh/master/dl_library/network_introduction.html) |
-
+<table class="docutils align-default">
+    <thead>
+        <tr class="row-odd">
+            <th class="head">序号</th>
+            <th class="head">SOTA模型介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="row-even">
+            <td>1</td>
+            <td><a href="https://xedu.readthedocs.io/zh/master/dl_library/net/SSD_Lite.html">SSD_Lite</a></td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="row-even">
+            <td>2</td>
+            <td><a href="https://xedu.readthedocs.io/zh/master/dl_library/net/FasterRCNN.html">	FasterRCNN</a></td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="row-even">
+            <td>3</td>
+            <td><a href="https://xedu.readthedocs.io/zh/master/dl_library/net/Yolov3.html">Yolov3</a></td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="row-even">
+            <td>4</td>
+            <td><a href="https://xedu.readthedocs.io/zh/master/dl_library/network_introduction.html">更多</a></td>
+        </tr>
+    </tbody>
+</table>
 
 
 #### 补充内容：再了解一下单目标检测和多目标检测

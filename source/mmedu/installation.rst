@@ -76,8 +76,9 @@ python中最常用的库管理工具pip，可以使用cmd命令行来运行，�
 在其中输入想要安装的库文件即可，如”pip install rarfile”。
 
 **在2022年9月后，不再维护MMEdu一键安装包，统一更新为XEdu。XEdu于22年9月在世界人工智能大会正式发布，分MMEdu、BaseML、BaseNN三个功能模块，除了一键安装包，同时实现以pip方式安装。**
-如\ ``pip install BaseML BaseNN BaseDT BaseDeploy MMEdu`` 1.2 pip安装
-~~~~~~~~~~~
+如\ ``pip install BaseML BaseNN BaseDT BaseDeploy MMEdu``
+
+1.2 pip安装 ~~~~~~~~~~~
 
 当前，我们提供的MMEdu0.0.7版本的安装是基础版的pip安装包，可以使用如下命令安装：
 ``pip install mmedu``\ 或\ ``pip install MMEdu``\ 。

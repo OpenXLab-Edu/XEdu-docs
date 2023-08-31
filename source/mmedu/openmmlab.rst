@@ -50,10 +50,7 @@ OpenMMLab官方地址：\ https://openmmlab.com/
 
 执行上述代码之后的运行结果如下图：
 
-.. figure:: ../images/mmedu/cls模型训练.png
-   :alt: image
-
-   image
+|image1|
 
 而在\ ``checkpoints\cls_model``\ 文件夹中我们会发现多了两种文件，一个是\ ``***.log.json``\ 文件，它记录了我们模型在训练过程中的一些参数，比如说学习率\ ``lr``\ ，所用时间\ ``time``\ ，以及损失\ ``loss``\ 等；另一个文件是.pth文件，这个是我们在训练过程中所保存的模型。
 
@@ -88,3 +85,5 @@ accuracy_top-5：对一张图片，如果预测概率前五名的答案中出现
 
 ``loss``:
 本批次模型在训练集上计算的损失值。loss是衡量模型在训练集上预测结果与真实结果之间差异的指标。不同类型的模型（如分类、回归、生成等）使用不同的loss函数来优化模型，MMEdu的图像分类模型一般使用交叉熵损失函数。通常情况下，训练过程中的loss会逐渐下降，表示模型在逐步学习优化。
+
+.. |image1| image:: ../images/mmedu/clsModelTrain.png

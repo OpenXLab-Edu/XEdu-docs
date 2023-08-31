@@ -279,22 +279,193 @@ XEdu一键安装包中预置了MMEdu的cls模块的示例代码（路径：/demo
 
 LeNet是一种简单的深度卷积神经网络，他的特色就是参数量少、计算小，训练模型很快，确定层数少，不能充分学习数据的特征，LeNet比较适合图像比较简单的图像分类，通常像素值超过224的图片或者彩色图片分类建议选择MobileNet和ResNet。
 
-+---+------------------------------------------------------------------+
-| 序 | SOTA模型介绍                                                    |
-| 号 |                                                                 |
-+===+==================================================================+
-| 1 | `LeNet <http                                                     |
-|   | s://xedu.readthedocs.io/zh/master/dl_library/net/lenet5.html>`__ |
-+---+------------------------------------------------------------------+
-| 2 | `MobileNet <https:/                                              |
-|   | /xedu.readthedocs.io/zh/master/dl_library/net/mobilenet.html>`__ |
-+---+------------------------------------------------------------------+
-| 3 | `ResNet <http                                                    |
-|   | s://xedu.readthedocs.io/zh/master/dl_library/net/ResNet.html>`__ |
-+---+------------------------------------------------------------------+
-| 4 | `更多 <https://xedu.r                                            |
-|   | eadthedocs.io/zh/master/dl_library/network_introduction.html>`__ |
-+---+------------------------------------------------------------------+
+.. raw:: html
+
+   <table class="docutils align-default">
+
+.. raw:: html
+
+   <thead>
+
+.. raw:: html
+
+   <tr class="row-odd">
+
+.. raw:: html
+
+   <th class="head">
+
+序号
+
+.. raw:: html
+
+   </th>
+
+.. raw:: html
+
+   <th class="head">
+
+SOTA模型介绍
+
+.. raw:: html
+
+   </th>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </thead>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td>
+
+1
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+LeNet
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td>
+
+2
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+MobileNet
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td>
+
+3
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+ResNet
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr class="row-even">
+
+.. raw:: html
+
+   <td>
+
+4
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+更多
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   </table>
 
 .. |image1| image:: ../images/mmedu/cls_dataset.png
 .. |image2| image:: ../images/mmedu/clsModelTrain.png

@@ -31,24 +31,88 @@ FastAI同样基于Pytorch，但是和OpenMMLab不同的是，FastAI只能支持G
 MMEdu基于OpenMMLab的基础上开发，因为面向中小学，优先选择支持CPU训练的模块。
 
 ## MMEdu的内置模块概述
+<table class="docutils align-default">
+    <thead>
+        <tr class="row-odd">
+            <th class="head">模块名称 </th>
+            <th class="head">简称</th>
+            <th class="head">功能</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="row-even">
+            <td>MMClassification</td>
+            <td>MMCls</td>
+            <td>图片分类 </td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="row-even">
+            <td>MMDetection</td>
+            <td>MMDet</td>
+            <td>图片中的物体检测</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="row-even">
+            <td>MMGeneration</td>
+            <td>MMGen</td>
+            <td>GAN，风格化</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="row-even">
+            <td>MMPose</td>
+            <td>MMPose</td>
+            <td>骨架</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="row-even">
+            <td>MMEditing</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="row-even">
+            <td>MMSegmentation</td>
+            <td></td>
+            <td>像素级识别</td>
+        </tr>
+    </tbody>
+</table>
 
-| 模块名称         | 简称   | 功能             |
-| ---------------- | ------ | ---------------- |
-| MMClassification | MMCls  | 图片分类         |
-| MMDetection      | MMDet  | 图片中的物体检测 |
-| MMGeneration     | MMGen  | GAN，风格化      |
-| MMPose           | MMPose | 骨架             |
-| MMEditing        |        |                  |
-| MMSegmentation   |        | 像素级识别       |
+
+
 
 ## MMEdu的内置SOTA模型
 
 MMEdu内置了常见的SOTA模型，我们还在不断更新中。如需查看所有支持的SOTA模型，可使用`model.sota()`代码进行查看。
 
-| 模块名称         | 内置模型                                                     | 功能             |
-| ---------------- | ------------------------------------------------------------ | ---------------- |
-| MMClassification | [LeNet](https://xedu.readthedocs.io/zh/master/dl_library/net/lenet5.html)、[ResNet18](https://xedu.readthedocs.io/zh/master/dl_library/net/ResNet.html)、[ResNet50](https://xedu.readthedocs.io/zh/master/dl_library/net/ResNet.html)、[MobileNet](https://xedu.readthedocs.io/zh/master/dl_library/net/mobilenet.html) | 图片分类         |
-| MMDetection      | [FastRCNN](https://xedu.readthedocs.io/zh/master/dl_library/net/FasterRCNN.html)、[SSD_Lite](https://xedu.readthedocs.io/zh/master/dl_library/net/SSD_Lite.html)、[Yolov3](https://xedu.readthedocs.io/zh/master/dl_library/net/Yolov3.html) | 图片中的物体检测 |
+<table class="docutils align-default">
+    <thead>
+        <tr class="row-odd">
+            <th class="head">模块名称</th>
+            <th class="head">内置模型</th>
+            <th class="head">功能</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="row-even">
+            <td>MMClassification</td>
+            <td><a href="https://xedu.readthedocs.io/zh/master/dl_library/net/lenet5.html">LeNet</a>、<a href="https://xedu.readthedocs.io/zh/master/dl_library/net/ResNet.html">ResNet18</a>、<a href="https://xedu.readthedocs.io/zh/master/dl_library/net/ResNet.html">ResNet50</a>、<a href="https://xedu.readthedocs.io/zh/master/dl_library/net/mobilenet.html">MobileNet</a></td>
+            <td>图片分类</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="row-even">
+            <td>MMDetection</td>
+            <td><a href="https://xedu.readthedocs.io/zh/master/dl_library/net/FasterRCNN.html">FastRCNN</a>、<a href="https://xedu.readthedocs.io/zh/master/dl_library/net/SSD_Lite.html">SSD_Lite</a>、<a href="https://xedu.readthedocs.io/zh/master/dl_library/net/Yolov3.html">Yolov3</a></td>
+            <td>图片中的物体检测</td>
+        </tr>
+    </tbody>
+</table>
+
+
 
 注：关于MMClassification支持的SOTA模型的比较可参考“解锁图像分类模块：MMClassification”中关于“[支持的SOTA模型](https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#sota)”的介绍，关于MMDetection支持的SOTA模型的比较可参考“揭秘目标检测模块：MMDetection”中关于“[支持的SOTA模型](https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html#sota)”的介绍。关于这些SOTA模型更具体的介绍，请参考本文档的“深度学习知识库”部分的“[经典网络模型介绍](https://xedu.readthedocs.io/zh/master/dl_library.html) ”。当然，通过“AI模型 + 关键词”的形式，你在很多搜索引擎中都能找到资料。
 
@@ -221,9 +285,9 @@ import MMEdu
 print(MMEdu.__path__)
 ```
 
-![image](../images/mmedu/pip安装指南1.png)
+![](../images/mmedu/pip1.png)
 
-2. 查看权重文件信息
+1. 查看权重文件信息
 
    模型训练好后生成了日志文件和（.pth）权重文件，可以使用如下代码查看权重文件信息。
 
@@ -231,7 +295,7 @@ print(MMEdu.__path__)
    pth_info(checkpoint) # 指定为pth权重文件路径
    ```
 
-3. 返回日志信息
+2. 返回日志信息
 
    如需返回日志信息，可在训练时使用如下代码：
 
@@ -242,5 +306,5 @@ print(MMEdu.__path__)
 
    返回的是日志文件中各行信息组成的列表。
 
-4. 打开github地址（[GitHub - OpenXLab-Edu/OpenMMLab-Edu](https://github.com/OpenXLab-Edu/OpenMMLab-Edu)），可查看库文件原码和更多示例程序。
+3. 打开github地址（[GitHub - OpenXLab-Edu/OpenMMLab-Edu](https://github.com/OpenXLab-Edu/OpenMMLab-Edu)），可查看库文件原码和更多示例程序。
 

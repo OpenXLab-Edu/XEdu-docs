@@ -6,7 +6,7 @@ MMEdu是什么？
 
 MMEdu源于国产人工智能视觉（CV）算法集成框架OpenMMLab，是一个“开箱即用”的深度学习开发工具。在继承OpenMMLab强大功能的同时，MMEdu简化了神经网络模型搭建和训练的参数，降低了编程的难度，并实现一键部署编程环境，让初学者通过简洁的代码完成各种SOTA模型（state-of-the-art，指在该项研究任务中目前最好/最先进的模型）的训练，并能够快速搭建出AI应用系统。
 
-官方地址：\ `OpenInnoLab <https://www.openinnolab.org.cn/pjEdu/xedu>`__
+官方地址：OpenInnoLab
 
 GitHub：https://github.com/OpenXLab-Edu/OpenMMLab-Edu
 
@@ -15,7 +15,7 @@ GitHub：https://github.com/OpenXLab-Edu/OpenMMLab-Edu
 小目标：使用MMEdu训练一个手写体数字识别模型！
 ---------------------------------------------
 
-MMEdu有多种\ `安装方式 <https://xedu.readthedocs.io/zh/master/mmedu/installation.html#mmedu>`__\ ，可以通过pip方式安装，也可以使用一键安装包。体验MMEdu的最快速方式是通过OpenInnoLab平台在线体验MMEdu。
+MMEdu有多种安装方式，可以通过pip方式安装，也可以使用一键安装包。体验MMEdu的最快速方式是通过OpenInnoLab平台在线体验MMEdu。
 
 1. 在OpenInnoLab创建MMEdu项目
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
