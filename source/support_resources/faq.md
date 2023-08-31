@@ -1,9 +1,9 @@
 # 常见问题解答
-云文档链接：https://docs.qq.com/sheet/DQ0htU2poQlRSUmxn?tab=BB08J2
+云文档链接：[https://docs.qq.com/sheet/DQ0htU2poQlRSUmxn?tab=BB08J2](https://docs.qq.com/sheet/DQ0htU2poQlRSUmxn?tab=BB08J2)
 
 Q1：XEdu和OpenInnoLab什么关系？都是人工智能平台吗？
 
-A1：XEdu是上海人工智能实验室智能教育中心为中小学AI教育设计的一套完整的学习工具。OpenInnoLab平台是上海人工智能实验室智能教育中心的开源平台，是个既可以学习AI也可以做AI项目的平台，网址就是**www.openinnolab.org.cn**。OpenInnoLab平台人工智能工坊提供多种主流深度学习框架的预置编程环境，包括XEdu工具的，在OpenInnoLab平台上可在线基于XEdu制作AI项目。
+A1：XEdu是上海人工智能实验室智能教育中心为中小学AI教育设计的一套完整的学习工具。OpenInnoLab平台是上海人工智能实验室智能教育中心的开源平台，是个既可以学习AI也可以做AI项目的平台，网址就是[**www.openinnolab.org.cn**](www.openinnolab.org.cn)。OpenInnoLab平台人工智能工坊提供多种主流深度学习框架的预置编程环境，包括XEdu工具的，在OpenInnoLab平台上可在线基于XEdu制作AI项目。
 
 
 
