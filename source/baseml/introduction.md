@@ -1,6 +1,6 @@
 # BaseML功能详解
 
-我们的传统机器学习（Mechine Learning）有很多算法，但总的来说，可以分为三大类：分类、回归和聚类。BaseML和sklearn不同之处，也就体现于此，sklearn尽管在拟合、预测等函数上对各模块做了统一，但并没有明确指出这样的三大类划分方式。这三类也有着特有的数据输入格式。
+我们的传统机器学习（Mechine Learning）有很多算法，但总的来说，可以分为三大类：分类、回归和聚类。BaseML和sklearn不同之处，也就体现于此，sklearn尽管在拟合、预测等函数上对各模块做了统一，但并没有明确指出这样的三大类划分方式。这三类也有着特有的数据输入格式。除此之外，BaseLM还提供了`DimentionReduction`数据降维模块，用以对数据进行降维处理。
 
 ## 分类任务
 
@@ -105,6 +105,8 @@ model.load_dataset(X=train_x, y=train_y,type ='numpy')
 ```
 
 `X`表示数据特征，`y`表示标签。可再设置`x_column`和`y_column`参数，不设置则默认所有列。同时BaseML内置了图片读取处理模块`ImageLoader`。
+
+`ImageLoader`是BaseML内置的图片读取处理模块，用于进行图像数字化处理，读取图片并提取其中的图像特征，如HOG特征和LBP特征，用以进行后续的机器学习任务。
 
 使用示例：
 
