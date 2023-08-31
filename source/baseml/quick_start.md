@@ -85,7 +85,7 @@ model.load('mymodel.pkl')
 
 体验BaseML的最快速方式是通过OpenInnoLab平台。
 
-OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台，满足青少年的AI学习和创作需求，支持在线编程。在“项目”中查看更多，查找”BaseML“，即可找到所有与BaseML相关的体验项目。
+OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台，满足青少年的AI学习和创作需求，支持在线编程。在“项目”中查看更多，查找“BaseML”即可找到所有BaseML相关的体验项目。
 
 AI项目工坊：[https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pjlab/ai/projects](https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pjlab/ai/projects)
 
