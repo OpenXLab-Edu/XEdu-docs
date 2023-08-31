@@ -106,6 +106,8 @@ model.load_dataset(X=train_x, y=train_y,type ='numpy')
 
 `X`表示数据特征，`y`表示标签。可再设置`x_column`和`y_column`参数，不设置则默认所有列。同时BaseML内置了图片读取处理模块`ImageLoader`。
 
+`ImageLoader`是BaseML内置的图片读取处理模块，用于进行图像数字化处理，读取图片并提取其中的图像特征，如HOG特征和LBP特征，用以进行后续的机器学习任务。
+
 使用示例：
 
 以读取ImageNet格式的MNIST数据集为例，
