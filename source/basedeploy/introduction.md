@@ -365,7 +365,7 @@ port：设置启动`PywebIO`的端口号，默认为：`1956`。
 
 使用Mind+V1.7.2及以上版本，在python模式用户库中加载此扩展，AI模型部署工具库。
 
-Gitee链接：https://gitee.com/liliang9693/ext-BaseDeploy
+Gitee链接：[https://gitee.com/liliang9693/ext-BaseDeploy](https://gitee.com/liliang9693/ext-BaseDeploy)
 
 #### 使用说明
 
@@ -403,15 +403,15 @@ Gitee链接：https://gitee.com/liliang9693/ext-BaseDeploy
 
 ## 参考链接
 
-Gradio：https://github.com/gradio-app/gradio
+Gradio：[https://github.com/gradio-app/gradio](https://github.com/gradio-app/gradio)
 
-FastAPI：https://github.com/tiangolo/fastapi
+FastAPI：[https://github.com/tiangolo/fastapi](https://github.com/tiangolo/fastapi)
 
-SIOT：https://github.com/vvlink/SIoT
+SIOT：[https://github.com/vvlink/SIoT](https://github.com/vvlink/SIoT)
 
-PywebIO：https://github.com/pywebio/PyWebIO
+PywebIO：[https://github.com/pywebio/PyWebIO](https://github.com/pywebio/PyWebIO)
 
-Flask：https://github.com/pallets/flask
+Flask：[https://github.com/pallets/flask](https://github.com/pallets/flask)
 
-Mind+：https://mindplus.cc/
+Mind+：[https://mindplus.cc/](https://mindplus.cc/)
 
