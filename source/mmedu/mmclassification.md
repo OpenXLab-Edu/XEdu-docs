@@ -2,7 +2,7 @@
 
 ### 初识MMClassification
 
-MMClassifiation（简称cls）的主要功能是对图像进行分类。其支持的SOTA模型有LeNet、MobileNet、ResNet18、ResNet50等，具体介绍详见[后文](https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#sota)。如需查看所有支持的SOTA模型，可使用`model.sota()`代码进行查看。
+MMClassifiation（简称cls）的主要功能是对图像进行分类。其支持的SOTA模型有LeNet、MobileNet、ResNet18、ResNet50等，具体介绍详见<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#sota">后文</a>。如需查看所有支持的SOTA模型，可使用`model.sota()`代码进行查看。
 
 ### 使用说明
 
@@ -20,7 +20,7 @@ XEdu一键安装包中预置了MMEdu的cls模块的示例代码（路径：/demo
 
 ![](../images/mmedu/cls_dataset.png)
 
-**hand_gray**数据集符合MMEdu图像分类模块支持的数据集要求，文件夹中包含三个图片文件夹，`test_set`,`training_set`,`val_set`分别存储测试集，训练集和验证集的图片；以及三个`txt`文件，`classes.txt`记录该数据集的类别，`test.txt`和`val.txt`分别记录测试集和验证集的图片名。如您想要了解更多数据集格式的内容，可参考[数据集支持](https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#id3)部分。
+**hand_gray**数据集符合MMEdu图像分类模块支持的数据集要求，文件夹中包含三个图片文件夹，`test_set`,`training_set`,`val_set`分别存储测试集，训练集和验证集的图片；以及三个`txt`文件，`classes.txt`记录该数据集的类别，`test.txt`和`val.txt`分别记录测试集和验证集的图片名。如您想要了解更多数据集格式的内容，可参考<a href="https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#id3">数据集支持</a>部分。
 
 训练代码如下：
 
@@ -248,9 +248,9 @@ checkpoint = '../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的�
 model.train(epochs=50, validate=True, checkpoint=checkpoint) # 进行再训练
 ```
 
-这里我们有一个参数在之前的[训练模型](https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#id3)过程中没有详细说明，那就是`train`函数中的`checkpoint`参数，这个放到这里就比较好理解，它的意思是指定需要进行再训练的模型路径，当然您也可以根据你需要训练的不同模型而调整参数。同时您也可以指定网上下载的某个预训练模型。借助在大型数据集上训练的预训练模型可以根据一系列任务的历史数据来对新的任务进行训练，而无需从头开始训练。它可以将一个大型数据集中的知识和技能转移到另一个任务上，从而大大节省训练时间。 
+这里我们有一个参数在之前的<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#id3">训练模型</a>过程中没有详细说明，那就是`train`函数中的`checkpoint`参数，这个放到这里就比较好理解，它的意思是指定需要进行再训练的模型路径，当然您也可以根据你需要训练的不同模型而调整参数。同时您也可以指定网上下载的某个预训练模型。借助在大型数据集上训练的预训练模型可以根据一系列任务的历史数据来对新的任务进行训练，而无需从头开始训练。它可以将一个大型数据集中的知识和技能转移到另一个任务上，从而大大节省训练时间。 
 
-全新开始训练一个模型，一般要花较长时间。我们强烈建议在预训练模型的基础上继续训练，哪怕你要分类的数据集和预训练的数据集并不一样。基于预训练模型继续训练可起到加速训练的作用，通常会使得模型达到更好的效果。在学习资源下载处也提供了一些[预训练模型和权重文件下载](https://xedu.readthedocs.io/zh/master/support_resources/resources.html#id3)途径。
+全新开始训练一个模型，一般要花较长时间。我们强烈建议在预训练模型的基础上继续训练，哪怕你要分类的数据集和预训练的数据集并不一样。基于预训练模型继续训练可起到加速训练的作用，通常会使得模型达到更好的效果。在学习资源下载处也提供了一些<a href="https://xedu.readthedocs.io/zh/master/support_resources/resources.html#id3">预训练模型和权重文件下载</a>途径。
 
 #### 4. 支持的SOTA模型
 

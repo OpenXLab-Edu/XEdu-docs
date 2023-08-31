@@ -516,7 +516,7 @@ FastRCNN、SSD_Lite、Yolov3
 
    </table>
 
-注：关于MMClassification支持的SOTA模型的比较可参考“解锁图像分类模块：MMClassification”中关于“\ `支持的SOTA模型 <https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#sota>`__\ ”的介绍，关于MMDetection支持的SOTA模型的比较可参考“揭秘目标检测模块：MMDetection”中关于“\ `支持的SOTA模型 <https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html#sota>`__\ ”的介绍。关于这些SOTA模型更具体的介绍，请参考本文档的“深度学习知识库”部分的“\ `经典网络模型介绍 <https://xedu.readthedocs.io/zh/master/dl_library.html>`__
+注：关于MMClassification支持的SOTA模型的比较可参考“解锁图像分类模块：MMClassification”中关于“支持的SOTA模型”的介绍，关于MMDetection支持的SOTA模型的比较可参考“揭秘目标检测模块：MMDetection”中关于“支持的SOTA模型”的介绍。关于这些SOTA模型更具体的介绍，请参考本文档的“深度学习知识库”部分的“经典网络模型介绍
 ”。当然，通过“AI模型 + 关键词”的形式，你在很多搜索引擎中都能找到资料。
 
 数据集支持
@@ -575,7 +575,7 @@ classes.txt包含数据集类别标签信息，每行包含一个类别名称，
 
 注：真实标签的值应该位于\ ``[0,类别数目-1]``\ 之间。
 
-如果您觉得整理规范格式数据集有点困难，您只需收集完图片按照类别存放，然后完成训练集（trainning_set）、验证集（val_set）和测试集（test_set）等的拆分，整理在一个大的文件夹下作为你的数据集。此时指定数据集路径后同样可以训练模型，因为XEdu拥有检查数据集的功能，如您的数据集缺失txt文件，会自动帮您生成“classes.txt”，“val.txt”等（如存在对应的数据文件夹）开始训练。这些txt文件会生成在您指定的数据集路径下，即帮您补齐数据集。完整的从零开始制作一个ImageNet格式的数据集的步骤详见\ `深度学习知识库 <https://xedu.readthedocs.io/zh/latest/dl_library/howtomake_imagenet.html#imagenet>`__\ 。
+如果您觉得整理规范格式数据集有点困难，您只需收集完图片按照类别存放，然后完成训练集（trainning_set）、验证集（val_set）和测试集（test_set）等的拆分，整理在一个大的文件夹下作为你的数据集。此时指定数据集路径后同样可以训练模型，因为XEdu拥有检查数据集的功能，如您的数据集缺失txt文件，会自动帮您生成“classes.txt”，“val.txt”等（如存在对应的数据文件夹）开始训练。这些txt文件会生成在您指定的数据集路径下，即帮您补齐数据集。完整的从零开始制作一个ImageNet格式的数据集的步骤详见深度学习知识库。
 
 2）COCO
 ~~~~~~~
@@ -636,7 +636,7 @@ COCO数据集的标注信息存储在“annotations”文件夹中的\ ``json``\
        "supercategory": str, # 类别所属的大类，如哈巴狗和狐狸犬都属于犬科这个大类
    }]
 
-为了验证和测试，我们建议划分训练集、验证集和测试集，需要生成验证集valid和标注文件valid.json，测试集test和标注文件test.json，json文件的基本数据结构依然是COCO格式。制作一个COCO格式的数据集的步骤详见\ `深度学习知识库 <https://xedu.readthedocs.io/zh/latest/dl_library/howtomake_coco.html#coco>`__\ 。
+为了验证和测试，我们建议划分训练集、验证集和测试集，需要生成验证集valid和标注文件valid.json，测试集test和标注文件test.json，json文件的基本数据结构依然是COCO格式。制作一个COCO格式的数据集的步骤详见深度学习知识库。
 
 使用示例
 --------
@@ -644,7 +644,7 @@ COCO数据集的标注信息存储在“annotations”文件夹中的\ ``json``\
 模型推理：
 ~~~~~~~~~~
 
-此处展示的是图像分类模型的模型推理的示例代码，如需了解更多模块的示例代码或想了解更多使用说明请看\ `后文 <https://xedu.readthedocs.io/zh/latest/mmedu/mmclassification.html>`__\ 。
+此处展示的是图像分类模型的模型推理的示例代码，如需了解更多模块的示例代码或想了解更多使用说明请看后文。
 
 .. code:: python
 
@@ -658,7 +658,7 @@ COCO数据集的标注信息存储在“annotations”文件夹中的\ ``json``\
 从零开始训练：
 ~~~~~~~~~~~~~~
 
-此处展示的是图像分类模型的从零开始训练的示例代码，如需了解更多模块的示例代码或想了解更多使用说明请看\ `后文 <https://xedu.readthedocs.io/zh/latest/mmedu/mmclassification.html>`__\ 。
+此处展示的是图像分类模型的从零开始训练的示例代码，如需了解更多模块的示例代码或想了解更多使用说明请看后文。
 
 .. code:: python
 
@@ -672,7 +672,7 @@ COCO数据集的标注信息存储在“annotations”文件夹中的\ ``json``\
 继续训练：
 ~~~~~~~~~~
 
-此处展示的是图像分类模型的继续训练的示例代码，如需了解更多模块的示例代码或想了解更多使用说明请看\ `后文 <https://xedu.readthedocs.io/zh/latest/mmedu/mmclassification.html>`__\ 。
+此处展示的是图像分类模型的继续训练的示例代码，如需了解更多模块的示例代码或想了解更多使用说明请看后文。
 
 .. code:: python
 
@@ -717,7 +717,7 @@ COCO数据集的标注信息存储在“annotations”文件夹中的\ ``json``\
 
    返回的是日志文件中各行信息组成的列表。
 
-3. 打开github地址（\ `GitHub -
-   OpenXLab-Edu/OpenMMLab-Edu <https://github.com/OpenXLab-Edu/OpenMMLab-Edu>`__\ ），可查看库文件原码和更多示例程序。
+3. 打开github地址（GitHub -
+   OpenXLab-Edu/OpenMMLab-Edu），可查看库文件原码和更多示例程序。
 
 .. |image1| image:: ../images/mmedu/pip1.png

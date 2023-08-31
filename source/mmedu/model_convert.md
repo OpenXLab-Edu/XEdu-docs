@@ -40,7 +40,7 @@
 
 ### 什么是推理框架
 
-深度学习推理框架是一种让深度学习算法在实时处理环境中提高性能的框架。常见的有[ONNXRuntime](https://github.com/microsoft/onnxruntime)、[NCNN](https://github.com/Tencent/ncnn)、[TensorRT](https://github.com/NVIDIA/TensorRT)、[OpenVINO](https://github.com/openvinotoolkit/openvino)等。
+深度学习推理框架是一种让深度学习算法在实时处理环境中提高性能的框架。常见的有<a href="https://github.com/microsoft/onnxruntime">ONNXRuntime</a>、<a href="https://github.com/Tencent/ncnn">NCNN</a>、<a href="https://github.com/NVIDIA/TensorRT">TensorRT</a>、<a href="https://github.com/openvinotoolkit/openvino">OpenVINO</a>等。
 
 > ONNXRuntime是微软推出的一款推理框架，支持多种运行后端包括CPU，GPU，TensorRT，DML等，是对ONNX模型最原生的支持。
 >
@@ -101,7 +101,7 @@ model.convert(checkpoint=checkpoint, out_file=out_file)
 
 参考项目：
 
-https://www.openinnolab.org.cn/pjlab/project?id=645110943c0e930cb55e859b&sc=62f34141bf4f550f3e926e0e#public
+<a href="https://www.openinnolab.org.cn/pjlab/project?id=645110943c0e930cb55e859b&sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=645110943c0e930cb55e859b&sc=62f34141bf4f550f3e926e0e#public</a>
 
 ### 借助BaseDeploy完成模型部署
 
@@ -121,9 +121,9 @@ print(result)
 cap.release()
 ```
 
-更多关于BaseDePloy库的介绍和使用说明详见[BaseDeploy：服务于XEdu的模型部署工具](https://xedu.readthedocs.io/zh/master/basedeploy/introduction.html#basedeploy-xedu)。
+更多关于BaseDePloy库的介绍和使用说明详见<a href="https://xedu.readthedocs.io/zh/master/basedeploy/introduction.html#basedeploy-xedu">BaseDeploy：服务于XEdu的模型部署工具</a>。
 
-现在，让我们从“[从零开始训练猫狗识别模型并完成模型转换](https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&sc=635638d69ed68060c638f979#public)”项目入手，见识一下使用MMEdu工具完成从模型训练到模型部署的基本流程吧！
+现在，让我们从“<a href="https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&sc=635638d69ed68060c638f979#public">从零开始训练猫狗识别模型并完成模型转换</a>”项目入手，见识一下使用MMEdu工具完成从模型训练到模型部署的基本流程吧！
 
 **1.准备数据集**
 
@@ -204,7 +204,7 @@ cap.release()
 
 MMDeploy还推出了模型转换工具网页版本，支持更多后端推理框架，具体使用步骤如下。
 
-- 点击[MMDeploy硬件模型库](https://platform.openmmlab.com/deploee)，后选择模型转换
+- 点击<a href="https://platform.openmmlab.com/deploee">MMDeploy硬件模型库</a>，后选择模型转换
 
 ![](../images/model_convert/Web1.png)
 
@@ -684,7 +684,7 @@ MMDeploy还推出了模型转换工具网页版本，支持更多后端推理框
 >**：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite
 
 #### 行空板测试
-> 行空板, 青少年Python教学用开源硬件，解决Python教学难和使用门槛高的问题，旨在推动Python教学在青少年中的普及。官网：https://www.dfrobot.com.cn/
+> 行空板, 青少年Python教学用开源硬件，解决Python教学难和使用门槛高的问题，旨在推动Python教学在青少年中的普及。官网：<a href="https://www.dfrobot.com.cn/">https://www.dfrobot.com.cn/</a>
 ##### 软硬件环境
 - 操作系统：Linux
 - 系统位数：64
@@ -1017,7 +1017,7 @@ MMDeploy还推出了模型转换工具网页版本，支持更多后端推理框
 >
 >**：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite
 
-__注：硬件测试模块持续更新中，如有更多硬件测试需求，请[联系我们](https://github.com/OpenXLab-Edu/XEdu-docs/issues)__
+__注：硬件测试模块持续更新中，如有更多硬件测试需求，请<a href="https://github.com/OpenXLab-Edu/XEdu-docs/issues">联系我们</a>__
 
 ## 多模态交互
 回顾用AI解决真实问题的流程图，我们已经介绍了收集数据、训练模型、模型推理和应用部署。结合项目设计，我们还会去思考如何通过摄像头获得图像，如何控制灯光发亮，如何操纵舵机，如何设计显示界面UI等需要使用输入设备和输出设备等来实现的交互设计，即对`多模态交互`的考量。
@@ -1025,15 +1025,15 @@ __注：硬件测试模块持续更新中，如有更多硬件测试需求，请
 ![](../images/model_convert/SolveRealProblemsWithAI.JPG)
 
 
-更多传感器、执行器使用教程参见：[DFRobot](https://wiki.dfrobot.com.cn/)
+更多传感器、执行器使用教程参见：<a href="https://wiki.dfrobot.com.cn/">DFRobot</a>
 
 
 ## 更多模型转换相关项目
 
-猫狗分类小助手：https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&backpath=/pjedu/userprofile%3FslideKey=project#public
+猫狗分类小助手：<a href="https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&backpath=/pjedu/userprofile%3FslideKey=project#public">https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&backpath=/pjedu/userprofile%3FslideKey=project#public</a>
 
-千物识别小助手：https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&backpath=/pjlab/projects/list#public
+千物识别小助手：<a href="https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&backpath=/pjlab/projects/list#public</a>
 
-有无人检测小助手：https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&backpath=/pjlab/projects/list#public
+有无人检测小助手：<a href="https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&backpath=/pjlab/projects/list#public</a>
 
-MMEdu模型在线转换：https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&sc=62f34141bf4f550f3e926e0e#public
+MMEdu模型在线转换：<a href="https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&sc=62f34141bf4f550f3e926e0e#public</a>

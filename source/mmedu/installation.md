@@ -25,9 +25,9 @@
 
  1）下载方式（即XEdu下载方式）
 
-飞书网盘：https://p6bm2if73b.feishu.cn/drive/folder/fldcn67XTwhg8qIFCl8edJBZZQb
+飞书网盘：<a href="https://p6bm2if73b.feishu.cn/drive/folder/fldcn67XTwhg8qIFCl8edJBZZQb">https://p6bm2if73b.feishu.cn/drive/folder/fldcn67XTwhg8qIFCl8edJBZZQb</a>
 
-百度网盘:<https://pan.baidu.com/s/1UDt-GwHriCB_rewl8kCrUA?pwd=2022>
+百度网盘:<a href="https://pan.baidu.com/s/1UDt-GwHriCB_rewl8kCrUA?pwd=2022">https://pan.baidu.com/s/1UDt-GwHriCB_rewl8kCrUA?pwd=2022</a>
 提取码:2022
 
 第二步：您可以根据个人喜好，选择自己习惯的IDE。
@@ -77,8 +77,7 @@ python中最常用的库管理工具pip，可以使用cmd命令行来运行，�
 **在2022年9月后，不再维护MMEdu一键安装包，统一更新为XEdu。XEdu于22年9月在世界人工智能大会正式发布，分MMEdu、BaseML、BaseNN三个功能模块，除了一键安装包，同时实现以pip方式安装。**
 如`pip install BaseML BaseNN BaseDT BaseDeploy MMEdu` 
 
-1.2 pip安装
-\~\~\~\~\~\~\~\~\~\~\~
+### 1.2 pip安装
 
 当前，我们提供的MMEdu0.0.7版本的安装是基础版的pip安装包，可以使用如下命令安装：
 `pip install mmedu`或`pip install MMEdu`。
@@ -103,8 +102,8 @@ python中最常用的库管理工具pip，可以使用cmd命令行来运行，�
 
 第二步：`pip install pycocotools`
 
-如果失败，可以考虑以下两种方案 ①下载whl进行本地安装（见
-<https://aicarrier.feishu.cn/docx/K0D6d8VHLoN1zoxDb72cBlKynjc>）；
+如果失败，可以考虑以下两种方案 ①下载whl进行本地安装（见<a href="https://aicarrier.feishu.cn/docx/K0D6d8VHLoN1zoxDb72cBlKynjc>">https://aicarrier.feishu.cn/docx/K0D6d8VHLoN1zoxDb72cBlKynjc></a>
+）；
 ②安装Visual Studio进行编译安装。
 
 第三步：`pip install mmdet==2.23.0`
@@ -134,7 +133,7 @@ python中最常用的库管理工具pip，可以使用cmd命令行来运行，�
 
 **下载**
 
-首先打开Anaconda官网：https://www.anaconda.com/
+首先打开Anaconda官网：<a href="https://www.anaconda.com/">https://www.anaconda.com/</a>
 
 点击`Download`开始下载，下载完成后得到exe文件。
 
@@ -154,7 +153,7 @@ python中最常用的库管理工具pip，可以使用cmd命令行来运行，�
 
 **下载**
 
-首先打开Thonny官网：https://thonny.org/
+首先打开Thonny官网：<a href="https://thonny.org/">https://thonny.org/</a>
 
 右上角选择合适的操作系统点击下载，此处以windows为例
 
@@ -218,7 +217,7 @@ $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/i
 2.3 安装MMEdu(GPU版本)
 ----------------------
 
-首先安装对应自己cuda版本的pytorch，安装命令可在以下网址中进行查询：https://pytorch.org/get-started/locally/
+首先安装对应自己cuda版本的pytorch，安装命令可在以下网址中进行查询：<a href="https://pytorch.org/get-started/locally/">https://pytorch.org/get-started/locally/</a>
 
 可以在命令行中使用`nvidia-smi`指令查询自己的cuda版本。
 

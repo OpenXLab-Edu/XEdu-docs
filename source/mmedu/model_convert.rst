@@ -55,7 +55,7 @@ Why：为什么
 什么是推理框架
 ~~~~~~~~~~~~~~
 
-深度学习推理框架是一种让深度学习算法在实时处理环境中提高性能的框架。常见的有\ `ONNXRuntime <https://github.com/microsoft/onnxruntime>`__\ 、\ `NCNN <https://github.com/Tencent/ncnn>`__\ 、\ `TensorRT <https://github.com/NVIDIA/TensorRT>`__\ 、\ `OpenVINO <https://github.com/openvinotoolkit/openvino>`__\ 等。
+深度学习推理框架是一种让深度学习算法在实时处理环境中提高性能的框架。常见的有ONNXRuntime、NCNN、TensorRT、OpenVINO等。
 
    ONNXRuntime是微软推出的一款推理框架，支持多种运行后端包括CPU，GPU，TensorRT，DML等，是对ONNX模型最原生的支持。
 
@@ -141,9 +141,9 @@ https://www.openinnolab.org.cn/pjlab/project?id=645110943c0e930cb55e859b&sc=62f3
    print(result)
    cap.release()
 
-更多关于BaseDePloy库的介绍和使用说明详见\ `BaseDeploy：服务于XEdu的模型部署工具 <https://xedu.readthedocs.io/zh/master/basedeploy/introduction.html#basedeploy-xedu>`__\ 。
+更多关于BaseDePloy库的介绍和使用说明详见BaseDeploy：服务于XEdu的模型部署工具。
 
-现在，让我们从“\ `从零开始训练猫狗识别模型并完成模型转换 <https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&sc=635638d69ed68060c638f979#public>`__\ ”项目入手，见识一下使用MMEdu工具完成从模型训练到模型部署的基本流程吧！
+现在，让我们从“从零开始训练猫狗识别模型并完成模型转换”项目入手，见识一下使用MMEdu工具完成从模型训练到模型部署的基本流程吧！
 
 **1.准备数据集**
 
@@ -224,7 +224,7 @@ https://www.openinnolab.org.cn/pjlab/project?id=645110943c0e930cb55e859b&sc=62f3
 
 MMDeploy还推出了模型转换工具网页版本，支持更多后端推理框架，具体使用步骤如下。
 
--  点击\ `MMDeploy硬件模型库 <https://platform.openmmlab.com/deploee>`__\ ，后选择模型转换
+-  点击MMDeploy硬件模型库，后选择模型转换
 
 |image3|
 
@@ -5076,7 +5076,7 @@ COCO
 
    \*\*：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite
 
-**注：硬件测试模块持续更新中，如有更多硬件测试需求，请\ **\ `联系我们 <https://github.com/OpenXLab-Edu/XEdu-docs/issues>`__
+**注：硬件测试模块持续更新中，如有更多硬件测试需求，请联系我们**
 
 多模态交互
 ----------
@@ -5085,7 +5085,7 @@ COCO
 
 |image9|
 
-更多传感器、执行器使用教程参见：\ `DFRobot <https://wiki.dfrobot.com.cn/>`__
+更多传感器、执行器使用教程参见：DFRobot
 
 更多模型转换相关项目
 --------------------

@@ -17,7 +17,7 @@ OpenMMLab 已经累计开源了超过 30
 
 MMEdu保留了OpenMMLab的各种参数，尤其是模型训练的所有常见参数。如果要训练出更加专业的模型，你需要先了解OpenMMLab。
 
-OpenMMLab官方地址：\ https://openmmlab.com/
+OpenMMLab官方地址：https://openmmlab.com/
 
 训练参数详解
 ------------
