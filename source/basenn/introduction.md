@@ -184,7 +184,7 @@ model.load_dataset(train_x, train_y)
 
 ### 3. 搭建模型
 
-逐层添加，搭建起模型结构，支持CNN（卷积神经网络）和RNN（循环神经网络）。注释标明了数据经过各层的尺寸变化。
+逐层添加，搭建起模型结构，支持CNN（卷积神经网络）和RNN（循环神经网络）。注释标明了数据经过各层的尺寸变化。在模型搭建中要特别注意数据经过各层的尺寸变化，以设置正确的`size`值
 
 ``` python
 model.add(layer='linear',size=(4, 10),activation='relu') # [120, 10]
@@ -514,10 +514,19 @@ feature = model.extract_feature(img, pretrain='resnet18')
 
 使用BaseNN可以轻易地创建深度学习模型。不同类型的神经网络适用于不同类型的问题，比如CNN通常用于处理图像问题，RNN通常用于处理序列问题，全连接神经网络可以应用于各种问题。
 
-首先以典型的LeNet5网络结构为例。注释标明了数据经过各层的尺寸变化。
+首先以一个传统的卷积神经网络结构为例。注释标明了数据经过各层的尺寸变化。
+
+这里我们讨论简单卷积，卷积前后数据尺寸的变化可以利用以下公式解决：
+
+$ N = W - F + 1 $，其中N表示输出大小，F表示卷积核大小，W表示输入大小。（这里输入、输出和卷积核均为正方形）
+
+由于是正方形，池化操作后数据尺寸变化可以利用以下公式得出：
+
+$N = \frac{W}{P}$ ，其中P表示池化层的卷积核大小。
 
 ``` python
-model.add('conv2d', size=(1, 3),kernel_size=( 3, 3), activation='relu') # [100, 3, 18, 18]
+# 输入: [100,1,20,20]
+model.add('conv2d', size=(1, 3),kernel_size=(3, 3), activation='relu') # [100, 3, 18, 18]
 model.add('maxpool', kernel_size=(2,2)) # [100, 3, 9, 9]
 model.add('conv2d', size=(3, 10), kernel_size=(3, 3), activation='relu') # [100, 10, 7, 7]
 model.add('avgpool', kernel_size=(2,2)) # [100, 10, 3, 3]
@@ -526,71 +535,56 @@ model.add('linear', size=(10, 2), activation='softmax') # [100,2]
 model.add(optimizer='SGD') # 设定优化器
 ```
 
-添加层的方法为`add(self, layer=None, activation=None, optimizer='SGD', **kw)`，
+以上代码注释中数字代表含义说明:
 
-参数说明:
+以[100, 3, 18, 18]为例 ，其对应含义为 [图像数量, 通道数, 图像维度, 图像维度]，从参数`kernel_size=(3,3)`可以得到卷积核大小为3，输入大小为20，根据公式$20-3+1=18$ 。根据参数`size=(1,3)`得出输入为1通道，输出为3通道。经过`kernel_size=(2,2)`的最大池化层后，根据公式$\frac{18}{2}=9$，得到输出数据尺寸为9x9大小。最后，由于线性层（linear）是一维的，因此二维数据在输入前要进行展平（flatten），将二维展平为1维。在以上代码中，输入linear层前，一张图像有10通道，每个通道的图像大小为3x3，因此展平后有$10 \times 3 \times 3 = 90$，这就是为什么要设置linear层`size=(90,10)`中，输入维度为90。
 
-layer：层的类型，可选值包括Conv2D, MaxPool, AvgPool, Linear, Dropout。
+添加层的方法为`add(layer=None, activation=None, optimizer=None, **kw)`，
 
-activation：激活函数类型，可选值包括ReLU，Softmax。
+#### 参数说明:
 
-optimizer：为优化器类型，默认值为SGD，可选值包括SGD，Adam，Adagrad，ASGD。
+- layer：层的类型，可选值包括conv2d, conv1d, maxpool, avgpool, linear, dropout。
 
-kw：关键字参数，包括与size相关的各种参数，常用的如size=(x,y)，x为输入维度，y为输出维度；
-kernel_size=(a,b)， (a,b)表示核的尺寸。
+- activation：激活函数类型，可选值包括ReLU，Softmax。
+
+- optimizer：为优化器类型，默认值为SGD，可选值包括SGD，Adam，Adagrad，ASGD。
+
+- kw：关键字参数，包括与size相关的各种参数，常用的如size=(x,y)，x为输入维度，y为输出维度；
+  kernel_size=(a,b)， (a,b)表示核的尺寸。
 
 以下具体讲述各种层：
 
-conv2d：卷积层（二维），需给定size，kernel_size。同时支持搭建conv1d（一维卷积层）。
+- conv1d: 卷积层（一维），需给定size，kernel_size。
 
-maxpool：最大池化层，需给定kernel_size。
+- conv2d：卷积层（二维），需给定size，kernel_size。
 
-avgpool：平均池化层，需给定kernel_size。
+- maxpool：最大池化层，需给定kernel_size。
 
-linear：线性层，需给定size。
+- avgpool：平均池化层，需给定kernel_size。
 
-dropout：随机失活层，需给定p（概率）。作用为随机关闭一些神经元，避免过拟合。其中参数`p`表示关闭神经元的比例，比如此处
-p=0.2
-表示有随机20%的神经元会被关闭。这种网络层是为了优化效果，避免过拟合而加入的，不是必需的，因此可以尝试修改p的值甚至删掉这个层观察比较效果差距。
+- linear：线性层，需给定size。
 
-再以RNN模型（循环神经网络）为例进行详细说明：
+- dropout：随机失活层，需给定p（概率）。作用为随机关闭一些神经元，避免过拟合。其中参数`p`表示关闭神经元的比例，比如此处
+  p=0.2
+  表示有随机20%的神经元会被关闭。这种网络层是为了优化效果，避免过拟合而加入的，不是必需的，因此可以尝试修改p的值甚至删掉这个层观察比较效果差距。
+
+再以lstm为例进行详细说明：lstm（Long Short-Term Memory，长短时记忆）是一种特殊的RNN（Recurrent Neural Network，循环神经网络）模型，主要用于处理序列数据。lstm模型在自然语言处理、语音识别、时间序列预测等任务中被广泛应用，特别是在需要处理长序列数据时，lstm模型可以更好地捕捉序列中的长程依赖关系。
 
 ```python
 model.add('lstm',size=(128,256),num_layers=2)
 ```
 
-lstm（Long Short-Term Memory，长短时记忆）是一种特殊的RNN（Recurrent
-Neural
-Network，循环神经网络）模型，主要用于处理序列数据。lstm模型在自然语言处理、语音识别、时间序列预测等任务中被广泛应用，特别是在需要处理长序列数据时，lstm模型可以更好地捕捉序列中的长程依赖关系。
+#### 参数说明：
 
-size的两个值：
+- size中的的两个值：第一个为嵌入层维度(embedding_dim)，即文本转化为词向量后的向量维度。第二个为隐藏层维度(hidden_dim)，即lstm隐藏层中神经元数量。
 
-第一个为嵌入层维度(embedding_dim)，
-
-第二个为隐藏层维度(hidden_dim)，即lstm隐藏层中神经元数量。
-
-参数说明：
-
-input_size：
-输入数据的特征维数，即每一个字用多少维的向量来表示，通常就是embedding_dim(词向量的维度)。
-
-hidden_size：LSTM中隐藏层的神经元数量。
-
-num_layers：循环神经网络的层数。一般1\~5，常用2、3层，太多层会大幅度影响训练速度和收敛难度。
-
-bias：用不用偏置，default=True。
-
-dropout：随机失活层，默认是0，代表不用dropout。作用为随机关闭一些神经元，避免过拟合。其中参数`p`表示关闭神经元的比例，比如此处
-p=0.2
-表示有随机20%的神经元会被关闭。这种网络层是为了优化效果，避免过拟合而加入的，不是必需的，因此可以尝试修改p的值甚至删掉这个层观察比较效果差距。
-
-bidirectional：默认是false，代表不用双向LSTM。
+- num_layers：循环神经网络的层数。一般1\~5，常用2、3层，太多层会大幅度影响训练速度和收敛难度。
 
 以上仅是基本的模型架构。在实际使用中，可能需要调整模型的层数、节点数、激活函数等参数以达到最佳效果。
 
 ### 拓展\--RNN模型搭建简单指南：
 
-循环神经网络是一类以序列数据为输入，在序列的演进方向进行递归且所有节点（循环单元）按链式连接的递归神经网络。RNN在自然语言处理问题中有得到应用，也被用于与自然语言处理有关的异常值检测问题，例如社交网络中虚假信息/账号的检测。NN与卷积神经网络向结合的系统可被应用于在计算机视觉问题，例如在字符识别中，有研究使用卷积神经网络对包含字符的图像进行特征提取，并将特征输入LSTM进行序列标注。
+循环神经网络是一类以序列数据为输入，在序列的演进方向进行递归且所有节点（循环单元）按链式连接的递归神经网络。RNN在自然语言处理问题中有得到应用，也被用于与自然语言处理有关的异常值检测问题，例如社交网络中虚假信息/账号的检测。RNN与CNN卷积神经网络相结合的系统可被应用于在计算机视觉问题，例如在字符识别中，有研究使用卷积神经网络对包含字符的图像进行特征提取，并将特征输入LSTM进行序列标注。
 
 下为搭建RNN神经网络的一般流程：
 
