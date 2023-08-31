@@ -295,6 +295,22 @@ MMEditing
 
 .. raw:: html
 
+   <td>
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
    </tr>
 
 .. raw:: html
