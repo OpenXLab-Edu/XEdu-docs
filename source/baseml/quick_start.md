@@ -87,7 +87,7 @@ model.load('mymodel.pkl')
 
 OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台，满足青少年的AI学习和创作需求，支持在线编程。在“项目”中查看更多，查找”BaseML“，即可找到所有与BaseML相关的体验项目。
 
-AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pjlab/ai/projects
+AI项目工坊：[https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pjlab/ai/projects](https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pjlab/ai/projects)
 
 （用Chorme浏览器打开效果最佳）
 
@@ -101,7 +101,7 @@ AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pj
 
 数据集来源：上海科教版《人工智能初步》人教地图56-58页。
 
-项目地址：https://www.openinnolab.org.cn/pjlab/project?id=64140719ba932064ea956a3e&sc=635638d69ed68060c638f979#public
+项目地址：[https://www.openinnolab.org.cn/pjlab/project?id=64140719ba932064ea956a3e&sc=635638d69ed68060c638f979#public](https://www.openinnolab.org.cn/pjlab/project?id=64140719ba932064ea956a3e&sc=635638d69ed68060c638f979#public)
 
 #### 项目核心功能和实现效果展示：
 
@@ -154,7 +154,7 @@ print(label[y[0]-1])
 
 本案例来源于《人工智能初步》广东教育出版社版75-80页。
 
-项目地址：https://www.openinnolab.org.cn/pjlab/project?id=637db4e401df4535876a8690&sc=62f34141bf4f550f3e926e0e#public
+项目地址：[https://www.openinnolab.org.cn/pjlab/project?id=637db4e401df4535876a8690&sc=62f34141bf4f550f3e926e0e#public](https://www.openinnolab.org.cn/pjlab/project?id=637db4e401df4535876a8690&sc=62f34141bf4f550f3e926e0e#public)
 
 #### 项目核心功能：
 
@@ -211,7 +211,7 @@ print(label[y[0]])
 
 本案例来源于华师大出版社《人工智能初步》56-57页。
 
-项目地址：https://www.openinnolab.org.cn/pjlab/project?id=6417d0477c99492cf1aa8ba6&sc=635638d69ed68060c638f979#public
+项目地址：[https://www.openinnolab.org.cn/pjlab/project?id=6417d0477c99492cf1aa8ba6&sc=635638d69ed68060c638f979#public](https://www.openinnolab.org.cn/pjlab/project?id=6417d0477c99492cf1aa8ba6&sc=635638d69ed68060c638f979#public)
 
 #### 项目核心功能：
 
@@ -292,9 +292,9 @@ model.save('mymodel2.pkl')
 
 本案例来源于人教地图版《人工智能初步》39-41页。
 
-项目地址：https://www.openinnolab.org.cn/pjlab/project?id=64141e08cb63f030543bffff&sc=635638d69ed68060c638f979#public
+项目地址：[https://www.openinnolab.org.cn/pjlab/project?id=64141e08cb63f030543bffff&sc=635638d69ed68060c638f979#public](https://www.openinnolab.org.cn/pjlab/project?id=64141e08cb63f030543bffff&sc=635638d69ed68060c638f979#public)
 
-项目地址2（增加可视化版本）：https://www.openinnolab.org.cn/pjlab/project?id=6368a382bbcccd583a837a0e&sc=62f34141bf4f550f3e926e0e#public
+项目地址2（增加可视化版本）：[https://www.openinnolab.org.cn/pjlab/project?id=6368a382bbcccd583a837a0e&sc=62f34141bf4f550f3e926e0e#public](https://www.openinnolab.org.cn/pjlab/project?id=6368a382bbcccd583a837a0e&sc=62f34141bf4f550f3e926e0e#public)
 
 #### 项目核心功能：
 
@@ -346,7 +346,7 @@ plt.show()
 
 本案例来源于华东师范大学出版社《人工智能初步》53-55页。
 
-项目地址：https://www.openinnolab.org.cn/pjlab/project?id=638015a0777c254264da387f&sc=62f34141bf4f550f3e926e0e#public
+项目地址：[https://www.openinnolab.org.cn/pjlab/project?id=638015a0777c254264da387f&sc=62f34141bf4f550f3e926e0e#public](https://www.openinnolab.org.cn/pjlab/project?id=638015a0777c254264da387f&sc=62f34141bf4f550f3e926e0e#public)
 
 #### 项目核心功能：
 
@@ -421,7 +421,7 @@ for i in range(model.model.cluster_centers_.shape[0]):
 
 本案例来源于上海科技教育出版社《人工智能初步》88-89页。
 
-项目地址：https://www.openinnolab.org.cn/pjlab/project?id=638015e4777c254264da38ca&sc=62f34141bf4f550f3e926e0e#public
+项目地址：[https://www.openinnolab.org.cn/pjlab/project?id=638015e4777c254264da38ca&sc=62f34141bf4f550f3e926e0e#public](https://www.openinnolab.org.cn/pjlab/project?id=638015e4777c254264da38ca&sc=62f34141bf4f550f3e926e0e#public)
 
 #### 项目核心功能：
 

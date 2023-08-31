@@ -117,11 +117,11 @@ model.print_result(res) # 输出字典格式结果
 
 OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台，满足青少年的AI学习和创作需求，支持在线编程。在“项目”中查看更多，搜索”BaseNN“，即可找到所有与BaseNN相关的体验项目。
 
-AI项目工坊：https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pjlab/ai/projects
+AI项目工坊：[https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pjlab/ai/projects](https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pjlab/ai/projects)
 
 （用Chrome浏览器打开效果最佳）
 
-用BaseNN库搭建搭建鸢尾花分类模型项目地址：https://www.openinnolab.org.cn/pjlab/project?id=641bc2359c0eb14f22fdbbb1&sc=635638d69ed68060c638f979#public
+用BaseNN库搭建搭建鸢尾花分类模型项目地址：[https://www.openinnolab.org.cn/pjlab/project?id=641bc2359c0eb14f22fdbbb1&sc=635638d69ed68060c638f979#public](https://www.openinnolab.org.cn/pjlab/project?id=641bc2359c0eb14f22fdbbb1&sc=635638d69ed68060c638f979#public)
 
 ## 挑战使用BaseNN完成第一个自然语言处理项目：自动写诗机
 
@@ -192,7 +192,7 @@ print("word:",w)
 
 可以使用训练好的模型生成唐诗，生成藏头诗，做各种有意思的应用。
 
-更多内容详见用BaseNN实现自动写诗机项目，项目地址：https://www.openinnolab.org.cn/pjlab/project?id=641c00bbba932064ea962783&sc=635638d69ed68060c638f979#public
+更多内容详见用BaseNN实现自动写诗机项目，项目地址：[https://www.openinnolab.org.cn/pjlab/project?id=641c00bbba932064ea962783&sc=635638d69ed68060c638f979#public](https://www.openinnolab.org.cn/pjlab/project?id=641c00bbba932064ea962783&sc=635638d69ed68060c638f979#public)
 
 ## 附录
 
@@ -200,7 +200,7 @@ print("word:",w)
 
 本案例来源于《人工智能初步》人教地图72页。
 
-项目地址：https://www.openinnolab.org.cn/pjlab/project?id=641d17e67c99492cf16d706f&sc=635638d69ed68060c638f979#public
+项目地址：[https://www.openinnolab.org.cn/pjlab/project?id=641d17e67c99492cf16d706f&sc=635638d69ed68060c638f979#public](https://www.openinnolab.org.cn/pjlab/project?id=641d17e67c99492cf16d706f&sc=635638d69ed68060c638f979#public)
 
 实现效果：
 
@@ -292,13 +292,13 @@ for x, y in val_data:
 
 本案例来源于《人工智能初步》人教地图版72-76页。
 
-项目地址：https://www.openinnolab.org.cn/pjlab/project?id=638d8bd8be5e9c6ce28ad033&sc=635638d69ed68060c638f979#public
+项目地址：[https://www.openinnolab.org.cn/pjlab/project?id=638d8bd8be5e9c6ce28ad033&sc=635638d69ed68060c638f979#public](https://www.openinnolab.org.cn/pjlab/project?id=638d8bd8be5e9c6ce28ad033&sc=635638d69ed68060c638f979#public)
 
 #### 项目核心功能：
 
 完成了搭建一维卷积神经网络实现文本感情识别分类，代码使用BaseNN库实现，同时结合了Embedding层对单词文本进行向量化。
 
-数据集是imdb电影评论和情感分类数据集，来自斯坦福AI实验室平台，http://ai.stanford.edu/~amaas/data/sentiment/。
+数据集是imdb电影评论和情感分类数据集，来自斯坦福AI实验室平台，[http://ai.stanford.edu/~amaas/data/sentiment/](http://ai.stanford.edu/~amaas/data/sentiment/)。
 
 #### 实现步骤：
 
@@ -372,7 +372,7 @@ print('评论对电影的评价是：', label[res[0]]) # 该评论文本数据�
 
 本案例是一个跨学科项目，用神经网络来拟合三角函数。案例发表于2023年的《中国信息技术教育》杂志。
 
-项目地址：https://www.openinnolab.org.cn/pjlab/project?id=6444992a06618727bed5a67c&sc=635638d69ed68060c638f979#public
+项目地址：[https://www.openinnolab.org.cn/pjlab/project?id=6444992a06618727bed5a67c&sc=635638d69ed68060c638f979#public](https://www.openinnolab.org.cn/pjlab/project?id=6444992a06618727bed5a67c&sc=635638d69ed68060c638f979#public)
 
 #### 项目核心功能：
 

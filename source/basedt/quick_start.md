@@ -96,14 +96,14 @@ ds.check()
 首先需将网上下载的原始数据集做初步整理，整理规范如下：
 
 ```Python
-原数据集（目标检测）
+原数据集(目标检测)
 |---annotations
       |----xxx.json/xxx.xml/xxx.txt
 |---images
       |----xxx.jpg/png/....
 classes.txt
 
-原数据集（分类）
+原数据集(分类)
 |---images
     |---class1
           |----xxx.jpg/png/....
@@ -120,7 +120,7 @@ classes.txt
 
 整理完毕即可使用BaseDT数据集格式转换的代码完成数据集转换。需指定新数据集路径、原始数据集路径、原始数据集格式、划分比例（如不设置，则默认比例为训练集:测试集:验证集=7:1:2）。
 
-```
+```python
 from BaseDT.dataset import DataSet
 ds = DataSet(r"my_dataset") # 指定为新数据集路径
 ds.make_dataset(r"G:\\测试数据集\\fruit_voc", src_format="VOC",train_ratio = 0.8, test_ratio = 0.1, val_ratio = 0.1) # 指定待转格式的原始数据集路径，原始数据集格式，划分比例，默认比例为train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2
@@ -144,13 +144,13 @@ ds.make_dataset(r"/data/HZQV42", src_format="INNOLAB",train_ratio = 0.8, test_ra
 
 更多XEdu支持的数据集格式的介绍详见[数据集支持](https://xedu.readthedocs.io/zh/latest/mmedu/introduction.html#id3)部分。
 
-**用BaseDT完成数据集制作和格式检查体验项目**：https://www.openinnolab.org.cn/pjlab/project?id=6412c95f79f259135f259f45&sc=635638d69ed68060c638f979#public
+**用BaseDT完成数据集制作和格式检查体验项目**：[https://www.openinnolab.org.cn/pjlab/project?id=6412c95f79f259135f259f45&sc=635638d69ed68060c638f979#public](https://www.openinnolab.org.cn/pjlab/project?id=6412c95f79f259135f259f45&sc=635638d69ed68060c638f979#public)
 
 ###  4. 数据集拆分
 
 一般训练前建议先完成数据集划分，即将数据集拆分为训练集和验证集，训练集用于训练模型，验证集用于评估模型的性能。针对CSV格式的数据集，可以使用BaseDT完成拆分。
 
-```
+```python
 from BaseDT.dataset import split_tab_dataset
 # 指定待拆分的csv数据集
 path = "feature_data/mmpose_pose_train_feature.csv"
