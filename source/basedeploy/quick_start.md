@@ -11,7 +11,7 @@
 ```python
 from BaseDT.data import ImageData
 import BaseDeploy as bd
-model_path = `./mymodel.onnx`
+model_path = './mymodel.onnx'
 dt = ImageData(img_path, backbone='训练的模型名称，例如MobileNet')
 model = bd(model_path)
 result = model.inference(dt)
@@ -23,7 +23,7 @@ result = model.inference(dt)
 
 ```python
 import BaseDeploy as bd
-model_path = `./mymodel.onnx`
+model_path = './mymodel.onnx'
 model = bd(model_path)
 result = model.inference(img_path)
 ```
@@ -35,7 +35,7 @@ result = model.inference(img_path)
 ```python
 import cv2
 import BaseDeploy as bd
-model_path = `./mymodel.onnx`
+model_path = './mymodel.onnx'
 cap = cv2.VideoCapture(0)
 ret, img = cap.read()
 model = bd(model_path)
@@ -60,7 +60,7 @@ cap.release()
 
 ## 更多模型部署相关项目
 
-猫狗分类小助手：https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&backpath=/pjedu/userprofile%3FslideKey=project#public
+猫狗分类小助手：<a href="https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&backpath=/pjedu/userprofile%3FslideKey=project#public">https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&backpath=/pjedu/userprofile%3FslideKey=project#public</a>
 
 千物识别小助手：https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&backpath=/pjlab/projects/list#public
 
