@@ -60,12 +60,12 @@ cap.release()
 
 ## 更多模型部署相关项目
 
-猫狗分类小助手：<a href="https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&backpath=/pjedu/userprofile%3FslideKey=project#public">https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&backpath=/pjedu/userprofile%3FslideKey=project#public</a>
+猫狗分类小助手：[https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&backpath=/pjedu/userprofile%3FslideKey=project#public](https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&backpath=/pjedu/userprofile%3FslideKey=project#public)
 
-千物识别小助手：https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&backpath=/pjlab/projects/list#public
+千物识别小助手：[https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&backpath=/pjlab/projects/list#public](https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&backpath=/pjlab/projects/list#public)
 
-有无人检测小助手：https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&backpath=/pjlab/projects/list#public
+有无人检测小助手：[https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&backpath=/pjlab/projects/list#public](https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&backpath=/pjlab/projects/list#public)
 
-树莓派与MMEdu：https://www.openinnolab.org.cn/pjlab/project?id=64992a4dc0b7072a267541f4&sc=635638d69ed68060c638f979#public
+树莓派与MMEdu：[https://www.openinnolab.org.cn/pjlab/project?id=64992a4dc0b7072a267541f4&sc=635638d69ed68060c638f979#public](https://www.openinnolab.org.cn/pjlab/project?id=64992a4dc0b7072a267541f4&sc=635638d69ed68060c638f979#public)
 
-MMEdu模型在线转换：https://www.openinnolab.org.cn/pjlab/project?id=645110943c0e930cb55e859b&sc=635638d69ed68060c638f979#public
+MMEdu模型在线转换：[https://www.openinnolab.org.cn/pjlab/project?id=645110943c0e930cb55e859b&sc=635638d69ed68060c638f979#public](https://www.openinnolab.org.cn/pjlab/project?id=645110943c0e930cb55e859b&sc=635638d69ed68060c638f979#public)

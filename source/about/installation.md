@@ -15,9 +15,9 @@
 
 下载方式
 
-飞书网盘：https://p6bm2if73b.feishu.cn/drive/folder/fldcn67XTwhg8qIFCl8edJBZZQb
+飞书网盘：[https://p6bm2if73b.feishu.cn/drive/folder/fldcn67XTwhg8qIFCl8edJBZZQb](https://p6bm2if73b.feishu.cn/drive/folder/fldcn67XTwhg8qIFCl8edJBZZQb)
 
-百度网盘:<https://pan.baidu.com/s/1UDt-GwHriCB_rewl8kCrUA?pwd=2022>
+百度网盘:[https://pan.baidu.com/s/1UDt-GwHriCB_rewl8kCrUA?pwd=2022](https://pan.baidu.com/s/1UDt-GwHriCB_rewl8kCrUA?pwd=2022)
 提取码:2022
 
 第一步：双击运行，将自解压为XEdu文件夹（注意！避免踩坑推荐安装到纯英文路径下）。
@@ -182,7 +182,7 @@ XEdu的MMEdu、BaseML、BaseNN等各模块库均已支持pip安装并会持续�
 
 **下载**
 
-首先打开Anaconda官网：https://www.anaconda.com/
+首先打开Anaconda官网：[https://www.anaconda.com/](https://www.anaconda.com/)
 
 点击`Download`开始下载，下载完成后得到exe文件。
 
@@ -202,7 +202,7 @@ XEdu的MMEdu、BaseML、BaseNN等各模块库均已支持pip安装并会持续�
 
 **下载**
 
-首先打开Thonny官网：https://thonny.org/
+首先打开Thonny官网：[https://thonny.org/](https://thonny.org/)
 
 右上角选择合适的操作系统点击下载，此处以windows为例
 
@@ -266,7 +266,7 @@ $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/i
 
 ### 1.3 安装MMEdu(GPU版本)
 
-首先安装对应自己cuda版本的pytorch，安装命令可在以下网址中进行查询：https://pytorch.org/get-started/locally/
+首先安装对应自己cuda版本的pytorch，安装命令可在以下网址中进行查询：[https://pytorch.org/get-started/locally/](https://pytorch.org/get-started/locally/)
 
 可以在命令行中使用`nvidia-smi`指令查询自己的cuda版本。
 
