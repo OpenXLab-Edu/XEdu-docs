@@ -117,7 +117,7 @@ AI项目工坊：[https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/p
 
 第2列：预计车流量 ；
 
-第3列：分类结果（道路能否通行）：(1) 不可通行, (2)可通行。
+第3列：分类结果（道路能否通行）：(1) 不可通行, (2) 可通行。
 
 ![](https://www.openinnolab.org.cn/webdav/635638d69ed68060c638f979/638028c0777c254264da4dd7/current/assets/screenshot-20221205-111611.png)
 
