@@ -99,9 +99,10 @@ import PySimpleGUIWeb as sg
 import BaseDeploy as bd
 import cv2  #pip install opencv-python
 
+model_path = 'cls_imagenet.onnx'
+model = bd(model_path)
+
 def my_inf(frame):
-    model_path = 'cls_imagenet.onnx'
-    model = bd(model_path)
     result1 = model.inference(frame)
     result2 = model.print_result(result1)
     return result2
