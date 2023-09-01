@@ -20,7 +20,7 @@ MMEdu有多种安装方式，可以通过Pip方式安装，也可以使用一键
 
 第一步：下载MMEdu最新版文件，并解压到本地，文件夹目录结构如下图所示。
 
-![image](../images/mmedu/MMEDU安装图1.png) 
+![](../images/mmedu/MMEDUinstall1.png) 
 
 图1 目录结构图
 
@@ -36,7 +36,7 @@ MMEdu有多种安装方式，可以通过Pip方式安装，也可以使用一键
 
 第二步：运行根目录的“steup.bat”文件，完成环境部署（如下图所示）。
 
-![image](../../build/html/_static/MMEDU安装图2.png)
+![](../images/mmedu/MMEDUinstall2.png)
 
 图2 环境部署界面
 
@@ -119,7 +119,8 @@ cap.release()
 
 2）运行效果
 
-<img src="../../build/html/_static/image-20220609170413010.png" alt="avatar" style="zoom:150%;" />
+![](../images/mmedu/image-20220609170413010.png)
+
 
 ### 3.借助PyWebIO部署Web应用
 
@@ -156,7 +157,7 @@ print('模型预测的结果是：' +flower[r[0]['预测值']])
 
 2）运行效果
 
-![avatar](../../build/html/_static/web运行效果.png)
+![](../images/mmedu/webOperationEffect.png)
 
 ### 4.连接开源硬件开发智能作品
 

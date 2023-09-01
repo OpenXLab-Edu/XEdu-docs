@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MMEdu基本功能 &mdash; OpenXLabEdu  documentation</title>
@@ -11,11 +11,10 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -27,15 +26,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="../index.html" class="icon icon-home">
-            OpenXLabEdu
+            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -68,8 +63,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">MMEdu基本功能</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>MMEdu基本功能</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/mmedu/0introduction.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -80,38 +75,43 @@
            <div itemprop="articleBody">
              
   <section id="mmedu">
-<h1>MMEdu基本功能<a class="headerlink" href="#mmedu" title="Permalink to this heading"></a></h1>
+<h1>MMEdu基本功能<a class="headerlink" href="#mmedu" title="Permalink to this headline"></a></h1>
 <section id="id1">
-<h2>MMEdu功能简介<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<h2>MMEdu功能简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <p>MMEdu是一个计算机视觉方向的深度学习开发工具，是一个用来训练AI模型的工具。</p>
 </section>
 <section id="mmeduai">
-<h2>MMEdu和常见AI框架的比较<a class="headerlink" href="#mmeduai" title="Permalink to this heading"></a></h2>
+<h2>MMEdu和常见AI框架的比较<a class="headerlink" href="#mmeduai" title="Permalink to this headline"></a></h2>
 <section id="mmeduopencv">
-<h3>1）MMEdu和OpenCV的比较<a class="headerlink" href="#mmeduopencv" title="Permalink to this heading"></a></h3>
+<h3>1）MMEdu和OpenCV的比较<a class="headerlink" href="#mmeduopencv" title="Permalink to this headline"></a></h3>
 <p>OpenCV是一个开源的计算机视觉框架，MMEdu的核心模块MMCV基于OpenCV，二者联系紧密。</p>
 <p>OpenCV虽然是一个很常用的工具，但是普通用户很难在OpenCV的基础上训练自己的分类器。MMEdu则是一个入门门槛很低的深度学习开发工具，借助MMEdu和经典的网络模型，只要拥有一定数量的数据，连小学生都能训练出自己的个性化模型。</p>
 </section>
 <section id="mmedumediapipe">
-<h3>2）MMEdu和MediaPipe的比较<a class="headerlink" href="#mmedumediapipe" title="Permalink to this heading"></a></h3>
+<h3>2）MMEdu和MediaPipe的比较<a class="headerlink" href="#mmedumediapipe" title="Permalink to this headline"></a></h3>
 <p>MediaPipe 是一款由 Google Research
 开发并开源的多媒体机器学习模型应用框架，支持人脸识别、手势识别和表情识别等，功能非常强大。MMEdu中的MMPose模块关注的重点也是手势识别，功能类似。但MediaPipe是应用框架，而不是开发框架。换句话说，用MediaPipe只能完成其提供的AI识别功能，没办法训练自己的个性化模型。</p>
 </section>
 <section id="mmedukeras">
-<h3>3）MMEdu和Keras的比较<a class="headerlink" href="#mmedukeras" title="Permalink to this heading"></a></h3>
+<h3>3）MMEdu和Keras的比较<a class="headerlink" href="#mmedukeras" title="Permalink to this headline"></a></h3>
 <p>Keras是一个高层神经网络API，是对Tensorflow、Theano以及CNTK的进一步封装。OpenMMLab和Keras一样，都是为支持快速实验而生。MMEdu则源于OpenMMLab，其语法设计借鉴过Keras。</p>
 <p>相当而言，MMEdu的语法比Keras更加简洁，对中小学生来说也更友好。目前MMEdu的底层框架是Pytorch，而Keras的底层是TensorFlow（虽然也有基于Pytorch的Keras）。</p>
 </section>
 <section id="mmedufastai">
-<h3>4）MMEdu和FastAI的比较<a class="headerlink" href="#mmedufastai" title="Permalink to this heading"></a></h3>
+<h3>4）MMEdu和FastAI的比较<a class="headerlink" href="#mmedufastai" title="Permalink to this headline"></a></h3>
 <p>FastAI（Fast.ai）最受学生欢迎的MOOC课程平台，也是一个PyTorch的顶层框架。和OpenMMLab的做法一样，为了让新手快速实施深度学习，FastAI团队将知名的SOTA模型封装好供学习者使用。</p>
 <p>FastAI同样基于Pytorch，但是和OpenMMLab不同的是，FastAI只能支持GPU。考虑到中小学的基础教育中很难拥有GPU环境，MMEdu特意将OpenMMLab中支持CPU训练的工具筛选出来，供中小学生使用。</p>
 <p>MMEdu基于OpenMMLab的基础上开发，因为面向中小学，优先选择支持CPU训练的模块。</p>
 </section>
 </section>
 <section id="id2">
-<h2>MMEdu的内置模块概述<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<h2>MMEdu的内置模块概述<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <table class="docutils align-default">
+<colgroup>
+<col style="width: 42%" />
+<col style="width: 16%" />
+<col style="width: 42%" />
+</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>模块名称</p></th>
 <th class="head"><p>简称</p></th>
@@ -147,9 +147,14 @@
 </table>
 </section>
 <section id="mmedusota">
-<h2>MMEdu的内置SOTA模型<a class="headerlink" href="#mmedusota" title="Permalink to this heading"></a></h2>
+<h2>MMEdu的内置SOTA模型<a class="headerlink" href="#mmedusota" title="Permalink to this headline"></a></h2>
 <p>MMEdu内置了常见的SOTA模型，我们还在不断更新中。如需查看所有支持的SOTA模型，可使用<code class="docutils literal notranslate"><span class="pre">model.sota()</span></code>代码进行查看。</p>
 <table class="docutils align-default">
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 91%" />
+<col style="width: 4%" />
+</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>模块名称</p></th>
 <th class="head"><p>内置模型</p></th>
@@ -171,10 +176,10 @@
 + 关键词”的形式，你在很多搜索引擎中都能找到资料。</p>
 </section>
 <section id="id3">
-<h2>数据集支持<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<h2>数据集支持<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
 <p>MMEdu系列提供了包括分类、检测等任务的若干数据集，存储在XEdu一键安装包中的dataset文件夹下。MMEdu支持的数据集格式如下：</p>
 <section id="imagenet">
-<h3>1）ImageNet<a class="headerlink" href="#imagenet" title="Permalink to this heading"></a></h3>
+<h3>1）ImageNet<a class="headerlink" href="#imagenet" title="Permalink to this headline"></a></h3>
 <p>ImageNet是斯坦福大学提出的一个用于视觉对象识别软件研究的大型可视化数据库，目前大部分模型的性能基准测试都在ImageNet上完成。MMEdu的MMClassification支持的数据集类型是ImageNet，如需训练自己创建的数据集，数据集需整理成ImageNet格式。</p>
 <p>ImageNet格式数据集文件夹结构如下所示，包含三个文件夹和三个文本文件，图像数据文件夹内，不同类别图片按照文件夹分门别类排好，通过trainning_set、val_set、test_set区分训练集、验证集和测试集。文本文件classes.txt说明类别名称与序号的对应关系，val.txt说明验证集图片路径与类别序号的对应关系，test.txt说明测试集图片路径与类别序号的对应关系。</p>
 <div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>imagenet
@@ -217,7 +222,7 @@ filesname_b.jpg n
 <p>如果您觉得整理规范格式数据集有点困难，您只需收集完图片按照类别存放，然后完成训练集（trainning_set）、验证集（val_set）和测试集（test_set）等的拆分，整理在一个大的文件夹下作为你的数据集。此时指定数据集路径后同样可以训练模型，因为XEdu拥有检查数据集的功能，如您的数据集缺失txt文件，会自动帮您生成“classes.txt”，“val.txt”等（如存在对应的数据文件夹）开始训练。这些txt文件会生成在您指定的数据集路径下，即帮您补齐数据集。完整的从零开始制作一个ImageNet格式的数据集的步骤详见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/dl_library/howtomake_imagenet.html#imagenet">深度学习知识库</a>。</p>
 </section>
 <section id="coco">
-<h3>2）COCO<a class="headerlink" href="#coco" title="Permalink to this heading"></a></h3>
+<h3>2）COCO<a class="headerlink" href="#coco" title="Permalink to this headline"></a></h3>
 <p>COCO数据集是微软于2014年提出的一个大型的、丰富的检测、分割和字幕数据集，包含33万张图像，针对目标检测和实例分割提供了80个类别的物体的标注，一共标注了150万个物体。MMEdu的MMDetection支持的数据集类型是COCO，如需训练自己创建的数据集，数据集需转换成COCO格式。</p>
 <p>MMEdu的MMDetection设计的COCO格式数据集文件夹结构如下所示，“annotations”文件夹存储标注文件，“images”文件夹存储用于训练、验证、测试的图片。</p>
 <div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>coco
@@ -272,9 +277,9 @@ categories [{
 </section>
 </section>
 <section id="id4">
-<h2>使用示例<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<h2>使用示例<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
 <section id="id5">
-<h3>模型推理：<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<h3>模型推理：<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
 <p>此处展示的是图像分类模型的模型推理的示例代码，如需了解更多模块的示例代码或想了解更多使用说明请看<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/mmclassification.html">后文</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
 <span class="n">img</span> <span class="o">=</span> <span class="s1">&#39;./img.png&#39;</span>
@@ -286,7 +291,7 @@ categories [{
 </div>
 </section>
 <section id="id6">
-<h3>从零开始训练：<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<h3>从零开始训练：<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
 <p>此处展示的是图像分类模型的从零开始训练的示例代码，如需了解更多模块的示例代码或想了解更多使用说明请看<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/mmclassification.html">后文</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
 <span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;ResNet18&#39;</span><span class="p">)</span>
@@ -298,7 +303,7 @@ categories [{
 </div>
 </section>
 <section id="id7">
-<h3>继续训练：<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
+<h3>继续训练：<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
 <p>此处展示的是图像分类模型的继续训练的示例代码，如需了解更多模块的示例代码或想了解更多使用说明请看<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/mmedu/mmclassification.html">后文</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
 <span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;ResNet18&#39;</span><span class="p">)</span>
@@ -311,7 +316,7 @@ categories [{
 </div>
 </section>
 <section id="id8">
-<h3>更多示例：<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
+<h3>更多示例：<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
 <ol class="arabic">
 <li><p>查看MMEdu库所在的目录</p>
 <p>进入Python终端，然后依次输入如下代码即可查看Python库所在的目录（site-packages）。</p>
@@ -322,7 +327,7 @@ categories [{
 </pre></div>
 </div>
 <figure class="align-default">
-<img alt="../_images/pip%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%971.png" src="../_images/pip%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%971.png" />
+<img alt="images/mmedu/pip安装指南1.png" src="images/mmedu/pip安装指南1.png" />
 </figure>
 <ol class="arabic" start="2">
 <li><p>查看权重文件信息</p>

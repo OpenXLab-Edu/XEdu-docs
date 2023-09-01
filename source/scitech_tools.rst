@@ -7,6 +7,8 @@
 
    scitech_tools/pywebio.md
 
+   scitech_tools/pysimplegui.md
+
    scitech_tools/siot.md
 
    scitech_tools/pinpong.md
@@ -15,4 +17,5 @@
 
    scitech_tools/fastapi.md 
 
-   scitech_tools/gradio.md
+   scitech_tools/gradio.md 
+

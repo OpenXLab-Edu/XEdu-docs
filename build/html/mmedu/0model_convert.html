@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>最后一步：AI模型转换 &mdash; OpenXLabEdu  documentation</title>
@@ -11,11 +11,10 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -27,15 +26,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="../index.html" class="icon icon-home">
-            OpenXLabEdu
+            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -68,8 +63,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">最后一步：AI模型转换</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>最后一步：AI模型转换</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/mmedu/0model_convert.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -80,7 +75,7 @@
            <div itemprop="articleBody">
              
   <section id="ai">
-<h1>最后一步：AI模型转换<a class="headerlink" href="#ai" title="Permalink to this heading"></a></h1>
+<h1>最后一步：AI模型转换<a class="headerlink" href="#ai" title="Permalink to this headline"></a></h1>
 <p>得益于<code class="docutils literal notranslate"><span class="pre">OpenMMLab</span></code>系列工具的不断进步与发展。MMEdu通过集成OpenMMLab开源的<code class="docutils literal notranslate"><span class="pre">模型部署工具箱MMDeploy</span></code>和<code class="docutils literal notranslate"><span class="pre">模型压缩工具包MMRazor</span></code>，打通了从算法模型到应用程序这
 “最后一公里”！
 今天我们将开启<code class="docutils literal notranslate"><span class="pre">AI模型部署</span></code>入门系列教程，在面向中小学AI教育的开发和学习工具
@@ -99,12 +94,12 @@
 Python 语言，除此之外不需要了解任何模型部署的知识。</p>
 <p><strong>行空板上部署MMEdu训练模型效果示例：</strong></p>
 <figure class="align-default">
-<img alt="../_images/%E9%83%A8%E7%BD%B2%E6%BC%94%E7%A4%BA.gif" src="../_images/%E9%83%A8%E7%BD%B2%E6%BC%94%E7%A4%BA.gif" />
+<img alt="images/model_convert/部署演示.gif" src="images/model_convert/部署演示.gif" />
 </figure>
 <section id="why">
-<h2>Why：为什么<a class="headerlink" href="#why" title="Permalink to this heading"></a></h2>
+<h2>Why：为什么<a class="headerlink" href="#why" title="Permalink to this headline"></a></h2>
 <section id="id1">
-<h3>为什么要进行模型转换<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<h3>为什么要进行模型转换<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
 <p>用MMEdu训练的模型，只能运行在安装了MMEdu环境的电脑吗？不，借助模型转换，MMEdu（包括BaseNN）训练的模型都可以转换为ONNX模型，然后部署在很多常见的电脑（开源硬件）上。</p>
 <p>模型转换是为了模型能在不同框架间流转。在实际应用时，模型转换几乎都用于工业部署，负责模型从训练框架到部署侧推理框架的连接。
 这是因为随着深度学习应用和技术的演进，训练框架和推理框架的职能已经逐渐分化。
@@ -116,7 +111,7 @@ Python 语言，除此之外不需要了解任何模型部署的知识。</p>
 </div>
 </section>
 <section id="id2">
-<h3>为什么要进行模型量化<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<h3>为什么要进行模型量化<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
 <p>模型量化是指将深度学习模型中的参数、激活值等数据转化为更小的数据类型（通常是8位整数或者浮点数），以达到模型大小减小、计算速度加快、内存占用减小等优化目的的技术手段。模型量化有以下几个优点：减小模型大小、加速模型推理、减少内存占用等。因此，模型量化可以帮助提高深度学习模型的效率和性能，在实际应用中具有重要的价值和意义。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -125,12 +120,12 @@ MB的模型量化后大小变为了42.6 MB，推理速度提高了两倍。</p>
 </div>
 </section>
 <section id="id3">
-<h3>为什么要进行多模态交互<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<h3>为什么要进行多模态交互<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
 <p>多模态交互是指利用多个感知通道（例如语音、图像、触觉、姿态等）进行交互的技术。多模态交互在人机交互、智能交通、健康医疗、教育培训等领域都有广泛的应用、在提高交互效率、用户体验、解决单模态限制和实现智能化交互等方面具有重要的作用和价值。
 &gt;概括：给你的AI作品加点创客料 &gt;</p>
 </section>
 <section id="id4">
-<h3>什么是推理框架<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<h3>什么是推理框架<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
 <p>深度学习推理框架是一种让深度学习算法在实时处理环境中提高性能的框架。常见的有<a class="reference external" href="https://github.com/microsoft/onnxruntime">ONNXRuntime</a>、<a class="reference external" href="https://github.com/Tencent/ncnn">NCNN</a>、<a class="reference external" href="https://github.com/NVIDIA/TensorRT">TensorRT</a>、<a class="reference external" href="https://github.com/openvinotoolkit/openvino">OpenVINO</a>等。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -141,7 +136,7 @@ MB的模型量化后大小变为了42.6 MB，推理速度提高了两倍。</p>
 </section>
 </section>
 <section id="how">
-<h2>How：怎么做<a class="headerlink" href="#how" title="Permalink to this heading"></a></h2>
+<h2>How：怎么做<a class="headerlink" href="#how" title="Permalink to this headline"></a></h2>
 <p>总结一下Why中的回应，在软件工程中，部署指把开发完毕的软件投入使用的过程，包括环境配置、软件安装等步骤。类似地，对于深度学习模型来说，模型部署指让训练好的模型在特定环境中运行的过程。相比于软件部署，模型部署会面临更多的难题：</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -154,11 +149,11 @@ PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架
 </div>
 <p>经过工业界和学术界数年的探索，结合<code class="docutils literal notranslate"><span class="pre">XEdu</span></code>的工具，展示模型部署一条流行的流水线：</p>
 <figure class="align-default">
-<img alt="../_images/XEdu%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2%E5%85%A8%E9%93%BE%E8%B7%AFpipeline.JPG" src="../_images/XEdu%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2%E5%85%A8%E9%93%BE%E8%B7%AFpipeline.JPG" />
+<img alt="images/model_convert/XEdu模型部署全链路pipeline.JPG" src="images/model_convert/XEdu模型部署全链路pipeline.JPG" />
 </figure>
 <p>这一条流水线解决了模型部署中的两大问题：使用对接深度学习框架和推理引擎的中间表示，开发者不必担心如何在新环境中运行各个复杂的框架；通过中间表示的网络结构优化和推理引擎对运算的底层优化，模型的运算效率大幅提升。</p>
 <section id="mmedu">
-<h3>借助MMEdu完成模型转换<a class="headerlink" href="#mmedu" title="Permalink to this heading"></a></h3>
+<h3>借助MMEdu完成模型转换<a class="headerlink" href="#mmedu" title="Permalink to this headline"></a></h3>
 <p>MMEdu内置了一个<code class="docutils literal notranslate"><span class="pre">convert</span></code>函数实现了一键式模型转换，转换前先了解一下转换要做的事情吧。</p>
 <ul>
 <li><p>转换准备：</p>
@@ -191,7 +186,7 @@ PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架
 <p><a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=645110943c0e930cb55e859b&amp;sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=645110943c0e930cb55e859b&amp;sc=62f34141bf4f550f3e926e0e#public</a></p>
 </section>
 <section id="basedeploy">
-<h3>借助BaseDeploy完成模型部署<a class="headerlink" href="#basedeploy" title="Permalink to this heading"></a></h3>
+<h3>借助BaseDeploy完成模型部署<a class="headerlink" href="#basedeploy" title="Permalink to this headline"></a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">XEdu</span></code>团队推出了模型部署工具<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>，可以轻松完成模型部署。对MMEdu训练的模型完成转换后，生成ONNX模型，可借助<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>库部署到硬件上。</p>
 <p>示例代码如下：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
@@ -274,19 +269,19 @@ PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架
 <li><p>点击<a class="reference external" href="https://platform.openmmlab.com/deploee">MMDeploy硬件模型库</a>，后选择模型转换</p></li>
 </ul>
 <figure class="align-default">
-<img alt="../_images/%E7%BD%91%E9%A1%B5%E7%89%88%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A41.png" src="../_images/%E7%BD%91%E9%A1%B5%E7%89%88%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A41.png" />
+<img alt="images/model_convert/网页版使用步骤1.png" src="images/model_convert/网页版使用步骤1.png" />
 </figure>
 <ul class="simple">
 <li><p>点击新建转换任务</p></li>
 </ul>
 <figure class="align-default">
-<img alt="../_images/%E7%BD%91%E9%A1%B5%E7%89%88%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A42.png" src="../_images/%E7%BD%91%E9%A1%B5%E7%89%88%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A42.png" />
+<img alt="images/model_convert/网页版使用步骤2.png" src="images/model_convert/网页版使用步骤2.png" />
 </figure>
 <ul class="simple">
 <li><p>选择需要转换的模型类型、模型训练配置，并点击<code class="docutils literal notranslate"><span class="pre">上传模型</span></code>上传本地训练好的.pth权重文件，具体的选项如下表所示</p></li>
 </ul>
 <figure class="align-default">
-<img alt="../_images/%E7%BD%91%E9%A1%B5%E7%89%88%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A43.png" src="../_images/%E7%BD%91%E9%A1%B5%E7%89%88%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A43.png" />
+<img alt="images/model_convert/网页版使用步骤3.png" src="images/model_convert/网页版使用步骤3.png" />
 </figure>
 <table class="docutils align-default"><thead><tr><th rowspan="2"><p>MMEdu模型名称</p>
 </th><th rowspan="2"><p>功能</p>
@@ -344,28 +339,28 @@ PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架
 <li><p>选择需要的目标runtime，可选的有<code class="docutils literal notranslate"><span class="pre">ncnn</span></code>,<code class="docutils literal notranslate"><span class="pre">ort1.8.1(onnxruntime)</span></code>,<code class="docutils literal notranslate"><span class="pre">openvino</span></code>等，点击提交任务</p></li>
 </ul>
 <figure class="align-default">
-<img alt="../_images/%E7%BD%91%E9%A1%B5%E7%89%88%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A44.png" src="../_images/%E7%BD%91%E9%A1%B5%E7%89%88%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A44.png" />
+<img alt="images/model_convert/网页版使用步骤4.png" src="images/model_convert/网页版使用步骤4.png" />
 </figure>
 <ul class="simple">
 <li><p>点击提交任务后，状态会变为排队中，或处理中，如果转换失败会提示错误日志，根据错误日志提示修改，像下图错误的原因是使用ResNet50（分类）的权重，可对应的OpenMMLab算法误选为了mmdet（检测）的，所以提示的错误是找不到配置文件</p></li>
 </ul>
 <figure class="align-default">
-<img alt="../_images/%E7%BD%91%E9%A1%B5%E7%89%88%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A45.png" src="../_images/%E7%BD%91%E9%A1%B5%E7%89%88%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A45.png" />
+<img alt="images/model_convert/网页版使用步骤5.png" src="images/model_convert/网页版使用步骤5.png" />
 </figure>
 <ul class="simple">
 <li><p>转换成功后，点击<code class="docutils literal notranslate"><span class="pre">下载模型</span></code>即可使用</p></li>
 </ul>
 <figure class="align-default">
-<img alt="../_images/%E7%BD%91%E9%A1%B5%E7%89%88%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A46.png" src="../_images/%E7%BD%91%E9%A1%B5%E7%89%88%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A46.png" />
+<img alt="images/model_convert/网页版使用步骤6.png" src="images/model_convert/网页版使用步骤6.png" />
 </figure>
 </section>
 </section>
 <section id="what">
-<h2>What：什么现象与成果<a class="headerlink" href="#what" title="Permalink to this heading"></a></h2>
+<h2>What：什么现象与成果<a class="headerlink" href="#what" title="Permalink to this headline"></a></h2>
 <section id="id5">
-<h3>精度测试结果<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<h3>精度测试结果<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
 <section id="id6">
-<h4>软硬件环境<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h4>
+<h4>软硬件环境<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h4>
 <ul class="simple">
 <li><p>操作系统：Ubuntu 16.04</p></li>
 <li><p>系统位数：64</p></li>
@@ -376,7 +371,7 @@ PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架
 </ul>
 </section>
 <section id="id7">
-<h4>配置<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h4>
+<h4>配置<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h4>
 <ul class="simple">
 <li><p>静态图导出</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">batch</span></code>大小为1</p></li>
@@ -384,7 +379,7 @@ PyTorch、TensorFlow。由于框架规模、依赖环境的限制，这些框架
 </ul>
 </section>
 <section id="id8">
-<h4>精度测试结果汇总<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h4>
+<h4>精度测试结果汇总<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h4>
 <ul class="simple">
 <li><p>图像分类</p></li>
 </ul>
@@ -495,9 +490,9 @@ Precision)：平均精度，在不同recall下的最高precision的均值(一般
 </section>
 </section>
 <section id="id9">
-<h3>边、端设备测试结果<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
+<h3>边、端设备测试结果<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
 <section id="pc">
-<h4>PC机测试<a class="headerlink" href="#pc" title="Permalink to this heading"></a></h4>
+<h4>PC机测试<a class="headerlink" href="#pc" title="Permalink to this headline"></a></h4>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>用于模型训练的机器，性能较优，常见的操作系统有Windows和Linux</p>
@@ -512,7 +507,7 @@ Precision)：平均精度，在不同recall下的最高precision的均值(一般
 </ul>
 </div>
 <section id="id11">
-<span id="id12"></span><h5>配置<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h5>
+<span id="id12"></span><h5>配置<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h5>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">静态图</span></code>导出</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">batch</span></code>大小为1</p></li>
@@ -609,7 +604,7 @@ Precision)：平均精度，在不同recall下的最高precision的均值(一般
 </section>
 </section>
 <section id="id13">
-<h4>行空板测试<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h4>
+<h4>行空板测试<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h4>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>行空板,
@@ -710,7 +705,7 @@ Precision)：平均精度，在不同recall下的最高precision的均值(一般
 </div>
 </section>
 <section id="b">
-<h4>树莓派（4b）测试<a class="headerlink" href="#b" title="Permalink to this heading"></a></h4>
+<h4>树莓派（4b）测试<a class="headerlink" href="#b" title="Permalink to this headline"></a></h4>
 <blockquote>
 <div><p>Raspberry
 Pi。中文名为“树莓派”,简写为RPi，或者RasPi/RPi)是为学生计算机编程教育而设计，卡片式电脑，其系统基于Linux。
@@ -808,15 +803,15 @@ Pi。中文名为“树莓派”,简写为RPi，或者RasPi/RPi)是为学生计�
 </section>
 </section>
 <section id="id18">
-<h2>多模态交互<a class="headerlink" href="#id18" title="Permalink to this heading"></a></h2>
+<h2>多模态交互<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h2>
 <p>回顾用AI解决真实问题的流程图，我们已经介绍了收集数据、训练模型、模型推理和应用部署。结合项目设计，我们还会去思考如何通过摄像头获得图像，如何控制灯光发亮，如何操纵舵机，如何设计显示界面UI等需要使用输入设备和输出设备等来实现的交互设计，即对<code class="docutils literal notranslate"><span class="pre">多模态交互</span></code>的考量。</p>
 <figure class="align-default">
-<img alt="../_images/%E7%94%A8AI%E8%A7%A3%E5%86%B3%E7%9C%9F%E5%AE%9E%E9%97%AE%E9%A2%98.JPG" src="../_images/%E7%94%A8AI%E8%A7%A3%E5%86%B3%E7%9C%9F%E5%AE%9E%E9%97%AE%E9%A2%98.JPG" />
+<img alt="images/model_convert/用AI解决真实问题.JPG" src="images/model_convert/用AI解决真实问题.JPG" />
 </figure>
 <p>更多传感器、执行器使用教程参见：<a class="reference external" href="https://wiki.dfrobot.com.cn/">DFRobot</a></p>
 </section>
 <section id="id19">
-<h2>更多模型转换相关项目<a class="headerlink" href="#id19" title="Permalink to this heading"></a></h2>
+<h2>更多模型转换相关项目<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h2>
 <p>猫狗分类小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&amp;backpath=/pjedu/userprofile%3FslideKey=project#public">https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&amp;backpath=/pjedu/userprofile%3FslideKey=project#public</a></p>
 <p>千物识别小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&amp;backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&amp;backpath=/pjlab/projects/list#public</a></p>
 <p>有无人检测小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&amp;backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&amp;backpath=/pjlab/projects/list#public</a></p>
