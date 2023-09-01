@@ -32,6 +32,7 @@
 
 ```
 pip install PySimpleGUIWeb
+pip install PySimpleGUI
 ```
 
 ## 3. 如何选择PySimpleGUI和PySimpleGUIWeb
