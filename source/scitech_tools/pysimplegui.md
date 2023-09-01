@@ -1,4 +1,4 @@
-# Web库PySimpleGUIWeb
+#  GUI库PySimpleGUI
 
 ## 1. 简介
 
