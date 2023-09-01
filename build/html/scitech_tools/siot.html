@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MQTT库siot &mdash; OpenXLabEdu  documentation</title>
@@ -11,11 +11,10 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -29,15 +28,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="../index.html" class="icon icon-home">
-            OpenXLabEdu
+            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -57,10 +52,11 @@
 <li class="toctree-l2"><a class="reference internal" href="pywebio.html">Web库PyWebIO</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">MQTT库siot</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">1. 简介</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">3. 代码范例</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id3">3.1 发送消息</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">3.2 订阅消息</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">3.3 订阅多条消息</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2. 安装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">3. 代码范例</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">3.1 发送消息</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">3.2 订阅消息</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">3.3 订阅多条消息</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#siot">4. 借助siot部署智联网应用</a></li>
@@ -89,11 +85,11 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../scitech_tools.html">相关科创工具</a></li>
-      <li class="breadcrumb-item active">MQTT库siot</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../scitech_tools.html">相关科创工具</a> &raquo;</li>
+      <li>MQTT库siot</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/scitech_tools/siot.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/scitech_tools/siot.md.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -102,28 +98,28 @@
            <div itemprop="articleBody">
              
   <section id="mqttsiot">
-<h1>MQTT库siot<a class="headerlink" href="#mqttsiot" title="Permalink to this heading"></a></h1>
+<h1>MQTT库siot<a class="headerlink" href="#mqttsiot" title="Permalink to this headline"></a></h1>
 <section id="id1">
-<h2>1. 简介<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
-<p>MQTT是最常用的物联网协议之一。但是，MQTT的官方Python库明显不好用，前面要定义一个类，代码冗长，对初学者不够友好。siot是虚谷物联团队基于MQTT
-paho写的一个Python库，为了让初学者能够写出更加简洁、优雅的Python代码。</p>
+<h2>1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<p>MQTT是最常用的物联网协议之一。但是，MQTT的官方Python库明显不好用，前面要定义一个类，代码冗长，对初学者不够友好。siot是虚谷物联团队基于MQTT paho写的一个Python库，为了让初学者能够写出更加简洁、优雅的Python代码。</p>
 <p>需要强调的是，siot库同时支持MicroPython，语法完全一致。</p>
 <p>GitHub地址：<a class="reference external" href="https://github.com/vvlink/SIoT/tree/master/Python_lib/siot">https://github.com/vvlink/SIoT/tree/master/Python_lib/siot</a></p>
 <p>SIoT文档地址：<a class="reference external" href="https://siot.readthedocs.io/zh_CN/latest/">https://siot.readthedocs.io/zh_CN/latest/</a></p>
-<p>SIoT V2
-新增了可视化面板，全新升级，性能提升，可以支持更快的速度，同时使用QOS区分了快速数据以及存入数据的数据以应对不同的使用场景，网页界面也进行了更新更美观。具体可以参见：<a class="reference external" href="https://mindplus.dfrobot.com.cn/dashboard">https://mindplus.dfrobot.com.cn/dashboard</a>
-## 2. 安装</p>
+<p>SIoT V2 新增了可视化面板，全新升级，性能提升，可以支持更快的速度，同时使用QOS区分了快速数据以及存入数据的数据以应对不同的使用场景，网页界面也进行了更新更美观。具体可以参见：<a class="reference external" href="https://mindplus.dfrobot.com.cn/dashboard">https://mindplus.dfrobot.com.cn/dashboard</a></p>
+</section>
+<section id="id2">
+<h2>2. 安装<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <p>可以使用使用pip命令安装siot库。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">siot</span>
 </pre></div>
 </div>
 <p>注：XEdu一键安装包中已经内置了siot库。</p>
 </section>
-<section id="id2">
-<h2>3. 代码范例<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
-<p>下面的代码以MQTT服务器软件SIoT为例。SIoT是一个一键部署的MQTT服务器，广泛应用于中小学的物联网教学中。</p>
 <section id="id3">
-<h3>3.1 发送消息<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<h2>3. 代码范例<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<p>下面的代码以MQTT服务器软件SIoT为例。SIoT是一个一键部署的MQTT服务器，广泛应用于中小学的物联网教学中。</p>
+<section id="id4">
+<h3>3.1 发送消息<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
 <div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>import siot
 import time
 
@@ -145,8 +141,8 @@ while True:
 </pre></div>
 </div>
 </section>
-<section id="id4">
-<h3>3.2 订阅消息<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<section id="id5">
+<h3>3.2 订阅消息<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
 <div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>import siot
 import time
 
@@ -169,8 +165,8 @@ siot.loop()
 </pre></div>
 </div>
 </section>
-<section id="id5">
-<h3>3.3 订阅多条消息<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<section id="id6">
+<h3>3.3 订阅多条消息<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
 <div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>import siot
 import time
 
@@ -189,7 +185,7 @@ def sub_cb(client, userdata, msg):  # sub_cb函数仍然只有一个，需要在
 
 siot.init(CLIENT_ID, SERVER, user=IOT_UserName, password=IOT_PassWord)
 siot.connect()
-siot.set_callback(sub_cb)
+siot.set_callback(sub_cb)         
 siot.getsubscribe(IOT_pubTopic1)  # 订阅消息1
 siot.getsubscribe(IOT_pubTopic2)  # 订阅消息2
 siot.loop()
@@ -198,14 +194,14 @@ siot.loop()
 </section>
 </section>
 <section id="siot">
-<h2>4. 借助siot部署智联网应用<a class="headerlink" href="#siot" title="Permalink to this heading"></a></h2>
+<h2>4. 借助siot部署智联网应用<a class="headerlink" href="#siot" title="Permalink to this headline"></a></h2>
 <p>当物联网遇上人工智能，就形成了智联网。当学生训练出一个AI模型，就可以通过物联网设备进行多模态交互。</p>
 <p>1）远程感知</p>
-<p>mind+远程图传案例：<a class="reference external" href="https://mindplus.dfrobot.com.cn/dashboard#target_16">https://mindplus.dfrobot.com.cn/dashboard#target_16</a></p>
+<p><a class="reference external" href="https://mindplus.dfrobot.com.cn/dashboard#target_16">mind+远程图传案例</a></p>
 <p>2）远程控制</p>
-<p>mind+控制LED灯案例：<a class="reference external" href="https://mindplus.dfrobot.com.cn/dashboard#target_14">https://mindplus.dfrobot.com.cn/dashboard#target_14</a></p>
+<p><a class="reference external" href="https://mindplus.dfrobot.com.cn/dashboard#target_14">mind+控制LED灯案例</a></p>
 <p>3）可视化展示</p>
-<p>mind+可视化面板案例：<a class="reference external" href="https://mindplus.dfrobot.com.cn/dashboard#target_15">https://mindplus.dfrobot.com.cn/dashboard#target_15</a></p>
+<p><a class="reference external" href="https://mindplus.dfrobot.com.cn/dashboard#target_15">mind+可视化面板案例</a></p>
 </section>
 </section>
 

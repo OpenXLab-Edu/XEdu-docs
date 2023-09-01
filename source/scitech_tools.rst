@@ -15,4 +15,6 @@
 
    scitech_tools/fastapi.md 
 
-   scitech_tools/gradio.md
+   scitech_tools/gradio.md 
+
+   scitech_tools/pysimpleguiweb.md

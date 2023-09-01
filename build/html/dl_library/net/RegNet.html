@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>图像分类模型RegNet &mdash; OpenXLabEdu  documentation</title>
@@ -11,11 +11,10 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../../about.html" />
@@ -30,15 +29,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="../../index.html" class="icon icon-home">
-            OpenXLabEdu
+            <a href="../../index.html" class="icon icon-home"> OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -98,10 +93,10 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../../dl_library.html">深度学习知识库</a></li>
-          <li class="breadcrumb-item"><a href="../network_introduction.html">经典网络模型介绍</a></li>
-      <li class="breadcrumb-item active">图像分类模型RegNet</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../dl_library.html">深度学习知识库</a> &raquo;</li>
+          <li><a href="../network_introduction.html">经典网络模型介绍</a> &raquo;</li>
+      <li>图像分类模型RegNet</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/dl_library/net/RegNet.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -112,20 +107,20 @@
            <div itemprop="articleBody">
              
   <section id="regnet">
-<h1>图像分类模型RegNet<a class="headerlink" href="#regnet" title="Permalink to this heading"></a></h1>
+<h1>图像分类模型RegNet<a class="headerlink" href="#regnet" title="Permalink to this headline"></a></h1>
 <blockquote>
 <div><p><a class="reference external" href="https://arxiv.org/abs/2003.13678">Designing Network Design
 Spaces</a></p>
 </div></blockquote>
 <section id="id1">
-<h2>简介<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<h2>简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <p>RegNet是何凯明大神团队提出的用NAS得到的分类网络，该网络在轻量级网络领域，低FLOPs的RegNet模型也能达到很好的效果，和MobileNetV2以及ShuffleNetV2性能有的一比</p>
 <p><img alt="image1" src="../../_images/regnet0.png" /></p>
 <p>与当时分类网络的天花板EfficientNet对比，可以看到RegNetY-8.0GF的错误率比EfficientNet-B5更低，且推理速度(infer)快五倍。</p>
 <p><img alt="image2" src="../../_images/regnet1.png" /></p>
 </section>
 <section id="id2">
-<h2>RegNet网络结构<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<h2>RegNet网络结构<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <p><img alt="image3" src="../../_images/regnet2.png" /></p>
 <p>图中展示了网络主要由三部分组成，stem、body和head。</p>
 <ul class="simple">
@@ -135,7 +130,7 @@ Spaces</a></p>
 </ul>
 </section>
 <section id="anynet">
-<h2>特点：AnyNet设计<a class="headerlink" href="#anynet" title="Permalink to this heading"></a></h2>
+<h2>特点：AnyNet设计<a class="headerlink" href="#anynet" title="Permalink to this headline"></a></h2>
 <p>论文作者说，根据他们的经验将block设计为standard residual bottlenecks
 block with group
 convolution即带有组卷积的残差结构（和ResNext的block类似），如下图所示，左图为block的stride=1的情况，右图为block的stride=2的情况：</p>
@@ -160,7 +155,7 @@ bottleneck ratio）后并没有什么明显的变化。</p>
 <p>剩余详细设计思路可以在<a class="reference external" href="https://blog.csdn.net/qq_37541097/article/details/114362044">CSDN博客</a>中学习。</p>
 </section>
 <section id="id3">
-<h2>参考文献<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<h2>参考文献<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@article</span><span class="p">{</span><span class="n">radosavovic2020designing</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="p">{</span><span class="n">Designing</span> <span class="n">Network</span> <span class="n">Design</span> <span class="n">Spaces</span><span class="p">},</span>
     <span class="n">author</span><span class="o">=</span><span class="p">{</span><span class="n">Ilija</span> <span class="n">Radosavovic</span> <span class="ow">and</span> <span class="n">Raj</span> <span class="n">Prateek</span> <span class="n">Kosaraju</span> <span class="ow">and</span> <span class="n">Ross</span> <span class="n">Girshick</span> <span class="ow">and</span> <span class="n">Kaiming</span> <span class="n">He</span> <span class="ow">and</span> <span class="n">Piotr</span> <span class="n">Dollár</span><span class="p">},</span>

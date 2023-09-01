@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EasyAPI（AI模型远程推理工具） &mdash; OpenXLabEdu  documentation</title>
@@ -11,11 +11,10 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -29,15 +28,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="../index.html" class="icon icon-home">
-            OpenXLabEdu
+            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -87,11 +82,11 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../easydl.html">EasyDL系列无代码工具</a></li>
-      <li class="breadcrumb-item active">EasyAPI（AI模型远程推理工具）</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../easydl.html">EasyDL系列无代码工具</a> &raquo;</li>
+      <li>EasyAPI（AI模型远程推理工具）</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/easydl/easyapi.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/easydl/easyapi.md.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -100,37 +95,37 @@
            <div itemprop="articleBody">
              
   <section id="easyapi-ai">
-<h1>EasyAPI（AI模型远程推理工具）<a class="headerlink" href="#easyapi-ai" title="Permalink to this heading"></a></h1>
+<h1>EasyAPI（AI模型远程推理工具）<a class="headerlink" href="#easyapi-ai" title="Permalink to this headline"></a></h1>
 <section id="easyapi">
-<h2>EasyAPI简介<a class="headerlink" href="#easyapi" title="Permalink to this heading"></a></h2>
+<h2>EasyAPI简介<a class="headerlink" href="#easyapi" title="Permalink to this headline"></a></h2>
 <p>EasyAPI是无代码的MMEdu模型推理（部署）工具，不需要编写一行代码，即可搭建出一个类似百度开放平台的API平台。</p>
 <p>如果你训练的模型无法运行在某一创客作品的开源硬件上，那么就需要EasyAPI的帮忙了。</p>
 </section>
 <section id="id1">
-<h2>EasyAPI的应用场景<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<h2>EasyAPI的应用场景<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <section id="id2">
-<h3>应用场景1：行空板+掌控板<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<h3>应用场景1：行空板+掌控板<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
 <p>行空板可以运行ONNX，你可以利用EasyAPI生成参考代码，然后在行空板上运行。掌控板可以用HTTP的方式远程发送图片或者音频，行空板推理后返回结果信息。</p>
 </section>
 <section id="pc">
-<h3>应用场景2：行空板+PC<a class="headerlink" href="#pc" title="Permalink to this heading"></a></h3>
+<h3>应用场景2：行空板+PC<a class="headerlink" href="#pc" title="Permalink to this headline"></a></h3>
 <p>行空板拍摄照片，然后发送到PC（算力服务器）上推理。</p>
 </section>
 </section>
 <section id="id3">
-<h2>启动EasyAPI实现无代码服务部署可视化界面<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<h2>启动EasyAPI实现无代码服务部署可视化界面<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
 <p>EasyAPI界面启动之后在下拉框中选择问题类型为分类或者检测。</p>
-<p>在选择了问题类型之后，下面的“算法类型”也会对应的更改。</p>
+<p>在选择了问题类型之后，下面的”算法类型”也会对应的更改。</p>
 <p>选择权重文件、类别文件、推理结果保存路径、推理所用设备。</p>
 <p>点击生成代码会在上方Code呈现代码，有需要的用户也可以复制到本地运行。</p>
-<p><img alt="image0" src="../_images/API_code.PNG" /></p>
+<p><img alt="../_images/API_code.PNG" src="../_images/API_code.PNG" /></p>
 <p>运行代码会看到EasyAPI界面打开的同时运行的cmd.exe框内会有呈现运行后台，此时点击打开网页。</p>
-<p><img alt="image1" src="../_images/API_backstage.png" /></p>
+<p><img alt="../_images/API_backstage.png" src="../_images/API_backstage.png" /></p>
 <p>网页界面如下图所示。用户可指定类别的图片进行识别。此外，EasyAPI还提供了一个接口地址，可通过POST请求进行图像发送-服务器推理识别-结果放回的数据通路。如果手机和启动EasyAPI服务的电脑在同一wifi下，手机端还可以直接输入可视化网页连接来访问该服务，可以实现一个手机拍照，识别推理结果返回显示的功能。</p>
-<p><img alt="image2" src="../_images/API_test.png" /></p>
+<p><img alt="../_images/API_test.png" src="../_images/API_test.png" /></p>
 </section>
 <section id="id4">
-<h2>注意事项<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<h2>注意事项<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p>一部分参数有范围，例如学习率只能为正值，轮数只能为正整数，请选择合理范围的参数。</p></li>
 <li><p>关于设备类型，如果没有安装GPU版本的XEdu各模块，则不能以cuda设备运行，只能选择cpu。</p></li>

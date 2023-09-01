@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>快速体验BaseDeploy &mdash; OpenXLabEdu  documentation</title>
@@ -11,11 +11,10 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -29,15 +28,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="../index.html" class="icon icon-home">
-            OpenXLabEdu
+            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -79,11 +74,11 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../basedeploy.html">模型部署库BaseDeploy</a></li>
-      <li class="breadcrumb-item active">快速体验BaseDeploy</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../basedeploy.html">模型部署库BaseDeploy</a> &raquo;</li>
+      <li>快速体验BaseDeploy</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/basedeploy/quick_start.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/basedeploy/quick_start.md.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -92,38 +87,38 @@
            <div itemprop="articleBody">
              
   <section id="basedeploy">
-<h1>快速体验BaseDeploy<a class="headerlink" href="#basedeploy" title="Permalink to this heading"></a></h1>
+<h1>快速体验BaseDeploy<a class="headerlink" href="#basedeploy" title="Permalink to this headline"></a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">XEdu</span></code>团队推出的模型部署工具<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>，其代码风格向<code class="docutils literal notranslate"><span class="pre">MMEdu</span></code>对齐，通过对推理核心代码的封装，目标是用户能够更加专注于科创作品功能的设计，而将AI模块作为接口的黑盒，能够对其返回的结果进行二次创作。</p>
 <p><code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>通过传入<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/model_convert.html#id4">ONNX模型</a>的路径加载为一个模型，通过<code class="docutils literal notranslate"><span class="pre">model.inference</span></code>即可完成模型的推理，从而可实现借助BaseDeploy完成模型部署。</p>
 <section id="id1">
-<h2>示例代码<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<h2>示例代码<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <p>示例代码一：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>from BaseDT.data import ImageData
-import BaseDeploy as bd
-model_path = `./mymodel.onnx`
-dt = ImageData(img_path, backbone=&#39;训练的模型名称，例如MobileNet&#39;)
-model = bd(model_path)
-result = model.inference(dt)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.data</span> <span class="kn">import</span> <span class="n">ImageData</span>
+<span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
+<span class="n">model_path</span> <span class="o">=</span> <span class="s1">&#39;./mymodel.onnx&#39;</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">ImageData</span><span class="p">(</span><span class="n">img_path</span><span class="p">,</span> <span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;训练的模型名称，例如MobileNet&#39;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">bd</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>本段代码实现的功能是将<code class="docutils literal notranslate"><span class="pre">BaseDT</span></code>预处理好后的图片传入<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>推理函数进行推理，并将推理结果返回。关于BaseDT处理图片的说明详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basedt/quick_start.html#id12">BaseDT部分</a>。</p>
 <p>示例代码二：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>import BaseDeploy as bd
-model_path = `./mymodel.onnx`
-model = bd(model_path)
-result = model.inference(img_path)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
+<span class="n">model_path</span> <span class="o">=</span> <span class="s1">&#39;./mymodel.onnx&#39;</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">bd</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>本段代码实现的功能是将图片路径传入<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>推理函数进行推理，并将推理结果返回。</p>
 <p>示例代码三：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>import cv2
-import BaseDeploy as bd
-model_path = `./mymodel.onnx`
-cap = cv2.VideoCapture(0)
-ret, img = cap.read()
-model = bd(model_path)
-result = model.inference(img)
-cap.release()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
+<span class="n">model_path</span> <span class="o">=</span> <span class="s1">&#39;./mymodel.onnx&#39;</span>
+<span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ret</span><span class="p">,</span> <span class="n">img</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">bd</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>本段代码实现的功能是将cv2调用摄像头拍摄的图片传入<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>推理函数进行推理，并将推理结果返回。此处代码与<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/model_convert.html#mmedu">借助MMEdu完成模型转换</a>后生成的示例代码非常相似。</p>
@@ -131,18 +126,14 @@ cap.release()
 <ul class="simple">
 <li><p>图像分类</p></li>
 </ul>
-<figure class="align-default">
-<img alt="../_images/%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%8E%A8%E7%90%86_%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB.png" src="../_images/%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%8E%A8%E7%90%86_%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB.png" />
-</figure>
+<p><img alt="../_images/base_cls.png" src="../_images/base_cls.png" /></p>
 <ul class="simple">
 <li><p>目标检测</p></li>
 </ul>
-<figure class="align-default">
-<img alt="../_images/%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%8E%A8%E7%90%86_%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B.png" src="../_images/%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%8E%A8%E7%90%86_%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B.png" />
-</figure>
+<p><img alt="../_images/base_detect.png" src="../_images/base_detect.png" /></p>
 </section>
 <section id="id2">
-<h2>更多模型部署相关项目<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<h2>更多模型部署相关项目<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <p>猫狗分类小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&amp;backpath=/pjedu/userprofile%3FslideKey=project#public">https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&amp;backpath=/pjedu/userprofile%3FslideKey=project#public</a></p>
 <p>千物识别小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&amp;backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&amp;backpath=/pjlab/projects/list#public</a></p>
 <p>有无人检测小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&amp;backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&amp;backpath=/pjlab/projects/list#public</a></p>
