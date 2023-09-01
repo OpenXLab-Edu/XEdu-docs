@@ -117,8 +117,7 @@ cap = cv2.VideoCapture(0)
 ret, img = cap.read()
 model = bd(model_path)
 result = model.inference(img)
-result = model.print_result(result)
-print(result)
+model.print_result(result)
 cap.release()
 ```
 
@@ -193,7 +192,6 @@ ret, img = cap.read()
 model = bd(model_path)
 result = model.inference(img)
 result = model.print_result(result)
-print(result)
 
 if result['预测结果'] == 'dog':
     print('这是小狗，汪汪汪！')
