@@ -8,19 +8,19 @@ MMClassifiation（简称cls）的主要功能是对图像进行分类。其支�
 
 XEdu一键安装包中预置了MMEdu的cls模块的示例代码（路径：/demo）、常用小数据集（路径：/dataset/cls）,并且已经预训练了一些权重（路径：/checkpoints/cls_model）。在demo文件夹中，还提供了一张测试图片，OpenInnoLab平台也公开了非常多图像分类任务的项目，体验了几个之后相信会对此模块有一定理解。
 
-下面我们将以“石头剪刀布”手势识别这个任务为例，介绍一下图像分类模块示例代码的用法，解锁图像分类模块的同时也一起完成一个新的图像分类项目吧！
+下面我们将以“石头剪刀布”手势识别这个任务为例，介绍一下图像分类模块示例代码的用法，在解锁图像分类模块的同时也一起完成一个新的图像分类项目吧！
 
 #### 1. 模型训练
 
-使用下面的代码即可简单体验MMClassification的训练过程，我们会为您进行详细的介绍。
+使用下面的代码即可简单体验MMClassification的训练过程，接下来就开始详细的介绍。
 
-在运行代码之前，您需要先拥有一个数据集，这里我们为您提供经典的石头剪刀布分类数据集。
+在运行代码之前，我们首先需要拥有一个数据集，这里提供了经典的石头剪刀布分类数据集。
 
 数据集文件结构如下:
 
 ![](../images/mmedu/cls_dataset.png)
 
-**hand_gray**数据集符合MMEdu图像分类模块支持的数据集要求，文件夹中包含三个图片文件夹，`test_set`,`training_set`,`val_set`分别存储测试集，训练集和验证集的图片；以及三个`txt`文件，`classes.txt`记录该数据集的类别，`test.txt`和`val.txt`分别记录测试集和验证集的图片名。如您想要了解更多数据集格式的内容，可参考<a href="https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#id3">数据集支持</a>部分。
+**hand_gray**数据集符合MMEdu图像分类模块支持的数据集要求，文件夹中包含三个图片文件夹，`test_set`,`training_set`,`val_set`分别存储测试集，训练集和验证集的图片；还有三个`txt`文件，其中`classes.txt`记录该数据集的类别，`test.txt`和`val.txt`分别记录测试集和验证集的图片名。若想要了解更多数据集格式的内容，可参考<a href="https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#id3">数据集支持</a>部分。
 
 训练代码如下：
 
@@ -32,9 +32,13 @@ model.save_fold = '../checkpoints/cls_model/hand_gray' # 设置模型的保存�
 model.train(epochs=10, validate=True) # 设定训练的epoch次数以及是否进行评估
 ```
 
-接下来对为您讲述训练代码规则：
+通过注释，我们可以清晰的理解每句代码的功能，模型训练过程可以概括为5步骤，每个步骤分别对应一行代码：
 
-实例化模型的代码在前面说过就不再赘述。
+- **实例化模型**
+
+```python
+model = cls(backbone='LeNet') # 实例化模型，不指定参数即使用默认参数
+```
 
 - **指定类别数量**
 
@@ -62,7 +66,7 @@ model.save_fold = '../checkpoints/cls_model/hand_gray'
 model.train(epochs=10, validate=True) # 设定训练的epoch次数以及是否进行评估
 ```
 
-表示训练10个轮次，并在训练结束后用校验集进行评估。
+`epochs=10`表示训练10个轮次，`validate=True`表示在训练结束后用验证集（`val_set`）进行评估。
 
 **参数详解**
 
@@ -96,15 +100,15 @@ model.train(epochs=10, validate=True) # 设定训练的epoch次数以及是否�
 
 ![](../images/mmedu/clsModelTrain.png)
 
-而在`checkpoints\cls_model`文件夹中我们会发现多了两种文件，一个是`***.log.json`文件，它记录了我们模型在训练过程中的一些参数，比如说学习率`lr`，所用时间`time`，以及损失`loss`等；另一个文件是.pth文件，这个是我们在训练过程中所保存的模型。
+而在`checkpoints\cls_model`文件夹中我们会发现多了两种文件，一个是`***.log.json`文件，它记录了我们模型在训练过程中的一些参数，比如说学习率`lr`，所用时间`time`，以及损失`loss`等；另一个文件是`***.pth`文件，这个是我们在训练过程中所保存的模型。
 
 **准确率怎么看？**
 
 方式一：通过训练输出（如上图），运行训练代码时输出项里会出现学习率lr，所用时间time，以及损失loss，每一轮在验证上的accuracy_top-**等。
 
-方式二：通过日志文件，在训练过程中我们会发现模型保存路径下（代码中指定指定）出现一个*.log.json文件，这就是日志文件，它记录了我们模型在训练过程中的一些信息。
+方式二：通过日志文件，在训练过程中我们会发现模型保存路径下（代码中指定指定）出现一个`***.log.json`文件，这就是日志文件，它记录了我们模型在训练过程中的一些信息。
 
-当您启动验证集验证，即设置“validate=True”，表示每轮（每个epoch）训练后，在验证集（val_set）上测试一次准确率。那么每一轮训练结束时会呈现一次准确率，并且会生成best_accuracy_top-*.pth权重文件即最佳准确率权重文件。
+当您启动验证集验证，即设置`validate=True`，表示每轮（每个epoch）训练后，在验证集（val_set）上测试一次准确率。那么每一轮训练结束时会呈现一次准确率，并且会生成best_accuracy_top-*.pth权重文件即最佳准确率权重文件。
 
 accuracy_top-1：对一张图片，如果你的预测结果中概率最大的那个分类正确，则认为正确，再根据分类正确的样本数除以所有的样本数计算得到的准确率。
 
@@ -132,41 +136,40 @@ accuracy_top-5：对一张图片，如果预测概率前五名的答案中出现
 
 #### 2. 模型推理
 
-当完成模型训练，可使用训练好的模型对新图片进行模型推理。当然如果想快速上手体验MMClassification的图像分类，可直接使用我们已经预训练好的模型和权重文件进行推理，提供一张图片测试推理的准确度。
+训练完模型训后，我们就可使用该模型对新图片进行模型推理。当然如果想快速上手体验MMClassification的图像分类，可直接使用我们已经预训练好的模型和权重文件体验图片推理。
 
 示例代码如下:
 
 ```python
 from MMEdu import MMClassification as cls  # 导入mmcls模块
-img = 'testrock01-02.png' # 指定进行推理的图片路径，我们使用demo文件夹中提供的图片
+img = 'testrock01-02.png' # 指定待推理的图片路径
 model = cls(backbone='LeNet') # 实例化MMClassification模型
 model.checkpoint='../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的模型权重文件
 result = model.inference(image=img, show=True, checkpoint=checkpoint) # 在CPU上进行推理
-model.print_result() # 输出结果
-# 同时您可以修改show的值来决定是否需要显示结果图片，此处默认显示结果图片
+model.print_result() # 输出结果，可以修改参数show的值来决定是否需要显示结果图片，默认显示结果图片
 ```
 
 运行结果如图：
 
 ![](../images/mmedu/cls_result.png)
 
-推理结果图片（带标签的图片）会以原来的文件名称保存在代码文件的同级目录下的`cls_result`文件夹下，如果运行代码前没有发现该文件夹，不用担心，系统会自动建立。当然，您可以自己指定保存文件夹的名称。
+`标签`: 1， `置信度`: 0.69， `预测结果`: 'rock'
 
-您也可以将收集的图片放在一个文件夹下，然后指定文件夹路径进行一组图片的**批量推理**。如在`demo`文件夹下新建一个`cls_testIMG`文件夹放图片，批量推理的示例代码如下。
+推理结果图片（带标签的图片）会以原来的文件名称保存在代码文件的同级目录下的`cls_result`文件夹下，如果运行代码前没有发现该文件夹，不用担心，系统会自动建立。当然，我们可以自己指定保存文件夹的名称。
+
+此外，我们还可以对一组图片进行**批量推理**，只需将收集的图片放在一个文件夹下，如在`demo`文件夹下新建一个`cls_testIMG`文件夹放图片。批量推理的示例代码如下。
 
 ```python
 img = 'cls_testIMG/' # 指定进行推理的一组图片的路径
 model = cls(backbone='LeNet') # 实例化MMClassification模型
 model.checkpoint='../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的模型权重文件
 result = model.inference(image=img, show=True, checkpoint=checkpoint) # 在CPU上进行推理
-model.print_result(result) # 输出结果
-# 同时您可以修改show的值来决定是否需要显示结果图片，此处默认显示结果图片
+model.print_result(result) # 输出结果，可以修改参数show的值来决定是否需要显示结果图片，默认显示结果图片
 ```
 
-您会发现当前目录下`‘cls_result’`文件夹里出现了这组图片的推理结果图，每张图片的结果与您收集的图片同名，到这个文件夹下查看推理结果。
+运行上述代码之后，`‘cls_result’`文件夹里就会出现这组图片的推理结果图，推理图片名称和原图片同名。
 
-接下来对为您讲述推理代码规则：
-
+模型推理的过程也可以概括为6步骤，每个步骤分别对应一行代码：
 - **图片准备**
 
 ```python
@@ -185,6 +188,11 @@ model = cls(backbone='LeNet') # 实例化MMClassification模型
 
 `backbone`：指定使用的`MMClassification`模型，默认参数是`'LeNet'`，当然读者可以自行修改该参数以使用不同模型。
 
+- **指定模型权重文件**
+
+```python
+model.checkpoint='../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的模型权重文件
+```
 - **模型推理**
 
 ```python
@@ -192,6 +200,11 @@ model.inference(image=img, show=True, checkpoint=checkpoint) # 在cpu上进行�
 ```
 
 将所需要推理图片的路径传入`inference`函数中即可进行推理，我们这里传入了四个参数，`image`代表的就是推理图片的路径，`show`代表是否需要显示结果图片，`class_path`代表训练集的路径，`checkpoint`代表指定使用的模型权重文件。
+- **图片准备**
+
+```python
+img = 'testrock01-02.png' # 指定推理图片的路径，直接在代码所在的demo文件夹中选择图片
+```
 
 **参数详解**
 
@@ -236,7 +249,7 @@ result = model.fast_inference(image=img)
 
 #### 3. 继续训练
 
-在这一步中，我们会教您加载之前训练过的模型接着训练，如果您觉得之前训练的模型epoch数不够的话或者因为一些客观原因而不得不提前结束训练，相信下面的代码会帮到您。
+在这一步中，我们会教您加载之前训练过的模型接着训练。如果觉得之前训练的模型epoch数不够的话或者因为一些客观原因而不得不提前结束训练，相信下面的代码会帮到您。
 
 ```python
 model = cls(backbone='LeNet') # 初始化实例模型
@@ -248,9 +261,11 @@ checkpoint = '../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的�
 model.train(epochs=50, validate=True, checkpoint=checkpoint) # 进行再训练
 ```
 
-这里我们有一个参数在之前的<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#id3">训练模型</a>过程中没有详细说明，那就是`train`函数中的`checkpoint`参数，这个放到这里就比较好理解，它的意思是指定需要进行再训练的模型路径，当然您也可以根据你需要训练的不同模型而调整参数。同时您也可以指定网上下载的某个预训练模型。借助在大型数据集上训练的预训练模型可以根据一系列任务的历史数据来对新的任务进行训练，而无需从头开始训练。它可以将一个大型数据集中的知识和技能转移到另一个任务上，从而大大节省训练时间。 
+这里我们有一个参数在之前的<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#id3">训练模型</a>过程中没有详细说明，那就是`train`函数中的`checkpoint`参数，这个放到这里就比较好理解，它的意思是指定需要进行再训练的模型路径，当然您也可以根据你需要训练的不同模型而调整参数。
 
-全新开始训练一个模型，一般要花较长时间。我们强烈建议在预训练模型的基础上继续训练，哪怕你要分类的数据集和预训练的数据集并不一样。基于预训练模型继续训练可起到加速训练的作用，通常会使得模型达到更好的效果。在学习资源下载处也提供了一些<a href="https://xedu.readthedocs.io/zh/master/support_resources/resources.html#id3">预训练模型和权重文件下载</a>途径。
+我们还可以指定网上下载的某个预训练模型。通过借助在大型数据集上训练的预训练模型，来对新的任务进行训练，而无需从头开始训练。它可以将一个大型数据集中的知识和技能转移到另一个任务上，从而大大节省训练时间。 
+
+全新开始训练一个模型一般要花较长时间，所以我们强烈建议在预训练模型的基础上继续训练，哪怕你要分类的数据集和预训练的数据集并不一样，基于预训练模型继续训练可起到加速训练的作用。在学习资源下载处也提供了一些<a href="https://xedu.readthedocs.io/zh/master/support_resources/resources.html#id3">预训练模型和权重文件下载</a>途径。
 
 #### 4. 支持的SOTA模型
 
@@ -270,7 +285,7 @@ model.train(epochs=50, validate=True, checkpoint=checkpoint) # 进行再训练
 
 各个SOTA模型的比较：
 
-LeNet是一种简单的深度卷积神经网络，他的特色就是参数量少、计算小，训练模型很快，确定层数少，不能充分学习数据的特征，LeNet比较适合图像比较简单的图像分类，通常像素值超过224的图片或者彩色图片分类建议选择MobileNet和ResNet。
+LeNet是一种简单的深度卷积神经网络，他的特色就是参数量少、计算小，训练模型很快，确定层数少，不能充分学习数据的特征，LeNet比较适合图像比较简单的图像分类，通常像素值超过224的图片或者彩色图片分类建议选择MobileNet和ResNet。点击下方SOTA模型介绍链接可以学习更多模型知识。
 
 <table class="docutils align-default">
     <thead>
