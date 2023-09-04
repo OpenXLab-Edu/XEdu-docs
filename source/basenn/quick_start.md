@@ -141,26 +141,24 @@ model = nn()
 
 ### 第2步 载入数据
 
-tang.npz是本项目的文本数据，源于互联网，包括57580首唐诗。
+tangccc.npz是本项目的文本数据，源于互联网，包括57580首唐诗。npz是一种用于存储NumPy数组数据的文件格式。
+
+npz文件是一种方便的方式来保存和加载NumPy数组，通常用于在不同的Python程序之间或不同的计算环境中共享数据。
+
+在该项目中可以使用`load_npz_data()`方法直接读取npz格式的数据到模型中
 
 ```python
-datas = np.load('tang.npz',allow_pickle=True)
-data = datas['data'] 
-print("第一条数据：",data[0]) # 观察第一条数据
-word2idx = datas['word2ix'].item() # 汉字对应的索引
-print("词表:",word2idx) 
-idx2word = datas['ix2word'].item() # 索引对应的汉字
-x, y = data[:,:-1], data[:, 1:]
-
-model.load_dataset(x, y, word2idx=word2idx) # 载入数据
+model.load_npz_data('tangccc.npz')
 ```
 
 ### 第3步 搭建LSTM模型
 
-搭建模型只需加入lstm层即可，其他层会自适应补充，其中num_layers参数为循环神经网络循环的次数。
+搭建模型只需加入em_lstm层即可，其他层会自适应补充，其中num_layers参数为循环神经网络循环的次数。
+
+em_LSTM由包括embedding层，LSTM层和线性层组成，因为由embedding层的加入，使其可以专门处理文本数据。
 
 ```python
-model.add('lstm', size=(128,256),num_layers=2) 
+model.add('em_lstm', size=(128,256),num_layers=2) 
 ```
 
 ### 第4步 模型训练

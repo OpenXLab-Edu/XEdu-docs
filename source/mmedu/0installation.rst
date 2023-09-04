@@ -28,8 +28,7 @@ MMEdu安装和下载
 
 飞书网盘：https://p6bm2if73b.feishu.cn/drive/folder/fldcn67XTwhg8qIFCl8edJBZZQb
 
-百度网盘:https://pan.baidu.com/s/1UDt-GwHriCB_rewl8kCrUA?pwd=2022
-提取码:2022
+浦源CDN加速：https://download.openxlab.org.cn/models/yikshing/bash/weight/x16
 
 第二步：您可以根据个人喜好，选择自己习惯的IDE。
 
@@ -121,7 +120,7 @@ https://aicarrier.feishu.cn/docx/K0D6d8VHLoN1zoxDb72cBlKynjc\ ）；
 
 至此，已经完成了对MMEdu的GPU升级。
 
-2. 完整版安装之pip安装
+1. 完整版安装之pip安装
 ----------------------
 
 2.1 准备工作
