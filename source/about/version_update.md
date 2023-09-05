@@ -263,6 +263,30 @@ det：
 
 #### 5）XEdu一键安装包
 
+##### V1.6 20230901
+
+​	重构opencv-python库环境。
+
+​	支持bug解决脚本（解决绝大多数问题）。
+
+​	支持jupyter notebook中文。
+
+​	升级库版本MMEdu0.1.21，BaseNN0.2.0，BaseML0.0.6、BaseDT0.1.1、BaseDeploy0.0.4。
+
+​	支持openxlab下载（https://download.openxlab.org.cn/models/yikshing/bash/weight/x16）
+
+##### V1.5.4 20230811
+
+​	升级库版本。
+
+​	支持cmd终端一键启动。
+
+​	支持jupyter notebook中文。
+
+##### V1.5.2 20230613
+
+​	升级库版本。
+
 ##### V1.4.6 20230529
 
 ​	解决BaseNN推理缓慢的问题。
