@@ -323,7 +323,7 @@ model.train(lr=0.01,epochs=1)
 
 #### 文本类型
 
-在做文本识别等NLP（自然语言处理）领域项目时，一般搭建[RNN网络](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn)训练模型，训练数据是文本数据，参考代码如下：
+在做文本生成等NLP（自然语言处理）领域项目时，一般搭建[RNN网络](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn)训练模型，训练数据是文本数据，参考代码如下：
 
 ```python
 model = nn()
@@ -451,7 +451,7 @@ model.visual_feature(data)   # 特征的可视化
 
 ### 10. 自定义随机数种子
 
-默认初始化是随机的，每次训练结果都不一样。可以使用`set_seed()`函数设定随机数种子，使得训练结果可被其他人复现。一旦指定，则每次训练结果一致。使用方法如下：
+默认初始化是随机的，因此每次模型训练效果可能存在差异。可以使用`set_seed()`函数设定随机数种子，使得训练结果可被其他人复现。一旦指定，则每次训练结果一致。使用方法如下：
 
 ``` python
 model = nn()
