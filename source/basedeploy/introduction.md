@@ -1,6 +1,8 @@
 # BaseDeploy：服务于XEdu的模型部署工具
 
-模型部署是AI应用的重要一环，因其涉及的框架量大、推理代码风格不一等问题，往往会对初学者的上手造成一定的难度。为此，`XEdu`团队推出了模型部署工具`BaseDeploy`，其代码风格向`MMEdu`对齐，通过对推理核心代码的封装，目标是用户能够更加专注于科创作品功能的设计，而将AI模块作为接口的黑盒，能够对其返回的结果进行二次创作。
+模型部署是AI应用的重要一环，因其涉及的框架量大、推理代码风格不一等问题，往往会对初学者的上手造成一定的难度。为此，`XEdu`团队推出了模型部署工具`BaseDeploy`，其代码风格向`MMEdu`对齐，通过对推理核心代码的封装，目标是用户能够更加专注于科创作品功能的设计，而将AI模块作为接口的黑盒，能够对其返回的结果进行二次创作。当前，BaseDeploy主要支持onnxruntime的部署形式，只要将模型文件转换为onnx格式，即可轻松部署到绝大多数硬件上。
+
+onnxruntime介绍：[https://github.com/microsoft/onnxruntime](https://github.com/microsoft/onnxruntime)
 
 ## 基本功能说明
 
@@ -10,7 +12,7 @@
 首先`BaseDeploy`对不同任务的模型进行统一的推理管理，对于用户来说仅需更换onnx模型的路径，`BaseDeploy`会自动匹配对应的任务类型，并将推理和显示的内部流程进行封装。
 
 ```python
-model.inference(input_data, show, get_img, score, show_path)
+pred_onx = model.inference(input_data, show, get_img, score, show_path)
 ```
 
 参数说明如下：
@@ -26,14 +28,14 @@ model.inference(input_data, show, get_img, score, show_path)
 `show_path`：是否显示图片路径，默认为False。
 
 #### 返回参数说明
-通过BaseDeploy的模型完成推理后，输出的格式与onnx推理保持一致，用户可自行进行推理结果后处理操作或使用内置的`model.print_result`函数进行推理结果格式化。
+通过BaseDeploy的模型完成推理后，输出的格式与[onnxruntime](https://github.com/microsoft/onnxruntime)推理保持一致，用户可自行进行推理结果后处理操作或使用内置的`model.print_result`函数进行推理结果格式化。
 
 ### 格式化推理结果
 
 为了便于用户查看推理结果，`BaseDeploy`提供`model.print_result`函数供用户进行推理结果格式化操作。
 
 ```python
-model.print_result(pred_onx)
+result = model.print_result(pred_onx)
 ```
 
 参数说明如下：
@@ -70,7 +72,7 @@ for item in result:
 ```python
 import BaseDeploy as bd
 model = bd(model_path)
-result = model.inference(folder_path)
+pred_onx = model.inference(folder_path)
 ```
 
 参数说明如下：
@@ -92,13 +94,13 @@ result = model.inference(folder_path)
 
 
 
-#### 图片路径显示
+#### 可视化效果保存
 
-将`show_path`设置为True，即可以`文件名+推理结果`作为最终的消息回显（该功能仅对以路径形式传入的方式有效）
+文件推理后，可以保存在本地。将`show_path`设置为True，即可以`文件名+推理结果`作为最终的消息回显（该功能仅对以`img_path`路径形式传入的方式有效）
 ```python
 import BaseDeploy as bd
 model = bd(model_path)
-result = model.inference(folder_path, show=True, show_path=True)
+result = model.inference(img_path, show=True, show_path=True)
 ```
 
 - 图像分类
@@ -113,7 +115,9 @@ result = model.inference(folder_path, show=True, show_path=True)
 
 
 
-#### 图像回传
+#### 可视化效果获取
+
+- 这里的`get_img='pil/cv2'`与前面的`show_path=True`的区别在于：前者以变量传参形式返回，不保存在本地磁盘；后者以保存路径字符串返回，方便调试查看。前者更适合在项目开发中使用。
 
 如果您想对推理结果图进行一部分操作（比如部署时希望在行空板屏幕上显示推理结果图），那么可以使用如下代码：
 加入`get_img`参数，默认为None，可选参数为`pil`和`cv2`，matplotlib和OpenCV是两个常用的图像梳理库，目的是用户可以通过得到的图片二次创作。
@@ -138,8 +142,10 @@ plt.show()
 `get_img`：`model.inference`中内置的参数，设为`pil`表示回传的图片可供`pil`显示。
 
 
-##### PIL方式
+##### 返回形式1：PIL方式
+
 PIL方式适合Jupyter中进行交互，下面是相关示例说明。
+
 - 图像分类
 
 ![](../images/basedeploy/back_cls_pil.JPG)
@@ -152,7 +158,7 @@ PIL方式适合Jupyter中进行交互，下面是相关示例说明。
 
 
 
-##### cv2方式
+##### 返回形式2：cv2方式
 
 cv2方式适合调用屏幕显示等操作。
 ```python
@@ -186,7 +192,7 @@ cv2.destroyAllWindows()
 
 
 
-#### 拓展：一般ONNX模型的解析
+#### 强大的ONNX模型尺寸解析能力
 
 `BaseDeploy`为适配图像任务，可自动解析未经`XEdu`标记的ONNX模型的输入张量尺寸，并进行图像预处理和输出后处理，输出结果将不会带有类别信息。[学习资源库](https://xedu.readthedocs.io/zh/master/support_resources/resources.html)提供了部分ONNX模型下载链接。
 
@@ -213,8 +219,9 @@ result = model.inference(img_path)
 ![](../images/basedeploy/ONNX_detect.JPG)
 
 
+#### 通用的onnx推理能力
 
-此外，`BaseDeploy`还提供`diy_inference`函数，供用户推理特殊的ONNX模型，其推理的前处理和后处理需要用户自行实现。
+`BaseDeploy`还提供`diy_inference`函数，可以推理任意的ONNX模型，这里并不强调是由XEdu转换而来的模型，只要是ONNX格式，均可以类似的代码风格进行推理。但是需要注意，不同的任务对应的前处理、后处理不同，需要用户自行实现。
 
 ```python
 import BaseDeploy as bd
@@ -226,9 +233,9 @@ result = model.diy_inference(input_data)
 
 `model_path`：ONNX模型的路径。
 
-`img_path`：待推理的图片路径。
+`input_data`：用户自定义前处理好后的`张量`，可以是任何数据，不一定是图像数据，请将其保持与模型输入节点需要的`张量形状一致`。
 
-`input_data`：用户自定义前处理好后的张量，请将其保持与模型输入节点需要的张量形状一致。
+返回值`result`即
 
 ![](../images/basedeploy/diy_infer.JPG)
 
