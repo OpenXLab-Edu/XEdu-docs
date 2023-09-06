@@ -130,7 +130,9 @@ model.load_dataset(x, y)
 
 此处采用Iris鸢尾花数据集和MNIST手写体数字图像数据集作为示例。
 
-读取并载入csv格式鸢尾花数据集（鸢尾花数据集以鸢尾花的特征作为数据来源，数据集包含150条数据，有4维（花萼长度、宽度和花瓣长度、宽度），分为3类（setosa、versicolour、virginica），每类50个数据）：
+读取并载入csv格式鸢尾花数据集（鸢尾花数据集以鸢尾花的特征作为数据来源，数据集包含150条数据，有4维（花萼长度、宽度和花瓣长度、宽度），分为3类（setosa、versicolour、virginica），每类50条数据）：
+
+数据集共有5列，其中前四列为特征，第五列为鸢尾花的类别，即标签。
 
 ``` python
 # 训练数据
@@ -321,7 +323,7 @@ model.train(lr=0.01,epochs=1)
 
 #### 文本类型
 
-在做文本识别等NLP（自然语言处理）领域项目时，一般搭建[RNN网络](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn)训练模型，训练数据是文本数据，参考代码代码如下：
+在做文本识别等NLP（自然语言处理）领域项目时，一般搭建[RNN网络](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn)训练模型，训练数据是文本数据，参考代码如下：
 
 ```python
 model = nn()
