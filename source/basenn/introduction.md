@@ -109,7 +109,7 @@ model.load_tab_data(train_path, batch_size=120)
 
 ```python
 train_path = '../../dataset/dataset.npz'
-model.load_tab_data(train_path, batch_size=5000,classes=["walking","waving","stretching"])
+model.load_npz_data(train_path, batch_size=5000,classes=["walking","waving","stretching"])
 ```
 
 对NPZ数据集的要求：npz格式，其中至少应该拥有两个键，分别为`data`与`label`，其中`data`中存储的应为训练数据信息，`label`中存储的应为数据所对应的标签信息（应为数组形式）。
@@ -130,7 +130,7 @@ model.load_dataset(x, y)
 
 此处采用Iris鸢尾花数据集和MNIST手写体数字图像数据集作为示例。
 
-读取并载入csv格式鸢尾花数据集（鸢尾花数据集以鸢尾花的特征作为数据来源，数据集包含150个数据集，有4维，分为3类（setosa、versicolour、virginica），每类50个数据，每个数据包含4个属性，花萼长度、宽度和花瓣长度、宽度）：
+读取并载入csv格式鸢尾花数据集（鸢尾花数据集以鸢尾花的特征作为数据来源，数据集包含150条数据，有4维（花萼长度、宽度和花瓣长度、宽度），分为3类（setosa、versicolour、virginica），每类50个数据）：
 
 ``` python
 # 训练数据
@@ -198,7 +198,7 @@ model.add('lstm',size=(128,256),num_layers=2)
 model.add('conv2d', size=(1, 3),kernel_size=( 3, 3), activation='relu') # [100, 3, 18, 18]
 ```
 
-以上使用`add()`方法添加层，参数`layer='linear'`表示添加的层是线性层，`size=(4,10)`表示该层输入维度为4，输出维度为10，`activation='relu'`表示使用relu激活函数。更详细\[`add()`方法使用可见[附录1](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add)。
+以上使用`add()`方法添加层，参数`layer='linear'`表示添加的层是线性层，`size=(4,10)`表示该层输入维度为4，输出维度为10，`activation='relu'`表示使用relu激活函数。更详细`add()`方法使用可见[附录1](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add)。
 
 ### 4. 模型训练
 
@@ -345,9 +345,9 @@ model.print_result(result) # 输出字典格式结果
 
 直接推理的输出结果数据类型为`NumPy`的二维数组，表示各个样本的各个特征的置信度。
 
-输出字典格式结果的数据类型为字典，格式为{样本编号：{预测值：x，置信度：y}}。`print_result()`函数调用即输出，但也有返回值。
+输出字典格式结果的数据类型为字典，格式为`{样本编号：{预测值：x，置信度：y}}`。`print_result()`函数调用即输出，但也有返回值。
 
-参数`data`为待推理的测试数据数据，该参数必须传入值，可以传入NumPy数组或文件路径或者dataloader类型的数据，也可以传入list（最终还是会转成numpy数组）。除了NumPy数组格式和list数组格式的特征数据，以及传入dataloader类型的数据进行批量的模型推理外，还可以传入文件路径进行模型推理，下面我们分文件类型说明。
+参数`data`为待推理的测试数据，该参数必须传入值，可以传入NumPy数组或文件路径或者dataloader类型的数据，也可以传入list（最终还是会转成numpy数组）。除了NumPy数组格式和list数组格式的特征数据，以及传入dataloader类型的数据进行批量的模型推理外，还可以传入文件路径进行模型推理，下面我们分文件类型说明。
 
 #### 针对单个图片文件的推理：
 
@@ -391,11 +391,11 @@ index = np.argmax(result[0]) # 取得概率最大的字的索引，当然也可�
 word = model.idx2word[index] # 根据词表获得对应的字
 ```
 
-`result`为列表包含两个变量：`[output, hidden]`。
+- `result`为列表包含两个变量：`[output, hidden]`。
 
-`output`为NumPy数组，里面是一系列概率值，对应每个字的概率。
+- `output`为NumPy数组，里面是一系列概率值，对应每个字的概率。
 
-`hidden`为高维向量，存储上下文信息，代表"记忆"，所以生成单个字可以不传入hidden，但写诗需要循环传入之前输出的hidden。
+- `hidden`为高维向量，存储上下文信息，代表"记忆"，所以生成单个字可以不传入hidden，但写诗需要循环传入之前输出的hidden。
 
 ### 7. 模型的保存与加载
 
@@ -487,15 +487,15 @@ model.train(...,metrics=["mse"])
 
 例：
 
-回归：`model.train(...,loss="SmoothL1Loss", metrics=["mae"])`
+- 回归：`model.train(...,loss="SmoothL1Loss", metrics=["mae"])`
 
-分类：`model.train(...,loss="CrossEntropyLoss",metrics=["acc"])`
+- 分类：`model.train(...,loss="CrossEntropyLoss",metrics=["acc"])`
 
 ### 13. CNN特征提取
 
 图像特征提取是计算机视觉中的重要研究领域之一，是计算机视觉中的一个关键步骤，它涉及将图像转换成一组有意义的特征向量，以便后续的图像分析和识别任务。CNN（卷积神经网络）特征提取方法是一种基于深度学习的特征提取方法，通过卷积层、池化层等多个网络层的处理，可以提取出具有高层次抽象能力的特征表示，被广泛应用于图像分类、目标检测等领域。
 
-BaseNN中提供了一个CNN特征提取工具，可使用BaeNN的`model.extract_feature()`函数通过指定预训练模型来提取图像特征，使用ResNet预训练模型可将一张图像提取为1000维的特征（该预训练模型是在imagenet上训练的千分类模型，所以输出特征的维度是1000维），输出一个1行1000列的数组。
+BaseNN中提供了一个CNN特征提取工具，可使用BaseNN的`model.extract_feature()`函数通过指定预训练模型来提取图像特征，使用ResNet预训练模型可将一张图像提取为1000维的特征（该预训练模型是在imagenet上训练的千分类模型，所以输出特征的维度是1000维），输出一个1行1000列的数组。
 
 ```python
 # 声明模型
@@ -828,8 +828,8 @@ CNN是一种用于处理图像和空间数据的神经网络模型。例如图�
 
 ### 4. 深度学习常见的数据类型
 
-图像数据：图像数据是深度学习应用中最常见的数据类型之一。图像数据通常表示为多维数组，每个数组元素代表一个像素的值。深度学习应用中常使用的图像数据格式包括JPEG、PNG、BMP等。
+**图像数据**：图像数据是深度学习应用中最常见的数据类型之一。图像数据通常表示为多维数组，每个数组元素代表一个像素的值。深度学习应用中常使用的图像数据格式包括JPEG、PNG、BMP等。
 
-文本数据：文本数据是指由字符组成的序列数据。在深度学习应用中，文本数据通常被表示为词向量或字符向量，用于输入到文本处理模型中。
+**文本数据**：文本数据是指由字符组成的序列数据。在深度学习应用中，文本数据通常被表示为词向量或字符向量，用于输入到文本处理模型中。
 
-特征数据：特征数据指的是表示对象或事物的特征的数据，通常用于机器学习和数据挖掘。特征数据可以是数值型、离散型或者是二进制的，用于描述对象或事物的各种属性和特征。特征数据可以是手动设计的、自动提取的或者是混合的。在机器学习中，特征数据通常作为模型的输入，用于预测目标变量或者分类。
+**特征数据**：特征数据指的是表示对象或事物的特征的数据，通常用于机器学习和数据挖掘。特征数据可以是数值型、离散型或者是二进制的，用于描述对象或事物的各种属性和特征。特征数据可以是手动设计的、自动提取的或者是混合的。在机器学习中，特征数据通常作为模型的输入，用于预测目标变量或者分类。
