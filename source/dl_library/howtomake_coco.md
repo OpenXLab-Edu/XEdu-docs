@@ -14,7 +14,7 @@ XEdu中MMEdu的MMDetection模块支持的数据集类型是COCO，如需训练�
 
 #### 第二步：标注图片
 
-使用熟悉的标注方式标注图片，如可进入平台的在线工具-人工智能工坊-数据标注完成数据标注。跳转链接：https://www.openinnolab.org.cn/pjlab/projects/channel
+使用熟悉的标注方式标注图片，如可进入平台的在线工具-人工智能工坊-数据标注完成数据标注。[项目链接](https://www.openinnolab.org.cn/pjlab/projects/channel)
 
 #### 第三步：转换成COCO格式
 
@@ -30,7 +30,7 @@ ds.make_dataset(r"/data/HZQV42", src_format="INNOLAB",train_ratio = 0.8, test_ra
 
 结合数据集检查提示对数据集进行调整，必要时可重做前几步，最后完成整个数据集制作。在训练的时候，只要通过`model.load_dataset`指定数据集的路径就可以了。
 
-参考项目：https://www.openinnolab.org.cn/pjlab/project?id=63c4ad101dd9517dffdff539&sc=635638d69ed68060c638f979#public
+参考项目：[COCO数据集格式转换](https://www.openinnolab.org.cn/pjlab/project?id=63c4ad101dd9517dffdff539&sc=635638d69ed68060c638f979#public)
 
 ### 选择2：LabelMe版（本地标注）
 

@@ -16,7 +16,8 @@ import BaseDeploy as bd
 model_path = './mymodel.onnx'
 dt = ImageData(img_path, backbone='训练的模型名称，例如MobileNet')
 model = bd(model_path)
-result = model.inference(dt)
+pred_onx = model.inference(dt)
+result = model.print_result(pred_onx)
 ```
 
 本段代码实现的功能是将`BaseDT`预处理好后的图片传入`BaseDeploy`推理函数进行推理，并将推理结果返回。关于BaseDT处理图片的说明详见[BaseDT部分](https://xedu.readthedocs.io/zh/master/basedt/quick_start.html#id12)。
@@ -27,7 +28,8 @@ result = model.inference(dt)
 import BaseDeploy as bd
 model_path = './mymodel.onnx'
 model = bd(model_path)
-result = model.inference(img_path)
+pred_onx = model.inference(img_path)
+result = model.print_result(pred_onx)
 ```
 
 本段代码实现的功能是将图片路径传入`BaseDeploy`推理函数进行推理，并将推理结果返回。
@@ -41,7 +43,8 @@ model_path = './mymodel.onnx'
 cap = cv2.VideoCapture(0)
 ret, img = cap.read()
 model = bd(model_path)
-result = model.inference(img)
+pred_onx = model.inference(img)
+result = model.print_result(pred_onx)
 cap.release()
 ```
 
