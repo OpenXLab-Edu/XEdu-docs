@@ -10,6 +10,8 @@ b）支持搭建[CNN和RNN](https://xedu.readthedocs.io/zh/master/basenn/introdu
 
 c）同时支持CPU和GPU
 
+文档涉及的部分代码见XEdu帮助文档配套项目集：[https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public](https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public)
+
 ## 解锁BaseNN使用方法
 
 ### 0. 引入包

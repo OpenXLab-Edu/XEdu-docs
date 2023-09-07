@@ -2,6 +2,8 @@
 
 模型部署是AI应用的重要一环，因其涉及的框架量大、推理代码风格不一等问题，往往会对初学者的上手造成一定的难度。为此，`XEdu`团队推出了模型部署工具`BaseDeploy`，其代码风格向`MMEdu`对齐，通过对推理核心代码的封装，目标是用户能够更加专注于科创作品功能的设计，而将AI模块作为接口的黑盒，能够对其返回的结果进行二次创作。
 
+文档涉及的部分代码见XEdu帮助文档配套项目集：[https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public](https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public)
+
 ## 基本功能说明
 
 `BaseDeploy`提供多种便于模型部署的函数，包括了推理与相关库启动部署。
@@ -241,6 +243,7 @@ result = model.diy_inference(input_data)
 Gradio 是一种简单易用的Web界面工具，它可以让你快速地将模型部署到Web应用程序中。`BaseDeploy`通过对`Gradio`进行封装，一键启动。为了保证`BaseDeploy`的轻量性，`Gradio`库在安装时并不会被同步安装，如想使用该功能在使用前请使用`pip3 install gradio`进行依赖库的安装。
 
 `BaseDeploy`支持在载入模型后使用`run_gradio`函数一键启动，启动后输入界面可选择两个参数，一是点击后选择路径，二是设置`score`，低于`score`的图片将不会被绘制，详情可见运行后日志。
+
 ```python
 import BaseDeploy as bd
 model = bd(model_path)

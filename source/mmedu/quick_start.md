@@ -10,6 +10,8 @@ GitHub：<a href="https://github.com/OpenXLab-Edu/OpenMMLab-Edu">https://github.
 
 国内镜像：<a href="https://gitee.com/openxlab-edu/OpenMMLab-Edu">https://gitee.com/openxlab-edu/OpenMMLab-Edu</a>
 
+文档涉及的部分代码见XEdu帮助文档配套项目集：[https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public](https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public)
+
 ## 小目标：使用MMEdu训练一个手写体数字识别模型！
 
 MMEdu有多种<a href="https://xedu.readthedocs.io/zh/master/mmedu/installation.html#mmedu">安装方式</a>，可以通过pip方式安装，也可以使用一键安装包。体验MMEdu的最快速方式是通过OpenInnoLab平台在线体验MMEdu。
