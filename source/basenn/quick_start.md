@@ -17,6 +17,10 @@ BaseNN可以方便地逐层搭建神经网络，深入探究神经网络的原�
 
 可以在命令行输入BaseNN查看安装的路径，在安装路径内，可以查看提供的更多demo案例。同时可查看附录。
 
+如果在使用中出现报错：`**AttributeError**: partially initialized module 'cv2' has no attribute 'gapi_wip_gst_GStreamerPipeline' (most likely due to a circular import)` 
+
+可通过运行`pip install --upgrade opencv-python`解决
+
 ## 第一个BaseNN项目：搭建搭建鸢尾花分类模型
 
 ### 第0步 引入包
