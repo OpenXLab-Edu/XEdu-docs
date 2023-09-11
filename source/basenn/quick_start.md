@@ -17,9 +17,9 @@ BaseNN可以方便地逐层搭建神经网络，深入探究神经网络的原�
 
 可以在命令行输入BaseNN查看安装的路径，在安装路径内，可以查看提供的更多demo案例。同时可查看附录。
 
-如果在使用中出现报错：`**AttributeError**: partially initialized module 'cv2' has no attribute 'gapi_wip_gst_GStreamerPipeline' (most likely due to a circular import)` 
+如果在使用中出现类似报错：`**AttributeError**: partially initialized module 'cv2' has no attribute 'gapi_wip_gst_GStreamerPipeline' (most likely due to a circular import)` 
 
-可通过运行`pip install --upgrade opencv-python`解决
+可尝试通过运行`pip install --upgrade opencv-python`解决
 
 ## 第一个BaseNN项目：搭建搭建鸢尾花分类模型
 
@@ -159,7 +159,7 @@ model.load_npz_data('tangccc.npz')
 
 搭建模型只需加入em_lstm层即可，其他层会自适应补充，其中num_layers参数为循环神经网络循环的次数。
 
-em_LSTM由包括embedding层，LSTM层和线性层组成，因为由embedding层的加入，使其可以专门处理文本数据。
+em_LSTM由包括embedding层，LSTM层和线性层组成，因为有embedding层的加入，所以em_LSTM可以专门处理文本数据。
 
 ```python
 model.add('em_lstm', size=(128,256),num_layers=2) 
