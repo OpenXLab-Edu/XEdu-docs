@@ -2,19 +2,25 @@
 
 ### COCO格式数据集简介
 
-COCO数据集是一个大型的、丰富的物体检测，分割和字幕数据集。这个数据集以scene understanding为目标，主要从复杂的日常场景中截取，图像中的目标通过精确的segmentation进行位置的标定。图像包括91类目标，328,000影像和2,500,000个label。目前为止有语义分割的最大数据集，提供的类别有80 类，有超过33 万张图片，其中20 万张有标注，整个数据集中个体的数目超过150 万个。
+COCO数据集是一个大型的、丰富的物体检测，分割和字幕数据集。这个数据集以scene understanding（场景理解）为目标，主要从复杂的日常场景中截取，图像中的目标通过精确的segmentation（分割）进行位置的标定。图像包括91类目标，328,000影像和2,500,000个label。目前为止有语义分割的最大数据集，提供的类别有80类，有超过33万张图片，其中20万张有标注，整个数据集中个体的数目超过150万个。
 
-XEdu中MMEdu的MMDetection模块支持的数据集类型是COCO，如需训练自己创建的数据集，数据集需转换成[COCO格式](https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#coco)。这里，为您提供几种自己制作[COCO格式](https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#coco)数据集的方法。
+XEdu中MMEdu的MMDetection模块支持的数据集类型是COCO，很多时候我们需要训练自己创建的数据集，那怎么样才能将数据集需转换成<a href="https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#coco">COCO格式</a>呢？
 
-### 选择1：OpenInnoLab版（线上标注）
+接下来就让我们一起学习几种自己制作<a href="https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#coco">COCO格式</a>数据集的方式吧。
+
+
+### 方式1：OpenInnoLab版（线上标注）
+
+这里强烈推荐初学者点击<a href="https://www.openinnolab.org.cn/pjlab/project?id=63c4ad101dd9517dffdff539&sc=635638d69ed68060c638f979#public">《从零开始制作一个COCO数据集之格式转换》</a>，跟随项目中的图文指引，轻松体验COCO格式数据集创建过程。
 
 #### 第一步：整理图片
 
-新建一个images文件夹用于存放图片 ，根据需求按照自己喜欢的方式收集图片，图片中包含需要检测的信息即可。
+新建一个images文件夹用于存放自己收集到的所有图片，图片可以从网络上下载，也可以自行拍摄，但是要注意的是，图片需要是jpg或png格式，否则可能会导致无法正常显示。
 
 #### 第二步：标注图片
 
-使用熟悉的标注方式标注图片，如可进入平台的在线工具-人工智能工坊-数据标注完成数据标注。跳转链接：https://www.openinnolab.org.cn/pjlab/projects/channel
+使用熟悉的标注方式标注图片，如可点击链接进入<a href="https://www.openinnolab.org.cn/pjlab/projects/channel">浦育在线工具</a>页面，再点击“人工智能工坊”，在“数据标注”板块创建数据标注项目实践。
+![](../images/dl_library/entrypage.png)
 
 #### 第三步：转换成COCO格式
 
@@ -23,14 +29,13 @@ XEdu中MMEdu的MMDetection模块支持的数据集类型是COCO，如需训练�
 ```plain
 from BaseDT.dataset import DataSet
 ds = DataSet(r"my_dataset") # 指定目标数据集
-ds.make_dataset(r"/data/HZQV42", src_format="INNOLAB",train_ratio = 0.8, test_ratio = 0.1, val_ratio = 0.1) # 仅需修改为待转格式的原始数据集路径（注意是整个数据集）
+ds.make_dataset(r"/data/HZQV42", src_format="INNOLAB",train_ratio = 0.8, test_ratio = 0.1, val_ratio = 0.1) # 仅需修改第一个参数为待转格式的原始数据集路径（注意是整个数据集）
 ```
 
 #### 第四步：检查数据集格式
 
 结合数据集检查提示对数据集进行调整，必要时可重做前几步，最后完成整个数据集制作。在训练的时候，只要通过`model.load_dataset`指定数据集的路径就可以了。
 
-参考项目：https://www.openinnolab.org.cn/pjlab/project?id=63c4ad101dd9517dffdff539&sc=635638d69ed68060c638f979#public
 
 ### 选择2：LabelMe版（本地标注）
 
@@ -44,6 +49,10 @@ ds.make_dataset(r"/data/HZQV42", src_format="INNOLAB",train_ratio = 0.8, test_ra
 
 - LabelMe：麻省理工（MIT）的计算机科学和人工智能实验室（CSAIL）研发的图像标注工具，标注格式为LabelMe，网上较多LabelMe转VOC、COCO格式的脚本，可以标注矩形、圆形、线段、点。标注语义分割、实例分割数据集尤其推荐。
 - 安装与打开方式：`pip install labelme`安装完成后输入`labelme`即可打开。
+
+![](../images/dl_library/pipinstalllabelme.png)
+![](../images/dl_library/openlabelme.png)
+![](../images/dl_library/labelme.jpeg)
 
 #### 第三步：转换成COCO标注格式
 
@@ -176,7 +185,7 @@ labelme2coco(labelme_json, 'picture/new.json') # 指定生成文件路径
 
 #### 第四步：按照目录结构整理文件
 
-创建两个文件夹“images”和“annotations”，分别用于存放图片以及标注信息。按照要求的目录结构，整理好文件夹的文件，最后将文件夹重新命名，制作完成后如想要检查数据集，可使用BaseDT的[数据集格式检查](https://xedu.readthedocs.io/zh/latest/basedt/introduction.html#id9)功能，结合数据集检查提示对数据集进行调整，最后完成整个数据集制作。在训练的时候，只要通过`model.load_dataset`指定数据集的路径就可以了。
+创建两个文件夹“images”和“annotations”，分别用于存放图片以及标注信息。按照要求的目录结构，整理好文件夹，制作完成后如想要检查数据集，可使用BaseDT的<a href="https://xedu.readthedocs.io/zh/latest/basedt/introduction.html#id9">数据集格式检查</a>功能，结合数据集检查提示对数据集进行调整，最后完成整个数据集制作。在训练的时候，只要通过`model.load_dataset`指定数据集的路径就可以了。
 
 ### 选择3：改装网上下载的目标检测数据集
 
@@ -199,7 +208,7 @@ classes.txt
 
 #### 第二步：转换为COCO格式
 
-使用BaseDT库将平台标注格式的数据集转换成COCO格式，可以使用如下代码。如需了解更多BaseDT库数据集处理的功能，详见[BaseDT的数据集格式转换](https://xedu.readthedocs.io/zh/master/basedt/introduction.html#id7)部分。
+使用BaseDT库将平台标注格式的数据集转换成COCO格式，可以使用如下代码。如需了解更多BaseDT库数据集处理的功能，详见<a href="https://xedu.readthedocs.io/zh/master/basedt/introduction.html#id7">BaseDT的数据集格式转换</a>。
 
 ```plain
 from BaseDT.dataset import DataSet
