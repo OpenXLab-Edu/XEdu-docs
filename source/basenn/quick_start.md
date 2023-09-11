@@ -159,7 +159,7 @@ model.load_npz_data('tangccc.npz')
 
 搭建模型只需加入em_lstm层即可，其他层会自适应补充，其中num_layers参数为循环神经网络循环的次数。
 
-em_LSTM由包括embedding层，LSTM层和线性层组成，因为由embedding层的加入，使其可以专门处理文本数据。
+em_LSTM由包括embedding层，LSTM层和线性层组成，因为有embedding层的加入，所以em_LSTM可以专门处理文本数据。
 
 ```python
 model.add('em_lstm', size=(128,256),num_layers=2) 
