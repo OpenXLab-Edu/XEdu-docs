@@ -4,9 +4,9 @@
 
 ## 相关信息
 
-阅读地址：https://xedu.readthedocs.io
+阅读地址：[https://xedu.readthedocs.io](https://xedu.readthedocs.io)
 
-官方地址：https://www.openinnolab.org.cn/
+官方地址：[https://www.openinnolab.org.cn/](https://www.openinnolab.org.cn/pjedu/xedu)
 
 
 ## 文档维护

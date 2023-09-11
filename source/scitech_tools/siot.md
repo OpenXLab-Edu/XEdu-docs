@@ -11,6 +11,9 @@ GitHub地址：[https://github.com/vvlink/SIoT/tree/master/Python_lib/siot](http
 SIoT文档地址：[https://siot.readthedocs.io/zh_CN/latest/](https://siot.readthedocs.io/zh_CN/latest/)
 
 SIoT V2 新增了可视化面板，全新升级，性能提升，可以支持更快的速度，同时使用QOS区分了快速数据以及存入数据的数据以应对不同的使用场景，网页界面也进行了更新更美观。具体可以参见：[https://mindplus.dfrobot.com.cn/dashboard](https://mindplus.dfrobot.com.cn/dashboard)
+
+本文涉及的部分代码见XEdu帮助文档配套项目集：[https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public](https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public)
+
 ## 2. 安装
 
 可以使用使用pip命令安装siot库。

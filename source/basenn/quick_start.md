@@ -2,7 +2,7 @@
 
 ## 简介
 
-BaseNN可以方便地逐层搭建神经网路，深入探究神经网络的原理。
+BaseNN可以方便地逐层搭建神经网络，深入探究神经网络的原理。
 
 ## 安装
 
@@ -16,6 +16,10 @@ BaseNN可以方便地逐层搭建神经网路，深入探究神经网络的原�
 运行demo/BaseNN_demo.py。
 
 可以在命令行输入BaseNN查看安装的路径，在安装路径内，可以查看提供的更多demo案例。同时可查看附录。
+
+如果在使用中出现类似报错：`**AttributeError**: partially initialized module 'cv2' has no attribute 'gapi_wip_gst_GStreamerPipeline' (most likely due to a circular import)` 
+
+可尝试通过运行`pip install --upgrade opencv-python`解决
 
 ## 第一个BaseNN项目：搭建搭建鸢尾花分类模型
 
@@ -42,7 +46,7 @@ model.load_tab_data(train_path, batch_size=120)
 
 ### 第3步 搭建模型
 
-逐层添加，搭建起模型结构。注释标明了数据经过各层的尺寸变化。
+逐层添加，搭建起模型结构。注释标明了数据经过各层的维度变化。
 
 ```python
 model.add(layer='linear',size=(4, 10),activation='relu') # [120, 10]
@@ -155,7 +159,7 @@ model.load_npz_data('tangccc.npz')
 
 搭建模型只需加入em_lstm层即可，其他层会自适应补充，其中num_layers参数为循环神经网络循环的次数。
 
-em_LSTM由包括embedding层，LSTM层和线性层组成，因为由embedding层的加入，使其可以专门处理文本数据。
+em_LSTM由包括embedding层，LSTM层和线性层组成，因为有embedding层的加入，所以em_LSTM可以专门处理文本数据。
 
 ```python
 model.add('em_lstm', size=(128,256),num_layers=2) 
@@ -297,6 +301,8 @@ for x, y in val_data:
 完成了搭建一维卷积神经网络实现文本感情识别分类，代码使用BaseNN库实现，同时结合了Embedding层对单词文本进行向量化。
 
 数据集是imdb电影评论和情感分类数据集，来自斯坦福AI实验室平台，[http://ai.stanford.edu/~amaas/data/sentiment/](http://ai.stanford.edu/~amaas/data/sentiment/)。
+
+**注意**：新版本BaseNN（>==0.1.6）已不支持项目中部分代码的写法或，如添加Embedding层。可模仿下列代码进行
 
 #### 实现步骤：
 

@@ -10,6 +10,8 @@ GitHub：<a href="https://github.com/OpenXLab-Edu/OpenMMLab-Edu">https://github.
 
 国内镜像：<a href="https://gitee.com/openxlab-edu/OpenMMLab-Edu">https://gitee.com/openxlab-edu/OpenMMLab-Edu</a>
 
+文档涉及的部分代码见XEdu帮助文档配套项目集：[https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public](https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public)
+
 ## 小目标：使用MMEdu训练一个手写体数字识别模型！
 
 MMEdu有多种<a href="https://xedu.readthedocs.io/zh/master/mmedu/installation.html#mmedu">安装方式</a>，可以通过pip方式安装，也可以使用一键安装包。体验MMEdu的最快速方式是通过OpenInnoLab平台在线体验MMEdu。
@@ -53,6 +55,18 @@ OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台�
 解答：因为项目的空间容量是有限的，同时数据集是公用的，经常在多个项目中使用。因而OpenInnoLab将数据集放在一个公用区域，和项目的文件分离。如果要使用自己的数据集，请在“我的数据集”中增加一个新的数据集，OpenInnoLab支持上传压缩包的方式来建立数据集。数据集加好后，同样需要“导入”后才能访问。
 
 如果你的数据集很小（比如100M内），那么也可以像使用正常的项目文件一下，通过浏览器上传即可。
+
+**新手提问2：** 我应该怎么制作自己的数据集？
+
+解答：制作合适的数据集是机器学习任务成功的关键。而数据集的质量会直接影响到模型的性能。因此，制定合适的数据集策略至关重要。以下是关于如何做数据集的建议：
+
+​		明确目标：首先，你需要根据你的任务来确定你的数据需求。你想要解决的问题是什么？你需要什么样的数据来支持这个问题的解答？
+
+​		数据量与质量：许多人关心的问题是：“我需要多少图片？”以及“图片的尺寸应该是多大？”答案取决于你期望模型的识别精度。一般来说，数据越丰富、越多样，模型的表现就越好。
+
+​		多样性：只有数量还不够，你还需要确保数据的多样性。这意味着你需要考虑各种光线、拍摄角度、背景等变化条件。
+
+​		格式要求：不同的AI开发工具或框架可能对数据集格式有特定的要求。MMEdu工具对数据集的格式也有自己的要求，如图像分类模块要求[ImageNet格式](https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#imagenet)，目标检测模块要求[COCO格式](https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#coco)，后文有如何[从零开始制作ImageNet格式数据集](https://xedu.readthedocs.io/zh/master/dl_library/howtomake_imagenet.html)和如何[从零开始制作COCO格式数据集](https://xedu.readthedocs.io/zh/master/dl_library/howtomake_coco.html#coco)的详细说明。
 
 ### 4. 训练模型
 

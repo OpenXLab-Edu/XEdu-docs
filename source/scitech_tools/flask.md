@@ -6,6 +6,8 @@ Flask是一个轻量级的可定制框架，使用Python语言编写，较其他
 
 文档地址：[https://dormousehole.readthedocs.io/en/latest/quickstart.html](https://dormousehole.readthedocs.io/en/latest/quickstart.html)
 
+本文涉及的部分代码见XEdu帮助文档配套项目集：[https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public](https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public)
+
 ## 2. 安装
 
 可以使用使用pip命令安装Flask库。
