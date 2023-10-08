@@ -115,7 +115,11 @@
            <div itemprop="articleBody">
              
   <section id="ai">
+<<<<<<< HEAD
 <h1>最后一步：AI模型转换<a class="headerlink" href="#ai" title="Permalink to this heading"></a></h1>
+=======
+<h1>最后一步：AI模型转换<a class="headerlink" href="#ai" title="Permalink to this headline"></a></h1>
+>>>>>>> 8b47d1f5a47a339223cc58ec3c0c173a3f16b1ce
 <p>得益于<code class="docutils literal notranslate"><span class="pre">OpenMMLab</span></code>系列工具的不断进步与发展。MMEdu通过集成OpenMMLab开源的<code class="docutils literal notranslate"><span class="pre">模型部署工具箱MMDeploy</span></code>和<code class="docutils literal notranslate"><span class="pre">模型压缩工具包MMRazor</span></code>，打通了从算法模型到应用程序这 “最后一公里”！</p>
 <p>今天我们将开启<code class="docutils literal notranslate"><span class="pre">AI模型部署</span></code>入门系列教程，在面向中小学AI教育的开发和学习工具 <code class="docutils literal notranslate"><span class="pre">XEdu</span></code> 的辅助下，介绍以下内容：</p>
 <ul class="simple">
@@ -131,7 +135,11 @@
 <section id="why">
 <h2>Why：为什么<a class="headerlink" href="#why" title="Permalink to this heading"></a></h2>
 <section id="id1">
+<<<<<<< HEAD
 <h3>为什么要进行模型转换<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+=======
+<h3>为什么要进行模型转换<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+>>>>>>> 8b47d1f5a47a339223cc58ec3c0c173a3f16b1ce
 <p>用MMEdu训练的模型，只能运行在安装了MMEdu环境的电脑吗？</p>
 <p>不。借助模型转换，MMEdu（包括BaseNN）训练的模型都可以转换为ONNX模型，然后部署在很多常见的电脑（开源硬件）上。</p>
 <p>模型转换是为了模型能在不同框架间流转。在实际应用时，模型转换几乎都用于工业部署，负责模型从训练框架到部署侧推理框架的连接。 这是因为随着深度学习应用和技术的演进，训练框架和推理框架的职能已经逐渐分化。 分布式、自动求导、混合精度……训练框架往往围绕着易用性，面向设计算法的研究员，以研究员能更快地生产高性能模型为目标。 硬件指令集、预编译优化、量化算法……推理框架往往围绕着硬件平台的极致优化加速，面向工业落地，以模型能更快执行为目标。由于职能和侧重点不同，没有一个深度学习框架能面面俱到，完全一统训练侧和推理侧，而模型在各个框架内部的表示方式又千差万别，所以模型转换就被广泛需要了。</p>
@@ -166,7 +174,11 @@
 <p><img alt="../_images/XEduPipeline.JPG" src="../_images/XEduPipeline.JPG" /></p>
 <p>这条流水线解决了模型部署中的两大问题：使用对接深度学习框架和推理引擎的中间表示。开发者不必担心如何在新环境中运行各个复杂的框架；通过中间表示的网络结构优化和推理引擎对运算的底层优化，使模型的运算效率大幅提升。</p>
 <section id="mmedu">
+<<<<<<< HEAD
 <h3>借助MMEdu完成模型转换<a class="headerlink" href="#mmedu" title="Permalink to this heading"></a></h3>
+=======
+<h3>借助MMEdu完成模型转换<a class="headerlink" href="#mmedu" title="Permalink to this headline"></a></h3>
+>>>>>>> 8b47d1f5a47a339223cc58ec3c0c173a3f16b1ce
 <p>MMEdu内置了一个<code class="docutils literal notranslate"><span class="pre">convert</span></code>函数，来实现了一键式模型转换，转换前先了解一下转换要做的事情吧。</p>
 <ul>
 <li><p>转换准备：</p>
@@ -199,7 +211,11 @@
 </a></p>
 </section>
 <section id="basedeploy">
+<<<<<<< HEAD
 <h3>借助BaseDeploy完成模型部署<a class="headerlink" href="#basedeploy" title="Permalink to this heading"></a></h3>
+=======
+<h3>借助BaseDeploy完成模型部署<a class="headerlink" href="#basedeploy" title="Permalink to this headline"></a></h3>
+>>>>>>> 8b47d1f5a47a339223cc58ec3c0c173a3f16b1ce
 <p><code class="docutils literal notranslate"><span class="pre">XEdu</span></code>团队推出了模型部署工具<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>，该工具可以轻松完成模型部署。对MMEdu训练的模型完成转换后，生成ONNX模型，可借助<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>库部署到硬件上。</p>
 <p>示例代码如下：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
@@ -585,7 +601,11 @@
 <section id="id9">
 <h3>边、端设备测试结果<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
 <section id="pc">
+<<<<<<< HEAD
 <h4>PC机测试<a class="headerlink" href="#pc" title="Permalink to this heading"></a></h4>
+=======
+<h4>PC机测试<a class="headerlink" href="#pc" title="Permalink to this headline"></a></h4>
+>>>>>>> 8b47d1f5a47a339223cc58ec3c0c173a3f16b1ce
 <p>用于模型训练的机器，性能较优，常见的操作系统有Windows和Linux</p>
 </section>
 <section id="id10">
@@ -750,7 +770,11 @@
 </section>
 </section>
 <section id="id12">
+<<<<<<< HEAD
 <h4>行空板测试<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h4>
+=======
+<h4>行空板测试<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h4>
+>>>>>>> 8b47d1f5a47a339223cc58ec3c0c173a3f16b1ce
 <p>行空板, 青少年Python教学用开源硬件，解决Python教学难和使用门槛高的问题，旨在推动Python教学在青少年中的普及。官网：<a href="https://www.dfrobot.com.cn/">https://www.dfrobot.com.cn/</a></p>
 <section id="id13">
 <h5>软硬件环境<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h5>
@@ -916,7 +940,11 @@
 </section>
 </section>
 <section id="b">
+<<<<<<< HEAD
 <h4>树莓派（4b）测试<a class="headerlink" href="#b" title="Permalink to this heading"></a></h4>
+=======
+<h4>树莓派（4b）测试<a class="headerlink" href="#b" title="Permalink to this headline"></a></h4>
+>>>>>>> 8b47d1f5a47a339223cc58ec3c0c173a3f16b1ce
 <p>Raspberry Pi。中文名为“树莓派”,简写为RPi，或者RasPi（RPi）是为学生计算机编程教育而设计，卡片式电脑，其系统基于Linux。</p>
 <section id="id15">
 <h5>软硬件环境<a class="headerlink" href="#id15" title="Permalink to this heading"></a></h5>

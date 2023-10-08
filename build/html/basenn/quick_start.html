@@ -121,7 +121,11 @@
   <section id="basenn">
 <h1>快速体验BaseNN，开始！<a class="headerlink" href="#basenn" title="Permalink to this heading"></a></h1>
 <section id="id1">
+<<<<<<< HEAD
 <h2>简介<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+=======
+<h2>简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+>>>>>>> 8b47d1f5a47a339223cc58ec3c0c173a3f16b1ce
 <p>BaseNN可以方便地逐层搭建神经网络，深入探究神经网络的原理。</p>
 </section>
 <section id="id2">
@@ -160,7 +164,11 @@
 </div>
 </section>
 <section id="id8">
+<<<<<<< HEAD
 <h3>第3步 搭建模型<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
+=======
+<h3>第3步 搭建模型<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
+>>>>>>> 8b47d1f5a47a339223cc58ec3c0c173a3f16b1ce
 <p>逐层添加，搭建起模型结构。注释标明了数据经过各层的维度变化。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> <span class="c1"># [120, 10]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> <span class="c1"># [120, 5]</span>
@@ -245,7 +253,11 @@
 </div>
 </section>
 <section id="id15">
+<<<<<<< HEAD
 <h3>第2步 载入数据<a class="headerlink" href="#id15" title="Permalink to this heading"></a></h3>
+=======
+<h3>第2步 载入数据<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h3>
+>>>>>>> 8b47d1f5a47a339223cc58ec3c0c173a3f16b1ce
 <p>tangccc.npz是本项目的文本数据，源于互联网，包括57580首唐诗。npz是一种用于存储NumPy数组数据的文件格式。</p>
 <p>npz文件是一种方便的方式来保存和加载NumPy数组，通常用于在不同的Python程序之间或不同的计算环境中共享数据。</p>
 <p>在该项目中可以使用<code class="docutils literal notranslate"><span class="pre">load_npz_data()</span></code>方法直接读取npz格式的数据到模型中</p>
@@ -254,7 +266,11 @@
 </div>
 </section>
 <section id="lstm">
+<<<<<<< HEAD
 <h3>第3步 搭建LSTM模型<a class="headerlink" href="#lstm" title="Permalink to this heading"></a></h3>
+=======
+<h3>第3步 搭建LSTM模型<a class="headerlink" href="#lstm" title="Permalink to this headline"></a></h3>
+>>>>>>> 8b47d1f5a47a339223cc58ec3c0c173a3f16b1ce
 <p>搭建模型只需加入em_lstm层即可，其他层会自适应补充，其中num_layers参数为循环神经网络循环的次数。</p>
 <p>em_LSTM由包括embedding层，LSTM层和线性层组成，因为有embedding层的加入，所以em_LSTM可以专门处理文本数据。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;em_lstm&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span><span class="mi">256</span><span class="p">),</span><span class="n">num_layers</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> 
