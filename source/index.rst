@@ -13,7 +13,7 @@ OpenXLabEdu帮助文档
 
    about
    mmedu
-   xedu-hub
+   xedu_hub
    basenn
    baseml
    easydl
