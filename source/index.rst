@@ -21,6 +21,7 @@ OpenXLabEdu帮助文档
    scitech_tools
    support_resources
    dl_library
+   xedu-hub
 
 
 
