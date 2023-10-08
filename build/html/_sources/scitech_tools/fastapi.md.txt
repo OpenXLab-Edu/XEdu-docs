@@ -8,6 +8,8 @@ FastAPI 是一种现代、快速（高性能）的 Web 框架，用于基于标�
 
 文档地址：[https://fastapi.tiangolo.com/](https://fastapi.tiangolo.com/)
 
+本文涉及的部分代码见XEdu帮助文档配套项目集：[https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public](https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public)
+
 ## 2. 安装
 
 可以使用使用pip命令安装FastAPI库。

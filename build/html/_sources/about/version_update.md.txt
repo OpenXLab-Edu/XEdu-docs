@@ -221,6 +221,10 @@ det：
 
 #### 4）BaseDT
 
+##### V0.1.2 20230914
+
+1. 修正了FasterRCNN模型输入图像尺寸的问题。
+
 ##### V0.1.1 20230626
 
 1. 修复BaseDT中plot模块在自定义载入时绘图通道顺序显示的错误。
@@ -262,6 +266,30 @@ det：
 ​	首次上源。
 
 #### 5）XEdu一键安装包
+
+##### V1.6 20230901
+
+​	重构opencv-python库环境。
+
+​	支持bug解决脚本（解决绝大多数问题）。
+
+​	支持jupyter notebook中文。
+
+​	升级库版本MMEdu0.1.21，BaseNN0.2.0，BaseML0.0.6、BaseDT0.1.1、BaseDeploy0.0.4。
+
+​	支持openxlab下载（https://download.openxlab.org.cn/models/yikshing/bash/weight/x16）
+
+##### V1.5.4 20230811
+
+​	升级库版本。
+
+​	支持cmd终端一键启动。
+
+​	支持jupyter notebook中文。
+
+##### V1.5.2 20230613
+
+​	升级库版本。
 
 ##### V1.4.6 20230529
 
@@ -307,6 +335,8 @@ det：
 
 1. 新增demo实例文件夹，内置lenet的onnx模型。
 2. 预测结果保留未润色后的形式，并可使用print_result对结果进行润色。
+
+## 2. 测试版
 
 ### XEdu 0.1.0版
 

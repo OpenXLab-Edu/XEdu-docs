@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GUI库PySimpleGUI &mdash; OpenXLabEdu  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="MQTT库siot" href="siot.html" />
+    <link rel="prev" title="Web库PyWebIO" href="pywebio.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basenn.html">神经网络库BaseNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../baseml.html">传统机器学习库BaseML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basedt.html">数据处理库BaseDT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basedeploy.html">模型部署库BaseDeploy</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../scitech_tools.html">相关科创工具</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="data_labeling.html">数据集标注工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pywebio.html">Web库PyWebIO</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GUI库PySimpleGUI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">1. 简介</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pysimplegui">PySimpleGUI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pysimpleguiweb">PySimpleGUIWeb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pysimpleguipysimpleguiweb">选择PySimpleGUI还是PySimpleGUIWeb？</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2. 安装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">3.示例代码</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pysimpleguiai">4. 借助PySimpleGUI部署简易AI应用</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">示例1：带窗体的摄像头实时推理的程序（图像分类）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">示例2：带窗体的摄像头实时推理的程序（目标检测）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="siot.html">MQTT库siot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pinpong.html">开源硬件库pinpong</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flask.html">Web库Flask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fastapi.html">Web库FastAPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gradio.html">Web库Gradio</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../support_resources.html">学习支持和资源获取</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dl_library.html">深度学习知识库</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenXLabEdu</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../scitech_tools.html">相关科创工具</a> &raquo;</li>
+      <li>GUI库PySimpleGUI</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/scitech_tools/pysimplegui.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="guipysimplegui">
+<h1>GUI库PySimpleGUI<a class="headerlink" href="#guipysimplegui" title="Permalink to this headline"></a></h1>
+<section id="id1">
+<h2>1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<p>图形用户界面（Graphical User Interface，简称 GUI，又称图形用户接口）是指采用图形方式显示的计算机操作用户界面。图形用户界面是一种人与计算机通信的界面显示格式，允许用户使用鼠标等输入设备操纵屏幕上的图标或菜单选项，以选择命令、调用文件、启动程序或执行其它一些日常任务。用户界面通常包括许多视觉元素，如图标、按钮、图形、显示文本和多种输入控件，如复选框、文本输入框等。如何给AI应用程序编写一个图形用户界面？那么就需要选择一个简单好用的GUI开发工具。</p>
+<p>Python作为一个容易上手，简单方便的开源编程语言，第三方的开发工具数不胜数，在GUI这个方向同样有很多的工具可以选择。比较常用的GUI开发工具有Tkinter、PyQt、wxPython、Gtk+、Kivy、FLTK和OpenGL等，其中最常用是Tkinter。Tkinter的优点在于是Python内置标准库，无需额外安装，兼容性好，但缺点在于实现效果较为普通，开发体验不好。比较受程序员推崇的是PyQt和wxPython，功能强大，界面优美，相关教程也很多，可惜学习曲线有些陡峭。在比较了多款GUI开发工具之后，我们最终推荐使用<code class="docutils literal notranslate"><span class="pre">PySimpleGUI</span></code>。</p>
+<p><code class="docutils literal notranslate"><span class="pre">PySimpleGUI</span></code>的优势还在于其内置了多个GUI框架。目前已经集成了tkinter、PyQt、wxPython和 Remi等四种。其中Remi是一个Web界面开发库。如果想要将普通的GUI界面更换为Web界面，只要将前面的导入库“import PySimpleGUI as sg”一句改为“import PySimpleGUIWeb as sg”，其他代码都不需要改变，体现了“一次编写、处处运行”的理念。</p>
+<p>本文涉及的部分代码见XEdu帮助文档配套项目集：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&amp;sc=645caab8a8efa334b3f0eb24#public">https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&amp;sc=645caab8a8efa334b3f0eb24#public</a></p>
+<section id="pysimplegui">
+<h3>PySimpleGUI<a class="headerlink" href="#pysimplegui" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p><strong>底层框架</strong>: 使用的是 Python 的标准 GUI 库 <code class="docutils literal notranslate"><span class="pre">tkinter</span></code> 作为其底层实现。</p></li>
+<li><p><strong>目标平台</strong>: 桌面环境。通过它，你可以轻松地为 Windows、Mac 和 Linux 创建原生应用程序。</p></li>
+<li><p>特点：</p>
+<ul>
+<li><p>简单的 API，允许快速构建应用程序。</p></li>
+<li><p>提供了大量的小部件，如按钮、文本框、列表框等。</p></li>
+<li><p>可以轻松地与其他 Python 库集成。</p></li>
+</ul>
+</li>
+</ul>
+<p>官方GitHub仓库地址：<a class="reference external" href="https://github.com/PySimpleGUI/PySimpleGUI">https://github.com/PySimpleGUI/PySimpleGUI</a></p>
+</section>
+<section id="pysimpleguiweb">
+<h3>PySimpleGUIWeb<a class="headerlink" href="#pysimpleguiweb" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p><strong>底层框架</strong>: 使用 <code class="docutils literal notranslate"><span class="pre">Remi</span></code> 作为其底层实现，它是一个 Python GUI 库，允许你创建的 GUI 在 web 浏览器中运行。</p></li>
+<li><p><strong>目标平台</strong>: Web 浏览器。它旨在为那些想要一个简单的方法来创建 web 应用程序的开发者提供解决方案。</p></li>
+<li><p>特点：</p>
+<ul>
+<li><p>不需要深入了解 web 开发或 HTML/CSS/JavaScript 的知识。</p></li>
+<li><p>可以在任何支持的浏览器中运行，无需客户端安装。</p></li>
+<li><p>API 与其他 <code class="docutils literal notranslate"><span class="pre">PySimpleGUI</span></code> 版本相似，使得从桌面应用迁移到 web 应用变得简单。</p></li>
+</ul>
+</li>
+</ul>
+<p>官方GitHub仓库地址：<a class="reference external" href="https://github.com/PySimpleGUI/PySimpleGUI/tree/master/PySimpleGUIWeb">https://github.com/PySimpleGUI/PySimpleGUI/tree/master/PySimpleGUIWeb</a></p>
+</section>
+<section id="pysimpleguipysimpleguiweb">
+<h3>选择PySimpleGUI还是PySimpleGUIWeb？<a class="headerlink" href="#pysimpleguipysimpleguiweb" title="Permalink to this headline"></a></h3>
+<p>在选择使用哪个版本之前，你应该首先确定你的应用程序的需求。如果你需要一个轻量级的桌面应用程序，<code class="docutils literal notranslate"><span class="pre">PySimpleGUI</span></code> 可能是更好的选择。如果你希望你的应用程序可以在浏览器中运行，那么 <code class="docutils literal notranslate"><span class="pre">PySimpleGUIWeb</span></code> 更适合。</p>
+</section>
+</section>
+<section id="id2">
+<h2>2. 安装<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<p>均可以采用pip命令安装，具体如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">PySimpleGUI</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">PySimpleGUIWeb</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h2>3.示例代码<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<p>以下是一个基本的 <code class="docutils literal notranslate"><span class="pre">PySimpleGUI</span></code> 示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库</span>
+<span class="kn">import</span> <span class="nn">PySimpleGUI</span> <span class="k">as</span> <span class="nn">sg</span>
+<span class="c1"># 设计窗体布局，用列表来定义每一个元素。</span>
+<span class="n">layout</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="n">sg</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;请输入你的名字：&#39;</span><span class="p">)],</span>
+    <span class="p">[</span><span class="n">sg</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)],</span>
+    <span class="p">[</span><span class="n">sg</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s1">&#39;确认&#39;</span><span class="p">),</span> <span class="n">sg</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s1">&#39;取消&#39;</span><span class="p">)],</span>
+    <span class="p">[</span><span class="n">sg</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;输出：&#39;</span><span class="p">),</span> <span class="n">sg</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s1">&#39;out&#39;</span><span class="p">)]</span>
+<span class="p">]</span>
+<span class="c1"># 创建窗体</span>
+<span class="n">window</span> <span class="o">=</span> <span class="n">sg</span><span class="o">.</span><span class="n">Window</span><span class="p">(</span><span class="s1">&#39;PySimpleGUI 范例&#39;</span><span class="p">,</span> <span class="n">layout</span><span class="p">)</span>
+<span class="c1"># 监视窗体的事件，并响应。</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="c1"># event为按钮的名称，values为一个字典</span>
+    <span class="n">event</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="n">window</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="p">,</span><span class="n">values</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">event</span> <span class="ow">in</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;取消&#39;</span><span class="p">):</span>
+        <span class="n">window</span><span class="p">[</span><span class="s1">&#39;in&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="n">window</span><span class="p">[</span><span class="s1">&#39;out&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">values</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;欢迎你，&#39;</span> <span class="o">+</span> <span class="n">values</span><span class="p">[</span><span class="s1">&#39;in&#39;</span><span class="p">]</span>
+        <span class="n">window</span><span class="p">[</span><span class="s1">&#39;out&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="c1"># 关闭窗体</span>
+<span class="n">window</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>上面这段代码一个简单的PySimpleGUI应用程序，它创建了一个包含文本和按钮的窗口。当用户点击”确定”按钮或关闭窗口时，程序将结束。这段代码中最核心的部分在于窗体设计和窗体事件控制部分。其中“window.read()”返回的信息中，event为按钮的名称，values则为一个字典，键名是控件的名称。仔细观察PySimpleGUI代码，会发现和Arduino、掌控板之类开源硬件程序的运行逻辑非常类似——用一个无限循环来处理输入和输出窗体事件。该代码的运行效果如下，界面样式中规中矩，看起来并不丑。</p>
+<p><img alt="../_images/pysimplegui.png" src="../_images/pysimplegui.png" /></p>
+</section>
+<section id="pysimpleguiai">
+<h2>4. 借助PySimpleGUI部署简易AI应用<a class="headerlink" href="#pysimpleguiai" title="Permalink to this headline"></a></h2>
+<p>只需准备好模型后，使用<code class="docutils literal notranslate"><span class="pre">PySimpleGUI</span></code>创建一个带GUI的简单AI应用。考虑到计算机视觉（CV）方向的模型都需要结合摄像头，界面中得显示实时画面，那就需要借助Image类型的对象，然后在窗体事件控制部分中实时更新画面。</p>
+<section id="id4">
+<h3>示例1：带窗体的摄像头实时推理的程序（图像分类）<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<p>下面是一段使用PySimpleGUIWeb与OpenCV来显示实时的摄像头图像并对其进行实时推理。在推理过程中，使用的是ONNX模型，推理的代码是借助XEdu团队推出的模型部署工具<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basedeploy/introduction.html">BaseDeploy</a>，代码较为简洁。关于基于MMEdu训练的模型转换为ONNX的说明可见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/model_convert.html#ai">最后一步：AI模型转换与部署</a>。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 带窗体的摄像头程序，自动推理</span>
+<span class="c1"># 模型为1000分类预训练模型（MobielNet）</span>
+<span class="kn">import</span> <span class="nn">PySimpleGUIWeb</span> <span class="k">as</span> <span class="nn">sg</span>
+<span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
+<span class="kn">import</span> <span class="nn">cv2</span>  <span class="c1">#pip install opencv-python</span>
+
+<span class="n">model_path</span> <span class="o">=</span> <span class="s1">&#39;cls_imagenet.onnx&#39;</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">bd</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">my_inf</span><span class="p">(</span><span class="n">frame</span><span class="p">):</span>
+    <span class="n">result1</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+    <span class="n">result2</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">print_result</span><span class="p">(</span><span class="n">result1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result2</span>
+
+<span class="c1">#背景色</span>
+<span class="n">sg</span><span class="o">.</span><span class="n">theme</span><span class="p">(</span><span class="s1">&#39;LightGreen&#39;</span><span class="p">)</span>
+<span class="c1">#定义窗口布局</span>
+<span class="n">layout</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">[</span><span class="n">sg</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;image&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">400</span><span class="p">))],</span>
+  <span class="p">[</span><span class="n">sg</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s1">&#39;关闭&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">))],</span>
+  <span class="p">[</span><span class="n">sg</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;推理结果：&#39;</span><span class="p">,</span><span class="n">key</span><span class="o">=</span><span class="s1">&#39;res&#39;</span><span class="p">)]</span>
+<span class="p">]</span>
+
+<span class="c1">#窗口设计</span>
+<span class="n">window</span> <span class="o">=</span> <span class="n">sg</span><span class="o">.</span><span class="n">Window</span><span class="p">(</span><span class="s1">&#39;OpenCV实时图像处理&#39;</span><span class="p">,</span><span class="n">layout</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">500</span><span class="p">))</span>
+<span class="c1">#打开内置摄像头</span>
+<span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">event</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="n">window</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">timeout_key</span><span class="o">=</span><span class="s1">&#39;timeout&#39;</span><span class="p">)</span>
+    <span class="c1">#实时读取图像，重设画面大小</span>
+    <span class="n">ret</span><span class="p">,</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">imgSrc</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="p">(</span><span class="mi">600</span><span class="p">,</span><span class="mi">400</span><span class="p">))</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">my_inf</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span> 
+    <span class="k">if</span> <span class="n">res</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;推理结果为：&#39;</span><span class="p">,</span><span class="n">res</span><span class="p">)</span>
+        <span class="n">window</span><span class="p">[</span><span class="s1">&#39;res&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s1">&#39;推理结果：&#39;</span><span class="o">+</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;预测结果&#39;</span><span class="p">])</span>
+
+    <span class="c1">#画面实时更新</span>
+    <span class="n">imgbytes</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imencode</span><span class="p">(</span><span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="n">imgSrc</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tobytes</span><span class="p">()</span>
+    <span class="n">window</span><span class="p">[</span><span class="s1">&#39;image&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">imgbytes</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">event</span> <span class="ow">in</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;关闭&#39;</span><span class="p">):</span>
+        <span class="k">break</span>
+<span class="c1"># 退出窗体</span>
+<span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+<span class="n">window</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h3>示例2：带窗体的摄像头实时推理的程序（目标检测）<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<p>一般来说，目标检测的代码会在推理画面上显示检测出来的目标，并且绘制一个矩形。因而，BaseDeploy的推理函数会返回识别后的画面。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 带窗体的摄像头程序，自动推理</span>
+<span class="c1"># 模型为80类目标检测预训练模型（SSD_Lite）</span>
+<span class="kn">import</span> <span class="nn">PySimpleGUIWeb</span> <span class="k">as</span> <span class="nn">sg</span>
+<span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
+<span class="kn">import</span> <span class="nn">cv2</span>  <span class="c1">#pip install opencv-python</span>
+
+<span class="n">model_path</span> <span class="o">=</span> <span class="s1">&#39;det.onnx&#39;</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">bd</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">my_inf</span><span class="p">(</span><span class="n">frame</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">model</span>
+    <span class="n">res1</span><span class="p">,</span> <span class="n">img</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span><span class="n">get_img</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">)</span>
+    <span class="c1"># 转换推理结果</span>
+    <span class="n">res2</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">print_result</span><span class="p">(</span><span class="n">res1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">res2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span><span class="kc">None</span>
+    <span class="n">classes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">res2</span><span class="p">)</span>
+    <span class="c1"># 提取预测结果</span>
+    <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">res2</span><span class="p">:</span>
+        <span class="n">classes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;预测结果&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">classes</span><span class="p">),</span><span class="n">img</span>
+
+<span class="c1">#背景色</span>
+<span class="n">sg</span><span class="o">.</span><span class="n">theme</span><span class="p">(</span><span class="s1">&#39;LightGreen&#39;</span><span class="p">)</span>
+<span class="c1">#定义窗口布局</span>
+<span class="n">layout</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">[</span><span class="n">sg</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;image&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">400</span><span class="p">))],</span>
+  <span class="p">[</span><span class="n">sg</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s1">&#39;关闭&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">))],</span>
+  <span class="p">[</span><span class="n">sg</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;推理结果：&#39;</span><span class="p">,</span><span class="n">key</span><span class="o">=</span><span class="s1">&#39;res&#39;</span><span class="p">)]</span>
+<span class="p">]</span>
+
+<span class="c1"># 建立窗体</span>
+<span class="n">window</span> <span class="o">=</span> <span class="n">sg</span><span class="o">.</span><span class="n">Window</span><span class="p">(</span><span class="s1">&#39;OpenCV实时图像处理&#39;</span><span class="p">,</span><span class="n">layout</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">500</span><span class="p">))</span>
+<span class="c1">#打开摄像头</span>
+<span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">event</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="n">window</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">timeout_key</span><span class="o">=</span><span class="s1">&#39;timeout&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">event</span> <span class="ow">in</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;关闭&#39;</span><span class="p">):</span>
+        <span class="k">break</span>
+    <span class="c1"># 实时读取图像</span>
+    <span class="n">ret</span><span class="p">,</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">res</span><span class="p">,</span> <span class="n">img</span> <span class="o">=</span> <span class="n">my_inf</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">res</span><span class="p">:</span>
+        <span class="n">window</span><span class="p">[</span><span class="s1">&#39;res&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s1">&#39;推理结果：&#39;</span><span class="o">+</span><span class="n">res</span><span class="p">)</span>
+        <span class="n">newimg</span> <span class="o">=</span> <span class="n">img</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">newimg</span> <span class="o">=</span> <span class="n">frame</span>
+    <span class="c1"># 实时更新画面</span>
+    <span class="n">newimg</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">newimg</span><span class="p">,</span> <span class="p">(</span><span class="mi">600</span><span class="p">,</span><span class="mi">400</span><span class="p">))</span>
+    <span class="n">imgbytes</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imencode</span><span class="p">(</span><span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="n">newimg</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tobytes</span><span class="p">()</span>
+    <span class="n">window</span><span class="p">[</span><span class="s1">&#39;image&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">imgbytes</span><span class="p">)</span>
+<span class="c1"># 退出窗体</span>
+<span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+<span class="n">window</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="pywebio.html" class="btn btn-neutral float-left" title="Web库PyWebIO" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="siot.html" class="btn btn-neutral float-right" title="MQTT库siot" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2023 OpenXLabEdu.All Rights Reserved.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

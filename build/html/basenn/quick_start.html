@@ -117,7 +117,7 @@
 <h1>快速体验BaseNN，开始！<a class="headerlink" href="#basenn" title="Permalink to this headline"></a></h1>
 <section id="id1">
 <h2>简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
-<p>BaseNN可以方便地逐层搭建神经网路，深入探究网络原理。</p>
+<p>BaseNN可以方便地逐层搭建神经网络，深入探究神经网络的原理。</p>
 </section>
 <section id="id2">
 <h2>安装<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
@@ -128,6 +128,8 @@
 <h2>体验<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
 <p>运行demo/BaseNN_demo.py。</p>
 <p>可以在命令行输入BaseNN查看安装的路径，在安装路径内，可以查看提供的更多demo案例。同时可查看附录。</p>
+<p>如果在使用中出现类似报错：<code class="docutils literal notranslate"><span class="pre">**AttributeError**:</span> <span class="pre">partially</span> <span class="pre">initialized</span> <span class="pre">module</span> <span class="pre">'cv2'</span> <span class="pre">has</span> <span class="pre">no</span> <span class="pre">attribute</span> <span class="pre">'gapi_wip_gst_GStreamerPipeline'</span> <span class="pre">(most</span> <span class="pre">likely</span> <span class="pre">due</span> <span class="pre">to</span> <span class="pre">a</span> <span class="pre">circular</span> <span class="pre">import)</span></code></p>
+<p>可尝试通过运行<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--upgrade</span> <span class="pre">opencv-python</span></code>解决</p>
 </section>
 <section id="id4">
 <h2>第一个BaseNN项目：搭建搭建鸢尾花分类模型<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
@@ -154,7 +156,7 @@
 </section>
 <section id="id8">
 <h3>第3步 搭建模型<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
-<p>逐层添加，搭建起模型结构。注释标明了数据经过各层的尺寸变化。</p>
+<p>逐层添加，搭建起模型结构。注释标明了数据经过各层的维度变化。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> <span class="c1"># [120, 10]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> <span class="c1"># [120, 5]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">)</span> <span class="c1"># [120, 3]</span>
@@ -239,23 +241,18 @@
 </section>
 <section id="id15">
 <h3>第2步 载入数据<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h3>
-<p>tang.npz是本项目的文本数据，源于互联网，包括57580首唐诗。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">datas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;tang.npz&#39;</span><span class="p">,</span><span class="n">allow_pickle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">datas</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;第一条数据：&quot;</span><span class="p">,</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># 观察第一条数据</span>
-<span class="n">word2idx</span> <span class="o">=</span> <span class="n">datas</span><span class="p">[</span><span class="s1">&#39;word2ix&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="c1"># 汉字对应的索引</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;词表:&quot;</span><span class="p">,</span><span class="n">word2idx</span><span class="p">)</span> 
-<span class="n">idx2word</span> <span class="o">=</span> <span class="n">datas</span><span class="p">[</span><span class="s1">&#39;ix2word&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="c1"># 索引对应的汉字</span>
-<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span>
-
-<span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">word2idx</span><span class="o">=</span><span class="n">word2idx</span><span class="p">)</span> <span class="c1"># 载入数据</span>
+<p>tangccc.npz是本项目的文本数据，源于互联网，包括57580首唐诗。npz是一种用于存储NumPy数组数据的文件格式。</p>
+<p>npz文件是一种方便的方式来保存和加载NumPy数组，通常用于在不同的Python程序之间或不同的计算环境中共享数据。</p>
+<p>在该项目中可以使用<code class="docutils literal notranslate"><span class="pre">load_npz_data()</span></code>方法直接读取npz格式的数据到模型中</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">load_npz_data</span><span class="p">(</span><span class="s1">&#39;tangccc.npz&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="lstm">
 <h3>第3步 搭建LSTM模型<a class="headerlink" href="#lstm" title="Permalink to this headline"></a></h3>
-<p>搭建模型只需加入lstm层即可，其他层会自适应补充，其中num_layers参数为循环神经网络循环的次数。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;lstm&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span><span class="mi">256</span><span class="p">),</span><span class="n">num_layers</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> 
+<p>搭建模型只需加入em_lstm层即可，其他层会自适应补充，其中num_layers参数为循环神经网络循环的次数。</p>
+<p>em_LSTM由包括embedding层，LSTM层和线性层组成，因为有embedding层的加入，所以em_LSTM可以专门处理文本数据。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;em_lstm&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span><span class="mi">256</span><span class="p">),</span><span class="n">num_layers</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> 
 </pre></div>
 </div>
 </section>
@@ -378,6 +375,7 @@
 <h4>项目核心功能：<a class="headerlink" href="#id25" title="Permalink to this headline"></a></h4>
 <p>完成了搭建一维卷积神经网络实现文本感情识别分类，代码使用BaseNN库实现，同时结合了Embedding层对单词文本进行向量化。</p>
 <p>数据集是imdb电影评论和情感分类数据集，来自斯坦福AI实验室平台，<a class="reference external" href="http://ai.stanford.edu/~amaas/data/sentiment/">http://ai.stanford.edu/~amaas/data/sentiment/</a>。</p>
+<p><strong>注意</strong>：新版本BaseNN（&gt;==0.1.6）已不支持项目中部分代码的写法或，如添加Embedding层。可模仿下列代码进行</p>
 </section>
 <section id="id26">
 <h4>实现步骤：<a class="headerlink" href="#id26" title="Permalink to this headline"></a></h4>

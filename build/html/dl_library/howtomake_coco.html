@@ -55,7 +55,7 @@
 <li class="toctree-l2"><a class="reference internal" href="howtomake_imagenet.html">从零开始制作一个ImageNet格式数据集</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">从零开始制作一个COCO格式数据集</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">COCO格式数据集简介</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#openinnolab">选择1：OpenInnoLab版（线上标注）</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#openinnolab">方式1：OpenInnoLab版（线上标注）</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">第一步：整理图片</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id3">第二步：标注图片</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id4">第三步：转换成COCO格式</a></li>
@@ -111,32 +111,34 @@
 <h1>从零开始制作一个COCO格式数据集<a class="headerlink" href="#coco" title="Permalink to this headline"></a></h1>
 <section id="id1">
 <h2>COCO格式数据集简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
-<p>COCO数据集是一个大型的、丰富的物体检测，分割和字幕数据集。这个数据集以scene understanding为目标，主要从复杂的日常场景中截取，图像中的目标通过精确的segmentation进行位置的标定。图像包括91类目标，328,000影像和2,500,000个label。目前为止有语义分割的最大数据集，提供的类别有80 类，有超过33 万张图片，其中20 万张有标注，整个数据集中个体的数目超过150 万个。</p>
-<p>XEdu中MMEdu的MMDetection模块支持的数据集类型是COCO，如需训练自己创建的数据集，数据集需转换成<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#coco">COCO格式</a>。这里，为您提供几种自己制作<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#coco">COCO格式</a>数据集的方法。</p>
+<p>COCO数据集是一个大型的、丰富的物体检测，分割和字幕数据集。这个数据集以scene understanding（场景理解）为目标，主要从复杂的日常场景中截取，图像中的目标通过精确的segmentation（分割）进行位置的标定。图像包括91类目标，328,000影像和2,500,000个label。是目前为止有语义分割的最大数据集，提供的类别有80类，有超过33万张图片，其中20万张有标注，整个数据集中个体的数目超过150万个。</p>
+<p>XEdu中MMEdu的MMDetection模块支持的数据集类型是COCO，很多时候我们需要训练自己创建的数据集，那怎么样才能将数据集需转换成<a href="https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#coco">COCO格式</a>呢？</p>
+<p>接下来就让我们一起学习几种自己制作<a href="https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#coco">COCO格式</a>数据集的方式吧。</p>
 </section>
 <section id="openinnolab">
-<h2>选择1：OpenInnoLab版（线上标注）<a class="headerlink" href="#openinnolab" title="Permalink to this headline"></a></h2>
+<h2>方式1：OpenInnoLab版（线上标注）<a class="headerlink" href="#openinnolab" title="Permalink to this headline"></a></h2>
+<p>这里强烈推荐初学者点击<a href="https://www.openinnolab.org.cn/pjlab/project?id=63c4ad101dd9517dffdff539&sc=635638d69ed68060c638f979#public">《从零开始制作一个COCO数据集之格式转换》</a>，跟随项目中的图文指引，轻松体验COCO格式数据集创建过程。</p>
 <section id="id2">
 <h3>第一步：整理图片<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
-<p>新建一个images文件夹用于存放图片 ，根据需求按照自己喜欢的方式收集图片，图片中包含需要检测的信息即可。</p>
+<p>新建一个images文件夹用于存放自己收集到的所有图片，图片可以从网络上下载，也可以自行拍摄，但是要注意的是，图片需要是jpg或png格式，否则可能会导致无法正常显示。</p>
 </section>
 <section id="id3">
 <h3>第二步：标注图片<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
-<p>使用熟悉的标注方式标注图片，如可进入平台的在线工具-人工智能工坊-数据标注完成数据标注。跳转链接：https://www.openinnolab.org.cn/pjlab/projects/channel</p>
+<p>使用熟悉的标注方式标注图片，如可点击链接进入<a href="https://www.openinnolab.org.cn/pjlab/projects/channel">浦育在线工具</a>页面，再点击“人工智能工坊”，在“数据标注”板块创建数据标注项目实践。
+<img alt="../_images/entrypage.png" src="../_images/entrypage.png" /></p>
 </section>
 <section id="id4">
 <h3>第三步：转换成COCO格式<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
 <p>使用BaseDT库将平台标注格式的数据集转换成COCO格式，可以使用如下代码：</p>
 <div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>from BaseDT.dataset import DataSet
 ds = DataSet(r&quot;my_dataset&quot;) # 指定目标数据集
-ds.make_dataset(r&quot;/data/HZQV42&quot;, src_format=&quot;INNOLAB&quot;,train_ratio = 0.8, test_ratio = 0.1, val_ratio = 0.1) # 仅需修改为待转格式的原始数据集路径（注意是整个数据集）
+ds.make_dataset(r&quot;/data/HZQV42&quot;, src_format=&quot;INNOLAB&quot;,train_ratio = 0.8, test_ratio = 0.1, val_ratio = 0.1) # 仅需修改第一个参数为待转格式的原始数据集路径（注意是整个数据集）
 </pre></div>
 </div>
 </section>
 <section id="id5">
 <h3>第四步：检查数据集格式<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
 <p>结合数据集检查提示对数据集进行调整，必要时可重做前几步，最后完成整个数据集制作。在训练的时候，只要通过<code class="docutils literal notranslate"><span class="pre">model.load_dataset</span></code>指定数据集的路径就可以了。</p>
-<p>参考项目：https://www.openinnolab.org.cn/pjlab/project?id=63c4ad101dd9517dffdff539&amp;sc=635638d69ed68060c638f979#public</p>
 </section>
 </section>
 <section id="labelme">
@@ -152,6 +154,9 @@ ds.make_dataset(r&quot;/data/HZQV42&quot;, src_format=&quot;INNOLAB&quot;,train_
 <li><p>LabelMe：麻省理工（MIT）的计算机科学和人工智能实验室（CSAIL）研发的图像标注工具，标注格式为LabelMe，网上较多LabelMe转VOC、COCO格式的脚本，可以标注矩形、圆形、线段、点。标注语义分割、实例分割数据集尤其推荐。</p></li>
 <li><p>安装与打开方式：<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">labelme</span></code>安装完成后输入<code class="docutils literal notranslate"><span class="pre">labelme</span></code>即可打开。</p></li>
 </ul>
+<p><img alt="../_images/pipinstalllabelme.png" src="../_images/pipinstalllabelme.png" />
+<img alt="../_images/openlabelme.png" src="../_images/openlabelme.png" />
+<img alt="../_images/labelme.jpeg" src="../_images/labelme.jpeg" /></p>
 </section>
 <section id="id8">
 <h3>第三步：转换成COCO标注格式<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
@@ -283,7 +288,7 @@ labelme2coco(labelme_json, &#39;picture/new.json&#39;) # 指定生成文件路�
 </section>
 <section id="id9">
 <h3>第四步：按照目录结构整理文件<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
-<p>创建两个文件夹“images”和“annotations”，分别用于存放图片以及标注信息。按照要求的目录结构，整理好文件夹的文件，最后将文件夹重新命名，制作完成后如想要检查数据集，可使用BaseDT的<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basedt/introduction.html#id9">数据集格式检查</a>功能，结合数据集检查提示对数据集进行调整，最后完成整个数据集制作。在训练的时候，只要通过<code class="docutils literal notranslate"><span class="pre">model.load_dataset</span></code>指定数据集的路径就可以了。</p>
+<p>创建两个文件夹“images”和“annotations”，分别用于存放图片以及标注信息。按照要求的目录结构，整理好文件夹，制作完成后如想要检查数据集，可使用BaseDT的<a href="https://xedu.readthedocs.io/zh/latest/basedt/introduction.html#id9">数据集格式检查</a>功能，结合数据集检查提示对数据集进行调整，最后完成整个数据集制作。在训练的时候，只要通过<code class="docutils literal notranslate"><span class="pre">model.load_dataset</span></code>指定数据集的路径就可以了。</p>
 </section>
 </section>
 <section id="id10">
@@ -304,7 +309,7 @@ classes.txt
 </section>
 <section id="id12">
 <h3>第二步：转换为COCO格式<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h3>
-<p>使用BaseDT库将平台标注格式的数据集转换成COCO格式，可以使用如下代码。如需了解更多BaseDT库数据集处理的功能，详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basedt/introduction.html#id7">BaseDT的数据集格式转换</a>部分。</p>
+<p>使用BaseDT库将平台标注格式的数据集转换成COCO格式，可以使用如下代码。如需了解更多BaseDT库数据集处理的功能，详见<a href="https://xedu.readthedocs.io/zh/master/basedt/introduction.html#id7">BaseDT的数据集格式转换</a>。</p>
 <div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>from BaseDT.dataset import DataSet
 ds = DataSet(r&quot;my_dataset&quot;) # 指定为新数据集路径
 ds.make_dataset(r&quot;G:\\测试数据集\\fruit_voc&quot;, src_format=&quot;VOC&quot;,train_ratio = 0.8, test_ratio = 0.1, val_ratio = 0.1) # 指定待转格式的原始数据集路径，原始数据集格式，划分比例，默认比例为train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2

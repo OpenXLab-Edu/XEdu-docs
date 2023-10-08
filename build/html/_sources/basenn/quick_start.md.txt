@@ -2,7 +2,7 @@
 
 ## 简介
 
-BaseNN可以方便地逐层搭建神经网路，深入探究网络原理。
+BaseNN可以方便地逐层搭建神经网络，深入探究神经网络的原理。
 
 ## 安装
 
@@ -16,6 +16,10 @@ BaseNN可以方便地逐层搭建神经网路，深入探究网络原理。
 运行demo/BaseNN_demo.py。
 
 可以在命令行输入BaseNN查看安装的路径，在安装路径内，可以查看提供的更多demo案例。同时可查看附录。
+
+如果在使用中出现类似报错：`**AttributeError**: partially initialized module 'cv2' has no attribute 'gapi_wip_gst_GStreamerPipeline' (most likely due to a circular import)` 
+
+可尝试通过运行`pip install --upgrade opencv-python`解决
 
 ## 第一个BaseNN项目：搭建搭建鸢尾花分类模型
 
@@ -42,7 +46,7 @@ model.load_tab_data(train_path, batch_size=120)
 
 ### 第3步 搭建模型
 
-逐层添加，搭建起模型结构。注释标明了数据经过各层的尺寸变化。
+逐层添加，搭建起模型结构。注释标明了数据经过各层的维度变化。
 
 ```python
 model.add(layer='linear',size=(4, 10),activation='relu') # [120, 10]
@@ -141,26 +145,24 @@ model = nn()
 
 ### 第2步 载入数据
 
-tang.npz是本项目的文本数据，源于互联网，包括57580首唐诗。
+tangccc.npz是本项目的文本数据，源于互联网，包括57580首唐诗。npz是一种用于存储NumPy数组数据的文件格式。
+
+npz文件是一种方便的方式来保存和加载NumPy数组，通常用于在不同的Python程序之间或不同的计算环境中共享数据。
+
+在该项目中可以使用`load_npz_data()`方法直接读取npz格式的数据到模型中
 
 ```python
-datas = np.load('tang.npz',allow_pickle=True)
-data = datas['data'] 
-print("第一条数据：",data[0]) # 观察第一条数据
-word2idx = datas['word2ix'].item() # 汉字对应的索引
-print("词表:",word2idx) 
-idx2word = datas['ix2word'].item() # 索引对应的汉字
-x, y = data[:,:-1], data[:, 1:]
-
-model.load_dataset(x, y, word2idx=word2idx) # 载入数据
+model.load_npz_data('tangccc.npz')
 ```
 
 ### 第3步 搭建LSTM模型
 
-搭建模型只需加入lstm层即可，其他层会自适应补充，其中num_layers参数为循环神经网络循环的次数。
+搭建模型只需加入em_lstm层即可，其他层会自适应补充，其中num_layers参数为循环神经网络循环的次数。
+
+em_LSTM由包括embedding层，LSTM层和线性层组成，因为有embedding层的加入，所以em_LSTM可以专门处理文本数据。
 
 ```python
-model.add('lstm', size=(128,256),num_layers=2) 
+model.add('em_lstm', size=(128,256),num_layers=2) 
 ```
 
 ### 第4步 模型训练
@@ -299,6 +301,8 @@ for x, y in val_data:
 完成了搭建一维卷积神经网络实现文本感情识别分类，代码使用BaseNN库实现，同时结合了Embedding层对单词文本进行向量化。
 
 数据集是imdb电影评论和情感分类数据集，来自斯坦福AI实验室平台，[http://ai.stanford.edu/~amaas/data/sentiment/](http://ai.stanford.edu/~amaas/data/sentiment/)。
+
+**注意**：新版本BaseNN（>==0.1.6）已不支持项目中部分代码的写法或，如添加Embedding层。可模仿下列代码进行
 
 #### 实现步骤：
 

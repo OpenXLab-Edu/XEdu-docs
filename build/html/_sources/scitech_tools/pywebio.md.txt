@@ -6,6 +6,8 @@
 
 Github地址：[https://github.com/wang0618/PyWebIO](https://github.com/wang0618/PyWebIO)
 
+本文涉及的部分代码见XEdu帮助文档配套项目集：[https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public](https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public)
+
 ## 2. 安装
 
 PyWebIO可以采用pip命令安装，具体如下：

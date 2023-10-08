@@ -67,9 +67,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#id29">附录</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#add">1. add()详细介绍</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rnn">拓展--RNN模型搭建简单指南：</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id30">2. 支持的损失函数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id32">2. 支持的损失函数</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rnncnn">3. RNN和CNN</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id31">4. 深度学习常见的数据类型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id33">4. 深度学习常见的数据类型</a></li>
 </ul>
 </li>
 </ul>
@@ -118,6 +118,7 @@
 <p>a）简易和快速地搭建神经网络</p>
 <p>b）支持搭建<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basenn/introduction.html#rnncnn">CNN和RNN</a>，或二者的结合</p>
 <p>c）同时支持CPU和GPU</p>
+<p>文档涉及的部分代码见XEdu帮助文档配套项目集：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&amp;sc=645caab8a8efa334b3f0eb24#public">https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&amp;sc=645caab8a8efa334b3f0eb24#public</a></p>
 </section>
 <section id="id2">
 <h2>解锁BaseNN使用方法<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
@@ -193,7 +194,7 @@
 <h4>针对NPZ数据集类型的数据：<a class="headerlink" href="#npz" title="Permalink to this headline"></a></h4>
 <p>指定NPZ数据集路径，再使用<code class="docutils literal notranslate"><span class="pre">load_npz_data</span></code>函数即可完成载入数据。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">train_path</span> <span class="o">=</span> <span class="s1">&#39;../../dataset/dataset.npz&#39;</span>
-<span class="n">model</span><span class="o">.</span><span class="n">load_tab_data</span><span class="p">(</span><span class="n">train_path</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span><span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;walking&quot;</span><span class="p">,</span><span class="s2">&quot;waving&quot;</span><span class="p">,</span><span class="s2">&quot;stretching&quot;</span><span class="p">])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_npz_data</span><span class="p">(</span><span class="n">train_path</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span><span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;walking&quot;</span><span class="p">,</span><span class="s2">&quot;waving&quot;</span><span class="p">,</span><span class="s2">&quot;stretching&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>对NPZ数据集的要求：npz格式，其中至少应该拥有两个键，分别为<code class="docutils literal notranslate"><span class="pre">data</span></code>与<code class="docutils literal notranslate"><span class="pre">label</span></code>，其中<code class="docutils literal notranslate"><span class="pre">data</span></code>中存储的应为训练数据信息，<code class="docutils literal notranslate"><span class="pre">label</span></code>中存储的应为数据所对应的标签信息（应为数组形式）。</p>
@@ -209,7 +210,8 @@
 </pre></div>
 </div>
 <p>此处采用Iris鸢尾花数据集和MNIST手写体数字图像数据集作为示例。</p>
-<p>读取并载入csv格式鸢尾花数据集（鸢尾花数据集以鸢尾花的特征作为数据来源，数据集包含150个数据集，有4维，分为3类（setosa、versicolour、virginica），每类50个数据，每个数据包含4个属性，花萼长度、宽度和花瓣长度、宽度）：</p>
+<p>读取并载入csv格式鸢尾花数据集（鸢尾花数据集以鸢尾花的特征作为数据来源，数据集包含150条数据，有4维（花萼长度、宽度和花瓣长度、宽度），分为3类（setosa、versicolour、virginica），每类50条数据）：</p>
+<p>数据集共有5列，其中前四列为特征，第五列为鸢尾花的类别，即标签。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 训练数据</span>
 <span class="n">train_path</span> <span class="o">=</span> <span class="s1">&#39;../dataset/iris/iris_training.csv&#39;</span> 
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">train_path</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span> <span class="c1"># 读取前四列，特征</span>
@@ -259,7 +261,7 @@
 </section>
 <section id="id10">
 <h3>3. 搭建模型<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
-<p>逐层添加，搭建起模型结构，支持CNN（卷积神经网络）和RNN（循环神经网络）。注释标明了数据经过各层的尺寸变化。</p>
+<p>逐层添加，搭建起模型结构，支持CNN（卷积神经网络）和RNN（循环神经网络）。注释标明了数据经过各层的尺寸变化。在模型搭建中要特别注意数据经过各层的尺寸变化，以设置正确的<code class="docutils literal notranslate"><span class="pre">size</span></code>值</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> <span class="c1"># [120, 10]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> <span class="c1"># [120, 5]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">)</span> <span class="c1"># [120, 3]</span>
@@ -270,7 +272,7 @@
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;conv2d&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span><span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> <span class="c1"># [100, 3, 18, 18]</span>
 </pre></div>
 </div>
-<p>以上使用<code class="docutils literal notranslate"><span class="pre">add()</span></code>方法添加层，参数<code class="docutils literal notranslate"><span class="pre">layer='linear'</span></code>表示添加的层是线性层，<code class="docutils literal notranslate"><span class="pre">size=(4,10)</span></code>表示该层输入维度为4，输出维度为10，<code class="docutils literal notranslate"><span class="pre">activation='relu'</span></code>表示使用relu激活函数。更详细[<code class="docutils literal notranslate"><span class="pre">add()</span></code>方法使用可见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add">附录1</a>。</p>
+<p>以上使用<code class="docutils literal notranslate"><span class="pre">add()</span></code>方法添加层，参数<code class="docutils literal notranslate"><span class="pre">layer='linear'</span></code>表示添加的层是线性层，<code class="docutils literal notranslate"><span class="pre">size=(4,10)</span></code>表示该层输入维度为4，输出维度为10，<code class="docutils literal notranslate"><span class="pre">activation='relu'</span></code>表示使用relu激活函数。更详细<code class="docutils literal notranslate"><span class="pre">add()</span></code>方法使用可见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add">附录1</a>。</p>
 </section>
 <section id="id11">
 <h3>4. 模型训练<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h3>
@@ -376,7 +378,7 @@
 </section>
 <section id="id17">
 <h4>文本类型<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h4>
-<p>在做文本识别等NLP（自然语言处理）领域项目时，一般搭建<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn">RNN网络</a>训练模型，训练数据是文本数据，参考代码代码如下：</p>
+<p>在做文本生成等NLP（自然语言处理）领域项目时，一般搭建<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn">RNN网络</a>训练模型，训练数据是文本数据，参考代码如下：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">word2idx</span><span class="o">=</span><span class="n">word2idx</span><span class="p">)</span> <span class="c1"># word2idx是词表（字典）</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;lstm&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span><span class="mi">256</span><span class="p">),</span><span class="n">num_layers</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -396,8 +398,8 @@
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>为已有模型路径，即使用现有的模型进行推理。</p>
 <p>直接推理的输出结果数据类型为<code class="docutils literal notranslate"><span class="pre">NumPy</span></code>的二维数组，表示各个样本的各个特征的置信度。</p>
-<p>输出字典格式结果的数据类型为字典，格式为{样本编号：{预测值：x，置信度：y}}。<code class="docutils literal notranslate"><span class="pre">print_result()</span></code>函数调用即输出，但也有返回值。</p>
-<p>参数<code class="docutils literal notranslate"><span class="pre">data</span></code>为待推理的测试数据数据，该参数必须传入值，可以传入NumPy数组或文件路径或者dataloader类型的数据，也可以传入list（最终还是会转成numpy数组）。除了NumPy数组格式和list数组格式的特征数据，以及传入dataloader类型的数据进行批量的模型推理外，还可以传入文件路径进行模型推理，下面我们分文件类型说明。</p>
+<p>输出字典格式结果的数据类型为字典，格式为<code class="docutils literal notranslate"><span class="pre">{样本编号：{预测值：x，置信度：y}}</span></code>。<code class="docutils literal notranslate"><span class="pre">print_result()</span></code>函数调用即输出，但也有返回值。</p>
+<p>参数<code class="docutils literal notranslate"><span class="pre">data</span></code>为待推理的测试数据，该参数必须传入值，可以传入NumPy数组或文件路径或者dataloader类型的数据，也可以传入list（最终还是会转成numpy数组）。除了NumPy数组格式和list数组格式的特征数据，以及传入dataloader类型的数据进行批量的模型推理外，还可以传入文件路径进行模型推理，下面我们分文件类型说明。</p>
 <section id="id19">
 <h4>针对单个图片文件的推理：<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
@@ -437,9 +439,11 @@
 <span class="n">word</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">idx2word</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="c1"># 根据词表获得对应的字</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">result</span></code>为列表包含两个变量：<code class="docutils literal notranslate"><span class="pre">[output,</span> <span class="pre">hidden]</span></code>。</p>
-<p><code class="docutils literal notranslate"><span class="pre">output</span></code>为NumPy数组，里面是一系列概率值，对应每个字的概率。</p>
-<p><code class="docutils literal notranslate"><span class="pre">hidden</span></code>为高维向量，存储上下文信息，代表”记忆”，所以生成单个字可以不传入hidden，但写诗需要循环传入之前输出的hidden。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">result</span></code>为列表包含两个变量：<code class="docutils literal notranslate"><span class="pre">[output,</span> <span class="pre">hidden]</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>为NumPy数组，里面是一系列概率值，对应每个字的概率。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hidden</span></code>为高维向量，存储上下文信息，代表”记忆”，所以生成单个字可以不传入hidden，但写诗需要循环传入之前输出的hidden。</p></li>
+</ul>
 </section>
 </section>
 <section id="id23">
@@ -486,7 +490,7 @@
 </section>
 <section id="id26">
 <h3>10. 自定义随机数种子<a class="headerlink" href="#id26" title="Permalink to this headline"></a></h3>
-<p>默认初始化是随机的，每次训练结果都不一样。可以使用<code class="docutils literal notranslate"><span class="pre">set_seed()</span></code>函数设定随机数种子，使得训练结果可被其他人复现。一旦指定，则每次训练结果一致。使用方法如下：</p>
+<p>默认初始化是随机的，因此每次模型训练效果可能存在差异。可以使用<code class="docutils literal notranslate"><span class="pre">set_seed()</span></code>函数设定随机数种子，使得训练结果可被其他人复现。一旦指定，则每次训练结果一致。使用方法如下：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
 <span class="n">model</span><span class="o">.</span><span class="n">set_seed</span><span class="p">(</span><span class="mi">1235</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
@@ -515,13 +519,15 @@
 </div>
 <p>因此针对不同的分类或回归任务，可指定不同的损失函数和评价指标。</p>
 <p>例：</p>
-<p>回归：<code class="docutils literal notranslate"><span class="pre">model.train(...,loss=&quot;SmoothL1Loss&quot;,</span> <span class="pre">metrics=[&quot;mae&quot;])</span></code></p>
-<p>分类：<code class="docutils literal notranslate"><span class="pre">model.train(...,loss=&quot;CrossEntropyLoss&quot;,metrics=[&quot;acc&quot;])</span></code></p>
+<ul class="simple">
+<li><p>回归：<code class="docutils literal notranslate"><span class="pre">model.train(...,loss=&quot;SmoothL1Loss&quot;,</span> <span class="pre">metrics=[&quot;mae&quot;])</span></code></p></li>
+<li><p>分类：<code class="docutils literal notranslate"><span class="pre">model.train(...,loss=&quot;CrossEntropyLoss&quot;,metrics=[&quot;acc&quot;])</span></code></p></li>
+</ul>
 </section>
 <section id="cnn">
 <h3>13. CNN特征提取<a class="headerlink" href="#cnn" title="Permalink to this headline"></a></h3>
-<p>图像特征提取是计算机视觉中的重要研究领域之一，是计算机视觉中的一个关键步骤，它涉及将图像转换成一组有意义的特征向量，以便后续的图像分析和识别任务。CNN（卷积神经网络）特征提取方法是一种基于深度学习的特征提取方法，通过卷积层、池化层等多个网络层的处理，可以提取出具有高层次抽象能力的特征表示，被广泛应用于图像分类、目标检测等领域。</p>
-<p>BaseNN中提供了一个CNN特征提取工具，可使用BaeNN的<code class="docutils literal notranslate"><span class="pre">model.extract_feature()</span></code>函数通过指定预训练模型来提取图像特征，使用ResNet预训练模型可将一张图像提取为1000维的特征（该预训练模型是在imagenet上训练的千分类模型，所以输出特征的维度是1000维），输出一个1行1000列的数组。</p>
+<p>图像特征提取是计算机视觉中的重要研究领域之一，是计算机视觉中的一个关键步骤，它涉及将图像转换成一组有意义的特征向量，以便于后续的图像分析和识别任务。CNN（卷积神经网络）特征提取方法是一种基于深度学习的特征提取方法，通过卷积层、池化层等多个网络层的处理，可以提取出具有高层次抽象能力的特征表示，被广泛应用于图像分类、目标检测等领域。</p>
+<p>BaseNN中提供了一个CNN特征提取工具，可使用BaseNN的<code class="docutils literal notranslate"><span class="pre">model.extract_feature()</span></code>函数通过指定预训练模型来提取图像特征，使用ResNet预训练模型可将一张图像提取为1000维的特征（该预训练模型是在imagenet上训练的千分类模型，所以输出特征的维度是1000维），输出一个1行1000列的数组。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 声明模型</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
 <span class="c1"># 读取图像文件</span>
@@ -538,8 +544,9 @@
 <section id="add">
 <h3>1. add()详细介绍<a class="headerlink" href="#add" title="Permalink to this headline"></a></h3>
 <p>使用BaseNN可以轻易地创建深度学习模型。不同类型的神经网络适用于不同类型的问题，比如CNN通常用于处理图像问题，RNN通常用于处理序列问题，全连接神经网络可以应用于各种问题。</p>
-<p>首先以典型的LeNet5网络结构为例。注释标明了数据经过各层的尺寸变化。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;conv2d&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span><span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> <span class="c1"># [100, 3, 18, 18]</span>
+<p>首先以一个传统的卷积神经网络结构为例。注释标明了数据经过各层的尺寸变化。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 输入: [100,1,20,20]</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;conv2d&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span><span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> <span class="c1"># [100, 3, 18, 18]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;maxpool&#39;</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># [100, 3, 9, 9]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;conv2d&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> <span class="c1"># [100, 10, 7, 7]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;avgpool&#39;</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># [100, 10, 3, 3]</span>
@@ -548,46 +555,55 @@
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;SGD&#39;</span><span class="p">)</span> <span class="c1"># 设定优化器</span>
 </pre></div>
 </div>
-<p>添加层的方法为<code class="docutils literal notranslate"><span class="pre">add(self,</span> <span class="pre">layer=None,</span> <span class="pre">activation=None,</span> <span class="pre">optimizer='SGD',</span> <span class="pre">**kw)</span></code>，</p>
-<p>参数说明:</p>
-<p>layer：层的类型，可选值包括Conv2D, MaxPool, AvgPool, Linear, Dropout。</p>
-<p>activation：激活函数类型，可选值包括ReLU，Softmax。</p>
-<p>optimizer：为优化器类型，默认值为SGD，可选值包括SGD，Adam，Adagrad，ASGD。</p>
-<p>kw：关键字参数，包括与size相关的各种参数，常用的如size=(x,y)，x为输入维度，y为输出维度；
-kernel_size=(a,b)， (a,b)表示核的尺寸。</p>
+<p>以上代码注释中数字代表含义说明:</p>
+<p>以[100, 3, 18, 18]为例 ，其对应含义为 [图像数量, 通道数, 图像维度, 图像维度]。</p>
+<p>这里我们讨论简单卷积，卷积前后数据尺寸的变化可以利用以下公式解决：</p>
+<p>N = W - F + 1 ，其中N表示输出大小，F表示卷积核大小，W表示输入大小。（这里输入、输出和卷积核均为正方形）</p>
+<p>由于是正方形，池化操作后数据尺寸变化可以利用以下公式得出：</p>
+<p>N = W/P ，其中P表示池化层的卷积核大小。</p>
+<p>从参数<code class="docutils literal notranslate"><span class="pre">kernel_size=(3,3)</span></code>可以得到卷积核大小为3，输入大小为20，根据公式20-3+1=18。</p>
+<p>根据参数<code class="docutils literal notranslate"><span class="pre">size=(1,3)</span></code>得出输入为1通道，输出为3通道。</p>
+<p>经过<code class="docutils literal notranslate"><span class="pre">kernel_size=(2,2)</span></code>的最大池化层后，根据公式18/2=9，得到输出数据尺寸为9x9大小。</p>
+<p>最后，由于线性层（linear）是一维的，因此二维数据在输入前要进行展平（flatten），将二维展平为1维。</p>
+<p>在以上代码中，输入linear层前，一张图像有10通道，每个通道的图像大小为3x3，因此展平后有10x3x3 = 90，这就是为什么要设置linear层<code class="docutils literal notranslate"><span class="pre">size=(90,10)</span></code>中，输入维度为90。</p>
+<p>添加层的方法为<code class="docutils literal notranslate"><span class="pre">add(layer=None,</span> <span class="pre">activation=None,</span> <span class="pre">optimizer=None,</span> <span class="pre">**kw)</span></code>。</p>
+<section id="id30">
+<h4>参数说明:<a class="headerlink" href="#id30" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p>layer：层的类型，可选值包括conv2d, conv1d, maxpool, avgpool, linear, dropout。</p></li>
+<li><p>activation：激活函数类型，可选值包括ReLU，Softmax。</p></li>
+<li><p>optimizer：为优化器类型，默认值为SGD，可选值包括SGD，Adam，Adagrad，ASGD。</p></li>
+<li><p>kw：关键字参数，包括与size相关的各种参数，常用的如size=(x,y)，x为输入维度，y为输出维度；
+kernel_size=(a,b)， (a,b)表示核的尺寸。</p></li>
+</ul>
 <p>以下具体讲述各种层：</p>
-<p>conv2d：卷积层（二维），需给定size，kernel_size。同时支持搭建conv1d（一维卷积层）。</p>
-<p>maxpool：最大池化层，需给定kernel_size。</p>
-<p>avgpool：平均池化层，需给定kernel_size。</p>
-<p>linear：线性层，需给定size。</p>
-<p>dropout：随机失活层，需给定p（概率）。作用为随机关闭一些神经元，避免过拟合。其中参数<code class="docutils literal notranslate"><span class="pre">p</span></code>表示关闭神经元的比例，比如此处
+<ul class="simple">
+<li><p>conv1d: 卷积层（一维），需给定size，kernel_size。</p></li>
+<li><p>conv2d：卷积层（二维），需给定size，kernel_size。</p></li>
+<li><p>maxpool：最大池化层，需给定kernel_size。</p></li>
+<li><p>avgpool：平均池化层，需给定kernel_size。</p></li>
+<li><p>linear：线性层，需给定size。</p></li>
+<li><p>dropout：随机失活层，需给定p（概率）。作用为随机关闭一些神经元，避免过拟合。其中参数<code class="docutils literal notranslate"><span class="pre">p</span></code>表示关闭神经元的比例，比如此处
 p=0.2
-表示有随机20%的神经元会被关闭。这种网络层是为了优化效果，避免过拟合而加入的，不是必需的，因此可以尝试修改p的值甚至删掉这个层观察比较效果差距。</p>
-<p>再以RNN模型（循环神经网络）为例进行详细说明：</p>
+表示有随机20%的神经元会被关闭。这种网络层是为了优化效果，避免过拟合而加入的，不是必需的，因此可以尝试修改p的值甚至删掉这个层观察比较效果差距。</p></li>
+</ul>
+<p>再以lstm为例进行详细说明：lstm（Long Short-Term Memory，长短时记忆）是一种特殊的RNN（Recurrent Neural Network，循环神经网络）模型，主要用于处理序列数据。lstm模型在自然语言处理、语音识别、时间序列预测等任务中被广泛应用，特别是在需要处理长序列数据时，lstm模型可以更好地捕捉序列中的长程依赖关系。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;lstm&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span><span class="mi">256</span><span class="p">),</span><span class="n">num_layers</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>lstm（Long Short-Term Memory，长短时记忆）是一种特殊的RNN（Recurrent
-Neural
-Network，循环神经网络）模型，主要用于处理序列数据。lstm模型在自然语言处理、语音识别、时间序列预测等任务中被广泛应用，特别是在需要处理长序列数据时，lstm模型可以更好地捕捉序列中的长程依赖关系。</p>
-<p>size的两个值：</p>
-<p>第一个为嵌入层维度(embedding_dim)，</p>
-<p>第二个为隐藏层维度(hidden_dim)，即lstm隐藏层中神经元数量。</p>
-<p>参数说明：</p>
-<p>input_size：
-输入数据的特征维数，即每一个字用多少维的向量来表示，通常就是embedding_dim(词向量的维度)。</p>
-<p>hidden_size：LSTM中隐藏层的神经元数量。</p>
-<p>num_layers：循环神经网络的层数。一般1~5，常用2、3层，太多层会大幅度影响训练速度和收敛难度。</p>
-<p>bias：用不用偏置，default=True。</p>
-<p>dropout：随机失活层，默认是0，代表不用dropout。作用为随机关闭一些神经元，避免过拟合。其中参数<code class="docutils literal notranslate"><span class="pre">p</span></code>表示关闭神经元的比例，比如此处
-p=0.2
-表示有随机20%的神经元会被关闭。这种网络层是为了优化效果，避免过拟合而加入的，不是必需的，因此可以尝试修改p的值甚至删掉这个层观察比较效果差距。</p>
-<p>bidirectional：默认是false，代表不用双向LSTM。</p>
+</section>
+<section id="id31">
+<h4>参数说明：<a class="headerlink" href="#id31" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p>size中的的两个值：第一个为嵌入层维度(embedding_dim)，即文本转化为词向量后的向量维度。第二个为隐藏层维度(hidden_dim)，即lstm隐藏层中神经元数量。</p></li>
+<li><p>num_layers：循环神经网络的层数。一般1~5，常用2、3层，太多层会大幅度影响训练速度和收敛难度。</p></li>
+</ul>
 <p>以上仅是基本的模型架构。在实际使用中，可能需要调整模型的层数、节点数、激活函数等参数以达到最佳效果。</p>
+</section>
 </section>
 <section id="rnn">
 <h3>拓展--RNN模型搭建简单指南：<a class="headerlink" href="#rnn" title="Permalink to this headline"></a></h3>
-<p>循环神经网络是一类以序列数据为输入，在序列的演进方向进行递归且所有节点（循环单元）按链式连接的递归神经网络。RNN在自然语言处理问题中有得到应用，也被用于与自然语言处理有关的异常值检测问题，例如社交网络中虚假信息/账号的检测。NN与卷积神经网络向结合的系统可被应用于在计算机视觉问题，例如在字符识别中，有研究使用卷积神经网络对包含字符的图像进行特征提取，并将特征输入LSTM进行序列标注。</p>
+<p>循环神经网络是一类以序列数据为输入，在序列的演进方向进行递归且所有节点（循环单元）按链式连接的递归神经网络。RNN在自然语言处理问题中有得到应用，也被用于与自然语言处理有关的异常值检测问题，例如社交网络中虚假信息/账号的检测。RNN与CNN卷积神经网络相结合的系统可被应用于在计算机视觉问题，例如在字符识别中，有研究使用卷积神经网络对包含字符的图像进行特征提取，并将特征输入LSTM进行序列标注。</p>
 <p>下为搭建RNN神经网络的一般流程：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;lstm&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">132</span><span class="p">,</span><span class="mi">128</span><span class="p">))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Dropout&#39;</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
@@ -650,8 +666,8 @@ p=0.2
 </pre></div>
 </div>
 </section>
-<section id="id30">
-<h3>2. 支持的损失函数<a class="headerlink" href="#id30" title="Permalink to this headline"></a></h3>
+<section id="id32">
+<h3>2. 支持的损失函数<a class="headerlink" href="#id32" title="Permalink to this headline"></a></h3>
 <table class="docutils align-default">
     <thead>
         <tr class="row-odd">
@@ -803,11 +819,11 @@ p=0.2
 <p>CNN是一种用于处理图像和空间数据的神经网络模型。例如图片（可以看成是像素的网格）。CNN的核心概念是卷积层和池化层。卷积层通过滑动窗口（也叫做卷积核）在输入数据上进行卷积操作，能够自动学习并识别图像中的局部特征，比如线条、形状等。池化层则用于降低数据的维度，减少计算量。CNN的一个重要特性是它具有参数共享和平移不变性，这使得CNN非常适合处理图像数据。当然，CNN也被用于处理其他类型的数据，如文本和时间序列数据。它的主要特点是利用卷积操作提取图像中的特征，并通过池化操作减小特征图的大小，最终通过全连接层进行分类或回归。CNN在图像分类、目标检测、图像分割等任务中表现出色。</p>
 <p>简单来说，RNN适用于序列数据处理，而CNN适用于图像和空间数据处理。但实际上，它们也可以互相组合使用，例如在图像描述生成任务中，可以使用CNN提取图像特征，然后使用RNN生成对应的文字描述。使用BaseNN搭建RNN和CNN模型的方式详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basenn/introduction.html#add">add()详细</a>介绍。</p>
 </section>
-<section id="id31">
-<h3>4. 深度学习常见的数据类型<a class="headerlink" href="#id31" title="Permalink to this headline"></a></h3>
-<p>图像数据：图像数据是深度学习应用中最常见的数据类型之一。图像数据通常表示为多维数组，每个数组元素代表一个像素的值。深度学习应用中常使用的图像数据格式包括JPEG、PNG、BMP等。</p>
-<p>文本数据：文本数据是指由字符组成的序列数据。在深度学习应用中，文本数据通常被表示为词向量或字符向量，用于输入到文本处理模型中。</p>
-<p>特征数据：特征数据指的是表示对象或事物的特征的数据，通常用于机器学习和数据挖掘。特征数据可以是数值型、离散型或者是二进制的，用于描述对象或事物的各种属性和特征。特征数据可以是手动设计的、自动提取的或者是混合的。在机器学习中，特征数据通常作为模型的输入，用于预测目标变量或者分类。</p>
+<section id="id33">
+<h3>4. 深度学习常见的数据类型<a class="headerlink" href="#id33" title="Permalink to this headline"></a></h3>
+<p><strong>图像数据</strong>：图像数据是深度学习应用中最常见的数据类型之一。图像数据通常表示为多维数组，每个数组元素代表一个像素的值。深度学习应用中常使用的图像数据格式包括JPEG、PNG、BMP等。</p>
+<p><strong>文本数据</strong>：文本数据是指由字符组成的序列数据。在深度学习应用中，文本数据通常被表示为词向量或字符向量，用于输入到文本处理模型中。</p>
+<p><strong>特征数据</strong>：特征数据指的是表示对象或事物的特征的数据，通常用于机器学习和数据挖掘。特征数据可以是数值型、离散型或者是二进制的，用于描述对象或事物的各种属性和特征。特征数据可以是手动设计的、自动提取的或者是混合的。在机器学习中，特征数据通常作为模型的输入，用于预测目标变量或者分类。</p>
 </section>
 </section>
 </section>

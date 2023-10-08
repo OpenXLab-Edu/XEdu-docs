@@ -324,6 +324,7 @@ categories [{
 </section>
 <section id="id4">
 <h2>使用示例<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
+<p>文档涉及的部分代码见XEdu帮助文档配套项目集：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&amp;sc=645caab8a8efa334b3f0eb24#public">https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&amp;sc=645caab8a8efa334b3f0eb24#public</a></p>
 <section id="id5">
 <h3>模型推理：<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
 <p>此处展示的是图像分类模型的模型推理的示例代码，如需了解更多模块的示例代码或想了解更多使用说明请看<a href="https://xedu.readthedocs.io/zh/latest/mmedu/mmclassification.html">后文</a>。</p>
@@ -363,33 +364,26 @@ categories [{
 </section>
 <section id="id8">
 <h3>更多示例：<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
-<ol>
-<li><p>查看MMEdu库所在的目录</p>
+<p>1.查看MMEdu库所在的目录</p>
 <p>进入Python终端，然后依次输入如下代码即可查看Python库所在的目录（site-packages）。</p>
-</li>
-</ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">MMEdu</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">MMEdu</span><span class="o">.</span><span class="n">__path__</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><img alt="../_images/pip1.png" src="../_images/pip1.png" /></p>
-<ol>
-<li><p>查看权重文件信息</p>
+<p>2.查看权重文件信息</p>
 <p>模型训练好后生成了日志文件和（.pth）权重文件，可以使用如下代码查看权重文件信息。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pth_info</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">)</span> <span class="c1"># 指定为pth权重文件路径</span>
 </pre></div>
 </div>
-</li>
-<li><p>返回日志信息</p>
+<p>3.返回日志信息</p>
 <p>如需返回日志信息，可在训练时使用如下代码：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">xxx</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>返回的是日志文件中各行信息组成的列表。</p>
-</li>
-<li><p>打开github地址（<a href="https://github.com/OpenXLab-Edu/OpenMMLab-Edu">GitHub - OpenXLab-Edu/OpenMMLab-Edu</a>），可查看库文件原码和更多示例程序。</p></li>
-</ol>
+<p>4.打开github地址（<a href="https://github.com/OpenXLab-Edu/OpenMMLab-Edu">GitHub - OpenXLab-Edu/OpenMMLab-Edu</a>），可查看库文件原码和更多示例程序。</p>
 </section>
 </section>
 </section>

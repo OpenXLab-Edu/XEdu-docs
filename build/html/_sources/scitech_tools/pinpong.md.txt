@@ -8,6 +8,8 @@ pinpong库的原理是给开源硬件烧录一个特定的固件，使其可以�
 
 GitHub地址：[https://github.com/DFRobot/pinpong-docs](https://github.com/DFRobot/pinpong-docs)
 
+本文涉及的部分代码见XEdu帮助文档配套项目集：[https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public](https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public)
+
 ## 2. 安装
 
 可以使用使用pip命令安装pinpong库。

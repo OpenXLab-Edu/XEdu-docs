@@ -8,6 +8,8 @@ gitee地址：[https://gitee.com/mirrors/gradio](https://gitee.com/mirrors/gradi
 
 官方文档：[https://gradio.app/docs/](https://gradio.app/docs/)
 
+本文涉及的部分代码见XEdu帮助文档配套项目集：[https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public](https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public)
+
 ## 2. 安装
 
 Gradio可以采用pip命令安装，具体如下：
