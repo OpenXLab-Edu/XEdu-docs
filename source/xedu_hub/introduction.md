@@ -40,7 +40,7 @@ from XEdu.hub import Workflow as wf
 
 这些关键点的检测可以用于人体姿态估计和分类、动作分析、手势识别等多种应用。
 
-XEdu-Hub提供了两个识别人体关键点的模型，`body17`和`body26` 数字表示了识别出人体关键点的数量，声明代码如下
+XEdu-Hub提供了两个识别人体关键点的模型，`body17`和`body26` 数字表示了识别出人体关键点的数量，声明代码如下：
 
 ```python
 pose = wf(task='body') # 数字可省略，当省略时，默认为body17
@@ -52,7 +52,7 @@ pose = wf(task='body') # 数字可省略，当省略时，默认为body17
 
 例如眼睛、鼻子、嘴巴、眉毛等。这些关键点的准确定位对于许多应用非常重要，包括人脸识别、表情分析、虚拟化妆、人机交互等。
 
-XEdu-Hub提供了识别人脸关键点的模型：`face106`，这意味着该模型能够识别人脸上的106个关键点，声明代码如下
+XEdu-Hub提供了识别人脸关键点的模型：`face106`，这意味着该模型能够识别人脸上的106个关键点，声明代码如下：
 
 ```python
 pose = wf(task='face') # 数字可省略，默认为face106
@@ -64,7 +64,7 @@ pose = wf(task='face') # 数字可省略，默认为face106
 
 这些关键点的识别对于手势识别、手部姿态估计、手部追踪、手势控制设备等应用具有重要意义。
 
-XEdu-Hub提供了识别人手关键点的模型：`hand21`，该模型能够识别人手上的21个关键点，声明代码如下
+XEdu-Hub提供了识别人手关键点的模型：`hand21`，该模型能够识别人手上的21个关键点，声明代码如下：
 
 ```python
 pose = wf(task='hand') # 数字可省略，默认为hand21
@@ -72,7 +72,7 @@ pose = wf(task='hand') # 数字可省略，默认为hand21
 
 ##### 人体所有关键点
 
-XEdu-Hub提供了识别人体所有关键点，包括人手、人脸和人体躯干部分关键点的模型：`wholebody133`，声明代码如下
+XEdu-Hub提供了识别人体所有关键点，包括人手、人脸和人体躯干部分关键点的模型：`wholebody133`，声明代码如下：
 
 ```python
 pose = wf(task='wholebody') # 数字可省略，默认为wholebody133
@@ -80,7 +80,7 @@ pose = wf(task='wholebody') # 数字可省略，默认为wholebody133
 
 #### 2. 模型推理
 
-由于已经从云端下载好了预训练的SOTA模型，因此只需要传入相应图片即可进行模型推理任务，识别相应的关键点，以人体关键点识别为例，模型推理代码如下
+由于已经从云端下载好了预训练的SOTA模型，因此只需要传入相应图片即可进行模型推理任务，识别相应的关键点，以人体关键点识别为例，模型推理代码如下：
 
 ```python
 img = "data/body.jpg" # 指定待识别关键点的图片的路径
@@ -98,7 +98,7 @@ keypoints,img_with_keypoints = pose.inference(data=img,img_type='pil') # 进行�
 
 #### 3. 结果输出
 
-XEdu-Hub提供了一种便捷的方式，能够以标准美观的格式查看关键点坐标以及分数（可以理解为置信度），代码如下
+XEdu-Hub提供了一种便捷的方式，能够以标准美观的格式查看关键点坐标以及分数（可以理解为置信度），代码如下：
 
 ```python
 format_result = pose.format_output(lang='zh')# 参数language设置了输出结果的语言
@@ -112,7 +112,7 @@ pose.show(img_with_keypoints)
 
 ####    4. 结果保存
 
-XEdu-Hub提供了保存带有关键点和关键点连线结果图像的方法，代码如下
+XEdu-Hub提供了保存带有关键点和关键点连线结果图像的方法，代码如下：
 
 ```python
 pose.save(img_with_keypoints,'img_with_keypoints.jpg')
@@ -142,7 +142,7 @@ from XEdu.hub import Workflow as wf
 
 通常，人体目标检测不仅要求准确地定位人体的边界框，还需要对人体进行类别分类，如行人、车辆乘客、骑自行车者等。这一技术在自动驾驶、视频监控、行人识别、人数统计、人体姿态估计等领域中有广泛的应用。
 
-XEdu-Hub提供了进行人体目标检测的模型：`bodydetect`，该模型既能够进行单人的人体目标检测，也能够实现多人检测，声明代码如下
+XEdu-Hub提供了进行人体目标检测的模型：`bodydetect`，该模型既能够进行单人的人体目标检测，也能够实现多人检测，声明代码如下：
 
 ```python
 det = wf(task='bodydetect')
@@ -156,7 +156,7 @@ COCO（Common Objects in Context）是一个用于目标检测和图像分割任
 def = wf(task='cocodetect')
 ```
 
-若要查看coco目标检测中的所有类别可运行以下代码
+若要查看coco目标检测中的所有类别可运行以下代码：
 
 ```python
 wf.coco_class()
@@ -164,7 +164,7 @@ wf.coco_class()
 
 #### 2. 模型推理
 
-由于已经从云端下载好了预训练的SOTA模型，因此只需要传入相应图片即可进行模型推理任务，识别相应的关键点，以人体目标检测为例，模型推理代码如下
+由于已经从云端下载好了预训练的SOTA模型，因此只需要传入相应图片即可进行模型推理任务，识别相应的关键点，以人体目标检测为例，模型推理代码如下：
 
 ```python
 img = 'data/body.jpg'
@@ -181,7 +181,7 @@ result.img_with_box = det.inference(data=img,img_type='cv2')
 
 ####   3. 结果输出
 
-XEdu-Hub提供了一种便捷的方式，能够以标准美观的格式查看检测框顶点坐标、检测分数以及目标类别，代码如下
+XEdu-Hub提供了一种便捷的方式，能够以标准美观的格式查看检测框顶点坐标、检测分数以及目标类别，代码如下：
 
 ```python
 format_result =det.format_output(lang='zh')# 参数language设置了输出结果的语言
@@ -195,7 +195,7 @@ det.show(img_with_box)
 
 ####    4. 结果保存
 
-XEdu-Hub提供了带有检测框图片的方法，代码如下
+XEdu-Hub提供了带有检测框图片的方法，代码如下：
 
 ```python
 det.save(img_with_box,'img_with_box.jpg')
@@ -203,11 +203,11 @@ det.save(img_with_box,'img_with_box.jpg')
 
 ### 目标检测+关键点识别综合应用
 
-以下代码可以实时检测摄像头中出现的多个人，并对每一个人体提取关键点。
+以下代码可以实时检测摄像头中出现的多个人，并对每一个人体提取关键点
 
 其中，我们先进行目标检测，拿到所有的检测框`bbox`及其顶点坐标
 
-随后对每个检测框中的人体进行关键点提取。
+随后对每个检测框中的人体进行关键点提取
 
 ```python
 import cv2
