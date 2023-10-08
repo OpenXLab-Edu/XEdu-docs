@@ -236,6 +236,8 @@ categories [{
 
 ## 使用示例
 
+文档涉及的部分代码见XEdu帮助文档配套项目集：[https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public](https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public)
+
 ### 模型推理：
 
 此处展示的是图像分类模型的模型推理的示例代码，如需了解更多模块的示例代码或想了解更多使用说明请看<a href="https://xedu.readthedocs.io/zh/latest/mmedu/mmclassification.html">后文</a>。
@@ -278,9 +280,9 @@ model.train(epochs=10, validate=True, checkpoint=checkpoint)
 
 ### 更多示例：
 
-1. 查看MMEdu库所在的目录
+1.查看MMEdu库所在的目录
 
-   进入Python终端，然后依次输入如下代码即可查看Python库所在的目录（site-packages）。
+进入Python终端，然后依次输入如下代码即可查看Python库所在的目录（site-packages）。
 
 ```
 import MMEdu
@@ -289,24 +291,24 @@ print(MMEdu.__path__)
 
 ![](../images/mmedu/pip1.png)
 
-1. 查看权重文件信息
+2.查看权重文件信息
 
-   模型训练好后生成了日志文件和（.pth）权重文件，可以使用如下代码查看权重文件信息。
+模型训练好后生成了日志文件和（.pth）权重文件，可以使用如下代码查看权重文件信息。
 
-   ```python
-   pth_info(checkpoint) # 指定为pth权重文件路径
-   ```
+```python
+pth_info(checkpoint) # 指定为pth权重文件路径
+```
 
-2. 返回日志信息
+3.返回日志信息
 
-   如需返回日志信息，可在训练时使用如下代码：
+如需返回日志信息，可在训练时使用如下代码：
 
-   ```
-   log = model.train(xxx)
-   print(log)
-   ```
+```
+log = model.train(xxx)
+print(log)
+```
 
-   返回的是日志文件中各行信息组成的列表。
+返回的是日志文件中各行信息组成的列表。
 
-3. 打开github地址（<a href="https://github.com/OpenXLab-Edu/OpenMMLab-Edu">GitHub - OpenXLab-Edu/OpenMMLab-Edu</a>），可查看库文件原码和更多示例程序。
+4.打开github地址（<a href="https://github.com/OpenXLab-Edu/OpenMMLab-Edu">GitHub - OpenXLab-Edu/OpenMMLab-Edu</a>），可查看库文件原码和更多示例程序。
 

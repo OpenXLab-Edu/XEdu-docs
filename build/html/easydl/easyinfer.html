@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EasyInference（模型推理辅助工具） &mdash; OpenXLabEdu  documentation</title>
@@ -11,10 +11,11 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -28,11 +29,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -77,9 +82,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../easydl.html">EasyDL系列无代码工具</a> &raquo;</li>
-      <li>EasyInference（模型推理辅助工具）</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../easydl.html">EasyDL系列无代码工具</a></li>
+      <li class="breadcrumb-item active">EasyInference（模型推理辅助工具）</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/easydl/easyinfer.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -90,13 +95,13 @@
            <div itemprop="articleBody">
              
   <section id="easyinference">
-<h1>EasyInference（模型推理辅助工具）<a class="headerlink" href="#easyinference" title="Permalink to this headline"></a></h1>
+<h1>EasyInference（模型推理辅助工具）<a class="headerlink" href="#easyinference" title="Permalink to this heading"></a></h1>
 <section id="id1">
-<h2>EasyInference简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<h2>EasyInference简介<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p>EasyInference是模型推理工具。借助EasyInference，不需要编写一行代码，即可完成模型的推理。支持一张图片和一个文件夹的批量推理。</p>
 </section>
 <section id="id2">
-<h2>快速体验用EasyInference完成模型推理<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<h2>快速体验用EasyInference完成模型推理<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
 <p>EasyInference页面的左侧还是基本的参数选择，包括问题类型，算法类型，权重文件，类别文件，推理结果的保存路径。
 如果推理结果的保存路径不选择，会默认保存到当前文件夹下的<code class="docutils literal notranslate"><span class="pre">det_result</span></code>中。
 但是请选择一个空文件夹作为保存路径，否则预览界面会出现问题。</p>
@@ -112,7 +117,7 @@
 <p>点击”上一张”，”下一张”可以进行切换。如果保存路径还有其他图片，程序会将那些图片全都展示，所以建议在推理之前清空保存路径。</p>
 </section>
 <section id="id3">
-<h2>注意事项<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<h2>注意事项<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>一部分参数有范围，例如学习率只能为正值，轮数只能为正整数，请选择合理范围的参数。</p></li>
 <li><p>关于设备类型，如果没有安装GPU版本的XEdu各模块，则不能以cuda设备运行，只能选择cpu。</p></li>

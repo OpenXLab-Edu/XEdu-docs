@@ -10,6 +10,8 @@ b）支持搭建[CNN和RNN](https://xedu.readthedocs.io/zh/master/basenn/introdu
 
 c）同时支持CPU和GPU
 
+文档涉及的部分代码见XEdu帮助文档配套项目集：[https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public](https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public)
+
 ## 解锁BaseNN使用方法
 
 ### 0. 引入包
@@ -109,7 +111,7 @@ model.load_tab_data(train_path, batch_size=120)
 
 ```python
 train_path = '../../dataset/dataset.npz'
-model.load_tab_data(train_path, batch_size=5000,classes=["walking","waving","stretching"])
+model.load_npz_data(train_path, batch_size=5000,classes=["walking","waving","stretching"])
 ```
 
 对NPZ数据集的要求：npz格式，其中至少应该拥有两个键，分别为`data`与`label`，其中`data`中存储的应为训练数据信息，`label`中存储的应为数据所对应的标签信息（应为数组形式）。
@@ -130,7 +132,9 @@ model.load_dataset(x, y)
 
 此处采用Iris鸢尾花数据集和MNIST手写体数字图像数据集作为示例。
 
-读取并载入csv格式鸢尾花数据集（鸢尾花数据集以鸢尾花的特征作为数据来源，数据集包含150个数据集，有4维，分为3类（setosa、versicolour、virginica），每类50个数据，每个数据包含4个属性，花萼长度、宽度和花瓣长度、宽度）：
+读取并载入csv格式鸢尾花数据集（鸢尾花数据集以鸢尾花的特征作为数据来源，数据集包含150条数据，有4维（花萼长度、宽度和花瓣长度、宽度），分为3类（setosa、versicolour、virginica），每类50条数据）：
+
+数据集共有5列，其中前四列为特征，第五列为鸢尾花的类别，即标签。
 
 ``` python
 # 训练数据
@@ -184,7 +188,7 @@ model.load_dataset(train_x, train_y)
 
 ### 3. 搭建模型
 
-逐层添加，搭建起模型结构，支持CNN（卷积神经网络）和RNN（循环神经网络）。注释标明了数据经过各层的尺寸变化。
+逐层添加，搭建起模型结构，支持CNN（卷积神经网络）和RNN（循环神经网络）。注释标明了数据经过各层的尺寸变化。在模型搭建中要特别注意数据经过各层的尺寸变化，以设置正确的`size`值
 
 ``` python
 model.add(layer='linear',size=(4, 10),activation='relu') # [120, 10]
@@ -198,7 +202,7 @@ model.add('lstm',size=(128,256),num_layers=2)
 model.add('conv2d', size=(1, 3),kernel_size=( 3, 3), activation='relu') # [100, 3, 18, 18]
 ```
 
-以上使用`add()`方法添加层，参数`layer='linear'`表示添加的层是线性层，`size=(4,10)`表示该层输入维度为4，输出维度为10，`activation='relu'`表示使用relu激活函数。更详细\[`add()`方法使用可见[附录1](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add)。
+以上使用`add()`方法添加层，参数`layer='linear'`表示添加的层是线性层，`size=(4,10)`表示该层输入维度为4，输出维度为10，`activation='relu'`表示使用relu激活函数。更详细`add()`方法使用可见[附录1](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add)。
 
 ### 4. 模型训练
 
@@ -321,7 +325,7 @@ model.train(lr=0.01,epochs=1)
 
 #### 文本类型
 
-在做文本识别等NLP（自然语言处理）领域项目时，一般搭建[RNN网络](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn)训练模型，训练数据是文本数据，参考代码代码如下：
+在做文本生成等NLP（自然语言处理）领域项目时，一般搭建[RNN网络](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn)训练模型，训练数据是文本数据，参考代码如下：
 
 ```python
 model = nn()
@@ -345,9 +349,9 @@ model.print_result(result) # 输出字典格式结果
 
 直接推理的输出结果数据类型为`NumPy`的二维数组，表示各个样本的各个特征的置信度。
 
-输出字典格式结果的数据类型为字典，格式为{样本编号：{预测值：x，置信度：y}}。`print_result()`函数调用即输出，但也有返回值。
+输出字典格式结果的数据类型为字典，格式为`{样本编号：{预测值：x，置信度：y}}`。`print_result()`函数调用即输出，但也有返回值。
 
-参数`data`为待推理的测试数据数据，该参数必须传入值，可以传入NumPy数组或文件路径或者dataloader类型的数据，也可以传入list（最终还是会转成numpy数组）。除了NumPy数组格式和list数组格式的特征数据，以及传入dataloader类型的数据进行批量的模型推理外，还可以传入文件路径进行模型推理，下面我们分文件类型说明。
+参数`data`为待推理的测试数据，该参数必须传入值，可以传入NumPy数组或文件路径或者dataloader类型的数据，也可以传入list（最终还是会转成numpy数组）。除了NumPy数组格式和list数组格式的特征数据，以及传入dataloader类型的数据进行批量的模型推理外，还可以传入文件路径进行模型推理，下面我们分文件类型说明。
 
 #### 针对单个图片文件的推理：
 
@@ -391,11 +395,11 @@ index = np.argmax(result[0]) # 取得概率最大的字的索引，当然也可�
 word = model.idx2word[index] # 根据词表获得对应的字
 ```
 
-`result`为列表包含两个变量：`[output, hidden]`。
+- `result`为列表包含两个变量：`[output, hidden]`。
 
-`output`为NumPy数组，里面是一系列概率值，对应每个字的概率。
+- `output`为NumPy数组，里面是一系列概率值，对应每个字的概率。
 
-`hidden`为高维向量，存储上下文信息，代表"记忆"，所以生成单个字可以不传入hidden，但写诗需要循环传入之前输出的hidden。
+- `hidden`为高维向量，存储上下文信息，代表"记忆"，所以生成单个字可以不传入hidden，但写诗需要循环传入之前输出的hidden。
 
 ### 7. 模型的保存与加载
 
@@ -449,7 +453,7 @@ model.visual_feature(data)   # 特征的可视化
 
 ### 10. 自定义随机数种子
 
-默认初始化是随机的，每次训练结果都不一样。可以使用`set_seed()`函数设定随机数种子，使得训练结果可被其他人复现。一旦指定，则每次训练结果一致。使用方法如下：
+默认初始化是随机的，因此每次模型训练效果可能存在差异。可以使用`set_seed()`函数设定随机数种子，使得训练结果可被其他人复现。一旦指定，则每次训练结果一致。使用方法如下：
 
 ``` python
 model = nn()
@@ -487,15 +491,15 @@ model.train(...,metrics=["mse"])
 
 例：
 
-回归：`model.train(...,loss="SmoothL1Loss", metrics=["mae"])`
+- 回归：`model.train(...,loss="SmoothL1Loss", metrics=["mae"])`
 
-分类：`model.train(...,loss="CrossEntropyLoss",metrics=["acc"])`
+- 分类：`model.train(...,loss="CrossEntropyLoss",metrics=["acc"])`
 
 ### 13. CNN特征提取
 
-图像特征提取是计算机视觉中的重要研究领域之一，是计算机视觉中的一个关键步骤，它涉及将图像转换成一组有意义的特征向量，以便后续的图像分析和识别任务。CNN（卷积神经网络）特征提取方法是一种基于深度学习的特征提取方法，通过卷积层、池化层等多个网络层的处理，可以提取出具有高层次抽象能力的特征表示，被广泛应用于图像分类、目标检测等领域。
+图像特征提取是计算机视觉中的重要研究领域之一，是计算机视觉中的一个关键步骤，它涉及将图像转换成一组有意义的特征向量，以便于后续的图像分析和识别任务。CNN（卷积神经网络）特征提取方法是一种基于深度学习的特征提取方法，通过卷积层、池化层等多个网络层的处理，可以提取出具有高层次抽象能力的特征表示，被广泛应用于图像分类、目标检测等领域。
 
-BaseNN中提供了一个CNN特征提取工具，可使用BaeNN的`model.extract_feature()`函数通过指定预训练模型来提取图像特征，使用ResNet预训练模型可将一张图像提取为1000维的特征（该预训练模型是在imagenet上训练的千分类模型，所以输出特征的维度是1000维），输出一个1行1000列的数组。
+BaseNN中提供了一个CNN特征提取工具，可使用BaseNN的`model.extract_feature()`函数通过指定预训练模型来提取图像特征，使用ResNet预训练模型可将一张图像提取为1000维的特征（该预训练模型是在imagenet上训练的千分类模型，所以输出特征的维度是1000维），输出一个1行1000列的数组。
 
 ```python
 # 声明模型
@@ -514,10 +518,11 @@ feature = model.extract_feature(img, pretrain='resnet18')
 
 使用BaseNN可以轻易地创建深度学习模型。不同类型的神经网络适用于不同类型的问题，比如CNN通常用于处理图像问题，RNN通常用于处理序列问题，全连接神经网络可以应用于各种问题。
 
-首先以典型的LeNet5网络结构为例。注释标明了数据经过各层的尺寸变化。
+首先以一个传统的卷积神经网络结构为例。注释标明了数据经过各层的尺寸变化。
 
 ``` python
-model.add('conv2d', size=(1, 3),kernel_size=( 3, 3), activation='relu') # [100, 3, 18, 18]
+# 输入: [100,1,20,20]
+model.add('conv2d', size=(1, 3),kernel_size=(3, 3), activation='relu') # [100, 3, 18, 18]
 model.add('maxpool', kernel_size=(2,2)) # [100, 3, 9, 9]
 model.add('conv2d', size=(3, 10), kernel_size=(3, 3), activation='relu') # [100, 10, 7, 7]
 model.add('avgpool', kernel_size=(2,2)) # [100, 10, 3, 3]
@@ -526,71 +531,74 @@ model.add('linear', size=(10, 2), activation='softmax') # [100,2]
 model.add(optimizer='SGD') # 设定优化器
 ```
 
-添加层的方法为`add(self, layer=None, activation=None, optimizer='SGD', **kw)`，
+以上代码注释中数字代表含义说明:
 
-参数说明:
+以[100, 3, 18, 18]为例 ，其对应含义为 [图像数量, 通道数, 图像维度, 图像维度]。
 
-layer：层的类型，可选值包括Conv2D, MaxPool, AvgPool, Linear, Dropout。
+这里我们讨论简单卷积，卷积前后数据尺寸的变化可以利用以下公式解决：
 
-activation：激活函数类型，可选值包括ReLU，Softmax。
+N = W - F + 1 ，其中N表示输出大小，F表示卷积核大小，W表示输入大小。（这里输入、输出和卷积核均为正方形）
 
-optimizer：为优化器类型，默认值为SGD，可选值包括SGD，Adam，Adagrad，ASGD。
+由于是正方形，池化操作后数据尺寸变化可以利用以下公式得出：
 
-kw：关键字参数，包括与size相关的各种参数，常用的如size=(x,y)，x为输入维度，y为输出维度；
-kernel_size=(a,b)， (a,b)表示核的尺寸。
+N = W/P ，其中P表示池化层的卷积核大小。
+
+从参数`kernel_size=(3,3)`可以得到卷积核大小为3，输入大小为20，根据公式20-3+1=18。
+
+根据参数`size=(1,3)`得出输入为1通道，输出为3通道。
+
+经过`kernel_size=(2,2)`的最大池化层后，根据公式18/2=9，得到输出数据尺寸为9x9大小。
+
+最后，由于线性层（linear）是一维的，因此二维数据在输入前要进行展平（flatten），将二维展平为1维。
+
+在以上代码中，输入linear层前，一张图像有10通道，每个通道的图像大小为3x3，因此展平后有10x3x3 = 90，这就是为什么要设置linear层`size=(90,10)`中，输入维度为90。
+
+添加层的方法为`add(layer=None, activation=None, optimizer=None, **kw)`。
+
+#### 参数说明:
+
+- layer：层的类型，可选值包括conv2d, conv1d, maxpool, avgpool, linear, dropout。
+
+- activation：激活函数类型，可选值包括ReLU，Softmax。
+
+- optimizer：为优化器类型，默认值为SGD，可选值包括SGD，Adam，Adagrad，ASGD。
+
+- kw：关键字参数，包括与size相关的各种参数，常用的如size=(x,y)，x为输入维度，y为输出维度；
+  kernel_size=(a,b)， (a,b)表示核的尺寸。
 
 以下具体讲述各种层：
 
-conv2d：卷积层（二维），需给定size，kernel_size。同时支持搭建conv1d（一维卷积层）。
+- conv1d: 卷积层（一维），需给定size，kernel_size。
 
-maxpool：最大池化层，需给定kernel_size。
+- conv2d：卷积层（二维），需给定size，kernel_size。
 
-avgpool：平均池化层，需给定kernel_size。
+- maxpool：最大池化层，需给定kernel_size。
 
-linear：线性层，需给定size。
+- avgpool：平均池化层，需给定kernel_size。
 
-dropout：随机失活层，需给定p（概率）。作用为随机关闭一些神经元，避免过拟合。其中参数`p`表示关闭神经元的比例，比如此处
-p=0.2
-表示有随机20%的神经元会被关闭。这种网络层是为了优化效果，避免过拟合而加入的，不是必需的，因此可以尝试修改p的值甚至删掉这个层观察比较效果差距。
+- linear：线性层，需给定size。
 
-再以RNN模型（循环神经网络）为例进行详细说明：
+- dropout：随机失活层，需给定p（概率）。作用为随机关闭一些神经元，避免过拟合。其中参数`p`表示关闭神经元的比例，比如此处
+  p=0.2
+  表示有随机20%的神经元会被关闭。这种网络层是为了优化效果，避免过拟合而加入的，不是必需的，因此可以尝试修改p的值甚至删掉这个层观察比较效果差距。
+
+再以lstm为例进行详细说明：lstm（Long Short-Term Memory，长短时记忆）是一种特殊的RNN（Recurrent Neural Network，循环神经网络）模型，主要用于处理序列数据。lstm模型在自然语言处理、语音识别、时间序列预测等任务中被广泛应用，特别是在需要处理长序列数据时，lstm模型可以更好地捕捉序列中的长程依赖关系。
 
 ```python
 model.add('lstm',size=(128,256),num_layers=2)
 ```
 
-lstm（Long Short-Term Memory，长短时记忆）是一种特殊的RNN（Recurrent
-Neural
-Network，循环神经网络）模型，主要用于处理序列数据。lstm模型在自然语言处理、语音识别、时间序列预测等任务中被广泛应用，特别是在需要处理长序列数据时，lstm模型可以更好地捕捉序列中的长程依赖关系。
+#### 参数说明：
 
-size的两个值：
+- size中的的两个值：第一个为嵌入层维度(embedding_dim)，即文本转化为词向量后的向量维度。第二个为隐藏层维度(hidden_dim)，即lstm隐藏层中神经元数量。
 
-第一个为嵌入层维度(embedding_dim)，
-
-第二个为隐藏层维度(hidden_dim)，即lstm隐藏层中神经元数量。
-
-参数说明：
-
-input_size：
-输入数据的特征维数，即每一个字用多少维的向量来表示，通常就是embedding_dim(词向量的维度)。
-
-hidden_size：LSTM中隐藏层的神经元数量。
-
-num_layers：循环神经网络的层数。一般1\~5，常用2、3层，太多层会大幅度影响训练速度和收敛难度。
-
-bias：用不用偏置，default=True。
-
-dropout：随机失活层，默认是0，代表不用dropout。作用为随机关闭一些神经元，避免过拟合。其中参数`p`表示关闭神经元的比例，比如此处
-p=0.2
-表示有随机20%的神经元会被关闭。这种网络层是为了优化效果，避免过拟合而加入的，不是必需的，因此可以尝试修改p的值甚至删掉这个层观察比较效果差距。
-
-bidirectional：默认是false，代表不用双向LSTM。
+- num_layers：循环神经网络的层数。一般1\~5，常用2、3层，太多层会大幅度影响训练速度和收敛难度。
 
 以上仅是基本的模型架构。在实际使用中，可能需要调整模型的层数、节点数、激活函数等参数以达到最佳效果。
 
 ### 拓展\--RNN模型搭建简单指南：
 
-循环神经网络是一类以序列数据为输入，在序列的演进方向进行递归且所有节点（循环单元）按链式连接的递归神经网络。RNN在自然语言处理问题中有得到应用，也被用于与自然语言处理有关的异常值检测问题，例如社交网络中虚假信息/账号的检测。NN与卷积神经网络向结合的系统可被应用于在计算机视觉问题，例如在字符识别中，有研究使用卷积神经网络对包含字符的图像进行特征提取，并将特征输入LSTM进行序列标注。
+循环神经网络是一类以序列数据为输入，在序列的演进方向进行递归且所有节点（循环单元）按链式连接的递归神经网络。RNN在自然语言处理问题中有得到应用，也被用于与自然语言处理有关的异常值检测问题，例如社交网络中虚假信息/账号的检测。RNN与CNN卷积神经网络相结合的系统可被应用于在计算机视觉问题，例如在字符识别中，有研究使用卷积神经网络对包含字符的图像进行特征提取，并将特征输入LSTM进行序列标注。
 
 下为搭建RNN神经网络的一般流程：
 
@@ -824,8 +832,8 @@ CNN是一种用于处理图像和空间数据的神经网络模型。例如图�
 
 ### 4. 深度学习常见的数据类型
 
-图像数据：图像数据是深度学习应用中最常见的数据类型之一。图像数据通常表示为多维数组，每个数组元素代表一个像素的值。深度学习应用中常使用的图像数据格式包括JPEG、PNG、BMP等。
+**图像数据**：图像数据是深度学习应用中最常见的数据类型之一。图像数据通常表示为多维数组，每个数组元素代表一个像素的值。深度学习应用中常使用的图像数据格式包括JPEG、PNG、BMP等。
 
-文本数据：文本数据是指由字符组成的序列数据。在深度学习应用中，文本数据通常被表示为词向量或字符向量，用于输入到文本处理模型中。
+**文本数据**：文本数据是指由字符组成的序列数据。在深度学习应用中，文本数据通常被表示为词向量或字符向量，用于输入到文本处理模型中。
 
-特征数据：特征数据指的是表示对象或事物的特征的数据，通常用于机器学习和数据挖掘。特征数据可以是数值型、离散型或者是二进制的，用于描述对象或事物的各种属性和特征。特征数据可以是手动设计的、自动提取的或者是混合的。在机器学习中，特征数据通常作为模型的输入，用于预测目标变量或者分类。
+**特征数据**：特征数据指的是表示对象或事物的特征的数据，通常用于机器学习和数据挖掘。特征数据可以是数值型、离散型或者是二进制的，用于描述对象或事物的各种属性和特征。特征数据可以是手动设计的、自动提取的或者是混合的。在机器学习中，特征数据通常作为模型的输入，用于预测目标变量或者分类。
