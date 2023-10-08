@@ -1,4 +1,4 @@
-# 深度学习工具库
+# 深度学习工具库XEdu-Hub
 
 .. toctree::
    :maxdepth: 2

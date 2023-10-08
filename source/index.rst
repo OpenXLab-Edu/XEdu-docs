@@ -13,6 +13,7 @@ OpenXLabEdu帮助文档
 
    about
    mmedu
+   xedu-hub
    basenn
    baseml
    easydl
@@ -21,7 +22,6 @@ OpenXLabEdu帮助文档
    scitech_tools
    support_resources
    dl_library
-   xedu-hub
 
 
 
