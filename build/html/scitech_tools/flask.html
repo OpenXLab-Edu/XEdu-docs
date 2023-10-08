@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Web库Flask &mdash; OpenXLabEdu  documentation</title>
@@ -11,10 +11,11 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -28,11 +29,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -86,9 +91,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../scitech_tools.html">相关科创工具</a> &raquo;</li>
-      <li>Web库Flask</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../scitech_tools.html">相关科创工具</a></li>
+      <li class="breadcrumb-item active">Web库Flask</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/scitech_tools/flask.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -99,15 +104,15 @@
            <div itemprop="articleBody">
              
   <section id="webflask">
-<h1>Web库Flask<a class="headerlink" href="#webflask" title="Permalink to this headline"></a></h1>
+<h1>Web库Flask<a class="headerlink" href="#webflask" title="Permalink to this heading"></a></h1>
 <section id="id1">
-<h2>1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<h2>1. 简介<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p>Flask是一个轻量级的可定制框架，使用Python语言编写，较其他同类型框架更为灵活、轻便、安全且容易上手，其强大的插件库可以让用户实现个性化的网站定制，开发出功能强大的网站。</p>
 <p>文档地址：<a class="reference external" href="https://dormousehole.readthedocs.io/en/latest/quickstart.html">https://dormousehole.readthedocs.io/en/latest/quickstart.html</a></p>
 <p>本文涉及的部分代码见XEdu帮助文档配套项目集：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&amp;sc=645caab8a8efa334b3f0eb24#public">https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&amp;sc=645caab8a8efa334b3f0eb24#public</a></p>
 </section>
 <section id="id2">
-<h2>2. 安装<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<h2>2. 安装<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
 <p>可以使用使用pip命令安装Flask库。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">flask</span>
 </pre></div>
@@ -115,9 +120,9 @@
 <p>注：XEdu一键安装包中已经内置了Flask库。</p>
 </section>
 <section id="id3">
-<h2>3. 代码示例<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<h2>3. 代码示例<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
 <section id="web">
-<h3>3.1 最简Web服务器<a class="headerlink" href="#web" title="Permalink to this headline"></a></h3>
+<h3>3.1 最简Web服务器<a class="headerlink" href="#web" title="Permalink to this heading"></a></h3>
 <p>几行代码就能建一个Web服务器。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
 
@@ -137,7 +142,7 @@
 </ul>
 </section>
 <section id="id4">
-<h3>3.2 上传一个文件<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<h3>3.2 上传一个文件<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
@@ -164,7 +169,7 @@
 </div>
 </section>
 <section id="webapi">
-<h3>3.3 一个简单的WebAPI<a class="headerlink" href="#webapi" title="Permalink to this headline"></a></h3>
+<h3>3.3 一个简单的WebAPI<a class="headerlink" href="#webapi" title="Permalink to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">jsonify</span><span class="p">,</span> <span class="n">request</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
@@ -181,7 +186,7 @@
 </section>
 </section>
 <section id="flask">
-<h2>4. 借助Flask部署智能应用<a class="headerlink" href="#flask" title="Permalink to this headline"></a></h2>
+<h2>4. 借助Flask部署智能应用<a class="headerlink" href="#flask" title="Permalink to this heading"></a></h2>
 <p>因为算力的限制，在很多应用场景中，负责采集数据的终端往往没有办法直接部署MMEdu或者其他的人工智能应用框架，也就是说没有办法在终端上直接推理。那么，先在服务器（或者一台算力较好的PC机）部署一个AI应用，提供WebAPI接口，让终端发送数据到这个服务器，服务器推理后返回推理结果。</p>
 <p>这种做法和很多智能终端的工作原理是一样的。如小度、天猫精灵和小爱音箱等，自己都没有处理数据的能力，都要靠网络传送数据到服务器，然后才能正确和用户交流。目前中小学的很多AI应用，都是借助百度AI开放平台的。</p>
 <p><img alt="../_images/flaskintro1.jpeg" src="../_images/flaskintro1.jpeg" /></p>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>目标检测模型Yolov3 &mdash; OpenXLabEdu  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="目标检测模型SSD" href="SSD_Lite.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            OpenXLabEdu
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mmedu.html">计算机视觉库MMEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basenn.html">神经网络库BaseNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../baseml.html">传统机器学习库BaseML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../easydl.html">EasyDL系列无代码工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basedt.html">数据处理库BaseDT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basedeploy.html">模型部署库BaseDeploy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scitech_tools.html">相关科创工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../support_resources.html">学习支持和资源获取</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../dl_library.html">深度学习知识库</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../parameter_explain.html">深度学习训练参数详解</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dataset_introduction.html">经典数据集介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../howtomake_imagenet.html">从零开始制作一个ImageNet格式数据集</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../howtomake_coco.html">从零开始制作一个COCO格式数据集</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../network_introduction.html">经典网络模型介绍</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="lenet5.html">图像分类模型LeNet-5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RegNet.html">图像分类模型RegNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RepVGG.html">图像分类模型RepVGG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ShuffleNet_v2.html">图像分类模型ShuffleNet_v2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="VGG.html">图像分类模型VGG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mobilenet.html">图像分类模型MobileNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ResNet.html">图像分类模型ResNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ResNeXt.html">图像分类模型ResNeXt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FasterRCNN.html">目标检测模型Faster R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Mask_RCNN.html">目标检测模型Mask R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SSD_Lite.html">目标检测模型SSD</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">目标检测模型Yolov3</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">介绍</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#end-to-end">特点：end-to-end</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">特点：回归问题</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">优点</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">适用领域</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">参考文献</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">OpenXLabEdu</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../dl_library.html">深度学习知识库</a></li>
+          <li class="breadcrumb-item"><a href="../network_introduction.html">经典网络模型介绍</a></li>
+      <li class="breadcrumb-item active">目标检测模型Yolov3</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/dl_library/net/Yolov3.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="yolov3">
+<h1>目标检测模型Yolov3<a class="headerlink" href="#yolov3" title="Permalink to this heading"></a></h1>
+<p><a class="reference external" href="https://arxiv.org/abs/1804.02767">Yolov3</a></p>
+<section id="id1">
+<h2>介绍<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>Yolo方法是目标检测的常用算法，是一种典型的one-stage检测方法。比起two-stage的方法，one-stage的Yolo方法少了一次卷积获得proposal的过程，直接从图像中用一个卷积神经网络得出预测结果。特点是快而且精确度较高，略低于two-stage方法。Yolo的全称是you
+only look
+once，意为只检测一次，与其只有一个卷积网络吻合。是一种兼顾速度与准确率的方法。</p>
+</section>
+<section id="end-to-end">
+<h2>特点：end-to-end<a class="headerlink" href="#end-to-end" title="Permalink to this heading"></a></h2>
+<p>end-to-end的意思是，输入是最原始的数据，输出是想要得到的结果，不需要额外对数据集进行处理，也不需要对结果再进行加工。特征的提取，训练都在算法内部。
+这使得yolo网络目标明确，方便使用。</p>
+</section>
+<section id="id2">
+<h2>特点：回归问题<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>Yolo中的检测是一个回归问题，把受检测图片划分为<span class="math notranslate nohighlight">\(S \cdot S\)</span>个格子，然后对于每一个格子，预测五个值，(x,y,w,h,confidence)。</p>
+<p><img alt="image1" src="../../_images/grids.PNG" /></p>
+<ul class="simple">
+<li><p>x,y 分别为boundingbox的中心坐标（相对于本格子）</p></li>
+<li><p>w,h 分别为boundingbox的宽度和高度</p></li>
+<li><p>confidence
+为置信度，计算为<span class="math notranslate nohighlight">\(confidence = P \cdot IOU\)</span>,P为groundtruth是否在本格子里，是为1，否为0；IOU为预测的boundingbox与实际groundtruth的交集比上并集的比值。</p></li>
+</ul>
+<p>生成的时候要对每个格子生成<span class="math notranslate nohighlight">\(2 \cdot boundingbox + classes\)</span>数量的预测值。总共就是<span class="math notranslate nohighlight">\((S \cdot S \cdot (2 \cdot B + C))\)</span>个值。
+一个总的流程大意图如下：</p>
+<p><img alt="image2" src="../../_images/process.PNG" /></p>
+<p>以上原理是Yolov1的原理和思想，v3与其基本思想一致，网络结构上有一些差异，v3的网络结构如下图:</p>
+<p><img alt="image3" src="../../_images/Net.PNG" /></p>
+<p>其网络结构有53个卷积层。</p>
+</section>
+<section id="id3">
+<h2>优点<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>只进行一次检测，速度较快</p></li>
+<li><p>输入输出为原图片和检测结果，便于使用</p></li>
+<li><p>精确度较高</p></li>
+</ul>
+</section>
+<section id="id4">
+<h2>适用领域<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<p>稍微大型的目标检测问题</p>
+</section>
+<section id="id5">
+<h2>参考文献<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<div class="highlight-bibtex notranslate"><div class="highlight"><pre><span></span><span class="nc">@inproceedings</span><span class="p">{</span><span class="nl">redmon2016you</span><span class="p">,</span>
+<span class="w">  </span><span class="na">title</span><span class="p">=</span><span class="s">{You only look once: Unified, real-time object detection}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">author</span><span class="p">=</span><span class="s">{Redmon, Joseph and Divvala, Santosh and Girshick, Ross and Farhadi, Ali}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">booktitle</span><span class="p">=</span><span class="s">{Proceedings of the IEEE conference on computer vision and pattern recognition}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">pages</span><span class="p">=</span><span class="s">{779--788}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">year</span><span class="p">=</span><span class="s">{2016}</span>
+<span class="p">}</span>
+<span class="nc">@article</span><span class="p">{</span><span class="nl">redmon2018yolov3</span><span class="p">,</span>
+<span class="w">  </span><span class="na">title</span><span class="p">=</span><span class="s">{Yolov3: An incremental improvement}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">author</span><span class="p">=</span><span class="s">{Redmon, Joseph and Farhadi, Ali}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">journal</span><span class="p">=</span><span class="s">{arXiv preprint arXiv:1804.02767}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">year</span><span class="p">=</span><span class="s">{2018}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="SSD_Lite.html" class="btn btn-neutral float-left" title="目标检测模型SSD" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2023 OpenXLabEdu.All Rights Reserved.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

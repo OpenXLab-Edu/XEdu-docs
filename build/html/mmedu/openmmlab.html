@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>走向OpenMMLab &mdash; OpenXLabEdu  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="神经网络库BaseNN" href="../basenn.html" />
+    <link rel="prev" title="最后一步：AI模型转换" href="model_convert.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenXLabEdu
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="quick_start.html">快速体验MMEdu，开始！</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html">MMEdu安装和下载</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#id1">快速了解安装方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">MMEdu基本功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmclassification.html">解锁图像分类模块：MMClassification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmdetection.html">揭秘目标检测模块：MMDetection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmediting.html">图像处理模块：MMEditing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_convert.html">最后一步：AI模型转换</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">走向OpenMMLab</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">OpenMMLab简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">训练参数详解</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">如果查看准确率</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">日志文件解读</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basenn.html">神经网络库BaseNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../baseml.html">传统机器学习库BaseML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basedt.html">数据处理库BaseDT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basedeploy.html">模型部署库BaseDeploy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scitech_tools.html">相关科创工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support_resources.html">学习支持和资源获取</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dl_library.html">深度学习知识库</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenXLabEdu</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../mmedu.html">计算机视觉库MMEdu</a></li>
+      <li class="breadcrumb-item active">走向OpenMMLab</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/mmedu/openmmlab.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="openmmlab">
+<h1>走向OpenMMLab<a class="headerlink" href="#openmmlab" title="Permalink to this heading"></a></h1>
+<section id="id1">
+<h2>OpenMMLab简介<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>当你打开这个页面，说明MMEdu已经入门，并期望使用更多的参数，训练出更好的模型。</p>
+<p>MMEdu源自OpenMMLab。OpenMMLab（浦视）是上海人工智能实验室的计算机视觉算法开源体系 OpenMMLab是深度学习时代全球领域最全面、最具影响力的视觉算法开源项目，全球最大最全的开源计算机视觉算法库，为学术和产业界提供一个可跨方向、结构精良、易复现的统一算法工具库。</p>
+<p>OpenMMLab 已经累计开源了超过 30 个算法库，涵盖分类、检测、分割、视频理解等众多研究领域，拥有超过 300 种算法、2,400 多个预训练模型。在 GitHub 上获得超过 72,000 个标星，同时吸引了超过 1,500 名社区开发者参与项目贡献，用户遍及超过 110 个国家和地区，覆盖全国全球顶尖高校、研究机构和企业。</p>
+<p>MMEdu保留了OpenMMLab的各种参数，尤其是模型训练的所有常见参数。如果要训练出更加专业的模型，你需要先了解OpenMMLab。</p>
+<p>OpenMMLab官方地址：<a href="https://openmmlab.com/">https://openmmlab.com/</a></p>
+</section>
+<section id="id2">
+<h2>训练参数详解<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">train</span></code>函数支持很多参数，为了降低难度，MMEdu已经给绝大多数的参数设置了默认值。根据具体的情况修改参数，可能会得到更好的训练效果。下面来详细说明<code class="docutils literal notranslate"><span class="pre">train</span></code>函数的各个参数。</p>
+<p><code class="docutils literal notranslate"><span class="pre">epochs</span></code>：默认参数为<code class="docutils literal notranslate"><span class="pre">100</span></code>，用于指定训练的轮次，而在上述代码中我们设置为<code class="docutils literal notranslate"><span class="pre">10</span></code>。</p>
+<p><code class="docutils literal notranslate"><span class="pre">batch_size</span></code>：批大小，一次训练所选取的样本数，指每次训练在训练集中取batch_size个样本训练。默认参数为<code class="docutils literal notranslate"><span class="pre">None</span></code>，如为<code class="docutils literal notranslate"><span class="pre">None</span></code>则默认为对应网络配置文件中设置的<code class="docutils literal notranslate"><span class="pre">samples_per_gpu</span></code>的值，用于指定一次训练所选取的样本数。当训练集样本非常多时，直接将这些数据输入到神经网络的话会导致计算量非常大，容易因内存不足导致内核挂掉，因此可引入<code class="docutils literal notranslate"><span class="pre">batch_size</span></code>参数的设置。关于<code class="docutils literal notranslate"><span class="pre">batch_size</span></code>的取值范围，应该大于类别数，小于样本数，且由于GPU对2的幂次的<code class="docutils literal notranslate"><span class="pre">batch</span></code>可以发挥更佳的性能，因此设置成16、32、64、128…时往往要比设置为整10、整100的倍数时表现更优。</p>
+<p><code class="docutils literal notranslate"><span class="pre">validate</span></code>：布尔值，只能为<code class="docutils literal notranslate"><span class="pre">True</span></code>或者<code class="docutils literal notranslate"><span class="pre">False</span></code>，默认参数为<code class="docutils literal notranslate"><span class="pre">True</span></code>，在训练结束后，设定是否需要在验证集上进行评估，<code class="docutils literal notranslate"><span class="pre">True</span></code>则是需要进行评估。</p>
+<p><code class="docutils literal notranslate"><span class="pre">random_seed</span></code>：随机种子策略，默认为<code class="docutils literal notranslate"><span class="pre">0</span></code>即不使用，使用随机种子策略会减小模型算法结果的随机性。</p>
+<p><code class="docutils literal notranslate"><span class="pre">save_fold</span></code>：模型的保存路径，参数为<code class="docutils literal notranslate"><span class="pre">None</span></code>，默认保存路径为<code class="docutils literal notranslate"><span class="pre">./checkpoints/cls_model/</span></code>，如果不想模型保存在该目录下，可自己指定路径。</p>
+<p><code class="docutils literal notranslate"><span class="pre">distributed</span></code>：布尔值，表示是否在分布式环境中训练该模型，默认为<code class="docutils literal notranslate"><span class="pre">False</span></code>。</p>
+<p><code class="docutils literal notranslate"><span class="pre">device</span></code>：训练时所使用的设备，默认为<code class="docutils literal notranslate"><span class="pre">'cpu'</span></code>，如果电脑支持GPU，也可以将参数修改为<code class="docutils literal notranslate"><span class="pre">'cuda'</span></code>，使用GPU进行推理。</p>
+<p><code class="docutils literal notranslate"><span class="pre">metric</span></code>：验证指标，默认参数为<code class="docutils literal notranslate"><span class="pre">'accuracy'</span></code>，在进行模型评估时会计算分类准确率，数值越高说明模型性能越好，我们在运行完程序之后也会看到这个结果。</p>
+<p><code class="docutils literal notranslate"><span class="pre">save_best</span></code>：验证指标，默认参数为<code class="docutils literal notranslate"><span class="pre">'auto'</span></code>，在进行模型评估时会计算分类准确率，数值越高说明模型性能越好，运行完程序之后会将这个结果保存。</p>
+<p><code class="docutils literal notranslate"><span class="pre">optimizer</span></code>：进行迭代时的优化器，默认参数为<code class="docutils literal notranslate"><span class="pre">SGD</span></code>，<code class="docutils literal notranslate"><span class="pre">SGD</span></code>会在训练的过程中迭代计算mini-bath的梯度。</p>
+<p><code class="docutils literal notranslate"><span class="pre">lr</span></code>：学习率，默认参数为<code class="docutils literal notranslate"><span class="pre">1e-2</span></code>即<code class="docutils literal notranslate"><span class="pre">0.01</span></code>，指定模型进行梯度下降时的步长。简单解释就是，学习率过小，训练过程会很缓慢，学习率过大时，模型精度会降低。</p>
+<p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>：指定使用的模型权重文件，默认参数为<code class="docutils literal notranslate"><span class="pre">None</span></code>，如果没有指定模型权重文件，那么我们将会使用默认的模型权重文件进行推理。</p>
+<p>执行上述代码之后的运行结果如下图：</p>
+<p><img alt="../_images/clsModelTrain.png" src="../_images/clsModelTrain.png" /></p>
+<p>而在<code class="docutils literal notranslate"><span class="pre">checkpoints\cls_model</span></code>文件夹中我们会发现多了两种文件，一个是<code class="docutils literal notranslate"><span class="pre">***.log.json</span></code>文件，它记录了我们模型在训练过程中的一些参数，比如说学习率<code class="docutils literal notranslate"><span class="pre">lr</span></code>，所用时间<code class="docutils literal notranslate"><span class="pre">time</span></code>，以及损失<code class="docutils literal notranslate"><span class="pre">loss</span></code>等；另一个文件是.pth文件，这个是我们在训练过程中所保存的模型。</p>
+</section>
+<section id="id3">
+<h2>如果查看准确率<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>方式一：通过训练输出（如上图），运行训练代码时输出项里会出现学习率lr，所用时间time，以及损失loss，每一轮在验证上的accuracy_top-**等。</p>
+<p>方式二：通过日志文件，在训练过程中我们会发现模型保存路径下（代码中指定指定）出现一个*.log.json文件，这就是日志文件，它记录了我们模型在训练过程中的一些信息。</p>
+<p>当您启动验证集验证，即设置“validate=True”，表示每轮（每个epoch）训练后，在验证集（val_set）上测试一次准确率。那么每一轮训练结束时会呈现一次准确率，并且会生成best_accuracy_top-*.pth权重文件即最佳准确率权重文件。</p>
+<p>accuracy_top-1：对一张图片，如果你的预测结果中概率最大的那个分类正确，则认为正确，再根据分类正确的样本数除以所有的样本数计算得到的准确率。</p>
+<p>accuracy_top-5：对一张图片，如果预测概率前五名的答案中出现了正确答案，便认为正确，再根据分类正确的样本数除以所有的样本数计算得到的准确率，在MMClassification中，如果类别数量大于5会启动accuracy_top-5准确率。</p>
+</section>
+<section id="id4">
+<h2>日志文件解读<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Epoch[1][10/838]</span></code>: 1表示当前是第1个epoch，而10/838表示当前正在处理第10个批次，一共有838个批次。在深度学习模型的训练过程中，通常会将训练数据集分成若干个批次，每个批次包含一定数量的样本（每批次样本数和batch_size设置相关），训练时会使用这些批次逐步迭代来更新模型的参数。</p>
+<p><code class="docutils literal notranslate"><span class="pre">lr</span></code>: 学习率。</p>
+<p><code class="docutils literal notranslate"><span class="pre">eta</span></code>: 表示预计完成整个训练所需要的时间。</p>
+<p><code class="docutils literal notranslate"><span class="pre">time</span></code>: 表示本批次训练需要的时间。</p>
+<p><code class="docutils literal notranslate"><span class="pre">data_time</span></code>: 数据预处理的时间。</p>
+<p><code class="docutils literal notranslate"><span class="pre">memory</span></code>: 训练时占据内存或现存的大小。</p>
+<p><code class="docutils literal notranslate"><span class="pre">loss</span></code>: 本批次模型在训练集上计算的损失值。loss是衡量模型在训练集上预测结果与真实结果之间差异的指标。不同类型的模型（如分类、回归、生成等）使用不同的loss函数来优化模型，MMEdu的图像分类模型一般使用交叉熵损失函数。通常情况下，训练过程中的loss会逐渐下降，表示模型在逐步学习优化。</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="model_convert.html" class="btn btn-neutral float-left" title="最后一步：AI模型转换" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../basenn.html" class="btn btn-neutral float-right" title="神经网络库BaseNN" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2023 OpenXLabEdu.All Rights Reserved.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

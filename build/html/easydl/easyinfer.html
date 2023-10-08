@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EasyInference（模型推理辅助工具） &mdash; OpenXLabEdu  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="EasyAPI（AI模型远程推理工具）" href="easyapi.html" />
+    <link rel="prev" title="EasyTrain（模型训练辅助工具）" href="easytrain.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenXLabEdu
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basenn.html">神经网络库BaseNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../baseml.html">传统机器学习库BaseML</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">EasyDL系列工具功能详解</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howtoget.html">如何获取EasyDL系列工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="easytrain.html">EasyTrain（模型训练辅助工具）</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">EasyInference（模型推理辅助工具）</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">EasyInference简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">快速体验用EasyInference完成模型推理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">注意事项</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="easyapi.html">EasyAPI（AI模型远程推理工具）</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basedt.html">数据处理库BaseDT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basedeploy.html">模型部署库BaseDeploy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scitech_tools.html">相关科创工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support_resources.html">学习支持和资源获取</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dl_library.html">深度学习知识库</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenXLabEdu</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../easydl.html">EasyDL系列无代码工具</a></li>
+      <li class="breadcrumb-item active">EasyInference（模型推理辅助工具）</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/easydl/easyinfer.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="easyinference">
+<h1>EasyInference（模型推理辅助工具）<a class="headerlink" href="#easyinference" title="Permalink to this heading"></a></h1>
+<section id="id1">
+<h2>EasyInference简介<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>EasyInference是模型推理工具。借助EasyInference，不需要编写一行代码，即可完成模型的推理。支持一张图片和一个文件夹的批量推理。</p>
+</section>
+<section id="id2">
+<h2>快速体验用EasyInference完成模型推理<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>EasyInference页面的左侧还是基本的参数选择，包括问题类型，算法类型，权重文件，类别文件，推理结果的保存路径。
+如果推理结果的保存路径不选择，会默认保存到当前文件夹下的<code class="docutils literal notranslate"><span class="pre">det_result</span></code>中。
+但是请选择一个空文件夹作为保存路径，否则预览界面会出现问题。</p>
+<p>在一个单选按钮中选择要推理的文件夹或者单张图片，无论选择哪个都会弹出选择框。</p>
+<p>如果选择推理单张图片，请选择一张图片，格式支持jpg，jpeg，png。请注意，即使多选，也只会推理第一张。如果发现文件夹中并没有想要的图片，再确认该图片确实在此路径下后，可以通过尝试更改查找时文件的后缀名（如下图所示）来寻找图片。</p>
+<p><img alt="../_images/infselsingle.PNG" src="../_images/infselsingle.PNG" /></p>
+<p>如果是选择文件夹，选择该文件夹即可。</p>
+<p><img alt="../_images/infselfolder.PNG" src="../_images/infselfolder.PNG" /></p>
+<p>如果问题类型为检测，则会多出两个参数选择，分别是rpn阈值和rcnn阈值，请选择0-1之内的数字。</p>
+<p><img alt="../_images/infmoreparam.PNG" src="../_images/infmoreparam.PNG" /></p>
+<p>点击”生成代码”后，代码会保存在<code class="docutils literal notranslate"><span class="pre">inference_code.py</span></code>中，并且在界面中显示。</p>
+<p>点击”开始推理”后，会弹出提示框并且进行推理。请注意，运行过程中主界面会卡住，请耐心等待推理完成，推理完成后会在右下角显示推理信息，也会在上方显示结果图片。</p>
+<p>点击”上一张”，”下一张”可以进行切换。如果保存路径还有其他图片，程序会将那些图片全都展示，所以建议在推理之前清空保存路径。</p>
+</section>
+<section id="id3">
+<h2>注意事项<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>一部分参数有范围，例如学习率只能为正值，轮数只能为正整数，请选择合理范围的参数。</p></li>
+<li><p>关于设备类型，如果没有安装GPU版本的XEdu各模块，则不能以cuda设备运行，只能选择cpu。</p></li>
+<li><p>请选择空文件夹进行结果的保存，原因已经解释过。</p></li>
+<li><p>请确认推理时选择的网络是否与权重文件匹配，如果不匹配会报错。</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="easytrain.html" class="btn btn-neutral float-left" title="EasyTrain（模型训练辅助工具）" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="easyapi.html" class="btn btn-neutral float-right" title="EasyAPI（AI模型远程推理工具）" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2023 OpenXLabEdu.All Rights Reserved.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

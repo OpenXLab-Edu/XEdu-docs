@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>经典网络模型介绍 &mdash; OpenXLabEdu  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="图像分类模型LeNet-5" href="net/lenet5.html" />
+    <link rel="prev" title="从零开始制作一个COCO格式数据集" href="howtomake_coco.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenXLabEdu
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basenn.html">神经网络库BaseNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../baseml.html">传统机器学习库BaseML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basedt.html">数据处理库BaseDT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basedeploy.html">模型部署库BaseDeploy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scitech_tools.html">相关科创工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support_resources.html">学习支持和资源获取</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../dl_library.html">深度学习知识库</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="parameter_explain.html">深度学习训练参数详解</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataset_introduction.html">经典数据集介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howtomake_imagenet.html">从零开始制作一个ImageNet格式数据集</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howtomake_coco.html">从零开始制作一个COCO格式数据集</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">经典网络模型介绍</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="net/lenet5.html">图像分类模型LeNet-5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="net/RegNet.html">图像分类模型RegNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="net/RepVGG.html">图像分类模型RepVGG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="net/ShuffleNet_v2.html">图像分类模型ShuffleNet_v2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="net/VGG.html">图像分类模型VGG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="net/mobilenet.html">图像分类模型MobileNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="net/ResNet.html">图像分类模型ResNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="net/ResNeXt.html">图像分类模型ResNeXt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="net/FasterRCNN.html">目标检测模型Faster R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="net/Mask_RCNN.html">目标检测模型Mask R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="net/SSD_Lite.html">目标检测模型SSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="net/Yolov3.html">目标检测模型Yolov3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenXLabEdu</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../dl_library.html">深度学习知识库</a></li>
+      <li class="breadcrumb-item active">经典网络模型介绍</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/dl_library/network_introduction.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>经典网络模型介绍<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="net/lenet5.html">图像分类模型LeNet-5</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="net/lenet5.html#id1">简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/lenet5.html#id2">网络结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/lenet5.html#id3">优点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/lenet5.html#id4">适用领域</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/lenet5.html#id5">参考文献</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="net/RegNet.html">图像分类模型RegNet</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="net/RegNet.html#id1">简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/RegNet.html#id2">RegNet网络结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/RegNet.html#anynet">特点：AnyNet设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/RegNet.html#id3">参考文献</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="net/RepVGG.html">图像分类模型RepVGG</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="net/RepVGG.html#id1">简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/RepVGG.html#resnext">ResNeXt网络结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/RepVGG.html#id2">特点：重参数化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/RepVGG.html#id3">总结</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/RepVGG.html#id4">参考文献</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="net/ShuffleNet_v2.html">图像分类模型ShuffleNet_v2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="net/ShuffleNet_v2.html#id1">简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/ShuffleNet_v2.html#id2">特点</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="net/ShuffleNet_v2.html#channelmac-flops">1：当卷积层的输入特征矩阵与输出特征矩阵channel相等时MAC最小(保持FLOPs不变时)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="net/ShuffleNet_v2.html#gconvgroups-flops-mac">2：当GConv的groups增大时(保持FLOPs不变时)，MAC也会增大</a></li>
+<li class="toctree-l3"><a class="reference internal" href="net/ShuffleNet_v2.html#id3">3：网络设计的碎片化程度越高，速度越慢</a></li>
+<li class="toctree-l3"><a class="reference internal" href="net/ShuffleNet_v2.html#element-wise">4：Element-wise操作带来的影响是不可忽视的</a></li>
+<li class="toctree-l3"><a class="reference internal" href="net/ShuffleNet_v2.html#id4">总结：</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="net/ShuffleNet_v2.html#shufflenetv2">ShuffleNetV2网络结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/ShuffleNet_v2.html#id5">总结</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/ShuffleNet_v2.html#id7">参考文献</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="net/VGG.html">图像分类模型VGG</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="net/VGG.html#id1">简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/VGG.html#id2">特点：小卷积核和多卷积子层</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/VGG.html#id3">特点：全连接转卷积</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/VGG.html#id4">VGG网络结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/VGG.html#id5">优点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/VGG.html#id6">适用领域</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/VGG.html#id7">参考文献</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="net/mobilenet.html">图像分类模型MobileNet</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="net/mobilenet.html#id1">介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/mobilenet.html#id2">特点：深度可分离卷积</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/mobilenet.html#linear-bottleneck">特点：Linear Bottleneck</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/mobilenet.html#id3">网络结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/mobilenet.html#id4">优点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/mobilenet.html#id5">使用领域</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/mobilenet.html#id6">参考文献</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="net/ResNet.html">图像分类模型ResNet</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="net/ResNet.html#id1">简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/ResNet.html#id2">特点：残差结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/ResNet.html#id3">ResNet网络结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/ResNet.html#id4">优点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/ResNet.html#id5">适用领域</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/ResNet.html#id6">参考文献</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="net/ResNeXt.html">图像分类模型ResNeXt</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="net/ResNeXt.html#id1">简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/ResNeXt.html#block">特点：block单元</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/ResNeXt.html#id2">ResNeXt网络结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/ResNeXt.html#id3">优点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/ResNeXt.html#id4">参考文献</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="net/FasterRCNN.html">目标检测模型Faster R-CNN</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="net/FasterRCNN.html#id1">简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/FasterRCNN.html#id2">发展历程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/FasterRCNN.html#region-proposal-networks-rpn">特点：区域候选网络(Region Proposal Networks,RPN)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/FasterRCNN.html#feature-pyramid-networks-fpn">特点：特征金字塔(Feature Pyramid Networks,FPN)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/FasterRCNN.html#id3">优点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/FasterRCNN.html#id4">适用领域</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/FasterRCNN.html#id5">预训练模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/FasterRCNN.html#id6">参考文献</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="net/Mask_RCNN.html">目标检测模型Mask R-CNN</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="net/Mask_RCNN.html#id1">简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/Mask_RCNN.html#mask">特点：Mask预测分支</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/Mask_RCNN.html#roialign">特点：RoIAlign</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/Mask_RCNN.html#id2">优点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/Mask_RCNN.html#id3">适用领域</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/Mask_RCNN.html#id4">预训练模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/Mask_RCNN.html#id5">参考文献</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="net/SSD_Lite.html">目标检测模型SSD</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="net/SSD_Lite.html#id1">介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/SSD_Lite.html#end-to-end">特点：end-to-end</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/SSD_Lite.html#id2">优点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/SSD_Lite.html#id3">设计理念</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/SSD_Lite.html#id4">模型结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/SSD_Lite.html#id5">结论</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="net/SSD_Lite.html#id6">优点：</a></li>
+<li class="toctree-l3"><a class="reference internal" href="net/SSD_Lite.html#id8">缺点：</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="net/SSD_Lite.html#id9">参考文献</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="net/Yolov3.html">目标检测模型Yolov3</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="net/Yolov3.html#id1">介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/Yolov3.html#end-to-end">特点：end-to-end</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/Yolov3.html#id2">特点：回归问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/Yolov3.html#id3">优点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/Yolov3.html#id4">适用领域</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net/Yolov3.html#id5">参考文献</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="howtomake_coco.html" class="btn btn-neutral float-left" title="从零开始制作一个COCO格式数据集" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="net/lenet5.html" class="btn btn-neutral float-right" title="图像分类模型LeNet-5" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2023 OpenXLabEdu.All Rights Reserved.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
