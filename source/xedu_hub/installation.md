@@ -1,10 +1,10 @@
+# XEdu-Hub安装
+
 你可以通过pip命令来安装XEdu-Hub。
 
 
 
-```
-pip install xedu-python` 或 `pip install XEdu-python
-```
+`pip install xedu-python` 或 `pip install XEdu-python`
 
 
 
