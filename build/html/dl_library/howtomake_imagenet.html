@@ -47,6 +47,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEdu-Hub</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basenn.html">神经网络库BaseNN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../baseml.html">传统机器学习库BaseML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a></li>
@@ -161,11 +162,7 @@
 <section id="id6">
 <h2>选择2：按照标准方式制作<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h2>
 <section id="id7">
-<<<<<<< HEAD
 <h3>第一步：整理图片<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
-=======
-<h3>第一步：整理图片<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
->>>>>>> 8b47d1f5a47a339223cc58ec3c0c173a3f16b1ce
 <p>您可以用任何设备拍摄图像，也可以从视频中抽取帧图像，需要注意，这些图像可以被划分为多个类别。每个类别建立一个文件夹，文件夹名称为类别名称，将图片放在其中。</p>
 <p>接下来需要对图片进行尺寸、保存格式等的统一，简单情况下的参考代码如下：</p>
 <div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>from PIL import Image
@@ -196,11 +193,7 @@ for cnt in range(len(classes)):
 </div>
 </section>
 <section id="id8">
-<<<<<<< HEAD
 <h3>第二步：划分训练集、验证集和测试集<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
-=======
-<h3>第二步：划分训练集、验证集和测试集<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
->>>>>>> 8b47d1f5a47a339223cc58ec3c0c173a3f16b1ce
 <p>根据整理的数据集大小，按照一定比例拆分训练集、验证集和测试集，可手动也可以使用如下代码将原始数据集按照“6:2:2”的比例拆分。</p>
 <div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>import os
 import shutil
@@ -250,11 +243,7 @@ for cnt in range(len(classes)):
 </div>
 </section>
 <section id="id9">
-<<<<<<< HEAD
 <h3>第三步：生成标签文件<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
-=======
-<h3>第三步：生成标签文件<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
->>>>>>> 8b47d1f5a47a339223cc58ec3c0c173a3f16b1ce
 <p>划分完训练集、验证集和测试集，我们需要生成“classes.txt”，“val.txt”和“test.txt”。其中classes.txt包含数据集类别标签信息，每行包含一个类别名称，按照字母顺序排列。“val.txt”和“test.txt”这两个标签文件的要求是每一行都包含一个文件名和其相应的真实标签。</p>
 <p>可以手动完成，这里也为您提供一段用Python代码完成标签文件的程序如下所示，程序中设计了“val.txt”和“test.txt”这两个标签文件每行会包含类别名称、文件名和真实标签。</p>
 <div class="highlight-plain notranslate"><div class="highlight"><pre><span></span># 在windows测试通过
@@ -333,11 +322,7 @@ with open(set_path +&#39;test.txt&#39;,&#39;w&#39;) as f:
 </div>
 </section>
 <section id="id10">
-<<<<<<< HEAD
 <h3>第四步：给数据集命名<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h3>
-=======
-<h3>第四步：给数据集命名<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
->>>>>>> 8b47d1f5a47a339223cc58ec3c0c173a3f16b1ce
 <p>最后，我们将这些文件放在一个文件夹中，命名为数据集的名称。这样，在训练的时候，只要通过<code class="docutils literal notranslate"><span class="pre">model.load_dataset</span></code>指定数据集的路径就可以了。</p>
 </section>
 </section>

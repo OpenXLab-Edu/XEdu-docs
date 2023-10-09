@@ -200,7 +200,7 @@ labelme2coco(labelme_json, 'picture/new.json') # 指定生成文件路径
 ```
 原数据集（目标检测）
 |---annotations
-      |----xxx.json/xxx.xml/xxx.txt
+      |----xxx.json/xxx.xml
 |---images
       |----xxx.jpg/png/....
 classes.txt
