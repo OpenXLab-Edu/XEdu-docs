@@ -1,16 +1,12 @@
-# XEdu-Hub功能详解
+# XEduHub功能详解
 
-## 为什么是XEdu-Hub？
+## 为什么是XEduHub？
 
-XEdu-Hub是一个专为快速、便捷地利用最先进的深度学习模型完成任务而设计的工具库。其设计灵感源自PyTorchHub，旨在以工作流的方式，迅速高效地完成深度学习任务。XEdu-Hub的独特之处在于它内置了大量优质的深度学习SOTA模型，无需用户自行进行繁琐的模型训练。用户只需将这些现成的模型应用于特定任务，便能轻松进行AI应用实践。
+XEduHub是一个专为快速、便捷地利用最先进的深度学习模型完成任务而设计的工具库。其设计灵感源自PyTorchHub，旨在以工作流的方式，迅速高效地完成深度学习任务。XEduHub的独特之处在于它内置了大量优质的深度学习SOTA模型，无需用户自行进行繁琐的模型训练。用户只需将这些现成的模型应用于特定任务，便能轻松进行AI应用实践。
 
-XEdu-Hub的目标是为学习者提供一个无需深入研究底层算法和模型构建的解决方案。通过将各种最新的深度学习模型集成到库中，XEdu-Hub赋予用户能力，使他们能够专注于任务本身，而不必担心模型训练、调优等繁杂的工作。这使得教育者、研究者和从业者都能够更容易地将深度学习技术应用于实际问题，从而推动AI应用的便捷性和普及度。
+## 解锁XEduHub的使用方法
 
-XEdu-Hub的设计理念在于让深度学习任务变得更加容易，允许用户通过简单地引用现有的SOTA模型，而不必从头开始构建自己的模型，从而为学习者和从业者提供了更便捷的AI应用实践体验。
-
-## 解锁XEdu-Hub的使用方法
-
-XEdu-Hub作为一个深度学习工具库，集成了许多深度学习领域优质的SOTA模型，能够帮助用户在不进模型训练的前提下，用少量的代码，快速实现计算机视觉、自然语言处理等多个深度学习领域的任务。
+XEduHub作为一个深度学习工具库，集成了许多深度学习领域优质的SOTA模型，能够帮助用户在不进模型训练的前提下，用少量的代码，快速实现计算机视觉、自然语言处理等多个深度学习领域的任务。
 
 ## 计算机视觉
 
@@ -40,7 +36,7 @@ from XEdu.hub import Workflow as wf
 
 这些关键点的检测可以用于人体姿态估计和分类、动作分析、手势识别等多种应用。
 
-XEdu-Hub提供了两个识别人体关键点的模型，`body17`和`body26` 数字表示了识别出人体关键点的数量，声明代码如下：
+XEduHub提供了两个识别人体关键点的模型，`body17`和`body26` 数字表示了识别出人体关键点的数量，声明代码如下：
 
 ```python
 pose = wf(task='body') # 数字可省略，当省略时，默认为body17
@@ -52,7 +48,7 @@ pose = wf(task='body') # 数字可省略，当省略时，默认为body17
 
 例如眼睛、鼻子、嘴巴、眉毛等。这些关键点的准确定位对于许多应用非常重要，包括人脸识别、表情分析、虚拟化妆、人机交互等。
 
-XEdu-Hub提供了识别人脸关键点的模型：`face106`，这意味着该模型能够识别人脸上的106个关键点，声明代码如下：
+XEduHub提供了识别人脸关键点的模型：`face106`，这意味着该模型能够识别人脸上的106个关键点，声明代码如下：
 
 ```python
 pose = wf(task='face') # 数字可省略，默认为face106
@@ -64,7 +60,7 @@ pose = wf(task='face') # 数字可省略，默认为face106
 
 这些关键点的识别对于手势识别、手部姿态估计、手部追踪、手势控制设备等应用具有重要意义。
 
-XEdu-Hub提供了识别人手关键点的模型：`hand21`，该模型能够识别人手上的21个关键点，声明代码如下：
+XEduHub提供了识别人手关键点的模型：`hand21`，该模型能够识别人手上的21个关键点，声明代码如下：
 
 ```python
 pose = wf(task='hand') # 数字可省略，默认为hand21
@@ -72,7 +68,7 @@ pose = wf(task='hand') # 数字可省略，默认为hand21
 
 ##### 人体所有关键点
 
-XEdu-Hub提供了识别人体所有关键点，包括人手、人脸和人体躯干部分关键点的模型：`wholebody133`，声明代码如下：
+XEduHub提供了识别人体所有关键点，包括人手、人脸和人体躯干部分关键点的模型：`wholebody133`，声明代码如下：
 
 ```python
 pose = wf(task='wholebody') # 数字可省略，默认为wholebody133
@@ -98,7 +94,7 @@ keypoints,img_with_keypoints = pose.inference(data=img,img_type='pil') # 进行�
 
 #### 3. 结果输出
 
-XEdu-Hub提供了一种便捷的方式，能够以标准美观的格式查看关键点坐标以及分数（可以理解为置信度），代码如下：
+XEduHub提供了一种便捷的方式，能够以标准美观的格式查看关键点坐标以及分数（可以理解为置信度），代码如下：
 
 ```python
 format_result = pose.format_output(lang='zh')# 参数language设置了输出结果的语言
@@ -112,7 +108,7 @@ pose.show(img_with_keypoints)
 
 ####    4. 结果保存
 
-XEdu-Hub提供了保存带有关键点和关键点连线结果图像的方法，代码如下：
+XEduHub提供了保存带有关键点和关键点连线结果图像的方法，代码如下：
 
 ```python
 pose.save(img_with_keypoints,'img_with_keypoints.jpg')
@@ -142,7 +138,7 @@ from XEdu.hub import Workflow as wf
 
 通常，人体目标检测不仅要求准确地定位人体的边界框，还需要对人体进行类别分类，如行人、车辆乘客、骑自行车者等。这一技术在自动驾驶、视频监控、行人识别、人数统计、人体姿态估计等领域中有广泛的应用。
 
-XEdu-Hub提供了进行人体目标检测的模型：`bodydetect`，该模型既能够进行单人的人体目标检测，也能够实现多人检测，声明代码如下：
+XEduHub提供了进行人体目标检测的模型：`bodydetect`，该模型既能够进行单人的人体目标检测，也能够实现多人检测，声明代码如下：
 
 ```python
 det = wf(task='bodydetect')
@@ -150,7 +146,7 @@ det = wf(task='bodydetect')
 
 ##### coco目标检测
 
-COCO（Common Objects in Context）是一个用于目标检测和图像分割任务的广泛使用的数据集和评估基准。它是计算机视觉领域中最重要的数据集之一，在XEdu-Hub中的该模型能够检测出80类coco数据集中的物体：`cocodetect`，声明代码如下
+COCO（Common Objects in Context）是一个用于目标检测和图像分割任务的广泛使用的数据集和评估基准。它是计算机视觉领域中最重要的数据集之一，在XEduHub中的该模型能够检测出80类coco数据集中的物体：`cocodetect`，声明代码如下
 
 ```python
 det = wf(task='cocodetect')
@@ -177,11 +173,11 @@ result,img_with_box = det.inference(data=img,img_type='cv2')
 
 - `data`：指定待检测的图片
 - `img_type`：目标检测完成后会返回含有检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`
-- `thr:` 设置检测框阈值，超过该阈值的检测框被视为有效检测框，进行显示
+- `thr`: 设置检测框阈值，超过该阈值的检测框被视为有效检测框，进行显示
 
 ####   3. 结果输出
 
-XEdu-Hub提供了一种便捷的方式，能够以标准美观的格式查看检测框顶点坐标、检测分数以及目标类别，代码如下：
+XEduHub提供了一种便捷的方式，能够以标准美观的格式查看检测框顶点坐标、检测分数以及目标类别，代码如下：
 
 ```python
 format_result =det.format_output(lang='zh')# 参数language设置了输出结果的语言
@@ -195,7 +191,7 @@ det.show(img_with_box)
 
 ####    4. 结果保存
 
-XEdu-Hub提供了带有检测框图片的方法，代码如下：
+XEduHub提供了带有检测框图片的方法，代码如下：
 
 ```python
 det.save(img_with_box,'img_with_box.jpg')
@@ -219,10 +215,10 @@ while cap.isOpened():
     ret, frame = cap.read()
     if not ret:
         break
-    bboxs = det.inference(data=frame,threshold=0.3)
+    bboxs = det.inference(data=frame,thr=0.3)
     img = frame
     for i in bboxs:
-        keypoints,img =pose.inference(data=img,get_img='cv2',bbox=i)
+        keypoints,img =pose.inference(data=img,img_type='cv2',bbox=i)
     for [x1,y1,x2,y2] in bboxs: # 画检测框
         cv2.rectangle(img, (int(x1),int(y1)),(int(x2),int(y2)),(0,255,0),2)
     cv2.imshow('video', img)
