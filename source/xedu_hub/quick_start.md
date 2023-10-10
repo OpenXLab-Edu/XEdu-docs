@@ -6,7 +6,7 @@ XEduHub是一个集合了各种各样深度学习工具的模块，可以让用�
 
 ## 安装
 
-`pip instal XEdu-python`或`pip install xedu-python`
+`pip install XEdu-python`或`pip install xedu-python`
 
 ## 体验
 
