@@ -168,7 +168,7 @@ wf.coco_class()
 
 ```python
 img = 'data/body.jpg'
-result.img_with_box = det.inference(data=img,img_type='cv2')
+result,img_with_box = det.inference(data=img,img_type='cv2')
 ```
 
 `result`保存了检测框四个顶点的坐标，`img_with_box`以cv2格式保存了包含了检测框的图片
