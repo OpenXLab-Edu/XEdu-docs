@@ -210,6 +210,7 @@ det.save(img_with_box,'img_with_box.jpg')
 随后对每个检测框中的人体进行关键点提取
 
 ```python
+from XEdu.hub import Workflow as wf
 import cv2
 cap = cv2.VideoCapture(0)
 pose = wf(task='body17')# 实例化pose模型
