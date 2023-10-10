@@ -153,7 +153,7 @@ det = wf(task='bodydetect')
 COCO（Common Objects in Context）是一个用于目标检测和图像分割任务的广泛使用的数据集和评估基准。它是计算机视觉领域中最重要的数据集之一，在XEdu-Hub中的该模型能够检测出80类coco数据集中的物体：`cocodetect`，声明代码如下
 
 ```python
-def = wf(task='cocodetect')
+det = wf(task='cocodetect')
 ```
 
 若要查看coco目标检测中的所有类别可运行以下代码：
