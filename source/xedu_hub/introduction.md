@@ -39,7 +39,7 @@ from XEdu.hub import Workflow as wf
 XEduHub提供了两个识别人体关键点的模型，`body17`和`body26` 数字表示了识别出人体关键点的数量，声明代码如下：
 
 ```python
-pose = wf(task='body') # 数字可省略，当省略时，默认为body17
+body = wf(task='body') # 数字可省略，当省略时，默认为body17
 ```
 
 ##### 人脸关键点
@@ -51,7 +51,7 @@ pose = wf(task='body') # 数字可省略，当省略时，默认为body17
 XEduHub提供了识别人脸关键点的模型：`face106`，这意味着该模型能够识别人脸上的106个关键点，声明代码如下：
 
 ```python
-pose = wf(task='face') # 数字可省略，默认为face106
+face = wf(task='face') # 数字可省略，默认为face106
 ```
 
 ##### 人手关键点
@@ -63,7 +63,7 @@ pose = wf(task='face') # 数字可省略，默认为face106
 XEduHub提供了识别人手关键点的模型：`hand21`，该模型能够识别人手上的21个关键点，声明代码如下：
 
 ```python
-pose = wf(task='hand') # 数字可省略，默认为hand21
+hand = wf(task='hand') # 数字可省略，默认为hand21
 ```
 
 ##### 人体所有关键点
@@ -71,7 +71,7 @@ pose = wf(task='hand') # 数字可省略，默认为hand21
 XEduHub提供了识别人体所有关键点，包括人手、人脸和人体躯干部分关键点的模型：`wholebody133`，声明代码如下：
 
 ```python
-pose = wf(task='wholebody') # 数字可省略，默认为wholebody133
+wholebody = wf(task='wholebody') # 数字可省略，默认为wholebody133
 ```
 
 #### 2. 模型推理
@@ -80,12 +80,12 @@ pose = wf(task='wholebody') # 数字可省略，默认为wholebody133
 
 ```python
 img = "data/body.jpg" # 指定待识别关键点的图片的路径
-keypoints,img_with_keypoints = pose.inference(data=img,img_type='pil') # 进行模型推理
+keypoints,img_with_keypoints = body.inference(data=img,img_type='pil') # 进行模型推理
 ```
 
 `keypoints`保存了所有关键点的坐标，`img`以pil格式保存了关键点识别完成后的图片
 
-`pose.inference()`可传入参数：
+`inference()`可传入参数：
 
 - `data`: 指定待识别关键点的图片
 
@@ -97,13 +97,13 @@ keypoints,img_with_keypoints = pose.inference(data=img,img_type='pil') # 进行�
 XEduHub提供了一种便捷的方式，能够以标准美观的格式查看关键点坐标以及分数（可以理解为置信度），代码如下：
 
 ```python
-format_result = pose.format_output(lang='zh')# 参数language设置了输出结果的语言
+format_result = body.format_output(lang='zh')# 参数language设置了输出结果的语言
 ```
 
 显示带有关键点和关键点连线的结果图像
 
 ```python
-pose.show(img_with_keypoints)
+body.show(img_with_keypoints)
 ```
 
 ####    4. 结果保存
@@ -111,7 +111,7 @@ pose.show(img_with_keypoints)
 XEduHub提供了保存带有关键点和关键点连线结果图像的方法，代码如下：
 
 ```python
-pose.save(img_with_keypoints,'img_with_keypoints.jpg')
+body.save(img_with_keypoints,'img_with_keypoints.jpg')
 ```
 
 ### 目标检测
@@ -209,7 +209,7 @@ det.save(img_with_box,'img_with_box.jpg')
 from XEdu.hub import Workflow as wf
 import cv2
 cap = cv2.VideoCapture(0)
-pose = wf(task='body17')# 实例化pose模型
+body = wf(task='body17')# 实例化pose模型
 det = wf(task='bodydetect')#实例化detect模型
 while cap.isOpened():
     ret, frame = cap.read()
@@ -218,7 +218,7 @@ while cap.isOpened():
     bboxs = det.inference(data=frame,thr=0.3)
     img = frame
     for i in bboxs:
-        keypoints,img =pose.inference(data=img,img_type='cv2',bbox=i)
+        keypoints,img =body.inference(data=img,img_type='cv2',bbox=i)
     for [x1,y1,x2,y2] in bboxs: # 画检测框
         cv2.rectangle(img, (int(x1),int(y1)),(int(x2),int(y2)),(0,255,0),2)
     cv2.imshow('video', img)
