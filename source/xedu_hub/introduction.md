@@ -68,11 +68,11 @@ body = wf(task='body') # 数字可省略，当省略时，默认为body17
 
 `body17`模型能识别出17个人体骨骼关键点，示意图如下，你可以根据自己的需要选择其中的特定的关键点进行后续的处理。
 
-<img src="../images/xeduhub/body17.png" style="zoom:22%;" />
+![](../images/xeduhub/body17-sm4.png)
 
 `body26`模型能识别出26个人体骨骼关键点，与`body17`相比，示意图如下，你可以根据自己的需要选择其中的特定的关键点进行后续的处理。
 
-<img src="../images/xeduhub/body26.png" style="zoom: 22%;" />
+![](../images/xeduhub/body26-sm4.png)
 
 **人脸关键点**
 
