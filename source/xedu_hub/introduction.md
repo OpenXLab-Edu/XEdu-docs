@@ -123,7 +123,7 @@ img = "data/body.jpg" # 指定待识别关键点的图片的路径
 keypoints,img_with_keypoints = body.inference(data=img,img_type='pil') # 进行模型推理
 ```
 
-`keypoints`保存了所有关键点的坐标，根据前面的图示，要获取到某个特定序号`i`的关键点，只需要访问`keypoints[i]`即可。
+`keypoints`以二维数组的形式保存了所有关键点的坐标，每个关键点(x,y)被表示为`[x,y]`根据前面的图示，要获取到某个特定序号`i`的关键点，只需要访问`keypoints[i]`即可。
 
 `img`以pil格式保存了关键点识别完成后的图片。
 
@@ -144,11 +144,15 @@ XEduHub提供了一种便捷的方式，能够以标准美观的格式查看关�
 format_result = body.format_output(lang='zh')# 参数language设置了输出结果的语言
 ```
 
+![](../images/xeduhub/format_output.png)
+
 显示带有关键点和关键点连线的结果图像
 
 ```python
 body.show(img_with_keypoints)
 ```
+
+![](../images/xeduhub/imgshow-ky.png)
 
 #####    4. 结果保存
 
@@ -172,7 +176,9 @@ body.save(img_with_keypoints,'img_with_keypoints.jpg')
 
 人体目标检测的任务是在图像或视频中检测和定位人体的位置，并为每个检测到的人体分配一个相应的类别标签。
 
-XEduHub提供了进行人体目标检测的模型：`bodydetect`，该模型既能够进行单人的人体目标检测，也能够实现多人检测，声明代码如下：
+XEduHub提供了进行人体目标检测的模型：`bodydetect`，该模型既能够进行单人的人体目标检测，也能够实现多人检测。
+
+声明代码如下：
 
 ```python
 det = wf(task='bodydetect')
@@ -212,17 +218,23 @@ result,img_with_box = det.inference(data=img,img_type='cv2')
 
 3. 结果输出
 
-XEduHub提供了一种便捷的方式，能够以标准美观的格式查看检测框顶点坐标、检测分数以及目标类别，代码如下：
+XEduHub提供了一种便捷的方式，能够以标准美观的格式查看检测框位置信息、检测分数以及目标的分类类别。
+
+代码如下：
 
 ```python
 format_result =det.format_output(lang='zh')# 参数language设置了输出结果的语言
 ```
+
+![](../images/xeduhub/format_output_person.png)
 
  显示带有检测框的图片
 
 ```python
 det.show(img_with_box)
 ```
+
+![](../images/xeduhub/new_body.jpg)
 
 #####    4. 结果保存
 
@@ -234,18 +246,18 @@ det.save(img_with_box,'img_with_box.jpg')
 
 #### 多元AI模型综合应用
 
-借助XEduHub可以实现应用多元AI模型去解决复杂的问题。例如以下代码可以实时检测摄像头中出现的多个人，并对每一个人体提取关键点。
+借助XEduHub可以实现应用多元AI模型去解决复杂的问题。
 
-其中，我们先进行目标检测，拿到所有的检测框`bbox`及其顶点坐标
+例如以下代码可以实时检测摄像头中出现的多个人，并对每一个人体提取关键点。
 
-随后对每个检测框中的人体进行关键点提取
+具体实现方式为：我们首先将实时视频中每一帧的图像进行人体目标检测，拿到所有的检测框`bbox`及其坐标信息，绘制检测框。随后对每个检测框中的人体进行关键点提取。
 
 ```python
 from XEdu.hub import Workflow as wf
 import cv2
 cap = cv2.VideoCapture(0)
 body = wf(task='body17')# 实例化pose模型
-det = wf(task='bodydetect')#实例化detect模型
+det = wf(task='bodydetect')# 实例化detect模型
 while cap.isOpened():
     ret, frame = cap.read()
     if not ret:
