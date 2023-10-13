@@ -2,7 +2,7 @@
 
 ## XEduHub是什么？
 
-XEduHub是一个专为快速、便捷地利用最先进的深度学习模型完成任务而设计的工具库。其设计灵感源自PyTorchHub，旨在以工作流的方式，迅速高效地完成深度学习任务。XEduHub的独特之处在于它内置了大量优质的深度学习SOTA模型，无需用户自行进行繁琐的模型训练。用户只需将这些现成的模型应用于特定任务，便能轻松进行AI应用实践。
+XEduHub是一个专为快速、便捷地利用最先进的深度学习模型完成任务而设计的工具库。其设计灵感源自PyTorchHub，旨在以工作流的方式，高效地完成深度学习任务。XEduHub的独特之处在于它内置了大量优质的深度学习SOTA模型，无需用户自行进行繁琐的模型训练。用户只需将这些现成的模型应用于特定任务，便能轻松进行AI应用实践。
 
 想象一下，你的玩具箱里有很多玩具，每次想玩的时候，你只需要打开玩具箱，挑选你想要的玩具来玩。XEduHub就像是一个充满了AI玩具的箱子，里面有很多已经做好的AI模型，我们可以直接用它们来完成不同的任务。
 
@@ -166,30 +166,34 @@ body.save(img_with_keypoints,'img_with_keypoints.jpg')
 
 目标检测是一种计算机视觉任务，其目标是在图像或视频中检测并定位物体的位置，并为每个物体分配类别标签。
 
-实现目标检测通常包括特征提取、物体位置定位、物体类别分类等步骤。这一技术广泛应用于自动驾驶、安全监控、人脸识别、医学影像分析、虚拟现实、图像搜索等各种领域，为实现自动化和智能化应用提供了关键支持。
+实现目标检测通常包括特征提取、物体位置定位、物体类别分类等步骤。这一技术广泛应用于自动驾驶、安全监控、医学影像分析、图像搜索等各种领域，为实现自动化和智能化应用提供了关键支持。
+
+![](../images/xeduhub/objdetection.png)
 
 ##### 1. 模型声明
 
 在第一次声明模型时代码运行用时较长，是因为要将预训练模型从云端下载到本地中，从而便于用户进行使用。
 
+你可以在当前项目中找到名为**checkpoints**的文件夹，里面保存的就是下载下来的预训练模型。
+
 **人体目标检测**
 
 人体目标检测的任务是在图像或视频中检测和定位人体的位置，并为每个检测到的人体分配一个相应的类别标签。
 
-XEduHub提供了进行人体目标检测的模型：`bodydetect`，该模型既能够进行单人的人体目标检测，也能够实现多人检测。
+XEduHub提供了进行人体目标检测的模型：`bodydetect`，该模型能够进行单人的人体目标检测。
 
 声明代码如下：
 
 ```python
-det = wf(task='bodydetect')
+body_det = wf(task='bodydetect')
 ```
 
 **coco目标检测**
 
-COCO（Common Objects in Context）是一个用于目标检测和图像分割任务的广泛使用的数据集和评估基准。它是计算机视觉领域中最重要的数据集之一，在XEduHub中的该模型能够检测出80类coco数据集中的物体：`cocodetect`，声明代码如下
+COCO（Common Objects in Context）是一个用于目标检测和图像分割任务的广泛使用的数据集和评估基准。它是计算机视觉领域中最重要的数据集之一，在XEduHub中的该模型能够检测出80类coco数据集中的物体：`cocodetect`，声明代码如下:
 
 ```python
-det = wf(task='cocodetect')
+coco_det = wf(task='cocodetect')
 ```
 
 若要查看coco目标检测中的所有类别可运行以下代码：
@@ -198,32 +202,44 @@ det = wf(task='cocodetect')
 wf.coco_class()
 ```
 
+**人脸检测**
+
+人脸检测指的是检测和定位一张图片中的人脸。XEduHub使用的是opencv的人脸检测模型，能够快速准确地检测出一张图片中所有的人脸。
+
+需要注意的是由于使用的为opencv的人脸检测模型，因此在`format_output`时缺少了分数这一指标。
+
+声明代码如下：
+
+```python
+face_det = wf(task='facedetect')
+```
+
 ##### 2. 模型推理
 
-由于已经从云端下载好了预训练的SOTA模型，因此只需要传入相应图片即可进行模型推理任务，识别相应的关键点，以人体目标检测为例，模型推理代码如下：
+由于已经从云端下载好了预训练的SOTA模型，因此只需要传入相应图片即可进行模型推理任务，实现目标检测。以人体目标检测为例，模型推理代码如下：
 
 ```python
 img = 'data/body.jpg'
-result,img_with_box = det.inference(data=img,img_type='cv2')
+result,img_with_box = body_det.inference(data=img,img_type='cv2')
 ```
 
 `result`保存了检测框左上角顶点的(x,y)坐标以及检测框的宽度w和高度h，我们可以利用这四个数据计算出其他三个顶点的坐标。`img_with_box`以cv2格式保存了包含了检测框的图片。
 
-`det.inference()`可传入参数：
+`body_det.inference()`可传入参数：
 
 - `data`：指定待检测的图片。
 - `show`: 可取值：`[true,false]` 默认为`false`。如果取值为`true`，在推理完成后会直接输出目标检测完成后的图片。
 - `img_type`：目标检测完成后会返回含有检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`
 - `thr`: 设置检测框阈值，超过该阈值的检测框被视为有效检测框，进行显示。
 
-3. 结果输出
+##### 3. 结果输出
 
 XEduHub提供了一种便捷的方式，能够以标准美观的格式查看检测框位置信息、检测分数以及目标的分类类别。
 
 代码如下：
 
 ```python
-format_result =det.format_output(lang='zh')# 参数language设置了输出结果的语言
+format_result =body_det.format_output(lang='zh')# 参数language设置了输出结果的语言
 ```
 
 ![](../images/xeduhub/format_output_person.png)
@@ -231,24 +247,26 @@ format_result =det.format_output(lang='zh')# 参数language设置了输出结果
  显示带有检测框的图片
 
 ```python
-det.show(img_with_box)
+body_det.show(img_with_box)
 ```
 
 ![](../images/xeduhub/new_body.jpg)
 
 #####    4. 结果保存
 
-XEduHub提供了带有检测框图片的方法，代码如下：
+XEduHub提供了保存带有检测框图片的方法，代码如下：
 
 ```python
-det.save(img_with_box,'img_with_box.jpg')
+body_det.save(img_with_box,'img_with_box.jpg')
 ```
 
 #### 多元AI模型综合应用
 
 借助XEduHub可以实现应用多元AI模型去解决复杂的问题。
 
-例如以下代码可以实时检测摄像头中出现的多个人，并对每一个人体提取关键点。
+##### 实时人体关键点识别
+
+以下代码可以实时检测摄像头中出现的多个人，并对每一个人体提取关键点。
 
 具体实现方式为：我们首先将实时视频中每一帧的图像进行人体目标检测，拿到所有的检测框`bbox`及其坐标信息，绘制检测框。随后对每个检测框中的人体进行关键点提取。
 
@@ -273,5 +291,86 @@ while cap.isOpened():
         break    
 cap.release()
 cv2.destroyAllWindows()
+```
+
+##### 多人脸关键点识别
+
+以下代码可以将一张图片中所有的人脸识别出来，并对每一张脸提取关键点。这可以用于对一张图片中的所有人进行表情分类，推测情感等。
+
+具体实现方式为：我们首先使用`facedetect`进行人脸检测，拿到所有的检测框`bbox`。随后对每个检测框中的人脸进行关键点提取。
+
+```python
+from XEdu.hub import Workflow as wf
+face_det = wf(task='facedetect')
+face_kp = wf(task='face')
+bboxs,img = face_det.inference(data='face.jpg',img_type='cv2')
+for i in bboxs:
+    keypoints,img = face_kp.inference(data=img,img_type='cv2',bbox=i)
+    face_kp.show(img)
+```
+
+
+
+#### 方向三：光学字符识别（OCR）
+
+光学字符识别（Optical Character Recognition, OCR）是一项用于将图像或扫描的文档转换为可编辑的文本格式的技术。
+
+OCR技术能够自动识别和提取图像或扫描文档中的文本，并将其转化为计算机可处理的文本格式。
+
+OCR技术在车牌识别、证件识别、文档扫描、拍照搜题等多个场景有着广泛应用。
+
+##### 1. 模型声明
+
+在第一次声明模型时代码运行用时较长，是因为要将预训练模型从云端下载到本地中，从而便于用户进行使用。
+
+你可以在当前项目中找到名为**font**的文件夹，里面的FZVTK.TTF文件就是下载下来的预训练模型。
+
+XEduHub使用的OCR模型是来自百度的开源免费的OCR模型：rapidocr，这个模型运行速度快，性能优越，小巧灵活，并且能支持超过6000种字符的识别，如简体中文、繁体中文、英文、数字和其他艺术字等等。
+
+声明代码如下：
+
+```python
+ocr = wf(task="ocr")
+```
+
+##### 2. 模型推理
+
+由于已经从云端下载好了预训练的SOTA模型，因此只需要传入相应图片即可进行字符识别。模型推理代码如下：
+
+```python
+img = 'data/ocr.jpg'
+result,ocr_img = ocr.inference(data=img,img_type='cv2')
+```
+
+`result`保存了识别出的文本及其检测框的四个顶点(x,y)坐标，分别为[左上，右上，左下，右下]。`ocr_img`的格式为cv2，由两部分组成，左侧为原图片，右侧为经过ocr识别出的文本，并且该文本的位置与原图片中文本的位置保持对应。
+
+`ocr.inference()`可传入参数：
+
+- `data`：指定待识别的图片。
+- `show`: 可取值：`[true,false]` 默认为`false`。如果取值为`true`，在推理完成后会直接输出OCR完成后的图片。
+- `img_type`：目标检测完成后会返回含有检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`
+
+##### 3. 结果输出
+
+XEduHub提供了一种便捷的方式，能够以标准美观的格式查看检测框位置信息、分数以及识别出的文本。
+
+代码如下：
+
+```python
+ocr_format_result = ocr.format_output(lang="zh")
+```
+
+显示结果图片
+
+```python
+ocr.show(ocr_img)
+```
+
+##### 4. 结果保存
+
+XEduHub提供了保存OCR识别后的图片的方法，代码如下：
+
+```python
+ocr.save(ocr_img)
 ```
 
