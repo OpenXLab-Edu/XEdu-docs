@@ -251,6 +251,7 @@ result,img_with_box = body_det.inference(data=img,img_type='cv2')
 - `data`：指定待检测的图片。
 - `show`: 可取值：`[true,false]` 默认为`false`。如果取值为`true`，在推理完成后会直接输出目标检测完成后的图片。
 - `img_type`：目标检测完成后会返回含有检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`
+- `target_class`：该参数在使用`cocodetect`的时候可以指定要检测的对象，如：`person`，`cake`等等。
 - `thr`: 设置检测框阈值，超过该阈值的检测框被视为有效检测框，进行显示。
 
 #### 3. 结果输出
