@@ -51,6 +51,8 @@ wf.support_task()
 
 ![](../images/xeduhub/task.png)
 
+## 内置任务
+
 ### 方向一：关键点识别
 
 关键点识别是深度学习中的一项关键任务，旨在检测图像或视频中的关键位置，通常代表物体或人体的重要部位。
@@ -59,7 +61,7 @@ wf.support_task()
 
 在第一次声明模型时代码运行用时较长，是因为要将预训练模型从云端下载到本地中，从而便于用户进行使用。
 
-你可以在当前项目中找到名为**checkpoints**的文件夹，里面保存的就是下载下来的预训练模型。
+你可以在当前项目中找到名为**checkpoints**的文件夹，里面保存的就是下载下来的预训练模型。当代码运行时，会先在本地的同级目录中寻找是否有已下载的预训练模型，如果没有，到本地缓存中寻找，如果本地缓存没有，查看是不是指定了模型的路径，如果都没有，到网络下载。
 
 #### **人体关键点**
 
@@ -134,9 +136,13 @@ img = "data/body.jpg" # 指定待识别关键点的图片的路径
 keypoints,img_with_keypoints = body.inference(data=img,img_type='pil') # 进行模型推理
 ```
 
-`keypoints`以二维数组的形式保存了所有关键点的坐标，每个关键点(x,y)被表示为`[x,y]`根据前面的图示，要获取到某个特定序号`i`的关键点，只需要访问`keypoints[i]`即可。
+`keypoints`以三维数组的形式保存了所有关键点的坐标，每个关键点(x,y)被表示为`[x,y]`根据前面的图示，要获取到某个特定序号`i`的关键点，只需要访问`keypoints[0][i]`即可。
 
-`img`以pil格式保存了关键点识别完成后的图片。
+![](../images/xeduhub/res_keypoints.png)
+
+`img_with_keypoints`是个三维数组，以pil格式保存了关键点识别完成后的图片。
+
+![](../images/xeduhub/img_keypoints.png)
 
 `inference()`可传入参数：
 
@@ -144,7 +150,7 @@ keypoints,img_with_keypoints = body.inference(data=img,img_type='pil') # 进行�
 
 - `show`: 可取值：`[true,false]` 默认为`false`。如果取值为`true`，在推理完成后会直接输出关键点识别完成后的图片。
 
-- `img_type`: 关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`
+- `img_type`: 关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
 - `bbox`：该参数可配合目标检测使用。在多人关键点检测中，该参数指定了要识别哪个检测框中的关键点。
 
 #### 3. 结果输出
@@ -154,6 +160,8 @@ XEduHub提供了一种便捷的方式，能够以标准美观的格式查看关�
 ```python
 format_result = body.format_output(lang='zh')# 参数language设置了输出结果的语言
 ```
+
+`format_result`以字典形式存储了推理结果，共有两个键：关键点坐标和分数。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标，而分数则是对应下标的关键点的置信度，以一维数组形式保存。
 
 ![](../images/xeduhub/format_output.png)
 
@@ -170,6 +178,18 @@ body.show(img_with_keypoints)
 XEduHub提供了保存带有关键点和关键点连线结果图像的方法，代码如下：
 
 ```python
+body.save(img_with_keypoints,'img_with_keypoints.jpg')
+```
+
+#### 5.完整代码
+
+```python
+from XEdu.hub import Workflow as wf
+body = wf(task='body') # 数字可省略，当省略时，默认为body17
+img = "data/body.jpg" # 指定待识别关键点的图片的路径
+keypoints,img_with_keypoints = body.inference(data=img,img_type='pil') # 进行模型推理
+format_result = body.format_output(lang='zh')# 参数language设置了输出结果的语言
+body.show(img_with_keypoints)
 body.save(img_with_keypoints,'img_with_keypoints.jpg')
 ```
 
@@ -227,7 +247,7 @@ face_det = wf(task='facedetect')
 
 #### 手部检测
 
-手部检测指的是检测和定位一张图片中的人手。
+手部检测指的是检测和定位一张图片中的人手。XEduHub采用的是MMPose框架中rtmpose中的手部检测模型，能够快速准确地检测出图片中的所有人手
 
 声明代码如下：
 
@@ -244,19 +264,25 @@ img = 'data/body.jpg'
 result,img_with_box = body_det.inference(data=img,img_type='cv2')
 ```
 
-`result`保存了检测框左上角顶点的(x,y)坐标以及检测框的宽度w和高度h，我们可以利用这四个数据计算出其他三个顶点的坐标。`img_with_box`以cv2格式保存了包含了检测框的图片。
+`result`以二维数组的形式保存了检测框左上角顶点的(x,y)坐标以及检测框的宽度w和高度h（之所以是二维数组，是因为该模型能够检测多个人体，因此当检测到多个人体时，就会有多个[x,y,w,h]的一维数组，所以需要以二维数组形式保存），我们可以利用这四个数据计算出其他三个顶点的坐标。![](../images/xeduhub/det_res.png)
+
+`img_with_box`是个三维数组，以cv2格式保存了包含了检测框的图片。
+
+![](../images/xeduhub/det_img.png)
 
 `body_det.inference()`可传入参数：
 
 - `data`：指定待检测的图片。
 - `show`: 可取值：`[true,false]` 默认为`false`。如果取值为`true`，在推理完成后会直接输出目标检测完成后的图片。
-- `img_type`：目标检测完成后会返回含有检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`
+- `img_type`：目标检测完成后会返回含有检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
 - `target_class`：该参数在使用`cocodetect`的时候可以指定要检测的对象，如：`person`，`cake`等等。
 - `thr`: 设置检测框阈值，超过该阈值的检测框被视为有效检测框，进行显示。
 
 #### 3. 结果输出
 
 XEduHub提供了一种便捷的方式，能够以标准美观的格式查看检测框位置信息、检测分数以及目标的分类类别。
+
+`format_result`以字典形式存储了推理结果，共有三个键：检测框、分数和类别。检测框以二维数组形式保存了每个检测框的坐标信息[x,y,w,h]，而分数则是对应下标的检测框的置信度，以一维数组形式保存，类别则是检测框中对象所属的类别，以一维数组形式保存。
 
 代码如下：
 
@@ -279,6 +305,18 @@ body_det.show(img_with_box)
 XEduHub提供了保存带有检测框图片的方法，代码如下：
 
 ```python
+body_det.save(img_with_box,'img_with_box.jpg')
+```
+
+#### 5. 完整代码
+
+```python
+from XEdu.Hub import Workflow as wf
+body_det = wf(task='bodydetect')
+img = 'data/body.jpg'
+result,img_with_box = body_det.inference(data=img,img_type='cv2')
+format_result =body_det.format_output(lang='zh')# 参数language设置了输出结果的语言
+body_det.show(img_with_box)
 body_det.save(img_with_box,'img_with_box.jpg')
 ```
 
@@ -311,7 +349,15 @@ img = 'data/ocr.jpg'
 result,ocr_img = ocr.inference(data=img,img_type='cv2')
 ```
 
-`result`保存了识别出的文本及其检测框的四个顶点(x,y)坐标，分别为[左上，右上，左下，右下]。`ocr_img`的格式为cv2，由两部分组成，左侧为原图片，右侧为经过ocr识别出的文本，并且该文本的位置与原图片中文本的位置保持对应。
+`result`以一维数组的形式保存了识别出的文本及其检测框的四个顶点(x,y)坐标.
+
+如图所示，数组中每个元素的形式为元组：（识别文本，检测框顶点坐标）。四个顶点坐标顺序分别为[左上，右上，左下，右下]。
+
+![](../images/xeduhub/res_ocr.png)
+
+`ocr_img`的格式为cv2，如下图所示
+
+![](../images/xeduhub/ocr_img.png)
 
 `ocr.inference()`可传入参数：
 
@@ -323,35 +369,163 @@ result,ocr_img = ocr.inference(data=img,img_type='cv2')
 
 XEduHub提供了一种便捷的方式，能够以标准美观的格式查看检测框位置信息、分数以及识别出的文本。
 
+`format_output`的结果以字典形式存储了推理结果，共有三个键：检测框坐标、分数和文本。检测框坐标以三维数组形式保存了每个检测框的四个顶点的[x,y]坐标，而分数则是对应下标的检测框的置信度，以一维数组形式保存。文本则是每个检测框中识别出的文本，以一维数组形式保存。
+
 代码如下：
 
 ```python
 ocr_format_result = ocr.format_output(lang="zh")
 ```
 
-![](../images/xeduhub/ocr_output.png)
+![](../images/xeduhub/ocr_format.png)
 
-显示结果图片：
+显示结果图片：由两部分组成，左侧为原图片，右侧为经过ocr识别出的文本，并且该文本的位置与原图片中文本的位置保持对应。
 
 ```python
 ocr.show(ocr_img)
 ```
 
-![](../images/xeduhub/ocr_2.jpg)
+![](../images/xeduhub/ocr_6_img.png)
 
 #### 4. 结果保存
 
 XEduHub提供了保存OCR识别后的图片的方法，代码如下：
 
 ```python
+ocr.save(ocr_img,"ocr_img.jpg")
+```
+
+#### 5. 完整代码
+
+```python
+from XEdu.Hub import Workflow as wf
+ocr = wf(task="ocr")
+img = 'data/ocr.jpg'
+result,ocr_img = ocr.inference(data=img,img_type='cv2')
+ocr_format_result = ocr.format_output(lang="zh")
+ocr.show(ocr_img)
 ocr.save(ocr_img)
 ```
 
-### 多元AI模型综合应用
+## 内置任务
+
+### 基于MMEdu导出模型推理
+
+XEduHub现在可以支持使用MMEdu导出的onnx模型进行推理啦！如果你想了解如何将使用MMEdu训练好的模型转换成ONNX格式，可以看这里[最后一步：AI模型转换](https://xedu.readthedocs.io/zh/master/mmedu/model_convert.html)。OK，准备好了ONNX模型，那么就开始使用XEduHub吧！
+
+#### 1. 模型声明
+
+与外置任务的模型声明不同之处在于：`task`和`checkpoint`的设置。首先，你只需要设置task为"mmedu"，而不需要指定是哪种任务；其次，你需要指定你的模型的路径，并传入到`checkpoint`参数。这里我们以猫狗分类模型为例，项目指路：[猫狗分类](https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&sc=647b3880aac6f67c822a04f5#public)。
+
+```python
+mmedu = wf(task="mmedu",checkpoint="cat_dogs.onnx")
+```
+
+#### 2. 模型推理
+
+在完成模型声明后，传入待推理的数据即可完成推理。
+
+```python
+img = 'cat.jpg'
+result, new_img =  mmedu.inference(data=img,img_type="pil",show=True)
+```
+
+![](../images/xeduhub/mmedu_inference.png)
+
+`mmedu.inference`可传入参数：
+
+- `data`：指定待检测的图片。
+- `show`: 可取值：`[true,false]` 默认为`false`。如果取值为`true`，在推理完成后会直接输出目标检测完成后的图片。
+- `img_type`：目标检测完成后会返回含有检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
+
+`result`和`img`是模型推理后返回的推理结果。
+
+`result`结果如下图所示，是一个一维数组，这代表着每个分类标签的置信度，第一个元素是这张图片为猫的置信度，第二个元素是这张图片为狗的置信度，显然，这张图片为猫的置信度接近100%，自然这张图片被分类为猫。
+
+![](../images/xeduhub/mmedu_res.png)
+
+`img`结果是打上分类标签和分数的原图片，在这里以数字化的方式（三维数组）呈现。
+
+![](../images/xeduhub/mmedu_img.png)
+
+#### 3. 结果输出
+
+XEduHub提供了一种便捷的方式，能够以标准美观的格式查看输出结果。
+
+```python
+format_result = mmedu.format_output(lang="zh")
+```
+
+![](../images/xeduhub/mmedu_format.png)
+
+`format_result`以字典形式保存了模型的推理结果，包括所属标签、置信度、以及预测结果。
+
+显示结果图片：与原图相比，结果图片在左上角多了`pred_label`, `pred_socre`和`pred_class`三个数据，对应着标签、置信度和预测结果。
+
+```python
+mmedu.show(new_img,"mmedu_img.jpg")
+```
+
+![](../images/xeduhub/mmedu_show.png)
+
+#### 4. 结果保存
+
+XEduHub提供了保存MMEdu模型推理后的图片的方法，代码如下：
+
+```python
+mmedu.save(img,'new_cat.jpg')
+```
+
+### 基于BaseNN导出模型推理
+
+XEduHub现在可以支持使用BaseNN导出的onnx模型进行推理啦！如果你想了解如何将使用BaseNN训练好的模型转换成ONNX格式，可以看这里：BaseNN-14.模型文件格式转换。OK，准备好了ONNX模型，那么就开始使用XEduHub吧！
+
+#### 1. 模型声明
+
+与MMEdu一样，在模型声明时你只需要设置task为"basenn"，而不需要指定是哪种任务；其次，你需要指定你的模型的路径，并传入到`checkpoint`参数。
+
+```python
+basenn = wf(task="basenn",checkpoint="basenn.pth")
+```
+
+#### 2. 模型推理
+
+```python
+img = '6.jpg'
+result = base.inference(data=img)
+```
+
+`result`结果如下图所示，是一个一维数组，这代表着每个分类标签的概率。显然可以看到数字为6的标签的置信度最高，是1.0。
+
+![](../images/xeduhub/basenn_res.png)
+
+`mmedu.inference`可传入参数：
+
+- `data`：指定待检测的图片。
+- `show`: 可取值：`[true,false]` 默认为`false`。如果取值为`true`，在推理完成后会直接输出目标检测完成后的图片。
+- `img_type`：目标检测完成后会返回含有检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
+
+**注意！**基于BaseNN模型推理结果不包含图片！因为大部分使用BaseNN解决的任务只需要输出分类标签、文本或者数组数据等。
+
+#### 3. 结果输出
+
+XEduHub提供了一种便捷的方式，能够以标准美观的格式查看输出结果。
+
+```python
+format_output = basenn.format_output(lang='zh')
+```
+
+`format_result`以字典形式保存了模型的推理结果，包括预测结果，分数（置信度）。
+
+### 基于用户自定义模型推理
+
+即将上线，敬请期待！
+
+## 多元AI模型综合应用
 
 借助XEduHub可以实现应用多元AI模型去解决复杂的问题。
 
-#### 实时人体关键点识别
+### 实时人体关键点识别
 
 以下代码可以实时检测摄像头中出现的多个人，并对每一个人体提取关键点。
 
@@ -380,7 +554,75 @@ cap.release()
 cv2.destroyAllWindows()
 ```
 
-#### 多人脸关键点识别
+### **拓展：视频中的人体关键点识别**
+
+该项目可以识别视频中出现的人体的关键点。
+
+具体实现方式与上面的代码类似，区别就是从摄像头的实时视频流变成了本地的视频流，对视频每一帧的操作不变。最后，我们还需要将处理好的每一帧的图片再合成为视频。
+
+在这里我们将这个任务分成两步：Step1: 利用关键点识别处理视频的每一帧并保存到本地；Step2: 将本地的视频帧合成为视频。
+
+Step1的代码：
+
+```python
+# STEP1: 利用关键点识别处理视频的每一帧并保存到本地
+import cv2
+from XEdu.hub import Workflow as wf
+import os
+
+video_path = "data/eason.mp4" # 指定视频路径
+output_dir = 'output/' # 指定保存位置
+body = wf(task='body17')# 实例化pose模型
+det = wf(task='bodydetect')# 实例化detect模型
+cap = cv2.VideoCapture(video_path)
+frame_count = 0 # 视频帧的数量
+
+while True:
+    ret, frame = cap.read()
+    if not ret:
+        print('Video read complete!')
+        break
+    frame_count += 1
+    frame_file_name = f'{output_dir}frame_{frame_count:04d}.jpg' # 每一张帧图片的名称
+    bboxs = det.inference(data=frame,thr=0.3)
+    img = frame
+    for i in bboxs:
+        keypoints,img =body.inference(data=img,img_type='cv2',bbox=i)
+    for [x1,y1,x2,y2] in bboxs: # 画检测框
+        cv2.rectangle(img, (int(x1),int(y1)),(int(x2),int(y2)),(0,255,0),2)
+    cv2.imshow('video', img)
+    body.save(img,frame_file_name)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break    
+
+cap.release()
+```
+
+Step2的代码：
+
+```python
+import cv2
+import os
+
+output_video_path = 'output_video.mp4' # 指定合成后视频的名称
+output_dir = 'output/' # 指定本地的帧图片的路径
+# 获取推理结果文件列表
+result_files = sorted([os.path.join(output_dir, f) for f in os.listdir(output_dir) if f.endswith('.jpg')])
+# 获取第一张图像的尺寸
+first_frame = cv2.imread(result_files[0])
+frame_height, frame_width, _ = first_frame.shape
+# 设置视频编码器和输出对象
+fourcc = cv2.VideoWriter_fourcc(*'mp4v')  # 使用 mp4 编码器
+out = cv2.VideoWriter(output_video_path, fourcc, 30, (frame_width, frame_height)) # 30 是帧率
+print('开始合成视频...')
+for image_path in result_files:
+    img = cv2.imread(image_path)
+    out.write(img)
+out.release()
+print('视频合成完毕，已保存到：', output_video_path)
+```
+
+### 多人脸关键点识别
 
 以下代码可以将一张图片中所有的人脸识别出来，并对每一张脸提取关键点。这可以用于对一张图片中的所有人进行表情分类，推测情感等。
 
@@ -396,7 +638,7 @@ for i in bboxs:
     face_kp.show(img)
 ```
 
-#### 人脸检测控制舵机方向
+### 人脸检测控制舵机方向
 
 以下代码可以运行在Arduino开发板上，实现通过跟随人脸位置来控制舵机方向。具体实现方式为：通过人脸检测模型得到人脸检测框的坐标并计算x轴方向的中心点，根据中心点的位置判断是左转还是右转。通过pinpong库控制舵机的转向。
 
