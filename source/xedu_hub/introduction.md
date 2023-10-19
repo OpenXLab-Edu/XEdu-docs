@@ -407,7 +407,7 @@ ocr.show(ocr_img)
 ocr.save(ocr_img)
 ```
 
-## 内置任务
+## 外置任务
 
 ### 基于MMEdu导出模型推理
 
@@ -478,7 +478,7 @@ mmedu.save(img,'new_cat.jpg')
 
 ### 基于BaseNN导出模型推理
 
-XEduHub现在可以支持使用BaseNN导出的onnx模型进行推理啦！如果你想了解如何将使用BaseNN训练好的模型转换成ONNX格式，可以看这里：BaseNN-14.模型文件格式转换。OK，准备好了ONNX模型，那么就开始使用XEduHub吧！
+XEduHub现在可以支持使用BaseNN导出的onnx模型进行推理啦！如果你想了解如何将使用BaseNN训练好的模型转换成ONNX格式，可以看这里：[BaseNN模型文件格式转换](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id29)。OK，准备好了ONNX模型，那么就开始使用XEduHub吧！
 
 #### 1. 模型声明
 
