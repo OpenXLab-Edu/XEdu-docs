@@ -512,6 +512,25 @@ feature = model.extract_feature(img, pretrain='resnet18')
 
 第一次下载预训练模型有点慢需要耐心等待，再次运行则无需下载。
 
+### 14. 模型文件格式转换
+
+使用BaseNN训练好的模型权重会以.pth格式的文件保存到本地，但是以.pth格式保存文件不利于模型的部署以及推理，因此我们希望将.pth文件转换成.onnx格式的文件，这样就可以将模型快速部署并进行推理啦。比如，可以使用XEduHub工具，利用转换好的onnx文件进行模型推理。
+
+模型格式转换代码如下：
+
+```python
+from BaseNN import nn
+model = nn()
+model.convert(checkppint="basenn_cd.pth",out_file="basenn_cd.onnx")
+```
+
+`model.convert()`参数信息：
+
+- `checkpoint`: 指定要转换的pth模型文件路径
+- `out_file`: 指定转换出的onnx模型文件路径
+
+**注意！**：在转换为onnx文件后会将模型的元信息，如数据类型、输入尺寸等也写入模型文件，而之前版本的BaseNN训练得到的模型文件不含有这些信息，因此如果想要将之前的BaseNN训练得到的文件进行转换，需要基于原先的模型文件使用最新的BaseNN版本再进行一轮训练！
+
 ## 附录
 
 ### 1. add()详细介绍

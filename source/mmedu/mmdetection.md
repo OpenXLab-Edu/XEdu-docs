@@ -153,7 +153,7 @@ from MMEdu import MMDetection as det # 导入mmdet模块
 img = 'car_plate.png' # 指定进行推理的图片路径，我们使用demo文件夹中提供的图片
 model = det(backbone="FasterRCNN") # 实例化MMDetection模型
 checkpoint = '../checkpoints/det_model/plate/latest.pth' # 指定使用的模型权重文件
-result = model.inference(image=img, show=True, checkpoint_path = checkpoint) # 在CPU上进行推理
+result = model.inference(image=img, show=True, checkpoint = checkpoint) # 在CPU上进行推理
 model.print_result() # 输出结果
 # 同时您可以修改show的值来决定是否需要显示结果图片，此处默认显示结果图片
 ```
@@ -170,12 +170,16 @@ model.print_result() # 输出结果
 img = 'det_testIMG/' # 指定进行推理的一组图片的路径
 model = det(backbone="FasterRCNN") # 实例化MMDetection模型
 checkpoint = '../checkpoints/det_model/plate/latest.pth' # 指定使用的模型权重文件
-result = model.inference(image=img, show=True, checkpoint_path = checkpoint) # 在CPU上进行推理
+result = model.inference(image=img, show=True, checkpoint = checkpoint) # 在CPU上进行推理
 model.print_result() # 输出结果
 # 同时您可以修改show的值来决定是否需要显示结果图片，此处默认显示结果图片
 ~~~
 
-您会发现当前目录下`‘det_result’`文件夹里出现了这组图片的推理结果图，每张图片的结果与您收集的图片同名，您可以到这个文件夹下查看推理结果。
+推理结果如下：
+
+![](../images/mmedu/det_result.png)
+
+返回的数据类型是一个字典列表（很多个字典组成的列表）类型的变量，内置的字典表示`分类的结果`和`边框的位置`，如“`[{'类别标签': 0, '置信度': 0.6336591, '坐标': {'x1': 97, 'y1': 150, 'x2': 230, 'y2': 188}}]`”，我们可以用字典访问其中的元素。同时您会发现当前目录下`‘det_result’`文件夹里出现了这组图片的推理结果图，每张图片的结果与您收集的图片同名，您可以到这个文件夹下查看推理结果。
 
 接下来讲述推理代码规则：
 
@@ -200,7 +204,7 @@ model = det(backbone='FasterRCNN') # 实例化MMDetection模型
 - **模型推理**
 
 ```python
-model.inference(image=img, show=True, checkpoint_path = checkpoint) # 在CPU上进行推理
+model.inference(image=img, show=True, checkpoint = checkpoint) # 在CPU上进行推理
 ```
 
 将所需要推理图片的路径传入`inference`函数中即可进行推理，我们这里传入了四个参数，`image`代表的就是推理图片的路径，`show`代表是否需要显示结果图片，`checkpoint`代表指定使用的模型权重文件。
