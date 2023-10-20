@@ -153,7 +153,7 @@ from MMEdu import MMDetection as det # 导入mmdet模块
 img = 'car_plate.png' # 指定进行推理的图片路径，我们使用demo文件夹中提供的图片
 model = det(backbone="FasterRCNN") # 实例化MMDetection模型
 checkpoint = '../checkpoints/det_model/plate/latest.pth' # 指定使用的模型权重文件
-result = model.inference(image=img, show=True, checkpoint_path = checkpoint) # 在CPU上进行推理
+result = model.inference(image=img, show=True, checkpoint = checkpoint) # 在CPU上进行推理
 model.print_result() # 输出结果
 # 同时您可以修改show的值来决定是否需要显示结果图片，此处默认显示结果图片
 ```
@@ -170,7 +170,7 @@ model.print_result() # 输出结果
 img = 'det_testIMG/' # 指定进行推理的一组图片的路径
 model = det(backbone="FasterRCNN") # 实例化MMDetection模型
 checkpoint = '../checkpoints/det_model/plate/latest.pth' # 指定使用的模型权重文件
-result = model.inference(image=img, show=True, checkpoint_path = checkpoint) # 在CPU上进行推理
+result = model.inference(image=img, show=True, checkpoint = checkpoint) # 在CPU上进行推理
 model.print_result() # 输出结果
 # 同时您可以修改show的值来决定是否需要显示结果图片，此处默认显示结果图片
 ~~~
@@ -204,7 +204,7 @@ model = det(backbone='FasterRCNN') # 实例化MMDetection模型
 - **模型推理**
 
 ```python
-model.inference(image=img, show=True, checkpoint_path = checkpoint) # 在CPU上进行推理
+model.inference(image=img, show=True, checkpoint = checkpoint) # 在CPU上进行推理
 ```
 
 将所需要推理图片的路径传入`inference`函数中即可进行推理，我们这里传入了四个参数，`image`代表的就是推理图片的路径，`show`代表是否需要显示结果图片，`checkpoint`代表指定使用的模型权重文件。
