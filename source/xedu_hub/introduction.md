@@ -53,6 +53,8 @@ wf.support_task()
 
 ## 内置任务
 
+XEduHub内置多个深度学习领域优质的SOTA模型，支持多种类型的内置任务。
+
 ### 方向一：关键点识别
 
 关键点识别是深度学习中的一项关键任务，旨在检测图像或视频中的关键位置，通常代表物体或人体的重要部位。
@@ -409,9 +411,11 @@ ocr.save(ocr_img)
 
 ## 外置任务
 
+XEduHub除了内置多个深度学习领域优质的SOTA模型，支持多种类型的内置任务，同时也支持指定外置任务，如MMEdu、BaseNN。
+
 ### 基于MMEdu导出模型推理
 
-XEduHub现在可以支持使用MMEdu导出的onnx模型进行推理啦！如果你想了解如何将使用MMEdu训练好的模型转换成ONNX格式，可以看这里[最后一步：AI模型转换](https://xedu.readthedocs.io/zh/master/mmedu/model_convert.html)。OK，准备好了ONNX模型，那么就开始使用XEduHub吧！
+XEduHub现在可以支持使用MMEdu导出的onnx模型进行推理啦！如果你想了解如何将使用[MMEdu](https://xedu.readthedocs.io/zh/master/mmedu.html)训练好的模型转换成ONNX格式，可以看这里[最后一步：AI模型转换](https://xedu.readthedocs.io/zh/master/mmedu/model_convert.html)。OK，准备好了ONNX模型，那么就开始使用XEduHub吧！
 
 #### 1. 模型声明
 
@@ -476,9 +480,15 @@ XEduHub提供了保存MMEdu模型推理后的图片的方法，代码如下：
 mmedu.save(img,'new_cat.jpg')
 ```
 
+#### 5. 指定其他
+
+XEduHub提供了保存MMEdu模型推
+
+如果此时你有冲动去使用MMEdu完成模型训练到推理，再到转换与应用，快去下文学习[MMEdu的相关使用](https://xedu.readthedocs.io/zh/master/mmedu.html)吧！
+
 ### 基于BaseNN导出模型推理
 
-XEduHub现在可以支持使用BaseNN导出的onnx模型进行推理啦！如果你想了解如何将使用BaseNN训练好的模型转换成ONNX格式，可以看这里：[BaseNN模型文件格式转换](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id29)。OK，准备好了ONNX模型，那么就开始使用XEduHub吧！
+XEduHub现在可以支持使用BaseNN导出的onnx模型进行推理啦！如果你想了解如何将使用[BaseNN](https://xedu.readthedocs.io/zh/master/basenn.html)训练好的模型转换成ONNX格式，可以看这里：[BaseNN模型文件格式转换](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id29)。OK，准备好了ONNX模型，那么就开始使用XEduHub吧！
 
 #### 1. 模型声明
 
@@ -516,6 +526,8 @@ format_output = basenn.format_output(lang='zh')
 ```
 
 `format_result`以字典形式保存了模型的推理结果，包括预测结果，分数（置信度）。
+
+如果此时你有冲动去使用BaseNN完成模型训练到推理，再到转换与应用，快去下文学习[BaseNN的相关使用](https://xedu.readthedocs.io/zh/master/basenn.html)吧！
 
 ### 基于用户自定义模型推理
 
