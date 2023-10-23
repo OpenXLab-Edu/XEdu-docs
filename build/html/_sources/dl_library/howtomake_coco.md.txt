@@ -183,10 +183,6 @@ labelme_json = glob.glob('picture/*.json')  # 获取指定目录下的json格式
 labelme2coco(labelme_json, 'picture/new.json') # 指定生成文件路径
 ```
 
-#### 第四步：按照目录结构整理文件
-
-创建两个文件夹“images”和“annotations”，分别用于存放图片以及标注信息。按照要求的目录结构，整理好文件夹，制作完成后如想要检查数据集，可使用BaseDT的<a href="https://xedu.readthedocs.io/zh/latest/basedt/introduction.html#id9">数据集格式检查</a>功能，结合数据集检查提示对数据集进行调整，最后完成整个数据集制作。在训练的时候，只要通过`model.load_dataset`指定数据集的路径就可以了。
-
 ### 选择3：改装网上下载的目标检测数据集
 
 网上也可以找到一些目标检测数据集，但是网上下载的数据集的格式可能不符合XEdu的需求。那么就需要进行数据集格式转换。
