@@ -46,6 +46,7 @@
               <p class="caption" role="heading"><span class="caption-text">目录</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEduHub</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../basenn.html">神经网络库BaseNN</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="quick_start.html">快速体验BaseNN，开始！</a></li>
@@ -67,14 +68,15 @@
 <li class="toctree-l4"><a class="reference internal" href="#id27">11. 自定义损失函数</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id28">12. 自定义评价指标</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cnn">13. CNN特征提取</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id29">14. 模型文件格式转换</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id29">附录</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id30">附录</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#add">1. add()详细介绍</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rnn">拓展--RNN模型搭建简单指南：</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id32">2. 支持的损失函数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id33">2. 支持的损失函数</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rnncnn">3. RNN和CNN</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id33">4. 深度学习常见的数据类型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id34">4. 深度学习常见的数据类型</a></li>
 </ul>
 </li>
 </ul>
@@ -265,11 +267,7 @@
 </section>
 </section>
 <section id="id10">
-<<<<<<< HEAD
 <h3>3. 搭建模型<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h3>
-=======
-<h3>3. 搭建模型<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
->>>>>>> 8b47d1f5a47a339223cc58ec3c0c173a3f16b1ce
 <p>逐层添加，搭建起模型结构，支持CNN（卷积神经网络）和RNN（循环神经网络）。注释标明了数据经过各层的尺寸变化。在模型搭建中要特别注意数据经过各层的尺寸变化，以设置正确的<code class="docutils literal notranslate"><span class="pre">size</span></code>值</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> <span class="c1"># [120, 10]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> <span class="c1"># [120, 5]</span>
@@ -386,11 +384,7 @@
 </div>
 </section>
 <section id="id17">
-<<<<<<< HEAD
 <h4>文本类型<a class="headerlink" href="#id17" title="Permalink to this heading"></a></h4>
-=======
-<h4>文本类型<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h4>
->>>>>>> 8b47d1f5a47a339223cc58ec3c0c173a3f16b1ce
 <p>在做文本生成等NLP（自然语言处理）领域项目时，一般搭建<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn">RNN网络</a>训练模型，训练数据是文本数据，参考代码如下：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">word2idx</span><span class="o">=</span><span class="n">word2idx</span><span class="p">)</span> <span class="c1"># word2idx是词表（字典）</span>
@@ -502,11 +496,7 @@
 </div>
 </section>
 <section id="id26">
-<<<<<<< HEAD
 <h3>10. 自定义随机数种子<a class="headerlink" href="#id26" title="Permalink to this heading"></a></h3>
-=======
-<h3>10. 自定义随机数种子<a class="headerlink" href="#id26" title="Permalink to this headline"></a></h3>
->>>>>>> 8b47d1f5a47a339223cc58ec3c0c173a3f16b1ce
 <p>默认初始化是随机的，因此每次模型训练效果可能存在差异。可以使用<code class="docutils literal notranslate"><span class="pre">set_seed()</span></code>函数设定随机数种子，使得训练结果可被其他人复现。一旦指定，则每次训练结果一致。使用方法如下：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
 <span class="n">model</span><span class="o">.</span><span class="n">set_seed</span><span class="p">(</span><span class="mi">1235</span><span class="p">)</span>
@@ -542,11 +532,7 @@
 </ul>
 </section>
 <section id="cnn">
-<<<<<<< HEAD
 <h3>13. CNN特征提取<a class="headerlink" href="#cnn" title="Permalink to this heading"></a></h3>
-=======
-<h3>13. CNN特征提取<a class="headerlink" href="#cnn" title="Permalink to this headline"></a></h3>
->>>>>>> 8b47d1f5a47a339223cc58ec3c0c173a3f16b1ce
 <p>图像特征提取是计算机视觉中的重要研究领域之一，是计算机视觉中的一个关键步骤，它涉及将图像转换成一组有意义的特征向量，以便于后续的图像分析和识别任务。CNN（卷积神经网络）特征提取方法是一种基于深度学习的特征提取方法，通过卷积层、池化层等多个网络层的处理，可以提取出具有高层次抽象能力的特征表示，被广泛应用于图像分类、目标检测等领域。</p>
 <p>BaseNN中提供了一个CNN特征提取工具，可使用BaseNN的<code class="docutils literal notranslate"><span class="pre">model.extract_feature()</span></code>函数通过指定预训练模型来提取图像特征，使用ResNet预训练模型可将一张图像提取为1000维的特征（该预训练模型是在imagenet上训练的千分类模型，所以输出特征的维度是1000维），输出一个1行1000列的数组。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 声明模型</span>
@@ -559,9 +545,25 @@
 </div>
 <p>第一次下载预训练模型有点慢需要耐心等待，再次运行则无需下载。</p>
 </section>
-</section>
 <section id="id29">
-<h2>附录<a class="headerlink" href="#id29" title="Permalink to this heading"></a></h2>
+<h3>14. 模型文件格式转换<a class="headerlink" href="#id29" title="Permalink to this heading"></a></h3>
+<p>使用BaseNN训练好的模型权重会以.pth格式的文件保存到本地，但是以.pth格式保存文件不利于模型的部署以及推理，因此我们希望将.pth文件转换成.onnx格式的文件，这样就可以将模型快速部署并进行推理啦。比如，可以使用XEduHub工具，利用转换好的onnx文件进行模型推理。</p>
+<p>模型格式转换代码如下：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">checkppint</span><span class="o">=</span><span class="s2">&quot;basenn_cd.pth&quot;</span><span class="p">,</span><span class="n">out_file</span><span class="o">=</span><span class="s2">&quot;basenn_cd.onnx&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">model.convert()</span></code>参数信息：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>: 指定要转换的pth模型文件路径</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">out_file</span></code>: 指定转换出的onnx模型文件路径</p></li>
+</ul>
+<p><strong>注意！</strong>：在转换为onnx文件后会将模型的元信息，如数据类型、输入尺寸等也写入模型文件，而之前版本的BaseNN训练得到的模型文件不含有这些信息，因此如果想要将之前的BaseNN训练得到的文件进行转换，需要基于原先的模型文件使用最新的BaseNN版本再进行一轮训练！</p>
+</section>
+</section>
+<section id="id30">
+<h2>附录<a class="headerlink" href="#id30" title="Permalink to this heading"></a></h2>
 <section id="add">
 <h3>1. add()详细介绍<a class="headerlink" href="#add" title="Permalink to this heading"></a></h3>
 <p>使用BaseNN可以轻易地创建深度学习模型。不同类型的神经网络适用于不同类型的问题，比如CNN通常用于处理图像问题，RNN通常用于处理序列问题，全连接神经网络可以应用于各种问题。</p>
@@ -588,12 +590,8 @@
 <p>最后，由于线性层（linear）是一维的，因此二维数据在输入前要进行展平（flatten），将二维展平为1维。</p>
 <p>在以上代码中，输入linear层前，一张图像有10通道，每个通道的图像大小为3x3，因此展平后有10x3x3 = 90，这就是为什么要设置linear层<code class="docutils literal notranslate"><span class="pre">size=(90,10)</span></code>中，输入维度为90。</p>
 <p>添加层的方法为<code class="docutils literal notranslate"><span class="pre">add(layer=None,</span> <span class="pre">activation=None,</span> <span class="pre">optimizer=None,</span> <span class="pre">**kw)</span></code>。</p>
-<section id="id30">
-<<<<<<< HEAD
-<h4>参数说明:<a class="headerlink" href="#id30" title="Permalink to this heading"></a></h4>
-=======
-<h4>参数说明:<a class="headerlink" href="#id30" title="Permalink to this headline"></a></h4>
->>>>>>> 8b47d1f5a47a339223cc58ec3c0c173a3f16b1ce
+<section id="id31">
+<h4>参数说明:<a class="headerlink" href="#id31" title="Permalink to this heading"></a></h4>
 <ul class="simple">
 <li><p>layer：层的类型，可选值包括conv2d, conv1d, maxpool, avgpool, linear, dropout。</p></li>
 <li><p>activation：激活函数类型，可选值包括ReLU，Softmax。</p></li>
@@ -617,12 +615,8 @@ p=0.2
 </pre></div>
 </div>
 </section>
-<section id="id31">
-<<<<<<< HEAD
-<h4>参数说明：<a class="headerlink" href="#id31" title="Permalink to this heading"></a></h4>
-=======
-<h4>参数说明：<a class="headerlink" href="#id31" title="Permalink to this headline"></a></h4>
->>>>>>> 8b47d1f5a47a339223cc58ec3c0c173a3f16b1ce
+<section id="id32">
+<h4>参数说明：<a class="headerlink" href="#id32" title="Permalink to this heading"></a></h4>
 <ul class="simple">
 <li><p>size中的的两个值：第一个为嵌入层维度(embedding_dim)，即文本转化为词向量后的向量维度。第二个为隐藏层维度(hidden_dim)，即lstm隐藏层中神经元数量。</p></li>
 <li><p>num_layers：循环神经网络的层数。一般1~5，常用2、3层，太多层会大幅度影响训练速度和收敛难度。</p></li>
@@ -631,11 +625,7 @@ p=0.2
 </section>
 </section>
 <section id="rnn">
-<<<<<<< HEAD
 <h3>拓展--RNN模型搭建简单指南：<a class="headerlink" href="#rnn" title="Permalink to this heading"></a></h3>
-=======
-<h3>拓展--RNN模型搭建简单指南：<a class="headerlink" href="#rnn" title="Permalink to this headline"></a></h3>
->>>>>>> 8b47d1f5a47a339223cc58ec3c0c173a3f16b1ce
 <p>循环神经网络是一类以序列数据为输入，在序列的演进方向进行递归且所有节点（循环单元）按链式连接的递归神经网络。RNN在自然语言处理问题中有得到应用，也被用于与自然语言处理有关的异常值检测问题，例如社交网络中虚假信息/账号的检测。RNN与CNN卷积神经网络相结合的系统可被应用于在计算机视觉问题，例如在字符识别中，有研究使用卷积神经网络对包含字符的图像进行特征提取，并将特征输入LSTM进行序列标注。</p>
 <p>下为搭建RNN神经网络的一般流程：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;lstm&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">132</span><span class="p">,</span><span class="mi">128</span><span class="p">))</span>
@@ -699,12 +689,8 @@ p=0.2
 </pre></div>
 </div>
 </section>
-<section id="id32">
-<<<<<<< HEAD
-<h3>2. 支持的损失函数<a class="headerlink" href="#id32" title="Permalink to this heading"></a></h3>
-=======
-<h3>2. 支持的损失函数<a class="headerlink" href="#id32" title="Permalink to this headline"></a></h3>
->>>>>>> 8b47d1f5a47a339223cc58ec3c0c173a3f16b1ce
+<section id="id33">
+<h3>2. 支持的损失函数<a class="headerlink" href="#id33" title="Permalink to this heading"></a></h3>
 <table class="docutils align-default">
     <thead>
         <tr class="row-odd">
@@ -856,12 +842,8 @@ p=0.2
 <p>CNN是一种用于处理图像和空间数据的神经网络模型。例如图片（可以看成是像素的网格）。CNN的核心概念是卷积层和池化层。卷积层通过滑动窗口（也叫做卷积核）在输入数据上进行卷积操作，能够自动学习并识别图像中的局部特征，比如线条、形状等。池化层则用于降低数据的维度，减少计算量。CNN的一个重要特性是它具有参数共享和平移不变性，这使得CNN非常适合处理图像数据。当然，CNN也被用于处理其他类型的数据，如文本和时间序列数据。它的主要特点是利用卷积操作提取图像中的特征，并通过池化操作减小特征图的大小，最终通过全连接层进行分类或回归。CNN在图像分类、目标检测、图像分割等任务中表现出色。</p>
 <p>简单来说，RNN适用于序列数据处理，而CNN适用于图像和空间数据处理。但实际上，它们也可以互相组合使用，例如在图像描述生成任务中，可以使用CNN提取图像特征，然后使用RNN生成对应的文字描述。使用BaseNN搭建RNN和CNN模型的方式详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basenn/introduction.html#add">add()详细</a>介绍。</p>
 </section>
-<section id="id33">
-<<<<<<< HEAD
-<h3>4. 深度学习常见的数据类型<a class="headerlink" href="#id33" title="Permalink to this heading"></a></h3>
-=======
-<h3>4. 深度学习常见的数据类型<a class="headerlink" href="#id33" title="Permalink to this headline"></a></h3>
->>>>>>> 8b47d1f5a47a339223cc58ec3c0c173a3f16b1ce
+<section id="id34">
+<h3>4. 深度学习常见的数据类型<a class="headerlink" href="#id34" title="Permalink to this heading"></a></h3>
 <p><strong>图像数据</strong>：图像数据是深度学习应用中最常见的数据类型之一。图像数据通常表示为多维数组，每个数组元素代表一个像素的值。深度学习应用中常使用的图像数据格式包括JPEG、PNG、BMP等。</p>
 <p><strong>文本数据</strong>：文本数据是指由字符组成的序列数据。在深度学习应用中，文本数据通常被表示为词向量或字符向量，用于输入到文本处理模型中。</p>
 <p><strong>特征数据</strong>：特征数据指的是表示对象或事物的特征的数据，通常用于机器学习和数据挖掘。特征数据可以是数值型、离散型或者是二进制的，用于描述对象或事物的各种属性和特征。特征数据可以是手动设计的、自动提取的或者是混合的。在机器学习中，特征数据通常作为模型的输入，用于预测目标变量或者分类。</p>

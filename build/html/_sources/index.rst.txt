@@ -12,8 +12,8 @@ OpenXLabEdu帮助文档
    :caption: 目录
 
    about
-   mmedu
    xedu_hub
+   mmedu
    basenn
    baseml
    easydl

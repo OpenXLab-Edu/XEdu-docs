@@ -43,6 +43,18 @@ ds.make_dataset(r"/data/HZQV42", src_format="INNOLAB",train_ratio = 0.8, test_ra
 
 根据需求按照自己喜欢的方式收集图片，图片中包含需要检测的信息即可，可以使用ImageNet格式数据集整理图片的方式对收集的图片进行预处理。
 
+```
+整理图片（目标检测）
+|---images
+    |----test
+        |----xxx.jpg/png/....
+    |----train
+        |----xxx.jpg/png/....
+    |----valid
+        |----xxx.jpg/png/....
+```
+
+
 #### 第二步：标注图片
 
 使用熟悉的标注方式标注图片，如可使用LabelMe批量打开图片文件夹的图片，进行标注并保存为json文件。
@@ -181,6 +193,23 @@ class labelme2coco(object):
 
 labelme_json = glob.glob('picture/*.json')  # 获取指定目录下的json格式的文件
 labelme2coco(labelme_json, 'picture/new.json') # 指定生成文件路径
+```
+
+#### 第四步：按照目录结构整理文件
+
+创建两个文件夹“images”和“annotations”，分别用于存放图片以及标注信息。按照要求的目录结构，整理好文件夹的文件，最后将文件夹重新命名，制作完成后如想要检查数据集，可使用BaseDT的[数据集格式检查](https://xedu.readthedocs.io/zh/latest/basedt/introduction.html#id9)功能，结合数据集检查提示对数据集进行调整，最后完成整个数据集制作。在训练的时候，只要通过`model.load_dataset`指定数据集的路径就可以了。
+
+```
+COCO格式数据集（目标检测）
+|---annotations
+      	|----test.json
+      	|----train.json
+      	|----valid.json
+|---images
+      	|----test
+      	|----train
+      	|----valid
+classes.txt
 ```
 
 ### 选择3：改装网上下载的目标检测数据集

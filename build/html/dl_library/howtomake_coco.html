@@ -46,8 +46,8 @@
               <p class="caption" role="heading"><span class="caption-text">目录</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEduHub</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEdu-Hub</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basenn.html">神经网络库BaseNN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../baseml.html">传统机器学习库BaseML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a></li>
@@ -72,12 +72,13 @@
 <li class="toctree-l4"><a class="reference internal" href="#id6">第一步：整理图片</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id7">第二步：标注图片</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id8">第三步：转换成COCO标注格式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">第四步：按照目录结构整理文件</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">选择3：改装网上下载的目标检测数据集</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id10">第一步：整理原始数据集</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id11">第二步：转换为COCO格式</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id12">第三步：检查数据集</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">选择3：改装网上下载的目标检测数据集</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id11">第一步：整理原始数据集</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">第二步：转换为COCO格式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">第三步：检查数据集</a></li>
 </ul>
 </li>
 </ul>
@@ -151,6 +152,16 @@ ds.make_dataset(r&quot;/data/HZQV42&quot;, src_format=&quot;INNOLAB&quot;,train_
 <section id="id6">
 <h3>第一步：整理图片<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
 <p>根据需求按照自己喜欢的方式收集图片，图片中包含需要检测的信息即可，可以使用ImageNet格式数据集整理图片的方式对收集的图片进行预处理。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>整理图片（目标检测）
+|---images
+    |----test
+        |----xxx.jpg/png/....
+    |----train
+        |----xxx.jpg/png/....
+    |----valid
+        |----xxx.jpg/png/....
+</pre></div>
+</div>
 </section>
 <section id="id7">
 <h3>第二步：标注图片<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
@@ -291,13 +302,29 @@ labelme2coco(labelme_json, &#39;picture/new.json&#39;) # 指定生成文件路�
 </pre></div>
 </div>
 </section>
-</section>
 <section id="id9">
-<h2>选择3：改装网上下载的目标检测数据集<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h2>
+<h3>第四步：按照目录结构整理文件<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
+<p>创建两个文件夹“images”和“annotations”，分别用于存放图片以及标注信息。按照要求的目录结构，整理好文件夹的文件，最后将文件夹重新命名，制作完成后如想要检查数据集，可使用BaseDT的<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basedt/introduction.html#id9">数据集格式检查</a>功能，结合数据集检查提示对数据集进行调整，最后完成整个数据集制作。在训练的时候，只要通过<code class="docutils literal notranslate"><span class="pre">model.load_dataset</span></code>指定数据集的路径就可以了。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>COCO格式数据集（目标检测）
+|---annotations
+      	|----test.json
+      	|----train.json
+      	|----valid.json
+|---images
+      	|----test
+      	|----train
+      	|----valid
+classes.txt
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id10">
+<h2>选择3：改装网上下载的目标检测数据集<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h2>
 <p>网上也可以找到一些目标检测数据集，但是网上下载的数据集的格式可能不符合XEdu的需求。那么就需要进行数据集格式转换。</p>
 <p>我们可以下载网上的数据集，改装生成我们需要的数据集格式。此时可以选择使用BaseDT的常见数据集格式转换功能。</p>
-<section id="id10">
-<h3>第一步：整理原始数据集<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h3>
+<section id="id11">
+<h3>第一步：整理原始数据集<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h3>
 <p>首先新建一个annotations文件夹用于存放所有标注文件（VOC格式的为xml文件、COCO格式的为json格式），然后新建一个images文件夹用于存放所有图片，同时在根目录下新建一个classes.txt，写入类别名称。整理规范如下：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>原数据集（目标检测）
 |---annotations
@@ -308,8 +335,8 @@ classes.txt
 </pre></div>
 </div>
 </section>
-<section id="id11">
-<h3>第二步：转换为COCO格式<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h3>
+<section id="id12">
+<h3>第二步：转换为COCO格式<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h3>
 <p>使用BaseDT库将平台标注格式的数据集转换成COCO格式，可以使用如下代码。如需了解更多BaseDT库数据集处理的功能，详见<a href="https://xedu.readthedocs.io/zh/master/basedt/introduction.html#id7">BaseDT的数据集格式转换</a>。</p>
 <div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>from BaseDT.dataset import DataSet
 ds = DataSet(r&quot;my_dataset&quot;) # 指定为新数据集路径
@@ -317,8 +344,8 @@ ds.make_dataset(r&quot;G:\\测试数据集\\fruit_voc&quot;, src_format=&quot;VO
 </pre></div>
 </div>
 </section>
-<section id="id12">
-<h3>第三步：检查数据集<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h3>
+<section id="id13">
+<h3>第三步：检查数据集<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h3>
 <p>结合数据集检查提示对数据集进行调整，必要时可重做前几步，最后完成整个数据集制作。在训练的时候，只要通过<code class="docutils literal notranslate"><span class="pre">model.load_dataset</span></code>指定数据集的路径就可以了。</p>
 </section>
 </section>

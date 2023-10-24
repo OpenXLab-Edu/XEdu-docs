@@ -1,6 +1,6 @@
-# XEdu-Hub安装
+# XEduHub安装
 
-你可以通过pip命令来安装XEdu-Hub。
+你可以通过pip命令来安装XEduHub。
 
 
 
