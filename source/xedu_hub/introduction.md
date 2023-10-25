@@ -55,6 +55,33 @@ wf.support_task()
 
 XEduHub内置多个深度学习领域优质的SOTA模型，支持多种类型的内置任务。
 
+**写在前面：为了更好地兼容每个版本的任务名称，我们建立了一个任务写法的映射表**。
+
+下表每一行列出的写法都是等价的，例如你要声明一个检测人体17个关键点的模型，你可以给`task`参数传入`body`, `body17`或者`pose_body17`，当然推荐规范写法是`pose_body17`。
+
+| 可用写法       | 推荐规范写法      |
+| -------------- | ----------------- |
+| body           | pose_body17       |
+| body17         | pose_body17       |
+| body26         | pose_body26       |
+| pose_hand      | pose_hand21       |
+| pose_body      | pose_body17       |
+| pose_wholebody | pose_wholebody133 |
+| pose_face      | pose_face106      |
+
+同时，我们对一些任务写法进行了规范，之前不规范的写法已经**在最新版本(0.0.4)被弃用**。
+下表列出的是当前(0.0.4版本)**不再适用的写法**以及对应的推荐规范写法。
+
+| 原先写法（已不适用） | 推荐规范写法   |
+| -------------------- | -------------- |
+| face                 | pose_face106   |
+| wholebody            | pose_wholebody |
+| hand                 | pose_hand21    |
+| cocodetect           | det_coco       |
+| bodydetect           | det_body       |
+| handdetect           | det_hand       |
+| facedetect           | det_face       |
+
 ### 方向一：关键点识别
 
 关键点识别是深度学习中的一项关键任务，旨在检测图像或视频中的关键位置，通常代表物体或人体的重要部位。
@@ -676,7 +703,7 @@ result = custom.inference(data='det.jpg',preprocess=pre,postprocess=post)
 print(result)
 ```
 
-
+![](../images/xeduhub/custom_result.png)
 
 ## 多元AI模型综合应用
 
