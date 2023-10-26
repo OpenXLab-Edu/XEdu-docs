@@ -59,28 +59,78 @@ XEduHub内置多个深度学习领域优质的SOTA模型，支持多种类型的
 
 下表每一行列出的写法都是等价的，例如你要声明一个检测人体17个关键点的模型，你可以给`task`参数传入`body`, `body17`或者`pose_body17`，当然推荐规范写法是`pose_body17`。
 
-| 可用写法       | 推荐规范写法      |
-| -------------- | ----------------- |
-| body           | pose_body17       |
-| body17         | pose_body17       |
-| body26         | pose_body26       |
-| pose_hand      | pose_hand21       |
-| pose_body      | pose_body17       |
-| pose_wholebody | pose_wholebody133 |
-| pose_face      | pose_face106      |
+<table>
+  <tr>
+    <th>可用写法</th>
+    <th>推荐规范写法</th>
+  </tr>
+  <tr>
+    <td>body</td>
+    <td>pose_body17</td>
+  </tr>
+  <tr>
+    <td>body17</td>
+    <td>pose_body17</td>
+  </tr>
+  <tr>
+    <td>body26</td>
+    <td>pose_body26</td>
+  </tr>
+  <tr>
+    <td>pose_hand</td>
+    <td>pose_hand21</td>
+  </tr>
+  <tr>
+    <td>pose_body</td>
+    <td>pose_body17</td>
+  </tr>
+  <tr>
+    <td>pose_wholebody</td>
+    <td>pose_wholebody133</td>
+  </tr>
+  <tr>
+    <td>pose_face</td>
+    <td>pose_face106</td>
+  </tr>
+</table>
 
 同时，我们对一些任务写法进行了规范，之前不规范的写法已经**在最新版本(0.0.4)被弃用**。
 下表列出的是当前(0.0.4版本)**不再适用的写法**以及对应的推荐规范写法。
 
-| 原先写法（已不适用） | 推荐规范写法   |
-| -------------------- | -------------- |
-| face                 | pose_face106   |
-| wholebody            | pose_wholebody |
-| hand                 | pose_hand21    |
-| cocodetect           | det_coco       |
-| bodydetect           | det_body       |
-| handdetect           | det_hand       |
-| facedetect           | det_face       |
+<table>
+  <tr>
+    <th>原先写法（已不适用）</th>
+    <th>推荐规范写法</th>
+  </tr>
+  <tr>
+    <td>face</td>
+    <td>pose_face106</td>
+  </tr>
+  <tr>
+    <td>wholebody</td>
+    <td>pose_wholebody</td>
+  </tr>
+  <tr>
+    <td>hand</td>
+    <td>pose_hand21</td>
+  </tr>
+  <tr>
+    <td>cocodetect</td>
+    <td>det_coco</td>
+  </tr>
+  <tr>
+    <td>bodydetect</td>
+    <td>det_body</td>
+  </tr>
+  <tr>
+    <td>handdetect</td>
+    <td>det_hand</td>
+  </tr>
+  <tr>
+    <td>facedetect</td>
+    <td>det_face</td>
+  </tr>
+</table>
 
 ### 方向一：关键点识别
 
