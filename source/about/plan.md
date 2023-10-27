@@ -24,27 +24,31 @@ XEdu的基础工具BaseDT，则是一个整合了常见数据处理工具的基�
 
 ## 了解XEdu的规划
 
-1.计算机视觉开发库：MMEdu
+1.深度学习工具库：XEduHub
+
+XEduHub是一个集合了各种各样深度学习工具的模块，可以让用户高效地完成深度学习任务。
+
+2.计算机视觉开发库：MMEdu
 
 MMEdu全称为OpenMMLabEdu，是著名的计算机视觉开发工具OpenMMLab的教育版本。 
 
-2.神经网络开发库：BaseNN
+3.神经网络开发库：BaseNN
 
 BaseNN是神经网络库，能够使用类似Keras的语法搭建神经网络模型。
 
-3.传统机器学习开发库：BaseML
+4.传统机器学习开发库：BaseML
 
 BaseML是传统机器学习库，类似Sklearn，使用了与MMEdu同样的语法。 
 
-4.数据处理工具库：BaseDT
+5.数据处理工具库：BaseDT
 
 不同的模型对数据有特定的要求，比如LeNet-5是28*28*1，MobileNet是224*224*3。BaseDT集成了这些转换工具。
 
-5.Easy系列工具
+6.Easy系列工具
 
 一系列方便初学者的小工具，可以在无代码的情况下完成模型的训练、推理、转换和部署，甚至可以搭建一个WebAPI服务器，类似百度AI开放平台。
 
-6.其他规划中的库
+7.其他规划中的库
 
 规划中的库还有OpenDILabEdu和OpenDataLabEdu，从名称可以看出源自上海人工智能实验室的各种工具。
 
