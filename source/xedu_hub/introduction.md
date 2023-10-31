@@ -813,6 +813,36 @@ print(result)
 
 ![](../images/xeduhub/custom_result.png)
 
+#### 3. 完整代码
+
+```python
+from XEdu.hub import Workflow as wf
+import cv2
+import numpy as np
+
+custom = wf(task="custom",checkpoint="custom.onnx")
+
+def pre(path): # 输入数据（此处为文件路径）前处理的输入参数就是模型推理时的输入参数，这里是图片的路径
+    """
+    这个前处理方法实现了将待推理的图片读入并进行数字化，调整数据类型、增加维度、调整各维度的顺序。
+    """
+    img = cv2.imread(path) # 读取图像
+    img = img.astype(np.float32) # 调整数据类型
+    img = np.expand_dims(img,0) # 增加batch维
+    img = np.transpose(img, (0,3,1,2)) # [batch,channel,width,height]
+    return img # 输出前处理过的数据（此处为四维numpy数组）
+
+def post(res,data): # 输入推理结果和前处理后的数据
+    """
+    这个后处理方法实现了获取并返回推理结果中置信度最大的类别标签。
+    """
+    res = np.argmax(res[0]) # 返回类别索引
+    return res # 输出结果
+
+result = custom.inference(data='det.jpg',preprocess=pre,postprocess=post)
+print(result)
+```
+
 ## 多元AI模型综合应用
 
 借助XEduHub可以实现应用多元AI模型去解决复杂的问题。
