@@ -97,8 +97,6 @@ XEduHub内置多个深度学习领域优质的SOTA模型，支持多种类型的
         </tr>
     </tbody>
 </table>
-
-
 同时，我们对一些任务写法进行了规范，之前不规范的写法已经**在最新版本(0.0.4)被弃用**。
 下表列出的是当前(0.0.4版本)**不再适用的写法**以及对应的推荐规范写法。
 
@@ -610,7 +608,7 @@ format_result = mmedu.format_output(lang="zh")
 显示结果图片：与原图相比，结果图片在左上角多了`pred_label`, `pred_socre`和`pred_class`三个数据，对应着标签、置信度和预测结果。
 
 ```python
-mmedu.show(new_img,"mmedu_img.jpg")
+mmedu.show(new_img)
 ```
 
 ![](../images/xeduhub/mmedu_show.png)
@@ -636,6 +634,19 @@ XEduHub提供了保存MMEdu模型推理后的图片的方法，代码如下：
 ```python
 mmedu.save(img,'new_cat.jpg')
 mmdet.save(img,'new_plate.jpg')
+```
+
+#### 5. 完整代码
+
+```python
+# 基于MMClassification训练出的模型进行推理
+from XEdu.hub import Workflow as wf
+mmedu = wf(task="mmedu",checkpoint="cat_dogs.onnx")
+img = 'cat.jpg'
+result, new_img =  mmedu.inference(data=img,img_type="pil",show=True)
+format_result = mmedu.format_output(lang="zh")
+mmedu.show(new_img)
+mmedu.save(new_img,"mmedu_img")
 ```
 
 ### 基于BaseNN导出模型推理
@@ -682,6 +693,18 @@ format_output = basenn.format_output(lang='zh')
 
 如果此时你有冲动去使用BaseNN完成模型训练到推理，再到转换与应用，快去下文学习[BaseNN的相关使用](https://xedu.readthedocs.io/zh/master/basenn.html)吧！
 
+#### 4. 完整代码
+
+```python
+# 使用BaseNN训练的手写数字识别模型进行推理
+from XEdu.hub import Workflow as wf
+basenn = wf(task="basenn",checkpoint="basenn.pth")
+img = '6.jpg'
+result = base.inference(data=img)
+format_output = basenn.format_output(lang='zh')
+print(format_output)
+```
+
 ### 基于BaseML模型推理
 
 XEduHub现在可以支持使用BaseML导出的pkl模型文件进行推理啦！如果你想了解如何将使用[BaseML](https://xedu.readthedocs.io/zh/master/baseml.html)训练模型并保存成.pkl模型文件，可以看这里：[BaseML模型保存](https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id10)。OK，准备好了pkl模型，那么就开始使用XEduHub吧！
@@ -723,6 +746,18 @@ format_output = baseml.format_output(lang='zh')
 ![](../images/xeduhub/baseml_format.png)
 
 如果此时你有冲动去使用BaseML完成模型训练到推理，再到转换与应用，快去下文学习[BaseML的相关使用](https://xedu.readthedocs.io/zh/master/baseml.html)吧！
+
+#### 4. 完整代码
+
+```python
+# 使用BaseML训练的鸢尾花聚类模型推理
+from XEdu.hub import Workflow as wf
+baseml = wf(task='baseml',checkpoint='baseml.pkl')
+data = [[5.1,1.5],[7,4.7]] # 该项目中训练数据只有两维，因此推理时给出两维数据
+result= baseml.inference(data=data)
+format_output = baseml.format_output(lang='zh')
+print(format_output)
+```
 
 ### 基于用户自定义ONNX模型推理
 
