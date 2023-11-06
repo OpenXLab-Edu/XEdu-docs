@@ -40,7 +40,7 @@ wf.support_task()
 现在以提取人体关键点任务为例。此时我们可以选择它！
 
 ```
-body = wf(task='body') # 实例化pose模型
+body = wf(task='pose_body17') # 实例化pose模型
 ```
 
 第三步：使用AI玩具
