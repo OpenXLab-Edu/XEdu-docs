@@ -393,7 +393,7 @@ det_coco = wf(task='det_coco')
 result,img_with_box = det_coco.inference(data='data/det_coco.jpg',img_type='pil',show=True) # 进行模型推理
 ```
 
-![](D:\workspace\XEdu-docs\source\images\xeduhub\det_coco_result.png)
+![](../images/xeduhub/det_coco_result.png)
 
 模型推理`inference()`可传入参数：
 

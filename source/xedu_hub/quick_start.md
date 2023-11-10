@@ -6,7 +6,7 @@ XEduHub是一个专为快速、便捷地利用最先进的深度学习模型完�
 
 想象一下，你的玩具箱里有很多玩具，每次想玩的时候，你只需要打开玩具箱，挑选你想要的玩具来玩。XEduHub就像是一个充满了AI玩具的箱子，里面有很多已经做好的AI模型，我们可以直接用它们来完成不同的任务。
 
-![](D:\workspace\XEdu-docs\source\images\xeduhub\eason.gif)
+![](../images/xeduhub/eason.gif)
 
 ## XEduHub有多棒？
 
