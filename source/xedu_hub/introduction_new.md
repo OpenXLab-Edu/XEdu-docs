@@ -110,7 +110,7 @@ body.save(img_with_keypoints,'img_with_keypoints.jpg')
 
 XEduHub提供了识别人脸关键点的模型：`pose_face106`，这意味着该模型能够识别人脸上的106个关键点。如下图所示是106个关键点在脸部的分布情况，我们可以利用这些关键点的分布特征进行人脸识别，或者对人的表情进行分析和分类等。
 
-![](../images/xeduhub/face106.png)
+![](../images/xeduhub/new_face106.png)
 
 #### 代码样例
 
@@ -192,7 +192,7 @@ face.save(img_with_keypoints,'img_with_keypoints.jpg')# 保存推理图片
 
 XEduHub提供了能够快速识别人手关键点的模型：`pose_hand21`，该模型能够识别人手上的21个关键点，如下图所示。你可以根据自身需要对关键点进行进一步处理。例如：手势的不同会体现在关键点位置的分布上，这样就可以利用这些关键点进行手势的分类和识别。
 
-![](../images/xeduhub/hand.png)
+![](../images/xeduhub/new_hand.png)
 
 #### 代码样例
 
