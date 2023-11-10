@@ -1,8 +1,55 @@
 # 快速体验XEduHub
 
-## 简介
+## XEduHub是什么？
 
-XEduHub是一个集合了各种各样深度学习工具的模块，可以让用户高效地完成深度学习任务。使用XEduHub可以让我们轻松使用先进的AI模型，就像玩玩具一样简单！
+XEduHub是一个专为快速、便捷地利用最先进的深度学习模型完成任务而设计的工具库。其设计灵感源自PyTorchHub，旨在以工作流的方式，高效地完成深度学习任务。XEduHub的独特之处在于它内置了大量优质的深度学习SOTA模型，无需用户自行进行繁琐的模型训练。用户只需将这些现成的模型应用于特定任务，便能轻松进行AI应用实践。
+
+想象一下，你的玩具箱里有很多玩具，每次想玩的时候，你只需要打开玩具箱，挑选你想要的玩具来玩。XEduHub就像是一个充满了AI玩具的箱子，里面有很多已经做好的AI模型，我们可以直接用它们来完成不同的任务。
+
+![](D:\workspace\XEdu-docs\source\images\xeduhub\eason.gif)
+
+## XEduHub有多棒？
+
+- **简单易用**：就像玩玩具一样，不需要专业知识，只要按照指导，你就可以使用这些AI模型。
+- **无需训练**：你不需要自己制作玩具，里面的AI模型都已经为你准备好了。
+- **节省时间**：不需要等待，使用XEduHub，选取你需要的模型，然后就可以开始你的AI之旅。
+
+## 解锁XEduHub的使用方法
+
+XEduHub作为一个深度学习工具库，集成了许多深度学习领域优质的SOTA模型，能够帮助用户在不进模型训练的前提下，用少量的代码，快速实现计算机视觉、自然语言处理等多个深度学习领域的任务。
+
+一般使用步骤是：
+
+步骤1：[安装](https://xedu.readthedocs.io/zh/master/xedu_hub/installation.html)并导入XEduHub库
+
+步骤2：选择你的AI玩具
+
+步骤3：使用AI玩具
+
+有了模型，你就可以使用它来完成你的任务啦！
+
+```python
+# 步骤一：导入库
+from XEdu.hub import Workflow as wf
+# 步骤二：选择你的AI玩具
+face = wf(task="face") # 实例化模型
+# 步骤三：使用你的AI玩具
+img = 'face.jpg'
+# 进行推理，同时返回结果和带标注的图片
+result,new_img = face.inference(data=img,img_type='cv2')
+print(result) # 输出推理结果
+face.show(new_img) # 显示带标注图片
+```
+
+一旦你安装好XEduHub并导入到代码中后，你就可以查看里面所有的AI模型。看看哪一个是你想要的，然后选择它！
+
+```python
+from XEdu.hub import Workflow as wf
+# 目前支持的任务
+wf.support_task()
+```
+
+![](../images/xeduhub/task.png)
 
 ## 安装
 
