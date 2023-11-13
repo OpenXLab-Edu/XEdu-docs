@@ -7,6 +7,6 @@
 
    xedu_hub/installation.md
 
-   xedu_hub/introduction_new.md
+   xedu_hub/introduction.md
 
    xedu_hub/projects.md
