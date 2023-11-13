@@ -55,6 +55,104 @@ wf.support_task()
 
 XEduHub内置多个深度学习领域优质的SOTA模型，支持多种类型的内置任务。
 
+**写在前面：为了更好地兼容每个版本的任务名称，我们建立了一个任务写法的映射表**。
+
+下表每一行列出的写法都是等价的，例如你要声明一个检测人体17个关键点的模型，你可以给`task`参数传入`body`, `body17`或者`pose_body17`，当然推荐规范写法是`pose_body17`。
+
+<table class="docutils align-default">
+    <thead>
+        <tr class="row-odd">
+            <th class="head">可用写法</th>
+            <th class="head">推荐规范写法</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="row-even">
+            <td>body</td>
+            <td>pose_body17</td>
+        </tr>
+        <tr class="row-even">
+            <td>body17</td>
+            <td>pose_body17</td>
+        </tr>
+        <tr class="row-even">
+            <td>body26</td>
+            <td>pose_body26</td>
+        </tr>
+        <tr class="row-even">
+            <td>pose_hand</td>
+            <td>pose_hand21</td>
+        </tr>
+        <tr class="row-even">
+            <td>pose_body</td>
+            <td>pose_body17</td>
+        </tr>
+        <tr class="row-even">
+            <td>pose_wholebody</td>
+            <td>pose_wholebody133</td>
+        </tr>
+        <tr class="row-even">
+            <td>pose_face</td>
+            <td>pose_face106</td>
+        </tr>
+    </tbody>
+</table>
+
+
+同时，我们对一些任务写法进行了规范，之前不规范的写法已经**在最新版本(0.0.4)被弃用**。
+下表列出的是当前(0.0.4版本)**不再适用的写法**以及对应的推荐规范写法。
+
+<table class="docutils align-default">
+    <thead>
+        <tr class="row-odd">
+            <th class="head">原先写法（已不适用）</th>
+            <th class="head">推荐规范写法</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="row-even">
+            <td>face</td>
+            <td>pose_face106</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="row-even">
+            <td>wholebody</td>
+            <td>pose_wholebody</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="row-even">
+            <td>hand</td>
+            <td>pose_hand21</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="row-even">
+            <td>cocodetect</td>
+            <td>det_coco</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="row-even">
+            <td>bodydetect</td>
+            <td>det_body</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="row-even">
+            <td>handdetect</td>
+            <td>det_hand</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="row-even">
+            <td>facedetect</td>
+            <td>det_face</td>
+        </tr>
+    </tbody>
+</table>
+
 ### 方向一：关键点识别
 
 关键点识别是深度学习中的一项关键任务，旨在检测图像或视频中的关键位置，通常代表物体或人体的重要部位。
@@ -78,6 +176,7 @@ XEduHub提供了两个识别人体关键点的优质模型，能够在使用cpu�
 声明代码如下：
 
 ```python
+from XEdu.hub import Workflow as wf
 body = wf(task='body') # 数字可省略，当省略时，默认为body17
 ```
 
@@ -100,6 +199,7 @@ XEduHub提供了识别人脸关键点的模型：`face106`，这意味着该模�
 声明代码如下：
 
 ```python
+from XEdu.hub import Workflow as wf
 face = wf(task='face') # 数字可省略，默认为face106
 ```
 
@@ -114,6 +214,7 @@ XEduHub提供了能够快速识别人手关键点的模型：`hand21`，该模�
 声明代码如下：
 
 ```python
+from XEdu.hub import Workflow as wf
 hand = wf(task='hand') # 数字可省略，默认为hand21
 ```
 
@@ -126,6 +227,7 @@ XEduHub提供了识别人体所有关键点，包括人手、人脸和人体躯�
 声明代码如下：
 
 ```python
+from XEdu.hub import Workflow as wf
 wholebody = wf(task='wholebody') # 数字可省略，默认为wholebody133
 ```
 
@@ -164,6 +266,8 @@ format_result = body.format_output(lang='zh')# 参数language设置了输出结�
 ```
 
 `format_result`以字典形式存储了推理结果，共有两个键：关键点坐标和分数。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标，而分数则是对应下标的关键点的置信度，以一维数组形式保存。
+
+置信度是机器学习中常用的概念，描述的是模型对于单个预测的确定程度，反映了模型对该预测的信心强度。
 
 ![](../images/xeduhub/format_output.png)
 
@@ -218,6 +322,7 @@ XEduHub提供了进行人体目标检测的模型：`bodydetect`，该模型能�
 声明代码如下：
 
 ```python
+from XEdu.hub import Workflow as wf
 body_det = wf(task='bodydetect')
 ```
 
@@ -226,6 +331,7 @@ body_det = wf(task='bodydetect')
 COCO（Common Objects in Context）是一个用于目标检测和图像分割任务的广泛使用的数据集和评估基准。它是计算机视觉领域中最重要的数据集之一，在XEduHub中的该模型能够检测出80类coco数据集中的物体：`cocodetect`，声明代码如下:
 
 ```python
+from XEdu.hub import Workflow as wf
 coco_det = wf(task='cocodetect')
 ```
 
@@ -244,6 +350,7 @@ wf.coco_class()
 声明代码如下：
 
 ```python
+from XEdu.hub import Workflow as wf
 face_det = wf(task='facedetect')
 ```
 
@@ -254,6 +361,7 @@ face_det = wf(task='facedetect')
 声明代码如下：
 
 ```python
+from XEdu.hub import Workflow as wf
 hand_det = wf(task="handdetect")
 ```
 
@@ -339,6 +447,7 @@ XEduHub使用的OCR模型是来自百度的开源免费的OCR模型：rapidocr�
 声明代码如下：
 
 ```python
+from XEdu.hub import Workflow as wf
 ocr = wf(task="ocr")
 ```
 
@@ -415,19 +524,33 @@ XEduHub除了内置多个深度学习领域优质的SOTA模型，支持多种类
 
 ### 基于MMEdu导出模型推理
 
-XEduHub现在可以支持使用MMEdu导出的onnx模型进行推理啦！如果你想了解如何将使用[MMEdu](https://xedu.readthedocs.io/zh/master/mmedu.html)训练好的模型转换成ONNX格式，可以看这里[最后一步：AI模型转换](https://xedu.readthedocs.io/zh/master/mmedu/model_convert.html)。OK，准备好了ONNX模型，那么就开始使用XEduHub吧！
+XEduHub现在可以支持使用MMEdu导出的onnx模型进行推理啦！如果你想了解如何使用MMEdu训练模型，可以看这里：[解锁图像分类模块：MMClassification](https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html)、[揭秘目标检测模块：MMDetection](https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html)。
+
+如果你想了解如何将使用[MMEdu](https://xedu.readthedocs.io/zh/master/mmedu.html)训练好的模型转换成ONNX格式，可以看这里[最后一步：AI模型转换](https://xedu.readthedocs.io/zh/master/mmedu/model_convert.html)。OK，准备好了ONNX模型，那么就开始使用XEduHub吧！
 
 #### 1. 模型声明
 
-与外置任务的模型声明不同之处在于：`task`和`checkpoint`的设置。首先，你只需要设置task为"mmedu"，而不需要指定是哪种任务；其次，你需要指定你的模型的路径，并传入到`checkpoint`参数。这里我们以猫狗分类模型为例，项目指路：[猫狗分类](https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&sc=647b3880aac6f67c822a04f5#public)。
+与外置任务的模型声明不同之处在于：`task`和`checkpoint`的设置。首先，你只需要设置task为"mmedu"，而不需要指定是哪种任务；其次，你需要指定你的模型的路径，并传入到`checkpoint`参数。
+
+这里我们以猫狗分类模型为例，项目指路：[猫狗分类](https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&sc=647b3880aac6f67c822a04f5#public)。
 
 ```python
+from XEdu.hub import Workflow as wf
 mmedu = wf(task="mmedu",checkpoint="cat_dogs.onnx")
+```
+
+如果要使用MMDetection，这里以车牌识别为例进行说明。项目指路：[使用MMEdu实现车牌检测](https://www.openinnolab.org.cn/pjlab/project?id=641426fdcb63f030544017a2&backpath=/pjlab/projects/list#public)
+
+```python
+from XEdu.hub import Workflow as wf
+mmdet = wf(task='mmedu',checkpoint='plate.onnx')
 ```
 
 #### 2. 模型推理
 
 在完成模型声明后，传入待推理的数据即可完成推理。
+
+**以下是使用MMEdu分类模型的推理代码和结果。**
 
 ```python
 img = 'cat.jpg'
@@ -435,6 +558,14 @@ result, new_img =  mmedu.inference(data=img,img_type="pil",show=True)
 ```
 
 ![](../images/xeduhub/mmedu_inference.png)
+
+**以下是使用MMEdu检测模型的推理代码和结果。**
+
+```python
+result = mmdet.inference(data='plate0.png',show=True,img_type='cv2')
+```
+
+![](../images/xeduhub/mmdet.png)
 
 `mmedu.inference`可传入参数：
 
@@ -444,7 +575,9 @@ result, new_img =  mmedu.inference(data=img,img_type="pil",show=True)
 
 `result`和`img`是模型推理后返回的推理结果。
 
-`result`结果如下图所示，是一个一维数组，这代表着每个分类标签的置信度，第一个元素是这张图片为猫的置信度，第二个元素是这张图片为狗的置信度，显然，这张图片为猫的置信度接近100%，自然这张图片被分类为猫。
+`result`结果如下图所示:
+
+**对于分类模型而言**，`result`的结果是一个一维数组，这代表着每个分类标签的置信度，第一个元素是这张图片为猫的置信度，第二个元素是这张图片为狗的置信度，显然，这张图片为猫的置信度接近100%，自然这张图片被分类为猫。
 
 ![](../images/xeduhub/mmedu_res.png)
 
@@ -452,9 +585,19 @@ result, new_img =  mmedu.inference(data=img,img_type="pil",show=True)
 
 ![](../images/xeduhub/mmedu_img.png)
 
+**对于检测模型而言**，`result`的结果是一个三维数组，如下图所示，其中第一个元素[103.20052, 148.52896, 227.04301, 189.76846, 0.58629453]代表着第一个有效检测框的信息。前四个数字，分别对应着左上角(x1,y1)和右下角(x2,y2)检测框的坐标值，最后一个数字代表着这个检测框的置信度。
+
+![](../images/xeduhub/mmdet_result.png)
+
+`img`结果是打上检测框的原图片，在这里以数字化的方式（三维数组）呈现。
+
+![](../images/xeduhub/mmdet_img.png)
+
 #### 3. 结果输出
 
 XEduHub提供了一种便捷的方式，能够以标准美观的格式查看输出结果。
+
+**以下是MMEdu分类模型的输出结果。**
 
 ```python
 format_result = mmedu.format_output(lang="zh")
@@ -472,19 +615,28 @@ mmedu.show(new_img,"mmedu_img.jpg")
 
 ![](../images/xeduhub/mmedu_show.png)
 
+**以下是MMEdu检测模型的输出结果。**
+
+```python
+format_result = mmdet.format_output(lang='zh')
+```
+
+![](../images/xeduhub/mmdet_format.png)
+
+`format_result`以字典形式保存了模型的推理结果，包括所属标签、置信度、检测框的坐标信息以及预测结果。
+
+显示结果图片：与原图相比，结果图片还包含车牌周围的检测框以及结果信息。
+
+![](../images/xeduhub/mmdet_show.png)
+
 #### 4. 结果保存
 
 XEduHub提供了保存MMEdu模型推理后的图片的方法，代码如下：
 
 ```python
 mmedu.save(img,'new_cat.jpg')
+mmdet.save(img,'new_plate.jpg')
 ```
-
-#### 5. 指定其他
-
-XEduHub提供了保存MMEdu模型推
-
-如果此时你有冲动去使用MMEdu完成模型训练到推理，再到转换与应用，快去下文学习[MMEdu的相关使用](https://xedu.readthedocs.io/zh/master/mmedu.html)吧！
 
 ### 基于BaseNN导出模型推理
 
@@ -495,6 +647,7 @@ XEduHub现在可以支持使用BaseNN导出的onnx模型进行推理啦！如果
 与MMEdu一样，在模型声明时你只需要设置task为"basenn"，而不需要指定是哪种任务；其次，你需要指定你的模型的路径，并传入到`checkpoint`参数。
 
 ```python
+from XEdu.hub import Workflow as wf
 basenn = wf(task="basenn",checkpoint="basenn.pth")
 ```
 
@@ -511,9 +664,7 @@ result = base.inference(data=img)
 
 `mmedu.inference`可传入参数：
 
-- `data`：指定待检测的图片。
-- `show`: 可取值：`[true,false]` 默认为`false`。如果取值为`true`，在推理完成后会直接输出目标检测完成后的图片。
-- `img_type`：目标检测完成后会返回含有检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
+- `data`：指定待推理数据（数据类型和格式跟模型训练有关）。
 
 **注意！**基于BaseNN模型推理结果不包含图片！因为大部分使用BaseNN解决的任务只需要输出分类标签、文本或者数组数据等。
 
@@ -527,11 +678,105 @@ format_output = basenn.format_output(lang='zh')
 
 `format_result`以字典形式保存了模型的推理结果，包括预测结果，分数（置信度）。
 
+![](../images/xeduhub/basenn_output.png)
+
 如果此时你有冲动去使用BaseNN完成模型训练到推理，再到转换与应用，快去下文学习[BaseNN的相关使用](https://xedu.readthedocs.io/zh/master/basenn.html)吧！
 
-### 基于用户自定义模型推理
+### 基于BaseML模型推理
 
-即将上线，敬请期待！
+XEduHub现在可以支持使用BaseML导出的pkl模型文件进行推理啦！如果你想了解如何将使用[BaseML](https://xedu.readthedocs.io/zh/master/baseml.html)训练模型并保存成.pkl模型文件，可以看这里：[BaseML模型保存](https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id10)。OK，准备好了pkl模型，那么就开始使用XEduHub吧！
+
+#### 1. 模型声明
+
+与MMEdu和BaseNN一样，在模型声明时你只需要设置task为"baseml"，而不需要指定是哪种任务；其次，你需要指定你的模型路径，并传入到`checkpoint`参数。这里我们以[鸢尾花聚类项目](https://www.openinnolab.org.cn/pjlab/project?id=6440db053c0e930cb5d7f297&backpath=/pjlab/projects/list#public)为例。
+
+```python
+from XEdu.hub import Workflow as wf
+baseml = wf(task='baseml',checkpoint='baseml.pkl')
+```
+
+#### 2. 模型推理
+
+```python
+data = [[5.1,1.5],[7,4.7]] # 该项目中训练数据只有两维，因此推理时给出两维数据
+result= baseml.inference(data=data)
+```
+
+![](../images/xeduhub/baseml_result.png)
+
+`mmdet.inference`可传入参数：
+
+- `data`：指定待推理数据（数据类型和格式跟模型训练有关）。
+
+**注意！**基于BaseML模型推理结果不包含图片！因为大部分使用BaseML解决的任务只需要输出分类标签、文本或者数组数据等。
+
+#### 3. 结果输出
+
+XEduHub提供了一种便捷的方式，能够以标准美观的格式查看输出结果。
+
+```python
+format_output = baseml.format_output(lang='zh')
+```
+
+`format_result`以字典形式保存了模型的推理结果，由于使用的是聚类模型，输出结果为这两个特征数据所对应的聚类标签。
+
+![](../images/xeduhub/baseml_format.png)
+
+如果此时你有冲动去使用BaseML完成模型训练到推理，再到转换与应用，快去下文学习[BaseML的相关使用](https://xedu.readthedocs.io/zh/master/baseml.html)吧！
+
+### 基于用户自定义ONNX模型推理
+
+XEduHub现在可以支持使用用户自定义的ONNX模型文件进行推理啦！这意味着你可以不仅仅使用MMEdu或者BaseNN训练模型并转换而成的ONNX模型文件进行推理，还可以使用其他各个地方的ONNX模型文件，但是有个**重要的前提：你需要会使用这个模型，了解模型输入的训练数据以及模型的输出结果**。OK，如果你已经做好了充足的准备，那么就开始使用XEduHub吧！
+
+#### 1. 模型声明
+
+与其他的外置任务一样，在模型声明时你只需要设置task为"custom"，而不需要指定是哪种任务；其次，你需要指定你的模型路径，并传入到`checkpoint`参数。这里以一个目标检测为例。
+
+```python
+from XEdu.hub import Workflow as wf
+custom = wf(task="custom",checkpoint="custom.onnx")
+```
+
+#### 2. 模型推理
+
+在这里，使用自定义的ONNX模型进行推理的时候，你需要自己的需求实现模型输入数据的前处理以及输出数据的后处理方法，确保在进行模型推理的正常运行。
+
+举一个例子，如果你手中有一个onnx模型文件，这个模型是一个**目标检测模型**，在训练时的训练数据是将图片读入后进行数字化处理得到的**numpy数组**，那么你在使用XEduHub时，基于该模型进行推理之前，**需要设计对应的前处理方法**将图片进行数字化。
+
+同样地，如果你的模型的输出结果是一个一维数组，里面包含了所有类别标签对应的置信度，那么如果你想要输出检测出来的最有可能的类别标签，你就**需要设计后处理方法**，使得输出的推理结果满足你的需要。
+
+以下是前处理和后处理方法的代码示例，以前文提到的目标检测为例。
+
+```python
+import cv2
+import numpy as np
+
+def pre(path): # 输入数据（此处为文件路径）前处理的输入参数就是模型推理时的输入参数，这里是图片的路径
+    """
+    这个前处理方法实现了将待推理的图片读入并进行数字化，调整数据类型、增加维度、调整各维度的顺序。
+    """
+    img = cv2.imread(path) # 读取图像
+    img = img.astype(np.float32) # 调整数据类型
+    img = np.expand_dims(img,0) # 增加batch维
+    img = np.transpose(img, (0,3,1,2)) # [batch,channel,width,height]
+    return img # 输出前处理过的数据（此处为四维numpy数组）
+
+def post(res,data): # 输入推理结果和前处理后的数据
+    """
+    这个后处理方法实现了获取并返回推理结果中置信度最大的类别标签。
+    """
+    res = np.argmax(res[0]) # 返回类别索引
+    return res # 输出结果
+```
+
+在定义好了前处理和后处理函数之后，就可以进行模型推理了！记得要传入前后处理函数的名称到模型参数中。
+
+```python
+result = custom.inference(data='det.jpg',preprocess=pre,postprocess=post)
+print(result)
+```
+
+![](../images/xeduhub/custom_result.png)
 
 ## 多元AI模型综合应用
 
@@ -608,6 +853,7 @@ while True:
         break    
 
 cap.release()
+cv2.destroyAllWindows()
 ```
 
 Step2的代码：
@@ -691,5 +937,10 @@ cap.release()
 cv2.destroyAllWindows()
 ```
 
+## 报错专栏
 
+你是否在使用XEduHub时遇到过报错？是否遇到ERROR时感到无所适从，甚至有点慌张？
+没有关系！报错专栏将为你可能在使用过程中出现的错误提供解决方案！
+这里收录着使用XEduHub中的常见报错并呈现对应的解决方案，如果你遇到了问题，查看这个专栏，找到类似报错，并且解决它！
 
+正在努力收录中……敬请期待！

@@ -14,7 +14,7 @@ XEduHub是一个集合了各种各样深度学习工具的模块，可以让用�
 
 OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台，满足青少年的AI学习和创作需求，支持在线编程。在“项目”中查看更多，查找“XEduHub”即可找到所有XEduHub相关的体验项目。
 
-XEduHub实例代码合集：https://www.openinnolab.org.cn/pjlab/project?id=65311ce6cd3f4d197ca4866c&sc=62f34141bf4f550f3e926e0e#public
+XEduHub实例代码合集：[https://www.openinnolab.org.cn/pjlab/project?id=65311ce6cd3f4d197ca4866c&sc=62f34141bf4f550f3e926e0e#public](https://www.openinnolab.org.cn/pjlab/project?id=65311ce6cd3f4d197ca4866c&sc=62f34141bf4f550f3e926e0e#public)
 
 非正式demo：[https://www.openinnolab.org.cn/pjlab/project?id=65083f0ae8de1d02739c9192&backpath=/pjedu/userprofile?slideKey=project&type=EDITOR#public](https://www.openinnolab.org.cn/pjlab/project?id=65083f0ae8de1d02739c9192&backpath=/pjedu/userprofile?slideKey=project&type=EDITOR#public)
 
