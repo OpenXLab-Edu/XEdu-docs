@@ -1,4 +1,4 @@
-# EasyConvert 模型训练辅助工具
+# EasyConvert 模型转换辅助工具
 
 EasyConvert 简介
 -------------
