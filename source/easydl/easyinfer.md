@@ -1,4 +1,4 @@
-# EasyInference（模型推理辅助工具）
+# EasyInference 模型推理辅助工具
 
 EasyInference简介
 -----------------
