@@ -1,11 +1,11 @@
 # EasyTrain 模型训练辅助工具
 
-![](../images/easydl/train0.jpg)
-
 EasyTrain简介
 -------------
 
 EasyTrain是无代码的MMEdu模型、BaseNN模型训练辅助工具。借助EasyTrain，不需要编写一行代码，即可训练出AI模型。
+
+![](../images/easydl/train0.jpg)
 
 用EasyTrain训练第一个MMEdu模型！
 -----------------------------
