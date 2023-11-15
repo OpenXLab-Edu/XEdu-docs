@@ -17,7 +17,7 @@
 
 飞书网盘：[https://p6bm2if73b.feishu.cn/drive/folder/fldcn67XTwhg8qIFCl8edJBZZQb](https://p6bm2if73b.feishu.cn/drive/folder/fldcn67XTwhg8qIFCl8edJBZZQb)
 
-浦源CDN加速：[https://download.openxlab.org.cn/models/yikshing/bash/weight/x16](https://download.openxlab.org.cn/models/yikshing/bash/weight/x16)
+浦源CDN加速：[https://download.openxlab.org.cn/models/yikshing/bash/weight/xedu16](https://download.openxlab.org.cn/models/yikshing/bash/weight/xedu16)
 
 第一步：双击运行，将自解压为XEdu文件夹（注意！避免踩坑推荐安装到纯英文路径下）。
 

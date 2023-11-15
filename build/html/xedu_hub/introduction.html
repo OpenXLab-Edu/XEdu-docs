@@ -19,9 +19,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="计算机视觉库MMEdu" href="../mmedu.html" />
-    <link rel="prev" title="XEduHub安装" href="installation.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,40 +42,9 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">目录</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEduHub</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="quick_start.html">快速体验XEduHub</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation.html">XEduHub安装</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">XEduHub功能详解</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">XEduHub是什么？</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">XEduHub有多棒？</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">解锁XEduHub的使用方法</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">内置任务</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id5">方向一：关键点识别</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id15">方向二：目标检测</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ocr">方向三：光学字符识别（OCR）</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#id29">外置任务</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#mmedu">基于MMEdu导出模型推理</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#basenn">基于BaseNN导出模型推理</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#baseml">基于BaseML模型推理</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#onnx">基于用户自定义ONNX模型推理</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#ai">多元AI模型综合应用</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id42">实时人体关键点识别</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id43"><strong>拓展：视频中的人体关键点识别</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id44">多人脸关键点识别</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id45">人脸检测控制舵机方向</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#id46">报错专栏</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEduHub</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basenn.html">神经网络库BaseNN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../baseml.html">传统机器学习库BaseML</a></li>
@@ -103,7 +70,6 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../xedu_hub.html">深度学习工具库XEduHub</a></li>
       <li class="breadcrumb-item active">XEduHub功能详解</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/xedu_hub/introduction.md.txt" rel="nofollow"> View page source</a>
@@ -200,57 +166,6 @@
             <td>pose_face106</td>
         </tr>
     </tbody>
-</table><p>同时，我们对一些任务写法进行了规范，之前不规范的写法已经<strong>在最新版本(0.0.4)被弃用</strong>。
-下表列出的是当前(0.0.4版本)<strong>不再适用的写法</strong>以及对应的推荐规范写法。</p>
-<table class="docutils align-default">
-    <thead>
-        <tr class="row-odd">
-            <th class="head">原先写法（已不适用）</th>
-            <th class="head">推荐规范写法</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr class="row-even">
-            <td>face</td>
-            <td>pose_face106</td>
-        </tr>
-    </tbody>
-    <tbody>
-        <tr class="row-even">
-            <td>wholebody</td>
-            <td>pose_wholebody</td>
-        </tr>
-    </tbody>
-    <tbody>
-        <tr class="row-even">
-            <td>hand</td>
-            <td>pose_hand21</td>
-        </tr>
-    </tbody>
-    <tbody>
-        <tr class="row-even">
-            <td>cocodetect</td>
-            <td>det_coco</td>
-        </tr>
-    </tbody>
-    <tbody>
-        <tr class="row-even">
-            <td>bodydetect</td>
-            <td>det_body</td>
-        </tr>
-    </tbody>
-    <tbody>
-        <tr class="row-even">
-            <td>handdetect</td>
-            <td>det_hand</td>
-        </tr>
-    </tbody>
-    <tbody>
-        <tr class="row-even">
-            <td>facedetect</td>
-            <td>det_face</td>
-        </tr>
-    </tbody>
 </table><section id="id5">
 <h3>方向一：关键点识别<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
 <p>关键点识别是深度学习中的一项关键任务，旨在检测图像或视频中的关键位置，通常代表物体或人体的重要部位。</p>
@@ -279,7 +194,7 @@
 <h4><strong>人脸关键点</strong><a class="headerlink" href="#id8" title="Permalink to this heading"></a></h4>
 <p>人脸关键点识别是计算机视觉领域中的一项任务，它的目标是检测和定位人脸图像中代表面部特征的重要点，例如眼睛、鼻子、嘴巴、眉毛等。这些关键点的准确定位对于许多应用非常重要，包括人脸识别、表情分析、虚拟化妆、人机交互等。</p>
 <p>XEduHub提供了识别人脸关键点的模型：<code class="docutils literal notranslate"><span class="pre">face106</span></code>，这意味着该模型能够识别人脸上的106个关键点。如下图所示是106个关键点在脸部的分布情况，我们可以利用这些关键点的分布特征进行人脸识别，或者对人的表情进行分析和分类等。</p>
-<p><img alt="../_images/face106.png" src="../_images/face106.png" /></p>
+<p><img alt="images/xeduhub/face106.png" src="images/xeduhub/face106.png" /></p>
 <p>声明代码如下：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">face</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;face&#39;</span><span class="p">)</span> <span class="c1"># 数字可省略，默认为face106</span>
@@ -290,7 +205,7 @@
 <h4><strong>人手关键点</strong><a class="headerlink" href="#id9" title="Permalink to this heading"></a></h4>
 <p>人手关键点识别是一项计算机视觉任务，其目标是检测和定位图像或视频中人手的关键位置，通常包括手指、手掌、手腕等关键部位的位置。这些关键点的识别对于手势识别、手部姿态估计、手部追踪、手势控制设备等应用具有重要意义。</p>
 <p>XEduHub提供了能够快速识别人手关键点的模型：<code class="docutils literal notranslate"><span class="pre">hand21</span></code>，该模型能够识别人手上的21个关键点，如下图所示。你可以根据自身需要对关键点进行进一步处理。例如：手势的不同会体现在关键点位置的分布上，这样就可以利用这些关键点进行手势的分类和识别。</p>
-<p><img alt="../_images/hand.png" src="../_images/hand.png" /></p>
+<p><img alt="images/xeduhub/hand.png" src="images/xeduhub/hand.png" /></p>
 <p>声明代码如下：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">hand</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;hand&#39;</span><span class="p">)</span> <span class="c1"># 数字可省略，默认为hand21</span>
@@ -598,7 +513,7 @@
 <p><img alt="../_images/mmedu_format.png" src="../_images/mmedu_format.png" /></p>
 <p><code class="docutils literal notranslate"><span class="pre">format_result</span></code>以字典形式保存了模型的推理结果，包括所属标签、置信度、以及预测结果。</p>
 <p>显示结果图片：与原图相比，结果图片在左上角多了<code class="docutils literal notranslate"><span class="pre">pred_label</span></code>, <code class="docutils literal notranslate"><span class="pre">pred_socre</span></code>和<code class="docutils literal notranslate"><span class="pre">pred_class</span></code>三个数据，对应着标签、置信度和预测结果。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mmedu</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">new_img</span><span class="p">,</span><span class="s2">&quot;mmedu_img.jpg&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mmedu</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">new_img</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><img alt="../_images/mmedu_show.png" src="../_images/mmedu_show.png" /></p>
@@ -619,20 +534,33 @@
 </pre></div>
 </div>
 </section>
+<section id="id34">
+<h4>5. 完整代码<a class="headerlink" href="#id34" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 基于MMClassification训练出的模型进行推理</span>
+<span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
+<span class="n">mmedu</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;mmedu&quot;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s2">&quot;cat_dogs.onnx&quot;</span><span class="p">)</span>
+<span class="n">img</span> <span class="o">=</span> <span class="s1">&#39;cat.jpg&#39;</span>
+<span class="n">result</span><span class="p">,</span> <span class="n">new_img</span> <span class="o">=</span>  <span class="n">mmedu</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">img</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s2">&quot;pil&quot;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">format_result</span> <span class="o">=</span> <span class="n">mmedu</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s2">&quot;zh&quot;</span><span class="p">)</span>
+<span class="n">mmedu</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">new_img</span><span class="p">)</span>
+<span class="n">mmedu</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">new_img</span><span class="p">,</span><span class="s2">&quot;mmedu_img&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
 </section>
 <section id="basenn">
 <h3>基于BaseNN导出模型推理<a class="headerlink" href="#basenn" title="Permalink to this heading"></a></h3>
 <p>XEduHub现在可以支持使用BaseNN导出的onnx模型进行推理啦！如果你想了解如何将使用<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basenn.html">BaseNN</a>训练好的模型转换成ONNX格式，可以看这里：<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id29">BaseNN模型文件格式转换</a>。OK，准备好了ONNX模型，那么就开始使用XEduHub吧！</p>
-<section id="id34">
-<h4>1. 模型声明<a class="headerlink" href="#id34" title="Permalink to this heading"></a></h4>
+<section id="id35">
+<h4>1. 模型声明<a class="headerlink" href="#id35" title="Permalink to this heading"></a></h4>
 <p>与MMEdu一样，在模型声明时你只需要设置task为”basenn”，而不需要指定是哪种任务；其次，你需要指定你的模型的路径，并传入到<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>参数。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">basenn</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;basenn&quot;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s2">&quot;basenn.pth&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
-<section id="id35">
-<h4>2. 模型推理<a class="headerlink" href="#id35" title="Permalink to this heading"></a></h4>
+<section id="id36">
+<h4>2. 模型推理<a class="headerlink" href="#id36" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">img</span> <span class="o">=</span> <span class="s1">&#39;6.jpg&#39;</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">img</span><span class="p">)</span>
 </pre></div>
@@ -645,8 +573,8 @@
 </ul>
 <p>**注意！**基于BaseNN模型推理结果不包含图片！因为大部分使用BaseNN解决的任务只需要输出分类标签、文本或者数组数据等。</p>
 </section>
-<section id="id36">
-<h4>3. 结果输出<a class="headerlink" href="#id36" title="Permalink to this heading"></a></h4>
+<section id="id37">
+<h4>3. 结果输出<a class="headerlink" href="#id37" title="Permalink to this heading"></a></h4>
 <p>XEduHub提供了一种便捷的方式，能够以标准美观的格式查看输出结果。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">format_output</span> <span class="o">=</span> <span class="n">basenn</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span>
 </pre></div>
@@ -655,20 +583,32 @@
 <p><img alt="../_images/basenn_output.png" src="../_images/basenn_output.png" /></p>
 <p>如果此时你有冲动去使用BaseNN完成模型训练到推理，再到转换与应用，快去下文学习<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basenn.html">BaseNN的相关使用</a>吧！</p>
 </section>
+<section id="id38">
+<h4>4. 完整代码<a class="headerlink" href="#id38" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 使用BaseNN训练的手写数字识别模型进行推理</span>
+<span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
+<span class="n">basenn</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;basenn&quot;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s2">&quot;basenn.pth&quot;</span><span class="p">)</span>
+<span class="n">img</span> <span class="o">=</span> <span class="s1">&#39;6.jpg&#39;</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">img</span><span class="p">)</span>
+<span class="n">format_output</span> <span class="o">=</span> <span class="n">basenn</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">format_output</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
 </section>
 <section id="baseml">
 <h3>基于BaseML模型推理<a class="headerlink" href="#baseml" title="Permalink to this heading"></a></h3>
 <p>XEduHub现在可以支持使用BaseML导出的pkl模型文件进行推理啦！如果你想了解如何将使用<a class="reference external" href="https://xedu.readthedocs.io/zh/master/baseml.html">BaseML</a>训练模型并保存成.pkl模型文件，可以看这里：<a class="reference external" href="https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id10">BaseML模型保存</a>。OK，准备好了pkl模型，那么就开始使用XEduHub吧！</p>
-<section id="id37">
-<h4>1. 模型声明<a class="headerlink" href="#id37" title="Permalink to this heading"></a></h4>
+<section id="id39">
+<h4>1. 模型声明<a class="headerlink" href="#id39" title="Permalink to this heading"></a></h4>
 <p>与MMEdu和BaseNN一样，在模型声明时你只需要设置task为”baseml”，而不需要指定是哪种任务；其次，你需要指定你的模型路径，并传入到<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>参数。这里我们以<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=6440db053c0e930cb5d7f297&amp;backpath=/pjlab/projects/list#public">鸢尾花聚类项目</a>为例。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">baseml</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;baseml&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;baseml.pkl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
-<section id="id38">
-<h4>2. 模型推理<a class="headerlink" href="#id38" title="Permalink to this heading"></a></h4>
+<section id="id40">
+<h4>2. 模型推理<a class="headerlink" href="#id40" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">5.1</span><span class="p">,</span><span class="mf">1.5</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mf">4.7</span><span class="p">]]</span> <span class="c1"># 该项目中训练数据只有两维，因此推理时给出两维数据</span>
 <span class="n">result</span><span class="o">=</span> <span class="n">baseml</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
@@ -680,8 +620,8 @@
 </ul>
 <p>**注意！**基于BaseML模型推理结果不包含图片！因为大部分使用BaseML解决的任务只需要输出分类标签、文本或者数组数据等。</p>
 </section>
-<section id="id39">
-<h4>3. 结果输出<a class="headerlink" href="#id39" title="Permalink to this heading"></a></h4>
+<section id="id41">
+<h4>3. 结果输出<a class="headerlink" href="#id41" title="Permalink to this heading"></a></h4>
 <p>XEduHub提供了一种便捷的方式，能够以标准美观的格式查看输出结果。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">format_output</span> <span class="o">=</span> <span class="n">baseml</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span>
 </pre></div>
@@ -690,20 +630,32 @@
 <p><img alt="../_images/baseml_format.png" src="../_images/baseml_format.png" /></p>
 <p>如果此时你有冲动去使用BaseML完成模型训练到推理，再到转换与应用，快去下文学习<a class="reference external" href="https://xedu.readthedocs.io/zh/master/baseml.html">BaseML的相关使用</a>吧！</p>
 </section>
+<section id="id42">
+<h4>4. 完整代码<a class="headerlink" href="#id42" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 使用BaseML训练的鸢尾花聚类模型推理</span>
+<span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
+<span class="n">baseml</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;baseml&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;baseml.pkl&#39;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">5.1</span><span class="p">,</span><span class="mf">1.5</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mf">4.7</span><span class="p">]]</span> <span class="c1"># 该项目中训练数据只有两维，因此推理时给出两维数据</span>
+<span class="n">result</span><span class="o">=</span> <span class="n">baseml</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+<span class="n">format_output</span> <span class="o">=</span> <span class="n">baseml</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">format_output</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
 </section>
 <section id="onnx">
 <h3>基于用户自定义ONNX模型推理<a class="headerlink" href="#onnx" title="Permalink to this heading"></a></h3>
 <p>XEduHub现在可以支持使用用户自定义的ONNX模型文件进行推理啦！这意味着你可以不仅仅使用MMEdu或者BaseNN训练模型并转换而成的ONNX模型文件进行推理，还可以使用其他各个地方的ONNX模型文件，但是有个<strong>重要的前提：你需要会使用这个模型，了解模型输入的训练数据以及模型的输出结果</strong>。OK，如果你已经做好了充足的准备，那么就开始使用XEduHub吧！</p>
-<section id="id40">
-<h4>1. 模型声明<a class="headerlink" href="#id40" title="Permalink to this heading"></a></h4>
+<section id="id43">
+<h4>1. 模型声明<a class="headerlink" href="#id43" title="Permalink to this heading"></a></h4>
 <p>与其他的外置任务一样，在模型声明时你只需要设置task为”custom”，而不需要指定是哪种任务；其次，你需要指定你的模型路径，并传入到<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>参数。这里以一个目标检测为例。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">custom</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;custom&quot;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s2">&quot;custom.onnx&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
-<section id="id41">
-<h4>2. 模型推理<a class="headerlink" href="#id41" title="Permalink to this heading"></a></h4>
+<section id="id44">
+<h4>2. 模型推理<a class="headerlink" href="#id44" title="Permalink to this heading"></a></h4>
 <p>在这里，使用自定义的ONNX模型进行推理的时候，你需要自己的需求实现模型输入数据的前处理以及输出数据的后处理方法，确保在进行模型推理的正常运行。</p>
 <p>举一个例子，如果你手中有一个onnx模型文件，这个模型是一个<strong>目标检测模型</strong>，在训练时的训练数据是将图片读入后进行数字化处理得到的<strong>numpy数组</strong>，那么你在使用XEduHub时，基于该模型进行推理之前，<strong>需要设计对应的前处理方法</strong>将图片进行数字化。</p>
 <p>同样地，如果你的模型的输出结果是一个一维数组，里面包含了所有类别标签对应的置信度，那么如果你想要输出检测出来的最有可能的类别标签，你就<strong>需要设计后处理方法</strong>，使得输出的推理结果满足你的需要。</p>
@@ -736,154 +688,36 @@
 </div>
 <p><img alt="../_images/custom_result.png" src="../_images/custom_result.png" /></p>
 </section>
-</section>
-</section>
-<section id="ai">
-<h2>多元AI模型综合应用<a class="headerlink" href="#ai" title="Permalink to this heading"></a></h2>
-<p>借助XEduHub可以实现应用多元AI模型去解决复杂的问题。</p>
-<section id="id42">
-<h3>实时人体关键点识别<a class="headerlink" href="#id42" title="Permalink to this heading"></a></h3>
-<p>以下代码可以实时检测摄像头中出现的多个人，并对每一个人体提取关键点。</p>
-<p>具体实现方式为：我们首先将实时视频中每一帧的图像进行人体目标检测，拿到所有的检测框<code class="docutils literal notranslate"><span class="pre">bbox</span></code>及其坐标信息，绘制检测框。随后对每个检测框中的人体进行关键点提取。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
-<span class="kn">import</span> <span class="nn">cv2</span>
-<span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">body</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;body17&#39;</span><span class="p">)</span><span class="c1"># 实例化pose模型</span>
-<span class="n">det</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;bodydetect&#39;</span><span class="p">)</span><span class="c1"># 实例化detect模型</span>
-<span class="k">while</span> <span class="n">cap</span><span class="o">.</span><span class="n">isOpened</span><span class="p">():</span>
-    <span class="n">ret</span><span class="p">,</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">ret</span><span class="p">:</span>
-        <span class="k">break</span>
-    <span class="n">bboxs</span> <span class="o">=</span> <span class="n">det</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">frame</span><span class="p">,</span><span class="n">thr</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
-    <span class="n">img</span> <span class="o">=</span> <span class="n">frame</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">bboxs</span><span class="p">:</span>
-        <span class="n">keypoints</span><span class="p">,</span><span class="n">img</span> <span class="o">=</span><span class="n">body</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">img</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">,</span><span class="n">bbox</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
-    <span class="k">for</span> <span class="p">[</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">]</span> <span class="ow">in</span> <span class="n">bboxs</span><span class="p">:</span> <span class="c1"># 画检测框</span>
-        <span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">x1</span><span class="p">),</span><span class="nb">int</span><span class="p">(</span><span class="n">y1</span><span class="p">)),(</span><span class="nb">int</span><span class="p">(</span><span class="n">x2</span><span class="p">),</span><span class="nb">int</span><span class="p">(</span><span class="n">y2</span><span class="p">)),(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span>
-    <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">&#39;video&#39;</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFF</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">):</span>
-        <span class="k">break</span>    
-<span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
-</pre></div>
-</div>
-</section>
-<section id="id43">
-<h3><strong>拓展：视频中的人体关键点识别</strong><a class="headerlink" href="#id43" title="Permalink to this heading"></a></h3>
-<p>该项目可以识别视频中出现的人体的关键点。</p>
-<p>具体实现方式与上面的代码类似，区别就是从摄像头的实时视频流变成了本地的视频流，对视频每一帧的操作不变。最后，我们还需要将处理好的每一帧的图片再合成为视频。</p>
-<p>在这里我们将这个任务分成两步：Step1: 利用关键点识别处理视频的每一帧并保存到本地；Step2: 将本地的视频帧合成为视频。</p>
-<p>Step1的代码：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># STEP1: 利用关键点识别处理视频的每一帧并保存到本地</span>
-<span class="kn">import</span> <span class="nn">cv2</span>
-<span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
-<span class="kn">import</span> <span class="nn">os</span>
-
-<span class="n">video_path</span> <span class="o">=</span> <span class="s2">&quot;data/eason.mp4&quot;</span> <span class="c1"># 指定视频路径</span>
-<span class="n">output_dir</span> <span class="o">=</span> <span class="s1">&#39;output/&#39;</span> <span class="c1"># 指定保存位置</span>
-<span class="n">body</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;body17&#39;</span><span class="p">)</span><span class="c1"># 实例化pose模型</span>
-<span class="n">det</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;bodydetect&#39;</span><span class="p">)</span><span class="c1"># 实例化detect模型</span>
-<span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="n">video_path</span><span class="p">)</span>
-<span class="n">frame_count</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># 视频帧的数量</span>
-
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="n">ret</span><span class="p">,</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">ret</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Video read complete!&#39;</span><span class="p">)</span>
-        <span class="k">break</span>
-    <span class="n">frame_count</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="n">frame_file_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">output_dir</span><span class="si">}</span><span class="s1">frame_</span><span class="si">{</span><span class="n">frame_count</span><span class="si">:</span><span class="s1">04d</span><span class="si">}</span><span class="s1">.jpg&#39;</span> <span class="c1"># 每一张帧图片的名称</span>
-    <span class="n">bboxs</span> <span class="o">=</span> <span class="n">det</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">frame</span><span class="p">,</span><span class="n">thr</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
-    <span class="n">img</span> <span class="o">=</span> <span class="n">frame</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">bboxs</span><span class="p">:</span>
-        <span class="n">keypoints</span><span class="p">,</span><span class="n">img</span> <span class="o">=</span><span class="n">body</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">img</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">,</span><span class="n">bbox</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
-    <span class="k">for</span> <span class="p">[</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">]</span> <span class="ow">in</span> <span class="n">bboxs</span><span class="p">:</span> <span class="c1"># 画检测框</span>
-        <span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">x1</span><span class="p">),</span><span class="nb">int</span><span class="p">(</span><span class="n">y1</span><span class="p">)),(</span><span class="nb">int</span><span class="p">(</span><span class="n">x2</span><span class="p">),</span><span class="nb">int</span><span class="p">(</span><span class="n">y2</span><span class="p">)),(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span>
-    <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">&#39;video&#39;</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
-    <span class="n">body</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">frame_file_name</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFF</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">):</span>
-        <span class="k">break</span>    
-
-<span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>Step2的代码：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
-<span class="kn">import</span> <span class="nn">os</span>
-
-<span class="n">output_video_path</span> <span class="o">=</span> <span class="s1">&#39;output_video.mp4&#39;</span> <span class="c1"># 指定合成后视频的名称</span>
-<span class="n">output_dir</span> <span class="o">=</span> <span class="s1">&#39;output/&#39;</span> <span class="c1"># 指定本地的帧图片的路径</span>
-<span class="c1"># 获取推理结果文件列表</span>
-<span class="n">result_files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.jpg&#39;</span><span class="p">)])</span>
-<span class="c1"># 获取第一张图像的尺寸</span>
-<span class="n">first_frame</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">result_files</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">frame_height</span><span class="p">,</span> <span class="n">frame_width</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">first_frame</span><span class="o">.</span><span class="n">shape</span>
-<span class="c1"># 设置视频编码器和输出对象</span>
-<span class="n">fourcc</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoWriter_fourcc</span><span class="p">(</span><span class="o">*</span><span class="s1">&#39;mp4v&#39;</span><span class="p">)</span>  <span class="c1"># 使用 mp4 编码器</span>
-<span class="n">out</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoWriter</span><span class="p">(</span><span class="n">output_video_path</span><span class="p">,</span> <span class="n">fourcc</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="p">(</span><span class="n">frame_width</span><span class="p">,</span> <span class="n">frame_height</span><span class="p">))</span> <span class="c1"># 30 是帧率</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;开始合成视频...&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">image_path</span> <span class="ow">in</span> <span class="n">result_files</span><span class="p">:</span>
-    <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
-    <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-<span class="n">out</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;视频合成完毕，已保存到：&#39;</span><span class="p">,</span> <span class="n">output_video_path</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<section id="id44">
-<h3>多人脸关键点识别<a class="headerlink" href="#id44" title="Permalink to this heading"></a></h3>
-<p>以下代码可以将一张图片中所有的人脸识别出来，并对每一张脸提取关键点。这可以用于对一张图片中的所有人进行表情分类，推测情感等。</p>
-<p>具体实现方式为：我们首先使用<code class="docutils literal notranslate"><span class="pre">facedetect</span></code>进行人脸检测，拿到所有的检测框<code class="docutils literal notranslate"><span class="pre">bbox</span></code>。随后对每个检测框中的人脸进行关键点提取。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
-<span class="n">face_det</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;facedetect&#39;</span><span class="p">)</span>
-<span class="n">face_kp</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;face&#39;</span><span class="p">)</span>
-<span class="n">bboxs</span><span class="p">,</span><span class="n">img</span> <span class="o">=</span> <span class="n">face_det</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;face.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">bboxs</span><span class="p">:</span>
-    <span class="n">keypoints</span><span class="p">,</span><span class="n">img</span> <span class="o">=</span> <span class="n">face_kp</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">img</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">,</span><span class="n">bbox</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
-    <span class="n">face_kp</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
 <section id="id45">
-<h3>人脸检测控制舵机方向<a class="headerlink" href="#id45" title="Permalink to this heading"></a></h3>
-<p>以下代码可以运行在Arduino开发板上，实现通过跟随人脸位置来控制舵机方向。具体实现方式为：通过人脸检测模型得到人脸检测框的坐标并计算x轴方向的中心点，根据中心点的位置判断是左转还是右转。通过pinpong库控制舵机的转向。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
-<span class="kn">from</span> <span class="nn">pinpong.board</span> <span class="kn">import</span> <span class="n">Board</span><span class="p">,</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">Servo</span>
+<h4>3. 完整代码<a class="headerlink" href="#id45" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
-<span class="kn">import</span> <span class="nn">time</span>
 
+<span class="n">custom</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;custom&quot;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s2">&quot;custom.onnx&quot;</span><span class="p">)</span>
 
-<span class="n">Board</span><span class="p">(</span><span class="s1">&#39;uno&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">begin</span><span class="p">()</span> <span class="c1"># 指定Arduino开发板，自动识别COM口</span>
-<span class="n">det</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;facedetect&#39;</span><span class="p">)</span> <span class="c1"># 加载人脸检测模型</span>
-<span class="n">ser</span> <span class="o">=</span> <span class="n">Servo</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">Pin</span><span class="o">.</span><span class="n">D4</span><span class="p">))</span> <span class="c1"># 初始化舵机，指定舵机接口为D4</span>
-<span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># 打开摄像头</span>
+<span class="k">def</span> <span class="nf">pre</span><span class="p">(</span><span class="n">path</span><span class="p">):</span> <span class="c1"># 输入数据（此处为文件路径）前处理的输入参数就是模型推理时的输入参数，这里是图片的路径</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    这个前处理方法实现了将待推理的图片读入并进行数字化，调整数据类型、增加维度、调整各维度的顺序。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="c1"># 读取图像</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="c1"># 调整数据类型</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># 增加batch维</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># [batch,channel,width,height]</span>
+    <span class="k">return</span> <span class="n">img</span> <span class="c1"># 输出前处理过的数据（此处为四维numpy数组）</span>
 
-<span class="k">while</span> <span class="n">cap</span><span class="o">.</span><span class="n">isOpened</span><span class="p">():</span>
-    <span class="n">ret</span><span class="p">,</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="mi">300</span> <span class="c1"># 初始化人脸中心点的x坐标</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">ret</span><span class="p">:</span>
-        <span class="k">break</span>
-    <span class="n">result</span><span class="p">,</span><span class="n">img</span> <span class="o">=</span> <span class="n">det</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">frame</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">,</span><span class="n">thr</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span> <span class="c1"># 在CPU上进行推理</span>
-    <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># 计算人脸中心点的x坐标</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">400</span><span class="p">:</span> <span class="c1"># 根据人脸中心点的x坐标控制舵机转动,大于400向左转</span>
-        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
-        <span class="n">ser</span><span class="o">.</span><span class="n">write_angle</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">200</span><span class="p">:</span> <span class="c1"># 根据人脸中心点的x坐标控制舵机转动，小于200向右转</span>
-        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
-        <span class="n">ser</span><span class="o">.</span><span class="n">write_angle</span><span class="p">(</span><span class="mi">180</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
-    <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">&#39;video&#39;</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFF</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">):</span> <span class="c1"># 按q键退出</span>
-        <span class="k">break</span>    
-<span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="n">data</span><span class="p">):</span> <span class="c1"># 输入推理结果和前处理后的数据</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    这个后处理方法实现了获取并返回推理结果中置信度最大的类别标签。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># 返回类别索引</span>
+    <span class="k">return</span> <span class="n">res</span> <span class="c1"># 输出结果</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">custom</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;det.jpg&#39;</span><span class="p">,</span><span class="n">preprocess</span><span class="o">=</span><span class="n">pre</span><span class="p">,</span><span class="n">postprocess</span><span class="o">=</span><span class="n">post</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </pre></div>
 </div>
+</section>
 </section>
 </section>
 <section id="id46">
@@ -898,10 +732,7 @@
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="installation.html" class="btn btn-neutral float-left" title="XEduHub安装" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../mmedu.html" class="btn btn-neutral float-right" title="计算机视觉库MMEdu" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 

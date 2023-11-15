@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EasyTrain（模型训练辅助工具） &mdash; OpenXLabEdu  documentation</title>
+  <title>EasyTrain 模型训练辅助工具 &mdash; OpenXLabEdu  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -46,15 +46,23 @@
               <p class="caption" role="heading"><span class="caption-text">目录</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEduHub</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basenn.html">神经网络库BaseNN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../baseml.html">传统机器学习库BaseML</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">EasyDL系列工具功能详解</a></li>
 <li class="toctree-l2"><a class="reference internal" href="howtoget.html">如何获取EasyDL系列工具</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">EasyTrain（模型训练辅助工具）</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">EasyTrain 模型训练辅助工具</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">EasyTrain简介</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#easytrainai">用EasyTrain训练第一个AI模型！</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#easytrainai">用EasyTrain训练第一个AI模型！</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#step-1">step 1：任务选择</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-2">step 2：模型选择</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-3">step 3：数据集选择</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-4">step 4：参数设置</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-5">step 5：开始训练</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">注意事项</a></li>
 </ul>
 </li>
@@ -84,7 +92,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../easydl.html">EasyDL系列无代码工具</a></li>
-      <li class="breadcrumb-item active">EasyTrain（模型训练辅助工具）</li>
+      <li class="breadcrumb-item active">EasyTrain 模型训练辅助工具</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/easydl/easytrain.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -95,36 +103,56 @@
            <div itemprop="articleBody">
              
   <section id="easytrain">
-<h1>EasyTrain（模型训练辅助工具）<a class="headerlink" href="#easytrain" title="Permalink to this heading"></a></h1>
+<h1>EasyTrain 模型训练辅助工具<a class="headerlink" href="#easytrain" title="Permalink to this heading"></a></h1>
 <section id="id1">
 <h2>EasyTrain简介<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p>EasyTrain是无代码的MMEdu模型训练辅助工具。借助EasyTrain，不需要编写一行代码，即可训练出AI模型。</p>
 </section>
 <section id="easytrainai">
 <h2>用EasyTrain训练第一个AI模型！<a class="headerlink" href="#easytrainai" title="Permalink to this heading"></a></h2>
-<p>EasyTrain界面打开之后在下拉框中选择问题类型为分类或者检测。</p>
-<p><img alt="../_images/probtype.PNG" src="../_images/probtype.PNG" /></p>
-<p>在选择了问题类型之后，下面的”算法类型”也会对应的更改。</p>
-<p><img alt="../_images/algotype1.PNG" src="../_images/algotype1.PNG" /></p>
-<p>在训练中要指定训练结果的保存路径和数据集路径，在选择了路径后，按钮文本会变成”重新选择”。如果训练新的模型，请尽量把结果保存在新的空文件夹中，否则不同训练问题的自动保存模型会冲突。</p>
-<p><img alt="../_images/trpath.PNG" src="../_images/trpath.PNG" /></p>
-<p>训练的轮数，学习率，类别数量，使用设备等参数也可以调节，点击”更多参数”按钮可以修改更多的参数。一部分参数有范围，限定数字等要求。并且请选择合理的数值。如果是用不到的参数，建议不要修改，采用默认值。特别地，类别默认为-1是允许的，表示默认读取<code class="docutils literal notranslate"><span class="pre">class.txt</span></code>中的类别，修改之后需要填成正确的类数量。</p>
-<p><img alt="../_images/trparam.PNG" src="../_images/trparam.PNG" /></p>
-<p>在更多参数中做出修改后，请点击”保存修改”将其保存。</p>
-<p><img alt="../_images/trmoreparam.PNG" src="../_images/trmoreparam.PNG" /></p>
-<p>在修改好自己的参数后，点击左下角的”代码生成”，可以生成训练代码，生成代码之后才可以训练。
-生成的代码会显示在上方的代码框，并且保存到<code class="docutils literal notranslate"><span class="pre">train_code.py</span></code>中，请不要随意修改。</p>
-<p><img alt="../_images/trgenecode.PNG" src="../_images/trgenecode.PNG" /></p>
-<p>代码生成之后点击”开始训练”按钮即可开始训练，训练过程中主界面依旧可以正常运行，但是为了程序的稳定性和速度，不建议进行额外操作。
-在开始训练后，停止训练会短暂地卡顿，随后停止。</p>
-<p>在训练过程中，loss曲线会实时显示在右下方的loss框中，以轮数表示的训练进度也会表现在”结束训练”按钮下的进度条中。</p>
+<section id="step-1">
+<h3>step 1：任务选择<a class="headerlink" href="#step-1" title="Permalink to this heading"></a></h3>
+<p>EasyTrain界面打开之后在下拉框中选择训练任务为分类或者检测任务。</p>
+<p><img alt="../_images/train1.jpg" src="../_images/train1.jpg" /></p>
+</section>
+<section id="step-2">
+<h3>step 2：模型选择<a class="headerlink" href="#step-2" title="Permalink to this heading"></a></h3>
+<p>在选择了训练任务类型之后，点击“下一步”，进入模型选择页面，选择训练的模型。训练模型会根据任务对应更改。</p>
+<p><img alt="../_images/train2.png" src="../_images/train2.png" /></p>
+</section>
+<section id="step-3">
+<h3>step 3：数据集选择<a class="headerlink" href="#step-3" title="Permalink to this heading"></a></h3>
+<p>在训练中要指定训练的数据集，一件安装包中已包含了分类任务数据集：cats_dogs、hand_gray;检测任务数据集：plate。</p>
+<p><img alt="../_images/train3.jpg" src="../_images/train3.jpg" /></p>
+<p>如果要使用自己的数据集需要将数据集放置在XEdu/dataset相应的任务之下，再刷新一下网页即可再数据集菜单选项中看到对应的数据集。如下所示，再分类任务mmedu_cls文件夹下放置我的数据集“my_newdataset”，刷新网页成功出现。</p>
+<p><img alt="../_images/train4.png" src="../_images/train4.png" />
+<img alt="../_images/train5.png" src="../_images/train5.png" /></p>
+</section>
+<section id="step-4">
+<h3>step 4：参数设置<a class="headerlink" href="#step-4" title="Permalink to this heading"></a></h3>
+<p>点击“设置基本参数↓”，可以设置学习率，批次大小，训练轮数，随机种子。完成设置后点击“确认”按钮，成功设置会弹出窗口提醒设置成功。</p>
+<p><img alt="../_images/train6.png" src="../_images/train6.png" /></p>
+<p>点击“设置其他训练参数”，可以设置分类数量（仅用于分类任务），优化器，权重衰减、设备、预训练模型。完成设置后点击“提交”按钮。</p>
+<p><img alt="../_images/train7.png" src="../_images/train7.png" /></p>
+<p>在完成参数设置后，点击右侧的”生成代码”，可以生成训练代码，生成代码之后才可以训练。
+生成的代码会显示在上方的代码框，点击右上角复制按钮还可以一键复制代码。</p>
+<p><img alt="../_images/train8.png" src="../_images/train8.png" /></p>
+</section>
+<section id="step-5">
+<h3>step 5：开始训练<a class="headerlink" href="#step-5" title="Permalink to this heading"></a></h3>
+<p>代码生成之后点击”进入训练”按钮即可跳转至训练页面，点击“开始训练”按钮即可一键开始训练模型。</p>
+<p><img alt="../_images/train9.png" src="../_images/train9.png" /></p>
+<p>出现“loading”表示模型正在训练中，由于本地cpu训练模型的速度较慢，请耐心等待，可以先去喝杯水休息一下~</p>
+<p>若想中断训练，可以点击“停止训练”按钮。</p>
+<p><img alt="../_images/train10.png" src="../_images/train10.png" /></p>
+<p>在训练过程中，loss曲线会实时显示在左侧的Loss Chart框中，accuracy曲线会实时显示在左侧的Accuracy  Chart框中。坐标轴的横坐标为训练轮数，纵坐标为对应数值。</p>
+</section>
 </section>
 <section id="id2">
 <h2>注意事项<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>一部分参数有范围，例如学习率只能为正值，轮数只能为正整数，请选择合理范围的参数。</p></li>
 <li><p>关于设备类型，如果没有安装GPU版本的XEdu各模块，则不能以cuda设备运行，只能选择cpu。</p></li>
-<li><p>请选择空文件夹进行结果的保存，原因已经解释过。</p></li>
 <li><p>请确认推理时选择的网络是否与权重文件匹配，如果不匹配会报错。</p></li>
 </ul>
 </section>
