@@ -7,9 +7,7 @@ EasyDL系列无代码工具
 
    easydl/howtoget.md
 
-   easydl/easytrain-mmedu.md
-
-   easydl/easytrain-basenn.md
+   easydl/easytrain.md
 
    easydl/easyconvert.md
 
