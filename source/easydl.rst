@@ -9,6 +9,8 @@ EasyDL系列无代码工具
 
    easydl/easytrain.md
 
+   easydl/easyconvert.md
+
    easydl/easyinfer.md
 
    easydl/easyapi.md
