@@ -1,11 +1,11 @@
-# EasyTrain 模型训练辅助工具
+# EasyTrain-MMEdu 模型训练辅助工具
 
-EasyTrain简介
+EasyTrain-MMEdu简介
 -------------
 
-EasyTrain是无代码的MMEdu模型训练辅助工具。借助EasyTrain，不需要编写一行代码，即可训练出AI模型。
+EasyTrain-MMEdu是无代码的MMEdu模型训练辅助工具。借助EasyTrain-MMEdu，不需要编写一行代码，即可训练出AI模型。
 
-用EasyTrain训练第一个AI模型！
+用EasyTrain-MMEdu训练第一个AI模型！
 -----------------------------
 
 ### step 1：任务选择
@@ -22,7 +22,9 @@ EasyTrain界面打开之后在下拉框中选择训练任务为分类或者检�
 
 ### step 3：数据集选择
 
-在训练中要指定训练的数据集，网页会读取XEdu/dataset相应的任务之下数据集。一键安装包中自带分类任务数据集：cats_dogs、hand_gray;检测任务数据集：plate。
+在训练中要指定训练的数据集，网页会读取XEdu/dataset相应的任务之下数据集。数据集的格式要求为：[ImageNet格式](https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#imagenet)（分类任务），[COCO格式](https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#coco)（检测任务）。
+
+一键安装包中自带分类任务数据集：cats_dogs、hand_gray;检测任务数据集：plate。
 
 **目前数据集中为空需要自行下载添加，详细步骤在文件夹中**
 ![](../images/easydl/train-dataset.png)
@@ -67,10 +69,18 @@ EasyTrain界面打开之后在下拉框中选择训练任务为分类或者检�
 
 在训练过程中，loss曲线会实时显示在左侧的Loss Chart框中，accuracy曲线会实时显示在左侧的Accuracy  Chart框中。坐标轴的横坐标为训练轮数，纵坐标为对应数值。
 
+自己训练的模型文件将保存在XEdu/my_checkpoints中。每次训练都会生成一个文件夹，可以通过文件夹名称上的日期时间找到对应的模型。
+
+![](../images/easydl/train11.png)
+
+完成模型训练之后，窗口会弹出模型转换，可以点击“是”可实现pth格式模型准换成onnx格式模型。若要自行转换可使用[EasyConvert](https://xedu.readthedocs.io/zh/master/easydl/easyconvert.html)。
+
+![](../images/easydl/train19.png)
+
 注意事项
 --------
 
--   请确认选择的数据集不为空。
+-   请确认选择的数据集不为空，且数据集格式正确。
 -   一部分参数有范围，例如学习率只能为正值，轮数只能为正整数，请选择合理范围的参数。
 -   关于设备类型，如果没有安装GPU版本的XEdu各模块，则不能以cuda设备运行，只能选择cpu。
 -   请确认推理时选择的网络是否与权重文件匹配，如果不匹配会报错。
