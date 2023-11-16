@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EasyInference 模型推理辅助工具 &mdash; OpenXLabEdu  documentation</title>
+  <title>EasyConvert 模型转换辅助工具 &mdash; OpenXLabEdu  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -20,8 +20,8 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="EasyAPI AI模型远程推理工具" href="easyapi.html" />
-    <link rel="prev" title="EasyConvert 模型转换辅助工具" href="easyconvert.html" /> 
+    <link rel="next" title="EasyInference 模型推理辅助工具" href="easyinfer.html" />
+    <link rel="prev" title="EasyTrain 模型训练辅助工具" href="easytrain.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -54,13 +54,17 @@
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">EasyDL系列工具功能详解</a></li>
 <li class="toctree-l2"><a class="reference internal" href="howtoget.html">如何获取EasyDL系列工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="easytrain.html">EasyTrain 模型训练辅助工具</a></li>
-<li class="toctree-l2"><a class="reference internal" href="easyconvert.html">EasyConvert 模型转换辅助工具</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">EasyInference 模型推理辅助工具</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">EasyInference简介</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">快速体验用EasyInference完成模型推理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">注意事项</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">EasyConvert 模型转换辅助工具</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">EasyConvert 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#easyconvertai">用EasyConvert准换第一个AI模型！</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#step-1">step 1：选择要转换处理的文件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-2">step 2：选择操作</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-3">step 3：模型转换</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="easyinfer.html">EasyInference 模型推理辅助工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="easyapi.html">EasyAPI AI模型远程推理工具</a></li>
 </ul>
 </li>
@@ -86,9 +90,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../easydl.html">EasyDL系列无代码工具</a></li>
-      <li class="breadcrumb-item active">EasyInference 模型推理辅助工具</li>
+      <li class="breadcrumb-item active">EasyConvert 模型转换辅助工具</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/easydl/easyinfer.md.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/easydl/easyconvert.md.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -96,36 +100,38 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="easyinference">
-<h1>EasyInference 模型推理辅助工具<a class="headerlink" href="#easyinference" title="Permalink to this heading"></a></h1>
+  <section id="easyconvert">
+<h1>EasyConvert 模型转换辅助工具<a class="headerlink" href="#easyconvert" title="Permalink to this heading"></a></h1>
 <section id="id1">
-<h2>EasyInference简介<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
-<p>EasyInference是模型推理工具。借助EasyInference，不需要编写一行代码，即可完成模型的推理。支持一张图片和一个文件夹的批量推理。</p>
+<h2>EasyConvert 简介<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>EasyConvert是XEdu提供的无代码模型转换工具。利用EasyConvert，可以实现将MMEdu和BaseNN导出的pth格式模型转换成onnx格式模型，适用于初学者人工智能入门。</p>
+<p>注意：pth模型须是新版的MMEdu和BaseNN训练得到的模型！</p>
+<p><img alt="../_images/EasyConvert-home.jpg" src="../_images/EasyConvert-home.jpg" /></p>
 </section>
-<section id="id2">
-<h2>快速体验用EasyInference完成模型推理<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
-<p>EasyInference页面的左侧还是基本的参数选择，包括问题类型，算法类型，权重文件，类别文件，推理结果的保存路径。
-如果推理结果的保存路径不选择，会默认保存到当前文件夹下的<code class="docutils literal notranslate"><span class="pre">det_result</span></code>中。
-但是请选择一个空文件夹作为保存路径，否则预览界面会出现问题。</p>
-<p>在一个单选按钮中选择要推理的文件夹或者单张图片，无论选择哪个都会弹出选择框。</p>
-<p>如果选择推理单张图片，请选择一张图片，格式支持jpg，jpeg，png。请注意，即使多选，也只会推理第一张。如果发现文件夹中并没有想要的图片，再确认该图片确实在此路径下后，可以通过尝试更改查找时文件的后缀名（如下图所示）来寻找图片。</p>
-<p><img alt="../_images/infselsingle.PNG" src="../_images/infselsingle.PNG" /></p>
-<p>如果是选择文件夹，选择该文件夹即可。</p>
-<p><img alt="../_images/infselfolder.PNG" src="../_images/infselfolder.PNG" /></p>
-<p>如果问题类型为检测，则会多出两个参数选择，分别是rpn阈值和rcnn阈值，请选择0-1之内的数字。</p>
-<p><img alt="../_images/infmoreparam.PNG" src="../_images/infmoreparam.PNG" /></p>
-<p>点击”生成代码”后，代码会保存在<code class="docutils literal notranslate"><span class="pre">inference_code.py</span></code>中，并且在界面中显示。</p>
-<p>点击”开始推理”后，会弹出提示框并且进行推理。请注意，运行过程中主界面会卡住，请耐心等待推理完成，推理完成后会在右下角显示推理信息，也会在上方显示结果图片。</p>
-<p>点击”上一张”，”下一张”可以进行切换。如果保存路径还有其他图片，程序会将那些图片全都展示，所以建议在推理之前清空保存路径。</p>
-</section>
-<section id="id3">
-<h2>注意事项<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<section id="easyconvertai">
+<h2>用EasyConvert准换第一个AI模型！<a class="headerlink" href="#easyconvertai" title="Permalink to this heading"></a></h2>
+<section id="step-1">
+<h3>step 1：选择要转换处理的文件<a class="headerlink" href="#step-1" title="Permalink to this heading"></a></h3>
+<p>EasyTrain界面打开之后，有两种支持的文件选项：</p>
 <ul class="simple">
-<li><p>一部分参数有范围，例如学习率只能为正值，轮数只能为正整数，请选择合理范围的参数。</p></li>
-<li><p>关于设备类型，如果没有安装GPU版本的XEdu各模块，则不能以cuda设备运行，只能选择cpu。</p></li>
-<li><p>请选择空文件夹进行结果的保存，原因已经解释过。</p></li>
-<li><p>请确认推理时选择的网络是否与权重文件匹配，如果不匹配会报错。</p></li>
+<li><p>单个模型文件转换</p></li>
+<li><p>批量模型文件转换（放置在一个文件夹下）</p></li>
 </ul>
+<p><img alt="../_images/convert1.png" src="../_images/convert1.png" /></p>
+</section>
+<section id="step-2">
+<h3>step 2：选择操作<a class="headerlink" href="#step-2" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>pth转onnx</p></li>
+<li><p>onnx转pth（正在开发，敬请期待）</p></li>
+</ul>
+<p><img alt="../_images/convert2.png" src="../_images/convert2.png" /></p>
+</section>
+<section id="step-3">
+<h3>step 3：模型转换<a class="headerlink" href="#step-3" title="Permalink to this heading"></a></h3>
+<p>点击“模型转换”按钮，会将“单个模型”和“模型文件夹”中的所有模型进行转换。新模型保存地址与原模型相同。</p>
+<p><img alt="../_images/convert3.png" src="../_images/convert3.png" /></p>
+</section>
 </section>
 </section>
 
@@ -133,8 +139,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="easyconvert.html" class="btn btn-neutral float-left" title="EasyConvert 模型转换辅助工具" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="easyapi.html" class="btn btn-neutral float-right" title="EasyAPI AI模型远程推理工具" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="easytrain.html" class="btn btn-neutral float-left" title="EasyTrain 模型训练辅助工具" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="easyinfer.html" class="btn btn-neutral float-right" title="EasyInference 模型推理辅助工具" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

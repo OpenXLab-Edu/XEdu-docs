@@ -75,10 +75,11 @@ EasyTrain界面打开之后在下拉框中选择训练任务为分类或者检�
 
 ![](../images/easydl/train11.png)
 
-完成模型训练之后，窗口会弹出模型转换，可以点击“是”可实现pth格式模型准换成onnx格式模型。若要自行转换可使用[EasyConvert](https://xedu.readthedocs.io/zh/master/easydl/easyconvert.html)。
+完成模型训练之后，窗口会弹出模型转换，可以点击“是”可实现best_accuracy的pth格式模型转为onnx格式。若要自行转换可使用[EasyConvert](https://xedu.readthedocs.io/zh/master/easydl/easyconvert.html)。
 
 ![](../images/easydl/train19.png)
 
+![](../images/easydl/train20.png)
 
 用EasyTrain训练第一个BaseNN模型！
 -----------------------------
@@ -87,7 +88,7 @@ EasyTrain界面打开之后在下拉框中选择训练任务为分类或者检�
 
 EasyTrain界面打开之后，选择BaseNN页面，在下拉框中指定训练的数据集，网页会读取XEdu/dataset/basenn之下数据集。一键安装包中自带数据集：iris/iris_test.csv，iris/iris_training.csv。
 
-数据集的格式要求为：[csv文件](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id21)(BaseNN任务)。
+数据集的格式要求为：[csv文件](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id21)(BaseNN任务)。纵轴为样本，横轴为特征，第一行为表头，最后一列为标签。
 
 ![](../images/easydl/train13.png)
 
