@@ -61,9 +61,7 @@ wf.support_task()
 
 OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台，满足青少年的AI学习和创作需求，支持在线编程。在“项目”中查看更多，查找“XEduHub”即可找到所有XEduHub相关的体验项目。
 
-XEduHub实例代码合集：[https://www.openinnolab.org.cn/pjlab/project?id=653f3489e9eb0010816aba8a&backpath=/pjedu/userprofile?slideKey=project&type=EDITOR#public](https://www.openinnolab.org.cn/pjlab/project?id=653f3489e9eb0010816aba8a&backpath=/pjedu/userprofile?slideKey=project&type=EDITOR#public)
-
-非正式demo：[https://www.openinnolab.org.cn/pjlab/project?id=65083f0ae8de1d02739c9192&backpath=/pjedu/userprofile?slideKey=project&type=EDITOR#public](https://www.openinnolab.org.cn/pjlab/project?id=65083f0ae8de1d02739c9192&backpath=/pjedu/userprofile?slideKey=project&type=EDITOR#public)
+XEduHub实例代码合集：[https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&sc=635638d69ed68060c638f979#public](https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&sc=635638d69ed68060c638f979#public)
 
 （用Chrome浏览器打开效果最佳）
 

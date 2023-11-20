@@ -1,4 +1,4 @@
-# EasyAPI（AI模型远程推理工具）
+# EasyAPI AI模型远程推理工具
 
 EasyAPI简介
 -----------------
