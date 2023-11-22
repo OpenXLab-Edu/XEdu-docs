@@ -4,7 +4,7 @@
 
 XEdu的全名为OpenXLabEdu，是基于OpenXLab的教育版，也是为中小学AI教育设计的一套完整的学习工具。OpenXLab是上海人工智能实验室开源的AI工具集合。
 
-XEdu核心工具为深度学习工具库XEduHub计算机视觉库MMEdu，加上神经网络库BaseNN和传统机器学习库BaseML，后期规划中会增加OpenDILabEdu和OpenDataLabEdu等，覆盖实验室开源的所有人工智能工具，支持中小学可能涉及到AI技术所有领域。
+XEdu核心工具为深度学习工具库XEduHub、计算机视觉库MMEdu，加上神经网络库BaseNN和传统机器学习库BaseML，后期规划中会增加OpenDILabEdu和OpenDataLabEdu等，覆盖实验室开源的所有人工智能工具，支持中小学可能涉及到AI技术所有领域。
 
 ## 揭秘XEdu
 
