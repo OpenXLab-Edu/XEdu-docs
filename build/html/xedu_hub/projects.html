@@ -21,7 +21,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="计算机视觉库MMEdu" href="../mmedu.html" />
-    <link rel="prev" title="XEduHub功能详解" href="introduction_new.html" /> 
+    <link rel="prev" title="XEduHub功能详解" href="introduction.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -49,12 +49,13 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEduHub</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="quick_start.html">快速体验XEduHub</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation.html">XEduHub安装</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction_new.html">XEduHub功能详解</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">XEduHub功能详解</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">XEduHub项目案例集</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">实时人体关键点识别</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">拓展：视频中的人体关键点识别</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">多人脸关键点识别</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id4">人脸检测控制舵机方向</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">识行小车</a></li>
 </ul>
 </li>
 </ul>
@@ -242,13 +243,82 @@
 </pre></div>
 </div>
 </section>
+<section id="id5">
+<h2>识行小车<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<p>以下代码可以运行在esp32cam核心板上，该芯片是一款高性能、低功耗的芯片，并且具有集成摄像头功能。使用文字识别的离线OCR技术，用XEduHub现成模型，模型大小只要10M。实现阅读交通信息来控制小车运动。具体实现方式为：使用 OCR 技术来识别图像中的文本，并根据识别的文本控制小车的运动。通过发送HTTP GET请求来获取视频流和控制小车的运动。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
+
+<span class="c1">#定义控制小车运动函数</span>
+<span class="k">def</span> <span class="nf">control_car</span><span class="p">(</span><span class="n">cmd</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://192.168.4.1/state?cmd=&quot;</span><span class="c1">#URL，需要根据实际设备或服务器的地址进行修改</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span> <span class="o">+</span> <span class="n">cmd</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>
+    <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s1">&#39;http://192.168.4.1/state?cmd=S&#39;</span><span class="p">)</span> <span class="c1"># 停止URL，需要根据实际设备或服务器的地址进行修改</span>
+    <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;请求成功！&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;请求失败，状态码：&quot;</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+
+<span class="c1"># 定义相机流的URL，需要根据实际设备或服务器的地址进行修改</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://192.168.4.1:81/stream&#39;</span>
+<span class="c1"># 发送GET请求来获取视频流</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+    <span class="c1"># 使用OpenCV创建一个视频窗口</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">namedWindow</span><span class="p">(</span><span class="s1">&#39;Video&#39;</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">WINDOW_NORMAL</span><span class="p">)</span>
+    <span class="c1"># 实例化模型</span>
+    <span class="n">ocr</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;ocr&#39;</span><span class="p">)</span>
+    <span class="c1"># 设置抽取帧的间隔，例如每25帧抽取一帧</span>
+    <span class="n">frame_interval</span> <span class="o">=</span> <span class="mi">25</span>
+    <span class="n">frame_count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">max_size</span><span class="o">=</span><span class="mi">16384</span> <span class="c1"># chunk大小实际情况进行调整 </span>
+    <span class="c1"># 持续读取视频流</span>
+    <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">iter_content</span><span class="p">(</span><span class="n">chunk_size</span><span class="o">=</span><span class="n">max_size</span><span class="p">):</span>
+        <span class="c1">#过滤其他信息，筛选出图像的数据信息</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span> <span class="o">&gt;</span><span class="mi">100</span><span class="p">:</span> 
+            <span class="k">if</span> <span class="n">frame_count</span> <span class="o">%</span> <span class="n">frame_interval</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># 累计到达相应的帧数对帧进行推理</span>
+                <span class="c1"># 将数据转换成图像格式</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">chunk</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+                <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imdecode</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_COLOR</span><span class="p">)</span>
+                <span class="c1"># ocr模型推理</span>
+                <span class="n">texts</span><span class="o">=</span> <span class="n">ocr</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">img</span><span class="p">)</span> <span class="c1"># 进行推理</span>
+                <span class="c1"># 在窗口中显示图像</span>
+                <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">&#39;Video&#39;</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+                <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                <span class="c1"># 小车控制</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">texts</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">texts</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;stop&quot;</span><span class="p">:</span>
+                        <span class="n">control_car</span><span class="p">(</span><span class="s1">&#39;S&#39;</span><span class="p">)</span> <span class="c1"># 停止</span>
+                    <span class="k">elif</span> <span class="n">texts</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;left&quot;</span><span class="p">:</span>
+                        <span class="n">control_car</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">)</span> <span class="c1"># 左转</span>
+                    <span class="k">elif</span> <span class="n">texts</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;right&quot;</span><span class="p">:</span>
+                       <span class="n">control_car</span><span class="p">(</span><span class="s1">&#39;R&#39;</span><span class="p">)</span> <span class="c1"># 右转</span>
+                    <span class="k">elif</span> <span class="n">texts</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;go&quot;</span><span class="p">:</span>
+                        <span class="n">control_car</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">)</span> <span class="c1"># 前进</span>
+                    <span class="k">elif</span> <span class="n">texts</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;back&quot;</span><span class="p">:</span>
+                        <span class="n">control_car</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">)</span> <span class="c1"># 后退</span>
+            <span class="n">frame_count</span> <span class="o">+=</span> <span class="mi">1</span> 
+            <span class="k">if</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFF</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">):</span>
+                <span class="k">break</span>
+<span class="c1"># 关闭窗口和释放资源</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+<span class="n">response</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="introduction_new.html" class="btn btn-neutral float-left" title="XEduHub功能详解" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="introduction.html" class="btn btn-neutral float-left" title="XEduHub功能详解" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="../mmedu.html" class="btn btn-neutral float-right" title="计算机视觉库MMEdu" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

@@ -156,3 +156,72 @@ while cap.isOpened():
 cap.release()
 cv2.destroyAllWindows()
 ```
+## 识行小车
+
+以下代码可以运行在esp32cam核心板上，该芯片是一款高性能、低功耗的芯片，并且具有集成摄像头功能。使用文字识别的离线OCR技术，用XEduHub现成模型，模型大小只要10M。实现阅读交通信息来控制小车运动。具体实现方式为：使用 OCR 技术来识别图像中的文本，并根据识别的文本控制小车的运动。通过发送HTTP GET请求来获取视频流和控制小车的运动。
+
+```python
+# 导入库
+import time
+import requests
+import cv2
+import numpy as np
+from XEdu.hub import Workflow as wf
+
+#定义控制小车运动函数
+def control_car(cmd):
+    url = "http://192.168.4.1/state?cmd="#URL，需要根据实际设备或服务器的地址进行修改
+    response = requests.get(url + cmd)
+    time.sleep(0.3)
+    requests.get(url='http://192.168.4.1/state?cmd=S') # 停止URL，需要根据实际设备或服务器的地址进行修改
+    if response.status_code == 200:
+        print("请求成功！")
+        print(response.text)
+    else:
+        print("请求失败，状态码：", response.status_code)
+
+# 定义相机流的URL，需要根据实际设备或服务器的地址进行修改
+url = 'http://192.168.4.1:81/stream'
+# 发送GET请求来获取视频流
+response = requests.get(url, stream=True)
+if response.status_code == 200:
+    # 使用OpenCV创建一个视频窗口
+    cv2.namedWindow('Video', cv2.WINDOW_NORMAL)
+    # 实例化模型
+    ocr = wf(task='ocr')
+    # 设置抽取帧的间隔，例如每25帧抽取一帧
+    frame_interval = 25
+    frame_count = 0
+    max_size=16384 # chunk大小实际情况进行调整 
+    # 持续读取视频流
+    for chunk in response.iter_content(chunk_size=max_size):
+        #过滤其他信息，筛选出图像的数据信息
+        if len(chunk) >100: 
+            if frame_count % frame_interval == 0: # 累计到达相应的帧数对帧进行推理
+                # 将数据转换成图像格式
+                data = np.frombuffer(chunk, dtype=np.uint8)
+                img = cv2.imdecode(data, cv2.IMREAD_COLOR)
+                # ocr模型推理
+                texts= ocr.inference(data=img) # 进行推理
+                # 在窗口中显示图像
+                cv2.imshow('Video', img)
+                cv2.waitKey(1)
+                # 小车控制
+                if len(texts)>0:
+                    if texts[0][0]=="stop":
+                        control_car('S') # 停止
+                    elif texts[0][0]=="left":
+                        control_car('L') # 左转
+                    elif texts[0][0]=="right":
+                       control_car('R') # 右转
+                    elif texts[0][0]=="go":
+                        control_car('F') # 前进
+                    elif texts[0][0]=="back":
+                        control_car('B') # 后退
+            frame_count += 1 
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
+# 关闭窗口和释放资源
+cv2.destroyAllWindows()
+response.close()
+```
