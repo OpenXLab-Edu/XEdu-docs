@@ -949,10 +949,10 @@ XEduHub现在可以支持使用MMEdu导出的onnx模型进行推理啦！如果�
 ```python
 from XEdu.hub import Workflow as wf
 mmcls = wf(task='mmedu',checkpoint='cats_dogs.onnx')# 指定使用的onnx模型
-result, result_img =  mmcls.inference(data='data/cat101.jpg',img_type='pil',show=True)# 进行模型推理
+result, result_img =  mmcls.inference(data='data/cat101.jpg',img_type='pil')# 进行模型推理
 format_result = mmcls.format_output(lang="zh")# 推理结果格式化输出
 mmcls.show(result_img)# 展示推理结果图片
-mmcls.save(img,'new_cat.jpg')# 保存推理结果图片
+mmcls.save(result_img,'new_cat.jpg')# 保存推理结果图片
 ```
 
 #### 代码解释
@@ -1028,10 +1028,10 @@ mmcls.save(img,'new_cat.jpg')# 保存推理结果图片
 ```python
 from XEdu.hub import Workflow as wf
 mmdet = wf(task='mmedu',checkpoint='plate.onnx')# 指定使用的onnx模型
-result, result_img =  mmdet.inference(data='data/plate0.png',img_type='pil',show=True)# 进行模型推理
+result, result_img =  mmdet.inference(data='data/plate0.png',img_type='pil')# 进行模型推理
 format_result = mmdet.format_output(lang="zh")# 推理结果格式化输出
 mmdet.show(result_img)# 展示推理结果图片
-mmdet.save(img,'new_plate.jpg')# 保存推理结果图片
+mmdet.save(result_img,'new_plate.jpg')# 保存推理结果图片
 ```
 
 #### 代码解释
