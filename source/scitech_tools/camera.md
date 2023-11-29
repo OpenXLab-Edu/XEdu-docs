@@ -1,18 +1,24 @@
 # 科创神器ESP32-CAM小型摄像头模块
 
-ESP32-CAM是一款基于ESP32的小型摄像头模块。它结合了ESP32芯片的强大功能和低功耗，提供了Wi-Fi和蓝牙功能，并支持图像捕获和视频流功能。ESP32-CAM可以非常适合用于制作一些AI科创作品，尤其是那些需要图像处理和数据传输的项目。将ESP32-CAM用作数据收集节点，将图像或视频数据发送到更强大的服务器或云平台进行进一步的AI处理，可轻松助力完成高级AI任务。
+## 简介
+
+ESP32-CAM是一个小巧但功能强大的摄像头模块，非常适合DIY爱好者和科创项目。它可以连接Wi-Fi和蓝牙，让你轻松地进行图像捕获和视频流处理。无论你是想做一个智能小车，还是想在家里安装一个简易的监控系统，ESP32-CAM都是一个很好的选择。
 
 下文简单介绍一下如何配置SP32-CAM以及简单应用。
 
-## 购买ESP32-CAM
+## 简单使用教程
+
+### 购买ESP32-CAM
 
 1. 在淘宝、京东查找ESP32-CAM，购买一款合适的产品。
 2. 核对规格：确保购买的是ESP32-CAM模块，它通常包括一个小型摄像头模块（摄像头模块可能需要自行安装）。
 3. USB接口的线，配合ESP32-CAM连接。
 
-## 准备编程环境
+### 准备编程环境
 
 1.下载并安装arduino IDE
+
+这是一个编程软件，可以让你给ESP32-CAM编写和上传代码。
 
 下载地址[https://www.arduino.cc/en/Main/Software?setlang=cn](https://www.arduino.cc/en/Main/Software?setlang=cn)
 
@@ -37,7 +43,7 @@ http://arduino.esp8266.com/stable/package_esp8266com_index.json
 
 ![](../images/scitech_tools/cam4.png)
 
-## 连接ESP32-CAM至电脑
+### 连接ESP32-CAM至电脑
 
 将ESP32-CAM模块通过转换器连接到电脑，并在arduino ide中选择连接，工具-开发板-ESP32-esp32 Wrover Module
 
@@ -49,7 +55,9 @@ http://arduino.esp8266.com/stable/package_esp8266com_index.json
 
 ### 编写配置WIFI的代码
 
-1.ESP32 CAM Live Video Streaming in Python OpenCV的示例代码是：
+1获取编程示例
+
+ESP32 CAM Live Video Streaming in Python OpenCV的示例代码是：
 
 ```
 #include <WebServer.h>
@@ -148,7 +156,7 @@ void loop()
 
 2.新建文件，将上述代码复制到新文件中，编写Wi-Fi代码，包括指定Wi-Fi账号和密码，其他不变。
 
-## 安装esp32cam库
+### 安装esp32cam库
 
 1.下载esp32cam库
 
@@ -162,7 +170,7 @@ void loop()
 
 ![](../images/scitech_tools/cam8.png)
 
-## 上传代码并获取IP地址
+### 上传代码并获取IP地址
 
 单击上传按钮上传代码
 
@@ -182,7 +190,7 @@ void loop()
 
 注：同一个WIFI下IP地址不会发生变化。
 
-## 简单应用：在Python中测试实时视频流
+### 简单应用：在Python中测试实时视频流
 
 可以编写python代码连接esp32cam摄像头，获取视频流（需要将代码中的ip改为上述串口监视器中输出的ip）,下面是最简代码。
 
@@ -221,8 +229,4 @@ cv2.destroyAllWindows() # 关闭所有OpenCV创建的窗口
 
 可在此基础上，编写更复杂的python代码，例如对接收的照片进行各种模型推理的操作。
 
-本文参考：[可在此基础上，编写更复杂的python代码，例如对接收的照片进行各种模型推理的操作。
-
-本文参考：https://www.electroniclinic.com/esp32-cam-with-python-opencv-yolo-v3-for-object-detection-and-identification/](可在此基础上，编写更复杂的python代码，例如对接收的照片进行各种模型推理的操作。
-
-本文参考：https://www.electroniclinic.com/esp32-cam-with-python-opencv-yolo-v3-for-object-detection-and-identification/)
+本文参考：[https://www.electroniclinic.com/esp32-cam-with-python-opencv-yolo-v3-for-object-detection-and-identification/](https://www.electroniclinic.com/esp32-cam-with-python-opencv-yolo-v3-for-object-detection-and-identification/)
