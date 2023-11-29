@@ -10,9 +10,11 @@ ESP32-CAM是一个小巧但功能强大的摄像头模块，非常适合DIY爱�
 
 ### 购买ESP32-CAM
 
-1. 在淘宝、京东查找ESP32-CAM，购买一款合适的产品。
-2. 核对规格：确保购买的是ESP32-CAM模块，它通常包括一个小型摄像头模块（摄像头模块可能需要自行安装）。
-3. USB接口的线，配合ESP32-CAM连接。
+1.在淘宝、京东查找ESP32-CAM，购买一款合适的产品。
+
+2.核对规格：确保购买的是ESP32-CAM模块，它通常包括一个小型摄像头模块（摄像头模块可能需要自行安装）。
+
+3.USB接口的线，配合ESP32-CAM连接。
 
 ### 准备编程环境
 
@@ -20,7 +22,7 @@ ESP32-CAM是一个小巧但功能强大的摄像头模块，非常适合DIY爱�
 
 这是一个编程软件，可以让你给ESP32-CAM编写和上传代码。
 
-下载地址[https://www.arduino.cc/en/Main/Software?setlang=cn](https://www.arduino.cc/en/Main/Software?setlang=cn)
+下载地址：[https://www.arduino.cc/en/Main/Software?setlang=cn](https://www.arduino.cc/en/Main/Software?setlang=cn)
 
 2.下载完成后打开arduino IDE选择首选项
 
