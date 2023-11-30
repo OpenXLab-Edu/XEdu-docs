@@ -28,31 +28,36 @@ EasyConvert无代码模型转换工具。
 
 ### 2. 启动工具
 
-打开拟定的工作目录（自定的任意目录，建议空白文件夹），在当前目录下的路径栏，输入cmd+回车，就可以打开当前目录下的命令行，在命令行中输入`easytrain`或`easyconvert`，回车运行，即可启动EasyTrain工具或EasyConvert工具。
+打开一个任意文件夹，建议是纯英文路径下的空白文件夹，下面以D:\workspace为例。如下图所示，在当前目录下的路径栏，输入cmd+回车，就可以打开当前目录下的命令行，在命令行中输入`easytrain`或`easyconvert`，回车运行，即可启动EasyTrain工具或EasyConvert工具。
 
 ![](../images/easydl/howtoget1.png)
 
-- `easytrain`工具在启动后会在命令行中返回工具地址，复制地址到浏览器的网址栏中，即可打开工具。
+- `easytrain`工具在启动后会在命令行中返回工具地址，复制地址到浏览器的网址栏中，即可打开工具。如下图所示。
 
 ![](../images/easydl/howtoget2.png)
 
-- `easyconvert`工具在启动后会即可弹出工具窗口。
+- `easyconvert`工具在启动后会即可弹出工具窗口。如下图所示。
 
 ![](../images/easydl/howtoget4.png)
 
-在启动以上两个任意一个工具的过程中会自动检测这个工作目录下是否存在以下目录结构，不符合以下结构会新建相应的文件夹。
+在启动以上两个任意一个工具的过程中会自动检测这个文件夹下是否存在以下目录结构，不符合以下结构会新建相应的文件夹。
 
 ![](../images/easydl/howtoget3.png)
 
-- checkpoints（模型）
-  - basenn_model
-  - mmedu_cls_model
-  - mmedu_det_model
-- datasets（数据集）
-  - basenn
-  - mmedu_cls
-  - mmedu_det
-- my_checkpoints（自己训练的模型）
+```
+|----checkpoints（预训练模型）
+    |----basenn_model
+    |----mmedu_cls_model
+    |----mmedu_det_model
+|----datasets（数据集）
+    |----basenn
+    |----mmedu_cls
+    |----mmedu_det
+|----my_checkpoints（自己训练的模型将会保存在此）
+```
+文件夹的使用可以通过链接跳转学习：checkpoints[（预训练模型）](https://xedu.readthedocs.io/zh/master/easydl/easytrain.html#step-4)、datasets[（数据集）](https://xedu.readthedocs.io/zh/master/easydl/easytrain.html#step-3)、
+my_checkpoints[（自己训练的模型将会保存在此）](https://xedu.readthedocs.io/zh/master/easydl/easytrain.html#step-5)。
+
 
 
 EasyDL系列工具的代码全部以CC协议开源，欢迎再次修改。
