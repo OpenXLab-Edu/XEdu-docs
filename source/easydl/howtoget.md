@@ -55,7 +55,7 @@ EasyConvert无代码模型转换工具。
     |----mmedu_det
 |----my_checkpoints（自己训练的模型将会保存在此）
 ```
-文件夹的使用可以通过链接跳转学习：checkpoints[（预训练模型）](https://xedu.readthedocs.io/zh/master/easydl/easytrain.html#step-4)、datasets[（数据集）](https://xedu.readthedocs.io/zh/master/easydl/easytrain.html#step-3)、
+文件夹的使用可以通过链接跳转学习：checkpoints[（选择预训练模型）](https://xedu.readthedocs.io/zh/master/easydl/easytrain.html#step-4)、datasets[（选择数据集）](https://xedu.readthedocs.io/zh/master/easydl/easytrain.html#step-3)、
 my_checkpoints[（自己训练的模型将会保存在此）](https://xedu.readthedocs.io/zh/master/easydl/easytrain.html#step-5)。
 
 
