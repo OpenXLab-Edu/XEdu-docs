@@ -245,7 +245,9 @@
 </section>
 <section id="id5">
 <h2>识行小车<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
-<p>以下代码可以运行在esp32cam核心板上，该芯片是一款高性能、低功耗的芯片，并且具有集成摄像头功能。使用文字识别的离线OCR技术，用XEduHub现成模型，模型大小只要10M。实现阅读交通信息来控制小车运动。具体实现方式为：使用 OCR 技术来识别图像中的文本，并根据识别的文本控制小车的运动。通过发送HTTP GET请求来获取视频流和控制小车的运动。</p>
+<p>我们做了一辆能在驾驶过程中自动阅读交通指令并做出相应运动的小车。使用无线摄像头实时获取小车行驶的第一视角，并让一台上位机无线接收图像，再对接收的图像使用XEduHub进行文字识别的离线OCR技术，最后根据识别的文本下发运动指令，以此打造了一辆“识行小车”。</p>
+<p><img alt="../_images/car_ocr.gif" src="../_images/car_ocr.gif" /></p>
+<p>该项目通过ESP32-CAM，该小车的无线摄像头和运动指令已经经过封装，关于该小车的配置可参考网上的开源教程。识行小车使用的文字识别技术采用的是XEduHub现成模型，模型大小只要10M。通过发送HTTP GET请求来获取视频流和控制小车的运动。上位机的参考代码如下。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">requests</span>
