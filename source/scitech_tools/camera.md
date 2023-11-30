@@ -4,27 +4,27 @@
 
 ESP32-CAM是一个小巧但功能强大的摄像头模块，非常适合DIY爱好者和科创项目。它可以连接Wi-Fi和蓝牙，让你轻松地进行图像捕获和视频流处理。无论你是想做一个智能小车，还是想在家里安装一个简易的监控系统，ESP32-CAM都是一个很好的选择。
 
-下文简单介绍一下如何配置SP32-CAM以及简单应用。
+下文简单介绍一下如何配置ESP32-CAM以及简单应用。
 
 ## 简单使用教程
 
-### 购买ESP32-CAM
+### 1.购买ESP32-CAM
 
-1.在淘宝、京东查找ESP32-CAM，购买一款合适的产品。
+a.在淘宝、京东查找ESP32-CAM，购买一款合适的产品。
 
-2.核对规格：确保购买的是ESP32-CAM模块，它通常包括一个小型摄像头模块（摄像头模块可能需要自行安装）。
+b.核对规格：确保购买的是ESP32-CAM模块，它通常包括一个小型摄像头模块（摄像头模块可能需要自行安装）。
 
-3.USB接口的线，配合ESP32-CAM连接。
+c.USB接口的线，配合ESP32-CAM连接。
 
-### 准备编程环境
+### 2.准备编程环境
 
-1.下载并安装arduino IDE
+a.下载并安装arduino IDE
 
 这是一个编程软件，可以让你给ESP32-CAM编写和上传代码。
 
 下载地址：[https://www.arduino.cc/en/Main/Software?setlang=cn](https://www.arduino.cc/en/Main/Software?setlang=cn)
 
-2.下载完成后打开arduino IDE选择首选项
+b.下载完成后打开arduino IDE选择首选项
 
 ![](../images/scitech_tools/cam0.PNG)
 
@@ -37,7 +37,7 @@ http://arduino.esp8266.com/stable/package_esp8266com_index.json
 
 ![](../images/scitech_tools/cam2.PNG)
 
-3.打开工具-开发板管理器，然后搜索esp32
+c.打开工具-开发板管理器，然后搜索esp32
 
 ![](../images/scitech_tools/cam3.PNG)
 
@@ -45,7 +45,7 @@ http://arduino.esp8266.com/stable/package_esp8266com_index.json
 
 ![](../images/scitech_tools/cam4.png)
 
-### 连接ESP32-CAM至电脑
+### 3.连接ESP32-CAM至电脑
 
 将ESP32-CAM模块通过转换器连接到电脑，并在arduino ide中选择连接，工具-开发板-ESP32-esp32 Wrover Module
 
@@ -55,9 +55,9 @@ http://arduino.esp8266.com/stable/package_esp8266com_index.json
 
 ![](../images/scitech_tools/cam6.png)
 
-### 编写配置WIFI的代码
+### 4.编写配置WIFI的代码
 
-1获取编程示例
+a.获取编程示例
 
 ESP32 CAM Live Video Streaming in Python OpenCV的示例代码是：
 
@@ -156,23 +156,23 @@ void loop()
 }
 ```
 
-2.新建文件，将上述代码复制到新文件中，编写Wi-Fi代码，包括指定Wi-Fi账号和密码，其他不变。
+b.新建文件，将上述代码复制到新文件中，编写Wi-Fi代码，包括指定Wi-Fi账号和密码，其他不变。
 
-### 安装esp32cam库
+### 5.安装esp32cam库
 
-1.下载esp32cam库
+a.下载esp32cam库
 
 下载地址：[https://github.com/yoursunny/esp32cam](https://github.com/yoursunny/esp32cam)
 
 ![](../images/scitech_tools/cam7.png)
 
-2.导入库
+b.导入库
 
 项目-导入库-添加.ZIP库
 
 ![](../images/scitech_tools/cam8.png)
 
-### 上传代码并获取IP地址
+### 6.上传代码并获取IP地址
 
 单击上传按钮上传代码
 
@@ -192,7 +192,7 @@ void loop()
 
 注：同一个WIFI下IP地址不会发生变化。
 
-### 简单应用：在Python中测试实时视频流
+## 简单应用：在Python中测试实时视频流
 
 可以编写python代码连接esp32cam摄像头，获取视频流（需要将代码中的ip改为上述串口监视器中输出的ip）,下面是最简代码。
 
@@ -229,6 +229,6 @@ cap.release() # 释放VideoCapture对象
 cv2.destroyAllWindows() # 关闭所有OpenCV创建的窗口
 ```
 
-可在此基础上，编写更复杂的python代码，例如对接收的照片进行各种模型推理的操作。
+在此基础上，可继续编写更复杂的python代码，例如对接收的照片进行各种模型推理的操作，甚至还可以连接小车做一个无人行驶小车（例如我们的[识行小车案例](https://xedu.readthedocs.io/zh/master/xedu_hub/projects.html#id5)）。
 
 本文参考：[https://www.electroniclinic.com/esp32-cam-with-python-opencv-yolo-v3-for-object-detection-and-identification/](https://www.electroniclinic.com/esp32-cam-with-python-opencv-yolo-v3-for-object-detection-and-identification/)
