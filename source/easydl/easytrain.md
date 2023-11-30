@@ -32,7 +32,9 @@ EasyTrain界面打开之后在下拉框中选择训练任务为分类或者检�
 ![](../images/easydl/train-dataset.png)
 ![](../images/easydl/train3.jpg)
 
-如果要使用自己的数据集需要将数据集放置在XEdu/dataset相应的任务之下，再刷新一下网页即可再数据集菜单选项中看到对应的数据集。如下所示，再分类任务mmedu_cls文件夹下放置我的数据集“my_newdataset”，刷新网页成功出现。
+**怎么传入自己的数据集？**
+
+如果要使用自己的数据集需要将数据集放置在XEdu/dataset相应的任务之下（分类任务mmedu_cls/检测任务mmedu_det），再刷新一下网页即可再数据集菜单选项中看到对应的数据集。例如现在我想做分类任务，在分类任务mmedu_cls文件夹下放置我的数据集“my_newdataset”（如下图所示），刷新网页成功出现。
 
 ![](../images/easydl/train4.png)
 ![](../images/easydl/train5.png)
