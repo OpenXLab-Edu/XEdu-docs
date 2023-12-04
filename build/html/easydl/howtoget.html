@@ -52,7 +52,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../baseml.html">传统机器学习库BaseML</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">EasyDL系列工具功能详解</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">如何获取EasyDL系列工具</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">如何获取EasyDL系列工具</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#xedueasydl">方式一：使用XEdu一键安装包中内置EasyDL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pipeasy">方式二：通过pip命令来安装新版easy系列工具</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">1. 安装库</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">2. 启动工具</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="easytrain.html">EasyTrain 模型训练辅助工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="easyconvert.html">EasyConvert 模型转换辅助工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="easyinfer.html">EasyInference 模型推理辅助工具</a></li>
@@ -93,12 +101,59 @@
              
   <section id="easydl">
 <h1>如何获取EasyDL系列工具<a class="headerlink" href="#easydl" title="Permalink to this heading"></a></h1>
+<section id="xedueasydl">
+<h2>方式一：使用XEdu一键安装包中内置EasyDL<a class="headerlink" href="#xedueasydl" title="Permalink to this heading"></a></h2>
 <p>EasyDL系列工具内置在XEdu一键安装包中（如下图所示）。</p>
 <p>飞书网盘：<a class="reference external" href="https://p6bm2if73b.feishu.cn/drive/folder/fldcn67XTwhg8qIFCl8edJBZZQb">https://p6bm2if73b.feishu.cn/drive/folder/fldcn67XTwhg8qIFCl8edJBZZQb</a></p>
 <p>浦源CDN加速：<a class="reference external" href="https://download.openxlab.org.cn/models/yikshing/bash/weight/x16">https://download.openxlab.org.cn/models/yikshing/bash/weight/x16</a></p>
-<p>下载一键安装包后，进度EazyDL文件夹，选择对应的工具，双击即可打开。（提示：不要关闭命令提示符窗口）</p>
+<p>下载一键安装包后，进入EasyDL文件夹，选择对应的工具，双击即可打开。（提示：不要关闭命令提示符窗口）</p>
 <p><img alt="../_images/bat.png" src="../_images/bat.png" /></p>
+</section>
+<section id="pipeasy">
+<h2>方式二：通过pip命令来安装新版easy系列工具<a class="headerlink" href="#pipeasy" title="Permalink to this heading"></a></h2>
+<section id="id1">
+<h3>1. 安装库<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<p>你可以通过pip命令来安装新版easy系列工具。</p>
+<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">easy-xedu</span></code></p>
+<p>更新库文件：</p>
+<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--upgrade</span> <span class="pre">easy-xedu</span></code></p>
+<p>安装EasyDL库之后，就可以在终端使用命令<code class="docutils literal notranslate"><span class="pre">easytrain</span></code>或<code class="docutils literal notranslate"><span class="pre">easyconvert</span></code>，打开EasyTrain无代码模型训练工具或
+EasyConvert无代码模型转换工具。</p>
+</section>
+<section id="id2">
+<h3>2. 启动工具<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<p>打开拟定的工作目录（自定的任意目录，建议空白文件夹），在当前目录下的路径栏，输入cmd+回车，就可以打开当前目录下的命令行，在命令行中输入<code class="docutils literal notranslate"><span class="pre">easytrain</span></code>或<code class="docutils literal notranslate"><span class="pre">easyconvert</span></code>，回车运行，即可启动EasyTrain工具或EasyConvert工具。</p>
+<p><img alt="../_images/howtoget1.png" src="../_images/howtoget1.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">easytrain</span></code>工具在启动后会在命令行中返回工具地址，复制地址到浏览器的网址栏中，即可打开工具。</p></li>
+</ul>
+<p><img alt="../_images/howtoget2.png" src="../_images/howtoget2.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">easyconvert</span></code>工具在启动后会即可弹出工具窗口。</p></li>
+</ul>
+<p><img alt="../_images/howtoget4.png" src="../_images/howtoget4.png" /></p>
+<p>在启动以上两个任意一个工具的过程中会自动检测这个工作目录下是否存在以下目录结构，不符合以下结构会新建相应的文件夹。</p>
+<p><img alt="../_images/howtoget3.png" src="../_images/howtoget3.png" /></p>
+<ul class="simple">
+<li><p>checkpoints（模型）</p>
+<ul>
+<li><p>basenn_model</p></li>
+<li><p>mmedu_cls_model</p></li>
+<li><p>mmedu_det_model</p></li>
+</ul>
+</li>
+<li><p>datasets（数据集）</p>
+<ul>
+<li><p>basenn</p></li>
+<li><p>mmedu_cls</p></li>
+<li><p>mmedu_det</p></li>
+</ul>
+</li>
+<li><p>my_checkpoints（自己训练的模型）</p></li>
+</ul>
 <p>EasyDL系列工具的代码全部以CC协议开源，欢迎再次修改。</p>
+</section>
+</section>
 </section>
 
 
