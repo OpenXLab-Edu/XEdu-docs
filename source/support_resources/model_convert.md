@@ -30,7 +30,7 @@ MMEdu内置了一个`convert`函数，来实现了一键式模型转换，转换
 
 - 转换准备：
 
-  待转换的模型权重文件（用MMEdu训练）。
+  待转换的模型权重文件（[用MMEdu训练](https://xedu.readthedocs.io/zh/master/mmedu.html)）。
 
 - 需要配置两个信息：
 
@@ -66,13 +66,13 @@ model.convert(checkpoint=checkpoint, out_file=out_file)
 参考项目：<a href="https://www.openinnolab.org.cn/pjlab/project?id=645110943c0e930cb55e859b&sc=62f34141bf4f550f3e926e0e#public">MMEdu模型转换
 </a>
 
-## 2.BaseNN模型转换
+### 2.BaseNN模型转换
 
 BaseNN内置了一个`convert`函数，来实现了一键式模型转换，转换前先了解一下转换要做的事情吧。
 
 - 转换准备：
 
-  待转换的模型权重文件（用BaseNN训练）。
+  待转换的模型权重文件（[用BaseNN训练](https://xedu.readthedocs.io/zh/master/basenn.html)）。
 
 - 需要配置两个信息：
 
