@@ -10,3 +10,5 @@
    support_resources/courses.md
 
    support_resources/creative_works.md
+
+   support_resources/model_convert.md
