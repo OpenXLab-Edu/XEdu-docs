@@ -473,10 +473,10 @@ model.train(...)
 
 损失函数（或称目标函数、优化评分函数）是编译模型时所需的参数之一。在机器学习和深度学习中，模型的训练通常涉及到一个优化过程，即通过不断调整模型的参数，使得模型在训练数据上的预测结果与实际结果的差距最小化。这个差距通常使用一个称为"损失函数"的指标来衡量。损失函数通常是一个关于模型参数的函数，用于度量模型预测结果与实际结果之间的差异。在模型训练过程中，模型会根据损失函数的值来调整自己的参数，以减小损失函数的值。
 
-默认的损失函数是交叉熵损失函数，允许选择不同的损失函数，支持的损失函数见[附录](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#id22)。自选损失函数方法如下：
+默认的损失函数是交叉熵损失函数，允许选择不同的损失函数，支持的损失函数见[附录](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#id33)。自选损失函数方法如下：
 
 ```python
-model.train(...,loss="CrossEntropyLoss")
+model.train(...,loss="MSELoss")
 ```
 
 ### 12. 自定义评价指标
@@ -490,14 +490,6 @@ model.train(...,loss="CrossEntropyLoss")
 ```python
 model.train(...,metrics=["mse"])
 ```
-
-因此针对不同的分类或回归任务，可指定不同的损失函数和评价指标。
-
-例：
-
-- 回归：`model.train(...,loss="SmoothL1Loss", metrics=["mae"])`
-
-- 分类：`model.train(...,loss="CrossEntropyLoss",metrics=["acc"])`
 
 ### 13. CNN特征提取
 
