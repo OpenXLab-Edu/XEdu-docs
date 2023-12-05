@@ -936,7 +936,89 @@ ocr.save(ocr_img,'ocr_result.jpg')# 保存推理结果图片
 
 该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
 
-## 6. MMEdu模型推理
+## 6. 全景驾驶感知系统
+
+全景驾驶感知系统是一种高效的多任务学习网络，可同时执行交通对象检测、可行驶道路区域分割和车道检测任务，能很好地帮助自动驾驶汽车通过摄像头全面了解周围环境，来控制车辆的动作。那为什么我们需要多任务网络呢？这是因为在实时自动驾驶系统中为每个单独的任务运行单独的模型通常是不切实际的。多任务学习网络通过采用编码器-解码器模式提供了一种节省计算成本的潜在解决方案，编码器由不同的任务有效共享。XEduHub提供了进行全景驾驶感知的任务：`drive_perception`。
+
+### 代码样例
+
+```python
+from XEdu.hub import Workflow as wf
+drive = wf(task='drive_perception') # 实例化模型
+result,img = drive.inference(data="demo/drive.png",img_type='cv2') # 模型推理
+drive.format_output(lang='zh') # 将推理结果进行格式化输出
+drive.show(img) # 展示推理图片
+drive.save(img,"img_perception.jpg") # 保存推理图片
+```
+
+### 代码解释
+
+#### 1. 模型声明
+
+```python
+from XEdu.hub import Workflow as wf
+drive = wf(task='drive_perception') # 实例化模型
+```
+
+`wf()`中共有两个参数可以设置
+
+- `task`决定了任务类型
+- `download_path`参数决定了预训练模型下载的路径。默认是下载到同级的checkpoints文件夹中，当代码运行时，会先在本地的同级目录中寻找是否有已下载的预训练模型，如果没有，到本地缓存中寻找，如果本地缓存没有，查看是不是指定了模型的路径，如果都没有，到网络下载。用户也可指定模型的下载路径，如`dowload_path='my_checkpoint'`
+
+#### 2. 模型推理
+
+```python
+result,img = drive.inference(data='demo/drive.png',img_type='cv2',show=True) # 模型推理
+```
+
+![](../images/xeduhub/drive_result.png)
+
+模型推理`inference()`可传入参数：
+
+- `data`：指定待检测的图片。
+- `show`: 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出目标检测完成后的图片。
+- `img_type`：目标检测完成后会返回含有检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
+- `thr`: 设置检测框阈值，取值范围为`[0,1]`超过该阈值的检测框被视为有效检测框，进行显示。
+
+模型推理返回结果：
+
+- `result`：以三维数组的形式保存了车辆检测（红色框），车道线分割（蓝色色块），可行驶区域（绿色色块）。
+- `车辆检测result[0]`：以二维数组保存了车辆目标检测框左上角顶点的(x,y)坐标以及检测框的宽度w和高度h（之所以是二维数组，是因为该模型能够检测多辆车，因此当检测到多辆车时，就会有多个[x,y,w,h]的一维数组，所以需要以二维数组形式保存），我们可以利用这四个数据计算出检测框的其他三个顶点的坐标。
+- `车道线分割result[1]`：以由0，1组成二维数组（w*h），保存图像中每个像素的mask，mask为1表示该像素为车道线分割目标，mask为0表示该像素是背景。
+- `可形式区域result[2]`：以由0，1组成二维数组（w*h），保存图像中每个像素的mask，mask为1表示该像素为可驾驶区域分割目标，mask为0表示该像素是背景。
+- `img_with_box：`：是个三维数组，以cv2格式保存了包含了检测框与分割目标的图片。
+
+#### 3. 结果输出
+
+```python
+format_result = drive.format_output(lang='zh')# 将推理结果进行格式化输出
+```
+
+`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。参数`lang`设置了输出结果的语言，如果不指定默认为中文。
+
+`format_result`以字典形式存储了推理结果，有四个键：`检测框`、`分数`、`车道线掩码`、`可行驶区域掩码`。检测框以二维数组形式保存了每个检测框的坐标信息[x,y,w,h]。
+
+![](../images/xeduhub/drive_format.png)
+
+```python
+drive.show(img)# 展示推理图片
+```
+
+`show()`能够输出带有检测框与分割目标的图片。
+
+![](../images/xeduhub/drive_show.png)
+
+#### 4. 结果保存
+
+```python
+drive.save(img,"img_perception.jpg") # 保存推理图片
+```
+
+`save()`方法能够保存带有检测框与分割目标的图片。
+
+该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
+
+## 7. MMEdu模型推理
 
 XEduHub现在可以支持使用MMEdu导出的onnx模型进行推理啦！如果你想了解如何使用MMEdu训练模型，可以看这里：[解锁图像分类模块：MMClassification](https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html)、[揭秘目标检测模块：MMDetection](https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html)。
 
@@ -1100,7 +1182,7 @@ mmdet.save(img,'new_plate.jpg')# 保存推理结果图片
 
 该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
 
-## 7. BaseNN模型推理
+## 8. BaseNN模型推理
 
 XEduHub现在可以支持使用BaseNN导出的onnx模型进行推理啦！如果你想了解如何将使用[BaseNN](https://xedu.readthedocs.io/zh/master/basenn.html)训练好的模型转换成ONNX格式，可以看这里：[BaseNN模型文件格式转换](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id29)。OK，准备好了ONNX模型，那么就开始使用XEduHub吧！
 
@@ -1154,7 +1236,7 @@ format_result = basenn.format_output()
 
 `format_output`的结果是一个结果字典，这个字典的第一个元素有两个键，`预测值`、`分数`，代表着该手写数字的分类标签以及属于该分类标签的概率。
 
-## 8. BaseML模型推理
+## 9. BaseML模型推理
 
 XEduHub现在可以支持使用BaseML导出的pkl模型文件进行推理啦！如果你想了解如何将使用[BaseML](https://xedu.readthedocs.io/zh/master/baseml.html)训练模型并保存成.pkl模型文件，可以看这里：[BaseML模型保存](https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id10)。OK，准备好了pkl模型，那么就开始使用XEduHub吧！
 
@@ -1210,7 +1292,7 @@ format_output = baseml.format_output(lang='zh')# 推理结果格式化输出
 
 如果此时你有冲动去使用BaseML完成模型训练到推理，再到转换与应用，快去下文学习[BaseML的相关使用](https://xedu.readthedocs.io/zh/master/baseml.html)吧！
 
-## 9. 其他onnx模型推理
+## 10. 其他onnx模型推理
 
 XEduHub现在可以支持使用用户自定义的ONNX模型文件进行推理啦！这意味着你可以不仅仅使用MMEdu或者BaseNN训练模型并转换而成的ONNX模型文件进行推理，还可以使用其他各个地方的ONNX模型文件，但是有个**重要的前提：你需要会使用这个模型，了解模型输入的训练数据以及模型的输出结果**。OK，如果你已经做好了充足的准备，那么就开始使用XEduHub吧！
 

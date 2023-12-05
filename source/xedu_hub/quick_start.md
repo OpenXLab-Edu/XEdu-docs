@@ -49,7 +49,7 @@ from XEdu.hub import Workflow as wf
 wf.support_task()
 ```
 
-![](../images/xeduhub/task.png)
+![](../images/xeduhub/task1.png)
 
 ## 安装
 

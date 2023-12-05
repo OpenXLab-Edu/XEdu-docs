@@ -32,7 +32,9 @@ EasyTrain界面打开之后在下拉框中选择训练任务为分类或者检�
 ![](../images/easydl/train-dataset.png)
 ![](../images/easydl/train3.jpg)
 
-如果要使用自己的数据集需要将数据集放置在XEdu/dataset相应的任务之下，再刷新一下网页即可再数据集菜单选项中看到对应的数据集。如下所示，再分类任务mmedu_cls文件夹下放置我的数据集“my_newdataset”，刷新网页成功出现。
+**怎么传入自己的数据集？**
+
+如果要使用自己的数据集需要将数据集放置在XEdu/dataset相应的任务之下（分类任务mmedu_cls/检测任务mmedu_det），再刷新一下网页即可再数据集菜单选项中看到对应的数据集。例如现在我想做分类任务，在分类任务mmedu_cls文件夹下放置我的数据集“my_newdataset”（如下图所示），刷新网页成功出现。
 
 ![](../images/easydl/train4.png)
 ![](../images/easydl/train5.png)
@@ -59,7 +61,11 @@ EasyTrain界面打开之后在下拉框中选择训练任务为分类或者检�
 
 ### step 5：开始训练
 
-代码生成之后点击"进入训练"按钮即可跳转至训练页面，点击“开始训练”按钮即可一键开始训练模型。
+代码生成之后点击"进入训练"按钮即可跳转至训练页面，工具会先检查你的电脑有没有安装MMEdu的库，如果没有请先去”小黑窗“进行[pip安装MMEdu](https://xedu.readthedocs.io/zh/master/mmedu/installation.html#pip)。
+
+![](../images/easydl/train22.png)
+
+点击“开始训练”按钮即可一键开始训练模型。
 
 ![](../images/easydl/train9.png)
 
@@ -125,11 +131,17 @@ EasyTrain界面打开之后，选择BaseNN页面，在下拉框中指定训练�
 
 ### step 4：开始训练
 
-代码生成之后点击"进入训练"按钮即可跳转至训练页面，点击“开始训练”按钮即可一键开始训练模型。
+代码生成之后点击"进入训练"按钮即可跳转至训练页面，工具会先检查你的电脑有没有安装MMEdu的库，如果没有请先去”小黑窗“进行[pip安装BaseNN](https://xedu.readthedocs.io/zh/master/basenn/installation.html#)。
+
+![](../images/easydl/train21.png)
+
+点击“开始训练”按钮即可一键开始训练模型。
 
 ![](../images/easydl/train9.png)
 
-出现“loading”表示模型正在训练中，由于本地cpu训练模型的速度较慢，请耐心等待，可以先去喝杯水休息一下~
+出现“loading”表示模型正在训练中，但是也有可能是因为没有安装相应的库，数据集路径错误，数据集为空等等原因导致训练失败，所以先检查一下后台”小黑窗“有没有报错。
+
+如果有报错，修改相应的错误，再通过刷新页面或者关闭”小黑窗“重启工具的方式重新训练。如果没有报错，请耐心等待，由于本地cpu训练模型的速度较慢，可以先去喝杯水休息一下~
 
 若想中断训练，可以点击“停止训练”按钮。
 

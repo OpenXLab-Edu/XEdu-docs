@@ -110,4 +110,4 @@ demo.launch(share=True)
 
 配套课程设计：
 
-[https://www.openinnolab.org.cn/pjedu/teach?mode=learn&courseId=646caecf32f2ea160081ff42&scheduleId=65390a43d36e4272c1dbbdc6&documentId=6530ddc0f6aa31374a401ad1&from=courseCenter](https://www.openinnolab.org.cn/pjedu/teach?mode=learn&courseId=646caecf32f2ea160081ff42&scheduleId=65390a43d36e4272c1dbbdc6&documentId=6530ddc0f6aa31374a401ad1&from=courseCenter)
+[https://www.openinnolab.org.cn/pjedu/courses/courseDetail?courseId=646caecf32f2ea160081ff42&sc=62f34141bf4f550f3e926e0e](https://www.openinnolab.org.cn/pjedu/courses/courseDetail?courseId=646caecf32f2ea160081ff42&sc=62f34141bf4f550f3e926e0e)

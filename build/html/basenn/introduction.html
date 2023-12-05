@@ -140,6 +140,10 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
 </pre></div>
 </div>
+<p>可选参数：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>：指定了这个模型要完成的任务，可选取值有：<code class="docutils literal notranslate"><span class="pre">['reg','cls']</span></code>，如果设定<code class="docutils literal notranslate"><span class="pre">nn('reg')</span></code>则该模型完成的是回归任务，如果设定<code class="docutils literal notranslate"><span class="pre">nn('cls')</span></code>则该模型完成的是分类任务。当不指定时，<code class="docutils literal notranslate"><span class="pre">task</span></code>的默认值<code class="docutils literal notranslate"><span class="pre">'cls'</span></code></p></li>
+</ul>
 </section>
 <section id="id5">
 <h3>2. 载入数据<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
@@ -558,6 +562,7 @@
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>: 指定要转换的pth模型文件路径</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">out_file</span></code>: 指定转换出的onnx模型文件路径</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">opset_version</span></code>：指定转换出的onnx模型算子的版本，默认为10，一般情况下不需要进行设置，除非出现了算子版本不符而导致的报错。</p></li>
 </ul>
 <p><strong>注意！</strong>：在转换为onnx文件后会将模型的元信息，如数据类型、输入尺寸等也写入模型文件，而之前版本的BaseNN训练得到的模型文件不含有这些信息，因此如果想要将之前的BaseNN训练得到的文件进行转换，需要基于原先的模型文件使用最新的BaseNN版本再进行一轮训练！</p>
 </section>
