@@ -7,9 +7,9 @@
 
    baseml/installation.md
 
-   baseml/introduction.rst
+   baseml/introduction.md
 
-   baseml/visualization.rst
+   baseml/visualization.md
 
-   baseml/projects.rst
+   baseml/projects.md
 
