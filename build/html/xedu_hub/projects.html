@@ -245,9 +245,11 @@
 </section>
 <section id="id5">
 <h2>识行小车<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
-<p>我们做了一辆能在驾驶过程中自动阅读交通指令并做出相应运动的小车。使用无线摄像头实时获取小车行驶的第一视角，并让一台上位机无线接收图像，再对接收的图像使用XEduHub进行文字识别的离线OCR技术，最后根据识别的文本下发运动指令，以此打造了一辆“识行小车”。</p>
+<p>我们做了一辆能在驾驶过程中自动阅读交通指令并做出相应运动的小车。</p>
 <p><img alt="../_images/car_ocr.gif" src="../_images/car_ocr.gif" /></p>
-<p>该项目通过ESP32-CAM，该小车的无线摄像头和运动指令已经经过封装，关于该小车的配置可参考网上的开源教程。识行小车使用的文字识别技术采用的是XEduHub现成模型，模型大小只要10M。通过发送HTTP GET请求来获取视频流和控制小车的运动。上位机的参考代码如下。</p>
+<p>功能描述：一辆能在驾驶过程中自动阅读交通指令并做出相应运动的小车。</p>
+<p>技术实现方式：使用无线摄像头实时获取小车行驶的第一视角，并让一台上位机无线接收图像，再对接收的图像使用XEduHub进行文字识别的离线OCR技术，最后根据识别的文本下发运动指令。</p>
+<p>该项目中的小车是JTANK履带车，该小车的无线摄像头和运动指令已经经过封装，由于该小车用的不是普通的ESP32的配置，详细配置请参考<a href="https://gitee.com/jt123_456/jtank">JTANK履带车简介</a>。如果你的小车是普通的ESP32，那关于该小车的配置方法可参考<a href="https://xedu.readthedocs.io/zh/master/scitech_tools/camera.html#">科创神器ESP32-CAM小型摄像头模块</a>。识行小车使用的文字识别技术采用的是XEduHub现成模型，模型大小只要10M。通过发送HTTP GET请求来获取视频流和控制小车的运动。上位机的参考代码如下。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">requests</span>
@@ -280,7 +282,7 @@
     <span class="n">frame_interval</span> <span class="o">=</span> <span class="mi">25</span>
     <span class="n">frame_count</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">max_size</span><span class="o">=</span><span class="mi">16384</span> <span class="c1"># chunk大小实际情况进行调整 </span>
-    <span class="c1"># 持续读取视频流</span>
+    <span class="c1"># 持续读取视频流，当我们连续获取图像信息就形成了视屏流</span>
     <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">iter_content</span><span class="p">(</span><span class="n">chunk_size</span><span class="o">=</span><span class="n">max_size</span><span class="p">):</span>
         <span class="c1">#过滤其他信息，筛选出图像的数据信息</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span> <span class="o">&gt;</span><span class="mi">100</span><span class="p">:</span> 
@@ -309,6 +311,109 @@
             <span class="k">if</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFF</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">):</span>
                 <span class="k">break</span>
 <span class="c1"># 关闭窗口和释放资源</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+<span class="n">response</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>此外我们还做了一辆能在驾驶过程中自动跟踪手掌并做出相应运动的小车。</p>
+<p><img alt="../_images/followhandcar.gif" src="../_images/followhandcar.gif" /></p>
+<p>功能描述：一辆能自动跟随手掌，并跟手掌保持一定距离的小车。</p>
+<p>技术实现方式：使用无线摄像头实时获取小车行驶的第一视角，并让一台上位机无线接收图像，再对接收的图像使用XEduHub进行目标检测技术，最后根据识别的手掌关键点距离和手与摄像机之间的距离(cm)的映射，以及手掌水平x的位置，来发送运动指令，实现前进、后退、停止、左转和右转的运动。</p>
+<p>该项目中的小车是JTANK履带车，该小车的无线摄像头和运动指令已经经过封装，由于该小车用的不是普通的ESP32的配置，详细配置请参考<a href="https://gitee.com/jt123_456/jtank">JTANK履带车简介</a>。如果你的小车是普通的ESP32，那关于该小车的配置方法可参考<a href="https://xedu.readthedocs.io/zh/master/scitech_tools/camera.html#">科创神器ESP32-CAM小型摄像头模块</a>。识行小车使用的文字识别技术采用的是XEduHub现成模型，模型大小只要10M。通过发送HTTP GET请求来获取视频流和控制小车的运动。上位机的参考代码如下。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="c1">#（3）找到手掌间的距离和实际的手与摄像机之间的距离的映射关系</span>
+<span class="c1"># x 代表手掌间的距离(像素距离)，y 代表手和摄像机之间的距离(cm)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">300</span><span class="p">,</span> <span class="mi">245</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">145</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">112</span><span class="p">,</span> <span class="mi">103</span><span class="p">,</span> <span class="mi">93</span><span class="p">,</span> <span class="mi">87</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">62</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">57</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="c1"># 因此我们需要一个类似 y = AX^2 + BX + C 的方程来拟合</span>
+<span class="n">coff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1">#构造二阶多项式方程，coff中存放的是二阶多项式的系数 A,B,C</span>
+<span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">coff</span><span class="c1"># 拟合的二次多项式的系数保存在coff数组中，即掌间距离和手与相机间的距离的对应关系的系数</span>
+
+<span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://192.168.4.1/state?cmd=T&quot;</span><span class="p">)</span> <span class="c1">#低速档位</span>
+
+<span class="c1">#定义控制小车运动函数</span>
+<span class="k">def</span> <span class="nf">control_car</span><span class="p">(</span><span class="n">cmd</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://192.168.4.1/state?cmd=&quot;</span><span class="c1">#URL，需要根据实际设备或服务器的地址进行修改</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span> <span class="o">+</span> <span class="n">cmd</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;请求成功！&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;请求失败，状态码：&quot;</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+
+
+<span class="c1"># 定义相机流的URL，需要根据实际设备或服务器的地址进行修改</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://192.168.4.1:81/stream&#39;</span>
+<span class="c1"># 发送GET请求来获取视频流</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+    <span class="c1"># 使用OpenCV创建一个视频窗口</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">namedWindow</span><span class="p">(</span><span class="s1">&#39;Video&#39;</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">WINDOW_NORMAL</span><span class="p">)</span>
+    <span class="c1"># 实例化模型</span>
+    <span class="n">detector</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;pose_hand21&#39;</span><span class="p">)</span>
+    <span class="c1"># 设置抽取帧的间隔，例如每15帧抽取一帧</span>
+    <span class="n">frame_interval</span> <span class="o">=</span> <span class="mi">15</span>
+    <span class="n">frame_count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">max_size</span><span class="o">=</span><span class="mi">16384</span> <span class="c1"># chunk大小实际情况进行调整 </span>
+    <span class="c1"># 持续读取视频流</span>
+    <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">iter_content</span><span class="p">(</span><span class="n">chunk_size</span><span class="o">=</span><span class="n">max_size</span><span class="p">):</span>
+        <span class="c1">#过滤其他信息，筛选出图像的数据信息</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span> <span class="o">&gt;</span><span class="mi">100</span><span class="p">:</span> 
+            <span class="k">if</span> <span class="n">frame_count</span> <span class="o">%</span> <span class="n">frame_interval</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># 累计到达相应的帧数对帧进行推理</span>
+                <span class="c1"># 将数据转换成图像格式</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">chunk</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+                <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imdecode</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_COLOR</span><span class="p">)</span>
+                <span class="c1"># 获取手部关键点信息，绘制关键点和连线后的图像img</span>
+                <span class="n">keypoints</span><span class="p">,</span> <span class="n">img_with_keypoints</span> <span class="o">=</span> <span class="n">detector</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">img</span><span class="p">,</span> <span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">)</span> <span class="c1"># 进行推理</span>
+                <span class="c1"># 如果检测到手</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">keypoints</span><span class="p">):</span>
+                    <span class="c1"># 获取食指根部&#39;5&#39;和小指根部&#39;17&#39;的坐标点</span>
+                    <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">keypoints</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> 
+                    <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">keypoints</span><span class="p">[</span><span class="mi">17</span><span class="p">]</span>
+                    <span class="c1"># 勾股定理计算关键点&#39;5&#39;和&#39;17&#39;之间的距离，并变成整型</span>
+                    <span class="n">distance</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">x2</span><span class="o">-</span><span class="n">x1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y2</span><span class="o">-</span><span class="n">y1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+                    <span class="c1"># 得到像素距离转为实际cm距离的公式 y = Ax^2 + Bx + C</span>
+                    <span class="n">distanceCM</span> <span class="o">=</span> <span class="n">A</span><span class="o">*</span><span class="n">distance</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">B</span><span class="o">*</span><span class="n">distance</span> <span class="o">+</span> <span class="n">C</span>
+                    <span class="c1"># 勾股定理计算关键点&#39;5&#39;和&#39;17&#39;之间的距离，并变成整型</span>
+                    <span class="n">distance</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">x2</span><span class="o">-</span><span class="n">x1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y2</span><span class="o">-</span><span class="n">y1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+                    <span class="n">mid</span><span class="o">=</span><span class="p">(</span><span class="n">x1</span><span class="o">+</span><span class="n">x2</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">distanceCM</span><span class="o">=</span><span class="mi">80</span>
+                    <span class="n">mid</span><span class="o">=</span><span class="mi">150</span>
+                
+                <span class="nb">print</span><span class="p">(</span><span class="n">distanceCM</span><span class="p">,</span><span class="n">mid</span><span class="p">)</span>
+                
+                <span class="c1"># 小车控制</span>
+                <span class="k">if</span>  <span class="mi">90</span> <span class="o">&gt;</span> <span class="n">distanceCM</span> <span class="o">&gt;</span> <span class="mi">70</span> <span class="ow">and</span> <span class="mi">270</span><span class="o">&gt;</span><span class="n">mid</span><span class="o">&gt;</span><span class="mi">50</span><span class="p">:</span>
+                        <span class="n">control_car</span><span class="p">(</span><span class="s1">&#39;S&#39;</span><span class="p">)</span> <span class="c1"># 停止</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;stop&quot;</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">distanceCM</span><span class="o">&gt;=</span><span class="mi">90</span> <span class="ow">and</span> <span class="mi">270</span><span class="o">&gt;</span><span class="n">mid</span><span class="o">&gt;</span><span class="mi">50</span><span class="p">:</span>
+                        <span class="n">control_car</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">)</span> <span class="c1"># 前进</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;go&quot;</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">distanceCM</span><span class="o">&lt;=</span><span class="mi">70</span> <span class="ow">and</span> <span class="mi">270</span><span class="o">&gt;</span><span class="n">mid</span><span class="o">&gt;</span><span class="mi">50</span><span class="p">:</span>
+                        <span class="n">control_car</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">)</span> <span class="c1"># 后退</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;back&quot;</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="mi">270</span><span class="o">&lt;</span><span class="n">mid</span><span class="p">:</span>
+                        <span class="n">control_car</span><span class="p">(</span><span class="s1">&#39;R&#39;</span><span class="p">)</span> <span class="c1"># 右转</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="mi">50</span><span class="o">&gt;</span><span class="n">mid</span><span class="p">:</span>
+                        <span class="n">control_car</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">)</span> <span class="c1"># 左转</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+                <span class="c1"># 在窗口中显示图像</span>
+                <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">&#39;Video&#39;</span><span class="p">,</span> <span class="n">img_with_keypoints</span><span class="p">)</span>
+
+            <span class="n">frame_count</span> <span class="o">+=</span> <span class="mi">1</span> 
+            <span class="k">if</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFF</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">):</span>
+                <span class="k">break</span>
+
+ 
+<span class="c1"># 释放视频资源</span>
 <span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
 <span class="n">response</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>

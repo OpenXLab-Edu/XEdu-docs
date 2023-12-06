@@ -514,8 +514,8 @@
 <section id="id27">
 <h3>11. 自定义损失函数<a class="headerlink" href="#id27" title="Permalink to this heading"></a></h3>
 <p>损失函数（或称目标函数、优化评分函数）是编译模型时所需的参数之一。在机器学习和深度学习中，模型的训练通常涉及到一个优化过程，即通过不断调整模型的参数，使得模型在训练数据上的预测结果与实际结果的差距最小化。这个差距通常使用一个称为”损失函数”的指标来衡量。损失函数通常是一个关于模型参数的函数，用于度量模型预测结果与实际结果之间的差异。在模型训练过程中，模型会根据损失函数的值来调整自己的参数，以减小损失函数的值。</p>
-<p>默认的损失函数是交叉熵损失函数，允许选择不同的损失函数，支持的损失函数见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#id22">附录</a>。自选损失函数方法如下：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="o">...</span><span class="p">,</span><span class="n">loss</span><span class="o">=</span><span class="s2">&quot;CrossEntropyLoss&quot;</span><span class="p">)</span>
+<p>默认的损失函数是交叉熵损失函数，允许选择不同的损失函数，支持的损失函数见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#id33">附录</a>。自选损失函数方法如下：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="o">...</span><span class="p">,</span><span class="n">loss</span><span class="o">=</span><span class="s2">&quot;MSELoss&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -528,12 +528,6 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="o">...</span><span class="p">,</span><span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;mse&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>因此针对不同的分类或回归任务，可指定不同的损失函数和评价指标。</p>
-<p>例：</p>
-<ul class="simple">
-<li><p>回归：<code class="docutils literal notranslate"><span class="pre">model.train(...,loss=&quot;SmoothL1Loss&quot;,</span> <span class="pre">metrics=[&quot;mae&quot;])</span></code></p></li>
-<li><p>分类：<code class="docutils literal notranslate"><span class="pre">model.train(...,loss=&quot;CrossEntropyLoss&quot;,metrics=[&quot;acc&quot;])</span></code></p></li>
-</ul>
 </section>
 <section id="cnn">
 <h3>13. CNN特征提取<a class="headerlink" href="#cnn" title="Permalink to this heading"></a></h3>

@@ -158,11 +158,15 @@ cv2.destroyAllWindows()
 ```
 ## 识行小车
 
-我们做了一辆能在驾驶过程中自动阅读交通指令并做出相应运动的小车。使用无线摄像头实时获取小车行驶的第一视角，并让一台上位机无线接收图像，再对接收的图像使用XEduHub进行文字识别的离线OCR技术，最后根据识别的文本下发运动指令，以此打造了一辆“识行小车”。
+我们做了一辆能在驾驶过程中自动阅读交通指令并做出相应运动的小车。
 
 ![](../images/xeduhub/car_ocr.gif)
 
-该项目通过ESP32-CAM，该小车的无线摄像头和运动指令已经经过封装，关于该小车的配置可参考网上的开源教程。识行小车使用的文字识别技术采用的是XEduHub现成模型，模型大小只要10M。通过发送HTTP GET请求来获取视频流和控制小车的运动。上位机的参考代码如下。
+功能描述：一辆能在驾驶过程中自动阅读交通指令并做出相应运动的小车。
+
+技术实现方式：使用无线摄像头实时获取小车行驶的第一视角，并让一台上位机无线接收图像，再对接收的图像使用XEduHub进行文字识别的离线OCR技术，最后根据识别的文本下发运动指令。
+
+该项目中的小车是JTANK履带车，该小车的无线摄像头和运动指令已经经过封装，由于该小车用的不是普通的ESP32的配置，详细配置请参考<a href="https://gitee.com/jt123_456/jtank">JTANK履带车简介</a>。如果你的小车是普通的ESP32，那关于该小车的配置方法可参考<a href="https://xedu.readthedocs.io/zh/master/scitech_tools/camera.html#">科创神器ESP32-CAM小型摄像头模块</a>。识行小车使用的文字识别技术采用的是XEduHub现成模型，模型大小只要10M。通过发送HTTP GET请求来获取视频流和控制小车的运动。上位机的参考代码如下。
 
 ```python
 # 导入库
@@ -197,7 +201,7 @@ if response.status_code == 200:
     frame_interval = 25
     frame_count = 0
     max_size=16384 # chunk大小实际情况进行调整 
-    # 持续读取视频流
+    # 持续读取视频流，当我们连续获取图像信息就形成了视屏流
     for chunk in response.iter_content(chunk_size=max_size):
         #过滤其他信息，筛选出图像的数据信息
         if len(chunk) >100: 
@@ -226,6 +230,115 @@ if response.status_code == 200:
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
 # 关闭窗口和释放资源
+cv2.destroyAllWindows()
+response.close()
+```
+
+此外我们还做了一辆能在驾驶过程中自动跟踪手掌并做出相应运动的小车。
+
+![](../images/xeduhub/followhandcar.gif)
+
+功能描述：一辆能自动跟随手掌，并跟手掌保持一定距离的小车。
+
+技术实现方式：使用无线摄像头实时获取小车行驶的第一视角，并让一台上位机无线接收图像，再对接收的图像使用XEduHub进行目标检测技术，最后根据识别的手掌关键点距离和手与摄像机之间的距离(cm)的映射，以及手掌水平x的位置，来发送运动指令，实现前进、后退、停止、左转和右转的运动。
+
+该项目中的小车是JTANK履带车，该小车的无线摄像头和运动指令已经经过封装，由于该小车用的不是普通的ESP32的配置，详细配置请参考<a href="https://gitee.com/jt123_456/jtank">JTANK履带车简介</a>。如果你的小车是普通的ESP32，那关于该小车的配置方法可参考<a href="https://xedu.readthedocs.io/zh/master/scitech_tools/camera.html#">科创神器ESP32-CAM小型摄像头模块</a>。识行小车使用的文字识别技术采用的是XEduHub现成模型，模型大小只要10M。通过发送HTTP GET请求来获取视频流和控制小车的运动。上位机的参考代码如下。
+
+```python
+import cv2
+from XEdu.hub import Workflow as wf
+import math
+import numpy as np
+import requests
+
+#（3）找到手掌间的距离和实际的手与摄像机之间的距离的映射关系
+# x 代表手掌间的距离(像素距离)，y 代表手和摄像机之间的距离(cm)
+x = [300, 245, 200, 170, 145, 130, 112, 103, 93, 87, 80, 75, 70, 67, 62, 59, 57]
+y = [20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100]
+# 因此我们需要一个类似 y = AX^2 + BX + C 的方程来拟合
+coff = np.polyfit(x, y, 2)  #构造二阶多项式方程，coff中存放的是二阶多项式的系数 A,B,C
+A, B, C = coff# 拟合的二次多项式的系数保存在coff数组中，即掌间距离和手与相机间的距离的对应关系的系数
+
+requests.get("http://192.168.4.1/state?cmd=T") #低速档位
+
+#定义控制小车运动函数
+def control_car(cmd):
+    url = "http://192.168.4.1/state?cmd="#URL，需要根据实际设备或服务器的地址进行修改
+    response = requests.get(url + cmd)
+    if response.status_code == 200:
+        print("请求成功！")
+        print(response.text)
+    else:
+        print("请求失败，状态码：", response.status_code)
+
+
+# 定义相机流的URL，需要根据实际设备或服务器的地址进行修改
+url = 'http://192.168.4.1:81/stream'
+# 发送GET请求来获取视频流
+response = requests.get(url, stream=True)
+
+if response.status_code == 200:
+    # 使用OpenCV创建一个视频窗口
+    cv2.namedWindow('Video', cv2.WINDOW_NORMAL)
+    # 实例化模型
+    detector = wf(task='pose_hand21')
+    # 设置抽取帧的间隔，例如每15帧抽取一帧
+    frame_interval = 15
+    frame_count = 0
+    max_size=16384 # chunk大小实际情况进行调整 
+    # 持续读取视频流
+    for chunk in response.iter_content(chunk_size=max_size):
+        #过滤其他信息，筛选出图像的数据信息
+        if len(chunk) >100: 
+            if frame_count % frame_interval == 0: # 累计到达相应的帧数对帧进行推理
+                # 将数据转换成图像格式
+                data = np.frombuffer(chunk, dtype=np.uint8)
+                img = cv2.imdecode(data, cv2.IMREAD_COLOR)
+                # 获取手部关键点信息，绘制关键点和连线后的图像img
+                keypoints, img_with_keypoints = detector.inference(data=img, img_type='cv2') # 进行推理
+                # 如果检测到手
+                if len(keypoints):
+                    # 获取食指根部'5'和小指根部'17'的坐标点
+                    x1, y1 = keypoints[5] 
+                    x2, y2 = keypoints[17]
+                    # 勾股定理计算关键点'5'和'17'之间的距离，并变成整型
+                    distance = int(math.sqrt((x2-x1)**2 + (y2-y1)**2))
+                    # 得到像素距离转为实际cm距离的公式 y = Ax^2 + Bx + C
+                    distanceCM = A*distance**2 + B*distance + C
+                    # 勾股定理计算关键点'5'和'17'之间的距离，并变成整型
+                    distance = int(math.sqrt((x2-x1)**2 + (y2-y1)**2))
+                    mid=(x1+x2)/2
+                else:
+                    distanceCM=80
+                    mid=150
+                
+                print(distanceCM,mid)
+                
+                # 小车控制
+                if  90 > distanceCM > 70 and 270>mid>50:
+                        control_car('S') # 停止
+                        print("stop")
+                elif distanceCM>=90 and 270>mid>50:
+                        control_car('F') # 前进
+                        print("go")
+                elif distanceCM<=70 and 270>mid>50:
+                        control_car('B') # 后退
+                        print("back")
+                elif 270<mid:
+                        control_car('R') # 右转
+                        print("right")
+                elif 50>mid:
+                        control_car('L') # 左转
+                        print("left")
+                # 在窗口中显示图像
+                cv2.imshow('Video', img_with_keypoints)
+
+            frame_count += 1 
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
+
+ 
+# 释放视频资源
 cv2.destroyAllWindows()
 response.close()
 ```

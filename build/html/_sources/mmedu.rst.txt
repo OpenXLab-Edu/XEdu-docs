@@ -10,5 +10,5 @@
    mmedu/mmclassification.md
    mmedu/mmdetection.md
    mmedu/mmediting.md
-   mmedu/model_convert.md
+   mmedu/mmedumodel_convert.md
    mmedu/openmmlab.md

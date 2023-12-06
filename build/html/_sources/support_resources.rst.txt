@@ -1,7 +1,9 @@
 学习支持和资源获取
 =================================
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 2 
+
+   support_resources/model_convert.md
 
    support_resources/faq.md
 

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>科创神器ESP32-CAM小型摄像头模块 &mdash; OpenXLabEdu  documentation</title>
+  <title>wifi摄像头模块：ESP32-CAM &mdash; OpenXLabEdu  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -62,12 +62,12 @@
 <li class="toctree-l2"><a class="reference internal" href="flask.html">Web库Flask</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fastapi.html">Web库FastAPI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gradio.html">Web库Gradio</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">科创神器ESP32-CAM小型摄像头模块</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">wifi摄像头模块：ESP32-CAM</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">1.简介</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">2.简单使用教程</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id3">第一步：购买ESP32-CAM</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">第二步：准备编程环境</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">第三步：连接ESP32-CAM至电脑</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#esp32-cam">第一步：购买ESP32-CAM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">第二步：准备编程环境</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">第三步：连接ESP32-CAM至电脑</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#wifi">第四步：编写配置WIFI的代码</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#esp32cam">第五步：安装esp32cam库</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ip">第六步：上传代码并获取IP地址</a></li>
@@ -97,7 +97,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../scitech_tools.html">相关科创工具</a></li>
-      <li class="breadcrumb-item active">科创神器ESP32-CAM小型摄像头模块</li>
+      <li class="breadcrumb-item active">wifi摄像头模块：ESP32-CAM</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/scitech_tools/camera.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -107,8 +107,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="esp32-cam">
-<h1>科创神器ESP32-CAM小型摄像头模块<a class="headerlink" href="#esp32-cam" title="Permalink to this heading"></a></h1>
+  <section id="wifi-esp32-cam">
+<h1>wifi摄像头模块：ESP32-CAM<a class="headerlink" href="#wifi-esp32-cam" title="Permalink to this heading"></a></h1>
 <section id="id1">
 <h2>1.简介<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p>ESP32-CAM是一个小巧但功能强大的摄像头模块，非常适合DIY爱好者和科创项目。它可以连接Wi-Fi和蓝牙，让你轻松地进行图像捕获和视频流处理。无论你是想做一个智能小车，还是想在家里安装一个简易的监控系统，ESP32-CAM都是一个很好的选择。</p>
@@ -116,14 +116,14 @@
 </section>
 <section id="id2">
 <h2>2.简单使用教程<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
-<section id="id3">
-<h3>第一步：购买ESP32-CAM<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<section id="esp32-cam">
+<h3>第一步：购买ESP32-CAM<a class="headerlink" href="#esp32-cam" title="Permalink to this heading"></a></h3>
 <p>a.在淘宝、京东查找ESP32-CAM，购买一款合适的产品。</p>
 <p>b.核对规格：确保购买的是ESP32-CAM模块，它通常包括一个小型摄像头模块（摄像头模块可能需要自行安装）。</p>
 <p>c.USB接口的线，配合ESP32-CAM连接。</p>
 </section>
-<section id="id4">
-<h3>第二步：准备编程环境<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<section id="id3">
+<h3>第二步：准备编程环境<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
 <p>a.下载并安装arduino IDE</p>
 <p>这是一个编程软件，可以让你给ESP32-CAM编写和上传代码。</p>
 <p>下载地址：<a class="reference external" href="https://www.arduino.cc/en/Main/Software?setlang=cn">https://www.arduino.cc/en/Main/Software?setlang=cn</a></p>
@@ -140,8 +140,8 @@
 <p>选第二个esp32 by Espressif点击安装，等待安装完毕</p>
 <p><img alt="../_images/cam4.png" src="../_images/cam4.png" /></p>
 </section>
-<section id="id5">
-<h3>第三步：连接ESP32-CAM至电脑<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<section id="id4">
+<h3>第三步：连接ESP32-CAM至电脑<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
 <p>将ESP32-CAM模块通过转换器连接到电脑，并在arduino ide中选择连接，工具-开发板-ESP32-esp32 Wrover Module</p>
 <p><img alt="../_images/cam5.png" src="../_images/cam5.png" /></p>
 <p>工具-端口选择COM5</p>
