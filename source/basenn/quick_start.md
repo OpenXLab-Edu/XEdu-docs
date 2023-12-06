@@ -127,6 +127,92 @@ AI项目工坊：[https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/p
 
 用BaseNN库搭建搭建鸢尾花分类模型项目地址：[https://www.openinnolab.org.cn/pjlab/project?id=641bc2359c0eb14f22fdbbb1&sc=635638d69ed68060c638f979#public](https://www.openinnolab.org.cn/pjlab/project?id=641bc2359c0eb14f22fdbbb1&sc=635638d69ed68060c638f979#public)
 
+## 挑战使用BaseNN完成第一个回归项目：波士顿房价预测
+
+波士顿房价数据集（Boston Housing Dataset）是一个著名的数据集，经常用于机器学习和统计分析中。该数据集包含波士顿郊区房屋的各种信息，包括房价和与房价可能相关的各种属性。选择了四个与房价关系较大的特征：RM (每栋住宅的平均房间数)、LSTAT (人口中较低地位的百分比)、PTRATIO (师生比例)、NOX (一氧化氮浓度) 。进行数据预处理后生成了已提取出只有这四列特征和预测值且做了归一化处理的训练集（house_price_data_norm_train.csv）、验证集（house_price_data_norm_val.csv），搭建模型进行训练，数据预处理的代码可参考原项目。
+
+项目地址：
+
+[https://www.openinnolab.org.cn/pjlab/project?id=656d99e87e42e551fa5f89bd&sc=62f34141bf4f550f3e926e0e#public](https://www.openinnolab.org.cn/pjlab/project?id=656d99e87e42e551fa5f89bd&sc=62f34141bf4f550f3e926e0e#public)
+
+（用Chrome浏览器打开效果最佳）
+
+### 第0步 引入包
+
+```
+# 导入库
+from BaseNN import nn
+```
+
+### 第1步 声明模型
+
+```python
+# 声明模型，选择回归任务
+model = nn('reg') 
+```
+
+### 第2步 载入数据
+
+```
+model.load_tab_data('house_price_data_norm_train.csv',batch_size=1024) # 载入数据
+```
+
+### 第3步 搭建一个3层的全连接神经网络
+
+```
+model.add('Linear', size=(4, 64),activation='ReLU')  
+model.add('Linear', size=(64, 4), activation='ReLU') 
+model.add('Linear', size=(4, 1))
+model.add(optimizer='Adam')
+```
+
+### 第4步 模型训练
+
+```
+# 设置模型保存的路径
+model.save_fold = 'checkpoints/ckpt'
+model.train(lr=0.008, epochs=5000,loss='MSELoss') # 训练
+```
+
+### 第5步 模型测试
+
+此步骤可以借助验证集完成。
+
+读取数据。
+
+```
+import numpy as np
+# 读取验证集
+val_path = 'house_price_data_norm_val.csv'
+val_x = np.loadtxt(val_path, dtype=float, delimiter=',',skiprows=1,usecols=range(0,4)) # 读取特征列
+val_y = np.loadtxt(val_path, dtype=float, delimiter=',',skiprows=1,usecols=4) # 读取第4列
+```
+
+模型推理。
+
+```
+# 导入库
+from BaseNN import nn
+# 声明模型
+model = nn('reg') 
+y_pred = model.inference(val_x,checkpoint = 'checkpoints/ckpt2/basenn.pth')  # 对该数据进行预测
+```
+
+绘制曲线图。
+
+```
+# 绘制真实数据和预测比较曲线
+import matplotlib.pyplot as plt
+plt.plot(val_y, label='val')
+plt.plot(y_pred, label='pred')
+plt.legend()
+plt.show()
+```
+
+对比输出，查看回归的效果，觉得效果还是很不错的。
+
+![](../images/basenn/huigui.png)
+
 ## 挑战使用BaseNN完成第一个自然语言处理项目：自动写诗机
 
 ### 第0步 引入包
@@ -376,7 +462,7 @@ print('评论对电影的评价是：', label[res[0]]) # 该评论文本数据�
 
 本案例是一个跨学科项目，用神经网络来拟合三角函数。案例发表于2023年的《中国信息技术教育》杂志。
 
-项目地址：[https://www.openinnolab.org.cn/pjlab/project?id=6444992a06618727bed5a67c&sc=635638d69ed68060c638f979#public](https://www.openinnolab.org.cn/pjlab/project?id=6444992a06618727bed5a67c&sc=635638d69ed68060c638f979#public)
+项目地址：[https://www.openinnolab.org.cn/pjlab/project?id=6444992a06618727bed5a67c&backpath=/pjlab/projects/list#public](https://www.openinnolab.org.cn/pjlab/project?id=6444992a06618727bed5a67c&backpath=/pjlab/projects/list#public)
 
 #### 项目核心功能：
 
@@ -390,45 +476,62 @@ print('评论对电影的评价是：', label[res[0]]) # 该评论文本数据�
 
 ![](../images/basenn/excel.png)
 
-##### 2）网络搭建和模型训练
+##### 2）数据预处理
 
-训练数据由Excel的随机数结合三角函数公式产生。0-2为输入，3-9是各种输出的数据。
+首先读取数据，0-2为输入，3-9是各种输出的数据。
 
 ```
 import numpy as np
 train_path = './data/train-full.csv'
 x = np.loadtxt(train_path, dtype=float, delimiter=',',skiprows=1,usecols=[0,1,2]) # 读取前3列
-y = np.loadtxt(train_path, dtype=float, delimiter=',',skiprows=1,usecols=[3])
+y = np.loadtxt(train_path, dtype=float, delimiter=',',skiprows=1,usecols=[8]) # 读取9列
 ```
+
+将y映射到0-1之间。
+
+```
+from sklearn.preprocessing import MinMaxScaler
+y = y.reshape(-1, 1)
+scaler = MinMaxScaler()
+scaler.fit(y)
+y = scaler.transform(y)  # 0~1
+```
+
+生成新的数据集。
+
+```
+norm_data = np.concatenate((x,y),axis=1)
+np.savetxt('./data/train_norm.csv',norm_data,delimiter=',')
+```
+
+##### 3）网络搭建和模型训练
 
 搭建一个3层的神经网络并开始训练，输入维度是3（3列数据），最后输出维度是1（1列数据），激活函数使用ReLU。
 
 ```
 from BaseNN import nn
-model = nn() #声明模型 
-model.load_dataset(x, y) # 载入数据
-model.add('linear', size=(3, 30), activation='relu')  
-model.add('linear', size=(30, 10), activation='relu') 
-model.add('linear', size=(10, 5), activation='relu') 
-model.add('linear', size=(5, 1))
-model.add(optimizer='SGD')
+model = nn('reg') #声明模型 
+model.load_tab_data('./data/train_norm.csv',batch_size=1024) # 载入数据
+model.add('Linear', size=(3, 60),activation='ReLU')  
+model.add('Linear', size=(60, 6), activation='ReLU') 
+model.add('Linear', size=(6, 1))
+model.add(optimizer='Adam')
 
 # 设置模型保存的路径
-model.save_fold = 'checkpoints/ckpt-1'
-# model.train(lr=0.001, epochs=500, loss="MSELoss",metrics=["mae"],checkpoint='checkpoints/ckpt/basenn.pkl') # 直接训练
-model.train(lr=0.001, epochs=500, loss="MSELoss",metrics=["mae"]) # 直接训练
+model.save_fold = 'checkpoints/ckpt'
+# 模型训练
+model.train(lr=0.001, epochs=300,loss='MSELoss') 
 ```
 
-##### 3）模型推理
+##### 4）模型推理
 
 读取测试数据进行模型推理，测试数据同样来自随机数。
 
 ```
 # 测试数据
-test_path = './data/test.csv'
+test_path = './data/test-full.csv'
 test_x = np.loadtxt(test_path, dtype=float, delimiter=',',skiprows=1,usecols=[0,1,2]) # 读取前3列
-test_y = np.loadtxt(test_path, dtype=float, delimiter=',',skiprows=1,usecols=[3]) # 读取第4列
-result = model.inference(data=test_x) # 对该数据进行预测
-print(np.arccos(result)/np.pi*180)
+test_y = np.loadtxt(test_path, dtype=float, delimiter=',',skiprows=1,usecols=[8]) # 读取第9列
+y_pred = model.inference(test_x,checkpoint = 'checkpoints/ckpt/basenn.pth')  # 对该数据进行预测
 ```
 
