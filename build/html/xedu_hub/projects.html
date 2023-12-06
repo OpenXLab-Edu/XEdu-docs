@@ -326,7 +326,7 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="c1">#（3）找到手掌间的距离和实际的手与摄像机之间的距离的映射关系</span>
+<span class="c1"># 找到手掌间的距离和实际的手与摄像机之间的距离的映射关系</span>
 <span class="c1"># x 代表手掌间的距离(像素距离)，y 代表手和摄像机之间的距离(cm)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">300</span><span class="p">,</span> <span class="mi">245</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">145</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">112</span><span class="p">,</span> <span class="mi">103</span><span class="p">,</span> <span class="mi">93</span><span class="p">,</span> <span class="mi">87</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">62</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">57</span><span class="p">]</span>
 <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
@@ -411,8 +411,6 @@
             <span class="n">frame_count</span> <span class="o">+=</span> <span class="mi">1</span> 
             <span class="k">if</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFF</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">):</span>
                 <span class="k">break</span>
-
- 
 <span class="c1"># 释放视频资源</span>
 <span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
 <span class="n">response</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
