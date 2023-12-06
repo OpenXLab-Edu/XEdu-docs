@@ -91,4 +91,4 @@ AI项目工坊：[https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/p
 
 （用Chorme浏览器打开效果最佳）
 
-更多案例详见下文。
+更多案例详见[下文](https://xedu.readthedocs.io/zh/master/baseml/projects.html)。

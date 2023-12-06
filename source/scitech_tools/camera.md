@@ -194,7 +194,7 @@ b.导入库
 
 ## 3.简单应用：在Python中测试实时视频流
 
-可以编写python代码连接esp32cam摄像头，获取视频流（需要将代码中的ip改为上述串口监视器中输出的ip）,下面是最简代码。
+由前文可知通过ESP32-CAM获取的是一张照片，如果编写代码一直读就是视频流了。下面这段代码是连接esp32cam摄像头，获取视频流并将图片展示在窗口（需要将代码中的ip改为上述串口监视器中输出的ip）的参考代码。
 
 ```
 import cv2
@@ -229,6 +229,6 @@ cap.release() # 释放VideoCapture对象
 cv2.destroyAllWindows() # 关闭所有OpenCV创建的窗口
 ```
 
-在此基础上，可继续编写更复杂的python代码，例如对接收的照片进行各种模型推理的操作，甚至还可以连接小车做一个无人行驶小车（例如我们的[识行小车案例](https://xedu.readthedocs.io/zh/master/xedu_hub/projects.html#id5)）。
+在此基础上，可继续编写更复杂的python代码，例如对接收的照片进行各种模型推理的操作，甚至还可以连接小车做一个无人行驶小车（例如有人对ESP32-CAM进行了封装组装成了一款JTANK履带车，我们在其基础上制作成了一辆[识行小车](https://xedu.readthedocs.io/zh/master/xedu_hub/projects.html#id5)）。
 
 本文参考：[https://www.electroniclinic.com/esp32-cam-with-python-opencv-yolo-v3-for-object-detection-and-identification/](https://www.electroniclinic.com/esp32-cam-with-python-opencv-yolo-v3-for-object-detection-and-identification/)
