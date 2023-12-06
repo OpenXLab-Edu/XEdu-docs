@@ -24,11 +24,11 @@
 
 这些关键点的检测可以用于人体姿态估计和分类、动作分析、手势识别等多种应用。
 
-XEduHub提供了两个识别人体关键点的优质模型:`pose_body17`和`pose_body26`，能够在使用cpu推理的情况下，快速识别出身体的关键点。
+XEduHub提供了三个识别人体关键点的优质模型:`pose_body17`,`pose_body17_l`和`pose_body26`，能够在使用cpu推理的情况下，快速识别出身体的关键点。
 
- 数字表示了识别出人体关键点的数量。
+ 数字表示了识别出人体关键点的数量，l代表了large，表示规模较大的，性能较强的模型，但是缺点在于推理速度较慢。
 
-`pose_body17`模型能识别出17个人体骨骼关键点，`pose_body26`模型能识别出26个人体骨骼关键点。
+`pose_body17`与`pose_body17_l`模型能识别出17个人体骨骼关键点，`pose_body26`模型能识别出26个人体骨骼关键点。
 
 ![](../images/xeduhub/body.png)
 
@@ -54,7 +54,7 @@ body = wf(task='pose_body') # 数字可省略，当省略时，默认为pose_bod
 
 `wf()`中共有两个参数可以设置
 
-- `task`决定了使用哪个关键点识别模型，可选取值为：`[pose_body17,pose_body26]`
+- `task`决定了使用哪个关键点识别模型，可选取值为：`[pose_body17,pose_body17_l,pose_body26]`
 - `download_path`参数决定了预训练模型下载的路径。默认是下载到同级的checkpoints文件夹中，当代码运行时，会先在本地的同级目录中寻找是否有已下载的预训练模型，如果没有，到本地缓存中寻找，如果本地缓存没有，查看是不是指定了模型的路径，如果都没有，到网络下载。用户也可指定模型的下载路径，如`dowload_path='my_checkpoint'`。
 
 #### 2. 模型推理
@@ -372,7 +372,9 @@ XEduHub目标支持目标检测任务有：coco目标检测`det_coco`、人体�
 
 ### coco目标检测
 
-COCO（Common Objects in Context）是一个用于目标检测和图像分割任务的广泛使用的数据集和评估基准。它是计算机视觉领域中最重要的数据集之一，在XEduHub中的该模型能够检测出80类coco数据集中的物体：`det_coco`。
+COCO（Common Objects in Context）是一个用于目标检测和图像分割任务的广泛使用的数据集和评估基准。它是计算机视觉领域中最重要的数据集之一，在XEduHub中的该模型能够检测出80类coco数据集中的物体：`det_coco`，以及加强版`det_coco_l`。
+
+![](../images/xeduhub/new_coco.png)
 
 若要查看coco目标检测中的所有类别可运行以下代码：
 
@@ -402,7 +404,7 @@ det_coco = wf(task='det_coco')
 
 `wf()`中共有两个参数可以设置
 
-- `task`决定了使用哪个检测模型，coco目标检测的模型为`det_coco`。
+- `task`决定了使用哪个检测模型，coco目标检测的模型为`det_coco`, `det_coco_l`。`det_coco_l`相比`det_coco`模型规模较大，性能较强，但是推理的速度较慢。
 - `download_path`参数决定了预训练模型下载的路径。默认是下载到同级的checkpoints文件夹中，当代码运行时，会先在本地的同级目录中寻找是否有已下载的预训练模型，如果没有，到本地缓存中寻找，如果本地缓存没有，查看是不是指定了模型的路径，如果都没有，到网络下载。用户也可指定模型的下载路径，如`dowload_path='my_checkpoint'`。
 
 #### 2. 模型推理
@@ -463,7 +465,7 @@ det_coco.save(img_with_box,'img_with_box.jpg')# 保存推理图片
 
 人体目标检测的任务是在图像或视频中检测和定位人体的位置，并为每个检测到的人体分配一个相应的类别标签。
 
-XEduHub提供了进行人体目标检测的模型：`det_body`，该模型能够进行单人的人体目标检测。
+XEduHub提供了进行人体目标检测的模型：`det_body`，`det_body_l`，这两个模型能够进行单人的人体目标检测。
 
 #### 代码样例
 
@@ -487,7 +489,7 @@ det_body = wf(task='det_body')
 
 `wf()`中共有两个参数可以设置
 
-- `task`决定了使用哪个检测模型，人体目标检测模型为`det_body`
+- `task`决定了使用哪个检测模型，人体目标检测模型为`det_body`, `det_body_l`。`det_body_l`相比`det_body`模型规模较大，性能较强，但是推理的速度较慢。
 - `download_path`参数决定了预训练模型下载的路径。默认是下载到同级的checkpoints文件夹中，当代码运行时，会先在本地的同级目录中寻找是否有已下载的预训练模型，如果没有，到本地缓存中寻找，如果本地缓存没有，查看是不是指定了模型的路径，如果都没有，到网络下载。用户也可指定模型的下载路径，如`dowload_path='my_checkpoint'`。
 
 #### 2. 模型推理
