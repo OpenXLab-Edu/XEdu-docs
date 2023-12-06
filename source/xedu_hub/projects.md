@@ -251,7 +251,7 @@ import math
 import numpy as np
 import requests
 
-#（3）找到手掌间的距离和实际的手与摄像机之间的距离的映射关系
+# 找到手掌间的距离和实际的手与摄像机之间的距离的映射关系
 # x 代表手掌间的距离(像素距离)，y 代表手和摄像机之间的距离(cm)
 x = [300, 245, 200, 170, 145, 130, 112, 103, 93, 87, 80, 75, 70, 67, 62, 59, 57]
 y = [20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100]
@@ -336,8 +336,6 @@ if response.status_code == 200:
             frame_count += 1 
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
-
- 
 # 释放视频资源
 cv2.destroyAllWindows()
 response.close()
