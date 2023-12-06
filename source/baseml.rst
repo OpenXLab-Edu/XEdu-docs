@@ -11,3 +11,5 @@
 
    baseml/visualization.rst
 
+   baseml/projects.rst
+
