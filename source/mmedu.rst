@@ -12,3 +12,4 @@
    mmedu/mmediting.md
    mmedu/mmedumodel_convert.md
    mmedu/openmmlab.md
+   mmedu/projects.md
