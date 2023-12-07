@@ -438,7 +438,7 @@ model.convert(checkppint="basenn_cd.pth",out_file="basenn_cd.onnx")
 
 - `checkpoint`: 指定要转换的pth模型文件路径
 - `out_file`: 指定转换出的onnx模型文件路径
-- `opset_version`：指定转换出的onnx模型算子的版本，默认为10，一般情况下不需要进行设置，除非出现了算子版本不符而导致的报错。
+- `opset_version`：指定转换出的onnx模型算子的版本，默认为10，一般情况下不需要进行设置，除非出现了算子版本不符而导致的报错。【高级功能】
 
 **注意！**：在转换为onnx文件后会将模型的元信息，如数据类型、输入尺寸等也写入模型文件，而之前版本的BaseNN训练得到的模型文件不含有这些信息，因此如果想要将之前的BaseNN训练得到的文件进行转换，需要基于原先的模型文件使用最新的BaseNN版本再进行一轮训练！
 
@@ -535,6 +535,8 @@ model.train(...,loss="MSELoss")
 ```python
 model.train(...,metrics=["mse"])
 ```
+
+
 
 ## 附录
 
