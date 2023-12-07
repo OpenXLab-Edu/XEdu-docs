@@ -8,3 +8,5 @@
    basenn/installation.md
 
    basenn/introduction.md
+
+   basenn/projects.md

@@ -52,10 +52,11 @@ from XEdu.hub import Workflow as wf
 body = wf(task='pose_body') # 数字可省略，当省略时，默认为pose_body17
 ```
 
-`wf()`中共有两个参数可以设置
+`wf()`中共有许多参数可以设置，其中主要的参数：
 
-- `task`决定了使用哪个关键点识别模型，可选取值为：`[pose_body17,pose_body17_l,pose_body26]`
-- `download_path`参数决定了预训练模型下载的路径。默认是下载到同级的checkpoints文件夹中，当代码运行时，会先在本地的同级目录中寻找是否有已下载的预训练模型，如果没有，到本地缓存中寻找，如果本地缓存没有，查看是不是指定了模型的路径，如果都没有，到网络下载。用户也可指定模型的下载路径，如`dowload_path='my_checkpoint'`。
+- `task`选择任务。在人体关键点识别模型中，`task`可选取值为：`[pose_body17,pose_body17_l,pose_body26]`
+
+- 更多参数设置可见高级功能……
 
 #### 2. 模型推理
 
@@ -65,20 +66,21 @@ keypoints,img_with_keypoints = body.inference(data='data/body.jpg',img_type='pil
 
 ![](../images/xeduhub/body_result.png)
 
-模型推理`inference()`可传入参数：
+模型推理`inference()`可传入的主要参数：
 
 - `data`: 指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
 
 - `show`: 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出关键点识别完成后的图片。
 
 - `img_type`: 关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
-- `bbox`：该参数可配合目标检测使用。在多人关键点检测中，该参数指定了要识别哪个检测框中的关键点。
+  
+- 更多参数设置可见高级功能……
 
 模型推理返回结果：
 
 - `keypoints`以二维数组的形式保存了所有关键点的坐标，每个关键点(x,y)被表示为`[x,y]`根据前面的图示，要获取到某个特定序号`i`的关键点，只需要访问`keypoints[i]`即可。
 
-- `img_with_keypoints`是个三维数组，以pil格式保存了关键点识别完成后的图片。
+- `img_with_keypoints`是个三维数组，以对应img_type格式保存了关键点识别完成后图片的像素点信息。
 
 #### 3. 结果输出
 
@@ -86,13 +88,13 @@ keypoints,img_with_keypoints = body.inference(data='data/body.jpg',img_type='pil
 format_result = body.format_output(lang='zh')# 参数lang设置了输出结果的语言，默认为中文
 ```
 
-`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。参数`lang`设置了输出结果的语言，如果不指定默认为中文。
+`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。参数`lang`设置了输出结果的语言，默认为中文。
 
 `format_result`以字典形式存储了推理结果，共有两个键：`关键点坐标`和`分数`。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标，而分数则是对应下标的关键点的分数，以一维数组形式保存。
 
 ![](../images/xeduhub/body-format.png)
 
-输出图
+结果可视化
 
 ```python
 body.show(img_with_keypoints)
@@ -140,10 +142,11 @@ from XEdu.hub import Workflow as wf
 face = wf(task='pose_face') # 数字可省略，默认为face106
 ```
 
-`wf()`中共有两个参数可以设置
+`wf()`中共有许多参数可以设置，其中主要的参数：
 
-- `task`决定了使用哪个关键点识别模型，人脸关键点识别模型为`pose_face`。
-- `download_path`参数决定了预训练模型下载的路径。默认是下载到同级的checkpoints文件夹中，当代码运行时，会先在本地的同级目录中寻找是否有已下载的预训练模型，如果没有，到本地缓存中寻找，如果本地缓存没有，查看是不是指定了模型的路径，如果都没有，到网络下载。用户也可指定模型的下载路径，如`dowload_path='my_checkpoint'`。
+- `task`决定了使用哪个关键点识别模型，人脸关键点识别模型为`pose_face106`（数字可省略，默认为face106）。
+
+- 更多参数设置可见高级功能……
 
 #### 2. 模型推理
 
@@ -153,20 +156,21 @@ keypoints,img_with_keypoints = face.inference(data='data/face.jpg',img_type='pil
 
 ![](../images/xeduhub/face_result.png)
 
-模型推理`inference()`可传入参数：
+模型推理`inference()`可传入的主要参数：
 
 - `data`: 指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
 
 - `show`: 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出关键点识别完成后的图片。
 
 - `img_type`: 关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
-- `bbox`：该参数可配合目标检测使用。在多人脸关键点检测中，该参数指定了要识别哪个检测框中的关键点。
+
+- 更多参数设置可见高级功能……
 
 模型推理返回结果：
 
 - `keypoints`以二维数组的形式保存了所有关键点的坐标，每个关键点(x,y)被表示为`[x,y]`根据前面的图示，要获取到某个特定序号`i`的关键点，只需要访问`keypoints[i]`即可。
 
-- `img_with_keypoints`是个三维数组，以pil格式保存了关键点识别完成后的图片。
+- `img_with_keypoints`是个三维数组，以对应img_type格式保存了关键点识别完成后图片的像素点信息。
 
 #### 3. 结果输出
 
@@ -177,6 +181,8 @@ format_result = face.format_output(lang='zh')# 将推理结果进行格式化输
 `format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。参数`lang`设置了输出结果的语言，如果不指定默认为中文。
 
 `format_result`以字典形式存储了推理结果，共有两个键：`关键点坐标`和`分数`。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标，而分数则是对应下标的关键点的分数，以一维数组形式保存。
+
+结果可视化
 
 ```python
 face.show(img_with_keypoints)# 展示推理图片
