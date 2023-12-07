@@ -194,10 +194,10 @@
 <span class="n">body</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;pose_body&#39;</span><span class="p">)</span> <span class="c1"># 数字可省略，当省略时，默认为pose_body17</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有两个参数可以设置</p>
+<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有许多参数可以设置，其中主要的参数：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>决定了使用哪个关键点识别模型，可选取值为：<code class="docutils literal notranslate"><span class="pre">[pose_body17,pose_body17_l,pose_body26]</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数决定了预训练模型下载的路径。默认是下载到同级的checkpoints文件夹中，当代码运行时，会先在本地的同级目录中寻找是否有已下载的预训练模型，如果没有，到本地缓存中寻找，如果本地缓存没有，查看是不是指定了模型的路径，如果都没有，到网络下载。用户也可指定模型的下载路径，如<code class="docutils literal notranslate"><span class="pre">dowload_path='my_checkpoint'</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>选择任务。在人体关键点识别模型中，<code class="docutils literal notranslate"><span class="pre">task</span></code>可选取值为：<code class="docutils literal notranslate"><span class="pre">[pose_body17,pose_body17_l,pose_body26]</span></code></p></li>
+<li><p>更多参数设置可见高级功能……</p></li>
 </ul>
 </section>
 <section id="id6">
@@ -206,17 +206,17 @@
 </pre></div>
 </div>
 <p><img alt="../_images/body_result.png" src="../_images/body_result.png" /></p>
-<p>模型推理<code class="docutils literal notranslate"><span class="pre">inference()</span></code>可传入参数：</p>
+<p>模型推理<code class="docutils literal notranslate"><span class="pre">inference()</span></code>可传入的主要参数：</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>: 指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">show</span></code>: 可取值：<code class="docutils literal notranslate"><span class="pre">[True,False]</span></code> 默认为<code class="docutils literal notranslate"><span class="pre">False</span></code>。如果取值为<code class="docutils literal notranslate"><span class="pre">True</span></code>，在推理完成后会直接输出关键点识别完成后的图片。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">img_type</span></code>: 关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:<code class="docutils literal notranslate"><span class="pre">['cv2','pil']</span></code>，默认值为<code class="docutils literal notranslate"><span class="pre">None</span></code>，如果不传入值，则不会返回图。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">bbox</span></code>：该参数可配合目标检测使用。在多人关键点检测中，该参数指定了要识别哪个检测框中的关键点。</p></li>
+<li><p>更多参数设置可见高级功能……</p></li>
 </ul>
 <p>模型推理返回结果：</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">keypoints</span></code>以二维数组的形式保存了所有关键点的坐标，每个关键点(x,y)被表示为<code class="docutils literal notranslate"><span class="pre">[x,y]</span></code>根据前面的图示，要获取到某个特定序号<code class="docutils literal notranslate"><span class="pre">i</span></code>的关键点，只需要访问<code class="docutils literal notranslate"><span class="pre">keypoints[i]</span></code>即可。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">img_with_keypoints</span></code>是个三维数组，以pil格式保存了关键点识别完成后的图片。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">img_with_keypoints</span></code>是个三维数组，以对应img_type格式保存了关键点识别完成后图片的像素点信息。</p></li>
 </ul>
 </section>
 <section id="id7">
@@ -224,10 +224,10 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">format_result</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span><span class="c1"># 参数lang设置了输出结果的语言，默认为中文</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。参数<code class="docutils literal notranslate"><span class="pre">lang</span></code>设置了输出结果的语言，如果不指定默认为中文。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。参数<code class="docutils literal notranslate"><span class="pre">lang</span></code>设置了输出结果的语言，默认为中文。</p>
 <p><code class="docutils literal notranslate"><span class="pre">format_result</span></code>以字典形式存储了推理结果，共有两个键：<code class="docutils literal notranslate"><span class="pre">关键点坐标</span></code>和<code class="docutils literal notranslate"><span class="pre">分数</span></code>。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标，而分数则是对应下标的关键点的分数，以一维数组形式保存。</p>
 <p><img alt="../_images/body-format.png" src="../_images/body-format.png" /></p>
-<p>输出图</p>
+<p>结果可视化</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">body</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img_with_keypoints</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -268,10 +268,10 @@
 <span class="n">face</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;pose_face&#39;</span><span class="p">)</span> <span class="c1"># 数字可省略，默认为face106</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有两个参数可以设置</p>
+<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有许多参数可以设置，其中主要的参数：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>决定了使用哪个关键点识别模型，人脸关键点识别模型为<code class="docutils literal notranslate"><span class="pre">pose_face</span></code>。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数决定了预训练模型下载的路径。默认是下载到同级的checkpoints文件夹中，当代码运行时，会先在本地的同级目录中寻找是否有已下载的预训练模型，如果没有，到本地缓存中寻找，如果本地缓存没有，查看是不是指定了模型的路径，如果都没有，到网络下载。用户也可指定模型的下载路径，如<code class="docutils literal notranslate"><span class="pre">dowload_path='my_checkpoint'</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>决定了使用哪个关键点识别模型，人脸关键点识别模型为<code class="docutils literal notranslate"><span class="pre">pose_face106</span></code>（数字可省略，默认为face106）。</p></li>
+<li><p>更多参数设置可见高级功能……</p></li>
 </ul>
 </section>
 <section id="id13">
@@ -280,17 +280,17 @@
 </pre></div>
 </div>
 <p><img alt="../_images/face_result.png" src="../_images/face_result.png" /></p>
-<p>模型推理<code class="docutils literal notranslate"><span class="pre">inference()</span></code>可传入参数：</p>
+<p>模型推理<code class="docutils literal notranslate"><span class="pre">inference()</span></code>可传入的主要参数：</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>: 指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">show</span></code>: 可取值：<code class="docutils literal notranslate"><span class="pre">[True,False]</span></code> 默认为<code class="docutils literal notranslate"><span class="pre">False</span></code>。如果取值为<code class="docutils literal notranslate"><span class="pre">True</span></code>，在推理完成后会直接输出关键点识别完成后的图片。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">img_type</span></code>: 关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:<code class="docutils literal notranslate"><span class="pre">['cv2','pil']</span></code>，默认值为<code class="docutils literal notranslate"><span class="pre">None</span></code>，如果不传入值，则不会返回图。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">bbox</span></code>：该参数可配合目标检测使用。在多人脸关键点检测中，该参数指定了要识别哪个检测框中的关键点。</p></li>
+<li><p>更多参数设置可见高级功能……</p></li>
 </ul>
 <p>模型推理返回结果：</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">keypoints</span></code>以二维数组的形式保存了所有关键点的坐标，每个关键点(x,y)被表示为<code class="docutils literal notranslate"><span class="pre">[x,y]</span></code>根据前面的图示，要获取到某个特定序号<code class="docutils literal notranslate"><span class="pre">i</span></code>的关键点，只需要访问<code class="docutils literal notranslate"><span class="pre">keypoints[i]</span></code>即可。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">img_with_keypoints</span></code>是个三维数组，以pil格式保存了关键点识别完成后的图片。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">img_with_keypoints</span></code>是个三维数组，以对应img_type格式保存了关键点识别完成后图片的像素点信息。</p></li>
 </ul>
 </section>
 <section id="id14">
@@ -300,6 +300,7 @@
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。参数<code class="docutils literal notranslate"><span class="pre">lang</span></code>设置了输出结果的语言，如果不指定默认为中文。</p>
 <p><code class="docutils literal notranslate"><span class="pre">format_result</span></code>以字典形式存储了推理结果，共有两个键：<code class="docutils literal notranslate"><span class="pre">关键点坐标</span></code>和<code class="docutils literal notranslate"><span class="pre">分数</span></code>。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标，而分数则是对应下标的关键点的分数，以一维数组形式保存。</p>
+<p>结果可视化</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">face</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img_with_keypoints</span><span class="p">)</span><span class="c1"># 展示推理图片</span>
 </pre></div>
 </div>
