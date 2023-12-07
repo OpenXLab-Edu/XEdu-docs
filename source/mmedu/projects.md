@@ -50,6 +50,8 @@ model.train(epochs=5, checkpoint='checkpoints/Pre-trained_mobilenet_v2.pth' ,bat
 
 ##### 4）模型测试
 
+可用一些新的图片进行测试。
+
 ```
 img = '/data/6P6SGH/CatsDogs/test_set/cat/cat100.jpg'
 model = cls(backbone='MobileNet')
@@ -60,7 +62,7 @@ model.print_result(result)
 
 ##### 5）模型转换和应用
 
-参考项目：https://openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&backpath=/pjlab/projects/list#public
+参考项目：[https://openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&backpath=/pjlab/projects/list#public](https://openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&backpath=/pjlab/projects/list#public)
 
 模型转换：
 
@@ -133,9 +135,13 @@ model.save_fold = 'checkpoints/det_model/catdogs_pretrain'
 model.train(epochs=10, lr=0.001, validate=True, batch_size = 4, device='cuda', checkpoint=checkpoint)
 ```
 
+预训练模型下载地址：[https://p6bm2if73b.feishu.cn/drive/folder/fldcnxios44vrIOV9Je3wPLmExf](https://p6bm2if73b.feishu.cn/drive/folder/fldcnxios44vrIOV9Je3wPLmExf)
+
 注：浦育平台可启动GPU服务器，可上传数据集到浦育平台进行模型训练。
 
 ##### 4）模型测试
+
+可用一些新的图片进行测试。
 
 ```
 img = "/data/H47U12/cat_dog_det/images/valid/001.jpg"
