@@ -1,15 +1,14 @@
 # XEdu的安装和下载
 
 可选的安装方式
-==============
+--------------
 
 为了满足广大中小学师生的需求，XEdu安装方式分为一键安装包安装和pip安装。一键安装包版包含MMEdu、BaseML、BaseNN三个模块的基础功能，同时内置了一套EasyDL系列工具，分"EasyTrain.bat"、"EasyInference.bat"和"EasyAPI.bat"这三个可视化工具，定期更新。pip安装方式需用户自己分模块安装，各模块更新同步工具开发进度。后续还将推出docker容器镜像，敬请期待。
 
 初学者安装强推!!!不会让人失望的一键安装包
-=========================================
+-----------------------------------------
 
-即刻体验XEdu一键安装包，开始！
-------------------------------
+### 即刻体验XEdu一键安装包，开始！
 
 下载工具：XEdu一键安装包
 
@@ -66,28 +65,31 @@ python中最常用的库管理工具pip，可以使用cmd命令行来运行，�
 
 用IDE打开解压路径下的py文件，如"cls\_demo.py"，点击"运行"。运行效果应和Thonny一样。
 
-第四步："EasyTrain.bat"、"EasyInference.bat"、"EasyAPI.bat"体验。
+第四步：EasyDL系列体验。
 
-XEdu一键安装包内置了一套EasyDL系列工具，分"EasyTrain.bat"、"EasyInference.bat"和"EasyAPI.bat"这三个可视化工具。
+XEdu一键安装包内置了一套EasyDL系列工具，分"EasyTrain.bat"、"EasyInference.bat"、"EasyConvert.bat"和"EasyAPI.bat"这四个可视化工具。
 
-双击即可体验，体验时操作根据界面完成即可。
+进入EasyDL文件夹，双击即可体验，体验时操作根据界面完成即可。
 
-①双击"EasyTrain.bat"，根据界面完成训练；
+①双击"EasyTrain.bat"，根据界面完成训练；EasyTrain提供了MMEdu和BaseNN模型的训练流程。
 
-![](../images/about/EasyTrain.png)
+![](../images/easydl/EasyTrain-home.jpg)
 
 ②双击"EasyInference.bat"，根据界面完成推理；
 
 ![](../images/about/EasyInference.png)
 
-③双击"EasyAPI.bat"，根据界面完成服务部署。
+③双击"EasyConvert.bat"，根据界面完成模型转换。
+
+![](../images/easydl/EasyConvert-home.jpg)
+
+④双击"EasyAPI.bat"，根据界面完成服务部署。
 
 ![](../images/about/EasyAPI.png)
 
 更多EasyDL系列工具详见[EasyDL系列无代码工具](https://xedu.readthedocs.io/zh/latest/easydl.html#easydl)。
 
-揭秘一键安装包功能
-------------------
+### 揭秘一键安装包功能
 
 XEdu一键安装版是一个压缩包，解压后即可使用。
 
@@ -96,17 +98,20 @@ XEdu的根目录结构如下：
 ``` {.plain}
 XEdu
 ├── checkpoints
-├── dataset
-├── demo
+├── datasets
+├── EasyDL
 ├── envs
-├── visualization
-├── EasyAPI.bat
-├── EasyInference.bat
-├── EasyTrain.bat
+├── utils
+├── XEdu示例代码
+├── 教学资源
+├── bug解决脚本.bat
 ├── jupyter编辑器.bat
+├── IDLE.bat
+├── jupyter编辑器.bat
+├── PythonTutor代码可视化.bat
 ├── Thonny编辑器.bat
+├── XEdu简介 v1.6.pdf
 ├── 启动cmd.bat
-├── XEdu简介 v1.5.pdf
 ```
 
 接下来对每层子目录进行介绍。
@@ -115,57 +120,37 @@ XEdu
 
 存放各个模块的预训练模型的权重文件，分别放在以模块名称命名的文件夹下，如"cls\_model"。
 
-**dataset目录：**
+**datasets目录：**
 
 存放为各个模块任务准备的数据集，分别放在以模块名称命名的文件夹下，如"cls"。同时提供了部分数据集的说明文档，如"添加猫狗数据集.txt"，文档提供了数据集下载链接、使用说明、添加数据集流程等。
-
-**demo目录：**
-
-存放各个模块的测试程序，如"cls\_demo.py"，并提供了测试图片。测试程序包括`py`文件和`ipynb`文件，可支持各种"Python
-IDE"和"jupyter
-notebook"运行，可运行根目录的"Thonny编辑器.bat"和"jupyter编辑器.bat"后打开测试程序。
 
 **envs目录：**
 
 存放XEdu各模块运行所需的环境和中小学课程常用的库。
 
-**visualization目录：**
+**utils目录：**
 
-存放可视化界面。
+存放EasyDL系列功能的源码。
 
-**EasyAPI.bat：**
+**XEdu示例代码目录：**
 
-支持无代码WebAPI部署的可视化工具。
+存放各个模块的测试程序，如"cls\_demo.py"，并提供了测试图片。测试程序包括`py`文件和`ipynb`文件，可支持各种"Python
+IDE"和"jupyter notebook"运行，可运行根目录的"Thonny编辑器.bat"和"jupyter编辑器.bat"等后打开测试程序。
 
-主要功能包括：1）选择功能（图像分类、目标检测）；2）选择算法和权重文件；3）启动Web服务（生成代码）；4）提供HttpPost（基于request）的范例；5）测试。
+**EasyDL**
 
-**EasyInference.bat：**
+存放可视化工具。
 
-支持无代码推理的可视化工具。
+**几个bat文件**
 
-主要功能包括：1）选择功能（图像分类、目标检测）；2）选择算法和权重文件；3）选择输入图片；4）开始推理（出现推理原始信息和解释）；5）查看代码（查看相应的Python推理代码）。
+内置特色功能软件。双击打开运行后使用，包括Python编辑器和cmd启动。
 
-**EasyTrain.bat：**
-
-支持无代码训练的可视化工具。
-
-主要功能包括：1）选择功能（图像分类、目标检测）；2）选择算法（列出支持的算法-如列出文件夹名称等实现方法）；3）选择数据集（分类数量之类的设置）；4）选择模型文件保存位置；5）开始训练（看到训练进度和可视化折线图，
-支持配置训练参数，支持继续训练）；6）查看代码（查看相应的Python训练代码）。
-
-**jupyter编辑器.bat：**
-
-双击打开即运行jupyter notebook，初始化完成后第二次可直接打开。
-
-**Thonny编辑器.bat：**
-
-双击打开即运行Thonny，一款轻量级Python IDE。
-
-**XEdu简介 v1.5.pdf：**
+**XEdu简介 v1.6.pdf：**
 
 XEdu一键安装包说明文档。
 
 使用pip安装
-===========
+-----------
 
 XEdu的MMEdu、BaseML、BaseNN等各模块库均已支持pip安装并会持续迭代。
 
@@ -308,12 +293,12 @@ $ pip install MMEdu
 `pip install basenn` 或 `pip install BaseNN`
 
 docker容器镜像
-==============
+--------------
 
 敬请期待
 
 如何快速查看XEdu各模块库的版本
-==============================
+------------------------------
 
 打开python终端，执行以下命令即可查看XEdu各模块库的版本。当前最新版本是0.04。
 
@@ -322,7 +307,7 @@ docker容器镜像
 注：目前版本MMEdu仅支持CPU。
 
 如何卸载XEdu各模块库
-====================
+--------------------
 
 如果XEdu某模块库出现异常情况，可以尝试使用`uninstall`命令卸载，然后再使用install命令安装。参考代码：
 
