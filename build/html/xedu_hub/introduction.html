@@ -108,7 +108,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#id107">代码解释</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id110">报错专栏</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id110">XEduHub任务模型资源下载与存放</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id111">报错专栏</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="projects.html">XEduHub项目案例集</a></li>
@@ -178,7 +179,7 @@
 <h4>代码样例<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">body</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;pose_body&#39;</span><span class="p">)</span> <span class="c1"># 数字可省略，当省略时，默认为pose_body17</span>
-<span class="n">keypoints</span><span class="p">,</span><span class="n">img_with_keypoints</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/body.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
+<span class="n">keypoints</span><span class="p">,</span><span class="n">img_with_keypoints</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/body.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
 <span class="n">format_result</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span><span class="c1"># 将推理结果进行格式化输出</span>
 <span class="n">body</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img_with_keypoints</span><span class="p">)</span><span class="c1"># 展示推理图片</span>
 <span class="n">body</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img_with_keypoints</span><span class="p">,</span><span class="s1">&#39;img_with_keypoints.jpg&#39;</span><span class="p">)</span><span class="c1"># 保存推理图片</span>
@@ -194,24 +195,25 @@
 <span class="n">body</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;pose_body&#39;</span><span class="p">)</span> <span class="c1"># 数字可省略，当省略时，默认为pose_body17</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有许多参数可以设置，其中主要的参数：</p>
+<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有三个参数可以设置：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>选择任务。在人体关键点识别模型中，<code class="docutils literal notranslate"><span class="pre">task</span></code>可选取值为：<code class="docutils literal notranslate"><span class="pre">[pose_body17,pose_body17_l,pose_body26]</span></code></p></li>
-<li><p>更多参数设置可见高级功能……</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>选择任务。在人体关键点识别模型中，<code class="docutils literal notranslate"><span class="pre">task</span></code>可选取值为：<code class="docutils literal notranslate"><span class="pre">[pose_body17,pose_body17_l,pose_body26]</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如<code class="docutils literal notranslate"><span class="pre">checkpoints='my_checkpoint/model.onnx'</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。</p></li>
 </ul>
+<p>任务模型下载与存放规范请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">高级功能</a>。</p>
 </section>
 <section id="id6">
 <h4>2. 模型推理<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">keypoints</span><span class="p">,</span><span class="n">img_with_keypoints</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/body.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">keypoints</span><span class="p">,</span><span class="n">img_with_keypoints</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/body.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
 </pre></div>
 </div>
-<p><img alt="../_images/body_result.png" src="../_images/body_result.png" /></p>
-<p>模型推理<code class="docutils literal notranslate"><span class="pre">inference()</span></code>可传入的主要参数：</p>
+<p>模型推理<code class="docutils literal notranslate"><span class="pre">inference()</span></code>可传入参数：</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>: 指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">show</span></code>: 可取值：<code class="docutils literal notranslate"><span class="pre">[True,False]</span></code> 默认为<code class="docutils literal notranslate"><span class="pre">False</span></code>。如果取值为<code class="docutils literal notranslate"><span class="pre">True</span></code>，在推理完成后会直接输出关键点识别完成后的图片。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">img_type</span></code>: 关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:<code class="docutils literal notranslate"><span class="pre">['cv2','pil']</span></code>，默认值为<code class="docutils literal notranslate"><span class="pre">None</span></code>，如果不传入值，则不会返回图。</p></li>
-<li><p>更多参数设置可见高级功能……</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bbox</span></code>：该参数可配合目标检测使用。在多人手关键点检测中，该参数指定了要识别哪个检测框中的关键点。</p></li>
 </ul>
 <p>模型推理返回结果：</p>
 <ul class="simple">
@@ -252,7 +254,7 @@
 <h4>代码样例<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">face</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;pose_face&#39;</span><span class="p">)</span> <span class="c1"># 数字可省略，当省略时，默认为pose_face106</span>
-<span class="n">keypoints</span><span class="p">,</span><span class="n">img_with_keypoints</span> <span class="o">=</span> <span class="n">face</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/face.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
+<span class="n">keypoints</span><span class="p">,</span><span class="n">img_with_keypoints</span> <span class="o">=</span> <span class="n">face</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/face.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
 <span class="n">format_result</span> <span class="o">=</span> <span class="n">face</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span><span class="c1"># 将推理结果进行格式化输出</span>
 <span class="n">face</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img_with_keypoints</span><span class="p">)</span><span class="c1"># 展示推理图片</span>
 <span class="n">face</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img_with_keypoints</span><span class="p">,</span><span class="s1">&#39;img_with_keypoints.jpg&#39;</span><span class="p">)</span><span class="c1"># 保存推理图片</span>
@@ -268,24 +270,25 @@
 <span class="n">face</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;pose_face&#39;</span><span class="p">)</span> <span class="c1"># 数字可省略，默认为face106</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有许多参数可以设置，其中主要的参数：</p>
+<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有三个参数可以设置：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>决定了使用哪个关键点识别模型，人脸关键点识别模型为<code class="docutils literal notranslate"><span class="pre">pose_face106</span></code>（数字可省略，默认为face106）。</p></li>
-<li><p>更多参数设置可见高级功能……</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>选择任务。人脸关键点识别模型为<code class="docutils literal notranslate"><span class="pre">pose_face106</span></code>（数字可省略，默认为face106）。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如<code class="docutils literal notranslate"><span class="pre">checkpoints='my_checkpoint/model.onnx'</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。</p></li>
 </ul>
+<p>任务模型下载与存放规范请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">高级功能</a>。</p>
 </section>
 <section id="id13">
 <h4>2. 模型推理<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">keypoints</span><span class="p">,</span><span class="n">img_with_keypoints</span> <span class="o">=</span> <span class="n">face</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/face.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">keypoints</span><span class="p">,</span><span class="n">img_with_keypoints</span> <span class="o">=</span> <span class="n">face</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/face.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
 </pre></div>
 </div>
-<p><img alt="../_images/face_result.png" src="../_images/face_result.png" /></p>
-<p>模型推理<code class="docutils literal notranslate"><span class="pre">inference()</span></code>可传入的主要参数：</p>
+<p>模型推理<code class="docutils literal notranslate"><span class="pre">inference()</span></code>可传入参数：</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>: 指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">show</span></code>: 可取值：<code class="docutils literal notranslate"><span class="pre">[True,False]</span></code> 默认为<code class="docutils literal notranslate"><span class="pre">False</span></code>。如果取值为<code class="docutils literal notranslate"><span class="pre">True</span></code>，在推理完成后会直接输出关键点识别完成后的图片。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">img_type</span></code>: 关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:<code class="docutils literal notranslate"><span class="pre">['cv2','pil']</span></code>，默认值为<code class="docutils literal notranslate"><span class="pre">None</span></code>，如果不传入值，则不会返回图。</p></li>
-<li><p>更多参数设置可见高级功能……</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bbox</span></code>：该参数可配合目标检测使用。在多人手关键点检测中，该参数指定了要识别哪个检测框中的关键点。</p></li>
 </ul>
 <p>模型推理返回结果：</p>
 <ul class="simple">
@@ -325,7 +328,7 @@
 <h4>代码样例<a class="headerlink" href="#id17" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">hand</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;pose_hand&#39;</span><span class="p">)</span> <span class="c1"># 数字可省略，当省略时，默认为pose_hand21</span>
-<span class="n">keypoints</span><span class="p">,</span><span class="n">img_with_keypoints</span> <span class="o">=</span> <span class="n">hand</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/hand.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
+<span class="n">keypoints</span><span class="p">,</span><span class="n">img_with_keypoints</span> <span class="o">=</span> <span class="n">hand</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/hand.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
 <span class="n">format_result</span> <span class="o">=</span> <span class="n">hand</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span><span class="c1"># 将推理结果进行格式化输出</span>
 <span class="n">hand</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img_with_keypoints</span><span class="p">)</span><span class="c1"># 展示推理图片</span>
 <span class="n">hand</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img_with_keypoints</span><span class="p">,</span><span class="s1">&#39;img_with_keypoints.jpg&#39;</span><span class="p">)</span><span class="c1"># 保存推理图片</span>
@@ -341,18 +344,19 @@
 <span class="n">hand</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;pose_hand&#39;</span><span class="p">)</span> <span class="c1"># 数字可省略，当省略时，默认为pose_hand21</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有两个参数可以设置</p>
+<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有三个参数可以设置：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>决定了使用哪个关键点识别模型，人手关键点识别模型为<code class="docutils literal notranslate"><span class="pre">pose_hand</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数决定了预训练模型下载的路径。默认是下载到同级的checkpoints文件夹中，当代码运行时，会先在本地的同级目录中寻找是否有已下载的预训练模型，如果没有，到本地缓存中寻找，如果本地缓存没有，查看是不是指定了模型的路径，如果都没有，到网络下载。用户也可指定模型的下载路径，如<code class="docutils literal notranslate"><span class="pre">dowload_path='my_checkpoint'</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>选择任务。人手关键点识别模型为<code class="docutils literal notranslate"><span class="pre">pose_hand</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如<code class="docutils literal notranslate"><span class="pre">checkpoints='my_checkpoint/model.onnx'</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。</p></li>
 </ul>
+<p>任务模型下载与存放规范请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">高级功能</a>。</p>
 </section>
 <section id="id20">
 <h4>2. 模型推理<a class="headerlink" href="#id20" title="Permalink to this heading"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">keypoints</span><span class="p">,</span><span class="n">img_with_keypoints</span> <span class="o">=</span> <span class="n">hand</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/hand.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">keypoints</span><span class="p">,</span><span class="n">img_with_keypoints</span> <span class="o">=</span> <span class="n">hand</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/hand.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
 </pre></div>
 </div>
-<p><img alt="../_images/hand_result.png" src="../_images/hand_result.png" /></p>
 <p>模型推理<code class="docutils literal notranslate"><span class="pre">inference()</span></code>可传入参数：</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>: 指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。</p></li>
@@ -396,7 +400,7 @@
 <h4>代码样例<a class="headerlink" href="#id24" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">wholebody</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;pose_wholebody&#39;</span><span class="p">)</span> <span class="c1"># 数字可省略，当省略时，默认为pose_wholebody133</span>
-<span class="n">keypoints</span><span class="p">,</span><span class="n">img_with_keypoints</span> <span class="o">=</span> <span class="n">wholebody</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/wholebody.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
+<span class="n">keypoints</span><span class="p">,</span><span class="n">img_with_keypoints</span> <span class="o">=</span> <span class="n">wholebody</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/wholebody.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
 <span class="n">format_result</span> <span class="o">=</span> <span class="n">wholebody</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span><span class="c1"># 将推理结果进行格式化输出</span>
 <span class="n">wholebody</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img_with_keypoints</span><span class="p">)</span><span class="c1"># 展示推理图片</span>
 <span class="n">wholebody</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img_with_keypoints</span><span class="p">,</span><span class="s1">&#39;img_with_keypoints.jpg&#39;</span><span class="p">)</span><span class="c1"># 保存推理图片</span>
@@ -412,18 +416,19 @@
 <span class="n">wholebody</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;pose_wholebody&#39;</span><span class="p">)</span> <span class="c1"># 数字可省略，当省略时，默认为pose_wholebody133</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有两个参数可以设置</p>
+<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有三个参数可以设置：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>决定了使用哪个关键点识别模型，全身关键点提取模型为<code class="docutils literal notranslate"><span class="pre">pose_wholebody</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数决定了预训练模型下载的路径。默认是下载到同级的checkpoints文件夹中，当代码运行时，会先在本地的同级目录中寻找是否有已下载的预训练模型，如果没有，到本地缓存中寻找，如果本地缓存没有，查看是不是指定了模型的路径，如果都没有，到网络下载。用户也可指定模型的下载路径，如<code class="docutils literal notranslate"><span class="pre">dowload_path='my_checkpoint'</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>选择任务。全身关键点提取模型为<code class="docutils literal notranslate"><span class="pre">pose_wholebody</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如<code class="docutils literal notranslate"><span class="pre">checkpoints='my_checkpoint/model.onnx'</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。</p></li>
 </ul>
+<p>任务模型下载与存放规范请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">高级功能</a>。</p>
 </section>
 <section id="id27">
 <h4>2. 模型推理<a class="headerlink" href="#id27" title="Permalink to this heading"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">keypoints</span><span class="p">,</span><span class="n">img_with_keypoints</span> <span class="o">=</span> <span class="n">wholebody</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/wholebody.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">keypoints</span><span class="p">,</span><span class="n">img_with_keypoints</span> <span class="o">=</span> <span class="n">wholebody</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/wholebody.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
 </pre></div>
 </div>
-<p><img alt="../_images/wholebody_result.png" src="../_images/wholebody_result.png" /></p>
 <p>模型推理<code class="docutils literal notranslate"><span class="pre">inference()</span></code>可传入参数：</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>: 指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。</p></li>
@@ -477,7 +482,7 @@
 <h4>代码样例<a class="headerlink" href="#id31" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">det_coco</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;det_coco&#39;</span><span class="p">)</span>
-<span class="n">result</span><span class="p">,</span><span class="n">img_with_box</span> <span class="o">=</span> <span class="n">det_coco</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/det_coco.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
+<span class="n">result</span><span class="p">,</span><span class="n">img_with_box</span> <span class="o">=</span> <span class="n">det_coco</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/det_coco.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
 <span class="n">format_result</span> <span class="o">=</span> <span class="n">det_coco</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span><span class="c1"># 将推理结果进行格式化输出</span>
 <span class="n">det_coco</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">)</span><span class="c1"># 展示推理图片</span>
 <span class="n">det_coco</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">,</span><span class="s1">&#39;img_with_box.jpg&#39;</span><span class="p">)</span><span class="c1"># 保存推理图片</span>
@@ -493,18 +498,19 @@
 <span class="n">det_coco</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;det_coco&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有两个参数可以设置</p>
+<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有三个参数可以设置：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>决定了使用哪个检测模型，coco目标检测的模型为<code class="docutils literal notranslate"><span class="pre">det_coco</span></code>, <code class="docutils literal notranslate"><span class="pre">det_coco_l</span></code>。<code class="docutils literal notranslate"><span class="pre">det_coco_l</span></code>相比<code class="docutils literal notranslate"><span class="pre">det_coco</span></code>模型规模较大，性能较强，但是推理的速度较慢。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数决定了预训练模型下载的路径。默认是下载到同级的checkpoints文件夹中，当代码运行时，会先在本地的同级目录中寻找是否有已下载的预训练模型，如果没有，到本地缓存中寻找，如果本地缓存没有，查看是不是指定了模型的路径，如果都没有，到网络下载。用户也可指定模型的下载路径，如<code class="docutils literal notranslate"><span class="pre">dowload_path='my_checkpoint'</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>选择任务。coco目标检测的模型为<code class="docutils literal notranslate"><span class="pre">det_coco</span></code>, <code class="docutils literal notranslate"><span class="pre">det_coco_l</span></code>。<code class="docutils literal notranslate"><span class="pre">det_coco_l</span></code>相比<code class="docutils literal notranslate"><span class="pre">det_coco</span></code>模型规模较大，性能较强，但是推理的速度较慢。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如<code class="docutils literal notranslate"><span class="pre">checkpoints='my_checkpoint/model.onnx'</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。</p></li>
 </ul>
+<p>任务模型下载与存放规范请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">高级功能</a>。</p>
 </section>
 <section id="id34">
 <h4>2. 模型推理<a class="headerlink" href="#id34" title="Permalink to this heading"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">,</span><span class="n">img_with_box</span> <span class="o">=</span> <span class="n">det_coco</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/det_coco.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">,</span><span class="n">img_with_box</span> <span class="o">=</span> <span class="n">det_coco</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/det_coco.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
 </pre></div>
 </div>
-<p><img alt="../_images/det_coco_result.png" src="../_images/det_coco_result.png" /></p>
 <p>模型推理<code class="docutils literal notranslate"><span class="pre">inference()</span></code>可传入参数：</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>：指定待检测的图片。</p></li>
@@ -549,11 +555,12 @@
 <h3>人体检测<a class="headerlink" href="#id37" title="Permalink to this heading"></a></h3>
 <p>人体目标检测的任务是在图像或视频中检测和定位人体的位置，并为每个检测到的人体分配一个相应的类别标签。</p>
 <p>XEduHub提供了进行人体目标检测的模型：<code class="docutils literal notranslate"><span class="pre">det_body</span></code>，<code class="docutils literal notranslate"><span class="pre">det_body_l</span></code>，这两个模型能够进行单人的人体目标检测。</p>
+<p><img alt="../_images/det_body.png" src="../_images/det_body.png" /></p>
 <section id="id38">
 <h4>代码样例<a class="headerlink" href="#id38" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">det_body</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;det_body&#39;</span><span class="p">)</span>
-<span class="n">result</span><span class="p">,</span><span class="n">img_with_box</span> <span class="o">=</span> <span class="n">det_body</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/det_body.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
+<span class="n">result</span><span class="p">,</span><span class="n">img_with_box</span> <span class="o">=</span> <span class="n">det_body</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/det_body.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
 <span class="n">format_result</span> <span class="o">=</span> <span class="n">det_body</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span><span class="c1"># 将推理结果进行格式化输出</span>
 <span class="n">det_body</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">)</span><span class="c1"># 展示推理图片</span>
 <span class="n">det_body</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">,</span><span class="s1">&#39;img_with_box.jpg&#39;</span><span class="p">)</span><span class="c1"># 保存推理图片</span>
@@ -569,18 +576,19 @@
 <span class="n">det_body</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;det_body&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有两个参数可以设置</p>
+<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有三个参数可以设置：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>决定了使用哪个检测模型，人体目标检测模型为<code class="docutils literal notranslate"><span class="pre">det_body</span></code>, <code class="docutils literal notranslate"><span class="pre">det_body_l</span></code>。<code class="docutils literal notranslate"><span class="pre">det_body_l</span></code>相比<code class="docutils literal notranslate"><span class="pre">det_body</span></code>模型规模较大，性能较强，但是推理的速度较慢。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数决定了预训练模型下载的路径。默认是下载到同级的checkpoints文件夹中，当代码运行时，会先在本地的同级目录中寻找是否有已下载的预训练模型，如果没有，到本地缓存中寻找，如果本地缓存没有，查看是不是指定了模型的路径，如果都没有，到网络下载。用户也可指定模型的下载路径，如<code class="docutils literal notranslate"><span class="pre">dowload_path='my_checkpoint'</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>选择任务。人体目标检测模型为<code class="docutils literal notranslate"><span class="pre">det_body</span></code>, <code class="docutils literal notranslate"><span class="pre">det_body_l</span></code>。<code class="docutils literal notranslate"><span class="pre">det_body_l</span></code>相比<code class="docutils literal notranslate"><span class="pre">det_body</span></code>模型规模较大，性能较强，但是推理的速度较慢。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如<code class="docutils literal notranslate"><span class="pre">checkpoints='my_checkpoint/model.onnx'</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。</p></li>
 </ul>
+<p>任务模型下载与存放规范请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">高级功能</a>。</p>
 </section>
 <section id="id41">
 <h4>2. 模型推理<a class="headerlink" href="#id41" title="Permalink to this heading"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">,</span><span class="n">img_with_box</span> <span class="o">=</span> <span class="n">det_body</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/det_body.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">,</span><span class="n">img_with_box</span> <span class="o">=</span> <span class="n">det_body</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/det_body.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
 </pre></div>
 </div>
-<p><img alt="../_images/det_result1.png" src="../_images/det_result1.png" /></p>
 <p>模型推理<code class="docutils literal notranslate"><span class="pre">inference()</span></code>可传入参数：</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>：指定待检测的图片。</p></li>
@@ -624,7 +632,7 @@
 <h4>代码样例<a class="headerlink" href="#id45" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">det_face</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;det_face&#39;</span><span class="p">)</span>
-<span class="n">result</span><span class="p">,</span><span class="n">img_with_box</span> <span class="o">=</span> <span class="n">det_face</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/det_face.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
+<span class="n">result</span><span class="p">,</span><span class="n">img_with_box</span> <span class="o">=</span> <span class="n">det_face</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/det_face.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
 <span class="n">format_result</span> <span class="o">=</span> <span class="n">det_face</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span><span class="c1"># 将推理结果进行格式化输出</span>
 <span class="n">det_face</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">)</span><span class="c1"># 展示推理图片</span>
 <span class="n">det_face</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">,</span><span class="s1">&#39;img_with_box.jpg&#39;</span><span class="p">)</span><span class="c1"># 保存推理图片</span>
@@ -640,18 +648,19 @@
 <span class="n">det_face</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;det_face&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有两个参数可以设置</p>
+<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有三个参数可以设置：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>决定了使用哪个检测模型，人脸目标检测模型为<code class="docutils literal notranslate"><span class="pre">det_face</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数决定了预训练模型下载的路径。默认是下载到同级的checkpoints文件夹中，当代码运行时，会先在本地的同级目录中寻找是否有已下载的预训练模型，如果没有，到本地缓存中寻找，如果本地缓存没有，查看是不是指定了模型的路径，如果都没有，到网络下载。用户也可指定模型的下载路径，如<code class="docutils literal notranslate"><span class="pre">dowload_path='my_checkpoint'</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>选择任务。人脸目标检测模型为<code class="docutils literal notranslate"><span class="pre">det_face</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如<code class="docutils literal notranslate"><span class="pre">checkpoints='my_checkpoint/model.onnx'</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。</p></li>
 </ul>
+<p>任务模型下载与存放规范请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">高级功能</a>。</p>
 </section>
 <section id="id48">
 <h4>2. 模型推理<a class="headerlink" href="#id48" title="Permalink to this heading"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">,</span><span class="n">img_with_box</span> <span class="o">=</span> <span class="n">det_face</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/det_face.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">,</span><span class="n">img_with_box</span> <span class="o">=</span> <span class="n">det_face</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/det_face.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
 </pre></div>
 </div>
-<p><img alt="../_images/det_face_result.png" src="../_images/det_face_result.png" /></p>
 <p>模型推理<code class="docutils literal notranslate"><span class="pre">inference()</span></code>可传入参数：</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>：指定待检测的图片。</p></li>
@@ -711,15 +720,19 @@
 <span class="n">det_hand</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;det_hand&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有两个参数可以设置</p>
+<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有三个参数可以设置：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>决定了使用哪个检测模型，全身关键点提取模型为<code class="docutils literal notranslate"><span class="pre">det_face</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数决定了预训练模型下载的路径。默认是下载到同级的checkpoints文件夹中，当代码运行时，会先在本地的同级目录中寻找是否有已下载的预训练模型，如果没有，到本地缓存中寻找，如果本地缓存没有，查看是不是指定了模型的路径，如果都没有，到网络下载。用户也可指定模型的下载路径，如<code class="docutils literal notranslate"><span class="pre">dowload_path='my_checkpoint'</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>选择任务。全身关键点提取模型为<code class="docutils literal notranslate"><span class="pre">det_face</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如<code class="docutils literal notranslate"><span class="pre">checkpoints='my_checkpoint/model.onnx'</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。</p></li>
 </ul>
+<p>任务模型下载与存放规范请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">高级功能</a>。</p>
 </section>
 <section id="id55">
 <h4>2. 模型推理<a class="headerlink" href="#id55" title="Permalink to this heading"></a></h4>
-<p><img alt="../_images/det_hand_result.png" src="../_images/det_hand_result.png" /></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">,</span><span class="n">img_with_box</span> <span class="o">=</span> <span class="n">det_hand</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/det_hand.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
+</pre></div>
+</div>
 <p>模型推理<code class="docutils literal notranslate"><span class="pre">inference()</span></code>可传入参数：</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>：指定待检测的图片。</p></li>
@@ -777,11 +790,13 @@
 <span class="bp">cls</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;cls_imagenet&quot;</span><span class="p">)</span> <span class="c1"># 模型声明</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有两个参数可以设置</p>
+<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有三个参数可以设置：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>决定了进行图像分类的模型，目前支持<code class="docutils literal notranslate"><span class="pre">cls_imagenet</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数决定了预训练模型下载的路径。默认是下载到同级的checkpoints文件夹中，当代码运行时，会先在本地的同级目录中寻找是否有已下载的预训练模型，如果没有，到本地缓存中寻找，如果本地缓存没有，查看是不是指定了模型的路径，如果都没有，到网络下载。用户也可指定模型的下载路径，如<code class="docutils literal notranslate"><span class="pre">dowload_path='my_checkpoint'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>选择任务。图像分类的模型为<code class="docutils literal notranslate"><span class="pre">cls_imagenet</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如<code class="docutils literal notranslate"><span class="pre">checkpoints='my_checkpoint/model.onnx'</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。</p></li>
 </ul>
+<p>任务模型下载与存放规范请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">高级功能</a>。</p>
 </section>
 <section id="id62">
 <h4>2. 模型推理<a class="headerlink" href="#id62" title="Permalink to this heading"></a></h4>
@@ -813,7 +828,7 @@
 <h3>代码样例<a class="headerlink" href="#id65" title="Permalink to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">style</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;gen_style&#39;</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;mosaic&#39;</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">style</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/cat101.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="c1"># 进行模型推理</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">style</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/cat101.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">)</span><span class="c1"># 进行模型推理</span>
 <span class="n">style</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="c1"># 展示推理图片</span>
 <span class="n">style</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">result</span><span class="p">,</span><span class="s2">&quot;style_cat.jpg&quot;</span><span class="p">)</span><span class="c1"># 保存推理图片</span>
 </pre></div>
@@ -827,12 +842,14 @@
 <span class="n">style</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;gen_style&#39;</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;mosaic&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有三个参数可以设置</p>
+<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有四个参数可以设置：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>决定了任务类型</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数决定了预训练模型下载的路径。默认是下载到同级的checkpoints文件夹中，当代码运行时，会先在本地的同级目录中寻找是否有已下载的预训练模型，如果没有，到本地缓存中寻找，如果本地缓存没有，查看是不是指定了模型的路径，如果都没有，到网络下载。用户也可指定模型的下载路径，如<code class="docutils literal notranslate"><span class="pre">dowload_path='my_checkpoint'</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">style</span></code>决定了风格迁移所使用的风格。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>选择任务。图像分类的模型为<code class="docutils literal notranslate"><span class="pre">cls_imagenet</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">style</span></code>选择风格迁移所使用的风格。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如<code class="docutils literal notranslate"><span class="pre">checkpoints='my_checkpoint/model.onnx'</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。</p></li>
 </ul>
+<p>任务模型下载与存放规范请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">高级功能</a>。</p>
 <p>运行代码<code class="docutils literal notranslate"><span class="pre">wf.support_style()</span></code>可查看当前预设的风格。当前预设风格共有五种，如下图所示。</p>
 <p><img alt="../_images/style_all.png" src="../_images/style_all.png" /></p>
 <p><code class="docutils literal notranslate"><span class="pre">style</span></code>可选参数为：<code class="docutils literal notranslate"><span class="pre">['mosaic','candy','rain-princess','udnie','pointilism']</span></code>，也可以输入一张其他图片的路径来自定义风格，如<code class="docutils literal notranslate"><span class="pre">style='fangao.jpg'</span></code>。为了方便用户使用预设风格，还可以通过输入预设风格对应的标签值来进行设定，如<code class="docutils literal notranslate"><span class="pre">style=0</span></code>。</p>
@@ -868,10 +885,9 @@
 </table></section>
 <section id="id68">
 <h4>2. 模型推理<a class="headerlink" href="#id68" title="Permalink to this heading"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">style</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/cat101.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="c1"># 进行模型推理</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">style</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/cat101.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">)</span><span class="c1"># 进行模型推理</span>
 </pre></div>
 </div>
-<p><img alt="../_images/style_result.png" src="../_images/style_result.png" /></p>
 <p>模型推理<code class="docutils literal notranslate"><span class="pre">inference()</span></code>可传入参数：</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>: 待进行风格迁移的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。</p></li>
@@ -910,7 +926,7 @@
 <h3>代码样例<a class="headerlink" href="#id71" title="Permalink to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">ocr</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;ocr&quot;</span><span class="p">)</span>
-<span class="n">result</span><span class="p">,</span><span class="n">ocr_img</span> <span class="o">=</span> <span class="n">ocr</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/ocr_img.png&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
+<span class="n">result</span><span class="p">,</span><span class="n">ocr_img</span> <span class="o">=</span> <span class="n">ocr</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/ocr_img.png&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
 <span class="n">ocr_format_result</span> <span class="o">=</span> <span class="n">ocr</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s2">&quot;zh&quot;</span><span class="p">)</span><span class="c1"># 推理结果格式化输出</span>
 <span class="n">ocr</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">ocr_img</span><span class="p">)</span><span class="c1"># 展示推理结果图片</span>
 <span class="n">ocr</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">ocr_img</span><span class="p">,</span><span class="s1">&#39;ocr_result.jpg&#39;</span><span class="p">)</span><span class="c1"># 保存推理结果图片</span>
@@ -925,17 +941,17 @@
 <span class="n">ocr</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;ocr&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有一个参数可以设置，这里的模型不是以onnx方式下载，而是以python库的形式下载和安装，因此不同于之前任务的下载方式，也无需指定下载路径。</p>
+<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中只有参数可以设置：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>决定了任务类型</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>选择任务类型，光学字符识别（OCR）的模型为<code class="docutils literal notranslate"><span class="pre">ocr</span></code>。</p></li>
 </ul>
+<p><strong>注意</strong>：ocr的模型不是以onnx方式下载，而是以python库的形式下载和安装，因此不同于之前任务的下载方式，也无需指定下载路径。可以通过<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">rapidocr_onnxruntime==1.3.7</span></code>预先下载库。</p>
 </section>
 <section id="id74">
 <h4>2. 模型推理<a class="headerlink" href="#id74" title="Permalink to this heading"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">,</span><span class="n">ocr_img</span> <span class="o">=</span> <span class="n">ocr</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/ocr_img.png&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">,</span><span class="n">ocr_img</span> <span class="o">=</span> <span class="n">ocr</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/ocr_img.png&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
 </pre></div>
 </div>
-<p><img alt="../_images/ocr_result.png" src="../_images/ocr_result.png" /></p>
 <p>模型推理<code class="docutils literal notranslate"><span class="pre">inference()</span></code>可传入参数：</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>: 指定待进行ocr的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。</p></li>
@@ -993,15 +1009,18 @@
 <span class="n">drive</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;drive_perception&#39;</span><span class="p">)</span> <span class="c1"># 实例化模型</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有两个参数可以设置</p>
+<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有三个参数可以设置：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>决定了任务类型</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数决定了预训练模型下载的路径。默认是下载到同级的checkpoints文件夹中，当代码运行时，会先在本地的同级目录中寻找是否有已下载的预训练模型，如果没有，到本地缓存中寻找，如果本地缓存没有，查看是不是指定了模型的路径，如果都没有，到网络下载。用户也可指定模型的下载路径，如<code class="docutils literal notranslate"><span class="pre">dowload_path='my_checkpoint'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>选择任务。全景驾驶感知系统的模型为<code class="docutils literal notranslate"><span class="pre">drive_perception</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如<code class="docutils literal notranslate"><span class="pre">checkpoints='my_checkpoint/model.onnx'</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。</p></li>
 </ul>
+<p>任务模型下载与存放规范请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">高级功能</a>。
+`</p>
 </section>
 <section id="id81">
 <h4>2. 模型推理<a class="headerlink" href="#id81" title="Permalink to this heading"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">,</span><span class="n">img</span> <span class="o">=</span> <span class="n">drive</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;demo/drive.png&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 模型推理</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">,</span><span class="n">img</span> <span class="o">=</span> <span class="n">drive</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;demo/drive.png&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">)</span> <span class="c1"># 模型推理</span>
 </pre></div>
 </div>
 <p><img alt="../_images/drive_result.png" src="../_images/drive_result.png" /></p>
@@ -1381,7 +1400,26 @@
 </section>
 </section>
 <section id="id110">
-<h2>报错专栏<a class="headerlink" href="#id110" title="Permalink to this heading"></a></h2>
+<h2>XEduHub任务模型资源下载与存放<a class="headerlink" href="#id110" title="Permalink to this heading"></a></h2>
+<p>XEduHub提供了大量优秀的任务模型，我们不仅可以通过<code class="docutils literal notranslate"><span class="pre">wf()</span></code>代码的运行实现下载，还可以自行到网页上下载，防止运行代码时没有网络无法下载模型的问题。</p>
+<p>只要进入<a href="https://openxlab.org.cn/models/detail/xedu/hub-model">模型仓库</a>，在Model File里就可以随意下载各种任务模型。网址：<a href="https://openxlab.org.cn/models/detail/xedu/hub-model">https://openxlab.org.cn/models/detail/xedu/hub-model</a></p>
+<p><img alt="../_images/downloadmodel.png" src="../_images/downloadmodel.png" /></p>
+<p>下载后，如何让代码<code class="docutils literal notranslate"><span class="pre">wf()</span></code>运行时找到我下载的预训练模型呢？</p>
+<p>在这里悄悄透露代码<code class="docutils literal notranslate"><span class="pre">wf()</span></code>运行时的工作流程，在没有指定模型路径<code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>参数的情况下，会先检查是否已下载了对应任务的模型，检查的顺序如下：</p>
+<ol class="simple">
+<li><p>本地的同级目录的checkpoints文件夹中</p></li>
+<li><p>本地缓存中</p></li>
+</ol>
+<p>如果都没有，就会到网络上下载。</p>
+<p>因此，无论是网络下载还是自己训练的模型使用，有两种解决思路：</p>
+<ul class="simple">
+<li><p>在本地同级目录中新建checkpoints文件夹，将模型存放在该文件夹中</p></li>
+<li><p>使用参数<code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>，指定模型路径，如<code class="docutils literal notranslate"><span class="pre">model=wf(task='det_body',checkpoints='my_path/body17.onnx')</span></code></p></li>
+</ul>
+<p>最后提醒一下，自己到网络下载或自己训练的模型需要是ONNX格式。</p>
+</section>
+<section id="id111">
+<h2>报错专栏<a class="headerlink" href="#id111" title="Permalink to this heading"></a></h2>
 <p>你是否在使用XEduHub时遇到过报错？是否遇到ERROR时感到无所适从，甚至有点慌张？
 没有关系！报错专栏将为你可能在使用过程中出现的错误提供解决方案！
 这里收录着使用XEduHub中的常见报错并呈现对应的解决方案，如果你遇到了问题，查看这个专栏，找到类似报错，并且解决它！</p>

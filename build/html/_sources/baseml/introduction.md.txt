@@ -165,6 +165,17 @@ model.load("my_CART_model.pkl")
 
 参数为模型保存的路径。
 
+模型保存后可加载模型进行模型测试，参考代码如下：
+
+```
+# 加载模型
+model.load("my_CART_model.pkl")
+# 给定一组数据，推理查看效果
+y=model.inference(data)
+```
+
+也可以[借助XEduHub库完成推理](https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#baseml)和应用，更多模型转换与应用的介绍详见[后文](https://xedu.readthedocs.io/zh/master/support_resources/model_convert.html)。
+
 ## 回归任务
 
 ### 0. 引入包

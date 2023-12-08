@@ -37,7 +37,7 @@ XEduHub提供了三个识别人体关键点的优质模型:`pose_body17`,`pose_b
 ```python
 from XEdu.hub import Workflow as wf
 body = wf(task='pose_body') # 数字可省略，当省略时，默认为pose_body17
-keypoints,img_with_keypoints = body.inference(data='data/body.jpg',img_type='pil',show=True) # 进行模型推理
+keypoints,img_with_keypoints = body.inference(data='data/body.jpg',img_type='pil') # 进行模型推理
 format_result = body.format_output(lang='zh')# 将推理结果进行格式化输出
 body.show(img_with_keypoints)# 展示推理图片
 body.save(img_with_keypoints,'img_with_keypoints.jpg')# 保存推理图片
@@ -51,30 +51,28 @@ body.save(img_with_keypoints,'img_with_keypoints.jpg')# 保存推理图片
 from XEdu.hub import Workflow as wf
 body = wf(task='pose_body') # 数字可省略，当省略时，默认为pose_body17
 ```
+`wf()`中共有三个参数可以设置：
 
-`wf()`中共有许多参数可以设置，其中主要的参数：
+- `task`选择任务。在人体关键点识别模型中，`task`可选取值为：`[pose_body17,pose_body17_l,pose_body26]`。
+- `checkpoints`指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如`checkpoints='my_checkpoint/model.onnx'`。
+- `download_path`指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如`download_path='my_checkpoint'`。
 
-- `task`选择任务。在人体关键点识别模型中，`task`可选取值为：`[pose_body17,pose_body17_l,pose_body26]`
-
-- 更多参数设置可见高级功能……
+任务模型下载与存放规范请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">高级功能</a>。
 
 #### 2. 模型推理
 
 ```python
-keypoints,img_with_keypoints = body.inference(data='data/body.jpg',img_type='pil',show=True) # 进行模型推理
+keypoints,img_with_keypoints = body.inference(data='data/body.jpg',img_type='pil') # 进行模型推理
 ```
 
-![](../images/xeduhub/body_result.png)
-
-模型推理`inference()`可传入的主要参数：
+模型推理`inference()`可传入参数：
 
 - `data`: 指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
 
 - `show`: 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出关键点识别完成后的图片。
 
 - `img_type`: 关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
-  
-- 更多参数设置可见高级功能……
+- `bbox`：该参数可配合目标检测使用。在多人手关键点检测中，该参数指定了要识别哪个检测框中的关键点。
 
 模型推理返回结果：
 
@@ -127,7 +125,7 @@ XEduHub提供了识别人脸关键点的模型：`pose_face106`，这意味着�
 ```python
 from XEdu.hub import Workflow as wf
 face = wf(task='pose_face') # 数字可省略，当省略时，默认为pose_face106
-keypoints,img_with_keypoints = face.inference(data='data/face.jpg',img_type='pil',show=True) # 进行模型推理
+keypoints,img_with_keypoints = face.inference(data='data/face.jpg',img_type='pil') # 进行模型推理
 format_result = face.format_output(lang='zh')# 将推理结果进行格式化输出
 face.show(img_with_keypoints)# 展示推理图片
 face.save(img_with_keypoints,'img_with_keypoints.jpg')# 保存推理图片
@@ -142,21 +140,21 @@ from XEdu.hub import Workflow as wf
 face = wf(task='pose_face') # 数字可省略，默认为face106
 ```
 
-`wf()`中共有许多参数可以设置，其中主要的参数：
+`wf()`中共有三个参数可以设置：
 
-- `task`决定了使用哪个关键点识别模型，人脸关键点识别模型为`pose_face106`（数字可省略，默认为face106）。
+- `task`选择任务。人脸关键点识别模型为`pose_face106`（数字可省略，默认为face106）。
+- `checkpoints`指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如`checkpoints='my_checkpoint/model.onnx'`。
+- `download_path`指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如`download_path='my_checkpoint'`。
 
-- 更多参数设置可见高级功能……
+任务模型下载与存放规范请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">高级功能</a>。
 
 #### 2. 模型推理
 
 ```python
-keypoints,img_with_keypoints = face.inference(data='data/face.jpg',img_type='pil',show=True) # 进行模型推理
+keypoints,img_with_keypoints = face.inference(data='data/face.jpg',img_type='pil') # 进行模型推理
 ```
 
-![](../images/xeduhub/face_result.png)
-
-模型推理`inference()`可传入的主要参数：
+模型推理`inference()`可传入参数：
 
 - `data`: 指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
 
@@ -164,7 +162,7 @@ keypoints,img_with_keypoints = face.inference(data='data/face.jpg',img_type='pil
 
 - `img_type`: 关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
 
-- 更多参数设置可见高级功能……
+- `bbox`：该参数可配合目标检测使用。在多人手关键点检测中，该参数指定了要识别哪个检测框中的关键点。
 
 模型推理返回结果：
 
@@ -215,7 +213,7 @@ XEduHub提供了能够快速识别人手关键点的模型：`pose_hand21`，该
 ```python
 from XEdu.hub import Workflow as wf
 hand = wf(task='pose_hand') # 数字可省略，当省略时，默认为pose_hand21
-keypoints,img_with_keypoints = hand.inference(data='data/hand.jpg',img_type='pil',show=True) # 进行模型推理
+keypoints,img_with_keypoints = hand.inference(data='data/hand.jpg',img_type='pil') # 进行模型推理
 format_result = hand.format_output(lang='zh')# 将推理结果进行格式化输出
 hand.show(img_with_keypoints)# 展示推理图片
 hand.save(img_with_keypoints,'img_with_keypoints.jpg')# 保存推理图片
@@ -230,18 +228,19 @@ from XEdu.hub import Workflow as wf
 hand = wf(task='pose_hand') # 数字可省略，当省略时，默认为pose_hand21
 ```
 
-`wf()`中共有两个参数可以设置
+`wf()`中共有三个参数可以设置：
 
-- `task`决定了使用哪个关键点识别模型，人手关键点识别模型为`pose_hand`
-- `download_path`参数决定了预训练模型下载的路径。默认是下载到同级的checkpoints文件夹中，当代码运行时，会先在本地的同级目录中寻找是否有已下载的预训练模型，如果没有，到本地缓存中寻找，如果本地缓存没有，查看是不是指定了模型的路径，如果都没有，到网络下载。用户也可指定模型的下载路径，如`dowload_path='my_checkpoint'`。
+- `task`选择任务。人手关键点识别模型为`pose_hand`。
+- `checkpoints`指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如`checkpoints='my_checkpoint/model.onnx'`。
+- `download_path`指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如`download_path='my_checkpoint'`。
+
+任务模型下载与存放规范请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">高级功能</a>。
 
 #### 2. 模型推理
 
 ```python
-keypoints,img_with_keypoints = hand.inference(data='data/hand.jpg',img_type='pil',show=True) # 进行模型推理
+keypoints,img_with_keypoints = hand.inference(data='data/hand.jpg',img_type='pil') # 进行模型推理
 ```
-
-![](../images/xeduhub/hand_result.png)
 
 模型推理`inference()`可传入参数：
 
@@ -297,7 +296,7 @@ XEduHub提供了识别人体所有关键点，包括人手、人脸和人体躯�
 ```python
 from XEdu.hub import Workflow as wf
 wholebody = wf(task='pose_wholebody') # 数字可省略，当省略时，默认为pose_wholebody133
-keypoints,img_with_keypoints = wholebody.inference(data='data/wholebody.jpg',img_type='pil',show=True) # 进行模型推理
+keypoints,img_with_keypoints = wholebody.inference(data='data/wholebody.jpg',img_type='pil') # 进行模型推理
 format_result = wholebody.format_output(lang='zh')# 将推理结果进行格式化输出
 wholebody.show(img_with_keypoints)# 展示推理图片
 wholebody.save(img_with_keypoints,'img_with_keypoints.jpg')# 保存推理图片
@@ -312,18 +311,19 @@ from XEdu.hub import Workflow as wf
 wholebody = wf(task='pose_wholebody') # 数字可省略，当省略时，默认为pose_wholebody133
 ```
 
-`wf()`中共有两个参数可以设置
+`wf()`中共有三个参数可以设置：
 
-- `task`决定了使用哪个关键点识别模型，全身关键点提取模型为`pose_wholebody`
-- `download_path`参数决定了预训练模型下载的路径。默认是下载到同级的checkpoints文件夹中，当代码运行时，会先在本地的同级目录中寻找是否有已下载的预训练模型，如果没有，到本地缓存中寻找，如果本地缓存没有，查看是不是指定了模型的路径，如果都没有，到网络下载。用户也可指定模型的下载路径，如`dowload_path='my_checkpoint'`。
+- `task`选择任务。全身关键点提取模型为`pose_wholebody`。
+- `checkpoints`指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如`checkpoints='my_checkpoint/model.onnx'`。
+- `download_path`指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如`download_path='my_checkpoint'`。
+
+任务模型下载与存放规范请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">高级功能</a>。
 
 #### 2. 模型推理
 
 ```python
-keypoints,img_with_keypoints = wholebody.inference(data='data/wholebody.jpg',img_type='pil',show=True) # 进行模型推理
+keypoints,img_with_keypoints = wholebody.inference(data='data/wholebody.jpg',img_type='pil') # 进行模型推理
 ```
-
-![](../images/xeduhub/wholebody_result.png)
 
 模型推理`inference()`可传入参数：
 
@@ -393,7 +393,7 @@ wf.coco_class()
 ```python
 from XEdu.hub import Workflow as wf
 det_coco = wf(task='det_coco')
-result,img_with_box = det_coco.inference(data='data/det_coco.jpg',img_type='pil',show=True) # 进行模型推理
+result,img_with_box = det_coco.inference(data='data/det_coco.jpg',img_type='pil') # 进行模型推理
 format_result = det_coco.format_output(lang='zh')# 将推理结果进行格式化输出
 det_coco.show(img_with_box)# 展示推理图片
 det_coco.save(img_with_box,'img_with_box.jpg')# 保存推理图片
@@ -408,18 +408,20 @@ from XEdu.hub import Workflow as wf
 det_coco = wf(task='det_coco')
 ```
 
-`wf()`中共有两个参数可以设置
+`wf()`中共有三个参数可以设置：
 
-- `task`决定了使用哪个检测模型，coco目标检测的模型为`det_coco`, `det_coco_l`。`det_coco_l`相比`det_coco`模型规模较大，性能较强，但是推理的速度较慢。
-- `download_path`参数决定了预训练模型下载的路径。默认是下载到同级的checkpoints文件夹中，当代码运行时，会先在本地的同级目录中寻找是否有已下载的预训练模型，如果没有，到本地缓存中寻找，如果本地缓存没有，查看是不是指定了模型的路径，如果都没有，到网络下载。用户也可指定模型的下载路径，如`dowload_path='my_checkpoint'`。
+- `task`选择任务。coco目标检测的模型为`det_coco`, `det_coco_l`。`det_coco_l`相比`det_coco`模型规模较大，性能较强，但是推理的速度较慢。
+- `checkpoints`指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如`checkpoints='my_checkpoint/model.onnx'`。
+- `download_path`指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如`download_path='my_checkpoint'`。
+
+任务模型下载与存放规范请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">高级功能</a>。
 
 #### 2. 模型推理
 
 ```python
-result,img_with_box = det_coco.inference(data='data/det_coco.jpg',img_type='pil',show=True) # 进行模型推理
+result,img_with_box = det_coco.inference(data='data/det_coco.jpg',img_type='pil') # 进行模型推理
 ```
 
-![](../images/xeduhub/det_coco_result.png)
 
 模型推理`inference()`可传入参数：
 
@@ -473,12 +475,14 @@ det_coco.save(img_with_box,'img_with_box.jpg')# 保存推理图片
 
 XEduHub提供了进行人体目标检测的模型：`det_body`，`det_body_l`，这两个模型能够进行单人的人体目标检测。
 
+![](../images/xeduhub/det_body.png)
+
 #### 代码样例
 
 ```python
 from XEdu.hub import Workflow as wf
 det_body = wf(task='det_body')
-result,img_with_box = det_body.inference(data='data/det_body.jpg',img_type='pil',show=True) # 进行模型推理
+result,img_with_box = det_body.inference(data='data/det_body.jpg',img_type='pil') # 进行模型推理
 format_result = det_body.format_output(lang='zh')# 将推理结果进行格式化输出
 det_body.show(img_with_box)# 展示推理图片
 det_body.save(img_with_box,'img_with_box.jpg')# 保存推理图片
@@ -493,18 +497,19 @@ from XEdu.hub import Workflow as wf
 det_body = wf(task='det_body')
 ```
 
-`wf()`中共有两个参数可以设置
+`wf()`中共有三个参数可以设置：
 
-- `task`决定了使用哪个检测模型，人体目标检测模型为`det_body`, `det_body_l`。`det_body_l`相比`det_body`模型规模较大，性能较强，但是推理的速度较慢。
-- `download_path`参数决定了预训练模型下载的路径。默认是下载到同级的checkpoints文件夹中，当代码运行时，会先在本地的同级目录中寻找是否有已下载的预训练模型，如果没有，到本地缓存中寻找，如果本地缓存没有，查看是不是指定了模型的路径，如果都没有，到网络下载。用户也可指定模型的下载路径，如`dowload_path='my_checkpoint'`。
+- `task`选择任务。人体目标检测模型为`det_body`, `det_body_l`。`det_body_l`相比`det_body`模型规模较大，性能较强，但是推理的速度较慢。
+- `checkpoints`指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如`checkpoints='my_checkpoint/model.onnx'`。
+- `download_path`指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如`download_path='my_checkpoint'`。
+
+任务模型下载与存放规范请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">高级功能</a>。
 
 #### 2. 模型推理
 
 ```python
-result,img_with_box = det_body.inference(data='data/det_body.jpg',img_type='pil',show=True) # 进行模型推理
+result,img_with_box = det_body.inference(data='data/det_body.jpg',img_type='pil') # 进行模型推理
 ```
-
-![](../images/xeduhub/det_result.png)
 
 模型推理`inference()`可传入参数：
 
@@ -558,7 +563,7 @@ det_body.save(img_with_box,'img_with_box.jpg')# 保存推理图片
 ```python
 from XEdu.hub import Workflow as wf
 det_face = wf(task='det_face')
-result,img_with_box = det_face.inference(data='data/det_face.jpg',img_type='pil',show=True) # 进行模型推理
+result,img_with_box = det_face.inference(data='data/det_face.jpg',img_type='pil') # 进行模型推理
 format_result = det_face.format_output(lang='zh')# 将推理结果进行格式化输出
 det_face.show(img_with_box)# 展示推理图片
 det_face.save(img_with_box,'img_with_box.jpg')# 保存推理图片
@@ -572,19 +577,19 @@ det_face.save(img_with_box,'img_with_box.jpg')# 保存推理图片
 from XEdu.hub import Workflow as wf
 det_face = wf(task='det_face')
 ```
+`wf()`中共有三个参数可以设置：
 
-`wf()`中共有两个参数可以设置
+- `task`选择任务。人脸目标检测模型为`det_face`。
+- `checkpoints`指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如`checkpoints='my_checkpoint/model.onnx'`。
+- `download_path`指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如`download_path='my_checkpoint'`。
 
-- `task`决定了使用哪个检测模型，人脸目标检测模型为`det_face`
-- `download_path`参数决定了预训练模型下载的路径。默认是下载到同级的checkpoints文件夹中，当代码运行时，会先在本地的同级目录中寻找是否有已下载的预训练模型，如果没有，到本地缓存中寻找，如果本地缓存没有，查看是不是指定了模型的路径，如果都没有，到网络下载。用户也可指定模型的下载路径，如`dowload_path='my_checkpoint'`。
+任务模型下载与存放规范请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">高级功能</a>。
 
 #### 2. 模型推理
 
 ```python
-result,img_with_box = det_face.inference(data='data/det_face.jpg',img_type='pil',show=True) # 进行模型推理
+result,img_with_box = det_face.inference(data='data/det_face.jpg',img_type='pil') # 进行模型推理
 ```
-
-![](../images/xeduhub/det_face_result.png)
 
 模型推理`inference()`可传入参数：
 
@@ -652,14 +657,19 @@ from XEdu.hub import Workflow as wf
 det_hand = wf(task='det_hand')
 ```
 
-`wf()`中共有两个参数可以设置
+`wf()`中共有三个参数可以设置：
 
-- `task`决定了使用哪个检测模型，全身关键点提取模型为`det_face`
-- `download_path`参数决定了预训练模型下载的路径。默认是下载到同级的checkpoints文件夹中，当代码运行时，会先在本地的同级目录中寻找是否有已下载的预训练模型，如果没有，到本地缓存中寻找，如果本地缓存没有，查看是不是指定了模型的路径，如果都没有，到网络下载。用户也可指定模型的下载路径，如`dowload_path='my_checkpoint'`。
+- `task`选择任务。全身关键点提取模型为`det_face`。
+- `checkpoints`指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如`checkpoints='my_checkpoint/model.onnx'`。
+- `download_path`指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如`download_path='my_checkpoint'`。
+
+任务模型下载与存放规范请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">高级功能</a>。
 
 #### 2. 模型推理
 
-![](../images/xeduhub/det_hand_result.png)
+```python
+result,img_with_box = det_hand.inference(data='data/det_hand.jpg',img_type='pil') # 进行模型推理
+```
 
 模型推理`inference()`可传入参数：
 
@@ -725,10 +735,14 @@ from XEdu.hub import Workflow as wf
 cls = wf(task="cls_imagenet") # 模型声明
 ```
 
-`wf()`中共有两个参数可以设置
 
-- `task`决定了进行图像分类的模型，目前支持`cls_imagenet`
-- `download_path`参数决定了预训练模型下载的路径。默认是下载到同级的checkpoints文件夹中，当代码运行时，会先在本地的同级目录中寻找是否有已下载的预训练模型，如果没有，到本地缓存中寻找，如果本地缓存没有，查看是不是指定了模型的路径，如果都没有，到网络下载。用户也可指定模型的下载路径，如`dowload_path='my_checkpoint'`
+`wf()`中共有三个参数可以设置：
+
+- `task`选择任务。图像分类的模型为`cls_imagenet`。
+- `checkpoints`指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如`checkpoints='my_checkpoint/model.onnx'`。
+- `download_path`指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如`download_path='my_checkpoint'`。
+
+任务模型下载与存放规范请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">高级功能</a>。
 
 #### 2. 模型推理
 
@@ -765,7 +779,7 @@ format_result = cls.format_output(lang='zh')#推理结果格式化输出
 ```python
 from XEdu.hub import Workflow as wf
 style = wf(task='gen_style',style='mosaic')
-result = style.inference(data='data/cat101.jpg',img_type='cv2',show=True)# 进行模型推理
+result = style.inference(data='data/cat101.jpg',img_type='cv2')# 进行模型推理
 style.show(result)# 展示推理图片
 style.save(result,"style_cat.jpg")# 保存推理图片
 ```
@@ -779,11 +793,14 @@ from XEdu.hub import Workflow as wf
 style = wf(task='gen_style',style='mosaic')
 ```
 
-`wf()`中共有三个参数可以设置
+`wf()`中共有四个参数可以设置：
 
-- `task`决定了任务类型
-- `download_path`参数决定了预训练模型下载的路径。默认是下载到同级的checkpoints文件夹中，当代码运行时，会先在本地的同级目录中寻找是否有已下载的预训练模型，如果没有，到本地缓存中寻找，如果本地缓存没有，查看是不是指定了模型的路径，如果都没有，到网络下载。用户也可指定模型的下载路径，如`dowload_path='my_checkpoint'`
-- `style`决定了风格迁移所使用的风格。
+- `task`选择任务。图像分类的模型为`cls_imagenet`。
+- `style`选择风格迁移所使用的风格。
+- `checkpoints`指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如`checkpoints='my_checkpoint/model.onnx'`。
+- `download_path`指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如`download_path='my_checkpoint'`。
+
+任务模型下载与存放规范请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">高级功能</a>。
 
 运行代码`wf.support_style()`可查看当前预设的风格。当前预设风格共有五种，如下图所示。
 
@@ -825,10 +842,8 @@ style = wf(task='gen_style',style='mosaic')
 #### 2. 模型推理
 
 ```python
-result = style.inference(data='data/cat101.jpg',img_type='cv2',show=True)# 进行模型推理
+result = style.inference(data='data/cat101.jpg',img_type='cv2')# 进行模型推理
 ```
-
-![](../images/xeduhub/style_result.png)
 
 模型推理`inference()`可传入参数：
 
@@ -873,7 +888,7 @@ XEduHub使用的OCR模型是来自百度的开源免费的OCR模型：rapidocr�
 ```python
 from XEdu.hub import Workflow as wf
 ocr = wf(task="ocr")
-result,ocr_img = ocr.inference(data='data/ocr_img.png',img_type='cv2',show=True) # 进行模型推理
+result,ocr_img = ocr.inference(data='data/ocr_img.png',img_type='cv2') # 进行模型推理
 ocr_format_result = ocr.format_output(lang="zh")# 推理结果格式化输出
 ocr.show(ocr_img)# 展示推理结果图片
 ocr.save(ocr_img,'ocr_result.jpg')# 保存推理结果图片
@@ -888,17 +903,17 @@ from XEdu.hub import Workflow as wf
 ocr = wf(task="ocr")
 ```
 
-`wf()`中共有一个参数可以设置，这里的模型不是以onnx方式下载，而是以python库的形式下载和安装，因此不同于之前任务的下载方式，也无需指定下载路径。
+`wf()`中只有参数可以设置：
 
-- `task`决定了任务类型
+- `task`选择任务类型，光学字符识别（OCR）的模型为`ocr`。
+  
+**注意**：ocr的模型不是以onnx方式下载，而是以python库的形式下载和安装，因此不同于之前任务的下载方式，也无需指定下载路径。可以通过`pip install rapidocr_onnxruntime==1.3.7`预先下载库。
 
 #### 2. 模型推理
 
 ```python
-result,ocr_img = ocr.inference(data='data/ocr_img.png',img_type='cv2',show=True) # 进行模型推理
+result,ocr_img = ocr.inference(data='data/ocr_img.png',img_type='cv2') # 进行模型推理
 ```
-
-![](../images/xeduhub/ocr_result.png)
 
 模型推理`inference()`可传入参数：
 
@@ -968,15 +983,19 @@ from XEdu.hub import Workflow as wf
 drive = wf(task='drive_perception') # 实例化模型
 ```
 
-`wf()`中共有两个参数可以设置
+`wf()`中共有三个参数可以设置：
 
-- `task`决定了任务类型
-- `download_path`参数决定了预训练模型下载的路径。默认是下载到同级的checkpoints文件夹中，当代码运行时，会先在本地的同级目录中寻找是否有已下载的预训练模型，如果没有，到本地缓存中寻找，如果本地缓存没有，查看是不是指定了模型的路径，如果都没有，到网络下载。用户也可指定模型的下载路径，如`dowload_path='my_checkpoint'`
+- `task`选择任务。全景驾驶感知系统的模型为`drive_perception`。
+- `checkpoints`指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如`checkpoints='my_checkpoint/model.onnx'`。
+- `download_path`指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如`download_path='my_checkpoint'`。
+
+任务模型下载与存放规范请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">高级功能</a>。
+`
 
 #### 2. 模型推理
 
 ```python
-result,img = drive.inference(data='demo/drive.png',img_type='cv2',show=True) # 模型推理
+result,img = drive.inference(data='demo/drive.png',img_type='cv2') # 模型推理
 ```
 
 ![](../images/xeduhub/drive_result.png)
@@ -1398,6 +1417,31 @@ print(result)
 - `data`：指定待检测的图片
 - `preprocess`: 指定前处理函数
 - `postprocess`：指定后处理函数
+
+## XEduHub任务模型资源下载与存放
+
+XEduHub提供了大量优秀的任务模型，我们不仅可以通过`wf()`代码的运行实现下载，还可以自行到网页上下载，防止运行代码时没有网络无法下载模型的问题。
+
+只要进入<a href="https://openxlab.org.cn/models/detail/xedu/hub-model">模型仓库</a>，在Model File里就可以随意下载各种任务模型。网址：<a href="https://openxlab.org.cn/models/detail/xedu/hub-model">https://openxlab.org.cn/models/detail/xedu/hub-model</a>
+
+![](../images/xeduhub/downloadmodel.png)
+
+下载后，如何让代码`wf()`运行时找到我下载的预训练模型呢？
+
+在这里悄悄透露代码`wf()`运行时的工作流程，在没有指定模型路径`checkpoints`参数的情况下，会先检查是否已下载了对应任务的模型，检查的顺序如下：
+
+1. 本地的同级目录的checkpoints文件夹中
+2. 本地缓存中
+
+如果都没有，就会到网络上下载。
+
+因此，无论是网络下载还是自己训练的模型使用，有两种解决思路：
+
+- 在本地同级目录中新建checkpoints文件夹，将模型存放在该文件夹中
+  
+- 使用参数`checkpoints`，指定模型路径，如`model=wf(task='det_body',checkpoints='my_path/body17.onnx')`
+
+最后提醒一下，自己到网络下载或自己训练的模型需要是ONNX格式。
 
 ## 报错专栏
 
