@@ -46,6 +46,7 @@
               <p class="caption" role="heading"><span class="caption-text">目录</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEduHub</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basenn.html">神经网络库BaseNN</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../baseml.html">传统机器学习库BaseML</a><ul class="current">
@@ -86,6 +87,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="visualization.html">BaseML杀手锏：自带可视化部分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">BaseML项目案例集</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a></li>
@@ -262,6 +264,14 @@ model=cls(algorithm = &#39;AdaBoost&#39;，n_estimators = 50)
 </pre></div>
 </div>
 <p>参数为模型保存的路径。</p>
+<p>模型保存后可加载模型进行模型测试，参考代码如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 加载模型</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;my_CART_model.pkl&quot;</span><span class="p">)</span>
+<span class="c1"># 给定一组数据，推理查看效果</span>
+<span class="n">y</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>也可以<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#baseml">借助XEduHub库完成推理</a>和应用，更多模型转换与应用的介绍详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/support_resources/model_convert.html">后文</a>。</p>
 </section>
 </section>
 <section id="id11">

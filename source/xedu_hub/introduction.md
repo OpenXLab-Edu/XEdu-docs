@@ -1418,29 +1418,30 @@ print(result)
 - `preprocess`: 指定前处理函数
 - `postprocess`：指定后处理函数
 
-## 高级功能
+## XEduHub任务模型资源下载与存放
 
-### 1. 任务模型下载与存放规范
+XEduHub提供了大量优秀的任务模型，我们不仅可以通过`wf()`代码的运行实现下载，还可以自行到网页上下载，防止运行代码时没有网络无法下载模型的问题。
 
-当代码`wf()`运行时，在没有指定模型路径`checkpoints`参数的情况下，会先检查是否已下载了对应任务的模型，检查的顺序如下：
+只要进入<a href="https://openxlab.org.cn/models/detail/xedu/hub-model">模型仓库</a>，在Model File里就可以随意下载各种任务模型。网址：<a href="https://openxlab.org.cn/models/detail/xedu/hub-model">https://openxlab.org.cn/models/detail/xedu/hub-model</a>
+
+![](../images/xeduhub/downloadmodel.png)
+
+下载后，如何让代码`wf()`运行时找到我下载的预训练模型呢？
+
+在这里悄悄透露代码`wf()`运行时的工作流程，在没有指定模型路径`checkpoints`参数的情况下，会先检查是否已下载了对应任务的模型，检查的顺序如下：
 
 1. 本地的同级目录的checkpoints文件夹中
 2. 本地缓存中
 
 如果都没有，就会到网络上下载。
 
-但遇到代码运行时没有网络无法下载的问题时，我们还可以自己下载预训练模型。只要进入<a href="https://openxlab.org.cn/models/detail/xedu/hub-model">模型仓库</a>，在Model File里就可以随意下载各种任务模型。网址：<a href="https://openxlab.org.cn/models/detail/xedu/hub-model">https://openxlab.org.cn/models/detail/xedu/hub-model</a>
-
-![](../images/xeduhub/downloadmodel.png)
-
-下载后，如何让代码`wf()`运行时找到我下载的预训练模型呢？
-
-有两种解决思路：
+因此，无论是网络下载还是自己训练的模型使用，有两种解决思路：
 
 - 在本地同级目录中新建checkpoints文件夹，将模型存放在该文件夹中
   
 - 使用参数`checkpoints`，指定模型路径，如`model=wf(task='det_body',checkpoints='my_path/body17.onnx')`
 
+最后提醒一下，自己到网络下载或自己训练的模型需要是ONNX格式。
 
 ## 报错专栏
 
