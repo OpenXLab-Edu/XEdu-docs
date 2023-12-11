@@ -100,25 +100,60 @@ model.convert(checkppint="basenn_cd.pth",out_file="basenn_cd.onnx")
 
 ### MMEdu模型转换后示例代码
 
-敬请期待。
+```
+from XEdu.hub import Workflow as wf
+import numpy as np
+
+# 模型声明
+mm = wf(task='mmedu',checkpoint='cls.onnx')
+# 待推理图像，此处仅以随机数组为例
+image = np.random.random((400,400)) # 可替换成您想要推理的图像路径,如 image = 'cat.jpg'
+# 模型推理
+res,img = mm.inference(data=image,img_type='cv2')
+# 标准化推理结果
+result = mm.format_output(lang="zh")
+# 可视化结果图像
+mm.show(img)
+```
+
+观察注释可得，修改待推理图像为您想要推理的图像路径，即可展示转换后模型的效果。此处代码借助XEduHub库实现MMEdu模型推理，安装方便，且方便部署，下文介绍几种修改示例代码完成模型应用和部署的方法，当然也欢迎您自己改编代码。
 
 ### BaseNN模型转换后示例代码
 
-敬请期待。
+```
+from XEdu.hub import Workflow as wf
+import numpy as np
+
+# 模型声明
+basenn = wf(task='basenn',checkpoint='basenn_cd.onnx')
+# 待推理数据，此处仅以随机二维数组为例，以下为1个维度为4的特征
+table = [[5.9, 3. , 4.2, 1.5]]
+# 模型推理
+res = basenn.inference(data=table)
+# 标准化推理结果
+result = basenn.format_output(lang="zh")
+```
+
+观察注释可得，修改待推理数据为您想要推理的数据（注意需与训练数据的特征数保持一致，且是二维数组），即可展示转换后模型的效果。此处代码借助XEduHub库实现BaseNN模型推理，安装方便，且方便部署，下文介绍几种修改示例代码完成模型应用和部署的方法，当然也欢迎您自己改编代码。
 
 ## 五、模型应用和部署
 
 模型应用和部署是将训练好的模型应用于实际场景的过程。这通常包括以下几个步骤：
 
 1. 选择硬件和软件环境：根据实际应用需求，选择合适的硬件（如CPU、GPU、FPGA等）和软件环境（如操作系统、编程语言、库等）。
-2. 模型优化：为了提高模型在实际应用中的性能，可能需要对模型进行优化，例如量化、剪枝、蒸馏等。这些优化方法可以减小模型大小、降低计算复杂度，从而提高运行效率。
-3. 接口设计：为了方便其他开发者或系统调用和使用模型，需要设计合适的接口。这可能包括API设计、封装模型为库或服务等。
-4. 监控和维护：在模型部署后，需要对其进行监控和维护，确保模型在实际应用中的稳定性和准确性。这可能包括日志记录、性能监控、模型更新等。
-5. 安全性：在部署模型时，需要考虑数据安全和隐私保护。确保数据在传输和存储过程中的安全性，以及模型在处理敏感信息时的合规性。
+2. 准备ONNX模型：
+   - 若模型转换是在平台完成，可直接下载转换好的ONNX模型（轻触文件后选择下载按钮）。
+   - 若模型转换是在本地完成，定位到转换后的模型文件。
+   - 如果需要将模型部署到特定硬件，还需上传模型到相应硬件。
+
+3. 准备部署代码：使用模型转换时生成的示例代码作为起点。建议根据具体需求进行适当修改和调试。如果模型将部署到硬件，确保代码兼容并上传到对应硬件。
+4. 运行代码：执行部署代码，将模型应用到实际场景中。
 
 通过遵循这些步骤，您可以将模型成功部署到实际应用场景中，实现模型的价值。在下面的示例代码中，我们将展示如何将转换后的模型应用到实际问题中。
 
 ### 1.连接摄像头
+
+MMEdu训练并转换的模型基本可以连接摄像头进行使用，在示例代码中加入cv2调用摄像头的代码即可。
 
 ```
 import cv2
@@ -130,3 +165,54 @@ result=  mmcls.inference(data=img)
 format_result = mmcls.format_output(lang="zh")
 cap.release()
 ```
+
+在上述代码基础上再加入循环即可实现实时识别的效果。
+
+```
+from XEdu.hub import Workflow as wf
+import cv2
+cap = cv2.VideoCapture(0)
+mmcls = wf(task='mmedu',checkpoint='cats_dogs.onnx')
+while cap.isOpened():
+    ret, img = cap.read()
+    if not ret:
+        break
+    result, result_img=  mmcls.inference(data=img,img_type='cv2')
+    format_result = mmcls.format_output(lang="zh")
+    mmcls.show(result_img)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break    
+cap.release()
+cv2.destroyAllWindows()
+```
+
+### 2.部署到硬件（以行空板为例）
+
+当准备好了模型应用的代码，我们可以考虑将其部署到硬件，比如行空板，通常需要遵循以下步骤。
+
+#### 第一步：准备模型文件和代码文件
+
+- 确保您的模型文件（如ONNX格式）已准备好。
+- 确保您的代码文件已准备好（最好先在本机调试）。
+
+#### 第二步：选择上传模型方式
+
+- 根据行空板的具体指南选择合适的编程平台和上传方法。这可能涉及使用特定的软件工具、命令行工具或通过网络接口。
+
+- 如使用Mind+编程，下载Mind+支持行空板的版本**（V1.7.2 RC3.0及以上版本）**。[[Mind+官网下载\]](https://mindplus.cc/download.html)  。程序里面需要资源文件（例如图片）该如何上传到行空板上？打开**文件系统**，将文件拖入**项目中的文件**即可，在点击**运行**的时候Mind+会将**项目中的文件**里面的所有文件一起上传到行空板的mindplus文件夹中运行。
+
+- 如使用有线jupyter notebook编程，打开电脑的chrome浏览器，输入板子的ip`10.1.2.3`，就可以打开界面，此处有文件上传。
+
+  ![](../images/support_resources/upload.png)
+
+#### 第三步：上传模型
+
+- 使用选择的方法将模型文件上传到行空板。这可能需要在计算机上运行特定的命令，或者使用图形界面进行操作。
+
+#### 第四步：安装库
+
+- 使用选择的编程平台安装需要的库[行空板库安装-行空板官方文档 (unihiker.com.cn)](https://www.unihiker.com.cn/wiki/pip_install) 例如XEduHub（`pip install xedu-python`）
+
+#### 第五步：部署和运行
+
+- 运行代码。

@@ -431,7 +431,7 @@ model.load("basenn.pth")
 ```python
 from BaseNN import nn
 model = nn()
-model.convert(checkppint="basenn_cd.pth",out_file="basenn_cd.onnx")
+model.convert(checkpoint="basenn_cd.pth",out_file="basenn_cd.onnx")
 ```
 
 `model.convert()`参数信息：
