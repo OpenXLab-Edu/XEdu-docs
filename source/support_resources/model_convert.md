@@ -199,20 +199,20 @@ cv2.destroyAllWindows()
 
 - 根据行空板的具体指南选择合适的编程平台和上传方法。这可能涉及使用特定的软件工具、命令行工具或通过网络接口。
 
-- 如使用Mind+编程，下载Mind+支持行空板的版本**（V1.7.2 RC3.0及以上版本）**。[[Mind+官网下载\]](https://mindplus.cc/download.html)  。程序里面需要资源文件（例如图片）该如何上传到行空板上？打开**文件系统**，将文件拖入**项目中的文件**即可，在点击**运行**的时候Mind+会将**项目中的文件**里面的所有文件一起上传到行空板的mindplus文件夹中运行。
+- 如使用Mind+编程，下载Mind+支持行空板的版本（V1.7.2 RC3.0及以上版本）。[[Mind+官网下载\]](https://mindplus.cc/download.html)  。
 
-- 如使用有线jupyter notebook编程，打开电脑的chrome浏览器，输入板子的ip`10.1.2.3`，就可以打开界面，此处有文件上传。
+  模型该如何上传到行空板上？打开**文件系统**，将文件拖入**项目中的文件**即可，在点击**运行**的时候Mind+会将**项目中的文件**里面的所有文件一起上传到行空板的mindplus文件夹中运行。
+
+  ![](../images/support_resources/upload2.png)
+
+- 如使用jupyter notebook编程，打开电脑的chrome浏览器，输入板子的ip`10.1.2.3`，就可以打开界面，此处有文件上传。
 
   ![](../images/support_resources/upload.png)
 
-#### 第三步：上传模型
+#### 第三步：安装库
 
-- 使用选择的方法将模型文件上传到行空板。这可能需要在计算机上运行特定的命令，或者使用图形界面进行操作。
+- 使用选择的编程平台安装需要的库，参考方式：[行空板库安装-行空板官方文档 (unihiker.com.cn)](https://www.unihiker.com.cn/wiki/pip_install) 例如XEduHub（`pip install xedu-python`）
 
-#### 第四步：安装库
-
-- 使用选择的编程平台安装需要的库[行空板库安装-行空板官方文档 (unihiker.com.cn)](https://www.unihiker.com.cn/wiki/pip_install) 例如XEduHub（`pip install xedu-python`）
-
-#### 第五步：部署和运行
+#### 第四步：部署和运行
 
 - 运行代码。
