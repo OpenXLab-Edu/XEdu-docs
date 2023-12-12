@@ -66,6 +66,8 @@ model.convert(checkpoint=checkpoint, out_file=out_file)
 参考项目：<a href="https://www.openinnolab.org.cn/pjlab/project?id=645110943c0e930cb55e859b&sc=62f34141bf4f550f3e926e0e#public">MMEdu模型转换
 </a>
 
+模型转换后生成一个ONNX模型和示例代码，示例代码的使用详见[后文](https://xedu.readthedocs.io/zh/master/support_resources/model_convert.html#id7)。
+
 ### 2.BaseNN模型转换
 
 BaseNN内置了一个`convert`函数，来实现了一键式模型转换，转换前先了解一下转换要做的事情吧。
@@ -91,6 +93,8 @@ model.convert(checkppint="basenn_cd.pth",out_file="basenn_cd.onnx")
 `checkpoint`: 指定要转换的pth模型文件路径
 
 `out_file`: 指定转换出的onnx模型文件路径
+
+模型转换后生成一个ONNX模型和示例代码，示例代码的使用详见[后文](https://xedu.readthedocs.io/zh/master/support_resources/model_convert.html#id8)。
 
 ## 四、如何快速进行模型应用？
 
@@ -127,7 +131,7 @@ import numpy as np
 # 模型声明
 basenn = wf(task='basenn',checkpoint='basenn_cd.onnx')
 # 待推理数据，此处仅以随机二维数组为例，以下为1个维度为4的特征
-table = [[5.9, 3. , 4.2, 1.5]]
+table = np.random.random((1, 4)).astype('float32')
 # 模型推理
 res = basenn.inference(data=table)
 # 标准化推理结果
