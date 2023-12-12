@@ -5,7 +5,7 @@
 
 我们也希望通过本系列教程，带领大家学会如何把自己使用`MMEdu`训练的计算机视觉任务`SOTA模型`部署到`ONNXRuntime`、`NCNN`等各个推理引擎上。
 
-### 借助MMEdu完成模型转换
+## 借助MMEdu完成模型转换
 MMEdu内置了一个`convert`函数，来实现了一键式模型转换，转换前先了解一下转换要做的事情吧。
 
 - 转换准备：
@@ -46,25 +46,7 @@ model.convert(checkpoint=checkpoint, out_file=out_file)
 参考项目：<a href="https://www.openinnolab.org.cn/pjlab/project?id=645110943c0e930cb55e859b&sc=62f34141bf4f550f3e926e0e#public">MMEdu模型转换
 </a>
 
-### 借助BaseDeploy完成模型部署
-
-`XEdu`团队推出了模型部署工具`BaseDeploy`，该工具可以轻松完成模型部署。对MMEdu训练的模型完成转换后，生成ONNX模型，可借助`BaseDeploy`库部署到硬件上。
-
-示例代码如下：
-
-```
-import cv2
-import BaseDeploy as bd
-model_path = 'cls.onnx'
-cap = cv2.VideoCapture(0)
-ret, img = cap.read()
-model = bd(model_path)
-result = model.inference(img)
-model.print_result(result)
-cap.release()
-```
-
-更多关于BaseDePloy库的介绍和使用说明可见<a href="https://xedu.readthedocs.io/zh/master/basedeploy/introduction.html#basedeploy-xedu">BaseDeploy：服务于XEdu的模型部署工具</a>。
+## 全流程体验
 
 现在，让我们从“<a href="https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&sc=635638d69ed68060c638f979#public">从零开始训练猫狗识别模型并完成模型转换</a>”项目入手，见识一下使用MMEdu工具完成从模型训练到模型部署的基本流程吧！
 
