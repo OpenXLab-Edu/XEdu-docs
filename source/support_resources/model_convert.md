@@ -68,6 +68,10 @@ model.convert(checkpoint=checkpoint, out_file=out_file)
 
 模型转换后生成一个ONNX模型和示例代码，示例代码的使用详见[后文](https://xedu.readthedocs.io/zh/master/support_resources/model_convert.html#id7)。
 
+同时我们也为您提供了一些我们转换好的ONNX模型。
+
+下载链接：[https://aicarrier.feishu.cn/drive/folder/NozifkbMKlojyodZVpDcYdvonR8](https://aicarrier.feishu.cn/drive/folder/NozifkbMKlojyodZVpDcYdvonR8)
+
 ### 2.BaseNN模型转换
 
 BaseNN内置了一个`convert`函数，来实现了一键式模型转换，转换前先了解一下转换要做的事情吧。
