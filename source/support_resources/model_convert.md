@@ -85,7 +85,7 @@ BaseNN内置了一个`convert`函数，来实现了一键式模型转换，转�
 ```python
 from BaseNN import nn
 model = nn()
-model.convert(checkppint="basenn_cd.pth",out_file="basenn_cd.onnx")
+model.convert(checkpoint="basenn_cd.pth",out_file="basenn_cd.onnx")
 ```
 
 `model.convert()`参数信息：
