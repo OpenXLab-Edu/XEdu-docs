@@ -150,7 +150,7 @@ result = basenn.format_output(lang="zh")
    - 若模型转换是在本地完成，定位到转换后的模型文件。
    - 如果需要将模型部署到特定硬件，还需上传模型到相应硬件。
 
-3. 准备部署代码：使用模型转换时生成的示例代码作为起点。建议根据具体需求进行适当修改和调试。如果模型将部署到硬件，确保代码兼容并上传到对应硬件。
+3. 准备部署代码：使用模型转换时生成的示例代码作为起点，加入更多交互功能，例如连接摄像头实时识别、连接舵机控制舵机转动等。建议根据具体需求进行适当修改和调试。如果模型将部署到硬件，确保代码兼容并上传到对应硬件。
 4. 运行代码：执行部署代码，将模型应用到实际场景中。
 
 通过遵循这些步骤，您可以将模型成功部署到实际应用场景中，实现模型的价值。在下面的示例代码中，我们将展示如何将转换后的模型应用到实际问题中。
@@ -219,5 +219,15 @@ cv2.destroyAllWindows()
 
 #### 第四步：部署和运行
 
-- 编写应用模型的代码或上传准备好的代码。
-- 运行代码。
+- 使用选择的编程平台新建代码文件编写应用模型的代码，或直接上传自己准备好且调试好的代码文件（方式同第二步上传模型的方式），注意代码中指定模型的路径需与模型在行空板的位置一致，比较简单的方式是将代码文件和ONNX模型放在同一级目录下，指定路径时只需指定文件名即可。
+- 运行代码并完成部署。
+
+**行空板上部署MMEdu模型效果示例：**
+
+![](D:\XEdu-docs\source\images\model_convert\DeploymentDemonstration.gif)
+
+### 参考项目：
+
+千物识别小助手：<a href="https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&backpath=/pjlab/projects/list#public</a>
+
+有无人检测小助手：<a href="https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&backpath=/pjlab/projects/list#public</a>

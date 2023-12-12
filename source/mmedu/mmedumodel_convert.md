@@ -1,13 +1,9 @@
 # 最后一步：模型转换
 
 
-得益于`OpenMMLab`系列工具的不断进步与发展。MMEdu通过集成OpenMMLab开源的`模型部署工具箱MMDeploy`和`模型压缩工具包MMRazor`，打通了从算法模型到应用程序这 “最后一公里”！ 
+训练好了模型该如何快速应用呢？在别的设备安装MMEdu似乎很麻烦。得益于`OpenMMLab`系列工具的不断进步与发展。MMEdu通过集成OpenMMLab开源的`模型部署工具箱MMDeploy`和`模型压缩工具包MMRazor`，打通了从算法模型到应用程序这 “最后一公里”！ 
 
 我们也希望通过本系列教程，带领大家学会如何把自己使用`MMEdu`训练的计算机视觉任务`SOTA模型`部署到`ONNXRuntime`、`NCNN`等各个推理引擎上。
-
-**行空板上部署MMEdu训练模型效果示例：**
-
-![](../images/model_convert/DeploymentDemonstration.gif)
 
 ### 借助MMEdu完成模型转换
 MMEdu内置了一个`convert`函数，来实现了一键式模型转换，转换前先了解一下转换要做的事情吧。
@@ -118,11 +114,11 @@ out_file='out_file/cats_dogs.onnx'
 model.convert(checkpoint=checkpoint, out_file=out_file)
 ```
 
-此时项目文件中的out_file文件夹下便生成了模型转换后生成的两个文件，可打开查看。一个是ONNX模型权重，一个是示例代码，示例代码稍作改动即可运行（需配合BaseData.py的BaseDT库）。
+此时项目文件中的out_file文件夹下便生成了模型转换后生成的两个文件，可打开查看。一个是ONNX模型权重，一个是示例代码，示例代码稍作改动即可运行（XEduHub）。
 
 - 硬件上需安装的库：
 
-  BaseDeploy
+  XEduHub（`pip install xedu-python`）
   
 - 需上传到硬件的文件：
 
@@ -133,20 +129,19 @@ model.convert(checkpoint=checkpoint, out_file=out_file)
 示例代码：
 
 ```
-import cv2
-import BaseDeploy as bd
-model_path = 'out_file/cats_dogs.onnx'
-cap = cv2.VideoCapture(0)
-ret, img = cap.read()
-model = bd(model_path)
-result = model.inference(img)
-result = model.print_result(result)
+from XEdu.hub import Workflow as wf
+import numpy as np
 
-if result['预测结果'] == 'dog':
-    print('这是小狗，汪汪汪！')
-else:
-    print('这是小猫，喵喵喵！')
-cap.release()
+# 模型声明
+mm = wf(task='mmedu',checkpoint='cats_dogs.onnx')
+# 待推理图像，此处仅以随机数组为例
+image = 'cat0.jpg'
+# 模型推理
+res,img = mm.inference(data=image,img_type='cv2')
+# 标准化推理结果
+result = mm.format_output(lang="zh")
+# 可视化结果图像
+mm.show(img)
 ```
 
 **拓展：模型转换在线版**
@@ -976,13 +971,4 @@ __注：硬件测试模块持续更新中，如有更多硬件测试需求，请
 
 更多传感器、执行器使用教程参见：<a href="https://wiki.dfrobot.com.cn/">DFRobot</a>
 
-
-## 更多模型转换相关项目
-
-猫狗分类小助手：<a href="https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&backpath=/pjedu/userprofile%3FslideKey=project#public">https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&backpath=/pjedu/userprofile%3FslideKey=project#public</a>
-
-千物识别小助手：<a href="https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&backpath=/pjlab/projects/list#public</a>
-
-有无人检测小助手：<a href="https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&backpath=/pjlab/projects/list#public</a>
-
-MMEdu模型在线转换：<a href="https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&sc=62f34141bf4f550f3e926e0e#public</a>
+更多模型转换和应用的教程详见[后文](https://xedu.readthedocs.io/zh/master/support_resources/model_convert.html)。
