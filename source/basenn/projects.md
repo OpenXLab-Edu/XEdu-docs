@@ -253,3 +253,131 @@ test_y = np.loadtxt(test_path, dtype=float, delimiter=',',skiprows=1,usecols=[8]
 y_pred = model.inference(test_x,checkpoint = 'checkpoints/ckpt/basenn.pth')  # 对该数据进行预测
 ```
 
+## 用BaseNN搭建神经网络拟合多项式
+
+本案例实现用BaseNN搭建神经网络拟合多项式，使用神经网络来拟合简单的多项式函数是学习和理解神经网络工作原理的一个很好的入门方式。这个过程涉及到数据的处理、模型的构建、损失函数的应用、优化算法的使用等，这些都是深度学习的基本组成部分。
+
+项目地址：[https://openinnolab.org.cn/pjlab/project?id=6576e6928474f83270a08310&sc=635638d69ed68060c638f979#public](https://openinnolab.org.cn/pjlab/project?id=6576e6928474f83270a08310&sc=635638d69ed68060c638f979#public)
+
+#### 项目核心功能：
+
+用自动生成的多项式数据训练一个可以拟合多项式的神经网络模型，掌握使用BaseNN库搭建神经网络完成“回归”任务的流程。
+
+#### 实现步骤：
+
+##### 1）数据准备
+
+可以定义一个多项式函数（以五项式为例），生成数据。
+如下代码还向五次多项式函数生成的数据点添加高斯噪声，可以模拟现实世界中可能遇到的数据不准确性。这种方法特别适合于准备数据，用于训练机器学习模型，以确保它们在面对实际、可能带有噪声的数据时仍能有效工作。
+
+```
+import numpy as np
+
+# 定义五项式函数
+def quintic_polynomial(x, a=1, b=0, c=0, d=0, e=0, f=0):
+    return a * x**5 + b * x**4 + c * x**3 + d * x**2 + e * x + f
+
+# 生成数据点
+x = np.linspace(-50, 50, 1000, dtype=np.float32)  # 生成 -10 到 10 之间的 100 个点，确保生成的数据是 float32 类型
+a, b, c, d, e, f = 1, -2, 1, 2, -1, 1
+y = quintic_polynomial(x, a, b, c, d, e, f)
+noise = np.random.normal(0, 2, y.shape).astype(np.float32)  # 将噪声转换为 float32 类型
+y_noisy = y + noise
+
+# 调整数据形状以适应神经网络
+x = x.reshape(-1, 1)
+y_noisy = y_noisy.reshape(-1, 1)
+```
+
+将生成的数据保存在一个csv中，且给它加入表头，完成数据集制作。
+
+```
+data = np.concatenate((x,y_noisy),axis=1)
+# 定义标题行，列之间用逗号分隔
+header = 'feature,pred'
+np.savetxt('data/data.csv',data,delimiter=',', header=header, comments='')
+```
+
+##### 2）数据预处理
+
+为了加速收敛，我们参照已有经验将x和y映射到0-1之间。
+
+```
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler() # 创建MinMaxScaler实例
+y_noisy = scaler.fit_transform(y_noisy) # 将y_noisy拟合并转换到0-1范围
+scaler2 = MinMaxScaler() # 创建MinMaxScaler实例
+x = scaler2.fit_transform(x) # 将x拟合并转换到0-1范围
+```
+
+保存为新的csv。
+
+```
+norm_data = np.concatenate((x,y_noisy),axis=1)
+# 定义标题行，列之间用逗号分隔
+header = 'feature,pred'
+np.savetxt('data/norm_data.csv',norm_data,delimiter=',', header=header, comments='')
+```
+
+训练模型前，一般建议划分数据集为训练集、验证集，我们可以借助BaseDT库完成数据集按照一定比例的随机划分。
+
+```
+from BaseDT.dataset import split_tab_dataset
+path = "data/norm_data.csv"
+tx,ty,val_x,val_y = split_tab_dataset(path,data_column=0,label_column=1)
+```
+
+##### 3）网络搭建和模型训练
+
+搭建一个3层的神经网络并开始训练，输入维度是1（1列数据），最后输出维度是1（1列数据），激活函数使用ReLU。
+
+```
+# 导入库
+from BaseNN import nn
+# 声明模型，选择回归任务
+model = nn('reg') 
+model.load_tab_data('data/norm_data_train.csv',batch_size=1024) # 载入数据
+model.add('Linear', size=(1, 60),activation='ReLU')  
+model.add('Linear', size=(60, 6), activation='ReLU') 
+model.add('Linear', size=(6, 1))
+model.add(optimizer='Adam')
+# 设置模型保存的路径
+model.save_fold = 'checkpoints/ckpt'
+model.train(lr=0.01, epochs=200,loss='MSELoss') # 训练
+```
+
+##### 4）模型推理
+
+读取验证集数据进行模型推理。
+
+```
+import numpy as np
+# 读取验证集
+val_path = 'data/norm_data_val.csv'
+val_x = np.loadtxt(val_path, dtype=float, delimiter=',',skiprows=1,usecols=0) # 读取特征列
+val_y = np.loadtxt(val_path, dtype=float, delimiter=',',skiprows=1,usecols=1) # 读取预测值列
+
+# 导入库
+from BaseNN import nn
+# 声明模型
+model = nn('reg') 
+y_pred = model.inference(val_x,checkpoint = 'checkpoints/ckpt/basenn.pth')  # 对该数据进行预测
+```
+
+绘图将预测值 (y_pred) 和实际值 (val_y) 与 val_x 的值进行对比，效果是相当不错的。
+
+```
+import matplotlib.pyplot as plt
+import operator
+
+# 将val_x,val_y,y_pred 根据val_x的顺序排序
+L = sorted(zip(val_x,val_y,y_pred), key=operator.itemgetter(0))
+val_x, val_y,y_pred = zip(*L)
+
+plt.plot(val_x,y_pred, label='pred')
+plt.plot(val_x,val_y, label='val')
+
+plt.show()
+```
+
+![](../images/basenn/huitu2.png)
