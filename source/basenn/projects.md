@@ -278,8 +278,8 @@ def quintic_polynomial(x, a=1, b=0, c=0, d=0, e=0, f=0):
     return a * x**5 + b * x**4 + c * x**3 + d * x**2 + e * x + f
 
 # 生成数据点
-x = np.linspace(-50, 50, 1000, dtype=np.float32)  # 生成 -10 到 10 之间的 100 个点，确保生成的数据是 float32 类型
-a, b, c, d, e, f = 1, -2, 1, 2, -1, 1
+x = np.linspace(-10000, 10000, 10000, dtype=np.float32)  # 生成 -10000 到 10000 之间的 10000 个点，确保生成的数据是 float32 类型
+a, b, c, d, e, f = 1, 13, 35, -85, -216, 252 # 设置系数
 y = quintic_polynomial(x, a, b, c, d, e, f)
 noise = np.random.normal(0, 2, y.shape).astype(np.float32)  # 将噪声转换为 float32 类型
 y_noisy = y + noise
@@ -343,7 +343,7 @@ model.add('Linear', size=(6, 1))
 model.add(optimizer='Adam')
 # 设置模型保存的路径
 model.save_fold = 'checkpoints/ckpt'
-model.train(lr=0.01, epochs=200,loss='MSELoss') # 训练
+model.train(lr=0.01, epochs=500,loss='MSELoss') # 训练
 ```
 
 ##### 4）模型推理
@@ -364,7 +364,15 @@ model = nn('reg')
 y_pred = model.inference(val_x,checkpoint = 'checkpoints/ckpt/basenn.pth')  # 对该数据进行预测
 ```
 
-绘图将预测值 (y_pred) 和实际值 (val_y) 与 val_x 的值进行对比，效果是相当不错的。
+借助matplotlib绘图将预测值 (y_pred) 和实际值 (val_y) 与 val_x 的值进行对比，效果是相当不错的。
+
+先将x和y从标准化的状态恢复到它们原始的比例和值，使用和预处理时一样的方式，scaler和scaler2均调用数据预处理时的。
+
+```
+y_pred = scaler.inverse_transform(y_pred)
+val_y = scaler.inverse_transform(val_y.reshape(-1, 1))
+val_x = scaler2.inverse_transform(val_x.reshape(-1, 1))
+```
 
 ```
 import matplotlib.pyplot as plt
