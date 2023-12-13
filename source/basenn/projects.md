@@ -1,12 +1,12 @@
 # BaseNN项目案例集
 
-## 搭建卷积神经网络实现手写体分类
+## 搭建卷积神经网络实现手写体图像分类
 
 本案例来源于《人工智能初步》人教地图72页。
 
 项目地址：[https://www.openinnolab.org.cn/pjlab/project?id=641d17e67c99492cf16d706f&sc=635638d69ed68060c638f979#public](https://www.openinnolab.org.cn/pjlab/project?id=641d17e67c99492cf16d706f&sc=635638d69ed68060c638f979#public)
 
-实现效果：
+#### 实现效果：
 
 ![](../images/basenn/six.png)
 
