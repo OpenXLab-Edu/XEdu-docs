@@ -232,3 +232,64 @@ cv2.destroyAllWindows() # 关闭所有OpenCV创建的窗口
 在此基础上，可继续编写更复杂的python代码，例如对接收的照片进行各种模型推理的操作，甚至还可以连接小车做一个无人行驶小车（例如有人对ESP32-CAM进行了封装组装成了一款JTANK履带车，我们在其基础上制作成了一辆[识行小车](https://xedu.readthedocs.io/zh/master/xedu_hub/projects.html#id5)）。
 
 本文参考：[https://www.electroniclinic.com/esp32-cam-with-python-opencv-yolo-v3-for-object-detection-and-identification/](https://www.electroniclinic.com/esp32-cam-with-python-opencv-yolo-v3-for-object-detection-and-identification/)
+
+借助ESP32-CAM还能连接[SIOT](https://xedu.readthedocs.io/zh/master/scitech_tools/siot.html)做各种智联网应用，下面这段代码的主要功能是读取摄像头图片，借助XEduHub完成手部检测，再向MQTT服务器发送消息，在此代码基础上，相信可以做出更多创意应用。
+
+```
+import cv2
+from XEdu.hub import Workflow as wf 
+import siot
+from time import sleep
+import numpy as np
+import urllib.request
+
+SERVER = "iot.dfrobot.com.cn"            #MQTT服务器IP
+CLIENT_ID = "1234"                  #在SIoT上，CLIENT_ID可以留空
+IOT_pubTopic  = 'tgzrRLVIg'       #“topic”为“项目名称/设备名称”
+IOT_UserName ='75HzWwL7R'            #用户名
+IOT_PassWord ='ncNkZQL7Rz'         #密码
+
+siot.init(CLIENT_ID,SERVER,user=IOT_UserName,password=IOT_PassWord)
+siot.connect()
+siot.loop()
+siot.publish_save(IOT_pubTopic, 'stop')
+
+#print("Before URL")rtsp://[username]:[password]@192.168.1.64/1'
+url = 'http://192.168.31.94/cam-hi.jpg' 
+cap = cv2.VideoCapture(url)
+
+# Check if the IP camera stream is opened successfully
+if not cap.isOpened():
+    print("Failed to open the IP camera stream")
+    exit()
+
+#print("After URL")
+model=wf(task='det_hand')
+print(model)
+cmd=''
+last=''
+while True:
+    img_resp=urllib.request.urlopen(url)
+    imgnp=np.array(bytearray(img_resp.read()),dtype=np.uint8)
+    # 将图像水平翻转
+    frame = cv2.imdecode(imgnp,-1)
+    frame = cv2.flip(frame, 1)
+    r,img=model.inference(data=frame,img_type='cv2',thr=0.6)
+    cv2.imshow("Capturing",img)
+    #print('Running..')
+    if len(r)>0:
+        cmd='stop'
+    else:
+        cmd='go'
+        
+    if cmd!=last:
+        siot.publish_save(IOT_pubTopic, cmd)
+        last=cmd
+    #sleep(0.1)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+cap.release()
+cv2.destroyAllWindows()
+```
+
