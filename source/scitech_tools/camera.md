@@ -45,9 +45,14 @@ c.打开工具-开发板管理器，然后搜索esp32
 
 ![](../images/scitech_tools/cam4.png)
 
+如因网速原因安装较慢可使用离线方法，相关文件和安装方法已上传百度云盘。
+
+链接：[https://pan.baidu.com/s/1T2vqBC2903NnPU-Cv-Qolw](https://pan.baidu.com/s/1T2vqBC2903NnPU-Cv-Qolw)
+提取码：bpri 
+
 ### 第三步：连接ESP32-CAM至电脑
 
-将ESP32-CAM模块通过转换器连接到电脑，并在arduino ide中选择连接，工具-开发板-ESP32-esp32 Wrover Module
+将ESP32-CAM模块通过转换器连接到电脑，并在arduino ide中选择连接，工具-开发板-ESP32-esp32 Wrover Module【上一步顺利完成此步骤才会出现此选项】
 
 ![](../images/scitech_tools/cam5.png)
 
@@ -66,8 +71,8 @@ ESP32 CAM Live Video Streaming in Python OpenCV的示例代码是：
 #include <WiFi.h>
 #include <esp32cam.h>
  
-const char* WIFI_SSID = "aicamp"; # wifi账号
-const char* WIFI_PASS = "aicamp123";# wifi密码
+const char* WIFI_SSID = "aicamp"; 
+const char* WIFI_PASS = "aicamp123";
  
 WebServer server(80);
  
@@ -156,7 +161,7 @@ void loop()
 }
 ```
 
-b.新建文件，将上述代码复制到新文件中，编写Wi-Fi代码，包括指定Wi-Fi账号和密码，其他不变。
+b.新建文件，将上述代码复制到新文件中，编写Wi-Fi代码，包括指定Wi-Fi账号和密码（第五、六行代码WIFI_SSID和WIFI_PASS），其他不变。【注意：此时先不要上传代码】
 
 ### 第五步：安装esp32cam库
 
