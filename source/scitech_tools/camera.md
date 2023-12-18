@@ -71,8 +71,8 @@ ESP32 CAM Live Video Streaming in Python OpenCV的示例代码是：
 #include <WiFi.h>
 #include <esp32cam.h>
  
-const char* WIFI_SSID = "aicamp"; 
-const char* WIFI_PASS = "aicamp123";
+const char* WIFI_SSID = "请写入你的WIFI账号"; 
+const char* WIFI_PASS = "请写入你的WIFI密码";
  
 WebServer server(80);
  
