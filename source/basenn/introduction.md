@@ -117,16 +117,47 @@ model.load_tab_data(train_path, batch_size=120)
 
 指定NPZ数据集路径，再使用`load_npz_data`函数即可完成载入数据。
 
+详见案例：[姿态识别进阶-循环神经网络](https://www.openinnolab.org.cn/pjlab/project?id=64daed3eafeb1059822a1578&sc=62f33550bf4f550f3e926cf2#public)
+
 ```python
 train_path = '../../dataset/dataset.npz'
 model.load_npz_data(train_path, batch_size=5000,classes=["walking","waving","stretching"])
 ```
 
-对NPZ数据集的要求：npz格式，其中至少应该拥有两个键，分别为`data`与`label`，其中`data`中存储的应为训练数据信息，`label`中存储的应为数据所对应的标签信息（应为数组形式）。
+对NPZ数据集的要求：npz格式(numpy zip)，其中至少应该拥有两个键，分别为`data`与`label`，其中`data`中存储的应为训练数据信息，`label`中存储的应为数据所对应的标签信息（应为数组形式）。
 
 `batch_size`：表示在一次训练中同时处理的样本数量。通常情况下，批量大小越大，模型的收敛速度越快，但内存和计算资源的需求也会相应增加。
 
 `classes`：表示数据集中的`label`中存储的数组各个位置标签所代表的意义。可以不传入，若不传入，则推理结果将会是认为结果的下标。若传入，则推理结果将自动转化为将原结果作为下标的数组中的对应内容。
+
+- 小帖士（井号后面是运行结果）：
+```python
+import numpy as np
+data = np.load('dataset.npz')
+print(data)
+# <numpy.lib.npyio.NpzFile object at 0x7f319c448ac0>
+print(data['label'])  # 这是一个三分类标签数据，它是二维数据，每一条数据里面是三分类独热编码标签。
+# array([[1, 0, 0],
+#          ...,
+#        [0, 0, 1]])
+print(data['data']) # 这是一个高维数据，每一条数据对应一个标签，但是数据本身不是一维的，而是高纬的。
+# array([[[ 4.60664570e-01,  2.78294533e-01, -3.56185764e-01, ...,
+#          9.21180844e-01,  1.94783360e-01,  9.93974388e-01],
+#        [ 4.62414086e-01,  2.83538818e-01, -3.53962898e-01, ...,
+#          9.16427970e-01,  1.96989119e-01,  9.91852582e-01],
+#        [ 4.63086247e-01,  2.80452102e-01, -3.24477255e-01, ...,
+#          9.19000983e-01,  1.50782943e-01,  9.93449986e-01],
+#        ...,
+#        [ 4.34215039e-01,  4.27498937e-01,  3.03461671e-01, ...,
+#          8.96103501e-01, -4.72080037e-02,  9.73582983e-01]]])
+```
+```python
+len(data['data'])和len(data['label'])是相等的。
+对于案例[《姿态识别进阶-循环神经网络》](https://www.openinnolab.org.cn/pjlab/project?id=64daed3eafeb1059822a1578&sc=62f33550bf4f550f3e926cf2#public)
+来说：data['label'].shape是(19, 3)，data['data'].shape是(19, 30, 132)。
+type(data['data'])是numpy.ndarray,type(data['data'])是numpy.ndarray。
+```
+
 
 #### 拓展------自行编写代码载入数据：
 
