@@ -26,7 +26,7 @@ a.下载并安装arduino IDE
 
 b.下载完成后打开arduino IDE选择首选项
 
-![](../images/scitech_tools/cam0.PNG)
+![](../../images/scitech_tools/cam0.PNG)
 
 打开配置后，添加附加开发板管理器网址（可直接复制下面的网址）
 
@@ -35,15 +35,15 @@ https://dl.espressif.com/dl/package_esp32_index.json
 http://arduino.esp8266.com/stable/package_esp8266com_index.json
 ```
 
-![](../images/scitech_tools/cam2.PNG)
+![](../../images/scitech_tools/cam2.PNG)
 
 c.打开工具-开发板管理器，然后搜索esp32
 
-![](../images/scitech_tools/cam3.PNG)
+![](../../images/scitech_tools/cam3.PNG)
 
 选第二个esp32 by Espressif点击安装，等待安装完毕
 
-![](../images/scitech_tools/cam4.png)
+![](../../images/scitech_tools/cam4.png)
 
 如因网速原因安装较慢可使用离线方法，相关文件和安装方法已上传百度云盘。
 
