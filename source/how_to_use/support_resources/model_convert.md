@@ -230,6 +230,8 @@ cv2.destroyAllWindows()
 
 **行空板上部署MMEdu模型效果示例：**
 
+
+
 ![](../../images/model_convert/DeploymentDemonstration.gif)
 
 ### 参考项目：
