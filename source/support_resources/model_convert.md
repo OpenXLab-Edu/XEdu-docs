@@ -68,7 +68,7 @@ model.convert(checkpoint=checkpoint, out_file=out_file)
 
 模型转换后生成一个ONNX模型和示例代码，示例代码的使用详见[后文](https://xedu.readthedocs.io/zh/master/support_resources/model_convert.html#id7)。
 
-同时我们也为您提供了一些我们转换好的ONNX模型。
+此外，我们也为提供了一些我们帮您做好转换的ONNX模型（MMEdu）。
 
 下载链接：[https://aicarrier.feishu.cn/drive/folder/NozifkbMKlojyodZVpDcYdvonR8](https://aicarrier.feishu.cn/drive/folder/NozifkbMKlojyodZVpDcYdvonR8)
 
@@ -108,7 +108,7 @@ model.convert(checkpoint="basenn_cd.pth",out_file="basenn_cd.onnx")
 
 为了帮助初学者快速使用，使用XEdu工具转换后除了会生成ONNX模型，还会生成一段示例代码，借助示例代码可以完成模型的快速应用。
 
-### MMEdu模型转换后示例代码
+### MMEdu模型转换后的示例代码
 
 ```
 from XEdu.hub import Workflow as wf
@@ -126,9 +126,9 @@ result = mm.format_output(lang="zh")
 mm.show(img)
 ```
 
-观察注释可得，修改待推理图像为您想要推理的图像路径，即可展示转换后模型的效果。此处代码借助XEduHub库实现MMEdu模型推理，安装方便，且方便部署，下文介绍几种修改示例代码完成模型应用和部署的方法。
+观察注释可得，修改待推理图像为您想要推理的图像路径，即可展示转换后模型的效果。此处代码借助XEduHub库实现MMEdu模型推理，安装方便，且方便部署，后文介绍几种修改示例代码完成模型应用和部署的方法。
 
-### BaseNN模型转换后示例代码
+### BaseNN模型转换后的示例代码
 
 ```
 from XEdu.hub import Workflow as wf
@@ -144,7 +144,7 @@ res = basenn.inference(data=table)
 result = basenn.format_output(lang="zh")
 ```
 
-观察注释可得，修改待推理数据为您想要推理的数据（注意需与训练数据的特征数保持一致，且是二维数组），即可展示转换后模型的效果。此处代码借助XEduHub库实现BaseNN模型推理，安装方便，且方便部署，下文介绍几种修改示例代码完成模型应用和部署的方法。
+观察注释可得，修改待推理数据为您想要推理的数据（注意需与训练数据的特征数保持一致，且是二维数组），即可展示转换后模型的效果。此处代码借助XEduHub库实现BaseNN模型推理，安装方便，且方便部署，后文介绍几种修改示例代码完成模型应用和部署的方法。
 
 ## 五、模型应用和部署
 
@@ -161,7 +161,7 @@ result = basenn.format_output(lang="zh")
 
 通过遵循这些步骤，您可以将模型成功部署到实际应用场景中，实现模型的价值。在下面的示例代码中，我们将展示如何将转换后的模型应用到实际问题中。
 
-### 1.连接摄像头
+### 1.连接摄像头实现拍照识别
 
 MMEdu训练并转换的模型基本可以连接摄像头进行使用，在示例代码中加入cv2调用摄像头的代码即可。
 
