@@ -12,18 +12,18 @@ MobileNetV2是Google对MobileNetV1提出的改良版本。MobileNets系列的本
 传统的标准卷积操作在M通道图像的基础上，准备得到N个特征图，使用的基础卷积核尺寸为$(W \cdot H)$。
 每一个特征图对应一个filter，需要用M个小卷积核进行卷积，即每一个filter为$(W \cdot H \cdot M)$个参数，而这样的操作重复N次，就得到了N个特征图，即总参数为$(W \cdot H \cdot M \cdot N)$。
 
-![](../../images/dl_library/TraditionalConvolution.png)
+![](../../../images/dl_library/TraditionalConvolution.png)
 
 而为了简化这一计算过程，采用两次计算：
 我们首先在深度方向进行卷积（深度卷积、逐通道卷积），先改变特征图的大小而不改变特征图的数量，即输入是M个通道，输出也是M个通道，先不涉及通道数的变化：
 
-![](../../images/dl_library/dwConv.png)
+![](../../../images/dl_library/dwConv.png)
 
 可以看到，每一个filter都是单层，这一步的参数量为$(W \cdot H \cdot M)$.
 
 此时特征图大小已经改变，只需要从M维映射到N维即可。我们需要对每个点进行卷积（逐点卷积），添加N个filters，每个filter尺寸为$(1 \times 1 \cdot M)$，也就是我们常说的加权平均：
 
-![](../../images/dl_library/pwConv.png)
+![](../../../images/dl_library/pwConv.png)
 
 可以看到，逐点卷积通过对老通道作N次“加权平均数”的运算，得到了N个新的特征图。这一步的参数量为$(1 \times 1 \cdot M \cdot N)$
 
@@ -34,7 +34,7 @@ $$
 $$
 在网络中的大部分层中，我们使用的是$3 \times 3$的卷积核，而N一般是几十到几百的数量级，因此一般参数可以缩减到传统方法的九分之一。而在实际测试中，原论文指出，准确度仅有1.1%的减少，但是参数量缩减到约七分之一：
 
-![](../../images/dl_library/v1Compare.PNG)
+![](../../../images/dl_library/v1Compare.PNG)
 
 ## 特点：Linear Bottleneck
 
@@ -45,7 +45,7 @@ X' = T^{-1}(Relu(T \cdot X))
 $$
 的操作。如果没有任何信息损失，$X'$和$X$就会是完全一致的，论文作者给出的结果是：
 
-![](../../images/dl_library/jw.PNG)
+![](../../../images/dl_library/jw.PNG)
 
 可以很直接的看出，维度越高，Relu造成的损失越小，而在低维度的情况下，信息失真很严重，这样会造成很多卷积核的死亡（权重为0）。
 于是作者在某些层舍弃了Relu，采用了线性的变化函数，进行了一次升维的操作，作者将其称之为"Linear Bottleneck"。此部分的细节我们不做深入阐述，这一步的作用就是给原网络升维，从而避免了很多卷积核的死亡。
@@ -54,7 +54,7 @@ $$
 
 至此我们给出网络结构：
 
-![](../../images/dl_library/v2Arch.PNG)
+![](../../../images/dl_library/v2Arch.PNG)
 
 可以从网络结构中看到上面我们描述的深度卷积层（conv2d）和逐点卷积层（conv2d 1x1）。网络结构肉眼可见的简洁和清晰，而效果也不俗。
 

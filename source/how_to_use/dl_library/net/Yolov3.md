@@ -15,7 +15,7 @@ end-to-end的意思是，输入是最原始的数据，输出是想要得到的�
 
 Yolo中的检测是一个回归问题，把受检测图片划分为$S \cdot S$个格子，然后对于每一个格子，预测五个值，(x,y,w,h,confidence)。
 
-![](../../images/dl_library/grids.PNG)
+![](../../../images/dl_library/grids.PNG)
 
 * x,y 分别为boundingbox的中心坐标（相对于本格子）
 * w,h 分别为boundingbox的宽度和高度
@@ -24,11 +24,11 @@ Yolo中的检测是一个回归问题，把受检测图片划分为$S \cdot S$�
 生成的时候要对每个格子生成$2 \cdot boundingbox + classes$数量的预测值。总共就是$(S \cdot S \cdot (2 \cdot B + C))$个值。
 一个总的流程大意图如下：
 
-![](../../images/dl_library/process.PNG)
+![](../../../images/dl_library/process.PNG)
 
 以上原理是Yolov1的原理和思想，v3与其基本思想一致，网络结构上有一些差异，v3的网络结构如下图:
 
-![](../../images/dl_library/Net.PNG)
+![](../../../images/dl_library/Net.PNG)
 
 其网络结构有53个卷积层。
 

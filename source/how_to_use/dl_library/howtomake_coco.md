@@ -20,7 +20,7 @@ XEdu中MMEdu的MMDetection模块支持的数据集类型是COCO，很多时候�
 #### 第二步：标注图片
 
 使用熟悉的标注方式标注图片，如可点击链接进入<a href="https://www.openinnolab.org.cn/pjlab/projects/channel">浦育在线工具</a>页面，再点击“人工智能工坊”，在“数据标注”板块创建数据标注项目实践。
-![](../images/dl_library/entrypage.png)
+![](../../images/dl_library/entrypage.png)
 
 #### 第三步：转换成COCO格式
 
@@ -67,9 +67,9 @@ ds.make_dataset(r"/data/HZQV42", src_format="INNOLAB",train_ratio = 0.8, test_ra
 - LabelMe：麻省理工（MIT）的计算机科学和人工智能实验室（CSAIL）研发的图像标注工具，标注格式为LabelMe，网上较多LabelMe转VOC、COCO格式的脚本，可以标注矩形、圆形、线段、点。标注语义分割、实例分割数据集尤其推荐。
 - 安装与打开方式：`pip install labelme`安装完成后输入`labelme`即可打开。
 
-![](../images/dl_library/pipinstalllabelme.png)
-![](../images/dl_library/openlabelme.png)
-![](../images/dl_library/labelme.jpeg)
+![](../../images/dl_library/pipinstalllabelme.png)
+![](../../images/dl_library/openlabelme.png)
+![](../../images/dl_library/labelme.jpeg)
 
 #### 第三步：转换成COCO标注格式
 
