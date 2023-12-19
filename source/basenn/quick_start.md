@@ -231,7 +231,7 @@ model = nn()
 
 ### 第2步 载入数据
 
-tangccc.npz是本项目的文本数据，源于互联网，包括57580首唐诗。npz是一种用于存储NumPy数组数据的文件格式。
+[tangccc.npz](https://download.openxlab.org.cn/models/yikshing/bash/weight/tangccc)是本项目的文本数据，源于互联网，包括57580首唐诗。npz是一种用于存储NumPy数组数据的文件格式。
 
 npz文件是一种方便的方式来保存和加载NumPy数组，通常用于在不同的Python程序之间或不同的计算环境中共享数据。
 
