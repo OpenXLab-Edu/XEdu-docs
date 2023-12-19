@@ -8,15 +8,15 @@
 
 实现的功能是掌控板监听现实环境，当其分贝超过某一阈值时，掌控板开始进行录音，将掌控板收集到的语音信息通过SIoT传输至行空板，并在行空板上执行推理后将结果返回，掌控板监听SIoT消息后，将结果回显。
 
-![](../../images/support_resources/siot_arch.png)
+![](../../../images/support_resources/siot_arch.png)
 
-![](../../images/support_resources/function.png)
+![](../../../images/support_resources/function.png)
 
 ## 二、项目设计
 
 将掌控板作为下位机，获取语音，通过[siot](https://xedu.readthedocs.io/zh/latest/scitech_tools/siot.html)协议（mqtt教育版）发送至行空板，行空板作为上位机，执行监听siot，语音转图像，onnx后端推理，发送执行命令等功能，结合传统物联网教学设计，形成一个完整的物联网语音读取，传输，识别和反馈的设计流程。
 
-![](../../images/support_resources/Physical_Demo.jpg)
+![](../../../images/support_resources/Physical_Demo.jpg)
 
 ## 三、背景知识
 
@@ -60,18 +60,18 @@ duration)**
 **音频监听：**
 掌控板需要持续发送声音数据，行空板进行实时检测，如果检测到环境中的声音高于设定的阈值，就需要开始记录音频数据并在录制结束后，将其送进行音频预处理后送入推理机进行推理。如下图所示，当音频的能量进入阈值区域内中才开始录音。
 
-![](../../images/support_resources/AudioThreshold.jpg)
+![](../../../images/support_resources/AudioThreshold.jpg)
 
 **批量生成时频谱图：** 详情见
 [行空板上温州话识别](https://www.openinnolab.org.cn/pjlab/project?id=63b7c66e5e089d71e61d19a0&backpath=/pjlab/projects/list#public)
 和
 [用卷积神经网络实现温州话语音分类](https://www.openinnolab.org.cn/pjlab/project?id=6379b63262c7304e16ed6d82&backpath=/pjlab/projects/list#public)。
 
-![](../../images/support_resources/WenzhouDialectRecognitionEffectDisplay.png)
+![](../../../images/support_resources/WenzhouDialectRecognitionEffectDisplay.png)
 
 通过上述两个项目中的内置脚本，可将音频文件，批量转换为时频谱图。具体来说即是将以音频格式为结尾的文件转换为以图像格式为结尾的文件，以期可用分类模型进行推理。
 
-![](../../images/support_resources/Audio2Picture.jpg)**wav音频预处理**：要想将接收到的wav文件送入ONNXRruntime推理机进行推理，还需对得到的wav音频文件进行图像预处理，具体的函数参考如下：
+![](../../../images/support_resources/Audio2Picture.jpg)**wav音频预处理**：要想将接收到的wav文件送入ONNXRruntime推理机进行推理，还需对得到的wav音频文件进行图像预处理，具体的函数参考如下：
 
     def wav2tensor(file_path, backbone):
         """
@@ -91,11 +91,11 @@ duration)**
                 wave = signal.resample(wave, num)  # 对数据进行重采样
         spec = librosa.feature.melspectrogram(wave, sr=fs, n_fft=512)
         spec = librosa.power_to_db(spec, ref=np.max)
-
+    
         spec_new = (((spec + 80) / 80) * 255).astype(np.uint8)
         h, w = spec_new.shape
         rgb_matrix = np.array([color_map[i] for i in spec_new.flatten()]).reshape(h, w, 3)
-
+    
         image = Image.fromarray(rgb_matrix.astype(np.uint8))
         image = np.array(image)
         dt = ImageData(image, backbone=backbone)
@@ -130,13 +130,13 @@ backbone（推理机网络模型选择），并返回推理机所需的数据类
 通过USB串口连接行空板后，通过浏览器访问本地地址
 10.1.2.3，进入行空板编程的界面。如有问题可自行查找行空板说明教程。
 
-![](../../images/support_resources/ProgrammingDisplayInterfaceForUnihiker.jpg)
+![](../../../images/support_resources/ProgrammingDisplayInterfaceForUnihiker.jpg)
 
 设计程序逻辑：
 
 根据项目整体设计，通过流程图描述想要在上运行的程序逻辑，以进一步的清晰自己的程序想要实现的功能。
 
-![](../../images/support_resources/unihikerLogic.png)
+![](../../../images/support_resources/unihikerLogic.png)
 
 下面编写代码，将程序逻辑中描述的内容通过代码编程的形式实现出来。
 
@@ -189,13 +189,13 @@ ONNX推理：
 
 进入掌控板，通过USB串口进行设备的连接，成功连接后，mPython的中心会出现绿色圆圈，并显示已连接。如有问题可自行查找mPython和掌控板相关说明文档。
 
-![](../../images/support_resources/Openmpython.jpg)
+![](../../../images/support_resources/Openmpython.jpg)
 
 设计程序逻辑：
 
 根据项目整体设计，通过流程图描述想要在掌控板上运行的程序逻辑，以进一步的清晰自己的程序想要实现的功能。
 
-![](../../images/support_resources/mPythonLogic.png)
+![](../../../images/support_resources/mPythonLogic.png)
 
 下面编写代码，将程序逻辑中描述的内容通过代码编程的形式实现出来。
 
@@ -255,4 +255,4 @@ on_button_a_pressed：将on_button_a_pressed函数赋值给button_a的event_pres
 
 ### 效果演示
 
-![](../../images/support_resources/mPython_siot_demo.gif)
+![](../../../images/support_resources/mPython_siot_demo.gif)

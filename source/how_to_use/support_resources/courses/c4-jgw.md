@@ -50,7 +50,7 @@
 
 **课时安排：**
 
-![](../../images/support_resources/jgwkc.png)
+![](../../../images/support_resources/jgwkc.png)
 
 **教学资源设计：**
 

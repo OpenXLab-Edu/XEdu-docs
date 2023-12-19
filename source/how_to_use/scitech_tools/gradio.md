@@ -35,7 +35,7 @@ iface.launch()
 
 上面的示例中，定义了一个名为"greet"的函数，它接受一个名字作为输入，并返回一个带有问候语的字符串。然后使用`gr.Interface`创建一个接口，指定输入类型为文本，输出类型也为文本。最后，使用`launch`方法来启动界面。运行效果如下：
 
-![](../images/scitech_tools/gradiodemo1.png)
+![](../../images/scitech_tools/gradiodemo1.png)
 
 在网页中输入文字“xedu”后即可输出“Hello xedu”。函数“greet”的参数就是input的信息，返回的信息就输出到网页，好容易理解。
 
@@ -67,7 +67,7 @@ iface.launch(share=True)
 
 运行效果如下：
 
-![](../images/scitech_tools/gradiodemo2.png)
+![](../../images/scitech_tools/gradiodemo2.png)
 
 您可以根据您的模型进行相应的修改和调整，以适应您的需求。例如对输出结果做一些修饰，参考代码如下：
 
@@ -111,4 +111,4 @@ iface.launch(share=True)
 
 运行效果如下：
 
-![](../images/scitech_tools/gradiodemo3.png)
+![](../../images/scitech_tools/gradiodemo3.png)

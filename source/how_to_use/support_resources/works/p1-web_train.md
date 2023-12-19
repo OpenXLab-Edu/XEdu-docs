@@ -7,7 +7,7 @@
 
 提供了Web前端模型训练功能的国内人工智能学习平台，主要有浦育、英荔和腾讯扣叮这几类。在Web前端训练一个AI模型的流程，和常见的机器学习流程是一致的，都要经历数据采集、模型训练和模型推理这三个环节，如图所示。
 
-![](../../images/support_resources/web.PNG)
+![](../../../images/support_resources/web.PNG)
 
 相对而言，浦育平台（OpenInnoLab）在TensorFlow.js的基础上做了二次开发，功能最为强大。其不仅实现了模型训练和推理演示，还与积木编程无缝融合，学生可以将模型推理结果应用在类似Scratch的编程上，与舞台上的各种角色互动。而英荔平台似乎是谷歌Teachable Machine的镜像网站，除了在线训练模型外，还能够下载训练好模型，并且提供了TensorFlow.js模型和h5模型（Keras框架使用的模型）的转换。
 
@@ -76,17 +76,17 @@ DFRobot的工程团队为BaseDeploy库设计了积木块，代表我们可以使
 
 首先安装库：BaseDeploy
 
-![](../../images/support_resources/install.png)
+![](../../../images/support_resources/install.png)
 
 然后加载积木块：切换至“模块”编程—打开扩展—选择用户库—输入库链接—加载积木库。
 
 库链接：[https://gitee.com/liliang9693/ext-BaseDeploy](https://gitee.com/liliang9693/ext-BaseDeploy)
 
-![](../../images/support_resources/bd.png)
+![](../../../images/support_resources/bd.png)
 
 最后编写程序，填写模型名称，将图片传入进行推理仅需4个积木块即可完成（程序里面需要资源文件需先上传）。
 
-![](../../images/support_resources/bd2.png)
+![](../../../images/support_resources/bd2.png)
 
 模型该如何上传到行空板上？打开**文件系统**，将文件拖入**项目中的文件**即可，在点击**运行**的时候Mind+会将**项目中的文件**里面的所有文件一起上传到行空板的mindplus文件夹中运行。
 

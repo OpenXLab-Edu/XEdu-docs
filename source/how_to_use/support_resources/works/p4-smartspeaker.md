@@ -52,7 +52,7 @@
 5. 在测试集中评估迁移学习模型的性能，确定模型对以前未见过的数据进行分类的能力。
 6. 如有必要，可通过调整其超参数、添加或删除网络层来进一步提高模型性能。
 
-![](../../images/support_resources/training_flow.png)
+![](../../../images/support_resources/training_flow.png)
 
 **图3** 模型训练流程图
 
@@ -117,7 +117,7 @@ model.convert(checkpoint = "ResNet18.pth",out_file="ResNet18.onnx")
 
 其结果如下图所示：
 
-![](../../images/support_resources/IntelligentVoiceAssistant.png)
+![](../../../images/support_resources/IntelligentVoiceAssistant.png)
 
 ## 五、总结
 

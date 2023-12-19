@@ -213,11 +213,11 @@ cv2.destroyAllWindows()
 
   模型该如何上传到行空板上？打开**文件系统**，将文件拖入**项目中的文件**即可，在点击**运行**的时候Mind+会将**项目中的文件**里面的所有文件一起上传到行空板的mindplus文件夹中运行。
 
-  ![](../images/support_resources/upload2.png)
+  ![](../../images/support_resources/upload2.png)
 
 - 如使用jupyter notebook编程，打开电脑的chrome浏览器，输入板子的ip`10.1.2.3`，就可以打开界面，此处有文件上传。
 
-  ![](../images/support_resources/upload.png)
+  ![](../../images/support_resources/upload.png)
 
 #### 第三步：安装库
 
@@ -230,7 +230,7 @@ cv2.destroyAllWindows()
 
 **行空板上部署MMEdu模型效果示例：**
 
-![](../images/model_convert/DeploymentDemonstration.gif)
+![](../../images/model_convert/DeploymentDemonstration.gif)
 
 ### 参考项目：
 

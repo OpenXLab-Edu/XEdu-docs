@@ -48,7 +48,7 @@ uvicorn.run(app=app, host="0.0.0.0", port=8099, workers=1)
 
 执行运行命令后，FastAPI启动成功图如下：
 
-![](../images/scitech_tools/FastAPIstart.JPG)
+![](../../images/scitech_tools/FastAPIstart.JPG)
 
 ### 3.2 上传一个文件
 
@@ -86,4 +86,4 @@ uvicorn.run(app=app, host="0.0.0.0", port=8099, workers=1)
 
 - 推理函数：负责利用已经训练好的模型对输入数据进行预测和分类，并返回相应的结果。
 
-![](../images/scitech_tools/FastAPIdeploy.png)
+![](../../images/scitech_tools/FastAPIdeploy.png)
