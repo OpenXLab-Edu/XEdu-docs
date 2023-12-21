@@ -18,9 +18,9 @@
 - 方式三：[BaseML](../baseml.html)
 ## Step5: 模型验证
 验证模型的效果。
-- 方式一：[MMEdu](../mmedu/quick_start.html#6-模型推理)
-- 方式二：[BaseNN](../basenn/quick_start.html#第5步-模型测试)
-- 方式三：[BaseML](../baseml/quick_start.html#推理)
+- 方式一：[MMEdu](../mmedu/quick_start.html#id7)
+- 方式二：[BaseNN](../basenn/quick_start.html#id10)
+- 方式三：[BaseML](../baseml/quick_start.html#id9)
 ## Step6: 模型应用
 使用规范的方式应用模型，可以添加相关的多模态操作，使项目更丰富，得以真正解决现实问题。
 - 方式一：[XEduHub](../xedu_hub.html)
