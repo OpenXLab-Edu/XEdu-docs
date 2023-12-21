@@ -10,3 +10,5 @@
    about/version_update.md
    about/milestones.md
    about/installation.md
+   about/functions.md
+   about/errorcode.md
