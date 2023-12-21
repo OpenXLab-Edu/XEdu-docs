@@ -13,15 +13,15 @@
 
 ## Step4: 模型训练
 将按照格式要求整理好的数据输入选择的模型，进行训练。如果效果不够好，调整超参数后，继续训练。或者寻找预训练模型，在此基础上调优。
-- 方式一：[MMEdu](../mmedu.rst)
-- 方式二：[BaseNN](../basenn.rst)
-- 方式三：[BaseML](../baseml.rst)
+- 方式一：[MMEdu](../mmedu.html)
+- 方式二：[BaseNN](../basenn.html)
+- 方式三：[BaseML](../baseml.html)
 ## Step5: 模型验证
 验证模型的效果。
-- 方式一：[MMEdu](../mmedu/quick_start.md#6-模型推理)
-- 方式二：[BaseNN](../basenn/quick_start.md#第5步-模型测试)
-- 方式三：[BaseML](../baseml/quick_start.md#推理)
+- 方式一：[MMEdu](../mmedu/quick_start.html#6-模型推理)
+- 方式二：[BaseNN](../basenn/quick_start.html#第5步-模型测试)
+- 方式三：[BaseML](../baseml/quick_start.html#推理)
 ## Step6: 模型应用
 使用规范的方式应用模型，可以添加相关的多模态操作，使项目更丰富，得以真正解决现实问题。
-- 方式一：[XEduHub](../xedu_hub.rst)
-- 方式二：[BaseDeploy](../basedt.rst)
+- 方式一：[XEduHub](../xedu_hub.html)
+- 方式二：[BaseDeploy](../basedt.html)
