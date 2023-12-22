@@ -46,11 +46,12 @@ out_file="catdog.onnx"
 model.convert(checkpoint=checkpoint, out_file=out_file)
 ```
 
-这段代码是完成分类模型的转换，接下来对为您`model.convert`函数的各个参数：
+`model.convert`函数中有四个参数可以设置：
 
-`checkpoint`：选择想要进行模型转换的权重文件，以.pth为后缀。
-
-`out_file`：模型转换后的输出文件路径。
+- `checkpoint`(string) - 必需参数，选择想要进行模型转换的权重文件，以.pth为后缀。
+- `out_file`(string) - 必需参数，指定模型转换后的输出文件路径。
+- `opset_version`(int) - 可选参数，设置模型算子集的版本，默认为11。
+- `ir_version`(int) - 可选参数，设置模型转化中间表示的版本，默认为6。
 
 
 类似的，目标检测模型转换的示例代码如下：
