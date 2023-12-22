@@ -86,7 +86,12 @@ keypoints,img_with_keypoints = body.inference(data='data/body.jpg',img_type='pil
 format_result = body.format_output(lang='zh')# 参数lang设置了输出结果的语言，默认为中文
 ```
 
-`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。参数`lang`设置了输出结果的语言，默认为中文。
+`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
+
+`format_output()`中共有两个参数可以设置：
+
+- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
 
 `format_result`以字典形式存储了推理结果，共有两个键：`关键点坐标`和`分数`。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标，而分数则是对应下标的关键点的分数，以一维数组形式保存。
 
@@ -175,7 +180,12 @@ keypoints,img_with_keypoints = face.inference(data='data/face.jpg',img_type='pil
 format_result = face.format_output(lang='zh')# 将推理结果进行格式化输出
 ```
 
-`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。参数`lang`设置了输出结果的语言，如果不指定默认为中文。
+`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
+
+`format_output()`中共有两个参数可以设置：
+
+- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
 
 `format_result`以字典形式存储了推理结果，共有两个键：`关键点坐标`和`分数`。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标，而分数则是对应下标的关键点的分数，以一维数组形式保存。
 
@@ -262,8 +272,12 @@ keypoints,img_with_keypoints = hand.inference(data='data/hand.jpg',img_type='pil
 format_result = hand.format_output(lang='zh')# 将推理结果进行格式化输出
 ```
 
-`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。参数`lang`设置了输出结果的语言，如果不指定默认为中文。
+`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
 
+`format_output()`中共有两个参数可以设置：
+
+- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
 `format_result`以字典形式存储了推理结果，共有两个键：`关键点坐标`和`分数`。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标，而分数则是对应下标的关键点的分数，以一维数组形式保存。
 
 ```python
@@ -345,7 +359,12 @@ keypoints,img_with_keypoints = wholebody.inference(data='data/wholebody.jpg',img
 format_result = wholebody.format_output(lang='zh')# 将推理结果进行格式化输出
 ```
 
-`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。参数`lang`设置了输出结果的语言，如果不指定默认为中文。
+`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
+
+`format_output()`中共有两个参数可以设置：
+
+- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
 
 `format_result`以字典形式存储了推理结果，共有两个键：`关键点坐标`和`分数`。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标，而分数则是对应下标的关键点的分数，以一维数组形式保存。
 
@@ -446,7 +465,12 @@ format_result = det_coco.format_output(lang='zh')# 将推理结果进行格式�
 
 ![](../images/xeduhub/det_coco_format.png)
 
-`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。参数`lang`设置了输出结果的语言，如果不指定默认为中文。
+`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
+
+`format_output()`中共有两个参数可以设置：
+
+- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
 
 `format_result`以字典形式存储了推理结果，共有三个键：`检测框`、`分数`和`类别`。检测框以二维数组形式保存了每个检测框的坐标信息[x,y,w,h]，而分数则是对应下标的检测框的置信度，以一维数组形式保存，类别则是检测框中对象所属的类别，以一维数组形式保存。
 
@@ -529,7 +553,12 @@ result,img_with_box = det_body.inference(data='data/det_body.jpg',img_type='pil'
 format_result = det_body.format_output(lang='zh')# 将推理结果进行格式化输出
 ```
 
-`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。参数`lang`设置了输出结果的语言，如果不指定默认为中文。
+`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
+
+`format_output()`中共有两个参数可以设置：
+
+- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
 
 `format_result`以字典形式存储了推理结果，共有两个键：`检测框`、`分数`。检测框以二维数组形式保存了每个检测框的坐标信息[x,y,w,h]，而分数则是对应下标的检测框的置信度，以一维数组形式保存。
 
@@ -608,7 +637,12 @@ result,img_with_box = det_face.inference(data='data/det_face.jpg',img_type='pil'
 format_result = det_face.format_output(lang='zh')# 将推理结果进行格式化输出
 ```
 
-`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。参数`lang`设置了输出结果的语言，如果不指定默认为中文。
+`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
+
+`format_output()`中共有两个参数可以设置：
+
+- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
 
 `format_result`以字典形式存储了推理结果，只有一个键：`检测框`、`分数`。检测框以二维数组形式保存了每个检测框的坐标信息[x,y,w,h]。需要注意的是由于使用的为opencv的人脸检测模型，因此在`format_output`时缺少了分数这一指标。
 
@@ -690,7 +724,12 @@ format_result = det_hand.format_output(lang='zh')# 将推理结果进行格式�
 
 ![](../images/xeduhub/det_hand_format.png)
 
-`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。参数`lang`设置了输出结果的语言，如果不指定默认为中文。
+`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
+
+`format_output()`中共有两个参数可以设置：
+
+- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
 
 `format_result`以字典形式存储了推理结果，共有两个键：`检测框`、`分数`。检测框以二维数组形式保存了每个检测框的坐标信息[x,y,w,h]，而分数则是对应下标的检测框的置信度，以一维数组形式保存。
 
@@ -764,6 +803,11 @@ format_result = cls.format_output(lang='zh')#推理结果格式化输出
 ```
 
 `format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
+
+`format_output()`中共有两个参数可以设置：
+
+- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
 
 `format_result`是一个字典，以格式化的方式展示了这张图片最有可能的分类结果。预测值表示图片分类标签在所有一千个分类中的索引，分数是属于这个分类的概率，预测类别是分类标签的内容。
 
@@ -936,7 +980,12 @@ ocr_format_result = ocr.format_output(lang="zh")
 
 ![](../images/xeduhub/ocr_format.png)
 
-`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。参数`lang`设置了输出结果的语言，如果不指定默认为中文。
+`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
+
+`format_output()`中共有两个参数可以设置：
+
+- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
 
 `format_output`的结果以字典形式存储了推理结果，共有三个键：`检测框`、`分数`和`文本`。检测框以三维数组形式保存了每个检测框的四个顶点的[x,y]坐标，而分数则是对应下标的检测框分数，以一维数组形式保存。文本则是每个检测框中识别出的文本，以一维数组形式保存。
 
@@ -1022,7 +1071,12 @@ result,img = drive.inference(data='demo/drive.png',img_type='cv2') # 模型推�
 format_result = drive.format_output(lang='zh')# 将推理结果进行格式化输出
 ```
 
-`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。参数`lang`设置了输出结果的语言，如果不指定默认为中文。
+`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
+
+`format_output()`中共有两个参数可以设置：
+
+- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
 
 `format_result`以字典形式存储了推理结果，有四个键：`检测框`、`分数`、`车道线掩码`、`可行驶区域掩码`。检测框以二维数组形式保存了每个检测框的坐标信息[x,y,w,h]。
 
@@ -1109,7 +1163,12 @@ format_result = mmcls.format_output(lang="zh")# 推理结果格式化输出
 
 ![](../images/xeduhub/mmcls_format.png)
 
-`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。参数`lang`设置了输出结果的语言，如果不指定默认为中文。
+`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
+
+`format_output()`中共有两个参数可以设置：
+
+- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
 
 `format_result`以字典形式保存了模型的推理结果，包括所属`标签`、`置信度`、以及`预测结果`。
 
@@ -1188,7 +1247,12 @@ format_result = mmdet.format_output(lang="zh")# 推理结果格式化输出
 
 ![](../images/xeduhub/mmdet_format.png)
 
-`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。参数`lang`设置了输出结果的语言，如果不指定默认为中文。
+`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
+
+`format_output()`中共有两个参数可以设置：
+
+- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
 
 `format_output`的结果是一个数组，里面保存了结果字典。该字典有四个键：`标签`、`置信度`、`坐标`以及`预测结果`。其中坐标表示了检测框的两个顶点：左上(x1,y1)和右下(x2,y2)。
 
@@ -1260,7 +1324,12 @@ format_result = basenn.format_output()
 
 ![](../images/xeduhub/basenn_format.png)
 
-`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。参数`lang`设置了输出结果的语言，如果不指定默认为中文。
+`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
+
+`format_output()`中共有两个参数可以设置：
+
+- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
 
 `format_output`的结果是一个结果字典，这个字典的第一个元素有两个键，`预测值`、`分数`，代表着该手写数字的分类标签以及属于该分类标签的概率。
 
@@ -1315,6 +1384,13 @@ format_output = baseml.format_output(lang='zh')# 推理结果格式化输出
 ```
 
 ![](../images/xeduhub/baseml_format.png)
+
+`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
+
+`format_output()`中共有两个参数可以设置：
+
+- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
 
 `format_result`以字典形式保存了模型的推理结果，由于使用的是聚类模型，输出结果为这两个特征数据所对应的聚类标签。
 
