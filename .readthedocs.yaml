@@ -33,5 +33,6 @@ python:
 sphinx:
   configuration: source/conf.py
 
-
+formats:
+  - epub
 
