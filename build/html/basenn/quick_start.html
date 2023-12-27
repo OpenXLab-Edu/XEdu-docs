@@ -63,7 +63,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#id11">快速体验</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">挑战使用BaseNN完成第一个回归项目：波士顿房价预测</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id12">挑战使用BaseNN完成第一个回归项目：房价预测</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id13">第0步 引入包</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id14">第1步 声明模型</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id15">第2步 载入数据</a></li>
@@ -93,9 +93,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basedt.html">数据处理库BaseDT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basedeploy.html">模型部署库BaseDeploy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../scitech_tools.html">相关科创工具</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../support_resources.html">学习支持和资源获取</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dl_library.html">深度学习知识库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_use.html">如何用XEdu借助AI解决真实问题</a></li>
 </ul>
 
         </div>
@@ -234,8 +232,8 @@
 <p>用BaseNN库搭建搭建鸢尾花分类模型项目地址：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=641bc2359c0eb14f22fdbbb1&amp;sc=635638d69ed68060c638f979#public">https://www.openinnolab.org.cn/pjlab/project?id=641bc2359c0eb14f22fdbbb1&amp;sc=635638d69ed68060c638f979#public</a></p>
 </section>
 <section id="id12">
-<h2>挑战使用BaseNN完成第一个回归项目：波士顿房价预测<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h2>
-<p>波士顿房价数据集（Boston Housing Dataset）是一个著名的数据集，经常用于机器学习和统计分析中。该数据集包含波士顿郊区房屋的各种信息，包括房价和与房价可能相关的各种属性。选择了四个与房价关系较大的特征：RM (每栋住宅的平均房间数)、LSTAT (人口中较低地位的百分比)、PTRATIO (师生比例)、NOX (一氧化氮浓度) 。进行数据预处理后生成了已提取出只有这四列特征和预测值且做了归一化处理的训练集（house_price_data_norm_train.csv）、验证集（house_price_data_norm_val.csv），搭建模型进行训练，数据预处理的代码可参考原项目。</p>
+<h2>挑战使用BaseNN完成第一个回归项目：房价预测<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h2>
+<p>Boston Housing Dataset（波士顿房价数据集）是一个著名的数据集，经常用于机器学习和统计分析中。该数据集包含波士顿郊区房屋的各种信息，包括房价和与房价可能相关的各种属性。选择了四个与房价关系较大的特征：RM (每栋住宅的平均房间数)、LSTAT (人口中较低地位的百分比)、PTRATIO (师生比例)、NOX (一氧化氮浓度) 。进行数据预处理后生成了已提取出只有这四列特征和预测值且做了归一化处理的训练集（house_price_data_norm_train.csv）、验证集（house_price_data_norm_val.csv），搭建模型进行训练，数据预处理的代码可参考原项目。</p>
 <p>项目地址：</p>
 <p><a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=656d99e87e42e551fa5f89bd&amp;sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=656d99e87e42e551fa5f89bd&amp;sc=62f34141bf4f550f3e926e0e#public</a></p>
 <p>（用Chrome浏览器打开效果最佳）</p>
@@ -284,7 +282,7 @@
 <span class="c1"># 读取验证集</span>
 <span class="n">val_path</span> <span class="o">=</span> <span class="s1">&#39;house_price_data_norm_val.csv&#39;</span>
 <span class="n">val_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">val_path</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span> <span class="c1"># 读取特征列</span>
-<span class="n">val_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">val_path</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># 读取第4列</span>
+<span class="n">val_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">val_path</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># 读取预测值列</span>
 </pre></div>
 </div>
 <p>模型推理。</p>
@@ -326,7 +324,7 @@
 </section>
 <section id="id22">
 <h3>第2步 载入数据<a class="headerlink" href="#id22" title="Permalink to this heading"></a></h3>
-<p>tangccc.npz是本项目的文本数据，源于互联网，包括57580首唐诗。npz是一种用于存储NumPy数组数据的文件格式。</p>
+<p><a class="reference external" href="https://download.openxlab.org.cn/models/yikshing/bash/weight/tangccc">tangccc.npz</a>是本项目的文本数据，源于互联网，包括57580首唐诗。npz是一种用于存储NumPy数组数据的文件格式。</p>
 <p>npz文件是一种方便的方式来保存和加载NumPy数组，通常用于在不同的Python程序之间或不同的计算环境中共享数据。</p>
 <p>在该项目中可以使用<code class="docutils literal notranslate"><span class="pre">load_npz_data()</span></code>方法直接读取npz格式的数据到模型中</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">load_npz_data</span><span class="p">(</span><span class="s1">&#39;tangccc.npz&#39;</span><span class="p">)</span>

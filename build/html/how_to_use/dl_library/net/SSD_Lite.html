@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>目标检测模型SSD &mdash; OpenXLabEdu  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../../../about.html" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="目标检测模型Yolov3" href="Yolov3.html" />
+    <link rel="prev" title="目标检测模型Mask R-CNN" href="Mask_RCNN.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            OpenXLabEdu
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../xedu_hub.html">深度学习工具库XEduHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mmedu.html">计算机视觉库MMEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../basenn.html">神经网络库BaseNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../baseml.html">传统机器学习库BaseML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../easydl.html">EasyDL系列无代码工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../basedt.html">数据处理库BaseDT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../basedeploy.html">模型部署库BaseDeploy</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../how_to_use.html">如何用XEdu借助AI解决真实问题</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../introduction.html">简单说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction.html#ai">用AI解决问题的一般步骤</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../support_resources.html">学习支持和资源获取</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scitech_tools.html">相关科创工具</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../dl_library.html">深度学习知识库</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../parameter_explain.html">深度学习训练参数详解</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dataset_introduction.html">经典数据集介绍</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howtomake_imagenet.html">从零开始制作一个ImageNet格式数据集</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howtomake_coco.html">从零开始制作一个COCO格式数据集</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../network_introduction.html">经典网络模型介绍</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="lenet5.html">图像分类模型LeNet-5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RegNet.html">图像分类模型RegNet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RepVGG.html">图像分类模型RepVGG</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ShuffleNet_v2.html">图像分类模型ShuffleNet_v2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="VGG.html">图像分类模型VGG</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mobilenet.html">图像分类模型MobileNet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ResNet.html">图像分类模型ResNet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ResNeXt.html">图像分类模型ResNeXt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="FasterRCNN.html">目标检测模型Faster R-CNN</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Mask_RCNN.html">目标检测模型Mask R-CNN</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">目标检测模型SSD</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Yolov3.html">目标检测模型Yolov3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">OpenXLabEdu</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../how_to_use.html">如何用XEdu借助AI解决真实问题</a></li>
+          <li class="breadcrumb-item"><a href="../../dl_library.html">深度学习知识库</a></li>
+          <li class="breadcrumb-item"><a href="../network_introduction.html">经典网络模型介绍</a></li>
+      <li class="breadcrumb-item active">目标检测模型SSD</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/how_to_use/dl_library/net/SSD_Lite.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ssd">
+<h1>目标检测模型SSD<a class="headerlink" href="#ssd" title="Permalink to this heading"></a></h1>
+<p><a class="reference external" href="https://arxiv.org/pdf/1512.02325.pdf">SSD: Single Shot MultiBox Detector</a></p>
+<section id="id1">
+<h2>介绍<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>SSD是ECCV 2016上提出的一种目标检测算法，截至目前是主要的检测框架之一，相比Faster RCNN有明显的速度优势，相比YOLO又有明显的mAP优势。</p>
+</section>
+<section id="end-to-end">
+<h2>特点：end-to-end<a class="headerlink" href="#end-to-end" title="Permalink to this heading"></a></h2>
+<p>目标检测主流算法分成两个类型：</p>
+<p>（1）two-stage方法：RCNN系列</p>
+<p>通过算法产生候选框，然后再对这些候选框进行分类和回归</p>
+<p>（2）one-stage方法：yolo和SSD</p>
+<p>直接通过主干网络给出类别位置信息，不需要区域生成</p>
+<p>下图是给出的几类算法的精度和速度差异。</p>
+<p><img alt="../../../_images/ssd0.png" src="../../../_images/ssd0.png" /></p>
+</section>
+<section id="id2">
+<h2>优点<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>从YOLO中继承了将detection转化为regression的思路，一次完成目标定位与分类</p></li>
+<li><p>基于Faster RCNN中的Anchor，提出了相似的prior box</p></li>
+<li><p>加入基于特征金字塔（Pyramidal Feature Hierarchy）的检测方式，即在不同感受野的feature map上预测目标</p></li>
+<li><p>这些设计实现了简单的端到端的训练，而且即便使用低分辨率的输入图像也能得到高的精度</p></li>
+</ul>
+</section>
+<section id="id3">
+<h2>设计理念<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>采用多尺度特征图用于检测
+CNN网络一般前面的特征图比较大，后面会逐渐采用stride=2的卷积或者pool来降低特征图大小，这正如图3所示，一个比较大的特征图和一个比较小的特征图，它们都用来做检测。这样做的好处是比较大的特征图来用来检测相对较小的目标，而小的特征图负责检测大目标。</p></li>
+<li><p>采用卷积进行检测
+SSD直接采用卷积对不同的特征图来进行提取检测结果。对于形状为mnp的特征图，只需要采用33p这样比较小的卷积核得到检测值。
+（每个添加的特征层使用一系列卷积滤波器可以产生一系列固定的预测。）</p></li>
+<li><p>设置先验框
+SSD借鉴faster rcnn中ancho理念，每个单元设置尺度或者长宽比不同的先验框，预测的是对于该单元格先验框的偏移量，以及每个类被预测反映框中该物体类别的置信度。</p></li>
+</ul>
+</section>
+<section id="id4">
+<h2>模型结构<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<p><img alt="../../../_images/ssd1.png" src="../../../_images/ssd1.png" /></p>
+<p>VGG-Base作为基础框架用来提取图像的feature，Extra-Layers对VGG的feature做进一步处理，增加模型对图像的感受野，使得extra-layers得到的特征图承载更多抽象信息。待预测的特征图由六种特征图组成，6中特征图最终通过pred-layer得到预测框的坐标，置信度，类别信息。</p>
+</section>
+<section id="id5">
+<h2>结论<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<section id="id6">
+<h3>优点：<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<p>SSD算法的优点应该很明显：运行速度可以和YOLO媲美，检测精度可以和Faster RCNN媲美。</p>
+</section>
+<section id="id7">
+<h3>缺点：<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
+<p>需要人工设置prior box的min_size，max_size和aspect_ratio值。网络中prior box的基础大小和形状不能直接通过学习获得，而是需要手工设置。而网络中每一层feature使用的prior box大小和形状恰好都不一样，导致调试过程非常依赖经验。
+虽然使用了pyramdial feature hierarchy的思路，但是对于小目标的recall依然一般，这是由于SSD使用conv4_3低级feature去检测小目标，而低级特征卷积层数少，存在特征提取不充分的问题。</p>
+</section>
+</section>
+<section id="id8">
+<h2>参考文献<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h2>
+<div class="highlight-bibtex notranslate"><div class="highlight"><pre><span></span><span class="nc">@article</span><span class="p">{</span><span class="nl">Liu_2016</span><span class="p">,</span>
+<span class="w">   </span><span class="na">title</span><span class="p">=</span><span class="s">{SSD: Single Shot MultiBox Detector}</span><span class="p">,</span>
+<span class="w">   </span><span class="na">journal</span><span class="p">=</span><span class="s">{ECCV}</span><span class="p">,</span>
+<span class="w">   </span><span class="na">author</span><span class="p">=</span><span class="s">{Liu, Wei and Anguelov, Dragomir and Erhan, Dumitru and Szegedy, Christian and Reed, Scott and Fu, Cheng-Yang and Berg, Alexander C.}</span><span class="p">,</span>
+<span class="w">   </span><span class="na">year</span><span class="p">=</span><span class="s">{2016}</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Mask_RCNN.html" class="btn btn-neutral float-left" title="目标检测模型Mask R-CNN" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Yolov3.html" class="btn btn-neutral float-right" title="目标检测模型Yolov3" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2023 OpenXLabEdu.All Rights Reserved.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

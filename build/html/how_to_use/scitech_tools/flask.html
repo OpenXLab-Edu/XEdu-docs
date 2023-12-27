@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web库Flask &mdash; OpenXLabEdu  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Web库FastAPI" href="fastapi.html" />
+    <link rel="prev" title="开源硬件库pinpong" href="pinpong.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            OpenXLabEdu
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../xedu_hub.html">深度学习工具库XEduHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mmedu.html">计算机视觉库MMEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basenn.html">神经网络库BaseNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../baseml.html">传统机器学习库BaseML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../easydl.html">EasyDL系列无代码工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basedt.html">数据处理库BaseDT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basedeploy.html">模型部署库BaseDeploy</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../how_to_use.html">如何用XEdu借助AI解决真实问题</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../introduction.html">简单说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction.html#ai">用AI解决问题的一般步骤</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../support_resources.html">学习支持和资源获取</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../scitech_tools.html">相关科创工具</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="data_labeling.html">数据集标注工具</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pywebio.html">Web库PyWebIO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pysimplegui.html">GUI库PySimpleGUI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="siot.html">MQTT库siot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pinpong.html">开源硬件库pinpong</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Web库Flask</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">1. 简介</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">2. 安装</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">3. 代码示例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#flask">4. 借助Flask部署智能应用</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fastapi.html">Web库FastAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gradio.html">Web库Gradio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="camera.html">wifi摄像头模块：ESP32-CAM</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../dl_library.html">深度学习知识库</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">OpenXLabEdu</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../how_to_use.html">如何用XEdu借助AI解决真实问题</a></li>
+          <li class="breadcrumb-item"><a href="../scitech_tools.html">相关科创工具</a></li>
+      <li class="breadcrumb-item active">Web库Flask</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/how_to_use/scitech_tools/flask.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="webflask">
+<h1>Web库Flask<a class="headerlink" href="#webflask" title="Permalink to this heading"></a></h1>
+<section id="id1">
+<h2>1. 简介<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>Flask是一个轻量级的可定制框架，使用Python语言编写，较其他同类型框架更为灵活、轻便、安全且容易上手，其强大的插件库可以让用户实现个性化的网站定制，开发出功能强大的网站。</p>
+<p>文档地址：<a class="reference external" href="https://dormousehole.readthedocs.io/en/latest/quickstart.html">https://dormousehole.readthedocs.io/en/latest/quickstart.html</a></p>
+<p>本文涉及的部分代码见XEdu帮助文档配套项目集：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&amp;sc=645caab8a8efa334b3f0eb24#public">https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&amp;sc=645caab8a8efa334b3f0eb24#public</a></p>
+</section>
+<section id="id2">
+<h2>2. 安装<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>可以使用使用pip命令安装Flask库。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">flask</span>
+</pre></div>
+</div>
+<p>注：XEdu一键安装包中已经内置了Flask库。</p>
+</section>
+<section id="id3">
+<h2>3. 代码示例<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<section id="web">
+<h3>3.1 最简Web服务器<a class="headerlink" href="#web" title="Permalink to this heading"></a></h3>
+<p>几行代码就能建一个Web服务器。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;&lt;p&gt;Hello, World!&lt;/p&gt;&quot;</span>
+</pre></div>
+</div>
+<p>代码是什么意思呢？</p>
+<ul class="simple">
+<li><p>首先我们导入了 Flask 类。该类的实例将会成为我们的 WSGI 应用。</p></li>
+<li><p>接着我们创建一个该类的实例。第一个参数是应用模块或者包的名称。 <strong>name</strong> 是一个适用于大多数情况的快捷方式。有了这个参数， Flask 才能知道在哪里可以找到模板和静态文件等东西。</p></li>
+<li><p>然后我们使用 route() 装饰器来告诉 Flask 触发函数 的 URL 。</p></li>
+<li><p>函数返回需要在用户浏览器中显示的信息。默认的内容类型是 HTML ，因此字符串中的 HTML 会被浏览器渲染。</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3>3.2 上传一个文件<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">UPLOAD_FOLDER</span> <span class="o">=</span> <span class="s1">&#39;uploads&#39;</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/upload&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">upload_file</span><span class="p">():</span>
+    <span class="k">if</span> <span class="s1">&#39;file&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">files</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;没有文件上传&#39;</span><span class="p">,</span> <span class="mi">400</span>
+
+    <span class="n">file</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">files</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">filename</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;没有选择文件&#39;</span><span class="p">,</span> <span class="mi">400</span>
+
+    <span class="k">if</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">UPLOAD_FOLDER</span><span class="p">,</span> <span class="n">file</span><span class="o">.</span><span class="n">filename</span><span class="p">))</span>
+        <span class="k">return</span> <span class="s1">&#39;文件上传成功&#39;</span><span class="p">,</span> <span class="mi">200</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">UPLOAD_FOLDER</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">UPLOAD_FOLDER</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="webapi">
+<h3>3.3 一个简单的WebAPI<a class="headerlink" href="#webapi" title="Permalink to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">jsonify</span><span class="p">,</span> <span class="n">request</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/api&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">api</span><span class="p">():</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;World&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s1">&#39;message&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;Hello, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">!&#39;</span><span class="p">})</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="flask">
+<h2>4. 借助Flask部署智能应用<a class="headerlink" href="#flask" title="Permalink to this heading"></a></h2>
+<p>因为算力的限制，在很多应用场景中，负责采集数据的终端往往没有办法直接部署MMEdu或者其他的人工智能应用框架，也就是说没有办法在终端上直接推理。那么，先在服务器（或者一台算力较好的PC机）部署一个AI应用，提供WebAPI接口，让终端发送数据到这个服务器，服务器推理后返回推理结果。</p>
+<p>这种做法和很多智能终端的工作原理是一样的。如小度、天猫精灵和小爱音箱等，自己都没有处理数据的能力，都要靠网络传送数据到服务器，然后才能正确和用户交流。目前中小学的很多AI应用，都是借助百度AI开放平台的。</p>
+<p><img alt="../../_images/flaskintro1.jpeg" src="../../_images/flaskintro1.jpeg" /></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="pinpong.html" class="btn btn-neutral float-left" title="开源硬件库pinpong" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fastapi.html" class="btn btn-neutral float-right" title="Web库FastAPI" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2023 OpenXLabEdu.All Rights Reserved.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

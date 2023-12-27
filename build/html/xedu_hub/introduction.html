@@ -88,28 +88,35 @@
 <li class="toctree-l4"><a class="reference internal" href="#id79">代码解释</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#mmedu">7. MMEdu模型推理</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id84">7. 图像嵌入和文本嵌入</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id85">图像嵌入</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id87">代码解释</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id90">文本嵌入</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id92">代码解释</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#mmedu">8. MMEdu模型推理</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#mmclassification">MMClassification模型</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mmdetection">MMDetection模型</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#basenn">8. BaseNN模型推理</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id96">代码样例</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id97">代码解释</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#basenn">9. BaseNN模型推理</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id107">代码样例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id108">代码解释</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#baseml">9. BaseML模型推理</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id101">代码样例</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id102">代码解释</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baseml">10. BaseML模型推理</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id112">代码样例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id113">代码解释</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#onnx">10. 其他onnx模型推理</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id106">代码样例</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id107">代码解释</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#onnx">11. 其他onnx模型推理</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id117">代码样例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id118">代码解释</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id110">XEduHub任务模型资源下载与存放</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id111">报错专栏</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id121">XEduHub任务模型资源下载与存放</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id122">报错专栏</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="projects.html">XEduHub项目案例集</a></li>
@@ -121,9 +128,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basedt.html">数据处理库BaseDT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basedeploy.html">模型部署库BaseDeploy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../scitech_tools.html">相关科创工具</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../support_resources.html">学习支持和资源获取</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dl_library.html">深度学习知识库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_use.html">如何用XEdu借助AI解决真实问题</a></li>
 </ul>
 
         </div>
@@ -201,7 +206,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如<code class="docutils literal notranslate"><span class="pre">checkpoints='my_checkpoint/model.onnx'</span></code>。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。</p></li>
 </ul>
-<p>任务模型下载与存放规范请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">高级功能</a>。</p>
+<p>任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">XEduHub任务模型资源下载与存放</a>。</p>
 </section>
 <section id="id6">
 <h4>2. 模型推理<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h4>
@@ -226,7 +231,12 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">format_result</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span><span class="c1"># 参数lang设置了输出结果的语言，默认为中文</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。参数<code class="docutils literal notranslate"><span class="pre">lang</span></code>设置了输出结果的语言，默认为中文。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(string) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool) - 可选参数，设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
+</ul>
 <p><code class="docutils literal notranslate"><span class="pre">format_result</span></code>以字典形式存储了推理结果，共有两个键：<code class="docutils literal notranslate"><span class="pre">关键点坐标</span></code>和<code class="docutils literal notranslate"><span class="pre">分数</span></code>。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标，而分数则是对应下标的关键点的分数，以一维数组形式保存。</p>
 <p><img alt="../_images/body-format.png" src="../_images/body-format.png" /></p>
 <p>结果可视化</p>
@@ -276,7 +286,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如<code class="docutils literal notranslate"><span class="pre">checkpoints='my_checkpoint/model.onnx'</span></code>。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。</p></li>
 </ul>
-<p>任务模型下载与存放规范请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">高级功能</a>。</p>
+<p>任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">XEduHub任务模型资源下载与存放</a>。</p>
 </section>
 <section id="id13">
 <h4>2. 模型推理<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h4>
@@ -301,7 +311,12 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">format_result</span> <span class="o">=</span> <span class="n">face</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span><span class="c1"># 将推理结果进行格式化输出</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。参数<code class="docutils literal notranslate"><span class="pre">lang</span></code>设置了输出结果的语言，如果不指定默认为中文。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(string) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool) - 可选参数，设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
+</ul>
 <p><code class="docutils literal notranslate"><span class="pre">format_result</span></code>以字典形式存储了推理结果，共有两个键：<code class="docutils literal notranslate"><span class="pre">关键点坐标</span></code>和<code class="docutils literal notranslate"><span class="pre">分数</span></code>。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标，而分数则是对应下标的关键点的分数，以一维数组形式保存。</p>
 <p>结果可视化</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">face</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img_with_keypoints</span><span class="p">)</span><span class="c1"># 展示推理图片</span>
@@ -350,7 +365,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如<code class="docutils literal notranslate"><span class="pre">checkpoints='my_checkpoint/model.onnx'</span></code>。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。</p></li>
 </ul>
-<p>任务模型下载与存放规范请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">高级功能</a>。</p>
+<p>任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">XEduHub任务模型资源下载与存放</a>。</p>
 </section>
 <section id="id20">
 <h4>2. 模型推理<a class="headerlink" href="#id20" title="Permalink to this heading"></a></h4>
@@ -375,8 +390,13 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">format_result</span> <span class="o">=</span> <span class="n">hand</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span><span class="c1"># 将推理结果进行格式化输出</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。参数<code class="docutils literal notranslate"><span class="pre">lang</span></code>设置了输出结果的语言，如果不指定默认为中文。</p>
-<p><code class="docutils literal notranslate"><span class="pre">format_result</span></code>以字典形式存储了推理结果，共有两个键：<code class="docutils literal notranslate"><span class="pre">关键点坐标</span></code>和<code class="docutils literal notranslate"><span class="pre">分数</span></code>。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标，而分数则是对应下标的关键点的分数，以一维数组形式保存。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(string) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool) - 可选参数，设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。
+<code class="docutils literal notranslate"><span class="pre">format_result</span></code>以字典形式存储了推理结果，共有两个键：<code class="docutils literal notranslate"><span class="pre">关键点坐标</span></code>和<code class="docutils literal notranslate"><span class="pre">分数</span></code>。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标，而分数则是对应下标的关键点的分数，以一维数组形式保存。</p></li>
+</ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">hand</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img_with_keypoints</span><span class="p">)</span><span class="c1"># 展示推理图片</span>
 </pre></div>
 </div>
@@ -422,7 +442,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如<code class="docutils literal notranslate"><span class="pre">checkpoints='my_checkpoint/model.onnx'</span></code>。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。</p></li>
 </ul>
-<p>任务模型下载与存放规范请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">高级功能</a>。</p>
+<p>任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">XEduHub任务模型资源下载与存放</a>。</p>
 </section>
 <section id="id27">
 <h4>2. 模型推理<a class="headerlink" href="#id27" title="Permalink to this heading"></a></h4>
@@ -447,7 +467,12 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">format_result</span> <span class="o">=</span> <span class="n">wholebody</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span><span class="c1"># 将推理结果进行格式化输出</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。参数<code class="docutils literal notranslate"><span class="pre">lang</span></code>设置了输出结果的语言，如果不指定默认为中文。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(string) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool) - 可选参数，设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
+</ul>
 <p><code class="docutils literal notranslate"><span class="pre">format_result</span></code>以字典形式存储了推理结果，共有两个键：<code class="docutils literal notranslate"><span class="pre">关键点坐标</span></code>和<code class="docutils literal notranslate"><span class="pre">分数</span></code>。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标，而分数则是对应下标的关键点的分数，以一维数组形式保存。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wholebody</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img_with_keypoints</span><span class="p">)</span><span class="c1"># 展示推理图片</span>
 </pre></div>
@@ -504,7 +529,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如<code class="docutils literal notranslate"><span class="pre">checkpoints='my_checkpoint/model.onnx'</span></code>。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。</p></li>
 </ul>
-<p>任务模型下载与存放规范请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">高级功能</a>。</p>
+<p>任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">XEduHub任务模型资源下载与存放</a>。</p>
 </section>
 <section id="id34">
 <h4>2. 模型推理<a class="headerlink" href="#id34" title="Permalink to this heading"></a></h4>
@@ -534,7 +559,12 @@
 </pre></div>
 </div>
 <p><img alt="../_images/det_coco_format.png" src="../_images/det_coco_format.png" /></p>
-<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。参数<code class="docutils literal notranslate"><span class="pre">lang</span></code>设置了输出结果的语言，如果不指定默认为中文。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(string) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool) - 可选参数，设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
+</ul>
 <p><code class="docutils literal notranslate"><span class="pre">format_result</span></code>以字典形式存储了推理结果，共有三个键：<code class="docutils literal notranslate"><span class="pre">检测框</span></code>、<code class="docutils literal notranslate"><span class="pre">分数</span></code>和<code class="docutils literal notranslate"><span class="pre">类别</span></code>。检测框以二维数组形式保存了每个检测框的坐标信息[x,y,w,h]，而分数则是对应下标的检测框的置信度，以一维数组形式保存，类别则是检测框中对象所属的类别，以一维数组形式保存。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">det_coco</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">)</span><span class="c1"># 展示推理图片</span>
 </pre></div>
@@ -582,7 +612,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如<code class="docutils literal notranslate"><span class="pre">checkpoints='my_checkpoint/model.onnx'</span></code>。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。</p></li>
 </ul>
-<p>任务模型下载与存放规范请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">高级功能</a>。</p>
+<p>任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">XEduHub任务模型资源下载与存放</a>。</p>
 </section>
 <section id="id41">
 <h4>2. 模型推理<a class="headerlink" href="#id41" title="Permalink to this heading"></a></h4>
@@ -607,7 +637,12 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">format_result</span> <span class="o">=</span> <span class="n">det_body</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span><span class="c1"># 将推理结果进行格式化输出</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。参数<code class="docutils literal notranslate"><span class="pre">lang</span></code>设置了输出结果的语言，如果不指定默认为中文。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(string) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool) - 可选参数，设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
+</ul>
 <p><code class="docutils literal notranslate"><span class="pre">format_result</span></code>以字典形式存储了推理结果，共有两个键：<code class="docutils literal notranslate"><span class="pre">检测框</span></code>、<code class="docutils literal notranslate"><span class="pre">分数</span></code>。检测框以二维数组形式保存了每个检测框的坐标信息[x,y,w,h]，而分数则是对应下标的检测框的置信度，以一维数组形式保存。</p>
 <p><img alt="../_images/det_body_format.png" src="../_images/det_body_format.png" /></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">det_body</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">)</span><span class="c1"># 展示推理图片</span>
@@ -654,7 +689,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如<code class="docutils literal notranslate"><span class="pre">checkpoints='my_checkpoint/model.onnx'</span></code>。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。</p></li>
 </ul>
-<p>任务模型下载与存放规范请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">高级功能</a>。</p>
+<p>任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">XEduHub任务模型资源下载与存放</a>。</p>
 </section>
 <section id="id48">
 <h4>2. 模型推理<a class="headerlink" href="#id48" title="Permalink to this heading"></a></h4>
@@ -679,7 +714,12 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">format_result</span> <span class="o">=</span> <span class="n">det_face</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span><span class="c1"># 将推理结果进行格式化输出</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。参数<code class="docutils literal notranslate"><span class="pre">lang</span></code>设置了输出结果的语言，如果不指定默认为中文。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(string) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool) - 可选参数，设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
+</ul>
 <p><code class="docutils literal notranslate"><span class="pre">format_result</span></code>以字典形式存储了推理结果，只有一个键：<code class="docutils literal notranslate"><span class="pre">检测框</span></code>、<code class="docutils literal notranslate"><span class="pre">分数</span></code>。检测框以二维数组形式保存了每个检测框的坐标信息[x,y,w,h]。需要注意的是由于使用的为opencv的人脸检测模型，因此在<code class="docutils literal notranslate"><span class="pre">format_output</span></code>时缺少了分数这一指标。</p>
 <p><img alt="../_images/det_face_format.png" src="../_images/det_face_format.png" /></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">det_face</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">)</span><span class="c1"># 展示推理图片</span>
@@ -726,7 +766,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如<code class="docutils literal notranslate"><span class="pre">checkpoints='my_checkpoint/model.onnx'</span></code>。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。</p></li>
 </ul>
-<p>任务模型下载与存放规范请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">高级功能</a>。</p>
+<p>任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">XEduHub任务模型资源下载与存放</a>。</p>
 </section>
 <section id="id55">
 <h4>2. 模型推理<a class="headerlink" href="#id55" title="Permalink to this heading"></a></h4>
@@ -752,7 +792,12 @@
 </pre></div>
 </div>
 <p><img alt="../_images/det_hand_format.png" src="../_images/det_hand_format.png" /></p>
-<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。参数<code class="docutils literal notranslate"><span class="pre">lang</span></code>设置了输出结果的语言，如果不指定默认为中文。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(string) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool) - 可选参数，设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
+</ul>
 <p><code class="docutils literal notranslate"><span class="pre">format_result</span></code>以字典形式存储了推理结果，共有两个键：<code class="docutils literal notranslate"><span class="pre">检测框</span></code>、<code class="docutils literal notranslate"><span class="pre">分数</span></code>。检测框以二维数组形式保存了每个检测框的坐标信息[x,y,w,h]，而分数则是对应下标的检测框的置信度，以一维数组形式保存。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">det_hand</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">)</span><span class="c1"># 展示推理图片</span>
 </pre></div>
@@ -796,7 +841,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如<code class="docutils literal notranslate"><span class="pre">checkpoints='my_checkpoint/model.onnx'</span></code>。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。</p></li>
 </ul>
-<p>任务模型下载与存放规范请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">高级功能</a>。</p>
+<p>任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">XEduHub任务模型资源下载与存放</a>。</p>
 </section>
 <section id="id62">
 <h4>2. 模型推理<a class="headerlink" href="#id62" title="Permalink to this heading"></a></h4>
@@ -816,6 +861,11 @@
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(string) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool) - 可选参数，设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
+</ul>
 <p><code class="docutils literal notranslate"><span class="pre">format_result</span></code>是一个字典，以格式化的方式展示了这张图片最有可能的分类结果。预测值表示图片分类标签在所有一千个分类中的索引，分数是属于这个分类的概率，预测类别是分类标签的内容。</p>
 <p><img alt="../_images/cls_format.png" src="../_images/cls_format.png" /></p>
 </section>
@@ -849,7 +899,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如<code class="docutils literal notranslate"><span class="pre">checkpoints='my_checkpoint/model.onnx'</span></code>。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。</p></li>
 </ul>
-<p>任务模型下载与存放规范请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">高级功能</a>。</p>
+<p>任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">XEduHub任务模型资源下载与存放</a>。</p>
 <p>运行代码<code class="docutils literal notranslate"><span class="pre">wf.support_style()</span></code>可查看当前预设的风格。当前预设风格共有五种，如下图所示。</p>
 <p><img alt="../_images/style_all.png" src="../_images/style_all.png" /></p>
 <p><code class="docutils literal notranslate"><span class="pre">style</span></code>可选参数为：<code class="docutils literal notranslate"><span class="pre">['mosaic','candy','rain-princess','udnie','pointilism']</span></code>，也可以输入一张其他图片的路径来自定义风格，如<code class="docutils literal notranslate"><span class="pre">style='fangao.jpg'</span></code>。为了方便用户使用预设风格，还可以通过输入预设风格对应的标签值来进行设定，如<code class="docutils literal notranslate"><span class="pre">style=0</span></code>。</p>
@@ -969,7 +1019,12 @@
 </pre></div>
 </div>
 <p><img alt="../_images/ocr_format.png" src="../_images/ocr_format.png" /></p>
-<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。参数<code class="docutils literal notranslate"><span class="pre">lang</span></code>设置了输出结果的语言，如果不指定默认为中文。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(string) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool) - 可选参数，设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
+</ul>
 <p><code class="docutils literal notranslate"><span class="pre">format_output</span></code>的结果以字典形式存储了推理结果，共有三个键：<code class="docutils literal notranslate"><span class="pre">检测框</span></code>、<code class="docutils literal notranslate"><span class="pre">分数</span></code>和<code class="docutils literal notranslate"><span class="pre">文本</span></code>。检测框以三维数组形式保存了每个检测框的四个顶点的[x,y]坐标，而分数则是对应下标的检测框分数，以一维数组形式保存。文本则是每个检测框中识别出的文本，以一维数组形式保存。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ocr</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">ocr_img</span><span class="p">)</span><span class="c1"># 展示推理结果图片</span>
 </pre></div>
@@ -1015,7 +1070,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如<code class="docutils literal notranslate"><span class="pre">checkpoints='my_checkpoint/model.onnx'</span></code>。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。</p></li>
 </ul>
-<p>任务模型下载与存放规范请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">高级功能</a>。
+<p>任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">XEduHub任务模型资源下载与存放</a>。
 `</p>
 </section>
 <section id="id81">
@@ -1046,7 +1101,12 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">format_result</span> <span class="o">=</span> <span class="n">drive</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span><span class="c1"># 将推理结果进行格式化输出</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。参数<code class="docutils literal notranslate"><span class="pre">lang</span></code>设置了输出结果的语言，如果不指定默认为中文。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(string) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool) - 可选参数，设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
+</ul>
 <p><code class="docutils literal notranslate"><span class="pre">format_result</span></code>以字典形式存储了推理结果，有四个键：<code class="docutils literal notranslate"><span class="pre">检测框</span></code>、<code class="docutils literal notranslate"><span class="pre">分数</span></code>、<code class="docutils literal notranslate"><span class="pre">车道线掩码</span></code>、<code class="docutils literal notranslate"><span class="pre">可行驶区域掩码</span></code>。检测框以二维数组形式保存了每个检测框的坐标信息[x,y,w,h]。</p>
 <p><img alt="../_images/drive_format.png" src="../_images/drive_format.png" /></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">drive</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img</span><span class="p">)</span><span class="c1"># 展示推理图片</span>
@@ -1065,14 +1125,97 @@
 </section>
 </section>
 </section>
+<section id="id84">
+<h2>7. 图像嵌入和文本嵌入<a class="headerlink" href="#id84" title="Permalink to this heading"></a></h2>
+<p>嵌入技术是一种将计算机无法直接理解图像或文本转换成计算机擅长理解的数字数字向量。通过“嵌入”方式得到的数字向量，能完成零样本分类、文本翻译，图像聚类等任务。XEduHub提供了图像嵌入和文本嵌入任务：<code class="docutils literal notranslate"><span class="pre">'embedding_image'</span></code>，<code class="docutils literal notranslate"><span class="pre">'embedding_text'</span></code>。</p>
+<section id="id85">
+<h3>图像嵌入<a class="headerlink" href="#id85" title="Permalink to this heading"></a></h3>
+<p>当我们使用图像嵌入，本质上是将图像“编码”或“嵌入”到向量形式的一系列数字中，让图像-&gt;向量。
+这些向量可以捕捉图像中的局部特征，如颜色、纹理和形状等。图像嵌入有助于计算机识别图像中的对象、场景和动作等。</p>
+<section id="id86">
+<h4>代码样例<a class="headerlink" href="#id86" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span> <span class="c1"># 导入库</span>
+<span class="n">img_emb</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;embedding_image&#39;</span><span class="p">)</span> <span class="c1"># 实例化模型</span>
+<span class="n">image_embeddings</span> <span class="o">=</span> <span class="n">img_emb</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;demo/cat.png&#39;</span><span class="p">)</span> <span class="c1"># 模型推理</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">image_embeddings</span><span class="p">)</span> <span class="c1"># 输出向量</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id87">
+<h3>代码解释<a class="headerlink" href="#id87" title="Permalink to this heading"></a></h3>
+<section id="id88">
+<h4>1. 模型声明<a class="headerlink" href="#id88" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span> <span class="c1"># 导入库</span>
+<span class="n">img_emb</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;embedding_image&#39;</span><span class="p">)</span> <span class="c1"># 实例化模型</span>
+</pre></div>
+</div>
+</section>
+<section id="id89">
+<h4>2. 模型推理<a class="headerlink" href="#id89" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image_embeddings</span> <span class="o">=</span> <span class="n">img_emb</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;demo/cat.png&#39;</span><span class="p">)</span> <span class="c1"># 模型推理</span>
+</pre></div>
+</div>
+<p>模型推理<code class="docutils literal notranslate"><span class="pre">inference()</span></code>可传入参数：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>：指定待嵌入的图片。可以直接传入图像路径<code class="docutils literal notranslate"><span class="pre">data='cat.jpg'</span></code> 或者多张图像路径列表<code class="docutils literal notranslate"><span class="pre">data=</span> <span class="pre">['cat.jpg','dog.jpg']</span> </code>。</p></li>
+</ul>
+<p>模型推理返回结果：</p>
+<p><img alt="../_images/emb_show1.png" src="../_images/emb_show1.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">result</span></code>：以二维数组的形式保存了每张图片特征提取后的512维向量。</p></li>
+</ul>
+</section>
+</section>
+<section id="id90">
+<h3>文本嵌入<a class="headerlink" href="#id90" title="Permalink to this heading"></a></h3>
+<p>当我们使用文本嵌入，本质上是将文本的上下文和场景“编码”或“嵌入”到向量形式的一系列数字中，让文本-&gt;向量。
+这些向量将词语映射到数值空间中，使得词语成为有意义的数值向量。</p>
+<p>因为该模型的训练集来源是互联网网页提取的4亿对图像文本对的编码，所以这里的文本可以为网络上出现的任意名词，或是一段文字。你可以加入很多描述性文本，让之后的“零样本分类”变得十分有趣！</p>
+<section id="id91">
+<h4>代码样例<a class="headerlink" href="#id91" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span> <span class="c1"># 导入库</span>
+<span class="n">txt_emb</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;embedding_text&#39;</span><span class="p">)</span> <span class="c1"># 实例化模型</span>
+<span class="n">txt_embeddings</span> <span class="o">=</span> <span class="n">txt_emb</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a black cat&#39;</span><span class="p">,</span><span class="s1">&#39;a yellow cat&#39;</span><span class="p">])</span> <span class="c1"># 模型推理</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">txt_embeddings</span><span class="p">)</span> <span class="c1"># 输出向量</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id92">
+<h3>代码解释<a class="headerlink" href="#id92" title="Permalink to this heading"></a></h3>
+<section id="id93">
+<h4>1. 模型声明<a class="headerlink" href="#id93" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span> <span class="c1"># 导入库</span>
+<span class="n">txt_emb</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;embedding_text&#39;</span><span class="p">)</span> <span class="c1"># 实例化模型</span>
+</pre></div>
+</div>
+</section>
+<section id="id94">
+<h4>2. 模型推理<a class="headerlink" href="#id94" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">txt_embeddings</span> <span class="o">=</span> <span class="n">txt_emb</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a black cat&#39;</span><span class="p">,</span><span class="s1">&#39;a yellow cat&#39;</span><span class="p">])</span> <span class="c1"># 模型推理</span>
+</pre></div>
+</div>
+<p>模型推理<code class="docutils literal notranslate"><span class="pre">inference()</span></code>可传入参数：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>：指定待嵌入的文本。可以直接传入文本<code class="docutils literal notranslate"><span class="pre">data=</span> <span class="pre">'cat'</span> </code>或者多条文本列表<code class="docutils literal notranslate"><span class="pre">data=</span> <span class="pre">['a</span> <span class="pre">black</span> <span class="pre">cat','a</span> <span class="pre">yellow</span> <span class="pre">cat']</span></code>。</p></li>
+</ul>
+<p>模型推理返回结果：</p>
+<p><img alt="../_images/emb_show2.png" src="../_images/emb_show2.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">result</span></code>：以二维数组的形式保存了每条文本特征提取后的512维向量。</p></li>
+</ul>
+</section>
+</section>
+</section>
 <section id="mmedu">
-<h2>7. MMEdu模型推理<a class="headerlink" href="#mmedu" title="Permalink to this heading"></a></h2>
+<h2>8. MMEdu模型推理<a class="headerlink" href="#mmedu" title="Permalink to this heading"></a></h2>
 <p>XEduHub现在可以支持使用MMEdu导出的onnx模型进行推理啦！如果你想了解如何使用MMEdu训练模型，可以看这里：<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html">解锁图像分类模块：MMClassification</a>、<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html">揭秘目标检测模块：MMDetection</a>。</p>
 <p>如果你想了解如何将使用<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu.html">MMEdu</a>训练好的模型转换成ONNX格式，可以看这里<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/model_convert.html">最后一步：AI模型转换</a>。OK，准备好了ONNX模型，那么就开始使用XEduHub吧！</p>
 <section id="mmclassification">
 <h3>MMClassification模型<a class="headerlink" href="#mmclassification" title="Permalink to this heading"></a></h3>
-<section id="id84">
-<h4>代码样例<a class="headerlink" href="#id84" title="Permalink to this heading"></a></h4>
+<section id="id95">
+<h4>代码样例<a class="headerlink" href="#id95" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">mmcls</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;mmedu&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;cats_dogs.onnx&#39;</span><span class="p">)</span><span class="c1"># 指定使用的onnx模型</span>
 <span class="n">result</span><span class="p">,</span> <span class="n">result_img</span> <span class="o">=</span>  <span class="n">mmcls</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/cat101.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span><span class="c1"># 进行模型推理</span>
@@ -1082,10 +1225,10 @@
 </pre></div>
 </div>
 </section>
-<section id="id85">
-<h4>代码解释<a class="headerlink" href="#id85" title="Permalink to this heading"></a></h4>
-<section id="id86">
-<h5>1. 模型声明<a class="headerlink" href="#id86" title="Permalink to this heading"></a></h5>
+<section id="id96">
+<h4>代码解释<a class="headerlink" href="#id96" title="Permalink to this heading"></a></h4>
+<section id="id97">
+<h5>1. 模型声明<a class="headerlink" href="#id97" title="Permalink to this heading"></a></h5>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">mmcls</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;mmedu&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;cats_dogs.onnx&#39;</span><span class="p">)</span><span class="c1"># 指定使用的onnx模型</span>
 </pre></div>
@@ -1097,8 +1240,8 @@
 </ul>
 <p>这里我们以猫狗分类模型为例，项目指路：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&amp;sc=647b3880aac6f67c822a04f5#public">猫狗分类</a>。</p>
 </section>
-<section id="id87">
-<h5>2. 模型推理<a class="headerlink" href="#id87" title="Permalink to this heading"></a></h5>
+<section id="id98">
+<h5>2. 模型推理<a class="headerlink" href="#id98" title="Permalink to this heading"></a></h5>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">,</span> <span class="n">result_img</span> <span class="o">=</span>  <span class="n">mmcls</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/cat101.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="c1"># 进行模型推理</span>
 </pre></div>
 </div>
@@ -1113,13 +1256,18 @@
 <p><img alt="../_images/mmcls_res.png" src="../_images/mmcls_res.png" /></p>
 <p><code class="docutils literal notranslate"><span class="pre">result_img</span></code>以pil格式保存了模型推理完成后的图片</p>
 </section>
-<section id="id88">
-<h5>3. 结果输出<a class="headerlink" href="#id88" title="Permalink to this heading"></a></h5>
+<section id="id99">
+<h5>3. 结果输出<a class="headerlink" href="#id99" title="Permalink to this heading"></a></h5>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">format_result</span> <span class="o">=</span> <span class="n">mmcls</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s2">&quot;zh&quot;</span><span class="p">)</span><span class="c1"># 推理结果格式化输出</span>
 </pre></div>
 </div>
 <p><img alt="../_images/mmcls_format.png" src="../_images/mmcls_format.png" /></p>
-<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。参数<code class="docutils literal notranslate"><span class="pre">lang</span></code>设置了输出结果的语言，如果不指定默认为中文。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(string) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool) - 可选参数，设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
+</ul>
 <p><code class="docutils literal notranslate"><span class="pre">format_result</span></code>以字典形式保存了模型的推理结果，包括所属<code class="docutils literal notranslate"><span class="pre">标签</span></code>、<code class="docutils literal notranslate"><span class="pre">置信度</span></code>、以及<code class="docutils literal notranslate"><span class="pre">预测结果</span></code>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mmcls</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">result_img</span><span class="p">)</span><span class="c1"># 展示推理结果图片</span>
 </pre></div>
@@ -1127,8 +1275,8 @@
 <p><code class="docutils literal notranslate"><span class="pre">show()</span></code>能够推理后的结果图像。与原图相比，结果图片在左上角多了<code class="docutils literal notranslate"><span class="pre">pred_label</span></code>, <code class="docutils literal notranslate"><span class="pre">pred_socre</span></code>和<code class="docutils literal notranslate"><span class="pre">pred_class</span></code>三个数据，对应着标签、置信度和预测结果。</p>
 <p><img alt="../_images/mmcls_show.png" src="../_images/mmcls_show.png" /></p>
 </section>
-<section id="id89">
-<h5>4. 结果保存<a class="headerlink" href="#id89" title="Permalink to this heading"></a></h5>
+<section id="id100">
+<h5>4. 结果保存<a class="headerlink" href="#id100" title="Permalink to this heading"></a></h5>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mmcls</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="s1">&#39;new_cat.jpg&#39;</span><span class="p">)</span><span class="c1"># 保存推理结果图片</span>
 </pre></div>
 </div>
@@ -1139,8 +1287,8 @@
 </section>
 <section id="mmdetection">
 <h3>MMDetection模型<a class="headerlink" href="#mmdetection" title="Permalink to this heading"></a></h3>
-<section id="id90">
-<h4>代码样例<a class="headerlink" href="#id90" title="Permalink to this heading"></a></h4>
+<section id="id101">
+<h4>代码样例<a class="headerlink" href="#id101" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">mmdet</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;mmedu&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;plate.onnx&#39;</span><span class="p">)</span><span class="c1"># 指定使用的onnx模型</span>
 <span class="n">result</span><span class="p">,</span> <span class="n">result_img</span> <span class="o">=</span>  <span class="n">mmdet</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/plate0.png&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span><span class="c1"># 进行模型推理</span>
@@ -1150,10 +1298,10 @@
 </pre></div>
 </div>
 </section>
-<section id="id91">
-<h4>代码解释<a class="headerlink" href="#id91" title="Permalink to this heading"></a></h4>
-<section id="id92">
-<h5>1. 模型声明<a class="headerlink" href="#id92" title="Permalink to this heading"></a></h5>
+<section id="id102">
+<h4>代码解释<a class="headerlink" href="#id102" title="Permalink to this heading"></a></h4>
+<section id="id103">
+<h5>1. 模型声明<a class="headerlink" href="#id103" title="Permalink to this heading"></a></h5>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">mmdet</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;mmedu&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;plate.onnx&#39;</span><span class="p">)</span><span class="c1"># 指定使用的onnx模型</span>
 </pre></div>
@@ -1165,8 +1313,8 @@
 </ul>
 <p>这里以车牌识别为例进行说明。项目指路：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=641426fdcb63f030544017a2&amp;backpath=/pjlab/projects/list#public">使用MMEdu实现车牌检测</a></p>
 </section>
-<section id="id93">
-<h5>2. 模型推理<a class="headerlink" href="#id93" title="Permalink to this heading"></a></h5>
+<section id="id104">
+<h5>2. 模型推理<a class="headerlink" href="#id104" title="Permalink to this heading"></a></h5>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">,</span> <span class="n">result_img</span> <span class="o">=</span>  <span class="n">mmdet</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/plate0.png&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="c1"># 进行模型推理</span>
 </pre></div>
 </div>
@@ -1181,13 +1329,18 @@
 <p><img alt="../_images/mmdet_res.png" src="../_images/mmdet_res.png" /></p>
 <p><code class="docutils literal notranslate"><span class="pre">result_img</span></code>以pil格式保存了模型推理完成后的图片</p>
 </section>
-<section id="id94">
-<h5>3. 结果输出<a class="headerlink" href="#id94" title="Permalink to this heading"></a></h5>
+<section id="id105">
+<h5>3. 结果输出<a class="headerlink" href="#id105" title="Permalink to this heading"></a></h5>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">format_result</span> <span class="o">=</span> <span class="n">mmdet</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s2">&quot;zh&quot;</span><span class="p">)</span><span class="c1"># 推理结果格式化输出</span>
 </pre></div>
 </div>
 <p><img alt="../_images/mmdet_format.png" src="../_images/mmdet_format.png" /></p>
-<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。参数<code class="docutils literal notranslate"><span class="pre">lang</span></code>设置了输出结果的语言，如果不指定默认为中文。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(string) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool) - 可选参数，设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
+</ul>
 <p><code class="docutils literal notranslate"><span class="pre">format_output</span></code>的结果是一个数组，里面保存了结果字典。该字典有四个键：<code class="docutils literal notranslate"><span class="pre">标签</span></code>、<code class="docutils literal notranslate"><span class="pre">置信度</span></code>、<code class="docutils literal notranslate"><span class="pre">坐标</span></code>以及<code class="docutils literal notranslate"><span class="pre">预测结果</span></code>。其中坐标表示了检测框的两个顶点：左上(x1,y1)和右下(x2,y2)。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mmdet</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">result_img</span><span class="p">)</span><span class="c1"># 展示推理结果图片</span>
 </pre></div>
@@ -1195,8 +1348,8 @@
 <p><code class="docutils literal notranslate"><span class="pre">show()</span></code>能够推理后的结果图像。与原图相比，结果图片还包含车牌周围的检测框以及结果信息。</p>
 <p><img alt="../_images/mmdet_show.png" src="../_images/mmdet_show.png" /></p>
 </section>
-<section id="id95">
-<h5>4. 结果保存<a class="headerlink" href="#id95" title="Permalink to this heading"></a></h5>
+<section id="id106">
+<h5>4. 结果保存<a class="headerlink" href="#id106" title="Permalink to this heading"></a></h5>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mmdet</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="s1">&#39;new_plate.jpg&#39;</span><span class="p">)</span><span class="c1"># 保存推理结果图片</span>
 </pre></div>
 </div>
@@ -1207,10 +1360,10 @@
 </section>
 </section>
 <section id="basenn">
-<h2>8. BaseNN模型推理<a class="headerlink" href="#basenn" title="Permalink to this heading"></a></h2>
+<h2>9. BaseNN模型推理<a class="headerlink" href="#basenn" title="Permalink to this heading"></a></h2>
 <p>XEduHub现在可以支持使用BaseNN导出的onnx模型进行推理啦！如果你想了解如何将使用<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basenn.html">BaseNN</a>训练好的模型转换成ONNX格式，可以看这里：<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id29">BaseNN模型文件格式转换</a>。OK，准备好了ONNX模型，那么就开始使用XEduHub吧！</p>
-<section id="id96">
-<h3>代码样例<a class="headerlink" href="#id96" title="Permalink to this heading"></a></h3>
+<section id="id107">
+<h3>代码样例<a class="headerlink" href="#id107" title="Permalink to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 使用BaseNN训练的手写数字识别模型进行推理</span>
 <span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">basenn</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;basenn&quot;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s2">&quot;basenn.onnx&quot;</span><span class="p">)</span><span class="c1"># 指定使用的onnx模型</span>
@@ -1219,10 +1372,10 @@
 </pre></div>
 </div>
 </section>
-<section id="id97">
-<h3>代码解释<a class="headerlink" href="#id97" title="Permalink to this heading"></a></h3>
-<section id="id98">
-<h4>1. 模型声明<a class="headerlink" href="#id98" title="Permalink to this heading"></a></h4>
+<section id="id108">
+<h3>代码解释<a class="headerlink" href="#id108" title="Permalink to this heading"></a></h3>
+<section id="id109">
+<h4>1. 模型声明<a class="headerlink" href="#id109" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">basenn</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;basenn&quot;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s2">&quot;basenn.onnx&quot;</span><span class="p">)</span><span class="c1"># 指定使用的onnx模型</span>
 </pre></div>
@@ -1233,8 +1386,8 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>：指定你的模型的路径</p></li>
 </ul>
 </section>
-<section id="id99">
-<h4>2. 模型推理<a class="headerlink" href="#id99" title="Permalink to this heading"></a></h4>
+<section id="id110">
+<h4>2. 模型推理<a class="headerlink" href="#id110" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/6.jpg&#39;</span><span class="p">)</span><span class="c1"># 进行模型推理</span>
 </pre></div>
 </div>
@@ -1245,22 +1398,27 @@
 <p><code class="docutils literal notranslate"><span class="pre">result</span></code>的结果是一个二维数组，第一个元素表示这张图属于0-9的数字类别的概率，可以看到当为6时，概率接近，因此该手写数字是6。</p>
 <p><img alt="../_images/basenn_res.png" src="../_images/basenn_res.png" /></p>
 </section>
-<section id="id100">
-<h4>3. 结果输出<a class="headerlink" href="#id100" title="Permalink to this heading"></a></h4>
+<section id="id111">
+<h4>3. 结果输出<a class="headerlink" href="#id111" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">format_result</span> <span class="o">=</span> <span class="n">basenn</span><span class="o">.</span><span class="n">format_output</span><span class="p">()</span>
 </pre></div>
 </div>
 <p><img alt="../_images/basenn_format.png" src="../_images/basenn_format.png" /></p>
-<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。参数<code class="docutils literal notranslate"><span class="pre">lang</span></code>设置了输出结果的语言，如果不指定默认为中文。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(string) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool) - 可选参数，设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
+</ul>
 <p><code class="docutils literal notranslate"><span class="pre">format_output</span></code>的结果是一个结果字典，这个字典的第一个元素有两个键，<code class="docutils literal notranslate"><span class="pre">预测值</span></code>、<code class="docutils literal notranslate"><span class="pre">分数</span></code>，代表着该手写数字的分类标签以及属于该分类标签的概率。</p>
 </section>
 </section>
 </section>
 <section id="baseml">
-<h2>9. BaseML模型推理<a class="headerlink" href="#baseml" title="Permalink to this heading"></a></h2>
+<h2>10. BaseML模型推理<a class="headerlink" href="#baseml" title="Permalink to this heading"></a></h2>
 <p>XEduHub现在可以支持使用BaseML导出的pkl模型文件进行推理啦！如果你想了解如何将使用<a class="reference external" href="https://xedu.readthedocs.io/zh/master/baseml.html">BaseML</a>训练模型并保存成.pkl模型文件，可以看这里：<a class="reference external" href="https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id10">BaseML模型保存</a>。OK，准备好了pkl模型，那么就开始使用XEduHub吧！</p>
-<section id="id101">
-<h3>代码样例<a class="headerlink" href="#id101" title="Permalink to this heading"></a></h3>
+<section id="id112">
+<h3>代码样例<a class="headerlink" href="#id112" title="Permalink to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 使用BaseML训练的鸢尾花聚类模型推理</span>
 <span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">baseml</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;baseml&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;baseml.pkl&#39;</span><span class="p">)</span><span class="c1"># 指定使用的pkl模型</span>
@@ -1270,10 +1428,10 @@
 </pre></div>
 </div>
 </section>
-<section id="id102">
-<h3>代码解释<a class="headerlink" href="#id102" title="Permalink to this heading"></a></h3>
-<section id="id103">
-<h4>1. 模型声明<a class="headerlink" href="#id103" title="Permalink to this heading"></a></h4>
+<section id="id113">
+<h3>代码解释<a class="headerlink" href="#id113" title="Permalink to this heading"></a></h3>
+<section id="id114">
+<h4>1. 模型声明<a class="headerlink" href="#id114" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">baseml</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;baseml&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;baseml.pkl&#39;</span><span class="p">)</span><span class="c1"># 指定使用的pkl模型</span>
 </pre></div>
@@ -1284,8 +1442,8 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>：指定你的模型的路径</p></li>
 </ul>
 </section>
-<section id="id104">
-<h4>2. 模型推理<a class="headerlink" href="#id104" title="Permalink to this heading"></a></h4>
+<section id="id115">
+<h4>2. 模型推理<a class="headerlink" href="#id115" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">5.1</span><span class="p">,</span><span class="mf">1.5</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mf">4.7</span><span class="p">]]</span> <span class="c1"># 该项目中训练数据只有两维，因此推理时给出两维数据</span>
 <span class="n">result</span><span class="o">=</span> <span class="n">baseml</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span><span class="c1"># 进行模型推理</span>
 </pre></div>
@@ -1297,22 +1455,28 @@
 <p>**注意！**基于BaseML模型推理结果不包含图片！因为大部分使用BaseML解决的任务只需要输出分类标签、文本或者数组数据等。</p>
 <p><img alt="../_images/baseml_result.png" src="../_images/baseml_result.png" /></p>
 </section>
-<section id="id105">
-<h4>3. 结果输出<a class="headerlink" href="#id105" title="Permalink to this heading"></a></h4>
+<section id="id116">
+<h4>3. 结果输出<a class="headerlink" href="#id116" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">format_output</span> <span class="o">=</span> <span class="n">baseml</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span><span class="c1"># 推理结果格式化输出</span>
 </pre></div>
 </div>
 <p><img alt="../_images/baseml_format.png" src="../_images/baseml_format.png" /></p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(string) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool) - 可选参数，设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
+</ul>
 <p><code class="docutils literal notranslate"><span class="pre">format_result</span></code>以字典形式保存了模型的推理结果，由于使用的是聚类模型，输出结果为这两个特征数据所对应的聚类标签。</p>
 <p>如果此时你有冲动去使用BaseML完成模型训练到推理，再到转换与应用，快去下文学习<a class="reference external" href="https://xedu.readthedocs.io/zh/master/baseml.html">BaseML的相关使用</a>吧！</p>
 </section>
 </section>
 </section>
 <section id="onnx">
-<h2>10. 其他onnx模型推理<a class="headerlink" href="#onnx" title="Permalink to this heading"></a></h2>
+<h2>11. 其他onnx模型推理<a class="headerlink" href="#onnx" title="Permalink to this heading"></a></h2>
 <p>XEduHub现在可以支持使用用户自定义的ONNX模型文件进行推理啦！这意味着你可以不仅仅使用MMEdu或者BaseNN训练模型并转换而成的ONNX模型文件进行推理，还可以使用其他各个地方的ONNX模型文件，但是有个<strong>重要的前提：你需要会使用这个模型，了解模型输入的训练数据以及模型的输出结果</strong>。OK，如果你已经做好了充足的准备，那么就开始使用XEduHub吧！</p>
-<section id="id106">
-<h3>代码样例<a class="headerlink" href="#id106" title="Permalink to this heading"></a></h3>
+<section id="id117">
+<h3>代码样例<a class="headerlink" href="#id117" title="Permalink to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="kn">import</span> <span class="nn">cv2</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1341,10 +1505,10 @@
 </pre></div>
 </div>
 </section>
-<section id="id107">
-<h3>代码解释<a class="headerlink" href="#id107" title="Permalink to this heading"></a></h3>
-<section id="id108">
-<h4>1. 模型声明<a class="headerlink" href="#id108" title="Permalink to this heading"></a></h4>
+<section id="id118">
+<h3>代码解释<a class="headerlink" href="#id118" title="Permalink to this heading"></a></h3>
+<section id="id119">
+<h4>1. 模型声明<a class="headerlink" href="#id119" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">custom</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;custom&quot;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s2">&quot;custom.onnx&quot;</span><span class="p">)</span>
 </pre></div>
@@ -1355,8 +1519,8 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>：指定你的模型的路径</p></li>
 </ul>
 </section>
-<section id="id109">
-<h4>2. 模型推理<a class="headerlink" href="#id109" title="Permalink to this heading"></a></h4>
+<section id="id120">
+<h4>2. 模型推理<a class="headerlink" href="#id120" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -1399,9 +1563,9 @@
 </section>
 </section>
 </section>
-<section id="id110">
-<h2>XEduHub任务模型资源下载与存放<a class="headerlink" href="#id110" title="Permalink to this heading"></a></h2>
-<p>XEduHub提供了大量优秀的任务模型，我们不仅可以通过<code class="docutils literal notranslate"><span class="pre">wf()</span></code>代码的运行实现下载，还可以自行到网页上下载，防止运行代码时没有网络无法下载模型的问题。</p>
+<section id="id121">
+<h2>XEduHub任务模型资源下载与存放<a class="headerlink" href="#id121" title="Permalink to this heading"></a></h2>
+<p>XEduHub提供了大量优秀的任务模型，我们不仅可以通过<code class="docutils literal notranslate"><span class="pre">wf()</span></code>代码的运行实现下载，还可以自行到网页上下载，防止运行代码时没有网络无法zi下载模型的问题。</p>
 <p>只要进入<a href="https://openxlab.org.cn/models/detail/xedu/hub-model">模型仓库</a>，在Model File里就可以随意下载各种任务模型。网址：<a href="https://openxlab.org.cn/models/detail/xedu/hub-model">https://openxlab.org.cn/models/detail/xedu/hub-model</a></p>
 <p><img alt="../_images/downloadmodel.png" src="../_images/downloadmodel.png" /></p>
 <p>下载后，如何让代码<code class="docutils literal notranslate"><span class="pre">wf()</span></code>运行时找到我下载的预训练模型呢？</p>
@@ -1418,8 +1582,8 @@
 </ul>
 <p>最后提醒一下，自己到网络下载或自己训练的模型需要是ONNX格式。</p>
 </section>
-<section id="id111">
-<h2>报错专栏<a class="headerlink" href="#id111" title="Permalink to this heading"></a></h2>
+<section id="id122">
+<h2>报错专栏<a class="headerlink" href="#id122" title="Permalink to this heading"></a></h2>
 <p>你是否在使用XEduHub时遇到过报错？是否遇到ERROR时感到无所适从，甚至有点慌张？
 没有关系！报错专栏将为你可能在使用过程中出现的错误提供解决方案！
 这里收录着使用XEduHub中的常见报错并呈现对应的解决方案，如果你遇到了问题，查看这个专栏，找到类似报错，并且解决它！</p>

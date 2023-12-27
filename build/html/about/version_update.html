@@ -67,12 +67,8 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="milestones.html">XEdu大事记</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation.html">XEdu的安装和下载</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#id1">可选的安装方式</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#id2">初学者安装强推!!!不会让人失望的一键安装包</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#pip">使用pip安装</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#docker">docker容器镜像</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#id6">如何快速查看XEdu各模块库的版本</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#id7">如何卸载XEdu各模块库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functions.html">XEdu的常见函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errorcode.html">XEdu的错误码</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEduHub</a></li>
@@ -82,9 +78,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basedt.html">数据处理库BaseDT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basedeploy.html">模型部署库BaseDeploy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../scitech_tools.html">相关科创工具</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../support_resources.html">学习支持和资源获取</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dl_library.html">深度学习知识库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_use.html">如何用XEdu借助AI解决真实问题</a></li>
 </ul>
 
         </div>
@@ -127,6 +121,13 @@
 <h3>正式版更新记录<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
 <section id="mmedu">
 <h4>1）MMEdu<a class="headerlink" href="#mmedu" title="Permalink to this heading"></a></h4>
+<section id="v0-1-23-20231207">
+<h5>V0.1.23 20231207<a class="headerlink" href="#v0-1-23-20231207" title="Permalink to this heading"></a></h5>
+<ol class="simple">
+<li><p>模型转换生成的示例代码文件由basedeploy修正为xedu-python。</p></li>
+<li><p>ssd_lite载入数据集完善，配置文件完善。</p></li>
+</ol>
+</section>
 <section id="v0-1-20-20230704">
 <h5>V0.1.20 20230704<a class="headerlink" href="#v0-1-20-20230704" title="Permalink to this heading"></a></h5>
 <ol class="simple">
@@ -317,6 +318,12 @@
 </section>
 <section id="basenn">
 <h4>3）BaseNN<a class="headerlink" href="#basenn" title="Permalink to this heading"></a></h4>
+<section id="v0-2-3-20231207">
+<h5>V0.2.3 20231207<a class="headerlink" href="#v0-2-3-20231207" title="Permalink to this heading"></a></h5>
+<ol class="simple">
+<li><p>basenn模型转换生成对应的xedu-python推理代码。</p></li>
+</ol>
+</section>
 <section id="v0-2-1-20231013">
 <h5>V0.2.1 20231013<a class="headerlink" href="#v0-2-1-20231013" title="Permalink to this heading"></a></h5>
 <ol class="simple">
@@ -443,6 +450,36 @@
 </section>
 <section id="xedu">
 <h4>5）XEdu一键安装包<a class="headerlink" href="#xedu" title="Permalink to this heading"></a></h4>
+<section id="v1-6-7-20231129">
+<h5>V1.6.7 20231129<a class="headerlink" href="#v1-6-7-20231129" title="Permalink to this heading"></a></h5>
+<p>​	删除PyQt5库。</p>
+<p>​	Thonny版本调整为稳定的3.3.13。</p>
+<p>​	增加xedu-hub的workflow功能。</p>
+<p>​	增加新版Easy系列（easy-xedu）。</p>
+<p>​	优化文件目录。</p>
+<p>​	同时发布XEdu信息科技教学版1.3a版本。</p>
+</section>
+<section id="v1-6-6-20231116">
+<h5>V1.6.6 20231116<a class="headerlink" href="#v1-6-6-20231116" title="Permalink to this heading"></a></h5>
+<p>​	添加新版Easy系列测试版本，大约70人内测。</p>
+</section>
+<section id="v1-6-5-20231020">
+<h5>V1.6.5 20231020<a class="headerlink" href="#v1-6-5-20231020" title="Permalink to this heading"></a></h5>
+<p>​	更新BaseNN库，支持onnx模型转换。</p>
+</section>
+<section id="v1-6-4-20231010">
+<h5>V1.6.4 20231010<a class="headerlink" href="#v1-6-4-20231010" title="Permalink to this heading"></a></h5>
+<p>​	更新BaseNN库，支持回归任务（model = nn(’reg’)）。</p>
+<p>​	更新XEdu-python库，支持更多推理任务工作流（workflow）。</p>
+</section>
+<section id="v1-6-3-20230916">
+<h5>V1.6.3 20230916<a class="headerlink" href="#v1-6-3-20230916" title="Permalink to this heading"></a></h5>
+<p>​	修正bug。</p>
+</section>
+<section id="v1-6-2-20230912">
+<h5>V1.6.2 20230912<a class="headerlink" href="#v1-6-2-20230912" title="Permalink to this heading"></a></h5>
+<p>​	修正bug。</p>
+</section>
 <section id="v1-6-20230901">
 <h5>V1.6 20230901<a class="headerlink" href="#v1-6-20230901" title="Permalink to this heading"></a></h5>
 <p>​	重构opencv-python库环境。</p>

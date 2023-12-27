@@ -57,17 +57,17 @@
 <li class="toctree-l2"><a class="reference internal" href="mmediting.html">图像处理模块：MMEditing</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">最后一步：模型转换</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#mmedu">借助MMEdu完成模型转换</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#basedeploy">借助BaseDeploy完成模型部署</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">全流程体验</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#what">What：什么现象与成果</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">精度测试结果</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">边、端设备测试结果</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">精度测试结果</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">边、端设备测试结果</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id14">多模态交互</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id15">更多模型转换相关项目</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">多模态交互</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="openmmlab.html">走向OpenMMLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">MMEdu项目案例集</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../basenn.html">神经网络库BaseNN</a></li>
@@ -75,9 +75,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basedt.html">数据处理库BaseDT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basedeploy.html">模型部署库BaseDeploy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../scitech_tools.html">相关科创工具</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../support_resources.html">学习支持和资源获取</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dl_library.html">深度学习知识库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_use.html">如何用XEdu借助AI解决真实问题</a></li>
 </ul>
 
         </div>
@@ -107,10 +105,8 @@
              
   <section id="id1">
 <h1>最后一步：模型转换<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
-<p>得益于<code class="docutils literal notranslate"><span class="pre">OpenMMLab</span></code>系列工具的不断进步与发展。MMEdu通过集成OpenMMLab开源的<code class="docutils literal notranslate"><span class="pre">模型部署工具箱MMDeploy</span></code>和<code class="docutils literal notranslate"><span class="pre">模型压缩工具包MMRazor</span></code>，打通了从算法模型到应用程序这 “最后一公里”！</p>
+<p>训练好了模型该如何快速应用呢？在别的设备安装MMEdu似乎很麻烦。得益于<code class="docutils literal notranslate"><span class="pre">OpenMMLab</span></code>系列工具的不断进步与发展。MMEdu通过集成OpenMMLab开源的<code class="docutils literal notranslate"><span class="pre">模型部署工具箱MMDeploy</span></code>和<code class="docutils literal notranslate"><span class="pre">模型压缩工具包MMRazor</span></code>，打通了从算法模型到应用程序这 “最后一公里”！</p>
 <p>我们也希望通过本系列教程，带领大家学会如何把自己使用<code class="docutils literal notranslate"><span class="pre">MMEdu</span></code>训练的计算机视觉任务<code class="docutils literal notranslate"><span class="pre">SOTA模型</span></code>部署到<code class="docutils literal notranslate"><span class="pre">ONNXRuntime</span></code>、<code class="docutils literal notranslate"><span class="pre">NCNN</span></code>等各个推理引擎上。</p>
-<p><strong>行空板上部署MMEdu训练模型效果示例：</strong></p>
-<p><img alt="../_images/DeploymentDemonstration.gif" src="../_images/DeploymentDemonstration.gif" /></p>
 <section id="mmedu">
 <h2>借助MMEdu完成模型转换<a class="headerlink" href="#mmedu" title="Permalink to this heading"></a></h2>
 <p>MMEdu内置了一个<code class="docutils literal notranslate"><span class="pre">convert</span></code>函数，来实现了一键式模型转换，转换前先了解一下转换要做的事情吧。</p>
@@ -130,9 +126,13 @@
 <span class="n">model</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>这段代码是完成分类模型的转换，接下来对为您<code class="docutils literal notranslate"><span class="pre">model.convert</span></code>函数的各个参数：</p>
-<p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>：选择想要进行模型转换的权重文件，以.pth为后缀。</p>
-<p><code class="docutils literal notranslate"><span class="pre">out_file</span></code>：模型转换后的输出文件路径。</p>
+<p><code class="docutils literal notranslate"><span class="pre">model.convert</span></code>函数中有四个参数可以设置：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>(string) - 必需参数，选择想要进行模型转换的权重文件，以.pth为后缀。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">out_file</span></code>(string) - 必需参数，指定模型转换后的输出文件路径。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">opset_version</span></code>(int) - 可选参数，设置模型算子集的版本，默认为11。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ir_version</span></code>(int) - 可选参数，设置模型转化中间表示的版本，默认为6。</p></li>
+</ul>
 <p>类似的，目标检测模型转换的示例代码如下：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMDetection</span> <span class="k">as</span> <span class="n">det</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">det</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;SSD_Lite&#39;</span><span class="p">)</span>
@@ -144,22 +144,8 @@
 <p>参考项目：<a href="https://www.openinnolab.org.cn/pjlab/project?id=645110943c0e930cb55e859b&sc=62f34141bf4f550f3e926e0e#public">MMEdu模型转换
 </a></p>
 </section>
-<section id="basedeploy">
-<h2>借助BaseDeploy完成模型部署<a class="headerlink" href="#basedeploy" title="Permalink to this heading"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">XEdu</span></code>团队推出了模型部署工具<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>，该工具可以轻松完成模型部署。对MMEdu训练的模型完成转换后，生成ONNX模型，可借助<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>库部署到硬件上。</p>
-<p>示例代码如下：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
-<span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
-<span class="n">model_path</span> <span class="o">=</span> <span class="s1">&#39;cls.onnx&#39;</span>
-<span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">ret</span><span class="p">,</span> <span class="n">img</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">bd</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">print_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-<span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>更多关于BaseDePloy库的介绍和使用说明可见<a href="https://xedu.readthedocs.io/zh/master/basedeploy/introduction.html#basedeploy-xedu">BaseDeploy：服务于XEdu的模型部署工具</a>。</p>
+<section id="id2">
+<h2>全流程体验<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
 <p>现在，让我们从“<a href="https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&sc=635638d69ed68060c638f979#public">从零开始训练猫狗识别模型并完成模型转换</a>”项目入手，见识一下使用MMEdu工具完成从模型训练到模型部署的基本流程吧！</p>
 <p><strong>1.准备数据集</strong></p>
 <p>思考自己想要解决的分类问题后，首先要收集数据并整理好数据集。例如想要解决猫狗识别问题，则需准备猫狗数据集。</p>
@@ -173,7 +159,7 @@
 <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">epochs</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;checkpoints/pretrain_model/mobilenet_v2.pth&#39;</span> <span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">device</span><span class="o">=</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>3.推理部署</strong></p>
+<p><strong>3.推理测试</strong></p>
 <p>使用MMEdu图像分类模块模型推理的示例代码完成模型推理。返回的数据类型是一个字典列表（很多个字典组成的列表）类型的变量，内置的字典表示分类的结果，如“<code class="docutils literal notranslate"><span class="pre">{'标签':</span> <span class="pre">0,</span> <span class="pre">'置信度':</span> <span class="pre">0.9417100548744202,</span> <span class="pre">'预测结果':</span> <span class="pre">'cat'}</span></code>”，我们可以用字典访问其中的元素。巧用预测结果设置一些输出。如：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
 <span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;MobileNet&#39;</span><span class="p">)</span>
@@ -196,31 +182,30 @@
 <span class="n">model</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>此时项目文件中的out_file文件夹下便生成了模型转换后生成的两个文件，可打开查看。一个是ONNX模型权重，一个是示例代码，示例代码稍作改动即可运行（需配合BaseData.py的BaseDT库）。</p>
+<p>此时项目文件中的out_file文件夹下便生成了模型转换后生成的两个文件，可打开查看。一个是ONNX模型权重，一个是示例代码，示例代码稍作改动即可运行（XEduHub）。</p>
 <ul>
 <li><p>硬件上需安装的库：</p>
-<p>BaseDeploy</p>
+<p>XEduHub（<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">xedu-python</span></code>）</p>
 </li>
 <li><p>需上传到硬件的文件：</p>
 <p>1）out_file文件夹（内含模型转换生成的两个文件）。</p>
 <p>新建一个代码文件，将out_file文件夹中的py文件中的代码稍作修改用于代码运行（当然也可以直接运行）。</p>
 </li>
 </ul>
-<p>示例代码：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
-<span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
-<span class="n">model_path</span> <span class="o">=</span> <span class="s1">&#39;out_file/cats_dogs.onnx&#39;</span>
-<span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">ret</span><span class="p">,</span> <span class="n">img</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">bd</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">print_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<p>生成的示例代码：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;预测结果&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;dog&#39;</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;这是小狗，汪汪汪！&#39;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;这是小猫，喵喵喵！&#39;</span><span class="p">)</span>
-<span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+<span class="c1"># 模型声明</span>
+<span class="n">mm</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;mmedu&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;cats_dogs.onnx&#39;</span><span class="p">)</span>
+<span class="c1"># 待推理图像，此处仅以随机数组为例</span>
+<span class="n">image</span> <span class="o">=</span> <span class="s1">&#39;cat0.jpg&#39;</span>
+<span class="c1"># 模型推理</span>
+<span class="n">res</span><span class="p">,</span><span class="n">img</span> <span class="o">=</span> <span class="n">mm</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">image</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">)</span>
+<span class="c1"># 标准化推理结果</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">mm</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s2">&quot;zh&quot;</span><span class="p">)</span>
+<span class="c1"># 可视化结果图像</span>
+<span class="n">mm</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>拓展：模型转换在线版</strong></p>
@@ -357,10 +342,10 @@
 </section>
 <section id="what">
 <h2>What：什么现象与成果<a class="headerlink" href="#what" title="Permalink to this heading"></a></h2>
-<section id="id2">
-<h3>精度测试结果<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
 <section id="id3">
-<h4>软硬件环境<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h4>
+<h3>精度测试结果<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<section id="id4">
+<h4>软硬件环境<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h4>
 <ul class="simple">
 <li><p>操作系统：Ubuntu 16.04</p></li>
 <li><p>系统位数：64</p></li>
@@ -370,16 +355,16 @@
 <li><p>数据处理工具：BaseDT == 0.0.1</p></li>
 </ul>
 </section>
-<section id="id4">
-<h4>配置<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h4>
+<section id="id5">
+<h4>配置<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h4>
 <ul class="simple">
 <li><p>静态图导出</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">batch</span></code>大小为1</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">BaseDT</span></code>内置<code class="docutils literal notranslate"><span class="pre">ImageData</span></code>工具进行数据预处理</p></li>
 </ul>
 </section>
-<section id="id5">
-<h4>精度测试结果汇总<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h4>
+<section id="id6">
+<h4>精度测试结果汇总<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h4>
 <ul class="simple">
 <li><p>图像分类</p></li>
 </ul>
@@ -527,14 +512,14 @@
 <p>mAP（mean AP）:平均精度的均值，各类别的AP的均值</p>
 </section>
 </section>
-<section id="id6">
-<h3>边、端设备测试结果<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<section id="id7">
+<h3>边、端设备测试结果<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
 <section id="pc">
 <h4>PC机测试<a class="headerlink" href="#pc" title="Permalink to this heading"></a></h4>
 <p>用于模型训练的机器，性能较优，常见的操作系统有Windows和Linux</p>
 </section>
-<section id="id7">
-<h4>软硬件环境<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h4>
+<section id="id8">
+<h4>软硬件环境<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h4>
 <ul class="simple">
 <li><p>操作系统：Ubuntu 16.04</p></li>
 <li><p>系统位数：64</p></li>
@@ -543,8 +528,8 @@
 <li><p>推理框架：ONNXRuntime == 1.13.1</p></li>
 <li><p>数据处理工具：BaseDT == 0.0.1</p></li>
 </ul>
-<section id="id8">
-<h5>配置<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h5>
+<section id="id9">
+<h5>配置<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h5>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">静态图</span></code>导出</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">batch</span></code>大小为1</p></li>
@@ -694,11 +679,11 @@
 <p>**：后端支持网络为MobileNetv2，即MMEdu中SSD_Lite选用的版本，可从参数对比中得出其精度、准确度、模型大小均优于以MobileNetv1为后端推理框架的SSD_Lite</p>
 </section>
 </section>
-<section id="id9">
-<h4>行空板测试<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h4>
-<p>行空板, 青少年Python教学用开源硬件，解决Python教学难和使用门槛高的问题，旨在推动Python教学在青少年中的普及。官网：<a href="https://www.dfrobot.com.cn/">https://www.dfrobot.com.cn/</a></p>
 <section id="id10">
-<h5>软硬件环境<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h5>
+<h4>行空板测试<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h4>
+<p>行空板, 青少年Python教学用开源硬件，解决Python教学难和使用门槛高的问题，旨在推动Python教学在青少年中的普及。官网：<a href="https://www.dfrobot.com.cn/">https://www.dfrobot.com.cn/</a></p>
+<section id="id11">
+<h5>软硬件环境<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h5>
 <ul class="simple">
 <li><p>操作系统：Linux</p></li>
 <li><p>系统位数：64</p></li>
@@ -709,8 +694,8 @@
 <li><p>数据处理工具：BaseDT == 0.0.1</p></li>
 </ul>
 </section>
-<section id="id11">
-<h5>配置<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h5>
+<section id="id12">
+<h5>配置<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h5>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">静态图</span></code>导出</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">batch</span></code>大小为1</p></li>
@@ -863,8 +848,8 @@
 <section id="b">
 <h4>树莓派（4b）测试<a class="headerlink" href="#b" title="Permalink to this heading"></a></h4>
 <p>Raspberry Pi。中文名为“树莓派”,简写为RPi，或者RasPi（RPi）是为学生计算机编程教育而设计，卡片式电脑，其系统基于Linux。</p>
-<section id="id12">
-<h5>软硬件环境<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h5>
+<section id="id13">
+<h5>软硬件环境<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h5>
 <ul class="simple">
 <li><p>操作系统：Linux</p></li>
 <li><p>系统位数：32</p></li>
@@ -875,8 +860,8 @@
 <li><p>数据处理工具：BaseDT == 0.0.1</p></li>
 </ul>
 </section>
-<section id="id13">
-<h5>配置<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h5>
+<section id="id14">
+<h5>配置<a class="headerlink" href="#id14" title="Permalink to this heading"></a></h5>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">静态图</span></code>导出</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">batch</span></code>大小为1</p></li>
@@ -1029,18 +1014,12 @@
 </section>
 </section>
 </section>
-<section id="id14">
-<h2>多模态交互<a class="headerlink" href="#id14" title="Permalink to this heading"></a></h2>
+<section id="id15">
+<h2>多模态交互<a class="headerlink" href="#id15" title="Permalink to this heading"></a></h2>
 <p>回顾用AI解决真实问题的流程图，我们已经介绍了收集数据、训练模型、模型推理和应用部署。结合项目设计，我们还会去思考如何通过摄像头获得图像，如何控制灯光发亮，如何操纵舵机，如何设计显示界面UI等需要使用输入设备和输出设备等来实现的交互设计，即对<code class="docutils literal notranslate"><span class="pre">多模态交互</span></code>的考量。</p>
 <p><img alt="../_images/SolveRealProblemsWithAI.JPG" src="../_images/SolveRealProblemsWithAI.JPG" /></p>
 <p>更多传感器、执行器使用教程参见：<a href="https://wiki.dfrobot.com.cn/">DFRobot</a></p>
-</section>
-<section id="id15">
-<h2>更多模型转换相关项目<a class="headerlink" href="#id15" title="Permalink to this heading"></a></h2>
-<p>猫狗分类小助手：<a href="https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&backpath=/pjedu/userprofile%3FslideKey=project#public">https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&amp;backpath=/pjedu/userprofile%3FslideKey=project#public</a></p>
-<p>千物识别小助手：<a href="https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&amp;backpath=/pjlab/projects/list#public</a></p>
-<p>有无人检测小助手：<a href="https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&amp;backpath=/pjlab/projects/list#public</a></p>
-<p>MMEdu模型在线转换：<a href="https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&sc=62f34141bf4f550f3e926e0e#public">https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&amp;sc=62f34141bf4f550f3e926e0e#public</a></p>
+<p>更多模型转换和应用的教程详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/support_resources/model_convert.html">后文</a>。</p>
 </section>
 </section>
 

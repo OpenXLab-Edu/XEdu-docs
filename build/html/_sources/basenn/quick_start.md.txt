@@ -127,9 +127,9 @@ AI项目工坊：[https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/p
 
 用BaseNN库搭建搭建鸢尾花分类模型项目地址：[https://www.openinnolab.org.cn/pjlab/project?id=641bc2359c0eb14f22fdbbb1&sc=635638d69ed68060c638f979#public](https://www.openinnolab.org.cn/pjlab/project?id=641bc2359c0eb14f22fdbbb1&sc=635638d69ed68060c638f979#public)
 
-## 挑战使用BaseNN完成第一个回归项目：波士顿房价预测
+## 挑战使用BaseNN完成第一个回归项目：房价预测
 
-波士顿房价数据集（Boston Housing Dataset）是一个著名的数据集，经常用于机器学习和统计分析中。该数据集包含波士顿郊区房屋的各种信息，包括房价和与房价可能相关的各种属性。选择了四个与房价关系较大的特征：RM (每栋住宅的平均房间数)、LSTAT (人口中较低地位的百分比)、PTRATIO (师生比例)、NOX (一氧化氮浓度) 。进行数据预处理后生成了已提取出只有这四列特征和预测值且做了归一化处理的训练集（house_price_data_norm_train.csv）、验证集（house_price_data_norm_val.csv），搭建模型进行训练，数据预处理的代码可参考原项目。
+Boston Housing Dataset（波士顿房价数据集）是一个著名的数据集，经常用于机器学习和统计分析中。该数据集包含波士顿郊区房屋的各种信息，包括房价和与房价可能相关的各种属性。选择了四个与房价关系较大的特征：RM (每栋住宅的平均房间数)、LSTAT (人口中较低地位的百分比)、PTRATIO (师生比例)、NOX (一氧化氮浓度) 。进行数据预处理后生成了已提取出只有这四列特征和预测值且做了归一化处理的训练集（house_price_data_norm_train.csv）、验证集（house_price_data_norm_val.csv），搭建模型进行训练，数据预处理的代码可参考原项目。
 
 项目地址：
 
@@ -185,7 +185,7 @@ import numpy as np
 # 读取验证集
 val_path = 'house_price_data_norm_val.csv'
 val_x = np.loadtxt(val_path, dtype=float, delimiter=',',skiprows=1,usecols=range(0,4)) # 读取特征列
-val_y = np.loadtxt(val_path, dtype=float, delimiter=',',skiprows=1,usecols=4) # 读取第4列
+val_y = np.loadtxt(val_path, dtype=float, delimiter=',',skiprows=1,usecols=4) # 读取预测值列
 ```
 
 模型推理。
@@ -231,7 +231,7 @@ model = nn()
 
 ### 第2步 载入数据
 
-tangccc.npz是本项目的文本数据，源于互联网，包括57580首唐诗。npz是一种用于存储NumPy数组数据的文件格式。
+[tangccc.npz](https://download.openxlab.org.cn/models/yikshing/bash/weight/tangccc)是本项目的文本数据，源于互联网，包括57580首唐诗。npz是一种用于存储NumPy数组数据的文件格式。
 
 npz文件是一种方便的方式来保存和加载NumPy数组，通常用于在不同的Python程序之间或不同的计算环境中共享数据。
 

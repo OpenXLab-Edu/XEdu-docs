@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>经典数据集介绍 &mdash; OpenXLabEdu  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="从零开始制作一个ImageNet格式数据集" href="howtomake_imagenet.html" />
+    <link rel="prev" title="深度学习训练参数详解" href="parameter_explain.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            OpenXLabEdu
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../xedu_hub.html">深度学习工具库XEduHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mmedu.html">计算机视觉库MMEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basenn.html">神经网络库BaseNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../baseml.html">传统机器学习库BaseML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../easydl.html">EasyDL系列无代码工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basedt.html">数据处理库BaseDT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basedeploy.html">模型部署库BaseDeploy</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../how_to_use.html">如何用XEdu借助AI解决真实问题</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../introduction.html">简单说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction.html#ai">用AI解决问题的一般步骤</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../support_resources.html">学习支持和资源获取</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scitech_tools.html">相关科创工具</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../dl_library.html">深度学习知识库</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="parameter_explain.html">深度学习训练参数详解</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">经典数据集介绍</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">常见的数据集</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#imagenet">ImageNet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#coco">COCO</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="howtomake_imagenet.html">从零开始制作一个ImageNet格式数据集</a></li>
+<li class="toctree-l3"><a class="reference internal" href="howtomake_coco.html">从零开始制作一个COCO格式数据集</a></li>
+<li class="toctree-l3"><a class="reference internal" href="network_introduction.html">经典网络模型介绍</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">OpenXLabEdu</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../how_to_use.html">如何用XEdu借助AI解决真实问题</a></li>
+          <li class="breadcrumb-item"><a href="../dl_library.html">深度学习知识库</a></li>
+      <li class="breadcrumb-item active">经典数据集介绍</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/how_to_use/dl_library/dataset_introduction.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>经典数据集介绍<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="id2">
+<h2>常见的数据集<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+</section>
+<section id="imagenet">
+<h2>ImageNet<a class="headerlink" href="#imagenet" title="Permalink to this heading"></a></h2>
+<p>ImageNet 是目前世界上图像识别最大的数据库，有超过1500万张图片，约2.2万种类别，权威、可靠。</p>
+<p>斯坦福大学教授李飞飞为了解决机器学习中过拟合和泛化的问题而牵头构建的数据集。该数据集从2007年开始手机建立，直到2009年作为论文的形式在CVPR 2009上面发布。直到目前，该数据集仍然是深度学习领域中图像分类、检测、定位的最常用数据集之一。</p>
+<p>基于ImageNet有一个比赛，从2010年开始举行，到2017年最后一届结束。该比赛称为ILSVRC，全称是ImageNet Large-Scale Visual Recognition Challenge，每年举办一次，每次从ImageNet数据集中抽取部分样本作为比赛的数据集。ILSVRC比赛包括：图像分类、目标定位、目标检测、视频目标检测、场景分类。在该比赛的历年优胜者中，诞生了AlexNet（2012）、VGG（2014）、GoogLeNet（2014）、ResNet（2015）等耳熟能详的深度学习网络模型。“ILSVRC”一词有时候也用来特指该比赛使用的数据集，即ImageNet的一个子集，其中最常用的是2012年的数据集，记为ILSVRC2012。因此有时候提到ImageNet，很可能是指ImageNet中用于ILSVRC2012的这个子集。ILSVRC2012数据集拥有1000个分类（这意味着面向ImageNet图片识别的神经网络的输出是1000个），每个分类约有1000张图片。这些用于训练的图片总数约为120万张，此外还有一些图片作为验证集和测试集。ILSVRC2012含有5万张图片作为验证集，10万张图片作为测试集（测试集没有标签，验证集的标签通过另外的文档给出）。</p>
+<p>ImageNet不仅是一个数据集、一项比赛，也是一种典型的数据集格式。分类任务中最经典的数据集类型就是<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#imagenet">ImageNet格式</a>。</p>
+<p>XEdu中MMEdu的图像分类模块数据集类型是<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#imagenet">ImageNet</a>，包含三个文件夹和三个文本文件，文件夹内，不同类别图片按照文件夹分门别类排好，通过training_set、val_set、test_set区分训练集、验证集和测试集。文本文件classes.txt说明类别名称与序号的对应关系，val.txt说明验证集图片路径与类别序号的对应关系，test.txt说明测试集图片路径与类别序号的对应关系。如需训练自己创建的数据集，数据集需转换成<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#imagenet">ImageNet格式</a>。如何制作ImageNet格式数据集详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/dl_library/howtomake_imagenet.html#imagenet">后文</a>。</p>
+</section>
+<section id="coco">
+<h2>COCO<a class="headerlink" href="#coco" title="Permalink to this heading"></a></h2>
+<p>MS COCO的全称是Microsoft Common Objects in Context，起源于微软于2014年出资标注的Microsoft COCO数据集，与ImageNet竞赛一样，被视为是计算机视觉领域最受关注和最权威的比赛之一。</p>
+<p>COCO数据集是一个大型的、丰富的物体检测，分割和字幕数据集。这个数据集以scene understanding为目标，主要从复杂的日常场景中截取，图像中的目标通过精确的segmentation进行位置的标定。图像包括91类目标，328,000影像和2,500,000个label。目前为止有语义分割的最大数据集，提供的类别有80 类，有超过33 万张图片，其中20 万张有标注，整个数据集中个体的数目超过150 万个。</p>
+<p>XEdu中MMEdu的MMDetection模块支持的数据集类型是<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#coco">COCO</a>，如需训练自己创建的数据集，数据集需转换成<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#coco">COCO格式</a>。如何制作COCO格式数据集详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/dl_library/howtomake_coco.html#coco">后文</a>。</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="parameter_explain.html" class="btn btn-neutral float-left" title="深度学习训练参数详解" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="howtomake_imagenet.html" class="btn btn-neutral float-right" title="从零开始制作一个ImageNet格式数据集" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2023 OpenXLabEdu.All Rights Reserved.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

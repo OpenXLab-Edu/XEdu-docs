@@ -87,6 +87,8 @@ EasyTrain界面打开之后在下拉框中选择训练任务为分类或者检�
 
 ![](../images/easydl/train20.png)
 
+如需尝试用代码完成MMEdu模型训练或了解MMEdu具体功能，请参照[MMEdu的教程](https://xedu.readthedocs.io/zh/master/mmedu.html)。
+
 用EasyTrain训练第一个BaseNN模型！
 -----------------------------
 
@@ -157,7 +159,7 @@ EasyTrain界面打开之后，选择BaseNN页面，在下拉框中指定训练�
 
 ![](../images/easydl/train19.png)
 
-
+如需尝试用代码完成BaseNN模型训练或了解BaseNN具体功能，请参照[BaseNN的教程](https://xedu.readthedocs.io/zh/master/basenn.html)。
 
 注意事项
 --------

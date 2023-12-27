@@ -90,9 +90,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basedt.html">数据处理库BaseDT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basedeploy.html">模型部署库BaseDeploy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../scitech_tools.html">相关科创工具</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../support_resources.html">学习支持和资源获取</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dl_library.html">深度学习知识库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_use.html">如何用XEdu借助AI解决真实问题</a></li>
 </ul>
 
         </div>
@@ -207,13 +205,43 @@
 <section id="npz">
 <h4>针对NPZ数据集类型的数据：<a class="headerlink" href="#npz" title="Permalink to this heading"></a></h4>
 <p>指定NPZ数据集路径，再使用<code class="docutils literal notranslate"><span class="pre">load_npz_data</span></code>函数即可完成载入数据。</p>
+<p>详见案例：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=64daed3eafeb1059822a1578&amp;sc=62f33550bf4f550f3e926cf2#public">姿态识别进阶-循环神经网络</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">train_path</span> <span class="o">=</span> <span class="s1">&#39;../../dataset/dataset.npz&#39;</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_npz_data</span><span class="p">(</span><span class="n">train_path</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span><span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;walking&quot;</span><span class="p">,</span><span class="s2">&quot;waving&quot;</span><span class="p">,</span><span class="s2">&quot;stretching&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>对NPZ数据集的要求：npz格式，其中至少应该拥有两个键，分别为<code class="docutils literal notranslate"><span class="pre">data</span></code>与<code class="docutils literal notranslate"><span class="pre">label</span></code>，其中<code class="docutils literal notranslate"><span class="pre">data</span></code>中存储的应为训练数据信息，<code class="docutils literal notranslate"><span class="pre">label</span></code>中存储的应为数据所对应的标签信息（应为数组形式）。</p>
+<p>对NPZ数据集的要求：npz格式(numpy zip)，其中至少应该拥有两个键，分别为<code class="docutils literal notranslate"><span class="pre">data</span></code>与<code class="docutils literal notranslate"><span class="pre">label</span></code>，其中<code class="docutils literal notranslate"><span class="pre">data</span></code>中存储的应为训练数据信息，<code class="docutils literal notranslate"><span class="pre">label</span></code>中存储的应为数据所对应的标签信息（应为数组形式）。</p>
 <p><code class="docutils literal notranslate"><span class="pre">batch_size</span></code>：表示在一次训练中同时处理的样本数量。通常情况下，批量大小越大，模型的收敛速度越快，但内存和计算资源的需求也会相应增加。</p>
 <p><code class="docutils literal notranslate"><span class="pre">classes</span></code>：表示数据集中的<code class="docutils literal notranslate"><span class="pre">label</span></code>中存储的数组各个位置标签所代表的意义。可以不传入，若不传入，则推理结果将会是认为结果的下标。若传入，则推理结果将自动转化为将原结果作为下标的数组中的对应内容。</p>
+<ul class="simple">
+<li><p>小帖士（井号后面是运行结果）：</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;dataset.npz&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="c1"># &lt;numpy.lib.npyio.NpzFile object at 0x7f319c448ac0&gt;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">])</span>  <span class="c1"># 这是一个三分类标签数据，它是二维数据，每一条数据里面是三分类独热编码标签。</span>
+<span class="c1"># array([[1, 0, 0],</span>
+<span class="c1">#          ...,</span>
+<span class="c1">#        [0, 0, 1]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span> <span class="c1"># 这是一个高维数据，每一条数据对应一个标签，但是数据本身不是一维的，而是高纬的。</span>
+<span class="c1"># array([[[ 4.60664570e-01,  2.78294533e-01, -3.56185764e-01, ...,</span>
+<span class="c1">#          9.21180844e-01,  1.94783360e-01,  9.93974388e-01],</span>
+<span class="c1">#        [ 4.62414086e-01,  2.83538818e-01, -3.53962898e-01, ...,</span>
+<span class="c1">#          9.16427970e-01,  1.96989119e-01,  9.91852582e-01],</span>
+<span class="c1">#        [ 4.63086247e-01,  2.80452102e-01, -3.24477255e-01, ...,</span>
+<span class="c1">#          9.19000983e-01,  1.50782943e-01,  9.93449986e-01],</span>
+<span class="c1">#        ...,</span>
+<span class="c1">#        [ 4.34215039e-01,  4.27498937e-01,  3.03461671e-01, ...,</span>
+<span class="c1">#          8.96103501e-01, -4.72080037e-02,  9.73582983e-01]]])</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>len(data[&#39;data&#39;])和len(data[&#39;label&#39;])是相等的。
+对于案例[《姿态识别进阶-循环神经网络》](https://www.openinnolab.org.cn/pjlab/project?id=64daed3eafeb1059822a1578&amp;sc=62f33550bf4f550f3e926cf2#public)
+来说：data[&#39;label&#39;].shape是(19, 3)，data[&#39;data&#39;].shape是(19, 30, 132)。
+type(data[&#39;data&#39;])是numpy.ndarray,type(data[&#39;data&#39;])是numpy.ndarray。
+</pre></div>
+</div>
 </section>
 <section id="id9">
 <h4>拓展——自行编写代码载入数据：<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h4>
@@ -477,7 +505,7 @@
 <p>模型格式转换代码如下：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
-<span class="n">model</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">checkppint</span><span class="o">=</span><span class="s2">&quot;basenn_cd.pth&quot;</span><span class="p">,</span><span class="n">out_file</span><span class="o">=</span><span class="s2">&quot;basenn_cd.onnx&quot;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="s2">&quot;basenn_cd.pth&quot;</span><span class="p">,</span><span class="n">out_file</span><span class="o">=</span><span class="s2">&quot;basenn_cd.onnx&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">model.convert()</span></code>参数信息：</p>
@@ -487,7 +515,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">opset_version</span></code>：指定转换出的onnx模型算子的版本，默认为10，一般情况下不需要进行设置，除非出现了算子版本不符而导致的报错。【高级功能】</p></li>
 </ul>
 <p><strong>注意！</strong>：在转换为onnx文件后会将模型的元信息，如数据类型、输入尺寸等也写入模型文件，而之前版本的BaseNN训练得到的模型文件不含有这些信息，因此如果想要将之前的BaseNN训练得到的文件进行转换，需要基于原先的模型文件使用最新的BaseNN版本再进行一轮训练！</p>
-<p>转换后模型可<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#basenn">借助XEduHub库完成推理</a>和应用，更多模型转换与应用的介绍详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/support_resources/model_convert.html">后文</a>。</p>
+<p>模型转换后生成一个ONNX模型和示例代码，示例代码的使用详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/support_resources/model_convert.html#id8">后文</a>。</p>
 </section>
 </section>
 <section id="id25">

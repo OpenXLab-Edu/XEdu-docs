@@ -1100,7 +1100,89 @@ drive.save(img,"img_perception.jpg") # 保存推理图片
 
 该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
 
-## 7. MMEdu模型推理
+## 7. 图像嵌入和文本嵌入
+
+嵌入技术是一种将计算机无法直接理解图像或文本转换成计算机擅长理解的数字数字向量。通过“嵌入”方式得到的数字向量，能完成零样本分类、文本翻译，图像聚类等任务。XEduHub提供了图像嵌入和文本嵌入任务：`'embedding_image'`，`'embedding_text'`。
+
+### 图像嵌入
+当我们使用图像嵌入，本质上是将图像“编码”或“嵌入”到向量形式的一系列数字中，让图像->向量。
+这些向量可以捕捉图像中的局部特征，如颜色、纹理和形状等。图像嵌入有助于计算机识别图像中的对象、场景和动作等。
+
+#### 代码样例
+
+```python
+from XEdu.hub import Workflow as wf # 导入库
+img_emb = wf(task='embedding_image') # 实例化模型
+image_embeddings = img_emb.inference(data='demo/cat.png') # 模型推理
+print(image_embeddings) # 输出向量
+```
+
+### 代码解释
+
+#### 1. 模型声明
+```python
+from XEdu.hub import Workflow as wf # 导入库
+img_emb = wf(task='embedding_image') # 实例化模型
+```
+
+#### 2. 模型推理
+
+```python
+image_embeddings = img_emb.inference(data='demo/cat.png') # 模型推理
+```
+
+模型推理`inference()`可传入参数：
+
+- `data`：指定待嵌入的图片。可以直接传入图像路径`data='cat.jpg'` 或者多张图像路径列表`data= ['cat.jpg','dog.jpg'] `。
+
+
+模型推理返回结果：
+
+![](../images/xeduhub/emb_show1.png)
+
+- `result`：以二维数组的形式保存了每张图片特征提取后的512维向量。
+
+### 文本嵌入
+当我们使用文本嵌入，本质上是将文本的上下文和场景“编码”或“嵌入”到向量形式的一系列数字中，让文本->向量。
+这些向量将词语映射到数值空间中，使得词语成为有意义的数值向量。
+
+因为该模型的训练集来源是互联网网页提取的4亿对图像文本对的编码，所以这里的文本可以为网络上出现的任意名词，或是一段文字。你可以加入很多描述性文本，让之后的“零样本分类”变得十分有趣！
+
+#### 代码样例
+
+```python
+from XEdu.hub import Workflow as wf # 导入库
+txt_emb = wf(task='embedding_text') # 实例化模型
+txt_embeddings = txt_emb.inference(data=['a black cat','a yellow cat']) # 模型推理
+print(txt_embeddings) # 输出向量
+```
+
+### 代码解释
+
+#### 1. 模型声明
+```python
+from XEdu.hub import Workflow as wf # 导入库
+txt_emb = wf(task='embedding_text') # 实例化模型
+```
+
+#### 2. 模型推理
+
+```python
+txt_embeddings = txt_emb.inference(data=['a black cat','a yellow cat']) # 模型推理
+```
+
+模型推理`inference()`可传入参数：
+
+- `data`：指定待嵌入的文本。可以直接传入文本`data= 'cat' `或者多条文本列表`data= ['a black cat','a yellow cat']`。
+
+
+模型推理返回结果：
+
+![](../images/xeduhub/emb_show2.png)
+
+- `result`：以二维数组的形式保存了每条文本特征提取后的512维向量。
+
+## 8. MMEdu模型推理
 
 XEduHub现在可以支持使用MMEdu导出的onnx模型进行推理啦！如果你想了解如何使用MMEdu训练模型，可以看这里：[解锁图像分类模块：MMClassification](https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html)、[揭秘目标检测模块：MMDetection](https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html)。
 
@@ -1274,7 +1356,7 @@ mmdet.save(img,'new_plate.jpg')# 保存推理结果图片
 
 该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
 
-## 8. BaseNN模型推理
+## 9. BaseNN模型推理
 
 XEduHub现在可以支持使用BaseNN导出的onnx模型进行推理啦！如果你想了解如何将使用[BaseNN](https://xedu.readthedocs.io/zh/master/basenn.html)训练好的模型转换成ONNX格式，可以看这里：[BaseNN模型文件格式转换](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id29)。OK，准备好了ONNX模型，那么就开始使用XEduHub吧！
 
@@ -1333,7 +1415,7 @@ format_result = basenn.format_output()
 
 `format_output`的结果是一个结果字典，这个字典的第一个元素有两个键，`预测值`、`分数`，代表着该手写数字的分类标签以及属于该分类标签的概率。
 
-## 9. BaseML模型推理
+## 10. BaseML模型推理
 
 XEduHub现在可以支持使用BaseML导出的pkl模型文件进行推理啦！如果你想了解如何将使用[BaseML](https://xedu.readthedocs.io/zh/master/baseml.html)训练模型并保存成.pkl模型文件，可以看这里：[BaseML模型保存](https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id10)。OK，准备好了pkl模型，那么就开始使用XEduHub吧！
 
@@ -1396,7 +1478,7 @@ format_output = baseml.format_output(lang='zh')# 推理结果格式化输出
 
 如果此时你有冲动去使用BaseML完成模型训练到推理，再到转换与应用，快去下文学习[BaseML的相关使用](https://xedu.readthedocs.io/zh/master/baseml.html)吧！
 
-## 10. 其他onnx模型推理
+## 11. 其他onnx模型推理
 
 XEduHub现在可以支持使用用户自定义的ONNX模型文件进行推理啦！这意味着你可以不仅仅使用MMEdu或者BaseNN训练模型并转换而成的ONNX模型文件进行推理，还可以使用其他各个地方的ONNX模型文件，但是有个**重要的前提：你需要会使用这个模型，了解模型输入的训练数据以及模型的输出结果**。OK，如果你已经做好了充足的准备，那么就开始使用XEduHub吧！
 
