@@ -67,7 +67,7 @@ model.convert(checkpoint=checkpoint, out_file=out_file)
 参考项目：<a href="https://www.openinnolab.org.cn/pjlab/project?id=645110943c0e930cb55e859b&sc=62f34141bf4f550f3e926e0e#public">MMEdu模型转换
 </a>
 
-模型转换后生成一个ONNX模型和示例代码，示例代码的使用详见[后文](https://xedu.readthedocs.io/zh/master/support_resources/model_convert.html#id7)。
+模型转换后生成一个ONNX模型和示例代码，示例代码的使用详见[后文](https://xedu.readthedocs.io/zh/master/how_to_use/support_resources/model_convert.html#id6)。
 
 此外，我们也为提供了一些我们帮您做好转换的ONNX模型（MMEdu）。
 
