@@ -11,7 +11,7 @@
 
 &ensp;&ensp;&ensp;&ensp;其次，训练好的模型需要部署为智能应用。应用模型也有多种选择，一种是将模型部署在服务器或者可以长时间开机的电脑上，提供WebAPI服务，使用带摄像头和Wi-Fi的开源硬件，将害虫的照片发回到Web服务器，然后得到推理结果。一般来说，只有较大的模型才需要这么做。另一种是直接将模型运行在开源硬件上，拍摄、识别和执行等功能全部整合在一起。能运行Python的开源硬件，绝大多数都支持ONNX的模型推理，如行空板、树莓派和爱克斯板等。只要模型不要太大，都能直接部署推理。
 
-![](../images/xeduhub/../how_to_use/1.png)
+![](../images/xeduhub/../how_to_use/1.jpg)
 
 &ensp;&ensp;&ensp;&ensp;具体的流程分析如图所示。而识别昆虫的模型，使用图像分类技术即可，选择常见的MobileNet模型约10M，ResNet18模型也才50M。以爱克斯板为例，即使不做OpenVINO加速，推理速度也很快。
 
@@ -22,7 +22,7 @@
 
 &ensp;&ensp;&ensp;&ensp;如果数据比较多，那么建议选择MMEdu来训练模型。用MMEdu训练模型，核心代码就六行。只要按照<a href="https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#imagenet">ImageNet</a>的数据集格式，将昆虫图片放在不同的分类目录中即可。具体可以参考XEdu的帮助文档<a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/howtomake_imagenet.html#">《从零开始制作一个ImageNet格式数据集》</a>，或者打开浦育平台的<a href="https://www.openinnolab.org.cn/pjlab/dataset/d74c1bb3c1564bb78db883e21ad66580">“猫狗”</a><a href="https://www.openinnolab.org.cn/pjlab/dataset/6464601f3c0e930cb50e15c8">“手写体数字”</a>之类的数据集，看一眼就明白。即使用MMEdu来训练，也有几种方式可以选择，如图所示。
 
-![](../images/xeduhub/../how_to_use/2.png)
+![](../images/xeduhub/../how_to_use/2.jpg)
 
 1. 用浦育平台提供的服务器（容器）训练模型。浦育平台还提供了GPU服务器，训练速度比普通电脑要快一些。只是GPU服务器数量少，如果在线人多就需要耐心等一两分钟。唯一不方便的是，需要将数据集打包上传到浦育平台。
 2. 搭建本地XEdu环境训练模型。即使在浦育平台上，训练模型一般也选择XEdu服务器，如果自己的电脑配置不会太古老，能安装Win7的64位，或者Win10、Win11等操作系统的，那就下载XEdu一键安装包，解压后训练环境就配置好了。XEdu提供了各种参考代码，改一下目录就能使用。
