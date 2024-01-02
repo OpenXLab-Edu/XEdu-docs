@@ -66,7 +66,7 @@ OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台�
 
 ​		多样性：只有数量还不够，你还需要确保数据的多样性。这意味着你需要考虑各种光线、拍摄角度、背景等变化条件。
 
-​		格式要求：不同的AI开发工具或框架可能对数据集格式有特定的要求。MMEdu工具对数据集的格式也有自己的要求，如图像分类模块要求[ImageNet格式](https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#imagenet)，目标检测模块要求[COCO格式](https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#coco)，后文有如何[从零开始制作ImageNet格式数据集](https://xedu.readthedocs.io/zh/master/dl_library/howtomake_imagenet.html)和如何[从零开始制作COCO格式数据集](https://xedu.readthedocs.io/zh/master/dl_library/howtomake_coco.html#coco)的详细说明。
+​		格式要求：不同的AI开发工具或框架可能对数据集格式有特定的要求。MMEdu工具对数据集的格式也有自己的要求，如图像分类模块要求[ImageNet格式](https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#imagenet)，目标检测模块要求[COCO格式](https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#coco)，后文有如何[从零开始制作ImageNet格式数据集](https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/howtomake_imagenet.html#imagenet)和如何[从零开始制作COCO格式数据集](https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/howtomake_coco.html#coco)的详细说明。
 
 ### 4. 训练模型
 

@@ -92,4 +92,5 @@ DFRobot的工程团队为BaseDeploy库设计了积木块，代表我们可以使
 
 ## 五、在行空板上部署模型
 
-最后，我们可以连接行空板，只需将ONNX模型上传行空板，再编写推理代码，就可实现将模型部署到行空板上，简单操作可查看[部署模型到硬件的教程](https://xedu.readthedocs.io/zh/master/support_resources/model_convert.html#id11)。
+最后，我们可以连接行空板，只需将ONNX模型上传行空板，再编写推理代码，就可实现将模型部署到行空板上，简单操作可查看[部署模型到硬件的教程](https://xedu.readthedocs.io/zh/master/how_to_use/support_resources/model_convert.html#id11)。
+

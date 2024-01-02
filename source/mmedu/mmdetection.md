@@ -268,7 +268,7 @@ model.train(epochs=3, validate=True, checkpoint=checkpoint) # 进行再训练
 
 我们还可以指定网上下载的某个预训练模型。通过借助在大型数据集上训练的预训练模型，来对新的任务进行训练，而无需从头开始训练。它可以将一个大型数据集中的知识和技能转移到另一个任务上，从而大大节省训练时间。 
 
-全新开始训练一个模型一般要花较长时间，所以我们强烈建议在预训练模型的基础上继续训练，哪怕你要分类的数据集和预训练的数据集并不一样，基于预训练模型继续训练可起到加速训练的作用。在学习资源下载处也提供了一些<a href="https://xedu.readthedocs.io/zh/master/support_resources/resources.html#id3">预训练模型和权重文件下载</a>途径。
+全新开始训练一个模型一般要花较长时间，所以我们强烈建议在预训练模型的基础上继续训练，哪怕你要分类的数据集和预训练的数据集并不一样，基于预训练模型继续训练可起到加速训练的作用。在学习资源下载处也提供了一些[预训练模型和权重文件下载](https://xedu.readthedocs.io/zh/master/how_to_use/support_resources/resources.html#id3)。
 
 
 #### 4.支持的SOTA模型
@@ -297,25 +297,25 @@ model.train(epochs=3, validate=True, checkpoint=checkpoint) # 进行再训练
     <tbody>
         <tr class="row-even">
             <td>1</td>
-            <td><a href="https://xedu.readthedocs.io/zh/master/dl_library/net/SSD_Lite.html">SSD_Lite</a></td>
+            <td><a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/SSD_Lite.html">SSD_Lite</a></td>
         </tr>
     </tbody>
     <tbody>
         <tr class="row-even">
             <td>2</td>
-            <td><a href="https://xedu.readthedocs.io/zh/master/dl_library/net/FasterRCNN.html">	FasterRCNN</a></td>
+            <td><a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/FasterRCNN.html">	FasterRCNN</a></td>
         </tr>
     </tbody>
     <tbody>
         <tr class="row-even">
             <td>3</td>
-            <td><a href="https://xedu.readthedocs.io/zh/master/dl_library/net/Yolov3.html">Yolov3</a></td>
+            <td><a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/Yolov3.html">Yolov3</a></td>
         </tr>
     </tbody>
     <tbody>
         <tr class="row-even">
             <td>4</td>
-            <td><a href="https://xedu.readthedocs.io/zh/master/dl_library/network_introduction.html">更多</a></td>
+            <td><a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/network_introduction.html">更多</a></td>
         </tr>
     </tbody>
 </table>
