@@ -954,4 +954,4 @@ __注：硬件测试模块持续更新中，如有更多硬件测试需求，请
 
 更多传感器、执行器使用教程参见：<a href="https://wiki.dfrobot.com.cn/">DFRobot</a>
 
-更多模型转换和应用的教程详见[后文](https://xedu.readthedocs.io/zh/master/support_resources/model_convert.html)。
+更多模型转换和应用的教程详见[后文](https://xedu.readthedocs.io/zh/master/how_to_use/support_resources/model_convert.html)。
