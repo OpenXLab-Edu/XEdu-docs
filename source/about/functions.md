@@ -13,10 +13,6 @@ from XEdu.utils import softmax, cosine_similarity, get_similarity
 ### softmax
 softmax是一个常见的非线性函数，神经网络最终输出的结果是一串数字，如果想要把数字映射为各类概率，那么使用softmax函数再好不过了。向函数输入一个numpy数组，即可得到输出的结果。
 
-softmax的计算公式为：
-```math
-sigma(z_i) = \frac{e^{z_{i}}}{\sum_{j=1}^K e^{z_{j}}} \ \ \ for\ i=1,2,\dots,K
-```
 ```python
 def softmax(x):
     """Apply the softmax operation to the input array.
@@ -33,10 +29,7 @@ def softmax(x):
 ```
 
 ### cosine_similarity
-该函数可以比较两个embedding序列的相似度，这里的相似度是以余弦相似度为计算指标的，其公式为：
-```math
-Cosine(x,y) = \frac{x \cdot y}{|x||y|}
-```
+该函数可以比较两个embedding序列的相似度，这里的相似度是以余弦相似度为计算指标的，在高中我们就学习过余弦定理，这里的余弦相似度公式也是类似的。
 
 假设输入的待比较embedding序列尺度分别为(N, D)和(M, D)，则输出的结果尺度为(N, M)。
 
