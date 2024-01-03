@@ -58,3 +58,19 @@ source_suffix = {
     '.txt': 'markdown',
     '.md': 'markdown',
 }
+
+latex_engine = "xelatex"
+latex_elements = {
+    'papersize': 'a4paper',
+    'utf8extra': '',
+    'inputenc': '',
+    'cmappkg': '',
+    'fontenc': '',
+    'preamble': r'''
+        \usepackage{xeCJK}
+        \parindent 2em
+        \setcounter{tocdepth}{3}
+        \renewcommand\familydefault{\ttdefault}
+        \renewcommand\CJKfamilydefault{\CJKrmdefault}
+    ''',
+}
