@@ -151,12 +151,14 @@ print(data['data']) # 这是一个高维数据，每一条数据对应一个标�
 #        [ 4.34215039e-01,  4.27498937e-01,  3.03461671e-01, ...,
 #          8.96103501e-01, -4.72080037e-02,  9.73582983e-01]]])
 ```
-```python
+
 len(data['data'])和len(data['label'])是相等的。
+
 对于案例[《姿态识别进阶-循环神经网络》](https://www.openinnolab.org.cn/pjlab/project?id=64daed3eafeb1059822a1578&sc=62f33550bf4f550f3e926cf2#public)
 来说：data['label'].shape是(19, 3)，data['data'].shape是(19, 30, 132)。
-type(data['data'])是numpy.ndarray,type(data['data'])是numpy.ndarray。
-```
+
+type(data['data'])的运行结果是numpy.ndarray，type(data['data'])的运行结果是numpy.ndarray。
+
 
 
 #### 拓展------自行编写代码载入数据：
