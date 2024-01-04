@@ -20,7 +20,7 @@
 第一步：下载MMEdu（XEdu）最新版文件，并安装到本地，双击exe文件，选择安装路径后，点击Extract即可，安装后自动生成XEdu文件夹，文件夹内目录结构如下图所示。
 
 
-![](../images/mmedu/XEDUinstallp1.png)
+![](../images/mmedu/XEDUinstall1.png)
 
 
  1）下载方式（即XEdu下载方式）
