@@ -668,7 +668,7 @@ N = W/P ，其中P表示池化层的卷积核大小。
 
 同时，使用BaseNN也能完成一些相对复杂的神经网络的搭建，如ResNet，同样也是支持的，首先需在卷积层新增两个参数的设置，分别是步长stride和填充padding，同时增加残差模块的设置。ResNet网络结构如下所示。
 
-![img](https://upload-images.jianshu.io/upload_images/15074510-c6806cfdf2a88fc4.png)
+![](../images/basenn/bn1.png)
 
 以ResNet18为例，我们看一下ResNet18的网络结构。
 
