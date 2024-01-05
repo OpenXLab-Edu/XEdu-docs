@@ -136,7 +136,7 @@ model.load_npz_data(train_path, batch_size=5000,classes=["walking","waving","str
 
 `classes`：表示数据集中的`label`中存储的数组各个位置标签所代表的意义。可以不传入，若不传入，则推理结果将会是认为结果的下标。若传入，则推理结果将自动转化为将原结果作为下标的数组中的对应内容。
 
-`num_workers`：线程数，决定了有多少个子线程被用于数据加载。子线程是并行运行的，可以同时处理多个数据批次。增加 `num_workers` 的数值时，可以加快数据批次的寻找速度，这通常会提高训练的速度，因为模型等待数据的时间减少了，但增大内存开销和CPU负荷。此参数用来控制数据加载过程中的线程数量。适当增加这个数值可以加速训练，但也要注意不要超出你的硬件限制。默认为0，一般而言设置num_workers最大为CPU核心数。
+`num_workers`：指定线程数，决定了有多少个子线程被用于数据加载。子线程是并行运行的，可以同时处理多个数据批次。增加 `num_workers` 的数值时，可以加快数据批次的寻找速度，这通常会提高训练的速度，因为模型等待数据的时间减少了，但增大内存开销和CPU负荷。此参数用来控制数据加载过程中的线程数量。适当增加这个数值可以加速训练，但也要注意不要超出你的硬件限制。默认为0，一般而言设置num_workers最大为CPU核心数。
 
 - 小帖士（井号后面是运行结果）：
 ```python
@@ -177,7 +177,7 @@ type(data['data'])的运行结果是numpy.ndarray，type(data['data'])的运行�
 model.load_dataset(x, y)
 ```
 
-也支持设置线程数参数`num_workers`，决定了有多少个子线程被用于数据加载。子线程是并行运行的，可以同时处理多个数据批次。增加 `num_workers` 的数值时，可以加快数据批次的寻找速度，这通常会提高训练的速度，因为模型等待数据的时间减少了，但增大内存开销和CPU负荷。此参数用来控制数据加载过程中的线程数量。适当增加这个数值可以加速训练，但也要注意不要超出你的硬件限制。默认为0，一般而言设置num_workers最大为CPU核心数。
+也支持设置线程数参数`num_workers`，此参数用来控制数据加载过程中的线程数量。适当增加这个数值可以加速训练，但也要注意不要超出你的硬件限制。默认为0，一般而言设置num_workers最大为CPU核心数。
 
 此处采用Iris鸢尾花数据集和MNIST手写体数字图像数据集作为示例。
 
@@ -585,11 +585,53 @@ model.train(...,metrics=["mse"])
 
 ## 附录
 
-### 1. add()详细介绍
+### 1. 使用add()搭建网络模型详细介绍
 
 使用BaseNN可以轻易地创建深度学习模型。不同类型的神经网络适用于不同类型的问题，比如CNN通常用于处理图像问题，RNN通常用于处理序列问题，全连接神经网络可以应用于各种问题。
 
-首先以一个传统的卷积神经网络结构为例。注释标明了数据经过各层的尺寸变化。
+添加层的方法为`add(layer=None, activation=None, optimizer=None, **kw)`。
+
+#### 参数说明:
+
+- layer：层的类型，可选值包括conv2d, conv1d, maxpool, avgpool, linear, lstm,dropout，res_block，Res_Block，Res_Bottleneck。
+
+- activation：激活函数类型，可选值包括ReLU，Softmax。
+
+- optimizer：为优化器类型，默认值为SGD，可选值包括SGD，Adam，Adagrad，ASGD。
+
+- kw：关键字参数，包括与size相关的各种参数，常用的如size=(x,y)，x为输入维度，y为输出维度；
+  kernel_size=(a,b)， (a,b)表示核的尺寸。
+
+以下具体讲述各种层：
+
+- conv1d: 卷积层（一维），需给定size（size=(输入特征数, 输出特征数)），卷积核尺寸kernel_size。也可额外设置拓展参数步长stride（默认为1），填充padding（默认为0）。
+- conv2d：卷积层（二维），需给定size（size=(输入特征数, 输出特征数)），卷积核尺寸kernel_size。也可额外设置拓展参数步长stride（默认为1），填充padding（默认为0）。
+- maxpool：最大池化层，需给定卷积核尺寸kernel_size。
+- avgpool：平均池化层，需给定卷积核尺寸kernel_size。
+- linear：线性层，需给定size。
+- Res_Block：残差基础模块，需给定size（size=(输入特征数, 输出特征数)），也可额外设置拓展参数num_blocks（默认为1），步长stride（默认为1）。
+- Res_Bottleneck：残差瓶颈模块，需给定size（size=(输入特征数, 输出特征数)），也可额外设置拓展参数num_blocks，步长stride（默认为1）。
+- lstm：一种特殊的RNN（Recurrent Neural Network，循环神经网络）层，需给定size，num_layers。
+- dropout：随机失活层，需给定p（概率）。作用为随机关闭一些神经元，避免过拟合。其中参数`p`表示关闭神经元的比例，比如此处
+  p=0.2
+  表示有随机20%的神经元会被关闭。这种网络层是为了优化效果，避免过拟合而加入的，不是必需的，因此可以尝试修改p的值甚至删掉这个层观察比较效果差距。
+
+#### 搭建全连接神经网络结构：
+
+以一个简单的全连接神经网络结构为例，注释标明了数据经过各层的尺寸变化。
+
+```
+# 输入: [120,4]
+model.add(layer='linear',size=(4, 10),activation='relu') # [120, 10]
+model.add(layer='linear',size=(10, 5), activation='relu') # [120, 5]
+model.add(layer='linear', size=(5, 3), activation='softmax') # [120, 3]
+```
+
+这段代码是在构建一个简单的神经网络模型，其中包含了三个线性层（也称为全连接层），每个层后面都有一个激活函数。输入数据的维度是120行4列的鸢尾花数据集，添加了三层线性层，最后一个线性层输出为3与数据集的类别数一致。
+
+#### 搭建卷积神经网络结构：
+
+以一个简单的卷积神经网络结构为例，注释标明了数据经过各层的尺寸变化。
 
 ``` python
 # 输入: [100,1,20,20]
@@ -602,7 +644,7 @@ model.add('linear', size=(10, 2), activation='softmax') # [100,2]
 model.add(optimizer='SGD') # 设定优化器
 ```
 
-以上代码注释中数字代表含义说明:
+以上代码注释中数字代表含义说明：
 
 以[100, 3, 18, 18]为例 ，其对应含义为 [图像数量, 通道数, 图像维度, 图像维度]。
 
@@ -624,50 +666,109 @@ N = W/P ，其中P表示池化层的卷积核大小。
 
 在以上代码中，输入linear层前，一张图像有10通道，每个通道的图像大小为3x3，因此展平后有10x3x3 = 90，这就是为什么要设置linear层`size=(90,10)`中，输入维度为90。
 
-添加层的方法为`add(layer=None, activation=None, optimizer=None, **kw)`。
+同时，使用BaseNN也能完成一些相对复杂的神经网络的搭建，如ResNet，同样也是支持的，首先需在卷积层新增两个参数的设置，分别是步长stride和填充padding，同时增加残差模块的设置。ResNet网络结构如下所示。
 
-#### 参数说明:
+![img](https://upload-images.jianshu.io/upload_images/15074510-c6806cfdf2a88fc4.png)
 
-- layer：层的类型，可选值包括conv2d, conv1d, maxpool, avgpool, linear, dropout。
+以ResNet18为例，我们看一下ResNet18的网络结构。
 
-- activation：激活函数类型，可选值包括ReLU，Softmax。
+![](../images/basenn/resnet18.jpg)
 
-- optimizer：为优化器类型，默认值为SGD，可选值包括SGD，Adam，Adagrad，ASGD。
+搭建一个ResNet18的示例代码如下（输入的是包含32张224×224尺寸的手写数字图片）：
 
-- kw：关键字参数，包括与size相关的各种参数，常用的如size=(x,y)，x为输入维度，y为输出维度；
-  kernel_size=(a,b)， (a,b)表示核的尺寸。
+```python
+model = nn()
+model.load_img_data('mnist/training_set',batch_size=32,num_workers=1) # (32,3,224,224)
+model.add('Conv2D', size=(3, 64), kernel_size=(7, 7),stride=2,padding=3, activation='ReLU') #(32,64,112,112)
+model.add('BatchNorm2d', size=64) # (32,64,112,112)
+model.add('MaxPool', kernel_size=(3,3),stride=2,padding=1) # (32,64,56,56)
 
-以下具体讲述各种层：
+model.add('Res_Block', size=(64, 64), num_blocks=2,stride=1) # (32,64,56,56)
+model.add('Res_Block', size=(64, 128), num_blocks=2,stride=2) # (32,128,28,28)
+model.add('Res_Block', size=(128, 256), num_blocks=2,stride=2) # (32,256,14,14)
+model.add('Res_Block', size=(256, 512), num_blocks=2,stride=2) # (32,512,7,7)
 
-- conv1d: 卷积层（一维），需给定size，kernel_size。也可额外设置拓展参数步长stride，填充padding。
+model.add('AvgPool', kernel_size=(7,7)) # (32,512)
+model.add('Linear', size=(512, 10), activation='Softmax') # (32,10)
+```
 
-- conv2d：卷积层（二维），需给定size，kernel_size。也可额外设置拓展参数步长stride，填充padding。
+注：注释表示[图像数量, 通道数, 图像维度, 图像维度]，加入stride和padding设置后，尺寸计算公式是：N = （W-F+2P)/S+1，前文提到的N = W - F + 1 其实是P取默认值0，S取默认值1的情况。
 
-- maxpool：最大池化层，需给定kernel_size。
+另外针对ResNet18其实还有一种搭建方式，那就是不设置num_blocks（默认为1）。
 
-- avgpool：平均池化层，需给定kernel_size。
+```python
+model = nn()
+model.load_img_data('mnist/training_set',batch_size=32,num_workers=1) # (32,3,224,224)
+model.add('Conv2D', size=(3, 64), kernel_size=(7, 7),stride=2,padding=3, activation='ReLU') #(32,64,112,112)
+model.add('BatchNorm2d', size=64) # (32,64,112,112)
+model.add('MaxPool', kernel_size=(3,3),stride=2,padding=1) # (32,64,56,56)
 
-- linear：线性层，需给定size。
+# 拆开实现：4->8
+model.add('Res_Block', size=(64, 64), stride=1) # (32,64,56,56)
+model.add('Res_Block', size=(64, 64), stride=1) # (32,64,56,56)
+model.add('Res_Block', size=(64, 128), stride=2) # (32,128,28,28)
+model.add('Res_Block', size=(128, 128), stride=1) # (32,128,28,28)
+model.add('Res_Block', size=(128, 256), stride=2) # (32,256,14,14)
+model.add('Res_Block', size=(256, 256), stride=1) # (32,256,14,14)
+model.add('Res_Block', size=(256, 512), stride=2) # (32,512,7,7)
+model.add('Res_Block', size=(512, 512), stride=1) # (32,512,7,7)
 
-- dropout：随机失活层，需给定p（概率）。作用为随机关闭一些神经元，避免过拟合。其中参数`p`表示关闭神经元的比例，比如此处
-  p=0.2
-  表示有随机20%的神经元会被关闭。这种网络层是为了优化效果，避免过拟合而加入的，不是必需的，因此可以尝试修改p的值甚至删掉这个层观察比较效果差距。
+model.add('AvgPool', kernel_size=(7,7)) # (32,512)
+model.add('Linear', size=(512, 10), activation='Softmax') # (32,10)
+```
 
-再以lstm为例进行详细说明：lstm（Long Short-Term Memory，长短时记忆）是一种特殊的RNN（Recurrent Neural Network，循环神经网络）模型，主要用于处理序列数据。lstm模型在自然语言处理、语音识别、时间序列预测等任务中被广泛应用，特别是在需要处理长序列数据时，lstm模型可以更好地捕捉序列中的长程依赖关系。
+设定num_blocks和多个块分别写的等价情况：
+
+```
+# 示例
+model.add('Res_Block', size=(64, 64), num_blocks=2,stride=1)
+# 等价方式
+# model.add('Res_Block', size=(64, 64), stride=1)
+# model.add('Res_Block', size=(64, 64), stride=1) 
+```
+
+那么，如搭建ResNet34就是把中间四层换成[3,4,6,3]，依次类推。
+
+ResNet50的搭建代码会稍显不同，如您仔细观察上文的ResNet各网络结构图，会发现>=50后基础残差模块使用bottleneck而非basicblock，此处为您提供搭建ResNet50的示例代码：
+
+```python
+model = nn()
+model.load_img_data('mnist/training_set',batch_size=32,num_workers=1) # (32,3,224,224)
+model.add('Conv2D', size=(3, 64), kernel_size=(7, 7),stride=2,padding=3, activation='ReLU') #(32,64,112,112)
+model.add('BatchNorm2d', size=64) # (32,64,112,112)
+model.add('MaxPool', kernel_size=(3,3),stride=2,padding=1) # (32,64,56,56)
+
+model.add('Res_Bottleneck', size=(64, 64), num_blocks=3,stride=1) # (32,64,56,56)
+model.add('Res_Bottleneck', size=(256, 128), num_blocks=4,stride=2) # (32,256,28,28)
+model.add('Res_Bottleneck', size=(512, 256), num_blocks=6,stride=2) # (32,256,14,14)
+model.add('Res_Bottleneck', size=(1024, 512), num_blocks=3,stride=2) # (32,512,7,7)
+
+model.add('AvgPool', kernel_size=(7,7)) # (32,2048)
+model.add('Linear', size=(2048, 10), activation='Softmax') # (32,10)
+
+model.add(optimizer='SGD')
+model.save_fold = 'new_mn_ckpt'
+
+model.train(lr=0.01, epochs=1) # 直接训练
+```
+
+注：bottleneck输出通道数是输入的四倍，因此注意size的区别。这个四倍是1 *1，3 *3，1 *1三次矩阵乘法导致的，有点难理解，而且bottleneck跑着也慢，建议文档里可以提有这个功能，但是示例项目不要用bottleneck就用basicblock。更多ResNet网络的介绍详见[深度学习知识库](https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/ResNet.html)。
+
+#### 搭建循环神经网络结构：
+
+以lstm为例进行详细说明：lstm（Long Short-Term Memory，长短时记忆）是一种特殊的RNN（Recurrent Neural Network，循环神经网络）模型，主要用于处理序列数据。lstm模型在自然语言处理、语音识别、时间序列预测等任务中被广泛应用，特别是在需要处理长序列数据时，lstm模型可以更好地捕捉序列中的长程依赖关系。
 
 ```python
 model.add('lstm',size=(128,256),num_layers=2)
 ```
 
-#### 参数说明：
+size中的的两个值：第一个为嵌入层维度(embedding_dim)，即文本转化为词向量后的向量维度。第二个为隐藏层维度(hidden_dim)，即lstm隐藏层中神经元数量。
 
-- size中的的两个值：第一个为嵌入层维度(embedding_dim)，即文本转化为词向量后的向量维度。第二个为隐藏层维度(hidden_dim)，即lstm隐藏层中神经元数量。
-
-- num_layers：循环神经网络的层数。一般1\~5，常用2、3层，太多层会大幅度影响训练速度和收敛难度。
+num_layers：循环神经网络的层数。一般1\~5，常用2、3层，太多层会大幅度影响训练速度和收敛难度。
 
 以上仅是基本的模型架构。在实际使用中，可能需要调整模型的层数、节点数、激活函数等参数以达到最佳效果。
 
-### 拓展\--RNN模型搭建简单指南：
+##### RNN模型搭建简单指南：
 
 循环神经网络是一类以序列数据为输入，在序列的演进方向进行递归且所有节点（循环单元）按链式连接的递归神经网络。RNN在自然语言处理问题中有得到应用，也被用于与自然语言处理有关的异常值检测问题，例如社交网络中虚假信息/账号的检测。RNN与CNN卷积神经网络相结合的系统可被应用于在计算机视觉问题，例如在字符识别中，有研究使用卷积神经网络对包含字符的图像进行特征提取，并将特征输入LSTM进行序列标注。
 
@@ -701,6 +802,8 @@ p=0.2
 `squeeze`与`unsqueeze`层两个神经网络层并不常见，其作用为对数据的升降维度进行处理。squeeze的操作为压缩维度，unsqueeze的操作为扩充维度。这种网络层是为了确保数据在层间正常流动，是必需的，如果想要自行调整，可能需要对数据经过每一层之后的维度变化有充分了解，在此之前，保持原样即可。
 
 `Batchnorm1d`的作用是对一维数据做归一化。参数中size值表示输入数据的维度（注意和上一层的输出以及下一层的输入一致即可）。这种网络层是也为了优化效果而加入的，不是必需的，没有这个层也可以正常训练，但由于去掉这个网络层后效果下降的会非常明显，所以不建议删掉这个层。
+
+#### 拓展——搭建更复杂的网络结构：
 
 如果对pytorch比较熟悉，想要自行添加比较复杂的模块，也可以自定义（BaseNN兼容pytorch搭的网络结构），例如，搭建一个与上述动作识别网络一致的自定义模块：
 
