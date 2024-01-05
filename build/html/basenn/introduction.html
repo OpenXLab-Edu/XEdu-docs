@@ -160,14 +160,15 @@
 <p><code class="docutils literal notranslate"><span class="pre">train_val_ratio</span></code>：0~1之间的浮点数，表示训练集的占比，默认为1。eg，数据集共1万张，train_val_ratio=0.8，则8000张训练集，2000张验证集。若传入大于1或小于0的错误比例，则参数值无效，默认整个数据集都可用于训练。此参数可用于拆分数据集为训练集和验证集。</p>
 <p><code class="docutils literal notranslate"><span class="pre">color</span></code>：设置为”grayscale”或”RGB”，表示图片的颜色空间或色彩模式，可以根据具体的需求来选择适合的模式。如果将color参数设置为”grayscale”，表示希望将图像转换为灰度图像，仅包含亮度信息。如果将color参数设置为”RGB”，表示希望保留图像的红、绿、蓝三个通道的颜色信息，得到彩色图像。</p>
 <p><code class="docutils literal notranslate"><span class="pre">batch_size</span></code>：表示在一次训练中同时处理的样本数量。通常情况下，批量大小越大，模型的收敛速度越快，但内存和计算资源的需求也会相应增加。</p>
+<p><code class="docutils literal notranslate"><span class="pre">num_workers</span></code>：线程数，决定了有多少个子线程被用于数据加载。子线程是并行运行的，可以同时处理多个数据批次。增加 <code class="docutils literal notranslate"><span class="pre">num_workers</span></code> 的数值时，可以加快数据批次的寻找速度，这通常会提高训练的速度，因为模型等待数据的时间减少了，但增大内存开销和CPU负荷。此参数用来控制数据加载过程中的线程数量。适当增加这个数值可以加速训练，但也要注意不要超出你的硬件限制。默认为0，一般而言设置num_workers最大为CPU核心数。</p>
 <section id="id7">
 <h5>关于图片数据集预处理：<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h5>
 <p>载入图片数据前如需对图像数据集进行预处理，例如做尺寸调整，可先使用torchvision对图片数据集进行预处理再载入模型进行训练。</p>
-<p>导入包</p>
+<p>首先导入包</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torchvision.transforms</span> <span class="kn">import</span> <span class="n">transforms</span>
 </pre></div>
 </div>
-<p>可以使用参数表示训练前对我们需要对数据进行的预处理。</p>
+<p>接下来可以使用参数表示训练前对我们需要对数据进行的预处理。</p>
 <p>此处为对数据进行单个步骤的简单处理。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tran1</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Resize</span><span class="p">([</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">])</span>
 </pre></div>
@@ -201,6 +202,7 @@
 </div>
 <p>对表格的要求：csv格式，纵轴为样本，横轴为特征，第一行为表头，最后一列为标签。</p>
 <p><code class="docutils literal notranslate"><span class="pre">batch_size</span></code>：表示在一次训练中同时处理的样本数量。通常情况下，批量大小越大，模型的收敛速度越快，但内存和计算资源的需求也会相应增加。</p>
+<p><code class="docutils literal notranslate"><span class="pre">num_workers</span></code>：线程数，决定了有多少个子线程被用于数据加载。子线程是并行运行的，可以同时处理多个数据批次。增加 <code class="docutils literal notranslate"><span class="pre">num_workers</span></code> 的数值时，可以加快数据批次的寻找速度，这通常会提高训练的速度，因为模型等待数据的时间减少了，但增大内存开销和CPU负荷。此参数用来控制数据加载过程中的线程数量。适当增加这个数值可以加速训练，但也要注意不要超出你的硬件限制。默认为0，一般而言设置num_workers最大为CPU核心数。</p>
 </section>
 <section id="npz">
 <h4>针对NPZ数据集类型的数据：<a class="headerlink" href="#npz" title="Permalink to this heading"></a></h4>
@@ -211,8 +213,10 @@
 </pre></div>
 </div>
 <p>对NPZ数据集的要求：npz格式(numpy zip)，其中至少应该拥有两个键，分别为<code class="docutils literal notranslate"><span class="pre">data</span></code>与<code class="docutils literal notranslate"><span class="pre">label</span></code>，其中<code class="docutils literal notranslate"><span class="pre">data</span></code>中存储的应为训练数据信息，<code class="docutils literal notranslate"><span class="pre">label</span></code>中存储的应为数据所对应的标签信息（应为数组形式）。</p>
+<p>参数说明：</p>
 <p><code class="docutils literal notranslate"><span class="pre">batch_size</span></code>：表示在一次训练中同时处理的样本数量。通常情况下，批量大小越大，模型的收敛速度越快，但内存和计算资源的需求也会相应增加。</p>
 <p><code class="docutils literal notranslate"><span class="pre">classes</span></code>：表示数据集中的<code class="docutils literal notranslate"><span class="pre">label</span></code>中存储的数组各个位置标签所代表的意义。可以不传入，若不传入，则推理结果将会是认为结果的下标。若传入，则推理结果将自动转化为将原结果作为下标的数组中的对应内容。</p>
+<p><code class="docutils literal notranslate"><span class="pre">num_workers</span></code>：线程数，决定了有多少个子线程被用于数据加载。子线程是并行运行的，可以同时处理多个数据批次。增加 <code class="docutils literal notranslate"><span class="pre">num_workers</span></code> 的数值时，可以加快数据批次的寻找速度，这通常会提高训练的速度，因为模型等待数据的时间减少了，但增大内存开销和CPU负荷。此参数用来控制数据加载过程中的线程数量。适当增加这个数值可以加速训练，但也要注意不要超出你的硬件限制。默认为0，一般而言设置num_workers最大为CPU核心数。</p>
 <ul class="simple">
 <li><p>小帖士（井号后面是运行结果）：</p></li>
 </ul>
@@ -236,21 +240,18 @@
 <span class="c1">#          8.96103501e-01, -4.72080037e-02,  9.73582983e-01]]])</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>len(data[&#39;data&#39;])和len(data[&#39;label&#39;])是相等的。
-对于案例[《姿态识别进阶-循环神经网络》](https://www.openinnolab.org.cn/pjlab/project?id=64daed3eafeb1059822a1578&amp;sc=62f33550bf4f550f3e926cf2#public)
-来说：data[&#39;label&#39;].shape是(19, 3)，data[&#39;data&#39;].shape是(19, 30, 132)。
-type(data[&#39;data&#39;])是numpy.ndarray,type(data[&#39;data&#39;])是numpy.ndarray。
-</pre></div>
-</div>
+<p>len(data[’data’])和len(data[’label’])是相等的。</p>
+<p>对于案例<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=64daed3eafeb1059822a1578&amp;sc=62f33550bf4f550f3e926cf2#public">《姿态识别进阶-循环神经网络》</a>
+来说：data[’label’].shape是(19, 3)，data[’data’].shape是(19, 30, 132)。</p>
+<p>type(data[’data’])的运行结果是numpy.ndarray，type(data[’data’])的运行结果是numpy.ndarray。</p>
 </section>
 <section id="id9">
 <h4>拓展——自行编写代码载入数据：<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h4>
-<p>如您想要尝试自行编写代码加载数据并做预处理，需生成NumPy数组格式的特征
-<code class="docutils literal notranslate"><span class="pre">x</span></code> 和标签
-<code class="docutils literal notranslate"><span class="pre">y</span></code>（不同的框架和模型可能对输入数据的格式有所要求有所不同，这是BaseNN的要求），载入时可使用如下代码。</p>
+<p>如您想要尝试自行编写代码加载数据并做预处理，需生成NumPy数组格式的特征<code class="docutils literal notranslate"><span class="pre">x</span></code> 和标签<code class="docutils literal notranslate"><span class="pre">y</span></code>（不同的框架和模型可能对输入数据的格式有所要求有所不同，这是BaseNN的要求），载入时可使用如下代码。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>也支持设置线程数参数<code class="docutils literal notranslate"><span class="pre">num_workers</span></code>，决定了有多少个子线程被用于数据加载。子线程是并行运行的，可以同时处理多个数据批次。增加 <code class="docutils literal notranslate"><span class="pre">num_workers</span></code> 的数值时，可以加快数据批次的寻找速度，这通常会提高训练的速度，因为模型等待数据的时间减少了，但增大内存开销和CPU负荷。此参数用来控制数据加载过程中的线程数量。适当增加这个数值可以加速训练，但也要注意不要超出你的硬件限制。默认为0，一般而言设置num_workers最大为CPU核心数。</p>
 <p>此处采用Iris鸢尾花数据集和MNIST手写体数字图像数据集作为示例。</p>
 <p>读取并载入csv格式鸢尾花数据集（鸢尾花数据集以鸢尾花的特征作为数据来源，数据集包含150条数据，有4维（花萼长度、宽度和花瓣长度、宽度），分为3类（setosa、versicolour、virginica），每类50条数据）：</p>
 <p>数据集共有5列，其中前四列为特征，第五列为鸢尾花的类别，即标签。</p>
@@ -508,14 +509,13 @@ type(data[&#39;data&#39;])是numpy.ndarray,type(data[&#39;data&#39;])是numpy.nd
 <span class="n">model</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="s2">&quot;basenn_cd.pth&quot;</span><span class="p">,</span><span class="n">out_file</span><span class="o">=</span><span class="s2">&quot;basenn_cd.onnx&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">model.convert()</span></code>参数信息：</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>: 指定要转换的pth模型文件路径</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">out_file</span></code>: 指定转换出的onnx模型文件路径</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">opset_version</span></code>：指定转换出的onnx模型算子的版本，默认为10，一般情况下不需要进行设置，除非出现了算子版本不符而导致的报错。【高级功能】</p></li>
-</ul>
+<p>参数说明：</p>
+<p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>: 指定要转换的pth模型文件路径。</p>
+<p><code class="docutils literal notranslate"><span class="pre">out_file</span></code>: 指定转换出的onnx模型文件路径。</p>
+<p><code class="docutils literal notranslate"><span class="pre">opset_version</span></code>：指定转换出的onnx模型算子的版本，默认为10，一般情况下不需要进行设置，除非出现了算子版本不符而导致的报错。【高级功能】</p>
+<p><code class="docutils literal notranslate"><span class="pre">ir_version</span></code>：指定中间表示（Intermediate Representation, 简称 IR）规范的版本，一个整数（int）类型的参数。当前可选范围为1～12，默认为6。在计算机编程中，中间表示是一种数据结构或代码，它介于原始代码和机器码之间。它通常用于编译器或类似工具中，作为转换和优化代码的一个步骤。指定中间表示的版本，可方便根据不同的需求和优化目标选择最合适的 IR 规范。</p>
 <p><strong>注意！</strong>：在转换为onnx文件后会将模型的元信息，如数据类型、输入尺寸等也写入模型文件，而之前版本的BaseNN训练得到的模型文件不含有这些信息，因此如果想要将之前的BaseNN训练得到的文件进行转换，需要基于原先的模型文件使用最新的BaseNN版本再进行一轮训练！</p>
-<p>模型转换后生成一个ONNX模型和示例代码，示例代码的使用详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/support_resources/model_convert.html#id8">后文</a>。</p>
+<p>模型转换后生成一个ONNX模型和示例代码，示例代码的使用详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/how_to_use/support_resources/model_convert.html#id8">后文</a>。</p>
 </section>
 </section>
 <section id="id25">
@@ -635,8 +635,8 @@ kernel_size=(a,b)， (a,b)表示核的尺寸。</p></li>
 </ul>
 <p>以下具体讲述各种层：</p>
 <ul class="simple">
-<li><p>conv1d: 卷积层（一维），需给定size，kernel_size。</p></li>
-<li><p>conv2d：卷积层（二维），需给定size，kernel_size。</p></li>
+<li><p>conv1d: 卷积层（一维），需给定size，kernel_size。也可额外设置拓展参数步长stride，填充padding。</p></li>
+<li><p>conv2d：卷积层（二维），需给定size，kernel_size。也可额外设置拓展参数步长stride，填充padding。</p></li>
 <li><p>maxpool：最大池化层，需给定kernel_size。</p></li>
 <li><p>avgpool：平均池化层，需给定kernel_size。</p></li>
 <li><p>linear：线性层，需给定size。</p></li>

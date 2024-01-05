@@ -101,14 +101,14 @@ MMEdu内置了常见的SOTA模型，我们还在不断更新中。如需查看�
     <tbody>
         <tr class="row-even">
             <td>MMClassification</td>
-            <td><a href="https://xedu.readthedocs.io/zh/master/dl_library/net/lenet5.html">LeNet</a>、<a href="https://xedu.readthedocs.io/zh/master/dl_library/net/ResNet.html">ResNet18</a>、<a href="https://xedu.readthedocs.io/zh/master/dl_library/net/ResNet.html">ResNet50</a>、<a href="https://xedu.readthedocs.io/zh/master/dl_library/net/mobilenet.html">MobileNet</a></td>
+            <td><a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/lenet5.html">LeNet</a>、<a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/ResNet.html">ResNet18</a>、<a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/ResNet.html">ResNet50</a>、<a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/mobilenet.html">MobileNet</a></td>
             <td>图片分类</td>
         </tr>
     </tbody>
     <tbody>
         <tr class="row-even">
             <td>MMDetection</td>
-            <td><a href="https://xedu.readthedocs.io/zh/master/dl_library/net/FasterRCNN.html">FastRCNN</a>、<a href="https://xedu.readthedocs.io/zh/master/dl_library/net/SSD_Lite.html">SSD_Lite</a>、<a href="https://xedu.readthedocs.io/zh/master/dl_library/net/Yolov3.html">Yolov3</a></td>
+            <td><a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/FasterRCNN.html">FastRCNN</a>、<a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/SSD_Lite.html">SSD_Lite</a>、<a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/Yolov3.html">Yolov3</a></td>
             <td>图片中的物体检测</td>
         </tr>
     </tbody>
@@ -116,7 +116,8 @@ MMEdu内置了常见的SOTA模型，我们还在不断更新中。如需查看�
 
 
 
-注：关于MMClassification支持的SOTA模型的比较可参考“解锁图像分类模块：MMClassification”中关于“<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#sota">支持的SOTA模型</a>”的介绍，关于MMDetection支持的SOTA模型的比较可参考“揭秘目标检测模块：MMDetection”中关于“<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html#sota">支持的SOTA模型</a>”的介绍。关于这些SOTA模型更具体的介绍，请参考本文档的“深度学习知识库”部分的“<a href="https://xedu.readthedocs.io/zh/master/dl_library.html">经典网络模型介绍</a> ”。当然，通过“AI模型 + 关键词”的形式，你在很多搜索引擎中都能找到资料。
+
+注：关于MMClassification支持的SOTA模型的比较可参考“解锁图像分类模块：MMClassification”中关于“<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#sota">支持的SOTA模型</a>”的介绍，关于MMDetection支持的SOTA模型的比较可参考“揭秘目标检测模块：MMDetection”中关于“<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html#sota">支持的SOTA模型</a>”的介绍。关于这些SOTA模型更具体的介绍，请参考本文档的“深度学习知识库”部分的“[经典网络模型介绍](https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/network_introduction.html)”。当然，通过“AI模型 + 关键词”的形式，你在很多搜索引擎中都能找到资料。
 
 ## 数据集支持
 
@@ -172,7 +173,7 @@ filesname_b.jpg n
 
 注：真实标签的值应该位于`[0,类别数目-1]`之间。
 
-如果您觉得整理规范格式数据集有点困难，您只需收集完图片按照类别存放，然后完成训练集（trainning_set）、验证集（val_set）和测试集（test_set）等的拆分，整理在一个大的文件夹下作为你的数据集。此时指定数据集路径后同样可以训练模型，因为XEdu拥有检查数据集的功能，如您的数据集缺失txt文件，会自动帮您生成“classes.txt”，“val.txt”等（如存在对应的数据文件夹）开始训练。这些txt文件会生成在您指定的数据集路径下，即帮您补齐数据集。完整的从零开始制作一个ImageNet格式的数据集的步骤详见<a href="https://xedu.readthedocs.io/zh/latest/dl_library/howtomake_imagenet.html#imagenet">深度学习知识库</a>。
+如果您觉得整理规范格式数据集有点困难，您只需收集完图片按照类别存放，然后完成训练集（trainning_set）、验证集（val_set）和测试集（test_set）等的拆分，整理在一个大的文件夹下作为你的数据集。此时指定数据集路径后同样可以训练模型，因为XEdu拥有检查数据集的功能，如您的数据集缺失txt文件，会自动帮您生成“classes.txt”，“val.txt”等（如存在对应的数据文件夹）开始训练。这些txt文件会生成在您指定的数据集路径下，即帮您补齐数据集。完整的从零开始制作一个ImageNet格式的数据集的步骤详见[深度学习知识库](https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/howtomake_imagenet.html)。
 
 ### 2）COCO
 
@@ -232,7 +233,7 @@ categories [{
 }]
 ```
 
-为了验证和测试，我们建议划分训练集、验证集和测试集，需要生成验证集valid和标注文件valid.json，测试集test和标注文件test.json，json文件的基本数据结构依然是COCO格式。制作一个COCO格式的数据集的步骤详见<a href="https://xedu.readthedocs.io/zh/latest/dl_library/howtomake_coco.html#coco">深度学习知识库</a>。
+为了验证和测试，我们建议划分训练集、验证集和测试集，需要生成验证集valid和标注文件valid.json，测试集test和标注文件test.json，json文件的基本数据结构依然是COCO格式。制作一个COCO格式的数据集的步骤详见[深度学习知识库](https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/howtomake_coco.html)。
 
 ## 使用示例
 

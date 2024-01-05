@@ -55,17 +55,19 @@ model.load_img_data(image_folder_data,color="grayscale",batch_size=1024)
 
 `batch_size`：表示在一次训练中同时处理的样本数量。通常情况下，批量大小越大，模型的收敛速度越快，但内存和计算资源的需求也会相应增加。
 
+`num_workers`：线程数，决定了有多少个子线程被用于数据加载。子线程是并行运行的，可以同时处理多个数据批次。增加 `num_workers` 的数值时，可以加快数据批次的寻找速度，这通常会提高训练的速度，因为模型等待数据的时间减少了，但增大内存开销和CPU负荷。此参数用来控制数据加载过程中的线程数量。适当增加这个数值可以加速训练，但也要注意不要超出你的硬件限制。默认为0，一般而言设置num_workers最大为CPU核心数。
+
 ##### 关于图片数据集预处理：
 
 载入图片数据前如需对图像数据集进行预处理，例如做尺寸调整，可先使用torchvision对图片数据集进行预处理再载入模型进行训练。
 
-导入包
+首先导入包
 
 ```python
 from torchvision.transforms import transforms
 ```
 
-可以使用参数表示训练前对我们需要对数据进行的预处理。
+接下来可以使用参数表示训练前对我们需要对数据进行的预处理。
 
 此处为对数据进行单个步骤的简单处理。
 
@@ -113,6 +115,8 @@ model.load_tab_data(train_path, batch_size=120)
 
 `batch_size`：表示在一次训练中同时处理的样本数量。通常情况下，批量大小越大，模型的收敛速度越快，但内存和计算资源的需求也会相应增加。
 
+`num_workers`：线程数，决定了有多少个子线程被用于数据加载。子线程是并行运行的，可以同时处理多个数据批次。增加 `num_workers` 的数值时，可以加快数据批次的寻找速度，这通常会提高训练的速度，因为模型等待数据的时间减少了，但增大内存开销和CPU负荷。此参数用来控制数据加载过程中的线程数量。适当增加这个数值可以加速训练，但也要注意不要超出你的硬件限制。默认为0，一般而言设置num_workers最大为CPU核心数。
+
 #### 针对NPZ数据集类型的数据：
 
 指定NPZ数据集路径，再使用`load_npz_data`函数即可完成载入数据。
@@ -126,9 +130,13 @@ model.load_npz_data(train_path, batch_size=5000,classes=["walking","waving","str
 
 对NPZ数据集的要求：npz格式(numpy zip)，其中至少应该拥有两个键，分别为`data`与`label`，其中`data`中存储的应为训练数据信息，`label`中存储的应为数据所对应的标签信息（应为数组形式）。
 
+参数说明：
+
 `batch_size`：表示在一次训练中同时处理的样本数量。通常情况下，批量大小越大，模型的收敛速度越快，但内存和计算资源的需求也会相应增加。
 
 `classes`：表示数据集中的`label`中存储的数组各个位置标签所代表的意义。可以不传入，若不传入，则推理结果将会是认为结果的下标。若传入，则推理结果将自动转化为将原结果作为下标的数组中的对应内容。
+
+`num_workers`：线程数，决定了有多少个子线程被用于数据加载。子线程是并行运行的，可以同时处理多个数据批次。增加 `num_workers` 的数值时，可以加快数据批次的寻找速度，这通常会提高训练的速度，因为模型等待数据的时间减少了，但增大内存开销和CPU负荷。此参数用来控制数据加载过程中的线程数量。适当增加这个数值可以加速训练，但也要注意不要超出你的硬件限制。默认为0，一般而言设置num_workers最大为CPU核心数。
 
 - 小帖士（井号后面是运行结果）：
 ```python
@@ -151,23 +159,25 @@ print(data['data']) # 这是一个高维数据，每一条数据对应一个标�
 #        [ 4.34215039e-01,  4.27498937e-01,  3.03461671e-01, ...,
 #          8.96103501e-01, -4.72080037e-02,  9.73582983e-01]]])
 ```
-```python
+
 len(data['data'])和len(data['label'])是相等的。
+
 对于案例[《姿态识别进阶-循环神经网络》](https://www.openinnolab.org.cn/pjlab/project?id=64daed3eafeb1059822a1578&sc=62f33550bf4f550f3e926cf2#public)
 来说：data['label'].shape是(19, 3)，data['data'].shape是(19, 30, 132)。
-type(data['data'])是numpy.ndarray,type(data['data'])是numpy.ndarray。
-```
+
+type(data['data'])的运行结果是numpy.ndarray，type(data['data'])的运行结果是numpy.ndarray。
+
 
 
 #### 拓展------自行编写代码载入数据：
 
-如您想要尝试自行编写代码加载数据并做预处理，需生成NumPy数组格式的特征
-`x` 和标签
-`y`（不同的框架和模型可能对输入数据的格式有所要求有所不同，这是BaseNN的要求），载入时可使用如下代码。
+如您想要尝试自行编写代码加载数据并做预处理，需生成NumPy数组格式的特征`x` 和标签`y`（不同的框架和模型可能对输入数据的格式有所要求有所不同，这是BaseNN的要求），载入时可使用如下代码。
 
 ```python
 model.load_dataset(x, y)
 ```
+
+也支持设置线程数参数`num_workers`，决定了有多少个子线程被用于数据加载。子线程是并行运行的，可以同时处理多个数据批次。增加 `num_workers` 的数值时，可以加快数据批次的寻找速度，这通常会提高训练的速度，因为模型等待数据的时间减少了，但增大内存开销和CPU负荷。此参数用来控制数据加载过程中的线程数量。适当增加这个数值可以加速训练，但也要注意不要超出你的硬件限制。默认为0，一般而言设置num_workers最大为CPU核心数。
 
 此处采用Iris鸢尾花数据集和MNIST手写体数字图像数据集作为示例。
 
@@ -465,15 +475,19 @@ model = nn()
 model.convert(checkpoint="basenn_cd.pth",out_file="basenn_cd.onnx")
 ```
 
-`model.convert()`参数信息：
+参数说明：
 
-- `checkpoint`: 指定要转换的pth模型文件路径
-- `out_file`: 指定转换出的onnx模型文件路径
-- `opset_version`：指定转换出的onnx模型算子的版本，默认为10，一般情况下不需要进行设置，除非出现了算子版本不符而导致的报错。【高级功能】
+`checkpoint`: 指定要转换的pth模型文件路径。
+
+`out_file`: 指定转换出的onnx模型文件路径。
+
+`opset_version`：指定转换出的onnx模型算子的版本，默认为10，一般情况下不需要进行设置，除非出现了算子版本不符而导致的报错。【高级功能】
+
+`ir_version`：指定中间表示（Intermediate Representation, 简称 IR）规范的版本，一个整数（int）类型的参数。当前可选范围为1～12，默认为6。在计算机编程中，中间表示是一种数据结构或代码，它介于原始代码和机器码之间。它通常用于编译器或类似工具中，作为转换和优化代码的一个步骤。指定中间表示的版本，可方便根据不同的需求和优化目标选择最合适的 IR 规范。
 
 **注意！**：在转换为onnx文件后会将模型的元信息，如数据类型、输入尺寸等也写入模型文件，而之前版本的BaseNN训练得到的模型文件不含有这些信息，因此如果想要将之前的BaseNN训练得到的文件进行转换，需要基于原先的模型文件使用最新的BaseNN版本再进行一轮训练！
 
-模型转换后生成一个ONNX模型和示例代码，示例代码的使用详见[后文](https://xedu.readthedocs.io/zh/master/support_resources/model_convert.html#id8)。
+模型转换后生成一个ONNX模型和示例代码，示例代码的使用详见[后文](https://xedu.readthedocs.io/zh/master/how_to_use/support_resources/model_convert.html#id8)。
 
 ## 高级功能
 
@@ -625,9 +639,9 @@ N = W/P ，其中P表示池化层的卷积核大小。
 
 以下具体讲述各种层：
 
-- conv1d: 卷积层（一维），需给定size，kernel_size。
+- conv1d: 卷积层（一维），需给定size，kernel_size。也可额外设置拓展参数步长stride，填充padding。
 
-- conv2d：卷积层（二维），需给定size，kernel_size。
+- conv2d：卷积层（二维），需给定size，kernel_size。也可额外设置拓展参数步长stride，填充padding。
 
 - maxpool：最大池化层，需给定kernel_size。
 

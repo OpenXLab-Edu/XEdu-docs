@@ -93,6 +93,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#id87">代码解释</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id90">文本嵌入</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id92">代码解释</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id95">提完了特征能干啥？</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#mmedu">8. MMEdu模型推理</a><ul>
@@ -101,22 +102,22 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#basenn">9. BaseNN模型推理</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id107">代码样例</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id108">代码解释</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id108">代码样例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id109">代码解释</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#baseml">10. BaseML模型推理</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id112">代码样例</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id113">代码解释</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id113">代码样例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id114">代码解释</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#onnx">11. 其他onnx模型推理</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id117">代码样例</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id118">代码解释</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id118">代码样例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id119">代码解释</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id121">XEduHub任务模型资源下载与存放</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id122">报错专栏</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id122">XEduHub任务模型资源下载与存放</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id123">报错专栏</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="projects.html">XEduHub项目案例集</a></li>
@@ -1207,15 +1208,31 @@
 </ul>
 </section>
 </section>
+<section id="id95">
+<h3>提完了特征能干啥？<a class="headerlink" href="#id95" title="Permalink to this heading"></a></h3>
+<p>零样本分类！</p>
+<p>什么是零样本分类呢？举个例子，现在我们想要分类图片中的猫是黑色的还是黄色的，按照图像分类的方式，我们需要收集数据集，并且标注数据集，再进行模型训练，最后才能使用训练出来的模型对图像进行分类。而现在，我们使用的“图像嵌入”和“文本嵌入”只需通过特征向量就可以进行分类，避免了大量的标注工作。</p>
+<p>上文中我们已经通过图像嵌入和文本嵌入把<code class="docutils literal notranslate"><span class="pre">cat.jpg</span></code>,<code class="docutils literal notranslate"><span class="pre">'a</span> <span class="pre">black</span> <span class="pre">cat'</span></code>,<code class="docutils literal notranslate"><span class="pre">'a</span> <span class="pre">yellow</span> <span class="pre">cat'</span></code>分别变成了3堆数字（3个512维向量），但是很显然，我们看不懂这些数字，但是计算机可以！
+通过让计算机将数字进行运算，即将图像和文本的特征向量作比较，就能看出很多信息，这也叫计算向量之间相似度。</p>
+<p>为了方便大家计算向量之间的相似度，我们也提供了一系列数据处理函数，函数具体内容请见<a href="https://xedu.readthedocs.io/zh/master/about/functions.html#">XEdu的常见函数</a>。</p>
+<p>下面就示范使用<a href="https://xedu.readthedocs.io/zh/master/about/functions.html#cosine-similarity">cosine_similarity</a>比较两个embedding序列的相似度。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.utils</span> <span class="kn">import</span> <span class="n">get_similarity</span> <span class="c1"># 导入库</span>
+<span class="n">get_similarity</span><span class="p">(</span><span class="n">image_embeddings</span><span class="p">,</span> <span class="n">txt_embeddings</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span> <span class="c1"># 计算相似度</span>
+</pre></div>
+</div>
+<p>该函数可以比较两个embedding序列的相似度，这里的相似度是以余弦相似度为计算指标的，其公式为：$$Cosine(x,y) = \frac{x \cdot y}{|x||y|}$$。</p>
+<p>假设输入的待比较embedding序列尺度分别为(N, D)和(M, D)，则输出的结果尺度为(N, M)。</p>
+<p>现在我们可以看到cat.jpg与’a black cat’向量的相似度为0.007789988070726395，而与’a yellow cat’向量的相似度为0.9922100305557251。显而易见，这张可爱的黄色猫咪图像与’a yellow cat’文本描述更为贴近。</p>
+</section>
 </section>
 <section id="mmedu">
 <h2>8. MMEdu模型推理<a class="headerlink" href="#mmedu" title="Permalink to this heading"></a></h2>
-<p>XEduHub现在可以支持使用MMEdu导出的onnx模型进行推理啦！如果你想了解如何使用MMEdu训练模型，可以看这里：<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html">解锁图像分类模块：MMClassification</a>、<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html">揭秘目标检测模块：MMDetection</a>。</p>
+<p>XEduHub现在可以支持使用MMEdu导出的onnx模型进行推理啦！如果你想了解如何使用MMEdu训练模型，可以看这里：<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html">解锁图像分类模块：MMClassification</a>、<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html">揭秘目标检测模块：MMDetection</a>。</p>
 <p>如果你想了解如何将使用<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu.html">MMEdu</a>训练好的模型转换成ONNX格式，可以看这里<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/model_convert.html">最后一步：AI模型转换</a>。OK，准备好了ONNX模型，那么就开始使用XEduHub吧！</p>
 <section id="mmclassification">
 <h3>MMClassification模型<a class="headerlink" href="#mmclassification" title="Permalink to this heading"></a></h3>
-<section id="id95">
-<h4>代码样例<a class="headerlink" href="#id95" title="Permalink to this heading"></a></h4>
+<section id="id96">
+<h4>代码样例<a class="headerlink" href="#id96" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">mmcls</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;mmedu&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;cats_dogs.onnx&#39;</span><span class="p">)</span><span class="c1"># 指定使用的onnx模型</span>
 <span class="n">result</span><span class="p">,</span> <span class="n">result_img</span> <span class="o">=</span>  <span class="n">mmcls</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/cat101.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span><span class="c1"># 进行模型推理</span>
@@ -1225,10 +1242,10 @@
 </pre></div>
 </div>
 </section>
-<section id="id96">
-<h4>代码解释<a class="headerlink" href="#id96" title="Permalink to this heading"></a></h4>
 <section id="id97">
-<h5>1. 模型声明<a class="headerlink" href="#id97" title="Permalink to this heading"></a></h5>
+<h4>代码解释<a class="headerlink" href="#id97" title="Permalink to this heading"></a></h4>
+<section id="id98">
+<h5>1. 模型声明<a class="headerlink" href="#id98" title="Permalink to this heading"></a></h5>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">mmcls</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;mmedu&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;cats_dogs.onnx&#39;</span><span class="p">)</span><span class="c1"># 指定使用的onnx模型</span>
 </pre></div>
@@ -1240,8 +1257,8 @@
 </ul>
 <p>这里我们以猫狗分类模型为例，项目指路：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&amp;sc=647b3880aac6f67c822a04f5#public">猫狗分类</a>。</p>
 </section>
-<section id="id98">
-<h5>2. 模型推理<a class="headerlink" href="#id98" title="Permalink to this heading"></a></h5>
+<section id="id99">
+<h5>2. 模型推理<a class="headerlink" href="#id99" title="Permalink to this heading"></a></h5>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">,</span> <span class="n">result_img</span> <span class="o">=</span>  <span class="n">mmcls</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/cat101.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="c1"># 进行模型推理</span>
 </pre></div>
 </div>
@@ -1256,8 +1273,8 @@
 <p><img alt="../_images/mmcls_res.png" src="../_images/mmcls_res.png" /></p>
 <p><code class="docutils literal notranslate"><span class="pre">result_img</span></code>以pil格式保存了模型推理完成后的图片</p>
 </section>
-<section id="id99">
-<h5>3. 结果输出<a class="headerlink" href="#id99" title="Permalink to this heading"></a></h5>
+<section id="id100">
+<h5>3. 结果输出<a class="headerlink" href="#id100" title="Permalink to this heading"></a></h5>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">format_result</span> <span class="o">=</span> <span class="n">mmcls</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s2">&quot;zh&quot;</span><span class="p">)</span><span class="c1"># 推理结果格式化输出</span>
 </pre></div>
 </div>
@@ -1275,8 +1292,8 @@
 <p><code class="docutils literal notranslate"><span class="pre">show()</span></code>能够推理后的结果图像。与原图相比，结果图片在左上角多了<code class="docutils literal notranslate"><span class="pre">pred_label</span></code>, <code class="docutils literal notranslate"><span class="pre">pred_socre</span></code>和<code class="docutils literal notranslate"><span class="pre">pred_class</span></code>三个数据，对应着标签、置信度和预测结果。</p>
 <p><img alt="../_images/mmcls_show.png" src="../_images/mmcls_show.png" /></p>
 </section>
-<section id="id100">
-<h5>4. 结果保存<a class="headerlink" href="#id100" title="Permalink to this heading"></a></h5>
+<section id="id101">
+<h5>4. 结果保存<a class="headerlink" href="#id101" title="Permalink to this heading"></a></h5>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mmcls</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="s1">&#39;new_cat.jpg&#39;</span><span class="p">)</span><span class="c1"># 保存推理结果图片</span>
 </pre></div>
 </div>
@@ -1287,8 +1304,8 @@
 </section>
 <section id="mmdetection">
 <h3>MMDetection模型<a class="headerlink" href="#mmdetection" title="Permalink to this heading"></a></h3>
-<section id="id101">
-<h4>代码样例<a class="headerlink" href="#id101" title="Permalink to this heading"></a></h4>
+<section id="id102">
+<h4>代码样例<a class="headerlink" href="#id102" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">mmdet</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;mmedu&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;plate.onnx&#39;</span><span class="p">)</span><span class="c1"># 指定使用的onnx模型</span>
 <span class="n">result</span><span class="p">,</span> <span class="n">result_img</span> <span class="o">=</span>  <span class="n">mmdet</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/plate0.png&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span><span class="c1"># 进行模型推理</span>
@@ -1298,10 +1315,10 @@
 </pre></div>
 </div>
 </section>
-<section id="id102">
-<h4>代码解释<a class="headerlink" href="#id102" title="Permalink to this heading"></a></h4>
 <section id="id103">
-<h5>1. 模型声明<a class="headerlink" href="#id103" title="Permalink to this heading"></a></h5>
+<h4>代码解释<a class="headerlink" href="#id103" title="Permalink to this heading"></a></h4>
+<section id="id104">
+<h5>1. 模型声明<a class="headerlink" href="#id104" title="Permalink to this heading"></a></h5>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">mmdet</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;mmedu&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;plate.onnx&#39;</span><span class="p">)</span><span class="c1"># 指定使用的onnx模型</span>
 </pre></div>
@@ -1313,8 +1330,8 @@
 </ul>
 <p>这里以车牌识别为例进行说明。项目指路：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=641426fdcb63f030544017a2&amp;backpath=/pjlab/projects/list#public">使用MMEdu实现车牌检测</a></p>
 </section>
-<section id="id104">
-<h5>2. 模型推理<a class="headerlink" href="#id104" title="Permalink to this heading"></a></h5>
+<section id="id105">
+<h5>2. 模型推理<a class="headerlink" href="#id105" title="Permalink to this heading"></a></h5>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">,</span> <span class="n">result_img</span> <span class="o">=</span>  <span class="n">mmdet</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/plate0.png&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="c1"># 进行模型推理</span>
 </pre></div>
 </div>
@@ -1329,8 +1346,8 @@
 <p><img alt="../_images/mmdet_res.png" src="../_images/mmdet_res.png" /></p>
 <p><code class="docutils literal notranslate"><span class="pre">result_img</span></code>以pil格式保存了模型推理完成后的图片</p>
 </section>
-<section id="id105">
-<h5>3. 结果输出<a class="headerlink" href="#id105" title="Permalink to this heading"></a></h5>
+<section id="id106">
+<h5>3. 结果输出<a class="headerlink" href="#id106" title="Permalink to this heading"></a></h5>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">format_result</span> <span class="o">=</span> <span class="n">mmdet</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s2">&quot;zh&quot;</span><span class="p">)</span><span class="c1"># 推理结果格式化输出</span>
 </pre></div>
 </div>
@@ -1348,8 +1365,8 @@
 <p><code class="docutils literal notranslate"><span class="pre">show()</span></code>能够推理后的结果图像。与原图相比，结果图片还包含车牌周围的检测框以及结果信息。</p>
 <p><img alt="../_images/mmdet_show.png" src="../_images/mmdet_show.png" /></p>
 </section>
-<section id="id106">
-<h5>4. 结果保存<a class="headerlink" href="#id106" title="Permalink to this heading"></a></h5>
+<section id="id107">
+<h5>4. 结果保存<a class="headerlink" href="#id107" title="Permalink to this heading"></a></h5>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mmdet</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="s1">&#39;new_plate.jpg&#39;</span><span class="p">)</span><span class="c1"># 保存推理结果图片</span>
 </pre></div>
 </div>
@@ -1362,8 +1379,8 @@
 <section id="basenn">
 <h2>9. BaseNN模型推理<a class="headerlink" href="#basenn" title="Permalink to this heading"></a></h2>
 <p>XEduHub现在可以支持使用BaseNN导出的onnx模型进行推理啦！如果你想了解如何将使用<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basenn.html">BaseNN</a>训练好的模型转换成ONNX格式，可以看这里：<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id29">BaseNN模型文件格式转换</a>。OK，准备好了ONNX模型，那么就开始使用XEduHub吧！</p>
-<section id="id107">
-<h3>代码样例<a class="headerlink" href="#id107" title="Permalink to this heading"></a></h3>
+<section id="id108">
+<h3>代码样例<a class="headerlink" href="#id108" title="Permalink to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 使用BaseNN训练的手写数字识别模型进行推理</span>
 <span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">basenn</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;basenn&quot;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s2">&quot;basenn.onnx&quot;</span><span class="p">)</span><span class="c1"># 指定使用的onnx模型</span>
@@ -1372,10 +1389,10 @@
 </pre></div>
 </div>
 </section>
-<section id="id108">
-<h3>代码解释<a class="headerlink" href="#id108" title="Permalink to this heading"></a></h3>
 <section id="id109">
-<h4>1. 模型声明<a class="headerlink" href="#id109" title="Permalink to this heading"></a></h4>
+<h3>代码解释<a class="headerlink" href="#id109" title="Permalink to this heading"></a></h3>
+<section id="id110">
+<h4>1. 模型声明<a class="headerlink" href="#id110" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">basenn</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;basenn&quot;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s2">&quot;basenn.onnx&quot;</span><span class="p">)</span><span class="c1"># 指定使用的onnx模型</span>
 </pre></div>
@@ -1386,8 +1403,8 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>：指定你的模型的路径</p></li>
 </ul>
 </section>
-<section id="id110">
-<h4>2. 模型推理<a class="headerlink" href="#id110" title="Permalink to this heading"></a></h4>
+<section id="id111">
+<h4>2. 模型推理<a class="headerlink" href="#id111" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/6.jpg&#39;</span><span class="p">)</span><span class="c1"># 进行模型推理</span>
 </pre></div>
 </div>
@@ -1398,8 +1415,8 @@
 <p><code class="docutils literal notranslate"><span class="pre">result</span></code>的结果是一个二维数组，第一个元素表示这张图属于0-9的数字类别的概率，可以看到当为6时，概率接近，因此该手写数字是6。</p>
 <p><img alt="../_images/basenn_res.png" src="../_images/basenn_res.png" /></p>
 </section>
-<section id="id111">
-<h4>3. 结果输出<a class="headerlink" href="#id111" title="Permalink to this heading"></a></h4>
+<section id="id112">
+<h4>3. 结果输出<a class="headerlink" href="#id112" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">format_result</span> <span class="o">=</span> <span class="n">basenn</span><span class="o">.</span><span class="n">format_output</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1417,8 +1434,8 @@
 <section id="baseml">
 <h2>10. BaseML模型推理<a class="headerlink" href="#baseml" title="Permalink to this heading"></a></h2>
 <p>XEduHub现在可以支持使用BaseML导出的pkl模型文件进行推理啦！如果你想了解如何将使用<a class="reference external" href="https://xedu.readthedocs.io/zh/master/baseml.html">BaseML</a>训练模型并保存成.pkl模型文件，可以看这里：<a class="reference external" href="https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id10">BaseML模型保存</a>。OK，准备好了pkl模型，那么就开始使用XEduHub吧！</p>
-<section id="id112">
-<h3>代码样例<a class="headerlink" href="#id112" title="Permalink to this heading"></a></h3>
+<section id="id113">
+<h3>代码样例<a class="headerlink" href="#id113" title="Permalink to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 使用BaseML训练的鸢尾花聚类模型推理</span>
 <span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">baseml</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;baseml&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;baseml.pkl&#39;</span><span class="p">)</span><span class="c1"># 指定使用的pkl模型</span>
@@ -1428,10 +1445,10 @@
 </pre></div>
 </div>
 </section>
-<section id="id113">
-<h3>代码解释<a class="headerlink" href="#id113" title="Permalink to this heading"></a></h3>
 <section id="id114">
-<h4>1. 模型声明<a class="headerlink" href="#id114" title="Permalink to this heading"></a></h4>
+<h3>代码解释<a class="headerlink" href="#id114" title="Permalink to this heading"></a></h3>
+<section id="id115">
+<h4>1. 模型声明<a class="headerlink" href="#id115" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">baseml</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;baseml&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;baseml.pkl&#39;</span><span class="p">)</span><span class="c1"># 指定使用的pkl模型</span>
 </pre></div>
@@ -1442,8 +1459,8 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>：指定你的模型的路径</p></li>
 </ul>
 </section>
-<section id="id115">
-<h4>2. 模型推理<a class="headerlink" href="#id115" title="Permalink to this heading"></a></h4>
+<section id="id116">
+<h4>2. 模型推理<a class="headerlink" href="#id116" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">5.1</span><span class="p">,</span><span class="mf">1.5</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mf">4.7</span><span class="p">]]</span> <span class="c1"># 该项目中训练数据只有两维，因此推理时给出两维数据</span>
 <span class="n">result</span><span class="o">=</span> <span class="n">baseml</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span><span class="c1"># 进行模型推理</span>
 </pre></div>
@@ -1455,8 +1472,8 @@
 <p>**注意！**基于BaseML模型推理结果不包含图片！因为大部分使用BaseML解决的任务只需要输出分类标签、文本或者数组数据等。</p>
 <p><img alt="../_images/baseml_result.png" src="../_images/baseml_result.png" /></p>
 </section>
-<section id="id116">
-<h4>3. 结果输出<a class="headerlink" href="#id116" title="Permalink to this heading"></a></h4>
+<section id="id117">
+<h4>3. 结果输出<a class="headerlink" href="#id117" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">format_output</span> <span class="o">=</span> <span class="n">baseml</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span><span class="c1"># 推理结果格式化输出</span>
 </pre></div>
 </div>
@@ -1475,8 +1492,8 @@
 <section id="onnx">
 <h2>11. 其他onnx模型推理<a class="headerlink" href="#onnx" title="Permalink to this heading"></a></h2>
 <p>XEduHub现在可以支持使用用户自定义的ONNX模型文件进行推理啦！这意味着你可以不仅仅使用MMEdu或者BaseNN训练模型并转换而成的ONNX模型文件进行推理，还可以使用其他各个地方的ONNX模型文件，但是有个<strong>重要的前提：你需要会使用这个模型，了解模型输入的训练数据以及模型的输出结果</strong>。OK，如果你已经做好了充足的准备，那么就开始使用XEduHub吧！</p>
-<section id="id117">
-<h3>代码样例<a class="headerlink" href="#id117" title="Permalink to this heading"></a></h3>
+<section id="id118">
+<h3>代码样例<a class="headerlink" href="#id118" title="Permalink to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="kn">import</span> <span class="nn">cv2</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1505,10 +1522,10 @@
 </pre></div>
 </div>
 </section>
-<section id="id118">
-<h3>代码解释<a class="headerlink" href="#id118" title="Permalink to this heading"></a></h3>
 <section id="id119">
-<h4>1. 模型声明<a class="headerlink" href="#id119" title="Permalink to this heading"></a></h4>
+<h3>代码解释<a class="headerlink" href="#id119" title="Permalink to this heading"></a></h3>
+<section id="id120">
+<h4>1. 模型声明<a class="headerlink" href="#id120" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">custom</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;custom&quot;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s2">&quot;custom.onnx&quot;</span><span class="p">)</span>
 </pre></div>
@@ -1519,8 +1536,8 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>：指定你的模型的路径</p></li>
 </ul>
 </section>
-<section id="id120">
-<h4>2. 模型推理<a class="headerlink" href="#id120" title="Permalink to this heading"></a></h4>
+<section id="id121">
+<h4>2. 模型推理<a class="headerlink" href="#id121" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -1563,8 +1580,8 @@
 </section>
 </section>
 </section>
-<section id="id121">
-<h2>XEduHub任务模型资源下载与存放<a class="headerlink" href="#id121" title="Permalink to this heading"></a></h2>
+<section id="id122">
+<h2>XEduHub任务模型资源下载与存放<a class="headerlink" href="#id122" title="Permalink to this heading"></a></h2>
 <p>XEduHub提供了大量优秀的任务模型，我们不仅可以通过<code class="docutils literal notranslate"><span class="pre">wf()</span></code>代码的运行实现下载，还可以自行到网页上下载，防止运行代码时没有网络无法zi下载模型的问题。</p>
 <p>只要进入<a href="https://openxlab.org.cn/models/detail/xedu/hub-model">模型仓库</a>，在Model File里就可以随意下载各种任务模型。网址：<a href="https://openxlab.org.cn/models/detail/xedu/hub-model">https://openxlab.org.cn/models/detail/xedu/hub-model</a></p>
 <p><img alt="../_images/downloadmodel.png" src="../_images/downloadmodel.png" /></p>
@@ -1582,8 +1599,8 @@
 </ul>
 <p>最后提醒一下，自己到网络下载或自己训练的模型需要是ONNX格式。</p>
 </section>
-<section id="id122">
-<h2>报错专栏<a class="headerlink" href="#id122" title="Permalink to this heading"></a></h2>
+<section id="id123">
+<h2>报错专栏<a class="headerlink" href="#id123" title="Permalink to this heading"></a></h2>
 <p>你是否在使用XEduHub时遇到过报错？是否遇到ERROR时感到无所适从，甚至有点慌张？
 没有关系！报错专栏将为你可能在使用过程中出现的错误提供解决方案！
 这里收录着使用XEduHub中的常见报错并呈现对应的解决方案，如果你遇到了问题，查看这个专栏，找到类似报错，并且解决它！</p>
