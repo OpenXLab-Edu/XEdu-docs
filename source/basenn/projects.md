@@ -389,3 +389,92 @@ plt.show()
 ```
 
 ![](../images/basenn/huitu2.png)
+
+## 用BaseNN搭建ResNet18网络实现MNIST手写体数字分类
+
+本项目展示用BaseNN搭建ResNet18网络，以MNIST手写体数字分类为任务，使用BaseNN完成ResNet18网络搭建并基于手写体数据集训练一个手写数字分类模型，通过模型测试效果不错。希望借此项目您能掌握使用BaseNN搭建ResNet18网络的方法，能举一反三搭建ResNet34、ResNet580等，也能更换数据集训练其他模型。
+
+项目地址：[https://openinnolab.org.cn/pjlab/project?id=659ba9b3a731f07a4896af46&backpath=/pjedu/userprofile?slideKey=project#public](https://openinnolab.org.cn/pjlab/project?id=659ba9b3a731f07a4896af46&backpath=/pjedu/userprofile?slideKey=project#public)
+
+#### 项目核心功能：
+
+BaseNN是XEdu系列工具的重要组成部分，延续了MMEdu极简的训练流程和风格，聚焦于基础原理的探究和模型的快速应用。BaseNN可以自由地构建神经网路，调整神经元的个数、层数、激活方式等，学生可以轻松探究神经网络原理和模型训练之中的奥秘。使用BaseNN可以轻易地创建深度学习模型。不同类型的神经网络适用于不同类型的问题，比如CNN通常用于处理图像问题，RNN通常用于处理序列问题，全连接神经网络可以应用于各种问题。同时，使用BaseNN也能完成一些相对复杂的神经网络的搭建，如ResNet，同样也是支持的，首先需在卷积层新增两个参数的设置，分别是步长stride和填充padding，同时增加残差模块的设置。
+
+#### 实现步骤：
+
+##### 1）导入库
+
+```
+# 导入库
+from BaseNN import nn
+```
+
+##### 2）搭建模型
+
+```
+#声明模型 
+model = nn() 
+
+# 搭建ResNet18网络(参照论文完成)，要求输入数据的尺寸为（224,224）
+model.add('Conv2D', size=(3, 64), kernel_size=(7, 7),stride=2,padding=3, activation='ReLU') #(32,64,112,112)
+model.add('BatchNorm2d', size=64) # (32,64,112,112)
+model.add('MaxPool', kernel_size=(3,3),stride=2,padding=1) # (32,64,56,56)
+
+model.add('Res_Block', size=(64, 64), num_blocks=2,stride=1) # (32,64,56,56)
+model.add('Res_Block', size=(64, 128), num_blocks=2,stride=2) # (32,128,28,28)
+model.add('Res_Block', size=(128, 256), num_blocks=2,stride=2) # (32,256,14,14)
+model.add('Res_Block', size=(256, 512), num_blocks=2,stride=2) # (32,512,7,7)
+
+model.add('AvgPool', kernel_size=(7,7)) # (32,512)
+model.add('Linear', size=(512, 10), activation='Softmax') # (32,10)
+```
+
+##### 3）载入数据
+
+载入前需对数据做预处理，载入图片数据前如需对图像数据集进行预处理，例如做尺寸调整，可先使用torchvision对图片数据集进行预处理再载入模型进行训练。此处我们需将图片做尺寸调整（调整为224,224）
+参考代码如下，注意涉及数万张图片，需等待几分钟。
+
+```
+from torchvision.transforms import transforms
+# 对数据集做尺寸调整
+tran = transforms.Resize([224,224])
+# 模型载入数据
+model.load_img_data("/data/MELLBZ/mnist/training_set",
+                            batch_size=32,transform=tran,num_workers=1)
+```
+
+##### 4）设置超参数并训练模型
+
+```
+model.add(optimizer='SGD')
+model.save_fold = 'new_mn_ckpt'
+
+model.train(lr=0.01, epochs=1) # 直接训练
+```
+
+可以发现虽然训练很慢，但是可以发现仅需1轮Accuracy便提升显著，最后直接到1（即100%准确率）。
+主要原因是手写数字识别通常是深度学习中的一个相对简单的任务，尤其是对于像ResNet18这样的先进模型来说。因此，即使是少量的训练，模型也能迅速学习到有效的特征来区分不同的数字。且ResNet18是一个相对复杂的网络，拥有较强的特征提取能力。对于简单的数据集来说，它可能会很快学会区分各类别。
+
+##### 5）模型测试
+
+可指定新的图片进行模型测试，注意需先将图片进行尺寸调整（训练时也做了）。
+
+```
+import cv2
+
+# 指定一张图片
+path =  'test_IMG/single_data.jpg'
+# 读取图片
+img = cv2.imread(path)
+# 对图片进行尺寸调整
+img = cv2.resize(img,(224,224))
+# 指定模型
+checkpoint = 'new_mn_ckpt/basenn.pth' 
+# 模型推理
+y_pred = model.inference(data=path, checkpoint=checkpoint)
+model.print_result()
+
+# 输出结果
+res = y_pred.argmax(axis=1)
+print('此手写体的数字是：',res[0])xxxxxxxxxx import cv2# 指定一张图片path =  'test_IMG/single_data.jpg'# 读取图片img = cv2.imread(path)# 对图片进行尺寸调整img = cv2.resize(img,(224,224))# 指定模型checkpoint = 'new_mn_ckpt/basenn.pth' # 模型推理y_pred = model.inference(data=path, checkpoint=checkpoint)model.print_result()# 输出结果res = y_pred.argmax(axis=1)print('此手写体的数字是：',res[0])model.add(optimizer='SGD')model.save_fold = 'new_mn_ckpt'model.train(lr=0.01, epochs=1) # 直接训练
+```
