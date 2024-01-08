@@ -593,7 +593,7 @@ model.train(...,metrics=["mse"])
 
 #### 参数说明:
 
-- layer：层的类型，可选值包括conv2d, conv1d, maxpool, avgpool, linear, lstm,dropout，res_block，Res_Block，Res_Bottleneck。
+- layer：层的类型，可选值包括conv2d, conv1d, maxpool, avgpool, linear, lstm,dropout，res_block，Res_Block，Res_Bottleneck等。
 
 - activation：激活函数类型，可选值包括ReLU，Softmax。
 
@@ -615,6 +615,7 @@ model.train(...,metrics=["mse"])
 - dropout：随机失活层，需给定p（概率）。作用为随机关闭一些神经元，避免过拟合。其中参数`p`表示关闭神经元的比例，比如此处
   p=0.2
   表示有随机20%的神经元会被关闭。这种网络层是为了优化效果，避免过拟合而加入的，不是必需的，因此可以尝试修改p的值甚至删掉这个层观察比较效果差距。
+- Batchnorm1d：对一维数据做归一化。需传入size，表示输入数据的维度（注意和上一层的输出以及下一层的输入一致即可）。这种网络层是也为了优化效果而加入的，不是必需的，没有这个层也可以正常训练，但由于去掉这个网络层后效果下降的会非常明显，所以不建议删掉这个层。
 
 下面为您具体展示如何搭建模型，以全连接神经网络结构、卷积神经网络结构、循环神经网络结构等为例为您讲解。
 
@@ -747,11 +748,6 @@ model.add('Res_Bottleneck', size=(1024, 512), num_blocks=3,stride=2) # (32,512,7
 
 model.add('AvgPool', kernel_size=(7,7)) # (32,2048)
 model.add('Linear', size=(2048, 10), activation='Softmax') # (32,10)
-
-model.add(optimizer='SGD')
-model.save_fold = 'new_mn_ckpt'
-
-model.train(lr=0.01, epochs=1) # 直接训练
 ```
 
 注：bottleneck输出通道数是输入的四倍，因此注意size的区别。这个四倍是1 *1，3 *3，1 *1三次矩阵乘法导致的，有点难理解，而且bottleneck跑着也慢，建议文档里可以提有这个功能，但是示例项目不要用bottleneck就用basicblock。更多ResNet网络的介绍详见[深度学习知识库](https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/ResNet.html)。
