@@ -2,36 +2,29 @@
 
 ## XEduHub是什么？
 
-XEduHub是一个专为快速、便捷地利用最先进的深度学习模型完成任务而设计的工具库。其设计灵感源自PyTorchHub，旨在以工作流的方式，高效地完成深度学习任务。XEduHub的独特之处在于它内置了大量优质的深度学习SOTA模型，无需用户自行进行繁琐的模型训练。用户只需将这些现成的模型应用于特定任务，便能轻松进行AI应用实践。
+XEduHub是一个专为快速、便捷地利用最先进的深度学习模型完成任务而设计的工具库。其设计灵感源自PyTorchHub，旨在以工作流的方式，高效地完成深度学习任务。XEduHub的独特之处在于它内置了大量优质的深度学习SOTA模型，无需用户自行进行繁琐的模型训练。用户根据自己的需求，选择不同的特定任务（task），而不同任务对应了不同的内置模型，拿过来就用，轻松进行AI应用实践。
 
-想象一下，你的玩具箱里有很多玩具，每次想玩的时候，你只需要打开玩具箱，挑选你想要的玩具来玩。XEduHub就像是一个充满了AI玩具的箱子，里面有很多已经做好的AI模型，我们可以直接用它们来完成不同的任务。
+### XEduHub的特点
+
+- **简单易用**：XEduhub是个工具箱（有各种螺丝刀、扳手、小刀等），不需要专业知识，只要知道工具的名称和作用，你就可以使用这些AI模型。
+- **无需训练**：你不需要自己制作工具，里面就已经有很多常用工具了（为你准备好多AI模型），当然你也可以自己做个新工具放进去。
+- **节省时间**：不需要等待，使用XEduHub，选取你需要的模型，然后就可以开始你的AI之旅。
 
 ![](../images/xeduhub/eason.gif)
 
-## XEduHub有多棒？
 
-- **简单易用**：就像玩玩具一样，不需要专业知识，只要按照指导，你就可以使用这些AI模型。
-- **无需训练**：你不需要自己制作玩具，里面的AI模型都已经为你准备好了。
-- **节省时间**：不需要等待，使用XEduHub，选取你需要的模型，然后就可以开始你的AI之旅。
+## XEduHub的安装和使用
 
-## 解锁XEduHub的使用方法
+### 安装方法
 
-XEduHub作为一个深度学习工具库，集成了许多深度学习领域优质的SOTA模型，能够帮助用户在不进模型训练的前提下，用少量的代码，快速实现计算机视觉、自然语言处理等多个深度学习领域的任务。
+`pip install XEdu-python`或`pip install xedu-python`
 
-一般使用步骤是：
-
-步骤1：[安装](https://xedu.readthedocs.io/zh/master/xedu_hub/installation.html)并导入XEduHub库
-
-步骤2：选择你的AI玩具
-
-步骤3：使用AI玩具
-
-有了模型，你就可以使用它来完成你的任务啦！
+以识别图像中的人脸为例，参考代码如下：
 
 ```python
 # 步骤一：导入库
 from XEdu.hub import Workflow as wf
-# 步骤二：选择你的AI玩具
+# 步骤二：选择你的AI工具
 face = wf(task="face") # 实例化模型
 # 步骤三：使用你的AI玩具
 img = 'face.jpg'
@@ -40,6 +33,14 @@ result,new_img = face.inference(data=img,img_type='cv2')
 print(result) # 输出推理结果
 face.show(new_img) # 显示带标注图片
 ```
+
+是不是很简单？一般使用步骤是：
+
+步骤1：安装并导入XEduHub库
+
+步骤2：选择你的推理任务
+
+步骤3：输入数据进行推理并得到结果
 
 一旦你安装好XEduHub并导入到代码中后，你就可以查看里面所有的AI模型。看看哪一个是你想要的，然后选择它！
 
@@ -51,11 +52,8 @@ wf.support_task()
 
 ![](../images/xeduhub/task1.png)
 
-## 安装
 
-`pip install XEdu-python`或`pip install xedu-python`
-
-## 体验
+## 体验XEduhub的更多功能
 
 体验XEduhub的最快速方式是通过OpenInnoLab平台。
 
@@ -73,7 +71,7 @@ XEduHub实例代码合集：[https://www.openinnolab.org.cn/pjlab/project?id=655
 from XEdu.hub import Workflow as wf
 ```
 
-第二步：选择你的AI玩具
+第二步：选择你的AI工具
 
 你可以查看里面所有的AI模型。看看哪一个是你想要的，然后选择它！可使用如下代码查看目前支持的任务：
 
@@ -88,7 +86,7 @@ wf.support_task()
 body = wf(task='pose_body17') # 实例化pose模型
 ```
 
-第三步：使用AI玩具
+第三步：使用AI工具
 
 有了模型，你就可以使用它来完成你的任务啦！继续上面的例子，可以用图片识别模型来完成推理：
 
