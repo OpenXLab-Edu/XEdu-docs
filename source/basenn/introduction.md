@@ -163,9 +163,9 @@ print(data['data']) # 这是一个高维数据，每一条数据对应一个标�
 len(data['data'])和len(data['label'])是相等的。
 
 对于案例[《姿态识别进阶-循环神经网络》](https://www.openinnolab.org.cn/pjlab/project?id=64daed3eafeb1059822a1578&sc=62f33550bf4f550f3e926cf2#public)
-来说：data['label'].shape是(19, 3)，data['data'].shape是(19, 30, 132)。
+来说：`data['label'].shape`是(19, 3)，`data['data'].shape`是(19, 30, 132)。
 
-type(data['data'])的运行结果是numpy.ndarray，type(data['data'])的运行结果是numpy.ndarray。
+`type(data['data'])`的运行结果是numpy.ndarray，`type(data['data'])`的运行结果是numpy.ndarray。
 
 
 
@@ -481,9 +481,9 @@ model.convert(checkpoint="basenn_cd.pth",out_file="basenn_cd.onnx")
 
 `out_file`: 指定转换出的onnx模型文件路径。
 
-`opset_version`：指定转换出的onnx模型算子的版本，默认为10，一般情况下不需要进行设置，除非出现了算子版本不符而导致的报错。【高级功能】
+`opset_version`：指定转换出的onnx模型算子的版本，默认为10，一般情况下不需要进行设置，除非出现了算子版本不符而导致的报错。【可选参数】
 
-`ir_version`：指定中间表示（Intermediate Representation, 简称 IR）规范的版本，一个整数（int）类型的参数。当前可选范围为1～12，默认为6。在计算机编程中，中间表示是一种数据结构或代码，它介于原始代码和机器码之间。它通常用于编译器或类似工具中，作为转换和优化代码的一个步骤。指定中间表示的版本，可方便根据不同的需求和优化目标选择最合适的 IR 规范。
+`ir_version`：指定中间表示（Intermediate Representation, 简称 IR）规范的版本，一个整数（int）类型的参数。当前可选范围为1～12，默认为6。在计算机编程中，中间表示是一种数据结构或代码，它介于原始代码和机器码之间。它通常用于编译器或类似工具中，作为转换和优化代码的一个步骤。指定中间表示的版本，可方便根据不同的需求和优化目标选择最合适的 IR 规范。【可选参数】
 
 **注意！**：在转换为onnx文件后会将模型的元信息，如数据类型、输入尺寸等也写入模型文件，而之前版本的BaseNN训练得到的模型文件不含有这些信息，因此如果想要将之前的BaseNN训练得到的文件进行转换，需要基于原先的模型文件使用最新的BaseNN版本再进行一轮训练！
 
@@ -754,6 +754,8 @@ model.add('Linear', size=(2048, 10), activation='Softmax') # (32,10)
 
 #### 搭建循环神经网络结构：
 
+循环神经网络是一类以序列数据为输入，在序列的演进方向进行递归且所有节点（循环单元）按链式连接的递归神经网络。RNN在自然语言处理问题中有得到应用，也被用于与自然语言处理有关的异常值检测问题，例如社交网络中虚假信息/账号的检测。RNN与CNN卷积神经网络相结合的系统可被应用于在计算机视觉问题，例如在字符识别中，有研究使用卷积神经网络对包含字符的图像进行特征提取，并将特征输入LSTM进行序列标注。
+
 以lstm为例进行详细说明：lstm（Long Short-Term Memory，长短时记忆）是一种特殊的RNN（Recurrent Neural Network，循环神经网络）模型，主要用于处理序列数据。lstm模型在自然语言处理、语音识别、时间序列预测等任务中被广泛应用，特别是在需要处理长序列数据时，lstm模型可以更好地捕捉序列中的长程依赖关系。
 
 ```python
@@ -766,11 +768,22 @@ num_layers：循环神经网络的层数。一般1\~5，常用2、3层，太多�
 
 以上仅是基本的模型架构。在实际使用中，可能需要调整模型的层数、节点数、激活函数等参数以达到最佳效果。
 
-##### RNN模型搭建简单指南：
+##### 简便方式：
 
-循环神经网络是一类以序列数据为输入，在序列的演进方向进行递归且所有节点（循环单元）按链式连接的递归神经网络。RNN在自然语言处理问题中有得到应用，也被用于与自然语言处理有关的异常值检测问题，例如社交网络中虚假信息/账号的检测。RNN与CNN卷积神经网络相结合的系统可被应用于在计算机视觉问题，例如在字符识别中，有研究使用卷积神经网络对包含字符的图像进行特征提取，并将特征输入LSTM进行序列标注。
+使用BaseNN做时序动作分类任务时，我们特意准备了一种简化模型搭建方法。
 
-下为搭建RNN神经网络的一般流程：
+```
+model.add('action_model',size=(132,256))
+model.add('linear',  size=(256, 64))
+model.add('Linear',  size=(64, 3))
+model.add(activation='Softmax')
+```
+
+此方法将搭建lstm、数据维度处理层等合并为一个简单的action_model层，当然了，也有坏处那就是是不太灵活，仅供参考。
+
+##### 搭建RNN模型的一般方式：
+
+以下方式与极简方式的代码的功能完全一致，展示了搭建RNN神经网络并进行模型训练的的一般流程：
 
 ``` python
 model.add('lstm', size=(132,128))
@@ -800,21 +813,6 @@ p=0.2
 `Batchnorm1d`的作用是对一维数据做归一化。参数中size值表示输入数据的维度（注意和上一层的输出以及下一层的输入一致即可）。这种网络层是也为了优化效果而加入的，不是必需的，没有这个层也可以正常训练，但由于去掉这个网络层后效果下降的会非常明显，所以不建议删掉这个层。
 
 参数`layer='linear'`表示添加的层是线性层，`size=(256,256)`表示该层输入维度为256，输出维度为256，`activation='Softmax'`表示使用softmax激活函数。
-
-##### 简化方式：
-
-使用BaseNN做时序动作分类任务时，我们特意准备了一种简化模型搭建方法。
-
-```
-model = nn()
-model.load_npz_data('./action.npz',batch_size=50,classes=["walking","waving","stretching"])
-model.add('action_model',size=(132,256))
-model.add('linear',  size=(256, 64))
-model.add('Linear',  size=(64, 3))
-model.train(epoch=100,lr=0.01,loss='BCELoss'，metrics=[])
-```
-
-此方法将搭建lstm、数据维度处理层等合并为一个简单的action_model层，当然了，坏处是不太灵活，仅供参考。
 
 #### 拓展——搭建更复杂的网络结构：
 
