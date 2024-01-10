@@ -19,20 +19,22 @@ XEduHub是一个专为快速、便捷地利用最先进的深度学习模型完�
 
 `pip install XEdu-python`或`pip install xedu-python`
 
-以识别图像中的人脸为例，参考代码如下：
+以识别图像中的人体关键点为例，参考代码如下：
 
 ```python
 # 步骤一：导入库
 from XEdu.hub import Workflow as wf
 # 步骤二：选择你的AI工具
-face = wf(task="face") # 实例化模型
+body = wf(task='pose_body17') # 实例化pose模型
 # 步骤三：使用你的AI玩具
-img = 'face.jpg'
+img = 'body.jpg'
 # 进行推理，同时返回结果和带标注的图片
-result,new_img = face.inference(data=img,img_type='cv2')
+result,new_img = body.inference(data=img,img_type='cv2')
 print(result) # 输出推理结果
-face.show(new_img) # 显示带标注图片
+body.show(new_img) # 显示带标注图片
 ```
+
+![](../images/xeduhub/bodyshow.png)
 
 是不是很简单？一般使用步骤是：
 
@@ -42,7 +44,7 @@ face.show(new_img) # 显示带标注图片
 
 步骤3：输入数据进行推理并得到结果
 
-一旦你安装好XEduHub并导入到代码中后，你就可以查看里面所有的AI模型。看看哪一个是你想要的，然后选择它！
+一旦你安装好XEduHub并导入到代码中后，你就可以查看里面所有的AI模型。看看哪一个是你想要的，然后选择它！查看hub中目前支持的任务代码如下：
 
 ```python
 from XEdu.hub import Workflow as wf
