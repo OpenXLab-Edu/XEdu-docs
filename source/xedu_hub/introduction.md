@@ -390,7 +390,7 @@ det_hand.save(img_with_box,'img_with_box.jpg')# 保存推理图片
 
 **注意事项**：这里我们强烈建议提取关键点之前应**先进行目标检测**。
 
-例如进行人体关键点检测`pose_body`之前，先使用`det_body`在图片中检测中人体目标，对每个人体目标进行更加精准的关键点检测。可参考项目<a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public">XEduHub实例代码-入门完整版</a>中的 **“3-1 综合项目：多目标关键点检测”**。
+例如进行人体关键点检测`pose_body`之前，先使用`det_body`在图片中检测中人体目标，对每个人体目标进行更加精准的关键点检测。可参考项目<a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public">XEduHub实例代码-入门完整版</a>中的 **“3-1 综合项目：目标检测+关键点检测”**。
 
 当然关键点识别也可以单独用，但是效果并不保证。
 
@@ -487,6 +487,8 @@ body.show(img_with_keypoints)
 
 ![](../images/xeduhub/body_show.png)
 
+**若此时发现关键点识别效果不佳**，关键点乱飞，我们可以果断采用在提取关键点之前**先进行目标检测**的方式。如当前任务`'pose_body'`，就可以在之前先进行`'det_body'`。详情可参考项目<a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public">XEduHub实例代码-入门完整版</a>中的 **“3-1 综合项目：目标检测+关键点检测”**。
+
 #### 4. 结果保存
 
 ```python
@@ -579,6 +581,8 @@ face.show(img_with_keypoints)# 展示推理图片
 
 ![](../images/xeduhub/face_show.png)
 
+**若此时发现关键点识别效果不佳**，关键点乱飞，我们可以果断采用在提取关键点之前**先进行目标检测**的方式。如当前任务`'pose_face'`，就可以在之前先进行`'det_face'`。详情可参考项目<a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public">XEduHub实例代码-入门完整版</a>中的 **“3-1 综合项目：目标检测+关键点检测”**。
+
 #### 4. 结果保存
 
 ```python
@@ -667,6 +671,8 @@ hand.show(img_with_keypoints)# 展示推理图片
 `show()`能够输出带有关键点的结果图像。
 
 ![](../images/xeduhub/hand_show.png)
+
+**若此时发现关键点识别效果不佳**，关键点乱飞，我们可以果断采用在提取关键点之前**先进行目标检测**的方式。如当前任务`'pose_hand'`，就可以在之前先进行`'det_hand'`。详情可参考项目<a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public">XEduHub实例代码-入门完整版</a>中的 **“3-1 综合项目：目标检测+关键点检测”**。
 
 #### 4. 结果保存
 

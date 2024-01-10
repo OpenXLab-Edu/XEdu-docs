@@ -2,6 +2,24 @@
 
 借助XEduHub可以实现应用多元AI模型去解决复杂的问题。
 
+## 目标检测+关键点检测
+
+以下代码可以将一张图片中所有的手识别出来，并对每一只手提取关键点。这可以提高关键点检测的准确度和实现多目标检测的任务。
+
+具体实现方式为：我们首先使用`det_hand`进行手目标检测，拿到所有的检测框`bbox`。随后对每个检测框中的手进行关键点提取。
+
+```python
+from XEdu.hub import Workflow as wf # 导入库
+det  = wf(task='det_hand') # 实例化目标检测模型
+hand = wf(task='pose_hand21') # 实例化关键点检测模型
+img_path = 'demo/hand3.jpg' # 指定进行推理的图片
+bboxs = det.inference(data=img_path) # 目标检测推理
+display_img = img_path # 初始化用于显示的图像
+for i in bboxs:
+    keypoints,display_img = hand.inference(data=display_img,img_type='cv2',bbox=i) # 关键点检测推理
+hand.show(display_img) # 结果可视化
+```
+
 ## 实时人体关键点识别
 
 以下代码可以实时检测摄像头中出现的多个人，并对每一个人体提取关键点。
@@ -98,22 +116,6 @@ for image_path in result_files:
     out.write(img)
 out.release()
 print('视频合成完毕，已保存到：', output_video_path)
-```
-
-## 多人脸关键点识别
-
-以下代码可以将一张图片中所有的人脸识别出来，并对每一张脸提取关键点。这可以用于对一张图片中的所有人进行表情分类，推测情感等。
-
-具体实现方式为：我们首先使用`facedetect`进行人脸检测，拿到所有的检测框`bbox`。随后对每个检测框中的人脸进行关键点提取。
-
-```python
-from XEdu.hub import Workflow as wf
-face_det = wf(task='facedetect')
-face_kp = wf(task='face')
-bboxs,img = face_det.inference(data='face.jpg',img_type='cv2')
-for i in bboxs:
-    keypoints,img = face_kp.inference(data=img,img_type='cv2',bbox=i)
-    face_kp.show(img)
 ```
 
 ## 人脸检测控制舵机方向
