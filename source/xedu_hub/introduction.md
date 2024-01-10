@@ -762,6 +762,8 @@ wholebody.show(img_with_keypoints)# 展示推理图片
 
 ![](../images/xeduhub/wholebody_show.png)
 
+**若此时发现关键点识别效果不佳**，关键点乱飞，我们可以果断采用在提取关键点之前**先进行目标检测**的方式。如当前任务`'pose_wholebody'`，就可以在之前先进行`'det_body'`。详情可参考项目<a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public">XEduHub实例代码-入门完整版</a>中的 **“3-1 综合项目：目标检测+关键点检测”**。
+
 #### 4. 结果保存
 
 ```python
