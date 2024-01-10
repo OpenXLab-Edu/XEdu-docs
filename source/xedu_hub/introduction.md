@@ -19,385 +19,7 @@ XEduHub就像是一个充满了AI玩具的箱子，里面有很多已经做好�
 
 通过学习“XEduHub实例代码-入门完整版”，可以在项目实践中探索XEduHub的魅力，项目中通俗易懂的讲解和实例代码也能帮助初学者快速入门XEduHub。
 
-## 1. 关键点识别
-
-关键点识别是深度学习中的一项关键任务，旨在检测图像或视频中的关键位置，通常代表物体或人体的重要部位。XEduHub支持的关键点识别任务有：人体关键点`pose_body`、人脸关键点`pose_face`、人手关键点`pose_hand`和所有人体关键点识别`pose_wholebody`。
-
-注意事项：这里我们强烈建议提取关键点之前应**先进行目标检测**。
-
-例如进行人体关键点检测`pose_body`之前，先使用`det_body`在图片中检测中人体目标，对每个人体目标进行更加精准的关键点检测。可参考项目<a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public">XEduHub实例代码-入门完整版</a>中的 **“3-1 综合项目：多目标关键点检测”**。
-
-当然关键点识别也可以单独用，但是效果并不保证。
-
-### 人体关键点识别 
-
-人体关键点识别是一项计算机视觉任务，旨在检测和定位图像或视频中人体的关键位置，通常是关节、身体部位或特定的解剖结构。
-
-这些关键点的检测可以用于人体姿态估计和分类、动作分析、手势识别等多种应用。
-
-XEduHub提供了三个识别人体关键点的优质模型:`pose_body17`,`pose_body17_l`和`pose_body26`，能够在使用cpu推理的情况下，快速识别出身体的关键点。
-
- 数字表示了识别出人体关键点的数量，l代表了large，表示规模较大的，性能较强的模型，但是缺点在于推理速度较慢。
-
-`pose_body17`与`pose_body17_l`模型能识别出17个人体骨骼关键点，`pose_body26`模型能识别出26个人体骨骼关键点。
-
-![](../images/xeduhub/body.png)
-
-#### 代码样例
-
-```python
-from XEdu.hub import Workflow as wf
-body = wf(task='pose_body') # 数字可省略，当省略时，默认为pose_body17
-keypoints,img_with_keypoints = body.inference(data='data/body.jpg',img_type='pil') # 进行模型推理
-format_result = body.format_output(lang='zh')# 将推理结果进行格式化输出
-body.show(img_with_keypoints)# 展示推理图片
-body.save(img_with_keypoints,'img_with_keypoints.jpg')# 保存推理图片
-```
-
-#### 代码解释
-
-#### 1. 模型声明
-
-```python
-from XEdu.hub import Workflow as wf
-body = wf(task='pose_body') # 数字可省略，当省略时，默认为pose_body17
-```
-`wf()`中共有三个参数可以设置：
-
-- `task`选择任务。在人体关键点识别模型中，`task`可选取值为：`[pose_body17,pose_body17_l,pose_body26]`。
-- `checkpoints`指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如`checkpoints='my_checkpoint/model.onnx'`。
-- `download_path`指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如`download_path='my_checkpoint'`。
-
-任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">XEduHub任务模型资源下载与存放</a>。
-
-#### 2. 模型推理
-
-```python
-keypoints,img_with_keypoints = body.inference(data='data/body.jpg',img_type='pil') # 进行模型推理
-```
-
-模型推理`inference()`可传入参数：
-
-- `data`: 指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
-
-- `show`: 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出关键点识别完成后的图片。
-
-- `img_type`: 关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
-- `bbox`：该参数可配合目标检测使用。在多人手关键点检测中，该参数指定了要识别哪个检测框中的关键点。
-
-模型推理返回结果：
-
-- `keypoints`以二维数组的形式保存了所有关键点的坐标，每个关键点(x,y)被表示为`[x,y]`根据前面的图示，要获取到某个特定序号`i`的关键点，只需要访问`keypoints[i]`即可。
-
-- `img_with_keypoints`是个三维数组，以对应img_type格式保存了关键点识别完成后图片的像素点信息。
-
-#### 3. 结果输出
-
-```python
-format_result = body.format_output(lang='zh')# 参数lang设置了输出结果的语言，默认为中文
-```
-
-`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
-
-`format_output()`中共有两个参数可以设置：
-
-- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
-- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
-
-`format_result`以字典形式存储了推理结果，共有两个键：`关键点坐标`和`分数`。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标，而分数则是对应下标的关键点的分数，以一维数组形式保存。
-
-![](../images/xeduhub/body-format.png)
-
-结果可视化
-
-```python
-body.show(img_with_keypoints)
-```
-
-`show()`能够输出带有关键点和关键点连线的结果图像。
-
-![](../images/xeduhub/body_show.png)
-
-#### 4. 结果保存
-
-```python
-body.save(img_with_keypoints,'img_with_keypoints.jpg')
-```
-
-`save()`方法能够保存保存带有关键点和关键点连线结果图像
-
-该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
-
-### **人脸关键点**
-
-人脸关键点识别是计算机视觉领域中的一项任务，它的目标是检测和定位人脸图像中代表面部特征的重要点，例如眼睛、鼻子、嘴巴、眉毛等。这些关键点的准确定位对于许多应用非常重要，包括人脸识别、表情分析、虚拟化妆、人机交互等。
-
-XEduHub提供了识别人脸关键点的模型：`pose_face106`，这意味着该模型能够识别人脸上的106个关键点。如下图所示是106个关键点在脸部的分布情况，我们可以利用这些关键点的分布特征进行人脸识别，或者对人的表情进行分析和分类等。
-
-![](../images/xeduhub/new_face106.png)
-
-#### 代码样例
-
-```python
-from XEdu.hub import Workflow as wf
-face = wf(task='pose_face') # 数字可省略，当省略时，默认为pose_face106
-keypoints,img_with_keypoints = face.inference(data='data/face.jpg',img_type='pil') # 进行模型推理
-format_result = face.format_output(lang='zh')# 将推理结果进行格式化输出
-face.show(img_with_keypoints)# 展示推理图片
-face.save(img_with_keypoints,'img_with_keypoints.jpg')# 保存推理图片
-```
-
-#### 代码解释
-
-#### 1. 模型声明
-
-```python
-from XEdu.hub import Workflow as wf
-face = wf(task='pose_face') # 数字可省略，默认为face106
-```
-
-`wf()`中共有三个参数可以设置：
-
-- `task`选择任务。人脸关键点识别模型为`pose_face106`（数字可省略，默认为face106）。
-- `checkpoints`指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如`checkpoints='my_checkpoint/model.onnx'`。
-- `download_path`指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如`download_path='my_checkpoint'`。
-
-任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">XEduHub任务模型资源下载与存放</a>。
-#### 2. 模型推理
-
-```python
-keypoints,img_with_keypoints = face.inference(data='data/face.jpg',img_type='pil') # 进行模型推理
-```
-
-模型推理`inference()`可传入参数：
-
-- `data`: 指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
-
-- `show`: 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出关键点识别完成后的图片。
-
-- `img_type`: 关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
-
-- `bbox`：该参数可配合目标检测使用。在多人手关键点检测中，该参数指定了要识别哪个检测框中的关键点。
-
-模型推理返回结果：
-
-- `keypoints`以二维数组的形式保存了所有关键点的坐标，每个关键点(x,y)被表示为`[x,y]`根据前面的图示，要获取到某个特定序号`i`的关键点，只需要访问`keypoints[i]`即可。
-
-- `img_with_keypoints`是个三维数组，以对应img_type格式保存了关键点识别完成后图片的像素点信息。
-
-#### 3. 结果输出
-
-```python
-format_result = face.format_output(lang='zh')# 将推理结果进行格式化输出
-```
-
-`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
-
-`format_output()`中共有两个参数可以设置：
-
-- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
-- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
-
-`format_result`以字典形式存储了推理结果，共有两个键：`关键点坐标`和`分数`。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标，而分数则是对应下标的关键点的分数，以一维数组形式保存。
-
-结果可视化
-
-```python
-face.show(img_with_keypoints)# 展示推理图片
-```
-
-`show()`能够输出带有关键点的结果图像。
-
-![](../images/xeduhub/face_show.png)
-
-#### 4. 结果保存
-
-```python
-face.save(img_with_keypoints,'img_with_keypoints.jpg')# 保存推理图片
-```
-
-`save()`方法能够保存带有关键点的图像
-
-该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
-
-### **人手关键点**
-
-人手关键点识别是一项计算机视觉任务，其目标是检测和定位图像或视频中人手的关键位置，通常包括手指、手掌、手腕等关键部位的位置。这些关键点的识别对于手势识别、手部姿态估计、手部追踪、手势控制设备等应用具有重要意义。
-
-XEduHub提供了能够快速识别人手关键点的模型：`pose_hand21`，该模型能够识别人手上的21个关键点，如下图所示。你可以根据自身需要对关键点进行进一步处理。例如：手势的不同会体现在关键点位置的分布上，这样就可以利用这些关键点进行手势的分类和识别。
-
-![](../images/xeduhub/new_hand.png)
-
-#### 代码样例
-
-```python
-from XEdu.hub import Workflow as wf
-hand = wf(task='pose_hand') # 数字可省略，当省略时，默认为pose_hand21
-keypoints,img_with_keypoints = hand.inference(data='data/hand.jpg',img_type='pil') # 进行模型推理
-format_result = hand.format_output(lang='zh')# 将推理结果进行格式化输出
-hand.show(img_with_keypoints)# 展示推理图片
-hand.save(img_with_keypoints,'img_with_keypoints.jpg')# 保存推理图片
-```
-
-#### 代码解释
-
-#### 1. 模型声明
-
-```python
-from XEdu.hub import Workflow as wf
-hand = wf(task='pose_hand') # 数字可省略，当省略时，默认为pose_hand21
-```
-
-`wf()`中共有三个参数可以设置：
-
-- `task`选择任务。人手关键点识别模型为`pose_hand`。
-- `checkpoints`指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如`checkpoints='my_checkpoint/model.onnx'`。
-- `download_path`指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如`download_path='my_checkpoint'`。
-
-任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">XEduHub任务模型资源下载与存放</a>。
-
-#### 2. 模型推理
-
-```python
-keypoints,img_with_keypoints = hand.inference(data='data/hand.jpg',img_type='pil') # 进行模型推理
-```
-
-模型推理`inference()`可传入参数：
-
-- `data`: 指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
-
-- `show`: 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出关键点识别完成后的图片。
-
-- `img_type`: 关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
-- `bbox`：该参数可配合目标检测使用。在多人手关键点检测中，该参数指定了要识别哪个检测框中的关键点。
-
-模型推理返回结果：
-
-- `keypoints`以二维数组的形式保存了所有关键点的坐标，每个关键点(x,y)被表示为`[x,y]`根据前面的图示，要获取到某个特定序号`i`的关键点，只需要访问`keypoints[i]`即可。
-
-- `img_with_keypoints`是个三维数组，以pil格式保存了关键点识别完成后的图片。
-
-#### 3. 结果输出
-
-```python
-format_result = hand.format_output(lang='zh')# 将推理结果进行格式化输出
-```
-
-`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
-
-`format_output()`中共有两个参数可以设置：
-
-- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
-- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
-`format_result`以字典形式存储了推理结果，共有两个键：`关键点坐标`和`分数`。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标，而分数则是对应下标的关键点的分数，以一维数组形式保存。
-
-```python
-hand.show(img_with_keypoints)# 展示推理图片
-```
-
-`show()`能够输出带有关键点的结果图像。
-
-![](../images/xeduhub/hand_show.png)
-
-#### 4. 结果保存
-
-```python
-hand.save(img_with_keypoints,'img_with_keypoints.jpg')# 保存推理图片
-```
-
-`save()`方法能够保存带有关键点的图像
-
-该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
-
-### **人体所有关键点**
-
-XEduHub提供了识别人体所有关键点，包括人手、人脸和人体躯干部分关键点的模型：`pose_wholebody133`。具体关键点的序号及其分布如下图所示：
-
-![](../images/xeduhub/wholebody.png)
-
-#### 代码样例
-
-```python
-from XEdu.hub import Workflow as wf
-wholebody = wf(task='pose_wholebody') # 数字可省略，当省略时，默认为pose_wholebody133
-keypoints,img_with_keypoints = wholebody.inference(data='data/wholebody.jpg',img_type='pil') # 进行模型推理
-format_result = wholebody.format_output(lang='zh')# 将推理结果进行格式化输出
-wholebody.show(img_with_keypoints)# 展示推理图片
-wholebody.save(img_with_keypoints,'img_with_keypoints.jpg')# 保存推理图片
-```
-
-#### 代码解释
-
-#### 1. 模型声明
-
-```python
-from XEdu.hub import Workflow as wf
-wholebody = wf(task='pose_wholebody') # 数字可省略，当省略时，默认为pose_wholebody133
-```
-
-`wf()`中共有三个参数可以设置：
-
-- `task`选择任务。全身关键点提取模型为`pose_wholebody`。
-- `checkpoints`指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如`checkpoints='my_checkpoint/model.onnx'`。
-- `download_path`指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如`download_path='my_checkpoint'`。
-
-任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">XEduHub任务模型资源下载与存放</a>。
-
-#### 2. 模型推理
-
-```python
-keypoints,img_with_keypoints = wholebody.inference(data='data/wholebody.jpg',img_type='pil') # 进行模型推理
-```
-
-模型推理`inference()`可传入参数：
-
-- `data`: 指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
-
-- `show`: 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出关键点识别完成后的图片。
-
-- `img_type`: 关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
-- `bbox`：该参数可配合目标检测使用。在多人手关键点检测中，该参数指定了要识别哪个检测框中的关键点。
-
-模型推理返回结果：
-
-- `keypoints`以二维数组的形式保存了所有关键点的坐标，每个关键点(x,y)被表示为`[x,y]`根据前面的图示，要获取到某个特定序号`i`的关键点，只需要访问`keypoints[i]`即可。
-
-- `img_with_keypoints`是个三维数组，以pil格式保存了关键点识别完成后的图片。
-
-#### 3. 结果输出
-
-```python
-format_result = wholebody.format_output(lang='zh')# 将推理结果进行格式化输出
-```
-
-`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
-
-`format_output()`中共有两个参数可以设置：
-
-- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
-- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
-
-`format_result`以字典形式存储了推理结果，共有两个键：`关键点坐标`和`分数`。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标，而分数则是对应下标的关键点的分数，以一维数组形式保存。
-
-```python
-wholebody.show(img_with_keypoints)# 展示推理图片
-```
-
-`show()`能够输出带有关键点的结果图像。
-
-![](../images/xeduhub/wholebody_show.png)
-
-#### 4. 结果保存
-
-```python
-wholebody.save(img_with_keypoints,'img_with_keypoints.jpg')# 保存推理图片
-```
-
-`save()`方法能够保存带有关键点的图像
-
-该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
-
-## 2. 目标检测
+## 1. 目标检测
 
 目标检测是一种计算机视觉任务，其目标是在图像或视频中检测并定位物体的位置，并为每个物体分配类别标签。
 
@@ -762,7 +384,478 @@ det_hand.save(img_with_box,'img_with_box.jpg')# 保存推理图片
 
 该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
 
-## 3. 图像分类
+## 2. 关键点识别
+
+关键点识别是深度学习中的一项关键任务，旨在检测图像或视频中的关键位置，通常代表物体或人体的重要部位。XEduHub支持的关键点识别任务有：人体关键点`pose_body`、人脸关键点`pose_face`、人手关键点`pose_hand`和所有人体关键点识别`pose_wholebody`。
+
+**注意事项**：这里我们强烈建议提取关键点之前应**先进行目标检测**。
+
+例如进行人体关键点检测`pose_body`之前，先使用`det_body`在图片中检测中人体目标，对每个人体目标进行更加精准的关键点检测。可参考项目<a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public">XEduHub实例代码-入门完整版</a>中的 **“3-1 综合项目：多目标关键点检测”**。
+
+当然关键点识别也可以单独用，但是效果并不保证。
+
+![](../images/xeduhub/pose.png)
+
+### 人体关键点识别 
+
+人体关键点识别是一项计算机视觉任务，旨在检测和定位图像或视频中人体的关键位置，通常是关节、身体部位或特定的解剖结构。
+
+这些关键点的检测可以用于人体姿态估计和分类、动作分析、手势识别等多种应用。
+
+XEduHub提供了三个识别人体关键点的优质模型:`pose_body17`,`pose_body17_l`和`pose_body26`，能够在使用cpu推理的情况下，快速识别出身体的关键点。
+
+ 数字表示了识别出人体关键点的数量，l代表了large，表示规模较大的，性能较强的模型，但是缺点在于推理速度较慢。
+
+`pose_body17`与`pose_body17_l`模型能识别出17个人体骨骼关键点，`pose_body26`模型能识别出26个人体骨骼关键点。
+
+![](../images/xeduhub/body.png)
+
+#### 代码样例
+
+```python
+from XEdu.hub import Workflow as wf
+body = wf(task='pose_body') # 数字可省略，当省略时，默认为pose_body17
+keypoints,img_with_keypoints = body.inference(data='data/body.jpg',img_type='pil') # 进行模型推理
+format_result = body.format_output(lang='zh')# 将推理结果进行格式化输出
+body.show(img_with_keypoints)# 展示推理图片
+body.save(img_with_keypoints,'img_with_keypoints.jpg')# 保存推理图片
+```
+
+#### 代码解释
+
+#### 1. 模型声明
+
+```python
+from XEdu.hub import Workflow as wf
+body = wf(task='pose_body') # 数字可省略，当省略时，默认为pose_body17
+```
+
+`wf()`中共有三个参数可以设置：
+
+- `task`选择任务。在人体关键点识别模型中，`task`可选取值为：`[pose_body17,pose_body17_l,pose_body26]`。
+- `checkpoints`指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如`checkpoints='my_checkpoint/model.onnx'`。
+- `download_path`指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如`download_path='my_checkpoint'`。
+
+任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">XEduHub任务模型资源下载与存放</a>。
+
+#### 2. 模型推理
+
+```python
+keypoints,img_with_keypoints = body.inference(data='data/body.jpg',img_type='pil') # 进行模型推理
+```
+
+
+模型推理`inference()`可传入参数：
+
+- `data`: 指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
+
+- `show`: 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出关键点识别完成后的图片。
+
+- `img_type`: 关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
+- `bbox`：该参数可配合目标检测使用。在多人手关键点检测中，该参数指定了要识别哪个检测框中的关键点。
+
+模型推理返回结果：
+
+- `keypoints`以二维数组的形式保存了所有关键点的坐标，每个关键点(x,y)被表示为`[x,y]`根据前面的图示，要获取到某个特定序号`i`的关键点，只需要访问`keypoints[i]`即可。
+
+- `img_with_keypoints`是个三维数组，以对应img_type格式保存了关键点识别完成后图片的像素点信息。
+
+#### 3. 结果输出
+
+```python
+format_result = body.format_output(lang='zh')# 参数lang设置了输出结果的语言，默认为中文
+```
+
+`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
+
+`format_output()`中共有两个参数可以设置：
+
+- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
+
+`format_result`以字典形式存储了推理结果，共有两个键：`关键点坐标`和`分数`。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标，而分数则是对应下标的关键点的分数，以一维数组形式保存。
+
+![](../images/xeduhub/body-format.png)
+
+结果可视化
+
+```python
+body.show(img_with_keypoints)
+```
+
+`show()`能够输出带有关键点和关键点连线的结果图像。
+
+![](../images/xeduhub/body_show.png)
+
+#### 4. 结果保存
+
+```python
+body.save(img_with_keypoints,'img_with_keypoints.jpg')
+```
+
+`save()`方法能够保存保存带有关键点和关键点连线结果图像
+
+该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
+
+### **人脸关键点**
+
+人脸关键点识别是计算机视觉领域中的一项任务，它的目标是检测和定位人脸图像中代表面部特征的重要点，例如眼睛、鼻子、嘴巴、眉毛等。这些关键点的准确定位对于许多应用非常重要，包括人脸识别、表情分析、虚拟化妆、人机交互等。
+
+XEduHub提供了识别人脸关键点的模型：`pose_face106`，这意味着该模型能够识别人脸上的106个关键点。如下图所示是106个关键点在脸部的分布情况，我们可以利用这些关键点的分布特征进行人脸识别，或者对人的表情进行分析和分类等。
+
+![](../images/xeduhub/new_face106.png)
+
+#### 代码样例
+
+```python
+from XEdu.hub import Workflow as wf
+face = wf(task='pose_face') # 数字可省略，当省略时，默认为pose_face106
+keypoints,img_with_keypoints = face.inference(data='data/face.jpg',img_type='pil') # 进行模型推理
+format_result = face.format_output(lang='zh')# 将推理结果进行格式化输出
+face.show(img_with_keypoints)# 展示推理图片
+face.save(img_with_keypoints,'img_with_keypoints.jpg')# 保存推理图片
+```
+
+#### 代码解释
+
+#### 1. 模型声明
+
+```python
+from XEdu.hub import Workflow as wf
+face = wf(task='pose_face') # 数字可省略，默认为face106
+```
+
+`wf()`中共有三个参数可以设置：
+
+- `task`选择任务。人脸关键点识别模型为`pose_face106`（数字可省略，默认为face106）。
+- `checkpoints`指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如`checkpoints='my_checkpoint/model.onnx'`。
+- `download_path`指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如`download_path='my_checkpoint'`。
+
+任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">XEduHub任务模型资源下载与存放</a>。
+#### 2. 模型推理
+
+```python
+keypoints,img_with_keypoints = face.inference(data='data/face.jpg',img_type='pil') # 进行模型推理
+```
+
+模型推理`inference()`可传入参数：
+
+- `data`: 指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
+
+- `show`: 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出关键点识别完成后的图片。
+
+- `img_type`: 关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
+
+- `bbox`：该参数可配合目标检测使用。在多人手关键点检测中，该参数指定了要识别哪个检测框中的关键点。
+
+模型推理返回结果：
+
+- `keypoints`以二维数组的形式保存了所有关键点的坐标，每个关键点(x,y)被表示为`[x,y]`根据前面的图示，要获取到某个特定序号`i`的关键点，只需要访问`keypoints[i]`即可。
+
+- `img_with_keypoints`是个三维数组，以对应img_type格式保存了关键点识别完成后图片的像素点信息。
+
+#### 3. 结果输出
+
+```python
+format_result = face.format_output(lang='zh')# 将推理结果进行格式化输出
+```
+
+`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
+
+`format_output()`中共有两个参数可以设置：
+
+- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
+
+`format_result`以字典形式存储了推理结果，共有两个键：`关键点坐标`和`分数`。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标，而分数则是对应下标的关键点的分数，以一维数组形式保存。
+
+结果可视化
+
+```python
+face.show(img_with_keypoints)# 展示推理图片
+```
+
+`show()`能够输出带有关键点的结果图像。
+
+![](../images/xeduhub/face_show.png)
+
+#### 4. 结果保存
+
+```python
+face.save(img_with_keypoints,'img_with_keypoints.jpg')# 保存推理图片
+```
+
+`save()`方法能够保存带有关键点的图像
+
+该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
+
+### **人手关键点**
+
+人手关键点识别是一项计算机视觉任务，其目标是检测和定位图像或视频中人手的关键位置，通常包括手指、手掌、手腕等关键部位的位置。这些关键点的识别对于手势识别、手部姿态估计、手部追踪、手势控制设备等应用具有重要意义。
+
+XEduHub提供了能够快速识别人手关键点的模型：`pose_hand21`，该模型能够识别人手上的21个关键点，如下图所示。你可以根据自身需要对关键点进行进一步处理。例如：手势的不同会体现在关键点位置的分布上，这样就可以利用这些关键点进行手势的分类和识别。
+
+![](../images/xeduhub/new_hand.png)
+
+#### 代码样例
+
+```python
+from XEdu.hub import Workflow as wf
+hand = wf(task='pose_hand') # 数字可省略，当省略时，默认为pose_hand21
+keypoints,img_with_keypoints = hand.inference(data='data/hand.jpg',img_type='pil') # 进行模型推理
+format_result = hand.format_output(lang='zh')# 将推理结果进行格式化输出
+hand.show(img_with_keypoints)# 展示推理图片
+hand.save(img_with_keypoints,'img_with_keypoints.jpg')# 保存推理图片
+```
+
+#### 代码解释
+
+#### 1. 模型声明
+
+```python
+from XEdu.hub import Workflow as wf
+hand = wf(task='pose_hand') # 数字可省略，当省略时，默认为pose_hand21
+```
+
+`wf()`中共有三个参数可以设置：
+
+- `task`选择任务。人手关键点识别模型为`pose_hand`。
+- `checkpoints`指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如`checkpoints='my_checkpoint/model.onnx'`。
+- `download_path`指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如`download_path='my_checkpoint'`。
+
+任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">XEduHub任务模型资源下载与存放</a>。
+
+#### 2. 模型推理
+
+```python
+keypoints,img_with_keypoints = hand.inference(data='data/hand.jpg',img_type='pil') # 进行模型推理
+```
+
+模型推理`inference()`可传入参数：
+
+- `data`: 指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
+
+- `show`: 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出关键点识别完成后的图片。
+
+- `img_type`: 关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
+- `bbox`：该参数可配合目标检测使用。在多人手关键点检测中，该参数指定了要识别哪个检测框中的关键点。
+
+模型推理返回结果：
+
+- `keypoints`以二维数组的形式保存了所有关键点的坐标，每个关键点(x,y)被表示为`[x,y]`根据前面的图示，要获取到某个特定序号`i`的关键点，只需要访问`keypoints[i]`即可。
+
+- `img_with_keypoints`是个三维数组，以pil格式保存了关键点识别完成后的图片。
+
+#### 3. 结果输出
+
+```python
+format_result = hand.format_output(lang='zh')# 将推理结果进行格式化输出
+```
+
+`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
+
+`format_output()`中共有两个参数可以设置：
+
+- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
+`format_result`以字典形式存储了推理结果，共有两个键：`关键点坐标`和`分数`。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标，而分数则是对应下标的关键点的分数，以一维数组形式保存。
+
+```python
+hand.show(img_with_keypoints)# 展示推理图片
+```
+
+`show()`能够输出带有关键点的结果图像。
+
+![](../images/xeduhub/hand_show.png)
+
+#### 4. 结果保存
+
+```python
+hand.save(img_with_keypoints,'img_with_keypoints.jpg')# 保存推理图片
+```
+
+`save()`方法能够保存带有关键点的图像
+
+该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
+
+### **人体所有关键点**
+
+XEduHub提供了识别人体所有关键点，包括人手、人脸和人体躯干部分关键点的模型：`pose_wholebody133`。具体关键点的序号及其分布如下图所示：
+
+![](../images/xeduhub/wholebody.png)
+
+#### 代码样例
+
+```python
+from XEdu.hub import Workflow as wf
+wholebody = wf(task='pose_wholebody') # 数字可省略，当省略时，默认为pose_wholebody133
+keypoints,img_with_keypoints = wholebody.inference(data='data/wholebody.jpg',img_type='pil') # 进行模型推理
+format_result = wholebody.format_output(lang='zh')# 将推理结果进行格式化输出
+wholebody.show(img_with_keypoints)# 展示推理图片
+wholebody.save(img_with_keypoints,'img_with_keypoints.jpg')# 保存推理图片
+```
+
+#### 代码解释
+
+#### 1. 模型声明
+
+```python
+from XEdu.hub import Workflow as wf
+wholebody = wf(task='pose_wholebody') # 数字可省略，当省略时，默认为pose_wholebody133
+```
+
+`wf()`中共有三个参数可以设置：
+
+- `task`选择任务。全身关键点提取模型为`pose_wholebody`。
+- `checkpoints`指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如`checkpoints='my_checkpoint/model.onnx'`。
+- `download_path`指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如`download_path='my_checkpoint'`。
+
+任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id110">XEduHub任务模型资源下载与存放</a>。
+
+#### 2. 模型推理
+
+```python
+keypoints,img_with_keypoints = wholebody.inference(data='data/wholebody.jpg',img_type='pil') # 进行模型推理
+```
+
+模型推理`inference()`可传入参数：
+
+- `data`: 指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
+
+- `show`: 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出关键点识别完成后的图片。
+
+- `img_type`: 关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
+- `bbox`：该参数可配合目标检测使用。在多人手关键点检测中，该参数指定了要识别哪个检测框中的关键点。
+
+模型推理返回结果：
+
+- `keypoints`以二维数组的形式保存了所有关键点的坐标，每个关键点(x,y)被表示为`[x,y]`根据前面的图示，要获取到某个特定序号`i`的关键点，只需要访问`keypoints[i]`即可。
+
+- `img_with_keypoints`是个三维数组，以pil格式保存了关键点识别完成后的图片。
+
+#### 3. 结果输出
+
+```python
+format_result = wholebody.format_output(lang='zh')# 将推理结果进行格式化输出
+```
+
+`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
+
+`format_output()`中共有两个参数可以设置：
+
+- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
+
+`format_result`以字典形式存储了推理结果，共有两个键：`关键点坐标`和`分数`。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标，而分数则是对应下标的关键点的分数，以一维数组形式保存。
+
+```python
+wholebody.show(img_with_keypoints)# 展示推理图片
+```
+
+`show()`能够输出带有关键点的结果图像。
+
+![](../images/xeduhub/wholebody_show.png)
+
+#### 4. 结果保存
+
+```python
+wholebody.save(img_with_keypoints,'img_with_keypoints.jpg')# 保存推理图片
+```
+
+`save()`方法能够保存带有关键点的图像
+
+该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
+
+## 3. 光学字符识别（OCR）
+
+光学字符识别（Optical Character Recognition, OCR）是一项用于将图像或扫描的文档转换为可编辑的文本格式的技术。OCR技术能够自动识别和提取图像或扫描文档中的文本，并将其转化为计算机可处理的文本格式。OCR技术在车牌识别、证件识别、文档扫描、拍照搜题等多个场景有着广泛应用。
+
+XEduHub使用的OCR模型是来自百度的开源免费的OCR模型：rapidocr，这个模型运行速度快，性能优越，小巧灵活，并且能支持超过6000种字符的识别，如简体中文、繁体中文、英文、数字和其他艺术字等等。
+
+注意：你可以在当前项目中找到名为**font**的文件夹，里面的FZVTK.TTF文件是一种字体文件，为了显示识别出的文字而使用。
+
+### 代码样例
+
+```python
+from XEdu.hub import Workflow as wf
+ocr = wf(task="ocr")
+result,ocr_img = ocr.inference(data='data/ocr_img.png',img_type='cv2') # 进行模型推理
+ocr_format_result = ocr.format_output(lang="zh")# 推理结果格式化输出
+ocr.show(ocr_img)# 展示推理结果图片
+ocr.save(ocr_img,'ocr_result.jpg')# 保存推理结果图片
+```
+
+### 代码解释
+
+#### 1. 模型声明
+
+```python
+from XEdu.hub import Workflow as wf
+ocr = wf(task="ocr")
+```
+
+`wf()`中只有参数可以设置：
+
+- `task`选择任务类型，光学字符识别（OCR）的模型为`ocr`。
+  
+**注意**：ocr的模型不是以onnx方式下载，而是以python库的形式下载和安装，因此不同于之前任务的下载方式，也无需指定下载路径。可以通过`pip install rapidocr_onnxruntime==1.3.7`预先下载库。
+
+#### 2. 模型推理
+
+```python
+result,ocr_img = ocr.inference(data='data/ocr_img.png',img_type='cv2') # 进行模型推理
+```
+
+模型推理`inference()`可传入参数：
+
+- `data`: 指定待进行ocr的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
+- `show`: 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出OCR完成后的图片。
+- `img_type`：目标检测完成后会返回含有检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`
+
+`result`以一维数组的形式保存了识别出的文本及其检测框的四个顶点(x,y)坐标.
+
+如图所示，数组中每个元素的形式为元组：（识别文本，检测框顶点坐标）。四个顶点坐标顺序分别为[左上，右上，左下，右下]。
+
+![](../images/xeduhub/ocr_res.png)
+
+`ocr_img`的格式为cv2，保存了ocr识别后的结果图片。
+
+#### 3. 结果输出
+
+```python
+ocr_format_result = ocr.format_output(lang="zh")
+```
+
+![](../images/xeduhub/ocr_format.png)
+
+`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
+
+`format_output()`中共有两个参数可以设置：
+
+- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
+
+`format_output`的结果以字典形式存储了推理结果，共有三个键：`检测框`、`分数`和`文本`。检测框以三维数组形式保存了每个检测框的四个顶点的[x,y]坐标，而分数则是对应下标的检测框分数，以一维数组形式保存。文本则是每个检测框中识别出的文本，以一维数组形式保存。
+
+```python
+ocr.show(ocr_img)# 展示推理结果图片
+```
+
+显示结果图片：由两部分组成，左侧为原图片，右侧为经过ocr识别出的文本，并且该文本的位置与原图片中文本的位置保持对应。
+
+![](../images/xeduhub/ocr_show.png)
+
+#### 4. 结果保存
+
+```python
+ocr.save(ocr_img,'ocr_result.jpg')# 保存推理结果图片
+```
+
+`save()`方法能够保存ocr识别后的结果图像
+
+该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
+
+## 4. 图像分类
 
 图像分类是一个分类任务，它能够将不同的图像划分到指定的类别中，实现最小的分类误差和最高精度。XEduHub提供了进行图像分类的模型：`cls_imagenet`，该模型的分类类别取自ImageNet的一千个分类，这意味着该模型能够将输入的图像划分到这一千个分类中的类别上。
 
@@ -824,7 +917,7 @@ format_result = cls.format_output(lang='zh')#推理结果格式化输出
 
 ![](../images/xeduhub/cls_format.png)
 
-## 4. 风格迁移
+## 5. 风格迁移
 
 风格迁移，这里主要指的是图像风格迁移，指的是一种计算机视觉和图像处理技术。它允许将一个图像的艺术风格应用到另一个图像上，从而创建出一个新的图像，同时保留了原始图像的内容，但采用了第二个图像的风格。XEduHub提供了进行图像风格迁移的模型：`gen_style`，它预设了5种图像风格，并支持用户输入自定义的图片进行自定义风格迁移。
 
@@ -926,95 +1019,6 @@ style.save(result,"style_cat.jpg")# 保存推理图片
 ```
 
 `save()`方法能够保存风格迁移后的图像
-
-该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
-
-## 5. 光学字符识别（OCR）
-
-光学字符识别（Optical Character Recognition, OCR）是一项用于将图像或扫描的文档转换为可编辑的文本格式的技术。OCR技术能够自动识别和提取图像或扫描文档中的文本，并将其转化为计算机可处理的文本格式。OCR技术在车牌识别、证件识别、文档扫描、拍照搜题等多个场景有着广泛应用。
-
-XEduHub使用的OCR模型是来自百度的开源免费的OCR模型：rapidocr，这个模型运行速度快，性能优越，小巧灵活，并且能支持超过6000种字符的识别，如简体中文、繁体中文、英文、数字和其他艺术字等等。
-
-注意：你可以在当前项目中找到名为**font**的文件夹，里面的FZVTK.TTF文件是一种字体文件，为了显示识别出的文字而使用。
-
-### 代码样例
-
-```python
-from XEdu.hub import Workflow as wf
-ocr = wf(task="ocr")
-result,ocr_img = ocr.inference(data='data/ocr_img.png',img_type='cv2') # 进行模型推理
-ocr_format_result = ocr.format_output(lang="zh")# 推理结果格式化输出
-ocr.show(ocr_img)# 展示推理结果图片
-ocr.save(ocr_img,'ocr_result.jpg')# 保存推理结果图片
-```
-
-### 代码解释
-
-#### 1. 模型声明
-
-```python
-from XEdu.hub import Workflow as wf
-ocr = wf(task="ocr")
-```
-
-`wf()`中只有参数可以设置：
-
-- `task`选择任务类型，光学字符识别（OCR）的模型为`ocr`。
-  
-**注意**：ocr的模型不是以onnx方式下载，而是以python库的形式下载和安装，因此不同于之前任务的下载方式，也无需指定下载路径。可以通过`pip install rapidocr_onnxruntime==1.3.7`预先下载库。
-
-#### 2. 模型推理
-
-```python
-result,ocr_img = ocr.inference(data='data/ocr_img.png',img_type='cv2') # 进行模型推理
-```
-
-模型推理`inference()`可传入参数：
-
-- `data`: 指定待进行ocr的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
-- `show`: 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出OCR完成后的图片。
-- `img_type`：目标检测完成后会返回含有检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`
-
-`result`以一维数组的形式保存了识别出的文本及其检测框的四个顶点(x,y)坐标.
-
-如图所示，数组中每个元素的形式为元组：（识别文本，检测框顶点坐标）。四个顶点坐标顺序分别为[左上，右上，左下，右下]。
-
-![](../images/xeduhub/ocr_res.png)
-
-`ocr_img`的格式为cv2，保存了ocr识别后的结果图片。
-
-#### 3. 结果输出
-
-```python
-ocr_format_result = ocr.format_output(lang="zh")
-```
-
-![](../images/xeduhub/ocr_format.png)
-
-`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
-
-`format_output()`中共有两个参数可以设置：
-
-- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
-- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
-
-`format_output`的结果以字典形式存储了推理结果，共有三个键：`检测框`、`分数`和`文本`。检测框以三维数组形式保存了每个检测框的四个顶点的[x,y]坐标，而分数则是对应下标的检测框分数，以一维数组形式保存。文本则是每个检测框中识别出的文本，以一维数组形式保存。
-
-```python
-ocr.show(ocr_img)# 展示推理结果图片
-```
-
-显示结果图片：由两部分组成，左侧为原图片，右侧为经过ocr识别出的文本，并且该文本的位置与原图片中文本的位置保持对应。
-
-![](../images/xeduhub/ocr_show.png)
-
-#### 4. 结果保存
-
-```python
-ocr.save(ocr_img,'ocr_result.jpg')# 保存推理结果图片
-```
-
-`save()`方法能够保存ocr识别后的结果图像
 
 该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
 
