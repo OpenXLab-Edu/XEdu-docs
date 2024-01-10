@@ -26,7 +26,7 @@ XEduHub是一个专为快速、便捷地利用最先进的深度学习模型完�
 from XEdu.hub import Workflow as wf
 # 步骤二：选择你的AI工具
 body = wf(task='pose_body17') # 实例化pose模型
-# 步骤三：使用你的AI玩具
+# 步骤三：使用你的AI工具
 img = 'body.jpg'
 # 进行推理，同时返回结果和带标注的图片
 result,new_img = body.inference(data=img,img_type='cv2')
