@@ -199,9 +199,9 @@ cap.release()
 cv2.destroyAllWindows()
 ```
 
-### 2.部署到硬件（以行空板为例）
+### 2.部署到硬件（以[行空板](https://xedu.readthedocs.io/zh/master/how_to_use/scitech_tools/unihiker.html#onnx)为例）
 
-当准备好了模型应用的代码，我们可以考虑将其部署到硬件，比如行空板，通常需要遵循以下步骤。
+当准备好了模型应用的代码，我们可以考虑将其部署到硬件，比如[行空板](https://xedu.readthedocs.io/zh/master/how_to_use/scitech_tools/unihiker.html#onnx)，通常需要遵循以下步骤。
 
 #### 第一步：准备模型文件和代码文件
 
