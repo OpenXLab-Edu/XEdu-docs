@@ -325,7 +325,7 @@ Docker分为容器（Container）和镜像（Image），（有时还会额外有
 4. 启动docker容器（Container）
 
 使用这个命令：
-`docker：docker run -it -p 5000:5000 -p 8888:8888 --mount type=bind,source=D:/share,target=/xedu/share xedu/xedu:v2s`，然后就可以用电脑访问127.0.0.1:8888访问jlab，通过127.0.0.1:5000访问easytrain。（电脑中的文件想要拷贝进docker，可以放到D盘share文件夹）。
+`docker run -it -p 5000:5000 -p 8888:8888 --mount type=bind,source=D:/share,target=/xedu/share xedu/xedu:v2s`，会询问是否绑定磁盘，选择Yes，然后就可以用电脑访问127.0.0.1:8888访问jlab，通过127.0.0.1:5000访问easytrain。（电脑中的文件想要拷贝进docker，可以放到D盘share文件夹）。
 
 5. 结束容器
 
