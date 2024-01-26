@@ -3,7 +3,7 @@
 可选的安装方式
 --------------
 
-为了满足广大中小学师生的需求，XEdu安装方式分为一键安装包安装和pip安装。一键安装包版包含MMEdu、BaseML、BaseNN三个模块的基础功能，以及XEduHub、BaseDT等工具库，同时内置了一套EasyDL系列工具，分"EasyTrain.bat"、"EasyInference.bat"和"EasyAPI.bat"这三个可视化工具，定期更新。pip安装方式需用户自己分模块安装，各模块更新同步工具开发进度。后续还将推出docker容器镜像，敬请期待。
+为了满足广大中小学师生的需求，XEdu安装方式分为一键安装包安装、pip安装和docker安装。一键安装包版包含MMEdu、BaseML、BaseNN三个模块的基础功能，以及XEduHub、BaseDT等工具库，同时内置了一套EasyDL系列工具，分"EasyTrain.bat"、"EasyInference.bat"和"EasyAPI.bat"这三个可视化工具，定期更新。pip安装方式需用户自己分模块安装，各模块更新同步工具开发进度。此外，还推出了docker容器镜像可供选择。
 
 初学者安装强推!!!不会让人失望的一键安装包
 -----------------------------------------
@@ -295,7 +295,45 @@ $ pip install MMEdu
 docker容器镜像
 --------------
 
-敬请期待
+- 提示：这里需要确保您的电脑系统盘空间剩余空间超过5GB，实际建议有10GB及以上空间，便于后续训练使用。如果想要调整存储空间位置，可以参考[这里](https://blog.csdn.net/ber_bai/article/details/120816006)。
+
+1. 首先需要安装Docker软件
+
+这里以Windows11系统为例，其他系统可以在网上查找相关教程自行安装Docker。
+
+Windows11系统中，可以先安装Docker Desktop图形化管理软件，下载链接为：[https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/)。建议不开启WSL2，否则可能与电脑其他软件存在冲突。
+
+2. 启动Docker服务
+
+安装完Docker Desktop，运行启动它，界面如下所示。
+![Docker 启动界面](../images/about/docker1.png)
+看到左下角显示Engine running说明启动成功。
+
+3. 拉取镜像
+
+Docker分为容器（Container）和镜像（Image），（有时还会额外有一类叫Dockerfile）。首先需要从云端获取镜像，类似于安装操作系统的镜像，这个镜像是和原版一模一样的。然后可以启动容器，容器可以由用户自主修改。
+
+拉取镜像的命令如下：
+`docker pull xedu/xedu:v2s`
+打开电脑的命令行（CMD）窗口，输入上面的命令行。
+
+这一步会拉取xedu的镜像文件到本地磁盘，因此务必保证您的电脑系统盘空间剩余空间超过5GB，实际建议有10GB及以上空间，便于后续训练使用。如果想要调整存储空间位置，可以参考[这里](https://blog.csdn.net/ber_bai/article/details/120816006)。
+
+等待拉取完成，所用时间取决于网速（大约30分钟-2小时之间），您也可以参考相关教程配置国内镜像源来加快拉取速度。如：[这个办法](https://blog.csdn.net/moluzhui/article/details/132287258)。
+
+4. 启动docker容器（Container）
+
+使用这个命令：
+`docker：docker run -it -p 5000:5000 -p 8888:8888 --mount type=bind,source=D:/share,target=/xedu/share xedu/xedu:v2s`，然后就可以用电脑访问127.0.0.1:8888访问jlab，通过127.0.0.1:5000访问easytrain。（电脑中的文件想要拷贝进docker，可以放到D盘share文件夹）。
+
+5. 结束容器
+
+在刚才的命令行窗口中，输入CTRL+C，即可结束容器。
+
+
+
+
+
 
 如何快速查看XEdu各模块库的版本
 ------------------------------
