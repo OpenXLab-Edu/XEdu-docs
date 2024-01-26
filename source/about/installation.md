@@ -317,7 +317,8 @@ Docker分为容器（Container）和镜像（Image），（有时还会额外有
 `docker pull xedu/xedu:v2s`
 打开电脑的命令行（CMD）窗口，输入上面的命令行。
 
-这一步会拉取xedu的镜像文件到本地磁盘，因此务必保证您的电脑系统盘空间剩余空间超过5GB，实际建议有10GB及以上空间，便于后续训练使用。如果想要调整存储空间位置，可以参考[这里](https://blog.csdn.net/ber_bai/article/details/120816006)。
+这一步会拉取xedu的镜像文件到本地磁盘，因此务必保证您的电脑系统盘空间剩余空间超过5GB，实际建议有10GB及以上空间，便于后续训练使用。如果想要调整存储空间位置，可以参考[这里](https://blog.csdn.net/ber_bai/article/details/120816006)。刚开始拉取没有相应，可以等待一会儿，就会出现下面的拉取进度的界面。
+![Docker拉取界面](../images/about/docker2.png)
 
 等待拉取完成，所用时间取决于网速（大约30分钟-2小时之间），您也可以参考相关教程配置国内镜像源来加快拉取速度。如：[这个办法](https://blog.csdn.net/moluzhui/article/details/132287258)。
 
