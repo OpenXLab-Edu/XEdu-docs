@@ -297,19 +297,19 @@ docker容器镜像
 
 - 提示：这里需要确保您的电脑系统盘空间剩余空间超过5GB，实际建议有10GB及以上空间，便于后续训练使用。如果想要调整存储空间位置，可以参考[这里](https://blog.csdn.net/ber_bai/article/details/120816006)。
 
-1. 首先需要安装Docker软件
+### 1.首先需要安装Docker软件
 
 这里以Windows11系统为例，其他系统可以在网上查找相关教程自行安装Docker。
 
 Windows11系统中，可以先安装Docker Desktop图形化管理软件，下载链接为：[https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/)。建议不开启WSL2，否则可能与电脑其他软件存在冲突。
 
-2. 启动Docker服务
+### 2.启动Docker服务
 
 安装完Docker Desktop，运行启动它，界面如下所示。
 ![Docker 启动界面](../images/about/docker1.png)
 看到左下角显示Engine running说明启动成功。
 
-3. 拉取镜像
+### 3.拉取镜像
 
 Docker分为容器（Container）和镜像（Image），（有时还会额外有一类叫Dockerfile）。首先需要从云端获取镜像，类似于安装操作系统的镜像，这个镜像是和原版一模一样的。然后可以启动容器，容器可以由用户自主修改。
 
@@ -322,12 +322,12 @@ Docker分为容器（Container）和镜像（Image），（有时还会额外有
 
 等待拉取完成，所用时间取决于网速（大约30分钟-2小时之间），您也可以参考相关教程配置国内镜像源来加快拉取速度。如：[这个办法](https://blog.csdn.net/moluzhui/article/details/132287258)。
 
-4. 启动docker容器（Container）
+### 4.启动docker容器（Container）
 
 使用这个命令：
-`docker run -it -p 5000:5000 -p 8888:8888 --mount type=bind,source=D:/share,target=/xedu/share xedu/xedu:v2s`，首次使用会询问是否绑定磁盘，选择Yes，然后就可以用电脑访问127.0.0.1:8888访问jlab，通过127.0.0.1:5000访问easytrain。（电脑中的文件想要拷贝进docker，可以放到D盘share文件夹）。美中不足的是，这两个网址需要自行打开浏览器后输入。如果显示效果不佳，可能是浏览器不兼容，建议下载[最新版的chrome浏览器](https://www.google.com/intl/zh-CN/chrome/)。
+`docker run -it -p 5000:5000 -p 8888:8888 --mount type=bind,source=D:/share,target=/xedu/share xedu/xedu:v2s`，首次使用会询问是否绑定磁盘，选择Yes，然后就可以用电脑访问**[127.0.0.1:8888](127.0.0.1:8888)**访问jlab，通过**[127.0.0.1:5000](127.0.0.1:5000)**访问easytrain。（电脑中的文件想要拷贝进docker，可以放到D盘share文件夹）。美中不足的是，这两个网址需要自行打开浏览器后输入。如果显示效果不佳，可能是浏览器不兼容，建议下载[最新版的chrome浏览器](https://www.google.com/intl/zh-CN/chrome/)。
 
-5. 结束容器
+### 5.结束容器
 
 在刚才的命令行窗口中，输入CTRL+C，即可结束容器。
 
