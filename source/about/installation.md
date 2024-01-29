@@ -325,7 +325,7 @@ Docker分为容器（Container）和镜像（Image），（有时还会额外有
 ### 4.启动docker容器（Container）
 
 使用这个命令：
-`docker run -it -p 5000:5000 -p 8888:8888 --mount type=bind,source=D:/share,target=/xedu/share xedu/xedu:v2s`，首次使用会询问是否绑定磁盘，选择Yes，然后就可以用电脑访问**[127.0.0.1:8888](127.0.0.1:8888)**访问jlab，通过**[127.0.0.1:5000](127.0.0.1:5000)**访问easytrain。（电脑中的文件想要拷贝进docker，可以放到D盘share文件夹）。美中不足的是，这两个网址需要自行打开浏览器后输入。如果显示效果不佳，可能是浏览器不兼容，建议下载[最新版的chrome浏览器](https://www.google.com/intl/zh-CN/chrome/)。
+`docker run -it -p 5000:5000 -p 8888:8888 --mount type=bind,source=D:/share,target=/xedu/share xedu/xedu:v2s`，首次使用会询问是否绑定磁盘，选择Yes，然后就可以用电脑访问 **[127.0.0.1:8888](127.0.0.1:8888)** 访问jlab，通过 **[127.0.0.1:5000](127.0.0.1:5000)** 访问easytrain。（电脑中的文件想要拷贝进docker，可以放到D盘share文件夹）。美中不足的是，这两个网址需要自行打开浏览器后输入。如果显示效果不佳，可能是浏览器不兼容，建议下载[最新版的chrome浏览器](https://www.google.com/intl/zh-CN/chrome/)。
 ![Docker Lab](../images/about/docker3.png)
 ![Docker EasyTrain](../images/about/docker4.png)
 
