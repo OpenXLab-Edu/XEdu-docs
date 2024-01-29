@@ -48,11 +48,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEduHub</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">快速体验XEduHub</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">XEduHub是什么？</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">XEduHub有多棒？</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">解锁XEduHub的使用方法</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">安装</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">体验</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">XEduHub是什么？</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">XEduHub的特点</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">XEduHub的安装和使用</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">安装方法</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">体验XEduhub的更多功能</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#xeduhubai">用XEduHub玩第一个AI项目！</a></li>
 </ul>
 </li>
@@ -99,39 +103,41 @@
 <h1>快速体验XEduHub<a class="headerlink" href="#xeduhub" title="Permalink to this heading"></a></h1>
 <section id="id1">
 <h2>XEduHub是什么？<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
-<p>XEduHub是一个专为快速、便捷地利用最先进的深度学习模型完成任务而设计的工具库。其设计灵感源自PyTorchHub，旨在以工作流的方式，高效地完成深度学习任务。XEduHub的独特之处在于它内置了大量优质的深度学习SOTA模型，无需用户自行进行繁琐的模型训练。用户只需将这些现成的模型应用于特定任务，便能轻松进行AI应用实践。</p>
-<p>想象一下，你的玩具箱里有很多玩具，每次想玩的时候，你只需要打开玩具箱，挑选你想要的玩具来玩。XEduHub就像是一个充满了AI玩具的箱子，里面有很多已经做好的AI模型，我们可以直接用它们来完成不同的任务。</p>
-<p><img alt="../_images/eason.gif" src="../_images/eason.gif" /></p>
-</section>
+<p>XEduHub是一个专为快速、便捷地利用最先进的深度学习模型完成任务而设计的工具库。其设计灵感源自PyTorchHub，旨在以工作流的方式，高效地完成深度学习任务。XEduHub的独特之处在于它内置了大量优质的深度学习SOTA模型，无需用户自行进行繁琐的模型训练。用户根据自己的需求，选择不同的特定任务（task），而不同任务对应了不同的内置模型，拿过来就用，轻松进行AI应用实践。</p>
 <section id="id2">
-<h2>XEduHub有多棒？<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<h3>XEduHub的特点<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
 <ul class="simple">
-<li><p><strong>简单易用</strong>：就像玩玩具一样，不需要专业知识，只要按照指导，你就可以使用这些AI模型。</p></li>
-<li><p><strong>无需训练</strong>：你不需要自己制作玩具，里面的AI模型都已经为你准备好了。</p></li>
+<li><p><strong>简单易用</strong>：XEduhub是个工具箱（有各种螺丝刀、扳手、小刀等），不需要专业知识，只要知道工具的名称和作用，你就可以使用这些AI模型。</p></li>
+<li><p><strong>无需训练</strong>：你不需要自己制作工具，里面就已经有很多常用工具了（为你准备好多AI模型），当然你也可以自己做个新工具放进去。</p></li>
 <li><p><strong>节省时间</strong>：不需要等待，使用XEduHub，选取你需要的模型，然后就可以开始你的AI之旅。</p></li>
 </ul>
+<p><img alt="../_images/eason.gif" src="../_images/eason.gif" /></p>
+</section>
 </section>
 <section id="id3">
-<h2>解锁XEduHub的使用方法<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
-<p>XEduHub作为一个深度学习工具库，集成了许多深度学习领域优质的SOTA模型，能够帮助用户在不进模型训练的前提下，用少量的代码，快速实现计算机视觉、自然语言处理等多个深度学习领域的任务。</p>
-<p>一般使用步骤是：</p>
-<p>步骤1：<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/installation.html">安装</a>并导入XEduHub库</p>
-<p>步骤2：选择你的AI玩具</p>
-<p>步骤3：使用AI玩具</p>
-<p>有了模型，你就可以使用它来完成你的任务啦！</p>
+<h2>XEduHub的安装和使用<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<section id="id4">
+<h3>安装方法<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">XEdu-python</span></code>或<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">xedu-python</span></code></p>
+<p>以识别图像中的人体关键点为例，参考代码如下：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 步骤一：导入库</span>
 <span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
-<span class="c1"># 步骤二：选择你的AI玩具</span>
-<span class="n">face</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;face&quot;</span><span class="p">)</span> <span class="c1"># 实例化模型</span>
-<span class="c1"># 步骤三：使用你的AI玩具</span>
-<span class="n">img</span> <span class="o">=</span> <span class="s1">&#39;face.jpg&#39;</span>
+<span class="c1"># 步骤二：选择你的AI工具</span>
+<span class="n">body</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;pose_body17&#39;</span><span class="p">)</span> <span class="c1"># 实例化pose模型</span>
+<span class="c1"># 步骤三：使用你的AI工具</span>
+<span class="n">img</span> <span class="o">=</span> <span class="s1">&#39;body.jpg&#39;</span>
 <span class="c1"># 进行推理，同时返回结果和带标注的图片</span>
-<span class="n">result</span><span class="p">,</span><span class="n">new_img</span> <span class="o">=</span> <span class="n">face</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">img</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">)</span>
+<span class="n">result</span><span class="p">,</span><span class="n">new_img</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">img</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="c1"># 输出推理结果</span>
-<span class="n">face</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">new_img</span><span class="p">)</span> <span class="c1"># 显示带标注图片</span>
+<span class="n">body</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">new_img</span><span class="p">)</span> <span class="c1"># 显示带标注图片</span>
 </pre></div>
 </div>
-<p>一旦你安装好XEduHub并导入到代码中后，你就可以查看里面所有的AI模型。看看哪一个是你想要的，然后选择它！</p>
+<p><img alt="../_images/bodyshow.png" src="../_images/bodyshow.png" /></p>
+<p>是不是很简单？一般使用步骤是：</p>
+<p>步骤1：安装并导入XEduHub库</p>
+<p>步骤2：选择你的推理任务</p>
+<p>步骤3：输入数据进行推理并得到结果</p>
+<p>一旦你安装好XEduHub并导入到代码中后，你就可以查看里面所有的AI模型。看看哪一个是你想要的，然后选择它！查看hub中目前支持的任务代码如下：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="c1"># 目前支持的任务</span>
 <span class="n">wf</span><span class="o">.</span><span class="n">support_task</span><span class="p">()</span>
@@ -139,12 +145,9 @@
 </div>
 <p><img alt="../_images/task1.png" src="../_images/task1.png" /></p>
 </section>
-<section id="id4">
-<h2>安装<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">XEdu-python</span></code>或<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">xedu-python</span></code></p>
 </section>
 <section id="id5">
-<h2>体验<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<h2>体验XEduhub的更多功能<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
 <p>体验XEduhub的最快速方式是通过OpenInnoLab平台。</p>
 <p>OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台，满足青少年的AI学习和创作需求，支持在线编程。在“项目”中查看更多，查找“XEduHub”即可找到所有XEduHub相关的体验项目。</p>
 <p>XEduHub实例代码合集：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&amp;sc=635638d69ed68060c638f979#public">https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&amp;sc=635638d69ed68060c638f979#public</a></p>
@@ -156,7 +159,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 </pre></div>
 </div>
-<p>第二步：选择你的AI玩具</p>
+<p>第二步：选择你的AI工具</p>
 <p>你可以查看里面所有的AI模型。看看哪一个是你想要的，然后选择它！可使用如下代码查看目前支持的任务：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 查看目前支持的任务</span>
 <span class="n">wf</span><span class="o">.</span><span class="n">support_task</span><span class="p">()</span>
@@ -166,7 +169,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">body</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;pose_body17&#39;</span><span class="p">)</span> <span class="c1"># 实例化pose模型</span>
 </pre></div>
 </div>
-<p>第三步：使用AI玩具</p>
+<p>第三步：使用AI工具</p>
 <p>有了模型，你就可以使用它来完成你的任务啦！继续上面的例子，可以用图片识别模型来完成推理：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">img</span> <span class="o">=</span> <span class="s1">&#39;body.jpg&#39;</span> <span class="c1"># 指定进行推理的图片路径</span>
 <span class="n">result</span><span class="p">,</span><span class="n">new_img</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">img</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 进行推理</span>

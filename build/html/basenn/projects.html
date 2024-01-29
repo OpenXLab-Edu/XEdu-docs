@@ -73,6 +73,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#id20">实现步骤：</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#basennresnet18mnist">用BaseNN搭建ResNet18网络实现MNIST手写体数字分类</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id25">项目核心功能：</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id26">实现步骤：</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -453,6 +458,92 @@
 </pre></div>
 </div>
 <p><img alt="../_images/huitu2.png" src="../_images/huitu2.png" /></p>
+</section>
+</section>
+</section>
+<section id="basennresnet18mnist">
+<h2>用BaseNN搭建ResNet18网络实现MNIST手写体数字分类<a class="headerlink" href="#basennresnet18mnist" title="Permalink to this heading"></a></h2>
+<p>本项目展示用BaseNN搭建ResNet18网络，以MNIST手写体数字分类为任务，使用BaseNN完成ResNet18网络搭建并基于手写体数据集训练一个手写数字分类模型，通过模型测试效果不错。希望借此项目您能掌握使用BaseNN搭建ResNet18网络的方法，能举一反三搭建ResNet34、ResNet580等，也能更换数据集训练其他模型。</p>
+<p>项目地址：<a class="reference external" href="https://openinnolab.org.cn/pjlab/project?id=659ba9b3a731f07a4896af46&amp;backpath=/pjedu/userprofile?slideKey=project#public">https://openinnolab.org.cn/pjlab/project?id=659ba9b3a731f07a4896af46&amp;backpath=/pjedu/userprofile?slideKey=project#public</a></p>
+<section id="id25">
+<h3>项目核心功能：<a class="headerlink" href="#id25" title="Permalink to this heading"></a></h3>
+<p>BaseNN是XEdu系列工具的重要组成部分，延续了MMEdu极简的训练流程和风格，聚焦于基础原理的探究和模型的快速应用。BaseNN可以自由地构建神经网路，调整神经元的个数、层数、激活方式等，学生可以轻松探究神经网络原理和模型训练之中的奥秘。使用BaseNN可以轻易地创建深度学习模型。不同类型的神经网络适用于不同类型的问题，比如CNN通常用于处理图像问题，RNN通常用于处理序列问题，全连接神经网络可以应用于各种问题。同时，使用BaseNN也能完成一些相对复杂的神经网络的搭建，如ResNet，同样也是支持的，首先需在卷积层新增两个参数的设置，分别是步长stride和填充padding，同时增加残差模块的设置。</p>
+</section>
+<section id="id26">
+<h3>实现步骤：<a class="headerlink" href="#id26" title="Permalink to this heading"></a></h3>
+<section id="id27">
+<h4>1）导入库<a class="headerlink" href="#id27" title="Permalink to this heading"></a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库</span>
+<span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
+</pre></div>
+</div>
+</section>
+<section id="id28">
+<h4>2）搭建模型<a class="headerlink" href="#id28" title="Permalink to this heading"></a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#声明模型 </span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span> 
+
+<span class="c1"># 搭建ResNet18网络(参照论文完成)，要求输入数据的尺寸为（224,224）</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Conv2D&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span><span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">padding</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1">#(32,64,112,112)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;BatchNorm2d&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span> <span class="c1"># (32,64,112,112)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;MaxPool&#39;</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># (32,64,56,56)</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Res_Block&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span> <span class="n">num_blocks</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># (32,64,56,56)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Res_Block&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">128</span><span class="p">),</span> <span class="n">num_blocks</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># (32,128,28,28)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Res_Block&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">256</span><span class="p">),</span> <span class="n">num_blocks</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># (32,256,14,14)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Res_Block&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span> <span class="n">num_blocks</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># (32,512,7,7)</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;AvgPool&#39;</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span> <span class="c1"># (32,512)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;Softmax&#39;</span><span class="p">)</span> <span class="c1"># (32,10)</span>
+</pre></div>
+</div>
+</section>
+<section id="id29">
+<h4>3）载入数据<a class="headerlink" href="#id29" title="Permalink to this heading"></a></h4>
+<p>载入前需对数据做预处理，载入图片数据前如需对图像数据集进行预处理，例如做尺寸调整，可先使用torchvision对图片数据集进行预处理再载入模型进行训练。此处我们需将图片做尺寸调整（调整为224,224）
+参考代码如下，注意涉及数万张图片，需等待几分钟。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torchvision.transforms</span> <span class="kn">import</span> <span class="n">transforms</span>
+<span class="c1"># 对数据集做尺寸调整</span>
+<span class="n">tran</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Resize</span><span class="p">([</span><span class="mi">224</span><span class="p">,</span><span class="mi">224</span><span class="p">])</span>
+<span class="c1"># 模型载入数据</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_img_data</span><span class="p">(</span><span class="s2">&quot;/data/MELLBZ/mnist/training_set&quot;</span><span class="p">,</span>
+                            <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span><span class="n">transform</span><span class="o">=</span><span class="n">tran</span><span class="p">,</span><span class="n">num_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id30">
+<h4>4）设置超参数并训练模型<a class="headerlink" href="#id30" title="Permalink to this heading"></a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;SGD&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;new_mn_ckpt&#39;</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 直接训练</span>
+</pre></div>
+</div>
+<p>可以发现虽然训练很慢，但是可以发现仅需1轮Accuracy便提升显著，最后直接到1（即100%准确率）。
+主要原因是手写数字识别通常是深度学习中的一个相对简单的任务，尤其是对于像ResNet18这样的先进模型来说。因此，即使是少量的训练，模型也能迅速学习到有效的特征来区分不同的数字。且ResNet18是一个相对复杂的网络，拥有较强的特征提取能力。对于简单的数据集来说，它可能会很快学会区分各类别。</p>
+</section>
+<section id="id31">
+<h4>5）模型测试<a class="headerlink" href="#id31" title="Permalink to this heading"></a></h4>
+<p>可指定新的图片进行模型测试，注意需先将图片进行尺寸调整（训练时也做了）。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
+
+<span class="c1"># 指定一张图片</span>
+<span class="n">path</span> <span class="o">=</span>  <span class="s1">&#39;test_IMG/single_data.jpg&#39;</span>
+<span class="c1"># 读取图片</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="c1"># 对图片进行尺寸调整</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">img</span><span class="p">,(</span><span class="mi">224</span><span class="p">,</span><span class="mi">224</span><span class="p">))</span>
+<span class="c1"># 指定模型</span>
+<span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;new_mn_ckpt/basenn.pth&#39;</span> 
+<span class="c1"># 模型推理</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">print_result</span><span class="p">()</span>
+
+<span class="c1"># 输出结果</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;此手写体的数字是：&#39;</span><span class="p">,</span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="n">xxxxxxxxxx</span> <span class="kn">import</span> <span class="nn">cv2</span><span class="c1"># 指定一张图片path =  &#39;test_IMG/single_data.jpg&#39;# 读取图片img = cv2.imread(path)# 对图片进行尺寸调整img = cv2.resize(img,(224,224))# 指定模型checkpoint = &#39;new_mn_ckpt/basenn.pth&#39; # 模型推理y_pred = model.inference(data=path, checkpoint=checkpoint)model.print_result()# 输出结果res = y_pred.argmax(axis=1)print(&#39;此手写体的数字是：&#39;,res[0])model.add(optimizer=&#39;SGD&#39;)model.save_fold = &#39;new_mn_ckpt&#39;model.train(lr=0.01, epochs=1) # 直接训练</span>
+</pre></div>
+</div>
 </section>
 </section>
 </section>

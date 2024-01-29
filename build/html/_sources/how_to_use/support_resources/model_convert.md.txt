@@ -99,7 +99,9 @@ model.convert(checkpoint="basenn_cd.pth",out_file="basenn_cd.onnx")
 
 `out_file`: 指定转换出的onnx模型文件路径
 
-`opset_version`：指定转换出的onnx模型算子的版本，默认为10，注！一般情况下不需要进行设置，如果出现了算子版本不符而导致的报错，可自行设置算子版本。【高级功能】
+`opset_version`：指定转换出的onnx模型算子的版本，默认为10，注！一般情况下不需要进行设置，如果出现了算子版本不符而导致的报错，可自行设置算子版本。【可选参数】
+
+`ir_version`：指定中间表示（Intermediate Representation, 简称 IR）规范的版本，一个整数（int）类型的参数。 - 可选参数，设置模型转化中间表示的版本，默认为6。【可选参数】
 
 模型转换后生成一个ONNX模型和示例代码，示例代码的使用详见[后文](https://xedu.readthedocs.io/zh/master/how_to_use/support_resources/model_convert.html#id6)。
 

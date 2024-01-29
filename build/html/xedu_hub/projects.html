@@ -51,9 +51,9 @@
 <li class="toctree-l2"><a class="reference internal" href="installation.html">XEduHub安装</a></li>
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">XEduHub功能详解</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">XEduHub项目案例集</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">实时人体关键点识别</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">拓展：视频中的人体关键点识别</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">多人脸关键点识别</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">目标检测+关键点检测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">实时人体关键点识别</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">拓展：视频中的人体关键点识别</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id4">人脸检测控制舵机方向</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id5">识行小车</a></li>
 </ul>
@@ -98,7 +98,23 @@
 <h1>XEduHub项目案例集<a class="headerlink" href="#xeduhub" title="Permalink to this heading"></a></h1>
 <p>借助XEduHub可以实现应用多元AI模型去解决复杂的问题。</p>
 <section id="id1">
-<h2>实时人体关键点识别<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<h2>目标检测+关键点检测<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>以下代码可以将一张图片中所有的手识别出来，并对每一只手提取关键点。这可以提高关键点检测的准确度和实现多目标检测的任务。</p>
+<p>具体实现方式为：我们首先使用<code class="docutils literal notranslate"><span class="pre">det_hand</span></code>进行手目标检测，拿到所有的检测框<code class="docutils literal notranslate"><span class="pre">bbox</span></code>。随后对每个检测框中的手进行关键点提取。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span> <span class="c1"># 导入库</span>
+<span class="n">det</span>  <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;det_hand&#39;</span><span class="p">)</span> <span class="c1"># 实例化目标检测模型</span>
+<span class="n">hand</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;pose_hand21&#39;</span><span class="p">)</span> <span class="c1"># 实例化关键点检测模型</span>
+<span class="n">img_path</span> <span class="o">=</span> <span class="s1">&#39;demo/hand3.jpg&#39;</span> <span class="c1"># 指定进行推理的图片</span>
+<span class="n">bboxs</span> <span class="o">=</span> <span class="n">det</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">img_path</span><span class="p">)</span> <span class="c1"># 目标检测推理</span>
+<span class="n">display_img</span> <span class="o">=</span> <span class="n">img_path</span> <span class="c1"># 初始化用于显示的图像</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">bboxs</span><span class="p">:</span>
+    <span class="n">keypoints</span><span class="p">,</span><span class="n">display_img</span> <span class="o">=</span> <span class="n">hand</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">display_img</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">,</span><span class="n">bbox</span><span class="o">=</span><span class="n">i</span><span class="p">)</span> <span class="c1"># 关键点检测推理</span>
+<span class="n">hand</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">display_img</span><span class="p">)</span> <span class="c1"># 结果可视化</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h2>实时人体关键点识别<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
 <p>以下代码可以实时检测摄像头中出现的多个人，并对每一个人体提取关键点。</p>
 <p>具体实现方式为：我们首先将实时视频中每一帧的图像进行人体目标检测，拿到所有的检测框<code class="docutils literal notranslate"><span class="pre">bbox</span></code>及其坐标信息，绘制检测框。随后对每个检测框中的人体进行关键点提取。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
@@ -124,8 +140,8 @@
 </pre></div>
 </div>
 </section>
-<section id="id2">
-<h2>拓展：视频中的人体关键点识别<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<section id="id3">
+<h2>拓展：视频中的人体关键点识别<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
 <p>该项目可以识别视频中出现的人体的关键点。</p>
 <p>具体实现方式与上面的代码类似，区别就是从摄像头的实时视频流变成了本地的视频流，对视频每一帧的操作不变。最后，我们还需要将处理好的每一帧的图片再合成为视频。</p>
 <p>在这里我们将这个任务分成两步：Step1: 利用关键点识别处理视频的每一帧并保存到本地；Step2: 将本地的视频帧合成为视频。</p>
@@ -184,20 +200,6 @@
     <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 <span class="n">out</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;视频合成完毕，已保存到：&#39;</span><span class="p">,</span> <span class="n">output_video_path</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<section id="id3">
-<h2>多人脸关键点识别<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
-<p>以下代码可以将一张图片中所有的人脸识别出来，并对每一张脸提取关键点。这可以用于对一张图片中的所有人进行表情分类，推测情感等。</p>
-<p>具体实现方式为：我们首先使用<code class="docutils literal notranslate"><span class="pre">facedetect</span></code>进行人脸检测，拿到所有的检测框<code class="docutils literal notranslate"><span class="pre">bbox</span></code>。随后对每个检测框中的人脸进行关键点提取。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
-<span class="n">face_det</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;facedetect&#39;</span><span class="p">)</span>
-<span class="n">face_kp</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;face&#39;</span><span class="p">)</span>
-<span class="n">bboxs</span><span class="p">,</span><span class="n">img</span> <span class="o">=</span> <span class="n">face_det</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;face.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">bboxs</span><span class="p">:</span>
-    <span class="n">keypoints</span><span class="p">,</span><span class="n">img</span> <span class="o">=</span> <span class="n">face_kp</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">img</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">,</span><span class="n">bbox</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
-    <span class="n">face_kp</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>

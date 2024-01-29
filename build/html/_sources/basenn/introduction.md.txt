@@ -163,9 +163,9 @@ print(data['data']) # 这是一个高维数据，每一条数据对应一个标�
 len(data['data'])和len(data['label'])是相等的。
 
 对于案例[《姿态识别进阶-循环神经网络》](https://www.openinnolab.org.cn/pjlab/project?id=64daed3eafeb1059822a1578&sc=62f33550bf4f550f3e926cf2#public)
-来说：data['label'].shape是(19, 3)，data['data'].shape是(19, 30, 132)。
+来说：`data['label'].shape`是(19, 3)，`data['data'].shape`是(19, 30, 132)。
 
-type(data['data'])的运行结果是numpy.ndarray，type(data['data'])的运行结果是numpy.ndarray。
+`type(data['data'])`的运行结果是numpy.ndarray，`type(data['data'])`的运行结果是numpy.ndarray。
 
 
 
@@ -481,9 +481,9 @@ model.convert(checkpoint="basenn_cd.pth",out_file="basenn_cd.onnx")
 
 `out_file`: 指定转换出的onnx模型文件路径。
 
-`opset_version`：指定转换出的onnx模型算子的版本，默认为10，一般情况下不需要进行设置，除非出现了算子版本不符而导致的报错。【高级功能】
+`opset_version`：指定转换出的onnx模型算子的版本，默认为10，一般情况下不需要进行设置，除非出现了算子版本不符而导致的报错。【可选参数】
 
-`ir_version`：指定中间表示（Intermediate Representation, 简称 IR）规范的版本，一个整数（int）类型的参数。当前可选范围为1～12，默认为6。在计算机编程中，中间表示是一种数据结构或代码，它介于原始代码和机器码之间。它通常用于编译器或类似工具中，作为转换和优化代码的一个步骤。指定中间表示的版本，可方便根据不同的需求和优化目标选择最合适的 IR 规范。
+`ir_version`：指定中间表示（Intermediate Representation, 简称 IR）规范的版本，一个整数（int）类型的参数。当前可选范围为1～12，默认为6。在计算机编程中，中间表示是一种数据结构或代码，它介于原始代码和机器码之间。它通常用于编译器或类似工具中，作为转换和优化代码的一个步骤。指定中间表示的版本，可方便根据不同的需求和优化目标选择最合适的 IR 规范。【可选参数】
 
 **注意！**：在转换为onnx文件后会将模型的元信息，如数据类型、输入尺寸等也写入模型文件，而之前版本的BaseNN训练得到的模型文件不含有这些信息，因此如果想要将之前的BaseNN训练得到的文件进行转换，需要基于原先的模型文件使用最新的BaseNN版本再进行一轮训练！
 
@@ -593,7 +593,7 @@ model.train(...,metrics=["mse"])
 
 #### 参数说明:
 
-- layer：层的类型，可选值包括conv2d, conv1d, maxpool, avgpool, linear, lstm,dropout，res_block，Res_Block，Res_Bottleneck。
+- layer：层的类型，可选值包括conv2d, conv1d, maxpool, avgpool, linear, lstm,dropout，res_block，Res_Block，Res_Bottleneck等。
 
 - activation：激活函数类型，可选值包括ReLU，Softmax。
 
@@ -615,6 +615,7 @@ model.train(...,metrics=["mse"])
 - dropout：随机失活层，需给定p（概率）。作用为随机关闭一些神经元，避免过拟合。其中参数`p`表示关闭神经元的比例，比如此处
   p=0.2
   表示有随机20%的神经元会被关闭。这种网络层是为了优化效果，避免过拟合而加入的，不是必需的，因此可以尝试修改p的值甚至删掉这个层观察比较效果差距。
+- Batchnorm1d：数据维度处理层，对一维数据做归一化。需传入size，表示输入数据的维度（注意和上一层的输出以及下一层的输入一致即可）。这种网络层是也为了优化效果而加入的，不是必需的，没有这个层也可以正常训练，但由于去掉这个网络层后效果下降的会非常明显，所以不建议删掉这个层。
 
 下面为您具体展示如何搭建模型，以全连接神经网络结构、卷积神经网络结构、循环神经网络结构等为例为您讲解。
 
@@ -630,6 +631,8 @@ model.add(layer='linear', size=(5, 3), activation='softmax') # [120, 3]
 ```
 
 这段代码是在构建一个简单的神经网络模型，其中包含了三个线性层（也称为全连接层），每个层后面都有一个激活函数。输入数据的维度是120行4列的鸢尾花数据集，添加了三层线性层，最后一个线性层输出为3与数据集的类别数一致。
+
+参考项目：[用BaseNN库搭建全连接神经网络训练IRIS鸢尾花分类模型](https://openinnolab.org.cn/pjlab/project?id=641bc2359c0eb14f22fdbbb1&backpath=/pjlab/projects/list#public)
 
 #### 搭建卷积神经网络结构：
 
@@ -668,7 +671,11 @@ N = W/P ，其中P表示池化层的卷积核大小。
 
 在以上代码中，输入linear层前，一张图像有10通道，每个通道的图像大小为3x3，因此展平后有10x3x3 = 90，这就是为什么要设置linear层`size=(90,10)`中，输入维度为90。
 
-同时，使用BaseNN也能完成一些相对复杂的神经网络的搭建，如ResNet，同样也是支持的，首先需在卷积层新增两个参数的设置，分别是步长stride和填充padding，同时增加残差模块的设置。ResNet网络结构如下所示。
+参考项目：[用卷积神经网络实现MNIST手写体数字分类](https://openinnolab.org.cn/pjlab/project?id=641d17e67c99492cf16d706f&backpath=/pjlab/projects/list#public)
+
+
+
+同时，使用BaseNN也能完成一些相对复杂的神经网络的搭建，如ResNet，同样也是支持的，首先需在卷积层新增两个参数的设置，分别是步长stride和填充padding，同时增加残差模块的设置。ResNet系列网络结构如下所示。
 
 ![](../images/basenn/bn1.png)
 
@@ -729,9 +736,11 @@ model.add('Res_Block', size=(64, 64), num_blocks=2,stride=1)
 # model.add('Res_Block', size=(64, 64), stride=1) 
 ```
 
-那么，如搭建ResNet34就是把中间四层换成[3,4,6,3]，依次类推。
+掌握了ResNet18的搭建，那么其他ResNet系列网络的搭建只需参照上文的ResNet各网络结构图即可，如需搭建ResNet34就是把中间四层换成[3,4,6,3]，依次类推。
 
-ResNet50的搭建代码会稍显不同，如您仔细观察上文的ResNet各网络结构图，会发现>=50后基础残差模块使用bottleneck而非basicblock，此处为您提供搭建ResNet50的示例代码：
+参考项目：[用BaseNN搭建ResNet18网络实现MNIST手写体数字分类](https://openinnolab.org.cn/pjlab/project?id=659ba9b3a731f07a4896af46&backpath=/pjlab/projects/list#public)
+
+如您仔细观察ResNet各网络结构图，会发现ResNet50的中间四层也是[3,4,6,3]，但是搭建代码会稍显不同，不难发现>=50后中间层的残差模块不一样，使用bottleneck而非basicblock，使用BaseNN搭建也非常方便，此处为您提供搭建ResNet50的示例代码：
 
 ```python
 model = nn()
@@ -747,16 +756,13 @@ model.add('Res_Bottleneck', size=(1024, 512), num_blocks=3,stride=2) # (32,512,7
 
 model.add('AvgPool', kernel_size=(7,7)) # (32,2048)
 model.add('Linear', size=(2048, 10), activation='Softmax') # (32,10)
-
-model.add(optimizer='SGD')
-model.save_fold = 'new_mn_ckpt'
-
-model.train(lr=0.01, epochs=1) # 直接训练
 ```
 
 注：bottleneck输出通道数是输入的四倍，因此注意size的区别。这个四倍是1 *1，3 *3，1 *1三次矩阵乘法导致的，有点难理解，而且bottleneck跑着也慢，建议文档里可以提有这个功能，但是示例项目不要用bottleneck就用basicblock。更多ResNet网络的介绍详见[深度学习知识库](https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/ResNet.html)。
 
 #### 搭建循环神经网络结构：
+
+循环神经网络是一类以序列数据为输入，在序列的演进方向进行递归且所有节点（循环单元）按链式连接的递归神经网络。RNN在自然语言处理问题中有得到应用，也被用于与自然语言处理有关的异常值检测问题，例如社交网络中虚假信息/账号的检测。RNN与CNN卷积神经网络相结合的系统可被应用于在计算机视觉问题，例如在字符识别中，有研究使用卷积神经网络对包含字符的图像进行特征提取，并将特征输入LSTM进行序列标注。
 
 以lstm为例进行详细说明：lstm（Long Short-Term Memory，长短时记忆）是一种特殊的RNN（Recurrent Neural Network，循环神经网络）模型，主要用于处理序列数据。lstm模型在自然语言处理、语音识别、时间序列预测等任务中被广泛应用，特别是在需要处理长序列数据时，lstm模型可以更好地捕捉序列中的长程依赖关系。
 
@@ -770,11 +776,22 @@ num_layers：循环神经网络的层数。一般1\~5，常用2、3层，太多�
 
 以上仅是基本的模型架构。在实际使用中，可能需要调整模型的层数、节点数、激活函数等参数以达到最佳效果。
 
-##### RNN模型搭建简单指南：
+##### 简便方式：
 
-循环神经网络是一类以序列数据为输入，在序列的演进方向进行递归且所有节点（循环单元）按链式连接的递归神经网络。RNN在自然语言处理问题中有得到应用，也被用于与自然语言处理有关的异常值检测问题，例如社交网络中虚假信息/账号的检测。RNN与CNN卷积神经网络相结合的系统可被应用于在计算机视觉问题，例如在字符识别中，有研究使用卷积神经网络对包含字符的图像进行特征提取，并将特征输入LSTM进行序列标注。
+使用BaseNN做时序动作分类任务时，我们特意准备了一种简化模型搭建方法。
 
-下为搭建RNN神经网络的一般流程：
+```
+model.add('action_model',size=(132,256))
+model.add('linear',  size=(256, 64))
+model.add('Linear',  size=(64, 3))
+model.add(activation='Softmax')
+```
+
+此方法将搭建lstm、数据维度处理层等合并为一个简单的action_model层，当然了，也有坏处那就是是不太灵活，仅供参考。
+
+##### 搭建RNN模型的一般方式：
+
+以下方式与极简方式的代码的功能完全一致，展示了搭建RNN神经网络并进行模型训练的的一般流程：
 
 ``` python
 model.add('lstm', size=(132,128))
@@ -793,8 +810,6 @@ model.add('Linear',  size=(64, 3))
 model.add(activation='Softmax')
 ```
 
-以上使用`add()`方法添加层，参数`layer='linear'`表示添加的层是线性层，`size=(256,256)`表示该层输入维度为256，输出维度为256，`activation='Softmax'`表示使用softmax激活函数。更详细`add()`方法使用可见[附录1](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add)。
-
 在搭建RNN时，一般第一层需要设置为`lstm`层，需要注意的是`size=(132,128)`表示该层输入维度为132，输出维度为128，输入维度应与数据集维度相同。
 
 `Dropout`层的作用为随机关闭一些神经元，避免过拟合。其中参数`p`表示关闭神经元的比例，比如此处
@@ -804,6 +819,10 @@ p=0.2
 `squeeze`与`unsqueeze`层两个神经网络层并不常见，其作用为对数据的升降维度进行处理。squeeze的操作为压缩维度，unsqueeze的操作为扩充维度。这种网络层是为了确保数据在层间正常流动，是必需的，如果想要自行调整，可能需要对数据经过每一层之后的维度变化有充分了解，在此之前，保持原样即可。
 
 `Batchnorm1d`的作用是对一维数据做归一化。参数中size值表示输入数据的维度（注意和上一层的输出以及下一层的输入一致即可）。这种网络层是也为了优化效果而加入的，不是必需的，没有这个层也可以正常训练，但由于去掉这个网络层后效果下降的会非常明显，所以不建议删掉这个层。
+
+参数`layer='linear'`表示添加的层是线性层，`size=(256,256)`表示该层输入维度为256，输出维度为256，`activation='Softmax'`表示使用softmax激活函数。
+
+参考项目：[姿态识别进阶-循环神经网络](https://openinnolab.org.cn/pjlab/project?id=64daed3eafeb1059822a1578&backpath=/pjlab/projects/list#public)
 
 #### 拓展——搭建更复杂的网络结构：
 

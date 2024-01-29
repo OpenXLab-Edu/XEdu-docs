@@ -75,9 +75,9 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#id31">附录</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#add">1. 使用add()搭建网络模型详细介绍</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id37">2. 支持的损失函数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id38">2. 支持的损失函数</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rnncnn">3. RNN和CNN</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id38">4. 深度学习常见的数据类型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id39">4. 深度学习常见的数据类型</a></li>
 </ul>
 </li>
 </ul>
@@ -241,8 +241,8 @@
 </div>
 <p>len(data[’data’])和len(data[’label’])是相等的。</p>
 <p>对于案例<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=64daed3eafeb1059822a1578&amp;sc=62f33550bf4f550f3e926cf2#public">《姿态识别进阶-循环神经网络》</a>
-来说：data[’label’].shape是(19, 3)，data[’data’].shape是(19, 30, 132)。</p>
-<p>type(data[’data’])的运行结果是numpy.ndarray，type(data[’data’])的运行结果是numpy.ndarray。</p>
+来说：<code class="docutils literal notranslate"><span class="pre">data['label'].shape</span></code>是(19, 3)，<code class="docutils literal notranslate"><span class="pre">data['data'].shape</span></code>是(19, 30, 132)。</p>
+<p><code class="docutils literal notranslate"><span class="pre">type(data['data'])</span></code>的运行结果是numpy.ndarray，<code class="docutils literal notranslate"><span class="pre">type(data['data'])</span></code>的运行结果是numpy.ndarray。</p>
 </section>
 <section id="id9">
 <h4>拓展——自行编写代码载入数据：<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h4>
@@ -511,8 +511,8 @@
 <p>参数说明：</p>
 <p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>: 指定要转换的pth模型文件路径。</p>
 <p><code class="docutils literal notranslate"><span class="pre">out_file</span></code>: 指定转换出的onnx模型文件路径。</p>
-<p><code class="docutils literal notranslate"><span class="pre">opset_version</span></code>：指定转换出的onnx模型算子的版本，默认为10，一般情况下不需要进行设置，除非出现了算子版本不符而导致的报错。【高级功能】</p>
-<p><code class="docutils literal notranslate"><span class="pre">ir_version</span></code>：指定中间表示（Intermediate Representation, 简称 IR）规范的版本，一个整数（int）类型的参数。当前可选范围为1～12，默认为6。在计算机编程中，中间表示是一种数据结构或代码，它介于原始代码和机器码之间。它通常用于编译器或类似工具中，作为转换和优化代码的一个步骤。指定中间表示的版本，可方便根据不同的需求和优化目标选择最合适的 IR 规范。</p>
+<p><code class="docutils literal notranslate"><span class="pre">opset_version</span></code>：指定转换出的onnx模型算子的版本，默认为10，一般情况下不需要进行设置，除非出现了算子版本不符而导致的报错。【可选参数】</p>
+<p><code class="docutils literal notranslate"><span class="pre">ir_version</span></code>：指定中间表示（Intermediate Representation, 简称 IR）规范的版本，一个整数（int）类型的参数。当前可选范围为1～12，默认为6。在计算机编程中，中间表示是一种数据结构或代码，它介于原始代码和机器码之间。它通常用于编译器或类似工具中，作为转换和优化代码的一个步骤。指定中间表示的版本，可方便根据不同的需求和优化目标选择最合适的 IR 规范。【可选参数】</p>
 <p><strong>注意！</strong>：在转换为onnx文件后会将模型的元信息，如数据类型、输入尺寸等也写入模型文件，而之前版本的BaseNN训练得到的模型文件不含有这些信息，因此如果想要将之前的BaseNN训练得到的文件进行转换，需要基于原先的模型文件使用最新的BaseNN版本再进行一轮训练！</p>
 <p>模型转换后生成一个ONNX模型和示例代码，示例代码的使用详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/how_to_use/support_resources/model_convert.html#id8">后文</a>。</p>
 </section>
@@ -604,7 +604,7 @@
 <section id="id32">
 <h4>参数说明:<a class="headerlink" href="#id32" title="Permalink to this heading"></a></h4>
 <ul class="simple">
-<li><p>layer：层的类型，可选值包括conv2d, conv1d, maxpool, avgpool, linear, lstm,dropout，res_block，Res_Block，Res_Bottleneck。</p></li>
+<li><p>layer：层的类型，可选值包括conv2d, conv1d, maxpool, avgpool, linear, lstm,dropout，res_block，Res_Block，Res_Bottleneck等。</p></li>
 <li><p>activation：激活函数类型，可选值包括ReLU，Softmax。</p></li>
 <li><p>optimizer：为优化器类型，默认值为SGD，可选值包括SGD，Adam，Adagrad，ASGD。</p></li>
 <li><p>kw：关键字参数，包括与size相关的各种参数，常用的如size=(x,y)，x为输入维度，y为输出维度；
@@ -623,6 +623,7 @@ kernel_size=(a,b)， (a,b)表示核的尺寸。</p></li>
 <li><p>dropout：随机失活层，需给定p（概率）。作用为随机关闭一些神经元，避免过拟合。其中参数<code class="docutils literal notranslate"><span class="pre">p</span></code>表示关闭神经元的比例，比如此处
 p=0.2
 表示有随机20%的神经元会被关闭。这种网络层是为了优化效果，避免过拟合而加入的，不是必需的，因此可以尝试修改p的值甚至删掉这个层观察比较效果差距。</p></li>
+<li><p>Batchnorm1d：数据维度处理层，对一维数据做归一化。需传入size，表示输入数据的维度（注意和上一层的输出以及下一层的输入一致即可）。这种网络层是也为了优化效果而加入的，不是必需的，没有这个层也可以正常训练，但由于去掉这个网络层后效果下降的会非常明显，所以不建议删掉这个层。</p></li>
 </ul>
 <p>下面为您具体展示如何搭建模型，以全连接神经网络结构、卷积神经网络结构、循环神经网络结构等为例为您讲解。</p>
 </section>
@@ -636,6 +637,7 @@ p=0.2
 </pre></div>
 </div>
 <p>这段代码是在构建一个简单的神经网络模型，其中包含了三个线性层（也称为全连接层），每个层后面都有一个激活函数。输入数据的维度是120行4列的鸢尾花数据集，添加了三层线性层，最后一个线性层输出为3与数据集的类别数一致。</p>
+<p>参考项目：<a class="reference external" href="https://openinnolab.org.cn/pjlab/project?id=641bc2359c0eb14f22fdbbb1&amp;backpath=/pjlab/projects/list#public">用BaseNN库搭建全连接神经网络训练IRIS鸢尾花分类模型</a></p>
 </section>
 <section id="id34">
 <h4>搭建卷积神经网络结构：<a class="headerlink" href="#id34" title="Permalink to this heading"></a></h4>
@@ -661,7 +663,8 @@ p=0.2
 <p>经过<code class="docutils literal notranslate"><span class="pre">kernel_size=(2,2)</span></code>的最大池化层后，根据公式18/2=9，得到输出数据尺寸为9x9大小。</p>
 <p>最后，由于线性层（linear）是一维的，因此二维数据在输入前要进行展平（flatten），将二维展平为1维。</p>
 <p>在以上代码中，输入linear层前，一张图像有10通道，每个通道的图像大小为3x3，因此展平后有10x3x3 = 90，这就是为什么要设置linear层<code class="docutils literal notranslate"><span class="pre">size=(90,10)</span></code>中，输入维度为90。</p>
-<p>同时，使用BaseNN也能完成一些相对复杂的神经网络的搭建，如ResNet，同样也是支持的，首先需在卷积层新增两个参数的设置，分别是步长stride和填充padding，同时增加残差模块的设置。ResNet网络结构如下所示。</p>
+<p>参考项目：<a class="reference external" href="https://openinnolab.org.cn/pjlab/project?id=641d17e67c99492cf16d706f&amp;backpath=/pjlab/projects/list#public">用卷积神经网络实现MNIST手写体数字分类</a></p>
+<p>同时，使用BaseNN也能完成一些相对复杂的神经网络的搭建，如ResNet，同样也是支持的，首先需在卷积层新增两个参数的设置，分别是步长stride和填充padding，同时增加残差模块的设置。ResNet系列网络结构如下所示。</p>
 <p><img alt="../_images/bn1.png" src="../_images/bn1.png" /></p>
 <p>以ResNet18为例，我们看一下ResNet18的网络结构。</p>
 <p><img alt="../_images/resnet18.jpg" src="../_images/resnet18.jpg" /></p>
@@ -711,8 +714,9 @@ p=0.2
 <span class="c1"># model.add(&#39;Res_Block&#39;, size=(64, 64), stride=1) </span>
 </pre></div>
 </div>
-<p>那么，如搭建ResNet34就是把中间四层换成[3,4,6,3]，依次类推。</p>
-<p>ResNet50的搭建代码会稍显不同，如您仔细观察上文的ResNet各网络结构图，会发现&gt;=50后基础残差模块使用bottleneck而非basicblock，此处为您提供搭建ResNet50的示例代码：</p>
+<p>掌握了ResNet18的搭建，那么其他ResNet系列网络的搭建只需参照上文的ResNet各网络结构图即可，如需搭建ResNet34就是把中间四层换成[3,4,6,3]，依次类推。</p>
+<p>参考项目：<a class="reference external" href="https://openinnolab.org.cn/pjlab/project?id=659ba9b3a731f07a4896af46&amp;backpath=/pjlab/projects/list#public">用BaseNN搭建ResNet18网络实现MNIST手写体数字分类</a></p>
+<p>如您仔细观察ResNet各网络结构图，会发现ResNet50的中间四层也是[3,4,6,3]，但是搭建代码会稍显不同，不难发现&gt;=50后中间层的残差模块不一样，使用bottleneck而非basicblock，使用BaseNN搭建也非常方便，此处为您提供搭建ResNet50的示例代码：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_img_data</span><span class="p">(</span><span class="s1">&#39;mnist/training_set&#39;</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span><span class="n">num_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># (32,3,224,224)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Conv2D&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span><span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">padding</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1">#(32,64,112,112)</span>
@@ -726,17 +730,13 @@ p=0.2
 
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;AvgPool&#39;</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span> <span class="c1"># (32,2048)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">2048</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;Softmax&#39;</span><span class="p">)</span> <span class="c1"># (32,10)</span>
-
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;SGD&#39;</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;new_mn_ckpt&#39;</span>
-
-<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 直接训练</span>
 </pre></div>
 </div>
 <p>注：bottleneck输出通道数是输入的四倍，因此注意size的区别。这个四倍是1 *1，3 *3，1 *1三次矩阵乘法导致的，有点难理解，而且bottleneck跑着也慢，建议文档里可以提有这个功能，但是示例项目不要用bottleneck就用basicblock。更多ResNet网络的介绍详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/ResNet.html">深度学习知识库</a>。</p>
 </section>
 <section id="id35">
 <h4>搭建循环神经网络结构：<a class="headerlink" href="#id35" title="Permalink to this heading"></a></h4>
+<p>循环神经网络是一类以序列数据为输入，在序列的演进方向进行递归且所有节点（循环单元）按链式连接的递归神经网络。RNN在自然语言处理问题中有得到应用，也被用于与自然语言处理有关的异常值检测问题，例如社交网络中虚假信息/账号的检测。RNN与CNN卷积神经网络相结合的系统可被应用于在计算机视觉问题，例如在字符识别中，有研究使用卷积神经网络对包含字符的图像进行特征提取，并将特征输入LSTM进行序列标注。</p>
 <p>以lstm为例进行详细说明：lstm（Long Short-Term Memory，长短时记忆）是一种特殊的RNN（Recurrent Neural Network，循环神经网络）模型，主要用于处理序列数据。lstm模型在自然语言处理、语音识别、时间序列预测等任务中被广泛应用，特别是在需要处理长序列数据时，lstm模型可以更好地捕捉序列中的长程依赖关系。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;lstm&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span><span class="mi">256</span><span class="p">),</span><span class="n">num_layers</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
@@ -744,10 +744,20 @@ p=0.2
 <p>size中的的两个值：第一个为嵌入层维度(embedding_dim)，即文本转化为词向量后的向量维度。第二个为隐藏层维度(hidden_dim)，即lstm隐藏层中神经元数量。</p>
 <p>num_layers：循环神经网络的层数。一般1~5，常用2、3层，太多层会大幅度影响训练速度和收敛难度。</p>
 <p>以上仅是基本的模型架构。在实际使用中，可能需要调整模型的层数、节点数、激活函数等参数以达到最佳效果。</p>
+<section id="id36">
+<h5>简便方式：<a class="headerlink" href="#id36" title="Permalink to this heading"></a></h5>
+<p>使用BaseNN做时序动作分类任务时，我们特意准备了一种简化模型搭建方法。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;action_model&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">132</span><span class="p">,</span><span class="mi">256</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span>  <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">64</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span>  <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;Softmax&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>此方法将搭建lstm、数据维度处理层等合并为一个简单的action_model层，当然了，也有坏处那就是是不太灵活，仅供参考。</p>
+</section>
 <section id="rnn">
-<h5>RNN模型搭建简单指南：<a class="headerlink" href="#rnn" title="Permalink to this heading"></a></h5>
-<p>循环神经网络是一类以序列数据为输入，在序列的演进方向进行递归且所有节点（循环单元）按链式连接的递归神经网络。RNN在自然语言处理问题中有得到应用，也被用于与自然语言处理有关的异常值检测问题，例如社交网络中虚假信息/账号的检测。RNN与CNN卷积神经网络相结合的系统可被应用于在计算机视觉问题，例如在字符识别中，有研究使用卷积神经网络对包含字符的图像进行特征提取，并将特征输入LSTM进行序列标注。</p>
-<p>下为搭建RNN神经网络的一般流程：</p>
+<h5>搭建RNN模型的一般方式：<a class="headerlink" href="#rnn" title="Permalink to this heading"></a></h5>
+<p>以下方式与极简方式的代码的功能完全一致，展示了搭建RNN神经网络并进行模型训练的的一般流程：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;lstm&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">132</span><span class="p">,</span><span class="mi">128</span><span class="p">))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Dropout&#39;</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;lstm&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span><span class="mi">256</span><span class="p">))</span>
@@ -764,17 +774,18 @@ p=0.2
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;Softmax&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>以上使用<code class="docutils literal notranslate"><span class="pre">add()</span></code>方法添加层，参数<code class="docutils literal notranslate"><span class="pre">layer='linear'</span></code>表示添加的层是线性层，<code class="docutils literal notranslate"><span class="pre">size=(256,256)</span></code>表示该层输入维度为256，输出维度为256，<code class="docutils literal notranslate"><span class="pre">activation='Softmax'</span></code>表示使用softmax激活函数。更详细<code class="docutils literal notranslate"><span class="pre">add()</span></code>方法使用可见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add">附录1</a>。</p>
 <p>在搭建RNN时，一般第一层需要设置为<code class="docutils literal notranslate"><span class="pre">lstm</span></code>层，需要注意的是<code class="docutils literal notranslate"><span class="pre">size=(132,128)</span></code>表示该层输入维度为132，输出维度为128，输入维度应与数据集维度相同。</p>
 <p><code class="docutils literal notranslate"><span class="pre">Dropout</span></code>层的作用为随机关闭一些神经元，避免过拟合。其中参数<code class="docutils literal notranslate"><span class="pre">p</span></code>表示关闭神经元的比例，比如此处
 p=0.2
 表示有随机20%的神经元会被关闭。这种网络层是为了优化效果，避免过拟合而加入的，不是必需的，因此可以尝试修改p的值甚至删掉这个层观察比较效果差距。</p>
 <p><code class="docutils literal notranslate"><span class="pre">squeeze</span></code>与<code class="docutils literal notranslate"><span class="pre">unsqueeze</span></code>层两个神经网络层并不常见，其作用为对数据的升降维度进行处理。squeeze的操作为压缩维度，unsqueeze的操作为扩充维度。这种网络层是为了确保数据在层间正常流动，是必需的，如果想要自行调整，可能需要对数据经过每一层之后的维度变化有充分了解，在此之前，保持原样即可。</p>
 <p><code class="docutils literal notranslate"><span class="pre">Batchnorm1d</span></code>的作用是对一维数据做归一化。参数中size值表示输入数据的维度（注意和上一层的输出以及下一层的输入一致即可）。这种网络层是也为了优化效果而加入的，不是必需的，没有这个层也可以正常训练，但由于去掉这个网络层后效果下降的会非常明显，所以不建议删掉这个层。</p>
+<p>参数<code class="docutils literal notranslate"><span class="pre">layer='linear'</span></code>表示添加的层是线性层，<code class="docutils literal notranslate"><span class="pre">size=(256,256)</span></code>表示该层输入维度为256，输出维度为256，<code class="docutils literal notranslate"><span class="pre">activation='Softmax'</span></code>表示使用softmax激活函数。</p>
+<p>参考项目：<a class="reference external" href="https://openinnolab.org.cn/pjlab/project?id=64daed3eafeb1059822a1578&amp;backpath=/pjlab/projects/list#public">姿态识别进阶-循环神经网络</a></p>
 </section>
 </section>
-<section id="id36">
-<h4>拓展——搭建更复杂的网络结构：<a class="headerlink" href="#id36" title="Permalink to this heading"></a></h4>
+<section id="id37">
+<h4>拓展——搭建更复杂的网络结构：<a class="headerlink" href="#id37" title="Permalink to this heading"></a></h4>
 <p>如果对pytorch比较熟悉，想要自行添加比较复杂的模块，也可以自定义（BaseNN兼容pytorch搭的网络结构），例如，搭建一个与上述动作识别网络一致的自定义模块：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span> <span class="k">class</span> <span class="nc">LSTM_model</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span> 
    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">actions</span><span class="p">):</span>
@@ -814,8 +825,8 @@ p=0.2
 </div>
 </section>
 </section>
-<section id="id37">
-<h3>2. 支持的损失函数<a class="headerlink" href="#id37" title="Permalink to this heading"></a></h3>
+<section id="id38">
+<h3>2. 支持的损失函数<a class="headerlink" href="#id38" title="Permalink to this heading"></a></h3>
 <table class="docutils align-default">
     <thead>
         <tr class="row-odd">
@@ -967,8 +978,8 @@ p=0.2
 <p>CNN是一种用于处理图像和空间数据的神经网络模型。例如图片（可以看成是像素的网格）。CNN的核心概念是卷积层和池化层。卷积层通过滑动窗口（也叫做卷积核）在输入数据上进行卷积操作，能够自动学习并识别图像中的局部特征，比如线条、形状等。池化层则用于降低数据的维度，减少计算量。CNN的一个重要特性是它具有参数共享和平移不变性，这使得CNN非常适合处理图像数据。当然，CNN也被用于处理其他类型的数据，如文本和时间序列数据。它的主要特点是利用卷积操作提取图像中的特征，并通过池化操作减小特征图的大小，最终通过全连接层进行分类或回归。CNN在图像分类、目标检测、图像分割等任务中表现出色。</p>
 <p>简单来说，RNN适用于序列数据处理，而CNN适用于图像和空间数据处理。但实际上，它们也可以互相组合使用，例如在图像描述生成任务中，可以使用CNN提取图像特征，然后使用RNN生成对应的文字描述。使用BaseNN搭建RNN和CNN模型的方式详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basenn/introduction.html#add">add()详细</a>介绍。</p>
 </section>
-<section id="id38">
-<h3>4. 深度学习常见的数据类型<a class="headerlink" href="#id38" title="Permalink to this heading"></a></h3>
+<section id="id39">
+<h3>4. 深度学习常见的数据类型<a class="headerlink" href="#id39" title="Permalink to this heading"></a></h3>
 <p><strong>图像数据</strong>：图像数据是深度学习应用中最常见的数据类型之一。图像数据通常表示为多维数组，每个数组元素代表一个像素的值。深度学习应用中常使用的图像数据格式包括JPEG、PNG、BMP等。</p>
 <p><strong>文本数据</strong>：文本数据是指由字符组成的序列数据。在深度学习应用中，文本数据通常被表示为词向量或字符向量，用于输入到文本处理模型中。</p>
 <p><strong>特征数据</strong>：特征数据指的是表示对象或事物的特征的数据，通常用于机器学习和数据挖掘。特征数据可以是数值型、离散型或者是二进制的，用于描述对象或事物的各种属性和特征。特征数据可以是手动设计的、自动提取的或者是混合的。在机器学习中，特征数据通常作为模型的输入，用于预测目标变量或者分类。</p>
