@@ -295,7 +295,23 @@ $ pip install MMEdu
 docker容器镜像
 --------------
 
-- 提示：这里需要确保您的电脑系统盘空间剩余空间超过5GB，实际建议有10GB及以上空间，便于后续训练使用。如果想要调整存储空间位置，可以参考[这里](https://blog.csdn.net/ber_bai/article/details/120816006)。
+- 提示：这里需要确保您的电脑系统盘空间剩余空间超过5GB，实际建议有10GB及以上空间，便于后续训练使用。如果想要调整存储空间位置，可以参考[这里修改安装路径](https://blog.csdn.net/ber_bai/article/details/120816006)，[这里修改数据路径](https://zhuanlan.zhihu.com/p/410126547)。
+### 0.空间不足的解决办法
+1）软件安装空间不足，可以把安装路径指向一个新的路径：可以参考[这里修改安装路径](https://blog.csdn.net/ber_bai/article/details/120816006)
+
+用管理员权限打开CMD，然后输入`mklink /j "C:\Program Files\Docker" "D:\Program Files\Docker"`。这样，软件看似安装在原目录，实则安装在了"D:\Program Files\Docker"。
+
+2）容器和镜像存储空间不足，旧版本可以直接在Docker Desktop中设置，但新版用了WSL之后就不行了。可以参考[这里修改数据路径](https://zhuanlan.zhihu.com/p/410126547)。
+
+退出Docker Desktop软件后，打开CMD，输入`wsl --list -v`，把所有相关的数据列出来，稍后需要挨个迁移。这里，返回的信息是：`docker-desktop-data STOPPED 2`，那么我只要迁移这一个就好，有的还会有`docker-desktop STOPPED 2`也需要迁移。
+
+接下来，我们同样把数据存在D盘，路径选择为"D:\Program Files\Docker"，先备份数据，输入：`wsl --export docker-desktop-data "D:\Program Files\Docker\docker-desktop-data.tar"`。如果有其它要备份，指令类似。
+
+接着注销WSL中原来的数据，输入：`wsl --unregister docker-desktop-data`。
+
+接着，导入数据到新的存储路径，输入：`wsl --import docker-desktop-data "D:\Program Files\Docker\data" "D:\Program Files\Docker\docker-desktop-data.tar" --version 2`。
+
+最后，重启Docker Desktop，完成了容器文件的存储位置迁移。如果有问题，可以尝试重启电脑。如果正常迁移完成，可以擅长备份的tar文件，即`D:\Program Files\Docker\docker-desktop-data.tar`。
 
 ### 1.首先需要安装Docker软件
 
@@ -317,7 +333,7 @@ Docker分为容器（Container）和镜像（Image），（有时还会额外有
 `docker pull xedu/xedu:v2s`
 打开电脑的命令行（CMD）窗口，输入上面的命令行。
 
-这一步会拉取xedu的镜像文件到本地磁盘，因此务必保证您的电脑系统盘空间剩余空间超过5GB，实际建议有10GB及以上空间，便于后续训练使用。如果想要调整存储空间位置，可以参考[这里](https://blog.csdn.net/ber_bai/article/details/120816006)。刚开始拉取没有相应，可以等待一会儿，就会出现下面的拉取进度的界面。
+这一步会拉取xedu的镜像文件到本地磁盘，因此务必保证您的电脑系统盘空间剩余空间超过5GB，实际建议有10GB及以上空间，便于后续训练使用。如果想要调整存储空间位置，可以参考上面空间不足的解决办法。刚开始拉取没有相应，可以等待一会儿，就会出现下面的拉取进度的界面。
 ![Docker拉取界面](../images/about/docker2.png)
 
 等待拉取完成，所用时间取决于网速（大约30分钟-2小时之间），您也可以参考相关教程配置国内镜像源来加快拉取速度。如：[这个办法](https://blog.csdn.net/moluzhui/article/details/132287258)。
