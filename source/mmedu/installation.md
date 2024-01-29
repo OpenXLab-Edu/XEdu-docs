@@ -248,9 +248,9 @@ $ pip install mmcv-full==1.4.5 -f https://download.openmmlab.com/mmcv/dist/cu101
 $ pip install MMEdu
 ```
 
-## 3. 完整版安装之docker容器镜像
+## 3. 完整版安装之docker容器
 
-敬请期待
+请参考XEdu的docker容器：[https://xedu.readthedocs.io/zh/master/about/installation.html#docker](https://xedu.readthedocs.io/zh/master/about/installation.html#docker)
 
 ## 4. 查看MMEdu版本
 
