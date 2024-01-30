@@ -295,29 +295,19 @@ $ pip install MMEdu
 docker容器镜像
 --------------
 
-- 提示：这里需要确保您的电脑系统盘空间剩余空间超过5GB，实际建议有10GB及以上空间，便于后续训练使用。如果想要调整存储空间位置，可以参考[这里修改安装路径](https://blog.csdn.net/ber_bai/article/details/120816006)，[这里修改数据路径](https://zhuanlan.zhihu.com/p/410126547)。
-### 0.空间不足的解决办法
-1）软件安装空间不足，可以把安装路径指向一个新的路径：可以参考[这里修改安装路径](https://blog.csdn.net/ber_bai/article/details/120816006)
+首先需要确保您的电脑系统盘（C盘）空间剩余空间超过5GB，实际建议有10GB及以上空间，便于后续训练使用。如果想要调整存储空间位置，可以参考[这里修改安装路径](https://blog.csdn.net/ber_bai/article/details/120816006)，[这里修改数据路径](https://zhuanlan.zhihu.com/p/410126547)，后文安装过程中也有具体叙述。
 
-用管理员权限打开CMD，然后输入`mklink /j "C:\Program Files\Docker" "D:\Program Files\Docker"`。这样，软件看似安装在原目录，实则安装在了"D:\Program Files\Docker"。
-
-2）容器和镜像存储空间不足，旧版本可以直接在Docker Desktop中设置，但新版用了WSL之后就不行了。可以参考[这里修改数据路径](https://zhuanlan.zhihu.com/p/410126547)。
-
-退出Docker Desktop软件后，打开CMD，输入`wsl --list -v`，把所有相关的数据列出来，稍后需要挨个迁移。这里，返回的信息是：`docker-desktop-data STOPPED 2`，那么我只要迁移这一个就好，有的还会有`docker-desktop STOPPED 2`也需要迁移。
-
-接下来，我们同样把数据存在D盘，路径选择为"D:\Program Files\Docker"，先备份数据，输入：`wsl --export docker-desktop-data "D:\Program Files\Docker\docker-desktop-data.tar"`。如果有其它要备份，指令类似。
-
-接着注销WSL中原来的数据，输入：`wsl --unregister docker-desktop-data`。
-
-接着，导入数据到新的存储路径，输入：`wsl --import docker-desktop-data "D:\Program Files\Docker\data" "D:\Program Files\Docker\docker-desktop-data.tar" --version 2`。
-
-最后，重启Docker Desktop，完成了容器文件的存储位置迁移。如果有问题，可以尝试重启电脑。如果正常迁移完成，可以擅长备份的tar文件，即`D:\Program Files\Docker\docker-desktop-data.tar`。
-
-### 1.首先需要安装Docker软件
+### 1.安装Docker软件
 
 这里以Windows11系统为例，其他系统可以在网上查找相关教程自行安装Docker。
 
 Windows11系统中，可以先安装Docker Desktop图形化管理软件，下载链接为：[https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/)。建议不开启WSL2，否则可能与电脑其他软件存在冲突。
+
+安装图（稍后更新）
+
+注：如软件安装空间不足，可以把安装路径指向一个新的路径：可以参考[这里修改安装路径](https://blog.csdn.net/ber_bai/article/details/120816006)
+
+用管理员权限打开CMD，然后输入`mklink /j "C:\Program Files\Docker" "D:\Program Files\Docker"`。这样，软件看似安装在原目录，实则安装在了"D:\Program Files\Docker"。当然也可修改为其他盘。
 
 ### 2.启动Docker服务
 
@@ -326,6 +316,40 @@ Windows11系统中，可以先安装Docker Desktop图形化管理软件，下载
 看到左下角显示Engine running说明启动成功。
 
 ### 3.拉取镜像
+
+#### 3.1准备工作：检查内存
+
+容器和镜像存储空间不足，旧版本可以直接在Docker Desktop中设置，但新版用了WSL之后就不行了。可以参考[这里修改数据路径](https://zhuanlan.zhihu.com/p/410126547)。
+
+0.列出相关的数据
+
+退出Docker Desktop软件后，打开CMD，输入`wsl --list -v`，把所有相关的数据列出来，稍后需要挨个迁移。
+
+![Docker 启动界面](../images/about/docker3.1.png)
+
+此时，返回的信息是如上图所示，那么需要迁移的数据有：`docker-desktop-data STOPPED 2`，`docker-desktop STOPPED 2`。有的只出现一条，那么只要迁移这一个就好。接下来，以把数据迁移到D盘为例进行说明。
+
+1.在D盘新建目录，保证路径"D:\Program Files\Docker"存在。
+
+2.备份数据
+
+在CMD中输入：`wsl --export docker-desktop-data "D:\Program Files\Docker\docker-desktop-data.tar"`。如果有其它要备份，指令类似。例如我们还需要备份`docker-desktop`，那么运行完上一句，继续输入：`wsl --export docker-desktop "D:\Program Files\Docker\docker-desktop.tar"`。
+
+3.注销WSL中原来的数据
+
+在CMD中输入：`wsl --unregister docker-desktop-data`。如果有其它要注销，指令类似。例如我们还需要注销`docker-desktop`，那么运行完上一句，继续输入：`wsl --unregister docker-desktop`。
+
+4.导入数据到新的存储路径
+
+在CMD中输入：`wsl --import docker-desktop-data "D:\Program Files\Docker\data" "D:\Program Files\Docker\docker-desktop-data.tar" --version 2`。
+
+我们还需要迁移`docker-desktop`，运行完上一句，继续输入：`wsl --import docker-desktop "D:\Program Files\Docker\data" "D:\Program Files\Docker\docker-desktop.tar" --version 2`。
+
+5.重启Docker Desktop
+
+此时已经完成了容器文件的存储位置迁移。如果有问题，可以尝试重启电脑。如果正常迁移完成，可以擅长备份的tar文件，即`D:\Program Files\Docker\docker-desktop-data.tar`。如需迁移到其他盘，也可参照此方式完成。
+
+#### 3.2拉取镜像
 
 Docker分为容器（Container）和镜像（Image），（有时还会额外有一类叫Dockerfile）。首先需要从云端获取镜像，类似于安装操作系统的镜像，这个镜像是和原版一模一样的。然后可以启动容器，容器可以由用户自主修改。
 
@@ -340,8 +364,8 @@ Docker分为容器（Container）和镜像（Image），（有时还会额外有
 
 ### 4.启动docker容器（Container）
 
-使用这个命令：
-`docker run -it -p 5000:5000 -p 8888:8888 --mount type=bind,source=D:/share,target=/xedu/share xedu/xedu:v2s`，首次使用会询问是否绑定磁盘，选择Yes，然后就可以用电脑访问 **[127.0.0.1:8888](127.0.0.1:8888)** 访问jlab，通过 **[127.0.0.1:5000](127.0.0.1:5000)** 访问easytrain。（电脑中的文件想要拷贝进docker，可以放到D盘share文件夹）。美中不足的是，这两个网址需要自行打开浏览器后输入。如果显示效果不佳，可能是浏览器不兼容，建议下载[最新版的chrome浏览器](https://www.google.com/intl/zh-CN/chrome/)。
+在CMD输入：
+`docker run -it -p 5000:5000 -p 8888:8888 --mount type=bind,source=D:/share,target=/xedu/share xedu/xedu:v2s`，首次使用会询问是否绑定磁盘，选择Yes，接下来就可以用电脑访问 **[127.0.0.1:8888](127.0.0.1:8888)** 访问jlab，通过 **[127.0.0.1:5000](127.0.0.1:5000)** 访问easytrain。（电脑中的文件想要拷贝进docker，可以放到D盘share文件夹）。美中不足的是，这两个网址需要自行打开浏览器后输入。如果显示效果不佳，可能是浏览器不兼容，建议下载[最新版的chrome浏览器](https://www.google.com/intl/zh-CN/chrome/)。
 ![Docker Lab](../images/about/docker3.png)
 ![Docker EasyTrain](../images/about/docker4.png)
 
@@ -350,9 +374,9 @@ Docker分为容器（Container）和镜像（Image），（有时还会额外有
 在刚才的命令行窗口中，输入CTRL+C，再输入y，即可结束容器。
 ![Docker shutdown](../images/about/docker5.png)
 
+### 6.重启容器
 
-
-
+已完成容器的安装，再次重启容器只需完成5.启动容器的操作即可。
 
 如何快速查看XEdu各模块库的版本
 ------------------------------
