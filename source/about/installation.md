@@ -299,11 +299,11 @@ docker容器镜像
 
 ### 1.安装Docker软件
 
-这里以Windows11系统为例，其他系统可以在网上查找相关教程自行安装Docker。
+这里以Windows11系统（专业版）为例，其他系统可以在网上查找相关教程自行安装Docker，如[菜鸟教程](https://www.runoob.com/docker/windows-docker-install.html)。
 
-Windows11系统中，可以先安装Docker Desktop图形化管理软件，下载链接为：[https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/)。建议不开启WSL2，否则可能与电脑其他软件存在冲突。
+Windows11系统中，可以先安装Docker Desktop图形化管理软件，下载链接为：[https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/)。建议不开启WSL2，否则可能与电脑其他软件存在冲突（除非电脑中已经使用了WSL2虚拟机，那么这里勾选开启）。
 
-安装图（稍后更新）
+![Docker安装](../images/about/docker-install.png)
 
 注：如软件安装空间不足，可以把安装路径指向一个新的路径：可以参考[这里修改安装路径](https://blog.csdn.net/ber_bai/article/details/120816006)
 
@@ -317,13 +317,13 @@ Windows11系统中，可以先安装Docker Desktop图形化管理软件，下载
 
 ### 3.拉取镜像
 
-#### 3.1准备工作：检查内存
+#### 3.1准备工作：检查磁盘剩余存储空间
 
-首先需要检查电脑系统盘（C盘）空间剩余空间是否超过5GB，实际建议有10GB及以上。如空间容器和镜像存储空间不足，旧版本可以直接在Docker Desktop中设置，但新版用了WSL之后就不行了。可以参考[这里修改数据路径](https://zhuanlan.zhihu.com/p/410126547)。
+首先需要检查电脑系统盘（C盘）空间剩余空间是否超过6GB，实际建议有10GB及以上。如果空间足够，可以跳转到[3.2](https://xedu.readthedocs.io/zh/master/about/installation.html#id14)，如空间容器和镜像存储空间不足，旧版本Docker Desktop可以直接在软件中设置新的存储路径，但新版就不行了，下面介绍新版的用法。参考来源：[修改存储路径](https://zhuanlan.zhihu.com/p/410126547)。
 
-##### 1）罗列待迁移数据
+##### 1）列出待迁移数据
 
-退出Docker Desktop软件后，打开CMD，输入`wsl --list -v`，把所有相关的数据列出来，稍后需要挨个迁移。
+退出Docker Desktop软件，以防冲突。打开CMD，输入`wsl --list -v`，把所有相关的数据文件列出来，稍后需要挨个迁移。
 
 ![Docker 启动界面](../images/about/docker3.1.png)
 
@@ -333,9 +333,9 @@ Windows11系统中，可以先安装Docker Desktop图形化管理软件，下载
 
 在D盘新建目录用于保存迁移过去的数据，例如我后续希望相关数据都迁移到"D:\Program Files\Docker"，那么我就得新建这个目录，保证路径"D:\Program Files\Docker"存在。
 
-##### 3）备份数据
+##### 3）导出数据
 
-在CMD中输入：`wsl --export docker-desktop-data "D:\Program Files\Docker\docker-desktop-data.tar"`。如果有其它要备份，指令类似。例如我们还需要备份`docker-desktop`，那么运行完上一句，继续输入：`wsl --export docker-desktop "D:\Program Files\Docker\docker-desktop.tar"`。
+在CMD中输入：`wsl --export docker-desktop-data "D:\Program Files\Docker\docker-desktop-data.tar"`。如果有其它要导出，指令类似。例如我们还需要导出`docker-desktop`，那么运行完上一句，继续输入：`wsl --export docker-desktop "D:\Program Files\Docker\docker-desktop.tar"`。
 
 ##### 4）注销WSL中原来的数据
 
@@ -343,13 +343,13 @@ Windows11系统中，可以先安装Docker Desktop图形化管理软件，下载
 
 ##### 5）导入数据到新的存储路径
 
-在CMD中输入：`wsl --import docker-desktop-data "D:\Program Files\Docker\data" "D:\Program Files\Docker\docker-desktop-data.tar" --version 2`。
+在CMD中输入：`wsl --import docker-desktop-data "D:\Program Files\Docker\data" "D:\Program Files\Docker\docker-desktop-data.tar" --version 2`。这里的"D:\Program Files\Docker\data"是新的存储路径，这个文件夹会自动创建。
 
-我们还需要迁移`docker-desktop`，运行完上一句，继续输入：`wsl --import docker-desktop "D:\Program Files\Docker\data" "D:\Program Files\Docker\docker-desktop.tar" --version 2`。
+若还需要迁移`docker-desktop`，运行完上一句，继续输入：`wsl --import docker-desktop "D:\Program Files\Docker\data" "D:\Program Files\Docker\docker-desktop.tar" --version 2`。
 
 ##### 6）重启Docker Desktop
 
-此时已经完成了容器文件的存储位置迁移。如果有问题，可以尝试重启电脑。如果正常迁移完成，可以擅长备份的tar文件，即`D:\Program Files\Docker\docker-desktop-data.tar`。如需迁移到其他盘，也可参照此方式完成。
+此时已经完成了容器文件的存储位置迁移。如果有问题，可以尝试重启电脑。如果正常迁移完成，可以删除导出的tar文件，即`D:\Program Files\Docker\docker-desktop-data.tar`。如需迁移到其他盘，也可参照此方式完成，只需要修改盘符即可。
 
 #### 3.2拉取镜像
 
