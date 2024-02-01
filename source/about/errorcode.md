@@ -4,7 +4,7 @@
 对于AI的初学者来说，并不像极客那样熟练掌握代码，或者热衷于解决一大堆的报错，每每遇到红色的输出就发慌。
 ![错误码](../images/about/errorcode1.png)
 其实我们也深受其害，有时候一个不经意的小错误，都可能造成数十行的报错提示，解决起来要花不少精力。因此，我们贴心的在XEdu底层开发时设计了错误检查的功能，把初学者常犯的错误用我们自己设计的错误提示体系来解释，希望能够让用户得到更精简且易懂的解释。当然，这里仅检查初学者常犯的错误，并不保证全面。
-例如上面的错误，就是缺少对应的推理图片，可能是图片名称输错了，或者是图片不在对应的路径下，也可能是图片的后缀名不一致等等。
+例如上面的错误，给出了提示`Error Code: -103. No such file or directory: body.jpg.`，虽然提示是英文的，但是不难看出，其实就是缺少对应的推理图片，可能是图片名称输错了，或者是图片不在对应的路径下，也可能是图片的后缀名不一致等等。当然，如果还是不清楚，可以拿着`103`这个编号（下文称为错误码），到下面的错误码查询目录进行查询，可以看到中文的解释。
 有了这样清晰明了的错误提示，再学习AI就不会那么心慌了。
 
 ## 错误码设计理念
@@ -17,21 +17,21 @@
 ## 错误码查询目录
 ### 1.文件路径错误
 #### 1.1 数据集的路径错误
-只能是存在的目录。
+不存在的目录，检查路径是否拼写正确。
 
 英文提示设计：No such dataset directory:XX/XXX/XXX/
 ```
 - Error Code: -101. No such dataset directory: xxx
 ```
 #### 1.2 权重文件的路径错误
-只能是存在的文件。
+不存在的权重文件，检查路径是否拼写正确。
 
 英文提示设计：No such checkpoint file:XX/XXX/XXX.pth
 ```
 - Error Code: -102. No such checkpoint file: xxx
 ```
 #### 1.3 要推理文件的路径错误
-只能是存在的文件。
+不存在的推理文件，检查路径是否拼写正确。
 
 英文提示设计：No such file:XX/XXX/XXX.jpg
 ```
@@ -66,14 +66,14 @@ case 4: 数据集中图片损坏
 - Error Code -201. The image file ../../dataset/xx.jpg is damaged.
 ```
 #### 2.2 权重文件的类型错误
-只能是pth。
+这里要注意区分权重文件的格式，这里要求选择后缀为pth的文件。
 
 英文提示设计：Checkpoint file type error
 ```
 - Error Code: -202. Checkpoint file type error: xxx
 ```
 #### 2.3 要推理文件的类型错误
-只能是图片文件，如jpg、png、bmp等受支持的文件格式。
+要求是图片类型的文件，如jpg、png、bmp等受支持的文件格式。
 
 英文提示设计：File type error
 ```
@@ -81,7 +81,7 @@ case 4: 数据集中图片损坏
 ```
 ### 3.参数值错误（等于号右边）
 #### 3.1 device设置错误
-只能是cpu和cuda。
+设备名称目前只能是是cpu和cuda，并且需要以字符串形式输入。
 
 英文提示设计：No such argument.
 ```
@@ -91,7 +91,7 @@ case 4: 数据集中图片损坏
 - Error Code: -301. Your device doesn't support cuda.
 ```
 #### 3.2 主干网络名称错误
-目前只支持‘LeNet’、‘MobileNet’、‘ResNet18’、‘ResNet50’
+目前只支持‘LeNet’、‘MobileNet’、‘ResNet18’、‘ResNet50’等网络，可以用cls.sota()来查看。
 
 英文提示设计：No such argument
 ```
