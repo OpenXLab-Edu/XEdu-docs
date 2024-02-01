@@ -69,16 +69,14 @@ case 4: 数据集中图片损坏
 只能是True和False
 
 英文提示设计：No such argument
-Error Code: -303. No such argument: xxx
+- Error Code: -303. No such argument: xxx
 #### 3.4 推理图片格式错误
 变量类型必须是str（图片路径）或list【str】（多张图）或numpyarray（点阵图）。（bug目前可视化仅支持路径）
 - Error Code: - 304. No such argument: (1, 'asd') which is <class 'tuple'>
 #### 3.5 fast_infer之前，未正确使用load_checkpoint载入权重
 
-### 4.算法网络相关错误
-
-#### 4.4 网络名称不存在（不存在的网络名称）
-404
+### 4.网络连接相关错误
+(预留)
 ### 5. 参数名称错误（等于号左边）
 #### 5.1 传入的参数名称错误
 无此参数，请重新输入。
@@ -86,7 +84,9 @@ Error Code: -303. No such argument: xxx
 英文提示设计：No such parameter 
 - Error Code: - 501. No such parameter: ig
 
-  ### 6. 代码逻辑错误
+### 6. 代码逻辑错误
+(预留)
+
 如show之前要inference
-  ### 7. 数据处理错误
-  如BaseDT中检查数据集标注
+### 7. 数据处理错误
+如BaseDT中检查数据集标注
