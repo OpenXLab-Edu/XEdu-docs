@@ -1,29 +1,37 @@
-# XEdu的错误码
+# XEdu的常见错误
 
-## 错误码的设计
-本文档定义了基本错误反馈。错误描述用英文（考虑到国际化）描述，同时输出错误代码。为方便用户查找对应中文含义，可以在此页面Crtl+F调出网页搜索功能，输入错误吗，如“101”，就可以快速跳转到对应的错误释义。代码和目录编号一致，“1.1”的错误代码为“101”。
+## 令人困扰的错误
+对于AI的初学者来说，并不像极客那样熟练掌握代码，或者热衷于解决一大堆的报错，每每遇到红色的输出就发慌。
 ![错误码](../images/about/errorcode1.png)
+其实我们也深受其害，有时候一个不经意的小错误，都可能造成数十行的报错提示，解决起来要花不少精力。因此，我们贴心的在XEdu底层开发时设计了错误检查的功能，把初学者常犯的错误用我们自己设计的错误提示体系来解释，希望能够让用户得到更精简且易懂的解释。当然，这里仅检查初学者常犯的错误，并不保证全面。
+例如上面的错误，就是缺少对应的推理图片，可能是图片名称输错了，或者是图片不在对应的路径下，也可能是图片的后缀名不一致等等。
+有了这样清晰明了的错误提示，再学习AI就不会那么心慌了。
+
+## 错误码设计理念
+为了能够形成一套有效的错误检查语义体系，我们参考了经典的错误码设计方案，定义了基本错误反馈。错误描述用英文（考虑到国际化）描述，同时输出错误代码。为方便用户查找对应中文含义，可以在此页面Crtl+F调出网页搜索功能，输入错误吗，如“101”，就可以快速跳转到对应的错误释义。代码和目录编号一致，“1.1”的错误代码为“101”。
+
 错误码格式为三段式：错误码+错误现象+原因阐述或解决方案。其中第三段不一定有保证完全匹配。
 
 标准错误输出信息：Error Code: -编号,错误英文提示
 示例：Error Code: -101, No such dataset file:XX/XXX/XXX/
+## 错误码查询目录
 ### 1.文件路径错误
 #### 1.1 数据集的路径错误
-只能是存在的目录
+只能是存在的目录。
 
 英文提示设计：No such dataset directory:XX/XXX/XXX/
 ```
 - Error Code: -101. No such dataset directory: xxx
 ```
 #### 1.2 权重文件的路径错误
-只能是存在的文件
+只能是存在的文件。
 
 英文提示设计：No such checkpoint file:XX/XXX/XXX.pth
 ```
 - Error Code: -102. No such checkpoint file: xxx
 ```
 #### 1.3 要推理文件的路径错误
-只能是存在的文件
+只能是存在的文件。
 
 英文提示设计：No such file:XX/XXX/XXX.jpg
 ```
@@ -58,14 +66,14 @@ case 4: 数据集中图片损坏
 - Error Code -201. The image file ../../dataset/xx.jpg is damaged.
 ```
 #### 2.2 权重文件的类型错误
-只能是pth
+只能是pth。
 
 英文提示设计：Checkpoint file type error
 ```
 - Error Code: -202. Checkpoint file type error: xxx
 ```
 #### 2.3 要推理文件的类型错误
-只能是图片文件，如jpg、png、bmp等受支持的文件格式
+只能是图片文件，如jpg、png、bmp等受支持的文件格式。
 
 英文提示设计：File type error
 ```
@@ -73,9 +81,9 @@ case 4: 数据集中图片损坏
 ```
 ### 3.参数值错误（等于号右边）
 #### 3.1 device设置错误
-只能是cpu和cuda
+只能是cpu和cuda。
 
-英文提示设计：No such argument
+英文提示设计：No such argument.
 ```
 - Error Code: -301. No such argument: xxx
 ```
@@ -90,9 +98,9 @@ case 4: 数据集中图片损坏
 - Error Code: -302. No such argument: xxx. Currently xxx is available.
 ```
 #### 3.3 validate设置错误
-只能是True和False
+只能是True和False。
 
-英文提示设计：No such argument
+英文提示设计：No such argument.
 ```
 - Error Code: -303. No such argument: xxx
 ```
@@ -104,14 +112,14 @@ case 4: 数据集中图片损坏
 #### 3.5 fast_infer之前，未正确使用load_checkpoint载入权重
 
 ### 4.网络连接相关错误
-(预留)
+敬请期待，后续会开发网络相关功能。
 ### 5. 参数名称错误（等于号左边）
 #### 5.1 传入的参数名称错误
 无此参数，请重新输入。
 
 英文提示设计：No such parameter.
 ```
-- Error Code: - 501. No such parameter: ig
+- Error Code: - 501. No such parameter: xxx
 ```
 
 ### 6. 代码逻辑错误
