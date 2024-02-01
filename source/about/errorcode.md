@@ -1,7 +1,7 @@
 # XEdu的错误码
 
 ## 错误码的设计
-本文档定义了MMEdu的基本错误反馈。错误描述用英文（考虑到国际化）描述，同时输出错误代码。代码和目录编号一致，“1.1”的错误代码为“101”。
+本文档定义了基本错误反馈。错误描述用英文（考虑到国际化）描述，同时输出错误代码。为方便用户查找对应中文含义，可以在此页面Crtl+F调出网页搜索功能，输入错误吗，如“101”，就可以快速跳转到对应的错误释义。代码和目录编号一致，“1.1”的错误代码为“101”。
 
 错误码格式为三段式：错误码+错误现象+原因阐述或解决方案。其中第三段不一定有保证完全匹配。
 
@@ -12,14 +12,17 @@
 只能是存在的目录
 
 英文提示设计：No such dataset directory:XX/XXX/XXX/
+- Error Code: -101. No such dataset directory: xxx
 #### 1.2 权重文件的路径错误
 只能是存在的文件
 
 英文提示设计：No such checkpoint file:XX/XXX/XXX.pth
+- Error Code: -102. No such checkpoint file: xxx
 #### 1.3 要推理文件的路径错误
 只能是存在的文件
 
 英文提示设计：No such file:XX/XXX/XXX.jpg
+- Error Code: -103. No such file: xxx
 ### 2.文件类型错误
 #### 2.1 数据集的类型错误
 只能是目录，而且目录文件要符合要求。
@@ -44,23 +47,29 @@ case 4: 数据集中图片损坏
 只能是pth
 
 英文提示设计：Checkpoint file type error
+- Error Code: -202. Checkpoint file type error: xxx
 #### 2.3 要推理文件的类型错误
 只能是图片文件，如jpg、png、bmp等受支持的文件格式
 
 英文提示设计：File type error
+- Error Code: -203. File type error: xxx
 ### 3.参数值错误（等于号右边）
 #### 3.1 device设置错误
 只能是cpu和cuda
 
 英文提示设计：No such argument
+- Error Code: -301. No such argument: xxx
+- Error Code: -301. Your device doesn't support cuda.
 #### 3.2 主干网络名称错误
 目前只支持‘LeNet’、‘MobileNet’、‘ResNet18’、‘ResNet50’
 
 英文提示设计：No such argument
+- Error Code: -302. No such argument: xxx. Currently xxx is available."
 #### 3.3 validate设置错误
 只能是True和False
 
 英文提示设计：No such argument
+Error Code: -303. No such argument: xxx
 #### 3.4 推理图片格式错误
 变量类型必须是str（图片路径）或list【str】（多张图）或numpyarray（点阵图）。（bug目前可视化仅支持路径）
 - Error Code: - 304. No such argument: (1, 'asd') which is <class 'tuple'>
