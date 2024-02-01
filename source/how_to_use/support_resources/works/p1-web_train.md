@@ -41,6 +41,8 @@ with tf.Session() as sess:
 
 参考项目：[https://openinnolab.org.cn/pjlab/project?id=645ddb8fd73dd91bcbf15083&sc=635638d69ed68060c638f979#public](https://openinnolab.org.cn/pjlab/project?id=645ddb8fd73dd91bcbf15083&sc=635638d69ed68060c638f979#public)
 
+完成模型转换后，就可以将这一模型部署到行空板上了。行空板支持多种编程方式，我们选择一种即可。
+
 ## 三、用Python编程完成模型推理
 
 ### 方式一：借助XEduHub
