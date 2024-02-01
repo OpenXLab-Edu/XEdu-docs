@@ -84,7 +84,7 @@ case 4: 数据集中图片损坏
 - Error Code: -203. Inferable file type error: xxx. Ensure your file is in one of the following formats: jpg, png, jpeg, jiff or bmp.
 ```
 ### 3.参数值错误
-参数值就是赋值语句中等于号右边的那个东西，如 a = 3 中的3。
+参数值就是赋值语句中等于号右边的那个东西，如 `a = 3` 中的`3`。
 #### 3.1 device设置错误
 设备名称目前只能是是cpu和cuda，并且需要以字符串形式输入。
 
@@ -110,16 +110,16 @@ case 4: 数据集中图片损坏
 - Error Code: -303. No such argument: xxx
 ```
 #### 3.4 推理图片格式错误
-变量类型必须是str（图片路径）或list【str】（多张图）或numpyarray（点阵图）。（bug目前可视化仅支持路径）
+变量类型必须是str（图片路径）或`list[str]`（多张图）或`numpyarray`（点阵图）。（bug目前可视化仅支持路径）
 ```
 - Error Code: - 304. No such argument: (1, 'asd') which is <class 'tuple'>
 ```
-#### 3.5 fast_infer之前，未正确使用load_checkpoint载入权重
+
 
 ### 4.网络连接相关错误
 敬请期待，后续会开发网络相关功能。
 ### 5. 参数名称错误
-参数名称就是赋值语句中等于号左边的那个东西，如 a = 3 中的a。
+参数名称就是赋值语句中等于号左边的那个东西，如 `a = 3` 中的`a`。
 #### 5.1 传入的参数名称错误
 无此参数，请重新输入。
 
