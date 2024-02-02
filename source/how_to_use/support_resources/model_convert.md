@@ -237,6 +237,8 @@ cv2.destroyAllWindows()
 
 ![](../../images/model_convert/DeploymentDemonstration.gif)
 
+在浦育平台硬件工坊也可支持连接行空板，参考项目-行空板与XEdu：[https://openinnolab.org.cn/pjlab/project?id=65bc868615387949b281d622&backpath=/pjedu/userprofile?slideKey=project&type=OWNER#public](https://openinnolab.org.cn/pjlab/project?id=65bc868615387949b281d622&backpath=/pjedu/userprofile?slideKey=project&type=OWNER#public)
+
 ### 参考项目：
 
 千物识别小助手：<a href="https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&backpath=/pjlab/projects/list#public</a>

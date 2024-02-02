@@ -40,3 +40,5 @@ E行空板是一款拥有自主知识产权的国产教学用开源硬件，采�
 
 
 更多AI用法：[https://www.unihiker.com.cn/wiki/ai_project](https://www.unihiker.com.cn/wiki/ai_project)
+
+在浦育平台硬件工坊也可支持连接行空板，参考项目-行空板与XEdu：[https://openinnolab.org.cn/pjlab/project?id=65bc868615387949b281d622&backpath=/pjedu/userprofile?slideKey=project&type=OWNER#public](https://openinnolab.org.cn/pjlab/project?id=65bc868615387949b281d622&backpath=/pjedu/userprofile?slideKey=project&type=OWNER#public)
