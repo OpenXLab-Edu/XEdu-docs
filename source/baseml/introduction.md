@@ -90,7 +90,7 @@ cls.__doc__
 
 BaseML库支持各种形式载入数据。
 
-1. 从路径载入数据：
+#### （1）从路径载入数据：
 
 ```
 # 载入数据集，并说明特征列和标签列
@@ -99,7 +99,7 @@ model.load_dataset('./lenses.csv', type ='csv', x_column = [1,2,3,4],y_column=[5
 
 `x_column`表示特征列，`y_column`表示标签列。
 
-2. 读取图像数据转换为Numpy数组后直接从变量载入数据：
+#### （2）读取图像数据转换为Numpy数组后直接从变量载入数据：
 
 ```
 # 载入数据，并说明特征列和标签列
@@ -108,7 +108,9 @@ model.load_dataset(X=train_x, y=train_y,type ='numpy')
 
 `X`表示数据特征，`y`表示标签。可再设置`x_column`和`y_column`参数，不设置则默认所有列。同时BaseML内置了图片读取处理模块`ImageLoader`。
 
-`ImageLoader`是BaseML内置的图片读取处理模块，用于进行图像数字化处理，读取图片并提取其中的图像特征，如HOG特征和LBP特征，用以进行后续的机器学习任务。
+#### （3）图片处理
+
+`ImageLoader`是BaseML内置的图片处理模块，用于进行图像数字化处理，读取图片并提取其中的图像特征，如HOG特征和LBP特征，用以进行后续的机器学习任务。
 
 使用示例：
 
