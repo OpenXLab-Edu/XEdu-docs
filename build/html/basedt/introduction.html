@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>解锁BaseDT的强大功能 &mdash; OpenXLabEdu  documentation</title>
@@ -11,11 +11,10 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -29,15 +28,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="../index.html" class="icon icon-home">
-            OpenXLabEdu
+            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -102,9 +97,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../basedt.html">数据处理库BaseDT</a></li>
-      <li class="breadcrumb-item active">解锁BaseDT的强大功能</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../basedt.html">数据处理库BaseDT</a> &raquo;</li>
+      <li>解锁BaseDT的强大功能</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/basedt/introduction.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -115,14 +110,14 @@
            <div itemprop="articleBody">
              
   <section id="basedt">
-<h1>解锁BaseDT的强大功能<a class="headerlink" href="#basedt" title="Permalink to this heading"></a></h1>
+<h1>解锁BaseDT的强大功能<a class="headerlink" href="#basedt" title="Permalink to this headline"></a></h1>
 <p>数据处理是机器学习和深度学习中不可或缺的一环，它直接影响着模型的性能和效果。然而，在实际应用中，我们常常面临着数据处理过程中的各种困难和挑战，比如数据格式不统一、数据质量低下、数据处理流程复杂等。为了解决这些问题，我们开发了BaseDT库。BaseDT是一个用Python编写的库，它可以让你用一行代码就完成数据的各种操作，比如resize、crop、normalize、转换格式等。无论你是处理图片数据、文本数据、语音数据，还是其他类型的数据，BaseDT都可以帮助你轻松地准备好你的数据集，并且保持部署模型时和推理时的pipeline一致。BaseDT还支持数据集的处理，例如数据集的下载、检查和转换。此外，BaseDT还支持数据的可视化和I/O设备的调用。BaseDT不仅是一个功能强大的库，也是一个易于使用和扩展的库。它可以让你专注于模型的构建和训练，而不用担心数据处理的问题。BaseDT是一个值得你尝试和信赖的库。</p>
 <p>文档涉及的部分代码见XEdu帮助文档配套项目集：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&amp;sc=645caab8a8efa334b3f0eb24#public">https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&amp;sc=645caab8a8efa334b3f0eb24#public</a></p>
 <section id="id1">
-<h2>板块1：数据的处理<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<h2>板块1：数据的处理<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <p>BaseDT提供了一个data模块，它包含了多个子模块和类，分别针对不同类型和格式的数据提供了处理功能。例如，ImageData子模块可以让你对图片数据进行resize、crop、normalize等操作；TextData子模块可以让你对文本数据进行分词、词向量化等操作；AudioData子模块可以让你对语音数据进行重采样、裁剪、增强等操作。</p>
 <section id="id2">
-<h3>（1）图片数据处理<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<h3>（1）图片数据处理<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
 <p>图片数据处理是指对数字图像进行各种操作以改变其属性或提取其中的信息。图片数据处理在许多领域都有广泛地应用，比如计算机视觉、医学成像、生物识别、数字艺术等。通过对图片进行合适地处理，我们可以提高图片的质量、增强图片的特征、分析图片的内容、生成新的图片等。</p>
 <p>BaseDT库可进行一些常见的图片数据处理操作，比如resize、crop和normalize。这些操作可以帮助我们调整图片地大小和形状以适应不同地需求，以及将图片的数值标准化以方便后续地计算。</p>
 <p><strong>示例代码：</strong></p>
@@ -140,7 +135,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">normalize</span></code>: 一个布尔值，表示是否要对图像数据进行归一化处理。</p>
 </section>
 <section id="id3">
-<h3>（2）文本数据处理<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<h3>（2）文本数据处理<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
 <p>文本数据处理是指对自然语言形式的数据进行各种操作以改变其属性或提取其中的信息。文本数据处理在许多领域都有广泛地应用，比如自然语言理解、机器翻译、情感分析、信息检索等。通过对文本进行合适地处理，我们可以提高文本地质量、增强文本地特征、分析文本地内容、生成新地文本等。</p>
 <p>BaseDT库来进行一些常见的文本数据处理操作，比如向量化。向量化是指将文字转换为数字形式以方便后续地计算和分析。向量化可以帮助我们度量文字之间地相似性、分类文字地类别、预测文字地情感等。</p>
 <p><strong>示例代码：</strong></p>
@@ -156,15 +151,15 @@
 <p><code class="docutils literal notranslate"><span class="pre">vectorize</span></code>：一个布尔值，表示是否要对文本数据进行向量化。如果为True，那么会调用vectorizer方法，根据文本类型（str或dict）选择合适的向量化器（CountVectorizer或DictVectorizer），并返回一个词向量矩阵；如果为False，那么不会进行向量化。</p>
 </section>
 <section id="id4">
-<h3>（3）语音数据处理<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<h3>（3）语音数据处理<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
 <p>敬请期待。</p>
 </section>
 <section id="id5">
-<h3>（4）通用数据处理<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<h3>（4）通用数据处理<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
 <p>敬请期待。</p>
 </section>
 <section id="id6">
-<h3>（5）模型部署数据处理<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<h3>（5）模型部署数据处理<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
 <p>由于网络模型在训练时会对输入数据进行一系列预处理操作以提高模型性能，在部署时也需要对输入设备采集到的原始数据进行相同或类似地预处理操作以保证模型效果。然而，在不同设备上进行相同或类似地预处理操作并不容易实现，并且可能会增加部署成本和时间。为了简化这个过程，并且保证预处理操作与训练时相同或类似地执行方式与顺序，在BaseDT库中我们提供了一个简单而强大地功能：只需指定网络模型所使用地backbone名称（例如”MobileNet”），就可以自动完成与该backbone对应地预处理操作，并将原始输入转换为网络模型可接受地张量格式。</p>
 <p><strong>示例代码：</strong></p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.data</span> <span class="kn">import</span> <span class="n">ImageData</span>
@@ -178,7 +173,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">backbone</span></code>: 网络模型所使用地backbone名称。</p>
 </section>
 <section id="onnx">
-<h3>（6）ONNX模型信息数据读取<a class="headerlink" href="#onnx" title="Permalink to this heading"></a></h3>
+<h3>（6）ONNX模型信息数据读取<a class="headerlink" href="#onnx" title="Permalink to this headline"></a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">MMEdu</span></code>在进行模型转换的时候，会将模型的关键信息（<code class="docutils literal notranslate"><span class="pre">模型功能</span></code>、<code class="docutils literal notranslate"><span class="pre">模型名称</span></code>和<code class="docutils literal notranslate"><span class="pre">类别信息</span></code>）等写入ONNX模型，<code class="docutils literal notranslate"><span class="pre">BaseDT.data</span></code>中的<code class="docutils literal notranslate"><span class="pre">ModelData</span></code>提供了模型信息的读取函数，通过该函数可快速读取中ONNX模型信息。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.data</span> <span class="kn">import</span> <span class="n">ModelData</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">ModelData</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
@@ -222,14 +217,14 @@
 </section>
 </section>
 <section id="id7">
-<h2>板块2：数据集的处理<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h2>
+<h2>板块2：数据集的处理<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h2>
 <p>数据集的好坏决定了模型的训练结果，数据集的制作是深度学习模型训练的第一步。在实现一个深度学习项目时，除了搭建模型的网络结构，更重要的一点是处理好项目需要的数据集，那么就需要进行数据集处理。BaseDT提供了的DataSet类可支持对不同类型和格式的数据集进行处理。</p>
 <section id="id8">
-<h3>（1）常用数据集下载<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
+<h3>（1）常用数据集下载<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
 <p>敬请期待。</p>
 </section>
 <section id="id9">
-<h3>（2）数据集格式检查<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
+<h3>（2）数据集格式检查<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
 <p>BaseDT提供XEdu支持的数据集格式检查的功能。指定数据集路径和数据集任务类别，即可输出检查结果，可根据提示对数据集做调整。</p>
 <p><strong>示例代码：</strong></p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.dataset</span> <span class="kn">import</span> <span class="n">DataSet</span>
@@ -242,7 +237,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">dataset_type</span></code>: 数据集任务类别，如“cls”（图像分类）、“det”（目标检测），不设置也可以运行，仅会输出提示”数据集既不符合det也不符合cls“。如需输出详细信息，建议设置<code class="docutils literal notranslate"><span class="pre">dataset_type</span></code>。</p>
 </section>
 <section id="id10">
-<h3>（3）数据集格式转换<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h3>
+<h3>（3）数据集格式转换<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
 <p>针对网上下载的常见格式的数据集和自己标注或整理的数据集（目前支持IMAGENET、VOC、COCO和OpenInnoLab在线标注格式），均可使用BaseDT完成格式转换。更多借助BaseDT完成数据集格式转换的说明详见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basedt/quick_start.html#id12">快速上手的数据集格式转换部分</a>。</p>
 <p><strong>示例代码：</strong></p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.dataset</span> <span class="kn">import</span> <span class="n">DataSet</span>
@@ -257,7 +252,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">train_ratio</span> <span class="pre">,</span> <span class="pre">test_ratio,</span> <span class="pre">val_ratio</span></code>：训练集、测试集、验证集划分比例，默认比例为train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2。</p>
 </section>
 <section id="id11">
-<h3>（4）数据集拆分<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h3>
+<h3>（4）数据集拆分<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h3>
 <p>针对图像数据集，在上一步其实已有拆分数据集功能（使用train_ratio , test_ratio, val_ratio的设置），针对csv格式的表格数据集，可以使用BaseDT的split_tab_dataset()函数完成拆分。</p>
 <p><strong>示例代码：</strong></p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.dataset</span> <span class="kn">import</span> <span class="n">split_tab_dataset</span>
@@ -269,7 +264,9 @@
 <p><strong>参数详解：</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">data_path</span></code>: csv文件路径（csv格式和以前一致，第一行为表头不读）。</p>
 <p><code class="docutils literal notranslate"><span class="pre">data_column</span></code>: 文件中数据的列数，形式上可以是可迭代对象range(0,4)表示前四列，可以是列表[0,3]表示第一列和第四列，也可以是数字 4 表示第4列。</p>
-<p><code class="docutils literal notranslate"><span class="pre">label_column</span></code>: 文件中标签的列数，默认是-1，形式上与data_column一致。 train_val_ratio: 训练集的比重，默认是0.8。 <code class="docutils literal notranslate"><span class="pre">random_seed</span></code>: 随机数种子，默认42。设定相同的随机数种子使得划分结果可复现。</p>
+<p><code class="docutils literal notranslate"><span class="pre">label_column</span></code>: 文件中标签的列数，默认是-1，形式上与data_column一致。</p>
+<p><code class="docutils literal notranslate"><span class="pre">train_val_ratio</span></code>: 训练集的比重，默认是0.8。</p>
+<p><code class="docutils literal notranslate"><span class="pre">random_seed</span></code>: 随机数种子，默认42。设定相同的随机数种子使得划分结果可复现。</p>
 <p><code class="docutils literal notranslate"><span class="pre">normalize</span></code>: 一个布尔值，表示是否要对图像数据进行归一化处理。设定normalize=True时会额外返回一个归一化器scaler，代表归一化过程中对数据进行的操作，即如需将数据集外的其他数据进行同样的归一化操作，可以直接使用返回的归一化器data = scaler.transform(data)。</p>
 <p><strong>返回值：</strong></p>
 <p>四个numpy数组：训练数据，训练标签，验证数据，验证标签 。</p>
@@ -277,14 +274,14 @@
 </section>
 </section>
 <section id="id12">
-<h2>板块3：数据的可视化<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h2>
+<h2>板块3：数据的可视化<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h2>
 <p>BaseDT提供了一个plot模块，它可以让你对不同任务的数据进行可视化，例如绘制分类任务的混淆矩阵、目标检测任务的目标框、分割任务的掩膜等。plot模块支持多种显示方式，让你可以方便地查看和分析图片、文本、语音等不同类型的数据。</p>
 <section id="id13">
-<h3>（1）绘制分类任务混淆矩阵<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h3>
+<h3>（1）绘制分类任务混淆矩阵<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h3>
 <p>敬请期待。</p>
 </section>
 <section id="id14">
-<h3>（2）绘制目标检测任务的检测框<a class="headerlink" href="#id14" title="Permalink to this heading"></a></h3>
+<h3>（2）绘制目标检测任务的检测框<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h3>
 <p>针对目标检测任务目标框的绘制，BaseDT可根据网络模型的输出数据出检测出相应目标框。</p>
 <p><strong>示例代码：</strong></p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.plot</span> <span class="kn">import</span> <span class="n">imshow_det_bboxes</span>
@@ -301,7 +298,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">score_thr</span></code>: 显示边界框的最小分数，这里是 0.8 ，表示只显示分数大于等于 0.8 的边界框。</p>
 </section>
 <section id="id15">
-<h3>（3）日志分析<a class="headerlink" href="#id15" title="Permalink to this heading"></a></h3>
+<h3>（3）日志分析<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h3>
 <p>针对MMEdu训练训练日志，BaseDT的plot模块支持多种训练日志绘制方式，便于用户直观的对模型训练过程进行可视化分析。</p>
 <p><code class="docutils literal notranslate"><span class="pre">BaseDT</span></code>中的<code class="docutils literal notranslate"><span class="pre">plot</span></code>模块提供<code class="docutils literal notranslate"><span class="pre">plot_log</span></code>函数，支持对训练日志中的损失函数进行绘制。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log_path</span> <span class="o">=</span> <span class="s1">&#39;path/to/my_log.json&#39;</span>
@@ -317,10 +314,10 @@
 </section>
 </section>
 <section id="i-o">
-<h2>板块4：I/O设备<a class="headerlink" href="#i-o" title="Permalink to this heading"></a></h2>
+<h2>板块4：I/O设备<a class="headerlink" href="#i-o" title="Permalink to this headline"></a></h2>
 <p>BaseDT提供的io模块可支持数据的I/O设备的调用，它可以让你方便地从不同的来源获取和输出数据。例如，你可以用io模块中的MicroPhone类来调用麦克风录音，并且直接将录音转换成AudioData对象，进行后续的处理和分析。此外，BaseDT还支持其他多种I/O设备，比如摄像头、扫描仪、打印机等，让你可以轻松地处理各种类型和格式的数据。</p>
 <section id="id16">
-<h3>（1） 调用麦克风<a class="headerlink" href="#id16" title="Permalink to this heading"></a></h3>
+<h3>（1） 调用麦克风<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h3>
 <p>针对麦克风设备，BaseDT可调用麦克风，并用其录音。</p>
 <p><strong>示例代码：</strong></p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.io</span> <span class="kn">import</span> <span class="n">MicroPhone</span>

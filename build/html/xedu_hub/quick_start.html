@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>快速体验XEduHub &mdash; OpenXLabEdu  documentation</title>
@@ -11,11 +11,10 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -29,15 +28,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="../index.html" class="icon icon-home">
-            OpenXLabEdu
+            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -87,9 +82,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../xedu_hub.html">深度学习工具库XEduHub</a></li>
-      <li class="breadcrumb-item active">快速体验XEduHub</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../xedu_hub.html">深度学习工具库XEduHub</a> &raquo;</li>
+      <li>快速体验XEduHub</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/xedu_hub/quick_start.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -100,12 +95,12 @@
            <div itemprop="articleBody">
              
   <section id="xeduhub">
-<h1>快速体验XEduHub<a class="headerlink" href="#xeduhub" title="Permalink to this heading"></a></h1>
+<h1>快速体验XEduHub<a class="headerlink" href="#xeduhub" title="Permalink to this headline"></a></h1>
 <section id="id1">
-<h2>XEduHub是什么？<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<h2>XEduHub是什么？<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <p>XEduHub是一个专为快速、便捷地利用最先进的深度学习模型完成任务而设计的工具库。其设计灵感源自PyTorchHub，旨在以工作流的方式，高效地完成深度学习任务。XEduHub的独特之处在于它内置了大量优质的深度学习SOTA模型，无需用户自行进行繁琐的模型训练。用户根据自己的需求，选择不同的特定任务（task），而不同任务对应了不同的内置模型，拿过来就用，轻松进行AI应用实践。</p>
 <section id="id2">
-<h3>XEduHub的特点<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<h3>XEduHub的特点<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p><strong>简单易用</strong>：XEduhub是个工具箱（有各种螺丝刀、扳手、小刀等），不需要专业知识，只要知道工具的名称和作用，你就可以使用这些AI模型。</p></li>
 <li><p><strong>无需训练</strong>：你不需要自己制作工具，里面就已经有很多常用工具了（为你准备好多AI模型），当然你也可以自己做个新工具放进去。</p></li>
@@ -115,9 +110,9 @@
 </section>
 </section>
 <section id="id3">
-<h2>XEduHub的安装和使用<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<h2>XEduHub的安装和使用<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
 <section id="id4">
-<h3>安装方法<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<h3>安装方法<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">XEdu-python</span></code>或<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">xedu-python</span></code></p>
 <p>以识别图像中的人体关键点为例，参考代码如下：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 步骤一：导入库</span>
@@ -147,14 +142,14 @@
 </section>
 </section>
 <section id="id5">
-<h2>体验XEduhub的更多功能<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<h2>体验XEduhub的更多功能<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
 <p>体验XEduhub的最快速方式是通过OpenInnoLab平台。</p>
 <p>OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台，满足青少年的AI学习和创作需求，支持在线编程。在“项目”中查看更多，查找“XEduHub”即可找到所有XEduHub相关的体验项目。</p>
 <p>XEduHub实例代码合集：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&amp;sc=635638d69ed68060c638f979#public">https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&amp;sc=635638d69ed68060c638f979#public</a></p>
 <p>（用Chrome浏览器打开效果最佳）</p>
 </section>
 <section id="xeduhubai">
-<h2>用XEduHub玩第一个AI项目！<a class="headerlink" href="#xeduhubai" title="Permalink to this heading"></a></h2>
+<h2>用XEduHub玩第一个AI项目！<a class="headerlink" href="#xeduhubai" title="Permalink to this headline"></a></h2>
 <p>第一步：导入XEduHub库</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 </pre></div>

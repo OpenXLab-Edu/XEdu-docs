@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>开源硬件行空板 &mdash; OpenXLabEdu  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Web库Flask" href="flask.html" />
+    <link rel="prev" title="开源硬件库pinpong" href="pinpong.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> OpenXLabEdu
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../xedu_hub.html">深度学习工具库XEduHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mmedu.html">计算机视觉库MMEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basenn.html">神经网络库BaseNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../baseml.html">传统机器学习库BaseML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../easydl.html">EasyDL系列无代码工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basedt.html">数据处理库BaseDT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basedeploy.html">模型部署库BaseDeploy</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../how_to_use.html">如何用XEdu借助AI解决真实问题</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../introduction.html">用AI解决真实问题的技术地图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../step.html">用AI解决问题的一般步骤</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../support_resources.html">学习支持和资源获取</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../scitech_tools.html">相关科创工具</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="data_labeling.html">数据集标注工具</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pywebio.html">Web库PyWebIO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pysimplegui.html">GUI库PySimpleGUI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="siot.html">MQTT库siot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pinpong.html">开源硬件库pinpong</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">开源硬件行空板</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">1.简介</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">2.简单使用教程</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">3.部署模型到行空板</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="flask.html">Web库Flask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fastapi.html">Web库FastAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gradio.html">Web库Gradio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="camera.html">wifi摄像头模块：ESP32-CAM</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../dl_library.html">深度学习知识库</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">OpenXLabEdu</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../how_to_use.html">如何用XEdu借助AI解决真实问题</a> &raquo;</li>
+          <li><a href="../scitech_tools.html">相关科创工具</a> &raquo;</li>
+      <li>开源硬件行空板</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/how_to_use/scitech_tools/unihiker.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>开源硬件行空板<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h1>
+<section id="id2">
+<h2>1.简介<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<p>行空板是一款拥有自主知识产权的国产教学用开源硬件，采用微型计算机架构，集成LCD彩屏、WiFi蓝牙、多种常用传感器和丰富的拓展接口。同时，其自带Linux操作系统和python环境，还预装了常用的python库，让广大师生只需两步就能开始python教学。</p>
+<p>快速使用教程：<a class="reference external" href="https://www.unihiker.com.cn/wiki/get-started">https://www.unihiker.com.cn/wiki/get-started</a></p>
+</section>
+<section id="id3">
+<h2>2.简单使用教程<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<section id="id4">
+<h3>1.选择合适的编程方式<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<p>行空板自身作为一个单板计算机可以直接运行Python代码，同时默认开启了ssh服务及samba文件共享服务，因此可以用任意的文本编辑器编写代码，然后将代码传输到行空板即可运行。</p>
+<p>教程：<a class="reference external" href="https://www.unihiker.com.cn/wiki/mindplus">https://www.unihiker.com.cn/wiki/mindplus</a></p>
+</section>
+<section id="python">
+<h3>2.行空板Python库安装<a class="headerlink" href="#python" title="Permalink to this headline"></a></h3>
+<ul>
+<li><p>打开MInd+，<strong>连接行空板</strong>，切换到<strong>代码</strong>标签页，点击<strong>库管理</strong>，此时库管理页面左上角显示行空板logo，说明此处显示的是行空板的库管理。</p></li>
+<li><p>如果你需要<strong>卸载库</strong>或者<strong>更新库</strong>则可以在<strong>库列表</strong>中进行操作。</p></li>
+<li><p>如果<strong>推荐库</strong>中没有你需要的，则可以切换到<strong>PIP模式</strong>，在输入框中输入库名字安装，右上角可以切换不同的源，例如此处安装<strong>dominate</strong>则可以输入<code class="docutils literal notranslate"><span class="pre">dominate</span></code>或者完整指令 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">dominate</span></code>，或者指定版本安装<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">dominate==2.5.1</span></code>,提示**”Successfully installed xxxx”**即表示安装成功。</p>
+<p><img alt="../../_images/install_1.png" src="../../_images/install_1.png" /></p>
+</li>
+</ul>
+<p>例如可以在行空板安装我们的模型部署库BaseDeploy，Mind+中甚至可以添加BaseDeploy积木套件，更多说明详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basedeploy/introduction.html#mind-basedeploy">Mind+中的BaseDeploy积木块</a>。</p>
+<p><img alt="../../_images/install_lab.png" src="../../_images/install_lab.png" /></p>
+</section>
+</section>
+<section id="id5">
+<h2>3.部署模型到行空板<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
+<p>参考资料1-AI猜拳机器人：<a class="reference external" href="https://mc.dfrobot.com.cn/thread-315543-1-1.html">https://mc.dfrobot.com.cn/thread-315543-1-1.html</a></p>
+<p>参考资料2-智能音箱：<a class="reference external" href="https://xedu.readthedocs.io/zh/master/how_to_use/support_resources/works/p4-smartspeaker.html">https://xedu.readthedocs.io/zh/master/how_to_use/support_resources/works/p4-smartspeaker.html</a></p>
+<p>参考资料3-手搓图像识别硬件部署应用：<a class="reference external" href="https://www.bilibili.com/video/BV1364y1T771?p=3">https://www.bilibili.com/video/BV1364y1T771?p=3</a></p>
+<p>更多AI用法：<a class="reference external" href="https://www.unihiker.com.cn/wiki/ai_project">https://www.unihiker.com.cn/wiki/ai_project</a></p>
+<p>在浦育平台硬件工坊也可支持连接行空板，参考项目-行空板与XEdu：<a class="reference external" href="https://openinnolab.org.cn/pjlab/project?id=65bc868615387949b281d622&amp;backpath=/pjedu/userprofile?slideKey=project&amp;type=OWNER#public">https://openinnolab.org.cn/pjlab/project?id=65bc868615387949b281d622&amp;backpath=/pjedu/userprofile?slideKey=project&amp;type=OWNER#public</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="pinpong.html" class="btn btn-neutral float-left" title="开源硬件库pinpong" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="flask.html" class="btn btn-neutral float-right" title="Web库Flask" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2024 OpenXLabEdu.All Rights Reserved.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

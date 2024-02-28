@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>快速体验BaseDeploy &mdash; OpenXLabEdu  documentation</title>
@@ -11,11 +11,10 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -29,15 +28,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="../index.html" class="icon icon-home">
-            OpenXLabEdu
+            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -78,9 +73,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../basedeploy.html">模型部署库BaseDeploy</a></li>
-      <li class="breadcrumb-item active">快速体验BaseDeploy</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../basedeploy.html">模型部署库BaseDeploy</a> &raquo;</li>
+      <li>快速体验BaseDeploy</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/basedeploy/quick_start.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -91,12 +86,12 @@
            <div itemprop="articleBody">
              
   <section id="basedeploy">
-<h1>快速体验BaseDeploy<a class="headerlink" href="#basedeploy" title="Permalink to this heading"></a></h1>
+<h1>快速体验BaseDeploy<a class="headerlink" href="#basedeploy" title="Permalink to this headline"></a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">XEdu</span></code>团队推出的模型部署工具<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>，其代码风格向<code class="docutils literal notranslate"><span class="pre">MMEdu</span></code>对齐，通过对推理核心代码的封装，目标是用户能够更加专注于科创作品功能的设计，而将AI模块作为接口的黑盒，能够对其返回的结果进行二次创作。</p>
 <p><code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>通过传入<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/model_convert.html#id4">ONNX模型</a>的路径加载为一个模型，通过<code class="docutils literal notranslate"><span class="pre">model.inference</span></code>即可完成模型的推理，从而可实现借助BaseDeploy完成模型部署。</p>
 <p>文档涉及的部分代码见XEdu帮助文档配套项目集：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&amp;sc=645caab8a8efa334b3f0eb24#public">https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&amp;sc=645caab8a8efa334b3f0eb24#public</a></p>
 <section id="id1">
-<h2>示例代码<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<h2>示例代码<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <p>示例代码一：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.data</span> <span class="kn">import</span> <span class="n">ImageData</span>
 <span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
@@ -141,7 +136,7 @@
 <p><img alt="../_images/base_detect.png" src="../_images/base_detect.png" /></p>
 </section>
 <section id="id2">
-<h2>更多模型部署相关项目<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<h2>更多模型部署相关项目<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <p>猫狗分类小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&amp;backpath=/pjedu/userprofile%3FslideKey=project#public">https://www.openinnolab.org.cn/pjlab/project?id=641039b99c0eb14f2235e3d5&amp;backpath=/pjedu/userprofile%3FslideKey=project#public</a></p>
 <p>千物识别小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&amp;backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=641be6d479f259135f1cf092&amp;backpath=/pjlab/projects/list#public</a></p>
 <p>有无人检测小助手：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&amp;backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=641d3eb279f259135f870fb1&amp;backpath=/pjlab/projects/list#public</a></p>

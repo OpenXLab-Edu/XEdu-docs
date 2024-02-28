@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>XEduHub项目案例集 &mdash; OpenXLabEdu  documentation</title>
@@ -11,11 +11,10 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -29,15 +28,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="../index.html" class="icon icon-home">
-            OpenXLabEdu
+            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -82,9 +77,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../xedu_hub.html">深度学习工具库XEduHub</a></li>
-      <li class="breadcrumb-item active">XEduHub项目案例集</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../xedu_hub.html">深度学习工具库XEduHub</a> &raquo;</li>
+      <li>XEduHub项目案例集</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/xedu_hub/projects.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -95,10 +90,10 @@
            <div itemprop="articleBody">
              
   <section id="xeduhub">
-<h1>XEduHub项目案例集<a class="headerlink" href="#xeduhub" title="Permalink to this heading"></a></h1>
+<h1>XEduHub项目案例集<a class="headerlink" href="#xeduhub" title="Permalink to this headline"></a></h1>
 <p>借助XEduHub可以实现应用多元AI模型去解决复杂的问题。</p>
 <section id="id1">
-<h2>目标检测+关键点检测<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<h2>目标检测+关键点检测<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <p>以下代码可以将一张图片中所有的手识别出来，并对每一只手提取关键点。这可以提高关键点检测的准确度和实现多目标检测的任务。</p>
 <p>具体实现方式为：我们首先使用<code class="docutils literal notranslate"><span class="pre">det_hand</span></code>进行手目标检测，拿到所有的检测框<code class="docutils literal notranslate"><span class="pre">bbox</span></code>。随后对每个检测框中的手进行关键点提取。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span> <span class="c1"># 导入库</span>
@@ -114,7 +109,7 @@
 </div>
 </section>
 <section id="id2">
-<h2>实时人体关键点识别<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<h2>实时人体关键点识别<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <p>以下代码可以实时检测摄像头中出现的多个人，并对每一个人体提取关键点。</p>
 <p>具体实现方式为：我们首先将实时视频中每一帧的图像进行人体目标检测，拿到所有的检测框<code class="docutils literal notranslate"><span class="pre">bbox</span></code>及其坐标信息，绘制检测框。随后对每个检测框中的人体进行关键点提取。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
@@ -141,7 +136,7 @@
 </div>
 </section>
 <section id="id3">
-<h2>拓展：视频中的人体关键点识别<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<h2>拓展：视频中的人体关键点识别<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
 <p>该项目可以识别视频中出现的人体的关键点。</p>
 <p>具体实现方式与上面的代码类似，区别就是从摄像头的实时视频流变成了本地的视频流，对视频每一帧的操作不变。最后，我们还需要将处理好的每一帧的图片再合成为视频。</p>
 <p>在这里我们将这个任务分成两步：Step1: 利用关键点识别处理视频的每一帧并保存到本地；Step2: 将本地的视频帧合成为视频。</p>
@@ -204,7 +199,7 @@
 </div>
 </section>
 <section id="id4">
-<h2>人脸检测控制舵机方向<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<h2>人脸检测控制舵机方向<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
 <p>以下代码可以运行在Arduino开发板上，实现通过跟随人脸位置来控制舵机方向。具体实现方式为：通过人脸检测模型得到人脸检测框的坐标并计算x轴方向的中心点，根据中心点的位置判断是左转还是右转。通过pinpong库控制舵机的转向。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
 <span class="kn">from</span> <span class="nn">pinpong.board</span> <span class="kn">import</span> <span class="n">Board</span><span class="p">,</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">Servo</span>
@@ -244,12 +239,12 @@
 </div>
 </section>
 <section id="id5">
-<h2>识行小车<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<h2>识行小车<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
 <p>我们做了一辆能在驾驶过程中自动阅读交通指令并做出相应运动的小车。</p>
 <p><img alt="../_images/car_ocr.gif" src="../_images/car_ocr.gif" /></p>
 <p>功能描述：一辆能在驾驶过程中自动阅读交通指令并做出相应运动的小车。</p>
 <p>技术实现方式：使用无线摄像头实时获取小车行驶的第一视角，并让一台上位机无线接收图像，再对接收的图像使用XEduHub进行文字识别的离线OCR技术，最后根据识别的文本下发运动指令。</p>
-<p>该项目中的小车是JTANK履带车，该小车的无线摄像头和运动指令已经经过封装，由于该小车用的不是普通的ESP32的配置，详细配置请参考<a href="https://gitee.com/jt123_456/jtank">JTANK履带车简介</a>。如果你的小车是普通的ESP32，那关于该小车的配置方法可参考<a href="https://xedu.readthedocs.io/zh/master/scitech_tools/camera.html#">科创神器ESP32-CAM小型摄像头模块</a>。识行小车使用的文字识别技术采用的是XEduHub现成模型，模型大小只要10M。通过发送HTTP GET请求来获取视频流和控制小车的运动。上位机的参考代码如下。</p>
+<p>该项目中的小车是JTANK履带车，该小车的无线摄像头和运动指令已经经过封装，由于该小车用的不是普通的ESP32的配置，详细配置请参考<a href="https://gitee.com/jt123_456/jtank">JTANK履带车简介</a>。如果你的小车是普通的ESP32，那关于该小车的配置方法可参考<a href="https://xedu.readthedocs.io/zh/master/how_to_use/scitech_tools/camera.html">科创神器ESP32-CAM小型摄像头模块</a>。识行小车使用的文字识别技术采用的是XEduHub现成模型，模型大小只要10M。通过发送HTTP GET请求来获取视频流和控制小车的运动。上位机的参考代码如下。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">requests</span>

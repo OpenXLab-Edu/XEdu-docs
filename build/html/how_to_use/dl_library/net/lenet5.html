@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>图像分类模型LeNet-5 &mdash; OpenXLabEdu  documentation</title>
@@ -11,11 +11,10 @@
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../../../about.html" />
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -29,15 +28,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="../../../index.html" class="icon icon-home">
-            OpenXLabEdu
+            <a href="../../../index.html" class="icon icon-home"> OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -97,11 +92,11 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../../../how_to_use.html">如何用XEdu借助AI解决真实问题</a></li>
-          <li class="breadcrumb-item"><a href="../../dl_library.html">深度学习知识库</a></li>
-          <li class="breadcrumb-item"><a href="../network_introduction.html">经典网络模型介绍</a></li>
-      <li class="breadcrumb-item active">图像分类模型LeNet-5</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../how_to_use.html">如何用XEdu借助AI解决真实问题</a> &raquo;</li>
+          <li><a href="../../dl_library.html">深度学习知识库</a> &raquo;</li>
+          <li><a href="../network_introduction.html">经典网络模型介绍</a> &raquo;</li>
+      <li>图像分类模型LeNet-5</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../_sources/how_to_use/dl_library/net/lenet5.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -112,33 +107,33 @@
            <div itemprop="articleBody">
              
   <section id="lenet-5">
-<h1>图像分类模型LeNet-5<a class="headerlink" href="#lenet-5" title="Permalink to this heading"></a></h1>
+<h1>图像分类模型LeNet-5<a class="headerlink" href="#lenet-5" title="Permalink to this headline"></a></h1>
 <p><a class="reference external" href="https://ieeexplore.ieee.org/document/6795724">Backpropagation Applied to Handwritten Zip Code Recognition</a></p>
 <section id="id1">
-<h2>简介<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<h2>简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <p>LeNet是一种用于手写体字符识别的非常高效的卷积神经网络，通常LeNet指LeNet-5。</p>
 </section>
 <section id="id2">
-<h2>网络结构<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<h2>网络结构<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <p>LeNet的网络结构示意图如下所示：</p>
 <p><img alt="../../../_images/LeNet5.jpg" src="../../../_images/LeNet5.jpg" /></p>
 <p>即输入手写字符图片经过C1，C2，C3这3个卷积神经网络后，再经过两层全连接神经网络，输出最终的分类结果。</p>
 </section>
 <section id="id3">
-<h2>优点<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<h2>优点<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p>简单，易于初学者学习与使用</p></li>
 <li><p>运行速度快，对硬件设备没有要求</p></li>
 </ul>
 </section>
 <section id="id4">
-<h2>适用领域<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<h2>适用领域<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p>手写体字符识别</p></li>
 </ul>
 </section>
 <section id="id5">
-<h2>参考文献<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<h2>参考文献<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
 <div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>@ARTICLE{6795724,
   author={Y. {LeCun} and B. {Boser} and J. S. {Denker} and D. {Henderson} and R. E. {Howard} and W. {Hubbard} and L. D. {Jackel}},
   journal={Neural Computation},

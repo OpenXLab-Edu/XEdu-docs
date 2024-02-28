@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BaseDeploy：服务于XEdu的模型部署工具 &mdash; OpenXLabEdu  documentation</title>
@@ -11,11 +11,10 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -29,15 +28,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="../index.html" class="icon icon-home">
-            OpenXLabEdu
+            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -84,9 +79,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../basedeploy.html">模型部署库BaseDeploy</a></li>
-      <li class="breadcrumb-item active">BaseDeploy：服务于XEdu的模型部署工具</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../basedeploy.html">模型部署库BaseDeploy</a> &raquo;</li>
+      <li>BaseDeploy：服务于XEdu的模型部署工具</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/basedeploy/introduction.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -97,15 +92,15 @@
            <div itemprop="articleBody">
              
   <section id="basedeploy-xedu">
-<h1>BaseDeploy：服务于XEdu的模型部署工具<a class="headerlink" href="#basedeploy-xedu" title="Permalink to this heading"></a></h1>
+<h1>BaseDeploy：服务于XEdu的模型部署工具<a class="headerlink" href="#basedeploy-xedu" title="Permalink to this headline"></a></h1>
 <p>模型部署是AI应用的重要一环，因其涉及的框架量大、推理代码风格不一等问题，往往会对初学者的上手造成一定的难度。为此，<code class="docutils literal notranslate"><span class="pre">XEdu</span></code>团队推出了模型部署工具<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>，其代码风格向<code class="docutils literal notranslate"><span class="pre">MMEdu</span></code>对齐，通过对推理核心代码的封装，目标是用户能够更加专注于科创作品功能的设计，而将AI模块作为接口的黑盒，能够对其返回的结果进行二次创作。当前，BaseDeploy主要支持onnxruntime的部署形式，只要将模型文件转换为onnx格式，即可轻松部署到绝大多数硬件上。</p>
 <p>onnxruntime介绍：<a class="reference external" href="https://github.com/microsoft/onnxruntime">https://github.com/microsoft/onnxruntime</a></p>
 <p>文档涉及的部分代码见XEdu帮助文档配套项目集：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&amp;sc=645caab8a8efa334b3f0eb24#public">https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&amp;sc=645caab8a8efa334b3f0eb24#public</a></p>
 <section id="id1">
-<h2>基本功能说明<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<h2>基本功能说明<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>提供多种便于模型部署的函数，包括了推理与相关库启动部署。</p>
 <section id="id2">
-<h3>推理功能<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<h3>推理功能<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
 <p>首先<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>对不同任务的模型进行统一的推理管理，对于用户来说仅需更换onnx模型的路径，<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>会自动匹配对应的任务类型，并将推理和显示的内部流程进行封装。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pred_onx</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span> <span class="n">show</span><span class="p">,</span> <span class="n">get_img</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="n">show_path</span><span class="p">)</span>
 </pre></div>
@@ -117,12 +112,12 @@
 <p><code class="docutils literal notranslate"><span class="pre">score</span></code>：识别阈值，无论是分类任务还是检测任务，高于score的置信度的图片才会被输出到推理结果，默认为0.65。</p>
 <p><code class="docutils literal notranslate"><span class="pre">show_path</span></code>：是否显示图片路径，默认为False。</p>
 <section id="id3">
-<h4>返回参数说明<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h4>
+<h4>返回参数说明<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h4>
 <p>通过BaseDeploy的模型完成推理后，输出的格式与<a class="reference external" href="https://github.com/microsoft/onnxruntime">onnxruntime</a>推理保持一致，用户可自行进行推理结果后处理操作或使用内置的<code class="docutils literal notranslate"><span class="pre">model.print_result</span></code>函数进行推理结果格式化。</p>
 </section>
 </section>
 <section id="id4">
-<h3>格式化推理结果<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<h3>格式化推理结果<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
 <p>为了便于用户查看推理结果，<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>提供<code class="docutils literal notranslate"><span class="pre">model.print_result</span></code>函数供用户进行推理结果格式化操作。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">print_result</span><span class="p">(</span><span class="n">pred_onx</span><span class="p">)</span>
 </pre></div>
@@ -151,7 +146,7 @@
 </pre></div>
 </div>
 <section id="id5">
-<h4>文件夹推理<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h4>
+<h4>文件夹推理<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>同时提供对文件夹中的图片推理的功能。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">bd</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
@@ -171,7 +166,7 @@
 <p><img alt="../_images/dir_detect.JPG" src="../_images/dir_detect.JPG" /></p>
 </section>
 <section id="id6">
-<h4>可视化效果保存<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h4>
+<h4>可视化效果保存<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h4>
 <p>文件推理后，可以保存在本地。将<code class="docutils literal notranslate"><span class="pre">show_path</span></code>设置为True，即可以<code class="docutils literal notranslate"><span class="pre">文件名+推理结果</span></code>作为最终的消息回显（该功能仅对以<code class="docutils literal notranslate"><span class="pre">img_path</span></code>路径形式传入的方式有效）</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">bd</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
@@ -188,7 +183,7 @@
 <p><img alt="../_images/path_detect.JPG" src="../_images/path_detect.JPG" /></p>
 </section>
 <section id="id7">
-<h4>可视化效果获取<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h4>
+<h4>可视化效果获取<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h4>
 <ul class="simple">
 <li><p>这里的<code class="docutils literal notranslate"><span class="pre">get_img='pil/cv2'</span></code>与前面的<code class="docutils literal notranslate"><span class="pre">show_path=True</span></code>的区别在于：前者以变量传参形式返回，不保存在本地磁盘；后者以保存路径字符串返回，方便调试查看。前者更适合在项目开发中使用。</p></li>
 </ul>
@@ -209,7 +204,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">img_path</span></code>：待推理的图片路径。</p>
 <p><code class="docutils literal notranslate"><span class="pre">get_img</span></code>：<code class="docutils literal notranslate"><span class="pre">model.inference</span></code>中内置的参数，设为<code class="docutils literal notranslate"><span class="pre">pil</span></code>表示回传的图片可供<code class="docutils literal notranslate"><span class="pre">pil</span></code>显示。</p>
 <section id="pil">
-<h5>返回形式1：PIL方式<a class="headerlink" href="#pil" title="Permalink to this heading"></a></h5>
+<h5>返回形式1：PIL方式<a class="headerlink" href="#pil" title="Permalink to this headline"></a></h5>
 <p>PIL方式适合Jupyter中进行交互，下面是相关示例说明。</p>
 <ul class="simple">
 <li><p>图像分类</p></li>
@@ -221,7 +216,7 @@
 <p><img alt="../_images/back_detect_pil.JPG" src="../_images/back_detect_pil.JPG" /></p>
 </section>
 <section id="cv2">
-<h5>返回形式2：cv2方式<a class="headerlink" href="#cv2" title="Permalink to this heading"></a></h5>
+<h5>返回形式2：cv2方式<a class="headerlink" href="#cv2" title="Permalink to this headline"></a></h5>
 <p>cv2方式适合调用屏幕显示等操作。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">bd</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
@@ -248,7 +243,7 @@
 </section>
 </section>
 <section id="onnx">
-<h4>强大的ONNX模型尺寸解析能力<a class="headerlink" href="#onnx" title="Permalink to this heading"></a></h4>
+<h4>强大的ONNX模型尺寸解析能力<a class="headerlink" href="#onnx" title="Permalink to this headline"></a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>为适配图像任务，可自动解析未经<code class="docutils literal notranslate"><span class="pre">XEdu</span></code>标记的ONNX模型的输入张量尺寸，并进行图像预处理和输出后处理，输出结果将不会带有类别信息。<a class="reference external" href="https://xedu.readthedocs.io/zh/master/support_resources/resources.html">学习资源库</a>提供了部分ONNX模型下载链接。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">bd</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
@@ -268,7 +263,7 @@
 <p><img alt="../_images/ONNX_detect.JPG" src="../_images/ONNX_detect.JPG" /></p>
 </section>
 <section id="id8">
-<h4>通用的onnx推理能力<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h4>
+<h4>通用的onnx推理能力<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>还提供<code class="docutils literal notranslate"><span class="pre">diy_inference</span></code>函数，可以推理任意的ONNX模型，这里并不强调是由XEdu转换而来的模型，只要是ONNX格式，均可以类似的代码风格进行推理。但是需要注意，不同的任务对应的前处理、后处理不同，需要用户自行实现。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">bd</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
@@ -283,10 +278,10 @@
 </section>
 </section>
 <section id="id9">
-<h3>与其他库配合的部署<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
+<h3>与其他库配合的部署<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>通过<code class="docutils literal notranslate"><span class="pre">model.run()</span></code>调用内置的多种部署工具，包括<code class="docutils literal notranslate"><span class="pre">Gradio</span></code>，<code class="docutils literal notranslate"><span class="pre">EasyAPI</span></code>，<code class="docutils literal notranslate"><span class="pre">SIoT</span></code>和<code class="docutils literal notranslate"><span class="pre">PywebIO</span></code>等，实现模型即黑箱的功能，把AI推理简单的视作一个函数。</p>
 <section id="gradio">
-<h4>Gradio<a class="headerlink" href="#gradio" title="Permalink to this heading"></a></h4>
+<h4>Gradio<a class="headerlink" href="#gradio" title="Permalink to this headline"></a></h4>
 <p>Gradio 是一种简单易用的Web界面工具，它可以让你快速地将模型部署到Web应用程序中。<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>通过对<code class="docutils literal notranslate"><span class="pre">Gradio</span></code>进行封装，一键启动。为了保证<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>的轻量性，<code class="docutils literal notranslate"><span class="pre">Gradio</span></code>库在安装时并不会被同步安装，如想使用该功能在使用前请使用<code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">gradio</span></code>进行依赖库的安装。</p>
 <p><code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>支持在载入模型后使用<code class="docutils literal notranslate"><span class="pre">run_gradio</span></code>函数一键启动，启动后输入界面可选择两个参数，一是点击后选择路径，二是设置<code class="docutils literal notranslate"><span class="pre">score</span></code>，低于<code class="docutils literal notranslate"><span class="pre">score</span></code>的图片将不会被绘制，详情可见运行后日志。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
@@ -302,7 +297,7 @@
 </ul>
 </section>
 <section id="fastapi">
-<h4>FastAPI<a class="headerlink" href="#fastapi" title="Permalink to this heading"></a></h4>
+<h4>FastAPI<a class="headerlink" href="#fastapi" title="Permalink to this headline"></a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">FastAPI</span></code> 是一个Python Web 框架，用于构建高性能的 Web 应用程序和 API。它是基于 Python 类型提示和异步编程的优势，提供了快速、易于使用和具有强大功能的开发体验。<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>通过对<code class="docutils literal notranslate"><span class="pre">FastAPI</span></code>的集成，可一键启动接口，并支持json或file的回传形式，用户可自行选择。
 值得注意的是，由于<code class="docutils literal notranslate"><span class="pre">FastAPI</span></code>本身的限制，目前暂不支持在<code class="docutils literal notranslate"><span class="pre">Jupyter</span></code>中调用该函数。</p>
 <ul class="simple">
@@ -323,7 +318,7 @@
 <p>运行后出现下图所示的内容，即代表<code class="docutils literal notranslate"><span class="pre">FastAPI</span></code>启动成功。
 <img alt="../_images/FastAPI_command_start.JPG" src="../_images/FastAPI_command_start.JPG" /></p>
 <section id="id10">
-<h5>如何调用接口<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h5>
+<h5>如何调用接口<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h5>
 <p>在用户端如需调用<code class="docutils literal notranslate"><span class="pre">FastAPI</span></code>启动的接口，仅需设置接口地址<code class="docutils literal notranslate"><span class="pre">url</span></code>和图片路径<code class="docutils literal notranslate"><span class="pre">img_path</span></code>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://192.168.31.38:1956/upload&quot;</span>
@@ -343,7 +338,7 @@
 </section>
 </section>
 <section id="siot">
-<h4>SIoT<a class="headerlink" href="#siot" title="Permalink to this heading"></a></h4>
+<h4>SIoT<a class="headerlink" href="#siot" title="Permalink to this headline"></a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">SIoT</span></code>为“虚谷物联”项目的核心软件，是为了帮助中小学生理解物联网原理，并且能够基于物联网技术开发各种创意应用。因为其重点关注物联网数据的收集和导出，是采集科学数据的最好选择之一。</p>
 <p><code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>通过对<code class="docutils literal notranslate"><span class="pre">SIoT</span></code>进行封装，支持一键将后端推理从本地迁移至启动SIoT推理服务的程序。</p>
 <p>要想使用<code class="docutils literal notranslate"><span class="pre">SIoT</span></code>，需要一个<code class="docutils literal notranslate"><span class="pre">SIoT服务端</span></code>的<code class="docutils literal notranslate"><span class="pre">IP地址</span></code>，以及使用<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>启动监听和传输推理的服务。</p>
@@ -360,7 +355,7 @@
 <p><img alt="../_images/SIoT_server.JPG" src="../_images/SIoT_server.JPG" /></p>
 </section>
 <section id="pywebio">
-<h4>PywebIO<a class="headerlink" href="#pywebio" title="Permalink to this heading"></a></h4>
+<h4>PywebIO<a class="headerlink" href="#pywebio" title="Permalink to this headline"></a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">PyWebIO</span></code>是一个用于构建交互式Web应用程序的Python库。它提供了一组简单且直观的函数和装饰器，使得开发人员可以在Web浏览器中使用Python来创建丰富的用户界面和交互体验，而无需编写HTML、CSS或JavaScript代码。<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>通过对<code class="docutils literal notranslate"><span class="pre">PywebIO</span></code>的封装，支持一键启动推理服务界面。
 值得注意的是，由于<code class="docutils literal notranslate"><span class="pre">Pywebio</span></code>本身的限制，目前暂不支持在<code class="docutils literal notranslate"><span class="pre">Jupyter</span></code>中调用该函数。</p>
 <ul class="simple">
@@ -386,13 +381,13 @@
 </section>
 </section>
 <section id="mind-basedeploy">
-<h3>Mind+中的BaseDeploy积木块<a class="headerlink" href="#mind-basedeploy" title="Permalink to this heading"></a></h3>
+<h3>Mind+中的BaseDeploy积木块<a class="headerlink" href="#mind-basedeploy" title="Permalink to this headline"></a></h3>
 <p>使用Mind+V1.7.2及以上版本，在python模式用户库中加载此扩展，AI模型部署工具库。</p>
 <p>Gitee链接：<a class="reference external" href="https://gitee.com/liliang9693/ext-BaseDeploy">https://gitee.com/liliang9693/ext-BaseDeploy</a></p>
 <section id="id11">
-<h4>使用说明<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h4>
+<h4>使用说明<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h4>
 <section id="id12">
-<h5>第一步：加载积木库<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h5>
+<h5>第一步：加载积木库<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h5>
 <ul class="simple">
 <li><p>如果联网情况下，打开Mind+用户库粘贴本仓库的链接即可加载：</p></li>
 </ul>
@@ -404,18 +399,18 @@
 <p><img alt="../_images/offline_block_2.png" src="../_images/offline_block_2.png" /></p>
 </section>
 <section id="python">
-<h5>第二步：安装python库<a class="headerlink" href="#python" title="Permalink to this heading"></a></h5>
+<h5>第二步：安装python库<a class="headerlink" href="#python" title="Permalink to this headline"></a></h5>
 <p>打开库管理，输入BaseDeploy运行，提示successfully即可。</p>
 <p>注：WARNING是提醒，可以忽略；请及时更新BaseDeploy和BaseDT用户库，以获得更稳定、更强大的模型部署使用体验。</p>
 <p><img alt="../_images/install_lab.png" src="../_images/install_lab.png" /></p>
 </section>
 <section id="id13">
-<h5>第三步：导入模型<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h5>
+<h5>第三步：导入模型<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h5>
 <p>将onnx模型文件拖到项目中的文件中。</p>
 <p><img alt="../_images/import.png" src="../_images/import.png" /></p>
 </section>
 <section id="id14">
-<h5>第四步：开始编程！<a class="headerlink" href="#id14" title="Permalink to this heading"></a></h5>
+<h5>第四步：开始编程！<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h5>
 <p>至此，即可拖动积木块开始快乐编程啦，运行示例如下：</p>
 <p><img alt="../_images/case.png" src="../_images/case.png" /></p>
 </section>
@@ -423,7 +418,7 @@
 </section>
 </section>
 <section id="id15">
-<h2>参考链接<a class="headerlink" href="#id15" title="Permalink to this heading"></a></h2>
+<h2>参考链接<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h2>
 <p>Gradio：<a class="reference external" href="https://github.com/gradio-app/gradio">https://github.com/gradio-app/gradio</a></p>
 <p>FastAPI：<a class="reference external" href="https://github.com/tiangolo/fastapi">https://github.com/tiangolo/fastapi</a></p>
 <p>SIOT：<a class="reference external" href="https://github.com/vvlink/SIoT">https://github.com/vvlink/SIoT</a></p>
