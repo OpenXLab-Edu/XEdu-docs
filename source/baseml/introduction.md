@@ -6,25 +6,6 @@
 
 ## 机器学习典型算法一览表
 
-<style>
-  table {
-  width: 100%; /* 根据需要设置宽度 */
-  table-layout: fixed; /* 这可以帮助强制内容换行 */
-  }
-  th, td {
-    border: 1px solid black;
-    text-align: left;
-    padding: 8px;
-    vertical-align: top; /* 确保内容从顶部开始，以便有更多空间进行扩展 */
-    line-height: 1.5; /* 增加行高以改善文本的可读性和视觉隔离 */
-  }
-  .wrapword {
-    word-wrap: break-word; /* 允许单词在达到指定宽度时自动换行 */
-    overflow-wrap: break-word; /* 在长单词或URL等无法在行内断开的情况下也能进行断行 */
-    max-width: 130px; /* 设置单元格的最大宽度，根据实际需要调整 */
-    word-break: break-all;
-  }
-</style>
 <table class="docutils align-default">
 <thead>
   <tr>
@@ -108,6 +89,7 @@
   </tr>
 </tbody>
 </table>
+
 
 
 
