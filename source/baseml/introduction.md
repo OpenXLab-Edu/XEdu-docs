@@ -15,6 +15,8 @@
     border: 1px solid black;
     text-align: left;
     padding: 8px;
+    vertical-align: top; /* 确保内容从顶部开始，以便有更多空间进行扩展 */
+    line-height: 1.5; /* 增加行高以改善文本的可读性和视觉隔离 */
   }
   .wrapword {
     word-wrap: break-word; /* 允许单词在达到指定宽度时自动换行 */
@@ -106,6 +108,7 @@
   </tr>
 </tbody>
 </table>
+
 
 
 
