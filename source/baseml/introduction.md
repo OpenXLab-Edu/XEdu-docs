@@ -266,7 +266,7 @@ val_y = val_data.values[:,[3]]
 model.valid(x=val_x,y=val_y,metrics='acc') 
 ```
 
-`valid`方法的返回值有2个，分别是验证集的推理结果和评估指标。
+`valid`方法的返回值有2个，分别是评估指标计算结果和验证集的推理结果。
 
 ### 5. 模型测试
 
