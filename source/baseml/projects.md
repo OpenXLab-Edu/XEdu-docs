@@ -8,11 +8,9 @@
 
 项目地址：[https://www.openinnolab.org.cn/pjlab/project?id=64140719ba932064ea956a3e&sc=635638d69ed68060c638f979#public](https://www.openinnolab.org.cn/pjlab/project?id=64140719ba932064ea956a3e&sc=635638d69ed68060c638f979#public)
 
-### 项目核心功能和实现效果展示：
+### 项目核心功能
 
 借助[决策树](https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id5)算法完成道路智能决策，可通过学习和实验了解决策树的工作原理，掌握决策树分类任务编程的流程。
-
-![](https://www.openinnolab.org.cn/webdav/635638d69ed68060c638f979/638028c0777c254264da4dd7/current/assets/%E5%88%A9%E7%94%A8%E5%8E%86%E5%8F%B2%E6%95%B0%E6%8D%AE%E7%94%9F%E6%88%90%E5%86%B3%E7%AD%96%E6%A0%91.png)
 
 ### 数据说明：
 
@@ -23,8 +21,6 @@
 第2列：预计车流量 ；
 
 第3列：分类结果（道路能否通行）：(1) 不可通行, (2) 可通行。
-
-![](https://www.openinnolab.org.cn/webdav/635638d69ed68060c638f979/638028c0777c254264da4dd7/current/assets/screenshot-20221205-111611.png)
 
 ### 实现步骤：
 
@@ -86,7 +82,7 @@ X_train, y_train, X_test, y_test = img_set.get_data(method='flatten')
 # 导入库，从BaseML导入分类模块
 from BaseML import Classification as cls
 # 实例化模型，模型名称选择MLP（Multilayer Perceptron）
-model=cls(algorithm = 'MLP',n_hidden = (100,100))
+model=cls('MLP',n_hidden = (100,100))
 # 元组中元素的数量代表隐藏层的层数，每个元素的值代表每个隐藏层中神经元数
 # n_hidden = (100,100)表示2层神经元数量为100的隐藏层,
 # 载入数据，从变量载入
@@ -192,7 +188,7 @@ print(loc.inverse_transform(test_y))
 
 ```
 # # 实例化模型，设置k=3
-model1=cls(algorithm = 'KNN',n_neighbors =3)
+model1=cls('KNN',n_neighbors =3)
 model1.load_dataset(X = df, y = df, type ='pandas', x_column = [1,2,3,4],y_column=[5])
 model1.train()
 # 保存模型
@@ -225,7 +221,7 @@ import numpy as np
 import pandas as pd
 from BaseML import Regression as reg
 # 实例化模型
-model = reg(algorithm = 'LinearRegression')
+model = reg('LinearRegression')
 # 指定数据集，需要指定类型
 model.load_dataset("蛋糕尺寸与价格.csv", type='csv', x_column=[0],y_column = [1])
 # 开始训练
@@ -289,7 +285,7 @@ plt.show()
 
 ```
 # 实例化模型
-model = clt(algorithm = 'Kmeans', N_CLUSTERS=2)
+model = clt('Kmeans', N_CLUSTERS=2)
 # 指定数据集，需要指定类型
 model.load_dataset(X = X, type='numpy', x_column=[0,1])
 # 开始训练
@@ -355,7 +351,7 @@ from BaseML import Cluster as clt
 # 读取数据
 df = pd.read_csv("车辆聚类.csv")
 # 实例化模型
-model = clt(algorithm = 'Kmeans', N_CLUSTERS=2)
+model = clt('Kmeans', N_CLUSTERS=2)
 # 指定数据集，需要显式指定类型
 model.load_dataset(X = df, type='pandas', x_column=[1,2])
 # 开始训练

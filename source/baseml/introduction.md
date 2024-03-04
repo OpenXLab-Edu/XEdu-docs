@@ -132,7 +132,7 @@ model=cls('CART')
 
 ```
 # 实例化模型，模型名称选择KNN(K Nearest Neighbor)
-model = cls(algorithm = 'KNN',n_neighbors=3)
+model = cls('KNN',n_neighbors=3)
 ```
 
 `n_neighbors`表示k的值，参数需设置为整数，默认值为5。
@@ -148,7 +148,7 @@ model=cls('SVM')
 
 ```
 # 实例化模型，模型名称选择AdaBoost（Adaptive Boosting）
-model=cls(algorithm = 'AdaBoost'，n_estimators = 50)
+model=cls('AdaBoost'，n_estimators = 50)
 ```
 
 `n_estimators`表示弱学习器数量，默认值为100。
@@ -157,14 +157,14 @@ model=cls(algorithm = 'AdaBoost'，n_estimators = 50)
 
 ```
 # 实例化模型，模型名称选择RandomForest
-model=cls(algorithm = 'RandomForest')
+model=cls('RandomForest')
 ```
 
 #### 多层感知机（MLP）
 
 ```
 # 实例化模型，模型名称选择MLP（Multilayer Perceptron），n_hidden = (100,100)表示2层神经元数量为100的隐藏层
-model=cls(algorithm = 'MLP',n_hidden = (100,100))
+model=cls('MLP',n_hidden = (100,100))
 ```
 
 `n_hidden`表示隐藏层，参数值设置为一个元组，元组的元素数表示隐藏层数，元素的值依次表示隐藏层的神经元数。
@@ -323,35 +323,35 @@ from BaseML import Regression as reg
 
 ```
 # 实例化模型，模型名称选择'LinearRegression'
-model = reg(algorithm = 'LinearRegression')
+model = reg('LinearRegression')
 ```
 
 #### 决策树回归（CART）
 
 ```
 # 实例化模型，模型名称选择'DecisionTree'
-model = reg(algorithm = 'DecisionTree')
+model = reg('DecisionTree')
 ```
 
 #### 随机森林回归（RandomForest）
 
 ```
 # 实例化模型，模型名称选择'RandomForest'
-model = reg(algorithm = 'RandomForest')
+model = reg('RandomForest')
 ```
 
 #### 支持向量机回归（SVM）
 
 ```
 # 实例化模型，模型名称选择'SVM'
-model = reg(algorithm = 'SVM')
+model = reg('SVM')
 ```
 
 #### 自适应增强回归（AdaBoost）
 
 ```
 # 实例化模型，模型名称选择'AdaBoost'
-model = reg(algorithm = 'AdaBoost'，n_estimators = 50)
+model = reg('AdaBoost'，n_estimators = 50)
 ```
 
 `n_estimators`表示弱学习器数量，默认值为100。
@@ -360,7 +360,7 @@ model = reg(algorithm = 'AdaBoost'，n_estimators = 50)
 
 ```
 # 实例化模型，模型名称选择MLP（Multilayer Perceptron），n_hidden = (100,100)表示2层神经元数量为100的隐藏层
-model=reg(algorithm = 'MLP',n_hidden = (100,100))
+model=reg('MLP',n_hidden = (100,100))
 ```
 
 `n_hidden`表示隐藏层，参数值设置为一个元组，元组的元素数表示隐藏层数，元素的值依次表示隐藏层的神经元数。
@@ -411,7 +411,7 @@ k均值（k-means）算法是一种基于数据间距离迭代求解的聚类算
 
 ```
 # 实例化模型，模型名称选择'KMeans',N_CLUSTERS设置为3
-model = clt(algorithm='KMeans',N_CLUSTERS=3)
+model = clt('KMeans',N_CLUSTERS=3)
 ```
 
 `N_CLUSTERS`表示k的值，默认值为5。
@@ -422,7 +422,7 @@ model = clt(algorithm='KMeans',N_CLUSTERS=3)
 
 ```
 # 实例化模型，模型名称选择'SpectralClustering',N_CLUSTERS设置为3
-model = clt(algorithm='SpectralClustering',N_CLUSTERS=3)
+model = clt('SpectralClustering',N_CLUSTERS=3)
 ```
 
 `N_CLUSTERS`表示子图的数量，默认值为5。
@@ -433,7 +433,7 @@ Agglomerative clutsering 是一种自底而上的层次聚类方法，它能够�
 
 ```
 # 实例化模型，模型名称选择'Agglomerative clustering',N_CLUSTERS设置为3
-model = clt(algorithm='Agglomerative clustering',N_CLUSTERS=3)
+model = clt('Agglomerative clustering',N_CLUSTERS=3)
 ```
 
 `N_CLUSTERS`表示聚类的数量，默认值为5。
