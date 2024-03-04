@@ -200,7 +200,7 @@ tx,ty,val_x,val_y = split_tab_dataset(path,data_column=range(0,4),label_column=4
 
  `random_seed`: 随机数种子，默认42。设定相同的随机数种子使得划分结果可复现。 
 
-`normalize`: 一个布尔值，表示是否要对图像数据进行归一化处理。设定normalize=True时会额外返回一个归一化器scaler，代表归一化过程中对数据进行的操作，即如需将数据集外的其他数据进行同样的归一化操作，可以直接使用返回的归一化器data = scaler.transform(data)。
+`normalize`: 一个布尔值，表示是否要对数据进行归一化处理。设定normalize=True时会额外返回一个归一化器scaler，代表归一化过程中对数据进行的操作，即如需将数据集外的其他数据进行同样的归一化操作，可以直接使用返回的归一化器，使用方法是data = scaler.transform(data)。
 
 **返回值：** 
 
