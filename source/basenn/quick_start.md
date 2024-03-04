@@ -105,7 +105,7 @@ print("分类正确率为：",cal_accuracy(test_y, res))
 
 ```python
 # 用某组测试数据查看模型效果
-data = np.array([test_x[0]])
+data = [test_x[0]]
 checkpoint = 'checkpoints/iris_ckpt/basenn.pth'
 res = model.inference(data=data, checkpoint=checkpoint)
 model.print_result(res) # 输出字典格式结果
