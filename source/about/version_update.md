@@ -248,6 +248,10 @@ det：
 
 #### 4）BaseDT
 
+##### V0.1.3 20240229
+
+1. split_tab_dataset()新增参数column_name,可传入列表,自定义列名。
+
 ##### V0.1.2 20230914
 
 1. 修正了FasterRCNN模型输入图像尺寸的问题。
