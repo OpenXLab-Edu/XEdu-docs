@@ -157,6 +157,8 @@ model = nn('reg')
 model.load_tab_data('house_price_data_norm_train.csv',batch_size=1024) # 载入数据
 ```
 
+注：载入的数据集是做归一化之后并完成数据拆分的训练集。原项目中涉及数据归一化处理的步骤，使用sklearn.preprocessing的MinMaxScaler类，将每个特征缩放到给定的范围（在您的案例中是0到1），这是通过将最小值映射到0，最大值映射到1来实现的。对于中间的值，它们根据最大和最小值线性地缩放。
+
 ### 第3步 搭建一个3层的全连接神经网络
 
 ```
@@ -188,7 +190,7 @@ val_x = np.loadtxt(val_path, dtype=float, delimiter=',',skiprows=1,usecols=range
 val_y = np.loadtxt(val_path, dtype=float, delimiter=',',skiprows=1,usecols=4) # 读取预测值列
 ```
 
-模型推理。
+对验证集完成模型推理。
 
 ```
 # 导入库
@@ -212,6 +214,34 @@ plt.show()
 对比输出，查看回归的效果，觉得效果还是很不错的。
 
 ![](../images/basenn/huigui.png)
+
+### 第6步 模型应用
+
+最后，可将模型应用于推理新数据。输入一组新的数据进行模型推理，需先完成数据处理，涉及的数据处理的代码会较长，此处是为了应用之前在训练集 (x) 上通过 fit_transform 方法学习到的scaler来转换 val_x。这确保了数据的一致性，因为对于模型来说，重要的是以相同的方式缩放训练数据和验证/测试数据。
+
+```
+# 导入库
+from BaseNN import nn
+# 声明模型
+model = nn('reg') 
+# 输入一组数据
+data = [[4,5,20,2]]
+# 数据预处理
+from sklearn.preprocessing import MinMaxScaler
+import numpy as np
+train_path = 'data/house-price-data.csv'
+x = np.loadtxt(train_path, dtype=float, delimiter=',',skiprows=1,usecols=[4,5,10,12]) # 读取特征列
+scaler = MinMaxScaler() # 创建MinMaxScaler实例
+x = scaler.fit_transform(x) # 将训练集的特征x拟合并转换到0-1范围并获取scaler
+data = scaler.transform(data)
+
+# 模型推理
+y_pred = model.inference(data,checkpoint = 'checkpoints/ckpt2/basenn.pth')  # 对该数据进行预测
+#输出预测
+print('我的房价预测结果是：',y_pred[0][0],'（单位：千美元）')
+```
+
+
 
 ## 挑战使用BaseNN完成第一个自然语言处理项目：自动写诗机
 
