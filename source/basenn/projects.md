@@ -32,7 +32,7 @@ model.load_img_data("/data/MELLBZ/mnist/training_set",color="grayscale",batch_si
 
 ```
 # 声明模型
-model = nn()
+model = nn('cls')
 # 自己搭建网络（我们搭建的是LeNet网络，可改变参数搭建自己的网络）
 model.add('Conv2D', size=(1, 6),kernel_size=(5, 5), activation='ReLU') 
 model.add('MaxPool', kernel_size=(2,2)) 
@@ -413,7 +413,7 @@ from BaseNN import nn
 
 ```
 #声明模型 
-model = nn() 
+model = nn('cls')
 
 # 搭建ResNet18网络(参照论文完成)，要求输入数据的尺寸为（224,224）
 model.add('Conv2D', size=(3, 64), kernel_size=(7, 7),stride=2,padding=3, activation='ReLU') #(32,64,112,112)

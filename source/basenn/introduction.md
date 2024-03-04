@@ -268,7 +268,7 @@ model.train(lr=0.01, epochs=500)
 #### 正常训练
 
 ``` python
-model = nn() 
+model = nn('cls') 
 model.add(layer='linear',size=(4, 10),activation='relu') # [120, 10]
 model.add(layer='linear',size=(10, 5), activation='relu') # [120, 5]
 model.add(layer='linear', size=(5, 3), activation='softmax') # [120, 3]
@@ -282,7 +282,7 @@ model.train(lr=0.01, epochs=1000)
 #### 继续训练
 
 ``` python
-model = nn()
+model = nn('cls')
 model.load_dataset(x, y)
 model.save_fold = 'checkpoints/new_train' # 指定模型保存路径
 checkpoint = 'checkpoints/basenn.pth' # 指定已有模型的权重文件路径
@@ -300,7 +300,7 @@ model.train(lr=0.01, epochs=1000, checkpoint=checkpoint)
 可直接指定图片文件夹，同时针对图片数据可增加classes参数设置（推理时会输出预测的类别名称，如不设置此参数则只输出类别标签），参考代码如下：
 
 ``` python
-model = nn()
+model = nn('cls')
 model.load_img_data("./mnist/training_set",color="grayscale",batch_size=32,classes=classes)
 model.add('Conv2D', size=(1, 6),kernel_size=( 5, 5), activation='ReLU') 
 model.add('AvgPool', kernel_size=(2,2)) 
@@ -317,7 +317,7 @@ model.train(lr=0.01, epochs=200, checkpoint="new_mn_ckpt/basenn.pth") # 继续�
 如自己进行对图片数据处理后，使用`load_dataset(x, y)`载入数据，可使用如下代码：
 
 ```python
-model = nn()
+model = nn('cls')
 model.load_dataset(x,y,classes=classes) # classes是类别列表（列表） //字典
 model.add('conv2d',...)
 model.train(lr=0.01,epochs=1)
@@ -348,7 +348,7 @@ classes = {'0':'0', '1':'1'}
 可直接指定csv格式的表格完成模型训练，参考代码如下：
 
 ``` python
-model = nn()
+model = nn('cls')
 train_path = '../../dataset/iris/iris_training.csv'
 model.load_tab_data(train_path, batch_size=120)
 model.add(layer='Linear',size=(4, 10),activation='ReLU') # [120, 10]
@@ -365,7 +365,7 @@ model.train(lr=0.01, epochs=500)
 传递给模型。针对特征数据，使用BaseNN各模块的示例代码即可。
 
 ```python
-model = nn()
+model = nn('cls')
 model.load_dataset(x,y)
 model.add('Linear',...)
 model.save_fold = './iris_ckpt'
@@ -377,7 +377,7 @@ model.train(lr=0.01,epochs=1)
 在做文本生成等NLP（自然语言处理）领域项目时，一般搭建[RNN网络](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn)训练模型，训练数据是文本数据，参考代码如下：
 
 ```python
-model = nn()
+model = nn('cls')
 model.load_dataset(x,y,word2idx=word2idx) # word2idx是词表（字典）
 model.add('lstm',size=(128,256),num_layers=2)
 model.train(lr=0.001,epochs=1)
@@ -388,7 +388,7 @@ model.train(lr=0.001,epochs=1)
 可使用以下函数进行推理：
 
 ``` python
-model = nn() # 声明模型
+model = nn('cls') # 声明模型
 checkpoint = 'checkpoints/iris_ckpt/basenn.pth' # 现有模型路径
 result = model.inference(data=test_x, checkpoint=checkpoint) # 直接推理
 model.print_result(result) # 输出字典格式结果
@@ -405,7 +405,7 @@ model.print_result(result) # 输出字典格式结果
 #### 针对单个图片文件的推理：
 
 ``` python
-model = nn()
+model = nn('cls')
 test_x = "mnist/val_set/7/83.jpg"
 result = model.inference(data=test_x, checkpoint="mn_ckpt/basenn.pth") # 推理整个测试集
 model.print_result()
@@ -414,7 +414,7 @@ model.print_result()
 #### 针对图片文件夹的推理：
 
 ``` python
-model = nn()
+model = nn('cls')
 test_x = "mnist/val_set/7"
 result = model.inference(data=test_x, checkpoint="mn_ckpt/basenn.pth") # 推理整个测试集
 model.print_result()
@@ -423,7 +423,7 @@ model.print_result()
 #### 针对特征表格文件的推理：
 
 ``` python
-model = nn()
+model = nn('cls')
 test_path = '../../dataset/iris/iris_test.csv'
 res = model.inference(test_path, checkpoint="iris_ckpt/basenn.pth",label=True)
 model.print_result(res)
@@ -436,7 +436,7 @@ model.print_result(res)
 #### 针对文本数据的推理：
 
 ``` python
-model = nn()
+model = nn('cls')
 data = '长'
 checkpoint = 'xxx.pth'
 result = model.inference(data=data, checkpoint=checkpoint)
@@ -499,7 +499,7 @@ BaseNN中提供了一个CNN特征提取工具，可使用BaseNN的`model.extract
 
 ```python
 # 声明模型
-model = nn()
+model = nn('cls')
 # 读取图像文件
 img = cv2.imread('small/0/5818.png')
 # 指定resnet18提取图像特征
@@ -517,7 +517,7 @@ BaseNN内置`visual_feature`函数可呈现数据在网络中传递的过程。�
 ```python
 import cv2
 from BaseNN import nn
-model = nn()
+model = nn('cls')
 model.load('mn_ckpt/basenn.pth')          # 保存的已训练模型载入
 path = 'test_IMG/single_data.jpg'
 img = cv2.imread(path,flags = 0)          # 图片数据读取
@@ -531,7 +531,7 @@ model.visual_feature(img,in1img = True)   # 特征的可视化
 ```python
 import NumPy as np
 from BaseNN import nn
-model = nn()
+model = nn('cls')
 model.load('checkpoints/iris_ckpt/basenn.pth')          # 保存的已训练模型载入
 data = np.array(test_x[0]) # 指定数据,如测试数据的一行
 model.visual_feature(data)   # 特征的可视化
@@ -686,7 +686,7 @@ N = W/P ，其中P表示池化层的卷积核大小。
 搭建一个ResNet18的示例代码如下（输入的是包含32张224×224尺寸的手写数字图片）：
 
 ```python
-model = nn()
+model = nn('cls')
 model.load_img_data('mnist/training_set',batch_size=32,num_workers=1) # (32,3,224,224)
 model.add('Conv2D', size=(3, 64), kernel_size=(7, 7),stride=2,padding=3, activation='ReLU') #(32,64,112,112)
 model.add('BatchNorm2d', size=64) # (32,64,112,112)
@@ -706,7 +706,7 @@ model.add('Linear', size=(512, 10), activation='Softmax') # (32,10)
 另外针对ResNet18其实还有一种搭建方式，那就是不设置num_blocks（默认为1）。
 
 ```python
-model = nn()
+model = nn('cls')
 model.load_img_data('mnist/training_set',batch_size=32,num_workers=1) # (32,3,224,224)
 model.add('Conv2D', size=(3, 64), kernel_size=(7, 7),stride=2,padding=3, activation='ReLU') #(32,64,112,112)
 model.add('BatchNorm2d', size=64) # (32,64,112,112)
@@ -743,7 +743,7 @@ model.add('Res_Block', size=(64, 64), num_blocks=2,stride=1)
 如您仔细观察ResNet各网络结构图，会发现ResNet50的中间四层也是[3,4,6,3]，但是搭建代码会稍显不同，不难发现>=50后中间层的残差模块不一样，使用bottleneck而非basicblock，使用BaseNN搭建也非常方便，此处为您提供搭建ResNet50的示例代码：
 
 ```python
-model = nn()
+model = nn('cls')
 model.load_img_data('mnist/training_set',batch_size=32,num_workers=1) # (32,3,224,224)
 model.add('Conv2D', size=(3, 64), kernel_size=(7, 7),stride=2,padding=3, activation='ReLU') #(32,64,112,112)
 model.add('BatchNorm2d', size=64) # (32,64,112,112)

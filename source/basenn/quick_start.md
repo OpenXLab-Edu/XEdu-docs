@@ -34,7 +34,7 @@ import numpy as np
 ### 第1步 声明模型
 
 ```python
-model = nn()
+model = nn('cls')
 ```
 
 ### 第2步 载入数据
@@ -82,7 +82,7 @@ model.train(lr=0.01, epochs=1000, checkpoint=checkpoint)
 
 ```python
 # 用测试数据查看模型效果
-model2 = nn()
+model2 = nn('cls')
 test_path = 'data/iris_test.csv'
 test_x = np.loadtxt(test_path, dtype=float, delimiter=',',skiprows=1,usecols=range(0,4)) 
 res = model2.inference(test_x, checkpoint="checkpoints/iris_ckpt/basenn.pth")
@@ -256,7 +256,7 @@ import numpy as np
 ### 第1步 声明模型
 
 ```python
-model = nn()
+model = nn('cls')
 ```
 
 ### 第2步 载入数据
