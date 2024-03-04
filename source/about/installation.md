@@ -356,7 +356,7 @@ Windows11系统中，可以先安装Docker Desktop图形化管理软件，下载
 Docker分为容器（Container）和镜像（Image），（有时还会额外有一类叫Dockerfile）。首先需要从云端获取镜像，类似于安装操作系统的镜像，这个镜像是和原版一模一样的。然后可以启动容器，容器可以由用户自主修改。
 
 拉取镜像的命令如下：
-`docker pull xedu/xedu:v2s`
+`docker pull xedu/xedu:v3s`
 打开电脑的命令行（CMD）窗口，输入上面的命令行。
 
 这一步会拉取xedu的镜像文件到本地磁盘，因此务必保证您的电脑系统盘空间剩余空间超过5GB，实际建议有10GB及以上空间，便于后续训练使用。如果想要调整存储空间位置，可以参考上面空间不足的解决办法。刚开始拉取没有相应，可以等待一会儿，就会出现下面的拉取进度的界面。
@@ -367,11 +367,11 @@ Docker分为容器（Container）和镜像（Image），（有时还会额外有
 ### 4.启动docker容器（Container）
 
 在CMD输入：
-`docker run -it -p 5000:5000 -p 8888:8888 --mount type=bind,source=D:/share,target=/xedu/share xedu/xedu:v2s`，首次使用会询问是否绑定磁盘，选择Yes。运行成功界面如下：
+`docker run -it -p 5000:5000 -p 8888:8888 --mount type=bind,source=D:/share,target=/xedu/share xedu/xedu:v3s`，首次使用会询问是否绑定磁盘，选择Yes。运行成功界面如下：
 
 ![Docker Lab](../images/about/docker5.1.png)
 
-接下来就可以用电脑访问 **[127.0.0.1:8888](127.0.0.1:8888)** 访问jlab，通过 **[127.0.0.1:5000](127.0.0.1:5000)** 访问easytrain。（电脑中的文件想要拷贝进docker，可以放到D盘share文件夹）。美中不足的是，这两个网址需要自行打开浏览器后输入。如果显示效果不佳，可能是浏览器不兼容，建议下载[最新版的chrome浏览器](https://www.google.com/intl/zh-CN/chrome/)。
+接下来就可以用电脑访问 **[127.0.0.1:8888](http://127.0.0.1:8888)** 访问jlab，通过 **[127.0.0.1:5000](http://127.0.0.1:5000)** 访问easytrain。（电脑中的文件想要拷贝进docker，可以放到D盘share文件夹）。美中不足的是，这两个网址需要自行打开浏览器后输入。如果显示效果不佳，可能是浏览器不兼容，建议下载[最新版的chrome浏览器](https://www.google.com/intl/zh-CN/chrome/)。
 ![Docker Lab](../images/about/docker3.png)
 ![Docker EasyTrain](../images/about/docker4.png)
 
