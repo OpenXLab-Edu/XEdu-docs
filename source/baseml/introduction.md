@@ -108,7 +108,25 @@
 from BaseML import Classification as cls
 ```
 
-### 1. 实例化
+### 1. 搭建模型
+
+涉及实例化和参数设置，有如下三种搭建形式，如不设置参数可不设置。
+
+```
+# 第一种形式
+para = {"hidden_layer_sizes":(100,200), }
+model = cls("MLP",param=para)
+
+# 第二种形式
+model = cls("MLP")
+model.para = {"hidden_layer_sizes":(100,200), "activation":'relu', "solver":'adam'}
+
+# 第三种形式
+model = cls("MLP")
+model.set_para(hidden_layer_sizes=(100,200), activation='relu', solver='adam')
+```
+
+
 
 #### 贝叶斯分类
 
@@ -132,10 +150,10 @@ model=cls('CART')
 
 ```
 # 实例化模型，模型名称选择KNN(K Nearest Neighbor)
-model = cls('KNN',n_neighbors=3)
+model = cls('KNN')
 ```
 
-`n_neighbors`表示k的值，参数需设置为整数，默认值为5。
+必设参数`n_neighbors`表示k的值，参数需设置为整数，默认值为5。
 
 #### 支持向量机（SVM）
 
@@ -148,10 +166,10 @@ model=cls('SVM')
 
 ```
 # 实例化模型，模型名称选择AdaBoost（Adaptive Boosting）
-model=cls('AdaBoost'，n_estimators = 50)
+model=cls('AdaBoost')
 ```
 
-`n_estimators`表示弱学习器数量，默认值为100。
+必设参数`n_estimators`表示弱学习器数量，默认值为100。
 
 #### 随机森林分类（RandomForest）
 
@@ -163,11 +181,11 @@ model=cls('RandomForest')
 #### 多层感知机（MLP）
 
 ```
-# 实例化模型，模型名称选择MLP（Multilayer Perceptron），n_hidden = (100,100)表示2层神经元数量为100的隐藏层
-model=cls('MLP',n_hidden = (100,100))
+# 实例化模型，模型名称选择MLP（Multilayer Perceptron）
+model=cls('MLP')
 ```
 
-`n_hidden`表示隐藏层，参数值设置为一个元组，元组的元素数表示隐藏层数，元素的值依次表示隐藏层的神经元数。
+必设参数`hidden_layer_sizes`表示隐藏层，参数值设置为一个元组，元组的元素数表示隐藏层数，元素的值依次表示隐藏层的神经元数。
 
 ...
 
