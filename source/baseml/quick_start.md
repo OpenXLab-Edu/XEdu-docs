@@ -34,10 +34,8 @@ model=cls('CART')
 
 ```
 # 载入数据集，并说明特征列和标签列
-model.load_dataset('./lenses.csv', type ='csv', x_column = [1,2,3,4],y_column=[5])
+model.load_tab_data('./lenses.csv')
 ```
-
-`x_column`表示特征列，`y_column`表示标签列。
 
 ### 3. 模型训练
 

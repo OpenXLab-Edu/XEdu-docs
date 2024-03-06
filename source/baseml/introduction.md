@@ -1,8 +1,30 @@
 # BaseML功能详解
 
-我们的传统机器学习（Mechine Learning）有很多算法，但总的来说，可以分为三大类：分类、回归和聚类。BaseML和sklearn不同之处，也就体现于此，sklearn尽管在拟合、预测等函数上对各模块做了统一，但并没有明确指出这样的三大类划分方式。这三类也有着特有的数据输入格式。除此之外，BaseML还提供了`DimentionReduction`数据降维模块，用以对数据进行降维处理。
+我们的传统机器学习（Mechine Learning）有很多算法，但总的来说，可以分为三大类：分类、回归和聚类。BaseML和sklearn不同之处，也就体现于此，sklearn尽管在拟合、预测等函数上对各模块做了统一，但并没有明确指出这样的三大类划分方式。这三类也有着特有的数据输入格式。
 
 文档涉及的部分代码见XEdu帮助文档配套项目集：[https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public](https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public)
+
+## 机器学习的基本流程
+
+机器学习实际上分为两个阶段，首先是模型训练过程，即“学习”；然后是模型推理过程，即“应用”。典型的机器学习流程可以分为数据准备、模型搭建、模型训练与评估、模型应用等环节（如下图）。
+
+![](../images/baseml/flow_path.png)
+
+### 1.数据准备
+
+数据是描述客观事物或现象的符号记录，可以是数字、文字、图像、声音等形式。机器学习需要很多数据，我们称之为“数据集”。要训练怎样的模型，就要准备怎样的数据。例如要训练温度转换的模型，就要准备很多条类似“摄氏温度和华氏温度对应表”的数据。
+
+### 2.模型搭建
+
+搭建机器学习的模型，核心工作是实现一个具有特定功能的算法。实现机器学习的算法需要编写程序，难度较大。但好消息是Python有多个机器学习的库，这些库中内置了各种优秀的算法，只要根据需要选择合适的算法，就可以直接完成模型的搭建。
+
+### 3.模型训练与评估
+
+对于训练好的模型，需要评估一下其推理能力，类似人学习了某个课程后，还要做点单元小测试，看看掌握了多少。对回归任务来说，简单好用的评估指标之一是R平方值，对分类任务来说，一般选择准确率。通过比对推断结果与实际标注结果的差异，可以计算出评估指标。如果推理效果不好，要重新检查数据和模型，再次训练。
+
+### 4.模型应用
+
+当训练出来的模型的评估表现不错，那就可以保存模型。保存出来的模型文件，可以导入使用或供其他程序使用。其实模型应用环节和传统编程就差别不大了，只要输入一组新数据，就能输出预测结果。
 
 ## 机器学习典型算法一览表
 
@@ -92,110 +114,55 @@
 
 
 
+## 代码详解
 
-
-
-
-
-
-
-
-## 分类任务功能详解
-
-### 0. 引入包
+核心代码：
 
 ```
-from BaseML import Classification as cls
+from BaseML import Regression as reg # 从库文件中导入回归任务模块
+model = reg('LinearRegression') # 实例化线性回归模型
+model.load_tab_data( './data_train.csv') # 载入训练数据
+model.train() # 训练模型
+model.valid('./data_val.csv',metrics='r2') # 载入验证数据并验证
+model.save('mymodel. pkl') # 保存模型供应用
 ```
 
-### 1. 搭建模型
+### 1. 导入包与搭建模型
 
-涉及实例化和参数设置，有如下三种搭建形式，如不设置参数可不设置。
+库文件的导入只需要一行代码，根据机器学习的任务导入相应的库。“Regression”模块内置了回归任务的常见算法，“Classification”模块则内置了分类任务的常见算法。
+
+在BaseML中使用不同算法：
+
+![](../images/baseml/change.png)
+
+第二句代码属于模型搭建，除了实例化模型，选择部分算法如需额外设置参数可添加参数设置的代码（涉及的参数见上文的机器学习典型算法一览表），一般有如下三种搭建形式，下面以搭建多层感知机算法为例进行说明，此算法一般需要设置隐藏层"hidden_layer_sizes"，hidden_layer_sizes":(100,200)表示2层神经元数量为100和200的隐藏层。如下是他的三种搭建形式。
 
 ```
 # 第一种形式
 para = {"hidden_layer_sizes":(100,200), }
-model = cls("MLP",param=para)
+model = reg("MLP",param=para)
 
 # 第二种形式
-model = cls("MLP")
+model = reg("MLP")
 model.para = {"hidden_layer_sizes":(100,200), "activation":'relu', "solver":'adam'}
 
 # 第三种形式
-model = cls("MLP")
+model = reg("MLP")
 model.set_para(hidden_layer_sizes=(100,200), activation='relu', solver='adam')
 ```
 
-
-
-#### 贝叶斯分类
-
-贝叶斯分类算法常用于解决不确定问题，如人们普遍认为夜里下雨，第二天早晨草地会湿，实际到了早上草地可能就干了，也许是因为风的因素，解决这类问题往往需要根据人类已有的经验来计算某种状态出现的概率，这种方式叫做贝叶斯推理。 贝叶斯分类算法是基于贝叶斯定理的一种算法，即“简单”地假设每对特征之间相互独立。
-
-贝叶斯定理：P(A|B)表示事件B发生的条件下事件A发生的概率，P(A|B)等于事件A发生的条件下事件B发生的概率乘以事件A发生的概率P(A)，再除以事件B发生的概率P(B)。
+#### 拓展功能：查看各任务拥有的算法以及类注释
 
 ```
-# 实例化模型，模型名称选择NaiveBayes
-model=cls('NaiveBayes')
-```
+from BaseML import Regression as reg
+reg.__doc__
 
-#### 决策树分类（CART）
-
-```
-# 实例化模型，模型名称选择CART（Classification and Regression Trees）
-model=cls('CART')
-```
-
-#### 最近邻分类（KNN）
-
-```
-# 实例化模型，模型名称选择KNN(K Nearest Neighbor)
-model = cls('KNN')
-```
-
-必设参数`n_neighbors`表示k的值，参数需设置为整数，默认值为5。
-
-#### 支持向量机（SVM）
-
-```
-#实例化模型，模型名称选择SVM
-model=cls('SVM')
-```
-
-#### 自适应增强分类（AdaBoost）
-
-```
-# 实例化模型，模型名称选择AdaBoost（Adaptive Boosting）
-model=cls('AdaBoost')
-```
-
-必设参数`n_estimators`表示弱学习器数量，默认值为100。
-
-#### 随机森林分类（RandomForest）
-
-```
-# 实例化模型，模型名称选择RandomForest
-model=cls('RandomForest')
-```
-
-#### 多层感知机（MLP）
-
-```
-# 实例化模型，模型名称选择MLP（Multilayer Perceptron）
-model=cls('MLP')
-```
-
-必设参数`hidden_layer_sizes`表示隐藏层，参数值设置为一个元组，元组的元素数表示隐藏层数，元素的值依次表示隐藏层的神经元数。
-
-...
-
-#### 查看拥有的算法以及类注释
-
-```
+from BaseML import Classification as cls
 cls.__doc__
+
+from BaseML import Cluster as clt
+clt.__doc__
 ```
-
-
 
 ### 2. 数据载入
 
@@ -209,7 +176,19 @@ BaseML库支持各种形式载入数据。
 model.load_tab_data('data/Height_data_train.csv')
 ```
 
+返回值是x_train, y_train, x_val, y_val: 训练集和验证集，如无则返回“None”。
+
+参数说明：
+
+`data_path`：CSV数据集路径，数据格式要求如下：
+
 ![](../images/baseml/csv_data.png)
+
+`train_val_ratio` ：训练集与验证集的比例，float类型，默认值为1.0，即默认不划分，全部作为训练集。
+
+`shuffle`： 是否打乱数据，默认为True。
+
+`random_seed`：随机数种子，用于复现代码效果。
 
 方法2：使用`load_dataset`方法载入，需指定文件类型、特征列和标签列，可辅助做特征选择，此方法载入数据更加灵活。
 
@@ -218,26 +197,42 @@ model.load_tab_data('data/Height_data_train.csv')
 model.load_dataset('./lenses.csv', type ='csv', x_column = [1,2,3,4],y_column=[5])
 ```
 
-`x_column`表示特征列，`y_column`表示标签列。
+`type`表示X和y的输入格式，可选项为‘csv'、‘numpy'、'pandas'、'list'、'txt'。
+
+`x_column`表示特征列。
+
+`y_column`表示标签列。
+
+`split`：是否划分训练集、验证集，默认为True。
+
+`shuffle`： 是否打乱数据，默认为True。
+
+`scale`是否对数据进行归一化，默认为False。
+
+`show`：显示5条数据。默认为Tru。
 
 #### （2）针对图片数据
 
-主要方法：读取图像数据转换为Numpy数组后直接从变量载入数据。
+读取图像数据转换为Numpy数组后直接从变量载入数据。使用上文介绍过的载入数据更加灵活的`load_dataset`方法载入即可。
 
 ```
 # 载入数据，并说明特征列和标签列
 model.load_dataset(X=train_x, y=train_y,type ='numpy')
 ```
 
-`X`表示数据特征，`y`表示标签。可再设置`x_column`和`y_column`参数，不设置则默认所有列。同时BaseML内置了图片读取处理模块`ImageLoader`。
+`X`表示数据特征，`y`表示标签。可再设置`x_column`和`y_column`参数，不设置则默认指定的X和y的所有列。
 
-特殊方法：如需对图片进行处理后再载入，可使用BaseML内置的图像处理模型`ImageLoader`
+其他参数同上文。
+
+#### 辅助工具：BaseML内置的图像处理模型`ImageLoader`
+
+如需对图片进行处理后再载入，可使用BaseML内置的图像处理模型`ImageLoader`
 
 `ImageLoader`是BaseML内置的图片处理模块，用于进行图像数字化处理，读取图片并提取其中的图像特征，如HOG特征和LBP特征，用以进行后续的机器学习任务。
 
 使用示例：
 
-以读取ImageNet格式的MNIST数据集为例，
+以读取ImageNet格式的MNIST数据集为例，进行说明
 
 ```
 from BaseML import IMGLoader
@@ -270,40 +265,39 @@ model.train()
 model.valid('data_val.csv',metrics='acc') # 载入验证数据并验证
 ```
 
-`metrics`：评估指标选择，默认为'acc'分类任务一般选择'acc'，回归任务可以选择'r2'(R平方值)或'mse'(MSE值)。
+`path`: 验证集的路径。
 
-如使用其他方法载入数据，可在`valid`方法中传入x和y进行模型评估。
+`metrics`：评估指标选择，默认为'acc(accuracy)'，还支持precision,recall,f1,auc,r2,mse,mae。分类任务一般选择'acc(accuracy)'，回归任务可以选择'r2'(R平方值)或'mse'(MSE值)。
+
+除了传入验证集的路径，还可在`valid`方法中传入x验证集的特征和y验证集的标签进行模型评估，此方式更加灵活。
 
 ```
-# 读取验证集作为测试数据
-val_data = pd.read_csv("data_val.csv")
-val_x = val_data.values[:,[0,2]]
-val_y = val_data.values[:,[3]]
-
 # 模型评估
 model.valid(x=val_x,y=val_y,metrics='acc') 
 ```
 
 `valid`方法的返回值有2个，分别是评估指标计算结果和验证集的推理结果。
 
-### 5. 模型测试
+### 5. 评价指标可视化
 
-对一组数进行推理：
+```
+model.metricplot() 
+```
+
+使用前面运行的代码中读取的val_y和y进行绘制，如无或想自行传入，可自行设置。
+
+![](../images/baseml/metricplot.png)
+
+上图是线性回归任务绘制的可视化图，验证集已有的输出y为横坐标，通过模型推理得到的结果ŷ为纵坐标，如果两者构成的坐标点落在灰色虚线上，说明模型完全契合验证数据。而实际构成的点没有落在灰色虚线上，而是围绕黑色虚线分布，两条虚线相差越大，说明模型效果越差。
+
+### 6. 模型推理
 
 ```
 # 给定一组数据，推理查看效果
 y=model.inference([[1,  1,  1,  1]])
 ```
 
-读入测试集所有数据进行推理：
-
-```
-# 用测试集数据测试模型效果
-test_x = np.loadtxt(test_path, dtype=float, delimiter=',',skiprows=1,usecols=range(1,5) # 读取2-5列，特征列
-y_pred=m.inference(test_x) 
-```
-
-### 6. 模型的保存与加载
+### 7. 模型的保存与加载
 
 ```python
 # 保存模型
@@ -323,166 +317,19 @@ model.load("my_CART_model.pkl")
 y=model.inference(data)
 ```
 
-也可以[借助XEduHub库完成推理](https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#baseml)和应用，更多模型转换与应用的介绍详见[后文](https://xedu.readthedocs.io/zh/master/support_resources/model_convert.html)。
+### 8. 模型应用
 
-## 回归任务功能详解
-
-### 0. 引入包
+模型应用是将训练好的模型部署到实际场景中，例如集成到网站或移动应用中。一般来说，一个训练模型的工具也会自带了推理功能，如在BaseML训练好模型并保存，下次使用时以同样的方式导入BaseML库并载入模型进行推理即可。还有种方式是借助一些通用的模型推理库，如XEdu工具的XEduHub库，支持推理各种工具训练的模型，此类库的安装一般比机器学习开发工具简单很多。也可以[借助XEduHub库完成推理](https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#baseml)和应用，核心代码如下。
 
 ```
-from BaseML import Regression as reg
+from XEdu.hub import Workflow as wf
+baseml = wf(task='baseml',checkpoint='./model.pkl') # 指定使用的pkl模型
+data = [[1, 1, 1, 1]]# 指定测试数据，根据训练模型时使用的数据来定
+result= baseml.inference(data=data) # 进行模型推理
+print(result)
 ```
 
-### 1. 实例化
-
-#### 线性回归（Linear Regression）
-
-线性回归（Linear Regression）线性回归算法的核心思想是找到一条直线，使得这条直线能够最好地代表和预测数据。通常适用于连续值的预测，例如房价、贷款额度等。
-
-```
-# 实例化模型，模型名称选择'LinearRegression'
-model = reg('LinearRegression')
-```
-
-#### 决策树回归（CART）
-
-```
-# 实例化模型，模型名称选择'DecisionTree'
-model = reg('DecisionTree')
-```
-
-#### 随机森林回归（RandomForest）
-
-```
-# 实例化模型，模型名称选择'RandomForest'
-model = reg('RandomForest')
-```
-
-#### 支持向量机回归（SVM）
-
-```
-# 实例化模型，模型名称选择'SVM'
-model = reg('SVM')
-```
-
-#### 自适应增强回归（AdaBoost）
-
-```
-# 实例化模型，模型名称选择'AdaBoost'
-model = reg('AdaBoost'，n_estimators = 50)
-```
-
-`n_estimators`表示弱学习器数量，默认值为100。
-
-#### 多层感知机（MLP）
-
-```
-# 实例化模型，模型名称选择MLP（Multilayer Perceptron），n_hidden = (100,100)表示2层神经元数量为100的隐藏层
-model=reg('MLP',n_hidden = (100,100))
-```
-
-`n_hidden`表示隐藏层，参数值设置为一个元组，元组的元素数表示隐藏层数，元素的值依次表示隐藏层的神经元数。
-
-...
-
-#### 查看拥有的算法以及类注释
-
-```
-reg.__doc__
-```
-
-
-
-### 2. 数据载入
-
-与分类任务一致（见上文）。
-
-### 3. 模型训练
-
-与分类任务一致（见上文）。
-
-### 4. 模型评估
-
-与分类任务一致（见上文），注意评估指标调整，回归任务可以选择r2(R平方值)或mse(MSE值)。
-
-### 5. 模型测试
-
-与分类任务一致（见上文）。
-
-### 6. 模型的保存与加载
-
-与分类任务一致（见上文）。
-
-## 聚类任务功能详解
-
-### 0. 引入包
-
-```
-from BaseML import Cluster as clt
-```
-
-### 1. 实例化
-
-#### k均值
-
-k均值（k-means）算法是一种基于数据间距离迭代求解的聚类算法，通过分析数据之间的距离，发现数据之间的内在联系和相关性，将看似没有关联的事物聚合在一起，并将数据划分为若干个集合，方便为数据打上标签，从而进行后续的分析和处理。k代表划分的集合个数，means代表子集内数据对象的均值。
-
-```
-# 实例化模型，模型名称选择'KMeans',N_CLUSTERS设置为3
-model = clt('KMeans',N_CLUSTERS=3)
-```
-
-`N_CLUSTERS`表示k的值，默认值为5。
-
-#### 谱聚类
-
-谱聚类（spectral clustering）算法主要思想是把所有的数据看做空间中的点，这些点之间可以用边连接起来。将聚类问题转为图分割问题：距离较远（或者相似度较低）的两个点之间的边权重值较低，而距离较近（或者相似度较高）的两个点之间的边权重值较高，将所有数据点组成的图分割成若干个子图，让不同的子图间边权重和尽可能的低，而子图内的边权重和尽可能的高，从而达到聚类的目的。
-
-```
-# 实例化模型，模型名称选择'SpectralClustering',N_CLUSTERS设置为3
-model = clt('SpectralClustering',N_CLUSTERS=3)
-```
-
-`N_CLUSTERS`表示子图的数量，默认值为5。
-
-#### Agglomerative clustering
-
-Agglomerative clutsering 是一种自底而上的层次聚类方法，它能够根据指定的相似度或距离定义计算出类之间的距离。首先将每个样本都视为一个簇，然后开始按一定规则，将相似度高的簇进行合并，直到所有的元素都归为同一类。
-
-```
-# 实例化模型，模型名称选择'Agglomerative clustering',N_CLUSTERS设置为3
-model = clt('Agglomerative clustering',N_CLUSTERS=3)
-```
-
-`N_CLUSTERS`表示聚类的数量，默认值为5。
-
-...
-
-#### 查看拥有的算法以及类注释
-
-```
-clt.__doc__
-```
-
-### 2. 数据载入
-
-与分类任务一致（见上文）。
-
-### 3. 模型训练
-
-与分类任务一致（见上文）。
-
-### 4. 模型评估
-
-与分类任务一致（见上文）。
-
-### 5. 模型测试
-
-与分类任务一致（见上文）。
-
-### 6. 模型的保存与加载
-
-与分类任务一致（见上文）。
+### 
 
 ## 附录
 
@@ -491,3 +338,49 @@ clt.__doc__
 如果预测任务是为了将观察值分类到有限的标签集合中，换句话说，就是给观察对象命名，那任务就被称为**分类**任务。另外，如果任务是为了预测一个连续的目标变量，那就被称为**回归**任务。
 
 所谓**聚类**，即根据相似性原则，将具有较高相似度的数据对象划分至同一类簇，将具有较高相异度的数据对象划分至不同类簇。聚类与分类最大的区别在于，聚类过程为无监督过程，即待处理数据对象没有任何先验知识，而分类过程为有监督过程，即存在有先验知识的训练数据集。
+
+### 2. 其他算法
+
+#### 贝叶斯分类
+
+贝叶斯分类算法常用于解决不确定问题，如人们普遍认为夜里下雨，第二天早晨草地会湿，实际到了早上草地可能就干了，也许是因为风的因素，解决这类问题往往需要根据人类已有的经验来计算某种状态出现的概率，这种方式叫做贝叶斯推理。 贝叶斯分类算法是基于贝叶斯定理的一种算法，即“简单”地假设每对特征之间相互独立。
+
+贝叶斯定理：P(A|B)表示事件B发生的条件下事件A发生的概率，P(A|B)等于事件A发生的条件下事件B发生的概率乘以事件A发生的概率P(A)，再除以事件B发生的概率P(B)。
+
+```
+# 实例化模型，模型名称选择NaiveBayes
+model=cls('NaiveBayes')
+```
+
+#### k均值
+
+k均值（k-means）算法是一种基于数据间距离迭代求解的聚类算法，通过分析数据之间的距离，发现数据之间的内在联系和相关性，将看似没有关联的事物聚合在一起，并将数据划分为若干个集合，方便为数据打上标签，从而进行后续的分析和处理。k代表划分的集合个数，means代表子集内数据对象的均值。
+
+```
+# 实例化模型，模型名称选择'KMeans'
+model = clt('KMeans')
+```
+
+参数`N_CLUSTERS`表示k的值，默认值为5。
+
+#### 谱聚类
+
+谱聚类（spectral clustering）算法主要思想是把所有的数据看做空间中的点，这些点之间可以用边连接起来。将聚类问题转为图分割问题：距离较远（或者相似度较低）的两个点之间的边权重值较低，而距离较近（或者相似度较高）的两个点之间的边权重值较高，将所有数据点组成的图分割成若干个子图，让不同的子图间边权重和尽可能的低，而子图内的边权重和尽可能的高，从而达到聚类的目的。
+
+```
+# 实例化模型，模型名称选择'SpectralClustering',
+model = clt('SpectralClustering')
+```
+
+参数`N_CLUSTERS`表示子图的数量，默认值为5。
+
+#### Agglomerative clustering
+
+Agglomerative clutsering 是一种自底而上的层次聚类方法，它能够根据指定的相似度或距离定义计算出类之间的距离。首先将每个样本都视为一个簇，然后开始按一定规则，将相似度高的簇进行合并，直到所有的元素都归为同一类。
+
+```
+# 实例化模型，模型名称选择'Agglomerative clustering'
+model = clt('Agglomerative clustering')
+```
+
+参数`N_CLUSTERS`表示聚类的数量，默认值为5。
