@@ -139,8 +139,8 @@ model.save('mymodel. pkl') # 保存模型供应用
 
 ```
 # 第一种形式
-para = {"hidden_layer_sizes":(100,200), }
-model = reg("MLP",param=para)
+param = {"hidden_layer_sizes":(100,200), }
+model = reg("MLP",para=param)
 
 # 第二种形式
 model = reg("MLP")
