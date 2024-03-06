@@ -197,6 +197,8 @@ model.load_tab_data('data/Height_data_train.csv')
 model.load_dataset('./lenses.csv', type ='csv', x_column = [1,2,3,4],y_column=[5])
 ```
 
+参数说明：
+
 `type`表示X和y的输入格式，可选项为‘csv'、‘numpy'、'pandas'、'list'、'txt'。
 
 `x_column`表示特征列。
@@ -264,6 +266,8 @@ model.train()
 ```
 model.valid('data_val.csv',metrics='acc') # 载入验证数据并验证
 ```
+
+参数说明：
 
 `path`: 验证集的路径。
 
