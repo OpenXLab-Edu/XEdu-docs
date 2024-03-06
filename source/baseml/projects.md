@@ -34,22 +34,35 @@ model=cls('CART')
 # 载入数据集，并说明特征列和标签列
 model.load_dataset('./道路是否可通行历史数据f.csv', type ='csv', x_column = [1,2],y_column=[3])
 # 模型训练
-model.train(validate = False)
+model.train()
+```
+
+##### 2）模型评估
+
+```
+# 模型评估,使用载入数据时默认拆分出的验证集进行评估
+model.valid()
+# 模型评价指标可视化
+model.metricplot()
+```
+
+##### 3）模型保存
+
+```
 # 保存模型
 model.save('my_CART_model.pkl')
 ```
 
-##### 2）模型推理
+##### 4）模型推理
 
 ```python
-# 给定一组数据，推理查看效果
-y=model.inference([[1,  10]]) 
-# 输出结果
-label=['不可通行', '可通行']
+# 使用载入功能，复现效果
+m=cls('CART')
+m.load('my_CART_model.pkl') # 模型保存路径
+y=m.inference([[2,  10]]) # 2代表施工中，10代表预计车流量为10
+print(y)
 print(label[y[0]-1])
 ```
-
-
 
 ## 用多层感知机算法实现手写体数字分类
 
@@ -165,14 +178,14 @@ model=cls('KNN')
 model.load_dataset(X = df, y = df, type ='pandas', x_column = [1,2,3,4],y_column=[5])
 # 开始训练
 model.train()
-# 保存模型
-model.save('mymodel.pkl')
 ```
 
-使用BaseML特色功能进行评价指标可视化：
+##### 2）模型评估
 
 ```
-# 评价指标可视化
+# 模型评估,使用载入数据时默认拆分出的验证集进行评估
+model.valid()
+# 模型评价指标可视化
 model.metricplot()
 ```
 
@@ -186,7 +199,7 @@ model.metricplot()
 
 正确答案是类别2的则全部预测错误。
 
-##### 2）模型推理 
+##### 3）模型推理 
 
 ```
 # 给定一组数据，查看模型推理结果
@@ -196,15 +209,14 @@ print(test_y)
 print(loc.inverse_transform(test_y))
 ```
 
-修改k值进行训练：
+拓展-修改k值进行训练：
 
 ```
-# # 实例化模型，设置k=3
-model1=cls('KNN',n_neighbors =3)
+# 使用k = 3进行训练
+model1=cls('KNN')
+model1.para = {"n_neighbors":3}
 model1.load_dataset(X = df, y = df, type ='pandas', x_column = [1,2,3,4],y_column=[5])
 model1.train()
-# 保存模型
-model.save('mymodel2.pkl')
 ```
 
 
