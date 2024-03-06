@@ -209,7 +209,7 @@ model.load_dataset('./lenses.csv', type ='csv', x_column = [1,2,3,4],y_column=[5
 
 `scale`是否对数据进行归一化，默认为False。
 
-`show`：显示5条数据。默认为Tru。
+`show`：显示5条数据。默认为True。
 
 #### （2）针对图片数据
 
@@ -232,7 +232,7 @@ model.load_dataset(X=train_x, y=train_y,type ='numpy')
 
 使用示例：
 
-以读取ImageNet格式的MNIST数据集为例，进行说明
+以读取ImageNet格式的MNIST数据集为例，进行说明。
 
 ```
 from BaseML import IMGLoader
@@ -328,8 +328,6 @@ data = [[1, 1, 1, 1]]# 指定测试数据，根据训练模型时使用的数据
 result= baseml.inference(data=data) # 进行模型推理
 print(result)
 ```
-
-### 
 
 ## 附录
 
