@@ -284,7 +284,7 @@ model.valid(x=val_x,y=val_y,metrics='acc')
 model.metricplot() 
 ```
 
-使用前面运行的代码中读取的val_y和y进行绘制，如无或想自行传入，可自行设置。
+使用前面运行的代码中读取的验证集的特征val_x和验证集的标签val_y进行绘制，如无或想自行传入，可自行设置。
 
 ![](../images/baseml/metricplot.png)
 
