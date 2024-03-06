@@ -55,11 +55,11 @@ print(label[y[0]-1])
 
 本案例来源于《人工智能初步》广东教育出版社版75-80页。
 
-项目地址：[https://www.openinnolab.org.cn/pjlab/project?id=637db4e401df4535876a8690&sc=62f34141bf4f550f3e926e0e#public](https://www.openinnolab.org.cn/pjlab/project?id=637db4e401df4535876a8690&sc=62f34141bf4f550f3e926e0e#public)
+项目地址：[https://openinnolab.org.cn/pjlab/project?id=6440e64606618727bee5c1ce&backpath=/pjlab/projects/list#public](https://openinnolab.org.cn/pjlab/project?id=6440e64606618727bee5c1ce&backpath=/pjlab/projects/list#public)
 
 ### 项目核心功能：
 
-阿拉伯数字的字形信息量很小,不同数字写法字形相差又不大，使得准确区分某些数字相当困难。本项目解决的核心问题是如何利用计算机自动识别人手写在纸张上的阿拉伯数字。使用的数据集MNIST数据集包含 0~9 共10种数字的手写图片，每种数字有7000张图片，采集自不同书写风格的真实手写图片，整个数据集一共70000张图片。70000张手写数字图片使用`train_test_split`方法划分为60000张训练集（Training Set）和10000张测试集（Test Set）。项目核心功能是使用BaseML库搭建[多层感知机](https://xedu.readthedocs.io/zh/master/baseml/introduction.html#mlp)实现手写数字识别。
+阿拉伯数字的字形信息量很小,不同数字写法字形相差又不大，使得准确区分某些数字相当困难。本项目解决的核心问题是如何利用计算机自动识别人手写在纸张上的阿拉伯数字。使用的数据集MNIST数据集包含 0~9 共10种数字的手写图片，每种数字有7000张图片，采集自不同书写风格的真实手写图片，整个数据集一共70000张图片。70000张手写数字图片使用`train_test_split`方法划分为60000张训练集（Training Set）和10000张测试集（Test Set）。项目核心功能是使用BaseML库搭建多层感知机实现手写数字识别。
 
 ### 实现步骤：
 
@@ -81,19 +81,33 @@ X_train, y_train, X_test, y_test = img_set.get_data(method='flatten')
 ```python
 # 导入库，从BaseML导入分类模块
 from BaseML import Classification as cls
-# 实例化模型，模型名称选择MLP（Multilayer Perceptron）
-model=cls('MLP',n_hidden = (100,100))
-# 元组中元素的数量代表隐藏层的层数，每个元素的值代表每个隐藏层中神经元数
-# n_hidden = (100,100)表示2层神经元数量为100的隐藏层,
+# 搭建模型，模型名称选择MLP（Multilayer Perceptron）
+model=cls('MLP')
+# 设置参数，hidden_layer_sizes":(100,100)表示2层神经元数量为100的隐藏层
+model.para = {"hidden_layer_sizes":(100,100)}
 # 载入数据，从变量载入
 model.load_dataset(X=X_train, y=y_train,type ='numpy')
 # 模型训练
 model.train()
+```
+
+##### 2）模型评估
+
+```
+# 读取验证数据进行评估
+model.valid(x=X_val, y=y_val,metrics='acc')
+# 评价指标可视化
+model.metricplot(X_val,y_val)
+```
+
+##### 3）模型保存
+
+```
 # 保存模型
 model.save('checkpoints/mymodel.pkl')
 ```
 
-##### 2）模型推理
+##### 4）模型推理
 
 ```python
 # 给定一张图片，推理查看效果
@@ -107,8 +121,6 @@ print(y)
 label=['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 print(label[y[0]])
 ```
-
-
 
 ## 用k近邻为参观者推荐场馆
 
@@ -201,13 +213,11 @@ model.save('mymodel2.pkl')
 
 本案例来源于人教地图版《人工智能初步》39-41页。
 
-项目地址：[https://www.openinnolab.org.cn/pjlab/project?id=64141e08cb63f030543bffff&sc=635638d69ed68060c638f979#public](https://www.openinnolab.org.cn/pjlab/project?id=64141e08cb63f030543bffff&sc=635638d69ed68060c638f979#public)
-
-项目地址2（增加可视化版本）：[https://www.openinnolab.org.cn/pjlab/project?id=6368a382bbcccd583a837a0e&sc=62f34141bf4f550f3e926e0e#public](https://www.openinnolab.org.cn/pjlab/project?id=6368a382bbcccd583a837a0e&sc=62f34141bf4f550f3e926e0e#public)
+项目地址：[https://openinnolab.org.cn/pjlab/project?id=64141e08cb63f030543bffff&backpath=/pjlab/projects/list#public](https://openinnolab.org.cn/pjlab/project?id=64141e08cb63f030543bffff&backpath=/pjlab/projects/list#public)
 
 ### 项目核心功能：
 
-使用[线性回归](https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id14)预测蛋糕价格，案例场景贴近生活，可通过学习和实验了解线性回归的工作原理，掌握使用BaseML中的线性回归进行预测的方法。
+使用线性回归预测蛋糕价格，案例场景贴近生活，可通过学习和实验了解线性回归的工作原理，掌握使用BaseML中的线性回归进行预测的方法。
 
 数据集来源：人教地图版《人工智能初步》39-41页。
 
@@ -222,15 +232,27 @@ import pandas as pd
 from BaseML import Regression as reg
 # 实例化模型
 model = reg('LinearRegression')
-# 指定数据集，需要指定类型
-model.load_dataset("蛋糕尺寸与价格.csv", type='csv', x_column=[0],y_column = [1])
+# 载入训练数据
+model.load_tab_data( '蛋糕尺寸与价格.csv') 
 # 开始训练
 model.train()
+```
+
+##### 2）模型评估
+
+```
+# 计算R值进行评估
+model.valid('蛋糕尺寸与价格.csv',metrics='r2')
+```
+
+##### 3）模型保存
+
+```
 # 模型保存
 model.save('mymodel.pkl')
 ```
 
-##### 2）模型推理
+##### 4）模型应用
 
 ```
 # 指定数据
