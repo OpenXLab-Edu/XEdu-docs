@@ -14,6 +14,10 @@ BaseML库提供了众多机器学习训练方法，可以快速训练和应用�
 
 下面我们以用“用KNN对鸢尾花Iris数据集进行分类”案例为示例，体验用BaseML做第一个机器学习项目！
 
+认识鸢尾花数据集：
+
+鸢尾属植物有三个品种，分别是山鸢尾(setosa)、变色鸢尾(versicolor)、维吉尼亚鸢尾(virginica)。这些种类之间差别不大，但是不同种类在花瓣和花萼的形状上有所区别。鸢尾花数据集（iris.csv）中包括150条不同鸢尾花的花萼长度、花萼宽度、花瓣长度、花瓣宽度数据。下面使用的是已经完成拆分的数据，iris_training.csv训练数据集，120条样本数据；iris_test.csv测试数据集，30条数据，可借助BaseDT库快速完成[数据集拆分](https://xedu.readthedocs.io/zh/master/basedt/introduction.html#id11)。
+
 ## 训练
 
 ### 0. 引入包
