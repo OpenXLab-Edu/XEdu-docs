@@ -38,25 +38,25 @@
     <th class="wrapword">常用参数及其默认值</th>
   </tr>
 </thead>
-<tbody align="center">
+<tbody>
   <tr>
     <td>线性回归（LinearRegression）</td>
-    <td>[回归](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn-linear-model-linearregression)</td>
+    <td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn-linear-model-linearregression">回归</a></td>
     <td>适用于预测房价、预测销售额、贷款额度等。</td>
     <td class="wrapword">线性回归（Linear Regression）线性回归算法的核心思想是找到一条直线，使得这条直线能够最好地代表和预测数据。通常适用于连续值的预测，例如房价、贷款额度等。线性回归就像用直尺在散点图上画一条尽可能穿过所有点的直线，这条直线就能帮我们预测未来的值。</td>
     <td class="wrapword">fit_intercept=True, positive=False</td> 
   </tr>
 </tbody>
-<tbody align="center">
+<tbody>
   <tr>
     <td>最近邻分类（KNN, K-Nearest Neighbors）</td>
-    <td>[分类](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn-neighbors-kneighborsclassifier)</td>
+    <td><a herf="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn-neighbors-kneighborsclassifier">分类</a></td>
     <td class="wrapword">识别数字、判断邮件是否为垃圾邮件、图像识别等。</td>
     <td class="wrapword">最近邻分类算法核心思想是“近朱者赤”。如果要分析一个新数据点的类别，我们会寻找离它最近的K个邻居，哪类邻居多，就认为新数据点也属于该类。适用于数据集较小等情况，分类结果直观。假设你在一个聚会上不认识任何人，你可能会找和你最相似的人群加入。KNN算法也是这样工作的，它通过查找最相似（最近邻）的数据点来进行分类。</td>
     <td>n_neighbors=5, p=2（距离计算方式）</td>
   </tr>
 </tbody>
-<tbody align="center">
+<tbody>
   <tr>
     <td>支持向量机（SVM, Support Vector Machine）</td>
     <td>[分类](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn-svm-svc)/[回归](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html#sklearn-svm-svr)</td>
@@ -65,7 +65,7 @@
     <td class="wrapword">kernel='rbf', gamma='scale', tol=0.001, C=1.0</td>
   </tr>
 </tbody>
-<tbody align="center">
+<tbody>
   <tr>
     <td>决策树算法（CART）</td>
     <td>[分类](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn-tree-decisiontreeclassifier)/[回归](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html#sklearn-tree-decisiontreeregressor)</td>
@@ -74,7 +74,7 @@
     <td class="wrapword">criterion='squared_error', max_depth=None, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features=None</td>
   </tr>
 </tbody>
-<tbody align="center">
+<tbody>
   <tr>
     <td>随机森林算法（Random Forest）</td>
     <td>[分类](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn-ensemble-randomforestclassifier)/[回归](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html#sklearn-ensemble-randomforestregressor)</td>
@@ -83,7 +83,7 @@
     <td class="wrapword">n_estimators=100, criterion='squared_error', max_depth=None, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features=1.0, bootstrap=True, oob_score=False, warm_start=False</td>
   </tr>
 </tbody>
-<tbody align="center">
+<tbody>
   <tr>
     <td>自适应增强算法（AdaBoost）</td>
     <td>[分类](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html#sklearn-ensemble-adaboostclassifier)/[回归](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostRegressor.html#sklearn-ensemble-adaboostregressor)</td>
@@ -92,7 +92,7 @@
     <td class="wrapword">n_estimators=50, learning_rate=1.0, loss='linear'</td>
   </tr>
 </tbody>
-<tbody align="center">
+<tbody>
   <tr>
     <td>多层感知机算法（MLP）</td>
     <td>[分类](https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPClassifier.html#sklearn-neural-network-mlpclassifier)/[回归](https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html#sklearn-neural-network-mlpregressor)</td>
@@ -101,7 +101,7 @@
     <td class="wrapword">hidden_layer_sizes=(100,), activation='relu', *, solver='adam', alpha=0.0001, batch_size='auto', learning_rate='constant', learning_rate_init=0.001, power_t=0.5, max_iter=200, shuffle=True, tol=0.0001, verbose=False, warm_start=False, momentum=0.9, nesterovs_momentum=True, early_stopping=False, validation_fraction=0.1, beta_1=0.9, beta_2=0.999, epsilon=1e-08, n_iter_no_change=10, max_fun=15000</td>
   </tr>
 </tbody>
-<tbody align="center">
+<tbody>
   <tr>
     <td class="tg-zk71">……</td>
     <td>……</td>
