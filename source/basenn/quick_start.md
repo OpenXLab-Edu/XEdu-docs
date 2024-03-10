@@ -10,6 +10,8 @@ BaseNN可以方便地逐层搭建神经网络，深入探究神经网络的原�
 
 更新库文件：`pip install --upgrade BaseNN`
 
+库文件源代码可以从[PyPi](https://pypi.org/project/BaseNN/#files)下载，选择tar.gz格式下载，可用常见解压软件查看源码。
+
 
 ## 体验
 

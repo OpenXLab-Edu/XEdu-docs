@@ -19,6 +19,8 @@ XEduHub是一个专为快速、便捷地利用最先进的深度学习模型完�
 
 `pip install XEdu-python`或`pip install xedu-python`
 
+库文件源代码可以从[PyPi](https://pypi.org/project/xedu-python/#files)下载，选择tar.gz格式下载，可用常见解压软件查看源码。
+
 以识别图像中的人体关键点为例，参考代码如下：
 
 ```python
