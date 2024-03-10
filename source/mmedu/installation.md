@@ -182,7 +182,7 @@ python中最常用的库管理工具pip，可以使用cmd命令行来运行，�
 终端中输入pip install MMEdu即可安装。
 
 ``` {.powershell}
-$ pip install MMEdu
+$ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/index.html
 ```
 
 注：为避免出现版本冲突，建议新建一个conda环境，并在新环境中执行以上命令（注：要求python\<3.9）。
@@ -190,7 +190,7 @@ $ pip install MMEdu
 ``` {.powershell}
 $ conda create -n your_env_name python=3.8
 $ conda activate your_env_name
-$ pip install MMEdu
+$ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/index.html
 ```
 
 注：请将命令中的"your\_env\_name"换成你喜欢的名称，如"mmedu"。
@@ -245,7 +245,7 @@ $ pip install mmcv-full==1.4.5 -f https://download.openmmlab.com/mmcv/dist/cu101
 最后安装MMEdu。
 
 ``` {.powershell}
-$ pip install MMEdu
+$ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/index.html
 ```
 
 ## 3. 完整版安装之docker容器
@@ -264,4 +264,4 @@ $ pip install MMEdu
 
 如果MMEdu库出现异常情况，可以尝试使用如下命令卸载MMEdu然后再使用install命令安装。
 
-    $ pip uninstall MMEdu
+    $ pip uninstall MMEdu -y

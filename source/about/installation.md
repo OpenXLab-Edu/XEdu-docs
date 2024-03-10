@@ -398,6 +398,6 @@ Docker分为容器（Container）和镜像（Image），（有时还会额外有
 
 如果XEdu某模块库出现异常情况，可以尝试使用`uninstall`命令卸载，然后再使用install命令安装。参考代码：
 
-    $ pip uninstall MMEdu
-    $ pip uninstall BaseNN
-    $ pip uninstall BaseML
+    $ pip uninstall MMEdu -y
+    $ pip uninstall BaseNN -y
+    $ pip uninstall BaseML -y
