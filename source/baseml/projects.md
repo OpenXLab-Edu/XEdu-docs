@@ -285,15 +285,15 @@ plt.show()
 
 
 
-## 用k均值实现园区集合地点选取
+## 用k均值实现城市聚类分析
 
-本案例来源于华东师范大学出版社《人工智能初步》53-55页。
+本案例来源于人民教育出版社《人工智能初步》（中国地图出版社）56-59页。
 
-项目地址：[https://www.openinnolab.org.cn/pjlab/project?id=638015a0777c254264da387f&sc=62f34141bf4f550f3e926e0e#public](https://www.openinnolab.org.cn/pjlab/project?id=638015a0777c254264da387f&sc=62f34141bf4f550f3e926e0e#public)
+项目地址：[https://openinnolab.org.cn/pjlab/project?id=6440ce55d73dd91bcbcbb934&backpath=/pjedu/userprofile?slideKey=project#public](https://openinnolab.org.cn/pjlab/project?id=6440ce55d73dd91bcbcbb934&backpath=/pjedu/userprofile?slideKey=project#public)
 
 ### 项目核心功能：
 
-使用BaseML中的Cluster模块进行聚类，使用matplotlib库对聚类结果进行可视化。该项目可根据同学所在位置，解决聚集点设定问题。可通过学习和实验了解KMeans的工作原理，掌握使用BaseML进行[k均值（KMeans）](https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id25)聚类的方法。
+使用BaseML中的Cluster模块进行聚类，使用matplotlib库对聚类结果进行可视化。该项目可根据同学所在位置，解决聚集点设定问题。可通过学习和实验了解KMeans的工作原理，掌握使用BaseML进行k均值（KMeans）聚类的方法。
 
 数据集来源：自定义数据集。
 
@@ -302,26 +302,19 @@ plt.show()
 首先完成数据读取。
 
 ```python
-# 导入需要的各类库，numpy和pandas用来读入数据和处理数据，BaseML是主要的算法库
-import numpy as np
 import pandas as pd
-from BaseML import Cluster as clt
-import matplotlib.pyplot as plt
-from sklearn.datasets import make_blobs
-
-# 生成自定义数据，并查看数据分布情况。随机生成1000个点，定义两个中心。
-X,y=make_blobs(n_samples=1000,n_features=2,centers=[[1,5],[5,3]],cluster_std=[0.4,0.6],random_state=9)
-plt.scatter(X[:,0],X[:,1],marker='o')
-plt.show()
+# 观察数据情况
+df = pd.read_csv("2016地区GDP.csv")
 ```
 
 ##### 1）模型训练
 
 ```
 # 实例化模型
-model = clt('Kmeans', N_CLUSTERS=2)
-# 指定数据集，需要指定类型
-model.load_dataset(X = X, type='numpy', x_column=[0,1])
+model = clt('Kmeans')
+model.set_para(N_CLUSTERS=5) 
+# 指定数据集，需要显式指定类型. show可以显示前5条数据，scale表示要进行归一化。数量级相差大的特征需要进行归一化。
+model.load_dataset(X = df, type='pandas', x_column=[1,2], shuffle=True,scale=True)
 # 开始训练
 model.train()
 # 模型保存
@@ -330,102 +323,35 @@ model.save('mymodel.pkl')
 
 ##### 2）模型推理
 
-1.无参数推理，输出聚类数据结果
-
 ```
 # 进行推理
-model.inference()
+result = model.inference()
+print(result)
 ```
 
-2.有参数推理，返回聚类结果，便于可视化
-
 ```
-# 进行推理（）
-result = model.inference(X,verbose = False)
-```
-
-可视化聚类结果的代码：
-
-```
-import matplotlib.pyplot as plt
-# 聚类结果根据颜色区分
-plt.scatter(X[:,0],X[:,1], c=result, s=50, cmap='viridis')
-# 标出聚类序号，长方形序号的左下角为聚类中心所在位置
-centers = model.model.cluster_centers_
-for i in range(model.model.cluster_centers_.shape[0]):
-    plt.text(centers[:, 0][i]+0.03,y=centers[:, 1][i]+0.03,s=i, 
-             fontdict=dict(color='red',size=10),
-             bbox=dict(facecolor='yellow',alpha=0.5))
-```
-
-
-
-## 用k均值实现车辆类别聚类分析
-
-本案例来源于上海科技教育出版社《人工智能初步》88-89页。
-
-项目地址：[https://www.openinnolab.org.cn/pjlab/project?id=638015e4777c254264da38ca&sc=62f34141bf4f550f3e926e0e#public](https://www.openinnolab.org.cn/pjlab/project?id=638015e4777c254264da38ca&sc=62f34141bf4f550f3e926e0e#public)
-
-### 项目核心功能：
-
-使用BaseML中的Cluster模块进行聚类，使用matplotlib库对聚类结果进行可视化。该项目可根据车辆的品质，解决车辆分类问题，便于用户进行决策。可通过学习和实验了解KMeans的工作原理，掌握使用BaseML进行[k均值（KMeans）](https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id25)聚类的方法。
-
-数据集来源：上海科技教育出版社《人工智能初步》88页。
-
-### 实现步骤：
-
-##### 1）模型训练
-
-```
-# 导入需要的各类库，numpy和pandas用来读入数据和处理数据，BaseML是主要的算法库
-import numpy as np
-import pandas as pd
-from BaseML import Cluster as clt
-
-# 读取数据
-df = pd.read_csv("车辆聚类.csv")
-# 实例化模型
-model = clt('Kmeans', N_CLUSTERS=2)
-# 指定数据集，需要显式指定类型
-model.load_dataset(X = df, type='pandas', x_column=[1,2])
-# 开始训练
-model.train()
-# 模型保存
-model.save('mymodel.pkl')
-```
-
-##### 2）模型推理
-
-1.无参数推理，输出聚类数据结果
-
-```
-# 进行推理
-model.inference()
-```
-
-2.有参数推理，返回聚类结果，便于可视化
-
-```
-# 进行推理
-result = model.inference(df.loc[:,['大小','颜色']].values)
-# 输出最终的车辆聚类文字结果
+# 输出最终的城市聚类文字结果
 for index, row in df.iterrows():
-    print('{0}号车辆属于第{1}个类别'.format(row['汽车编号'],result[index])) # 输出每一行
+    print('{0}属于第{1}个城市集群'.format(row['地区'],result[index])) # 输出每一行
 ```
 
 可视化聚类结果的代码：
 
 ```
+# 可视化最终的城市集群结果
 import matplotlib.pyplot as plt
-# 画出不同颜色的车辆点
-plt.scatter(df.iloc[:, 1], df.iloc[:, 2], c=result, s=50, cmap='viridis')
 
-# 标出聚类序号，长方形序号的左下角为聚类中心所在位置
-centers = model.model.cluster_centers_
+# 画出不同颜色的城市集群点
+plt.scatter(df.iloc[:, 1], df.iloc[:, 2], c=result, s=50, cmap='viridis')
+# 画出聚类中心
+centers = model.reverse_scale(model.model.cluster_centers_)
+plt.scatter(centers[:, 0], centers[:, 1], c='black', s=100, alpha=0.5)
+# 标出聚类序号
 for i in range(model.model.cluster_centers_.shape[0]):
-    plt.text(centers[:, 0][i]+0.03,y=centers[:, 1][i]+0.03,s=i, 
+    plt.text(centers[:, 0][i],y=centers[:, 1][i],s=i, 
              fontdict=dict(color='red',size=10),
              bbox=dict(facecolor='yellow',alpha=0.5),
-            zorder=-1)
+            zorder=0)
 ```
+
 
