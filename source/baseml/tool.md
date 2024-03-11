@@ -1,6 +1,6 @@
 # BaseML辅助工具
 
-## 图像处理模型ImageLoader
+## 内置图像处理模型ImageLoader
 
 `ImageLoader`是BaseML内置的图片处理模块，用于进行图像数字化处理，读取图片并提取其中的图像特征，如HOG特征和LBP特征，用以进行后续的机器学习任务。
 
