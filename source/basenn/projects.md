@@ -431,16 +431,12 @@ model.add('Linear', size=(512, 10), activation='Softmax') # (32,10)
 
 ##### 3）载入数据
 
-载入前需对数据做预处理，载入图片数据前如需对图像数据集进行预处理，例如做尺寸调整，可先使用torchvision对图片数据集进行预处理再载入模型进行训练。此处我们需将图片做尺寸调整（调整为224,224）
+载入前需对数据做预处理，载入图片数据前如需对图像数据集进行预处理，例如做尺寸调整，可先使用调用已经内置的torchvision对图片数据集进行预处理再载入模型进行训练。此处我们需将图片做尺寸调整（调整为224,224）
 参考代码如下，注意涉及数万张图片，需等待几分钟。
 
 ```
-from torchvision.transforms import transforms
-# 对数据集做尺寸调整
-tran = transforms.Resize([224,224])
-# 模型载入数据
-model.load_img_data("/data/MELLBZ/mnist/training_set",
-                            batch_size=32,transform=tran,num_workers=1)
+# 载入数据，并对数据集做尺寸调整
+model.load_img_data('/data/MELLBZ/mnist/training_set',transform={"Resize":(224,224)},num_workers=1)
 ```
 
 ##### 4）设置超参数并训练模型
