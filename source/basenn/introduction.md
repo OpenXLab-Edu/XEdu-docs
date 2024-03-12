@@ -28,11 +28,13 @@ model = nn()
 
 可选参数：
 
-`task`：指定了这个模型要完成的任务，可选取值有：`['reg','cls']`，
+`task`：指定了这个模型要完成的任务，可选取值有：`['reg','cls','gen']`，
 
 回归任务：nn('reg')。
 
 分类任务：nn('cls')，当不指定时，`task`的默认值`'cls'`。
+
+生成任务：nn('gen')。
 
 ### 2. 载入数据
 
@@ -111,7 +113,7 @@ model.load_img_data('catdog',transform={"Resize":(128,128),"RandomResizedCrop":2
     <td>裁剪</td>
     <td>随机长宽比裁剪</td>
     <td>RandomResizedCrop</td>
-    <td>(size=224, scale=(0.08, 1.0), ratio=(0.75, 1.33), interpolation=2)</td>
+    <td>size=224, scale=(0.08, 1.0), ratio=(0.75, 1.33), interpolation=2</td>
   </tr>
 </tbody>
 <tbody>
@@ -127,7 +129,7 @@ model.load_img_data('catdog',transform={"Resize":(128,128),"RandomResizedCrop":2
     <td>裁剪</td>
     <td>上下左右中心裁剪后翻转</td>
     <td>TenCrop</td>
-    <td>(size=(32, 32), vertical_flip=False)</td>
+    <td>size=(32, 32), vertical_flip=False</td>
   </tr>
 </tbody>
 <tbody>
@@ -167,7 +169,7 @@ model.load_img_data('catdog',transform={"Resize":(128,128),"RandomResizedCrop":2
     <td>图像变换</td>
     <td>标准化</td>
     <td>Normalize</td>
-    <td>(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225))</td>
+    <td>mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225)</td>
   </tr>
 </tbody>
 <tbody>
@@ -191,7 +193,7 @@ model.load_img_data('catdog',transform={"Resize":(128,128),"RandomResizedCrop":2
     <td>图像变换</td>
     <td>修改亮度、对比度和饱和度</td>
     <td>ColorJitter</td>
-    <td>(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1)</td>
+    <td>brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1</td>
   </tr>
 </tbody>
 <tbody>
@@ -207,7 +209,7 @@ model.load_img_data('catdog',transform={"Resize":(128,128),"RandomResizedCrop":2
     <td>图像变换</td>
     <td>线性变换</td>
     <td>LinearTransformation</td>
-    <td>(transformation_matrix, mean_vector)</td>
+    <td>transformation_matrix, mean_vector</td>
   </tr>
 </tbody>
 <tbody>
@@ -215,7 +217,7 @@ model.load_img_data('catdog',transform={"Resize":(128,128),"RandomResizedCrop":2
     <td>图像变换</td>
     <td>仿射变换</td>
     <td>RandomAffine</td>
-    <td>(degrees=30, translate=(0.1, 0.1), scale=(0.8, 1.2), shear=10)</td>
+    <td>degrees=30, translate=(0.1, 0.1), scale=(0.8, 1.2), shear=10</td>
   </tr>
 </tbody>
 <tbody>
@@ -223,7 +225,7 @@ model.load_img_data('catdog',transform={"Resize":(128,128),"RandomResizedCrop":2
     <td>图像变换</td>
     <td>依概率p转为灰度图</td>
     <td>RandomGrayscale</td>
-    <td>(p=0.1)</td>
+    <td>0.1</td>
   </tr>
 </tbody>
 <tbody>
@@ -239,10 +241,11 @@ model.load_img_data('catdog',transform={"Resize":(128,128),"RandomResizedCrop":2
     <td>图像变换</td>
     <td>自定义Lambda变换</td>
     <td>Lambda</td>
-    <td>(lambda x: x.div(255))</td>
+    <td>lambda x: x.div(255)</td>
   </tr>
 </tbody>
 </table>
+
 
 
 #### 针对特征表格类型的数据：
