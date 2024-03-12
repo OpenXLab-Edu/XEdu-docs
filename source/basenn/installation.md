@@ -16,3 +16,4 @@ BaseNN已经内置在XEdu的一键安装包中，解压后即可使用。
 
 可尝试通过运行`pip install --upgrade opencv-python`解决。
 
+库文件源代码可以从[PyPi](https://pypi.org/project/BaseNN/#files)下载，选择tar.gz格式下载，可用常见解压软件查看源码。
