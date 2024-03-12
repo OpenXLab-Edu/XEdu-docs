@@ -75,7 +75,7 @@ model.load_img_data('MNIST',transform={"Resize":(128,128)})
 model.load_img_data('catdog',transform={"Resize":(128,128),"RandomResizedCrop":224,"RandomHorizontalFlip":0.5})
 ```
 
-方法说明: `Resize()`:对图片尺寸进行缩放。
+方法说明: `Resize()`:对图片尺寸进行调整。
 
 `RandomResizedCrop()`:对图片尺寸进行随机缩放后裁剪为固定尺寸。
 
@@ -159,7 +159,7 @@ model.load_img_data('catdog',transform={"Resize":(128,128),"RandomResizedCrop":2
 <tbody>
   <tr>
     <td>图像变换</td>
-    <td>Resize</td>
+    <td>尺寸调整</td>
     <td>Resize</td>
     <td>(128, 128)</td>
   </tr>
@@ -245,6 +245,7 @@ model.load_img_data('catdog',transform={"Resize":(128,128),"RandomResizedCrop":2
   </tr>
 </tbody>
 </table>
+
 
 
 
