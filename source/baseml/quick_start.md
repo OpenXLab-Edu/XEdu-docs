@@ -112,6 +112,6 @@ OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台�
 
 AI项目工坊：[https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pjlab/ai/projects](https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pjlab/ai/projects)
 
-（用Chorme浏览器打开效果最佳）
+（用Chrome浏览器打开效果最佳）
 
 更多案例详见[下文](https://xedu.readthedocs.io/zh/master/baseml/projects.html)。
