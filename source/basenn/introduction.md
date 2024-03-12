@@ -87,30 +87,30 @@ model.load_img_data('catdog',transform={"Resize":(128,128),"RandomResizedCrop":2
     <th>类别</th>
     <th>转换名称</th>
     <th>函数</th>
-    <th>参数设置示例</th>
+    <th>设置示例</th>
   </tr>
 </thead>
 <tbody>
   <tr>
     <td>裁剪</td>
     <td>随机裁剪</td>
-    <td>transforms.RandomCrop</td>
-    <td>(size=(32, 32))</td> 
+    <td>RandomCrop</td>
+    <td>(32, 32)</td> 
   </tr>
 </tbody>
 <tbody>
   <tr>
     <td>裁剪</td>
     <td>中心裁剪</td>
-    <td>transforms.CenterCrop</td>
-    <td>(size=(32, 32))</td>
+    <td>CenterCrop</td>
+    <td>(32, 32)</td>
   </tr>
 </tbody>
 <tbody>
   <tr>
     <td>裁剪</td>
     <td>随机长宽比裁剪</td>
-    <td>transforms.RandomResizedCrop</td>
+    <td>RandomResizedCrop</td>
     <td>(size=224, scale=(0.08, 1.0), ratio=(0.75, 1.33), interpolation=2)</td>
   </tr>
 </tbody>
@@ -118,15 +118,15 @@ model.load_img_data('catdog',transform={"Resize":(128,128),"RandomResizedCrop":2
   <tr>
     <td>裁剪</td>
     <td>上下左右中心裁剪</td>
-    <td>transforms.FiveCrop</td>
-    <td>(size=(32, 32))</td>
+    <td>FiveCrop</td>
+    <td>(32, 32)</td>
   </tr>
 </tbody>
 <tbody>
   <tr>
     <td>裁剪</td>
     <td>上下左右中心裁剪后翻转</td>
-    <td>transforms.TenCrop</td>
+    <td>TenCrop</td>
     <td>(size=(32, 32), vertical_flip=False)</td>
   </tr>
 </tbody>
@@ -134,39 +134,39 @@ model.load_img_data('catdog',transform={"Resize":(128,128),"RandomResizedCrop":2
   <tr>
     <td>翻转和旋转</td>
     <td>依概率p水平翻转</td>
-    <td>transforms.RandomHorizontalFlip</td>
-    <td>(p=0.5)</td>
+    <td>RandomHorizontalFlip</td>
+    <td>0.5</td>
   </tr>
 </tbody>
 <tbody>
   <tr>
     <td>翻转和旋转</td>
     <td>依概率p垂直翻转</td>
-    <td>transforms.RandomVerticalFlip</td>
-    <td>(p=0.5)</td>
+    <td>RandomVerticalFlip</td>
+    <td>0.5</td>
   </tr>
 </tbody>
 <tbody>
   <tr>
     <td>翻转和旋转</td>
     <td>随机旋转</td>
-    <td>transforms.RandomRotation</td>
-    <td>(degrees=(0, 180))</td>
+    <td>RandomRotation</td>
+    <td>(0, 180)</td>
   </tr>
 </tbody>
 <tbody>
   <tr>
     <td>图像变换</td>
     <td>Resize</td>
-    <td>transforms.Resize</td>
-    <td>(size=(128, 128))</td>
+    <td>Resize</td>
+    <td>(128, 128)</td>
   </tr>
 </tbody>
 <tbody>
   <tr>
     <td>图像变换</td>
     <td>标准化</td>
-    <td>transforms.Normalize</td>
+    <td>Normalize</td>
     <td>(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225))</td>
   </tr>
 </tbody>
@@ -174,7 +174,7 @@ model.load_img_data('catdog',transform={"Resize":(128,128),"RandomResizedCrop":2
   <tr>
     <td>图像变换</td>
     <td>转为tensor</td>
-    <td>transforms.ToTensor</td>
+    <td>ToTensor</td>
     <td>无参数设置示例</td>
   </tr>
 </tbody>
@@ -182,15 +182,15 @@ model.load_img_data('catdog',transform={"Resize":(128,128),"RandomResizedCrop":2
   <tr>
     <td>图像变换</td>
     <td>填充</td>
-    <td>transforms.Pad</td>
-    <td>(padding=4)</td>
+    <td>Pad</td>
+    <td>4</td>
   </tr>
 </tbody>
 <tbody>
   <tr>
     <td>图像变换</td>
     <td>修改亮度、对比度和饱和度</td>
-    <td>transforms.ColorJitter</td>
+    <td>ColorJitter</td>
     <td>(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1)</td>
   </tr>
 </tbody>
@@ -198,15 +198,15 @@ model.load_img_data('catdog',transform={"Resize":(128,128),"RandomResizedCrop":2
   <tr>
     <td>图像变换</td>
     <td>转灰度图</td>
-    <td>transforms.Grayscale</td>
-    <td>(num_output_channels=1)</td>
+    <td>Grayscale</td>
+    <td>1</td>
   </tr>
 </tbody>
 <tbody>
   <tr>
     <td>图像变换</td>
     <td>线性变换</td>
-    <td>transforms.LinearTransformation</td>
+    <td>LinearTransformation</td>
     <td>(transformation_matrix, mean_vector)</td>
   </tr>
 </tbody>
@@ -214,7 +214,7 @@ model.load_img_data('catdog',transform={"Resize":(128,128),"RandomResizedCrop":2
   <tr>
     <td>图像变换</td>
     <td>仿射变换</td>
-    <td>transforms.RandomAffine</td>
+    <td>RandomAffine</td>
     <td>(degrees=30, translate=(0.1, 0.1), scale=(0.8, 1.2), shear=10)</td>
   </tr>
 </tbody>
@@ -222,7 +222,7 @@ model.load_img_data('catdog',transform={"Resize":(128,128),"RandomResizedCrop":2
   <tr>
     <td>图像变换</td>
     <td>依概率p转为灰度图</td>
-    <td>transforms.RandomGrayscale</td>
+    <td>RandomGrayscale</td>
     <td>(p=0.1)</td>
   </tr>
 </tbody>
@@ -230,7 +230,7 @@ model.load_img_data('catdog',transform={"Resize":(128,128),"RandomResizedCrop":2
   <tr>
     <td>图像变换</td>
     <td>将数据转换为PILImage</td>
-    <td>transforms.ToPILImage</td>
+    <td>ToPILImage</td>
     <td>无参数设置示例</td>
   </tr>
 </tbody>
@@ -238,11 +238,12 @@ model.load_img_data('catdog',transform={"Resize":(128,128),"RandomResizedCrop":2
   <tr>
     <td>图像变换</td>
     <td>自定义Lambda变换</td>
-    <td>transforms.Lambda</td>
+    <td>Lambda</td>
     <td>(lambda x: x.div(255))</td>
   </tr>
 </tbody>
 </table>
+
 
 #### 针对特征表格类型的数据：
 
