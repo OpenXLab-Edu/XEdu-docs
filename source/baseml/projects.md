@@ -10,7 +10,7 @@
 
 ### 项目核心功能
 
-借助[决策树](https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id5)算法完成道路智能决策，可通过学习和实验了解决策树的工作原理，掌握决策树分类任务编程的流程。
+借助决策树算法完成道路智能决策，可通过学习和实验了解决策树的工作原理，掌握决策树分类任务编程的流程。
 
 ### 数据说明：
 
@@ -143,7 +143,7 @@ print(label[y[0]])
 
 ### 项目核心功能：
 
-使用BaseML来实现[k近邻（knn）](https://xedu.readthedocs.io/zh/master/baseml/introduction.html#k)分类算法，为旅行者们推荐最适合他们的场馆。在项目实践中了解k近邻的工作原理，掌握使用BaseML进行k近邻分类的方法。
+使用BaseML来实现k近邻（knn）分类算法，为旅行者们推荐最适合他们的场馆。在项目实践中了解k近邻的工作原理，掌握使用BaseML进行k近邻分类的方法。
 
 数据集来源：华师大出版社《人工智能初步》38页。
 
@@ -353,5 +353,4 @@ for i in range(model.model.cluster_centers_.shape[0]):
              bbox=dict(facecolor='yellow',alpha=0.5),
             zorder=0)
 ```
-
 
