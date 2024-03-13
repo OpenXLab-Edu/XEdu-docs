@@ -75,11 +75,11 @@ model.load_img_data('MNIST',transform={"Resize":(128,128)})
 model.load_img_data('catdog',transform={"Resize":(128,128),"RandomResizedCrop":224,"RandomHorizontalFlip":0.5})
 ```
 
-方法说明: `Resize()`:对图片尺寸进行调整。
+方法说明: `Resize`:对图片尺寸进行调整。
 
-`RandomResizedCrop()`:对图片尺寸进行随机缩放后裁剪为固定尺寸。
+`RandomResizedCrop`:对图片尺寸进行随机缩放后裁剪为固定尺寸。
 
-`RandomHorizontalFlip()`:依照某概率对图片进行水平翻转。
+`RandomHorizontalFlip`:依照某概率对图片进行水平翻转。
 
 支持的操作即为[torchvision中的transforms](https://pytorch-cn.readthedocs.io/zh/latest/torchvision/torchvision-transform/)包括的所有方式，如下表所列。
 
