@@ -89,9 +89,9 @@ mmcls.save(result_img,'new.jpg')# 保存推理结果图片
 
 ##### 6）部署到硬件
 
-此时您可以挑选自己熟悉的硬件，去做自己训练并完成转换的模型部署啦，只需要下载转换的ONNX模型，在硬件上安装库即可。
+此时您可以挑选自己熟悉的硬件，去做自己训练并完成转换的模型部署啦，只需要下载转换的ONNX模型，在硬件上安装库即可。更多模型应用与部署的介绍详见[后文](https://xedu.readthedocs.io/zh/master/how_to_use/support_resources/model_convert.html#id9)。
 
-## 解决图像分类问题——以猫狗检测为例
+## 解决目标检测问题——以猫狗检测为例
 
 项目地址：[https://openinnolab.org.cn/pjlab/project?id=64055f119c0eb14f22db647c&sc=62f34141bf4f550f3e926e0e#public](https://openinnolab.org.cn/pjlab/project?id=64055f119c0eb14f22db647c&sc=62f34141bf4f550f3e926e0e#public)
 
@@ -183,4 +183,5 @@ mmcls.save(result_img,'new.jpg')# 保存推理结果图片
 
 ##### 6）部署到硬件
 
-此时您可以挑选自己熟悉的硬件，去做自己训练并完成转换的模型部署啦，只需要下载转换的ONNX模型，在硬件上安装库即可。
+此时您可以挑选自己熟悉的硬件，去做自己训练并完成转换的模型部署啦，只需要下载转换的ONNX模型，在硬件上安装库即可。更多模型应用与部署的介绍详见[后文](https://xedu.readthedocs.io/zh/master/how_to_use/support_resources/model_convert.html#id9)。
+
