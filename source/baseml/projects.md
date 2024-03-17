@@ -1,5 +1,64 @@
 # BaseML项目案例集
 
+## 探秘BaseML之MLP（多层感知机）
+
+本案例选用了多套教材中的数据集，并都使用MLP算法对数据集进行训练，实现了**分类**和**回归**两大任务。
+
+项目地址：https://openinnolab.org.cn/pjlab/project?id=65f69017ace40851ae424258&sc=635638d69ed68060c638f979#public
+
+### 分类任务实现代码举例
+```python
+from BaseML import Classification as cls # 从库文件中导入分类任务模块
+model = cls('MLP') # 实例化MLP模型
+model.set_para(hidden_layer_sizes=(10,10)) # 设定模型参数
+                                             # 这里的输入和输出层神经元数量是自动识别的
+                                             # 只需要设定隐藏层的神经元数量即可
+data = model.load_tab_data('data/road-accessibility-status-analysis.csv',train_val_ratio=0.6) # 载入训练数据
+print(data)
+model.train(lr=0.01,epochs=100) # 训练模型
+model.valid(metrics='acc') # 载入验证数据并验证
+model.metricplot() 
+```
+输出如下：
+```
+Setting hidden_layer_sizes to (10, 10)
+(array([[ 2., 83.],
+       [ 1., 80.],
+       [ 1., 90.],
+       [ 1., 71.],
+       [ 1., 87.],
+       [ 2., 29.],
+       [ 1., 47.]]), array([1., 1., 1., 2., 1., 1., 2.]), array([[ 1., 73.],
+       [ 2., 75.],
+       [ 2., 48.],
+       [ 1., 68.],
+       [ 1., 78.]]), array([2., 1., 1., 2., 2.]))
+验证准确率为：80.0%
+```
+上面的代码通过metrics='acc'，计算了分类任务的准确性，并可以通过metricplot()将结果可视化。
+### 回归任务实现代码举例
+```python
+from BaseML import Regression as reg # 从库文件中导入回归任务模块
+model = reg('MLP') # 实例化MLP模型
+model.set_para(hidden_layer_sizes=(10,10)) # 设定模型参数
+                                             # 这里的输入和输出层神经元数量是自动识别的
+                                             # 只需要设定隐藏层的神经元数量即可
+data = model.load_tab_data('data/cake-size-to-price-prediction.csv',train_val_ratio=0.6) # 载入训练数据
+print(data)
+model.train(lr=0.01,epochs=100) # 训练模型
+model.valid(metrics='r2') # 载入验证数据并验证
+model.metricplot() 
+```
+输出如下：
+```
+Setting hidden_layer_sizes to (10, 10)
+(array([[ 9.],
+       [ 6.],
+       [10.]]), array([69., 40., 77.]), array([[ 8.],
+       [12.]]), array([56., 96.]))
+验证r2-score为：98.95081251824811%
+```
+上面的代码通过metrics='r2'，计算了回归任务的R平方指标的值，并可以通过metricplot()将结果可视化。
 ## 基于决策树的道路智能决策
 
 本案例来源于上海科教版《人工智能初步》人教地图56-58页。
