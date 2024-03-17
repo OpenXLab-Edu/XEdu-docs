@@ -375,6 +375,16 @@ Docker分为容器（Container）和镜像（Image），（有时还会额外有
 ![Docker Lab](../images/about/docker3.png)
 ![Docker EasyTrain](../images/about/docker4.png)
 
+#### 可能用到的docker命令
+- 查看现有的容器
+  `docker ps -a`
+- 暂停容器
+  `docker stop 34`。
+  假设使用ps查看到容器ID是1234567890，还有另一个容器ID是1243567890，我们在指定的时候，只要输入其中的任意一小段，可以区分开不同的容器即可，例如可以用`34`或者`1234`之类来区分这两个不同的容器。
+- 再次启动容器
+  `docker start 34`
+- 进入容器的命令行窗口
+  `docker exec 34 -it bash`
 ### 5.结束容器
 
 在刚才的命令行窗口中，输入CTRL+C，再输入y，即可结束容器。
