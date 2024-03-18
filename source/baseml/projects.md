@@ -4,7 +4,7 @@
 
 本案例选用了多套教材中的数据集，并都使用MLP算法对数据集进行训练，实现了**分类**和**回归**两大任务。
 
-项目地址：https://openinnolab.org.cn/pjlab/project?id=65f69017ace40851ae424258&sc=635638d69ed68060c638f979#public
+项目地址：[https://openinnolab.org.cn/pjlab/project?id=65f69017ace40851ae424258&sc=635638d69ed68060c638f979#public](https://openinnolab.org.cn/pjlab/project?id=65f69017ace40851ae424258&sc=635638d69ed68060c638f979#public)
 
 ### 分类任务实现代码举例
 ```python
