@@ -332,8 +332,6 @@ print(torch.cuda.is_available())
 
 ### 3. pip安装BaseNN
 
-----------------
-
 `pip install basenn` 或 `pip install BaseNN`
 
 ## windows一键安装包升级GPU版本
