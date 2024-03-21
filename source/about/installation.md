@@ -154,9 +154,7 @@ XEdu一键安装包说明文档。
 
 XEdu的MMEdu、BaseML、BaseNN等各模块库均已支持pip安装并会持续迭代。
 
-### 1. pip安装MMEdu
-
-#### 1.1 准备工作
+### 0.准备工作
 
 强烈推荐你在Anaconda的基础上安装MMEdu，可以避免很多的版本冲突问题。
 
@@ -206,11 +204,13 @@ XEdu的MMEdu、BaseML、BaseNN等各模块库均已支持pip安装并会持续�
 点击Thonny主界面右下角的Python版本号，可以选择对应的Python解释器，第一次配置点击`Configure inter preter`，弹出的窗口中，第一个下拉栏选择`可选的python3解释器或虚拟环境`，
 第二个下拉栏找到自己之前安装的anaconda环境中的python解释器位置。点击确认即可使用该python解释器。
 
-### 1.2 安装MMEdu(CPU版本)
+### 1.pip安装MMEdu
+
+### 1.1 安装MMEdu(CPU版本)
 
 #### 1）Linux安装MMEdu
 
-点击鼠标右键，打开终端。
+点击鼠标右键，打开终端，激活虚拟环境。
 
 终端中输入pip install MMEdu即可安装。
 
@@ -230,7 +230,7 @@ $ pip install MMEdu
 
 #### 2）Windows安装MMEdu
 
-同时按下win+r，输入cmd，回车，打开一个命令行窗口。
+同时按下win+r，输入cmd，回车，打开一个命令行窗口，激活虚拟环境。
 
 在命令行中使用pip安装即可。
 
@@ -248,7 +248,7 @@ $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/i
 
 如使用MMEdu的MMDet模块出现问题，可见后文[关于pip安装MMEdu的详细说明](https://xedu.readthedocs.io/zh/master/mmedu/installation.html#pip)。
 
-### 1.3 安装MMEdu(GPU版本)
+### 1.2 安装MMEdu(GPU版本)
 
 #### 步骤1：确认是否有cuda
 
