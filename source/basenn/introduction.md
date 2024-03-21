@@ -59,6 +59,30 @@ model.load_img_data(image_folder_data,color="grayscale",batch_size=1024)
 
 `num_workers`：线程数，决定了有多少个子线程被用于数据加载。子线程是并行运行的，可以同时处理多个数据批次。增加 `num_workers` 的数值时，可以加快数据批次的寻找速度，这通常会提高训练的速度，因为模型等待数据的时间减少了，但增大内存开销和CPU负荷。此参数用来控制数据加载过程中的线程数量。适当增加这个数值可以加速训练，但也要注意不要超出你的硬件限制。默认为0，一般而言设置num_workers最大为CPU核心数。
 
+`classes`：类别列表（列表）或字典，表示数据集中的`label`中存储的数组各个位置标签所代表的意义。可以不传入，若不传入，则推理结果将会是认为结果的下标。若传入，则推理结果将自动转化为将原结果作为下标的数组中的对应内容。
+
+classes可传参数兼容列表，字典形式(以下三种形式均可)。
+
+```python
+classes = ['cat','dog']
+classes = {0:'cat',1:'dog'}
+classes = {'cat':0, 'dog':1} # 与词表形式统一
+```
+
+注意：索引是数值类型（int)，类别名称是字符串（str)，即哪怕类别名也是数字0,1,...字典的键和值也有区别，例如：
+
+```python
+# 正确示例
+classes = {0:'0',1:'1'} # 索引to类别
+classes = {'0':0, '1':1} # 类别to索引
+
+# 错误示例
+classes = {0:0,1:1} 
+classes = {'0':'0', '1':'1'} 
+```
+
+
+
 ##### 关于图片数据集预处理：
 
 载入图片数据前如需对图像数据集进行预处理，最常见的例如做尺寸调整，可先调用已经内置的torchvision对图片数据集进行预处理再载入模型进行训练，只需在`load_img_data`图片数据集时增加一个`transform`的参数。
@@ -247,8 +271,6 @@ model.load_img_data('catdog',transform={"Resize":(128,128),"RandomResizedCrop":2
 </table>
 
 
-
-
 #### 针对特征表格类型的数据：
 
 指定表格路径，再使用`load_tab_data`函数即可完成载入数据。此处我使用的是经典的Iris鸢尾花数据集。
@@ -263,6 +285,8 @@ model.load_tab_data(train_path, batch_size=120)
 `batch_size`：表示在一次训练中同时处理的样本数量。通常情况下，批量大小越大，模型的收敛速度越快，但内存和计算资源的需求也会相应增加。
 
 `num_workers`：线程数，决定了有多少个子线程被用于数据加载。子线程是并行运行的，可以同时处理多个数据批次。增加 `num_workers` 的数值时，可以加快数据批次的寻找速度，这通常会提高训练的速度，因为模型等待数据的时间减少了，但增大内存开销和CPU负荷。此参数用来控制数据加载过程中的线程数量。适当增加这个数值可以加速训练，但也要注意不要超出你的硬件限制。默认为0，一般而言设置num_workers最大为CPU核心数。
+
+`classes`：类别列表（列表）或字典，表示数据集中的`label`中存储的数组各个位置标签所代表的意义。可以不传入，若不传入，则推理结果将会是认为结果的下标。若传入，则推理结果将自动转化为将原结果作为下标的数组中的对应内容。
 
 #### 针对NPZ数据集类型的数据：
 
@@ -453,9 +477,9 @@ model.add('Conv2D', size=(1, 6),kernel_size=( 5, 5), activation='ReLU')
 model.add('AvgPool', kernel_size=(2,2)) 
 model.add('Conv2D', size=(6, 16), kernel_size=(5, 5), activation='ReLU') 
 model.add('AvgPool', kernel_size=(2,2)) 
-model.add('Linear', size=(256, 120), activation='ReLU')  
-model.add('Linear', size=(120, 84), activation='ReLU') 
-model.add('Linear', size=(84, 10), activation='Softmax')
+model.add('linear', size=(256, 120), activation='ReLU')  
+model.add('linear', size=(120, 84), activation='ReLU') 
+model.add('linear', size=(84, 10), activation='Softmax')
 model.add(optimizer='SGD')
 model.save_fold = 'new_mn_ckpt'
 model.train(lr=0.01, epochs=200, checkpoint="new_mn_ckpt/basenn.pth") # 继续训练
@@ -470,26 +494,6 @@ model.add('conv2d',...)
 model.train(lr=0.01,epochs=1)
 ```
 
-classes可传参数兼容列表，字典形式(以下三种形式均可)。
-
-```python
-classes = ['cat','dog']
-classes = {0:'cat',1:'dog'}
-classes = {'cat':0, 'dog':1} # 与词表形式统一
-```
-
-注意：索引是数值类型（int)，类别名称是字符串（str)，即哪怕类别名也是数字0,1,...字典的键和值也有区别，例如：
-
-```python
-# 正确示例
-classes = {0:'0',1:'1'} # 索引to类别
-classes = {'0':0, '1':1} # 类别to索引
-
-# 错误示例
-classes = {0:0,1:1} 
-classes = {'0':'0', '1':'1'} 
-```
-
 ##### 第二种：特征类型
 
 可直接指定csv格式的表格完成模型训练，参考代码如下：
@@ -498,9 +502,9 @@ classes = {'0':'0', '1':'1'}
 model = nn('cls')
 train_path = '../../dataset/iris/iris_training.csv'
 model.load_tab_data(train_path, batch_size=120)
-model.add(layer='Linear',size=(4, 10),activation='ReLU') # [120, 10]
-model.add(layer='Linear',size=(10, 5), activation='ReLU') # [120, 5]
-model.add(layer='Linear', size=(5, 3), activation='Softmax') # [120, 3]
+model.add(layer='linear',size=(4, 10),activation='ReLU') # [120, 10]
+model.add(layer='linear',size=(10, 5), activation='ReLU') # [120, 5]
+model.add(layer='linear', size=(5, 3), activation='Softmax') # [120, 3]
 model.save_fold = './iris_ckpt'
 model.train(lr=0.01, epochs=500)
 ```
@@ -514,7 +518,7 @@ model.train(lr=0.01, epochs=500)
 ```python
 model = nn('cls')
 model.load_dataset(x,y)
-model.add('Linear',...)
+model.add('linear',...)
 model.save_fold = './iris_ckpt'
 model.train(lr=0.01,epochs=1)
 ```
@@ -845,7 +849,7 @@ model.add('Res_Block', size=(128, 256), num_blocks=2,stride=2) # (32,256,14,14)
 model.add('Res_Block', size=(256, 512), num_blocks=2,stride=2) # (32,512,7,7)
 
 model.add('AvgPool', kernel_size=(7,7)) # (32,512)
-model.add('Linear', size=(512, 10), activation='Softmax') # (32,10)
+model.add('linear', size=(512, 10), activation='Softmax') # (32,10)
 ```
 
 注：注释表示[图像数量, 通道数, 图像维度, 图像维度]，加入stride和padding设置后，尺寸计算公式是：N = （W-F+2P)/S+1，前文提到的N = W - F + 1 其实是P取默认值0，S取默认值1的情况。
@@ -870,7 +874,7 @@ model.add('Res_Block', size=(256, 512), stride=2) # (32,512,7,7)
 model.add('Res_Block', size=(512, 512), stride=1) # (32,512,7,7)
 
 model.add('AvgPool', kernel_size=(7,7)) # (32,512)
-model.add('Linear', size=(512, 10), activation='Softmax') # (32,10)
+model.add('linear', size=(512, 10), activation='Softmax') # (32,10)
 ```
 
 设定num_blocks和多个块分别写的等价情况：
@@ -902,7 +906,7 @@ model.add('Res_Bottleneck', size=(512, 256), num_blocks=6,stride=2) # (32,256,14
 model.add('Res_Bottleneck', size=(1024, 512), num_blocks=3,stride=2) # (32,512,7,7)
 
 model.add('AvgPool', kernel_size=(7,7)) # (32,2048)
-model.add('Linear', size=(2048, 10), activation='Softmax') # (32,10)
+model.add('linear', size=(2048, 10), activation='Softmax') # (32,10)
 ```
 
 注：bottleneck输出通道数是输入的四倍，因此注意size的区别。这个四倍是1 *1，3 *3，1 *1三次矩阵乘法导致的，有点难理解，而且bottleneck跑着也慢，建议文档里可以提有这个功能，但是示例项目不要用bottleneck就用basicblock。更多ResNet网络的介绍详见[深度学习知识库](https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/ResNet.html)。
@@ -930,7 +934,7 @@ num_layers：循环神经网络的层数。一般1\~5，常用2、3层，太多�
 ```
 model.add('action_model',size=(132,256))
 model.add('linear',  size=(256, 64))
-model.add('Linear',  size=(64, 3))
+model.add('linear',  size=(64, 3))
 model.add(activation='Softmax')
 ```
 
@@ -951,9 +955,9 @@ model.add('squeeze')
 model.add('BatchNorm1d', size=256)
 
 model.add('linear',  size=(256, 256))
-model.add('Linear',  size=(256, 128))
+model.add('linear',  size=(256, 128))
 model.add('linear',  size=(128, 64))
-model.add('Linear',  size=(64, 3))
+model.add('linear',  size=(64, 3))
 model.add(activation='Softmax')
 ```
 
@@ -985,10 +989,10 @@ import torch class LSTM_model(torch.nn.Module):
       self.dropout2 = torch.nn.Dropout(0.2)
       self.lstm3 = torch.nn.LSTM(256, 256, batch_first=True, bidirectional=False)
       self.bn = torch.nn.BatchNorm1d(256)
-      self.dense1 = torch.nn.Linear(256, 256)
-      self.dense2 = torch.nn.Linear(256, 128)
-      self.dense3 = torch.nn.Linear(128, 64)
-      self.dense4 = torch.nn.Linear(64, actions.shape[0])
+      self.dense1 = torch.nn.linear(256, 256)
+      self.dense2 = torch.nn.linear(256, 128)
+      self.dense3 = torch.nn.linear(128, 64)
+      self.dense4 = torch.nn.linear(64, actions.shape[0])
       self.softmax = torch.nn.Softmax(dim=1)
 
    def forward(self, x):

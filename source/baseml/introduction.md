@@ -272,9 +272,9 @@ model.valid('data_val.csv',metrics='acc') # 载入验证数据并验证
 
 `path`: 验证集的路径。
 
-`metrics`：评估指标选择，默认为'acc(accuracy)'，还支持precision,recall,f1,auc,r2,mse,mae、Silhouette Score、Calinski-Harabasz Score、Davies-Bouldin Score等。分类任务一般选择'acc(accuracy)'，回归任务可以选择'r2'(R平方值)或'mse'(MSE值)，聚类任务一般选择Silhouette Score，评估指标的说明详见[后文](https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id20)。
+`metrics`：评估指标选择，默认为'acc(accuracy)'，还支持precision,recall,f1,auc,r2,mse,mae、Silhouette Score、Calinski-Harabasz Score、Davies-Bouldin Score等。分类任务一般选择'acc(accuracy)'，回归任务可以选择'r2'(R平方值)或'mse'(MSE值)，聚类任务一般选择Silhouette Score（轮廓系数），评估指标的说明详见[后文](https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id20)。
 
-除了传入验证集的路径，还可在`valid`方法中传入x验证集的特征和y验证集的标签进行模型评估，此方式更加灵活。
+除了传入验证集的路径，还可在`valid`方法中传入x验证集的特征和y验证集的标签进行模型评估，此方式更加灵活。注：聚类和分类回归不一样的一点是：没有类别标签，即y只有预测值，没有真实值，因此聚类任务验证实际是对训练集的效果评价，因此不传入x和y也可直接验证。
 
 ```
 # 模型评估
