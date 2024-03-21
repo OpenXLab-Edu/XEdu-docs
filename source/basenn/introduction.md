@@ -766,7 +766,7 @@ model.train(...,metrics=["mse"])
 - dropout：随机失活层，需给定p（概率）。作用为随机关闭一些神经元，避免过拟合。其中参数`p`表示关闭神经元的比例，比如此处
   p=0.2
   表示有随机20%的神经元会被关闭。这种网络层是为了优化效果，避免过拟合而加入的，不是必需的，因此可以尝试修改p的值甚至删掉这个层观察比较效果差距。
-- Batchnorm1d：数据维度处理层，对一维数据做归一化。需传入size，表示输入数据的维度（注意和上一层的输出以及下一层的输入一致即可）。这种网络层是也为了优化效果而加入的，不是必需的，没有这个层也可以正常训练，但由于去掉这个网络层后效果下降的会非常明显，所以不建议删掉这个层。
+- batchnorm1d：数据维度处理层，对一维数据做归一化。需传入size，表示输入数据的维度（注意和上一层的输出以及下一层的输入一致即可）。这种网络层是也为了优化效果而加入的，不是必需的，没有这个层也可以正常训练，但由于去掉这个网络层后效果下降的会非常明显，所以不建议删掉这个层。
 
 下面为您具体展示如何搭建模型，以全连接神经网络结构、卷积神经网络结构、循环神经网络结构等为例为您讲解。
 
@@ -946,19 +946,19 @@ model.add(activation='Softmax')
 
 ``` python
 model.add('lstm', size=(132,128))
-model.add('Dropout',p=0.2)
+model.add('dropout',p=0.2)
 model.add('lstm', size=(128,256))
-model.add('Dropout',p=0.2)
+model.add('dropout',p=0.2)
 model.add('unsqueeze')
 model.add('lstm', size=(256,256))
 model.add('squeeze')
-model.add('BatchNorm1d', size=256)
+model.add('batchNorm1d', size=256)
 
 model.add('linear',  size=(256, 256))
 model.add('linear',  size=(256, 128))
 model.add('linear',  size=(128, 64))
 model.add('linear',  size=(64, 3))
-model.add(activation='Softmax')
+model.add(activation='softmax')
 ```
 
 在搭建RNN时，一般第一层需要设置为`lstm`层，需要注意的是`size=(132,128)`表示该层输入维度为132，输出维度为128，输入维度应与数据集维度相同。
