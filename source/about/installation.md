@@ -156,7 +156,7 @@ XEdu的MMEdu、BaseML、BaseNN等各模块库均已支持pip安装并会持续�
 
 ### 0.准备工作
 
-强烈推荐你在Anaconda的基础上安装MMEdu，可以避免很多的版本冲突问题。
+强烈推荐你在Anaconda的基础上安装XEdu环境，可以避免很多的版本冲突问题。
 
 #### 1）安装Anaconda
 
@@ -210,7 +210,7 @@ XEdu的MMEdu、BaseML、BaseNN等各模块库均已支持pip安装并会持续�
 
 #### 1）Linux安装MMEdu
 
-点击鼠标右键，打开终端，激活虚拟环境。
+点击鼠标右键，打开终端。
 
 终端中输入pip install MMEdu即可安装。
 
@@ -218,7 +218,7 @@ XEdu的MMEdu、BaseML、BaseNN等各模块库均已支持pip安装并会持续�
 $ pip install MMEdu
 ```
 
-注：为避免出现版本冲突，建议新建一个conda环境，并在新环境中执行以上命令（注：要求python\<3.9）。
+注！！！为避免出现版本冲突，建议新建一个conda环境，并在新环境中执行以上命令（注：要求python\<3.9）。
 
 ``` {.powershell}
 $ conda create -n your_env_name python=3.8
@@ -238,7 +238,7 @@ $ pip install MMEdu
 $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/index.html
 ```
 
-注：为避免出现版本冲突，建议新建一个conda环境，并在新环境中执行以上命令（注：要求python\<3.9）。
+注！！！为避免出现版本冲突，建议新建一个conda环境，并在新环境中执行以上命令（注：要求python\<3.9）。
 
 ``` {.powershell}
 $ conda create -n your_env_name python=3.8
