@@ -181,7 +181,7 @@ pip install  torch==1.8.1+cu101  torchvision==0.9.1+cu101  torchaudio==0.8.1 -f 
 
 接着，我们重新安装mmcv-full。（预编译版本可以在这里找到：https://download.openmmlab.com/mmcv/dist/**{**cu_version**}**/**{**torch_version**}**/index.html）
 
-如严格安装前面的步骤操作，此步可直接输入：
+如严格遵循了前面的步骤操作，此步可直接输入：
 
 ```
 pip install mmcv-full==1.4.5 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.8.0/index.html
