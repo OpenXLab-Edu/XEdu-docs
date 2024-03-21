@@ -326,13 +326,19 @@ print(torch.cuda.is_available())
 
 ![](../images/about/install1.4.3.png)
 
-## 步骤4：确认是否正确启用torch
+### 2. pip安装BaseML
 
-激活python后，可以运行下面的命令：
+`pip install baseml` 或 `pip install BaseML`
 
-### 1.4 windows一键安装包升级GPU版本
+### 3. pip安装BaseNN
 
-#### 步骤1：卸载CPU版本库
+----------------
+
+`pip install basenn` 或 `pip install BaseNN`
+
+## windows一键安装包升级GPU版本
+
+### 步骤1：卸载CPU版本库
 
 打开一键安装包根目录的启动cmd.bat，输入
 
@@ -340,9 +346,9 @@ print(torch.cuda.is_available())
 pip uninstall torch torchvision mmcv-full -y
 ```
 
-#### 步骤2：安装GPU版本的对应库
+### 步骤2：安装GPU版本的对应库
 
-##### 安装torch：
+#### 安装torch：
 
 ```
 pip install  torch==1.8.1+cu101  torchvision==0.9.1+cu101  torchaudio==0.8.1 -f   https://download.pytorch.org/whl/torch_stable.html
@@ -356,7 +362,7 @@ pip install  torch==1.8.1+cu101  torchvision==0.9.1+cu101  torchaudio==0.8.1 -f 
 pip install  torch==1.8.1+cu101  torchvision==0.9.1+cu101  torchaudio==0.8.1 -f   https://download.pytorch.org/whl/torch_stable.html -i https://pypi.douban.com/simple
 ```
 
-##### 安装mmcv-full：
+#### 安装mmcv-full：
 
 接着，我们重新安装mmcv-full。（预编译版本可以在这里找到：https://download.openmmlab.com/mmcv/dist/**{**cu_version**}**/**{**torch_version**}**/index.html）
 
@@ -368,7 +374,7 @@ pip install mmcv-full==1.4.5 -f https://download.openmmlab.com/mmcv/dist/cu101/t
 
 ![](../images/about/install1.4.2.PNG)
 
-#### 步骤3：确认是否正确启动cuda训练
+### 步骤3：确认是否正确启动cuda训练
 
 至此，已完成了MMEdu（GPU版）的升级，可以将train中的device参数赋值为'cuda'，试试速度有没有相较CPU版本有显著提升。
 
@@ -377,16 +383,6 @@ pip install mmcv-full==1.4.5 -f https://download.openmmlab.com/mmcv/dist/cu101/t
 如果用示例代码直接进行推理，也会出现提示：you can use 'device=cuda'
 
 ![](../images/about/install1.4.4.png)
-
-### 2. pip安装BaseML
-
-`pip install baseml` 或 `pip install BaseML`
-
-### 3. pip安装BaseNN
-
-----------------
-
-`pip install basenn` 或 `pip install BaseNN`
 
 docker容器镜像
 --------------
