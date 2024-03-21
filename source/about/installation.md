@@ -325,7 +325,7 @@ pip install MMEdu basenn baseml basedt basedeploy easy-xedu xedu-python
 pip install jupyter lab
 ```
 
-如下进行如上命令的具体说明（感兴趣可查看）：
+如下进行如上命令的具体说明（感兴趣查看，已经运行上面的4行命令如下解释时的命令无需运行）：
 
 安装对应自己cuda版本的pytorch，安装命令可在以下网址中进行查询：[https://pytorch.org/get-started/locally/](https://pytorch.org/get-started/locally/)
 
