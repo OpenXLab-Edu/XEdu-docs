@@ -8,7 +8,7 @@
 初学者安装强推!!!不会让人失望的一键安装包
 -----------------------------------------
 
-### 即刻体验XEdu一键安装包，开始！
+### 即刻体验XEdu一键安装包（CPU版本），开始！
 
 下载工具：XEdu一键安装包
 
@@ -17,6 +17,8 @@
 飞书网盘：[https://p6bm2if73b.feishu.cn/drive/folder/fldcn67XTwhg8qIFCl8edJBZZQb](https://p6bm2if73b.feishu.cn/drive/folder/fldcn67XTwhg8qIFCl8edJBZZQb)
 
 浦源CDN加速：[https://download.openxlab.org.cn/models/yikshing/bash/weight/xedu16](https://download.openxlab.org.cn/models/yikshing/bash/weight/xedu16)
+
+下载最新版exe，同时建议准备win10电脑。
 
 第一步：双击运行，将自解压为XEdu文件夹（注意！避免踩坑推荐安装到纯英文路径下）。
 
@@ -148,6 +150,54 @@ IDE"和"jupyter notebook"运行，可运行根目录的"Thonny编辑器.bat"和"
 **XEdu简介 v1.6.pdf：**
 
 XEdu一键安装包说明文档。
+
+### 拓展：windows一键安装包升级GPU版本（如硬件符合要求）
+
+#### 步骤1：卸载CPU版本库
+
+打开一键安装包根目录的启动cmd.bat，输入
+
+```
+pip uninstall torch torchvision mmcv-full -y
+```
+
+#### 步骤2：安装GPU版本的对应库
+
+##### 安装torch：
+
+```
+pip install  torch==1.8.1+cu101  torchvision==0.9.1+cu101  torchaudio==0.8.1 -f   https://download.pytorch.org/whl/torch_stable.html
+```
+
+![](../images/about/install1.4.1.PNG)
+
+注：如果安装速度太慢，可以部分选择国内镜像源，指令如下
+
+```
+pip install  torch==1.8.1+cu101  torchvision==0.9.1+cu101  torchaudio==0.8.1 -f   https://download.pytorch.org/whl/torch_stable.html -i https://pypi.douban.com/simple
+```
+
+##### 安装mmcv-full：
+
+接着，我们重新安装mmcv-full。（预编译版本可以在这里找到：https://download.openmmlab.com/mmcv/dist/**{**cu_version**}**/**{**torch_version**}**/index.html）
+
+如严格安装前面的步骤操作，此步可直接输入：
+
+```
+pip install mmcv-full==1.4.5 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.8.0/index.html
+```
+
+![](../images/about/install1.4.2.PNG)
+
+#### 步骤3：确认是否正确启动cuda训练
+
+至此，已完成了MMEdu（GPU版）的升级，可以将train中的device参数赋值为'cuda'，试试速度有没有相较CPU版本有显著提升。
+
+![](../images/about/install1.4.3.png)
+
+如果用示例代码直接进行推理，也会出现提示：you can use 'device=cuda'
+
+![](../images/about/install1.4.4.png)
 
 使用pip安装
 -----------
@@ -333,54 +383,6 @@ print(torch.cuda.is_available())
 ### 3. pip安装BaseNN
 
 `pip install basenn` 或 `pip install BaseNN`
-
-## windows一键安装包升级GPU版本
-
-### 步骤1：卸载CPU版本库
-
-打开一键安装包根目录的启动cmd.bat，输入
-
-```
-pip uninstall torch torchvision mmcv-full -y
-```
-
-### 步骤2：安装GPU版本的对应库
-
-#### 安装torch：
-
-```
-pip install  torch==1.8.1+cu101  torchvision==0.9.1+cu101  torchaudio==0.8.1 -f   https://download.pytorch.org/whl/torch_stable.html
-```
-
-![](../images/about/install1.4.1.PNG)
-
-注：如果安装速度太慢，可以部分选择国内镜像源，指令如下
-
-```
-pip install  torch==1.8.1+cu101  torchvision==0.9.1+cu101  torchaudio==0.8.1 -f   https://download.pytorch.org/whl/torch_stable.html -i https://pypi.douban.com/simple
-```
-
-#### 安装mmcv-full：
-
-接着，我们重新安装mmcv-full。（预编译版本可以在这里找到：https://download.openmmlab.com/mmcv/dist/**{**cu_version**}**/**{**torch_version**}**/index.html）
-
-如严格安装前面的步骤操作，此步可直接输入：
-
-```
-pip install mmcv-full==1.4.5 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.8.0/index.html
-```
-
-![](../images/about/install1.4.2.PNG)
-
-### 步骤3：确认是否正确启动cuda训练
-
-至此，已完成了MMEdu（GPU版）的升级，可以将train中的device参数赋值为'cuda'，试试速度有没有相较CPU版本有显著提升。
-
-![](../images/about/install1.4.3.png)
-
-如果用示例代码直接进行推理，也会出现提示：you can use 'device=cuda'
-
-![](../images/about/install1.4.4.png)
 
 docker容器镜像
 --------------
