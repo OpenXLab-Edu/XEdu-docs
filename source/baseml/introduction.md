@@ -262,26 +262,31 @@ model.train()
 
 ### 4.模型评估
 
+```
+# 模型评估
+model.valid(metrics='acc')
+```
+
+`valid`方法的返回值有2个，分别是评估指标计算结果和验证集的推理结果。
+
+参数说明：
+
+`metrics`：评估指标选择，默认为'acc(accuracy)'，还支持precision,recall,f1,auc,r2,mse,mae、Silhouette Score、Calinski-Harabasz Score、Davies-Bouldin Score等。分类任务一般选择'acc(accuracy)'，回归任务可以选择'r2'(R平方值)或'mse'(MSE值)，聚类任务一般选择Silhouette Score（轮廓系数），评估指标的说明详见[后文](https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id20)。
+
+`path`/`x,y`: 验证集的路径/验证集的特征和验证集的标签，如载入数据时设置了自动划分训练集和验证集，此时可不传入此参数，其他情况下基本需要传入，否则将报错。**注**：聚类任务只需传入`metrics`，因为聚类和分类回归不一样，没有类别标签，即y只有预测值，没有真实值，因此聚类任务验证实际是对训练集的效果评价，因此不传入x和y也可直接验证。
+
 如载入的是文本数据且直接使用`load_tab_data`载入，评估时可直接载入一个数据集格式要求及输入列数量等和训练数据保持高度一致即可的验证集进行模型评估即可。
 
 ```
 model.valid('data_val.csv',metrics='acc') # 载入验证数据并验证
 ```
 
-参数说明：
-
-`path`: 验证集的路径。
-
-`metrics`：评估指标选择，默认为'acc(accuracy)'，还支持precision,recall,f1,auc,r2,mse,mae、Silhouette Score、Calinski-Harabasz Score、Davies-Bouldin Score等。分类任务一般选择'acc(accuracy)'，回归任务可以选择'r2'(R平方值)或'mse'(MSE值)，聚类任务一般选择Silhouette Score（轮廓系数），评估指标的说明详见[后文](https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id20)。
-
-除了传入验证集的路径，还可在`valid`方法中传入x验证集的特征和y验证集的标签进行模型评估，此方式更加灵活。注：聚类和分类回归不一样的一点是：没有类别标签，即y只有预测值，没有真实值，因此聚类任务验证实际是对训练集的效果评价，因此不传入x和y也可直接验证。
+除了传入验证集的路径，还可在`valid`方法中传入x验证集的特征和y验证集的标签进行模型评估，此方式更加灵活。
 
 ```
 # 模型评估
 model.valid(x=val_x,y=val_y,metrics='acc') 
 ```
-
-`valid`方法的返回值有2个，分别是评估指标计算结果和验证集的推理结果。
 
 ### 5. 评价指标可视化
 
@@ -386,7 +391,7 @@ k均值（k-means）算法是一种基于数据间距离迭代求解的聚类算
 model = clt('KMeans')
 ```
 
-参数`N_CLUSTERS`表示k的值，默认值为5。
+参数`n_clusters`表示k的值，默认值为5。
 
 #### 谱聚类
 
@@ -397,7 +402,7 @@ model = clt('KMeans')
 model = clt('SpectralClustering')
 ```
 
-参数`N_CLUSTERS`表示子图的数量，默认值为5。
+参数`n_clusters`表示子图的数量，默认值为5。
 
 #### Agglomerative clustering
 
@@ -408,4 +413,4 @@ Agglomerative clutsering 是一种自底而上的层次聚类方法，它能够�
 model = clt('Agglomerative clustering')
 ```
 
-参数`N_CLUSTERS`表示聚类的数量，默认值为5。
+参数`n_clusters`表示聚类的数量，默认值为5。
