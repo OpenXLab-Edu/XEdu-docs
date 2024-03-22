@@ -3,7 +3,7 @@
 可选的安装方式
 --------------
 
-为了满足广大中小学师生的需求，XEdu安装方式分为一键安装包安装和pip安装。一键安装包版包含MMEdu、BaseML、BaseNN三个模块的基础功能，以及XEduHub、BaseDT等工具库，同时内置了一套EasyDL系列工具，分"EasyTrain.bat"、"EasyInference.bat"和"EasyAPI.bat"这三个可视化工具，定期更新。pip安装方式需用户自己分模块安装，各模块更新同步工具开发进度。后续还将推出docker容器镜像，敬请期待。
+为了满足广大中小学师生的需求，XEdu安装方式分为一键安装包安装、pip安装和docker安装。一键安装包版包含MMEdu、BaseML、BaseNN三个模块的基础功能，以及XEduHub、BaseDT等工具库，同时内置了一套EasyDL系列工具，分"EasyTrain.bat"、"EasyInference.bat"和"EasyAPI.bat"这三个可视化工具，定期更新。pip安装方式需用户自己分模块安装，各模块更新同步工具开发进度。此外，还推出了docker容器镜像可供选择。
 
 初学者安装强推!!!不会让人失望的一键安装包
 -----------------------------------------
@@ -295,7 +295,64 @@ $ pip install MMEdu
 docker容器镜像
 --------------
 
-敬请期待
+- 提示：这里需要确保您的电脑系统盘空间剩余空间超过5GB，实际建议有10GB及以上空间，便于后续训练使用。如果想要调整存储空间位置，可以参考[这里修改安装路径](https://blog.csdn.net/ber_bai/article/details/120816006)，[这里修改数据路径](https://zhuanlan.zhihu.com/p/410126547)。
+### 0.空间不足的解决办法
+1）软件安装空间不足，可以把安装路径指向一个新的路径：可以参考[这里修改安装路径](https://blog.csdn.net/ber_bai/article/details/120816006)
+
+用管理员权限打开CMD，然后输入`mklink /j "C:\Program Files\Docker" "D:\Program Files\Docker"`。这样，软件看似安装在原目录，实则安装在了"D:\Program Files\Docker"。
+
+2）容器和镜像存储空间不足，旧版本可以直接在Docker Desktop中设置，但新版用了WSL之后就不行了。可以参考[这里修改数据路径](https://zhuanlan.zhihu.com/p/410126547)。
+
+退出Docker Desktop软件后，打开CMD，输入`wsl --list -v`，把所有相关的数据列出来，稍后需要挨个迁移。这里，返回的信息是：`docker-desktop-data STOPPED 2`，那么我只要迁移这一个就好，有的还会有`docker-desktop STOPPED 2`也需要迁移。
+
+接下来，我们同样把数据存在D盘，路径选择为"D:\Program Files\Docker"，先备份数据，输入：`wsl --export docker-desktop-data "D:\Program Files\Docker\docker-desktop-data.tar"`。如果有其它要备份，指令类似。
+
+接着注销WSL中原来的数据，输入：`wsl --unregister docker-desktop-data`。
+
+接着，导入数据到新的存储路径，输入：`wsl --import docker-desktop-data "D:\Program Files\Docker\data" "D:\Program Files\Docker\docker-desktop-data.tar" --version 2`。
+
+最后，重启Docker Desktop，完成了容器文件的存储位置迁移。如果有问题，可以尝试重启电脑。如果正常迁移完成，可以擅长备份的tar文件，即`D:\Program Files\Docker\docker-desktop-data.tar`。
+
+### 1.首先需要安装Docker软件
+
+这里以Windows11系统为例，其他系统可以在网上查找相关教程自行安装Docker。
+
+Windows11系统中，可以先安装Docker Desktop图形化管理软件，下载链接为：[https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/)。建议不开启WSL2，否则可能与电脑其他软件存在冲突。
+
+### 2.启动Docker服务
+
+安装完Docker Desktop，运行启动它，界面如下所示。
+![Docker 启动界面](../images/about/docker1.png)
+看到左下角显示Engine running说明启动成功。
+
+### 3.拉取镜像
+
+Docker分为容器（Container）和镜像（Image），（有时还会额外有一类叫Dockerfile）。首先需要从云端获取镜像，类似于安装操作系统的镜像，这个镜像是和原版一模一样的。然后可以启动容器，容器可以由用户自主修改。
+
+拉取镜像的命令如下：
+`docker pull xedu/xedu:v2s`
+打开电脑的命令行（CMD）窗口，输入上面的命令行。
+
+这一步会拉取xedu的镜像文件到本地磁盘，因此务必保证您的电脑系统盘空间剩余空间超过5GB，实际建议有10GB及以上空间，便于后续训练使用。如果想要调整存储空间位置，可以参考上面空间不足的解决办法。刚开始拉取没有相应，可以等待一会儿，就会出现下面的拉取进度的界面。
+![Docker拉取界面](../images/about/docker2.png)
+
+等待拉取完成，所用时间取决于网速（大约30分钟-2小时之间），您也可以参考相关教程配置国内镜像源来加快拉取速度。如：[这个办法](https://blog.csdn.net/moluzhui/article/details/132287258)。
+
+### 4.启动docker容器（Container）
+
+使用这个命令：
+`docker run -it -p 5000:5000 -p 8888:8888 --mount type=bind,source=D:/share,target=/xedu/share xedu/xedu:v2s`，首次使用会询问是否绑定磁盘，选择Yes，然后就可以用电脑访问 **[127.0.0.1:8888](127.0.0.1:8888)** 访问jlab，通过 **[127.0.0.1:5000](127.0.0.1:5000)** 访问easytrain。（电脑中的文件想要拷贝进docker，可以放到D盘share文件夹）。美中不足的是，这两个网址需要自行打开浏览器后输入。如果显示效果不佳，可能是浏览器不兼容，建议下载[最新版的chrome浏览器](https://www.google.com/intl/zh-CN/chrome/)。
+![Docker Lab](../images/about/docker3.png)
+![Docker EasyTrain](../images/about/docker4.png)
+
+### 5.结束容器
+
+在刚才的命令行窗口中，输入CTRL+C，再输入y，即可结束容器。
+![Docker shutdown](../images/about/docker5.png)
+
+
+
+
 
 如何快速查看XEdu各模块库的版本
 ------------------------------

@@ -63,6 +63,7 @@
 <li class="toctree-l3"><a class="reference internal" href="pysimplegui.html">GUI库PySimpleGUI</a></li>
 <li class="toctree-l3"><a class="reference internal" href="siot.html">MQTT库siot</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pinpong.html">开源硬件库pinpong</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unihiker.html">开源硬件行空板</a></li>
 <li class="toctree-l3"><a class="reference internal" href="flask.html">Web库Flask</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fastapi.html">Web库FastAPI</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gradio.html">Web库Gradio</a></li>
@@ -144,9 +145,9 @@
 <section id="id4">
 <h3>第三步：连接ESP32-CAM至电脑<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
 <p>将ESP32-CAM模块通过转换器连接到电脑，并在arduino ide中选择连接，工具-开发板-ESP32-esp32 Wrover Module【上一步顺利完成此步骤才会出现此选项】</p>
-<p><img alt="how_to_use/images/scitech_tools/cam5.png" src="how_to_use/images/scitech_tools/cam5.png" /></p>
+<p><img alt="../../_images/cam5.png" src="../../_images/cam5.png" /></p>
 <p>工具-端口选择COM5</p>
-<p><img alt="how_to_use/images/scitech_tools/cam6.png" src="how_to_use/images/scitech_tools/cam6.png" /></p>
+<p><img alt="../../_images/cam6.png" src="../../_images/cam6.png" /></p>
 </section>
 <section id="wifi">
 <h3>第四步：编写配置WIFI的代码<a class="headerlink" href="#wifi" title="Permalink to this heading"></a></h3>
@@ -252,19 +253,19 @@ void loop()
 <h3>第五步：安装esp32cam库<a class="headerlink" href="#esp32cam" title="Permalink to this heading"></a></h3>
 <p>a.下载esp32cam库</p>
 <p>下载地址：<a class="reference external" href="https://github.com/yoursunny/esp32cam">https://github.com/yoursunny/esp32cam</a></p>
-<p><img alt="how_to_use/images/scitech_tools/cam7.png" src="how_to_use/images/scitech_tools/cam7.png" /></p>
+<p><img alt="../../_images/cam7.png" src="../../_images/cam7.png" /></p>
 <p>b.导入库</p>
 <p>项目-导入库-添加.ZIP库</p>
-<p><img alt="how_to_use/images/scitech_tools/cam8.png" src="how_to_use/images/scitech_tools/cam8.png" /></p>
+<p><img alt="../../_images/cam8.png" src="../../_images/cam8.png" /></p>
 </section>
 <section id="ip">
 <h3>第六步：上传代码并获取IP地址<a class="headerlink" href="#ip" title="Permalink to this heading"></a></h3>
 <p>单击上传按钮上传代码</p>
-<p><img alt="how_to_use/images/scitech_tools/cam9.png" src="how_to_use/images/scitech_tools/cam9.png" /></p>
+<p><img alt="../../_images/cam9.png" src="../../_images/cam9.png" /></p>
 <p>上传代码后点击esp32cam的reset键，重启esp32cam，可打开串口监视器，查看上传代码的运行情况(示例代码会输出相关ip和路径)</p>
-<p><img alt="how_to_use/images/scitech_tools/cam10.png" src="how_to_use/images/scitech_tools/cam10.png" /></p>
+<p><img alt="../../_images/cam10.png" src="../../_images/cam10.png" /></p>
 <p>下图中是串口监视器里输出的结果（如没有输出可增大默认的波特率）</p>
-<p><img alt="how_to_use/images/scitech_tools/cam11.png" src="how_to_use/images/scitech_tools/cam11.png" /></p>
+<p><img alt="../../_images/cam11.png" src="../../_images/cam11.png" /></p>
 <p>可以发现在串行监视器的IP地址下，会看到三种不同的图像分辨率 lo、hi 和 mid，根据需求使用一个。</p>
 <p>例如我们可以使用http://192.168.31.75/cam-hi.jpg，使用浏览器打开即可看到摄像头拍摄的照片，手动刷新可以看到拍摄到的一张张照片。</p>
 <p>注：同一个WIFI下IP地址不会发生变化。</p>

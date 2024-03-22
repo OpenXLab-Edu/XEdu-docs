@@ -54,11 +54,11 @@ c.打开工具-开发板管理器，然后搜索esp32
 
 将ESP32-CAM模块通过转换器连接到电脑，并在arduino ide中选择连接，工具-开发板-ESP32-esp32 Wrover Module【上一步顺利完成此步骤才会出现此选项】
 
-![](../images/scitech_tools/cam5.png)
+![](../../images/scitech_tools/cam5.png)
 
 工具-端口选择COM5
 
-![](../images/scitech_tools/cam6.png)
+![](../../images/scitech_tools/cam6.png)
 
 ### 第四步：编写配置WIFI的代码
 
@@ -169,27 +169,27 @@ a.下载esp32cam库
 
 下载地址：[https://github.com/yoursunny/esp32cam](https://github.com/yoursunny/esp32cam)
 
-![](../images/scitech_tools/cam7.png)
+![](../../images/scitech_tools/cam7.png)
 
 b.导入库
 
 项目-导入库-添加.ZIP库
 
-![](../images/scitech_tools/cam8.png)
+![](../../images/scitech_tools/cam8.png)
 
 ### 第六步：上传代码并获取IP地址
 
 单击上传按钮上传代码
 
-![](../images/scitech_tools/cam9.png)
+![](../../images/scitech_tools/cam9.png)
 
 上传代码后点击esp32cam的reset键，重启esp32cam，可打开串口监视器，查看上传代码的运行情况(示例代码会输出相关ip和路径)
 
-![](../images/scitech_tools/cam10.png)
+![](../../images/scitech_tools/cam10.png)
 
 下图中是串口监视器里输出的结果（如没有输出可增大默认的波特率）
 
-![](../images/scitech_tools/cam11.png)
+![](../../images/scitech_tools/cam11.png)
 
 可以发现在串行监视器的IP地址下，会看到三种不同的图像分辨率 lo、hi 和 mid，根据需求使用一个。
 

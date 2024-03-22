@@ -54,6 +54,9 @@ wf.support_task()
 
 ![](../images/xeduhub/task1.png)
 
+此外我们还可以通过"print(wf.__doc__ )"语句查看各类任务的文档。注意doc前后是两个下划线。
+
+![](../images/xeduhub/task2.png)
 
 ## 体验XEduhub的更多功能
 

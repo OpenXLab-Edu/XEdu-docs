@@ -249,7 +249,7 @@
 <p><img alt="../_images/car_ocr.gif" src="../_images/car_ocr.gif" /></p>
 <p>功能描述：一辆能在驾驶过程中自动阅读交通指令并做出相应运动的小车。</p>
 <p>技术实现方式：使用无线摄像头实时获取小车行驶的第一视角，并让一台上位机无线接收图像，再对接收的图像使用XEduHub进行文字识别的离线OCR技术，最后根据识别的文本下发运动指令。</p>
-<p>该项目中的小车是JTANK履带车，该小车的无线摄像头和运动指令已经经过封装，由于该小车用的不是普通的ESP32的配置，详细配置请参考<a href="https://gitee.com/jt123_456/jtank">JTANK履带车简介</a>。如果你的小车是普通的ESP32，那关于该小车的配置方法可参考<a href="https://xedu.readthedocs.io/zh/master/scitech_tools/camera.html#">科创神器ESP32-CAM小型摄像头模块</a>。识行小车使用的文字识别技术采用的是XEduHub现成模型，模型大小只要10M。通过发送HTTP GET请求来获取视频流和控制小车的运动。上位机的参考代码如下。</p>
+<p>该项目中的小车是JTANK履带车，该小车的无线摄像头和运动指令已经经过封装，由于该小车用的不是普通的ESP32的配置，详细配置请参考<a href="https://gitee.com/jt123_456/jtank">JTANK履带车简介</a>。如果你的小车是普通的ESP32，那关于该小车的配置方法可参考<a href="https://xedu.readthedocs.io/zh/master/how_to_use/scitech_tools/camera.html">科创神器ESP32-CAM小型摄像头模块</a>。识行小车使用的文字识别技术采用的是XEduHub现成模型，模型大小只要10M。通过发送HTTP GET请求来获取视频流和控制小车的运动。上位机的参考代码如下。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">requests</span>

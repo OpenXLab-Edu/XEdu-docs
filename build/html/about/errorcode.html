@@ -54,12 +54,14 @@
 <li class="toctree-l2"><a class="reference internal" href="installation.html">XEdu的安装和下载</a></li>
 <li class="toctree-l2"><a class="reference internal" href="functions.html">XEdu的常见函数</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">XEdu的错误码</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#mmedu">MMEdu的错误码</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id1">1.文件路径错误</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">2.文件类型错误</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id9">3.参数值错误（等于号右边）</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id12">4.预留给网络相关错误</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id14">5. 参数名称错误（等于号左边）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">错误码的设计</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">1.文件路径错误</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">2.文件类型错误</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">3.参数值错误（等于号右边）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">4.算法网络相关错误</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">5. 参数名称错误（等于号左边）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id17">6. 代码逻辑错误</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18">7. 数据处理错误</a></li>
 </ul>
 </li>
 </ul>
@@ -103,33 +105,34 @@
              
   <section id="xedu">
 <h1>XEdu的错误码<a class="headerlink" href="#xedu" title="Permalink to this heading"></a></h1>
-<section id="mmedu">
-<h2>MMEdu的错误码<a class="headerlink" href="#mmedu" title="Permalink to this heading"></a></h2>
+<section id="id1">
+<h2>错误码的设计<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p>本文档定义了MMEdu的基本错误反馈。错误描述用英文（考虑到国际化）描述，同时输出错误代码。代码和目录编号一致，“1.1”的错误代码为“101”。</p>
+<p>错误码格式为三段式：错误码+错误现象+原因阐述或解决方案。其中第三段不一定有保证完全匹配。</p>
 <p>标准错误输出信息：Error Code: -编号,错误英文提示
 示例：Error Code: -101, No such dataset file:XX/XXX/XXX/</p>
-<section id="id1">
-<h3>1.文件路径错误<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
 <section id="id2">
-<h4>1.1 数据集的路径错误<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h4>
+<h3>1.文件路径错误<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<section id="id3">
+<h4>1.1 数据集的路径错误<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h4>
 <p>只能是存在的目录</p>
 <p>英文提示设计：No such dataset directory:XX/XXX/XXX/</p>
 </section>
-<section id="id3">
-<h4>1.2 权重文件的路径错误<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h4>
+<section id="id4">
+<h4>1.2 权重文件的路径错误<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h4>
 <p>只能是存在的文件</p>
 <p>英文提示设计：No such checkpoint file:XX/XXX/XXX.pth</p>
 </section>
-<section id="id4">
-<h4>1.3 要推理文件的路径错误<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h4>
+<section id="id5">
+<h4>1.3 要推理文件的路径错误<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h4>
 <p>只能是存在的文件</p>
 <p>英文提示设计：No such file:XX/XXX/XXX.jpg</p>
 </section>
 </section>
-<section id="id5">
-<h3>2.文件类型错误<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
 <section id="id6">
-<h4>2.1 数据集的类型错误<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h4>
+<h3>2.文件类型错误<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<section id="id7">
+<h4>2.1 数据集的类型错误<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h4>
 <p>只能是目录，而且目录文件要符合要求。</p>
 <p>如果是imagenet：需要检查文件夹名称+txt名称，如果不存在，给出下载地址。指定的图片类别数量必须和数据集一致。val.txt行数也与实际图片数量一致。</p>
 <p>如果是coco，类似检查。</p>
@@ -148,26 +151,26 @@ case 4: 数据集中图片损坏</p></li>
 <li><p>Error Code -201. The image file ../../dataset/xx.jpg is damaged.</p></li>
 </ul>
 </section>
-<section id="id7">
-<h4>2.2 权重文件的类型错误<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h4>
+<section id="id8">
+<h4>2.2 权重文件的类型错误<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h4>
 <p>只能是pth</p>
 <p>英文提示设计：Checkpoint file type error</p>
 </section>
-<section id="id8">
-<h4>2.3 要推理文件的类型错误<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h4>
+<section id="id9">
+<h4>2.3 要推理文件的类型错误<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h4>
 <p>只能是图片文件，如jpg、png、bmp等受支持的文件格式</p>
 <p>英文提示设计：File type error</p>
 </section>
 </section>
-<section id="id9">
-<h3>3.参数值错误（等于号右边）<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
+<section id="id10">
+<h3>3.参数值错误（等于号右边）<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h3>
 <section id="device">
 <h4>3.1 device设置错误<a class="headerlink" href="#device" title="Permalink to this heading"></a></h4>
 <p>只能是cpu和cuda</p>
 <p>英文提示设计：No such argument</p>
 </section>
-<section id="id10">
-<h4>3.2 主干网络名称错误<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h4>
+<section id="id11">
+<h4>3.2 主干网络名称错误<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h4>
 <p>目前只支持‘LeNet’、‘MobileNet’、‘ResNet18’、‘ResNet50’</p>
 <p>英文提示设计：No such argument</p>
 </section>
@@ -176,8 +179,8 @@ case 4: 数据集中图片损坏</p></li>
 <p>只能是True和False</p>
 <p>英文提示设计：No such argument</p>
 </section>
-<section id="id11">
-<h4>3.4 推理图片格式错误<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h4>
+<section id="id12">
+<h4>3.4 推理图片格式错误<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h4>
 <p>变量类型必须是str（图片路径）或list【str】（多张图）或numpyarray（点阵图）。（bug目前可视化仅支持路径）</p>
 <ul class="simple">
 <li><p>Error Code: - 304. No such argument: (1, ‘asd’) which is &lt;class ‘tuple’&gt;</p></li>
@@ -187,17 +190,17 @@ case 4: 数据集中图片损坏</p></li>
 <h4>3.5 fast_infer之前，未正确使用load_checkpoint载入权重<a class="headerlink" href="#fast-infer-load-checkpoint" title="Permalink to this heading"></a></h4>
 </section>
 </section>
-<section id="id12">
-<h3>4.预留给网络相关错误<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h3>
 <section id="id13">
-<h4>4.4 网络名称不存在（不存在的网络名称）<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h4>
+<h3>4.算法网络相关错误<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h3>
+<section id="id14">
+<h4>4.4 网络名称不存在（不存在的网络名称）<a class="headerlink" href="#id14" title="Permalink to this heading"></a></h4>
 <p>404</p>
 </section>
 </section>
-<section id="id14">
-<h3>5. 参数名称错误（等于号左边）<a class="headerlink" href="#id14" title="Permalink to this heading"></a></h3>
 <section id="id15">
-<h4>5.1 传入的参数名称错误<a class="headerlink" href="#id15" title="Permalink to this heading"></a></h4>
+<h3>5. 参数名称错误（等于号左边）<a class="headerlink" href="#id15" title="Permalink to this heading"></a></h3>
+<section id="id16">
+<h4>5.1 传入的参数名称错误<a class="headerlink" href="#id16" title="Permalink to this heading"></a></h4>
 <p>无此参数，请重新输入。</p>
 <p>英文提示设计：No such parameter</p>
 <ul class="simple">
@@ -205,7 +208,15 @@ case 4: 数据集中图片损坏</p></li>
 </ul>
 </section>
 </section>
+<section id="id17">
+<h3>6. 代码逻辑错误<a class="headerlink" href="#id17" title="Permalink to this heading"></a></h3>
 </section>
+<section id="id18">
+<h3>7. 数据处理错误<a class="headerlink" href="#id18" title="Permalink to this heading"></a></h3>
+<p>如BaseDT中检查数据集标注</p>
+</section>
+</section>
+<p>如show之前要inference</p>
 </section>
 
 

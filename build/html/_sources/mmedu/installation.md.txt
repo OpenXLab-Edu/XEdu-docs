@@ -5,15 +5,15 @@
 
 根据对算力的依赖程度，MMEdu分为两个版本，分别是：基础版和完整版。
 
-基础版既可以使用pip方式安装，也可以使用"一键安装包"。本版本集成了MMClassification（图像分类）和MMDetection（物体检测）两个模块，采用CPU训练（不需要GPU环境）。
+基础版既可以使用pip方式安装，也可以使用"[XEdu一键安装包](https://xedu.readthedocs.io/zh/latest/about/installation.html#id3)"。本版本集成了MMClassification（图像分类）和MMDetection（物体检测）两个模块，采用CPU训练（不需要GPU环境）。
 
-标准版对算力要求较高，建议装在有英伟达显卡的电脑上，安装方式有pip安装和容器镜像安装两种。本版本集成了MMClassification（图像分类）、MMDetection（物体检测）、MMEditing（图像编辑）等模块，需要GPU环境支持。
+完整版对算力要求较高，建议装在有英伟达显卡的电脑上，安装方式有pip安装和容器镜像安装两种。本版本集成了MMClassification（图像分类）、MMDetection（物体检测）、MMEditing（图像编辑）等模块，需要GPU环境支持。
 
 ## 1. 基础版的安装
 
 ### 1.1 一键安装包
 
-为方便中小学教学，MMEdu团队提供了一键安装包。只要下载并解压即可直接使用。
+为方便中小学教学，MMEdu团队提供了[XEdu一键安装包](https://xedu.readthedocs.io/zh/latest/about/installation.html#id3)。只要下载并解压即可直接使用。
 
 **现MMEdu一键安装包已升级为XEdu一键安装包，下文提到的MMEdu文件，应理解为XEdu一键安装包。**
 
@@ -31,13 +31,13 @@
 
 第二步：您可以根据个人喜好，选择自己习惯的IDE。
 
-1）使用MMEdu（XEdu）自带的Thonny。
+1）使用XEdu自带的Thonny。
 
 Thonny是一款好用的Python轻量级IDE。其最突出的两个特点便是是简洁性和交互性。打开根目录下的Thonny.bat文件快捷方式即可打开。使用Thonny打开"demo"文件夹中的py文件，如"MMEdu\_cls\_demo.py"，点击"运行"的"将文件作为脚本运行"即可运行代码，界面如下图所示。
 
 ![](../images/mmedu/XEDUinstallp4.png)
 
-2）使用MMEdu（XEdu）自带的Jupyter。
+2）使用XEdu自带的Jupyter。
 
 Jupyter
 Notebook是基于网页的用于交互计算的应用程序。其可被应用于全过程计算：开发、文档编写、运行代码和展示结果。它相对简单，对用户也更加友好，适合初学者。打开根目录下的"jupyter编辑器.bat"，即自动启动浏览器并显示界面，如下图所示。
@@ -73,12 +73,12 @@ python中最常用的库管理工具pip，可以使用cmd命令行来运行，�
 
 在其中输入想要安装的库文件即可，如"pip install rarfile"。
 
-**在2022年9月后，不再维护MMEdu一键安装包，统一更新为XEdu。XEdu于22年9月在世界人工智能大会正式发布，分MMEdu、BaseML、BaseNN三个功能模块，除了一键安装包，同时实现以pip方式安装。**
+**在2022年9月后，不再维护MMEdu一键安装包，统一更新为XEdu。XEdu于22年9月在世界人工智能大会正式发布，分MMEdu、BaseML、BaseNN三个功能模块，除了一键安装包，发布会上线了以pip方式安装的XEdu。**
 如`pip install BaseML BaseNN BaseDT BaseDeploy MMEdu` 
 
 ### 1.2 pip安装
 
-当前，我们提供的MMEdu0.0.7版本的安装是基础版的pip安装包，可以使用如下命令安装：
+当前，我们提供的MMEdu的安装是基础版的pip安装包，可以使用如下命令安装：
 `pip install mmedu`或`pip install MMEdu`。
 
 在这一步中，可能会有运行失败的情况，通常是由于依赖库安装失败导致的。
@@ -248,9 +248,9 @@ $ pip install mmcv-full==1.4.5 -f https://download.openmmlab.com/mmcv/dist/cu101
 $ pip install MMEdu
 ```
 
-## 3. 完整版安装之docker容器镜像
+## 3. 完整版安装之docker容器
 
-敬请期待
+请参考XEdu的docker容器：[https://xedu.readthedocs.io/zh/master/about/installation.html#docker](https://xedu.readthedocs.io/zh/master/about/installation.html#docker)
 
 ## 4. 查看MMEdu版本
 

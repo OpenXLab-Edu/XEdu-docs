@@ -1,7 +1,9 @@
 # XEdu的错误码
 
-## MMEdu的错误码
+## 错误码的设计
 本文档定义了MMEdu的基本错误反馈。错误描述用英文（考虑到国际化）描述，同时输出错误代码。代码和目录编号一致，“1.1”的错误代码为“101”。
+
+错误码格式为三段式：错误码+错误现象+原因阐述或解决方案。其中第三段不一定有保证完全匹配。
 
 标准错误输出信息：Error Code: -编号,错误英文提示
 示例：Error Code: -101, No such dataset file:XX/XXX/XXX/
@@ -64,7 +66,7 @@ case 4: 数据集中图片损坏
 - Error Code: - 304. No such argument: (1, 'asd') which is <class 'tuple'>
 #### 3.5 fast_infer之前，未正确使用load_checkpoint载入权重
 
-### 4.预留给网络相关错误
+### 4.算法网络相关错误
 
 #### 4.4 网络名称不存在（不存在的网络名称）
 404
@@ -74,3 +76,8 @@ case 4: 数据集中图片损坏
 
 英文提示设计：No such parameter 
 - Error Code: - 501. No such parameter: ig
+
+  ### 6. 代码逻辑错误
+如show之前要inference
+  ### 7. 数据处理错误
+  如BaseDT中检查数据集标注
