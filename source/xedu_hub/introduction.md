@@ -829,6 +829,7 @@ ocr = wf(task="ocr")
 
 - `task`选择任务类型，光学字符识别（OCR）的模型为`ocr`。
   
+
 **注意**：ocr的模型不是以onnx方式下载，而是以python库的形式下载和安装，因此不同于之前任务的下载方式，也无需指定下载路径。可以通过`pip install rapidocr_onnxruntime==1.3.7`预先下载库。
 
 #### 2. 模型推理
@@ -1257,7 +1258,7 @@ get_similarity(image_embeddings, txt_embeddings,method='cosine') # 计算相似�
 
 XEduHub现在可以支持使用MMEdu导出的onnx模型进行推理啦！如果你想了解如何使用MMEdu训练模型，可以看这里：<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html">解锁图像分类模块：MMClassification</a>、<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html">揭秘目标检测模块：MMDetection</a>。
 
-如果你想了解如何将使用[MMEdu](https://xedu.readthedocs.io/zh/master/mmedu.html)训练好的模型转换成ONNX格式，可以看这里[最后一步：AI模型转换](https://xedu.readthedocs.io/zh/master/mmedu/model_convert.html)。OK，准备好了ONNX模型，那么就开始使用XEduHub吧！
+如果你想了解如何将使用[MMEdu](https://xedu.readthedocs.io/zh/master/mmedu.html)训练好的模型转换成ONNX格式，可以前往[最后一步：模型转换](https://xedu.readthedocs.io/zh/master/mmedu/mmedumodel_convert.html)。OK，准备好了ONNX模型，那么就开始使用XEduHub吧！
 
 ### MMClassification模型
 
@@ -1429,7 +1430,7 @@ mmdet.save(img,'new_plate.jpg')# 保存推理结果图片
 
 ## 9. BaseNN模型推理
 
-XEduHub现在可以支持使用BaseNN导出的onnx模型进行推理啦！如果你想了解如何将使用[BaseNN](https://xedu.readthedocs.io/zh/master/basenn.html)训练好的模型转换成ONNX格式，可以看这里：[BaseNN模型文件格式转换](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id29)。OK，准备好了ONNX模型，那么就开始使用XEduHub吧！
+XEduHub现在可以支持使用BaseNN导出的onnx模型进行推理啦！如果你想了解如何将使用[BaseNN](https://xedu.readthedocs.io/zh/master/basenn.html)训练好的模型转换成ONNX格式，可以看这里：[BaseNN模型文件格式转换](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id24)。OK，准备好了ONNX模型，那么就开始使用XEduHub吧！
 
 #### 代码样例
 
@@ -1488,7 +1489,7 @@ format_result = basenn.format_output()
 
 ## 10. BaseML模型推理
 
-XEduHub现在可以支持使用BaseML导出的pkl模型文件进行推理啦！如果你想了解如何将使用[BaseML](https://xedu.readthedocs.io/zh/master/baseml.html)训练模型并保存成.pkl模型文件，可以看这里：[BaseML模型保存](https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id10)。OK，准备好了pkl模型，那么就开始使用XEduHub吧！
+XEduHub现在可以支持使用BaseML导出的pkl模型文件进行推理啦！如果你想了解如何将使用[BaseML](https://xedu.readthedocs.io/zh/master/baseml.html)训练模型并保存成.pkl模型文件，可以看这里：[BaseML模型保存](https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id16)。OK，准备好了pkl模型，那么就开始使用XEduHub吧！
 
 #### 代码样例
 

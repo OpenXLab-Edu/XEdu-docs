@@ -4,6 +4,8 @@
 
 `BaseDeploy`通过传入[ONNX模型](https://xedu.readthedocs.io/zh/master/mmedu/model_convert.html#id4)的路径加载为一个模型，通过`model.inference`即可完成模型的推理，从而可实现借助BaseDeploy完成模型部署。
 
+库文件源代码可以从[PyPi](https://pypi.org/project/BaseDeploy/#files)下载，选择tar.gz格式下载，可用常见解压软件查看源码。
+
 文档涉及的部分代码见XEdu帮助文档配套项目集：[https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public](https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public)
 
 ## 示例代码

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GUI库PySimpleGUI &mdash; OpenXLabEdu  documentation</title>
@@ -11,11 +11,10 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -29,15 +28,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="../../index.html" class="icon icon-home">
-            OpenXLabEdu
+            <a href="../../index.html" class="icon icon-home"> OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -94,10 +89,10 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../../how_to_use.html">如何用XEdu借助AI解决真实问题</a></li>
-          <li class="breadcrumb-item"><a href="../scitech_tools.html">相关科创工具</a></li>
-      <li class="breadcrumb-item active">GUI库PySimpleGUI</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../how_to_use.html">如何用XEdu借助AI解决真实问题</a> &raquo;</li>
+          <li><a href="../scitech_tools.html">相关科创工具</a> &raquo;</li>
+      <li>GUI库PySimpleGUI</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/how_to_use/scitech_tools/pysimplegui.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -108,15 +103,15 @@
            <div itemprop="articleBody">
              
   <section id="guipysimplegui">
-<h1>GUI库PySimpleGUI<a class="headerlink" href="#guipysimplegui" title="Permalink to this heading"></a></h1>
+<h1>GUI库PySimpleGUI<a class="headerlink" href="#guipysimplegui" title="Permalink to this headline"></a></h1>
 <section id="id1">
-<h2>1. 简介<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<h2>1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <p>图形用户界面（Graphical User Interface，简称 GUI，又称图形用户接口）是指采用图形方式显示的计算机操作用户界面。图形用户界面是一种人与计算机通信的界面显示格式，允许用户使用鼠标等输入设备操纵屏幕上的图标或菜单选项，以选择命令、调用文件、启动程序或执行其它一些日常任务。用户界面通常包括许多视觉元素，如图标、按钮、图形、显示文本和多种输入控件，如复选框、文本输入框等。如何给AI应用程序编写一个图形用户界面？那么就需要选择一个简单好用的GUI开发工具。</p>
 <p>Python作为一个容易上手，简单方便的开源编程语言，第三方的开发工具数不胜数，在GUI这个方向同样有很多的工具可以选择。比较常用的GUI开发工具有Tkinter、PyQt、wxPython、Gtk+、Kivy、FLTK和OpenGL等，其中最常用是Tkinter。Tkinter的优点在于是Python内置标准库，无需额外安装，兼容性好，但缺点在于实现效果较为普通，开发体验不好。比较受程序员推崇的是PyQt和wxPython，功能强大，界面优美，相关教程也很多，可惜学习曲线有些陡峭。在比较了多款GUI开发工具之后，我们最终推荐使用<code class="docutils literal notranslate"><span class="pre">PySimpleGUI</span></code>。</p>
 <p><code class="docutils literal notranslate"><span class="pre">PySimpleGUI</span></code>的优势还在于其内置了多个GUI框架。目前已经集成了tkinter、PyQt、wxPython和 Remi等四种。其中Remi是一个Web界面开发库。如果想要将普通的GUI界面更换为Web界面，只要将前面的导入库“import PySimpleGUI as sg”一句改为“import PySimpleGUIWeb as sg”，其他代码都不需要改变，体现了“一次编写、处处运行”的理念。</p>
 <p>本文涉及的部分代码见XEdu帮助文档配套项目集：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&amp;sc=645caab8a8efa334b3f0eb24#public">https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&amp;sc=645caab8a8efa334b3f0eb24#public</a></p>
 <section id="pysimplegui">
-<h3>PySimpleGUI<a class="headerlink" href="#pysimplegui" title="Permalink to this heading"></a></h3>
+<h3>PySimpleGUI<a class="headerlink" href="#pysimplegui" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p><strong>底层框架</strong>: 使用的是 Python 的标准 GUI 库 <code class="docutils literal notranslate"><span class="pre">tkinter</span></code> 作为其底层实现。</p></li>
 <li><p><strong>目标平台</strong>: 桌面环境。通过它，你可以轻松地为 Windows、Mac 和 Linux 创建原生应用程序。</p></li>
@@ -131,7 +126,7 @@
 <p>官方GitHub仓库地址：<a class="reference external" href="https://github.com/PySimpleGUI/PySimpleGUI">https://github.com/PySimpleGUI/PySimpleGUI</a></p>
 </section>
 <section id="pysimpleguiweb">
-<h3>PySimpleGUIWeb<a class="headerlink" href="#pysimpleguiweb" title="Permalink to this heading"></a></h3>
+<h3>PySimpleGUIWeb<a class="headerlink" href="#pysimpleguiweb" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p><strong>底层框架</strong>: 使用 <code class="docutils literal notranslate"><span class="pre">Remi</span></code> 作为其底层实现，它是一个 Python GUI 库，允许你创建的 GUI 在 web 浏览器中运行。</p></li>
 <li><p><strong>目标平台</strong>: Web 浏览器。它旨在为那些想要一个简单的方法来创建 web 应用程序的开发者提供解决方案。</p></li>
@@ -146,12 +141,12 @@
 <p>官方GitHub仓库地址：<a class="reference external" href="https://github.com/PySimpleGUI/PySimpleGUI/tree/master/PySimpleGUIWeb">https://github.com/PySimpleGUI/PySimpleGUI/tree/master/PySimpleGUIWeb</a></p>
 </section>
 <section id="pysimpleguipysimpleguiweb">
-<h3>选择PySimpleGUI还是PySimpleGUIWeb？<a class="headerlink" href="#pysimpleguipysimpleguiweb" title="Permalink to this heading"></a></h3>
+<h3>选择PySimpleGUI还是PySimpleGUIWeb？<a class="headerlink" href="#pysimpleguipysimpleguiweb" title="Permalink to this headline"></a></h3>
 <p>在选择使用哪个版本之前，你应该首先确定你的应用程序的需求。如果你需要一个轻量级的桌面应用程序，<code class="docutils literal notranslate"><span class="pre">PySimpleGUI</span></code> 可能是更好的选择。如果你希望你的应用程序可以在浏览器中运行，那么 <code class="docutils literal notranslate"><span class="pre">PySimpleGUIWeb</span></code> 更适合。</p>
 </section>
 </section>
 <section id="id2">
-<h2>2. 安装<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<h2>2. 安装<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <p>均可以采用pip命令安装，具体如下：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">PySimpleGUI</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">PySimpleGUIWeb</span>
@@ -159,7 +154,7 @@
 </div>
 </section>
 <section id="id3">
-<h2>3.示例代码<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<h2>3.示例代码<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
 <p>以下是一个基本的 <code class="docutils literal notranslate"><span class="pre">PySimpleGUI</span></code> 示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库</span>
 <span class="kn">import</span> <span class="nn">PySimpleGUI</span> <span class="k">as</span> <span class="nn">sg</span>
@@ -192,10 +187,10 @@
 <p><img alt="how_to_use/images/scitech_tools/pysimplegui.png" src="how_to_use/images/scitech_tools/pysimplegui.png" /></p>
 </section>
 <section id="pysimpleguiai">
-<h2>4. 借助PySimpleGUI部署简易AI应用<a class="headerlink" href="#pysimpleguiai" title="Permalink to this heading"></a></h2>
+<h2>4. 借助PySimpleGUI部署简易AI应用<a class="headerlink" href="#pysimpleguiai" title="Permalink to this headline"></a></h2>
 <p>只需准备好模型后，使用<code class="docutils literal notranslate"><span class="pre">PySimpleGUI</span></code>创建一个带GUI的简单AI应用。考虑到计算机视觉（CV）方向的模型都需要结合摄像头，界面中得显示实时画面，那就需要借助Image类型的对象，然后在窗体事件控制部分中实时更新画面。</p>
 <section id="id4">
-<h3>示例1：带窗体的摄像头实时推理的程序（图像分类）<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<h3>示例1：带窗体的摄像头实时推理的程序（图像分类）<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
 <p>下面是一段使用PySimpleGUIWeb与OpenCV来显示实时的摄像头图像并对其进行实时推理。在推理过程中，使用的是ONNX模型，推理的代码是借助XEdu团队推出的模型部署工具<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basedeploy/introduction.html">BaseDeploy</a>，代码较为简洁。关于基于MMEdu训练的模型转换为ONNX的说明可见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/model_convert.html#ai">最后一步：AI模型转换与部署</a>。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 带窗体的摄像头程序，自动推理</span>
 <span class="c1"># 模型为1000分类预训练模型（MobielNet）</span>
@@ -246,7 +241,7 @@
 </div>
 </section>
 <section id="id5">
-<h3>示例2：带窗体的摄像头实时推理的程序（目标检测）<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<h3>示例2：带窗体的摄像头实时推理的程序（目标检测）<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
 <p>一般来说，目标检测的代码会在推理画面上显示检测出来的目标，并且绘制一个矩形。因而，BaseDeploy的推理函数会返回识别后的画面。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 带窗体的摄像头程序，自动推理</span>
 <span class="c1"># 模型为80类目标检测预训练模型（SSD_Lite）</span>

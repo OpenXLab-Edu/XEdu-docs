@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>解锁图像分类模块：MMClassification &mdash; OpenXLabEdu  documentation</title>
@@ -11,11 +11,10 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -29,15 +28,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="../index.html" class="icon icon-home">
-            OpenXLabEdu
+            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -91,9 +86,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../mmedu.html">计算机视觉库MMEdu</a></li>
-      <li class="breadcrumb-item active">解锁图像分类模块：MMClassification</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../mmedu.html">计算机视觉库MMEdu</a> &raquo;</li>
+      <li>解锁图像分类模块：MMClassification</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/mmedu/mmclassification.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -104,18 +99,18 @@
            <div itemprop="articleBody">
              
   <section id="mmclassification">
-<h1>解锁图像分类模块：MMClassification<a class="headerlink" href="#mmclassification" title="Permalink to this heading"></a></h1>
+<h1>解锁图像分类模块：MMClassification<a class="headerlink" href="#mmclassification" title="Permalink to this headline"></a></h1>
 <section id="id1">
-<h2>初识MMClassification<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<h2>初识MMClassification<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <p>MMClassifiation（简称cls）的主要功能是对图像进行分类。其支持的SOTA模型有LeNet、MobileNet、ResNet18、ResNet50等，具体介绍详见<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#sota">后文</a>。如需查看所有支持的SOTA模型，可使用<code class="docutils literal notranslate"><span class="pre">model.sota()</span></code>代码进行查看。</p>
 <p>文档涉及的部分代码见XEdu帮助文档配套项目集：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&amp;sc=645caab8a8efa334b3f0eb24#public">https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&amp;sc=645caab8a8efa334b3f0eb24#public</a></p>
 </section>
 <section id="id2">
-<h2>使用说明<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<h2>使用说明<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <p>XEdu一键安装包中预置了MMEdu的cls模块的示例代码（路径：/demo）、常用小数据集（路径：/dataset/cls）,并且已经预训练了一些权重（路径：/checkpoints/cls_model）。在demo文件夹中，还提供了一张测试图片，OpenInnoLab平台也公开了非常多图像分类任务的项目，体验了几个之后相信会对此模块有一定理解。</p>
 <p>下面我们将以“石头剪刀布”手势识别这个任务为例，介绍一下图像分类模块示例代码的用法，在解锁图像分类模块的同时也一起完成一个新的图像分类项目吧！</p>
 <section id="id3">
-<h3>1. 模型训练<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<h3>1. 模型训练<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
 <p>使用下面的代码即可简单体验MMClassification的训练过程，接下来就开始详细的介绍。</p>
 <p>在运行代码之前，我们首先需要拥有一个数据集，这里提供了经典的石头剪刀布分类数据集。</p>
 <p>数据集文件结构如下:</p>
@@ -193,7 +188,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">loss</span></code>: 本批次模型在训练集上计算的损失值。loss是衡量模型在训练集上预测结果与真实结果之间差异的指标。不同类型的模型（如分类、回归、生成等）使用不同的loss函数来优化模型，MMEdu的图像分类模型一般使用交叉熵损失函数。通常情况下，训练过程中的loss会逐渐下降，表示模型在逐步学习优化。</p>
 </section>
 <section id="id4">
-<h3>2. 模型推理<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<h3>2. 模型推理<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
 <p>训练完模型后，我们就可使用该模型对新图片进行模型推理。当然如果想快速上手体验MMClassification的图像分类，可直接使用我们已经预训练好的模型和权重文件体验图片推理。</p>
 <p>示例代码如下:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>  <span class="c1"># 导入mmcls模块</span>
@@ -277,7 +272,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">save_fold</span></code>：保存的图片名，数据结构为字符串，默认参数为<code class="docutils literal notranslate"><span class="pre">'cls_result'</span></code>，用户也可以定义为自己想要的名字。</p>
 </section>
 <section id="id5">
-<h3>3. 继续训练<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<h3>3. 继续训练<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
 <p>在这一步中，我们将学习如何加载之前训练过的模型接着训练。如果觉得之前训练的模型epoch数不够的话或者因为一些客观原因而不得不提前结束训练，相信下面的代码会帮到您。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;LeNet&#39;</span><span class="p">)</span> <span class="c1"># 初始化实例模型</span>
 <span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">3</span> <span class="c1"># 指定数据集中的类别数量</span>
@@ -293,7 +288,7 @@
 <p>全新开始训练一个模型一般要花较长时间，所以我们强烈建议在预训练模型的基础上继续训练，哪怕你要分类的数据集和预训练的数据集并不一样，基于预训练模型继续训练可起到加速训练的作用。在学习资源下载处也提供了一些<a class="reference external" href="https://xedu.readthedocs.io/zh/master/how_to_use/support_resources/resources.html#id3">预训练模型和权重文件下载</a>。</p>
 </section>
 <section id="sota">
-<h3>4. 支持的SOTA模型<a class="headerlink" href="#sota" title="Permalink to this heading"></a></h3>
+<h3>4. 支持的SOTA模型<a class="headerlink" href="#sota" title="Permalink to this headline"></a></h3>
 <p>目前MMClassifiation支持的SOTA模型有LeNet、MobileNet、ResNet18、ResNet50等，如需查看所有支持的SOTA模型，可使用<code class="docutils literal notranslate"><span class="pre">model.sota()</span></code>代码进行查看。这些模型的作用和适用场景简介如下。</p>
 <ul class="simple">
 <li><p><strong>LeNet</strong></p></li>

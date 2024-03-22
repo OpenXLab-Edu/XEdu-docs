@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BaseML杀手锏：自带可视化部分 &mdash; OpenXLabEdu  documentation</title>
@@ -11,11 +11,10 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -29,15 +28,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="../index.html" class="icon icon-home">
-            OpenXLabEdu
+            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -112,9 +107,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../baseml.html">传统机器学习库BaseML</a></li>
-      <li class="breadcrumb-item active">BaseML杀手锏：自带可视化部分</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../baseml.html">传统机器学习库BaseML</a> &raquo;</li>
+      <li>BaseML杀手锏：自带可视化部分</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/baseml/visualization.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -125,63 +120,63 @@
            <div itemprop="articleBody">
              
   <section id="baseml">
-<h1>BaseML杀手锏：自带可视化部分<a class="headerlink" href="#baseml" title="Permalink to this heading"></a></h1>
+<h1>BaseML杀手锏：自带可视化部分<a class="headerlink" href="#baseml" title="Permalink to this headline"></a></h1>
 <section id="id1">
-<h2>为什么需要可视化？<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<h2>为什么需要可视化？<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <p>在做机器学习项目的过程中，可视化能帮助我们了解模型训练状态，评估模型效果，还能了解数据，辅助了解算法模型，改善模型。</p>
 <p>BaseML中提供两种可视化方法：模型可视化及评价指标可视化。模型可视化可以通过测试数据及线条勾勒模型的大致形状，有助于解释和理解模型的内部结构。评价指标可视化显示了模型对于数据的拟合程度，描述了模型的性能，方便用户进行模型选择。使用可视化部分的前提是已经对模型进行初始化并且训练完成，否则可视化部分无法正常使用。</p>
 <section id="id2">
-<h3>1. 模型可视化<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<h3>1. 模型可视化<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
 <p>目前该模块只支持4类算法的可视化，分别为Classification中的KNN、SVM，Regression中的LinearRegression，Cluster中的Kmeans。调用方法为<code class="docutils literal notranslate"><span class="pre">model.plot()</span></code>。</p>
 </section>
 <section id="id3">
-<h3>2. 评价指标可视化<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<h3>2. 评价指标可视化<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
 <p>目前该模块支持Classification、Regression中的所有算法及Cluster中的Kmeans算法，其他算法不支持。调用方法为<code class="docutils literal notranslate"><span class="pre">model.metricplot()</span></code>。</p>
 </section>
 <section id="id4">
-<h3>3. 可视化调用限制<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<h3>3. 可视化调用限制<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
 <p><img alt="../_images/limit.png" src="../_images/limit.png" /></p>
 </section>
 </section>
 <section id="id5">
-<h2>快速体验训练过程可视化全流程！<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<h2>快速体验训练过程可视化全流程！<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
 <section id="id6">
-<h3>0. 引入包<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<h3>0. 引入包<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库，从BaseML导入分类模块</span>
 <span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Classification</span> <span class="k">as</span> <span class="bp">cls</span>
 </pre></div>
 </div>
 </section>
 <section id="id7">
-<h3>1. 实例化模型<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
+<h3>1. 实例化模型<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择KNN（K Nearest Neighbours）</span>
 <span class="n">model</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;KNN&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="id8">
-<h3>2. 载入数据<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
+<h3>2. 载入数据<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 载入数据集，并说明特征列和标签列</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;./lenses.csv&#39;</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="n">x_column</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span><span class="n">y_column</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
 </pre></div>
 </div>
 </section>
 <section id="id9">
-<h3>3. 模型训练<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
+<h3>3. 模型训练<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型训练</span>
 <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
 <section id="id10">
-<h3>4. 模型可视化<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h3>
+<h3>4. 模型可视化<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型可视化</span>
 <span class="n">model</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
 <section id="id11">
-<h3>5. 评价指标可视化<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h3>
+<h3>5. 评价指标可视化<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h3>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 评价指标可视化</span>
 <span class="n">model</span><span class="o">.</span><span class="n">metricplot</span><span class="p">()</span>
 </pre></div>
@@ -189,51 +184,51 @@
 </section>
 </section>
 <section id="id12">
-<h2>快速体验推理过程可视化！<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h2>
+<h2>快速体验推理过程可视化！<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h2>
 <section id="id13">
-<h3>0. 引入包<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h3>
+<h3>0. 引入包<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h3>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库，从BaseML导入分类模块</span>
 <span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Classification</span> <span class="k">as</span> <span class="bp">cls</span>
 </pre></div>
 </div>
 </section>
 <section id="id14">
-<h3>1. 实例化模型<a class="headerlink" href="#id14" title="Permalink to this heading"></a></h3>
+<h3>1. 实例化模型<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h3>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择KNN（K Nearest Neighbours）</span>
 <span class="n">model</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;KNN&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="id15">
-<h3>2. 加载模型参数<a class="headerlink" href="#id15" title="Permalink to this heading"></a></h3>
+<h3>2. 加载模型参数<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h3>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 加载保存的模型参数</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;mymodel.pkl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="id16">
-<h3>3. 载入数据<a class="headerlink" href="#id16" title="Permalink to this heading"></a></h3>
+<h3>3. 载入数据<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h3>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 载入数据集，并说明特征列和标签列</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;./lenses.csv&#39;</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="n">x_column</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span><span class="n">y_column</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
 </pre></div>
 </div>
 </section>
 <section id="id17">
-<h3>4. 模型推理<a class="headerlink" href="#id17" title="Permalink to this heading"></a></h3>
+<h3>4. 模型推理<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h3>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型推理</span>
 <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
 <section id="id18">
-<h3>5. 模型可视化<a class="headerlink" href="#id18" title="Permalink to this heading"></a></h3>
+<h3>5. 模型可视化<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h3>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型可视化</span>
 <span class="n">model</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
 <section id="id19">
-<h3>6. 评价指标可视化<a class="headerlink" href="#id19" title="Permalink to this heading"></a></h3>
+<h3>6. 评价指标可视化<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h3>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 评价指标可视化</span>
 <span class="n">model</span><span class="o">.</span><span class="n">metricplot</span><span class="p">()</span>
 </pre></div>
@@ -242,30 +237,30 @@
 </section>
 </section>
 <section id="id20">
-<h2>其他数据可视化<a class="headerlink" href="#id20" title="Permalink to this heading"></a></h2>
+<h2>其他数据可视化<a class="headerlink" href="#id20" title="Permalink to this headline"></a></h2>
 <section id="id21">
-<h3>0. 引入包<a class="headerlink" href="#id21" title="Permalink to this heading"></a></h3>
+<h3>0. 引入包<a class="headerlink" href="#id21" title="Permalink to this headline"></a></h3>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库，从BaseML导入分类模块</span>
 <span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Classification</span> <span class="k">as</span> <span class="bp">cls</span>
 </pre></div>
 </div>
 </section>
 <section id="id22">
-<h3>1. 实例化模型<a class="headerlink" href="#id22" title="Permalink to this heading"></a></h3>
+<h3>1. 实例化模型<a class="headerlink" href="#id22" title="Permalink to this headline"></a></h3>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择KNN（K Nearest Neighbours）</span>
 <span class="n">model</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;KNN&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="id23">
-<h3>2. 加载模型参数<a class="headerlink" href="#id23" title="Permalink to this heading"></a></h3>
+<h3>2. 加载模型参数<a class="headerlink" href="#id23" title="Permalink to this headline"></a></h3>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 加载保存的模型参数</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;mymodel.pkl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="id24">
-<h3>3. 模型推理<a class="headerlink" href="#id24" title="Permalink to this heading"></a></h3>
+<h3>3. 模型推理<a class="headerlink" href="#id24" title="Permalink to this headline"></a></h3>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型推理</span>
 <span class="c1"># test_data = [[0.2,0.4,3.2,5.6],</span>
 <span class="c1">#             [2.3,1.8,0.4,2.3]]</span>
@@ -274,7 +269,7 @@
 </div>
 </section>
 <section id="id25">
-<h3>4. 模型可视化<a class="headerlink" href="#id25" title="Permalink to this heading"></a></h3>
+<h3>4. 模型可视化<a class="headerlink" href="#id25" title="Permalink to this headline"></a></h3>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型可视化</span>
 <span class="c1"># test_true_data = [[0],</span>
 <span class="c1">#                  [1]]</span>
@@ -283,7 +278,7 @@
 </div>
 </section>
 <section id="id26">
-<h3>5. 评价指标可视化<a class="headerlink" href="#id26" title="Permalink to this heading"></a></h3>
+<h3>5. 评价指标可视化<a class="headerlink" href="#id26" title="Permalink to this headline"></a></h3>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 评价指标可视化, 如果要使用其他数据进行测试，必须先加载之前的数据集</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;./lenses.csv&#39;</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="n">x_column</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span><span class="n">y_column</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
 <span class="n">model</span><span class="o">.</span><span class="n">metricplot</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">test_data</span><span class="p">,</span> <span class="n">y_true</span><span class="o">=</span><span class="n">test_true_data</span><span class="p">)</span>

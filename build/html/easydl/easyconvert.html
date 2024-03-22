@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EasyConvert 模型转换辅助工具 &mdash; OpenXLabEdu  documentation</title>
@@ -11,11 +11,10 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -29,15 +28,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="../index.html" class="icon icon-home">
-            OpenXLabEdu
+            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -86,9 +81,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../easydl.html">EasyDL系列无代码工具</a></li>
-      <li class="breadcrumb-item active">EasyConvert 模型转换辅助工具</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../easydl.html">EasyDL系列无代码工具</a> &raquo;</li>
+      <li>EasyConvert 模型转换辅助工具</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/easydl/easyconvert.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -99,17 +94,17 @@
            <div itemprop="articleBody">
              
   <section id="easyconvert">
-<h1>EasyConvert 模型转换辅助工具<a class="headerlink" href="#easyconvert" title="Permalink to this heading"></a></h1>
+<h1>EasyConvert 模型转换辅助工具<a class="headerlink" href="#easyconvert" title="Permalink to this headline"></a></h1>
 <section id="id1">
-<h2>EasyConvert 简介<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<h2>EasyConvert 简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <p>EasyConvert是XEdu提供的无代码模型转换工具。利用EasyConvert，可以实现将MMEdu和BaseNN导出的pth格式模型转换成onnx格式模型，适用于初学者人工智能入门。</p>
 <p>注意：pth模型须是新版的MMEdu和BaseNN训练得到的模型！</p>
 <p><img alt="../_images/EasyConvert-home.jpg" src="../_images/EasyConvert-home.jpg" /></p>
 </section>
 <section id="easyconvertai">
-<h2>用EasyConvert准换第一个AI模型！<a class="headerlink" href="#easyconvertai" title="Permalink to this heading"></a></h2>
+<h2>用EasyConvert准换第一个AI模型！<a class="headerlink" href="#easyconvertai" title="Permalink to this headline"></a></h2>
 <section id="step-1">
-<h3>step 1：选择要转换处理的文件<a class="headerlink" href="#step-1" title="Permalink to this heading"></a></h3>
+<h3>step 1：选择要转换处理的文件<a class="headerlink" href="#step-1" title="Permalink to this headline"></a></h3>
 <p>EasyTrain界面打开之后，有两种支持的文件选项：</p>
 <ul class="simple">
 <li><p>单个模型文件转换</p></li>
@@ -118,7 +113,7 @@
 <p><img alt="../_images/convert1.png" src="../_images/convert1.png" /></p>
 </section>
 <section id="step-2">
-<h3>step 2：选择操作<a class="headerlink" href="#step-2" title="Permalink to this heading"></a></h3>
+<h3>step 2：选择操作<a class="headerlink" href="#step-2" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>pth转onnx</p></li>
 <li><p>onnx转pth（正在开发，敬请期待）</p></li>
@@ -126,7 +121,7 @@
 <p><img alt="../_images/convert2.png" src="../_images/convert2.png" /></p>
 </section>
 <section id="step-3">
-<h3>step 3：模型转换<a class="headerlink" href="#step-3" title="Permalink to this heading"></a></h3>
+<h3>step 3：模型转换<a class="headerlink" href="#step-3" title="Permalink to this headline"></a></h3>
 <p>点击“模型转换”按钮，会将“单个模型”和“模型文件夹”中的所有模型进行转换。新模型保存地址与原模型相同。</p>
 <p><img alt="../_images/convert3.png" src="../_images/convert3.png" /></p>
 </section>

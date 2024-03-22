@@ -18,7 +18,7 @@
 
 那么MMEdu的目标检测模块MMDetection（简称det）的主要功能便是输出图片或视频中出现的多个对象名称，同时用方框框出对象所在方形区域。
 
-其支持的SOTA模型有FasterRCNN、Yolov3、SSD_Lite等，具体介绍详见<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html#sota">后文</a>。如需查看所有支持的SOTA模型，可使用`model.sota()`代码进行查看。
+其支持的SOTA模型有FasterRCNN、Yolov3、SSD_Lite等，具体介绍详见<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html#sota">后文</a>。如需查看所有支持的SOTA模型，可导入模块后使用`det.sota()`代码进行查看。
 
 文档涉及的部分代码见XEdu帮助文档配套项目集：[https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public](https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public)
 
@@ -26,7 +26,13 @@
 
 XEdu一键安装包中预置了MMEdu的det模块的示例代码（路径：/demo）、常用小数据集（路径：/dataset/det）,并且已经预训练了一些权重（路径：/checkpoints/det_model）。在demo文件夹中，还提供了一张测试图片，OpenInnoLab平台也公开了非常多目标检测任务的项目，体验了几个之后相信会对此模块有一定理解。
 
-下面我们将以车牌检测这个任务为例，介绍一下目标检测模块示例代码的用法，一起解锁第一个目标检测项目吧！
+下面我们将以车牌检测这个任务为例，介绍一下目标检测模块示例代码的用法，一起解锁目标检测模块吧！
+
+#### 0. 导入模块
+
+```
+from MMEdu import MMDetection as det
+```
 
 #### 1.模型训练
 
@@ -54,7 +60,15 @@ model.train(epochs=3, validate=True) # 设定训练的epoch次数以及是否进
 
 接下来逐句讲述训练代码：
 
-实例化模型的代码在前面说过就不再赘述。
+- **实例化模型**
+
+```python
+model = det(backbone='FasterRCNN') # 实例化MMDetection模型
+```
+
+这里对于`MMDetection`模型提供的参数进行解释，`MMDetection`支持传入的参数是`backbone`。
+
+`backbone`：指定使用的`MMDetection`模型。可选的有FasterRCNN、Yolov3、SSD_Lite等，具体介绍详见<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html#sota">后文</a>。
 
 - **指定类别数量**
 
@@ -187,15 +201,14 @@ img = 'car_plate.png' # 指定推理图片的路径，直接在代码所在的de
 
 如果使用自己的图片的话，只需要修改img的路径即可（绝对路径和相对路径均可）。
 
-- **实例化模型**
+- **实例化模型并指定模型权重文件**
 
 ```python
-model = det(backbone='FasterRCNN') # 实例化MMDetection模型
+model = det(backbone="FasterRCNN") # 实例化MMDetection模型
+checkpoint = '../checkpoints/det_model/plate/latest.pth' # 指定使用的模型权重文件
 ```
 
-这里对于`MMDetection`模型提供的参数进行解释，`MMDetection`支持传入的参数是`backbone`。
-
-`backbone`：指定使用的`MMDetection`模型，默认使用 `'FasterRCNN'`，当然读者可以自行修改该参数以使用不同模型。
+实例化模型的代码在前面说过就不再赘述。推理时需实例化模型并指定已有的模型权重文件，两句代码需相互匹配，训练时实例化的网络是什么，推理时也需实例化同一个网络。如果没有指定模型权重文件，那么这两句代码可以不修改，即使用默认的模型。
 
 - **模型推理**
 
@@ -270,10 +283,12 @@ model.train(epochs=3, validate=True, checkpoint=checkpoint) # 进行再训练
 
 全新开始训练一个模型一般要花较长时间，所以我们强烈建议在预训练模型的基础上继续训练，哪怕你要分类的数据集和预训练的数据集并不一样，基于预训练模型继续训练可起到加速训练的作用。在学习资源下载处也提供了一些[预训练模型和权重文件下载](https://xedu.readthedocs.io/zh/master/how_to_use/support_resources/resources.html#id3)。
 
+另外为初学者准备了一个快速入门MMEdu的目标检测项目的基础项目《用MMEdu实现车牌目标检测》，项目地址是：[https://openinnolab.org.cn/pjlab/project?id=641426fdcb63f030544017a2&sc=62f34141bf4f550f3e926e0e#public](https://openinnolab.org.cn/pjlab/project?id=641426fdcb63f030544017a2&sc=62f34141bf4f550f3e926e0e#public)（用Chrome浏览器打开体验最佳）
+
 
 #### 4.支持的SOTA模型
 
-目前MMDetection支持的SOTA模型有SSD_Lite、FaterRCNN、Yolov3等，如需查看所有支持的SOTA模型，可使用`model.sota()`代码进行查看。这些模型的作用和适用场景简介如下。
+目前MMDetection支持的SOTA模型有SSD_Lite、FaterRCNN、Yolov3等，如需查看所有支持的SOTA模型，可导入模块后使用`det.sota()`代码进行查看。这些模型的作用和适用场景简介如下。
 
 - **SSD_Lite**
 

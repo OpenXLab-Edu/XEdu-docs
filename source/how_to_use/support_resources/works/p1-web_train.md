@@ -41,6 +41,8 @@ with tf.Session() as sess:
 
 参考项目：[https://openinnolab.org.cn/pjlab/project?id=645ddb8fd73dd91bcbf15083&sc=635638d69ed68060c638f979#public](https://openinnolab.org.cn/pjlab/project?id=645ddb8fd73dd91bcbf15083&sc=635638d69ed68060c638f979#public)
 
+完成模型转换后，就可以将这一模型部署到行空板上了。行空板支持多种编程方式，我们选择一种即可。
+
 ## 三、用Python编程完成模型推理
 
 ### 方式一：借助XEduHub
@@ -90,7 +92,6 @@ DFRobot的工程团队为BaseDeploy库设计了积木块，代表我们可以使
 
 模型该如何上传到行空板上？打开**文件系统**，将文件拖入**项目中的文件**即可，在点击**运行**的时候Mind+会将**项目中的文件**里面的所有文件一起上传到行空板的mindplus文件夹中运行。
 
-## 五、在行空板上部署模型
+## 五、在行空板上部署自己的模型
 
-最后，我们可以连接行空板，只需将ONNX模型上传行空板，再编写推理代码，就可实现将模型部署到行空板上，简单操作可查看[部署模型到硬件的教程](https://xedu.readthedocs.io/zh/master/how_to_use/support_resources/model_convert.html#id11)。
-
+最后，欢迎根据前面介绍的过程举一反三，收集数据训练一个自己的模型并进行模型转换，连接行空板，将ONNX模型上传行空板，选择合适的方式安装库、编写推理代码，便可实现将模型部署到行空板上，简单操作可查看[部署模型到硬件的教程](https://xedu.readthedocs.io/zh/master/how_to_use/support_resources/model_convert.html#id11)。

@@ -8,6 +8,8 @@ BaseDT不仅是一个功能强大的数据处理库，也是一个易于使用�
 
 `pip install basedt`或`pip install BaseDT`
 
+库文件源代码可以从[PyPi](https://pypi.org/project/BaseDT/#files)下载，选择tar.gz格式下载，可用常见解压软件查看源码。
+
 ## 数据的处理
 
 BaseDT提供了一个data模块，它包含了多个子模块和类，分别针对不同类型和格式的数据提供了处理功能。

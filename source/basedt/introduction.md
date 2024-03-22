@@ -194,15 +194,21 @@ tx,ty,val_x,val_y = split_tab_dataset(path,data_column=range(0,4),label_column=4
 
 `data_column`: 文件中数据的列数，形式上可以是可迭代对象range(0,4)表示前四列，可以是列表[0,3]表示第一列和第四列，也可以是数字 4 表示第4列。 
 
-`label_column`: 文件中标签的列数，默认是-1，形式上与data_column一致。 train_val_ratio: 训练集的比重，默认是0.8。 `random_seed`: 随机数种子，默认42。设定相同的随机数种子使得划分结果可复现。 
+`label_column`: 文件中标签的列数，默认是-1，形式上与data_column一致。
 
-`normalize`: 一个布尔值，表示是否要对图像数据进行归一化处理。设定normalize=True时会额外返回一个归一化器scaler，代表归一化过程中对数据进行的操作，即如需将数据集外的其他数据进行同样的归一化操作，可以直接使用返回的归一化器data = scaler.transform(data)。
+ `train_val_ratio`: 训练集的比重，默认是0.8。
+
+ `random_seed`: 随机数种子，默认42。设定相同的随机数种子使得划分结果可复现。 
+
+`normalize`: 一个布尔值，表示是否要对数据进行归一化处理。设定normalize=True时会额外返回一个归一化器scaler，代表归一化过程中对数据进行的操作，即如需将数据集外的其他数据进行同样的归一化操作，可以直接使用返回的归一化器，使用方法是data = scaler.transform(data)。
+
+`column_name`：自定义表头，默认值为Feature1、Feature2、Feature3... Label1、Label2、Label3...，如需自定义设置，可增加此参数，例如`column_name=['feature1','feature2','feature3','Target']`。
 
 **返回值：** 
 
-四个numpy数组：训练数据，训练标签，验证数据，验证标签 。
+四个numpy数组：训练数据，训练标签，验证数据，验证标签 ，另外如设置了normalize=True，将增加一个返回值scaler归一化器。
 
-并且会将训练集和验证集保存为csv： 命名为"原文件名_train.csv"和"原文件名_val.csv"，表头为Feature1、Feature2、Feature3... Label1、Label2、Label3...
+并且会将训练集和验证集保存为csv： 命名为"原文件名_train.csv"和"原文件名_val.csv"。
 
 ## 板块3：数据的可视化
 

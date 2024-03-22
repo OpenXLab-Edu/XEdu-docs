@@ -48,7 +48,7 @@ BaseML是传统机器学习库，类似Sklearn，使用了与MMEdu同样的语�
 
 6.[数据处理工具库：BaseDT](https://xedu.readthedocs.io/zh/master/basedt.html)
 
-不同的模型对数据有特定的要求，比如LeNet-5是28*28*1，MobileNet是224*224*3。BaseDT集成了这些转换工具。
+不同的模型对数据有特定的要求，比如LeNet-5是28×28，MobileNet是224×224。BaseDT集成了各种数据处理工具。
 
 7.其他规划中的库
 

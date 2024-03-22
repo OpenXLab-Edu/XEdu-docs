@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>XEdu的安装和下载 &mdash; OpenXLabEdu  documentation</title>
@@ -11,11 +11,10 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -29,15 +28,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="../index.html" class="icon icon-home">
-            OpenXLabEdu
+            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -67,6 +62,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#docker">docker容器镜像</a><ul>
+<<<<<<< HEAD
 <li class="toctree-l4"><a class="reference internal" href="#id6">0.空间不足的解决办法</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id7">1.首先需要安装Docker软件</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id8">2.启动Docker服务</a></li>
@@ -77,10 +73,22 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#id11">如何快速查看XEdu各模块库的版本</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id12">如何卸载XEdu各模块库</a></li>
+=======
+<li class="toctree-l4"><a class="reference internal" href="#id6">1.安装Docker软件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">2.启动Docker服务</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">3.拉取镜像</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker-container">4.启动docker容器（Container）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">5.结束容器</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16">6.重启容器</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">如何快速查看XEdu各模块库的版本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">如何卸载XEdu各模块库</a></li>
+>>>>>>> d57489f165c286403296095fc8e8f7db4c31befe
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="functions.html">XEdu的常见函数</a></li>
-<li class="toctree-l2"><a class="reference internal" href="errorcode.html">XEdu的错误码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errorcode.html">XEdu的常见错误</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEduHub</a></li>
@@ -106,9 +114,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../about.html">关于XEdu</a></li>
-      <li class="breadcrumb-item active">XEdu的安装和下载</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../about.html">关于XEdu</a> &raquo;</li>
+      <li>XEdu的安装和下载</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/about/installation.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -119,15 +127,20 @@
            <div itemprop="articleBody">
              
   <section id="xedu">
-<h1>XEdu的安装和下载<a class="headerlink" href="#xedu" title="Permalink to this heading"></a></h1>
+<h1>XEdu的安装和下载<a class="headerlink" href="#xedu" title="Permalink to this headline"></a></h1>
 <section id="id1">
+<<<<<<< HEAD
 <h2>可选的安装方式<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p>为了满足广大中小学师生的需求，XEdu安装方式分为一键安装包安装、pip安装和docker安装。一键安装包版包含MMEdu、BaseML、BaseNN三个模块的基础功能，以及XEduHub、BaseDT等工具库，同时内置了一套EasyDL系列工具，分”EasyTrain.bat”、”EasyInference.bat”和”EasyAPI.bat”这三个可视化工具，定期更新。pip安装方式需用户自己分模块安装，各模块更新同步工具开发进度。此外，还推出了docker容器镜像可供选择。</p>
+=======
+<h2>可选的安装方式<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<p>为了满足广大中小学师生的需求，XEdu安装方式分为一键安装包安装、pip安装和docker安装。一键安装包版包含MMEdu、BaseML、BaseNN三个模块的基础功能，以及XEduHub、BaseDT、BaseDeploy等工具库，同时内置了一套EasyDL系列工具，分”EasyTrain.bat”、”EasyInference.bat”和”EasyAPI.bat”这三个可视化工具，定期更新。pip安装方式需用户自己分模块安装，各模块更新同步工具开发进度。此外，还推出了docker容器镜像可供选择。</p>
+>>>>>>> d57489f165c286403296095fc8e8f7db4c31befe
 </section>
 <section id="id2">
-<h2>初学者安装强推!!!不会让人失望的一键安装包<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<h2>初学者安装强推!!!不会让人失望的一键安装包<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <section id="id3">
-<h3>即刻体验XEdu一键安装包，开始！<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<h3>即刻体验XEdu一键安装包，开始！<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
 <p>下载工具：XEdu一键安装包</p>
 <p>下载方式</p>
 <p>飞书网盘：<a class="reference external" href="https://p6bm2if73b.feishu.cn/drive/folder/fldcn67XTwhg8qIFCl8edJBZZQb">https://p6bm2if73b.feishu.cn/drive/folder/fldcn67XTwhg8qIFCl8edJBZZQb</a></p>
@@ -174,7 +187,7 @@ Notebook是基于网页的用于交互计算的应用程序。其可被应用于
 <p>更多EasyDL系列工具详见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/easydl.html#easydl">EasyDL系列无代码工具</a>。</p>
 </section>
 <section id="id4">
-<h3>揭秘一键安装包功能<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<h3>揭秘一键安装包功能<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
 <p>XEdu一键安装版是一个压缩包，解压后即可使用。</p>
 <p>XEdu的根目录结构如下：</p>
 <div class="highlight-{.plain} notranslate"><div class="highlight"><pre><span></span>XEdu
@@ -216,16 +229,16 @@ IDE”和”jupyter notebook”运行，可运行根目录的”Thonny编辑器.
 </section>
 </section>
 <section id="pip">
-<h2>使用pip安装<a class="headerlink" href="#pip" title="Permalink to this heading"></a></h2>
+<h2>使用pip安装<a class="headerlink" href="#pip" title="Permalink to this headline"></a></h2>
 <p>XEdu的MMEdu、BaseML、BaseNN等各模块库均已支持pip安装并会持续迭代。</p>
 <section id="pipmmedu">
-<h3>1. pip安装MMEdu<a class="headerlink" href="#pipmmedu" title="Permalink to this heading"></a></h3>
+<h3>1. pip安装MMEdu<a class="headerlink" href="#pipmmedu" title="Permalink to this headline"></a></h3>
 <section id="id5">
-<h4>1.1 准备工作<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h4>
+<h4>1.1 准备工作<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h4>
 <p>强烈推荐你在Anaconda的基础上安装MMEdu，可以避免很多的版本冲突问题。</p>
 </section>
 <section id="anaconda">
-<h4>1）安装Anaconda<a class="headerlink" href="#anaconda" title="Permalink to this heading"></a></h4>
+<h4>1）安装Anaconda<a class="headerlink" href="#anaconda" title="Permalink to this headline"></a></h4>
 <p>若您已经安装好conda，该步骤可跳过。</p>
 <p><strong>下载</strong></p>
 <p>首先打开Anaconda官网：<a class="reference external" href="https://www.anaconda.com/">https://www.anaconda.com/</a></p>
@@ -237,7 +250,7 @@ IDE”和”jupyter notebook”运行，可运行根目录的”Thonny编辑器.
 -&gt; <code class="docutils literal notranslate"><span class="pre">Install</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Finish</span></code></p>
 </section>
 <section id="python">
-<h4>2）安装python编辑器<a class="headerlink" href="#python" title="Permalink to this heading"></a></h4>
+<h4>2）安装python编辑器<a class="headerlink" href="#python" title="Permalink to this headline"></a></h4>
 <p>若您已经安装好合适的python编辑器，该步骤可跳过。</p>
 <p>此处以安装Thonny为例，其他编辑器例如Pycharm，VScode等也支持，用户自行配置好Python编译器即可。</p>
 <p><strong>下载</strong></p>
@@ -255,9 +268,9 @@ IDE”和”jupyter notebook”运行，可运行根目录的”Thonny编辑器.
 </section>
 </section>
 <section id="mmedu-cpu">
-<h3>1.2 安装MMEdu(CPU版本)<a class="headerlink" href="#mmedu-cpu" title="Permalink to this heading"></a></h3>
+<h3>1.2 安装MMEdu(CPU版本)<a class="headerlink" href="#mmedu-cpu" title="Permalink to this headline"></a></h3>
 <section id="linuxmmedu">
-<h4>1）Linux安装MMEdu<a class="headerlink" href="#linuxmmedu" title="Permalink to this heading"></a></h4>
+<h4>1）Linux安装MMEdu<a class="headerlink" href="#linuxmmedu" title="Permalink to this headline"></a></h4>
 <p>点击鼠标右键，打开终端。</p>
 <p>终端中输入pip install MMEdu即可安装。</p>
 <div class="highlight-{.powershell} notranslate"><div class="highlight"><pre><span></span>$ pip install MMEdu
@@ -272,7 +285,7 @@ $ pip install MMEdu
 <p>注：请将命令中的”your_env_name”换成你喜欢的名称，如”mmedu”。</p>
 </section>
 <section id="windowsmmedu">
-<h4>2）Windows安装MMEdu<a class="headerlink" href="#windowsmmedu" title="Permalink to this heading"></a></h4>
+<h4>2）Windows安装MMEdu<a class="headerlink" href="#windowsmmedu" title="Permalink to this headline"></a></h4>
 <p>同时按下win+r，输入cmd，回车，打开一个命令行窗口。</p>
 <p>在命令行中使用pip安装即可。</p>
 <div class="highlight-{.powershell} notranslate"><div class="highlight"><pre><span></span>$ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/index.html
@@ -288,7 +301,7 @@ $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/i
 </section>
 </section>
 <section id="mmedu-gpu">
-<h3>1.3 安装MMEdu(GPU版本)<a class="headerlink" href="#mmedu-gpu" title="Permalink to this heading"></a></h3>
+<h3>1.3 安装MMEdu(GPU版本)<a class="headerlink" href="#mmedu-gpu" title="Permalink to this headline"></a></h3>
 <p>首先安装对应自己cuda版本的pytorch，安装命令可在以下网址中进行查询：<a class="reference external" href="https://pytorch.org/get-started/locally/">https://pytorch.org/get-started/locally/</a></p>
 <p>可以在命令行中使用<code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code>指令查询自己的cuda版本。</p>
 <p>例如，若cuda版本为10.1，想要安装1.8.1版本的pytorch，则安装命令为：</p>
@@ -312,16 +325,17 @@ $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/i
 </div>
 </section>
 <section id="pipbaseml">
-<h3>2. pip安装BaseML<a class="headerlink" href="#pipbaseml" title="Permalink to this heading"></a></h3>
+<h3>2. pip安装BaseML<a class="headerlink" href="#pipbaseml" title="Permalink to this headline"></a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">baseml</span></code> 或 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">BaseML</span></code></p>
 </section>
 <section id="pipbasenn">
-<h3>3. pip安装BaseNN<a class="headerlink" href="#pipbasenn" title="Permalink to this heading"></a></h3>
+<h3>3. pip安装BaseNN<a class="headerlink" href="#pipbasenn" title="Permalink to this headline"></a></h3>
 <hr class="docutils" />
 <p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">basenn</span></code> 或 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">BaseNN</span></code></p>
 </section>
 </section>
 <section id="docker">
+<<<<<<< HEAD
 <h2>docker容器镜像<a class="headerlink" href="#docker" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>提示：这里需要确保您的电脑系统盘空间剩余空间超过5GB，实际建议有10GB及以上空间，便于后续训练使用。如果想要调整存储空间位置，可以参考<a class="reference external" href="https://blog.csdn.net/ber_bai/article/details/120816006">这里修改安装路径</a>，<a class="reference external" href="https://zhuanlan.zhihu.com/p/410126547">这里修改数据路径</a>。</p></li>
@@ -344,12 +358,64 @@ $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/i
 </section>
 <section id="id8">
 <h3>2.启动Docker服务<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
+=======
+<h2>docker容器镜像<a class="headerlink" href="#docker" title="Permalink to this headline"></a></h2>
+<p>首先需要确保您的电脑系统盘（C盘）空间剩余空间超过5GB，实际建议有10GB及以上空间，便于后续训练使用。如果想要调整存储空间位置，可以参考<a class="reference external" href="https://blog.csdn.net/ber_bai/article/details/120816006">这里修改安装路径</a>，<a class="reference external" href="https://zhuanlan.zhihu.com/p/410126547">这里修改数据路径</a>，后文安装过程中也有具体叙述。</p>
+<section id="id6">
+<h3>1.安装Docker软件<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<p>这里以Windows11系统（专业版）为例，其他系统可以在网上查找相关教程自行安装Docker，如<a class="reference external" href="https://www.runoob.com/docker/windows-docker-install.html">菜鸟教程</a>。</p>
+<p>Windows11系统中，可以先安装Docker Desktop图形化管理软件，下载链接为：<a class="reference external" href="https://www.docker.com/products/docker-desktop/">https://www.docker.com/products/docker-desktop/</a>。建议不开启WSL2，否则可能与电脑其他软件存在冲突（除非电脑中已经使用了WSL2虚拟机，那么这里勾选开启）。</p>
+<p><img alt="Docker安装" src="../_images/docker-install.png" /></p>
+<p>注：如软件安装空间不足，可以把安装路径指向一个新的路径：可以参考<a class="reference external" href="https://blog.csdn.net/ber_bai/article/details/120816006">这里修改安装路径</a></p>
+<p>用管理员权限打开CMD，然后输入<code class="docutils literal notranslate"><span class="pre">mklink</span> <span class="pre">/j</span> <span class="pre">&quot;C:\Program</span> <span class="pre">Files\Docker&quot;</span> <span class="pre">&quot;D:\Program</span> <span class="pre">Files\Docker&quot;</span></code>。这样，软件看似安装在原目录，实则安装在了”D:\Program Files\Docker”。当然也可修改为其他盘。</p>
+</section>
+<section id="id7">
+<h3>2.启动Docker服务<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+>>>>>>> d57489f165c286403296095fc8e8f7db4c31befe
 <p>安装完Docker Desktop，运行启动它，界面如下所示。
 <img alt="Docker 启动界面" src="../_images/docker1.png" />
 看到左下角显示Engine running说明启动成功。</p>
 </section>
+<<<<<<< HEAD
 <section id="id9">
 <h3>3.拉取镜像<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
+=======
+<section id="id8">
+<h3>3.拉取镜像<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
+<section id="id9">
+<h4>3.1准备工作：检查磁盘剩余存储空间<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h4>
+<p>首先需要检查电脑系统盘（C盘）空间剩余空间是否超过6GB，实际建议有10GB及以上。如果空间足够，可以跳转到<a class="reference external" href="https://xedu.readthedocs.io/zh/master/about/installation.html#id14">3.2</a>，如空间容器和镜像存储空间不足，旧版本Docker Desktop可以直接在软件中设置新的存储路径，但新版就不行了，下面介绍新版的用法。参考来源：<a class="reference external" href="https://zhuanlan.zhihu.com/p/410126547">修改存储路径</a>。</p>
+<section id="id10">
+<h5>1）列出待迁移数据<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h5>
+<p>退出Docker Desktop软件，以防冲突。打开CMD，输入<code class="docutils literal notranslate"><span class="pre">wsl</span> <span class="pre">--list</span> <span class="pre">-v</span></code>，把所有相关的数据文件列出来，稍后需要挨个迁移。</p>
+<p><img alt="Docker 启动界面" src="../_images/docker3.1.png" /></p>
+<p>此时，返回的信息是如上图所示，那么需要迁移的数据有：<code class="docutils literal notranslate"><span class="pre">docker-desktop-data</span> <span class="pre">STOPPED</span> <span class="pre">2</span></code>，<code class="docutils literal notranslate"><span class="pre">docker-desktop</span> <span class="pre">STOPPED</span> <span class="pre">2</span></code>。有的只出现一条，那么只要迁移这一个就好。接下来，以把数据迁移到D盘为例进行说明。</p>
+</section>
+<section id="id11">
+<h5>2）新建保存目录<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h5>
+<p>在D盘新建目录用于保存迁移过去的数据，例如我后续希望相关数据都迁移到”D:\Program Files\Docker”，那么我就得新建这个目录，保证路径”D:\Program Files\Docker”存在。</p>
+</section>
+<section id="id12">
+<h5>3）导出数据<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h5>
+<p>在CMD中输入：<code class="docutils literal notranslate"><span class="pre">wsl</span> <span class="pre">--export</span> <span class="pre">docker-desktop-data</span> <span class="pre">&quot;D:\Program</span> <span class="pre">Files\Docker\docker-desktop-data.tar&quot;</span></code>。如果有其它要导出，指令类似。例如我们还需要导出<code class="docutils literal notranslate"><span class="pre">docker-desktop</span></code>，那么运行完上一句，继续输入：<code class="docutils literal notranslate"><span class="pre">wsl</span> <span class="pre">--export</span> <span class="pre">docker-desktop</span> <span class="pre">&quot;D:\Program</span> <span class="pre">Files\Docker\docker-desktop.tar&quot;</span></code>。</p>
+</section>
+<section id="wsl">
+<h5>4）注销WSL中原来的数据<a class="headerlink" href="#wsl" title="Permalink to this headline"></a></h5>
+<p>在CMD中输入：<code class="docutils literal notranslate"><span class="pre">wsl</span> <span class="pre">--unregister</span> <span class="pre">docker-desktop-data</span></code>。如果有其它要注销，指令类似。例如我们还需要注销<code class="docutils literal notranslate"><span class="pre">docker-desktop</span></code>，那么运行完上一句，继续输入：<code class="docutils literal notranslate"><span class="pre">wsl</span> <span class="pre">--unregister</span> <span class="pre">docker-desktop</span></code>。</p>
+</section>
+<section id="id13">
+<h5>5）导入数据到新的存储路径<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h5>
+<p>在CMD中输入：<code class="docutils literal notranslate"><span class="pre">wsl</span> <span class="pre">--import</span> <span class="pre">docker-desktop-data</span> <span class="pre">&quot;D:\Program</span> <span class="pre">Files\Docker\data&quot;</span> <span class="pre">&quot;D:\Program</span> <span class="pre">Files\Docker\docker-desktop-data.tar&quot;</span> <span class="pre">--version</span> <span class="pre">2</span></code>。这里的”D:\Program Files\Docker\data”是新的存储路径，这个文件夹会自动创建。</p>
+<p>若还需要迁移<code class="docutils literal notranslate"><span class="pre">docker-desktop</span></code>，运行完上一句，继续输入：<code class="docutils literal notranslate"><span class="pre">wsl</span> <span class="pre">--import</span> <span class="pre">docker-desktop</span> <span class="pre">&quot;D:\Program</span> <span class="pre">Files\Docker\data&quot;</span> <span class="pre">&quot;D:\Program</span> <span class="pre">Files\Docker\docker-desktop.tar&quot;</span> <span class="pre">--version</span> <span class="pre">2</span></code>。</p>
+</section>
+<section id="docker-desktop">
+<h5>6）重启Docker Desktop<a class="headerlink" href="#docker-desktop" title="Permalink to this headline"></a></h5>
+<p>此时已经完成了容器文件的存储位置迁移。如果有问题，可以尝试重启电脑。如果正常迁移完成，可以删除导出的tar文件，即<code class="docutils literal notranslate"><span class="pre">D:\Program</span> <span class="pre">Files\Docker\docker-desktop-data.tar</span></code>。如需迁移到其他盘，也可参照此方式完成，只需要修改盘符即可。</p>
+</section>
+</section>
+<section id="id14">
+<h4>3.2拉取镜像<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h4>
+>>>>>>> d57489f165c286403296095fc8e8f7db4c31befe
 <p>Docker分为容器（Container）和镜像（Image），（有时还会额外有一类叫Dockerfile）。首先需要从云端获取镜像，类似于安装操作系统的镜像，这个镜像是和原版一模一样的。然后可以启动容器，容器可以由用户自主修改。</p>
 <p>拉取镜像的命令如下：
 <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">xedu/xedu:v2s</span></code>
@@ -358,6 +424,7 @@ $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/i
 <img alt="Docker拉取界面" src="../_images/docker2.png" /></p>
 <p>等待拉取完成，所用时间取决于网速（大约30分钟-2小时之间），您也可以参考相关教程配置国内镜像源来加快拉取速度。如：<a class="reference external" href="https://blog.csdn.net/moluzhui/article/details/132287258">这个办法</a>。</p>
 </section>
+<<<<<<< HEAD
 <section id="docker-container">
 <h3>4.启动docker容器（Container）<a class="headerlink" href="#docker-container" title="Permalink to this heading"></a></h3>
 <p>使用这个命令：
@@ -373,12 +440,41 @@ $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/i
 </section>
 <section id="id11">
 <h2>如何快速查看XEdu各模块库的版本<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h2>
+=======
+</section>
+<section id="docker-container">
+<h3>4.启动docker容器（Container）<a class="headerlink" href="#docker-container" title="Permalink to this headline"></a></h3>
+<p>在CMD输入：
+<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-it</span> <span class="pre">-p</span> <span class="pre">5000:5000</span> <span class="pre">-p</span> <span class="pre">8888:8888</span> <span class="pre">--mount</span> <span class="pre">type=bind,source=D:/share,target=/xedu/share</span> <span class="pre">xedu/xedu:v2s</span></code>，首次使用会询问是否绑定磁盘，选择Yes。运行成功界面如下：</p>
+<p><img alt="Docker Lab" src="../_images/docker5.1.png" /></p>
+<p>接下来就可以用电脑访问 <strong><a class="reference external" href="127.0.0.1:8888">127.0.0.1:8888</a></strong> 访问jlab，通过 <strong><a class="reference external" href="127.0.0.1:5000">127.0.0.1:5000</a></strong> 访问easytrain。（电脑中的文件想要拷贝进docker，可以放到D盘share文件夹）。美中不足的是，这两个网址需要自行打开浏览器后输入。如果显示效果不佳，可能是浏览器不兼容，建议下载<a class="reference external" href="https://www.google.com/intl/zh-CN/chrome/">最新版的chrome浏览器</a>。
+<img alt="Docker Lab" src="../_images/docker3.png" />
+<img alt="Docker EasyTrain" src="../_images/docker4.png" /></p>
+</section>
+<section id="id15">
+<h3>5.结束容器<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h3>
+<p>在刚才的命令行窗口中，输入CTRL+C，再输入y，即可结束容器。
+<img alt="Docker shutdown" src="../_images/docker5.png" /></p>
+</section>
+<section id="id16">
+<h3>6.重启容器<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h3>
+<p>已完成容器的安装，再次重启容器只需启动Docker服务，再完成5.启动容器的操作即可。</p>
+</section>
+</section>
+<section id="id17">
+<h2>如何快速查看XEdu各模块库的版本<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h2>
+>>>>>>> d57489f165c286403296095fc8e8f7db4c31befe
 <p>打开python终端，执行以下命令即可查看XEdu各模块库的版本。当前最新版本是0.1.21。</p>
 <p><img alt="../_images/pip3.png" src="../_images/pip3.png" /></p>
 <p>注：目前版本MMEdu仅支持CPU。</p>
 </section>
+<<<<<<< HEAD
 <section id="id12">
 <h2>如何卸载XEdu各模块库<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h2>
+=======
+<section id="id18">
+<h2>如何卸载XEdu各模块库<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h2>
+>>>>>>> d57489f165c286403296095fc8e8f7db4c31befe
 <p>如果XEdu某模块库出现异常情况，可以尝试使用<code class="docutils literal notranslate"><span class="pre">uninstall</span></code>命令卸载，然后再使用install命令安装。参考代码：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip uninstall MMEdu
 $ pip uninstall BaseNN
