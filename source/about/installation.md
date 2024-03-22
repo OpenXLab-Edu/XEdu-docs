@@ -153,6 +153,10 @@ XEdu一键安装包说明文档。
 
 ### 拓展：windows一键安装包升级GPU版本（如硬件符合要求）
 
+#### 准备工作：确认是否有cuda
+
+确认您的windows电脑有gpu算力，同时配置了cuda。建议提前检查自己的CUDA和显卡驱动版本，可以在cmd或terminal中，输入`nvidia-smi`命令检查（我们推荐的CUDA版本是10.1)。
+
 #### 步骤1：卸载CPU版本库
 
 打开一键安装包根目录的启动cmd.bat，输入
@@ -194,10 +198,6 @@ pip install mmcv-full==1.4.5 -f https://download.openmmlab.com/mmcv/dist/cu101/t
 至此，已完成了MMEdu（GPU版）的升级，可以将train中的device参数赋值为'cuda'，试试速度有没有相较CPU版本有显著提升。
 
 ![](../images/about/install1.4.3.png)
-
-如果用示例代码直接进行推理，也会出现提示：you can use 'device=cuda'
-
-![](../images/about/install1.4.4.png)
 
 使用pip安装
 -----------
@@ -300,13 +300,13 @@ $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/i
 
 ### 1.2 安装MMEdu(GPU版本)
 
-#### 步骤1：确认是否有cuda
+#### 准备工作：确认是否有cuda
 
 打开命令行，输入nvidia-smi，输出如下：
 
 ![](../images/about/cuda.PNG)
 
-#### 步骤2：创建一个新的虚拟环境
+#### 步骤1：创建一个新的虚拟环境
 
 在准备工作中已完成Anaconda安装，此时可创建一个新的虚拟环境。
 
@@ -314,7 +314,7 @@ $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/i
 conda create -n xedu python=3.8
 ```
 
-#### 步骤3：安装torch+101等
+#### 步骤2：安装torch+101等
 
 在刚才的python环境中，输入下面的指令进行全部库和工具的安装：
 
@@ -360,7 +360,7 @@ pip install MMEdu
 pip install jupyter lab
 ```
 
-#### 步骤4：确认是否正确启用torch
+#### 步骤3：确认是否正确启用torch
 
 激活python后，可以运行下面的命令：
 
@@ -370,7 +370,7 @@ print(torch.__version__)
 print(torch.cuda.is_available())
 ```
 
-#### 步骤5：确认是否正确启动cuda训练
+#### 步骤4：确认是否正确启动cuda训练
 
 启动已安装的jupyter lab，使用启动Gpu训练的代码，看看是否加速了。
 
