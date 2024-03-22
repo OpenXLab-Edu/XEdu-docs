@@ -422,7 +422,7 @@ model.add('lstm',size=(128,256),num_layers=2)
 model.add('conv2d', size=(1, 3),kernel_size=( 3, 3), activation='relu') # [100, 3, 18, 18]
 ```
 
-以上使用`add()`方法添加层，参数`layer='linear'`表示添加的层是线性层，`size=(4,10)`表示该层输入维度为4，输出维度为10，`activation='relu'`表示使用relu激活函数。更详细`add()`方法使用可见[附录1](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add)。
+以上使用`add()`方法添加层，参数`layer='linear'`表示添加的层是线性层，`size=(4,10)`表示该层输入维度为4，输出维度为10，`activation='relu'`表示使用relu激活函数。更详细`add()`方法使用可见[附录1](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add)，附录1呈现了[搭建全连接神经网络结构](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id33)、[简单卷积神经网络结构](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id34)，也呈现了与MMEdu内置的SOTA模型对应的[MobileNet网络](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#mobilenet)、[ResNet网络](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#resnet)，以及[循环神经网络](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id35)等搭建说明。
 
 ### 4. 模型训练
 
