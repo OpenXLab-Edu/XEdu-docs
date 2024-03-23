@@ -25,9 +25,7 @@
 
  1）下载方式（即XEdu下载方式）
 
-飞书网盘：<a href="https://p6bm2if73b.feishu.cn/drive/folder/fldcn67XTwhg8qIFCl8edJBZZQb">https://p6bm2if73b.feishu.cn/drive/folder/fldcn67XTwhg8qIFCl8edJBZZQb</a>
-
-浦源CDN加速：[https://download.openxlab.org.cn/models/yikshing/bash/weight/xedu16](https://download.openxlab.org.cn/models/yikshing/bash/weight/xedu16)
+飞书网盘：[XEdu v1.6.7d.exe](https://p6bm2if73b.feishu.cn/file/boxcn7ejYk2XUDsHI3Miq9546Uf?from=from_copylink)
 
 第二步：您可以根据个人喜好，选择自己习惯的IDE。
 
