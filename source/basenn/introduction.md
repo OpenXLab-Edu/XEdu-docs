@@ -850,6 +850,8 @@ model.train(lr=1e-3, epochs=20,metrics=['acc']) # 模型训练
 
 注：搭建MobileNet网络支持输入任意大小的图像，推理时也无需调整图片尺寸，但是训练时数据集中所有图像大小必须一致，因此载入数据时还是做了图片尺寸的统一调整，如图片数据集的尺寸本身就是一致的，则无需调整。
 
+参考项目：[用BaseNN搭建MobileNet网络实现猫狗分类模型训练](https://openinnolab.org.cn/pjlab/project?id=65fbdf2e8ce1f42bce09ad7a&sc=635638d69ed68060c638f979#public)
+
 无论输入图像的尺寸如何，通过`MobileNet Backbone`处理后，都会得到一个固定维度（1280）的输出，利用此能力，我们可利用`MobileNet Backbone`训练一个图像解码器，参考代码如下。
 
 ```
