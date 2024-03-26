@@ -28,9 +28,8 @@ BaseNN可以方便地逐层搭建神经网络，深入探究神经网络的原�
 ### 第0步 引入包
 
 ```python
-# 导入BaseNN库、numpy库，numpy库用于数据处理
+# 导入BaseNN库
 from BaseNN import nn
-import numpy as np
 ```
 
 ### 第1步 声明模型
