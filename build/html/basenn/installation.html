@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BaseNN安装或下载 &mdash; OpenXLabEdu  documentation</title>
@@ -11,10 +11,11 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -28,11 +29,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -70,9 +75,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../basenn.html">神经网络库BaseNN</a> &raquo;</li>
-      <li>BaseNN安装或下载</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../basenn.html">神经网络库BaseNN</a></li>
+      <li class="breadcrumb-item active">BaseNN安装或下载</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/basenn/installation.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -83,7 +88,7 @@
            <div itemprop="articleBody">
              
   <section id="basenn">
-<h1>BaseNN安装或下载<a class="headerlink" href="#basenn" title="Permalink to this headline"></a></h1>
+<h1>BaseNN安装或下载<a class="headerlink" href="#basenn" title="Permalink to this heading"></a></h1>
 <p>你可以通过pip命令来安装BaseNN。</p>
 <p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">basenn</span></code> 或 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">BaseNN</span></code></p>
 <p>更新库文件：</p>
@@ -91,7 +96,8 @@
 <p>可以在命令行输入BaseNN查看安装的路径，在安装路径内，可以查看提供的更多demo案例。</p>
 <p>BaseNN已经内置在XEdu的一键安装包中，解压后即可使用。</p>
 <p>如果在使用中出现类似报错：<code class="docutils literal notranslate"><span class="pre">**AttributeError**:</span> <span class="pre">partially</span> <span class="pre">initialized</span> <span class="pre">module</span> <span class="pre">'cv2'</span> <span class="pre">has</span> <span class="pre">no</span> <span class="pre">attribute</span> <span class="pre">'gapi_wip_gst_GStreamerPipeline'</span> <span class="pre">(most</span> <span class="pre">likely</span> <span class="pre">due</span> <span class="pre">to</span> <span class="pre">a</span> <span class="pre">circular</span> <span class="pre">import)</span></code></p>
-<p>可尝试通过运行<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--upgrade</span> <span class="pre">opencv-python</span></code>解决</p>
+<p>可尝试通过运行<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--upgrade</span> <span class="pre">opencv-python</span></code>解决。</p>
+<p>库文件源代码可以从<a class="reference external" href="https://pypi.org/project/BaseNN/#files">PyPi</a>下载，选择tar.gz格式下载，可用常见解压软件查看源码。</p>
 </section>
 
 

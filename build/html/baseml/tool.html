@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BaseML辅助工具 &mdash; OpenXLabEdu  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="BaseML项目案例集" href="projects.html" />
+    <link rel="prev" title="BaseML功能详解" href="introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenXLabEdu
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEduHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basenn.html">神经网络库BaseNN</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../baseml.html">传统机器学习库BaseML</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="quick_start.html">快速体验BaseML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html">BaseML安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">BaseML功能详解</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">BaseML辅助工具</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#imageloader">内置图像处理模型ImageLoader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">自带可视化工具</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">1. 模型可视化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">2. 评价指标可视化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">3. 可视化调用限制</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">快速体验训练过程可视化全流程！</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">快速体验推理过程可视化！</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id20">其他数据可视化</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">BaseML项目案例集</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basedt.html">数据处理库BaseDT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basedeploy.html">模型部署库BaseDeploy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_use.html">如何用XEdu借助AI解决真实问题</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenXLabEdu</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../baseml.html">传统机器学习库BaseML</a></li>
+      <li class="breadcrumb-item active">BaseML辅助工具</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/baseml/tool.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="baseml">
+<h1>BaseML辅助工具<a class="headerlink" href="#baseml" title="Permalink to this heading"></a></h1>
+<section id="imageloader">
+<h2>内置图像处理模型ImageLoader<a class="headerlink" href="#imageloader" title="Permalink to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">ImageLoader</span></code>是BaseML内置的图片处理模块，用于进行图像数字化处理，读取图片并提取其中的图像特征，如HOG特征和LBP特征，用以进行后续的机器学习任务。</p>
+<p>其处理流程源码如下：</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ImageLoader</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="c1"># BaseML中的图像导入处理模块</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">training_set_path</span><span class="p">,</span> <span class="n">testing_set_path</span><span class="p">,</span> <span class="n">label2id</span><span class="o">=</span><span class="p">{},</span> <span class="n">size</span><span class="o">=</span><span class="mi">128</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;ImageLoader初始化函数</span>
+<span class="sd">        Args:</span>
+<span class="sd">            training_set_path (str): 图片训练集路径.</span>
+<span class="sd">            testing_set_path (str): 图片测试集路径.</span>
+<span class="sd">            label2id (dict, optional): 自定义的标签id字典. Defaults to {}.</span>
+<span class="sd">            size (int, optional): 图像被resize的大小,尽量不要改size,否则使用lbp或者hog可能会出错,</span>
+<span class="sd">            但是如果原始图像过小,可以调整size . Defaults to 128.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ImageLoader</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X_train</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_train</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X_test</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_test</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1"># ImageNet格式的数据集才能被load</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">training_set_path</span> <span class="o">=</span> <span class="n">training_set_path</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">testing_set_path</span> <span class="o">=</span> <span class="n">testing_set_path</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label2id</span> <span class="o">=</span> <span class="n">label2id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">size</span>
+    <span class="c1"># 读取单张图片，进行预处理</span>
+    <span class="k">def</span> <span class="nf">pre_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img_path</span><span class="p">):</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>  <span class="c1"># 转为灰度图</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+        <span class="n">img</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">img</span>
+    <span class="k">def</span> <span class="nf">get_label2id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># 如果为空，自己读取training_set中所有的类别，并且进行编号</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">label2id</span> <span class="o">==</span> <span class="p">{}:</span>
+            <span class="n">_id</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">training_set_path</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label2id</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">_id</span>
+                <span class="n">_id</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">label2id</span>
+    <span class="k">def</span> <span class="nf">get_label_by_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">label2id</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">v</span> <span class="o">==</span> <span class="n">value</span><span class="p">]</span>
+    <span class="c1"># 提取hog描述符</span>
+    <span class="k">def</span> <span class="nf">get_hog_descriptor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">):</span>
+        <span class="c1"># 采用默认值设置</span>
+        <span class="n">window_Size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>  <span class="c1"># setting the window size</span>
+        <span class="n">block_Size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>  <span class="c1"># setting the block size</span>
+        <span class="n">block_Stride</span> <span class="o">=</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>  <span class="c1"># setting the block stride</span>
+        <span class="n">cell_Size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>  <span class="c1"># setting the cell size</span>
+        <span class="n">no_bins</span> <span class="o">=</span> <span class="mi">9</span>  <span class="c1"># setting the number of bins</span>
+        <span class="n">deriv_Aperture</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">Sigma</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.</span>  <span class="c1"># setting the value of sigma</span>
+        <span class="n">histogramNormType</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">L2HysThreshold</span> <span class="o">=</span> <span class="mf">0.2</span>
+        <span class="n">gamma</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># setting the value of gamma</span>
+        <span class="n">no_levels</span> <span class="o">=</span> <span class="mi">64</span>
+        <span class="n">signed_Gradients</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="c1"># running Hog descriptor</span>
+        <span class="n">hog</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">HOGDescriptor</span><span class="p">(</span><span class="n">window_Size</span><span class="p">,</span> <span class="n">block_Size</span><span class="p">,</span> <span class="n">block_Stride</span><span class="p">,</span>
+                                <span class="n">cell_Size</span><span class="p">,</span> <span class="n">no_bins</span><span class="p">,</span> <span class="n">deriv_Aperture</span><span class="p">,</span> <span class="n">Sigma</span><span class="p">,</span>
+                                <span class="n">histogramNormType</span><span class="p">,</span> <span class="n">L2HysThreshold</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">no_levels</span><span class="p">,</span>
+                                <span class="n">signed_Gradients</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">hog</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">img</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+    <span class="c1"># 　提取lbp描述符</span>
+    <span class="k">def</span> <span class="nf">get_lbp_descriptor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">):</span>
+        <span class="n">hist_size</span> <span class="o">=</span> <span class="mi">256</span>
+        <span class="n">lbp_radius</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">lbp_point</span> <span class="o">=</span> <span class="mi">8</span>
+        <span class="c1"># 使用LBP方法提取图像的纹理特征.</span>
+        <span class="n">lbp</span> <span class="o">=</span> <span class="n">skif</span><span class="o">.</span><span class="n">local_binary_pattern</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">lbp_point</span><span class="p">,</span> <span class="n">lbp_radius</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">)</span>
+        <span class="c1"># 统计图像的直方图</span>
+        <span class="n">max_bins</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">lbp</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># hist size:256</span>
+        <span class="n">hist</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span>
+            <span class="n">lbp</span><span class="p">,</span> <span class="n">normed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">max_bins</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_bins</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">hist</span>
+    <span class="c1"># 获取图像特征</span>
+    <span class="k">def</span> <span class="nf">get_feature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">,</span> <span class="n">method</span><span class="p">):</span>  <span class="c1"># 获取一张图片的描述子</span>
+        <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;hog&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_hog_descriptor</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;lbp&#39;</span><span class="p">:</span>
+            <span class="c1"># 返回是一维的，长度256的向量</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_lbp_descriptor</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;flatten&#39;</span><span class="p">:</span>
+            <span class="c1"># 转成灰度图后直接展平</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">img</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># 构建训练集和测试集</span>
+    <span class="k">def</span> <span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;hog&#39;</span><span class="p">):</span>
+        <span class="c1"># 如果为空，自己读取training_set中所有的类别，并且进行编号</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">label2id</span> <span class="o">==</span> <span class="p">{}:</span>
+            <span class="n">_id</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">training_set_path</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label2id</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">_id</span>
+                <span class="n">_id</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="c1"># 读取训练集中的图片，并且进行处理</span>
+        <span class="k">for</span> <span class="n">train_label</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">training_set_path</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">training_set_path</span><span class="p">,</span> <span class="n">train_label</span><span class="p">)):</span>
+                <span class="n">image_url</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">training_set_path</span><span class="p">,</span> <span class="n">train_label</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
+                <span class="n">img_processed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre_process</span><span class="p">(</span><span class="n">image_url</span><span class="p">)</span>
+                <span class="n">img_feature</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_feature</span><span class="p">(</span><span class="n">img_processed</span><span class="p">,</span> <span class="n">method</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">X_train</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">img_feature</span><span class="p">)</span>  <span class="c1"># 转置后是一行的</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">y_train</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">label2id</span><span class="p">[</span><span class="n">train_label</span><span class="p">])</span>
+        <span class="c1"># 读取测试集中的图片，进行处理</span>
+        <span class="k">for</span> <span class="n">test_label</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">testing_set_path</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">testing_set_path</span><span class="p">,</span> <span class="n">test_label</span><span class="p">)):</span>
+                <span class="n">image_url</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">testing_set_path</span><span class="p">,</span> <span class="n">test_label</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
+                <span class="n">img_processed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre_process</span><span class="p">(</span><span class="n">image_url</span><span class="p">)</span>
+                <span class="n">img_feature</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_feature</span><span class="p">(</span><span class="n">img_processed</span><span class="p">,</span> <span class="n">method</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">X_test</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">img_feature</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">y_test</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">label2id</span><span class="p">[</span><span class="n">test_label</span><span class="p">])</span>
+        <span class="c1"># Convert train and test data to numpy arrays</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X_train</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X_train</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">X_train</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span>
+            <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>  <span class="c1"># 转成二维数组</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y_train</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X_test</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X_test</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">X_test</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>  <span class="c1"># 转成二维数组</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y_test</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">X_train</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_train</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">X_test</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_test</span>
+</pre></div>
+</div>
+<p>使用此模块，可在BaseML载入数据前，对图片进行快速批量处理后再载入，且能够完成单张图片的HOG特征提取（还可以更换为其他特征），示例代码如下。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入BaseML的图像处理模块</span>
+<span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">IMGLoader</span>
+
+<span class="c1"># 定义一个提取单张图片HOG特征的函数</span>
+<span class="k">def</span> <span class="nf">read_hog_feature_single</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+    <span class="c1"># 创建ImageLoader实例并读取图片</span>
+    <span class="n">img_set</span> <span class="o">=</span> <span class="n">IMGLoader</span><span class="o">.</span><span class="n">ImageLoader</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span><span class="n">file_path</span><span class="p">,</span><span class="n">size</span> <span class="o">=</span> <span class="mi">128</span><span class="p">)</span>
+    <span class="c1"># 对读取的图片进行预处理</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">img_set</span><span class="o">.</span><span class="n">pre_process</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+    <span class="c1"># 提取图片的HOG特征</span>
+    <span class="n">feature</span> <span class="o">=</span> <span class="n">img_set</span><span class="o">.</span><span class="n">get_feature</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;hog&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">feature</span>
+
+<span class="c1"># 指定一张图片</span>
+<span class="n">img_path</span> <span class="o">=</span> <span class="s1">&#39;test.jpg&#39;</span>
+<span class="c1"># 提取HOG特征</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">read_hog_feature_single</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span>
+<span class="c1"># 打印HOG特征和其形状</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;HOG特征：&quot;</span><span class="p">,</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;图像形状：&quot;</span><span class="p">,</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h2>自带可视化工具<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>在做机器学习项目的过程中，可视化能帮助我们了解模型训练状态，评估模型效果，还能了解数据，辅助了解算法模型，改善模型。</p>
+<p>BaseML中提供两种可视化方法：模型可视化及评价指标可视化。模型可视化可以通过测试数据及线条勾勒模型的大致形状，有助于解释和理解模型的内部结构。评价指标可视化显示了模型对于数据的拟合程度，描述了模型的性能，方便用户进行模型选择。使用可视化部分的前提是已经对模型进行初始化并且训练完成，否则可视化部分无法正常使用。</p>
+<section id="id2">
+<h3>1. 模型可视化<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<p>目前该模块只支持4类算法的可视化，分别为Classification中的KNN、SVM，Regression中的LinearRegression，Cluster中的Kmeans。调用方法为<code class="docutils literal notranslate"><span class="pre">model.plot()</span></code>。</p>
+</section>
+<section id="id3">
+<h3>2. 评价指标可视化<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<p>目前该模块支持Classification、Regression中的所有算法及Cluster中的Kmeans算法，其他算法不支持。调用方法为<code class="docutils literal notranslate"><span class="pre">model.metricplot()</span></code>。</p>
+</section>
+<section id="id4">
+<h3>3. 可视化调用限制<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<p><img alt="../_images/limit.png" src="../_images/limit.png" /></p>
+</section>
+<section id="id5">
+<h3>快速体验训练过程可视化全流程！<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<section id="id6">
+<h4>0. 引入包<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h4>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库，从BaseML导入分类模块</span>
+<span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Classification</span> <span class="k">as</span> <span class="bp">cls</span>
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h4>1. 实例化模型<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h4>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择KNN（K Nearest Neighbours）</span>
+<span class="n">model</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;KNN&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id8">
+<h4>2. 载入数据<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h4>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 载入数据集，并说明特征列和标签列</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;./lenses.csv&#39;</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="n">x_column</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span><span class="n">y_column</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="id9">
+<h4>3. 模型训练<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h4>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型训练</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="id10">
+<h4>4. 模型可视化<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h4>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型可视化</span>
+<span class="n">model</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="id11">
+<h4>5. 评价指标可视化<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h4>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 评价指标可视化</span>
+<span class="n">model</span><span class="o">.</span><span class="n">metricplot</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id12">
+<h3>快速体验推理过程可视化！<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h3>
+<section id="id13">
+<h4>0. 引入包<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h4>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库，从BaseML导入分类模块</span>
+<span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Classification</span> <span class="k">as</span> <span class="bp">cls</span>
+</pre></div>
+</div>
+</section>
+<section id="id14">
+<h4>1. 实例化模型<a class="headerlink" href="#id14" title="Permalink to this heading"></a></h4>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择KNN（K Nearest Neighbours）</span>
+<span class="n">model</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;KNN&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id15">
+<h4>2. 加载模型参数<a class="headerlink" href="#id15" title="Permalink to this heading"></a></h4>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 加载保存的模型参数</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;mymodel.pkl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id16">
+<h4>3. 载入数据<a class="headerlink" href="#id16" title="Permalink to this heading"></a></h4>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 载入数据集，并说明特征列和标签列</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;./lenses.csv&#39;</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="n">x_column</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span><span class="n">y_column</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="id17">
+<h4>4. 模型推理<a class="headerlink" href="#id17" title="Permalink to this heading"></a></h4>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型推理</span>
+<span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="id18">
+<h4>5. 模型可视化<a class="headerlink" href="#id18" title="Permalink to this heading"></a></h4>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型可视化</span>
+<span class="n">model</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="id19">
+<h4>6. 评价指标可视化<a class="headerlink" href="#id19" title="Permalink to this heading"></a></h4>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 评价指标可视化</span>
+<span class="n">model</span><span class="o">.</span><span class="n">metricplot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>实际上，训练过程可视化使用的数据与推理过程可视化使用的数据是相同的，均为数据集经过划分后的测试集（model.x_test）。</p>
+</section>
+</section>
+<section id="id20">
+<h3>其他数据可视化<a class="headerlink" href="#id20" title="Permalink to this heading"></a></h3>
+<section id="id21">
+<h4>0. 引入包<a class="headerlink" href="#id21" title="Permalink to this heading"></a></h4>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库，从BaseML导入分类模块</span>
+<span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Classification</span> <span class="k">as</span> <span class="bp">cls</span>
+</pre></div>
+</div>
+</section>
+<section id="id22">
+<h4>1. 实例化模型<a class="headerlink" href="#id22" title="Permalink to this heading"></a></h4>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择KNN（K Nearest Neighbours）</span>
+<span class="n">model</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;KNN&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id23">
+<h4>2. 加载模型参数<a class="headerlink" href="#id23" title="Permalink to this heading"></a></h4>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 加载保存的模型参数</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;mymodel.pkl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id24">
+<h4>3. 模型推理<a class="headerlink" href="#id24" title="Permalink to this heading"></a></h4>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型推理</span>
+<span class="c1"># test_data = [[0.2,0.4,3.2,5.6],</span>
+<span class="c1">#             [2.3,1.8,0.4,2.3]]</span>
+<span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id25">
+<h4>4. 模型可视化<a class="headerlink" href="#id25" title="Permalink to this heading"></a></h4>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型可视化</span>
+<span class="c1"># test_true_data = [[0],</span>
+<span class="c1">#                  [1]]</span>
+<span class="n">model</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">test_data</span><span class="p">,</span> <span class="n">y_true</span><span class="o">=</span><span class="n">test_true_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id26">
+<h4>5. 评价指标可视化<a class="headerlink" href="#id26" title="Permalink to this heading"></a></h4>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 评价指标可视化, 如果要使用其他数据进行测试，必须先加载之前的数据集</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;./lenses.csv&#39;</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="n">x_column</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span><span class="n">y_column</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">metricplot</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">test_data</span><span class="p">,</span> <span class="n">y_true</span><span class="o">=</span><span class="n">test_true_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="introduction.html" class="btn btn-neutral float-left" title="BaseML功能详解" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="projects.html" class="btn btn-neutral float-right" title="BaseML项目案例集" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2024 OpenXLabEdu.All Rights Reserved.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

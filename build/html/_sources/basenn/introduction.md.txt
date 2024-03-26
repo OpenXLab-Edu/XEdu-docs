@@ -28,11 +28,13 @@ model = nn()
 
 可选参数：
 
-`task`：指定了这个模型要完成的任务，可选取值有：`['reg','cls']`，
+`task`：指定了这个模型要完成的任务，可选取值有：`['reg','cls','gen']`，
 
 回归任务：nn('reg')。
 
 分类任务：nn('cls')，当不指定时，`task`的默认值`'cls'`。
+
+生成任务：nn('gen')。
 
 ### 2. 载入数据
 
@@ -57,50 +59,217 @@ model.load_img_data(image_folder_data,color="grayscale",batch_size=1024)
 
 `num_workers`：线程数，决定了有多少个子线程被用于数据加载。子线程是并行运行的，可以同时处理多个数据批次。增加 `num_workers` 的数值时，可以加快数据批次的寻找速度，这通常会提高训练的速度，因为模型等待数据的时间减少了，但增大内存开销和CPU负荷。此参数用来控制数据加载过程中的线程数量。适当增加这个数值可以加速训练，但也要注意不要超出你的硬件限制。默认为0，一般而言设置num_workers最大为CPU核心数。
 
-##### 关于图片数据集预处理：
+`classes`：类别列表（列表）或字典，表示数据集中的`label`中存储的数组各个位置标签所代表的意义，一般适用于图片形式数据集的训练。可以不传入，若不传入，则推理结果将会是认为结果的下标。若传入，则推理结果将自动转化为将原结果作为下标的数组中的对应内容。
 
-载入图片数据前如需对图像数据集进行预处理，例如做尺寸调整，可先使用torchvision对图片数据集进行预处理再载入模型进行训练。
-
-首先导入包
+classes可传参数兼容列表，字典形式(以下三种形式均可)。
 
 ```python
-from torchvision.transforms import transforms
+classes = ['cat','dog']
+classes = {0:'cat',1:'dog'}
+classes = {'cat':0, 'dog':1} # 与词表形式统一
 ```
 
-接下来可以使用参数表示训练前对我们需要对数据进行的预处理。
+注意：索引是数值类型（int)，类别名称是字符串（str)，即哪怕类别名也是数字0,1,...字典的键和值也有区别，例如：
+
+```python
+# 正确示例
+classes = {0:'0',1:'1'} # 索引to类别
+classes = {'0':0, '1':1} # 类别to索引
+
+# 错误示例
+classes = {0:0,1:1} 
+classes = {'0':'0', '1':'1'} 
+```
+
+
+
+##### 关于图片数据集预处理：
+
+载入图片数据前如需对图像数据集进行预处理，最常见的例如做尺寸调整，可先调用已经内置的torchvision对图片数据集进行预处理再载入模型进行训练，只需在`load_img_data`图片数据集时增加一个`transform`的参数。
 
 此处为对数据进行单个步骤的简单处理。
 
 ```python
-tran1 = transforms.Resize([128,128])
+model.load_img_data('MNIST',transform={"Resize":(128,128)})
 ```
 
-若要对数据进行多次处理的复杂操作，可以采用如下代码，将多个处理方式按顺序输入，在执行时这些操作也会被按顺序执行。
+若要对图片数据进行多次处理的复杂操作，可以采用如下代码，将多个处理方式设置入参数，在执行时这些操作也会被按顺序执行。
 
 ```python
-tran2 = transforms.Compose([
-    transforms.RandomResizedCrop(224),
-    transforms.RandomHorizontalFlip(),
-    transforms.ToTensor(),
-    transforms.Normalize([0.485, 0.456, 0.406],[0.229, 0.224, 0.225])
-])
+model.load_img_data('catdog',transform={"Resize":(128,128),"RandomResizedCrop":224,"RandomHorizontalFlip":0.5})
 ```
 
-方法说明: `Resize()`:对图片尺寸进行缩放。
+方法说明: `Resize`:对图片尺寸进行调整。
 
-`RandomResizedCrop()`:对图片尺寸进行随机缩放后裁剪为固定尺寸。
+`RandomResizedCrop`:对图片尺寸进行随机缩放后裁剪为固定尺寸。
 
-`RandomHorizontalFlip()`:随机对图片进行水平翻转。
+`RandomHorizontalFlip`:依照某概率对图片进行水平翻转。
 
-`ToTensor()`:将图片转为张量。
+支持的操作即为[torchvision中的transforms](https://pytorch-cn.readthedocs.io/zh/latest/torchvision/torchvision-transform/)包括的所有方式，如下表所列。
 
-`Normalize()`:将图片归一化。
+<table class="docutils align-default">
+<thead>
+  <tr>
+    <th>类别</th>
+    <th>转换名称</th>
+    <th>函数</th>
+    <th>设置示例</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>裁剪</td>
+    <td>随机裁剪</td>
+    <td>RandomCrop</td>
+    <td>(32, 32)</td> 
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>裁剪</td>
+    <td>中心裁剪</td>
+    <td>CenterCrop</td>
+    <td>(32, 32)</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>裁剪</td>
+    <td>随机长宽比裁剪</td>
+    <td>RandomResizedCrop</td>
+    <td>size=224, scale=(0.08, 1.0), ratio=(0.75, 1.33), interpolation=2</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>裁剪</td>
+    <td>上下左右中心裁剪</td>
+    <td>FiveCrop</td>
+    <td>(32, 32)</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>裁剪</td>
+    <td>上下左右中心裁剪后翻转</td>
+    <td>TenCrop</td>
+    <td>size=(32, 32), vertical_flip=False</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>翻转和旋转</td>
+    <td>依概率p水平翻转</td>
+    <td>RandomHorizontalFlip</td>
+    <td>0.5</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>翻转和旋转</td>
+    <td>依概率p垂直翻转</td>
+    <td>RandomVerticalFlip</td>
+    <td>0.5</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>翻转和旋转</td>
+    <td>随机旋转</td>
+    <td>RandomRotation</td>
+    <td>(0, 180)</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>图像变换</td>
+    <td>尺寸调整</td>
+    <td>Resize</td>
+    <td>(128, 128)</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>图像变换</td>
+    <td>标准化</td>
+    <td>Normalize</td>
+    <td>mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225)</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>图像变换</td>
+    <td>转为tensor</td>
+    <td>ToTensor</td>
+    <td>无参数设置示例</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>图像变换</td>
+    <td>填充</td>
+    <td>Pad</td>
+    <td>4</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>图像变换</td>
+    <td>修改亮度、对比度和饱和度</td>
+    <td>ColorJitter</td>
+    <td>brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>图像变换</td>
+    <td>转灰度图</td>
+    <td>Grayscale</td>
+    <td>1</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>图像变换</td>
+    <td>线性变换</td>
+    <td>LinearTransformation</td>
+    <td>transformation_matrix, mean_vector</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>图像变换</td>
+    <td>仿射变换</td>
+    <td>RandomAffine</td>
+    <td>degrees=30, translate=(0.1, 0.1), scale=(0.8, 1.2), shear=10</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>图像变换</td>
+    <td>依概率p转为灰度图</td>
+    <td>RandomGrayscale</td>
+    <td>0.1</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>图像变换</td>
+    <td>将数据转换为PILImage</td>
+    <td>ToPILImage</td>
+    <td>无参数设置示例</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>图像变换</td>
+    <td>自定义Lambda变换</td>
+    <td>Lambda</td>
+    <td>lambda x: x.div(255)</td>
+  </tr>
+</tbody>
+</table>
 
-最后在载入数据集时，将设置好的想要使用的数据处理方式作为参数与数据集一起传入模型中。
-
-```python
-model.load_img_data(img_folder_data, transform = tran1)
-```
 
 #### 针对特征表格类型的数据：
 
@@ -171,7 +340,7 @@ len(data['data'])和len(data['label'])是相等的。
 
 #### 拓展------自行编写代码载入数据：
 
-如您想要尝试自行编写代码加载数据并做预处理，需生成NumPy数组格式的特征`x` 和标签`y`（不同的框架和模型可能对输入数据的格式有所要求有所不同，这是BaseNN的要求），载入时可使用如下代码。
+如您想要尝试自行编写代码加载数据并做预处理，需生成NumPy数组格式的特征`x` 和标签`y`（不同的框架和模型可能对输入数据的格式有所要求有所不同，这是BaseNN的要求），载入时可使用如下代码，此方法比较灵活。
 
 ```python
 model.load_dataset(x, y)
@@ -268,7 +437,7 @@ model.train(lr=0.01, epochs=500)
 #### 正常训练
 
 ``` python
-model = nn() 
+model = nn('cls') 
 model.add(layer='linear',size=(4, 10),activation='relu') # [120, 10]
 model.add(layer='linear',size=(10, 5), activation='relu') # [120, 5]
 model.add(layer='linear', size=(5, 3), activation='softmax') # [120, 3]
@@ -282,7 +451,7 @@ model.train(lr=0.01, epochs=1000)
 #### 继续训练
 
 ``` python
-model = nn()
+model = nn('cls')
 model.load_dataset(x, y)
 model.save_fold = 'checkpoints/new_train' # 指定模型保存路径
 checkpoint = 'checkpoints/basenn.pth' # 指定已有模型的权重文件路径
@@ -300,15 +469,15 @@ model.train(lr=0.01, epochs=1000, checkpoint=checkpoint)
 可直接指定图片文件夹，同时针对图片数据可增加classes参数设置（推理时会输出预测的类别名称，如不设置此参数则只输出类别标签），参考代码如下：
 
 ``` python
-model = nn()
+model = nn('cls')
 model.load_img_data("./mnist/training_set",color="grayscale",batch_size=32,classes=classes)
 model.add('Conv2D', size=(1, 6),kernel_size=( 5, 5), activation='ReLU') 
 model.add('AvgPool', kernel_size=(2,2)) 
 model.add('Conv2D', size=(6, 16), kernel_size=(5, 5), activation='ReLU') 
 model.add('AvgPool', kernel_size=(2,2)) 
-model.add('Linear', size=(256, 120), activation='ReLU')  
-model.add('Linear', size=(120, 84), activation='ReLU') 
-model.add('Linear', size=(84, 10), activation='Softmax')
+model.add('linear', size=(256, 120), activation='ReLU')  
+model.add('linear', size=(120, 84), activation='ReLU') 
+model.add('linear', size=(84, 10), activation='Softmax')
 model.add(optimizer='SGD')
 model.save_fold = 'new_mn_ckpt'
 model.train(lr=0.01, epochs=200, checkpoint="new_mn_ckpt/basenn.pth") # 继续训练
@@ -317,30 +486,10 @@ model.train(lr=0.01, epochs=200, checkpoint="new_mn_ckpt/basenn.pth") # 继续�
 如自己进行对图片数据处理后，使用`load_dataset(x, y)`载入数据，可使用如下代码：
 
 ```python
-model = nn()
+model = nn('cls')
 model.load_dataset(x,y,classes=classes) # classes是类别列表（列表） //字典
 model.add('conv2d',...)
 model.train(lr=0.01,epochs=1)
-```
-
-classes可传参数兼容列表，字典形式(以下三种形式均可)。
-
-```python
-classes = ['cat','dog']
-classes = {0:'cat',1:'dog'}
-classes = {'cat':0, 'dog':1} # 与词表形式统一
-```
-
-注意：索引是数值类型（int)，类别名称是字符串（str)，即哪怕类别名也是数字0,1,...字典的键和值也有区别，例如：
-
-```python
-# 正确示例
-classes = {0:'0',1:'1'} # 索引to类别
-classes = {'0':0, '1':1} # 类别to索引
-
-# 错误示例
-classes = {0:0,1:1} 
-classes = {'0':'0', '1':'1'} 
 ```
 
 ##### 第二种：特征类型
@@ -348,12 +497,12 @@ classes = {'0':'0', '1':'1'}
 可直接指定csv格式的表格完成模型训练，参考代码如下：
 
 ``` python
-model = nn()
+model = nn('cls')
 train_path = '../../dataset/iris/iris_training.csv'
 model.load_tab_data(train_path, batch_size=120)
-model.add(layer='Linear',size=(4, 10),activation='ReLU') # [120, 10]
-model.add(layer='Linear',size=(10, 5), activation='ReLU') # [120, 5]
-model.add(layer='Linear', size=(5, 3), activation='Softmax') # [120, 3]
+model.add(layer='linear',size=(4, 10),activation='ReLU') # [120, 10]
+model.add(layer='linear',size=(10, 5), activation='ReLU') # [120, 5]
+model.add(layer='linear', size=(5, 3), activation='Softmax') # [120, 3]
 model.save_fold = './iris_ckpt'
 model.train(lr=0.01, epochs=500)
 ```
@@ -365,9 +514,9 @@ model.train(lr=0.01, epochs=500)
 传递给模型。针对特征数据，使用BaseNN各模块的示例代码即可。
 
 ```python
-model = nn()
+model = nn('cls')
 model.load_dataset(x,y)
-model.add('Linear',...)
+model.add('linear',...)
 model.save_fold = './iris_ckpt'
 model.train(lr=0.01,epochs=1)
 ```
@@ -377,7 +526,7 @@ model.train(lr=0.01,epochs=1)
 在做文本生成等NLP（自然语言处理）领域项目时，一般搭建[RNN网络](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn)训练模型，训练数据是文本数据，参考代码如下：
 
 ```python
-model = nn()
+model = nn('cls')
 model.load_dataset(x,y,word2idx=word2idx) # word2idx是词表（字典）
 model.add('lstm',size=(128,256),num_layers=2)
 model.train(lr=0.001,epochs=1)
@@ -388,7 +537,7 @@ model.train(lr=0.001,epochs=1)
 可使用以下函数进行推理：
 
 ``` python
-model = nn() # 声明模型
+model = nn('cls') # 声明模型
 checkpoint = 'checkpoints/iris_ckpt/basenn.pth' # 现有模型路径
 result = model.inference(data=test_x, checkpoint=checkpoint) # 直接推理
 model.print_result(result) # 输出字典格式结果
@@ -400,12 +549,12 @@ model.print_result(result) # 输出字典格式结果
 
 输出字典格式结果的数据类型为字典，格式为`{样本编号：{预测值：x，置信度：y}}`。`print_result()`函数调用即输出，但也有返回值。
 
-参数`data`为待推理的测试数据，该参数必须传入值，可以传入NumPy数组或文件路径或者dataloader类型的数据，也可以传入list（最终还是会转成numpy数组）。除了NumPy数组格式和list数组格式的特征数据，以及传入dataloader类型的数据进行批量的模型推理外，还可以传入文件路径进行模型推理，下面我们分文件类型说明。
+参数`data`为待推理的测试数据，该参数必须传入值，可以传入NumPy数组或文件路径或者dataloader类型的数据，也可以传入list（最终还是会转成numpy数组）。除了NumPy数组格式和list数组格式的特征数据，以及传入dataloader类型的数据进行批量的模型推理外，还可以直接传入文件路径进行模型推理，下面我们分文件类型说明。
 
 #### 针对单个图片文件的推理：
 
 ``` python
-model = nn()
+model = nn('cls')
 test_x = "mnist/val_set/7/83.jpg"
 result = model.inference(data=test_x, checkpoint="mn_ckpt/basenn.pth") # 推理整个测试集
 model.print_result()
@@ -414,7 +563,7 @@ model.print_result()
 #### 针对图片文件夹的推理：
 
 ``` python
-model = nn()
+model = nn('cls')
 test_x = "mnist/val_set/7"
 result = model.inference(data=test_x, checkpoint="mn_ckpt/basenn.pth") # 推理整个测试集
 model.print_result()
@@ -423,7 +572,7 @@ model.print_result()
 #### 针对特征表格文件的推理：
 
 ``` python
-model = nn()
+model = nn('cls')
 test_path = '../../dataset/iris/iris_test.csv'
 res = model.inference(test_path, checkpoint="iris_ckpt/basenn.pth",label=True)
 model.print_result(res)
@@ -436,7 +585,7 @@ model.print_result(res)
 #### 针对文本数据的推理：
 
 ``` python
-model = nn()
+model = nn('cls')
 data = '长'
 checkpoint = 'xxx.pth'
 result = model.inference(data=data, checkpoint=checkpoint)
@@ -499,7 +648,7 @@ BaseNN中提供了一个CNN特征提取工具，可使用BaseNN的`model.extract
 
 ```python
 # 声明模型
-model = nn()
+model = nn('cls')
 # 读取图像文件
 img = cv2.imread('small/0/5818.png')
 # 指定resnet18提取图像特征
@@ -517,7 +666,7 @@ BaseNN内置`visual_feature`函数可呈现数据在网络中传递的过程。�
 ```python
 import cv2
 from BaseNN import nn
-model = nn()
+model = nn('cls')
 model.load('mn_ckpt/basenn.pth')          # 保存的已训练模型载入
 path = 'test_IMG/single_data.jpg'
 img = cv2.imread(path,flags = 0)          # 图片数据读取
@@ -531,7 +680,7 @@ model.visual_feature(img,in1img = True)   # 特征的可视化
 ```python
 import NumPy as np
 from BaseNN import nn
-model = nn()
+model = nn('cls')
 model.load('checkpoints/iris_ckpt/basenn.pth')          # 保存的已训练模型载入
 data = np.array(test_x[0]) # 指定数据,如测试数据的一行
 model.visual_feature(data)   # 特征的可视化
@@ -595,9 +744,9 @@ model.train(...,metrics=["mse"])
 
 - layer：层的类型，可选值包括conv2d, conv1d, maxpool, avgpool, linear, lstm,dropout，res_block，Res_Block，Res_Bottleneck等。
 
-- activation：激活函数类型，可选值包括ReLU，Softmax。
+- activation：激活函数类型，可选值包括ReLU，Softmax，tanh，sigmoid，leakyrelu。
 
-- optimizer：为优化器类型，默认值为SGD，可选值包括SGD，Adam，Adagrad，ASGD。
+- optimizer：为优化器类型，默认值为Adam，可选值包括SGD，Adam，Adagrad，ASGD。
 
 - kw：关键字参数，包括与size相关的各种参数，常用的如size=(x,y)，x为输入维度，y为输出维度；
   kernel_size=(a,b)， (a,b)表示核的尺寸。
@@ -615,7 +764,7 @@ model.train(...,metrics=["mse"])
 - dropout：随机失活层，需给定p（概率）。作用为随机关闭一些神经元，避免过拟合。其中参数`p`表示关闭神经元的比例，比如此处
   p=0.2
   表示有随机20%的神经元会被关闭。这种网络层是为了优化效果，避免过拟合而加入的，不是必需的，因此可以尝试修改p的值甚至删掉这个层观察比较效果差距。
-- Batchnorm1d：数据维度处理层，对一维数据做归一化。需传入size，表示输入数据的维度（注意和上一层的输出以及下一层的输入一致即可）。这种网络层是也为了优化效果而加入的，不是必需的，没有这个层也可以正常训练，但由于去掉这个网络层后效果下降的会非常明显，所以不建议删掉这个层。
+- batchnorm1d：数据维度处理层，对一维数据做归一化。需传入size，表示输入数据的维度（注意和上一层的输出以及下一层的输入一致即可）。这种网络层是也为了优化效果而加入的，不是必需的，没有这个层也可以正常训练，但由于去掉这个网络层后效果下降的会非常明显，所以不建议删掉这个层。
 
 下面为您具体展示如何搭建模型，以全连接神经网络结构、卷积神经网络结构、循环神经网络结构等为例为您讲解。
 
@@ -686,7 +835,7 @@ N = W/P ，其中P表示池化层的卷积核大小。
 搭建一个ResNet18的示例代码如下（输入的是包含32张224×224尺寸的手写数字图片）：
 
 ```python
-model = nn()
+model = nn('cls')
 model.load_img_data('mnist/training_set',batch_size=32,num_workers=1) # (32,3,224,224)
 model.add('Conv2D', size=(3, 64), kernel_size=(7, 7),stride=2,padding=3, activation='ReLU') #(32,64,112,112)
 model.add('BatchNorm2d', size=64) # (32,64,112,112)
@@ -698,7 +847,7 @@ model.add('Res_Block', size=(128, 256), num_blocks=2,stride=2) # (32,256,14,14)
 model.add('Res_Block', size=(256, 512), num_blocks=2,stride=2) # (32,512,7,7)
 
 model.add('AvgPool', kernel_size=(7,7)) # (32,512)
-model.add('Linear', size=(512, 10), activation='Softmax') # (32,10)
+model.add('linear', size=(512, 10), activation='Softmax') # (32,10)
 ```
 
 注：注释表示[图像数量, 通道数, 图像维度, 图像维度]，加入stride和padding设置后，尺寸计算公式是：N = （W-F+2P)/S+1，前文提到的N = W - F + 1 其实是P取默认值0，S取默认值1的情况。
@@ -706,7 +855,7 @@ model.add('Linear', size=(512, 10), activation='Softmax') # (32,10)
 另外针对ResNet18其实还有一种搭建方式，那就是不设置num_blocks（默认为1）。
 
 ```python
-model = nn()
+model = nn('cls')
 model.load_img_data('mnist/training_set',batch_size=32,num_workers=1) # (32,3,224,224)
 model.add('Conv2D', size=(3, 64), kernel_size=(7, 7),stride=2,padding=3, activation='ReLU') #(32,64,112,112)
 model.add('BatchNorm2d', size=64) # (32,64,112,112)
@@ -723,7 +872,7 @@ model.add('Res_Block', size=(256, 512), stride=2) # (32,512,7,7)
 model.add('Res_Block', size=(512, 512), stride=1) # (32,512,7,7)
 
 model.add('AvgPool', kernel_size=(7,7)) # (32,512)
-model.add('Linear', size=(512, 10), activation='Softmax') # (32,10)
+model.add('linear', size=(512, 10), activation='Softmax') # (32,10)
 ```
 
 设定num_blocks和多个块分别写的等价情况：
@@ -743,7 +892,7 @@ model.add('Res_Block', size=(64, 64), num_blocks=2,stride=1)
 如您仔细观察ResNet各网络结构图，会发现ResNet50的中间四层也是[3,4,6,3]，但是搭建代码会稍显不同，不难发现>=50后中间层的残差模块不一样，使用bottleneck而非basicblock，使用BaseNN搭建也非常方便，此处为您提供搭建ResNet50的示例代码：
 
 ```python
-model = nn()
+model = nn('cls')
 model.load_img_data('mnist/training_set',batch_size=32,num_workers=1) # (32,3,224,224)
 model.add('Conv2D', size=(3, 64), kernel_size=(7, 7),stride=2,padding=3, activation='ReLU') #(32,64,112,112)
 model.add('BatchNorm2d', size=64) # (32,64,112,112)
@@ -755,7 +904,7 @@ model.add('Res_Bottleneck', size=(512, 256), num_blocks=6,stride=2) # (32,256,14
 model.add('Res_Bottleneck', size=(1024, 512), num_blocks=3,stride=2) # (32,512,7,7)
 
 model.add('AvgPool', kernel_size=(7,7)) # (32,2048)
-model.add('Linear', size=(2048, 10), activation='Softmax') # (32,10)
+model.add('linear', size=(2048, 10), activation='Softmax') # (32,10)
 ```
 
 注：bottleneck输出通道数是输入的四倍，因此注意size的区别。这个四倍是1 *1，3 *3，1 *1三次矩阵乘法导致的，有点难理解，而且bottleneck跑着也慢，建议文档里可以提有这个功能，但是示例项目不要用bottleneck就用basicblock。更多ResNet网络的介绍详见[深度学习知识库](https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/ResNet.html)。
@@ -783,7 +932,7 @@ num_layers：循环神经网络的层数。一般1\~5，常用2、3层，太多�
 ```
 model.add('action_model',size=(132,256))
 model.add('linear',  size=(256, 64))
-model.add('Linear',  size=(64, 3))
+model.add('linear',  size=(64, 3))
 model.add(activation='Softmax')
 ```
 
@@ -795,19 +944,19 @@ model.add(activation='Softmax')
 
 ``` python
 model.add('lstm', size=(132,128))
-model.add('Dropout',p=0.2)
+model.add('dropout',p=0.2)
 model.add('lstm', size=(128,256))
-model.add('Dropout',p=0.2)
+model.add('dropout',p=0.2)
 model.add('unsqueeze')
 model.add('lstm', size=(256,256))
 model.add('squeeze')
-model.add('BatchNorm1d', size=256)
+model.add('batchNorm1d', size=256)
 
 model.add('linear',  size=(256, 256))
-model.add('Linear',  size=(256, 128))
+model.add('linear',  size=(256, 128))
 model.add('linear',  size=(128, 64))
-model.add('Linear',  size=(64, 3))
-model.add(activation='Softmax')
+model.add('linear',  size=(64, 3))
+model.add(activation='softmax')
 ```
 
 在搭建RNN时，一般第一层需要设置为`lstm`层，需要注意的是`size=(132,128)`表示该层输入维度为132，输出维度为128，输入维度应与数据集维度相同。
@@ -838,10 +987,10 @@ import torch class LSTM_model(torch.nn.Module):
       self.dropout2 = torch.nn.Dropout(0.2)
       self.lstm3 = torch.nn.LSTM(256, 256, batch_first=True, bidirectional=False)
       self.bn = torch.nn.BatchNorm1d(256)
-      self.dense1 = torch.nn.Linear(256, 256)
-      self.dense2 = torch.nn.Linear(256, 128)
-      self.dense3 = torch.nn.Linear(128, 64)
-      self.dense4 = torch.nn.Linear(64, actions.shape[0])
+      self.dense1 = torch.nn.linear(256, 256)
+      self.dense2 = torch.nn.linear(256, 128)
+      self.dense3 = torch.nn.linear(128, 64)
+      self.dense4 = torch.nn.linear(64, actions.shape[0])
       self.softmax = torch.nn.Softmax(dim=1)
 
    def forward(self, x):

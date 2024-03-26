@@ -2,7 +2,7 @@
 
 ### 初识MMClassification
 
-MMClassifiation（简称cls）的主要功能是对图像进行分类。其支持的SOTA模型有LeNet、MobileNet、ResNet18、ResNet50等，具体介绍详见<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#sota">后文</a>。如需查看所有支持的SOTA模型，可使用`model.sota()`代码进行查看。
+MMClassifiation（简称cls）的主要功能是对图像进行分类。其支持的SOTA模型有LeNet、MobileNet、ResNet18、ResNet50等，具体介绍详见<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#sota">后文</a>。如需查看所有支持的SOTA模型，可导入模块后使用`cls.sota()`代码进行查看。
 
 文档涉及的部分代码见XEdu帮助文档配套项目集：[https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public](https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public)
 
@@ -11,6 +11,12 @@ MMClassifiation（简称cls）的主要功能是对图像进行分类。其支�
 XEdu一键安装包中预置了MMEdu的cls模块的示例代码（路径：/demo）、常用小数据集（路径：/dataset/cls）,并且已经预训练了一些权重（路径：/checkpoints/cls_model）。在demo文件夹中，还提供了一张测试图片，OpenInnoLab平台也公开了非常多图像分类任务的项目，体验了几个之后相信会对此模块有一定理解。
 
 下面我们将以“石头剪刀布”手势识别这个任务为例，介绍一下图像分类模块示例代码的用法，在解锁图像分类模块的同时也一起完成一个新的图像分类项目吧！
+
+#### 0. 导入模块
+
+```
+from MMEdu import MMClassification as cls
+```
 
 #### 1. 模型训练
 
@@ -41,6 +47,10 @@ model.train(epochs=10, validate=True) # 设定训练的epoch次数以及是否�
 ```python
 model = cls(backbone='LeNet') # 实例化模型，不指定参数即使用默认参数
 ```
+
+这里对于`MMClassification`模型提供的参数进行解释，`MMClassification`支持传入的参数是`backbone`。
+
+`backbone`：指定使用的`MMClassification`模型。可选的有LeNet、MobileNet、ResNet18、ResNet50等，具体介绍详见<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#sota">后文</a>。
 
 - **指定类别数量**
 
@@ -139,7 +149,6 @@ accuracy_top-5：对一张图片，如果预测概率前五名的答案中出现
 示例代码如下:
 
 ```python
-from MMEdu import MMClassification as cls  # 导入mmcls模块
 img = 'testrock01-02.png' # 指定待推理的图片路径
 model = cls(backbone='LeNet') # 实例化MMClassification模型
 model.checkpoint='../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的模型权重文件
@@ -191,6 +200,8 @@ model = cls(backbone='LeNet') # 实例化MMClassification模型
 ```python
 model.checkpoint='../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的模型权重文件
 ```
+此时指定的模型权重文件首先需存在，并且需和实例化模型对应，训练时实例化的网络是什么，推理时也需实例化同一个网络。如果没有指定模型权重文件，那么这两句代码可以不修改，即使用默认的模型。
+
 - **模型推理**
 
 ```python
@@ -267,7 +278,7 @@ model.train(epochs=50, validate=True, checkpoint=checkpoint) # 进行再训练
 
 #### 4. 支持的SOTA模型
 
-目前MMClassifiation支持的SOTA模型有LeNet、MobileNet、ResNet18、ResNet50等，如需查看所有支持的SOTA模型，可使用`model.sota()`代码进行查看。这些模型的作用和适用场景简介如下。
+目前MMClassifiation支持的SOTA模型有LeNet、MobileNet、ResNet18、ResNet50等，如需查看所有支持的SOTA模型，可导入模块后使用`cls.sota()`代码进行查看。这些模型的作用和适用场景简介如下。
 
 - **LeNet**
 
@@ -317,4 +328,3 @@ LeNet是一种简单的深度卷积神经网络，他的特色就是参数量少
         </tr>
     </tbody>
 </table>
-

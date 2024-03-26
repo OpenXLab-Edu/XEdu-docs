@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>项目：结合SIoT的智能语音识别——让掌控板也能识别语音 &mdash; OpenXLabEdu  documentation</title>
@@ -11,10 +11,11 @@
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../../../about.html" />
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -28,11 +29,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../../index.html" class="icon icon-home"> OpenXLabEdu
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -86,11 +91,11 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../../how_to_use.html">如何用XEdu借助AI解决真实问题</a> &raquo;</li>
-          <li><a href="../../support_resources.html">学习支持和资源获取</a> &raquo;</li>
-          <li><a href="../creative_works.html">创意项目展示</a> &raquo;</li>
-      <li>项目：结合SIoT的智能语音识别——让掌控板也能识别语音</li>
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../how_to_use.html">如何用XEdu借助AI解决真实问题</a></li>
+          <li class="breadcrumb-item"><a href="../../support_resources.html">学习支持和资源获取</a></li>
+          <li class="breadcrumb-item"><a href="../creative_works.html">创意项目展示</a></li>
+      <li class="breadcrumb-item active">项目：结合SIoT的智能语音识别——让掌控板也能识别语音</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../_sources/how_to_use/support_resources/works/p3-aiot.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -101,9 +106,9 @@
            <div itemprop="articleBody">
              
   <section id="siot">
-<h1>项目：结合SIoT的智能语音识别——让掌控板也能识别语音<a class="headerlink" href="#siot" title="Permalink to this headline"></a></h1>
+<h1>项目：结合SIoT的智能语音识别——让掌控板也能识别语音<a class="headerlink" href="#siot" title="Permalink to this heading"></a></h1>
 <section id="id1">
-<h2>一、项目概述<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<h2>一、项目概述<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p>将音频文件转化为图片再进行识别，是中小学创客活动中常见的语音识别方式。
 掌控板因为不能直接部署AI模型，在智能系统中往往用来担任执行设备，即执行命令、显示信息的终端设备。本项目是一个结合掌控板与行空板的项目。对<a class="reference external" href="https://mp.weixin.qq.com/s/LT0M-d4BmgW36BCF-PahiA">蘑菇云社区发表的”AI助听器”项目</a>进行深度分析，挖掘
 了掌控板内置麦克风的功能，设计了利用掌控板录音、行空板推理的工作方式，并给出了标准化的参考代码，为中小学AI科创项目的开发提供了新方案。</p>
@@ -112,12 +117,12 @@
 <p><img alt="../../../_images/function.png" src="../../../_images/function.png" /></p>
 </section>
 <section id="id2">
-<h2>二、项目设计<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<h2>二、项目设计<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
 <p>将掌控板作为下位机，获取语音，通过<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/scitech_tools/siot.html">siot</a>协议（mqtt教育版）发送至行空板，行空板作为上位机，执行监听siot，语音转图像，onnx后端推理，发送执行命令等功能，结合传统物联网教学设计，形成一个完整的物联网语音读取，传输，识别和反馈的设计流程。</p>
 <p><img alt="../../../_images/Physical_Demo.jpg" src="../../../_images/Physical_Demo.jpg" /></p>
 </section>
 <section id="id3">
-<h2>三、背景知识<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<h2>三、背景知识<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
 <p><strong>音频信号：</strong>
 声音以音频信号的形式表示，音频信号具有频率、带宽、分贝等参数，音频信号一般可表示为振幅和时间的函数。这些声音有多种格式，因此计算机可以对其进行读取和分析。例如：mp3
 格式、WMA (Windows Media Audio) 格式、wav (Waveform Audio File) 格式。</p>
@@ -162,7 +167,7 @@ duration)</strong>
 <p>通过上述两个项目中的内置脚本，可将音频文件，批量转换为时频谱图。具体来说即是将以音频格式为结尾的文件转换为以图像格式为结尾的文件，以期可用分类模型进行推理。</p>
 <p><img alt="../../../_images/Audio2Picture.jpg" src="../../../_images/Audio2Picture.jpg" /><strong>wav音频预处理</strong>：要想将接收到的wav文件送入ONNXRruntime推理机进行推理，还需对得到的wav音频文件进行图像预处理，具体的函数参考如下：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">wav2tensor</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">backbone</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    对wav音频文件进行数据预处理，返回推理机需要的数据类型</span>
 <span class="sd">    :param file_path: wav音频文件地址</span>
 <span class="sd">    :param backbone: 推理机网络模型选择</span>
@@ -203,16 +208,16 @@ backbone（推理机网络模型选择），并返回推理机所需的数据类
 </ol>
 </section>
 <section id="id4">
-<h2>四、项目实现<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
+<h2>四、项目实现<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
 <section id="mmedu">
-<h3>第一步：使用MMEdu进行模型训练和模型转换<a class="headerlink" href="#mmedu" title="Permalink to this headline"></a></h3>
+<h3>第一步：使用MMEdu进行模型训练和模型转换<a class="headerlink" href="#mmedu" title="Permalink to this heading"></a></h3>
 <p>使用平台提供的
 <a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63b7c66e5e089d71e61d19a0&amp;backpath=/pjlab/projects/list#public">行空板上温州话识别</a>
 和
 <a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=6379b63262c7304e16ed6d82&amp;backpath=/pjlab/projects/list#public">用卷积神经网络实现温州话语音分类</a>的项目案例，进行数据收集，模型训练和转换的步骤，得到转换好的onnx模型下载保存至本地。</p>
 </section>
 <section id="id5">
-<h3>第二步：上位机（行空板端）程序制作<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<h3>第二步：上位机（行空板端）程序制作<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
 <p>在这个系统中，行空板作为服务器（也称上位机）实时监听MQTT消息，将有效的语音转为图像后进行推理，再发送识别后的结果或者相应的命令。行空板除了能执行模型推理的工作外，其优势在于内置了SIoT服务器软件。SIoT是一款使用非常方便的MQTT服务器，不用设置就能直接使用。</p>
 <p>首先连接行空板并打开jupyter进行编程：</p>
 <p>通过USB串口连接行空板后，通过浏览器访问本地地址
@@ -263,7 +268,7 @@ backbone（推理机网络模型选择），并返回推理机所需的数据类
 </div>
 </section>
 <section id="id6">
-<h3>第三步：下位机（掌控板）程序制作<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<h3>第三步：下位机（掌控板）程序制作<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
 <p>掌控板作为终端（也可以称为下位机），主要任务是实时检测音频，并通过MQTT协议发送至行空板，并且实时监视服务器传送的消息，根据不同的指令执行相应的工作。我们设计返回的消息是一个列表，如”[’sms’,’敲门’]”表示有人敲门，”[’sms’,’哭声’]”表示有孩子在哭。然后根据不同的消息内容执行不同的工作。</p>
 <p>首先打开mPython连接掌控板进行编程：</p>
 <p>进入掌控板，通过USB串口进行设备的连接，成功连接后，mPython的中心会出现绿色圆圈，并显示已连接。如有问题可自行查找mPython和掌控板相关说明文档。</p>
@@ -318,7 +323,7 @@ on_button_a_pressed(<em>)：定义了一个名为on_button_a_pressed的函数，
 on_button_a_pressed：将on_button_a_pressed函数赋值给button_a的event_pressed属性，意味着当A按钮被按下时会触发该属性中存储的函数（即on_button_a_pressed函数）。</p>
 </section>
 <section id="id7">
-<h3>效果演示<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<h3>效果演示<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
 <p><img alt="../../../_images/mPython_siot_demo.gif" src="../../../_images/mPython_siot_demo.gif" /></p>
 </section>
 </section>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>揭秘目标检测模块：MMDetection &mdash; OpenXLabEdu  documentation</title>
@@ -11,10 +11,11 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -28,11 +29,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -51,11 +56,12 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">揭秘目标检测模块：MMDetection</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">初识目标检测和MMDetection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">使用说明</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id3">1.模型训练</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">2.模型推理</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">3.继续训练</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">0. 导入模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">1.模型训练</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">2.模型推理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">3.继续训练</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sota">4.支持的SOTA模型</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">内容补充：单目标检测和多目标检测是什么？</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">内容补充：单目标检测和多目标检测是什么？</a></li>
 </ul>
 </li>
 </ul>
@@ -87,9 +93,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../mmedu.html">计算机视觉库MMEdu</a> &raquo;</li>
-      <li>揭秘目标检测模块：MMDetection</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../mmedu.html">计算机视觉库MMEdu</a></li>
+      <li class="breadcrumb-item active">揭秘目标检测模块：MMDetection</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/mmedu/mmdetection.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -100,9 +106,9 @@
            <div itemprop="articleBody">
              
   <section id="mmdetection">
-<h1>揭秘目标检测模块：MMDetection<a class="headerlink" href="#mmdetection" title="Permalink to this headline"></a></h1>
+<h1>揭秘目标检测模块：MMDetection<a class="headerlink" href="#mmdetection" title="Permalink to this heading"></a></h1>
 <section id="id1">
-<h2>初识目标检测和MMDetection<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<h2>初识目标检测和MMDetection<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p>相信你已经体验并完成了一些图像分类任务，但是图像分类任务在真实的场景中应用中，像只出现一只猫的图片情况较少，如果一张图片里有两只猫，图像分类的模型可能可以识别出是猫。但是如果是这张图又有猫又有狗，那图像分类模型就肯定识别不出来了。为了解决这一种问题，就出现了目标检测算法。对于图像分类任务来讲，AI仅需正确识别图片的类别即可。</p>
 <p>对于图像分类任务来讲，目标检测(Detection)任务有两个主要的子任务：<strong>定位和分类</strong>。</p>
 <p>定位任务是什么呢？ 定位是找到图像主体或者某个物体的位置，然后用一个框将其框起来。这个框可以是矩形的，也可以是多边形或者圆形的，通常用得最多的是矩形（如下图）。</p>
@@ -110,15 +116,21 @@
 <p>总的来说，目标检测任务是图像分类任务的进阶任务，图像分类任务只有一个子任务：分类，而目标检测任务有两个任务：定位和分类，按照<strong>图像中目标的数量</strong>可分为单目标检测和多目标检测。目标检测任务比起分类任务多出来了一个定位，即将目标框起来的步骤。</p>
 <p><img alt="../_images/ObjectDetectionOverview.png" src="../_images/ObjectDetectionOverview.png" /></p>
 <p>那么MMEdu的目标检测模块MMDetection（简称det）的主要功能便是输出图片或视频中出现的多个对象名称，同时用方框框出对象所在方形区域。</p>
-<p>其支持的SOTA模型有FasterRCNN、Yolov3、SSD_Lite等，具体介绍详见<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html#sota">后文</a>。如需查看所有支持的SOTA模型，可使用<code class="docutils literal notranslate"><span class="pre">model.sota()</span></code>代码进行查看。</p>
+<p>其支持的SOTA模型有FasterRCNN、Yolov3、SSD_Lite等，具体介绍详见<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html#sota">后文</a>。如需查看所有支持的SOTA模型，可导入模块后使用<code class="docutils literal notranslate"><span class="pre">det.sota()</span></code>代码进行查看。</p>
 <p>文档涉及的部分代码见XEdu帮助文档配套项目集：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&amp;sc=645caab8a8efa334b3f0eb24#public">https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&amp;sc=645caab8a8efa334b3f0eb24#public</a></p>
 </section>
 <section id="id2">
-<h2>使用说明<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<h2>使用说明<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
 <p>XEdu一键安装包中预置了MMEdu的det模块的示例代码（路径：/demo）、常用小数据集（路径：/dataset/det）,并且已经预训练了一些权重（路径：/checkpoints/det_model）。在demo文件夹中，还提供了一张测试图片，OpenInnoLab平台也公开了非常多目标检测任务的项目，体验了几个之后相信会对此模块有一定理解。</p>
-<p>下面我们将以车牌检测这个任务为例，介绍一下目标检测模块示例代码的用法，一起解锁第一个目标检测项目吧！</p>
+<p>下面我们将以车牌检测这个任务为例，介绍一下目标检测模块示例代码的用法，一起解锁目标检测模块吧！</p>
 <section id="id3">
-<h3>1.模型训练<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<h3>0. 导入模块<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMDetection</span> <span class="k">as</span> <span class="n">det</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3>1.模型训练<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
 <p>接下来我们将以车牌的识别为例，简单体验MMDetection的训练过程。</p>
 <p>在运行代码之前，我们同样需要先拥有一个数据集，这里我们提供了车牌检测数据集plate。</p>
 <p>数据集文件结构如下：</p>
@@ -133,7 +145,14 @@
 </pre></div>
 </div>
 <p>接下来逐句讲述训练代码：</p>
-<p>实例化模型的代码在前面说过就不再赘述。</p>
+<ul class="simple">
+<li><p><strong>实例化模型</strong></p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">det</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;FasterRCNN&#39;</span><span class="p">)</span> <span class="c1"># 实例化MMDetection模型</span>
+</pre></div>
+</div>
+<p>这里对于<code class="docutils literal notranslate"><span class="pre">MMDetection</span></code>模型提供的参数进行解释，<code class="docutils literal notranslate"><span class="pre">MMDetection</span></code>支持传入的参数是<code class="docutils literal notranslate"><span class="pre">backbone</span></code>。</p>
+<p><code class="docutils literal notranslate"><span class="pre">backbone</span></code>：指定使用的<code class="docutils literal notranslate"><span class="pre">MMDetection</span></code>模型。可选的有FasterRCNN、Yolov3、SSD_Lite等，具体介绍详见<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html#sota">后文</a>。</p>
 <ul class="simple">
 <li><p><strong>指定类别数量</strong></p></li>
 </ul>
@@ -186,8 +205,8 @@
 <p><code class="docutils literal notranslate"><span class="pre">bbox_mAP</span></code>：对目标检测任务，<code class="docutils literal notranslate"><span class="pre">bbox_mAP</span></code>可用来衡量检测准确度，指模型预测的边界框和真实边界框之间的重合度。</p>
 <p><code class="docutils literal notranslate"><span class="pre">loss</span></code>: 本批次模型在训练集上计算的损失值。loss是衡量模型在训练集上预测结果与真实结果之间差异的指标。</p>
 </section>
-<section id="id4">
-<h3>2.模型推理<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<section id="id5">
+<h3>2.模型推理<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
 <p>完成模型训练后，我们就可使用训练好的模型对新图片进行模型推理。若想快速上手体验MMDetection的目标检测，可直接使用我们已经预训练好的模型和权重文件进行图片推理。</p>
 <p>示例代码如下:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMDetection</span> <span class="k">as</span> <span class="n">det</span> <span class="c1"># 导入mmdet模块</span>
@@ -223,13 +242,13 @@
 </div>
 <p>如果使用自己的图片的话，只需要修改img的路径即可（绝对路径和相对路径均可）。</p>
 <ul class="simple">
-<li><p><strong>实例化模型</strong></p></li>
+<li><p><strong>实例化模型并指定模型权重文件</strong></p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">det</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;FasterRCNN&#39;</span><span class="p">)</span> <span class="c1"># 实例化MMDetection模型</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">det</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s2">&quot;FasterRCNN&quot;</span><span class="p">)</span> <span class="c1"># 实例化MMDetection模型</span>
+<span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;../checkpoints/det_model/plate/latest.pth&#39;</span> <span class="c1"># 指定使用的模型权重文件</span>
 </pre></div>
 </div>
-<p>这里对于<code class="docutils literal notranslate"><span class="pre">MMDetection</span></code>模型提供的参数进行解释，<code class="docutils literal notranslate"><span class="pre">MMDetection</span></code>支持传入的参数是<code class="docutils literal notranslate"><span class="pre">backbone</span></code>。</p>
-<p><code class="docutils literal notranslate"><span class="pre">backbone</span></code>：指定使用的<code class="docutils literal notranslate"><span class="pre">MMDetection</span></code>模型，默认使用 <code class="docutils literal notranslate"><span class="pre">'FasterRCNN'</span></code>，当然读者可以自行修改该参数以使用不同模型。</p>
+<p>实例化模型的代码在前面说过就不再赘述。推理时需实例化模型并指定已有的模型权重文件，两句代码需相互匹配，训练时实例化的网络是什么，推理时也需实例化同一个网络。如果没有指定模型权重文件，那么这两句代码可以不修改，即使用默认的模型。</p>
 <ul class="simple">
 <li><p><strong>模型推理</strong></p></li>
 </ul>
@@ -263,8 +282,8 @@
 <p><code class="docutils literal notranslate"><span class="pre">show</span></code>：布尔值，默认为<code class="docutils literal notranslate"><span class="pre">True</span></code>，表示推理后是否显示推理结果。</p>
 <p><code class="docutils literal notranslate"><span class="pre">save_fold</span></code>：保存的图片名，数据结构为字符串，默认参数为<code class="docutils literal notranslate"><span class="pre">'det_result'</span></code>，用户也可以定义为自己想要的名字。</p>
 </section>
-<section id="id5">
-<h3>3.继续训练<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<section id="id6">
+<h3>3.继续训练<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
 <p>在这一步中，我们将学习如何加载之前训练过的模型接着训练。如果觉得之前训练的模型epoch数不够的话或者因为一些客观原因而不得不提前结束训练，相信下面的代码会帮到您。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">det</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;FasterRCNN&#39;</span><span class="p">)</span> <span class="c1"># 初始化实例模型</span>
 <span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># 进行车牌识别，此时只有一个类别。</span>
@@ -277,10 +296,11 @@
 <p>这里我们有一个参数在之前的<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#id3">训练模型</a>过程中没有详细说明，那就是<code class="docutils literal notranslate"><span class="pre">train</span></code>函数中的<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>参数，这个放到这里就比较好理解，它的意思是指定需要进行再训练的模型路径，当然您也可以根据你需要训练的不同模型而调整参数。</p>
 <p>我们还可以指定网上下载的某个预训练模型。通过借助在大型数据集上训练的预训练模型，来对新的任务进行训练，而无需从头开始训练。它可以将一个大型数据集中的知识和技能转移到另一个任务上，从而大大节省训练时间。</p>
 <p>全新开始训练一个模型一般要花较长时间，所以我们强烈建议在预训练模型的基础上继续训练，哪怕你要分类的数据集和预训练的数据集并不一样，基于预训练模型继续训练可起到加速训练的作用。在学习资源下载处也提供了一些<a class="reference external" href="https://xedu.readthedocs.io/zh/master/how_to_use/support_resources/resources.html#id3">预训练模型和权重文件下载</a>。</p>
+<p>另外为初学者准备了一个快速入门MMEdu的目标检测项目的基础项目《用MMEdu实现车牌目标检测》，项目地址是：<a class="reference external" href="https://openinnolab.org.cn/pjlab/project?id=641426fdcb63f030544017a2&amp;sc=62f34141bf4f550f3e926e0e#public">https://openinnolab.org.cn/pjlab/project?id=641426fdcb63f030544017a2&amp;sc=62f34141bf4f550f3e926e0e#public</a>（用Chrome浏览器打开体验最佳）</p>
 </section>
 <section id="sota">
-<h3>4.支持的SOTA模型<a class="headerlink" href="#sota" title="Permalink to this headline"></a></h3>
-<p>目前MMDetection支持的SOTA模型有SSD_Lite、FaterRCNN、Yolov3等，如需查看所有支持的SOTA模型，可使用<code class="docutils literal notranslate"><span class="pre">model.sota()</span></code>代码进行查看。这些模型的作用和适用场景简介如下。</p>
+<h3>4.支持的SOTA模型<a class="headerlink" href="#sota" title="Permalink to this heading"></a></h3>
+<p>目前MMDetection支持的SOTA模型有SSD_Lite、FaterRCNN、Yolov3等，如需查看所有支持的SOTA模型，可导入模块后使用<code class="docutils literal notranslate"><span class="pre">det.sota()</span></code>代码进行查看。这些模型的作用和适用场景简介如下。</p>
 <ul class="simple">
 <li><p><strong>SSD_Lite</strong></p></li>
 </ul>
@@ -325,8 +345,8 @@
         </tr>
     </tbody>
 </table></section>
-<section id="id6">
-<h3>内容补充：单目标检测和多目标检测是什么？<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<section id="id7">
+<h3>内容补充：单目标检测和多目标检测是什么？<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
 <p>根据图像中目标的数量，目标检测分为单目标检测和多目标检测，单目标检测顾名思义，就是识别图像中的单独的一个目标。如下图，就用红框框出了一只猫。</p>
 <p><img alt="../_images/SingleTargetDetection.png" src="../_images/SingleTargetDetection.png" /></p>
 <p>多目标检测就像下面这张图，识别图中的多个目标，在下图中分别用红色的框框出来了猫和绿色的框框出来了狗。多目标检测通常比单目标检测更难，因为它需要同时处理多个目标。但是，多目标检测在很多场景中都是必要的。</p>

@@ -56,7 +56,13 @@ wf.support_task()
 
 ![](../images/xeduhub/task1.png)
 
-此外我们还可以通过"print(wf.__doc__ )"语句查看各类任务的文档。注意doc前后是两个下划线。
+此外我们还可以通过如下语句查看各类任务的文档。注意doc前后是两个下划线。
+
+```python
+from XEdu.hub import Workflow as wf
+# 目前支持的任务文档
+print(wf.__doc__)
+```
 
 ![](../images/xeduhub/task2.png)
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>快速上手BaseDT &mdash; OpenXLabEdu  documentation</title>
@@ -11,10 +11,11 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -28,11 +29,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -100,9 +105,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../basedt.html">数据处理库BaseDT</a> &raquo;</li>
-      <li>快速上手BaseDT</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../basedt.html">数据处理库BaseDT</a></li>
+      <li class="breadcrumb-item active">快速上手BaseDT</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/basedt/quick_start.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -113,20 +118,21 @@
            <div itemprop="articleBody">
              
   <section id="basedt">
-<h1>快速上手BaseDT<a class="headerlink" href="#basedt" title="Permalink to this headline"></a></h1>
+<h1>快速上手BaseDT<a class="headerlink" href="#basedt" title="Permalink to this heading"></a></h1>
 <section id="id1">
-<h2>简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<h2>简介<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p>BaseDT不仅是一个功能强大的数据处理库，也是一个易于使用和扩展的库。它可以让你专注于模型的构建和训练，而不用担心数据处理的问题。</p>
 </section>
 <section id="id2">
-<h2>安装<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<h2>安装<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">basedt</span></code>或<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">BaseDT</span></code></p>
+<p>库文件源代码可以从<a class="reference external" href="https://pypi.org/project/BaseDT/#files">PyPi</a>下载，选择tar.gz格式下载，可用常见解压软件查看源码。</p>
 </section>
 <section id="id3">
-<h2>数据的处理<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<h2>数据的处理<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
 <p>BaseDT提供了一个data模块，它包含了多个子模块和类，分别针对不同类型和格式的数据提供了处理功能。</p>
 <section id="id4">
-<h3>1. 图片数据处理<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<h3>1. 图片数据处理<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.data</span> <span class="kn">import</span> <span class="n">ImageData</span>
 <span class="c1">#图片路径，修改为对应路径</span>
 <span class="n">img</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;D:\PythonProject\OpenDataLab-Edu\dataset\cat2.jpg&quot;</span> 
@@ -138,7 +144,7 @@
 <p><img alt="../_images/pic_case.JPEG" src="../_images/pic_case.JPEG" /></p>
 </section>
 <section id="id5">
-<h3>2. 文本数据处理<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<h3>2. 文本数据处理<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.data</span> <span class="kn">import</span> <span class="n">TextData</span>
 <span class="c1"># 文本数据，字典类型</span>
 <span class="n">texts</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="s1">&#39;Dubai&#39;</span><span class="p">,</span> <span class="s1">&#39;temperature&#39;</span><span class="p">:</span> <span class="mi">33</span><span class="p">}</span>
@@ -150,15 +156,15 @@
 <p><img alt="../_images/text_trans_case.PNG" src="../_images/text_trans_case.PNG" /></p>
 </section>
 <section id="id6">
-<h3>3. 语音数据处理<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<h3>3. 语音数据处理<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
 <p>敬请期待。</p>
 </section>
 <section id="id7">
-<h3>4. 通用数据处理<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<h3>4. 通用数据处理<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
 <p>敬请期待。</p>
 </section>
 <section id="id8">
-<h3>5. 模型部署数据处理<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
+<h3>5. 模型部署数据处理<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.data</span> <span class="kn">import</span> <span class="n">ImageData</span>
 <span class="n">img</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;D:\PythonProject\OpenDataLab-Edu\dataset\cat2.jpg&quot;</span> <span class="c1">#修改为对应路径</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">ImageData</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">backbone</span> <span class="o">=</span> <span class="s2">&quot;MobileNet&quot;</span><span class="p">)</span>
@@ -170,14 +176,14 @@
 </section>
 </section>
 <section id="id9">
-<h2>数据集处理<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h2>
+<h2>数据集处理<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h2>
 <p>BaseDT提供了一个DataSet类，它可以让你对不同类型和格式的数据集进行处理。</p>
 <section id="id10">
-<h3>1. 常用数据集下载<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
+<h3>1. 常用数据集下载<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h3>
 <p>敬请期待。</p>
 </section>
 <section id="id11">
-<h3>2. 数据集格式检查<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h3>
+<h3>2. 数据集格式检查<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h3>
 <p>BaseDT提供了XEdu支持的数据集格式检查功能。</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.dataset</span> <span class="kn">import</span> <span class="n">DataSet</span>
 <span class="n">ds</span> <span class="o">=</span> <span class="n">DataSet</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;my_dataset&quot;</span><span class="p">,</span> <span class="s2">&quot;cls&quot;</span><span class="p">)</span>
@@ -191,7 +197,7 @@
 <p><img alt="../_images/formerror2.png" src="../_images/formerror2.png" /></p>
 </section>
 <section id="id12">
-<h3>3. 数据集格式转换<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h3>
+<h3>3. 数据集格式转换<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h3>
 <p>（1）针对网上下载的数据集，BaseDT可支持常见数据集格式（目前支持IMAGENET、VOC和COCO）的转换。</p>
 <p>首先需将网上下载的原始数据集做初步整理，整理规范如下：</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">原数据集</span><span class="p">(</span><span class="n">目标检测</span><span class="p">)</span>
@@ -235,7 +241,7 @@
 <p><strong>用BaseDT完成数据集制作和格式检查体验项目</strong>：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=6412c95f79f259135f259f45&amp;sc=635638d69ed68060c638f979#public">https://www.openinnolab.org.cn/pjlab/project?id=6412c95f79f259135f259f45&amp;sc=635638d69ed68060c638f979#public</a></p>
 </section>
 <section id="id13">
-<h3>4. 数据集拆分<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h3>
+<h3>4. 数据集拆分<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h3>
 <p>一般训练前建议先完成数据集划分，即将数据集拆分为训练集和验证集，训练集用于训练模型，验证集用于评估模型的性能。针对CSV格式的数据集，可以使用BaseDT完成拆分。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.dataset</span> <span class="kn">import</span> <span class="n">split_tab_dataset</span>
 <span class="c1"># 指定待拆分的csv数据集</span>
@@ -248,14 +254,14 @@
 </section>
 </section>
 <section id="id14">
-<h2>数据的可视化<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h2>
+<h2>数据的可视化<a class="headerlink" href="#id14" title="Permalink to this heading"></a></h2>
 <p>BaseDT提供了一个plot模块，它可以让你对不同任务的数据进行可视化。</p>
 <section id="id15">
-<h3>1. 绘制分类任务混淆矩阵<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h3>
+<h3>1. 绘制分类任务混淆矩阵<a class="headerlink" href="#id15" title="Permalink to this heading"></a></h3>
 <p>敬请期待。</p>
 </section>
 <section id="id16">
-<h3>2. 绘制目标检测任务的检测框<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h3>
+<h3>2. 绘制目标检测任务的检测框<a class="headerlink" href="#id16" title="Permalink to this heading"></a></h3>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.plot</span> <span class="kn">import</span> <span class="n">imshow_det_bboxes</span>
 <span class="n">img</span> <span class="o">=</span> <span class="s1">&#39;test.jpg&#39;</span>
 <span class="c1"># imshow_det_bboxes(图像， 框和得分，标签， 类别， 得分阈值)</span>
@@ -265,11 +271,11 @@
 <p><img alt="../_images/draw_square.png" src="../_images/draw_square.png" /></p>
 </section>
 <section id="id17">
-<h3>3. 绘制分割任务的掩膜<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h3>
+<h3>3. 绘制分割任务的掩膜<a class="headerlink" href="#id17" title="Permalink to this heading"></a></h3>
 <p>敬请期待。</p>
 </section>
 <section id="id18">
-<h3>4. 日志分析<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h3>
+<h3>4. 日志分析<a class="headerlink" href="#id18" title="Permalink to this heading"></a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">BaseDT</span></code>中的<code class="docutils literal notranslate"><span class="pre">plot</span></code>模块提供<code class="docutils literal notranslate"><span class="pre">plot_log</span></code>函数，支持对训练日志中的损失函数进行绘制。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.plot</span> <span class="kn">import</span> <span class="n">plot_log</span>
 <span class="n">plot_log</span><span class="p">(</span><span class="n">log_path</span><span class="p">)</span>
@@ -279,10 +285,10 @@
 </section>
 </section>
 <section id="i-o">
-<h2>轻松调用I/O设备<a class="headerlink" href="#i-o" title="Permalink to this headline"></a></h2>
+<h2>轻松调用I/O设备<a class="headerlink" href="#i-o" title="Permalink to this heading"></a></h2>
 <p>BaseDT提供了一个io模块，用于支持数据的I/O设备的调用，它可以让你方便地从不同的来源获取和输出数据。型和格式的数据。</p>
 <section id="id19">
-<h3>调用麦克风<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h3>
+<h3>调用麦克风<a class="headerlink" href="#id19" title="Permalink to this heading"></a></h3>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.io</span> <span class="kn">import</span> <span class="n">MicroPhone</span>
 <span class="c1"># 创建麦克风对象</span>
 <span class="n">microphone</span> <span class="o">=</span> <span class="n">MicroPhone</span><span class="p">()</span>
@@ -295,7 +301,7 @@
 </section>
 </section>
 <section id="id20">
-<h2>附录<a class="headerlink" href="#id20" title="Permalink to this headline"></a></h2>
+<h2>附录<a class="headerlink" href="#id20" title="Permalink to this heading"></a></h2>
 <p>敬请期待。</p>
 </section>
 </section>

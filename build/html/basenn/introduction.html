@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BaseNN功能详解 &mdash; OpenXLabEdu  documentation</title>
@@ -11,10 +11,11 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -28,11 +29,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -100,9 +105,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../basenn.html">神经网络库BaseNN</a> &raquo;</li>
-      <li>BaseNN功能详解</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../basenn.html">神经网络库BaseNN</a></li>
+      <li class="breadcrumb-item active">BaseNN功能详解</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/basenn/introduction.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -113,9 +118,9 @@
            <div itemprop="articleBody">
              
   <section id="basenn">
-<h1>BaseNN功能详解<a class="headerlink" href="#basenn" title="Permalink to this headline"></a></h1>
+<h1>BaseNN功能详解<a class="headerlink" href="#basenn" title="Permalink to this heading"></a></h1>
 <section id="id1">
-<h2>BaseNN是什么？<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<h2>BaseNN是什么？<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p>BaseNN是神经网络库，能够使用类似Keras却比Keras门槛更低的的语法搭建神经网络模型。可支持逐层搭建神经网络，深入探究网络原理。如果有如下需求，可以优先选择BaseNN：</p>
 <p>a）简易和快速地搭建神经网络</p>
 <p>b）支持搭建<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basenn/introduction.html#rnncnn">CNN和RNN</a>，或二者的结合</p>
@@ -123,28 +128,29 @@
 <p>文档涉及的部分代码见XEdu帮助文档配套项目集：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&amp;sc=645caab8a8efa334b3f0eb24#public">https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&amp;sc=645caab8a8efa334b3f0eb24#public</a></p>
 </section>
 <section id="id2">
-<h2>解锁BaseNN基本使用方法<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<h2>解锁BaseNN基本使用方法<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
 <section id="id3">
-<h3>0. 引入包<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<h3>0. 引入包<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
 </pre></div>
 </div>
 </section>
 <section id="id4">
-<h3>1. 声明模型<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<h3>1. 声明模型<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>可选参数：</p>
-<p><code class="docutils literal notranslate"><span class="pre">task</span></code>：指定了这个模型要完成的任务，可选取值有：<code class="docutils literal notranslate"><span class="pre">['reg','cls']</span></code>，</p>
+<p><code class="docutils literal notranslate"><span class="pre">task</span></code>：指定了这个模型要完成的任务，可选取值有：<code class="docutils literal notranslate"><span class="pre">['reg','cls','gen']</span></code>，</p>
 <p>回归任务：nn(’reg’)。</p>
 <p>分类任务：nn(’cls’)，当不指定时，<code class="docutils literal notranslate"><span class="pre">task</span></code>的默认值<code class="docutils literal notranslate"><span class="pre">'cls'</span></code>。</p>
+<p>生成任务：nn(’gen’)。</p>
 </section>
 <section id="id5">
-<h3>2. 载入数据<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<h3>2. 载入数据<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
 <p>根据数据类型，可选择使用<code class="docutils literal notranslate"><span class="pre">load_img_data</span></code>、<code class="docutils literal notranslate"><span class="pre">load_tab_data</span></code>等（持续更新中）直接载入不同类型数据的函数，在这些函数中封装了读取数据并进行预处理的功能。下面分数据类型进行说明：</p>
 <section id="id6">
-<h4>针对图片文件夹类型的数据：<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h4>
+<h4>针对图片文件夹类型的数据：<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h4>
 <p>指定图片文件夹路径，再使用<code class="docutils literal notranslate"><span class="pre">load_img_data</span></code>函数即可完成载入数据。此处使用的是经典的MNIST手写体数字图像数据集。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image_folder_data</span> <span class="o">=</span> <span class="s1">&#39;../../dataset/mnist/training_set&#39;</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_img_data</span><span class="p">(</span><span class="n">image_folder_data</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;grayscale&quot;</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">)</span>
@@ -155,40 +161,203 @@
 <p><code class="docutils literal notranslate"><span class="pre">color</span></code>：设置为”grayscale”或”RGB”，表示图片的颜色空间或色彩模式，可以根据具体的需求来选择适合的模式。如果将color参数设置为”grayscale”，表示希望将图像转换为灰度图像，仅包含亮度信息。如果将color参数设置为”RGB”，表示希望保留图像的红、绿、蓝三个通道的颜色信息，得到彩色图像。</p>
 <p><code class="docutils literal notranslate"><span class="pre">batch_size</span></code>：表示在一次训练中同时处理的样本数量。通常情况下，批量大小越大，模型的收敛速度越快，但内存和计算资源的需求也会相应增加。</p>
 <p><code class="docutils literal notranslate"><span class="pre">num_workers</span></code>：线程数，决定了有多少个子线程被用于数据加载。子线程是并行运行的，可以同时处理多个数据批次。增加 <code class="docutils literal notranslate"><span class="pre">num_workers</span></code> 的数值时，可以加快数据批次的寻找速度，这通常会提高训练的速度，因为模型等待数据的时间减少了，但增大内存开销和CPU负荷。此参数用来控制数据加载过程中的线程数量。适当增加这个数值可以加速训练，但也要注意不要超出你的硬件限制。默认为0，一般而言设置num_workers最大为CPU核心数。</p>
+<p><code class="docutils literal notranslate"><span class="pre">classes</span></code>：类别列表（列表）或字典，表示数据集中的<code class="docutils literal notranslate"><span class="pre">label</span></code>中存储的数组各个位置标签所代表的意义，一般适用于图片形式数据集的训练。可以不传入，若不传入，则推理结果将会是认为结果的下标。若传入，则推理结果将自动转化为将原结果作为下标的数组中的对应内容。</p>
+<p>classes可传参数兼容列表，字典形式(以下三种形式均可)。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span><span class="s1">&#39;dog&#39;</span><span class="p">]</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="s1">&#39;dog&#39;</span><span class="p">}</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;cat&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">}</span> <span class="c1"># 与词表形式统一</span>
+</pre></div>
+</div>
+<p>注意：索引是数值类型（int)，类别名称是字符串（str)，即哪怕类别名也是数字0,1,…字典的键和值也有区别，例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 正确示例</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="s1">&#39;1&#39;</span><span class="p">}</span> <span class="c1"># 索引to类别</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;0&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">}</span> <span class="c1"># 类别to索引</span>
+
+<span class="c1"># 错误示例</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">}</span> 
+<span class="n">classes</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;0&#39;</span><span class="p">:</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">:</span><span class="s1">&#39;1&#39;</span><span class="p">}</span> 
+</pre></div>
+</div>
 <section id="id7">
-<h5>关于图片数据集预处理：<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h5>
-<p>载入图片数据前如需对图像数据集进行预处理，例如做尺寸调整，可先使用torchvision对图片数据集进行预处理再载入模型进行训练。</p>
-<p>首先导入包</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torchvision.transforms</span> <span class="kn">import</span> <span class="n">transforms</span>
-</pre></div>
-</div>
-<p>接下来可以使用参数表示训练前对我们需要对数据进行的预处理。</p>
+<h5>关于图片数据集预处理：<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h5>
+<p>载入图片数据前如需对图像数据集进行预处理，最常见的例如做尺寸调整，可先调用已经内置的torchvision对图片数据集进行预处理再载入模型进行训练，只需在<code class="docutils literal notranslate"><span class="pre">load_img_data</span></code>图片数据集时增加一个<code class="docutils literal notranslate"><span class="pre">transform</span></code>的参数。</p>
 <p>此处为对数据进行单个步骤的简单处理。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tran1</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Resize</span><span class="p">([</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">load_img_data</span><span class="p">(</span><span class="s1">&#39;MNIST&#39;</span><span class="p">,</span><span class="n">transform</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Resize&quot;</span><span class="p">:(</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">)})</span>
 </pre></div>
 </div>
-<p>若要对数据进行多次处理的复杂操作，可以采用如下代码，将多个处理方式按顺序输入，在执行时这些操作也会被按顺序执行。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tran2</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
-    <span class="n">transforms</span><span class="o">.</span><span class="n">RandomResizedCrop</span><span class="p">(</span><span class="mi">224</span><span class="p">),</span>
-    <span class="n">transforms</span><span class="o">.</span><span class="n">RandomHorizontalFlip</span><span class="p">(),</span>
-    <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
-    <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">([</span><span class="mf">0.485</span><span class="p">,</span> <span class="mf">0.456</span><span class="p">,</span> <span class="mf">0.406</span><span class="p">],[</span><span class="mf">0.229</span><span class="p">,</span> <span class="mf">0.224</span><span class="p">,</span> <span class="mf">0.225</span><span class="p">])</span>
-<span class="p">])</span>
+<p>若要对图片数据进行多次处理的复杂操作，可以采用如下代码，将多个处理方式设置入参数，在执行时这些操作也会被按顺序执行。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">load_img_data</span><span class="p">(</span><span class="s1">&#39;catdog&#39;</span><span class="p">,</span><span class="n">transform</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Resize&quot;</span><span class="p">:(</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">),</span><span class="s2">&quot;RandomResizedCrop&quot;</span><span class="p">:</span><span class="mi">224</span><span class="p">,</span><span class="s2">&quot;RandomHorizontalFlip&quot;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">})</span>
 </pre></div>
 </div>
-<p>方法说明: <code class="docutils literal notranslate"><span class="pre">Resize()</span></code>:对图片尺寸进行缩放。</p>
-<p><code class="docutils literal notranslate"><span class="pre">RandomResizedCrop()</span></code>:对图片尺寸进行随机缩放后裁剪为固定尺寸。</p>
-<p><code class="docutils literal notranslate"><span class="pre">RandomHorizontalFlip()</span></code>:随机对图片进行水平翻转。</p>
-<p><code class="docutils literal notranslate"><span class="pre">ToTensor()</span></code>:将图片转为张量。</p>
-<p><code class="docutils literal notranslate"><span class="pre">Normalize()</span></code>:将图片归一化。</p>
-<p>最后在载入数据集时，将设置好的想要使用的数据处理方式作为参数与数据集一起传入模型中。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">load_img_data</span><span class="p">(</span><span class="n">img_folder_data</span><span class="p">,</span> <span class="n">transform</span> <span class="o">=</span> <span class="n">tran1</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
+<p>方法说明: <code class="docutils literal notranslate"><span class="pre">Resize</span></code>:对图片尺寸进行调整。</p>
+<p><code class="docutils literal notranslate"><span class="pre">RandomResizedCrop</span></code>:对图片尺寸进行随机缩放后裁剪为固定尺寸。</p>
+<p><code class="docutils literal notranslate"><span class="pre">RandomHorizontalFlip</span></code>:依照某概率对图片进行水平翻转。</p>
+<p>支持的操作即为<a class="reference external" href="https://pytorch-cn.readthedocs.io/zh/latest/torchvision/torchvision-transform/">torchvision中的transforms</a>包括的所有方式，如下表所列。</p>
+<table class="docutils align-default">
+<thead>
+  <tr>
+    <th>类别</th>
+    <th>转换名称</th>
+    <th>函数</th>
+    <th>设置示例</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>裁剪</td>
+    <td>随机裁剪</td>
+    <td>RandomCrop</td>
+    <td>(32, 32)</td> 
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>裁剪</td>
+    <td>中心裁剪</td>
+    <td>CenterCrop</td>
+    <td>(32, 32)</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>裁剪</td>
+    <td>随机长宽比裁剪</td>
+    <td>RandomResizedCrop</td>
+    <td>size=224, scale=(0.08, 1.0), ratio=(0.75, 1.33), interpolation=2</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>裁剪</td>
+    <td>上下左右中心裁剪</td>
+    <td>FiveCrop</td>
+    <td>(32, 32)</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>裁剪</td>
+    <td>上下左右中心裁剪后翻转</td>
+    <td>TenCrop</td>
+    <td>size=(32, 32), vertical_flip=False</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>翻转和旋转</td>
+    <td>依概率p水平翻转</td>
+    <td>RandomHorizontalFlip</td>
+    <td>0.5</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>翻转和旋转</td>
+    <td>依概率p垂直翻转</td>
+    <td>RandomVerticalFlip</td>
+    <td>0.5</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>翻转和旋转</td>
+    <td>随机旋转</td>
+    <td>RandomRotation</td>
+    <td>(0, 180)</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>图像变换</td>
+    <td>尺寸调整</td>
+    <td>Resize</td>
+    <td>(128, 128)</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>图像变换</td>
+    <td>标准化</td>
+    <td>Normalize</td>
+    <td>mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225)</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>图像变换</td>
+    <td>转为tensor</td>
+    <td>ToTensor</td>
+    <td>无参数设置示例</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>图像变换</td>
+    <td>填充</td>
+    <td>Pad</td>
+    <td>4</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>图像变换</td>
+    <td>修改亮度、对比度和饱和度</td>
+    <td>ColorJitter</td>
+    <td>brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>图像变换</td>
+    <td>转灰度图</td>
+    <td>Grayscale</td>
+    <td>1</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>图像变换</td>
+    <td>线性变换</td>
+    <td>LinearTransformation</td>
+    <td>transformation_matrix, mean_vector</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>图像变换</td>
+    <td>仿射变换</td>
+    <td>RandomAffine</td>
+    <td>degrees=30, translate=(0.1, 0.1), scale=(0.8, 1.2), shear=10</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>图像变换</td>
+    <td>依概率p转为灰度图</td>
+    <td>RandomGrayscale</td>
+    <td>0.1</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>图像变换</td>
+    <td>将数据转换为PILImage</td>
+    <td>ToPILImage</td>
+    <td>无参数设置示例</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
+    <td>图像变换</td>
+    <td>自定义Lambda变换</td>
+    <td>Lambda</td>
+    <td>lambda x: x.div(255)</td>
+  </tr>
+</tbody>
+</table></section>
 </section>
 <section id="id8">
-<h4>针对特征表格类型的数据：<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h4>
+<h4>针对特征表格类型的数据：<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h4>
 <p>指定表格路径，再使用<code class="docutils literal notranslate"><span class="pre">load_tab_data</span></code>函数即可完成载入数据。此处我使用的是经典的Iris鸢尾花数据集。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">train_path</span> <span class="o">=</span> <span class="s1">&#39;../../dataset/iris/iris_training.csv&#39;</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_tab_data</span><span class="p">(</span><span class="n">train_path</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
@@ -199,7 +368,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">num_workers</span></code>：线程数，决定了有多少个子线程被用于数据加载。子线程是并行运行的，可以同时处理多个数据批次。增加 <code class="docutils literal notranslate"><span class="pre">num_workers</span></code> 的数值时，可以加快数据批次的寻找速度，这通常会提高训练的速度，因为模型等待数据的时间减少了，但增大内存开销和CPU负荷。此参数用来控制数据加载过程中的线程数量。适当增加这个数值可以加速训练，但也要注意不要超出你的硬件限制。默认为0，一般而言设置num_workers最大为CPU核心数。</p>
 </section>
 <section id="npz">
-<h4>针对NPZ数据集类型的数据：<a class="headerlink" href="#npz" title="Permalink to this headline"></a></h4>
+<h4>针对NPZ数据集类型的数据：<a class="headerlink" href="#npz" title="Permalink to this heading"></a></h4>
 <p>指定NPZ数据集路径，再使用<code class="docutils literal notranslate"><span class="pre">load_npz_data</span></code>函数即可完成载入数据。</p>
 <p>详见案例：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=64daed3eafeb1059822a1578&amp;sc=62f33550bf4f550f3e926cf2#public">姿态识别进阶-循环神经网络</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">train_path</span> <span class="o">=</span> <span class="s1">&#39;../../dataset/dataset.npz&#39;</span>
@@ -240,8 +409,8 @@
 <p><code class="docutils literal notranslate"><span class="pre">type(data['data'])</span></code>的运行结果是numpy.ndarray，<code class="docutils literal notranslate"><span class="pre">type(data['data'])</span></code>的运行结果是numpy.ndarray。</p>
 </section>
 <section id="id9">
-<h4>拓展——自行编写代码载入数据：<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h4>
-<p>如您想要尝试自行编写代码加载数据并做预处理，需生成NumPy数组格式的特征<code class="docutils literal notranslate"><span class="pre">x</span></code> 和标签<code class="docutils literal notranslate"><span class="pre">y</span></code>（不同的框架和模型可能对输入数据的格式有所要求有所不同，这是BaseNN的要求），载入时可使用如下代码。</p>
+<h4>拓展——自行编写代码载入数据：<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h4>
+<p>如您想要尝试自行编写代码加载数据并做预处理，需生成NumPy数组格式的特征<code class="docutils literal notranslate"><span class="pre">x</span></code> 和标签<code class="docutils literal notranslate"><span class="pre">y</span></code>（不同的框架和模型可能对输入数据的格式有所要求有所不同，这是BaseNN的要求），载入时可使用如下代码，此方法比较灵活。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -297,7 +466,7 @@
 </section>
 </section>
 <section id="id10">
-<h3>3. 搭建模型<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
+<h3>3. 搭建模型<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h3>
 <p>逐层添加，搭建起模型结构，支持CNN（卷积神经网络）和RNN（循环神经网络）。注释标明了数据经过各层的尺寸变化。在模型搭建中要特别注意数据经过各层的尺寸变化，以设置正确的<code class="docutils literal notranslate"><span class="pre">size</span></code>值。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> <span class="c1"># [120, 10]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> <span class="c1"># [120, 5]</span>
@@ -312,7 +481,7 @@
 <p>以上使用<code class="docutils literal notranslate"><span class="pre">add()</span></code>方法添加层，参数<code class="docutils literal notranslate"><span class="pre">layer='linear'</span></code>表示添加的层是线性层，<code class="docutils literal notranslate"><span class="pre">size=(4,10)</span></code>表示该层输入维度为4，输出维度为10，<code class="docutils literal notranslate"><span class="pre">activation='relu'</span></code>表示使用relu激活函数。更详细<code class="docutils literal notranslate"><span class="pre">add()</span></code>方法使用可见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add">附录1</a>。</p>
 </section>
 <section id="id11">
-<h3>4. 模型训练<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h3>
+<h3>4. 模型训练<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h3>
 <p>模型训练可以采用以下函数：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
 </pre></div>
@@ -320,8 +489,8 @@
 <p>参数<code class="docutils literal notranslate"><span class="pre">lr</span></code>为学习率，<code class="docutils literal notranslate"><span class="pre">epochs</span></code>为训练轮数。</p>
 <p>从训练类型的角度，可以分为正常训练和继续训练。</p>
 <section id="id12">
-<h4>正常训练<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span> 
+<h4>正常训练<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">(</span><span class="s1">&#39;cls&#39;</span><span class="p">)</span> 
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> <span class="c1"># [120, 10]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> <span class="c1"># [120, 5]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">)</span> <span class="c1"># [120, 3]</span>
@@ -333,8 +502,8 @@
 <p><code class="docutils literal notranslate"><span class="pre">model.save_fold</span></code>表示训练出的模型文件保存的文件夹。</p>
 </section>
 <section id="id13">
-<h4>继续训练<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
+<h4>继续训练<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">(</span><span class="s1">&#39;cls&#39;</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/new_train&#39;</span> <span class="c1"># 指定模型保存路径</span>
 <span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/basenn.pth&#39;</span> <span class="c1"># 指定已有模型的权重文件路径</span>
@@ -344,58 +513,42 @@
 <p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>为现有模型路径，当使用<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>参数时，模型基于一个已有的模型继续训练，不使用<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>参数时，模型从零开始训练。</p>
 </section>
 <section id="id14">
-<h4>拓展——分数据类型看训练代码<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h4>
+<h4>拓展——分数据类型看训练代码<a class="headerlink" href="#id14" title="Permalink to this heading"></a></h4>
 <p>针对不同类型的数据类型，载入数据、搭建模型和模型训练的代码会略有不同。深度学习常见的数据类型介绍详见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#id23">附录4</a>。</p>
 <section id="id15">
-<h5>第一种：图片文件夹类型<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h5>
+<h5>第一种：图片文件夹类型<a class="headerlink" href="#id15" title="Permalink to this heading"></a></h5>
 <p>可直接指定图片文件夹，同时针对图片数据可增加classes参数设置（推理时会输出预测的类别名称，如不设置此参数则只输出类别标签），参考代码如下：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">(</span><span class="s1">&#39;cls&#39;</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_img_data</span><span class="p">(</span><span class="s2">&quot;./mnist/training_set&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;grayscale&quot;</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span><span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Conv2D&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span><span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> 
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;AvgPool&#39;</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> 
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Conv2D&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> 
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;AvgPool&#39;</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> 
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span>  
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">84</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> 
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">84</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;Softmax&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span>  
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">84</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> 
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">84</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;Softmax&#39;</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;SGD&#39;</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;new_mn_ckpt&#39;</span>
 <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="s2">&quot;new_mn_ckpt/basenn.pth&quot;</span><span class="p">)</span> <span class="c1"># 继续训练</span>
 </pre></div>
 </div>
 <p>如自己进行对图片数据处理后，使用<code class="docutils literal notranslate"><span class="pre">load_dataset(x,</span> <span class="pre">y)</span></code>载入数据，可使用如下代码：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">(</span><span class="s1">&#39;cls&#39;</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">)</span> <span class="c1"># classes是类别列表（列表） //字典</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;conv2d&#39;</span><span class="p">,</span><span class="o">...</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span><span class="n">epochs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>classes可传参数兼容列表，字典形式(以下三种形式均可)。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span><span class="s1">&#39;dog&#39;</span><span class="p">]</span>
-<span class="n">classes</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="s1">&#39;dog&#39;</span><span class="p">}</span>
-<span class="n">classes</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;cat&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">}</span> <span class="c1"># 与词表形式统一</span>
-</pre></div>
-</div>
-<p>注意：索引是数值类型（int)，类别名称是字符串（str)，即哪怕类别名也是数字0,1,…字典的键和值也有区别，例如：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 正确示例</span>
-<span class="n">classes</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="s1">&#39;1&#39;</span><span class="p">}</span> <span class="c1"># 索引to类别</span>
-<span class="n">classes</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;0&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">}</span> <span class="c1"># 类别to索引</span>
-
-<span class="c1"># 错误示例</span>
-<span class="n">classes</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">}</span> 
-<span class="n">classes</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;0&#39;</span><span class="p">:</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">:</span><span class="s1">&#39;1&#39;</span><span class="p">}</span> 
-</pre></div>
-</div>
 </section>
 <section id="id16">
-<h5>第二种：特征类型<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h5>
+<h5>第二种：特征类型<a class="headerlink" href="#id16" title="Permalink to this heading"></a></h5>
 <p>可直接指定csv格式的表格完成模型训练，参考代码如下：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">(</span><span class="s1">&#39;cls&#39;</span><span class="p">)</span>
 <span class="n">train_path</span> <span class="o">=</span> <span class="s1">&#39;../../dataset/iris/iris_training.csv&#39;</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_tab_data</span><span class="p">(</span><span class="n">train_path</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1"># [120, 10]</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1"># [120, 5]</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;Softmax&#39;</span><span class="p">)</span> <span class="c1"># [120, 3]</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1"># [120, 10]</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1"># [120, 5]</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;Softmax&#39;</span><span class="p">)</span> <span class="c1"># [120, 3]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;./iris_ckpt&#39;</span>
 <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
 </pre></div>
@@ -404,18 +557,18 @@
 <p>当然您也可以自行编写代码来加载数据并进行预处理，然后将生成的输入特征 <code class="docutils literal notranslate"><span class="pre">x</span></code>
 和目标标签 <code class="docutils literal notranslate"><span class="pre">y</span></code>
 传递给模型。针对特征数据，使用BaseNN各模块的示例代码即可。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">(</span><span class="s1">&#39;cls&#39;</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span><span class="o">...</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span><span class="o">...</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;./iris_ckpt&#39;</span>
 <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span><span class="n">epochs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="id17">
-<h5>第三种：文本类型<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h5>
+<h5>第三种：文本类型<a class="headerlink" href="#id17" title="Permalink to this heading"></a></h5>
 <p>在做文本生成等NLP（自然语言处理）领域项目时，一般搭建<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn">RNN网络</a>训练模型，训练数据是文本数据，参考代码如下：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">(</span><span class="s1">&#39;cls&#39;</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">word2idx</span><span class="o">=</span><span class="n">word2idx</span><span class="p">)</span> <span class="c1"># word2idx是词表（字典）</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;lstm&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span><span class="mi">256</span><span class="p">),</span><span class="n">num_layers</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span><span class="n">epochs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -425,9 +578,9 @@
 </section>
 </section>
 <section id="id18">
-<h3>5. 模型推理<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h3>
+<h3>5. 模型推理<a class="headerlink" href="#id18" title="Permalink to this heading"></a></h3>
 <p>可使用以下函数进行推理：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span> <span class="c1"># 声明模型</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">(</span><span class="s1">&#39;cls&#39;</span><span class="p">)</span> <span class="c1"># 声明模型</span>
 <span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/iris_ckpt/basenn.pth&#39;</span> <span class="c1"># 现有模型路径</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">test_x</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">)</span> <span class="c1"># 直接推理</span>
 <span class="n">model</span><span class="o">.</span><span class="n">print_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="c1"># 输出字典格式结果</span>
@@ -436,10 +589,10 @@
 <p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>为已有模型路径，即使用现有的模型进行推理。</p>
 <p>直接推理的输出结果数据类型为<code class="docutils literal notranslate"><span class="pre">NumPy</span></code>的二维数组，表示各个样本的各个特征的置信度。</p>
 <p>输出字典格式结果的数据类型为字典，格式为<code class="docutils literal notranslate"><span class="pre">{样本编号：{预测值：x，置信度：y}}</span></code>。<code class="docutils literal notranslate"><span class="pre">print_result()</span></code>函数调用即输出，但也有返回值。</p>
-<p>参数<code class="docutils literal notranslate"><span class="pre">data</span></code>为待推理的测试数据，该参数必须传入值，可以传入NumPy数组或文件路径或者dataloader类型的数据，也可以传入list（最终还是会转成numpy数组）。除了NumPy数组格式和list数组格式的特征数据，以及传入dataloader类型的数据进行批量的模型推理外，还可以传入文件路径进行模型推理，下面我们分文件类型说明。</p>
+<p>参数<code class="docutils literal notranslate"><span class="pre">data</span></code>为待推理的测试数据，该参数必须传入值，可以传入NumPy数组或文件路径或者dataloader类型的数据，也可以传入list（最终还是会转成numpy数组）。除了NumPy数组格式和list数组格式的特征数据，以及传入dataloader类型的数据进行批量的模型推理外，还可以直接传入文件路径进行模型推理，下面我们分文件类型说明。</p>
 <section id="id19">
-<h4>针对单个图片文件的推理：<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
+<h4>针对单个图片文件的推理：<a class="headerlink" href="#id19" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">(</span><span class="s1">&#39;cls&#39;</span><span class="p">)</span>
 <span class="n">test_x</span> <span class="o">=</span> <span class="s2">&quot;mnist/val_set/7/83.jpg&quot;</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">test_x</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="s2">&quot;mn_ckpt/basenn.pth&quot;</span><span class="p">)</span> <span class="c1"># 推理整个测试集</span>
 <span class="n">model</span><span class="o">.</span><span class="n">print_result</span><span class="p">()</span>
@@ -447,8 +600,8 @@
 </div>
 </section>
 <section id="id20">
-<h4>针对图片文件夹的推理：<a class="headerlink" href="#id20" title="Permalink to this headline"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
+<h4>针对图片文件夹的推理：<a class="headerlink" href="#id20" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">(</span><span class="s1">&#39;cls&#39;</span><span class="p">)</span>
 <span class="n">test_x</span> <span class="o">=</span> <span class="s2">&quot;mnist/val_set/7&quot;</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">test_x</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="s2">&quot;mn_ckpt/basenn.pth&quot;</span><span class="p">)</span> <span class="c1"># 推理整个测试集</span>
 <span class="n">model</span><span class="o">.</span><span class="n">print_result</span><span class="p">()</span>
@@ -456,8 +609,8 @@
 </div>
 </section>
 <section id="id21">
-<h4>针对特征表格文件的推理：<a class="headerlink" href="#id21" title="Permalink to this headline"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
+<h4>针对特征表格文件的推理：<a class="headerlink" href="#id21" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">(</span><span class="s1">&#39;cls&#39;</span><span class="p">)</span>
 <span class="n">test_path</span> <span class="o">=</span> <span class="s1">&#39;../../dataset/iris/iris_test.csv&#39;</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">test_path</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="s2">&quot;iris_ckpt/basenn.pth&quot;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">print_result</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
@@ -467,8 +620,8 @@
 <p>对表格文件的要求：csv格式，纵轴为样本，横轴为特征，第一行为表头，最后一列为标签</p>
 </section>
 <section id="id22">
-<h4>针对文本数据的推理：<a class="headerlink" href="#id22" title="Permalink to this headline"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
+<h4>针对文本数据的推理：<a class="headerlink" href="#id22" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">(</span><span class="s1">&#39;cls&#39;</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">=</span> <span class="s1">&#39;长&#39;</span>
 <span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;xxx.pth&#39;</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">)</span>
@@ -484,7 +637,7 @@
 </section>
 </section>
 <section id="id23">
-<h3>6. 模型的保存与加载<a class="headerlink" href="#id23" title="Permalink to this headline"></a></h3>
+<h3>6. 模型的保存与加载<a class="headerlink" href="#id23" title="Permalink to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 保存</span>
 <span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;mn_ckpt&#39;</span>
 <span class="c1"># 加载</span>
@@ -495,7 +648,7 @@
 <p>注：<code class="docutils literal notranslate"><span class="pre">train()</span></code>，<code class="docutils literal notranslate"><span class="pre">inference()</span></code>函数中也可通过参数控制模型的保存与加载，但这里也列出单独保存与加载模型的方法，以确保灵活性。</p>
 </section>
 <section id="id24">
-<h3>7. 模型文件格式转换<a class="headerlink" href="#id24" title="Permalink to this headline"></a></h3>
+<h3>7. 模型文件格式转换<a class="headerlink" href="#id24" title="Permalink to this heading"></a></h3>
 <p>使用BaseNN训练好的模型权重会以.pth格式的文件保存到本地，但是以.pth格式保存文件不利于模型的部署以及推理，因此我们希望将.pth文件转换成.onnx格式的文件，这样就可以将模型快速部署并进行推理啦。比如，可以使用XEduHub工具，利用转换好的onnx文件进行模型推理。</p>
 <p>模型格式转换代码如下：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
@@ -513,13 +666,13 @@
 </section>
 </section>
 <section id="id25">
-<h2>高级功能<a class="headerlink" href="#id25" title="Permalink to this headline"></a></h2>
+<h2>高级功能<a class="headerlink" href="#id25" title="Permalink to this heading"></a></h2>
 <section id="cnn">
-<h3>1.提取CNN特征<a class="headerlink" href="#cnn" title="Permalink to this headline"></a></h3>
+<h3>1.提取CNN特征<a class="headerlink" href="#cnn" title="Permalink to this heading"></a></h3>
 <p>图像特征提取是计算机视觉中的重要研究领域之一，是计算机视觉中的一个关键步骤，它涉及将图像转换成一组有意义的特征向量，以便于后续的图像分析和识别任务。CNN（卷积神经网络）特征提取方法是一种基于深度学习的特征提取方法，通过卷积层、池化层等多个网络层的处理，可以提取出具有高层次抽象能力的特征表示，被广泛应用于图像分类、目标检测等领域。</p>
 <p>BaseNN中提供了一个CNN特征提取工具，可使用BaseNN的<code class="docutils literal notranslate"><span class="pre">model.extract_feature()</span></code>函数通过指定预训练模型来提取图像特征，使用ResNet预训练模型可将一张图像提取为1000维的特征（该预训练模型是在imagenet上训练的千分类模型，所以输出特征的维度是1000维），输出一个1行1000列的数组。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 声明模型</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">(</span><span class="s1">&#39;cls&#39;</span><span class="p">)</span>
 <span class="c1"># 读取图像文件</span>
 <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;small/0/5818.png&#39;</span><span class="p">)</span>
 <span class="c1"># 指定resnet18提取图像特征</span>
@@ -529,12 +682,12 @@
 <p>第一次下载预训练模型有点慢需要耐心等待，再次运行则无需下载。</p>
 </section>
 <section id="id26">
-<h3>2.网络中特征可视化<a class="headerlink" href="#id26" title="Permalink to this headline"></a></h3>
+<h3>2.网络中特征可视化<a class="headerlink" href="#id26" title="Permalink to this heading"></a></h3>
 <p>BaseNN内置<code class="docutils literal notranslate"><span class="pre">visual_feature</span></code>函数可呈现数据在网络中传递的过程。特征可视化可以帮助我们更好地理解模型在处理数据时的内部工作原理，并通过这种方式来进一步提高模型的性能和效果。</p>
 <p>如输入数据为图片，指定图片和已经训练好的模型，可生成一张展示逐层网络特征传递的图片。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
 <span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">(</span><span class="s1">&#39;cls&#39;</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;mn_ckpt/basenn.pth&#39;</span><span class="p">)</span>          <span class="c1"># 保存的已训练模型载入</span>
 <span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;test_IMG/single_data.jpg&#39;</span>
 <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">flags</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>          <span class="c1"># 图片数据读取</span>
@@ -545,7 +698,7 @@
 <p>如输入数据为一维数据，指定数据和已经训练好的模型，可生成一个txt文件展示经过各层后的输出。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">NumPy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">(</span><span class="s1">&#39;cls&#39;</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;checkpoints/iris_ckpt/basenn.pth&#39;</span><span class="p">)</span>          <span class="c1"># 保存的已训练模型载入</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">test_x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># 指定数据,如测试数据的一行</span>
 <span class="n">model</span><span class="o">.</span><span class="n">visual_feature</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>   <span class="c1"># 特征的可视化</span>
@@ -553,14 +706,14 @@
 </div>
 </section>
 <section id="id27">
-<h3>3.查看模型结构<a class="headerlink" href="#id27" title="Permalink to this headline"></a></h3>
+<h3>3.查看模型结构<a class="headerlink" href="#id27" title="Permalink to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">print_model</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>无参数。</p>
 </section>
 <section id="id28">
-<h3>4.自定义随机数种子<a class="headerlink" href="#id28" title="Permalink to this headline"></a></h3>
+<h3>4.自定义随机数种子<a class="headerlink" href="#id28" title="Permalink to this heading"></a></h3>
 <p>默认初始化是随机的，因此每次模型训练效果可能存在差异。可以使用<code class="docutils literal notranslate"><span class="pre">set_seed()</span></code>函数设定随机数种子，使得训练结果可被其他人复现。一旦指定，则每次训练结果一致。使用方法如下：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
 <span class="n">model</span><span class="o">.</span><span class="n">set_seed</span><span class="p">(</span><span class="mi">1235</span><span class="p">)</span>
@@ -572,7 +725,7 @@
 <p>注：设定随机数种子<code class="docutils literal notranslate"><span class="pre">set_seed()</span></code>应当在搭建网络<code class="docutils literal notranslate"><span class="pre">add()</span></code>之前。在搭建机器学习模型之前，通常建议设置随机数种子。这样做可以使得在每次运行时，生成的随机数序列都是相同的，从而使得模型的可重复性更高。这对于模型调试、验证模型效果、比较不同模型效果等方面都非常有帮助。随机数种子的选择通常应该是随意的，只要您能记住或记录下来使用的种子即可。并且，种子的选择并不会影响模型的效果，只会影响结果的可重复性。</p>
 </section>
 <section id="id29">
-<h3>5.自定义损失函数<a class="headerlink" href="#id29" title="Permalink to this headline"></a></h3>
+<h3>5.自定义损失函数<a class="headerlink" href="#id29" title="Permalink to this heading"></a></h3>
 <p>损失函数（或称目标函数、优化评分函数）是编译模型时所需的参数之一。在机器学习和深度学习中，模型的训练通常涉及到一个优化过程，即通过不断调整模型的参数，使得模型在训练数据上的预测结果与实际结果的差距最小化。这个差距通常使用一个称为”损失函数”的指标来衡量。损失函数通常是一个关于模型参数的函数，用于度量模型预测结果与实际结果之间的差异。在模型训练过程中，模型会根据损失函数的值来调整自己的参数，以减小损失函数的值。</p>
 <p>默认的损失函数是交叉熵损失函数，允许选择不同的损失函数，支持的损失函数见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#id33">附录</a>。自选损失函数方法如下：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="o">...</span><span class="p">,</span><span class="n">loss</span><span class="o">=</span><span class="s2">&quot;MSELoss&quot;</span><span class="p">)</span>
@@ -580,7 +733,7 @@
 </div>
 </section>
 <section id="id30">
-<h3>6.自定义评价指标<a class="headerlink" href="#id30" title="Permalink to this headline"></a></h3>
+<h3>6.自定义评价指标<a class="headerlink" href="#id30" title="Permalink to this heading"></a></h3>
 <p>评价指标用于评估当前训练模型的性能。当模型编译后，评价指标应该作为
 <code class="docutils literal notranslate"><span class="pre">metrics</span></code>
 的参数来输入。默认的默认为准确率，允许选择其他的评价指标。支持的评价指标：acc（准确率），mae（平均绝对误差），mse（均方误差）。</p>
@@ -591,17 +744,17 @@
 </section>
 </section>
 <section id="id31">
-<h2>附录<a class="headerlink" href="#id31" title="Permalink to this headline"></a></h2>
+<h2>附录<a class="headerlink" href="#id31" title="Permalink to this heading"></a></h2>
 <section id="add">
-<h3>1. 使用add()搭建网络模型详细介绍<a class="headerlink" href="#add" title="Permalink to this headline"></a></h3>
+<h3>1. 使用add()搭建网络模型详细介绍<a class="headerlink" href="#add" title="Permalink to this heading"></a></h3>
 <p>使用BaseNN可以轻易地创建深度学习模型。不同类型的神经网络适用于不同类型的问题，比如CNN通常用于处理图像问题，RNN通常用于处理序列问题，全连接神经网络可以应用于各种问题。</p>
 <p>添加层的方法为<code class="docutils literal notranslate"><span class="pre">add(layer=None,</span> <span class="pre">activation=None,</span> <span class="pre">optimizer=None,</span> <span class="pre">**kw)</span></code>。</p>
 <section id="id32">
-<h4>参数说明:<a class="headerlink" href="#id32" title="Permalink to this headline"></a></h4>
+<h4>参数说明:<a class="headerlink" href="#id32" title="Permalink to this heading"></a></h4>
 <ul class="simple">
 <li><p>layer：层的类型，可选值包括conv2d, conv1d, maxpool, avgpool, linear, lstm,dropout，res_block，Res_Block，Res_Bottleneck等。</p></li>
-<li><p>activation：激活函数类型，可选值包括ReLU，Softmax。</p></li>
-<li><p>optimizer：为优化器类型，默认值为SGD，可选值包括SGD，Adam，Adagrad，ASGD。</p></li>
+<li><p>activation：激活函数类型，可选值包括ReLU，Softmax，tanh，sigmoid，leakyrelu。</p></li>
+<li><p>optimizer：为优化器类型，默认值为Adam，可选值包括SGD，Adam，Adagrad，ASGD。</p></li>
 <li><p>kw：关键字参数，包括与size相关的各种参数，常用的如size=(x,y)，x为输入维度，y为输出维度；
 kernel_size=(a,b)， (a,b)表示核的尺寸。</p></li>
 </ul>
@@ -618,12 +771,12 @@ kernel_size=(a,b)， (a,b)表示核的尺寸。</p></li>
 <li><p>dropout：随机失活层，需给定p（概率）。作用为随机关闭一些神经元，避免过拟合。其中参数<code class="docutils literal notranslate"><span class="pre">p</span></code>表示关闭神经元的比例，比如此处
 p=0.2
 表示有随机20%的神经元会被关闭。这种网络层是为了优化效果，避免过拟合而加入的，不是必需的，因此可以尝试修改p的值甚至删掉这个层观察比较效果差距。</p></li>
-<li><p>Batchnorm1d：数据维度处理层，对一维数据做归一化。需传入size，表示输入数据的维度（注意和上一层的输出以及下一层的输入一致即可）。这种网络层是也为了优化效果而加入的，不是必需的，没有这个层也可以正常训练，但由于去掉这个网络层后效果下降的会非常明显，所以不建议删掉这个层。</p></li>
+<li><p>batchnorm1d：数据维度处理层，对一维数据做归一化。需传入size，表示输入数据的维度（注意和上一层的输出以及下一层的输入一致即可）。这种网络层是也为了优化效果而加入的，不是必需的，没有这个层也可以正常训练，但由于去掉这个网络层后效果下降的会非常明显，所以不建议删掉这个层。</p></li>
 </ul>
 <p>下面为您具体展示如何搭建模型，以全连接神经网络结构、卷积神经网络结构、循环神经网络结构等为例为您讲解。</p>
 </section>
 <section id="id33">
-<h4>搭建全连接神经网络结构：<a class="headerlink" href="#id33" title="Permalink to this headline"></a></h4>
+<h4>搭建全连接神经网络结构：<a class="headerlink" href="#id33" title="Permalink to this heading"></a></h4>
 <p>以一个简单的全连接神经网络结构为例，注释标明了数据经过各层的尺寸变化。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 输入: [120,4]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> <span class="c1"># [120, 10]</span>
@@ -635,7 +788,7 @@ p=0.2
 <p>参考项目：<a class="reference external" href="https://openinnolab.org.cn/pjlab/project?id=641bc2359c0eb14f22fdbbb1&amp;backpath=/pjlab/projects/list#public">用BaseNN库搭建全连接神经网络训练IRIS鸢尾花分类模型</a></p>
 </section>
 <section id="id34">
-<h4>搭建卷积神经网络结构：<a class="headerlink" href="#id34" title="Permalink to this headline"></a></h4>
+<h4>搭建卷积神经网络结构：<a class="headerlink" href="#id34" title="Permalink to this heading"></a></h4>
 <p>以一个简单的卷积神经网络结构为例，注释标明了数据经过各层的尺寸变化。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 输入: [100,1,20,20]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;conv2d&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span><span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> <span class="c1"># [100, 3, 18, 18]</span>
@@ -664,7 +817,7 @@ p=0.2
 <p>以ResNet18为例，我们看一下ResNet18的网络结构。</p>
 <p><img alt="../_images/resnet18.jpg" src="../_images/resnet18.jpg" /></p>
 <p>搭建一个ResNet18的示例代码如下（输入的是包含32张224×224尺寸的手写数字图片）：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">(</span><span class="s1">&#39;cls&#39;</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_img_data</span><span class="p">(</span><span class="s1">&#39;mnist/training_set&#39;</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span><span class="n">num_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># (32,3,224,224)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Conv2D&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span><span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">padding</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1">#(32,64,112,112)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;BatchNorm2d&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span> <span class="c1"># (32,64,112,112)</span>
@@ -676,12 +829,12 @@ p=0.2
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Res_Block&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span> <span class="n">num_blocks</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># (32,512,7,7)</span>
 
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;AvgPool&#39;</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span> <span class="c1"># (32,512)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;Softmax&#39;</span><span class="p">)</span> <span class="c1"># (32,10)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;Softmax&#39;</span><span class="p">)</span> <span class="c1"># (32,10)</span>
 </pre></div>
 </div>
 <p>注：注释表示[图像数量, 通道数, 图像维度, 图像维度]，加入stride和padding设置后，尺寸计算公式是：N = （W-F+2P)/S+1，前文提到的N = W - F + 1 其实是P取默认值0，S取默认值1的情况。</p>
 <p>另外针对ResNet18其实还有一种搭建方式，那就是不设置num_blocks（默认为1）。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">(</span><span class="s1">&#39;cls&#39;</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_img_data</span><span class="p">(</span><span class="s1">&#39;mnist/training_set&#39;</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span><span class="n">num_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># (32,3,224,224)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Conv2D&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span><span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">padding</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1">#(32,64,112,112)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;BatchNorm2d&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span> <span class="c1"># (32,64,112,112)</span>
@@ -698,7 +851,7 @@ p=0.2
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Res_Block&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># (32,512,7,7)</span>
 
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;AvgPool&#39;</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span> <span class="c1"># (32,512)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;Softmax&#39;</span><span class="p">)</span> <span class="c1"># (32,10)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;Softmax&#39;</span><span class="p">)</span> <span class="c1"># (32,10)</span>
 </pre></div>
 </div>
 <p>设定num_blocks和多个块分别写的等价情况：</p>
@@ -712,7 +865,7 @@ p=0.2
 <p>掌握了ResNet18的搭建，那么其他ResNet系列网络的搭建只需参照上文的ResNet各网络结构图即可，如需搭建ResNet34就是把中间四层换成[3,4,6,3]，依次类推。</p>
 <p>参考项目：<a class="reference external" href="https://openinnolab.org.cn/pjlab/project?id=659ba9b3a731f07a4896af46&amp;backpath=/pjlab/projects/list#public">用BaseNN搭建ResNet18网络实现MNIST手写体数字分类</a></p>
 <p>如您仔细观察ResNet各网络结构图，会发现ResNet50的中间四层也是[3,4,6,3]，但是搭建代码会稍显不同，不难发现&gt;=50后中间层的残差模块不一样，使用bottleneck而非basicblock，使用BaseNN搭建也非常方便，此处为您提供搭建ResNet50的示例代码：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">(</span><span class="s1">&#39;cls&#39;</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_img_data</span><span class="p">(</span><span class="s1">&#39;mnist/training_set&#39;</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span><span class="n">num_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># (32,3,224,224)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Conv2D&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span><span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">padding</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> <span class="c1">#(32,64,112,112)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;BatchNorm2d&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span> <span class="c1"># (32,64,112,112)</span>
@@ -724,13 +877,13 @@ p=0.2
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Res_Bottleneck&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span> <span class="n">num_blocks</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># (32,512,7,7)</span>
 
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;AvgPool&#39;</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span> <span class="c1"># (32,2048)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">2048</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;Softmax&#39;</span><span class="p">)</span> <span class="c1"># (32,10)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">2048</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;Softmax&#39;</span><span class="p">)</span> <span class="c1"># (32,10)</span>
 </pre></div>
 </div>
 <p>注：bottleneck输出通道数是输入的四倍，因此注意size的区别。这个四倍是1 *1，3 *3，1 *1三次矩阵乘法导致的，有点难理解，而且bottleneck跑着也慢，建议文档里可以提有这个功能，但是示例项目不要用bottleneck就用basicblock。更多ResNet网络的介绍详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/ResNet.html">深度学习知识库</a>。</p>
 </section>
 <section id="id35">
-<h4>搭建循环神经网络结构：<a class="headerlink" href="#id35" title="Permalink to this headline"></a></h4>
+<h4>搭建循环神经网络结构：<a class="headerlink" href="#id35" title="Permalink to this heading"></a></h4>
 <p>循环神经网络是一类以序列数据为输入，在序列的演进方向进行递归且所有节点（循环单元）按链式连接的递归神经网络。RNN在自然语言处理问题中有得到应用，也被用于与自然语言处理有关的异常值检测问题，例如社交网络中虚假信息/账号的检测。RNN与CNN卷积神经网络相结合的系统可被应用于在计算机视觉问题，例如在字符识别中，有研究使用卷积神经网络对包含字符的图像进行特征提取，并将特征输入LSTM进行序列标注。</p>
 <p>以lstm为例进行详细说明：lstm（Long Short-Term Memory，长短时记忆）是一种特殊的RNN（Recurrent Neural Network，循环神经网络）模型，主要用于处理序列数据。lstm模型在自然语言处理、语音识别、时间序列预测等任务中被广泛应用，特别是在需要处理长序列数据时，lstm模型可以更好地捕捉序列中的长程依赖关系。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;lstm&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span><span class="mi">256</span><span class="p">),</span><span class="n">num_layers</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -740,33 +893,33 @@ p=0.2
 <p>num_layers：循环神经网络的层数。一般1~5，常用2、3层，太多层会大幅度影响训练速度和收敛难度。</p>
 <p>以上仅是基本的模型架构。在实际使用中，可能需要调整模型的层数、节点数、激活函数等参数以达到最佳效果。</p>
 <section id="id36">
-<h5>简便方式：<a class="headerlink" href="#id36" title="Permalink to this headline"></a></h5>
+<h5>简便方式：<a class="headerlink" href="#id36" title="Permalink to this heading"></a></h5>
 <p>使用BaseNN做时序动作分类任务时，我们特意准备了一种简化模型搭建方法。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;action_model&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">132</span><span class="p">,</span><span class="mi">256</span><span class="p">))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span>  <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">64</span><span class="p">))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span>  <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span>  <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;Softmax&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>此方法将搭建lstm、数据维度处理层等合并为一个简单的action_model层，当然了，也有坏处那就是是不太灵活，仅供参考。</p>
 </section>
 <section id="rnn">
-<h5>搭建RNN模型的一般方式：<a class="headerlink" href="#rnn" title="Permalink to this headline"></a></h5>
+<h5>搭建RNN模型的一般方式：<a class="headerlink" href="#rnn" title="Permalink to this heading"></a></h5>
 <p>以下方式与极简方式的代码的功能完全一致，展示了搭建RNN神经网络并进行模型训练的的一般流程：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;lstm&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">132</span><span class="p">,</span><span class="mi">128</span><span class="p">))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Dropout&#39;</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;dropout&#39;</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;lstm&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span><span class="mi">256</span><span class="p">))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Dropout&#39;</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;dropout&#39;</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;unsqueeze&#39;</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;lstm&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span><span class="mi">256</span><span class="p">))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;squeeze&#39;</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;BatchNorm1d&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;batchNorm1d&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span>
 
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span>  <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span>  <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">128</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span>  <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">128</span><span class="p">))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span>  <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span>  <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;Softmax&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span>  <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>在搭建RNN时，一般第一层需要设置为<code class="docutils literal notranslate"><span class="pre">lstm</span></code>层，需要注意的是<code class="docutils literal notranslate"><span class="pre">size=(132,128)</span></code>表示该层输入维度为132，输出维度为128，输入维度应与数据集维度相同。</p>
@@ -780,7 +933,7 @@ p=0.2
 </section>
 </section>
 <section id="id37">
-<h4>拓展——搭建更复杂的网络结构：<a class="headerlink" href="#id37" title="Permalink to this headline"></a></h4>
+<h4>拓展——搭建更复杂的网络结构：<a class="headerlink" href="#id37" title="Permalink to this heading"></a></h4>
 <p>如果对pytorch比较熟悉，想要自行添加比较复杂的模块，也可以自定义（BaseNN兼容pytorch搭的网络结构），例如，搭建一个与上述动作识别网络一致的自定义模块：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span> <span class="k">class</span> <span class="nc">LSTM_model</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span> 
    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">actions</span><span class="p">):</span>
@@ -791,10 +944,10 @@ p=0.2
       <span class="bp">self</span><span class="o">.</span><span class="n">dropout2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">lstm3</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="n">batch_first</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bidirectional</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">bn</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm1d</span><span class="p">(</span><span class="mi">256</span><span class="p">)</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">dense1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">dense2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">dense3</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">dense4</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">actions</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">dense1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">linear</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">dense2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">linear</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">dense3</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">linear</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">dense4</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">linear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">actions</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">softmax</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Softmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
@@ -821,7 +974,7 @@ p=0.2
 </section>
 </section>
 <section id="id38">
-<h3>2. 支持的损失函数<a class="headerlink" href="#id38" title="Permalink to this headline"></a></h3>
+<h3>2. 支持的损失函数<a class="headerlink" href="#id38" title="Permalink to this heading"></a></h3>
 <table class="docutils align-default">
     <thead>
         <tr class="row-odd">
@@ -958,7 +1111,7 @@ p=0.2
     </tbody>
 </table></section>
 <section id="rnncnn">
-<h3>3. RNN和CNN<a class="headerlink" href="#rnncnn" title="Permalink to this headline"></a></h3>
+<h3>3. RNN和CNN<a class="headerlink" href="#rnncnn" title="Permalink to this heading"></a></h3>
 <p>RNN（Recurrent Neural Network，循环神经网络）和CNN（Convolutional NeuralNetwork，卷积神经网络）是深度学习中两个非常重要的神经网络模型。</p>
 <p>RNN是一种用于处理序列数据的神经网络模型。它的特点是可以将前面的输入信息保存下来，并在后面的计算中进行利用，从而实现对序列数据的建模。RNN在自然语言处理、语音识别、股票预测等任务中广泛应用。RNN对具有序列特性的数据非常有效，它能挖掘数据中的时序信息以及语义信息。它有记忆功能，可以记住序列中前面的信息，并用这些信息影响后续的输出。这就像我们人类在阅读一段文字时，会记住前面的内容，以帮助理解后面的内容一样。</p>
 <p>一些常见的序列数据：</p>
@@ -974,7 +1127,7 @@ p=0.2
 <p>简单来说，RNN适用于序列数据处理，而CNN适用于图像和空间数据处理。但实际上，它们也可以互相组合使用，例如在图像描述生成任务中，可以使用CNN提取图像特征，然后使用RNN生成对应的文字描述。使用BaseNN搭建RNN和CNN模型的方式详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basenn/introduction.html#add">add()详细</a>介绍。</p>
 </section>
 <section id="id39">
-<h3>4. 深度学习常见的数据类型<a class="headerlink" href="#id39" title="Permalink to this headline"></a></h3>
+<h3>4. 深度学习常见的数据类型<a class="headerlink" href="#id39" title="Permalink to this heading"></a></h3>
 <p><strong>图像数据</strong>：图像数据是深度学习应用中最常见的数据类型之一。图像数据通常表示为多维数组，每个数组元素代表一个像素的值。深度学习应用中常使用的图像数据格式包括JPEG、PNG、BMP等。</p>
 <p><strong>文本数据</strong>：文本数据是指由字符组成的序列数据。在深度学习应用中，文本数据通常被表示为词向量或字符向量，用于输入到文本处理模型中。</p>
 <p><strong>特征数据</strong>：特征数据指的是表示对象或事物的特征的数据，通常用于机器学习和数据挖掘。特征数据可以是数值型、离散型或者是二进制的，用于描述对象或事物的各种属性和特征。特征数据可以是手动设计的、自动提取的或者是混合的。在机器学习中，特征数据通常作为模型的输入，用于预测目标变量或者分类。</p>

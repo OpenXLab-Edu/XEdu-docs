@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>图像分类模型MobileNet &mdash; OpenXLabEdu  documentation</title>
@@ -11,10 +11,11 @@
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../../../about.html" />
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -28,11 +29,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../../index.html" class="icon icon-home"> OpenXLabEdu
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -92,11 +97,11 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../../how_to_use.html">如何用XEdu借助AI解决真实问题</a> &raquo;</li>
-          <li><a href="../../dl_library.html">深度学习知识库</a> &raquo;</li>
-          <li><a href="../network_introduction.html">经典网络模型介绍</a> &raquo;</li>
-      <li>图像分类模型MobileNet</li>
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../how_to_use.html">如何用XEdu借助AI解决真实问题</a></li>
+          <li class="breadcrumb-item"><a href="../../dl_library.html">深度学习知识库</a></li>
+          <li class="breadcrumb-item"><a href="../network_introduction.html">经典网络模型介绍</a></li>
+      <li class="breadcrumb-item active">图像分类模型MobileNet</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../_sources/how_to_use/dl_library/net/mobilenet.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -107,15 +112,15 @@
            <div itemprop="articleBody">
              
   <section id="mobilenet">
-<h1>图像分类模型MobileNet<a class="headerlink" href="#mobilenet" title="Permalink to this headline"></a></h1>
+<h1>图像分类模型MobileNet<a class="headerlink" href="#mobilenet" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://arxiv.org/abs/1801.04381">MobileNetV2: Inverted Residuals and Linear Bottlenecks</a></p>
 <section id="id1">
-<h2>介绍<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<h2>介绍<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p>MobileNetV2是Google对MobileNetV1提出的改良版本。MobileNets系列的本身初衷是” <strong>for Mobile Vision Applications</strong>”。也就是提出一个轻量化的卷积网络模型，可以显著减少计算量和参数量，同时保持较高的准确率来提升效率，这样的模型是如此的的轻量化甚至可以在移动模型上进行训练。
 其主要创新性是采用了<strong>深度可分离卷积</strong>的思想，也就是把标准的卷积过程拆分成<strong>深度卷积</strong>和<strong>逐层卷积</strong>两个过程，大大减少了参数量。</p>
 </section>
 <section id="id2">
-<h2>特点：深度可分离卷积<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<h2>特点：深度可分离卷积<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
 <p>传统的标准卷积操作在M通道图像的基础上，准备得到N个特征图，使用的基础卷积核尺寸为$(W \cdot H)$。
 每一个特征图对应一个filter，需要用M个小卷积核进行卷积，即每一个filter为$(W \cdot H \cdot M)$个参数，而这样的操作重复N次，就得到了N个特征图，即总参数为$(W \cdot H \cdot M \cdot N)$。</p>
 <p><img alt="../../../_images/TraditionalConvolution.png" src="../../../_images/TraditionalConvolution.png" /></p>
@@ -135,7 +140,7 @@ $$
 <p><img alt="../../../_images/v1Compare.PNG" src="../../../_images/v1Compare.PNG" /></p>
 </section>
 <section id="linear-bottleneck">
-<h2>特点：Linear Bottleneck<a class="headerlink" href="#linear-bottleneck" title="Permalink to this headline"></a></h2>
+<h2>特点：Linear Bottleneck<a class="headerlink" href="#linear-bottleneck" title="Permalink to this heading"></a></h2>
 <p>MobileNetV1使用的激活函数为Relu，这个函数也是深度学习常用的激活函数之一。在MobileNetV2原始论文中，MobileNet团队指出，这个激活函数在较低维度无法保证信息的相对完整，会造成一定程度的丢失，下面这个例子有助于理解：
 有一条螺旋线$X$在二维空间内，我们使用某矩阵$T$将其映射到高维空间内，之后进行Relu操作，再使用某矩阵$T$的逆矩阵$T^{-1}$将其降维回二维。也就是说进行了一个：
 $$
@@ -147,40 +152,40 @@ $$
 于是作者在某些层舍弃了Relu，采用了线性的变化函数，进行了一次升维的操作，作者将其称之为”Linear Bottleneck”。此部分的细节我们不做深入阐述，这一步的作用就是给原网络升维，从而避免了很多卷积核的死亡。</p>
 </section>
 <section id="id3">
-<h2>网络结构<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<h2>网络结构<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
 <p>至此我们给出网络结构：</p>
 <p><img alt="../../../_images/v2Arch.PNG" src="../../../_images/v2Arch.PNG" /></p>
 <p>可以从网络结构中看到上面我们描述的深度卷积层（conv2d）和逐点卷积层（conv2d 1x1）。网络结构肉眼可见的简洁和清晰，而效果也不俗。</p>
 </section>
 <section id="id4">
-<h2>优点<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
+<h2>优点<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
 <p>总结一下优点，最大的优点就是创新性的可分离卷积带来的大量参数减少，从而导致网络的轻量化。此外，V2比起V1，还增加了Linear Bottleneck机制来避免卷积核的死亡，从而提高参数利用率。</p>
 </section>
 <section id="id5">
-<h2>使用领域<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
+<h2>使用领域<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>算力相对较低的移动平台的模型部署</p></li>
 <li><p>减少大型项目的运行时间同时保留较高的准确率</p></li>
 </ul>
 </section>
 <section id="id6">
-<h2>参考文献<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h2>
-<div class="highlight-bibtex notranslate"><div class="highlight"><pre><span></span><span class="nc">@misc</span><span class="p">{</span><span class="nl">howard2017mobilenets</span><span class="p">,</span><span class="w"></span>
+<h2>参考文献<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h2>
+<div class="highlight-bibtex notranslate"><div class="highlight"><pre><span></span><span class="nc">@misc</span><span class="p">{</span><span class="nl">howard2017mobilenets</span><span class="p">,</span>
 <span class="w">      </span><span class="na">title</span><span class="p">=</span><span class="s">{MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications}</span><span class="p">,</span><span class="w"> </span>
-<span class="w">      </span><span class="na">author</span><span class="p">=</span><span class="s">{Andrew G. Howard and Menglong Zhu and Bo Chen and Dmitry Kalenichenko and Weijun Wang and Tobias Weyand and Marco Andreetto and Hartwig Adam}</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="na">year</span><span class="p">=</span><span class="s">{2017}</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="na">eprint</span><span class="p">=</span><span class="s">{1704.04861}</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="na">archivePrefix</span><span class="p">=</span><span class="s">{arXiv}</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="na">primaryClass</span><span class="p">=</span><span class="s">{cs.CV}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="nc">@misc</span><span class="p">{</span><span class="nl">sandler2019mobilenetv2</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="na">author</span><span class="p">=</span><span class="s">{Andrew G. Howard and Menglong Zhu and Bo Chen and Dmitry Kalenichenko and Weijun Wang and Tobias Weyand and Marco Andreetto and Hartwig Adam}</span><span class="p">,</span>
+<span class="w">      </span><span class="na">year</span><span class="p">=</span><span class="s">{2017}</span><span class="p">,</span>
+<span class="w">      </span><span class="na">eprint</span><span class="p">=</span><span class="s">{1704.04861}</span><span class="p">,</span>
+<span class="w">      </span><span class="na">archivePrefix</span><span class="p">=</span><span class="s">{arXiv}</span><span class="p">,</span>
+<span class="w">      </span><span class="na">primaryClass</span><span class="p">=</span><span class="s">{cs.CV}</span>
+<span class="p">}</span>
+<span class="nc">@misc</span><span class="p">{</span><span class="nl">sandler2019mobilenetv2</span><span class="p">,</span>
 <span class="w">      </span><span class="na">title</span><span class="p">=</span><span class="s">{MobileNetV2: Inverted Residuals and Linear Bottlenecks}</span><span class="p">,</span><span class="w"> </span>
-<span class="w">      </span><span class="na">author</span><span class="p">=</span><span class="s">{Mark Sandler and Andrew Howard and Menglong Zhu and Andrey Zhmoginov and Liang-Chieh Chen}</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="na">year</span><span class="p">=</span><span class="s">{2019}</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="na">eprint</span><span class="p">=</span><span class="s">{1801.04381}</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="na">archivePrefix</span><span class="p">=</span><span class="s">{arXiv}</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="na">primaryClass</span><span class="p">=</span><span class="s">{cs.CV}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="na">author</span><span class="p">=</span><span class="s">{Mark Sandler and Andrew Howard and Menglong Zhu and Andrey Zhmoginov and Liang-Chieh Chen}</span><span class="p">,</span>
+<span class="w">      </span><span class="na">year</span><span class="p">=</span><span class="s">{2019}</span><span class="p">,</span>
+<span class="w">      </span><span class="na">eprint</span><span class="p">=</span><span class="s">{1801.04381}</span><span class="p">,</span>
+<span class="w">      </span><span class="na">archivePrefix</span><span class="p">=</span><span class="s">{arXiv}</span><span class="p">,</span>
+<span class="w">      </span><span class="na">primaryClass</span><span class="p">=</span><span class="s">{cs.CV}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>

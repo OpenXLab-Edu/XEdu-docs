@@ -9,7 +9,7 @@
 
    baseml/introduction.md
 
-   baseml/visualization.md
+   baseml/tool.md
 
    baseml/projects.md
 

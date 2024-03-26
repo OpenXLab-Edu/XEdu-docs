@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>目标检测模型Yolov3 &mdash; OpenXLabEdu  documentation</title>
@@ -11,10 +11,11 @@
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../../../about.html" />
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -27,11 +28,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../../index.html" class="icon icon-home"> OpenXLabEdu
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -91,11 +96,11 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../../how_to_use.html">如何用XEdu借助AI解决真实问题</a> &raquo;</li>
-          <li><a href="../../dl_library.html">深度学习知识库</a> &raquo;</li>
-          <li><a href="../network_introduction.html">经典网络模型介绍</a> &raquo;</li>
-      <li>目标检测模型Yolov3</li>
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../how_to_use.html">如何用XEdu借助AI解决真实问题</a></li>
+          <li class="breadcrumb-item"><a href="../../dl_library.html">深度学习知识库</a></li>
+          <li class="breadcrumb-item"><a href="../network_introduction.html">经典网络模型介绍</a></li>
+      <li class="breadcrumb-item active">目标检测模型Yolov3</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../_sources/how_to_use/dl_library/net/Yolov3.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -106,19 +111,19 @@
            <div itemprop="articleBody">
              
   <section id="yolov3">
-<h1>目标检测模型Yolov3<a class="headerlink" href="#yolov3" title="Permalink to this headline"></a></h1>
+<h1>目标检测模型Yolov3<a class="headerlink" href="#yolov3" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://arxiv.org/abs/1804.02767">Yolov3</a></p>
 <section id="id1">
-<h2>介绍<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<h2>介绍<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p>Yolo方法是目标检测的常用算法，是一种典型的one-stage检测方法。比起two-stage的方法，one-stage的Yolo方法少了一次卷积获得proposal的过程，直接从图像中用一个卷积神经网络得出预测结果。特点是快而且精确度较高，略低于two-stage方法。Yolo的全称是you only look once，意为只检测一次，与其只有一个卷积网络吻合。是一种兼顾速度与准确率的方法。</p>
 </section>
 <section id="end-to-end">
-<h2>特点：end-to-end<a class="headerlink" href="#end-to-end" title="Permalink to this headline"></a></h2>
+<h2>特点：end-to-end<a class="headerlink" href="#end-to-end" title="Permalink to this heading"></a></h2>
 <p>end-to-end的意思是，输入是最原始的数据，输出是想要得到的结果，不需要额外对数据集进行处理，也不需要对结果再进行加工。特征的提取，训练都在算法内部。
 这使得yolo网络目标明确，方便使用。</p>
 </section>
 <section id="id2">
-<h2>特点：回归问题<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<h2>特点：回归问题<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
 <p>Yolo中的检测是一个回归问题，把受检测图片划分为$S \cdot S$个格子，然后对于每一个格子，预测五个值，(x,y,w,h,confidence)。</p>
 <p><img alt="../../../_images/grids.PNG" src="../../../_images/grids.PNG" /></p>
 <ul class="simple">
@@ -134,7 +139,7 @@
 <p>其网络结构有53个卷积层。</p>
 </section>
 <section id="id3">
-<h2>优点<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<h2>优点<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>只进行一次检测，速度较快</p></li>
 <li><p>输入输出为原图片和检测结果，便于使用</p></li>
@@ -142,24 +147,24 @@
 </ul>
 </section>
 <section id="id4">
-<h2>适用领域<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
+<h2>适用领域<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
 <p>稍微大型的目标检测问题</p>
 </section>
 <section id="id5">
-<h2>参考文献<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
-<div class="highlight-bibtex notranslate"><div class="highlight"><pre><span></span><span class="nc">@inproceedings</span><span class="p">{</span><span class="nl">redmon2016you</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="na">title</span><span class="p">=</span><span class="s">{You only look once: Unified, real-time object detection}</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="na">author</span><span class="p">=</span><span class="s">{Redmon, Joseph and Divvala, Santosh and Girshick, Ross and Farhadi, Ali}</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="na">booktitle</span><span class="p">=</span><span class="s">{Proceedings of the IEEE conference on computer vision and pattern recognition}</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="na">pages</span><span class="p">=</span><span class="s">{779--788}</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="na">year</span><span class="p">=</span><span class="s">{2016}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="nc">@article</span><span class="p">{</span><span class="nl">redmon2018yolov3</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="na">title</span><span class="p">=</span><span class="s">{Yolov3: An incremental improvement}</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="na">author</span><span class="p">=</span><span class="s">{Redmon, Joseph and Farhadi, Ali}</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="na">journal</span><span class="p">=</span><span class="s">{arXiv preprint arXiv:1804.02767}</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="na">year</span><span class="p">=</span><span class="s">{2018}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<h2>参考文献<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<div class="highlight-bibtex notranslate"><div class="highlight"><pre><span></span><span class="nc">@inproceedings</span><span class="p">{</span><span class="nl">redmon2016you</span><span class="p">,</span>
+<span class="w">  </span><span class="na">title</span><span class="p">=</span><span class="s">{You only look once: Unified, real-time object detection}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">author</span><span class="p">=</span><span class="s">{Redmon, Joseph and Divvala, Santosh and Girshick, Ross and Farhadi, Ali}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">booktitle</span><span class="p">=</span><span class="s">{Proceedings of the IEEE conference on computer vision and pattern recognition}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">pages</span><span class="p">=</span><span class="s">{779--788}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">year</span><span class="p">=</span><span class="s">{2016}</span>
+<span class="p">}</span>
+<span class="nc">@article</span><span class="p">{</span><span class="nl">redmon2018yolov3</span><span class="p">,</span>
+<span class="w">  </span><span class="na">title</span><span class="p">=</span><span class="s">{Yolov3: An incremental improvement}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">author</span><span class="p">=</span><span class="s">{Redmon, Joseph and Farhadi, Ali}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">journal</span><span class="p">=</span><span class="s">{arXiv preprint arXiv:1804.02767}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">year</span><span class="p">=</span><span class="s">{2018}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>

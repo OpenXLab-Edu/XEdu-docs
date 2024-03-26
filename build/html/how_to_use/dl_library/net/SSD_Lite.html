@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>目标检测模型SSD &mdash; OpenXLabEdu  documentation</title>
@@ -11,10 +11,11 @@
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../../../about.html" />
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -28,11 +29,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../../index.html" class="icon icon-home"> OpenXLabEdu
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -92,11 +97,11 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../../how_to_use.html">如何用XEdu借助AI解决真实问题</a> &raquo;</li>
-          <li><a href="../../dl_library.html">深度学习知识库</a> &raquo;</li>
-          <li><a href="../network_introduction.html">经典网络模型介绍</a> &raquo;</li>
-      <li>目标检测模型SSD</li>
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../how_to_use.html">如何用XEdu借助AI解决真实问题</a></li>
+          <li class="breadcrumb-item"><a href="../../dl_library.html">深度学习知识库</a></li>
+          <li class="breadcrumb-item"><a href="../network_introduction.html">经典网络模型介绍</a></li>
+      <li class="breadcrumb-item active">目标检测模型SSD</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../_sources/how_to_use/dl_library/net/SSD_Lite.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -107,14 +112,14 @@
            <div itemprop="articleBody">
              
   <section id="ssd">
-<h1>目标检测模型SSD<a class="headerlink" href="#ssd" title="Permalink to this headline"></a></h1>
+<h1>目标检测模型SSD<a class="headerlink" href="#ssd" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://arxiv.org/pdf/1512.02325.pdf">SSD: Single Shot MultiBox Detector</a></p>
 <section id="id1">
-<h2>介绍<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<h2>介绍<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p>SSD是ECCV 2016上提出的一种目标检测算法，截至目前是主要的检测框架之一，相比Faster RCNN有明显的速度优势，相比YOLO又有明显的mAP优势。</p>
 </section>
 <section id="end-to-end">
-<h2>特点：end-to-end<a class="headerlink" href="#end-to-end" title="Permalink to this headline"></a></h2>
+<h2>特点：end-to-end<a class="headerlink" href="#end-to-end" title="Permalink to this heading"></a></h2>
 <p>目标检测主流算法分成两个类型：</p>
 <p>（1）two-stage方法：RCNN系列</p>
 <p>通过算法产生候选框，然后再对这些候选框进行分类和回归</p>
@@ -124,7 +129,7 @@
 <p><img alt="../../../_images/ssd0.png" src="../../../_images/ssd0.png" /></p>
 </section>
 <section id="id2">
-<h2>优点<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<h2>优点<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>从YOLO中继承了将detection转化为regression的思路，一次完成目标定位与分类</p></li>
 <li><p>基于Faster RCNN中的Anchor，提出了相似的prior box</p></li>
@@ -133,7 +138,7 @@
 </ul>
 </section>
 <section id="id3">
-<h2>设计理念<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<h2>设计理念<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>采用多尺度特征图用于检测
 CNN网络一般前面的特征图比较大，后面会逐渐采用stride=2的卷积或者pool来降低特征图大小，这正如图3所示，一个比较大的特征图和一个比较小的特征图，它们都用来做检测。这样做的好处是比较大的特征图来用来检测相对较小的目标，而小的特征图负责检测大目标。</p></li>
@@ -145,30 +150,30 @@ SSD借鉴faster rcnn中ancho理念，每个单元设置尺度或者长宽比不�
 </ul>
 </section>
 <section id="id4">
-<h2>模型结构<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
+<h2>模型结构<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
 <p><img alt="../../../_images/ssd1.png" src="../../../_images/ssd1.png" /></p>
 <p>VGG-Base作为基础框架用来提取图像的feature，Extra-Layers对VGG的feature做进一步处理，增加模型对图像的感受野，使得extra-layers得到的特征图承载更多抽象信息。待预测的特征图由六种特征图组成，6中特征图最终通过pred-layer得到预测框的坐标，置信度，类别信息。</p>
 </section>
 <section id="id5">
-<h2>结论<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
+<h2>结论<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
 <section id="id6">
-<h3>优点：<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<h3>优点：<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
 <p>SSD算法的优点应该很明显：运行速度可以和YOLO媲美，检测精度可以和Faster RCNN媲美。</p>
 </section>
 <section id="id7">
-<h3>缺点：<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<h3>缺点：<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
 <p>需要人工设置prior box的min_size，max_size和aspect_ratio值。网络中prior box的基础大小和形状不能直接通过学习获得，而是需要手工设置。而网络中每一层feature使用的prior box大小和形状恰好都不一样，导致调试过程非常依赖经验。
 虽然使用了pyramdial feature hierarchy的思路，但是对于小目标的recall依然一般，这是由于SSD使用conv4_3低级feature去检测小目标，而低级特征卷积层数少，存在特征提取不充分的问题。</p>
 </section>
 </section>
 <section id="id8">
-<h2>参考文献<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h2>
-<div class="highlight-bibtex notranslate"><div class="highlight"><pre><span></span><span class="nc">@article</span><span class="p">{</span><span class="nl">Liu_2016</span><span class="p">,</span><span class="w"></span>
-<span class="w">   </span><span class="na">title</span><span class="p">=</span><span class="s">{SSD: Single Shot MultiBox Detector}</span><span class="p">,</span><span class="w"></span>
-<span class="w">   </span><span class="na">journal</span><span class="p">=</span><span class="s">{ECCV}</span><span class="p">,</span><span class="w"></span>
-<span class="w">   </span><span class="na">author</span><span class="p">=</span><span class="s">{Liu, Wei and Anguelov, Dragomir and Erhan, Dumitru and Szegedy, Christian and Reed, Scott and Fu, Cheng-Yang and Berg, Alexander C.}</span><span class="p">,</span><span class="w"></span>
-<span class="w">   </span><span class="na">year</span><span class="p">=</span><span class="s">{2016}</span><span class="p">,</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<h2>参考文献<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h2>
+<div class="highlight-bibtex notranslate"><div class="highlight"><pre><span></span><span class="nc">@article</span><span class="p">{</span><span class="nl">Liu_2016</span><span class="p">,</span>
+<span class="w">   </span><span class="na">title</span><span class="p">=</span><span class="s">{SSD: Single Shot MultiBox Detector}</span><span class="p">,</span>
+<span class="w">   </span><span class="na">journal</span><span class="p">=</span><span class="s">{ECCV}</span><span class="p">,</span>
+<span class="w">   </span><span class="na">author</span><span class="p">=</span><span class="s">{Liu, Wei and Anguelov, Dragomir and Erhan, Dumitru and Szegedy, Christian and Reed, Scott and Fu, Cheng-Yang and Berg, Alexander C.}</span><span class="p">,</span>
+<span class="w">   </span><span class="na">year</span><span class="p">=</span><span class="s">{2016}</span><span class="p">,</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>

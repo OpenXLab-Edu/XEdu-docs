@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>快速体验BaseML &mdash; OpenXLabEdu  documentation</title>
@@ -11,10 +11,11 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -28,11 +29,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -54,12 +59,12 @@
 <li class="toctree-l4"><a class="reference internal" href="#id6">1. 实例化模型</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id7">2. 载入数据</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id8">3. 模型训练</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">4. 模型评估</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">5. 模型保存</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">推理</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id10">使用现有模型直接推理</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id11">输出推理结果</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id12">模型的保存与加载</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">推理与应用</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id12">使用现有模型直接推理</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#id13">快速体验</a></li>
@@ -67,7 +72,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="installation.html">BaseML安装</a></li>
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">BaseML功能详解</a></li>
-<li class="toctree-l2"><a class="reference internal" href="visualization.html">BaseML杀手锏：自带可视化部分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tool.html">BaseML辅助工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="projects.html">BaseML项目案例集</a></li>
 </ul>
 </li>
@@ -90,9 +95,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../baseml.html">传统机器学习库BaseML</a> &raquo;</li>
-      <li>快速体验BaseML</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../baseml.html">传统机器学习库BaseML</a></li>
+      <li class="breadcrumb-item active">快速体验BaseML</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/baseml/quick_start.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -103,90 +108,108 @@
            <div itemprop="articleBody">
              
   <section id="baseml">
-<h1>快速体验BaseML<a class="headerlink" href="#baseml" title="Permalink to this headline"></a></h1>
+<h1>快速体验BaseML<a class="headerlink" href="#baseml" title="Permalink to this heading"></a></h1>
 <section id="id1">
-<h2>简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<h2>简介<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p>BaseML库提供了众多机器学习训练方法，可以快速训练和应用模型。</p>
 </section>
 <section id="id2">
-<h2>安装<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<h2>安装<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">baseml</span></code>或<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">BaseML</span></code></p>
+<p>库文件源代码可以从<a class="reference external" href="https://pypi.org/project/BaseML/#files">PyPi</a>下载，选择tar.gz格式下载，可用常见解压软件查看源码。</p>
 </section>
 <section id="id3">
-<h2>体验<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<h2>体验<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
 <p>可以在命令行输入BaseML查看安装的路径，在安装路径内，可以查看提供的更多demo案例。</p>
-<p>下面我们以用“决策树方法配隐形眼镜”案例为示例，体验用BaseML做第一个机器学习项目！体验更多案例请看附录。</p>
+<p>下面我们以用“用KNN对鸢尾花Iris数据集进行分类”案例为示例，体验用BaseML做第一个机器学习项目！</p>
+<p>认识鸢尾花数据集：</p>
+<p>鸢尾属植物有三个品种，分别是山鸢尾(setosa)、变色鸢尾(versicolor)、维吉尼亚鸢尾(virginica)。这些种类之间差别不大，但是不同种类在花瓣和花萼的形状上有所区别。鸢尾花数据集（iris.csv）中包括150条不同鸢尾花的花萼长度、花萼宽度、花瓣长度、花瓣宽度数据。下面使用的是已经完成拆分的数据，iris_training.csv训练数据集，120条样本数据；iris_test.csv测试数据集，30条数据，可借助BaseDT库快速完成<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basedt/introduction.html#id11">数据集拆分</a>。</p>
 </section>
 <section id="id4">
-<h2>训练<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
+<h2>训练<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
 <section id="id5">
-<h3>0. 引入包<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<h3>0. 引入包<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库，从BaseML导入分类模块</span>
 <span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Classification</span> <span class="k">as</span> <span class="bp">cls</span>
 </pre></div>
 </div>
 </section>
 <section id="id6">
-<h3>1. 实例化模型<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择CART（Classification and Regression Trees）</span>
-<span class="n">model</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;CART&#39;</span><span class="p">)</span>
+<h3>1. 实例化模型<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型</span>
+<span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;KNN&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="id7">
-<h3>2. 载入数据<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 载入数据集，并说明特征列和标签列</span>
-<span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;./lenses.csv&#39;</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="n">x_column</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span><span class="n">y_column</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+<h3>2. 载入数据<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 指定数据集</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_tab_data</span><span class="p">(</span><span class="s1">&#39;datasets/iris_training.csv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">x_column</span></code>表示特征列，<code class="docutils literal notranslate"><span class="pre">y_column</span></code>表示标签列。</p>
 </section>
 <section id="id8">
-<h3>3. 模型训练<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
+<h3>3. 模型训练<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型训练</span>
 <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
-</section>
 <section id="id9">
-<h2>推理<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h2>
-<section id="id10">
-<h3>使用现有模型直接推理<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
-<p>对一组数据直接推理。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;CART&#39;</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;mymodel.pkl&#39;</span><span class="p">)</span>
-<span class="n">y</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">]])</span>
-</pre></div>
-</div>
-<p>输出结果数据类型为<code class="docutils literal notranslate"><span class="pre">array</span></code>的一维数组。</p>
-</section>
-<section id="id11">
-<h3>输出推理结果<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h3>
-<p>定义<code class="docutils literal notranslate"><span class="pre">label</span></code>存储标签名称，根据<code class="docutils literal notranslate"><span class="pre">label</span></code>和推理结果输出真实标签。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">label</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;不适合佩戴&#39;</span><span class="p">,</span> <span class="s1">&#39;软材质&#39;</span><span class="p">,</span> <span class="s1">&#39;硬材质&#39;</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">label</span><span class="p">[</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="c1"># 这里-1是因为python中的数组下标从0开始，而推理结果从1开始，因此需要-1才能输出对应的标签</span>
-</pre></div>
-</div>
-</section>
-<section id="id12">
-<h3>模型的保存与加载<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 保存模型</span>
-<span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;mymodel.pkl&#39;</span><span class="p">)</span>
+<h3>4. 模型评估<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型评估</span>
+<span class="n">model</span><span class="o">.</span><span class="n">valid</span><span class="p">(</span><span class="s1">&#39;datasets/iris_test.csv&#39;</span><span class="p">,</span><span class="n">metrics</span><span class="o">=</span><span class="s1">&#39;acc&#39;</span><span class="p">)</span>
 
-<span class="c1"># 加载模型</span>
-<span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;mymodel.pkl&#39;</span><span class="p">)</span>
+<span class="c1"># 评价指标可视化</span>
+<span class="n">model</span><span class="o">.</span><span class="n">metricplot</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="id10">
+<h3>5. 模型保存<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型保存</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;checkpoints/baseml_model/knn_iris.pkl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>参数为模型保存的路径，<code class="docutils literal notranslate"><span class="pre">.pkl</span></code>文件格式可以理解为将python中的数组、列表等持久化地存储在硬盘上的一种方式。</p>
 </section>
 </section>
+<section id="id11">
+<h2>推理与应用<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h2>
+<section id="id12">
+<h3>使用现有模型直接推理<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h3>
+<p>对一组数据直接推理。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;KNN&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;checkpoints/baseml_model/knn_iris.pkl&#39;</span><span class="p">)</span>
+<span class="n">y</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">([[</span><span class="mf">5.9</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.2</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p>输出结果数据类型为<code class="docutils literal notranslate"><span class="pre">array</span></code>的一维数组。</p>
+<p>可以在此基础上完成一个建议系统，输入鸢尾花的花萼长度、花萼宽度、花瓣长度、花瓣宽度，输出该鸢尾花所属的类别。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Classification</span> <span class="k">as</span> <span class="bp">cls</span>
+<span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;KNN&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;checkpoints/baseml_model/knn_iris.pkl&#39;</span><span class="p">)</span>
+
+<span class="n">sepal_length</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;花萼长度为(cm): &#39;</span><span class="p">))</span>
+<span class="n">sepal_width</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;花萼宽度为(cm): &#39;</span><span class="p">))</span>
+<span class="n">petal_length</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;花瓣长度为(cm): &#39;</span><span class="p">))</span>
+<span class="n">petal_width</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;花瓣宽度为(cm): &#39;</span><span class="p">))</span>
+
+<span class="c1"># 构建测试数据</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="n">sepal_length</span><span class="p">,</span><span class="n">sepal_width</span><span class="p">,</span><span class="n">petal_length</span><span class="p">,</span><span class="n">petal_width</span><span class="p">]]</span>
+<span class="c1"># 用上面训练好的模型来做推理</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;该鸢尾花属于第</span><span class="si">{0}</span><span class="s2">类&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+</section>
 <section id="id13">
-<h2>快速体验<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h2>
+<h2>快速体验<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h2>
 <p>体验BaseML的最快速方式是通过OpenInnoLab平台。</p>
 <p>OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台，满足青少年的AI学习和创作需求，支持在线编程。在“项目”中查看更多，查找“BaseML”即可找到所有BaseML相关的体验项目。</p>
 <p>AI项目工坊：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pjlab/ai/projects">https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/pjlab/ai/projects</a></p>
-<p>（用Chorme浏览器打开效果最佳）</p>
+<p>（用Chrome浏览器打开效果最佳）</p>
 <p>更多案例详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/baseml/projects.html">下文</a>。</p>
 </section>
 </section>

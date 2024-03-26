@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>最后一步：模型转换 &mdash; OpenXLabEdu  documentation</title>
@@ -11,10 +11,11 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -28,11 +29,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -86,9 +91,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../mmedu.html">计算机视觉库MMEdu</a> &raquo;</li>
-      <li>最后一步：模型转换</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../mmedu.html">计算机视觉库MMEdu</a></li>
+      <li class="breadcrumb-item active">最后一步：模型转换</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/mmedu/mmedumodel_convert.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -99,11 +104,11 @@
            <div itemprop="articleBody">
              
   <section id="id1">
-<h1>最后一步：模型转换<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h1>
+<h1>最后一步：模型转换<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
 <p>训练好了模型该如何快速应用呢？在别的设备安装MMEdu似乎很麻烦。得益于<code class="docutils literal notranslate"><span class="pre">OpenMMLab</span></code>系列工具的不断进步与发展。MMEdu通过集成OpenMMLab开源的<code class="docutils literal notranslate"><span class="pre">模型部署工具箱MMDeploy</span></code>和<code class="docutils literal notranslate"><span class="pre">模型压缩工具包MMRazor</span></code>，打通了从算法模型到应用程序这 “最后一公里”！</p>
 <p>我们也希望通过本系列教程，带领大家学会如何把自己使用<code class="docutils literal notranslate"><span class="pre">MMEdu</span></code>训练的计算机视觉任务<code class="docutils literal notranslate"><span class="pre">SOTA模型</span></code>部署到<code class="docutils literal notranslate"><span class="pre">ONNXRuntime</span></code>、<code class="docutils literal notranslate"><span class="pre">NCNN</span></code>等各个推理引擎上。</p>
 <section id="mmedu">
-<h2>借助MMEdu完成模型转换<a class="headerlink" href="#mmedu" title="Permalink to this headline"></a></h2>
+<h2>借助MMEdu完成模型转换<a class="headerlink" href="#mmedu" title="Permalink to this heading"></a></h2>
 <p>MMEdu内置了一个<code class="docutils literal notranslate"><span class="pre">convert</span></code>函数，来实现了一键式模型转换，转换前先了解一下转换要做的事情吧。</p>
 <ul>
 <li><p>转换准备：</p>
@@ -140,7 +145,7 @@
 </a></p>
 </section>
 <section id="id2">
-<h2>全流程体验<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<h2>全流程体验<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
 <p>现在，让我们从“<a href="https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&sc=635638d69ed68060c638f979#public">从零开始训练猫狗识别模型并完成模型转换</a>”项目入手，见识一下使用MMEdu工具完成从模型训练到模型部署的基本流程吧！</p>
 <p><strong>1.准备数据集</strong></p>
 <p>思考自己想要解决的分类问题后，首先要收集数据并整理好数据集。例如想要解决猫狗识别问题，则需准备猫狗数据集。</p>
@@ -336,11 +341,11 @@
 <p><img alt="../_images/Web6.png" src="../_images/Web6.png" /></p>
 </section>
 <section id="what">
-<h2>What：什么现象与成果<a class="headerlink" href="#what" title="Permalink to this headline"></a></h2>
+<h2>What：什么现象与成果<a class="headerlink" href="#what" title="Permalink to this heading"></a></h2>
 <section id="id3">
-<h3>精度测试结果<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<h3>精度测试结果<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
 <section id="id4">
-<h4>软硬件环境<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h4>
+<h4>软硬件环境<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h4>
 <ul class="simple">
 <li><p>操作系统：Ubuntu 16.04</p></li>
 <li><p>系统位数：64</p></li>
@@ -351,7 +356,7 @@
 </ul>
 </section>
 <section id="id5">
-<h4>配置<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h4>
+<h4>配置<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h4>
 <ul class="simple">
 <li><p>静态图导出</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">batch</span></code>大小为1</p></li>
@@ -359,7 +364,7 @@
 </ul>
 </section>
 <section id="id6">
-<h4>精度测试结果汇总<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h4>
+<h4>精度测试结果汇总<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h4>
 <ul class="simple">
 <li><p>图像分类</p></li>
 </ul>
@@ -508,13 +513,13 @@
 </section>
 </section>
 <section id="id7">
-<h3>边、端设备测试结果<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<h3>边、端设备测试结果<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
 <section id="pc">
-<h4>PC机测试<a class="headerlink" href="#pc" title="Permalink to this headline"></a></h4>
+<h4>PC机测试<a class="headerlink" href="#pc" title="Permalink to this heading"></a></h4>
 <p>用于模型训练的机器，性能较优，常见的操作系统有Windows和Linux</p>
 </section>
 <section id="id8">
-<h4>软硬件环境<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h4>
+<h4>软硬件环境<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h4>
 <ul class="simple">
 <li><p>操作系统：Ubuntu 16.04</p></li>
 <li><p>系统位数：64</p></li>
@@ -524,7 +529,7 @@
 <li><p>数据处理工具：BaseDT == 0.0.1</p></li>
 </ul>
 <section id="id9">
-<h5>配置<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h5>
+<h5>配置<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h5>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">静态图</span></code>导出</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">batch</span></code>大小为1</p></li>
@@ -675,10 +680,10 @@
 </section>
 </section>
 <section id="id10">
-<h4>行空板测试<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h4>
+<h4>行空板测试<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h4>
 <p>行空板, 青少年Python教学用开源硬件，解决Python教学难和使用门槛高的问题，旨在推动Python教学在青少年中的普及。官网：<a href="https://www.dfrobot.com.cn/">https://www.dfrobot.com.cn/</a></p>
 <section id="id11">
-<h5>软硬件环境<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h5>
+<h5>软硬件环境<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h5>
 <ul class="simple">
 <li><p>操作系统：Linux</p></li>
 <li><p>系统位数：64</p></li>
@@ -690,7 +695,7 @@
 </ul>
 </section>
 <section id="id12">
-<h5>配置<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h5>
+<h5>配置<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h5>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">静态图</span></code>导出</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">batch</span></code>大小为1</p></li>
@@ -841,10 +846,10 @@
 </section>
 </section>
 <section id="b">
-<h4>树莓派（4b）测试<a class="headerlink" href="#b" title="Permalink to this headline"></a></h4>
+<h4>树莓派（4b）测试<a class="headerlink" href="#b" title="Permalink to this heading"></a></h4>
 <p>Raspberry Pi。中文名为“树莓派”,简写为RPi，或者RasPi（RPi）是为学生计算机编程教育而设计，卡片式电脑，其系统基于Linux。</p>
 <section id="id13">
-<h5>软硬件环境<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h5>
+<h5>软硬件环境<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h5>
 <ul class="simple">
 <li><p>操作系统：Linux</p></li>
 <li><p>系统位数：32</p></li>
@@ -856,7 +861,7 @@
 </ul>
 </section>
 <section id="id14">
-<h5>配置<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h5>
+<h5>配置<a class="headerlink" href="#id14" title="Permalink to this heading"></a></h5>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">静态图</span></code>导出</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">batch</span></code>大小为1</p></li>
@@ -1010,7 +1015,7 @@
 </section>
 </section>
 <section id="id15">
-<h2>多模态交互<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h2>
+<h2>多模态交互<a class="headerlink" href="#id15" title="Permalink to this heading"></a></h2>
 <p>回顾用AI解决真实问题的流程图，我们已经介绍了收集数据、训练模型、模型推理和应用部署。结合项目设计，我们还会去思考如何通过摄像头获得图像，如何控制灯光发亮，如何操纵舵机，如何设计显示界面UI等需要使用输入设备和输出设备等来实现的交互设计，即对<code class="docutils literal notranslate"><span class="pre">多模态交互</span></code>的考量。</p>
 <p><img alt="../_images/SolveRealProblemsWithAI.JPG" src="../_images/SolveRealProblemsWithAI.JPG" /></p>
 <p>更多传感器、执行器使用教程参见：<a href="https://wiki.dfrobot.com.cn/">DFRobot</a></p>

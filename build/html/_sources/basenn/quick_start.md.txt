@@ -10,6 +10,8 @@ BaseNN可以方便地逐层搭建神经网络，深入探究神经网络的原�
 
 更新库文件：`pip install --upgrade BaseNN`
 
+库文件源代码可以从[PyPi](https://pypi.org/project/BaseNN/#files)下载，选择tar.gz格式下载，可用常见解压软件查看源码。
+
 
 ## 体验
 
@@ -34,7 +36,7 @@ import numpy as np
 ### 第1步 声明模型
 
 ```python
-model = nn()
+model = nn('cls')
 ```
 
 ### 第2步 载入数据
@@ -82,7 +84,7 @@ model.train(lr=0.01, epochs=1000, checkpoint=checkpoint)
 
 ```python
 # 用测试数据查看模型效果
-model2 = nn()
+model2 = nn('cls')
 test_path = 'data/iris_test.csv'
 test_x = np.loadtxt(test_path, dtype=float, delimiter=',',skiprows=1,usecols=range(0,4)) 
 res = model2.inference(test_x, checkpoint="checkpoints/iris_ckpt/basenn.pth")
@@ -105,7 +107,7 @@ print("分类正确率为：",cal_accuracy(test_y, res))
 
 ```python
 # 用某组测试数据查看模型效果
-data = np.array([test_x[0]])
+data = [test_x[0]]
 checkpoint = 'checkpoints/iris_ckpt/basenn.pth'
 res = model.inference(data=data, checkpoint=checkpoint)
 model.print_result(res) # 输出字典格式结果
@@ -157,6 +159,8 @@ model = nn('reg')
 model.load_tab_data('house_price_data_norm_train.csv',batch_size=1024) # 载入数据
 ```
 
+注：载入的数据集是做归一化之后并完成数据拆分的训练集。原项目中涉及数据归一化处理的步骤，使用sklearn.preprocessing的MinMaxScaler类，将每个特征缩放到给定的范围（在您的案例中是0到1），这是通过将最小值映射到0，最大值映射到1来实现的。对于中间的值，它们根据最大和最小值线性地缩放。
+
 ### 第3步 搭建一个3层的全连接神经网络
 
 ```
@@ -188,7 +192,7 @@ val_x = np.loadtxt(val_path, dtype=float, delimiter=',',skiprows=1,usecols=range
 val_y = np.loadtxt(val_path, dtype=float, delimiter=',',skiprows=1,usecols=4) # 读取预测值列
 ```
 
-模型推理。
+对验证集完成模型推理。
 
 ```
 # 导入库
@@ -213,6 +217,34 @@ plt.show()
 
 ![](../images/basenn/huigui.png)
 
+### 第6步 模型应用
+
+最后，可将模型应用于推理新数据。输入一组新的数据进行模型推理，需先完成数据处理，涉及的数据处理的代码会较长，此处是为了应用之前在训练集 (x) 上通过 fit_transform 方法学习到的scaler来转换 val_x。这确保了数据的一致性，因为对于模型来说，重要的是以相同的方式缩放训练数据和验证/测试数据。
+
+```
+# 导入库
+from BaseNN import nn
+# 声明模型
+model = nn('reg') 
+# 输入一组数据
+data = [[4,5,20,2]]
+# 数据预处理
+from sklearn.preprocessing import MinMaxScaler
+import numpy as np
+train_path = 'data/house-price-data.csv'
+x = np.loadtxt(train_path, dtype=float, delimiter=',',skiprows=1,usecols=[4,5,10,12]) # 读取特征列
+scaler = MinMaxScaler() # 创建MinMaxScaler实例
+x = scaler.fit_transform(x) # 将训练集的特征x拟合并转换到0-1范围并获取scaler
+data = scaler.transform(data)
+
+# 模型推理
+y_pred = model.inference(data,checkpoint = 'checkpoints/ckpt2/basenn.pth')  # 对该数据进行预测
+#输出预测
+print('我的房价预测结果是：',y_pred[0][0],'（单位：千美元）')
+```
+
+
+
 ## 挑战使用BaseNN完成第一个自然语言处理项目：自动写诗机
 
 ### 第0步 引入包
@@ -226,7 +258,7 @@ import numpy as np
 ### 第1步 声明模型
 
 ```python
-model = nn()
+model = nn('cls')
 ```
 
 ### 第2步 载入数据

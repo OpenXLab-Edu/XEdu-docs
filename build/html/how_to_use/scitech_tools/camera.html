@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>wifi摄像头模块：ESP32-CAM &mdash; OpenXLabEdu  documentation</title>
@@ -11,10 +11,11 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -28,11 +29,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../index.html" class="icon icon-home"> OpenXLabEdu
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -88,10 +93,10 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../how_to_use.html">如何用XEdu借助AI解决真实问题</a> &raquo;</li>
-          <li><a href="../scitech_tools.html">相关科创工具</a> &raquo;</li>
-      <li>wifi摄像头模块：ESP32-CAM</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../how_to_use.html">如何用XEdu借助AI解决真实问题</a></li>
+          <li class="breadcrumb-item"><a href="../scitech_tools.html">相关科创工具</a></li>
+      <li class="breadcrumb-item active">wifi摄像头模块：ESP32-CAM</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/how_to_use/scitech_tools/camera.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -102,22 +107,22 @@
            <div itemprop="articleBody">
              
   <section id="wifi-esp32-cam">
-<h1>wifi摄像头模块：ESP32-CAM<a class="headerlink" href="#wifi-esp32-cam" title="Permalink to this headline"></a></h1>
+<h1>wifi摄像头模块：ESP32-CAM<a class="headerlink" href="#wifi-esp32-cam" title="Permalink to this heading"></a></h1>
 <section id="id1">
-<h2>1.简介<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<h2>1.简介<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p>ESP32-CAM是一个小巧但功能强大的摄像头模块，非常适合DIY爱好者和科创项目。它可以连接Wi-Fi和蓝牙，让你轻松地进行图像捕获和视频流处理。无论你是想做一个智能小车，还是想在家里安装一个简易的监控系统，ESP32-CAM都是一个很好的选择。</p>
 <p>下文简单介绍一下如何配置ESP32-CAM以及简单应用。</p>
 </section>
 <section id="id2">
-<h2>2.简单使用教程<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<h2>2.简单使用教程<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
 <section id="esp32-cam">
-<h3>第一步：购买ESP32-CAM<a class="headerlink" href="#esp32-cam" title="Permalink to this headline"></a></h3>
+<h3>第一步：购买ESP32-CAM<a class="headerlink" href="#esp32-cam" title="Permalink to this heading"></a></h3>
 <p>a.在淘宝、京东查找ESP32-CAM，购买一款合适的产品。</p>
 <p>b.核对规格：确保购买的是ESP32-CAM模块，它通常包括一个小型摄像头模块（摄像头模块可能需要自行安装）。</p>
 <p>c.USB接口的线，配合ESP32-CAM连接。</p>
 </section>
 <section id="id3">
-<h3>第二步：准备编程环境<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<h3>第二步：准备编程环境<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
 <p>a.下载并安装arduino IDE</p>
 <p>这是一个编程软件，可以让你给ESP32-CAM编写和上传代码。</p>
 <p>下载地址：<a class="reference external" href="https://www.arduino.cc/en/Main/Software?setlang=cn">https://www.arduino.cc/en/Main/Software?setlang=cn</a></p>
@@ -138,14 +143,14 @@
 提取码：bpri</p>
 </section>
 <section id="id4">
-<h3>第三步：连接ESP32-CAM至电脑<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<h3>第三步：连接ESP32-CAM至电脑<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
 <p>将ESP32-CAM模块通过转换器连接到电脑，并在arduino ide中选择连接，工具-开发板-ESP32-esp32 Wrover Module【上一步顺利完成此步骤才会出现此选项】</p>
 <p><img alt="../../_images/cam5.png" src="../../_images/cam5.png" /></p>
 <p>工具-端口选择COM5</p>
 <p><img alt="../../_images/cam6.png" src="../../_images/cam6.png" /></p>
 </section>
 <section id="wifi">
-<h3>第四步：编写配置WIFI的代码<a class="headerlink" href="#wifi" title="Permalink to this headline"></a></h3>
+<h3>第四步：编写配置WIFI的代码<a class="headerlink" href="#wifi" title="Permalink to this heading"></a></h3>
 <p>a.获取编程示例</p>
 <p>ESP32 CAM Live Video Streaming in Python OpenCV的示例代码是：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#include &lt;WebServer.h&gt;
@@ -245,7 +250,7 @@ void loop()
 <p>b.新建文件，将上述代码复制到新文件中，编写Wi-Fi代码，包括指定Wi-Fi账号和密码（第五、六行代码WIFI_SSID和WIFI_PASS），其他不变。【注意：此时先不要上传代码】</p>
 </section>
 <section id="esp32cam">
-<h3>第五步：安装esp32cam库<a class="headerlink" href="#esp32cam" title="Permalink to this headline"></a></h3>
+<h3>第五步：安装esp32cam库<a class="headerlink" href="#esp32cam" title="Permalink to this heading"></a></h3>
 <p>a.下载esp32cam库</p>
 <p>下载地址：<a class="reference external" href="https://github.com/yoursunny/esp32cam">https://github.com/yoursunny/esp32cam</a></p>
 <p><img alt="../../_images/cam7.png" src="../../_images/cam7.png" /></p>
@@ -254,7 +259,7 @@ void loop()
 <p><img alt="../../_images/cam8.png" src="../../_images/cam8.png" /></p>
 </section>
 <section id="ip">
-<h3>第六步：上传代码并获取IP地址<a class="headerlink" href="#ip" title="Permalink to this headline"></a></h3>
+<h3>第六步：上传代码并获取IP地址<a class="headerlink" href="#ip" title="Permalink to this heading"></a></h3>
 <p>单击上传按钮上传代码</p>
 <p><img alt="../../_images/cam9.png" src="../../_images/cam9.png" /></p>
 <p>上传代码后点击esp32cam的reset键，重启esp32cam，可打开串口监视器，查看上传代码的运行情况(示例代码会输出相关ip和路径)</p>
@@ -267,7 +272,7 @@ void loop()
 </section>
 </section>
 <section id="python">
-<h2>3.简单应用：在Python中测试实时视频流<a class="headerlink" href="#python" title="Permalink to this headline"></a></h2>
+<h2>3.简单应用：在Python中测试实时视频流<a class="headerlink" href="#python" title="Permalink to this heading"></a></h2>
 <p>由前文可知通过ESP32-CAM获取的是一张照片，如果编写代码一直读就是视频流了。下面这段代码是连接esp32cam摄像头，获取视频流并将图片展示在窗口（需要将代码中的ip改为上述串口监视器中输出的ip）的参考代码。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
 <span class="kn">import</span> <span class="nn">urllib.request</span>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>传统机器学习库BaseML &mdash; OpenXLabEdu  documentation</title>
@@ -11,10 +11,11 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
@@ -28,11 +29,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> OpenXLabEdu
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -48,7 +53,7 @@
 <li class="toctree-l2"><a class="reference internal" href="baseml/quick_start.html">快速体验BaseML</a></li>
 <li class="toctree-l2"><a class="reference internal" href="baseml/installation.html">BaseML安装</a></li>
 <li class="toctree-l2"><a class="reference internal" href="baseml/introduction.html">BaseML功能详解</a></li>
-<li class="toctree-l2"><a class="reference internal" href="baseml/visualization.html">BaseML杀手锏：自带可视化部分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="baseml/tool.html">BaseML辅助工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="baseml/projects.html">BaseML项目案例集</a></li>
 </ul>
 </li>
@@ -71,8 +76,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>传统机器学习库BaseML</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">传统机器学习库BaseML</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/baseml.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -83,7 +88,7 @@
            <div itemprop="articleBody">
              
   <section id="baseml">
-<h1>传统机器学习库BaseML<a class="headerlink" href="#baseml" title="Permalink to this headline"></a></h1>
+<h1>传统机器学习库BaseML<a class="headerlink" href="#baseml" title="Permalink to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="baseml/quick_start.html">快速体验BaseML</a><ul>
@@ -91,33 +96,30 @@
 <li class="toctree-l2"><a class="reference internal" href="baseml/quick_start.html#id2">安装</a></li>
 <li class="toctree-l2"><a class="reference internal" href="baseml/quick_start.html#id3">体验</a></li>
 <li class="toctree-l2"><a class="reference internal" href="baseml/quick_start.html#id4">训练</a></li>
-<li class="toctree-l2"><a class="reference internal" href="baseml/quick_start.html#id9">推理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="baseml/quick_start.html#id11">推理与应用</a></li>
 <li class="toctree-l2"><a class="reference internal" href="baseml/quick_start.html#id13">快速体验</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="baseml/installation.html">BaseML安装</a></li>
 <li class="toctree-l1"><a class="reference internal" href="baseml/introduction.html">BaseML功能详解</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="baseml/introduction.html#id1">机器学习典型算法一览表</a></li>
-<li class="toctree-l2"><a class="reference internal" href="baseml/introduction.html#id2">分类任务功能详解</a></li>
-<li class="toctree-l2"><a class="reference internal" href="baseml/introduction.html#id13">回归任务功能详解</a></li>
-<li class="toctree-l2"><a class="reference internal" href="baseml/introduction.html#id26">聚类任务功能详解</a></li>
-<li class="toctree-l2"><a class="reference internal" href="baseml/introduction.html#id35">附录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="baseml/introduction.html#id1">机器学习的基本流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="baseml/introduction.html#id6">机器学习典型算法一览表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="baseml/introduction.html#id7">代码详解</a></li>
+<li class="toctree-l2"><a class="reference internal" href="baseml/introduction.html#id18">附录</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="baseml/visualization.html">BaseML杀手锏：自带可视化部分</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="baseml/visualization.html#id1">为什么需要可视化？</a></li>
-<li class="toctree-l2"><a class="reference internal" href="baseml/visualization.html#id5">快速体验训练过程可视化全流程！</a></li>
-<li class="toctree-l2"><a class="reference internal" href="baseml/visualization.html#id12">快速体验推理过程可视化！</a></li>
-<li class="toctree-l2"><a class="reference internal" href="baseml/visualization.html#id20">其他数据可视化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="baseml/tool.html">BaseML辅助工具</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="baseml/tool.html#imageloader">内置图像处理模型ImageLoader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="baseml/tool.html#id1">自带可视化工具</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="baseml/projects.html">BaseML项目案例集</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="baseml/projects.html#id1">基于决策树的道路智能决策</a></li>
-<li class="toctree-l2"><a class="reference internal" href="baseml/projects.html#id7">用多层感知机算法实现手写体数字分类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="baseml/projects.html#basemlmlp">探秘BaseML之MLP（多层感知机）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="baseml/projects.html#id3">基于决策树的道路智能决策</a></li>
+<li class="toctree-l2"><a class="reference internal" href="baseml/projects.html#id11">用多层感知机算法实现手写体数字分类</a></li>
 <li class="toctree-l2"><a class="reference internal" href="baseml/projects.html#k">用k近邻为参观者推荐场馆</a></li>
-<li class="toctree-l2"><a class="reference internal" href="baseml/projects.html#id16">用线性回归预测蛋糕价格</a></li>
-<li class="toctree-l2"><a class="reference internal" href="baseml/projects.html#id21">用k均值实现园区集合地点选取</a></li>
-<li class="toctree-l2"><a class="reference internal" href="baseml/projects.html#id26">用k均值实现车辆类别聚类分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="baseml/projects.html#id23">用线性回归预测蛋糕价格</a></li>
+<li class="toctree-l2"><a class="reference internal" href="baseml/projects.html#id30">用k均值实现城市聚类分析</a></li>
 </ul>
 </li>
 </ul>

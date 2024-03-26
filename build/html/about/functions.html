@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>XEdu的常见函数 &mdash; OpenXLabEdu  documentation</title>
@@ -11,10 +11,11 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -28,11 +29,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> OpenXLabEdu
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenXLabEdu
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -82,9 +87,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../about.html">关于XEdu</a> &raquo;</li>
-      <li>XEdu的常见函数</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../about.html">关于XEdu</a></li>
+      <li class="breadcrumb-item active">XEdu的常见函数</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/about/functions.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -95,9 +100,9 @@
            <div itemprop="articleBody">
              
   <section id="xedu">
-<h1>XEdu的常见函数<a class="headerlink" href="#xedu" title="Permalink to this headline"></a></h1>
+<h1>XEdu的常见函数<a class="headerlink" href="#xedu" title="Permalink to this heading"></a></h1>
 <section id="xedu-utils">
-<h2>XEdu.utils中的函数<a class="headerlink" href="#xedu-utils" title="Permalink to this headline"></a></h2>
+<h2>XEdu.utils中的函数<a class="headerlink" href="#xedu-utils" title="Permalink to this heading"></a></h2>
 <p>在XEdu-python库中，我们封装了一系列数据处理函数，可以帮助你方便地完成AI推理和部署。这些函数被封装在XEdu.utils中，你可以这样引入它们：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.utils</span> <span class="kn">import</span> <span class="o">*</span>
 </pre></div>
@@ -108,10 +113,10 @@
 </div>
 <p>下面对函数展开介绍。</p>
 <section id="softmax">
-<h3>softmax<a class="headerlink" href="#softmax" title="Permalink to this headline"></a></h3>
+<h3>softmax<a class="headerlink" href="#softmax" title="Permalink to this heading"></a></h3>
 <p>softmax是一个常见的非线性函数，神经网络最终输出的结果是一串数字，如果想要把数字映射为各类概率，那么使用softmax函数再好不过了。向函数输入一个numpy数组，即可得到输出的结果。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">softmax</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Apply the softmax operation to the input array.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Apply the softmax operation to the input array.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        x: The input numpy array, which can be of any shape.</span>
@@ -126,14 +131,14 @@
 </div>
 </section>
 <section id="cosine-similarity">
-<h3>cosine_similarity<a class="headerlink" href="#cosine-similarity" title="Permalink to this headline"></a></h3>
+<h3>cosine_similarity<a class="headerlink" href="#cosine-similarity" title="Permalink to this heading"></a></h3>
 <p>该函数可以比较两个embedding序列的相似度，这里的相似度是以余弦相似度为计算指标的，在高中我们就学习过余弦定理，这里的余弦相似度公式也是类似的。</p>
 <p>假设输入的待比较embedding序列尺度分别为(N, D)和(M, D)，则输出的结果尺度为(N, M)。</p>
 <ul class="simple">
 <li><p>embedding会在<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id84">图像嵌入和文本嵌入</a>中用到，具体案例可参见：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&amp;sc=62f33550bf4f550f3e926cf2#public">教程1-7</a></p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cosine_similarity</span><span class="p">(</span><span class="n">embeddings_1</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">embeddings_2</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Compute the pairwise cosine similarities between two embedding arrays.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the pairwise cosine similarities between two embedding arrays.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        embeddings_1: An array of embeddings of shape (N, D).</span>
@@ -168,7 +173,7 @@
 </div>
 </section>
 <section id="get-similarity">
-<h3>get_similarity<a class="headerlink" href="#get-similarity" title="Permalink to this headline"></a></h3>
+<h3>get_similarity<a class="headerlink" href="#get-similarity" title="Permalink to this heading"></a></h3>
 <p>该函数可以比较两个embedding序列的相似度，</p>
 <p>假设输入的待比较embedding序列尺度分别为(N, D)和(M, D)，则输出的结果尺度为(N, M)。当然，也可以输入一维序列，假设尺度一个是(N, D)或(M, D)，另一个是(D,)，输出则为(N,)或(M,)，假设两个输入都是一维的，则输出是一个数值。</p>
 <p>输入还可以指定计算方法method，可选’cosine’, ‘euclidean’, ‘manhattan’, ‘chebyshev’, ‘pearson’，默认是’cosine’（method=’cosine’）。</p>
@@ -177,7 +182,7 @@
 <li><p>embedding会在<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id84">图像嵌入和文本嵌入</a>中用到，具体案例可参见：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&amp;sc=62f33550bf4f550f3e926cf2#public">教程1-7</a></p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_similarity</span><span class="p">(</span><span class="n">embeddings_1</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">embeddings_2</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span><span class="n">method</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">,</span><span class="n">use_softmax</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Compute pairwise similarity scores between two arrays of embeddings.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute pairwise similarity scores between two arrays of embeddings.</span>
 <span class="sd">    Args:</span>
 <span class="sd">        embeddings_1: An array of embeddings of shape (N, D) or (D,).</span>
 <span class="sd">        embeddings_2: An array of embeddings of shape (M, D) or (D,).</span>
