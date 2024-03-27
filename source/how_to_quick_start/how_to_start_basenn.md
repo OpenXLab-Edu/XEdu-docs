@@ -158,6 +158,6 @@ if __name__ == '__main__':
 
 运行效果如下：
 
-![](../images/images/how_to_quick_start/pywebio.png)
+![](../images/how_to_quick_start/pywebio.png)
 
 更多模型转换和应用的教程详见[后文](https://xedu.readthedocs.io/zh/master/how_to_use/support_resources.html)。
