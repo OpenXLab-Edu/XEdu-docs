@@ -108,31 +108,6 @@ model.print_result(res) # 输出字典格式结果
 
 上文介绍了借助BaseNN从模型训练到模型测试的简单方法，可前往[解锁BaseNN基本使用方法的教程](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id2)。
 
-#### 第6步 简单应用
-
-可以写一个小的鸢尾花分类系统简单应用一下模型，实现根据要求手动输入观察到的鸢尾花特征，进行花种判断。
-
-```
-from BaseNN import nn
-import numpy as np
-
-model = nn('cls')
-checkpoint = 'checkpoints/iris_ckpt/basenn.pth' # 载入模型
-
-a=eval(input('请输入花萼长度：'))
-b=eval(input('请输入请花萼宽度：'))
-c=eval(input('请输入花瓣长度：'))
-d=eval(input('请输入花瓣宽度：'))
-
-print('您输入的鸢尾花花萼长度、花萼宽度、花瓣长度、花瓣宽度特征属性分别是', [a,b,c,d])
-
-result = model.inference(data=[[a,b,c,d]], checkpoint=checkpoint)
-res = model.print_result(result)
-
-label=['山鸢尾','变色鸢尾','维吉尼亚鸢尾']
-print('预测结果是：', label[res[0]['预测值']])
-```
-
 ### 2.拓展：模型转换和后续应用
 
 如果想要快速部署模型，可进行模型转换。BaseNN模型转换的代码如下：
@@ -147,7 +122,6 @@ model.convert(checkpoint="checkpoints/iris_ckpt/basenn.pth",out_file="basenn_cd.
 
 ```
 from XEdu.hub import Workflow as wf
-import numpy as np
 
 # 模型声明
 basenn = wf(task='basenn',checkpoint='basenn_cd.onnx')
@@ -159,5 +133,31 @@ res = basenn.inference(data=table)
 result = basenn.format_output(lang="zh")
 ```
 
-更多模型转换和应用的教程详见[后文](https://xedu.readthedocs.io/zh/master/how_to_use/support_resources.html)。
+还可以借助一些开源工具库（如[PyWebIO](https://xedu.readthedocs.io/zh/master/how_to_use/scitech_tools/pywebio.html#webpywebio)）编写一个人工智能应用，如下代码可实现手动输入观察到的鸢尾花特征，输出花种判断。
 
+```
+from pywebio.input import *
+from pywebio.output import *
+from XEdu.hub import Workflow as wf
+
+# 模型声明
+basenn = wf(task='basenn',checkpoint='basenn_cd.onnx')
+def pre():  
+    a=input('请输入花萼长度：', type=FLOAT)
+    b=input('请输入请花萼宽度：', type=FLOAT)
+    c=input('请输入花瓣长度：', type=FLOAT)
+    d=input('请输入花瓣宽度：', type=FLOAT)
+    data = [a,b,c,d]
+    result = basenn.inference(data=data)
+    res = basenn.format_output(lang="zh")
+    label=['山鸢尾','变色鸢尾','维吉尼亚鸢尾']
+    put_text('预测结果是：', str(label[res[0]['预测值']]))
+if __name__ == '__main__':
+    pre()
+```
+
+运行效果如下：
+
+![](D:\XEdu-docs\source\images\how_to_quick_start\pywebio.png)
+
+更多模型转换和应用的教程详见[后文](https://xedu.readthedocs.io/zh/master/how_to_use/support_resources.html)。
