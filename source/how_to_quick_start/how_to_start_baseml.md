@@ -8,7 +8,7 @@
 
 机器学习实际上分为两个阶段，首先是模型训练过程，即“学习”；然后是模型推理过程，即“应用”。典型的机器学习流程可以分为数据准备、模型搭建、模型训练与评估、模型应用等环节（如下图）。
 
-![](D:\XEdu-docs\source\images\baseml\flow_path.png)
+![](../images/baseml/flow_path.png)
 
 ### 1.数据准备
 
@@ -182,4 +182,4 @@ if __name__ == '__main__':
 
 运行效果如下：
 
-![](D:\XEdu-docs\source\images\how_to_quick_start\pywebio.png)
+![](../images/how_to_quick_start/pywebio.png)
