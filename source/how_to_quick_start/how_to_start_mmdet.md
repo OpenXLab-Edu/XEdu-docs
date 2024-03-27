@@ -4,6 +4,8 @@
 
 目标检测任务是图像分类任务的进阶任务，图像分类任务只有一个子任务：分类，而目标检测任务有两个任务：定位和分类，按照**图像中目标的数量**可分为单目标检测和多目标检测。如果一张图片里有两只猫，图像分类的模型可能可以识别出是猫。但是如果是这张图又有猫又有狗，那图像分类模型就肯定识别不出来了。本项目使用的是浦育平台公开的[猫狗目标检测数据集](https://openinnolab.org.cn/pjlab/dataset/6407fdcd9c0eb14f2297218d)，训练一个训练SSD_Lite目标识别模型。另外XEdu中MMEdu的目标检测模块支持的数据集类型是COCO，数据集需转换成COCO格式。如何从零开始制作符合要求的数据集详见[后文](https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/howtomake_coco.html)。
 
+项目地址：[https://openinnolab.org.cn/pjlab/project?id=64055f119c0eb14f22db647c&sc=62f34141bf4f550f3e926e0e#public](https://openinnolab.org.cn/pjlab/project?id=64055f119c0eb14f22db647c&sc=62f34141bf4f550f3e926e0e#public)
+
 ## 项目步骤：
 
 ### 1.模型训练
@@ -94,6 +96,8 @@ model.print_result(result) # 结果转换为中文输出
 更多关于MMEdu模型训练和推理的方法详见请前往[揭秘MMEdu的目标检测模块](https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html#mmdetection)。
 
 ### 4.模型转换和应用
+
+同样的，可以在模型应用前先完成模型转换，目标检测模型转换的代码风格和图像分类类似。
 
 ```
 from MMEdu import MMDetection as det
