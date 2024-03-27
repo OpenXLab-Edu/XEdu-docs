@@ -161,7 +161,7 @@ result= baseml.inference(data=data)# 进行模型推理
 print(result)
 ```
 
-甚至还可以借助一些开源工具库（如PyWebIO）编写一个人工智能应用，如下代码可实现输入一个角度，输出预测结果。
+甚至还可以借助一些开源工具库（如[PyWebIO](https://xedu.readthedocs.io/zh/master/how_to_use/scitech_tools/pywebio.html#webpywebio)）编写一个人工智能应用，如下代码可实现输入一个角度，输出预测结果。
 
 ```
 from pywebio.input import *
