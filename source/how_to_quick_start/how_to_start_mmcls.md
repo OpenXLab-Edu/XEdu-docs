@@ -4,7 +4,7 @@
 
 手写体数据集（mnist）是一个大型手写数字数据库，通常用于训练各种图像处理系统。该数据库还广泛用于机器学习领域的训练和测试。本项目使用经典的手写体数据集（mnist），完整介绍用MMEdu的图像分类模块训练LeNet模型实现手写体识别。
 
-数据集来源：mnist数据集，来源于National Institute of Standards and Technology，改编自MNIST。
+数据集来源：mnist数据集，来源于National Institute of Standards and Technology，改编自MNIST。另外MMEdu图像分类模块要求的数据集格式为ImageNet格式，包含三个文件夹和三个文本文件，文件夹内，不同类别图片按照文件夹分门别类排好，通过trainning_set、val_set、test_set区分训练集、验证集和测试集。文本文件classes.txt说明类别名称与序号的对应关系，val.txt说明验证集图片路径与类别序号的对应关系，test.txt说明测试集图片路径与类别序号的对应关系。如何从零开始制作符合要求的数据集详见[后文](https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/howtomake_imagenet.html)。
 
 项目地址：[https://openinnolab.org.cn/pjlab/project?id=64a3c64ed6c5dc7310302853&sc=62f34141bf4f550f3e926e0e#public](https://openinnolab.org.cn/pjlab/project?id=64a3c64ed6c5dc7310302853&sc=62f34141bf4f550f3e926e0e#public)
 
@@ -83,7 +83,7 @@ result = model.inference(image=img_path, show=True, checkpoint = checkpoint) # �
 model.print_result(result) # 结果转换为中文输出
 ```
 
-更多关于MMEdu模型训练和推理的方法详见请前往[MMEdu基本功能](https://xedu.readthedocs.io/zh/master/mmedu/introduction.html)。 
+更多关于MMEdu模型训练和推理的方法详见请前往[解锁MMEdu的图像分类模块](https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#mmclassification)。 
 
 ### 3.拓展：模型转换和应用
 

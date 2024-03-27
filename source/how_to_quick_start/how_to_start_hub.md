@@ -77,28 +77,3 @@ for i in bboxs:
     model.show(new_img) # 可视化结果
 ```
 
-### 3.拓展：实时手+手部关键点检测
-
-加入摄像头的代码，即可实现实时检测摄像头中出现的多只手，并对每一只手提取关键点。
-
-```
-from XEdu.hub import Workflow as wf # 导入库
-import cv2
-cap = cv2.VideoCapture(0)
-det  = wf(task='det_hand') # 实例化模型
-model = wf(task='pose_hand21') # 实例化模型
-# img_path = 'demo/hand.jpg' # 指定进行推理的图片路径
-while cap.isOpened():
-    ret, frame = cap.read()
-    if not ret:
-        break
-    bboxs,img = det.inference(data=frame,img_type='cv2') # 进行推理
-    for i in bboxs:
-        keypoints,new_img =model.inference(data=img,img_type='cv2',bbox=i) # 进行推理
-        cv2.imshow('video', new_img)
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break    
-cap.release()
-cv2.destroyAllWindows()
-```
-
