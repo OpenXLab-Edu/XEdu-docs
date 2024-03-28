@@ -56,7 +56,7 @@ model.train(epochs=10, lr=0.001, validate=True, batch_size = 4, device='cuda', c
 
 预训练模型下载地址：[https://p6bm2if73b.feishu.cn/drive/folder/fldcnxios44vrIOV9Je3wPLmExf](https://p6bm2if73b.feishu.cn/drive/folder/fldcnxios44vrIOV9Je3wPLmExf)
 
-注：浦育平台可启动GPU服务器。
+注：一般训练目标检测模型耗时较久，浦育平台可启动GPU服务器，建议去浦育平台完成模型训练，启动GPU服务器后便可以在训练参数中添加`device='cuda'`启动GPU训练。
 
 ### 3.模型测试（用新的图片完成推理）
 
@@ -93,7 +93,7 @@ result = model.inference(image=img, show=True, checkpoint = checkpoint,device='c
 model.print_result(result) # 结果转换为中文输出
 ```
 
-更多关于MMEdu模型训练和推理的方法详见请前往[揭秘MMEdu的目标检测模块](https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html#mmdetection)。
+上文简单介绍了如何用MMEdu训练一个目标检测模型，更多关于MMEdu模型训练和推理的方法详见请前往[揭秘MMEdu的目标检测模块](https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html#mmdetection)。
 
 ### 4.模型转换和应用
 

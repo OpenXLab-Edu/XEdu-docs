@@ -75,7 +75,7 @@ model.metricplot()
 model.save('checkpoints/baseml_model/knn_iris.pkl')
 ```
 
-BaseML模型训练的代码详解详见[BaseML功能详解](https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id7)。
+上文简单介绍了使用BaseML训练一个回归模型的方法，BaseML模型训练的代码详解详见[BaseML功能详解](https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id7)。
 
 ### 2.使用其他算法实现并测算R2值
 
