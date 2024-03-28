@@ -83,7 +83,7 @@ result = model.inference(image=img_path, show=True, checkpoint = checkpoint) # �
 model.print_result(result) # 结果转换为中文输出
 ```
 
-上文简单介绍了如何用MMEdu训练一个模型，更多关于MMEdu模型训练和推理的方法详见请前往[解锁MMEdu的图像分类模块](https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#mmclassification)。 
+上文简单介绍了如何用MMEdu训练一个图像分类模型，更多关于MMEdu模型训练和推理的方法详见请前往[解锁MMEdu的图像分类模块](https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#mmclassification)。 
 
 ### 3.拓展：模型转换和应用
 

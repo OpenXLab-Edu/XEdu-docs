@@ -1,4 +1,4 @@
-# 用MMEdu训练SSD_Lite目标识别模型（猫狗）
+# 用MMEdu训练SSD_Lite目标检测模型（猫狗）
 
 ## 项目说明：
 
