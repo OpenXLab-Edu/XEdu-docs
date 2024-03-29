@@ -10,4 +10,5 @@ XEdu快速入门手册
    how_to_quick_start/how_to_start_basenn.md
    how_to_quick_start/how_to_start_mmcls.md
    how_to_quick_start/how_to_start_mmdet.md
+   how_to_quick_start/how_to_make_a_small_project.md
 
