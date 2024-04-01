@@ -761,7 +761,7 @@ model.train(...,metrics=["mse"])
 - avgpool：平均池化层，需给定卷积核尺寸kernel_size。
 - linear：线性层，需给定size。
 - mobilenet：MobileNet网络层。
-- mobilenet_backbone：MobileNet特征提取器，一般用于分层搭建MoblileNet网络。通过MobileNet Backbone处理后，任意维度的输入都会得到一个固定维度（1280）的输出。
+- mobilenet_backbone：MobileNet主干网络，一般用于分层搭建MoblileNet网络。通过MobileNet Backbone处理后，任意维度的输入都会得到一个固定维度（1280）的输出。
 - Res_Block：残差基础模块，需给定size（size=(输入特征数, 输出特征数)），也可额外设置拓展参数num_blocks（默认为1），步长stride（默认为1）。
 - Res_Bottleneck：残差瓶颈模块，需给定size（size=(输入特征数, 输出特征数)），也可额外设置拓展参数num_blocks，步长stride（默认为1）。
 - lstm：一种特殊的RNN（Recurrent Neural Network，循环神经网络）层，需给定size，num_layers。
@@ -838,7 +838,7 @@ model = nn()
 model.load_img_data('CatsDogs/training_set', batch_size=32,shuffle=True,transform={'Resize':[32,32]})
 
 #搭建网络
-model.add('mobilenet_backbone')
+model.add('mobilenet_backbone') # MobileNet主干网络
 model.add('Linear', size=(1280,1000), activation='relu')
 model.add('Dropout', p=0.2)
 model.add('Linear', size=(1000,2),activation='Softmax')
@@ -862,7 +862,7 @@ model = nn()
 model.load_img_data('CatsDogs (1)/CatsDogs/training_set', batch_size=1000,transform={'Resize':(64,64)}) 
 
 #搭建网络
-model.add('mobilenet_backbone')
+model.add('mobilenet_backbone') # MobileNet主干网络
 model.add('Linear', size=(1280,1000), activation='relu') 
 model.add(optimizer='Adam')
 
