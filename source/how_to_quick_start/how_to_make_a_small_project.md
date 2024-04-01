@@ -8,7 +8,7 @@
 
 ## 项目步骤：
 
-### 1.关键点检测和应用
+### 1.关键点检测和简单应用
 
 手部关键点检测的代码和前文提到的完全一致，此处我们再次细致分析检测到的手部关键点的结构。
 
@@ -31,7 +31,7 @@
 
 #### 1）基于坐标信息写一个判断手势的逻辑
 
-假设已经检测出了一组手部关键点，那么应用的时候，可以对关键点做一下简单的处理，还可以做一些判断，例如我们写一个计算伸展手指数量的函数，可以判断一下手势。当然了，这种方式比较麻烦，需要细致分析，并且代码量也较大，同时结果可能不准确。
+假设已经检测出了一组手部关键点，那么应用的时候，可以对关键点做一下简单的处理，还可以做一些判断，例如我们写一个计算伸展手指数量的函数，可以判断一下手势。当然了，这种方式比较麻烦，需对手指进行细致分析方，同时结果可能不准确。
 
 ```
 import numpy as np
@@ -45,29 +45,35 @@ def count_extended_fingers(keypoints, wrist_point=0, finger_tips=[4, 8, 12, 16, 
     #finger_tips: 每个手指尖端关键点的索引列表，默认为拇指到小指的尖端。
     # 初始化伸展手指的数量为0
     extended_fingers = 0
-    distances = []  # 存储手腕到手指尖的距离
+    distances = []  # 存储掌心到手指尖的距离
     
     # 获取手腕关键点的坐标
     wrist = keypoints[wrist_point]
     
     # 遍历手指尖端关键点
     for fingertip in finger_tips:
-        # 计算手指尖端和手腕之间的距离
+        # 计算手指尖端和掌心之间的距离
         dist = distance(wrist, keypoints[fingertip])
+        # 计算第一节指骨到掌心之间的距离
+        dist1 = distance(wrist, keypoints[fingertip-1])
+        # 计算第二节指骨到掌心之间的距离
+        dist2 = distance(wrist, keypoints[fingertip-2])
         distances.append(dist)
-        # 如果距离大于阈值，则认为该手指是伸展的
-        if dist > threshold:
+        # 如果是大拇指距离大于阈值则认为该手指是伸展的
+        if dist > threshold and fingertip==4:
             extended_fingers += 1  # 增加伸展手指的数量
-    
+        # 如果距离大于阈值且指尖距离大于第一节指骨距离，第一节指骨距离大于第二节指骨距离则认为该手指是伸展的    
+        elif  dist > threshold and dist>dist1>dist2:
+            extended_fingers += 1  # 增加伸展手指的数量
+            
     # 返回伸展手指的总数和每个手指的距离
     return extended_fingers, distances
 
 # 假设 keypoints 是从模型获取的关键点列表
 extended_fingers, finger_distances = count_extended_fingers(keypoints)
 threshold=5
-
 # 判断手势
-if extended_fingers == 0 and all(dist <= threshold + 10 for dist in finger_distances[1:]):  # 加上额外的缓冲范围来处理闭合手势
+if extended_fingers == 0 or (finger_distances[0]>threshold and extended_fingers == 1):
     hand_gesture = "石头"
 elif extended_fingers == 2 and finger_distances[1] > threshold and finger_distances[2] > threshold:
     hand_gesture = "剪刀"
