@@ -160,8 +160,9 @@
 <p><code class="docutils literal notranslate"><span class="pre">train_val_ratio</span></code>：0~1之间的浮点数，表示训练集的占比，默认为1。eg，数据集共1万张，train_val_ratio=0.8，则8000张训练集，2000张验证集。若传入大于1或小于0的错误比例，则参数值无效，默认整个数据集都可用于训练。此参数可用于拆分数据集为训练集和验证集。</p>
 <p><code class="docutils literal notranslate"><span class="pre">color</span></code>：设置为”grayscale”或”RGB”，表示图片的颜色空间或色彩模式，可以根据具体的需求来选择适合的模式。如果将color参数设置为”grayscale”，表示希望将图像转换为灰度图像，仅包含亮度信息。如果将color参数设置为”RGB”，表示希望保留图像的红、绿、蓝三个通道的颜色信息，得到彩色图像。</p>
 <p><code class="docutils literal notranslate"><span class="pre">batch_size</span></code>：表示在一次训练中同时处理的样本数量。通常情况下，批量大小越大，模型的收敛速度越快，但内存和计算资源的需求也会相应增加。</p>
+<p><code class="docutils literal notranslate"><span class="pre">batch_model</span></code>：是否按照minibatch的模式读取数据，若 False，则载入数据时读取全部图像，若 True，则载入数据时仅读取图像路径，训练时再读取对应batch的图像。默认为 False，Fasle要求内存大， 速度快，True则速度慢，要求内存小，如载入图像文件夹时出现内核中断，可增设<code class="docutils literal notranslate"><span class="pre">batch_model=True</span></code>。</p>
 <p><code class="docutils literal notranslate"><span class="pre">num_workers</span></code>：线程数，决定了有多少个子线程被用于数据加载。子线程是并行运行的，可以同时处理多个数据批次。增加 <code class="docutils literal notranslate"><span class="pre">num_workers</span></code> 的数值时，可以加快数据批次的寻找速度，这通常会提高训练的速度，因为模型等待数据的时间减少了，但增大内存开销和CPU负荷。此参数用来控制数据加载过程中的线程数量。适当增加这个数值可以加速训练，但也要注意不要超出你的硬件限制。默认为0，一般而言设置num_workers最大为CPU核心数。</p>
-<p><code class="docutils literal notranslate"><span class="pre">classes</span></code>：类别列表（列表）或字典，表示数据集中的<code class="docutils literal notranslate"><span class="pre">label</span></code>中存储的数组各个位置标签所代表的意义，一般适用于图片形式数据集的训练。可以不传入，若不传入，则推理结果将会是认为结果的下标。若传入，则推理结果将自动转化为将原结果作为下标的数组中的对应内容。</p>
+<p><code class="docutils literal notranslate"><span class="pre">classes</span></code>：类别列表（列表）或字典，表示数据集中的<code class="docutils literal notranslate"><span class="pre">label</span></code>中存储的数组各个位置标签所代表的意义，一般适用于载入图片形式数据集训练图像分类模型。可以不传入，若不传入，则推理结果将会是认为结果的下标。若传入，则推理结果将自动转化为将原结果作为下标的数组中的对应内容。</p>
 <p>classes可传参数兼容列表，字典形式(以下三种形式均可)。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span><span class="s1">&#39;dog&#39;</span><span class="p">]</span>
 <span class="n">classes</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="s1">&#39;dog&#39;</span><span class="p">}</span>
@@ -478,7 +479,7 @@
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;conv2d&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span><span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> <span class="c1"># [100, 3, 18, 18]</span>
 </pre></div>
 </div>
-<p>以上使用<code class="docutils literal notranslate"><span class="pre">add()</span></code>方法添加层，参数<code class="docutils literal notranslate"><span class="pre">layer='linear'</span></code>表示添加的层是线性层，<code class="docutils literal notranslate"><span class="pre">size=(4,10)</span></code>表示该层输入维度为4，输出维度为10，<code class="docutils literal notranslate"><span class="pre">activation='relu'</span></code>表示使用relu激活函数。更详细<code class="docutils literal notranslate"><span class="pre">add()</span></code>方法使用可见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add">附录1</a>。</p>
+<p>以上使用<code class="docutils literal notranslate"><span class="pre">add()</span></code>方法添加层，参数<code class="docutils literal notranslate"><span class="pre">layer='linear'</span></code>表示添加的层是线性层，<code class="docutils literal notranslate"><span class="pre">size=(4,10)</span></code>表示该层输入维度为4，输出维度为10，<code class="docutils literal notranslate"><span class="pre">activation='relu'</span></code>表示使用relu激活函数。更详细<code class="docutils literal notranslate"><span class="pre">add()</span></code>方法使用可见<a class="reference external" href="https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add">附录1</a>，附录1呈现了<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id33">搭建全连接神经网络结构</a>、<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id34">简单卷积神经网络结构</a>，也呈现了与MMEdu内置的SOTA模型对应的<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basenn/introduction.html#mobilenet">MobileNet网络</a>、<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basenn/introduction.html#resnet">ResNet网络</a>，以及<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id35">循环神经网络</a>等搭建说明。</p>
 </section>
 <section id="id11">
 <h3>4. 模型训练<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h3>
@@ -765,6 +766,8 @@ kernel_size=(a,b)， (a,b)表示核的尺寸。</p></li>
 <li><p>maxpool：最大池化层，需给定卷积核尺寸kernel_size。</p></li>
 <li><p>avgpool：平均池化层，需给定卷积核尺寸kernel_size。</p></li>
 <li><p>linear：线性层，需给定size。</p></li>
+<li><p>mobilenet：MobileNet网络层。</p></li>
+<li><p>mobilenet_backbone：MobileNet特征提取器，一般用于分层搭建MoblileNet网络。通过MobileNet Backbone处理后，任意维度的输入都会得到一个固定维度（1280）的输出。</p></li>
 <li><p>Res_Block：残差基础模块，需给定size（size=(输入特征数, 输出特征数)），也可额外设置拓展参数num_blocks（默认为1），步长stride（默认为1）。</p></li>
 <li><p>Res_Bottleneck：残差瓶颈模块，需给定size（size=(输入特征数, 输出特征数)），也可额外设置拓展参数num_blocks，步长stride（默认为1）。</p></li>
 <li><p>lstm：一种特殊的RNN（Recurrent Neural Network，循环神经网络）层，需给定size，num_layers。</p></li>
@@ -812,7 +815,54 @@ p=0.2
 <p>最后，由于线性层（linear）是一维的，因此二维数据在输入前要进行展平（flatten），将二维展平为1维。</p>
 <p>在以上代码中，输入linear层前，一张图像有10通道，每个通道的图像大小为3x3，因此展平后有10x3x3 = 90，这就是为什么要设置linear层<code class="docutils literal notranslate"><span class="pre">size=(90,10)</span></code>中，输入维度为90。</p>
 <p>参考项目：<a class="reference external" href="https://openinnolab.org.cn/pjlab/project?id=641d17e67c99492cf16d706f&amp;backpath=/pjlab/projects/list#public">用卷积神经网络实现MNIST手写体数字分类</a></p>
-<p>同时，使用BaseNN也能完成一些相对复杂的神经网络的搭建，如ResNet，同样也是支持的，首先需在卷积层新增两个参数的设置，分别是步长stride和填充padding，同时增加残差模块的设置。ResNet系列网络结构如下所示。</p>
+<p>同时，使用BaseNN也能完成一些相对复杂的神经网络的搭建，如MobileNet，ResNet等MMEdu可以直接调用的SOTA模型，同样也是支持的。</p>
+<section id="mobilenet">
+<h5>搭建MobileNet网络：<a class="headerlink" href="#mobilenet" title="Permalink to this heading"></a></h5>
+<p>以训练猫狗二分类数据集为例，如下是搭建MobileNet网络训练猫狗识别模型的示例代码。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_img_data</span><span class="p">(</span><span class="s1">&#39;CatsDogs/training_set&#39;</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span><span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">transform</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Resize&#39;</span><span class="p">:[</span><span class="mi">32</span><span class="p">,</span><span class="mi">32</span><span class="p">]})</span>
+
+<span class="c1">#搭建网络</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;mobilenet_backbone&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1280</span><span class="p">,</span><span class="mi">1000</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Dropout&#39;</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;Softmax&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">optimmizer</span><span class="o">=</span><span class="s1">&#39;Adam&#39;</span><span class="p">)</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;mobilenet_ckpt&#39;</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;acc&#39;</span><span class="p">])</span> <span class="c1"># 模型训练</span>
+</pre></div>
+</div>
+<p>注：搭建MobileNet网络支持输入任意大小的图像，推理时也无需调整图片尺寸，但是训练时数据集中所有图像大小必须一致，因此载入数据时还是做了图片尺寸的统一调整，如图片数据集的尺寸本身就是一致的，则无需调整。</p>
+<p>参考项目：<a class="reference external" href="https://openinnolab.org.cn/pjlab/project?id=65fbdf2e8ce1f42bce09ad7a&amp;sc=635638d69ed68060c638f979#public">用BaseNN搭建MobileNet网络实现猫狗分类模型训练</a></p>
+<p>无论输入图像的尺寸如何，通过<code class="docutils literal notranslate"><span class="pre">MobileNet</span> <span class="pre">Backbone</span></code>处理后，都会得到一个固定维度（1280）的输出，利用此能力，我们可利用<code class="docutils literal notranslate"><span class="pre">MobileNet</span> <span class="pre">Backbone</span></code>训练一个图像解码器，参考代码如下。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
+<span class="c1"># 声明模型</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span>
+<span class="c1"># 载入数据</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_img_data</span><span class="p">(</span><span class="s1">&#39;CatsDogs (1)/CatsDogs/training_set&#39;</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span><span class="n">transform</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Resize&#39;</span><span class="p">:(</span><span class="mi">64</span><span class="p">,</span><span class="mi">64</span><span class="p">)})</span> 
+
+<span class="c1">#搭建网络</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;mobilenet_backbone&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1280</span><span class="p">,</span><span class="mi">1000</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> 
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;Adam&#39;</span><span class="p">)</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;mobilenet_ckpt&#39;</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span> <span class="c1"># 模型训练</span>
+</pre></div>
+</div>
+<p>使用模型进行图像编码：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型推理</span>
+<span class="n">dog_embedding</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;basenn.pth&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="s1">&#39;CatsDogs/dog1.jpg&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dog_embedding</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>上述代码输出的应是形状为(1, 1280)的向量，这样利用已训练的MobileNet模型，可以实现将任意尺寸的图像转换为1280维的embedding向量（取决于<code class="docutils literal notranslate"><span class="pre">MobileNet</span> <span class="pre">Backbone</span></code>层后加的全连接层的输出维度）。这对于图像特征提取和进一步的分析或应用非常有用。</p>
+</section>
+<section id="resnet">
+<h5>搭建ResNet网络：<a class="headerlink" href="#resnet" title="Permalink to this heading"></a></h5>
+<p>如需搭建ResNet首先需在卷积层新增两个参数的设置，分别是步长stride和填充padding，同时增加残差模块的设置。ResNet系列网络结构如下所示。</p>
 <p><img alt="../_images/bn1.png" src="../_images/bn1.png" /></p>
 <p>以ResNet18为例，我们看一下ResNet18的网络结构。</p>
 <p><img alt="../_images/resnet18.jpg" src="../_images/resnet18.jpg" /></p>
@@ -881,6 +931,7 @@ p=0.2
 </pre></div>
 </div>
 <p>注：bottleneck输出通道数是输入的四倍，因此注意size的区别。这个四倍是1 *1，3 *3，1 *1三次矩阵乘法导致的，有点难理解，而且bottleneck跑着也慢，建议文档里可以提有这个功能，但是示例项目不要用bottleneck就用basicblock。更多ResNet网络的介绍详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/ResNet.html">深度学习知识库</a>。</p>
+</section>
 </section>
 <section id="id35">
 <h4>搭建循环神经网络结构：<a class="headerlink" href="#id35" title="Permalink to this heading"></a></h4>

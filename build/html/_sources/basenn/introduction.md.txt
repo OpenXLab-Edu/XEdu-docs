@@ -57,9 +57,11 @@ model.load_img_data(image_folder_data,color="grayscale",batch_size=1024)
 
 `batch_size`：表示在一次训练中同时处理的样本数量。通常情况下，批量大小越大，模型的收敛速度越快，但内存和计算资源的需求也会相应增加。
 
+`batch_model`：是否按照minibatch的模式读取数据，若 False，则载入数据时读取全部图像，若 True，则载入数据时仅读取图像路径，训练时再读取对应batch的图像。默认为 False，Fasle要求内存大， 速度快，True则速度慢，要求内存小，如载入图像文件夹时出现内核中断，可增设`batch_model=True`。
+
 `num_workers`：线程数，决定了有多少个子线程被用于数据加载。子线程是并行运行的，可以同时处理多个数据批次。增加 `num_workers` 的数值时，可以加快数据批次的寻找速度，这通常会提高训练的速度，因为模型等待数据的时间减少了，但增大内存开销和CPU负荷。此参数用来控制数据加载过程中的线程数量。适当增加这个数值可以加速训练，但也要注意不要超出你的硬件限制。默认为0，一般而言设置num_workers最大为CPU核心数。
 
-`classes`：类别列表（列表）或字典，表示数据集中的`label`中存储的数组各个位置标签所代表的意义，一般适用于图片形式数据集的训练。可以不传入，若不传入，则推理结果将会是认为结果的下标。若传入，则推理结果将自动转化为将原结果作为下标的数组中的对应内容。
+`classes`：类别列表（列表）或字典，表示数据集中的`label`中存储的数组各个位置标签所代表的意义，一般适用于载入图片形式数据集训练图像分类模型。可以不传入，若不传入，则推理结果将会是认为结果的下标。若传入，则推理结果将自动转化为将原结果作为下标的数组中的对应内容。
 
 classes可传参数兼容列表，字典形式(以下三种形式均可)。
 
@@ -420,7 +422,7 @@ model.add('lstm',size=(128,256),num_layers=2)
 model.add('conv2d', size=(1, 3),kernel_size=( 3, 3), activation='relu') # [100, 3, 18, 18]
 ```
 
-以上使用`add()`方法添加层，参数`layer='linear'`表示添加的层是线性层，`size=(4,10)`表示该层输入维度为4，输出维度为10，`activation='relu'`表示使用relu激活函数。更详细`add()`方法使用可见[附录1](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add)。
+以上使用`add()`方法添加层，参数`layer='linear'`表示添加的层是线性层，`size=(4,10)`表示该层输入维度为4，输出维度为10，`activation='relu'`表示使用relu激活函数。更详细`add()`方法使用可见[附录1](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add)，附录1呈现了[搭建全连接神经网络结构](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id33)、[简单卷积神经网络结构](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id34)，也呈现了与MMEdu内置的SOTA模型对应的[MobileNet网络](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#mobilenet)、[ResNet网络](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#resnet)，以及[循环神经网络](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id35)等搭建说明。
 
 ### 4. 模型训练
 
@@ -758,6 +760,8 @@ model.train(...,metrics=["mse"])
 - maxpool：最大池化层，需给定卷积核尺寸kernel_size。
 - avgpool：平均池化层，需给定卷积核尺寸kernel_size。
 - linear：线性层，需给定size。
+- mobilenet：MobileNet网络层。
+- mobilenet_backbone：MobileNet特征提取器，一般用于分层搭建MoblileNet网络。通过MobileNet Backbone处理后，任意维度的输入都会得到一个固定维度（1280）的输出。
 - Res_Block：残差基础模块，需给定size（size=(输入特征数, 输出特征数)），也可额外设置拓展参数num_blocks（默认为1），步长stride（默认为1）。
 - Res_Bottleneck：残差瓶颈模块，需给定size（size=(输入特征数, 输出特征数)），也可额外设置拓展参数num_blocks，步长stride（默认为1）。
 - lstm：一种特殊的RNN（Recurrent Neural Network，循环神经网络）层，需给定size，num_layers。
@@ -822,9 +826,63 @@ N = W/P ，其中P表示池化层的卷积核大小。
 
 参考项目：[用卷积神经网络实现MNIST手写体数字分类](https://openinnolab.org.cn/pjlab/project?id=641d17e67c99492cf16d706f&backpath=/pjlab/projects/list#public)
 
+同时，使用BaseNN也能完成一些相对复杂的神经网络的搭建，如MobileNet，ResNet等MMEdu可以直接调用的SOTA模型，同样也是支持的。
 
+##### 搭建MobileNet网络：
 
-同时，使用BaseNN也能完成一些相对复杂的神经网络的搭建，如ResNet，同样也是支持的，首先需在卷积层新增两个参数的设置，分别是步长stride和填充padding，同时增加残差模块的设置。ResNet系列网络结构如下所示。
+以训练猫狗二分类数据集为例，如下是搭建MobileNet网络训练猫狗识别模型的示例代码。
+
+```
+from BaseNN import nn
+model = nn()
+model.load_img_data('CatsDogs/training_set', batch_size=32,shuffle=True,transform={'Resize':[32,32]})
+
+#搭建网络
+model.add('mobilenet_backbone')
+model.add('Linear', size=(1280,1000), activation='relu')
+model.add('Dropout', p=0.2)
+model.add('Linear', size=(1000,2),activation='Softmax')
+model.add(optimmizer='Adam')
+
+model.save_fold = 'mobilenet_ckpt'
+model.train(lr=1e-3, epochs=20,metrics=['acc']) # 模型训练
+```
+
+注：搭建MobileNet网络支持输入任意大小的图像，推理时也无需调整图片尺寸，但是训练时数据集中所有图像大小必须一致，因此载入数据时还是做了图片尺寸的统一调整，如图片数据集的尺寸本身就是一致的，则无需调整。
+
+参考项目：[用BaseNN搭建MobileNet网络实现猫狗分类模型训练](https://openinnolab.org.cn/pjlab/project?id=65fbdf2e8ce1f42bce09ad7a&sc=635638d69ed68060c638f979#public)
+
+无论输入图像的尺寸如何，通过`MobileNet Backbone`处理后，都会得到一个固定维度（1280）的输出，利用此能力，我们可利用`MobileNet Backbone`训练一个图像解码器，参考代码如下。
+
+```
+from BaseNN import nn
+# 声明模型
+model = nn()
+# 载入数据
+model.load_img_data('CatsDogs (1)/CatsDogs/training_set', batch_size=1000,transform={'Resize':(64,64)}) 
+
+#搭建网络
+model.add('mobilenet_backbone')
+model.add('Linear', size=(1280,1000), activation='relu') 
+model.add(optimizer='Adam')
+
+model.save_fold = 'mobilenet_ckpt'
+model.train(lr=1e-3, epochs=30) # 模型训练
+```
+
+使用模型进行图像编码：
+
+```
+# 模型推理
+dog_embedding = model.inference(checkpoint='basenn.pth', data='CatsDogs/dog1.jpg')
+print(dog_embedding)
+```
+
+上述代码输出的应是形状为(1, 1280)的向量，这样利用已训练的MobileNet模型，可以实现将任意尺寸的图像转换为1280维的embedding向量（取决于`MobileNet Backbone`层后加的全连接层的输出维度）。这对于图像特征提取和进一步的分析或应用非常有用。
+
+##### 搭建ResNet网络：
+
+如需搭建ResNet首先需在卷积层新增两个参数的设置，分别是步长stride和填充padding，同时增加残差模块的设置。ResNet系列网络结构如下所示。
 
 ![](../images/basenn/bn1.png)
 
