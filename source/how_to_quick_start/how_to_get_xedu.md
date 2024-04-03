@@ -1,8 +1,41 @@
 # 如何快速获得XEdu
 
-为了满足广大中小学师生的需求，XEdu安装方式分为一键安装包安装、pip安装和docker安装。快速获得自然是推荐选择XEdu一键安装包（CPU版本），它满足大部分机房需求。
+网页：浦育平台为使用者提供了XEdu容器，我们可以把它想象成一台部署好XEdu和配套AI开发工具的远程电脑，这种形式很好的解决了环境搭建和算力问题。
 
-## 1.快速安装并使用XEdu一键安装包
+本地：为了满足广大中小学师生本本地环境的需求，XEdu安装方式分为一键安装包安装、pip安装和docker安装。快速获得自然是推荐选择XEdu一键安装包（CPU版本），它满足大部分机房需求。
+
+## 浦育平台如入门并使用XEdu
+
+### 1. 打开浦育平台，注册登录账号
+
+[浦育平台openinnolab
+](https://www.openinnolab.org.cn/pjedu/home
+)：[https://www.openinnolab.org.cn/pjedu/home
+](https://www.openinnolab.org.cn/pjedu/home
+)
+
+### 3. 克隆一个XEdu容器的项目
+
+推荐初学者从克隆别人的项目开始学习XEdu，克隆项目的步骤如下：
+
+“项目”->"搜索XEdu"->"挑选喜欢的项目"->"克隆"
+
+![](../images/how_to_quick_start/openinnolab0.jpg)
+
+这样你就得到了一个XEdu项目，跟随项目就可以快速入门XEdu了
+
+![](../images/how_to_quick_start/openinnolab1.jpg)
+
+### 2. 新建一个XEdu容器的项目
+
+推荐初学者使用Notebook开始XEdu的学习，新建项目的步骤如下：
+
+“工具”->"人工智能工坊"->"Notebook编程"->"XEdu"
+
+![](../images/how_to_quick_start/openinnolab2.jpg)
+
+
+## 快速安装并使用XEdu一键安装包
 
 ### 准备工作
 

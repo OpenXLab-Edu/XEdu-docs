@@ -2,8 +2,9 @@ XEdu快速入门手册
 =================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
+   how_to_quick_start/quick_start_manual.md
    how_to_quick_start/how_to_get_xedu.md
    how_to_quick_start/how_to_start_hub.md
    how_to_quick_start/how_to_start_baseml.md
