@@ -1,4 +1,4 @@
-# 入门手册看这里！！！
+# 使用说明
 
 欢迎各位小伙伴们来到XEdu的AI天地，要想“畅游”XEdu，入门手册少不了，接下来将会一一介绍XEdu的奇妙AI工具们，带领大家快速了解XEdu各个模块的功能和特点，此外，我们还提供了链接“传送门”，方便小伙伴们轻松玩转AI。
 
@@ -92,7 +92,7 @@ MMEdu是人工智能视觉算法集成的深度学习开发工具。本项目使
 [https://openinnolab.org.cn/pjlab/project?id=64055f119c0eb14f22db647c&sc=62f34141bf4f550f3e926e0e#public](https://openinnolab.org.cn/pjlab/project?id=64055f119c0eb14f22db647c&sc=62f34141bf4f550f3e926e0e#public)
 
 
-# 案例七：综合项目石头剪刀布的实时识别（XEduhub+BaseNN）
+## 案例七：综合项目石头剪刀布的实时识别（XEduhub+BaseNN）
 
 ### 简介：
 
