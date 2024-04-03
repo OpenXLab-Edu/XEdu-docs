@@ -77,22 +77,7 @@ MMEdu是人工智能视觉算法集成的深度学习开发工具。本项目使
 项目链接：[用MMEdu解决目标检测问题（以猫狗检测为例）](https://openinnolab.org.cn/pjlab/project?id=64055f119c0eb14f22db647c&sc=62f34141bf4f550f3e926e0e#public)
 [https://openinnolab.org.cn/pjlab/project?id=64055f119c0eb14f22db647c&sc=62f34141bf4f550f3e926e0e#public](https://openinnolab.org.cn/pjlab/project?id=64055f119c0eb14f22db647c&sc=62f34141bf4f550f3e926e0e#public)
 
-## 案例六：用MMEdu训练SSD_Lite目标检测模型（猫狗）
-
-### 简介：
-
-MMEdu是人工智能视觉算法集成的深度学习开发工具。本项目使用MMEdu的目标检测模块MMDetection，根据猫狗多目标COCO数据集，训练SSD_Lite模型实现猫狗目标检测。此外此外目前MMClassifiation支持的SOTA模型有LeNet、MobileNet、ResNet18、ResNet50等，支持训练的数据集格式为COCO。
-
-### 链接：
-
-案例详解：[案例五：用MMEdu训练SSD_Lite目标检测模型（猫狗）](https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_start_mmdet.html)
-[https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_start_mmdet.html](https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_start_mmdet.html)
-
-项目链接：[用MMEdu解决目标检测问题（以猫狗检测为例）](https://openinnolab.org.cn/pjlab/project?id=64055f119c0eb14f22db647c&sc=62f34141bf4f550f3e926e0e#public)
-[https://openinnolab.org.cn/pjlab/project?id=64055f119c0eb14f22db647c&sc=62f34141bf4f550f3e926e0e#public](https://openinnolab.org.cn/pjlab/project?id=64055f119c0eb14f22db647c&sc=62f34141bf4f550f3e926e0e#public)
-
-
-## 案例七：综合项目石头剪刀布的实时识别（XEduhub+BaseNN）
+## 案例六：综合项目石头剪刀布的实时识别（XEduhub+BaseNN）
 
 ### 简介：
 
@@ -101,7 +86,7 @@ MMEdu是人工智能视觉算法集成的深度学习开发工具。本项目使
 
 ### 链接：
 
-案例详解：[案例七：综合项目石头剪刀布的实时识别（XEduhub+BaseNN）](https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_make_a_small_project.html#)
+案例详解：[案例六：综合项目石头剪刀布的实时识别（XEduhub+BaseNN）](https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_make_a_small_project.html#)
 [https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_make_a_small_project.html#](https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_make_a_small_project.html#)
 
 项目链接：[用XEduHub和BaseNN完成石头剪刀布手势识别](https://openinnolab.org.cn/pjlab/project?id=66062a39a888634b8a1bf2ca&backpath=/pjedu/userprofile?slideKey=project#public)
