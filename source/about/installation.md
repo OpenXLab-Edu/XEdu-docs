@@ -150,9 +150,12 @@ XEdu一键安装包说明文档。
 
 ### 拓展：windows一键安装包升级GPU版本（如硬件符合要求）
 
+参考视频：B站演示视频 [一分钟GPU电脑安装XEdu环境](https://www.bilibili.com/video/BV1ff421o788/?share_source=copy_web&vd_source=ca47cf8d0af314fd89055e7dc8d5dd86)
+
+
 #### 准备工作：确认是否有cuda
 
-确认您的windows电脑有gpu算力，同时配置了cuda。建议提前检查自己的CUDA和显卡驱动版本，可以在cmd或terminal中，输入`nvidia-smi`命令检查（我们推荐的CUDA版本是10.1)。
+确认您的windows电脑有GPU算力，同时配置了cuda。建议提前检查自己的CUDA和显卡驱动版本，可以在cmd或terminal中，输入`nvidia-smi`命令检查（我们推荐的CUDA版本是10.1)。
 
 #### 步骤1：卸载CPU版本库
 
@@ -180,13 +183,12 @@ pip install  torch==1.8.1+cu101  torchvision==0.9.1+cu101  torchaudio==0.8.1 -f 
 
 ##### 安装mmcv-full：
 
-接着，我们重新安装mmcv-full。（预编译版本可以在这里找到：https://download.openmmlab.com/mmcv/dist/**{**cu_version**}**/**{**torch_version**}**/index.html）
-
-如严格遵循了前面的步骤操作，此步可直接输入：
+建议直接输入：
 
 ```
 pip install mmcv-full==1.4.5 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.8.0/index.html
 ```
+如果想要用其他cuda版本或者torch版本，虽然不建议，但你可以在这里找到对应的预编译版本的mmcv-full：https://download.openmmlab.com/mmcv/dist/**{**cu_version**}**/**{**torch_version**}**/index.html
 
 ![](../images/about/install1.4.2.PNG)
 
@@ -203,15 +205,17 @@ XEdu的MMEdu、BaseML、BaseNN等各模块库均已支持pip安装并会持续�
 
 ### 0.准备工作
 
-强烈推荐你在Anaconda的基础上安装XEdu环境，可以避免很多的版本冲突问题。
+强烈推荐你在conda的基础上安装XEdu环境，可以避免很多的版本冲突问题。
 
-#### 1）安装Anaconda
+#### 1）安装conda
 
 若您已经安装好conda，该步骤可跳过。
 
 **下载**
 
-首先打开Anaconda官网：[https://www.anaconda.com/](https://www.anaconda.com/)
+可以在官网下载到Anaconda或者Miniconda，conda官网：[https://www.anaconda.com/](https://www.anaconda.com/)
+
+当然，我们也已经为您挑选好合适的版本，可以直接点此链接下载：[miniconda-py38](https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-py38_23.11.0-2-Windows-x86_64.exe)
 
 点击`Download`开始下载，下载完成后得到exe文件。
 
@@ -297,6 +301,8 @@ $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/i
 
 ### 1.2 安装MMEdu(GPU版本)
 
+B站演示视频：[一分钟GPU电脑安装XEdu环境](https://www.bilibili.com/video/BV1ff421o788/?share_source=copy_web&vd_source=ca47cf8d0af314fd89055e7dc8d5dd86)
+
 #### 准备工作：确认是否有cuda
 
 打开命令行，输入nvidia-smi，输出如下：
@@ -305,7 +311,7 @@ $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/i
 
 #### 步骤1：创建一个新的虚拟环境
 
-在准备工作中已完成Anaconda安装，此时可创建一个新的虚拟环境。
+在准备工作中已完成conda安装，此时可创建一个新的虚拟环境。
 
 ```
 conda create -n xedu python=3.8
@@ -326,15 +332,21 @@ pip install jupyter lab
 
 安装对应自己cuda版本的pytorch，安装命令可在以下网址中进行查询：[https://pytorch.org/get-started/locally/](https://pytorch.org/get-started/locally/)
 
-可以在命令行中使用`nvidia-smi`指令查询自己的cuda版本。
+可以在命令行中使用`nvidia-smi`指令查询自己的cuda版本，这里只要cuda版本高于10即可。
 
-例如，若cuda版本为10.1，想要安装1.8.1版本的pytorch，则安装命令为：
+建议使用下面的指令安装cuda10.1对应的torch1.8.1，安装命令为：
 
 ``` {.powershell}
 pip install torch==1.8.1+cu101 torchvision==0.9.1+cu101 torchaudio==0.8.1 -f https://download.pytorch.org/whl/torch_stable.html
 ```
 
-其次，根据torch版本和cuda版本安装mmcv。
+其次，安装mmcv-full。
+
+``` {.powershell}
+pip install mmcv-full==1.4.5 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.8.0/index.html
+```
+
+如果想要安装其他版本，可以尝试下面的指令：
 
 ``` {.powershell}
 pip install mmcv-full -f https://download.openmmlab.com/mmcv/dist/{cu_version}/{torch_version}/index.html
@@ -346,9 +358,6 @@ pip install mmcv-full -f https://download.openmmlab.com/mmcv/dist/{cu_version}/{
 例如想安装和 `CUDA 10.1`、`PyTorch 1.8.0` 兼容的
 `mmcv-full`，使用如下替换过的命令
 
-``` {.powershell}
-pip install mmcv-full==1.4.5 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.8.0/index.html
-```
 
 最后安装MMEdu及其他工具。
 
@@ -369,7 +378,7 @@ print(torch.cuda.is_available())
 
 #### 步骤4：确认是否正确启动cuda训练
 
-启动已安装的jupyter lab，使用启动Gpu训练的代码，看看是否加速了。
+启动已安装的jupyter lab，使用启动GPU训练的代码，看看是否加速了。
 
 ![](../images/about/install1.4.3.png)
 
