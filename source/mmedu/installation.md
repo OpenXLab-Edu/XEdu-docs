@@ -19,9 +19,7 @@
 
 第一步：下载MMEdu（XEdu）最新版文件，并安装到本地，双击exe文件，选择安装路径后，点击Extract即可，安装后自动生成XEdu文件夹，文件夹内目录结构如下图所示。
 
-
 ![](../images/mmedu/XEDUinstall1.png)
-
 
  1）下载方式（即XEdu下载方式）
 
@@ -79,6 +77,8 @@ python中最常用的库管理工具pip，可以使用cmd命令行来运行，�
 当前，我们提供的MMEdu的安装是基础版的pip安装包，可以使用如下命令安装：
 `pip install mmedu`或`pip install MMEdu`。
 
+最新安装说明可以参见：[这里](https://xedu.readthedocs.io/zh/master/about/installation.html#pipmmedu)
+
 在这一步中，可能会有运行失败的情况，通常是由于依赖库安装失败导致的。
 
 如果提示
@@ -108,6 +108,8 @@ python中最常用的库管理工具pip，可以使用cmd命令行来运行，�
 如果想要
 **升级为GPU版本**，可以将torch、torchvision和mmcv-full做一次升级。步骤如下：
 
+最新安装说明可以参见：[这里](https://xedu.readthedocs.io/zh/master/about/installation.html#mmedu-gpu)
+
 第一步：确认安装好与电脑GPU适配的CUDA驱动（这里以cuda10.1为例）
 
 第二步：卸载当前安装的版本：`pip uninstall torch torchvision mmcv-full -y`
@@ -118,29 +120,11 @@ python中最常用的库管理工具pip，可以使用cmd命令行来运行，�
 
 至此，已经完成了对MMEdu的GPU升级。
 
-## 2. 完整版安装之pip安装
+## 2. GPU完整版安装之pip安装
 
-### 2.1 准备工作
+最新安装说明可以参见：[这里](https://xedu.readthedocs.io/zh/master/about/installation.html#mmedu-gpu)
 
-强烈推荐你在Anaconda的基础上安装MMEdu，可以避免很多的版本冲突问题。
-
-### 2.1.1 安装Anaconda
-
-若您已经安装好conda，该步骤可跳过。
-
-**下载**
-
-首先打开Anaconda官网：<a href="https://www.anaconda.com/">https://www.anaconda.com/</a>
-
-点击`Download`开始下载，下载完成后得到exe文件。
-
-**安装**
-
-双击exe文件即可开始安装（一般下载完成后会自动打开安装界面无需点击exe文件，若没有自动打开安装页面再点击此exe文件）。
-
-打开安装界面后，依次选择`Next` -\> `I Agree` -\> `All Users` -\> `Next`
--\> `Next` -\> `Add Anaconda3 to the system PATH environment variable`
--\> `Install` -\> `Next` -\> `Next` -\> `Finish`
+视频演示参见：[B站](https://www.bilibili.com/video/BV1ff421o788/?share_source=copy_web&vd_source=ca47cf8d0af314fd89055e7dc8d5dd86)
 
 ### 3.1.2 安装python编辑器
 
@@ -172,6 +156,7 @@ python中最常用的库管理工具pip，可以使用cmd命令行来运行，�
 
 2.2 安装MMEdu(CPU版本)
 ----------------------
+最新安装说明可以参见：[这里](https://xedu.readthedocs.io/zh/master/about/installation.html#pipmmedu)
 
 ### 2.2.1 Linux安装MMEdu
 
@@ -194,6 +179,7 @@ $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/i
 注：请将命令中的"your\_env\_name"换成你喜欢的名称，如"mmedu"。
 
 ### 2.2.2 Windows安装MMEdu
+最新安装说明可以参见：[这里](https://xedu.readthedocs.io/zh/master/about/installation.html#pipmmedu)
 
 同时按下win+r，输入cmd，回车，打开一个命令行窗口。
 
@@ -213,38 +199,9 @@ $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/i
 
 2.3 安装MMEdu(GPU版本)
 ----------------------
+最新安装说明可以参见：[这里](https://xedu.readthedocs.io/zh/master/about/installation.html#mmedu-gpu)
 
-首先安装对应自己cuda版本的pytorch，安装命令可在以下网址中进行查询：<a href="https://pytorch.org/get-started/locally/">https://pytorch.org/get-started/locally/</a>
-
-可以在命令行中使用`nvidia-smi`指令查询自己的cuda版本。
-
-例如，若cuda版本为10.1，想要安装1.8.1版本的pytorch，则安装命令为：
-
-``` {.powershell}
-$ pip install torch==1.8.1+cu101 torchvision==0.9.1+cu101 torchaudio==0.8.1 -f https://download.pytorch.org/whl/torch_stable.html
-```
-
-其次，根据torch版本和cuda版本安装mmcv。
-
-``` {.powershell}
-$ pip install mmcv-full -f https://download.openmmlab.com/mmcv/dist/{cu_version}/{torch_version}/index.html
-```
-
-其中 `{cu_version}` 和 `{torch_version}`
-根据自身需求替换成实际的版本号。
-
-例如想安装和 `CUDA 10.1`、`PyTorch 1.8.0` 兼容的
-`mmcv-full`，使用如下替换过的命令
-
-``` {.powershell}
-$ pip install mmcv-full==1.4.5 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.8.0/index.html
-```
-
-最后安装MMEdu。
-
-``` {.powershell}
-$ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/index.html
-```
+视频演示参见：[B站](https://www.bilibili.com/video/BV1ff421o788/?share_source=copy_web&vd_source=ca47cf8d0af314fd89055e7dc8d5dd86)
 
 ## 3. 完整版安装之docker容器
 
@@ -255,8 +212,6 @@ $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/i
 打开python终端，执行以下命令即可查看MMEdu版本。当前最新版本是0.1.21。
 
 ![](../images/mmedu/pip3.png)
-
-注：目前版本MMEdu仅支持CPU。
 
 ## 5. 卸载MMEdu库
 
