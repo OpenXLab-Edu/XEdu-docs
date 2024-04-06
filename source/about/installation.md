@@ -1,11 +1,11 @@
 # XEdu的安装和下载
 
-可选的安装方式
+1.可选的安装方式
 --------------
 
 为了满足广大中小学师生的需求，XEdu安装方式分为一键安装包安装、pip安装和docker安装。一键安装包版包含MMEdu、BaseML、BaseNN三个模块的基础功能，以及XEduHub、BaseDT、BaseDeploy等工具库，同时内置了一套EasyDL系列工具，分"EasyTrain.bat"、"EasyInference.bat"和"EasyAPI.bat"这三个可视化工具，定期更新。pip安装方式需用户自己分模块安装，各模块更新同步工具开发进度。此外，还推出了docker容器镜像可供选择。
 
-初学者安装强推!!!不会让人失望的一键安装包
+2.初学者安装强推!!!不会让人失望的一键安装包
 -----------------------------------------
 
 ### 即刻体验XEdu一键安装包（CPU版本），开始！
@@ -198,7 +198,7 @@ pip install mmcv-full==1.4.5 -f https://download.openmmlab.com/mmcv/dist/cu101/t
 
 ![](../images/about/install1.4.3.png)
 
-学校教学强推!!!OpenHydra服务器部署
+3.学校教学强推!!!OpenHydra服务器部署
 -----------------------------------------
 ### 缘起：学校教学之困境
 因为学校机房的主机可能性能不强，但是又无法采购合适的intel新电脑或者nvidia显卡主机，尽管可以用浦育平台算力缓解燃眉之急，只需要浏览器就可以实现编程。但是受限于学校出口带宽等种种原因，AI教学依然受限，为此我们给出了一个新思路。可以用配置服务器的形式，为学校AI教学采购一款带GPU算力的服务器。有了服务器硬件之后，如何安装python环境，让学生能够像使用浦育平台一样使用校内等本地服务器算力呢？就请出我们的重磅嘉宾：**水螅矩阵（OpenHydra）** 一款开源的GPU算力分配系统。
@@ -213,18 +213,18 @@ pip install mmcv-full==1.4.5 -f https://download.openmmlab.com/mmcv/dist/cu101/t
 
 这套系统可以让一台服务器提供满足班级授课的python运行环境，同时内置了XEdu等多种预装环境，以及多套分层AI教学课程。当系统启动后，教师和学生可以登陆网页进行管理和使用。
 
-<img width="709" alt="image" src="https://github.com/OpenXLab-Edu/XEdu-docs/assets/40832342/4f279b78-4b2d-4a7a-a81c-81f2e2c8837a">
+<img width="700" alt="image" src="https://github.com/OpenXLab-Edu/XEdu-docs/assets/40832342/4f279b78-4b2d-4a7a-a81c-81f2e2c8837a">
 
 学生登陆后，将可以启动EasyTrain、JupyterLab、VS Code等多种AI学习环境，使用浏览器即可完成Python程序运行（程序都运行在服务器系统上）。OpenHydra的强大之处在于让不同的学生可以同时使用一台服务器的资源进行计算，而这一切，仅仅基于浏览器就可以实现。
 
-<img width="963" alt="image" src="https://github.com/OpenXLab-Edu/XEdu-docs/assets/40832342/f1a06198-eecc-4c32-86fc-87ee6ede2a35">
+<img width="700" alt="image" src="https://github.com/OpenXLab-Edu/XEdu-docs/assets/40832342/f1a06198-eecc-4c32-86fc-87ee6ede2a35">
 
-<img width="957" alt="image" src="https://github.com/OpenXLab-Edu/XEdu-docs/assets/40832342/2ea495c4-25e0-452b-8961-23360d738d90">
+<img width="700" alt="image" src="https://github.com/OpenXLab-Edu/XEdu-docs/assets/40832342/2ea495c4-25e0-452b-8961-23360d738d90">
 
 
 教师可以为系统添加更多的数据集、课程、算力、用户等必要的资源，同时，也可以对资源的分配进行控制。可以配置系统为纯CPU模式，也可以指定每个学生可以拥有的内存空间大小、显存空间大小，以及学生的预装python环境。
 
-<img width="963" alt="image" src="https://github.com/OpenXLab-Edu/XEdu-docs/assets/40832342/03219a8c-236f-4742-b2b0-cacd4b879120">
+<img width="700" alt="image" src="https://github.com/OpenXLab-Edu/XEdu-docs/assets/40832342/03219a8c-236f-4742-b2b0-cacd4b879120">
 
 官方B站账号：[OpenHydra](https://space.bilibili.com/3546379869751358)
 
@@ -244,6 +244,7 @@ ISO镜像下载地址，见[U盘模式为服务器安装ISO](https://github.com/
 
 视频演示见[OpenhydraUSB烧制指南](https://www.bilibili.com/video/BV1xH4y157pL/?share_source=copy_web&vd_source=ca47cf8d0af314fd89055e7dc8d5dd86) 。
 
+<iframe src="//player.bilibili.com/player.html?aid=1051549108&bvid=BV1xH4y157pL&cid=1468597565&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 2. 配置系统（将U盘插入服务器，然后配置安装设置）
 
@@ -253,13 +254,10 @@ ISO镜像下载地址，见[U盘模式为服务器安装ISO](https://github.com/
 
 视频演示见[Openhydra安装教程](https://www.bilibili.com/video/BV1LK421x7Vc/?share_source=copy_web&vd_source=ca47cf8d0af314fd89055e7dc8d5dd86)
 
-![](https://github.com/openhydra/open-hydra/blob/main/images/lab-01.png)
+<iframe src="//player.bilibili.com/player.html?aid=1701699116&bvid=BV1LK421x7Vc&cid=1467300632&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 
-
-
-
-使用pip安装
+4.使用pip安装
 -----------
 
 XEdu的MMEdu、BaseML、BaseNN等各模块库均已支持pip安装并会持续迭代。
@@ -451,7 +449,7 @@ print(torch.cuda.is_available())
 
 `pip install basenn` 或 `pip install BaseNN`
 
-docker容器镜像
+5.docker容器镜像
 --------------
 
 首先需要确保您的电脑系统盘（C盘）空间剩余空间超过5GB，实际建议有10GB及以上空间，便于后续训练使用。如果想要调整存储空间位置，可以参考[这里修改安装路径](https://blog.csdn.net/ber_bai/article/details/120816006)，[这里修改数据路径](https://zhuanlan.zhihu.com/p/410126547)，后文安装过程中也有具体叙述。
