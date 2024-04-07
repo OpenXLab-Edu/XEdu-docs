@@ -328,3 +328,23 @@ LeNet是一种简单的深度卷积神经网络，他的特色就是参数量少
         </tr>
     </tbody>
 </table>
+
+
+
+### MMCls的高级操作
+#### 验证top-k的修改
+由于源码限制，类别数量超过5类之后，默认的验证方式变为了top-5的准确率(accuracy_top-5)，无法看到top1的准确率。如下图所示：
+![image](https://github.com/OpenXLab-Edu/XEdu-docs/assets/40832342/fa822e32-8936-4960-88a3-d81ebdb2d409)
+
+为此，我们可以修改源码，将其改为'topk': (1,)，这样就可以看到top1的准确率，也可以改为其他数字，同时也支持(1,2,5)这样的写法。然后将修改之后的源码覆盖原始源码后重新导入库文件。
+
+1. 查看库文件所在路径
+    ```python
+    import MMEdu
+    print(MMEdu.__path__)
+    ```
+2. 覆盖原来的库文件
+   ```bash
+    !cp ./Classification_Edu.py /usr/local/envs/ssenv/lib/python3.9/site-packages/MMEdu/Classification/Classification_Edu.py
+   ```
+3. 重新导入库（重启内核）
