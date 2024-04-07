@@ -67,7 +67,7 @@ MMEdu是人工智能视觉算法集成的深度学习开发工具。本项目使
 
 ### 简介：
 
-MMEdu是人工智能视觉算法集成的深度学习开发工具。本项目使用MMEdu的目标检测模块MMDetection，根据猫狗多目标COCO数据集，训练SSD_Lite模型实现猫狗目标检测。此外此外目前MMDetection支持的SOTA模型有LeNet、MobileNet、ResNet18、ResNet50等，支持训练的数据集格式为COCO。
+MMEdu是人工智能视觉算法集成的深度学习开发工具。本项目使用MMEdu的目标检测模块MMDetection，根据猫狗多目标COCO数据集，训练SSD_Lite模型实现猫狗目标检测。此外此外目前MMDetection支持的SOTA模型有SSD_Lite、FaterRCNN、Yolov3等，支持训练的数据集格式为COCO。
 
 ### 链接：
 
