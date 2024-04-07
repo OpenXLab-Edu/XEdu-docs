@@ -731,8 +731,36 @@ model.train(...,loss="MSELoss")
 ```python
 model.train(...,metrics=["mse"])
 ```
+### 7.探秘权重文件
 
+BaseNN 0.3.0以上，支持查看pth文件中的权重信息。
 
+首先将pth文件读入一个变量`state_dict`:
+```python
+import torch 
+ckpt = torch.load('iris_ckpt/basenn.pth')
+state_dict = ckpt['state_dict'].state_dict()
+```
+1）查看模型里面有哪些层，及各个层的名称
+```python
+for i in state_dict:
+    print('这一层的名字是:',i)
+```
+<img width="300" alt="image" src="https://github.com/OpenXLab-Edu/XEdu-docs/assets/40832342/e895a125-5e95-4856-a5ea-7ba6f77d06c3">
+
+2）查看模型里面上述层的形状（每层的大小）
+```python
+for i in state_dict:
+    print('层：', i ," 的形状是", state_dict[i].shape)
+```
+<img width="600" alt="image" src="https://github.com/OpenXLab-Edu/XEdu-docs/assets/40832342/182173b1-22f5-495b-a727-8ad47d40ee4e">
+
+3）查看模型里各层参数的值
+```python
+for i in state_dict:
+    print(ckpt['state_dict'].state_dict()[i])
+```
+<img width="600" alt="image" src="https://github.com/OpenXLab-Edu/XEdu-docs/assets/40832342/6ba0eb2f-8993-4707-9253-de930135be6f">
 
 ## 附录
 
