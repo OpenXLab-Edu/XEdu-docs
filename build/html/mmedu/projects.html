@@ -46,6 +46,7 @@
               <p class="caption" role="heading"><span class="caption-text">目录</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_quick_start.html">XEdu快速入门手册</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEduHub</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="quick_start.html">快速体验MMEdu，开始！</a></li>
@@ -256,11 +257,11 @@
 </div>
 <p>模型应用的基础代码：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
-<span class="n">mmcls</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;mmedu&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;cats_dogs_det.onnx&#39;</span><span class="p">)</span><span class="c1"># 指定使用的onnx模型</span>
-<span class="n">result</span><span class="p">,</span> <span class="n">result_img</span> <span class="o">=</span>  <span class="n">mmcls</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;/data/H47U12/cat_dog_det/images/valid/001.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">)</span><span class="c1"># 进行模型推理</span>
-<span class="n">format_result</span> <span class="o">=</span> <span class="n">mmcls</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s2">&quot;zh&quot;</span><span class="p">)</span><span class="c1"># 推理结果格式化输出</span>
-<span class="n">mmcls</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">result_img</span><span class="p">)</span><span class="c1"># 展示推理结果图片</span>
-<span class="n">mmcls</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">result_img</span><span class="p">,</span><span class="s1">&#39;new.jpg&#39;</span><span class="p">)</span><span class="c1"># 保存推理结果图片</span>
+<span class="n">mmdet</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;mmedu&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;cats_dogs_det.onnx&#39;</span><span class="p">)</span><span class="c1"># 指定使用的onnx模型</span>
+<span class="n">result</span><span class="p">,</span> <span class="n">result_img</span> <span class="o">=</span>  <span class="n">mmdet</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;/data/H47U12/cat_dog_det/images/valid/001.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">)</span><span class="c1"># 进行模型推理</span>
+<span class="n">format_result</span> <span class="o">=</span> <span class="n">mmdet</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s2">&quot;zh&quot;</span><span class="p">)</span><span class="c1"># 推理结果格式化输出</span>
+<span class="n">mmdet</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">result_img</span><span class="p">)</span><span class="c1"># 展示推理结果图片</span>
+<span class="n">mmdet</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">result_img</span><span class="p">,</span><span class="s1">&#39;new.jpg&#39;</span><span class="p">)</span><span class="c1"># 保存推理结果图片</span>
 </pre></div>
 </div>
 </section>

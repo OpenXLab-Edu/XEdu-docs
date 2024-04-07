@@ -174,11 +174,11 @@ model.convert(checkpoint=checkpoint, backend="ONNX", out_file=out_file)
 
 ```
 from XEdu.hub import Workflow as wf
-mmcls = wf(task='mmedu',checkpoint='cats_dogs_det.onnx')# 指定使用的onnx模型
-result, result_img =  mmcls.inference(data='/data/H47U12/cat_dog_det/images/valid/001.jpg',img_type='cv2')# 进行模型推理
-format_result = mmcls.format_output(lang="zh")# 推理结果格式化输出
-mmcls.show(result_img)# 展示推理结果图片
-mmcls.save(result_img,'new.jpg')# 保存推理结果图片
+mmdet = wf(task='mmedu',checkpoint='cats_dogs_det.onnx')# 指定使用的onnx模型
+result, result_img =  mmdet.inference(data='/data/H47U12/cat_dog_det/images/valid/001.jpg',img_type='cv2')# 进行模型推理
+format_result = mmdet.format_output(lang="zh")# 推理结果格式化输出
+mmdet.show(result_img)# 展示推理结果图片
+mmdet.save(result_img,'new.jpg')# 保存推理结果图片
 ```
 
 ##### 6）部署到硬件

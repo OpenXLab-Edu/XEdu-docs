@@ -12,6 +12,7 @@ OpenXLabEdu帮助文档
    :caption: 目录
 
    about
+   how_to_quick_start
    xedu_hub
    mmedu
    basenn

@@ -192,7 +192,7 @@ while cap.isOpened():
         break
     result, result_img=  mmcls.inference(data=img,img_type='cv2')
     format_result = mmcls.format_output(lang="zh")
-    mmcls.show(result_img)
+    cv2.imshow('video', result_img)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break    
 cap.release()

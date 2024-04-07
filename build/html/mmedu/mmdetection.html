@@ -46,6 +46,7 @@
               <p class="caption" role="heading"><span class="caption-text">目录</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_quick_start.html">XEdu快速入门手册</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEduHub</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="quick_start.html">快速体验MMEdu，开始！</a></li>
@@ -110,7 +111,7 @@
 <section id="id1">
 <h2>初识目标检测和MMDetection<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p>相信你已经体验并完成了一些图像分类任务，但是图像分类任务在真实的场景中应用中，像只出现一只猫的图片情况较少，如果一张图片里有两只猫，图像分类的模型可能可以识别出是猫。但是如果是这张图又有猫又有狗，那图像分类模型就肯定识别不出来了。为了解决这一种问题，就出现了目标检测算法。对于图像分类任务来讲，AI仅需正确识别图片的类别即可。</p>
-<p>对于图像分类任务来讲，目标检测(Detection)任务有两个主要的子任务：<strong>定位和分类</strong>。</p>
+<p>目标检测(Detection)任务有两个主要的子任务：<strong>定位和分类</strong>。</p>
 <p>定位任务是什么呢？ 定位是找到图像主体或者某个物体的位置，然后用一个框将其框起来。这个框可以是矩形的，也可以是多边形或者圆形的，通常用得最多的是矩形（如下图）。</p>
 <p><img alt="../_images/image-20220408192155931.png" src="../_images/image-20220408192155931.png" /></p>
 <p>总的来说，目标检测任务是图像分类任务的进阶任务，图像分类任务只有一个子任务：分类，而目标检测任务有两个任务：定位和分类，按照<strong>图像中目标的数量</strong>可分为单目标检测和多目标检测。目标检测任务比起分类任务多出来了一个定位，即将目标框起来的步骤。</p>

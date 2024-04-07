@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>案例六：综合项目石头剪刀布的实时识别（XEduhub+BaseNN） &mdash; OpenXLabEdu  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="深度学习工具库XEduHub" href="../xedu_hub.html" />
+    <link rel="prev" title="案例五：用MMEdu训练SSD_Lite目标检测模型（猫狗）" href="how_to_start_mmdet.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenXLabEdu
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../how_to_quick_start.html">XEdu快速入门手册</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="quick_start_manual.html">使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_get_xedu.html">如何快速获得XEdu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_start_hub.html">案例一：用XEduhub执行推理任务（检测任务）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_start_baseml.html">案例二：用BaseML训练机器学习模型（抛物线）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_start_basenn.html">案例三：用BaseNN训练搭建全连接神经网络（鸢尾花）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_start_mmcls.html">案例四：用MMEdu训练LeNet图像分类模型（手写体）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_start_mmdet.html">案例五：用MMEdu训练SSD_Lite目标检测模型（猫狗）</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">案例六：综合项目石头剪刀布的实时识别（XEduhub+BaseNN）</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">项目说明：</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">项目步骤：</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">1.关键点检测和简单应用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">2.搭建全连接神经网络训练石头剪刀布手势模型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">3.模型应用：实时手势分类</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEduHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basenn.html">神经网络库BaseNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../baseml.html">传统机器学习库BaseML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basedt.html">数据处理库BaseDT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basedeploy.html">模型部署库BaseDeploy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_use.html">如何用XEdu借助AI解决真实问题</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenXLabEdu</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../how_to_quick_start.html">XEdu快速入门手册</a></li>
+      <li class="breadcrumb-item active">案例六：综合项目石头剪刀布的实时识别（XEduhub+BaseNN）</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/how_to_quick_start/how_to_make_a_small_project.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="xeduhub-basenn">
+<h1>案例六：综合项目石头剪刀布的实时识别（XEduhub+BaseNN）<a class="headerlink" href="#xeduhub-basenn" title="Permalink to this heading"></a></h1>
+<section id="id1">
+<h2>项目说明：<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>组合XEdu工具集的工具完成一个综合项目非常方便，本项目使用XEduHub提取手势图像的关键点信息，再将这些关键点信息作为特征输入到一个自己搭建的全连接神经网络模型中进行训练，此步骤由BaseNN实现，最后到本地完成模型应用。</p>
+<p>项目地址：<a class="reference external" href="https://openinnolab.org.cn/pjlab/project?id=66062a39a888634b8a1bf2ca&amp;backpath=/pjedu/userprofile?slideKey=project#public">https://openinnolab.org.cn/pjlab/project?id=66062a39a888634b8a1bf2ca&amp;backpath=/pjedu/userprofile?slideKey=project#public</a></p>
+</section>
+<section id="id2">
+<h2>项目步骤：<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<section id="id3">
+<h3>1.关键点检测和简单应用<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<p>手部关键点检测的代码和前文提到的完全一致，此处我们再次细致分析检测到的手部关键点的结构。</p>
+<p><img alt="../_images/new_hand.png" src="../_images/new_hand.png" /></p>
+<p>首先可以看到检测到的关键点供包含21组关键点数据，代表21个点的坐标，分别是
+掌心：0；</p>
+<p>大拇指：1-4；</p>
+<p>食指：5-8；</p>
+<p>中指：9-12；</p>
+<p>无名指：12-16；</p>
+<p>小拇指：17-20。</p>
+<p>有了这个认识，便能够轻松获取每个点的坐标信息。例如，大拇指指尖的关键点坐标是keypoints[4]。</p>
+<section id="id4">
+<h4>1）基于坐标信息写一个判断手势的逻辑<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h4>
+<p>假设已经检测出了一组手部关键点，那么应用的时候，可以对关键点做一下简单的处理，还可以做一些判断，例如我们写一个计算伸展手指数量的函数，可以判断一下手势。当然了，这种方式比较麻烦，需对手指进行细致分析，同时结果可能不准确。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># 计算两点之间的欧氏距离</span>
+<span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">p1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">p2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">p1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">p2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># 计算伸展手指的数量</span>
+<span class="k">def</span> <span class="nf">count_extended_fingers</span><span class="p">(</span><span class="n">keypoints</span><span class="p">,</span> <span class="n">wrist_point</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">finger_tips</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
+    <span class="c1">#finger_tips: 每个手指尖端关键点的索引列表，默认为拇指到小指的尖端。</span>
+    <span class="c1"># 初始化伸展手指的数量为0</span>
+    <span class="n">extended_fingers</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">distances</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># 存储掌心到手指尖的距离</span>
+    
+    <span class="c1"># 获取手腕关键点的坐标</span>
+    <span class="n">wrist</span> <span class="o">=</span> <span class="n">keypoints</span><span class="p">[</span><span class="n">wrist_point</span><span class="p">]</span>
+    
+    <span class="c1"># 遍历手指尖端关键点</span>
+    <span class="k">for</span> <span class="n">fingertip</span> <span class="ow">in</span> <span class="n">finger_tips</span><span class="p">:</span>
+        <span class="c1"># 计算手指尖端和掌心之间的距离</span>
+        <span class="n">dist</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="n">wrist</span><span class="p">,</span> <span class="n">keypoints</span><span class="p">[</span><span class="n">fingertip</span><span class="p">])</span>
+        <span class="c1"># 计算第一节指骨到掌心之间的距离</span>
+        <span class="n">dist1</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="n">wrist</span><span class="p">,</span> <span class="n">keypoints</span><span class="p">[</span><span class="n">fingertip</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="c1"># 计算第二节指骨到掌心之间的距离</span>
+        <span class="n">dist2</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="n">wrist</span><span class="p">,</span> <span class="n">keypoints</span><span class="p">[</span><span class="n">fingertip</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+        <span class="n">distances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span>
+        <span class="c1"># 如果是大拇指距离大于阈值则认为该手指是伸展的</span>
+        <span class="k">if</span> <span class="n">dist</span> <span class="o">&gt;</span> <span class="n">threshold</span> <span class="ow">and</span> <span class="n">fingertip</span><span class="o">==</span><span class="mi">4</span><span class="p">:</span>
+            <span class="n">extended_fingers</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c1"># 增加伸展手指的数量</span>
+        <span class="c1"># 如果距离大于阈值且指尖距离大于第一节指骨距离，第一节指骨距离大于第二节指骨距离则认为该手指是伸展的    </span>
+        <span class="k">elif</span>  <span class="n">dist</span> <span class="o">&gt;</span> <span class="n">threshold</span> <span class="ow">and</span> <span class="n">dist</span><span class="o">&gt;</span><span class="n">dist1</span><span class="o">&gt;</span><span class="n">dist2</span><span class="p">:</span>
+            <span class="n">extended_fingers</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c1"># 增加伸展手指的数量</span>
+            
+    <span class="c1"># 返回伸展手指的总数和每个手指的距离</span>
+    <span class="k">return</span> <span class="n">extended_fingers</span><span class="p">,</span> <span class="n">distances</span>
+
+<span class="c1"># 假设 keypoints 是从模型获取的关键点列表</span>
+<span class="n">extended_fingers</span><span class="p">,</span> <span class="n">finger_distances</span> <span class="o">=</span> <span class="n">count_extended_fingers</span><span class="p">(</span><span class="n">keypoints</span><span class="p">)</span>
+<span class="n">threshold</span><span class="o">=</span><span class="mi">5</span>
+<span class="c1"># 判断手势</span>
+<span class="k">if</span> <span class="n">extended_fingers</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="p">(</span><span class="n">finger_distances</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">&gt;</span><span class="n">threshold</span> <span class="ow">and</span> <span class="n">extended_fingers</span> <span class="o">==</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">hand_gesture</span> <span class="o">=</span> <span class="s2">&quot;石头&quot;</span>
+<span class="k">elif</span> <span class="n">extended_fingers</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">finger_distances</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">threshold</span> <span class="ow">and</span> <span class="n">finger_distances</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">:</span>
+    <span class="n">hand_gesture</span> <span class="o">=</span> <span class="s2">&quot;剪刀&quot;</span>
+<span class="k">elif</span> <span class="n">extended_fingers</span> <span class="o">==</span> <span class="mi">5</span> <span class="ow">and</span> <span class="nb">all</span><span class="p">(</span><span class="n">dist</span> <span class="o">&gt;</span> <span class="n">threshold</span> <span class="k">for</span> <span class="n">dist</span> <span class="ow">in</span> <span class="n">finger_distances</span><span class="p">):</span>
+    <span class="n">hand_gesture</span> <span class="o">=</span> <span class="s2">&quot;布&quot;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">hand_gesture</span> <span class="o">=</span> <span class="s2">&quot;未知手势&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">hand_gesture</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h4>2）实时手部关键点检测<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h4>
+<p>还有一种简单的应用，那便是连接摄像头，调用OpenCV库，在手部关键点检测的代码基础上可以实现实时手部关键点检测。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span> <span class="c1"># 导入库</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">det</span>  <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;det_hand&#39;</span><span class="p">)</span> <span class="c1"># 实例化模型</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;pose_hand21&#39;</span><span class="p">)</span> <span class="c1"># 实例化模型</span>
+
+<span class="k">while</span> <span class="n">cap</span><span class="o">.</span><span class="n">isOpened</span><span class="p">():</span>
+    <span class="n">ret</span><span class="p">,</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">ret</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">bboxs</span><span class="p">,</span><span class="n">img</span> <span class="o">=</span> <span class="n">det</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">frame</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">)</span> <span class="c1"># 进行推理</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">bboxs</span><span class="p">:</span>
+        <span class="n">keypoints</span><span class="p">,</span><span class="n">img</span> <span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">img</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">,</span><span class="n">bbox</span><span class="o">=</span><span class="n">i</span><span class="p">)</span> <span class="c1"># 进行推理</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">&#39;video&#39;</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFF</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">):</span>
+        <span class="k">break</span>    
+<span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id6">
+<h3>2.搭建全连接神经网络训练石头剪刀布手势模型<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<p>在1的基础上，我们可以批量提取出所有手势图像的手势关键点数据，做一个CSV格式的关键点数据集，每行代表一张图片提出的手部关键点坐标和这张图的类别。当有了这样一个数据集，我们便可以使用XEdu的一系列训练模型的工具去学习这些数据的特征，从而去训练一个石头剪刀布手势识别模型。</p>
+<section id="id7">
+<h4>第1步 划分数据集<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h4>
+<p>在准备训练前，我们建议先完成数据集划分，即将数据集拆分为训练集和验证集，训练集用于训练模型，验证集用于评估模型的性能。此步骤可以手动完成，也可以用代码完成，可<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basedt/introduction.html#id11">借助XEdu的数据处理库BaseDT</a>，指定csv文件路径以及划分比例，将特征数据集划分为训练集和验证集，并将训练集和验证集的特征和标签均提取出来。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.dataset</span> <span class="kn">import</span> <span class="n">split_tab_dataset</span>
+<span class="c1"># 指定待拆分的csv数据集</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;data/workflow_pose.csv&quot;</span>
+<span class="c1"># 指定特征数据列、标签列、训练集比重</span>
+<span class="n">tx</span><span class="p">,</span><span class="n">ty</span><span class="p">,</span><span class="n">val_x</span><span class="p">,</span><span class="n">val_y</span> <span class="o">=</span> <span class="n">split_tab_dataset</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">data_column</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">43</span><span class="p">),</span><span class="n">label_column</span><span class="o">=</span><span class="mi">43</span><span class="p">,</span><span class="n">train_val_ratio</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="basenn">
+<h4>第2步 用BaseNN搭建全连接神经网络训练模型<a class="headerlink" href="#basenn" title="Permalink to this heading"></a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入BaseNN库</span>
+<span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
+<span class="c1"># 声明模型</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">(</span><span class="s1">&#39;cls&#39;</span><span class="p">)</span>
+<span class="c1"># 载入数据</span>
+<span class="n">train_path</span> <span class="o">=</span> <span class="s1">&#39;data/workflow_pose_train.csv&#39;</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_tab_data</span><span class="p">(</span><span class="n">train_path</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">2100</span><span class="p">)</span>
+<span class="c1"># 自己搭建网络</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="mi">140</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> 
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">140</span><span class="p">,</span> <span class="mi">52</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> 
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">52</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">)</span> 
+<span class="c1"># 设置随机数种子</span>
+<span class="n">model</span><span class="o">.</span><span class="n">set_seed</span><span class="p">(</span><span class="mi">888</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">optimizer</span> <span class="o">=</span> <span class="s1">&#39;Adam&#39;</span> <span class="c1">#&#39;SGD&#39; , &#39;Adam&#39; , &#39;Adagrad&#39; , &#39;ASGD&#39; 内置不同优化器</span>
+<span class="n">learn_rate</span> <span class="o">=</span> <span class="mf">0.001</span> <span class="c1">#学习率</span>
+<span class="n">max_epoch</span> <span class="o">=</span> <span class="mi">200</span> <span class="c1"># 最大迭代次数</span>
+<span class="n">metrics</span> <span class="o">=</span> <span class="s1">&#39;acc&#39;</span><span class="c1"># 评估指标</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/BaseNN&#39;</span> <span class="c1"># 模型保存路径</span>
+<span class="c1"># 模型训练</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="n">learn_rate</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="n">max_epoch</span><span class="p">,</span><span class="n">metrics</span><span class="o">=</span><span class="n">metrics</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id8">
+<h4>第3步 模型评估<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h4>
+<p>使用第1步拆分出的验证集数据评估模型的性能。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="c1"># 计算验证集准确率</span>
+<span class="k">def</span> <span class="nf">cal_accuracy</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">pred_y</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">pred_y</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">tp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">==</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">tp</span><span class="p">)</span><span class="o">/</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">acc</span>
+
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">(</span><span class="s1">&#39;cls&#39;</span><span class="p">)</span> <span class="c1"># 声明模型</span>
+<span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/BaseNN/basenn.pth&#39;</span> <span class="c1"># 现有模型路径</span>
+
+<span class="c1"># 读取验证数据</span>
+<span class="n">val_path</span> <span class="o">=</span> <span class="s1">&#39;data/workflow_pose_val.csv&#39;</span>
+<span class="n">x_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">val_path</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">42</span><span class="p">))</span> 
+<span class="n">y_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">val_path</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span> <span class="c1"># 读取最后一列，标签</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">x_val</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">)</span> <span class="c1"># 直接推理</span>
+<span class="n">acc</span> <span class="o">=</span> <span class="n">cal_accuracy</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;验证集准确率: </span><span class="si">{:.2f}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mf">100.0</span> <span class="o">*</span> <span class="n">acc</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="id9">
+<h4>第4步 模型测试<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h4>
+<p>用某组数据进行推理预测。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">(</span><span class="s1">&#39;cls&#39;</span><span class="p">)</span> <span class="c1"># 声明模型</span>
+<span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/BaseNN/basenn.pth&#39;</span> <span class="c1"># 现有模型路径</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[[</span> <span class="mf">89.14984302</span><span class="p">,</span> <span class="mf">114.5882458</span> <span class="p">,</span>  <span class="mf">62.63654601</span><span class="p">,</span> <span class="mf">104.86670357</span><span class="p">,</span>
+        <span class="mf">47.90693656</span><span class="p">,</span>  <span class="mf">91.90464725</span><span class="p">,</span>  <span class="mf">33.17732712</span><span class="p">,</span>  <span class="mf">84.24525034</span><span class="p">,</span>
+        <span class="mf">18.15312548</span><span class="p">,</span>  <span class="mf">81.88851283</span><span class="p">,</span>  <span class="mf">70.59053511</span><span class="p">,</span>  <span class="mf">68.63186433</span><span class="p">,</span>
+        <span class="mf">59.98521631</span><span class="p">,</span>  <span class="mf">45.3590814</span> <span class="p">,</span>  <span class="mf">52.03122721</span><span class="p">,</span>  <span class="mf">29.4511032</span> <span class="p">,</span>
+        <span class="mf">47.02316</span>   <span class="p">,</span>  <span class="mf">15.89986251</span><span class="p">,</span>  <span class="mf">85.02555237</span><span class="p">,</span>  <span class="mf">64.80216587</span><span class="p">,</span>
+        <span class="mf">85.61473675</span><span class="p">,</span>  <span class="mf">38.87805324</span><span class="p">,</span>  <span class="mf">83.55259143</span><span class="p">,</span>  <span class="mf">22.08629847</span><span class="p">,</span>
+        <span class="mf">82.66881486</span><span class="p">,</span>  <span class="mf">10.00801873</span><span class="p">,</span>  <span class="mf">93.27413366</span><span class="p">,</span>  <span class="mf">66.27512681</span><span class="p">,</span>
+        <span class="mf">95.63087117</span><span class="p">,</span>  <span class="mf">44.18071264</span><span class="p">,</span>  <span class="mf">92.09576491</span><span class="p">,</span>  <span class="mf">37.4050923</span> <span class="p">,</span>
+        <span class="mf">86.49851332</span><span class="p">,</span>  <span class="mf">40.64560638</span><span class="p">,</span>  <span class="mf">99.46056963</span><span class="p">,</span>  <span class="mf">69.51564089</span><span class="p">,</span>
+       <span class="mf">100.63893838</span><span class="p">,</span>  <span class="mf">51.54551737</span><span class="p">,</span>  <span class="mf">98.28220087</span><span class="p">,</span>  <span class="mf">48.89418767</span><span class="p">,</span>
+        <span class="mf">95.63087117</span><span class="p">,</span>  <span class="mf">48.0104111</span> <span class="p">]]</span> <span class="c1"># 指定一组坐标数据</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">)</span> <span class="c1"># 直接推理</span>
+<span class="n">model</span><span class="o">.</span><span class="n">print_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="c1"># 输出推理结果</span>
+</pre></div>
+</div>
+</section>
+<section id="id10">
+<h4>第5步 模型转换与应用<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h4>
+<p>为了方便模型应用先可借助BaseNN完成模型转换，转换为ONNX格式后更方便模型使用。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">(</span><span class="s1">&#39;cls&#39;</span><span class="p">)</span>
+<span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/BaseNN3/basenn.pth&#39;</span> <span class="c1"># 指定待转换的模型权重文件</span>
+<span class="n">model</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="s1">&#39;checkpoints/basenn.onnx&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id11">
+<h3>3.模型应用：实时手势分类<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h3>
+<section id="id12">
+<h4>第1步 单张图片完成手势分类<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h4>
+<p>首选我们如何使用训练好的模型完成单张图片推理。模型推理时，要记得对新的图片进行与训练时相同的处理，也就是我们训练时使用批量完成手部关键点检测的数据，那么当推理一张新图片时，也需对此图片完成手部关键点检测，并且做维度处理。如下代码实现了上述功能</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">img_path</span> <span class="o">=</span> <span class="s1">&#39;paper01-001.png&#39;</span> <span class="c1"># 指定进行推理的图片路径</span>
+<span class="n">det</span>  <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;det_hand&#39;</span><span class="p">)</span> <span class="c1"># 实例化模型</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;pose_hand21&#39;</span><span class="p">)</span> <span class="c1"># 实例化模型</span>
+<span class="n">bboxs</span> <span class="o">=</span> <span class="n">det</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">img_path</span><span class="p">)</span> <span class="c1"># 进行推理</span>
+<span class="n">keypoints_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">bboxs</span><span class="p">:</span>
+    <span class="n">keypoints</span> <span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">img_path</span><span class="p">,</span><span class="n">bbox</span><span class="o">=</span><span class="n">i</span><span class="p">)</span> <span class="c1"># 进行推理</span>
+    <span class="n">keypoints_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">keypoints</span><span class="p">)</span>
+<span class="c1"># 展平数组</span>
+<span class="n">pose_features</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">keypoints_list</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">keypoints_list</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># 声明分类模型</span>
+<span class="n">bn</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;basenn&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;checkpoints/basenn.onnx&#39;</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">bn</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">pose_features</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">bn</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id13">
+<h4>第2步 模型应用：实时手势分类<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h4>
+<p>了解了单张图片推理的实现逻辑，我们可以应用一下这个模型模型，比如我们把onnx模型下载到本地，连接一个摄像头，再借助OpenCV库完成一个实时手势分类的应用，参考代码如下。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">det</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;det_hand&#39;</span><span class="p">)</span>  <span class="c1"># 实例化模型</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;pose_hand21&#39;</span><span class="p">)</span>  <span class="c1"># 实例化模型</span>
+<span class="n">bn</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;basenn&#39;</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;basenn.onnx&#39;</span><span class="p">)</span>  <span class="c1"># 声明分类模型</span>
+
+<span class="k">while</span> <span class="n">cap</span><span class="o">.</span><span class="n">isOpened</span><span class="p">():</span>
+    <span class="n">ret</span><span class="p">,</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">ret</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">bboxs</span><span class="p">,</span> <span class="n">img</span> <span class="o">=</span> <span class="n">det</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">frame</span><span class="p">,</span> <span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">)</span>  <span class="c1"># 进行推理</span>
+    <span class="n">keypoints_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">bboxs</span><span class="p">:</span>
+        <span class="n">keypoints</span><span class="p">,</span> <span class="n">img</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">img</span><span class="p">,</span> <span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">,</span> <span class="n">bbox</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>  <span class="c1"># 进行推理</span>
+        <span class="n">keypoints_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">keypoints</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">keypoints_list</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># 判断是否检测到手部关键点</span>
+        <span class="n">pose_features</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">keypoints_list</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">keypoints_list</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">bn</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">pose_features</span><span class="p">)</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">bn</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span>
+        <span class="c1"># 指定分类标签</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;paper&#39;</span><span class="p">,</span> <span class="s1">&#39;rock&#39;</span><span class="p">,</span> <span class="s1">&#39;scissors&#39;</span><span class="p">]</span>
+        <span class="c1"># 输出类别结果</span>
+        <span class="n">prediction</span><span class="o">=</span><span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">res</span><span class="p">)):</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;预测值&#39;</span><span class="p">])</span>
+            <span class="n">prediction</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">label</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">prediction</span><span class="p">)</span>   
+        <span class="c1"># 在显示图像的窗口中添加预测结果的文本</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">putText</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;prediction:</span><span class="si">{</span><span class="n">prediction</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="n">cv2</span><span class="o">.</span><span class="n">FONT_HERSHEY_SIMPLEX</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">2</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">LINE_AA</span><span class="p">)</span>  <span class="c1"># 使用BGR颜色代码</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">&#39;video&#39;</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFF</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">):</span>
+        <span class="k">break</span>
+
+<span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>实现效果：</p>
+<p><img alt="../_images/hand.gif" src="../_images/hand.gif" /></p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="how_to_start_mmdet.html" class="btn btn-neutral float-left" title="案例五：用MMEdu训练SSD_Lite目标检测模型（猫狗）" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../xedu_hub.html" class="btn btn-neutral float-right" title="深度学习工具库XEduHub" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2024 OpenXLabEdu.All Rights Reserved.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
