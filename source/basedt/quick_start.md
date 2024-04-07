@@ -97,14 +97,6 @@ ds.check()
 
 首先需将网上下载的原始数据集做初步整理，整理规范如下：
 
-```Python
-原数据集(目标检测)
-|---annotations
-      |----xxx.json/xxx.xml
-|---images
-      |----xxx.jpg/png/....
-classes.txt
-
 原数据集(分类)
 |---images
     |---class1
@@ -117,6 +109,28 @@ classes.txt
           |----xxx.jpg/png/....
 classes.txt
 ```
+注意这里需要有images文件夹和classes.txt这两个部分，才可以进行格式转换。
+
+如是图像分类数据集，首先需将所有图片按照类别存放，然后将所有图片文件夹放入images文件夹，同时新建一个classes.txt，写入类别信息。
+
+整理完毕即可使用BaseDT数据集格式转换的代码完成数据集转换。需指定新数据集路径、原始数据集路径、原始数据集格式、划分比例（如不设置，则默认比例为训练集:测试集:验证集=7:1:2）。
+
+```python
+from BaseDT.dataset import DataSet
+ds = DataSet(r"mycls") # 指定为生成数据集的路径
+# 默认比例为train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2
+ds.make_dataset(r"mydataset", src_format="IMAGENET",train_ratio = 0.8, test_ratio = 0.1, val_ratio = 0.1)# 指定原始数据集的路径，数据集格式选择IMAGENET
+```
+
+```Python
+原数据集(目标检测)
+|---annotations
+      |----xxx.json/xxx.xml
+|---images
+      |----xxx.jpg/png/....
+classes.txt
+
+
 
 如是目标检测数据集，需将所有图片存放至images文件夹，所有标注文件（VOC格式的为xml文件、COCO格式的为json格式）存放至annotations文件夹，同时在根目录下新建一个classes.txt，写入类别信息。如是图像分类数据集，首先需将所有图片按照类别存放，然后将所有图片文件夹放入images文件夹，同时新建一个classes.txt，写入类别信息。通过此过程，也有助于初步了解网上下载的数据集。
 
