@@ -73,7 +73,7 @@ model = wf(task='pose_hand21') # 实例化模型
 img_path = 'demo/hand.jpg' # 指定进行推理的图片路径
 bboxs,img = det.inference(data=img_path,img_type='cv2') # 进行推理
 for i in bboxs:
-    keypoints,new_img = model.inference(data=img,img_type='cv2',bbox=i) # 进行推理
-    model.show(new_img) # 可视化结果
+    keypoints,img = model.inference(data=img,img_type='cv2',bbox=i) # 进行推理
+    model.show(img) # 可视化结果
 ```
 
