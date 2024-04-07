@@ -72,7 +72,7 @@ model.metricplot()
 
 ```
 # 模型保存
-model.save('checkpoints/baseml_model/knn_iris.pkl')
+model.save('checkpoints/baseml_model/lr_catapult.pkl')
 ```
 
 上文简单介绍了使用BaseML训练一个回归模型的方法，BaseML模型训练的代码详解详见[BaseML功能详解](https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id7)。
@@ -155,7 +155,7 @@ model.metricplot() # 可视化验证效果
 
 ```
 from XEdu.hub import Workflow as wf
-baseml = wf(task='baseml',checkpoint='checkpoints/model.pkl')# 指定使用的pkl模型
+baseml = wf(task='baseml',checkpoint='checkpoints/baseml_model/lr_catapult.pkl')# 指定使用的pkl模型
 data = [[34]] # 根据训练模型时使用的数据来定
 result= baseml.inference(data=data)# 进行模型推理
 print(result)
