@@ -958,9 +958,9 @@ format_result = cls.format_output(lang='zh')#推理结果格式化输出
 ```python
 from XEdu.hub import Workflow as wf
 style = wf(task='gen_style',style='mosaic')
-result = style.inference(data='data/cat101.jpg',img_type='cv2')# 进行模型推理
-style.show(result)# 展示推理图片
-style.save(result,"style_cat.jpg")# 保存推理图片
+result, img = style.inference(data='data/cat101.jpg',img_type='cv2')# 进行模型推理
+style.show(img)# 展示推理图片
+style.save(img,"style_cat.jpg")# 保存推理图片
 ```
 
 ### 代码解释
@@ -1032,7 +1032,7 @@ style = wf(task='gen_style',style='mosaic')
 #### 2. 模型推理
 
 ```python
-result = style.inference(data='data/cat101.jpg',img_type='cv2')# 进行模型推理
+result, img = style.inference(data='data/cat101.jpg',img_type='cv2')# 进行模型推理
 ```
 
 模型推理`inference()`可传入参数：
@@ -1043,12 +1043,12 @@ result = style.inference(data='data/cat101.jpg',img_type='cv2')# 进行模型推
 
 模型推理返回结果：
 
-- `result`是个三维数组，以cv2格式保存了风格迁移完成后的图片。
+- `result`和`img`都是三维数组，以cv2格式保存了风格迁移完成后的图片。
 
 #### 3. 结果输出
 
 ```python
-style.show(result)# 展示推理后的图片
+style.show(img)# 展示推理后的图片
 ```
 
 `show()`能够输出风格迁移后的结果图像。
@@ -1058,7 +1058,7 @@ style.show(result)# 展示推理后的图片
 #### 4. 结果保存
 
 ```python
-style.save(result,"style_cat.jpg")# 保存推理图片
+style.save(img,"style_cat.jpg")# 保存推理图片
 ```
 
 `save()`方法能够保存风格迁移后的图像

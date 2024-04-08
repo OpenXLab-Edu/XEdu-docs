@@ -19,7 +19,8 @@ XEduHub针对一些常见任务，提供了现成的优质模型，可以完成�
 案例详解：[用XEduhub执行推理任务（检测任务）](https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_start_hub.html#)
 [https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_start_hub.html#](https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_start_hub.html#)
 
-项目链接：敬请期待……
+项目链接：[用XEduhub执行推理任务（检测任务）](https://www.openinnolab.org.cn/pjlab/project?id=6612327ea888634b8a6de8f6&backpath=/pjlab/projects/list#public)
+[https://www.openinnolab.org.cn/pjlab/project?id=6612327ea888634b8a6de8f6&backpath=/pjlab/projects/list#public](https://www.openinnolab.org.cn/pjlab/project?id=6612327ea888634b8a6de8f6&backpath=/pjlab/projects/list#public)
 
 ## 案例二：用BaseML训练机器学习模型（抛物线）
 
@@ -32,7 +33,8 @@ BaseML库提供了众多机器学习训练方法，如线性回归、KNN、SVM�
 案例详解：[用BaseML训练机器学习模型（抛物线）](https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_start_baseml.html#)
 [https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_start_baseml.html#](https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_start_baseml.html#)
 
-项目链接：敬请期待……
+项目链接：[用BaseML训练机器学习模型（抛物线）](https://www.openinnolab.org.cn/pjlab/project?id=66123df8e0ea4a2a08b20464&backpath=/pjlab/projects/list#public)
+[https://www.openinnolab.org.cn/pjlab/project?id=66123df8e0ea4a2a08b20464&backpath=/pjlab/projects/list#public](https://www.openinnolab.org.cn/pjlab/project?id=66123df8e0ea4a2a08b20464&backpath=/pjlab/projects/list#public)
 
 ## 案例三：用BaseNN训练搭建全连接神经网络（鸢尾花）
 

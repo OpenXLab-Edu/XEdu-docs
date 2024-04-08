@@ -4,6 +4,9 @@
 
 我们以恒定力量，分别以不同角度向空中抛出石块，测量石头落地点距离投石车的距离，得到投石角度与距离对照表。这是一个典型的抛物线问题，能否实现用机器学习方法预测抛物线函数呢？本项目使用BaseML中的回归算法，选择不同的算法训练投石车落地距离预测模型。
 
+项目地址：[用BaseML训练机器学习模型（抛物线）](https://www.openinnolab.org.cn/pjlab/project?id=66123df8e0ea4a2a08b20464&backpath=/pjlab/projects/list#public)
+[https://www.openinnolab.org.cn/pjlab/project?id=66123df8e0ea4a2a08b20464&backpath=/pjlab/projects/list#public](https://www.openinnolab.org.cn/pjlab/project?id=66123df8e0ea4a2a08b20464&backpath=/pjlab/projects/list#public)
+
 ## 机器学习的基本流程
 
 机器学习实际上分为两个阶段，首先是模型训练过程，即“学习”；然后是模型推理过程，即“应用”。典型的机器学习流程可以分为数据准备、模型搭建、模型训练与评估、模型应用等环节（如下图）。
