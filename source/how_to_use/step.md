@@ -55,9 +55,13 @@ for c in classes:
         else:
             t_path = os.path.join(target_path, 'test_set',c,pic)
         shutil.move(o_path,t_path)
+```
 
-
-
+### 专题2:用python解压一个zip压缩包
+```python
+import zipfile
+f = zipfile.ZipFile('./imagenet.zip') # 指定压缩包的路径
+f.extractall('./datasets') # 指定提取的路径
 ```
 
 ## Step4: 模型训练
