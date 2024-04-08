@@ -1,5 +1,7 @@
 # 常见问题解答
-云文档链接：[https://docs.qq.com/sheet/DQ0htU2poQlRSUmxn?tab=BB08J2](https://docs.qq.com/sheet/DQ0htU2poQlRSUmxn?tab=BB08J2)
+《有问必答》云文档链接：[https://docs.qq.com/sheet/DQ0htU2poQlRSUmxn?tab=BB08J2](https://docs.qq.com/sheet/DQ0htU2poQlRSUmxn?tab=BB08J2)
+
+【为了收集用户碰到的各种问题，并及时解决，我们提供了上面的有问必答文档，登录后即可添加问题和答案】
 
 Q1：XEdu和OpenInnoLab什么关系？都是人工智能平台吗？
 
