@@ -4,6 +4,11 @@
 
 XEduHub针对一些常见任务，提供了现成的优质模型，让初学者能轻松进行AI应用实践。本项目完成了直接调用一个内置模型实现检测手的功能，只用7行代码就可实现。
 
+
+
+项目地址：[用XEduhub执行推理任务（检测任务）](https://www.openinnolab.org.cn/pjlab/project?id=6612327ea888634b8a6de8f6&backpath=/pjlab/projects/list#public)
+[https://www.openinnolab.org.cn/pjlab/project?id=6612327ea888634b8a6de8f6&backpath=/pjlab/projects/list#public](https://www.openinnolab.org.cn/pjlab/project?id=6612327ea888634b8a6de8f6&backpath=/pjlab/projects/list#public)
+
 **XEduHub的特点**
 
 - **简单易用**：XEduhub是个工具箱（有各种螺丝刀、扳手、小刀等），不需要专业知识，只要知道工具的名称和作用，你就可以使用这些AI模型。
