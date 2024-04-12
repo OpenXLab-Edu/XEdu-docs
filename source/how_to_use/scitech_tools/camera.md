@@ -16,6 +16,10 @@ b.核对规格：确保购买的是ESP32-CAM模块，它通常包括一个小型
 
 c.USB接口的线，配合ESP32-CAM连接。
 
+注：不同型号的配置方式也可能有所不同，本教程适用的ESP32-CAM如下图所示。
+
+![](../../images/scitech_tools/cam_1.png)
+
 ### 第二步：准备编程环境
 
 a.下载并安装arduino IDE
