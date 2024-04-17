@@ -14,7 +14,7 @@
 ](https://www.openinnolab.org.cn/pjedu/home
 )
 
-### 3. 克隆一个XEdu容器的项目
+### 2. 克隆一个XEdu容器的项目
 
 推荐初学者从克隆别人的项目开始学习XEdu，克隆项目的步骤如下：
 
@@ -26,7 +26,7 @@
 
 ![](../images/how_to_quick_start/openinnolab1.jpg)
 
-### 2. 新建一个XEdu容器的项目
+### 3. 新建一个XEdu容器的项目
 
 推荐初学者使用Notebook开始XEdu的学习，新建项目的步骤如下：
 
@@ -45,11 +45,11 @@
 
 飞书网盘：[XEdu v1.6.7d.exe](https://p6bm2if73b.feishu.cn/file/boxcn7ejYk2XUDsHI3Miq9546Uf?from=from_copylink)
 
-硬件要求：准备win10电脑，安装到纯英文路径下，有条件的话可定期更新一键安装包（经常进飞书网盘看看最新版）。
+硬件要求：准备win10及以上的电脑，将一键安装包安装到纯英文路径下。飞书网盘里的一件安装包会不定期更新，可时常到网盘中查看与下载最新版。
 
 ### 安装步骤
 
-第一步：双击运行，将自解压为XEdu文件夹。
+第一步：双击运行“XEdu v1.6.7d.exe”文件，将自解压为XEdu文件夹。
 
 ![](../images/about/XEDUinstall1.png)
 
@@ -61,7 +61,7 @@
 
 ![](../images/about/XEDUinstall3.png)
 
-使用常用工具栏对代码进行操作，如"运行"，可以在单元格中编写文本或者代码，执行代码的结果也将会在每个单元下方呈现。可以逐个运行单元格，每点击一次，仅运行一个单元格。单元格左侧\[\*\]内的星号变为数字，表示该单元格运行完成。此时可打开"demo"文件夹中的ipynb文件，如"MMEdu\_cls\_notebook.ipynb"。
+此时可打开"demo"文件夹中的ipynb文件，如"MMEdu\_cls\_notebook.ipynb"。选中代码单元格，点击常用工具栏"运行"按钮，就可以运行单元格中的代码，单元格左侧\[\*\]内的星号变为数字，表示该单元格运行完成。按步骤即可测试体验XEdu代码。
 
 ![](../images/about/jupyter1.png)
 

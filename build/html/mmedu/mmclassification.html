@@ -46,6 +46,7 @@
               <p class="caption" role="heading"><span class="caption-text">目录</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_quick_start.html">XEdu快速入门手册</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEduHub</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="quick_start.html">快速体验MMEdu，开始！</a></li>
@@ -60,6 +61,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#id5">2. 模型推理</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id6">3. 继续训练</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sota">4. 支持的SOTA模型</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#mmcls">MMCls的高级操作</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#top-k">验证top-k的修改</a></li>
 </ul>
 </li>
 </ul>
@@ -350,6 +355,29 @@
         </tr>
     </tbody>
 </table></section>
+</section>
+<section id="mmcls">
+<h2>MMCls的高级操作<a class="headerlink" href="#mmcls" title="Permalink to this heading"></a></h2>
+<section id="top-k">
+<h3>验证top-k的修改<a class="headerlink" href="#top-k" title="Permalink to this heading"></a></h3>
+<p>由于源码限制，类别数量超过5类之后，默认的验证方式变为了top-5的准确率(accuracy_top-5)，无法看到top1的准确率。如下图所示：
+<img alt="image" src="https://github.com/OpenXLab-Edu/XEdu-docs/assets/40832342/fa822e32-8936-4960-88a3-d81ebdb2d409" /></p>
+<p>为此，我们可以修改源码，将其改为’topk’: (1,)，这样就可以看到top1的准确率，也可以改为其他数字，同时也支持(1,2,5)这样的写法。然后将修改之后的源码覆盖原始源码后重新导入库文件。</p>
+<ol>
+<li><p>查看库文件所在路径</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">MMEdu</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">MMEdu</span><span class="o">.</span><span class="n">__path__</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>覆盖原来的库文件</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w"> </span>!cp<span class="w"> </span>./Classification_Edu.py<span class="w"> </span>/usr/local/envs/ssenv/lib/python3.9/site-packages/MMEdu/Classification/Classification_Edu.py
+</pre></div>
+</div>
+</li>
+<li><p>重新导入库（重启内核）</p></li>
+</ol>
+</section>
 </section>
 </section>
 

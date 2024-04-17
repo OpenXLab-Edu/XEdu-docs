@@ -1,11 +1,11 @@
 # XEdu的安装和下载
 
-可选的安装方式
+1.可选的安装方式
 --------------
 
 为了满足广大中小学师生的需求，XEdu安装方式分为一键安装包安装、pip安装和docker安装。一键安装包版包含MMEdu、BaseML、BaseNN三个模块的基础功能，以及XEduHub、BaseDT、BaseDeploy等工具库，同时内置了一套EasyDL系列工具，分"EasyTrain.bat"、"EasyInference.bat"和"EasyAPI.bat"这三个可视化工具，定期更新。pip安装方式需用户自己分模块安装，各模块更新同步工具开发进度。此外，还推出了docker容器镜像可供选择。
 
-初学者安装强推!!!不会让人失望的一键安装包
+2.初学者安装强推!!!不会让人失望的一键安装包
 -----------------------------------------
 
 ### 即刻体验XEdu一键安装包（CPU版本），开始！
@@ -150,9 +150,12 @@ XEdu一键安装包说明文档。
 
 ### 拓展：windows一键安装包升级GPU版本（如硬件符合要求）
 
+参考视频：B站演示视频 [一分钟GPU电脑安装XEdu环境](https://www.bilibili.com/video/BV1ff421o788/?share_source=copy_web&vd_source=ca47cf8d0af314fd89055e7dc8d5dd86)
+
+
 #### 准备工作：确认是否有cuda
 
-确认您的windows电脑有gpu算力，同时配置了cuda。建议提前检查自己的CUDA和显卡驱动版本，可以在cmd或terminal中，输入`nvidia-smi`命令检查（我们推荐的CUDA版本是10.1)。
+确认您的windows电脑有GPU算力，同时配置了cuda。建议提前检查自己的CUDA和显卡驱动版本，可以在cmd或terminal中，输入`nvidia-smi`命令检查（我们推荐的CUDA版本是10.1)。
 
 #### 步骤1：卸载CPU版本库
 
@@ -180,13 +183,12 @@ pip install  torch==1.8.1+cu101  torchvision==0.9.1+cu101  torchaudio==0.8.1 -f 
 
 ##### 安装mmcv-full：
 
-接着，我们重新安装mmcv-full。（预编译版本可以在这里找到：https://download.openmmlab.com/mmcv/dist/**{**cu_version**}**/**{**torch_version**}**/index.html）
-
-如严格遵循了前面的步骤操作，此步可直接输入：
+建议直接输入：
 
 ```
 pip install mmcv-full==1.4.5 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.8.0/index.html
 ```
+如果想要用其他cuda版本或者torch版本，虽然不建议，但你可以在这里找到对应的预编译版本的mmcv-full：https://download.openmmlab.com/mmcv/dist/**{**cu_version**}**/**{**torch_version**}**/index.html
 
 ![](../images/about/install1.4.2.PNG)
 
@@ -196,22 +198,83 @@ pip install mmcv-full==1.4.5 -f https://download.openmmlab.com/mmcv/dist/cu101/t
 
 ![](../images/about/install1.4.3.png)
 
-使用pip安装
+3.学校教学强推!!!OpenHydra服务器部署
+-----------------------------------------
+### 缘起：学校教学之困境
+因为学校机房的主机可能性能不强，但是又无法采购合适的intel新电脑或者nvidia显卡主机，尽管可以用浦育平台算力缓解燃眉之急，只需要浏览器就可以实现编程。但是受限于学校出口带宽等种种原因，AI教学依然受限，为此我们给出了一个新思路。可以用配置服务器的形式，为学校AI教学采购一款带GPU算力的服务器。有了服务器硬件之后，如何安装python环境，让学生能够像使用浦育平台一样使用校内等本地服务器算力呢？就请出我们的重磅嘉宾：**水螅矩阵（OpenHydra）** 一款开源的GPU算力分配系统。
+
+![](https://avatars.githubusercontent.com/u/156864381?s=200&v=4)
+
+[开源助力AI教育丨九州未来@2024 GDC主题工作坊圆满举办](https://zhuanlan.zhihu.com/p/688916114)
+
+项目开源在[GitHub](https://github.com/openhydra/open-hydra) ，欢迎有能力的社区公民参与贡献！
+
+### OpenHydra的能力
+
+这套系统可以让一台服务器提供满足班级授课的python运行环境，同时内置了XEdu等多种预装环境，以及多套分层AI教学课程。当系统启动后，教师和学生可以登陆网页进行管理和使用。
+
+<img width="700" alt="image" src="https://github.com/OpenXLab-Edu/XEdu-docs/assets/40832342/4f279b78-4b2d-4a7a-a81c-81f2e2c8837a">
+
+学生登陆后，将可以启动EasyTrain、JupyterLab、VS Code等多种AI学习环境，使用浏览器即可完成Python程序运行（程序都运行在服务器系统上）。OpenHydra的强大之处在于让不同的学生可以同时使用一台服务器的资源进行计算，而这一切，仅仅基于浏览器就可以实现。
+
+<img width="700" alt="image" src="https://github.com/OpenXLab-Edu/XEdu-docs/assets/40832342/f1a06198-eecc-4c32-86fc-87ee6ede2a35">
+
+<img width="700" alt="image" src="https://github.com/OpenXLab-Edu/XEdu-docs/assets/40832342/2ea495c4-25e0-452b-8961-23360d738d90">
+
+
+教师可以为系统添加更多的数据集、课程、算力、用户等必要的资源，同时，也可以对资源的分配进行控制。可以配置系统为纯CPU模式，也可以指定每个学生可以拥有的内存空间大小、显存空间大小，以及学生的预装python环境。
+
+<img width="700" alt="image" src="https://github.com/OpenXLab-Edu/XEdu-docs/assets/40832342/03219a8c-236f-4742-b2b0-cacd4b879120">
+
+官方B站账号：[OpenHydra](https://space.bilibili.com/3546379869751358)
+
+[OpenHydra平台操作指南](https://www.bilibili.com/video/BV1Hx421y7A8/?share_source=copy_web&vd_source=ca47cf8d0af314fd89055e7dc8d5dd86)
+
+<iframe src="//player.bilibili.com/player.html?aid=1751384700&bvid=BV1Hx421y7A8&cid=1461907700&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+### OpenHydra的安装
+
+最简单的安装教程参见：[U盘模式为服务器安装ISO](https://github.com/openhydra/open-hydra/blob/main/docs/iso-installation-guide.md)
+
+简单总来来说，安装只有三步：
+
+1. 烧录镜像（下载iso之后，Windows系统可以rufus进行烧录）
+
+ISO镜像下载地址，见[U盘模式为服务器安装ISO](https://github.com/openhydra/open-hydra/blob/main/docs/iso-installation-guide.md) 。
+
+视频演示见[OpenhydraUSB烧制指南](https://www.bilibili.com/video/BV1xH4y157pL/?share_source=copy_web&vd_source=ca47cf8d0af314fd89055e7dc8d5dd86) 。
+
+<iframe src="//player.bilibili.com/player.html?aid=1051549108&bvid=BV1xH4y157pL&cid=1468597565&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+2. 配置系统（将U盘插入服务器，然后配置安装设置）
+
+视频演示见[Openhydra安装教程](https://www.bilibili.com/video/BV1LK421x7Vc/?share_source=copy_web&vd_source=ca47cf8d0af314fd89055e7dc8d5dd86)
+
+3. 等待系统安装完成（系统中间提示重启的时候，需要拔下U盘后手动确认，之后就等待系统安装完成即可）
+
+视频演示见[Openhydra安装教程](https://www.bilibili.com/video/BV1LK421x7Vc/?share_source=copy_web&vd_source=ca47cf8d0af314fd89055e7dc8d5dd86)
+
+<iframe src="//player.bilibili.com/player.html?aid=1701699116&bvid=BV1LK421x7Vc&cid=1467300632&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+
+4.使用pip安装
 -----------
 
 XEdu的MMEdu、BaseML、BaseNN等各模块库均已支持pip安装并会持续迭代。
 
 ### 0.准备工作
 
-强烈推荐你在Anaconda的基础上安装XEdu环境，可以避免很多的版本冲突问题。
+强烈推荐你在conda的基础上安装XEdu环境，可以避免很多的版本冲突问题。
 
-#### 1）安装Anaconda
+#### 1）安装conda
 
 若您已经安装好conda，该步骤可跳过。
 
 **下载**
 
-首先打开Anaconda官网：[https://www.anaconda.com/](https://www.anaconda.com/)
+可以在官网下载到Anaconda或者Miniconda，conda官网：[https://www.anaconda.com/](https://www.anaconda.com/)
+
+当然，我们也已经为您挑选好合适的版本，可以直接点此链接下载：[miniconda-py38](https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-py38_23.11.0-2-Windows-x86_64.exe)
 
 点击`Download`开始下载，下载完成后得到exe文件。
 
@@ -297,6 +360,8 @@ $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/i
 
 ### 1.2 安装MMEdu(GPU版本)
 
+B站演示视频：[一分钟GPU电脑安装XEdu环境](https://www.bilibili.com/video/BV1ff421o788/?share_source=copy_web&vd_source=ca47cf8d0af314fd89055e7dc8d5dd86)
+
 #### 准备工作：确认是否有cuda
 
 打开命令行，输入nvidia-smi，输出如下：
@@ -305,7 +370,7 @@ $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/i
 
 #### 步骤1：创建一个新的虚拟环境
 
-在准备工作中已完成Anaconda安装，此时可创建一个新的虚拟环境。
+在准备工作中已完成conda安装，此时可创建一个新的虚拟环境。
 
 ```
 conda create -n xedu python=3.8
@@ -326,15 +391,21 @@ pip install jupyter lab
 
 安装对应自己cuda版本的pytorch，安装命令可在以下网址中进行查询：[https://pytorch.org/get-started/locally/](https://pytorch.org/get-started/locally/)
 
-可以在命令行中使用`nvidia-smi`指令查询自己的cuda版本。
+可以在命令行中使用`nvidia-smi`指令查询自己的cuda版本，这里只要cuda版本高于10即可。
 
-例如，若cuda版本为10.1，想要安装1.8.1版本的pytorch，则安装命令为：
+建议使用下面的指令安装cuda10.1对应的torch1.8.1，安装命令为：
 
 ``` {.powershell}
 pip install torch==1.8.1+cu101 torchvision==0.9.1+cu101 torchaudio==0.8.1 -f https://download.pytorch.org/whl/torch_stable.html
 ```
 
-其次，根据torch版本和cuda版本安装mmcv。
+其次，安装mmcv-full。
+
+``` {.powershell}
+pip install mmcv-full==1.4.5 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.8.0/index.html
+```
+
+如果想要安装其他版本，可以尝试下面的指令：
 
 ``` {.powershell}
 pip install mmcv-full -f https://download.openmmlab.com/mmcv/dist/{cu_version}/{torch_version}/index.html
@@ -346,9 +417,6 @@ pip install mmcv-full -f https://download.openmmlab.com/mmcv/dist/{cu_version}/{
 例如想安装和 `CUDA 10.1`、`PyTorch 1.8.0` 兼容的
 `mmcv-full`，使用如下替换过的命令
 
-``` {.powershell}
-pip install mmcv-full==1.4.5 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.8.0/index.html
-```
 
 最后安装MMEdu及其他工具。
 
@@ -369,7 +437,7 @@ print(torch.cuda.is_available())
 
 #### 步骤4：确认是否正确启动cuda训练
 
-启动已安装的jupyter lab，使用启动Gpu训练的代码，看看是否加速了。
+启动已安装的jupyter lab，使用启动GPU训练的代码，看看是否加速了。
 
 ![](../images/about/install1.4.3.png)
 
@@ -381,7 +449,7 @@ print(torch.cuda.is_available())
 
 `pip install basenn` 或 `pip install BaseNN`
 
-docker容器镜像
+5.docker容器镜像
 --------------
 
 首先需要确保您的电脑系统盘（C盘）空间剩余空间超过5GB，实际建议有10GB及以上空间，便于后续训练使用。如果想要调整存储空间位置，可以参考[这里修改安装路径](https://blog.csdn.net/ber_bai/article/details/120816006)，[这里修改数据路径](https://zhuanlan.zhihu.com/p/410126547)，后文安装过程中也有具体叙述。

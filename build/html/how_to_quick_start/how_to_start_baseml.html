@@ -113,6 +113,8 @@
 <section id="id1">
 <h2>项目说明：<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p>我们以恒定力量，分别以不同角度向空中抛出石块，测量石头落地点距离投石车的距离，得到投石角度与距离对照表。这是一个典型的抛物线问题，能否实现用机器学习方法预测抛物线函数呢？本项目使用BaseML中的回归算法，选择不同的算法训练投石车落地距离预测模型。</p>
+<p>项目地址：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=66123df8e0ea4a2a08b20464&amp;backpath=/pjlab/projects/list#public">用BaseML训练机器学习模型（抛物线）</a>
+<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=66123df8e0ea4a2a08b20464&amp;backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=66123df8e0ea4a2a08b20464&amp;backpath=/pjlab/projects/list#public</a></p>
 </section>
 <section id="id2">
 <h2>机器学习的基本流程<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
@@ -180,7 +182,7 @@
 <section id="id14">
 <h4>第5步 模型保存<a class="headerlink" href="#id14" title="Permalink to this heading"></a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型保存</span>
-<span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;checkpoints/baseml_model/knn_iris.pkl&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;checkpoints/baseml_model/lr_catapult.pkl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>上文简单介绍了使用BaseML训练一个回归模型的方法，BaseML模型训练的代码详解详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id7">BaseML功能详解</a>。</p>
@@ -262,7 +264,7 @@
 <h3>3.拓展：借助XEduHub完成推理<a class="headerlink" href="#xeduhub" title="Permalink to this heading"></a></h3>
 <p>借助通用推理库XEduHub也可以完成BaseML模型的推理，示例代码如下。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
-<span class="n">baseml</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;baseml&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;checkpoints/model.pkl&#39;</span><span class="p">)</span><span class="c1"># 指定使用的pkl模型</span>
+<span class="n">baseml</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;baseml&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;checkpoints/baseml_model/lr_catapult.pkl&#39;</span><span class="p">)</span><span class="c1"># 指定使用的pkl模型</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">34</span><span class="p">]]</span> <span class="c1"># 根据训练模型时使用的数据来定</span>
 <span class="n">result</span><span class="o">=</span> <span class="n">baseml</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span><span class="c1"># 进行模型推理</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>

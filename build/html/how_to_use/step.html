@@ -46,6 +46,7 @@
               <p class="caption" role="heading"><span class="caption-text">目录</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_quick_start.html">XEdu快速入门手册</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEduHub</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basenn.html">神经网络库BaseNN</a></li>
@@ -58,7 +59,11 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">用AI解决问题的一般步骤</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#step1">Step1: 发现问题</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#step2">Step2: 寻找可行解决方案</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#step3">Step3: 采集数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step3">Step3: 采集数据</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#imagenet">专题1：从采集的数据到ImageNet数据。</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pythonzip">专题2:用python解压一个zip压缩包</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#step4">Step4: 模型训练</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#step5">Step5: 模型验证</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#step6">Step6: 模型应用</a></li>
@@ -110,6 +115,61 @@
 <section id="step3">
 <h2>Step3: 采集数据<a class="headerlink" href="#step3" title="Permalink to this heading"></a></h2>
 <p>分析问题，采集针对本问题的各种数据，并对数据进行探索和特征提取。使得数据方便输入模型。</p>
+<section id="imagenet">
+<h3>专题1：从采集的数据到ImageNet数据。<a class="headerlink" href="#imagenet" title="Permalink to this heading"></a></h3>
+<p>当我们采集到数据后，要准备一份可以训练的，包含training_set、val_set和test_set的规范数据集，可以用下面的代码进行转换：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">random</span><span class="o">,</span> <span class="nn">shutil</span>
+<span class="n">target_path</span> <span class="o">=</span> <span class="s1">&#39;./target_path/&#39;</span>
+<span class="n">origin_path</span> <span class="o">=</span> <span class="s1">&#39;./datasets/&#39;</span>
+<span class="n">train_ratio</span> <span class="o">=</span> <span class="mf">0.7</span>
+<span class="n">val_ratio</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">test_ratio</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">random_list</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="n">classes</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">origin_path</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classes</span><span class="p">)</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">target_path</span><span class="p">,</span><span class="s1">&#39;training_set&#39;</span><span class="p">))</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">target_path</span><span class="p">,</span><span class="s1">&#39;val_set&#39;</span><span class="p">))</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">target_path</span><span class="p">,</span><span class="s1">&#39;test_set&#39;</span><span class="p">))</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">target_path</span><span class="p">,</span><span class="s1">&#39;classes.txt&#39;</span><span class="p">),</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">classes</span><span class="p">):</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">c</span><span class="o">+</span><span class="s1">&#39; &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">target_path</span><span class="p">,</span><span class="s1">&#39;training_set&#39;</span><span class="p">,</span><span class="n">c</span><span class="p">))</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">target_path</span><span class="p">,</span><span class="s1">&#39;val_set&#39;</span><span class="p">,</span><span class="n">c</span><span class="p">))</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">target_path</span><span class="p">,</span><span class="s1">&#39;test_set&#39;</span><span class="p">,</span><span class="n">c</span><span class="p">))</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">:</span>
+    <span class="n">image_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">origin_path</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+    <span class="n">images</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">random_list</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">pic</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">images</span><span class="p">):</span>
+        <span class="n">_</span><span class="p">,</span><span class="n">ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">pic</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ext</span> <span class="o">!=</span><span class="s1">&#39;.jpg&#39;</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">o_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">image_path</span><span class="p">,</span><span class="n">pic</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">num</span><span class="o">*</span><span class="n">train_ratio</span><span class="p">:</span>
+            <span class="n">t_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">target_path</span><span class="p">,</span> <span class="s1">&#39;training_set&#39;</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">pic</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">num</span><span class="o">*</span><span class="p">(</span><span class="n">train_ratio</span><span class="o">+</span><span class="n">val_ratio</span><span class="p">):</span>
+            <span class="n">t_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">target_path</span><span class="p">,</span> <span class="s1">&#39;val_set&#39;</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">pic</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">t_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">target_path</span><span class="p">,</span> <span class="s1">&#39;test_set&#39;</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">pic</span><span class="p">)</span>
+        <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">o_path</span><span class="p">,</span><span class="n">t_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="pythonzip">
+<h3>专题2:用python解压一个zip压缩包<a class="headerlink" href="#pythonzip" title="Permalink to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">zipfile</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="s1">&#39;./imagenet.zip&#39;</span><span class="p">)</span> <span class="c1"># 指定压缩包的路径</span>
+<span class="n">f</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="s1">&#39;./datasets&#39;</span><span class="p">)</span> <span class="c1"># 指定提取的路径</span>
+</pre></div>
+</div>
+</section>
 </section>
 <section id="step4">
 <h2>Step4: 模型训练<a class="headerlink" href="#step4" title="Permalink to this heading"></a></h2>

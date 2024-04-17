@@ -46,6 +46,7 @@
               <p class="caption" role="heading"><span class="caption-text">目录</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_quick_start.html">XEdu快速入门手册</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEduHub</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="quick_start.html">快速体验MMEdu，开始！</a></li>
@@ -56,9 +57,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#pip">1.2 pip安装</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">2. 完整版安装之pip安装</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id5">2.1 准备工作</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#anaconda">2.1.1 安装Anaconda</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpupip">2. GPU完整版安装之pip安装</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#python">3.1.2 安装python编辑器</a></li>
 </ul>
 </li>
@@ -69,8 +68,8 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#mmedu-gpu">2.3 安装MMEdu(GPU版本)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#docker">3. 完整版安装之docker容器</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">4. 查看MMEdu版本</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">5. 卸载MMEdu库</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">4. 查看MMEdu版本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">5. 卸载MMEdu库</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">MMEdu基本功能</a></li>
@@ -167,6 +166,7 @@ PyCharm环境路径配置如下图所示。</p>
 <h3>1.2 pip安装<a class="headerlink" href="#pip" title="Permalink to this heading"></a></h3>
 <p>当前，我们提供的MMEdu的安装是基础版的pip安装包，可以使用如下命令安装：
 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">mmedu</span></code>或<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">MMEdu</span></code>。</p>
+<p>最新安装说明可以参见：<a class="reference external" href="https://xedu.readthedocs.io/zh/master/about/installation.html#pipmmedu">这里</a></p>
 <p>在这一步中，可能会有运行失败的情况，通常是由于依赖库安装失败导致的。</p>
 <p>如果提示
 <strong>mmcv相关的错误</strong>，可以尝试用：<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">MMEdu</span> <span class="pre">-f</span> <span class="pre">https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/index.html</span></code>
@@ -185,6 +185,7 @@ PyCharm环境路径配置如下图所示。</p>
 <p>第三步：<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">mmdet==2.23.0</span></code></p>
 <p>如果想要
 <strong>升级为GPU版本</strong>，可以将torch、torchvision和mmcv-full做一次升级。步骤如下：</p>
+<p>最新安装说明可以参见：<a class="reference external" href="https://xedu.readthedocs.io/zh/master/about/installation.html#mmedu-gpu">这里</a></p>
 <p>第一步：确认安装好与电脑GPU适配的CUDA驱动（这里以cuda10.1为例）</p>
 <p>第二步：卸载当前安装的版本：<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">uninstall</span> <span class="pre">torch</span> <span class="pre">torchvision</span> <span class="pre">mmcv-full</span> <span class="pre">-y</span></code></p>
 <p>第三步：安装合适的版本：<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">torch==1.8.1+cu101</span> <span class="pre">torchvision==0.9.1+cu101</span> <span class="pre">torchaudio==0.8.1</span> <span class="pre">-f</span> <span class="pre">https://download.pytorch.org/whl/torch_stable.html</span></code></p>
@@ -192,24 +193,10 @@ PyCharm环境路径配置如下图所示。</p>
 <p>至此，已经完成了对MMEdu的GPU升级。</p>
 </section>
 </section>
-<section id="id4">
-<h2>2. 完整版安装之pip安装<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
-<section id="id5">
-<h3>2.1 准备工作<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
-<p>强烈推荐你在Anaconda的基础上安装MMEdu，可以避免很多的版本冲突问题。</p>
-</section>
-<section id="anaconda">
-<h3>2.1.1 安装Anaconda<a class="headerlink" href="#anaconda" title="Permalink to this heading"></a></h3>
-<p>若您已经安装好conda，该步骤可跳过。</p>
-<p><strong>下载</strong></p>
-<p>首先打开Anaconda官网：<a href="https://www.anaconda.com/">https://www.anaconda.com/</a></p>
-<p>点击<code class="docutils literal notranslate"><span class="pre">Download</span></code>开始下载，下载完成后得到exe文件。</p>
-<p><strong>安装</strong></p>
-<p>双击exe文件即可开始安装（一般下载完成后会自动打开安装界面无需点击exe文件，若没有自动打开安装页面再点击此exe文件）。</p>
-<p>打开安装界面后，依次选择<code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">Agree</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">All</span> <span class="pre">Users</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Next</span></code>
--&gt; <code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Anaconda3</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">system</span> <span class="pre">PATH</span> <span class="pre">environment</span> <span class="pre">variable</span></code>
--&gt; <code class="docutils literal notranslate"><span class="pre">Install</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Next</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Finish</span></code></p>
-</section>
+<section id="gpupip">
+<h2>2. GPU完整版安装之pip安装<a class="headerlink" href="#gpupip" title="Permalink to this heading"></a></h2>
+<p>最新安装说明可以参见：<a class="reference external" href="https://xedu.readthedocs.io/zh/master/about/installation.html#mmedu-gpu">这里</a></p>
+<p>视频演示参见：<a class="reference external" href="https://www.bilibili.com/video/BV1ff421o788/?share_source=copy_web&amp;vd_source=ca47cf8d0af314fd89055e7dc8d5dd86">B站</a></p>
 <section id="python">
 <h3>3.1.2 安装python编辑器<a class="headerlink" href="#python" title="Permalink to this heading"></a></h3>
 <p>若您已经安装好合适的python编辑器，该步骤可跳过。</p>
@@ -230,6 +217,7 @@ PyCharm环境路径配置如下图所示。</p>
 </section>
 <section id="mmedu-cpu">
 <h2>2.2 安装MMEdu(CPU版本)<a class="headerlink" href="#mmedu-cpu" title="Permalink to this heading"></a></h2>
+<p>最新安装说明可以参见：<a class="reference external" href="https://xedu.readthedocs.io/zh/master/about/installation.html#pipmmedu">这里</a></p>
 <section id="linuxmmedu">
 <h3>2.2.1 Linux安装MMEdu<a class="headerlink" href="#linuxmmedu" title="Permalink to this heading"></a></h3>
 <p>点击鼠标右键，打开终端。</p>
@@ -247,6 +235,7 @@ $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/i
 </section>
 <section id="windowsmmedu">
 <h3>2.2.2 Windows安装MMEdu<a class="headerlink" href="#windowsmmedu" title="Permalink to this heading"></a></h3>
+<p>最新安装说明可以参见：<a class="reference external" href="https://xedu.readthedocs.io/zh/master/about/installation.html#pipmmedu">这里</a></p>
 <p>同时按下win+r，输入cmd，回车，打开一个命令行窗口。</p>
 <p>在命令行中使用pip安装即可。</p>
 <div class="highlight-{.powershell} notranslate"><div class="highlight"><pre><span></span>$ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/index.html
@@ -262,40 +251,20 @@ $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/i
 </section>
 <section id="mmedu-gpu">
 <h2>2.3 安装MMEdu(GPU版本)<a class="headerlink" href="#mmedu-gpu" title="Permalink to this heading"></a></h2>
-<p>首先安装对应自己cuda版本的pytorch，安装命令可在以下网址中进行查询：<a href="https://pytorch.org/get-started/locally/">https://pytorch.org/get-started/locally/</a></p>
-<p>可以在命令行中使用<code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code>指令查询自己的cuda版本。</p>
-<p>例如，若cuda版本为10.1，想要安装1.8.1版本的pytorch，则安装命令为：</p>
-<div class="highlight-{.powershell} notranslate"><div class="highlight"><pre><span></span>$ pip install torch==1.8.1+cu101 torchvision==0.9.1+cu101 torchaudio==0.8.1 -f https://download.pytorch.org/whl/torch_stable.html
-</pre></div>
-</div>
-<p>其次，根据torch版本和cuda版本安装mmcv。</p>
-<div class="highlight-{.powershell} notranslate"><div class="highlight"><pre><span></span>$ pip install mmcv-full -f https://download.openmmlab.com/mmcv/dist/{cu_version}/{torch_version}/index.html
-</pre></div>
-</div>
-<p>其中 <code class="docutils literal notranslate"><span class="pre">{cu_version}</span></code> 和 <code class="docutils literal notranslate"><span class="pre">{torch_version}</span></code>
-根据自身需求替换成实际的版本号。</p>
-<p>例如想安装和 <code class="docutils literal notranslate"><span class="pre">CUDA</span> <span class="pre">10.1</span></code>、<code class="docutils literal notranslate"><span class="pre">PyTorch</span> <span class="pre">1.8.0</span></code> 兼容的
-<code class="docutils literal notranslate"><span class="pre">mmcv-full</span></code>，使用如下替换过的命令</p>
-<div class="highlight-{.powershell} notranslate"><div class="highlight"><pre><span></span>$ pip install mmcv-full==1.4.5 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.8.0/index.html
-</pre></div>
-</div>
-<p>最后安装MMEdu。</p>
-<div class="highlight-{.powershell} notranslate"><div class="highlight"><pre><span></span>$ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/index.html
-</pre></div>
-</div>
+<p>最新安装说明可以参见：<a class="reference external" href="https://xedu.readthedocs.io/zh/master/about/installation.html#mmedu-gpu">这里</a></p>
+<p>视频演示参见：<a class="reference external" href="https://www.bilibili.com/video/BV1ff421o788/?share_source=copy_web&amp;vd_source=ca47cf8d0af314fd89055e7dc8d5dd86">B站</a></p>
 </section>
 <section id="docker">
 <h2>3. 完整版安装之docker容器<a class="headerlink" href="#docker" title="Permalink to this heading"></a></h2>
 <p>请参考XEdu的docker容器：<a class="reference external" href="https://xedu.readthedocs.io/zh/master/about/installation.html#docker">https://xedu.readthedocs.io/zh/master/about/installation.html#docker</a></p>
 </section>
-<section id="id6">
-<h2>4. 查看MMEdu版本<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h2>
+<section id="id4">
+<h2>4. 查看MMEdu版本<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
 <p>打开python终端，执行以下命令即可查看MMEdu版本。当前最新版本是0.1.21。</p>
 <p><img alt="../_images/pip3.png" src="../_images/pip3.png" /></p>
-<p>注：目前版本MMEdu仅支持CPU。</p>
 </section>
-<section id="id7">
-<h2>5. 卸载MMEdu库<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h2>
+<section id="id5">
+<h2>5. 卸载MMEdu库<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
 <p>如果MMEdu库出现异常情况，可以尝试使用如下命令卸载MMEdu然后再使用install命令安装。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip uninstall MMEdu -y
 </pre></div>

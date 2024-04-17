@@ -971,9 +971,9 @@
 <h3>代码样例<a class="headerlink" href="#id71" title="Permalink to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">style</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;gen_style&#39;</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;mosaic&#39;</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">style</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/cat101.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">)</span><span class="c1"># 进行模型推理</span>
-<span class="n">style</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="c1"># 展示推理图片</span>
-<span class="n">style</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">result</span><span class="p">,</span><span class="s2">&quot;style_cat.jpg&quot;</span><span class="p">)</span><span class="c1"># 保存推理图片</span>
+<span class="n">result</span><span class="p">,</span> <span class="n">img</span> <span class="o">=</span> <span class="n">style</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/cat101.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">)</span><span class="c1"># 进行模型推理</span>
+<span class="n">style</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img</span><span class="p">)</span><span class="c1"># 展示推理图片</span>
+<span class="n">style</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="s2">&quot;style_cat.jpg&quot;</span><span class="p">)</span><span class="c1"># 保存推理图片</span>
 </pre></div>
 </div>
 </section>
@@ -995,6 +995,13 @@
 <p>任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id122">XEduHub任务模型资源下载与存放</a>。</p>
 <p>运行代码<code class="docutils literal notranslate"><span class="pre">wf.support_style()</span></code>可查看当前预设的风格。当前预设风格共有五种，如下图所示。</p>
 <p><img alt="../_images/style_all.png" src="../_images/style_all.png" /></p>
+<ul class="simple">
+<li><p>udnie: 该幅作品是法国艺术家弗朗西斯·毕卡比亚 （Francis Picabia） 于 1913 年创作的一幅布面油画。这幅抽象画抽象的形式和金属色的反射让人想起机器的世界。</p></li>
+<li><p>mosaic: 马赛克是由有色石头、玻璃或陶瓷制成的规则或不规则的小块图案或图像，由石膏/砂浆固定到位并覆盖表面。</p></li>
+<li><p>rain-princess：该幅作品的作者是李奥尼德·阿夫列莫夫，他继梵高之后，当代最著名的现代印象派艺术家。风景、城市和人物在他的画笔下（更确切的可以说是刮刀），具有一种独特的风格，用色大胆、明亮，传达他的乐观。</p></li>
+<li><p>candy: 该风格通过糖果般绚丽的色块以及象征棒棒糖的圆圈图案，传递出甜蜜童真。</p></li>
+<li><p>pointilism： 点彩画是一种绘画技术，其中将小而独特的色点应用于图案以形成图像。</p></li>
+</ul>
 <p><code class="docutils literal notranslate"><span class="pre">style</span></code>可选参数为：<code class="docutils literal notranslate"><span class="pre">['mosaic','candy','rain-princess','udnie','pointilism']</span></code>，也可以输入一张其他图片的路径来自定义风格，如<code class="docutils literal notranslate"><span class="pre">style='fangao.jpg'</span></code>。为了方便用户使用预设风格，还可以通过输入预设风格对应的标签值来进行设定，如<code class="docutils literal notranslate"><span class="pre">style=0</span></code>。</p>
 <table class="docutils align-default">
     <thead>
@@ -1028,7 +1035,7 @@
 </table></section>
 <section id="id74">
 <h4>2. 模型推理<a class="headerlink" href="#id74" title="Permalink to this heading"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">style</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/cat101.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">)</span><span class="c1"># 进行模型推理</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">,</span> <span class="n">img</span> <span class="o">=</span> <span class="n">style</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/cat101.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">)</span><span class="c1"># 进行模型推理</span>
 </pre></div>
 </div>
 <p>模型推理<code class="docutils literal notranslate"><span class="pre">inference()</span></code>可传入参数：</p>
@@ -1039,12 +1046,12 @@
 </ul>
 <p>模型推理返回结果：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">result</span></code>是个三维数组，以cv2格式保存了风格迁移完成后的图片。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">result</span></code>和<code class="docutils literal notranslate"><span class="pre">img</span></code>都是三维数组，以cv2格式保存了风格迁移完成后的图片。</p></li>
 </ul>
 </section>
 <section id="id75">
 <h4>3. 结果输出<a class="headerlink" href="#id75" title="Permalink to this heading"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">style</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="c1"># 展示推理后的图片</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">style</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img</span><span class="p">)</span><span class="c1"># 展示推理后的图片</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">show()</span></code>能够输出风格迁移后的结果图像。</p>
@@ -1052,7 +1059,7 @@
 </section>
 <section id="id76">
 <h4>4. 结果保存<a class="headerlink" href="#id76" title="Permalink to this heading"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">style</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">result</span><span class="p">,</span><span class="s2">&quot;style_cat.jpg&quot;</span><span class="p">)</span><span class="c1"># 保存推理图片</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">style</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="s2">&quot;style_cat.jpg&quot;</span><span class="p">)</span><span class="c1"># 保存推理图片</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">save()</span></code>方法能够保存风格迁移后的图像</p>

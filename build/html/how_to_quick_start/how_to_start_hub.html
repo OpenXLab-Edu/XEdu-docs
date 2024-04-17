@@ -52,7 +52,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">案例一：用XEduhub执行推理任务（检测任务）</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">项目说明：</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">项目步骤：</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id3">1.检测单任务，检测手</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">项目任务一：检测单任务（以人手关键点检测为例）</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id10">2.检测多任务，检测手，再检测关键点</a></li>
 </ul>
 </li>
@@ -104,21 +104,28 @@
 <h1>案例一：用XEduhub执行推理任务（检测任务）<a class="headerlink" href="#xeduhub" title="Permalink to this heading"></a></h1>
 <section id="id1">
 <h2>项目说明：<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
-<p>XEduHub针对一些常见任务，提供了现成的优质模型，让初学者能轻松进行AI应用实践。本项目完成了直接调用一个内置模型实现检测手的功能，只用7行代码就可实现。</p>
-<p><strong>XEduHub的特点</strong></p>
-<ul class="simple">
-<li><p><strong>简单易用</strong>：XEduhub是个工具箱（有各种螺丝刀、扳手、小刀等），不需要专业知识，只要知道工具的名称和作用，你就可以使用这些AI模型。</p></li>
-<li><p><strong>无需训练</strong>：你不需要自己制作工具，里面就已经有很多常用工具了（为你准备好多AI模型），当然你也可以自己做个新工具放进去。</p></li>
-<li><p><strong>节省时间</strong>：不需要等待，使用XEduHub，选取你需要的模型，然后就可以开始你的AI之旅。</p></li>
-</ul>
+<p>XEduHub针对一些常见任务，提供了现成的优质模型，可以完成目标检测、关键点检测等等，还可以实现自训练模型推理，让初学者能轻松进行AI应用实践。本项目完成了直接调用XEduHub一个内置模型det_hand实现检测手的功能，只用7行代码就可实现。</p>
+<p>项目地址：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=6612327ea888634b8a6de8f6&amp;backpath=/pjlab/projects/list#public">用XEduhub执行推理任务（检测任务）</a>
+<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=6612327ea888634b8a6de8f6&amp;backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=6612327ea888634b8a6de8f6&amp;backpath=/pjlab/projects/list#public</a></p>
 </section>
 <section id="id2">
 <h2>项目步骤：<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
 <section id="id3">
-<h3>1.检测单任务，检测手<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<h3>项目任务一：检测单任务（以人手关键点检测为例）<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<p>下面是人手目标检测模型（det_hand）的完整代码：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span> <span class="c1"># 导入库</span>
+<span class="n">hand_det</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;det_hand&#39;</span><span class="p">)</span> <span class="c1"># 实例化模型</span>
+<span class="n">img_path</span> <span class="o">=</span> <span class="s1">&#39;demo/hand1.jpg&#39;</span>  <span class="c1"># 指定进行推理的图片路径</span>
+<span class="n">boxes</span><span class="p">,</span><span class="n">img_with_box</span> <span class="o">=</span> <span class="n">hand_det</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">img_path</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">)</span> <span class="c1"># 进行推理</span>
+<span class="n">format_result</span> <span class="o">=</span><span class="n">hand_det</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span> <span class="c1"># 结果格式化输出</span>
+<span class="n">hand_det</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">)</span> <span class="c1"># 可视化结果</span>
+<span class="n">hand_det</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">,</span><span class="s1">&#39;demo/img_with_box.jpg&#39;</span><span class="p">)</span> <span class="c1"># 保存可视化结果</span>
+</pre></div>
+</div>
+<p><img alt="../_images/hub1.jpg" src="../_images/hub1.jpg" /></p>
 <section id="id4">
 <h4>第0步 导入库（建议将库更新为最新版本再导入）<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span> <span class="c1"># 导入库</span>
 </pre></div>
 </div>
 </section>
@@ -139,9 +146,10 @@
 <section id="id7">
 <h4>第3步 模型推理<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">boxes</span> <span class="o">=</span> <span class="n">hand_det</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">img_path</span><span class="p">)</span> <span class="c1"># 进行推理</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">boxes</span><span class="p">)</span> <span class="c1"># 打印检测框坐标</span>
 </pre></div>
 </div>
+<p>[[354.98464312 171.77575248 993.5257285  867.79527937]]</p>
+<p>变量boxes以二维数组的形式保存了检测框左上角顶点的坐标(x1,y1)和右下角顶点的坐标(x2,y2)（之所以是二维数组，是因为该模型能够检测多个人手，因此当检测到多个人手时，就会有多个[x1,y1,x2,y2]的一维数组，所以需要以二维数组形式保存）</p>
 </section>
 <section id="id8">
 <h4>第4步 结果输出<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h4>
@@ -149,14 +157,16 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">format_result</span> <span class="o">=</span> <span class="n">hand_det</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span> <span class="c1"># 结果格式化输出</span>
 </pre></div>
 </div>
+<p><img alt="../_images/hub2.jpg" src="../_images/hub2.jpg" /></p>
 </section>
 <section id="id9">
-<h4>第5步 拓展：可视化结果<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h4>
+<h4>第5步 可视化结果<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h4>
 <p>在<strong>推理函数</strong>变量中加入<code class="docutils literal notranslate"><span class="pre">img_type='cv2'</span></code>，这时候会有两个返回值，除了第一个是检测框之外，还返回了每个像素点的颜色信息<code class="docutils literal notranslate"><span class="pre">img_with_keypoints</span></code>。再通过<code class="docutils literal notranslate"><span class="pre">show()</span></code>函数就可以看到像素点组成图片可以看到，此时的图片带有目标检测框。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">boxes</span><span class="p">,</span><span class="n">img_with_box</span> <span class="o">=</span> <span class="n">hand_det</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">img_path</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">)</span> <span class="c1"># 进行推理</span>
 <span class="n">hand_det</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">)</span> <span class="c1"># 可视化结果</span>
 </pre></div>
 </div>
+<p><img alt="../_images/hubhand.png" src="../_images/hubhand.png" /></p>
 <p>XEduHub内置了多个模型，像检测任务，除了手部检测，还支持脸部检测、人体检测……使用方法基本一致，更多使用示例详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#xeduhub">XEduHub功能详解</a>。</p>
 </section>
 </section>
@@ -166,13 +176,14 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span> <span class="c1"># 导入库</span>
 <span class="n">det</span>  <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;det_hand&#39;</span><span class="p">)</span> <span class="c1"># 实例化模型</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;pose_hand21&#39;</span><span class="p">)</span> <span class="c1"># 实例化模型</span>
-<span class="n">img_path</span> <span class="o">=</span> <span class="s1">&#39;demo/hand.jpg&#39;</span> <span class="c1"># 指定进行推理的图片路径</span>
+<span class="n">img_path</span> <span class="o">=</span> <span class="s1">&#39;demo/hand3.jpg&#39;</span> <span class="c1"># 指定进行推理的图片路径</span>
 <span class="n">bboxs</span><span class="p">,</span><span class="n">img</span> <span class="o">=</span> <span class="n">det</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">img_path</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">)</span> <span class="c1"># 进行推理</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">bboxs</span><span class="p">:</span>
-    <span class="n">keypoints</span><span class="p">,</span><span class="n">new_img</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">img</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">,</span><span class="n">bbox</span><span class="o">=</span><span class="n">i</span><span class="p">)</span> <span class="c1"># 进行推理</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">new_img</span><span class="p">)</span> <span class="c1"># 可视化结果</span>
+    <span class="n">keypoints</span><span class="p">,</span><span class="n">img</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">img</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">,</span><span class="n">bbox</span><span class="o">=</span><span class="n">i</span><span class="p">)</span> <span class="c1"># 进行推理</span>
+<span class="n">model</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img</span><span class="p">)</span> <span class="c1"># 可视化结果</span>
 </pre></div>
 </div>
+<p><img alt="../_images/hubhands.png" src="../_images/hubhands.png" /></p>
 </section>
 </section>
 </section>
