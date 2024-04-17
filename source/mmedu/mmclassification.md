@@ -33,7 +33,7 @@ from MMEdu import MMClassification as cls
 训练代码如下：
 
 ```python
-model = cls(backbone='LeNet') # 实例化模型，不指定参数即使用默认参数。
+model = cls('LeNet') # 实例化模型，不指定参数即使用默认参数。
 model.num_classes = 3 # 指定数据集中的类别数量
 model.load_dataset(path='../dataset/cls/hand_gray') # 从指定数据集路径中加载数据
 model.save_fold = '../checkpoints/cls_model/hand_gray' # 设置模型的保存路径
@@ -45,10 +45,10 @@ model.train(epochs=10, validate=True) # 设定训练的epoch次数以及是否�
 - **实例化模型**
 
 ```python
-model = cls(backbone='LeNet') # 实例化模型，不指定参数即使用默认参数
+model = cls('LeNet') # 实例化模型，不指定参数即使用默认参数
 ```
 
-这里对于`MMClassification`模型提供的参数进行解释，`MMClassification`支持传入的参数是`backbone`。
+这里对于`MMClassification`模型提供的参数进行解释，`MMClassification`支持传入的参数是`backbone`。也可以写成“backbone='LeNet'”，强化一下，这是一个网络的名称。
 
 `backbone`：指定使用的`MMClassification`模型。可选的有LeNet、MobileNet、ResNet18、ResNet50等，具体介绍详见<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#sota">后文</a>。
 
@@ -112,7 +112,7 @@ model.train(epochs=10, validate=True) # 设定训练的epoch次数以及是否�
 
 **准确率怎么看？**
 
-方式一：通过训练输出（如上图），运行训练代码时输出项里会出现学习率lr，所用时间time，以及损失loss，每一轮在验证上的accuracy_top-**等。
+方式一：通过训练输出（如上图），运行训练代码时输出项里会出现学习率lr，所用时间time，以及损失loss，每一轮在验证集上的accuracy_top-**等。
 
 方式二：通过日志文件，在训练过程中我们会发现模型保存路径下（代码中指定指定）出现一个`***.log.json`文件，这就是日志文件，它记录了我们模型在训练过程中的一些信息。
 
@@ -150,7 +150,7 @@ accuracy_top-5：对一张图片，如果预测概率前五名的答案中出现
 
 ```python
 img = 'testrock01-02.png' # 指定待推理的图片路径
-model = cls(backbone='LeNet') # 实例化MMClassification模型
+model = cls('LeNet') # 实例化MMClassification模型
 model.checkpoint='../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的模型权重文件
 result = model.inference(image=img, show=True, checkpoint=checkpoint) # 在CPU上进行推理
 model.print_result() # 输出结果，可以修改参数show的值来决定是否需要显示结果图片，默认显示结果图片
@@ -168,7 +168,7 @@ model.print_result() # 输出结果，可以修改参数show的值来决定是�
 
 ```python
 img = 'cls_testIMG/' # 指定进行推理的一组图片的路径
-model = cls(backbone='LeNet') # 实例化MMClassification模型
+model = cls('LeNet') # 实例化MMClassification模型
 model.checkpoint='../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的模型权重文件
 result = model.inference(image=img, show=True, checkpoint=checkpoint) # 在CPU上进行推理
 model.print_result(result) # 输出结果，可以修改参数show的值来决定是否需要显示结果图片，默认显示结果图片
@@ -188,7 +188,7 @@ img = 'testrock01-02.png' # 指定推理图片的路径，直接在代码所在�
 - **实例化模型**
 
 ```python
-model = cls(backbone='LeNet') # 实例化MMClassification模型
+model = cls('LeNet') # 实例化MMClassification模型
 ```
 
 这里对于`MMClassification`模型提供的参数进行解释，`MMClassification`支持传入的参数是`backbone`。
@@ -261,9 +261,8 @@ result = model.fast_inference(image=img)
 在这一步中，我们将学习如何加载之前训练过的模型接着训练。如果觉得之前训练的模型epoch数不够的话或者因为一些客观原因而不得不提前结束训练，相信下面的代码会帮到您。
 
 ```python
-model = cls(backbone='LeNet') # 初始化实例模型
+model = cls('LeNet') # 初始化实例模型
 model.num_classes = 3 # 指定数据集中的类别数量
-# model = cls(backbone='LeNet', num_classes = 3)
 model.load_dataset(path='../dataset/cls/hand_gray') # 配置数据集路径
 model.save_fold = '../checkpoints/cls_model/hand_gray' # 设置模型的保存路径
 checkpoint = '../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的模型权重文件
