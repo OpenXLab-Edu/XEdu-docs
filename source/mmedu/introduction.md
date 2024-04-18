@@ -108,7 +108,7 @@ MMEdu内置了常见的SOTA模型，我们还在不断更新中。如需查看�
     <tbody>
         <tr class="row-even">
             <td>MMDetection</td>
-            <td><a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/FasterRCNN.html">FastRCNN</a>、<a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/SSD_Lite.html">SSD_Lite</a>、<a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/Yolov3.html">Yolov3</a></td>
+            <td><a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/FasterRCNN.html">FastRCNN</a>、<a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/SSD_Lite.html">SSD_Lite</a>、<a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/Yolov3.html">YOLO</a></td>
             <td>图片中的物体检测</td>
         </tr>
     </tbody>
