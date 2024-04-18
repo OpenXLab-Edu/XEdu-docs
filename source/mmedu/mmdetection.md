@@ -18,7 +18,7 @@
 
 那么MMEdu的目标检测模块MMDetection（简称det）的主要功能便是输出图片或视频中出现的多个对象名称，同时用方框框出对象所在方形区域。
 
-其支持的SOTA模型有FasterRCNN、Yolov3、SSD_Lite等，具体介绍详见<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html#sota">后文</a>。如需查看所有支持的SOTA模型，可导入模块后使用`det.sota()`代码进行查看。
+其支持的SOTA模型有FasterRCNN、YOLO、SSD_Lite等，具体介绍详见<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html#sota">后文</a>。如需查看所有支持的SOTA模型，可导入模块后使用`det.sota()`代码进行查看。
 
 文档涉及的部分代码见XEdu帮助文档配套项目集：[https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public](https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public)
 
@@ -68,7 +68,7 @@ model = det('FasterRCNN') # 实例化MMDetection模型
 
 这里对于`MMDetection`模型提供的参数进行解释，`MMDetection`支持传入的参数是`backbone`。也可以写成“backbone='FasterRCNN'”，强化一下，这是一个网络的名称。
 
-`backbone`：指定使用的`MMDetection`模型。可选的有FasterRCNN、Yolov3、SSD_Lite等，具体介绍详见<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html#sota">后文</a>。
+`backbone`：指定使用的`MMDetection`模型。可选的有FasterRCNN、YOLO、SSD_Lite等，具体介绍详见<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html#sota">后文</a>。
 
 **指定类别数量**
 
@@ -288,7 +288,7 @@ model.train(epochs=3, validate=True, checkpoint=checkpoint) # 进行再训练
 
 #### 4.支持的SOTA模型
 
-目前MMDetection支持的SOTA模型有SSD_Lite、FaterRCNN、Yolov3等，如需查看所有支持的SOTA模型，可导入模块后使用`det.sota()`代码进行查看。这些模型的作用和适用场景简介如下。
+目前MMDetection支持的SOTA模型有SSD_Lite、FaterRCNN、YOLO等，如需查看所有支持的SOTA模型，可导入模块后使用`det.sota()`代码进行查看。这些模型的作用和适用场景简介如下。
 
 - **SSD_Lite**
 
@@ -298,7 +298,7 @@ model.train(epochs=3, validate=True, checkpoint=checkpoint) # 进行再训练
 
 采用双阶检测方法，可以解决多尺度、小目标问题，通用性强。
 
-- **Yolov3**
+- **YOLO**
 
 只进行一次检测，速度较快，适用于稍微大的目标检测问题。
 
@@ -324,7 +324,7 @@ model.train(epochs=3, validate=True, checkpoint=checkpoint) # 进行再训练
     <tbody>
         <tr class="row-even">
             <td>3</td>
-            <td><a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/Yolov3.html">Yolov3</a></td>
+            <td><a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/Yolov3.html">YOLO</a></td>
         </tr>
     </tbody>
     <tbody>
@@ -334,6 +334,7 @@ model.train(epochs=3, validate=True, checkpoint=checkpoint) # 进行再训练
         </tr>
     </tbody>
 </table>
+
 
 
 #### 内容补充：单目标检测和多目标检测是什么？
