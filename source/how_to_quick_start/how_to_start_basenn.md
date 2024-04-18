@@ -160,9 +160,9 @@ if __name__ == '__main__':
 
 ![](../images/how_to_quick_start/pywebio.png)
 
-更多模型转换和应用的教程详见[后文](https://xedu.readthedocs.io/zh/master/how_to_use/support_resources.html)。
+更多模型转换和应用的教程详见[模型转换和应用](https://xedu.readthedocs.io/zh/master/how_to_use/support_resources/model_convert.html#)[https://xedu.readthedocs.io/zh/master/how_to_use/support_resources/model_convert.html#](https://xedu.readthedocs.io/zh/master/how_to_use/support_resources/model_convert.html#)。
 
-## 拓展阅读：无代码完成本项目的模型训练和转换
+### 拓展阅读：无代码完成本项目的模型训练和转换
 
 本地版XEdu一键安装包中内置了无代码训练工具，支持BaseNN模型训练，我们也可以使用无代码方式完成鸢尾花模型训练和转换。无代码训练工具使用的步骤与前文介绍的代码实现方式完全一致。
 
