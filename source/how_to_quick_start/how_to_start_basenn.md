@@ -2,17 +2,17 @@
 
 ## 项目说明：
 
-鸢尾花是一种常见的观赏类植物，在全球有着大量的变种。研究鸢尾花的分类问题，对解决植物分类识别问题有着重要的引导作用。本项目核心功能是完成使用经典的鸢尾花数据集完成鸢尾花分类，最后完成了一个简单的鸢尾花分类小应用，输入花萼长度、宽度、花瓣长度、宽度，可以输出预测结果。
-
-数据集：UCI Machine Learning Repository: Iris Data Set（https://archive.ics.uci.edu/ml/datasets/Iris）
-
-案例来源：《人工智能初步》人教地图p69
+BaseNN可以方便地逐层搭建神经网络，支持搭建CNN和RNN，或二者的结合，训练深度学习模型。可前往[解锁BaseNN基本使用方法的教程](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id2)。本项目核心功能是完成使用经典的鸢尾花数据集完成鸢尾花分类，最后完成了一个简单的鸢尾花分类小应用，输入花萼长度、宽度、花瓣长度、宽度，可以输出预测结果。
 
 项目地址：[https://www.openinnolab.org.cn/pjlab/project?id=641bc2359c0eb14f22fdbbb1&sc=635638d69ed68060c638f979#public](https://www.openinnolab.org.cn/pjlab/project?id=641bc2359c0eb14f22fdbbb1&sc=635638d69ed68060c638f979#public)
 
+数据集：UCI Machine Learning Repository: Iris Data Set（https://archive.ics.uci.edu/ml/datasets/Iris）
+
+项目来源：《人工智能初步》人教地图p69
+
 ## 项目步骤：
 
-### 1.鸢尾花模型训练
+### 任务一：鸢尾花模型训练
 
 #### 第0步 引入包（建议将库更新为最新版本再导入）
 
@@ -106,9 +106,9 @@ model.print_result(res) # 输出字典格式结果
 
 `checkpoint`为已有模型路径，即使用现有的模型进行推理。
 
-上文介绍了借助BaseNN从模型训练到模型测试的简单方法，可前往[解锁BaseNN基本使用方法的教程](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id2)。
+上文介绍了借助BaseNN从模型训练到模型测试的简单方法，此外BaseNN支持搭建CNN和RNN，或二者的结合。可前往[解锁BaseNN基本使用方法的教程](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id2)。
 
-### 2.拓展：模型转换和后续应用
+### 任务二：模型转换和后续应用
 
 如果想要快速部署模型，可进行模型转换。BaseNN模型转换的代码如下：
 
@@ -162,13 +162,14 @@ if __name__ == '__main__':
 
 更多模型转换和应用的教程详见[后文](https://xedu.readthedocs.io/zh/master/how_to_use/support_resources.html)。
 
-### 3.拓展阅读：无代码完成本项目的模型训练和转换
+## 拓展阅读：无代码完成本项目的模型训练和转换
 
 本地版XEdu一键安装包中内置了无代码训练工具，支持BaseNN模型训练，我们也可以使用无代码方式完成鸢尾花模型训练和转换。无代码训练工具使用的步骤与前文介绍的代码实现方式完全一致。
 
 #### 第0步 模块选择
 
 EasyTrain界面打开之后，选择BaseNN页面。
+![](../images/easydl/train0.jpg)
 
 #### 第1步 数据集选择
 
