@@ -102,9 +102,9 @@ model.train(epochs=10, validate=True) # 设定训练的epoch次数以及是否�
 
 `device`：训练时所使用的设备，默认为`'cpu'`，如果电脑支持GPU，也可以将参数修改为`'cuda'`，使用GPU进行推理。
 
-`optimizer`：进行迭代时的优化器，默认参数为`SGD`，`SGD`会在训练的过程中迭代计算mini-bath的梯度。可选参数：`['SGD','Adam','Adagrad']`
+`optimizer`：进行迭代时的优化器，默认参数为`SGD`，`SGD`会在训练的过程中迭代计算mini-bath的梯度。可选参数：`['SGD','Adam','Adagrad']`。
 
-`lr`：学习率，默认参数为`1e-2`即`0.01`，指定模型进行梯度下降时的步长。简单解释就是，学习率过小，训练过程会很缓慢，学习率过大时，模型精度会降低。可以根据需要设置不同的`lr`大小
+`lr`：学习率，默认参数为`1e-2`即`0.01`，指定模型进行梯度下降时的步长。简单解释就是，学习率过小，训练过程会很缓慢，学习率过大时，模型精度会降低。可以根据需要设置不同的`lr`大小。
 
 `checkpoint`：指定使用的模型权重文件，默认参数为`None`，如果没有指定模型权重文件，那么我们将会使用默认的模型权重文件进行推理。
 
@@ -339,8 +339,10 @@ LeNet是一种简单的深度卷积神经网络，他的特色就是参数量少
 
 
 ### MMCls的高级操作
-#### 验证top-k的修改
-由于源码限制，类别数量超过5类之后，默认的验证方式变为了top-5的准确率(accuracy_top-5)，无法看到top1的准确率。如下图所示：
+#### 源代码的修改（以修改验证策略为例）
+所有库文件均以py文件形式开源，用户可以自行编辑修改。这样极大提升了代码的可玩性。这里以修改源码中的验证策略为例，展示如果修改源代码，实现自定义功能或功能修改。
+
+由于源码限制，分类类别超过5类之后，默认的验证方式变为了top-5的准确率(accuracy_top-5)，无法看到top1的准确率。如下图所示：
 ![image](https://github.com/OpenXLab-Edu/XEdu-docs/assets/40832342/fa822e32-8936-4960-88a3-d81ebdb2d409)
 
 为此，我们可以修改源码，将其改为'topk': (1,)，这样就可以看到top1的准确率，也可以改为其他数字，同时也支持(1,2,5)这样的写法。然后将修改之后的源码覆盖原始源码后重新导入库文件。
@@ -352,6 +354,6 @@ LeNet是一种简单的深度卷积神经网络，他的特色就是参数量少
     ```
 2. 覆盖原来的库文件
    ```bash
-    !cp ./Classification_Edu.py /usr/local/envs/ssenv/lib/python3.9/site-packages/MMEdu/Classification/Classification_Edu.py
+    !cp ./Classification_Edu.py /usr/local/python3.8/site-packages/MMEdu/Classification/Classification_Edu.py
    ```
 3. 重新导入库（重启内核）
