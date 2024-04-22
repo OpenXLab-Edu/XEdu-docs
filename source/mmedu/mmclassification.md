@@ -110,7 +110,7 @@ model.train(epochs=10, validate=True) # 设定训练的epoch次数以及是否�
 
 `topk`：元组，验证top-k准确率的策略。validate=True时有效。topk准确率的详细介绍见下图。当类别数量class<=5时，默认topk=(1,)，class>5时，默认topk=(5,)。这里我们可以自定义参数值，传入一个元组，如(1,2,3)，表示同时验证top-1、top-2、top-3的准确率，这样可以有效帮助我们评估模型的总体效果。
 
-![alt text](image.png)
+![](../images/mmedu/topk.png)
 
 执行上述代码之后的运行结果如下图：
 
