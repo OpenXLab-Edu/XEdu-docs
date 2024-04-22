@@ -18,7 +18,8 @@
 
 那么MMEdu的目标检测模块MMDetection（简称det）的主要功能便是输出图片或视频中出现的多个对象名称，同时用方框框出对象所在方形区域。
 
-其支持的SOTA模型有FasterRCNN、YOLO、SSD_Lite等，具体介绍详见<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html#sota">后文</a>。如需查看所有支持的SOTA模型，可导入模块后使用`det.sota()`代码进行查看。
+其支持的SOTA模型有FasterRCNN、YOLO、SSD_Lite等，具体介绍详见<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html#sota">后文</a>。如需查看所有支持的SOTA模型，可导入模块后使用`det.sota()`代码进行查看，网络名称不区分大小写，YOLO网络所指版本为v3版本。
+
 
 文档涉及的部分代码见XEdu帮助文档配套项目集：[https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public](https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public)
 
@@ -86,7 +87,7 @@ model.load_dataset(path='../dataset/det/coco') # 从指定数据集路径中加�
 
 - `path`：训练数据集的路径。
 
-- `check`：布尔值，默认为`True`，控制是否检查数据集中每张图像是否损坏。若已经确认图像数据集没有问题，可以设置为`False`来省去检查的时间。
+- `check`：布尔值，默认为`True`，控制是否检查数据集中每张图像是否损坏。由于检查需要花费一定时间，若已经在前面步骤中确认数据集没有问题，可以设置为`False`来省去检查的时间。
 
 - **指定模型参数存储位置**
 
@@ -265,7 +266,7 @@ result = model.fast_inference(image=img)
 
 - `save_fold`：保存的图片名，数据结构为字符串，默认参数为`'cls_result'`，用户也可以定义为自己想要的名字。
 
-- `verbose`：布尔值，默认为`True`，控制是否输出提示信息“===========begin infer============”
+- `verbose`：布尔值，默认为`True`，控制是否输出推理进度提示信息。如果循环执行时，不想要看到进度信息，而是用你自己的变量和条件判断来实现，可以设置verbose为`False`。
 
 
 
@@ -294,7 +295,7 @@ model.train(epochs=3, validate=True, checkpoint=checkpoint) # 进行再训练
 
 #### 4.支持的SOTA模型
 
-目前MMDetection支持的SOTA模型有SSD_Lite、FaterRCNN、YOLO等，如需查看所有支持的SOTA模型，可导入模块后使用`det.sota()`代码进行查看。这些模型的作用和适用场景简介如下。
+目前MMDetection支持的SOTA模型有SSD_Lite、FaterRCNN、YOLO等，如需查看所有支持的SOTA模型，可导入模块后使用`det.sota()`代码进行查看，网络名称不区分大小写，YOLO网络所指版本为v3版本。这些模型的作用和适用场景简介如下。
 
 - **SSD_Lite**
 
@@ -306,7 +307,7 @@ model.train(epochs=3, validate=True, checkpoint=checkpoint) # 进行再训练
 
 - **YOLO**
 
-只进行一次检测，速度较快，适用于稍微大的目标检测问题。
+只进行一次检测，相比于FasterRCNN速度较快，适用于复杂的目标检测问题。
 
 <table class="docutils align-default">
     <thead>
