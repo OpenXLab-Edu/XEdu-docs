@@ -1263,8 +1263,77 @@ get_similarity(image_embeddings, txt_embeddings,method='cosine') # 计算相似�
 
 现在我们可以看到cat.jpg与'a black cat'向量的相似度为0.007789988070726395，而与'a yellow cat'向量的相似度为0.9922100305557251。显而易见，这张可爱的黄色猫咪图像与'a yellow cat'文本描述更为贴近。
 
+## 8. 图像着色
 
-## 8. MMEdu模型推理
+图像着色模型是将灰度图像转换为彩色图像的模型，它根据图像的内容、场景和上下文等信息来推断合理的颜色分布，实现从灰度到彩色的映射。
+
+当我们有一张黑白图像想要为它上色时，可以使用XEduHub提供的`gen_color`图像着色任务。通过调用基于卷积神经网络 (CNN)训练的模型进行推理，自动地为黑白图像添加颜色，实现了快速生成逼真的着色效果。
+
+### 代码样例
+
+```python
+from XEdu.hub import Workflow as wf # 导入库
+color = wf(task='gen_color') # 实例化模型
+result, img = style.inference(data='demo/gray_img1.jpg',img_type='cv2')# 进行模型推
+color.show(img) # 可视化结果
+color.save(img,'demo/color_img.jpg') # 保存可视化结果
+```
+
+### 代码解释
+
+#### 1. 模型声明
+
+```python
+from XEdu.hub import Workflow as wf # 导入库
+color = wf(task='gen_color') # 实例化模型
+```
+
+`wf()`中共有三个参数可以设置：
+
+- `task`选择任务。图像分类的模型为`gen_color`。
+- `checkpoints`指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如`checkpoints='my_checkpoint/model.onnx'`。
+- `download_path`指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如`download_path='my_checkpoint'`。
+
+任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id122">XEduHub任务模型资源下载与存放</a>。
+
+
+#### 2. 模型推理
+
+```python
+result, img = style.inference(data='demo/gray_img1.jpg',img_type='cv2')# 进行模型推理
+```
+
+模型推理`inference()`可传入参数：
+
+- `data`: 待进行风格迁移的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
+- `show`: 可取值：`[true,false]` 默认为`false`。如果取值为`true`，在推理完成后会直接输出风格迁移完成后的图片。
+- `img_type`: 推理完成后会直接输出图像着色完成后的图片。该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
+
+模型推理返回结果：
+
+- `result`和`img`都是三维数组，以cv2格式保存了风格迁移完成后的图片。
+
+#### 3. 结果输出
+
+```python
+style.show(img)# 展示推理后的图片
+```
+
+`show()`能够输出着色后的结果图像。
+
+![](../images/xeduhub/color_show.png)
+
+#### 4. 结果保存
+
+```python
+style.save(img,"color_img.jpg")# 保存推理图片
+```
+
+`save()`方法能够保存着色后的图像
+
+该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
+
+## 9. MMEdu模型推理
 
 XEduHub现在可以支持使用MMEdu导出的onnx模型进行推理啦！如果你想了解如何使用MMEdu训练模型，可以看这里：<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html">解锁图像分类模块：MMClassification</a>、<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html">揭秘目标检测模块：MMDetection</a>。
 
@@ -1438,7 +1507,7 @@ mmdet.save(img,'new_plate.jpg')# 保存推理结果图片
 
 该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
 
-## 9. BaseNN模型推理
+## 10. BaseNN模型推理
 
 XEduHub现在可以支持使用BaseNN导出的onnx模型进行推理啦！如果你想了解如何将使用[BaseNN](https://xedu.readthedocs.io/zh/master/basenn.html)训练好的模型转换成ONNX格式，可以看这里：[BaseNN模型文件格式转换](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id24)。OK，准备好了ONNX模型，那么就开始使用XEduHub吧！
 
@@ -1497,7 +1566,7 @@ format_result = basenn.format_output()
 
 `format_output`的结果是一个结果字典，这个字典的第一个元素有两个键，`预测值`、`分数`，代表着该手写数字的分类标签以及属于该分类标签的概率。
 
-## 10. BaseML模型推理
+## 11. BaseML模型推理
 
 XEduHub现在可以支持使用BaseML导出的pkl模型文件进行推理啦！如果你想了解如何将使用[BaseML](https://xedu.readthedocs.io/zh/master/baseml.html)训练模型并保存成.pkl模型文件，可以看这里：[BaseML模型保存](https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id16)。OK，准备好了pkl模型，那么就开始使用XEduHub吧！
 
@@ -1560,7 +1629,7 @@ format_output = baseml.format_output(lang='zh')# 推理结果格式化输出
 
 如果此时你有冲动去使用BaseML完成模型训练到推理，再到转换与应用，快去下文学习[BaseML的相关使用](https://xedu.readthedocs.io/zh/master/baseml.html)吧！
 
-## 11. 其他onnx模型推理
+## 12. 其他onnx模型推理
 
 XEduHub现在可以支持使用用户自定义的ONNX模型文件进行推理啦！这意味着你可以不仅仅使用MMEdu或者BaseNN训练模型并转换而成的ONNX模型文件进行推理，还可以使用其他各个地方的ONNX模型文件，但是有个**重要的前提：你需要会使用这个模型，了解模型输入的训练数据以及模型的输出结果**。OK，如果你已经做好了充足的准备，那么就开始使用XEduHub吧！
 
