@@ -748,12 +748,19 @@ for i in state_dict:
 ```
 <img width="300" alt="image" src="https://github.com/OpenXLab-Edu/XEdu-docs/assets/40832342/e895a125-5e95-4856-a5ea-7ba6f77d06c3">
 
+可以看到，权重主要包括两种参数，一种是weight，一种是bias。其中weight，指“重”，特征的重要程度，bias值“偏”，偏离原点的程度。回想一下我们初中学习的一次函数 `y=w*x+b` 就是这样的含义。上图中，每一层都分别有weight和bias构成。
+
 2）查看模型里面上述层的形状（每层的大小）
+
+通过这一功能，可以简单计算一个模型的参数量有多少。
+
 ```python
 for i in state_dict:
     print('层：', i ," 的形状是", state_dict[i].shape)
 ```
 <img width="600" alt="image" src="https://github.com/OpenXLab-Edu/XEdu-docs/assets/40832342/182173b1-22f5-495b-a727-8ad47d40ee4e">
+
+例如在这个例子中，我们可以计算，参数量一共是：`10*4+10+5*10+5+3*5+3` 个参数。但是通常bias可以忽略不计。至于为什么有`10*4` ，这是因为第一个全连接层用的是size=(4, 10)，这表示，4个神经元的输入层，与10个神经元的隐藏层相连接。这种情况下，4个神经元中的任意一个神经元，都与10个下一层神经元相连接，显然，这里的参数量为10+10+10+10=10*4。
 
 3）查看模型里各层参数的值
 ```python
@@ -761,6 +768,8 @@ for i in state_dict:
     print(ckpt['state_dict'].state_dict()[i])
 ```
 <img width="600" alt="image" src="https://github.com/OpenXLab-Edu/XEdu-docs/assets/40832342/6ba0eb2f-8993-4707-9253-de930135be6f">
+
+我们知道了参数的值之后，可以尝试计算，当一条新数据输入网络后，模型会经历怎样的计算，请你试一试搭建一个简单的神经网络，试一试这个计算过程，你能不能手动实现呢？
 
 ## 附录
 
