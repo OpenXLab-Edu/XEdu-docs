@@ -949,11 +949,26 @@ format_result = cls.format_output(lang='zh')#推理结果格式化输出
 
 ![](../images/xeduhub/cls_format.png)
 
-## 5. 风格迁移
+## 5. 内容生成
+内容生成模型是一种人工智能模型，它能够根据输入的提示或指令生成新的内容，如文本、图像、音频或视频。
 
-风格迁移，这里主要指的是图像风格迁移，指的是一种计算机视觉和图像处理技术。它允许将一个图像的艺术风格应用到另一个图像上，从而创建出一个新的图像，同时保留了原始图像的内容，但采用了第二个图像的风格。XEduHub提供了进行图像风格迁移的模型：`gen_style`，它预设了5种图像风格，并支持用户输入自定义的图片进行自定义风格迁移。
+XEduHub提供了两个图像内容生成任务：图像风格迁移`gen_style`和图像着色`gen_color`。
+风格迁移
 
-### 代码样例
+### 1） 图像风格迁移模型的使用
+
+图像风格迁移就是根据一幅风格图像(style image)，将任意一张其他图像转化成这个风格，并尽量保留原图的内容(content image)。
+
+XEduHub中的风格迁移使用有两类：
+
+1. 预设风格迁移：预设好五种风格，用户只传入一张内容图像，迁移至该风格。
+2. 自定义风格迁移：用户传入一张内容图像和一张风格图像，迁移至风格图像的风格。
+
+### 实例讲解1：马赛克（mosaic）风格迁移模型的使用
+
+每个风格使用的代码风格是类似的，接下来通过学习一个完整示范，可以达到举一反三的效果
+
+下面是实例马赛克（mosaic）风格迁移模型的完整代码：
 
 ```python
 from XEdu.hub import Workflow as wf
@@ -1065,6 +1080,95 @@ style.save(img,"style_cat.jpg")# 保存推理图片
 
 该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
 
+### 实例讲解2：自定义风格迁移模型的使用
+
+当我们看到喜欢的风格的图像，并想要迁移到其他图像上时，我们就可以使用XEduHub中的自定义风格迁移模型
+
+例如我喜欢“my_style”这张图片，我想要将其风格迁移到我的风景照上，生成新的图像
+
+**将图片的路径来自定义风格，style='demo/my_style.jpg'**
+
+下面是实例自定义风格迁移模型的完整代码：
+
+```python
+from XEdu.hub import Workflow as wf # 导入库
+style = wf(task='gen_style',style='demo/my_style.jpg') # 实例化模型
+img_path = 'demo/ShangHai.jpg'  # 指定进行推理的图片路径
+result, new_img = style.inference(data=img_path,img_type='cv2')# 进行模型推理
+style.show(new_img) # 可视化结果
+style.save(new_img, "demo/style_my_style_ShangHai.jpg") # 保存可视化结果
+```
+
+### 2. 图像着色模型的使用
+
+图像着色模型是将灰度图像转换为彩色图像的模型，它根据图像的内容、场景和上下文等信息来推断合理的颜色分布，实现从灰度到彩色的映射。
+
+当我们有一张黑白图片想要为它上色时，可以使用XEduHub提供的gen_color图像着色任务。通过调用基于卷积神经网络 (CNN)训练的模型进行推理，自动地为黑白图像添加颜色，实现了快速生成逼真的着色效果。
+
+### 代码样例
+
+```python
+from XEdu.hub import Workflow as wf # 导入库
+color = wf(task='gen_color') # 实例化模型
+result, img = style.inference(data='demo/gray_img1.jpg',img_type='cv2')# 进行模型推
+color.show(img) # 可视化结果
+color.save(img,'demo/color_img.jpg') # 保存可视化结果
+```
+
+### 代码解释
+
+#### 1. 模型声明
+
+```python
+from XEdu.hub import Workflow as wf # 导入库
+color = wf(task='gen_color') # 实例化模型
+```
+
+`wf()`中共有三个参数可以设置：
+
+- `task`选择任务。图像分类的模型为`gen_color`。
+- `checkpoints`指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如`checkpoints='my_checkpoint/model.onnx'`。
+- `download_path`指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如`download_path='my_checkpoint'`。
+
+任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id122">XEduHub任务模型资源下载与存放</a>。
+
+
+#### 2. 模型推理
+
+```python
+result, img = style.inference(data='demo/gray_img1.jpg',img_type='cv2')# 进行模型推理
+```
+
+模型推理`inference()`可传入参数：
+
+- `data`: 待进行风格迁移的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
+- `show`: 可取值：`[true,false]` 默认为`false`。如果取值为`true`，在推理完成后会直接输出风格迁移完成后的图片。
+- `img_type`: 推理完成后会直接输出图像着色完成后的图片。该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
+
+模型推理返回结果：
+
+- `result`和`img`都是三维数组，以cv2格式保存了风格迁移完成后的图片。
+
+#### 3. 结果输出
+
+```python
+style.show(img)# 展示推理后的图片
+```
+
+`show()`能够输出着色后的结果图像。
+
+![](../images/xeduhub/color_show.png)
+
+#### 4. 结果保存
+
+```python
+style.save(img,"color_img.jpg")# 保存推理图片
+```
+
+`save()`方法能够保存着色后的图像
+
+该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
+
 ## 6. 全景驾驶感知系统
 
 全景驾驶感知系统是一种高效的多任务学习网络，“多任务”表示该模型可同时执行交通对象检测、可行驶道路区域分割和车道检测任务，能很好地帮助自动驾驶汽车通过摄像头全面了解周围环境。我们可以在实时自动驾驶的项目中组合运用不同的检测任务，来控制车辆的动作，以达到更好的效果。XEduHub提供了进行全景驾驶感知的任务：`drive_perception`。
@@ -1157,13 +1261,13 @@ drive.save(img,"img_perception.jpg") # 保存推理图片
 
 该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
 
-## 7. 图像嵌入和文本嵌入
+## 7. 多模态图文特征提取
 
-嵌入技术是一种将计算机无法直接理解图像或文本转换成计算机擅长理解的数字数字向量。通过“嵌入”方式得到的数字向量，能完成零样本分类、文本翻译，图像聚类等任务。XEduHub提供了图像嵌入和文本嵌入任务：`'embedding_image'`，`'embedding_text'`。
+多模态图文特征提取技术是一种将计算机无法直接理解图像或文本转换成计算机擅长理解的数字数字向量。通过“特征提取”方式得到的数字向量，能完成零样本分类、文本翻译，图像聚类等任务。XEduHub提供了图像特征提取和文本特征提取任务：`'embedding_image'`，`'embedding_text'`。
 
-### 图像嵌入
-当我们使用图像嵌入，本质上是将图像“编码”或“嵌入”到向量形式的一系列数字中，让图像->向量。
-这些向量可以捕捉图像中的局部特征，如颜色、纹理和形状等。图像嵌入有助于计算机识别图像中的对象、场景和动作等。
+### 图像特征提取
+当我们使用图像特征提取，本质上是将图像“编码”或“嵌入”到向量形式的一系列数字中，让图像->向量。
+这些向量可以捕捉图像中的局部特征，如颜色、纹理和形状等。图像特征提取有助于计算机识别图像中的对象、场景和动作等。
 
 #### 代码样例
 
@@ -1190,7 +1294,7 @@ image_embeddings = img_emb.inference(data='demo/cat.png') # 模型推理
 
 模型推理`inference()`可传入参数：
 
-- `data`：指定待嵌入的图片。可以直接传入图像路径`data='cat.jpg'` 或者多张图像路径列表`data= ['cat.jpg','dog.jpg'] `。
+- `data`：指定待特征提取的图片。可以直接传入图像路径`data='cat.jpg'` 或者多张图像路径列表`data= ['cat.jpg','dog.jpg'] `。
 
 
 模型推理返回结果：
@@ -1199,8 +1303,8 @@ image_embeddings = img_emb.inference(data='demo/cat.png') # 模型推理
 
 - `result`：以二维数组的形式保存了每张图片特征提取后的512维向量。
 
-### 文本嵌入
-当我们使用文本嵌入，本质上是将文本的上下文和场景“编码”或“嵌入”到向量形式的一系列数字中，让文本->向量。
+### 文本特征提取
+当我们使用文本特征提取，本质上是将文本的上下文和场景“编码”或“嵌入”到向量形式的一系列数字中，让文本->向量。
 这些向量将词语映射到数值空间中，使得词语成为有意义的数值向量。
 
 因为该模型的训练集来源是互联网网页提取的4亿对图像文本对的编码，所以这里的文本可以为网络上出现的任意名词，或是一段文字。你可以加入很多描述性文本，让之后的“零样本分类”变得十分有趣！
@@ -1230,7 +1334,7 @@ txt_embeddings = txt_emb.inference(data=['a black cat','a yellow cat']) # 模型
 
 模型推理`inference()`可传入参数：
 
-- `data`：指定待嵌入的文本。可以直接传入文本`data= 'cat' `或者多条文本列表`data= ['a black cat','a yellow cat']`。
+- `data`：指定待特征提取的文本。可以直接传入文本`data= 'cat' `或者多条文本列表`data= ['a black cat','a yellow cat']`。
 
 
 模型推理返回结果：
@@ -1243,9 +1347,9 @@ txt_embeddings = txt_emb.inference(data=['a black cat','a yellow cat']) # 模型
 
 零样本分类！
 
-什么是零样本分类呢？举个例子，现在我们想要分类图片中的猫是黑色的还是黄色的，按照图像分类的方式，我们需要收集数据集，并且标注数据集，再进行模型训练，最后才能使用训练出来的模型对图像进行分类。而现在，我们使用的“图像嵌入”和“文本嵌入”只需通过特征向量就可以进行分类，避免了大量的标注工作。
+什么是零样本分类呢？举个例子，现在我们想要分类图片中的猫是黑色的还是黄色的，按照图像分类的方式，我们需要收集数据集，并且标注数据集，再进行模型训练，最后才能使用训练出来的模型对图像进行分类。而现在，我们使用的“图像特征提取”和“文本特征提取”只需通过特征向量就可以进行分类，避免了大量的标注工作。
 
-上文中我们已经通过图像嵌入和文本嵌入把`cat.jpg`,`'a black cat'`,`'a yellow cat'`分别变成了3堆数字（3个512维向量），但是很显然，我们看不懂这些数字，但是计算机可以！
+上文中我们已经通过图像特征提取和文本特征提取把`cat.jpg`,`'a black cat'`,`'a yellow cat'`分别变成了3堆数字（3个512维向量），但是很显然，我们看不懂这些数字，但是计算机可以！
 通过让计算机将数字进行运算，即将图像和文本的特征向量作比较，就能看出很多信息，这也叫计算向量之间相似度。
 
 为了方便大家计算向量之间的相似度，我们也提供了一系列数据处理函数，函数具体内容请见<a href="https://xedu.readthedocs.io/zh/master/about/functions.html#">XEdu的常见函数</a>。
@@ -1263,77 +1367,8 @@ get_similarity(image_embeddings, txt_embeddings,method='cosine') # 计算相似�
 
 现在我们可以看到cat.jpg与'a black cat'向量的相似度为0.007789988070726395，而与'a yellow cat'向量的相似度为0.9922100305557251。显而易见，这张可爱的黄色猫咪图像与'a yellow cat'文本描述更为贴近。
 
-## 8. 图像着色
 
-图像着色模型是将灰度图像转换为彩色图像的模型，它根据图像的内容、场景和上下文等信息来推断合理的颜色分布，实现从灰度到彩色的映射。
-
-当我们有一张黑白图像想要为它上色时，可以使用XEduHub提供的`gen_color`图像着色任务。通过调用基于卷积神经网络 (CNN)训练的模型进行推理，自动地为黑白图像添加颜色，实现了快速生成逼真的着色效果。
-
-### 代码样例
-
-```python
-from XEdu.hub import Workflow as wf # 导入库
-color = wf(task='gen_color') # 实例化模型
-result, img = style.inference(data='demo/gray_img1.jpg',img_type='cv2')# 进行模型推
-color.show(img) # 可视化结果
-color.save(img,'demo/color_img.jpg') # 保存可视化结果
-```
-
-### 代码解释
-
-#### 1. 模型声明
-
-```python
-from XEdu.hub import Workflow as wf # 导入库
-color = wf(task='gen_color') # 实例化模型
-```
-
-`wf()`中共有三个参数可以设置：
-
-- `task`选择任务。图像分类的模型为`gen_color`。
-- `checkpoints`指定模型的路径，默认在本地同级的checkpoints文件夹中寻找任务对应的模型，如`checkpoints='my_checkpoint/model.onnx'`。
-- `download_path`指定模型的下载路径。默认是下载到同级的checkpoints文件夹中，如`download_path='my_checkpoint'`。
-
-任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id122">XEduHub任务模型资源下载与存放</a>。
-
-
-#### 2. 模型推理
-
-```python
-result, img = style.inference(data='demo/gray_img1.jpg',img_type='cv2')# 进行模型推理
-```
-
-模型推理`inference()`可传入参数：
-
-- `data`: 待进行风格迁移的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
-- `show`: 可取值：`[true,false]` 默认为`false`。如果取值为`true`，在推理完成后会直接输出风格迁移完成后的图片。
-- `img_type`: 推理完成后会直接输出图像着色完成后的图片。该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
-
-模型推理返回结果：
-
-- `result`和`img`都是三维数组，以cv2格式保存了风格迁移完成后的图片。
-
-#### 3. 结果输出
-
-```python
-style.show(img)# 展示推理后的图片
-```
-
-`show()`能够输出着色后的结果图像。
-
-![](../images/xeduhub/color_show.png)
-
-#### 4. 结果保存
-
-```python
-style.save(img,"color_img.jpg")# 保存推理图片
-```
-
-`save()`方法能够保存着色后的图像
-
-该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
-
-## 9. MMEdu模型推理
+## 8. MMEdu模型推理
 
 XEduHub现在可以支持使用MMEdu导出的onnx模型进行推理啦！如果你想了解如何使用MMEdu训练模型，可以看这里：<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html">解锁图像分类模块：MMClassification</a>、<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html">揭秘目标检测模块：MMDetection</a>。
 
@@ -1507,7 +1542,7 @@ mmdet.save(img,'new_plate.jpg')# 保存推理结果图片
 
 该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
 
-## 10. BaseNN模型推理
+## 9. BaseNN模型推理
 
 XEduHub现在可以支持使用BaseNN导出的onnx模型进行推理啦！如果你想了解如何将使用[BaseNN](https://xedu.readthedocs.io/zh/master/basenn.html)训练好的模型转换成ONNX格式，可以看这里：[BaseNN模型文件格式转换](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id24)。OK，准备好了ONNX模型，那么就开始使用XEduHub吧！
 
@@ -1566,7 +1601,7 @@ format_result = basenn.format_output()
 
 `format_output`的结果是一个结果字典，这个字典的第一个元素有两个键，`预测值`、`分数`，代表着该手写数字的分类标签以及属于该分类标签的概率。
 
-## 11. BaseML模型推理
+## 10. BaseML模型推理
 
 XEduHub现在可以支持使用BaseML导出的pkl模型文件进行推理啦！如果你想了解如何将使用[BaseML](https://xedu.readthedocs.io/zh/master/baseml.html)训练模型并保存成.pkl模型文件，可以看这里：[BaseML模型保存](https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id16)。OK，准备好了pkl模型，那么就开始使用XEduHub吧！
 
@@ -1629,7 +1664,7 @@ format_output = baseml.format_output(lang='zh')# 推理结果格式化输出
 
 如果此时你有冲动去使用BaseML完成模型训练到推理，再到转换与应用，快去下文学习[BaseML的相关使用](https://xedu.readthedocs.io/zh/master/baseml.html)吧！
 
-## 12. 其他onnx模型推理
+## 11. 其他onnx模型推理
 
 XEduHub现在可以支持使用用户自定义的ONNX模型文件进行推理啦！这意味着你可以不仅仅使用MMEdu或者BaseNN训练模型并转换而成的ONNX模型文件进行推理，还可以使用其他各个地方的ONNX模型文件，但是有个**重要的前提：你需要会使用这个模型，了解模型输入的训练数据以及模型的输出结果**。OK，如果你已经做好了充足的准备，那么就开始使用XEduHub吧！
 
