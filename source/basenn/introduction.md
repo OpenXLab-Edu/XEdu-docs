@@ -426,15 +426,20 @@ model.add('conv2d', size=(1, 3),kernel_size=( 3, 3), activation='relu') # [100, 
 
 ### 4. 模型训练
 
-模型训练可以采用以下函数：
+模型训练可以采用以下函数，训练前需设置模型保存路径，训练时需设置lr、epochs等超参数。
 
 ``` python
+# 设置模型保存的路径
+model.save_fold = 'checkpoints/irs_ckpt'
+# 模型训练
 model.train(lr=0.01, epochs=500)
 ```
 
 参数`lr`为学习率，`epochs`为训练轮数。
 
 从训练类型的角度，可以分为正常训练和继续训练。
+
+使用`model.save_fold`设置模型保存的路径，模型权重文件格式为`.pth`文件格式。默认保存为保存路径下的命名为basenn.pth的文件，如需修改保存命名，可在train中加入一个新参数`filename`，设置方法为`filename='XX.pth'`。
 
 #### 正常训练
 
@@ -601,18 +606,14 @@ word = model.idx2word[index] # 根据词表获得对应的字
 
 - `hidden`为高维向量，存储上下文信息，代表"记忆"，所以生成单个字可以不传入hidden，但写诗需要循环传入之前输出的hidden。
 
-### 6. 模型的保存与加载
+### 6. 模型加载
 
 ``` python
-# 保存
-model.save_fold = 'mn_ckpt'
-# 加载
+# 加载模型
 model.load("basenn.pth")
 ```
 
-参数为模型保存的路径，模型权重文件格式为`.pth`文件格式。
-
-注：`train()`，`inference()`函数中也可通过参数控制模型的保存与加载，但这里也列出单独保存与加载模型的方法，以确保灵活性。
+注：`train()`，`inference()`函数中也可通过参数控制模型的加载，但这里也列出单独加载模型的方法，以确保灵活性。
 
 ### 7. 模型文件格式转换
 
