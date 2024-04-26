@@ -83,7 +83,7 @@ window.close()
 
 上面这段代码一个简单的PySimpleGUI应用程序，它创建了一个包含文本和按钮的窗口。当用户点击"确定"按钮或关闭窗口时，程序将结束。这段代码中最核心的部分在于窗体设计和窗体事件控制部分。其中“window.read()”返回的信息中，event为按钮的名称，values则为一个字典，键名是控件的名称。仔细观察PySimpleGUI代码，会发现和Arduino、掌控板之类开源硬件程序的运行逻辑非常类似——用一个无限循环来处理输入和输出窗体事件。该代码的运行效果如下，界面样式中规中矩，看起来并不丑。
 
-![](../images/scitech_tools/pysimplegui.png)
+![](../../images/scitech_tools/pysimplegui.png)
 
 
 ## 4. 借助PySimpleGUI部署简易AI应用
