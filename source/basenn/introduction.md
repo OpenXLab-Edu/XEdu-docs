@@ -590,16 +590,29 @@ model.print_result()
 
 #### 针对特征表格文件的推理：
 
+简便方法：
+
 ``` python
 model = nn('cls')
-test_path = '../../dataset/iris/iris_test.csv'
+test_path = 'data/iris_test.csv'
 res = model.inference(test_path, checkpoint="iris_ckpt/basenn.pth",label=True)
 model.print_result(res)
 ```
 
-`label=True`：csv文件中含标签列，比如iris_test.csv；False为没有标签，一般情况下测试集都是没有标签的，所以默认为False。
+使用此方法，对表格文件有严格要求：csv格式，纵轴为样本，横轴为特征，第一行为表头，最后一列为标签
 
-对表格文件的要求：csv格式，纵轴为样本，横轴为特征，第一行为表头，最后一列为标签
+`label=True`：csv文件中含标签列，比如iris_test.csv；False为没有标签，如果指定的csv最后一列不是标签，则使用False。
+
+常规方法：先读取文件的特征列。
+
+```
+import numpy as np
+model = nn('cls')
+test_path = 'data/iris_test.csv'
+test_x = np.loadtxt(test_path, dtype=float, delimiter=',',skiprows=1,usecols=range(0,4)) 
+res = model.inference(test_x, checkpoint="checkpoints/iris_ckpt/basenn.pth")
+model.print_result(res)
+```
 
 #### 针对文本数据的推理：
 
