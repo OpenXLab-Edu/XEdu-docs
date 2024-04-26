@@ -15,13 +15,14 @@ c）同时支持CPU和GPU
 ## 示例代码
 
 ``` python
-model = nn('cls') 
-model.add(layer='linear',size=(4, 10),activation='relu') # [120, 10]
-model.add(layer='linear',size=(10, 5), activation='relu') # [120, 5]
-model.add(layer='linear', size=(5, 3), activation='softmax') # [120, 3]
-model.load_dataset(x, y)
-model.save_fold = 'checkpoints' # 指定模型保存路径
-model.train(lr=0.01, epochs=1000)
+model = nn('cls')
+train_path = '../../dataset/iris/iris_training.csv'
+model.load_tab_data(train_path, batch_size=120)
+model.add(layer='linear',size=(4, 10),activation='ReLU') 
+model.add(layer='linear',size=(10, 5), activation='ReLU') 
+model.add(layer='linear', size=(5, 3), activation='Softmax') 
+model.save_fold = './iris_ckpt'
+model.train(lr=0.01, epochs=500)
 ```
 
 ## 解锁BaseNN基本使用方法
