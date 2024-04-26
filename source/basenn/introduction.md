@@ -12,6 +12,18 @@ c）同时支持CPU和GPU
 
 文档涉及的部分代码见XEdu帮助文档配套项目集：[https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public](https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public)
 
+## 示例代码
+
+``` python
+model = nn('cls') 
+model.add(layer='linear',size=(4, 10),activation='relu') # [120, 10]
+model.add(layer='linear',size=(10, 5), activation='relu') # [120, 5]
+model.add(layer='linear', size=(5, 3), activation='softmax') # [120, 3]
+model.load_dataset(x, y)
+model.save_fold = 'checkpoints' # 指定模型保存路径
+model.train(lr=0.01, epochs=1000)
+```
+
 ## 解锁BaseNN基本使用方法
 
 ### 0. 引入包
@@ -85,7 +97,7 @@ classes = {'0':'0', '1':'1'}
 
 
 
-##### 关于图片数据集预处理：
+#### 关于图片数据集预处理：
 
 载入图片数据前如需对图像数据集进行预处理，最常见的例如做尺寸调整，可先调用已经内置的torchvision对图片数据集进行预处理再载入模型进行训练，只需在`load_img_data`图片数据集时增加一个`transform`的参数。
 
@@ -458,20 +470,17 @@ model.train(lr=0.01, epochs=1000)
 #### 继续训练
 
 ``` python
-model = nn('cls')
-model.load_dataset(x, y)
-model.save_fold = 'checkpoints/new_train' # 指定模型保存路径
 checkpoint = 'checkpoints/basenn.pth' # 指定已有模型的权重文件路径
 model.train(lr=0.01, epochs=1000, checkpoint=checkpoint)
 ```
 
 `checkpoint`为现有模型路径，当使用`checkpoint`参数时，模型基于一个已有的模型继续训练，不使用`checkpoint`参数时，模型从零开始训练。
 
-#### 拓展------分数据类型看训练代码
+### 训练篇拓展------分数据类型看训练代码
 
 针对不同类型的数据类型，载入数据、搭建模型和模型训练的代码会略有不同。深度学习常见的数据类型介绍详见[附录4](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#id23)。
 
-##### 第一种：图片文件夹类型
+#### 第一种：图片文件夹类型
 
 可直接指定图片文件夹，同时针对图片数据可增加classes参数设置（推理时会输出预测的类别名称，如不设置此参数则只输出类别标签），参考代码如下：
 
@@ -499,7 +508,7 @@ model.add('conv2d',...)
 model.train(lr=0.01,epochs=1)
 ```
 
-##### 第二种：特征类型
+#### 第二种：特征类型
 
 可直接指定csv格式的表格完成模型训练，参考代码如下：
 
@@ -528,7 +537,7 @@ model.save_fold = './iris_ckpt'
 model.train(lr=0.01,epochs=1)
 ```
 
-##### 第三种：文本类型
+#### 第三种：文本类型
 
 在做文本生成等NLP（自然语言处理）领域项目时，一般搭建[RNN网络](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn)训练模型，训练数据是文本数据，参考代码如下：
 
@@ -557,6 +566,8 @@ model.print_result(result) # 输出字典格式结果
 输出字典格式结果的数据类型为字典，格式为`{样本编号：{预测值：x，置信度：y}}`。`print_result()`函数调用即输出，但也有返回值。
 
 参数`data`为待推理的测试数据，该参数必须传入值，可以传入NumPy数组或文件路径或者dataloader类型的数据，也可以传入list（最终还是会转成numpy数组）。除了NumPy数组格式和list数组格式的特征数据，以及传入dataloader类型的数据进行批量的模型推理外，还可以直接传入文件路径进行模型推理，下面我们分文件类型说明。
+
+### 推理篇拓展------分文件类型看推理代码
 
 #### 针对单个图片文件的推理：
 
@@ -655,7 +666,7 @@ feature = model.extract_feature(img, pretrain='resnet18')
 
 BaseNN内置`visual_feature`函数可呈现数据在网络中传递的过程。特征可视化可以帮助我们更好地理解模型在处理数据时的内部工作原理，并通过这种方式来进一步提高模型的性能和效果。
 
-如输入数据为图片，指定图片和已经训练好的模型，可生成一张展示逐层网络特征传递的图片。
+如输入数据为**图片**，指定图片和已经训练好的模型，可生成一张展示逐层网络特征传递的图片。
 
 ```python
 import cv2
@@ -669,7 +680,7 @@ model.visual_feature(img,in1img = True)   # 特征的可视化
 
 ![](../images/basenn/visualization.png)
 
-如输入数据为一维数据，指定数据和已经训练好的模型，可生成一个txt文件展示经过各层后的输出。
+如输入数据为**一维数据**，指定数据和已经训练好的模型，可生成一个txt文件展示经过各层后的输出。
 
 ```python
 import NumPy as np

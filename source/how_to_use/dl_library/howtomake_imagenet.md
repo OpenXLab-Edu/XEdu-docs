@@ -60,9 +60,9 @@ ds.make_dataset(r"catdog2", src_format="IMAGENET",train_ratio = 0.8, test_ratio 
 
 #### 第一步：整理图片
 
-您可以用任何设备拍摄图像，也可以从视频中抽取帧图像，需要注意，这些图像可以被划分为多个类别。每个类别建立一个文件夹，文件夹名称为类别名称，将图片放在其中。
+您可以用任何设备拍摄图像，也可以从视频中抽取帧图像，需要注意，这些图像可以被划分为多个类别。每个类别建立一个文件夹，文件夹名称为类别名称，将图片放在其中，最终有一个大文件夹，包含多个以类别名命名的子文件夹。
 
-接下来需要对图片进行尺寸、保存格式等的统一，简单情况下的参考代码如下：
+接下来可能需要对图片进行尺寸、保存格式等的统一，简单情况下的参考代码如下（指定准备大文件夹路径）：
 
 ```plain
 from PIL import Image
@@ -73,9 +73,9 @@ def makeDir(folder_path):
     if not os.path.exists(folder_path):  # 判断是否存在文件夹如果不存在则创建为文件夹
         os.makedirs(folder_path)
 
-classes = os.listdir('./my_dataset/training_set')
-read_dir = './my_dataset/training_set/' # 指定原始图片路径
-new_dir = './my_dataset/newtraining_set'
+classes = os.listdir('./my_dataset') # 指定原始图片路径
+read_dir = './my_photo/' # 指定原始图片路径
+new_dir = './my_newphoto' # 指定新图片路径
 for cnt in range(len(classes)):
     r_dir = read_dir + classes[cnt] + '/'
     files = os.listdir(r_dir)
@@ -99,7 +99,7 @@ for cnt in range(len(classes)):
 import os
 import shutil
 # 列出指定目录下的所有文件名，确定分类信息
-classes = os.listdir('./my_photo')
+classes = os.listdir('./my_newphoto')
 
 # 定义创建目录的方法
 def makeDir(folder_path):
@@ -107,7 +107,7 @@ def makeDir(folder_path):
         os.makedirs(folder_path)
 
 # 指定文件目录
-read_dir = './my_photo/' # 指定原始图片路径
+read_dir = './my_newphoto/' # 指定原始图片路径
 train_dir = './my_dataset/training_set/' # 指定训练集路径
 test_dir = './my_dataset/test_set/'# 指定测试集路径
 val_dir = './my_dataset/val_set/'# 指定验证集路径
@@ -116,7 +116,7 @@ for cnt in range(len(classes)):
     r_dir = read_dir + classes[cnt] + '/'  # 指定原始数据某个分类的文件目录
     files = os.listdir(r_dir)  # 列出某个分类的文件目录下的所有文件名
     # files = files[:4000]
-    # 按照6:2:2拆分文件名
+    # 按照6:2:2拆分文件名,可更换比例
     offset1 = int(len(files) * 0.6)
     offset2 = int(len(files) * 0.8)
     training_data = files[:offset1]
