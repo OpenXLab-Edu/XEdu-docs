@@ -568,14 +568,16 @@ model.print_result(result) # 输出字典格式结果
 
 参数`data`为待推理的测试数据，该参数必须传入值，可以传入NumPy数组或文件路径或者dataloader类型的数据，也可以传入list（最终还是会转成numpy数组）。除了NumPy数组格式和list数组格式的特征数据，以及传入dataloader类型的数据进行批量的模型推理外，还可以直接传入文件路径进行模型推理，下面我们分文件类型说明。
 
-### 推理篇拓展------分文件类型看推理代码
+**注：**推理时传入的数据要和模型训练时使用的训练集的数据保持一致。
+
+### 推理篇拓展------直接传文件路径完成推理
 
 #### 针对单个图片文件的推理：
 
 ``` python
 model = nn('cls')
 test_x = "mnist/val_set/7/83.jpg"
-result = model.inference(data=test_x, checkpoint="mn_ckpt/basenn.pth") # 推理整个测试集
+result = model.inference(data=test_x, checkpoint="mn_ckpt/basenn.pth") # 推理某张图片
 model.print_result()
 ```
 
