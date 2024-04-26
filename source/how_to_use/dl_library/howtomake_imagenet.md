@@ -231,6 +231,62 @@ with open(set_path +'test.txt','w') as f:
 
 最后，我们将这些文件放在一个文件夹中，命名为数据集的名称。这样，在训练的时候，只要通过`model.load_dataset`指定数据集的路径就可以了。
 
+#### 其他实现方式：
+
+当我们采集到数据后，要准备一份可以训练的，包含training_set、val_set和test_set的规范数据集，可以用下面的代码进行转换：
+
+```python
+import os, random, shutil
+target_path = './target_path/'
+origin_path = './datasets/'
+train_ratio = 0.7
+val_ratio = 0.2
+test_ratio = 0.1
+random_list = True
+
+classes = os.listdir(origin_path)
+print(classes)
+
+os.makedirs(os.path.join(target_path,'training_set'))
+os.makedirs(os.path.join(target_path,'val_set'))
+os.makedirs(os.path.join(target_path,'test_set'))
+
+f = open(os.path.join(target_path,'classes.txt'),'w')
+for i, c in enumerate(classes):
+    f.write(c+' '+str(i)+'\n')
+    os.makedirs(os.path.join(target_path,'training_set',c))
+    os.makedirs(os.path.join(target_path,'val_set',c))
+    os.makedirs(os.path.join(target_path,'test_set',c))
+f.close()
+
+for c in classes:
+    image_path = os.path.join(origin_path, c)
+    images = os.listdir(image_path)
+    num = len(images)
+    if random_list == True:
+        random.shuffle(images)
+    for i,pic in enumerate(images):
+        _,ext = os.path.splitext(pic)
+        if ext !='.jpg':
+            continue
+        o_path = os.path.join(image_path,pic)
+        if i <= num*train_ratio:
+            t_path = os.path.join(target_path, 'training_set',c,pic)
+        elif i <= num*(train_ratio+val_ratio):
+            t_path = os.path.join(target_path, 'val_set',c,pic)
+        else:
+            t_path = os.path.join(target_path, 'test_set',c,pic)
+        shutil.move(o_path,t_path)
+```
+
+下一步：用python解压一个zip压缩包
+
+```python
+import zipfile
+f = zipfile.ZipFile('./imagenet.zip') # 指定压缩包的路径
+f.extractall('./datasets') # 指定提取的路径
+```
+
 ### 选择3：巧用XEdu自动补齐功能快速制作
 
 如果您觉得整理规范格式数据集有点困难，其实您只收集了图片按照类别存放，然后完成训练集（trainning_set）、验证集（val_set）和测试集（test_set）等的拆分，最后整理在一个大的文件夹下作为您的数据集也可以符合要求。此时指定数据集路径后同样可以训练模型，因为XEdu拥有检测数据集的功能，如您的数据集缺失txt文件，会自动帮您生成“classes.txt”，“val.txt”等（如存在对应的数据文件夹）开始训练。这些txt文件会生成在您指定的数据集路径下，即帮您补齐数据集。
