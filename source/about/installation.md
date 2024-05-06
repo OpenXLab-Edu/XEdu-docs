@@ -1,7 +1,7 @@
 # XEdu的安装和下载
 
 
-当前在[PypPi](https://pypi.org/user/aiedu/)开源的最新版本号如下：
+当前在[PyPi](https://pypi.org/user/aiedu/)开源的最新版本号如下：
 ```
 XEdu-python==0.1.4
 MMEdu==0.1.26
