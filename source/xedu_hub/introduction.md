@@ -1761,15 +1761,15 @@ print(result)
 - `preprocess`: 指定前处理函数
 - `postprocess`：指定后处理函数
 
-## XEduHub任务模型资源下载与存放
+## XEduHub任务模型文件获取与存放
 
-XEduHub提供了大量优秀的任务模型，我们不仅可以通过`wf()`代码的运行实现下载，还可以自行到网页上下载，防止运行代码时没有网络无法zi下载模型的问题。
+XEduHub提供了大量优秀的任务模型，我们不仅可以通过`wf()`代码的运行实现模型的获取，还可以在网站上进行获取。
 
-只要进入<a href="https://openxlab.org.cn/models/detail/xedu/hub-model">模型仓库</a>，在Model File里就可以随意下载各种任务模型。网址：<a href="https://openxlab.org.cn/models/detail/xedu/hub-model">https://openxlab.org.cn/models/detail/xedu/hub-model</a>
+只要进入<a href="https://openxlab.org.cn/models/detail/xedu/hub-model">模型仓库</a>，在Model File里就可以看到各种任务模型。网址：<a href="https://openxlab.org.cn/models/detail/xedu/hub-model">https://openxlab.org.cn/models/detail/xedu/hub-model</a>
 
 ![](../images/xeduhub/downloadmodel.png)
 
-下载后，如何让代码`wf()`运行时找到我下载的预训练模型呢？
+没有网络，如何让代码`wf()`运行时找到找到模型文件呢？
 
 在这里悄悄透露代码`wf()`运行时的工作流程，在没有指定模型路径`checkpoints`参数的情况下，会先检查是否已下载了对应任务的模型，检查的顺序如下：
 
