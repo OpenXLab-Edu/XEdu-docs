@@ -115,7 +115,103 @@ cv2.destroyAllWindows()
 
 除了任务一基于规则实现手势分类以外，还可以通过机器学习的方式，训练一个手势分类模型区分不同的手势。
 
-首先我们可以批量提取出所有手势图像的手势关键点数据，做一个CSV格式的关键点数据集，每行代表一张图片提出的手部关键点坐标和这张图的类别。当有了这样一个数据集（见项目文件），我们便可以使用XEdu的一系列训练模型的工具去学习这些数据的特征，从而去训练一个石头剪刀布手势识别模型。
+#### 准备工作：准备数据
+
+首先我们可以批量提取出所有手势图像的手势关键点数据，做一个CSV格式的关键点数据集，每行代表一张图片提出的手部关键点坐标和这张图的类别。用如下代码可以做到随拍随提取关键点，并生成关键点数据集（注意需提前安装库）。
+
+```
+import csv
+from XEdu.hub import Workflow as wf
+import cv2
+import os
+cap = cv2.VideoCapture(0)
+
+class_name=input('请输入本次想要采集的手势名称：')
+
+c_file='classes.txt'
+if not os.path.exists(c_file):
+    open(c_file,'w')
+with open(c_file,'r') as f:
+    lines=f.readlines()
+    print(lines)
+    class_index=len(lines)
+    print('类别{',class_name,'}对应的序号是{',class_index,'}。')
+with open(c_file,'a') as f:
+    s=str(class_name)+','+str(class_index)+'\n'
+    f.write(s)
+
+pose = wf(task='hand')
+feature_data=[]
+cnt=0
+from time import sleep
+print('3秒后开始采集数据，请做好准备....')
+sleep(3)
+total=100   # 一共采集多少条数据
+from tqdm import tqdm
+pbar=tqdm(total=total)
+while cnt<total:
+    sleep(0.1)
+    ret, frame = cap.read()
+
+    if not ret:
+        continue
+    keypoints,img =pose.inference(data=frame,img_type='cv2')
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+    format_result = pose.format_output(lang='en', isprint=False)
+    avg=0
+    for i in format_result['scores']:
+        avg+=i
+    avg/=21
+    if avg<0.5:
+        cv2.imshow('video', frame)
+        print('手部置信度未超过0.5:', avg)
+        continue
+    else:
+        cnt+=1
+        pbar.update(1)
+        cv2.imshow('video', img)
+    my_data=format_result['keypoints']
+    feature=[]
+    for d in format_result['keypoints']:
+        feature.append(d[0])
+        feature.append(d[1])
+    feature_data.append(feature)
+
+cap.release()
+cv2.destroyAllWindows()
+header = [f"Feature {i+1}" for i in range(21*2)] + ["Label"]
+csv_data = []
+
+for i in range(len(feature_data)):
+    csv_data.append(feature_data[i].copy())
+    csv_data[-1].append(class_index)
+print(csv_data)
+with open('hand_'+str(class_name)+'.csv','w',encoding='UTF8',newline='') as f:
+    writer = csv.writer(f)
+    writer.writerow(header)
+    writer.writerows(csv_data)
+print('saved to '+'hand_'+str(class_name)+'.csv')
+```
+
+再次运行上面的代码，可以生成第二类手势的数据集。
+
+经过多次收集，可以形成多类数据，用下面这段代码进行数据合并。
+
+```
+import pandas as pd
+
+classes=pd.read_csv('classes.txt',header=None)
+dataset=pd.DataFrame()
+for c in classes[0]:
+    df=pd.read_csv('hand_'+c+'.csv')
+    dataset=pd.concat([dataset,df],ignore_index=True)
+
+print(dataset)
+dataset.to_csv('hand_total.csv',index=False)
+```
+
+当制作完成了这样一个数据集（见项目文件），我们便可以使用XEdu的一系列训练模型的工具去学习这些数据的特征，从而去训练一个石头剪刀布手势识别模型。
 
 #### 第1步 划分数据集
 
