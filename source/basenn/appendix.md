@@ -36,7 +36,7 @@
 
 下面为您具体展示如何搭建模型，以全连接神经网络结构、卷积神经网络结构、循环神经网络结构等为例为您讲解。
 
-### 搭建全连接神经网络结构：
+### 搭建全连接神经网络结构
 
 以一个简单的全连接神经网络结构为例，注释标明了数据经过各层的尺寸变化。
 
@@ -51,9 +51,9 @@ model.add(layer='linear', size=(5, 3), activation='softmax') # [120, 3]
 
 参考项目：[用BaseNN库搭建全连接神经网络训练IRIS鸢尾花分类模型](https://openinnolab.org.cn/pjlab/project?id=641bc2359c0eb14f22fdbbb1&backpath=/pjlab/projects/list#public)
 
-### 搭建卷积神经网络结构：
+### 搭建卷积神经网络结构
 
-以一个简单的卷积神经网络LeNet结构为例，注释标明了数据经过各层的尺寸变化。
+首先以一个简单的卷积神经网络LeNet结构为例，注释标明了数据经过各层的尺寸变化。
 
 ``` python
 # 输入: [100,1,20,20]
@@ -90,7 +90,7 @@ N = W/P ，其中P表示池化层的卷积核大小。
 
 参考项目：[用卷积神经网络实现MNIST手写体数字分类](https://openinnolab.org.cn/pjlab/project?id=641d17e67c99492cf16d706f&backpath=/pjlab/projects/list#public)
 
-同时，使用BaseNN也能完成一些相对复杂的神经网络的搭建，如MobileNet，ResNet等MMEdu可以直接调用的SOTA模型，同样也是支持的。
+**同时，使用BaseNN也能完成一些相对复杂的神经网络的搭建，如MobileNet，ResNet等MMEdu可以直接调用的SOTA模型，同样也是支持的。**
 
 #### 搭建MobileNet网络：
 
@@ -231,7 +231,7 @@ model.add('linear', size=(2048, 10), activation='Softmax') # (32,10)
 
 注：bottleneck输出通道数是输入的四倍，因此注意size的区别。这个四倍是1 *1，3 *3，1 *1三次矩阵乘法导致的，有点难理解，而且bottleneck跑着也慢，建议文档里可以提有这个功能，但是示例项目不要用bottleneck就用basicblock。更多ResNet网络的介绍详见[深度学习知识库](https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/ResNet.html)。
 
-### 搭建循环神经网络结构：
+### 搭建循环神经网络结构
 
 循环神经网络是一类以序列数据为输入，在序列的演进方向进行递归且所有节点（循环单元）按链式连接的递归神经网络。RNN在自然语言处理问题中有得到应用，也被用于与自然语言处理有关的异常值检测问题，例如社交网络中虚假信息/账号的检测。RNN与CNN卷积神经网络相结合的系统可被应用于在计算机视觉问题，例如在字符识别中，有研究使用卷积神经网络对包含字符的图像进行特征提取，并将特征输入LSTM进行序列标注。
 
@@ -343,7 +343,7 @@ model.train(epochs=10)
 generated_imgs = model.inference(num=64, return_all_timesteps=True)
 ```
 
-### 拓展——搭建更复杂的网络结构：
+### 拓展——搭建更复杂的网络结构
 
 如果对pytorch比较熟悉，想要自行添加比较复杂的模块，也可以自定义（BaseNN兼容pytorch搭的网络结构），例如，搭建一个与上述动作识别网络一致的自定义模块：
 
