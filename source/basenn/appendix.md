@@ -148,11 +148,11 @@ print(dog_embedding)
 
 如需搭建ResNet首先需在卷积层新增两个参数的设置，分别是步长stride和填充padding，同时增加残差模块的设置。ResNet系列网络结构如下所示。
 
-![](D:\XEdu-docs\source\images\basenn\bn1.png)
+![](../images/basenn/bn1.png)
 
 以ResNet18为例，我们看一下ResNet18的网络结构。
 
-![](D:\XEdu-docs\source\images\basenn\resnet18.jpg)
+![](../images/basenn/resnet18.jpg)
 
 搭建一个ResNet18的示例代码如下（输入的是包含32张224×224尺寸的手写数字图片）：
 

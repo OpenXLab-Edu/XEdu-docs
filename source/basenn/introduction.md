@@ -429,7 +429,7 @@ model.add(layer='linear',size=(10, 5), activation='relu') # [120, 5]
 model.add(layer='linear', size=(5, 3), activation='softmax') # [120, 3]
 ```
 
-以上使用`add()`方法添加层，参数`layer='linear'`表示添加的层是线性层，`size=(4,10)`表示该层输入维度为4，输出维度为10，`activation='relu'`表示使用relu激活函数。以上代码搭建的是一个输入维度为4，输出维度为3，隐藏层数量为2的全连接神经网络。如要搭建更加复杂的神经网络，可前往[附录1](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#add)了解更详细的`add()`方法使用，还呈现了[搭建全连接神经网络结构](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id33)、[简单卷积神经网络结构](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id34)，也呈现了与MMEdu内置的SOTA模型对应的[MobileNet网络](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#mobilenet)、[ResNet网络](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#resnet)，以及[循环神经网络](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id35)等搭建说明。
+以上使用`add()`方法添加层，参数`layer='linear'`表示添加的层是线性层，`size=(4,10)`表示该层输入维度为4，输出维度为10，`activation='relu'`表示使用relu激活函数。以上代码搭建的是一个输入维度为4，输出维度为3，隐藏层数量为2的全连接神经网络。如要搭建更加复杂的神经网络，可前往[附录1](https://xedu.readthedocs.io/zh/master/basenn/appendix.html#add)了解更详细的`add()`方法使用，还呈现了搭建[全连接神经网络结构](https://xedu.readthedocs.io/zh/master/basenn/appendix.html#id3)、[简单卷积神经网络LeNet结构](https://xedu.readthedocs.io/zh/master/basenn/appendix.html#id4)，也呈现了与MMEdu内置的SOTA模型对应的[MobileNet网络](https://xedu.readthedocs.io/zh/master/basenn/appendix.html#mobilenet)、[ResNet](https://xedu.readthedocs.io/zh/master/basenn/appendix.html#resnet)等，以及[循环神经网络](https://xedu.readthedocs.io/zh/master/basenn/appendix.html#id5)、[扩散模型](https://xedu.readthedocs.io/zh/master/basenn/appendix.html#id7)等搭建说明。
 
 ### 4. 模型训练
 
@@ -473,7 +473,7 @@ model.train(lr=0.01, epochs=1000, checkpoint=checkpoint)
 
 ### 训练篇拓展------分数据类型看训练代码
 
-针对不同类型的数据类型，载入数据、搭建模型和模型训练的代码会略有不同。深度学习常见的数据类型介绍详见[附录4](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#id23)。
+针对不同类型的数据类型，载入数据、搭建模型和模型训练的代码会略有不同。深度学习常见的数据类型介绍详见[附录4](https://xedu.readthedocs.io/zh/master/basenn/appendix.html#id14)。
 
 #### 第一种：图片文件夹类型
 
@@ -534,7 +534,7 @@ model.train(lr=0.01,epochs=1)
 
 #### 第三种：文本类型
 
-在做文本生成等NLP（自然语言处理）领域项目时，一般搭建[RNN网络](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#rnncnn)训练模型，训练数据是文本数据，参考代码如下：
+在做文本生成等NLP（自然语言处理）领域项目时，一般[搭建RNN网络](https://xedu.readthedocs.io/zh/master/basenn/appendix.html#rnncnn)训练模型，训练数据是文本数据，参考代码如下：
 
 ```python
 model = nn('cls')
@@ -727,7 +727,7 @@ model.train(...)
 
 损失函数（或称目标函数、优化评分函数）是编译模型时所需的参数之一。在机器学习和深度学习中，模型的训练通常涉及到一个优化过程，即通过不断调整模型的参数，使得模型在训练数据上的预测结果与实际结果的差距最小化。这个差距通常使用一个称为"损失函数"的指标来衡量。损失函数通常是一个关于模型参数的函数，用于度量模型预测结果与实际结果之间的差异。在模型训练过程中，模型会根据损失函数的值来调整自己的参数，以减小损失函数的值。
 
-默认的损失函数是交叉熵损失函数，允许选择不同的损失函数，支持的损失函数见[附录](https://xedu.readthedocs.io/zh/latest/basenn/introduction.html#id33)。自选损失函数方法如下：
+默认的损失函数是交叉熵损失函数，允许选择不同的损失函数，支持的损失函数见[附录](https://xedu.readthedocs.io/zh/master/basenn/appendix.html#id13)。自选损失函数方法如下：
 
 ```python
 model.train(...,loss="MSELoss")
