@@ -744,6 +744,35 @@ model.train(...,loss="MSELoss")
 ```python
 model.train(...,metrics="acc")
 ```
+### 由此拓展-自定义评价函数和训练策略
+
+一般可以自定义一个分类正确率计算函数来评估模型效果。
+
+```
+# 定义一个计算分类正确率的函数
+def cal_accuracy(y, pred_y):
+    res = pred_y.argmax(axis=1)
+    tp = np.array(y)==np.array(res)
+    acc = np.sum(tp)/ y.shape[0]
+    return acc
+
+# 计算分类正确率
+print("分类正确率为：",cal_accuracy(test_y, res))
+```
+
+由于model.train在完全训练结束之后，才能进行其他操作，如何判断提前终止训练，或者使用自定义的验证策略来验证模型效果呢？可以用循环来实现。
+参考代码如下：
+
+```python
+for i in range(5):
+    model.train(lr=0.01, epochs=5, metrics='acc')
+    result = model.inference(x_val, checkpoint=checkpoint)
+    acc = cal_accuracy(y_val, result) # 调用自定义的验证计算函数
+    print('验证集准确率: {:.2f}%'.format(100.0 * acc))
+    if acc > 0.7: # 如果准确率大于70%，提前结束训练
+        break
+```
+
 ### 7.探秘权重文件
 
 BaseNN 0.3.0以上，支持查看pth文件中的权重信息。

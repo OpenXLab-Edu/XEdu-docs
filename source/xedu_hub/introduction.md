@@ -1110,7 +1110,7 @@ style.save(new_img, "demo/style_my_style_ShangHai.jpg") # 保存可视化结果
 ```python
 from XEdu.hub import Workflow as wf # 导入库
 color = wf(task='gen_color') # 实例化模型
-result, img = style.inference(data='demo/gray_img1.jpg',img_type='cv2')# 进行模型推
+result, img = color.inference(data='demo/gray_img1.jpg',img_type='cv2')# 进行模型推
 color.show(img) # 可视化结果
 color.save(img,'demo/color_img.jpg') # 保存可视化结果
 ```
@@ -1136,7 +1136,7 @@ color = wf(task='gen_color') # 实例化模型
 #### 2. 模型推理
 
 ```python
-result, img = style.inference(data='demo/gray_img1.jpg',img_type='cv2')# 进行模型推理
+result, img = color.inference(data='demo/gray_img1.jpg',img_type='cv2')# 进行模型推理
 ```
 
 模型推理`inference()`可传入参数：
@@ -1152,7 +1152,7 @@ result, img = style.inference(data='demo/gray_img1.jpg',img_type='cv2')# 进行�
 #### 3. 结果输出
 
 ```python
-style.show(img)# 展示推理后的图片
+color.show(img)# 展示推理后的图片
 ```
 
 `show()`能够输出着色后的结果图像。
@@ -1162,7 +1162,7 @@ style.show(img)# 展示推理后的图片
 #### 4. 结果保存
 
 ```python
-style.save(img,"color_img.jpg")# 保存推理图片
+color.save(img,"color_img.jpg")# 保存推理图片
 ```
 
 `save()`方法能够保存着色后的图像
