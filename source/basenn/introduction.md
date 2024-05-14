@@ -784,3 +784,15 @@ for i in state_dict:
 
 我们知道了参数的值之后，可以尝试计算，当一条新数据输入网络后，模型会经历怎样的计算，请你试一试搭建一个简单的神经网络，试一试这个计算过程，你能不能手动实现呢？
 
+### 8.自定义训练策略和验证函数
+由于model.train在完全训练结束之后，才能进行其他操作，如何判断提前终止训练，或者使用自定义的验证策略来验证模型效果呢？可以用循环来实现。
+参考代码如下：
+```python
+for i in range(5):
+    model.train(lr=0.01, epochs=5, metrics='acc')
+    result = model.inference(x_val, checkpoint=checkpoint)
+    acc = cal_accuracy(y_val, result) # 调用自定义的验证计算函数
+    print('验证集准确率: {:.2f}%'.format(100.0 * acc))
+    if acc > 0.7: # 如果准确率大于70%，提前结束训练
+        break
+```
