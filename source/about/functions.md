@@ -126,3 +126,7 @@ def get_similarity(embeddings_1: np.ndarray, embeddings_2: np.ndarray,method:str
         return similarity
 
 ```
+
+### cosine_similarity 函数和get_similarity函数的联系
+
+get_similarity 函数实际上是对 cosine_similarity 函数的扩展和泛化。它不仅支持余弦相似度，还支持其他距离测量方法，并提供了可选的 softmax 应用，使其功能更为丰富和灵活。在 get_similarity 中使用 'cosine' 方法时，它会调用 cosine_similarity 函数来计算余弦相似度，因此 cosine_similarity 可以视为 get_similarity 的一个特定实现。
