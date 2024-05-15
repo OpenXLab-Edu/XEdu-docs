@@ -62,7 +62,7 @@ det_coco = wf(task='det_coco')
 `wf()`中共有三个参数可以设置：
 
 - `task`选择任务。coco目标检测的模型为`det_coco`, `det_coco_l`。`det_coco_l`相比`det_coco`模型规模较大，性能较强，但是推理的速度较慢。
-- `checkpoint`指定模型文件所在的路径，如`color = wf(task='det_coco',checkpoint='det_coco.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`det_coco.onnx`。否则将通过网络到浦源平台的专用地址下载。
+- `checkpoint`指定模型文件所在的路径，如`det_coco = wf(task='det_coco',checkpoint='det_coco.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`det_coco.onnx`。否则将通过网络到浦源平台的专用地址下载。
 - `download_path`指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制`checkpoints`文件夹。如希望模型保存放在其他路径，则设置`download_path`参数，如`download_path='my_checkpoint'`。注意，`download_path`参数为文件夹名称。建议该参数留空，使用默认地址。
 
 任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id122">XEduHub任务模型资源下载与存放</a>。
@@ -161,7 +161,7 @@ det_body = wf(task='det_body')
 `wf()`中共有三个参数可以设置：
 
 - `task`选择任务。人体目标检测模型为`det_body`, `det_body_l`。`det_body_l`相比`det_body`模型规模较大，性能较强，但是推理的速度较慢。
-- `checkpoint`指定模型文件所在的路径，如`color = wf(task='det_body',checkpoint='det_body.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`det_body.onnx`。否则将通过网络到浦源平台的专用地址下载。
+- `checkpoint`指定模型文件所在的路径，如`det_body = wf(task='det_body',checkpoint='det_body.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`det_body.onnx`。否则将通过网络到浦源平台的专用地址下载。
 - `download_path`指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制`checkpoints`文件夹。如希望模型保存放在其他路径，则设置`download_path`参数，如`download_path='my_checkpoint'`。注意，`download_path`参数为文件夹名称。建议该参数留空，使用默认地址。
 
 任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id122">XEduHub任务模型资源下载与存放</a>。
@@ -251,7 +251,7 @@ det_face = wf(task='det_face')
 `wf()`中共有三个参数可以设置：
 
 - `task`选择任务。人脸目标检测模型为`det_face`。
-- `checkpoint`指定模型文件所在的路径，如`color = wf(task='det_face',checkpoint='det_face.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`det_face.onnx`。否则将通过网络到浦源平台的专用地址下载。
+- `checkpoint`指定模型文件所在的路径，如`det_face = wf(task='det_face',checkpoint='det_face.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`det_face.onnx`。否则将通过网络到浦源平台的专用地址下载。
 - `download_path`指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制`checkpoints`文件夹。如希望模型保存放在其他路径，则设置`download_path`参数，如`download_path='my_checkpoint'`。注意，`download_path`参数为文件夹名称。建议该参数留空，使用默认地址。
 
 任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id122">XEduHub任务模型资源下载与存放</a>。
@@ -349,7 +349,7 @@ det_hand = wf(task='det_hand')
 `wf()`中共有三个参数可以设置：
 
 - `task`选择任务。手部关键点提取模型为`det_hand`。
-- `checkpoint`指定模型文件所在的路径，如`color = wf(task='det_hand',checkpoint='det_hand.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`det_hand.onnx`。否则将通过网络到浦源平台的专用地址下载。
+- `checkpoint`指定模型文件所在的路径，如`det_hand = wf(task='det_hand',checkpoint='det_hand.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`det_hand.onnx`。否则将通过网络到浦源平台的专用地址下载。
 - `download_path`指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制`checkpoints`文件夹。如希望模型保存放在其他路径，则设置`download_path`参数，如`download_path='my_checkpoint'`。注意，`download_path`参数为文件夹名称。建议该参数留空，使用默认地址。
 
 任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id122">XEduHub任务模型资源下载与存放</a>。
@@ -456,7 +456,7 @@ body = wf(task='pose_body') # 数字可省略，当省略时，默认为pose_bod
 `wf()`中共有三个参数可以设置：
 
 - `task`选择任务。在人体关键点识别模型中，`task`可选取值为：`[pose_body17,pose_body17_l,pose_body26]`，默认为`pose_body17`。
-- `checkpoint`指定模型文件所在的路径，如`color = wf(task='pose_body',checkpoint='pose_body.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`pose_body17.onnx`。否则将通过网络到浦源平台的专用地址下载。
+- `checkpoint`指定模型文件所在的路径，如`pose_body = wf(task='pose_body',checkpoint='pose_body.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`pose_body17.onnx`。否则将通过网络到浦源平台的专用地址下载。
 - `download_path`指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制`checkpoints`文件夹。如希望模型保存放在其他路径，则设置`download_path`参数，如`download_path='my_checkpoint'`。注意，`download_path`参数为文件夹名称。建议该参数留空，使用默认地址。
 
 任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id122">XEduHub任务模型资源下载与存放</a>。
@@ -553,7 +553,7 @@ face = wf(task='pose_face') # 数字可省略，默认为face106
 `wf()`中共有三个参数可以设置：
 
 - `task`选择任务。人脸关键点识别模型为`pose_face106`（数字可省略，默认为pose_face）。
-- `checkpoint`指定模型文件所在的路径，如`color = wf(task='pose_face',checkpoint='pose_face.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`pose_face106.onnx`。否则将通过网络到浦源平台的专用地址下载。
+- `checkpoint`指定模型文件所在的路径，如`pose_face = wf(task='pose_face',checkpoint='pose_face.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`pose_face106.onnx`。否则将通过网络到浦源平台的专用地址下载。
 - `download_path`指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制`checkpoints`文件夹。如希望模型保存放在其他路径，则设置`download_path`参数，如`download_path='my_checkpoint'`。注意，`download_path`参数为文件夹名称。建议该参数留空，使用默认地址。
 
 任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id122">XEduHub任务模型资源下载与存放</a>。
@@ -647,7 +647,7 @@ hand = wf(task='pose_hand') # 数字可省略，当省略时，默认为pose_han
 `wf()`中共有三个参数可以设置：
 
 - `task`选择任务。人手关键点识别模型为`pose_hand`。
-- `checkpoint`指定模型文件所在的路径，如`color = wf(task='pose_hand',checkpoint='pose_hand.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`pose_hand.onnx`。否则将通过网络到浦源平台的专用地址下载。
+- `checkpoint`指定模型文件所在的路径，如`pose_hand = wf(task='pose_hand',checkpoint='pose_hand.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`pose_hand.onnx`。否则将通过网络到浦源平台的专用地址下载。
 - `download_path`指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制`checkpoints`文件夹。如希望模型保存放在其他路径，则设置`download_path`参数，如`download_path='my_checkpoint'`。注意，`download_path`参数为文件夹名称。建议该参数留空，使用默认地址。
 
 任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id122">XEduHub任务模型资源下载与存放</a>。
@@ -736,7 +736,7 @@ wholebody = wf(task='pose_wholebody') # 数字可省略，当省略时，默认�
 `wf()`中共有三个参数可以设置：
 
 - `task`选择任务。全身关键点提取模型为`pose_wholebody`。
-- `checkpoint`指定模型文件所在的路径，如`color = wf(task='pose_wholebody',checkpoint='pose_wholebody.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`pose_wholebody.onnx`。否则将通过网络到浦源平台的专用地址下载。
+- `checkpoint`指定模型文件所在的路径，如`wholebody = wf(task='pose_wholebody',checkpoint='pose_wholebody.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`pose_wholebody.onnx`。否则将通过网络到浦源平台的专用地址下载。
 - `download_path`指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制`checkpoints`文件夹。如希望模型保存放在其他路径，则设置`download_path`参数，如`download_path='my_checkpoint'`。注意，`download_path`参数为文件夹名称。建议该参数留空，使用默认地址。
 
 任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id122">XEduHub任务模型资源下载与存放</a>。
@@ -825,10 +825,9 @@ from XEdu.hub import Workflow as wf
 ocr = wf(task="ocr")
 ```
 
-`wf()`中只有参数可以设置：
+`wf()`中只有一个参数可以设置：
 
 - `task`选择任务类型，光学字符识别（OCR）的模型为`ocr`。
-  
 
 **注意**：ocr任务并没有使用ONNX模型，也不会以onnx方式下载模型文件，而是自动下载和安装一个Python库，因此不同于之前任务的下载方式，无需指定下载路径。如果在断网情况第一次使用，可以先通过`pip install rapidocr_onnxruntime==1.3.7`预先下载库。
 
@@ -913,7 +912,7 @@ cls = wf(task="cls_imagenet") # 模型声明
 `wf()`中共有三个参数可以设置：
 
 - `task`选择任务。图像分类的模型为`cls_imagenet`。
-- `checkpoint`指定模型文件所在的路径，如`color = wf(task='cls_imagenet',checkpoint='cls_imagenet.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`cls_imagenet.onnx`。否则将通过网络到浦源平台的专用地址下载。
+- `checkpoint`指定模型文件所在的路径，如`cls = wf(task='cls_imagenet',checkpoint='cls_imagenet.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`cls_imagenet.onnx`。否则将通过网络到浦源平台的专用地址下载。
 - `download_path`指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制`checkpoints`文件夹。如希望模型保存放在其他路径，则设置`download_path`参数，如`download_path='my_checkpoint'`。注意，`download_path`参数为文件夹名称。建议该参数留空，使用默认地址。
 
 任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id122">XEduHub任务模型资源下载与存放</a>。
@@ -991,7 +990,7 @@ style = wf(task='gen_style',style='mosaic')
 
 - `task`选择任务。风格迁移的模型为`gen_style `。
 - `style`选择风格迁移所使用的风格。可选的风格有`udnie`、`mosaic`、`rain-princess`、`candy`和`pointilism`，也可以用一张图片作为风格源。
-- `checkpoint`指定模型文件所在的路径，如`color = wf(task='gen_style',style='mosaic',checkpoint='gen_style_mosaic.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`gen_style_mosaic.onnx`（任务名加下划线加风格名）。否则将通过网络到浦源平台的专用地址下载。
+- `checkpoint`指定模型文件所在的路径，如`style = wf(task='gen_style',style='mosaic',checkpoint='gen_style_mosaic.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`gen_style_mosaic.onnx`（任务名加下划线加风格名）。否则将通过网络到浦源平台的专用地址下载。
 - `download_path`指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制`checkpoints`文件夹。如希望模型保存放在其他路径，则设置`download_path`参数，如`download_path='my_checkpoint'`。注意，`download_path`参数为文件夹名称。建议该参数留空，使用默认地址。
 
 任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id122">XEduHub任务模型资源下载与存放</a>。
@@ -1196,10 +1195,8 @@ drive = wf(task='drive_perception') # 实例化模型
 `wf()`中共有三个参数可以设置：
 
 - `task`选择任务。全景驾驶感知系统的模型为`drive_perception`。
-- `checkpoint`指定模型文件所在的路径，如`color = wf(task='drive_perception',checkpoint='drive_perception.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`drive_perception.onnx`。否则将通过网络到浦源平台的专用地址下载。
+- `checkpoint`指定模型文件所在的路径，如`drive = wf(task='drive_perception',checkpoint='drive_perception.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`drive_perception.onnx`。否则将通过网络到浦源平台的专用地址下载。
 - `download_path`指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制`checkpoints`文件夹。如希望模型保存放在其他路径，则设置`download_path`参数，如`download_path='my_checkpoint'`。注意，`download_path`参数为文件夹名称。建议该参数留空，使用默认地址。
-
-任务模型下载与存放请查看<a href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id122">XEduHub任务模型资源下载与存放</a>。
 
 #### 2. 模型推理
 
@@ -1287,9 +1284,11 @@ from XEdu.hub import Workflow as wf # 导入库
 img_emb = wf(task='embedding_image') # 实例化模型
 ```
 
-`wf()`中只有一个参数可以设置：
+`wf()`中有三个参数可以设置：
 
 - `task`选择任务。任务名称为`embedding_image `。
+- `checkpoint`指定模型文件所在的路径，如`img_emb = wf(task='embedding_image',checkpoint='embedding_image.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`embedding_image.onnx`。否则将通过网络到浦源平台的专用地址下载。
+- `download_path`指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制`checkpoints`文件夹。如希望模型保存放在其他路径，则设置`download_path`参数，如`download_path='my_checkpoint'`。注意，`download_path`参数为文件夹名称。建议该参数留空，使用默认地址。
 
 
 #### 2. 模型推理
@@ -1336,7 +1335,8 @@ txt_emb = wf(task='embedding_text') # 实例化模型
 
 - `task`选择任务。任务名称为`embedding_text`。
 
-
+- `checkpoint`指定模型文件所在的路径，如`txt_emb = wf(task='embedding_text',checkpoint='embedding_text.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`embedding_text.onnx`。否则将通过网络到浦源平台的专用地址下载。
+- `download_path`指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制`checkpoints`文件夹。如希望模型保存放在其他路径，则设置`download_path`参数，如`download_path='my_checkpoint'`。注意，`download_path`参数为文件夹名称。建议该参数留空，使用默认地址。
 
 #### 2. 模型推理
 
@@ -1794,7 +1794,7 @@ XEduHub提供了大量优秀的任务模型，我们不仅可以通过`wf()`代�
 
 - 在本地同级目录中新建checkpoints文件夹，将模型存放在该文件夹中。
   
-- 使用参数`checkpoints`，指定模型路径，如`model=wf(task='det_body',checkpoints='my_path/body17.onnx')`
+- 使用参数`checkpoint，指定模型路径，如`model=wf(task='pose_body17',checkpoint='my_path/pose_body17.onnx')`
 
 最后提醒一下，自己到网络下载或自己训练的模型需要是ONNX格式。ONNX是由微软、亚马逊 、Facebook 和 IBM 等公司共同开发的开放神经网络交换格式，即`Open Neural Network Exchange`，兼容性比较好。
 
