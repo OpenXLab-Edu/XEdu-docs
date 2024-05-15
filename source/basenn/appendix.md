@@ -142,7 +142,9 @@ dog_embedding = model.inference(checkpoint='basenn.pth', data='CatsDogs/dog1.jpg
 print(dog_embedding)
 ```
 
-上述代码输出的应是形状为(1, 1280)的向量，这样利用已训练的MobileNet模型，可以实现将任意尺寸的图像转换为1280维的embedding向量（取决于`MobileNet Backbone`层后加的全连接层的输出维度）。这对于图像特征提取和进一步的分析或应用非常有用。
+上述代码输出的应是形状为(1, 1280)的向量，这样利用已训练的图像解码器，可以实现将任意尺寸的图像转换为1280维的embedding向量（取决于`MobileNet Backbone`层后加的全连接层的输出维度）。这对于图像特征提取和进一步的分析或应用非常有用。比如可以借助XEdu.utils中的get_similarity函数比较两个embedding序列的相似度。
+
+参考项目：[用BaseNN搭建MobileNet网络训练图像解码器](https://openinnolab.org.cn/pjlab/project?id=65fce27be4952d44adcad792&sc=635638d69ed68060c638f979#public)
 
 #### 搭建ResNet网络：
 
