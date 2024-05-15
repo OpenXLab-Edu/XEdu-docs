@@ -45,8 +45,8 @@ wf.coco_class()
 from XEdu.hub import Workflow as wf
 det_coco = wf(task='det_coco')
 result,img_with_box = det_coco.inference(data='data/det_coco.jpg',img_type='pil') # 进行模型推理
-format_result = det_coco.format_output(lang='zh')# 将推理结果进行格式化输出
-det_coco.show(img_with_box)# 展示推理图片
+format_result = det_coco.format_output(lang='zh') # 将推理结果进行格式化输出
+det_coco.show(img_with_box) # 展示推理图片
 det_coco.save(img_with_box,'img_with_box.jpg')# 保存推理图片
 ```
 
@@ -80,11 +80,11 @@ result,img_with_box = det_coco.inference(data='data/det_coco.jpg',img_type='pil'
 
 - `show`(flag): 可取值`[True,False]` ,如果取值为`True`，在推理完成后会直接输出目标检测完成后的图片，默认为`False`。
 
-- `img_type`(string): 关键点识别完成后会返回含有目标检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，即如果不传入值，则不会返回图。
+- `img_type`(string): 目标检测完成后会返回含有目标检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，即如果不传入值，则不会返回图。
 
 - `thr`(float): 设置检测框阈值，取值范围为`[0,1]`超过该阈值的检测框被视为有效检测框，进行显示。
 
-- `target_class`(string)：该参数在使用`cocodetect`的时候可以指定要检测的对象，如：`person`，`cake`等等。
+- `target_class`(string)：该参数在使用`det_coco`的时候可以指定要检测的对象，如：`person`，`cake`等等。
 
 模型推理返回结果：
 
@@ -98,7 +98,7 @@ result,img_with_box = det_coco.inference(data='data/det_coco.jpg',img_type='pil'
 #### 3. 结果输出
 
 ```python
-format_result = det_coco.format_output(lang='zh')# 将推理结果进行格式化输出
+format_result = det_coco.format_output(lang='zh') # 将推理结果进行格式化输出
 ```
 
 ![](../images/xeduhub/det_coco_format.png)
@@ -113,7 +113,7 @@ format_result = det_coco.format_output(lang='zh')# 将推理结果进行格式�
 `format_result`以字典形式存储了推理结果，共有三个键：`检测框`、`分数`和`类别`。检测框以二维数组形式保存了每个检测框的坐标信息[x1,y1,x2,y2]，而分数则是对应下标的检测框的置信度，以一维数组形式保存，类别则是检测框中对象所属的类别，以一维数组形式保存。
 
 ```python
-det_coco.show(img_with_box)# 展示推理图片
+det_coco.show(img_with_box) # 展示推理图片
 ```
 
 `show()`能够输出带有检测框以及对应类别的结果图像。
@@ -123,7 +123,7 @@ det_coco.show(img_with_box)# 展示推理图片
 #### 4. 结果保存
 
 ```python
-det_coco.save(img_with_box,'img_with_box.jpg')# 保存推理图片
+det_coco.save(img_with_box,'img_with_box.jpg') # 保存推理图片
 ```
 
 `save()`方法能够保存带有检测框以及对应类别的图像
@@ -144,9 +144,9 @@ XEduHub提供了进行人体目标检测的模型：`det_body`，`det_body_l`，
 from XEdu.hub import Workflow as wf
 det_body = wf(task='det_body')
 result,img_with_box = det_body.inference(data='data/det_body.jpg',img_type='pil') # 进行模型推理
-format_result = det_body.format_output(lang='zh')# 将推理结果进行格式化输出
+format_result = det_body.format_output(lang='zh') # 将推理结果进行格式化输出
 det_body.show(img_with_box)# 展示推理图片
-det_body.save(img_with_box,'img_with_box.jpg')# 保存推理图片
+det_body.save(img_with_box,'img_with_box.jpg') # 保存推理图片
 ```
 
 #### 代码解释
@@ -175,14 +175,9 @@ result,img_with_box = det_body.inference(data='data/det_body.jpg',img_type='pil'
 模型推理`inference()`可传入参数：
 
 - `data`(string|numpy.ndarray): 指定待目标检测的图片。
-
 - `show`(flag): 可取值`[True,False]` ,如果取值为`True`，在推理完成后会直接输出目标检测完成后的图片，默认为`False`。
-
-- `img_type`(string): 关键点识别完成后会返回含有目标检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，即如果不传入值，则不会返回图。
-
+- `img_type`(string): 目标检测完成后会返回含有目标检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，即如果不传入值，则不会返回图。
 - `thr`(float): 设置检测框阈值，取值范围为`[0,1]`超过该阈值的检测框被视为有效检测框，进行显示。
-
-- `bbox`(List|numpy.ndarray)：该参数指定了要识别某检测框中的目标，如输入bbox=[x0,y0,w0,h0]。
 
 模型推理返回结果：
 
@@ -227,7 +222,7 @@ det_body.save(img_with_box,'img_with_box.jpg')# 保存推理图片
 
 ### 脸部检测
 
-人脸检测指的是检测和定位一张图片中的人脸。XEduHub使用的是opencv的人脸检测模型，能够快速准确地检测出一张图片中所有的人脸。EduHub提供了进行人体目标检测的模型：`det_face`，能够快速准确地检测出图片中的所有人脸。
+人脸检测指的是检测和定位一张图片中的人脸。XEduHub使用的是opencv的人脸检测模型，能够快速准确地检测出一张图片中所有的人脸。XEduHub提供了进行人体目标检测的模型：`det_face`，能够快速准确地检测出图片中的所有人脸。
 
 #### 代码样例
 
@@ -235,9 +230,9 @@ det_body.save(img_with_box,'img_with_box.jpg')# 保存推理图片
 from XEdu.hub import Workflow as wf
 det_face = wf(task='det_face')
 result,img_with_box = det_face.inference(data='data/det_face.jpg',img_type='pil') # 进行模型推理
-format_result = det_face.format_output(lang='zh')# 将推理结果进行格式化输出
-det_face.show(img_with_box)# 展示推理图片
-det_face.save(img_with_box,'img_with_box.jpg')# 保存推理图片
+format_result = det_face.format_output(lang='zh') # 将推理结果进行格式化输出
+det_face.show(img_with_box) # 展示推理图片
+det_face.save(img_with_box,'img_with_box.jpg') # 保存推理图片
 ```
 
 #### 代码解释
@@ -265,21 +260,12 @@ result,img_with_box = det_face.inference(data='data/det_face.jpg',img_type='pil'
 模型推理`inference()`可传入参数：
 
 - `data`(string|numpy.ndarray): 指定待目标检测的图片。
-
 - `show`(flag): 可取值`[True,False]` ,如果取值为`True`，在推理完成后会直接输出目标检测完成后的图片，默认为`False`。
-
-- `img_type`(string): 关键点识别完成后会返回含有目标检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，即如果不传入值，则不会返回图。
-
+- `img_type`(string): 目标检测完成后会返回含有目标检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，即如果不传入值，则不会返回图。
 - `thr`(float): 设置检测框阈值，取值范围为`[0,1]`超过该阈值的检测框被视为有效检测框，进行显示。
-
-- `bbox`(List|numpy.ndarray)：该参数指定了要识别某检测框中的目标，如输入bbox=[x0,y0,w0,h0]。
-
 - `minSize`(tuple(int,int))：检测框的最小尺寸，小于该尺寸的目标会被过滤掉，默认为(50,50)。
-
 - `maxSize`(tuple(int,int))：检测框的最大尺寸,大于该尺寸的目标会被过滤掉，默认为输入图像的大小。
-
 - `scaleFactor`(float)：该参数用于缩放图像，以便在检测过程中使用不同大小的窗口来识别人脸。较小的值会导致检测速度加快，但可能会错过一些小的人脸；较大的值可以提高检测的准确性，但会减慢检测速度。通常，这个值会在1.1到1.5之间进行调整，默认为1.1。
-
 - `minNeighbors`(int)：该参数定义了构成检测目标的最小邻域矩形个数。如果这个值设置得太高，可能会导致检测器过于严格，错过一些实际的人脸；如果设置得太低，检测器可能会变得过于宽松，错误地检测到非人脸区域。通常，这个值会在2到10之间进行调整，默认为5。
 
 模型推理返回结果：
@@ -300,12 +286,12 @@ format_result = det_face.format_output(lang='zh')# 将推理结果进行格式�
 - `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
 - `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
 
-`format_result`以字典形式存储了推理结果，只有一个键：`检测框`、`分数`。检测框以二维数组形式保存了每个检测框的坐标信息[x1,y1,x2,y2]。需要注意的是由于使用的为opencv的人脸检测模型，因此在`format_output`时缺少了分数这一指标。
+`format_result`以字典形式存储了推理结果，只有一个键：`检测框`。检测框以二维数组形式保存了每个检测框的坐标信息[x1,y1,x2,y2]。需要注意的是由于使用的为opencv的人脸检测模型，因此在`format_output`时缺少了分数这一指标。
 
 ![](../images/xeduhub/det_face_format.png)
 
 ```python
-det_face.show(img_with_box)# 展示推理图片
+det_face.show(img_with_box) # 展示推理图片
 ```
 
 `show()`能够输出带有检测框的结果图像。
@@ -331,10 +317,10 @@ det_face.save(img_with_box,'img_with_box.jpg')# 保存推理图片
 ```python
 from XEdu.hub import Workflow as wf
 det_hand = wf(task='det_hand')
-result,img_with_box = det_body.inference(data='data/det_hand.jpg',img_type='pil',show=True) # 进行模型推理
-format_result = det_hand.format_output(lang='zh')# 将推理结果进行格式化输出
-det_hand.show(img_with_box)# 展示推理图片
-det_hand.save(img_with_box,'img_with_box.jpg')# 保存推理图片
+result,img_with_box = det_hand.inference(data='data/det_hand.jpg',img_type='pil',show=True) # 进行模型推理
+format_result = det_hand.format_output(lang='zh') # 将推理结果进行格式化输出
+det_hand.show(img_with_box) # 展示推理图片
+det_hand.save(img_with_box,'img_with_box.jpg') # 保存推理图片
 ```
 
 #### 代码解释
@@ -375,7 +361,7 @@ result,img_with_box = det_hand.inference(data='data/det_hand.jpg',img_type='pil'
 #### 3. 结果输出
 
 ```python
-format_result = det_hand.format_output(lang='zh')# 将推理结果进行格式化输出
+format_result = det_hand.format_output(lang='zh') # 将推理结果进行格式化输出
 ```
 
 ![](../images/xeduhub/det_hand_format.png)
@@ -390,7 +376,7 @@ format_result = det_hand.format_output(lang='zh')# 将推理结果进行格式�
 `format_result`以字典形式存储了推理结果，共有两个键：`检测框`、`分数`。检测框以二维数组形式保存了每个检测框的坐标信息[x1,y1,x2,y2]，而分数则是对应下标的检测框的置信度，以一维数组形式保存。
 
 ```python
-det_hand.show(img_with_box)# 展示推理图片
+det_hand.show(img_with_box) # 展示推理图片
 ```
 
 `show()`能够输出带有检测框的结果图像。
@@ -400,7 +386,7 @@ det_hand.show(img_with_box)# 展示推理图片
 #### 4. 结果保存
 
 ```python
-det_hand.save(img_with_box,'img_with_box.jpg')# 保存推理图片
+det_hand.save(img_with_box,'img_with_box.jpg') # 保存推理图片
 ```
 
 `save()`方法能够保存带有检测框的图像
@@ -439,9 +425,9 @@ XEduHub提供了三个识别人体关键点的优质模型:`pose_body17`,`pose_b
 from XEdu.hub import Workflow as wf
 body = wf(task='pose_body') # 数字可省略，当省略时，默认为pose_body17
 keypoints,img_with_keypoints = body.inference(data='data/body.jpg',img_type='pil') # 进行模型推理
-format_result = body.format_output(lang='zh')# 将推理结果进行格式化输出
-body.show(img_with_keypoints)# 展示推理图片
-body.save(img_with_keypoints,'img_with_keypoints.jpg')# 保存推理图片
+format_result = body.format_output(lang='zh') # 将推理结果进行格式化输出
+body.show(img_with_keypoints) # 展示推理图片
+body.save(img_with_keypoints,'img_with_keypoints.jpg')  保存推理图片
 ```
 
 #### 代码解释
@@ -486,7 +472,7 @@ keypoints,img_with_keypoints = body.inference(data='data/body.jpg',img_type='pil
 #### 3. 结果输出
 
 ```python
-format_result = body.format_output(lang='zh')# 参数lang设置了输出结果的语言，默认为中文
+format_result = body.format_output(lang='zh') # 参数lang设置了输出结果的语言，默认为中文
 ```
 
 `format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
@@ -536,9 +522,9 @@ XEduHub提供了识别人脸关键点的模型：`pose_face106`，这意味着�
 from XEdu.hub import Workflow as wf
 face = wf(task='pose_face') # 数字可省略，当省略时，默认为pose_face106
 keypoints,img_with_keypoints = face.inference(data='data/face.jpg',img_type='pil') # 进行模型推理
-format_result = face.format_output(lang='zh')# 将推理结果进行格式化输出
-face.show(img_with_keypoints)# 展示推理图片
-face.save(img_with_keypoints,'img_with_keypoints.jpg')# 保存推理图片
+format_result = face.format_output(lang='zh') # 将推理结果进行格式化输出
+face.show(img_with_keypoints) # 展示推理图片
+face.save(img_with_keypoints,'img_with_keypoints.jpg') # 保存推理图片
 ```
 
 #### 代码解释
@@ -582,7 +568,7 @@ keypoints,img_with_keypoints = face.inference(data='data/face.jpg',img_type='pil
 #### 3. 结果输出
 
 ```python
-format_result = face.format_output(lang='zh')# 将推理结果进行格式化输出
+format_result = face.format_output(lang='zh') # 将推理结果进行格式化输出
 ```
 
 `format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
@@ -597,7 +583,7 @@ format_result = face.format_output(lang='zh')# 将推理结果进行格式化输
 结果可视化
 
 ```python
-face.show(img_with_keypoints)# 展示推理图片
+face.show(img_with_keypoints) # 展示推理图片
 ```
 
 `show()`能够输出带有关键点的结果图像。
@@ -609,7 +595,7 @@ face.show(img_with_keypoints)# 展示推理图片
 #### 4. 结果保存
 
 ```python
-face.save(img_with_keypoints,'img_with_keypoints.jpg')# 保存推理图片
+face.save(img_with_keypoints,'img_with_keypoints.jpg') # 保存推理图片
 ```
 
 `save()`方法能够保存带有关键点的图像
@@ -630,9 +616,9 @@ XEduHub提供了能够快速识别人手关键点的模型：`pose_hand21`，该
 from XEdu.hub import Workflow as wf
 hand = wf(task='pose_hand') # 数字可省略，当省略时，默认为pose_hand21
 keypoints,img_with_keypoints = hand.inference(data='data/hand.jpg',img_type='pil') # 进行模型推理
-format_result = hand.format_output(lang='zh')# 将推理结果进行格式化输出
-hand.show(img_with_keypoints)# 展示推理图片
-hand.save(img_with_keypoints,'img_with_keypoints.jpg')# 保存推理图片
+format_result = hand.format_output(lang='zh') # 将推理结果进行格式化输出
+hand.show(img_with_keypoints) # 展示推理图片
+hand.save(img_with_keypoints,'img_with_keypoints.jpg') # 保存推理图片
 ```
 
 #### 代码解释
@@ -688,7 +674,7 @@ format_result = hand.format_output(lang='zh')# 将推理结果进行格式化输
 `format_result`以字典形式存储了推理结果，共有两个键：`关键点坐标`和`分数`。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标，而分数则是对应下标的关键点的分数，以一维数组形式保存。
 
 ```python
-hand.show(img_with_keypoints)# 展示推理图片
+hand.show(img_with_keypoints) # 展示推理图片
 ```
 
 `show()`能够输出带有关键点的结果图像。
@@ -700,7 +686,7 @@ hand.show(img_with_keypoints)# 展示推理图片
 #### 4. 结果保存
 
 ```python
-hand.save(img_with_keypoints,'img_with_keypoints.jpg')# 保存推理图片
+hand.save(img_with_keypoints,'img_with_keypoints.jpg') # 保存推理图片
 ```
 
 `save()`方法能够保存带有关键点的图像
@@ -719,9 +705,9 @@ XEduHub提供了识别人体所有关键点，包括人手、人脸和人体躯�
 from XEdu.hub import Workflow as wf
 wholebody = wf(task='pose_wholebody') # 数字可省略，当省略时，默认为pose_wholebody133
 keypoints,img_with_keypoints = wholebody.inference(data='data/wholebody.jpg',img_type='pil') # 进行模型推理
-format_result = wholebody.format_output(lang='zh')# 将推理结果进行格式化输出
-wholebody.show(img_with_keypoints)# 展示推理图片
-wholebody.save(img_with_keypoints,'img_with_keypoints.jpg')# 保存推理图片
+format_result = wholebody.format_output(lang='zh') # 将推理结果进行格式化输出
+wholebody.show(img_with_keypoints) # 展示推理图片
+wholebody.save(img_with_keypoints,'img_with_keypoints.jpg') # 保存推理图片
 ```
 
 #### 代码解释
@@ -765,7 +751,7 @@ keypoints,img_with_keypoints = wholebody.inference(data='data/wholebody.jpg',img
 #### 3. 结果输出
 
 ```python
-format_result = wholebody.format_output(lang='zh')# 将推理结果进行格式化输出
+format_result = wholebody.format_output(lang='zh') # 将推理结果进行格式化输出
 ```
 
 `format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
@@ -778,7 +764,7 @@ format_result = wholebody.format_output(lang='zh')# 将推理结果进行格式�
 `format_result`以字典形式存储了推理结果，共有两个键：`关键点坐标`和`分数`。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标，而分数则是对应下标的关键点的分数，以一维数组形式保存。
 
 ```python
-wholebody.show(img_with_keypoints)# 展示推理图片
+wholebody.show(img_with_keypoints) # 展示推理图片
 ```
 
 `show()`能够输出带有关键点的结果图像。
@@ -790,7 +776,7 @@ wholebody.show(img_with_keypoints)# 展示推理图片
 #### 4. 结果保存
 
 ```python
-wholebody.save(img_with_keypoints,'img_with_keypoints.jpg')# 保存推理图片
+wholebody.save(img_with_keypoints,'img_with_keypoints.jpg') # 保存推理图片
 ```
 
 `save()`方法能够保存带有关键点的图像
@@ -809,11 +795,11 @@ XEduHub使用的OCR模型是来自百度的开源免费的OCR模型：rapidocr�
 
 ```python
 from XEdu.hub import Workflow as wf
-ocr = wf(task="ocr")
+ocr = wf(task='ocr')
 result,ocr_img = ocr.inference(data='data/ocr_img.png',img_type='cv2') # 进行模型推理
-ocr_format_result = ocr.format_output(lang="zh")# 推理结果格式化输出
-ocr.show(ocr_img)# 展示推理结果图片
-ocr.save(ocr_img,'ocr_result.jpg')# 保存推理结果图片
+ocr_format_result = ocr.format_output(lang="zh") # 推理结果格式化输出
+ocr.show(ocr_img) # 展示推理结果图片
+ocr.save(ocr_img,'ocr_result.jpg') # 保存推理结果图片
 ```
 
 ### 代码解释
@@ -822,7 +808,7 @@ ocr.save(ocr_img,'ocr_result.jpg')# 保存推理结果图片
 
 ```python
 from XEdu.hub import Workflow as wf
-ocr = wf(task="ocr")
+ocr = wf(task='ocr')
 ```
 
 `wf()`中只有一个参数可以设置：
@@ -839,9 +825,9 @@ result,ocr_img = ocr.inference(data='data/ocr_img.png',img_type='cv2') # 进行�
 
 模型推理`inference()`可传入参数：
 
-- `data`: 指定待进行ocr的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
-- `show`: 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出OCR完成后的图片。
-- `img_type`：目标检测完成后会返回含有检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`
+- `data`: 指定待进行OCR识别的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
+- `show`: 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出OCR识别完成后的图片。
+- `img_type`：OCR识别完成后会返回含有识别结果的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`。
 
 `result`以一维数组的形式保存了识别出的文本及其检测框的四个顶点(x,y)坐标.
 
@@ -869,7 +855,7 @@ ocr_format_result = ocr.format_output(lang="zh")
 `format_output`的结果以字典形式存储了推理结果，共有三个键：`检测框`、`分数`和`文本`。检测框以三维数组形式保存了每个检测框的四个顶点的[x,y]坐标，而分数则是对应下标的检测框分数，以一维数组形式保存。文本则是每个检测框中识别出的文本，以一维数组形式保存。
 
 ```python
-ocr.show(ocr_img)# 展示推理结果图片
+ocr.show(ocr_img) # 展示推理结果图片
 ```
 
 显示结果图片：由两部分组成，左侧为原图片，右侧为经过ocr识别出的文本，并且该文本的位置与原图片中文本的位置保持对应。
@@ -879,7 +865,7 @@ ocr.show(ocr_img)# 展示推理结果图片
 #### 4. 结果保存
 
 ```python
-ocr.save(ocr_img,'ocr_result.jpg')# 保存推理结果图片
+ocr.save(ocr_img,'ocr_result.jpg') # 保存推理结果图片
 ```
 
 `save()`方法能够保存ocr识别后的结果图像
@@ -895,8 +881,11 @@ ocr.save(ocr_img,'ocr_result.jpg')# 保存推理结果图片
 ```python
 from XEdu.hub import Workflow as wf
 cls = wf(task='cls_imagenet') # 模型声明
-result = cls.inference(data='data/cat101.jpg')# 进行模型推理
-format_result = cls.format_output(lang='zh')#推理结果格式化输出
+img_path = 'demo/cat.png' # 指定进行推理的图片路径
+result,cls_img = cls.inference(data=img_path,img_type='cv2') # 进行推理
+cls_format_result = cls.format_output(lang='zh')  # 结果格式化输出
+cls.show(cls_img)# 展示推理结果图片
+cls.save(cls_img,'cls_result.jpg')# 保存推理结果图片
 ```
 
 ### 代码解释
@@ -907,7 +896,6 @@ format_result = cls.format_output(lang='zh')#推理结果格式化输出
 from XEdu.hub import Workflow as wf
 cls = wf(task="cls_imagenet") # 模型声明
 ```
-
 
 `wf()`中共有三个参数可以设置：
 
@@ -920,21 +908,25 @@ cls = wf(task="cls_imagenet") # 模型声明
 #### 2. 模型推理
 
 ```python
-result = cls.inference(data='data/cat101.jpg')# 进行模型推理
+result,cls_img = cls.inference(data='data/cat101.jpg') # 进行模型推理
 ```
 
 模型推理`inference()`可传入参数：
 
 - `data`: 指定待分类的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
+- `show`: 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出图片。
+- `img_type`：返回原图，该参数指定了返回图片的格式，可选有:`['cv2','pil']`。
 
 推理结果`result`是一个二维数组，表示这个图片在ImageNet的一千个分类中，属于每个分类的概率。
 
 ![](../images/xeduhub/cls_result.png)
 
+`cls_img`的格式为cv2，呈现的就是一张原图。
+
 #### 3. 结果输出
 
 ```python
-format_result = cls.format_output(lang='zh')#推理结果格式化输出
+format_result = cls.format_output(lang='zh') #推理结果格式化输出
 ```
 
 `format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
@@ -972,9 +964,9 @@ XEduHub中的风格迁移使用有两类：
 ```python
 from XEdu.hub import Workflow as wf
 style = wf(task='gen_style',style='mosaic')
-result, img = style.inference(data='data/cat101.jpg',img_type='cv2')# 进行模型推理
-style.show(img)# 展示推理图片
-style.save(img,"style_cat.jpg")# 保存推理图片
+result, img = style.inference(data='data/cat101.jpg',img_type='cv2') # 进行模型推理
+style.show(img) # 展示推理图片
+style.save(img,'style_cat.jpg') # 保存推理图片
 ```
 
 ### 代码解释
@@ -1046,7 +1038,7 @@ style = wf(task='gen_style',style='mosaic')
 #### 2. 模型推理
 
 ```python
-result, img = style.inference(data='data/cat101.jpg',img_type='cv2')# 进行模型推理
+result, img = style.inference(data='data/cat101.jpg',img_type='cv2') # 进行模型推理
 ```
 
 模型推理`inference()`可传入参数：
@@ -1062,7 +1054,7 @@ result, img = style.inference(data='data/cat101.jpg',img_type='cv2')# 进行模�
 #### 3. 结果输出
 
 ```python
-style.show(img)# 展示推理后的图片
+style.show(img) # 展示推理后的图片
 ```
 
 `show()`能够输出风格迁移后的结果图像。
@@ -1072,7 +1064,7 @@ style.show(img)# 展示推理后的图片
 #### 4. 结果保存
 
 ```python
-style.save(img,"style_cat.jpg")# 保存推理图片
+style.save(img,'style_cat.jpg') # 保存推理图片
 ```
 
 `save()`方法能够保存风格迁移后的图像
@@ -1093,9 +1085,9 @@ style.save(img,"style_cat.jpg")# 保存推理图片
 from XEdu.hub import Workflow as wf # 导入库
 style = wf(task='gen_style',style='demo/my_style.jpg') # 实例化模型
 img_path = 'demo/ShangHai.jpg'  # 指定进行推理的图片路径
-result, new_img = style.inference(data=img_path,img_type='cv2')# 进行模型推理
+result, new_img = style.inference(data=img_path,img_type='cv2') # 进行模型推理
 style.show(new_img) # 可视化结果
-style.save(new_img, "demo/style_my_style_ShangHai.jpg") # 保存可视化结果
+style.save(new_img, 'demo/style_my_style_ShangHai.jpg') # 保存可视化结果
 ```
 
 ### 2. 图像着色模型的使用
@@ -1109,7 +1101,7 @@ style.save(new_img, "demo/style_my_style_ShangHai.jpg") # 保存可视化结果
 ```python
 from XEdu.hub import Workflow as wf # 导入库
 color = wf(task='gen_color') # 实例化模型
-result, img = color.inference(data='demo/gray_img1.jpg',img_type='cv2')# 进行模型推
+result, img = color.inference(data='demo/gray_img1.jpg',img_type='cv2') # 进行模型推
 color.show(img) # 可视化结果
 color.save(img,'demo/color_img.jpg') # 保存可视化结果
 ```
@@ -1135,7 +1127,7 @@ color = wf(task='gen_color') # 实例化模型
 #### 2. 模型推理
 
 ```python
-result, img = color.inference(data='demo/gray_img1.jpg',img_type='cv2')# 进行模型推理
+result, img = color.inference(data='demo/gray_img1.jpg',img_type='cv2') # 进行模型推理
 ```
 
 模型推理`inference()`可传入参数：
@@ -1151,7 +1143,7 @@ result, img = color.inference(data='demo/gray_img1.jpg',img_type='cv2')# 进行�
 #### 3. 结果输出
 
 ```python
-color.show(img)# 展示推理后的图片
+color.show(img) # 展示推理后的图片
 ```
 
 `show()`能够输出着色后的结果图像。
@@ -1161,7 +1153,7 @@ color.show(img)# 展示推理后的图片
 #### 4. 结果保存
 
 ```python
-color.save(img,"color_img.jpg")# 保存推理图片
+color.save(img,'color_img.jpg') # 保存推理图片
 ```
 
 `save()`方法能够保存着色后的图像
@@ -1177,10 +1169,10 @@ color.save(img,"color_img.jpg")# 保存推理图片
 ```python
 from XEdu.hub import Workflow as wf
 drive = wf(task='drive_perception') # 实例化模型
-result,img = drive.inference(data="demo/drive.png",img_type='cv2') # 模型推理
+result,img = drive.inference(data='demo/drive.png',img_type='cv2') # 模型推理
 drive.format_output(lang='zh') # 将推理结果进行格式化输出
 drive.show(img) # 展示推理图片
-drive.save(img,"img_perception.jpg") # 保存推理图片
+drive.save(img,'img_perception.jpg') # 保存推理图片
 ```
 
 ### 代码解释
@@ -1228,7 +1220,7 @@ result,img = drive.inference(data='demo/drive.png',img_type='cv2') # 模型推�
 #### 3. 结果输出
 
 ```python
-format_result = drive.format_output(lang='zh')# 将推理结果进行格式化输出
+format_result = drive.format_output(lang='zh') # 将推理结果进行格式化输出
 ```
 
 `format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
@@ -1243,7 +1235,7 @@ format_result = drive.format_output(lang='zh')# 将推理结果进行格式化�
 ![](../images/xeduhub/drive_format.png)
 
 ```python
-drive.show(img)# 展示推理图片
+drive.show(img) # 展示推理图片
 ```
 
 `show()`能够输出带有检测框与分割目标的图片。
@@ -1253,7 +1245,7 @@ drive.show(img)# 展示推理图片
 #### 4. 结果保存
 
 ```python
-drive.save(img,"img_perception.jpg") # 保存推理图片
+drive.save(img,'img_perception.jpg') # 保存推理图片
 ```
 
 `save()`方法能够保存带有检测框与分割目标的图片。
@@ -1369,7 +1361,7 @@ txt_embeddings = txt_emb.inference(data=['a black cat','a yellow cat']) # 模型
 
 为了方便大家计算向量之间的相似度，我们也提供了一系列数据处理函数，函数具体内容请见<a href="https://xedu.readthedocs.io/zh/master/about/functions.html#">XEdu的常见函数</a>。
 
-下面就示范使用<a href="https://xedu.readthedocs.io/zh/master/about/functions.html#cosine-similarity">cosine_similarity</a>比较两个embedding序列的相似度。
+下面就示范使用<a href="https://xedu.readthedocs.io/zh/master/about/functions.html#cosine-similarity">cosine_similarity</a>比较两个embedding序列的相似度。可以直接使用[get_similarity](https://xedu.readthedocs.io/zh/master/about/functions.html#get-similarity)函数，选择method='cosine'来实现。
 
 ```python
 from XEdu.utils import get_similarity # 导入库
@@ -1397,8 +1389,8 @@ XEduHub现在可以支持使用MMEdu导出的onnx模型进行推理啦！如果�
 from XEdu.hub import Workflow as wf
 mmcls = wf(task='mmedu',checkpoint='cats_dogs.onnx')# 指定使用的onnx模型
 result, result_img =  mmcls.inference(data='data/cat101.jpg',img_type='pil')# 进行模型推理
-format_result = mmcls.format_output(lang="zh")# 推理结果格式化输出
-mmcls.show(result_img)# 展示推理结果图片
+format_result = mmcls.format_output(lang='zh') # 推理结果格式化输出
+mmcls.show(result_img) # 展示推理结果图片
 mmcls.save(result_img,'new_cat.jpg')# 保存推理结果图片
 ```
 
@@ -1408,7 +1400,7 @@ mmcls.save(result_img,'new_cat.jpg')# 保存推理结果图片
 
 ```python
 from XEdu.hub import Workflow as wf
-mmcls = wf(task='mmedu',checkpoint='cats_dogs.onnx')# 指定使用的onnx模型
+mmcls = wf(task='mmedu',checkpoint='cats_dogs.onnx') # 指定使用的onnx模型
 ```
 
 `wf()`中共有两个参数可以设置：
@@ -1421,7 +1413,7 @@ mmcls = wf(task='mmedu',checkpoint='cats_dogs.onnx')# 指定使用的onnx模型
 ##### 2. 模型推理
 
 ```python
-result, result_img =  mmcls.inference(data='data/cat101.jpg',img_type='pil',show=True)# 进行模型推理
+result, result_img =  mmcls.inference(data='data/cat101.jpg',img_type='pil',show=True) # 进行模型推理
 ```
 
 ![](../images/xeduhub/mmcls_result.png)
@@ -1431,6 +1423,7 @@ result, result_img =  mmcls.inference(data='data/cat101.jpg',img_type='pil',show
 - `data`：指定待检测的图片。
 - `show`: 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出目标检测完成后的图片。
 - `img_type`：分类完成后会返回含有分类标签的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
+- `thr`(float): 设置推理阈值，取值范围为`[0,1]`，预测结果的置信度高于这个阈值时，这些结果才会被认为是有效的。
 
 `result`是一个字典，包含三个键：`标签`、`置信度`和`预测结果`。显然，这张图片为猫的置信度接近100%，自然这张图片被分类为猫。
 
@@ -1441,7 +1434,7 @@ result, result_img =  mmcls.inference(data='data/cat101.jpg',img_type='pil',show
 ##### 3. 结果输出
 
 ```python
-format_result = mmcls.format_output(lang="zh")# 推理结果格式化输出
+format_result = mmcls.format_output(lang='zh') # 推理结果格式化输出
 ```
 
 ![](../images/xeduhub/mmcls_format.png)
@@ -1456,7 +1449,7 @@ format_result = mmcls.format_output(lang="zh")# 推理结果格式化输出
 `format_result`以字典形式保存了模型的推理结果，包括所属`标签`、`置信度`、以及`预测结果`。
 
 ```python
-mmcls.show(result_img)# 展示推理结果图片
+mmcls.show(result_img) # 展示推理结果图片
 ```
 
 `show()`能够推理后的结果图像。与原图相比，结果图片在左上角多了`pred_label`, `pred_socre`和`pred_class`三个数据，对应着标签、置信度和预测结果。
@@ -1466,7 +1459,7 @@ mmcls.show(result_img)# 展示推理结果图片
 ##### 4. 结果保存
 
 ```python
-mmcls.save(img,'new_cat.jpg')# 保存推理结果图片
+mmcls.save(img,'new_cat.jpg') # 保存推理结果图片
 ```
 
 `save()`方法能够保存推理后的结果图像
@@ -1479,11 +1472,11 @@ mmcls.save(img,'new_cat.jpg')# 保存推理结果图片
 
 ```python
 from XEdu.hub import Workflow as wf
-mmdet = wf(task='mmedu',checkpoint='plate.onnx')# 指定使用的onnx模型
-result, result_img =  mmdet.inference(data='data/plate0.png',img_type='pil')# 进行模型推理
-format_result = mmdet.format_output(lang="zh")# 推理结果格式化输出
-mmdet.show(result_img)# 展示推理结果图片
-mmdet.save(result_img,'new_plate.jpg')# 保存推理结果图片
+mmdet = wf(task='mmedu',checkpoint='plate.onnx') # 指定使用的onnx模型
+result, result_img =  mmdet.inference(data='data/plate0.png',img_type='pil') # 进行模型推理
+format_result = mmdet.format_output(lang='zh') # 推理结果格式化输出
+mmdet.show(result_img) # 展示推理结果图片
+mmdet.save(result_img,'new_plate.jpg') # 保存推理结果图片
 ```
 
 #### 代码解释
@@ -1492,7 +1485,7 @@ mmdet.save(result_img,'new_plate.jpg')# 保存推理结果图片
 
 ```python
 from XEdu.hub import Workflow as wf
-mmdet = wf(task='mmedu',checkpoint='plate.onnx')# 指定使用的onnx模型
+mmdet = wf(task='mmedu',checkpoint='plate.onnx') # 指定使用的onnx模型
 ```
 
 `wf()`中共有两个参数可以设置：
@@ -1505,7 +1498,7 @@ mmdet = wf(task='mmedu',checkpoint='plate.onnx')# 指定使用的onnx模型
 ##### 2. 模型推理
 
 ```python
-result, result_img =  mmdet.inference(data='data/plate0.png',img_type='pil',show=True)# 进行模型推理
+result, result_img =  mmdet.inference(data='data/plate0.png',img_type='pil',show=True) # 进行模型推理
 ```
 
 ![](../images/xeduhub/mmdet_result.png)
@@ -1515,6 +1508,7 @@ result, result_img =  mmdet.inference(data='data/plate0.png',img_type='pil',show
 - `data`：指定待检测的图片。
 - `show`: 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出目标检测完成后的图片。
 - `img_type`：目标检测完成后会返回含有检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
+- `thr`(float): 设置检测框阈值，取值范围为`[0,1]`，预测结果的置信度高于这个阈值时，这些结果才会被认为是有效的。
 
 `result`的结果是一个数组，里面保存了结果字典。该字典有四个键：`标签`、`置信度`、`坐标`以及`预测结果`。其中坐标表示了检测框的两个顶点：左上(x1,y1)和右下(x2,y2)。
 
@@ -1525,7 +1519,7 @@ result, result_img =  mmdet.inference(data='data/plate0.png',img_type='pil',show
 ##### 3. 结果输出
 
 ```python
-format_result = mmdet.format_output(lang="zh")# 推理结果格式化输出
+format_result = mmdet.format_output(lang='zh') # 推理结果格式化输出
 ```
 
 ![](../images/xeduhub/mmdet_format.png)
@@ -1540,7 +1534,7 @@ format_result = mmdet.format_output(lang="zh")# 推理结果格式化输出
 `format_output`的结果是一个数组，里面保存了结果字典。该字典有四个键：`标签`、`置信度`、`坐标`以及`预测结果`。其中坐标表示了检测框的两个顶点：左上(x1,y1)和右下(x2,y2)。
 
 ```python
-mmdet.show(result_img)# 展示推理结果图片
+mmdet.show(result_img) # 展示推理结果图片
 ```
 
 `show()`能够推理后的结果图像。与原图相比，结果图片还包含车牌周围的检测框以及结果信息。
@@ -1550,7 +1544,7 @@ mmdet.show(result_img)# 展示推理结果图片
 ##### 4. 结果保存
 
 ```python
-mmdet.save(img,'new_plate.jpg')# 保存推理结果图片
+mmdet.save(img,'new_plate.jpg') # 保存推理结果图片
 ```
 
 `save()`方法能够保存推理后的结果图像
@@ -1566,8 +1560,8 @@ XEduHub现在可以支持使用BaseNN导出的onnx模型进行推理啦！如果
 ```python
 # 使用BaseNN训练的手写数字识别模型进行推理
 from XEdu.hub import Workflow as wf
-basenn = wf(task="basenn",checkpoint="basenn.onnx")# 指定使用的onnx模型
-result = base.inference(data='data/6.jpg')# 进行模型推理
+basenn = wf(task='basenn',checkpoint='basenn.onnx') # 指定使用的onnx模型
+result = base.inference(data='data/6.jpg') # 进行模型推理
 format_result = basenn.format_output()
 ```
 
@@ -1577,7 +1571,7 @@ format_result = basenn.format_output()
 
 ```python
 from XEdu.hub import Workflow as wf
-basenn = wf(task="basenn",checkpoint="basenn.onnx")# 指定使用的onnx模型
+basenn = wf(task='basenn',checkpoint='basenn.onnx') # 指定使用的onnx模型
 ```
 
 `wf()`中共有两个参数可以设置：
@@ -1588,7 +1582,7 @@ basenn = wf(task="basenn",checkpoint="basenn.onnx")# 指定使用的onnx模型
 ##### 2. 模型推理
 
 ```python
-result = base.inference(data='data/6.jpg')# 进行模型推理
+result = base.inference(data='data/6.jpg') # 进行模型推理
 ```
 
 模型推理`inference()`可传入参数：
@@ -1625,10 +1619,10 @@ XEduHub现在可以支持使用BaseML导出的pkl模型文件进行推理啦！�
 ```python
 # 使用BaseML训练的鸢尾花聚类模型推理
 from XEdu.hub import Workflow as wf
-baseml = wf(task='baseml',checkpoint='baseml.pkl')# 指定使用的pkl模型
+baseml = wf(task='baseml',checkpoint='baseml.pkl') # 指定使用的pkl模型
 data = [[5.1,1.5],[7,4.7]] # 该项目中训练数据只有两维，因此推理时给出两维数据
-result= baseml.inference(data=data)# 进行模型推理
-format_output = baseml.format_output(lang='zh')# 推理结果格式化输出
+result= baseml.inference(data=data) # 进行模型推理
+format_output = baseml.format_output(lang='zh') # 推理结果格式化输出
 ```
 
 #### 代码解释
@@ -1637,7 +1631,7 @@ format_output = baseml.format_output(lang='zh')# 推理结果格式化输出
 
 ```python
 from XEdu.hub import Workflow as wf
-baseml = wf(task='baseml',checkpoint='baseml.pkl')# 指定使用的pkl模型
+baseml = wf(task='baseml',checkpoint='baseml.pkl') # 指定使用的pkl模型
 ```
 
 `wf()`中共有两个参数可以设置：
@@ -1649,7 +1643,7 @@ baseml = wf(task='baseml',checkpoint='baseml.pkl')# 指定使用的pkl模型
 
 ```python
 data = [[5.1,1.5],[7,4.7]] # 该项目中训练数据只有两维，因此推理时给出两维数据
-result= baseml.inference(data=data)# 进行模型推理
+result= baseml.inference(data=data) # 进行模型推理
 ```
 
 `mmdet.inference`可传入参数：
