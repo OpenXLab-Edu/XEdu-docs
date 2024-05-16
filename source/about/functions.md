@@ -266,7 +266,35 @@ get_similarity 函数实际上是对 cosine_similarity 函数的扩展和泛化�
 ### visualize_similarity
 1. 函数说明
 
+为了能够更加直观地展示相似度计算之后的结果，这里还提供了可视化相似度的方法，调用这个函数，可以将数值映射为不同颜色深度的图像，方便对比。
 2. 使用示例
+```python
+# 文本-文本比较相似度
+from XEdu.hub import Workflow as wf
+from XEdu.utils import * 
+txt_emb = wf(task='embedding_text')# 实例化模型
+txts1 = ['cat','dog','room','elephant'] # 指定文本
+txts2 = ['a cat','a dog','a room','an elephant'] # 指定文本
+txt_embeddings1 = txt_emb.inference(data=txts1) # 模型推理
+txt_embeddings2 = txt_emb.inference(data=txts2) # 模型推理
+
+logits = get_similarity(txt_embeddings1, txt_embeddings2,method='cosine') # 计算余弦相似度
+print(logits)
+visualize_similarity(logits,txts1,txts2) # 可视化相似度矩阵
+```
+![](../../images/about/imbedding2.png)
+从图中可以看出，对不同词向量之间进行的对比，对角线上的几个词的相似度是最高的。
 
 3. 参数说明
 
+输入参数：
+
+`similarity`: 前面通过cosine_similarity或get_similarity计算得到的相似度矩阵；
+
+`x`: List[str]，原始图片或文本的列表；
+
+`y`: List[str]，原始图片或文本的列表。
+
+输出参数：
+
+一个matplotlib格式的图片。
