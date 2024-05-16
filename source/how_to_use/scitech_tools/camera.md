@@ -60,7 +60,7 @@ c.打开工具-开发板管理器，然后搜索esp32
 
 ![](../../images/scitech_tools/cam5.png)
 
-工具-端口选择COM5
+工具-端口选择COM5，如果无法识别，可能需要安装对应的COM驱动，如[CH341SER.EXE](https://aicarrier.feishu.cn/file/TyjOboEQSoQlXXx5fA7cNobknte)。
 
 ![](../../images/scitech_tools/cam6.png)
 
@@ -197,7 +197,53 @@ b.导入库
 
 可以发现在串行监视器的IP地址下，会看到三种不同的图像分辨率 lo、hi 和 mid，根据需求使用一个。
 
-例如我们可以使用http://192.168.31.75/cam-hi.jpg，使用浏览器打开即可看到摄像头拍摄的照片，手动刷新可以看到拍摄到的一张张照片。
+例如我们可以使用http://192.168.31.75/240x240.jpg，使用浏览器打开即可看到摄像头拍摄的照片，手动刷新可以看到拍摄到的一张张照片。
+
+也可以用下面的python代码来查看串口输出的IP信息。
+```python
+'''
+这段代码不需要理解
+仅用作读取摄像头配置信息
+
+1.连接摄像头数据线到电脑上（驱动）
+2.点击代码运行按钮
+3.点击摄像头上的“EN/RST”
+
+详解见：https://xedu.readthedocs.io/zh/master/how_to_use/scitech_tools/camera.html
+'''
+import serial
+import serial.tools.list_ports
+import time
+
+def find_serial_ports():
+    return serial.tools.list_ports.comports()
+
+def read_from_port(ser):
+    while True:
+        if ser.in_waiting > 0:
+            # 读取一行，直到遇到换行符
+            line = ser.readline().decode('utf-8').rstrip()
+            print(f'Received: {line}')
+# 检测所有可用的串口
+ports = find_serial_ports()
+for port_info in ports:
+    port = port_info.device
+    print(f'Found port: {port}')
+    try:
+        # 尝试打开串口，设置波特率
+        with serial.Serial(port, 115200, timeout=1) as ser:
+            print(f'Opened {port}. Starting to read data...')
+            # 给设备一点时间来初始化
+            time.sleep(2)
+            # 开始读取数据
+            read_from_port(ser)
+    except serial.SerialException:
+        print(f'Cannot open {port}. It might be in use or not available.')
+# 如果没有找到串口，则打印消息
+if not ports:
+    print('No available serial ports found')
+
+```
 
 注：同一个WIFI下IP地址不会发生变化。
 
@@ -205,12 +251,12 @@ b.导入库
 
 由前文可知通过ESP32-CAM获取的是一张照片，如果编写代码一直读就是视频流了。下面这段代码是连接esp32cam摄像头，获取视频流并将图片展示在窗口（需要将代码中的ip改为上述串口监视器中输出的ip）的参考代码。
 
-```
+```python
 import cv2
 import urllib.request
 import numpy as np
 
-url = 'http://192.168.31.75/cam-hi.jpg' # 填写串口监视器中输出的ip地址
+url = 'http://192.168.31.75/240x240.jpg' # 填写串口监视器中输出的ip地址
 cv2.namedWindow("live Cam Testing", cv2.WINDOW_AUTOSIZE)
 
 # 创建VideoCapture对象
@@ -244,7 +290,7 @@ cv2.destroyAllWindows() # 关闭所有OpenCV创建的窗口
 
 借助ESP32-CAM还能连接[SIOT](https://xedu.readthedocs.io/zh/master/scitech_tools/siot.html)做各种智联网应用，下面这段代码的主要功能是读取摄像头图片，借助XEduHub完成手部检测，再向MQTT服务器发送消息，在此代码基础上，相信可以做出更多创意应用。
 
-```
+```python
 import cv2
 from XEdu.hub import Workflow as wf 
 import siot
@@ -264,7 +310,7 @@ siot.loop()
 siot.publish_save(IOT_pubTopic, 'stop')
 
 #print("Before URL")rtsp://[username]:[password]@192.168.1.64/1'
-url = 'http://192.168.31.94/cam-hi.jpg' 
+url = 'http://192.168.31.94/240x240.jpg' 
 cap = cv2.VideoCapture(url)
 
 # Check if the IP camera stream is opened successfully
