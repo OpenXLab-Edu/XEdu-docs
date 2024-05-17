@@ -49,6 +49,15 @@
 </tbody>
 <tbody>
   <tr>
+    <td>多项式回归算法（Polynomial）</td>
+    <td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PolynomialFeatures.html">回归</a></td>
+    <td>适用于预测房价、预测销售额、贷款额度等。</td>
+    <td class="wrapword">就像是在一条直线上增加更多的弯曲，使得这条线可以更好地贴合数据点。就像用橡皮筋在散点图上拉出一个曲面，这个曲面就能更好地帮助我们预测未来的值。</td>
+    <td class="wrapword">degree=2, interaction_only=False, include_bias=True, order='C'</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
     <td>最近邻分类（KNN, K-Nearest Neighbors）</td>
     <td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn-neighbors-kneighborsclassifier">分类</a></td>
     <td class="wrapword">识别数字、判断邮件是否为垃圾邮件、图像识别等。</td>
@@ -111,6 +120,7 @@
   </tr>
 </tbody>
 </table>
+
 
 
 
@@ -414,3 +424,6 @@ model = clt('Agglomerative clustering')
 ```
 
 参数`n_clusters`表示聚类的数量，默认值为5。
+
+#### Polynomial
+
