@@ -8,7 +8,7 @@
    mmedu/installation.md
    mmedu/introduction.md
    mmedu/mmeducls.md
-   mmedu/mmmedudet.md
+   mmedu/mmedudet.md
    mmedu/mmediting.md
    mmedu/mmedumodel_convert.md
    mmedu/openmmlab.md
