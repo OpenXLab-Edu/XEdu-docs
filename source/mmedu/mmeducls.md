@@ -1,26 +1,31 @@
-# 解锁图像分类模块：MMClassification
+# 解锁图像分类模块：MMEduCls
 
-### 初识MMClassification
+### 初识MMEduCls
 
-MMClassifiation（简称cls）的主要功能是对图像进行分类。其支持的SOTA模型有LeNet、MobileNet、ResNet18、ResNet50等，具体介绍详见<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#sota">后文</a>。如需查看所有支持的SOTA模型，可导入模块后使用`cls.sota()`代码进行查看。
+MMEduCls（简称cls）的主要功能是对图像进行分类。其支持的SOTA模型有LeNet、MobileNet、ResNet18、ResNet50等，具体介绍详见<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmeducls.html#sota">后文</a>。如需查看所有支持的SOTA模型，可导入模块后使用`cls.sota()`代码进行查看。
 
 文档涉及的部分代码见XEdu帮助文档配套项目集：[https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public](https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public)
 
 ### 使用说明
 
-XEdu一键安装包中预置了MMEdu的cls模块的示例代码（路径：/demo）、常用小数据集（路径：/dataset/cls）,并且已经预训练了一些权重（路径：/checkpoints/cls_model）。在demo文件夹中，还提供了一张测试图片，OpenInnoLab平台也公开了非常多图像分类任务的项目，体验了几个之后相信会对此模块有一定理解。
+XEdu一键安装包中预置了MMEdu的图像分类模块的示例代码（路径：/demo）、常用小数据集（路径：/dataset/cls）,并且已经预训练了一些权重（路径：/checkpoints/cls_model）。在demo文件夹中，还提供了一张测试图片，OpenInnoLab平台也公开了非常多图像分类任务的项目，体验了几个之后相信会对此模块有一定理解。
 
 下面我们将以“石头剪刀布”手势识别这个任务为例，介绍一下图像分类模块示例代码的用法，在解锁图像分类模块的同时也一起完成一个新的图像分类项目吧！
 
 #### 0. 导入模块
 
 ```
+# 用别名让代码变得简洁
+from MMEdu import MMClassification as mmeducls
+
+# 用更加简单的别名
 from MMEdu import MMClassification as cls
+
 ```
 
 #### 1. 模型训练
 
-使用下面的代码即可简单体验MMClassification的训练过程，接下来就开始详细的介绍。
+使用下面的代码即可简单体验图像分类模型的训练过程，接下来就开始详细的介绍。
 
 在运行代码之前，我们首先需要拥有一个数据集，这里提供了经典的石头剪刀布分类数据集。
 
@@ -33,6 +38,7 @@ from MMEdu import MMClassification as cls
 训练代码如下：
 
 ```python
+from MMEdu import MMClassification as cls
 model = cls('LeNet') # 实例化模型，不指定参数即使用默认参数。
 model.num_classes = 3 # 指定数据集中的类别数量
 model.load_dataset(path='../dataset/cls/hand_gray') # 从指定数据集路径中加载数据
@@ -45,12 +51,12 @@ model.train(epochs=10, validate=True) # 设定训练的epoch次数以及是否�
 - **实例化模型**
 
 ```python
-model = cls('LeNet') # 实例化模型，不指定参数即使用默认参数
+model = mmeducls('LeNet') # 实例化模型，'LeNet'是sota模型的名称
 ```
 
-这里对于`MMClassification`模型提供的参数进行解释，`MMClassification`支持传入的参数是`backbone`。也可以写成“backbone='LeNet'”，强化一下，这是一个网络的名称。
+这里对于MMEdu图像分类模块提供的参数进行解释，支持传入的参数是`backbone`（骨干网络）。也可以写成“backbone='LeNet'”，强化一下，这是一个网络的名称。
 
-`backbone`：指定使用的`MMClassification`模型。可选的有LeNet、MobileNet、ResNet18、ResNet50等，具体介绍详见<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#sota">后文</a>。
+`backbone`：指定使用的图像分类模型。可选的有LeNet、MobileNet、ResNet18、ResNet50等，具体介绍详见<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmeducls.html#sota">后文</a>。
 
 - **指定类别数量**
 
@@ -128,7 +134,7 @@ model.train(epochs=10, validate=True) # 设定训练的epoch次数以及是否�
 
 accuracy_top-1：对一张图片，如果你的预测结果中概率最大的那个分类正确，则认为正确，再根据分类正确的样本数除以所有的样本数计算得到的准确率。
 
-accuracy_top-5：对一张图片，如果预测概率前五名的答案中出现了正确答案，便认为正确，再根据分类正确的样本数除以所有的样本数计算得到的准确率，在MMClassification中，如果类别数量大于5会启动accuracy_top-5准确率。
+accuracy_top-5：对一张图片，如果预测概率前五名的答案中出现了正确答案，便认为正确，再根据分类正确的样本数除以所有的样本数计算得到的准确率，在MMEdu的图像分类模块中，如果类别数量大于5会启动accuracy_top-5准确率。
 
 
 
@@ -152,13 +158,13 @@ accuracy_top-5：对一张图片，如果预测概率前五名的答案中出现
 
 #### 2. 模型推理
 
-训练完模型后，我们就可使用该模型对新图片进行模型推理。当然如果想快速上手体验MMClassification的图像分类，可直接使用我们已经预训练好的模型和权重文件体验图片推理。
+训练完模型后，我们就可使用该模型对新图片进行模型推理。当然如果想快速上手体验MMEdu的图像分类，可直接使用我们已经预训练好的模型和权重文件体验图片推理。
 
 示例代码如下:
 
 ```python
 img = 'testrock01-02.png' # 指定待推理的图片路径
-model = cls('LeNet') # 实例化MMClassification模型
+model = cls('LeNet') # 实例化图像分类模型
 model.checkpoint='../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的模型权重文件
 result = model.inference(image=img, show=True, checkpoint=checkpoint) # 在CPU上进行推理
 model.print_result() # 输出结果，可以修改参数show的值来决定是否需要显示结果图片，默认显示结果图片
@@ -175,8 +181,9 @@ model.print_result() # 输出结果，可以修改参数show的值来决定是�
 此外，我们还可以对一组图片进行**批量推理**，只需将收集的图片放在一个文件夹下，如在`demo`文件夹下新建一个`cls_testIMG`文件夹放图片。批量推理的示例代码如下。
 
 ```python
+from MMEdu import MMClassification as cls
 img = 'cls_testIMG/' # 指定进行推理的一组图片的路径
-model = cls('LeNet') # 实例化MMClassification模型
+model = cls('LeNet') # 实例化MMEdu图像分类模型
 model.checkpoint='../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的模型权重文件
 result = model.inference(image=img, show=True, checkpoint=checkpoint) # 在CPU上进行推理
 model.print_result(result) # 输出结果，可以修改参数show的值来决定是否需要显示结果图片，默认显示结果图片
@@ -196,12 +203,12 @@ img = 'testrock01-02.png' # 指定推理图片的路径，直接在代码所在�
 - **实例化模型**
 
 ```python
-model = cls('LeNet') # 实例化MMClassification模型
+model = cls('LeNet') # 实例化MMEdu图像分类模型
 ```
 
-这里对于`MMClassification`模型提供的参数进行解释，`MMClassification`支持传入的参数是`backbone`。
+这里对于`MMEdu`图像分类模型提供的参数进行解释，支持传入的参数是`backbone`。
 
-`backbone`：指定使用的`MMClassification`模型，默认参数是`'LeNet'`，当然读者可以自行修改该参数以使用不同模型。
+`backbone`：指定使用的sota模型名称，默认参数是`'LeNet'`，当然读者可以自行修改该参数以使用不同模型。
 
 - **指定模型权重文件**
 
@@ -225,7 +232,7 @@ img = 'testrock01-02.png' # 指定推理图片的路径，直接在代码所在�
 
 **参数详解**
 
-在MMClassification中对于`inference`函数还有其他的传入参数，在这里进行说明：
+在MMEdu中对于`inference`函数还有其他的传入参数，在这里进行说明：
 
 `device`：推理所用的设备，默认为`'cpu'`，如果电脑支持GPU，也可以将参数修改为`'cuda'`，使用GPU进行推理。
 
@@ -269,6 +276,7 @@ result = model.fast_inference(image=img)
 在这一步中，我们将学习如何加载之前训练过的模型接着训练。如果觉得之前训练的模型epoch数不够的话或者因为一些客观原因而不得不提前结束训练，相信下面的代码会帮到您。
 
 ```python
+from MMEdu import MMClassification as cls
 model = cls('LeNet') # 初始化实例模型
 model.num_classes = 3 # 指定数据集中的类别数量
 model.load_dataset(path='../dataset/cls/hand_gray') # 配置数据集路径
@@ -277,7 +285,7 @@ checkpoint = '../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的�
 model.train(epochs=50, validate=True, checkpoint=checkpoint) # 进行再训练
 ```
 
-这里我们有一个参数在之前的<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#id3">训练模型</a>过程中没有详细说明，那就是`train`函数中的`checkpoint`参数，这个放到这里就比较好理解，它的意思是指定需要进行再训练的模型路径，当然您也可以根据你需要训练的不同模型而调整参数。
+这里我们有一个参数在之前的<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmeducls.html#id3">训练模型</a>过程中没有详细说明，那就是`train`函数中的`checkpoint`参数，这个放到这里就比较好理解，它的意思是指定需要进行再训练的模型路径，当然您也可以根据你需要训练的不同模型而调整参数。
 
 我们还可以指定网上下载的某个预训练模型。通过借助在大型数据集上训练的预训练模型，来对新的任务进行训练，而无需从头开始训练。它可以将一个大型数据集中的知识和技能转移到另一个任务上，从而大大节省训练时间。 
 
@@ -285,7 +293,7 @@ model.train(epochs=50, validate=True, checkpoint=checkpoint) # 进行再训练
 
 #### 4. 支持的SOTA模型
 
-目前MMClassifiation支持的SOTA模型有LeNet、MobileNet、ResNet18、ResNet50等，如需查看所有支持的SOTA模型，可导入模块后使用`cls.sota()`代码进行查看。这些模型的作用和适用场景简介如下。
+目前MMEdu的图像分类模块支持的SOTA模型有LeNet、MobileNet、ResNet18、ResNet50等，如需查看所有支持的SOTA模型，可导入模块后使用`cls.sota()`代码进行查看。这些模型的作用和适用场景简介如下。
 
 - **LeNet**
 
@@ -338,7 +346,7 @@ LeNet是一种简单的深度卷积神经网络，他的特色就是参数量少
 
 
 
-### MMCls的高级操作
+### MMEduCls的高级操作
 #### 源代码的修改（以修改验证策略为例）
 所有库文件均以py文件形式开源，用户可以自行编辑修改。这样极大提升了代码的可玩性。这里以修改源码中的验证策略为例，展示如果修改源代码，实现自定义功能或功能修改。
 
