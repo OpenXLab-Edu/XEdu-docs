@@ -317,7 +317,7 @@ det_face.save(img_with_box,'img_with_box.jpg')# 保存推理图片
 ```python
 from XEdu.hub import Workflow as wf
 det_hand = wf(task='det_hand')
-result,img_with_box = det_hand.inference(data='data/det_hand.jpg',img_type='pil',show=True) # 进行模型推理
+result,img_with_box = det_hand.inference(data='data/det_hand.jpg',img_type='pil') # 进行模型推理
 format_result = det_hand.format_output(lang='zh') # 将推理结果进行格式化输出
 det_hand.show(img_with_box) # 展示推理图片
 det_hand.save(img_with_box,'img_with_box.jpg') # 保存推理图片
@@ -1413,7 +1413,7 @@ mmcls = wf(task='mmedu',checkpoint='cats_dogs.onnx') # 指定使用的onnx模型
 ##### 2. 模型推理
 
 ```python
-result, result_img =  mmcls.inference(data='data/cat101.jpg',img_type='pil',show=True) # 进行模型推理
+result, result_img =  mmcls.inference(data='data/cat101.jpg',img_type='pil') # 进行模型推理
 ```
 
 ![](../images/xeduhub/mmcls_result.png)
@@ -1498,7 +1498,7 @@ mmdet = wf(task='mmedu',checkpoint='plate.onnx') # 指定使用的onnx模型
 ##### 2. 模型推理
 
 ```python
-result, result_img =  mmdet.inference(data='data/plate0.png',img_type='pil',show=True) # 进行模型推理
+result, result_img =  mmdet.inference(data='data/plate0.png',img_type='pil') # 进行模型推理
 ```
 
 ![](../images/xeduhub/mmdet_result.png)
