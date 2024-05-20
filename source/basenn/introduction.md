@@ -36,7 +36,7 @@ from BaseNN import nn
 ### 1. 声明模型
 
 ``` python
-model = nn()
+model = nn('cls') 
 ```
 
 可选参数：
@@ -55,7 +55,7 @@ model = nn()
 
 #### 针对图片文件夹类型的数据：
 
-指定图片文件夹路径，再使用`load_img_data`函数即可完成载入数据。此处使用的是经典的MNIST手写体数字图像数据集。
+直接指定图片文件夹路径，再使用`load_img_data`函数即可完成载入数据，对图片文件夹格式有一定要求：大文件夹下包含各个按类别命名的子文件夹。例如此处使用的是经过处理的经典的MNIST手写体数字图像数据集。
 
 ```python
 image_folder_data = '../../dataset/mnist/training_set'
@@ -288,14 +288,12 @@ model.load_img_data('catdog',transform={"Resize":(128,128),"RandomResizedCrop":2
 
 #### 针对特征表格类型的数据：
 
-指定表格路径，再使用`load_tab_data`函数即可完成载入数据。此处我使用的是经典的Iris鸢尾花数据集。
+指定表格路径，再使用`load_tab_data`函数即可完成载入数据，对表格的要求：csv格式，纵轴为样本，横轴为特征，第一行为表头，最后一列为标签，且要求数据类型为数值类型并无缺失值。例如此处我使用的是经过处理的经典的Iris鸢尾花数据集。
 
 ```python
 train_path = '../../dataset/iris/iris_training.csv'
 model.load_tab_data(train_path, batch_size=120)
 ```
-
-对表格的要求：csv格式，纵轴为样本，横轴为特征，第一行为表头，最后一列为标签。
 
 `batch_size`：表示在一次训练中同时处理的样本数量。通常情况下，批量大小越大，模型的收敛速度越快，但内存和计算资源的需求也会相应增加。
 
@@ -303,7 +301,7 @@ model.load_tab_data(train_path, batch_size=120)
 
 #### 针对NPZ数据集类型的数据：
 
-指定NPZ数据集路径，再使用`load_npz_data`函数即可完成载入数据。
+指定NPZ数据集路径，再使用`load_npz_data`函数即可完成载入数据。NPZ格式，是numpy的一种压缩格式，对NPZ数据集的要求：npz格式(numpy zip)，其中至少应该拥有两个键，分别为`data`与`label`，其中`data`中存储的应为训练数据信息，`label`中存储的应为数据所对应的标签信息（应为数组形式）。
 
 详见案例：[姿态识别进阶-循环神经网络](https://www.openinnolab.org.cn/pjlab/project?id=64daed3eafeb1059822a1578&sc=62f33550bf4f550f3e926cf2#public)
 
@@ -311,8 +309,6 @@ model.load_tab_data(train_path, batch_size=120)
 train_path = '../../dataset/dataset.npz'
 model.load_npz_data(train_path, batch_size=5000,classes=["walking","waving","stretching"])
 ```
-
-对NPZ数据集的要求：npz格式(numpy zip)，其中至少应该拥有两个键，分别为`data`与`label`，其中`data`中存储的应为训练数据信息，`label`中存储的应为数据所对应的标签信息（应为数组形式）。
 
 参数说明：
 
