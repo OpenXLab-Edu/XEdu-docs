@@ -161,8 +161,30 @@ EasyTrain界面打开之后，选择BaseNN页面，在下拉框中指定训练�
 
 如需尝试用代码完成BaseNN模型训练或了解BaseNN具体功能，请参照[BaseNN的教程](https://xedu.readthedocs.io/zh/master/basenn.html)。
 
+
+常见错误排查
+-------------
+
+1.Flask运行错误
+
+EasyTrain基于Flask开发。如果在运行时出现这样的错误：
+
+``` {.powershell}
+
+hostname,aliases,ipaddrs = gethostbyaddr(name)InicodeDecodeError: 'utf-8' codec can't decode byte 0xdl in position 7: invalid continuation bvte。
+
+```
+
+请检查电脑名称是否为中文，修改为英文即可。
+
+
+2.生成代码正常，但是进入训练时没有反应。
+
+EasyTrain的生成代码部分基于Flask开发，进入训练则需要XEdu环境，涵盖BaseML、BaseNN、MMEdu等。点击“进入训练”后会在主目录下生成一个“*code.py”的文件。如果训练时页面没有反应，请用Python IDE工具（如Thonny）打开并运行，再根据错误提示进行排查。
+
+
 注意事项
---------
+----------
 
 -   请确认选择的数据集不为空，且数据集格式正确。
 -   一部分参数有范围，例如学习率只能为正值，轮数只能为正整数，请选择合理范围的参数。
