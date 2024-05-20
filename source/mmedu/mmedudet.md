@@ -1,6 +1,8 @@
-# 揭秘目标检测模块：MMDetection
+# 揭秘目标检测模块：MMEduDet
 
-### 初识目标检测和MMDetection
+### 初识目标检测和MMEduDet
+
+#### 初识目标检测任务
 
 相信你已经体验并完成了一些图像分类任务，但是图像分类任务在真实的场景中应用中，像只出现一只猫的图片情况较少，如果一张图片里有两只猫，图像分类的模型可能可以识别出是猫。但是如果是这张图又有猫又有狗，那图像分类模型就肯定识别不出来了。为了解决这一种问题，就出现了目标检测算法。对于图像分类任务来讲，AI仅需正确识别图片的类别即可。
 
@@ -16,7 +18,9 @@
 
 
 
-那么MMEdu的目标检测模块MMDetection（简称det）的主要功能便是输出图片或视频中出现的多个对象名称，同时用方框框出对象所在方形区域。
+#### 初识MMEduDet
+
+那么MMEdu的目标检测模块MMEduDet（简称det）的主要功能便是输出图片或视频中出现的多个对象名称，同时用方框框出对象所在方形区域。
 
 其支持的SOTA模型有FasterRCNN、YOLO、SSD_Lite等，具体介绍详见<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html#sota">后文</a>。如需查看所有支持的SOTA模型，可导入模块后使用`det.sota()`代码进行查看，网络名称不区分大小写，YOLO网络所指版本为v3版本。
 
@@ -32,12 +36,16 @@ XEdu一键安装包中预置了MMEdu的det模块的示例代码（路径：/demo
 #### 0. 导入模块
 
 ```
+# 用别名让代码变得简洁
+from MMEdu import MMDetection as mmedudet
+
+# 用更加简单的别名
 from MMEdu import MMDetection as det
 ```
 
 #### 1.模型训练
 
-接下来我们将以车牌的识别为例，简单体验MMDetection的训练过程。
+使用下面的代码即可简单体验目标检测模块的训练过程，接下来就开始详细的介绍。
 
 
 在运行代码之前，我们同样需要先拥有一个数据集，这里我们提供了车牌检测数据集plate。
@@ -64,12 +72,12 @@ model.train(epochs=3, validate=True) # 设定训练的epoch次数以及是否进
 - **实例化模型**
 
 ```python
-model = det('FasterRCNN') # 实例化MMDetection模型
+model = det('FasterRCNN') # 初始化实例模型
 ```
 
-这里对于`MMDetection`模型提供的参数进行解释，`MMDetection`支持传入的参数是`backbone`。也可以写成“backbone='FasterRCNN'”，强化一下，这是一个网络的名称。
+这里对于MMEdu目标检测模块提供的参数进行解释，`支持传入的参数是`backbone`。也可以写成“backbone='FasterRCNN'”，强化一下，这是一个网络的名称。
 
-`backbone`：指定使用的`MMDetection`模型。可选的有FasterRCNN、YOLO、SSD_Lite等，具体介绍详见<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html#sota">后文</a>。
+`backbone`：指定使用的目标检测模型。可选的有FasterRCNN、YOLO、SSD_Lite等，具体介绍详见<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html#sota">后文</a>。
 
 **指定类别数量**
 
@@ -158,15 +166,14 @@ model.train(epochs=10, validate=True) # 设定训练的epoch次数以及是否�
 
 #### 2.模型推理
 
-完成模型训练后，我们就可使用训练好的模型对新图片进行模型推理。若想快速上手体验MMDetection的目标检测，可直接使用我们已经预训练好的模型和权重文件进行图片推理。
+完成模型训练后，我们就可使用训练好的模型对新图片进行模型推理。若想快速上手体验MMEdu的目标检测，可直接使用我们已经预训练好的模型和权重文件进行图片推理。
 
 
 示例代码如下:
 
 ```python
-from MMEdu import MMDetection as det # 导入mmdet模块
 img = 'car_plate.png' # 指定进行推理的图片路径，我们使用demo文件夹中提供的图片
-model = det('FasterRCNN') # 实例化MMDetection模型
+model = det('FasterRCNN') # 初始化实例模型
 checkpoint = '../checkpoints/det_model/plate/latest.pth' # 指定使用的模型权重文件
 result = model.inference(image=img, show=True, checkpoint = checkpoint) # 在CPU上进行推理
 model.print_result() # 输出结果
@@ -183,7 +190,7 @@ model.print_result() # 输出结果
 
 ~~~python
 img = 'det_testIMG/' # 指定进行推理的一组图片的路径
-model = det('FasterRCNN') # 实例化MMDetection模型
+model = det('FasterRCNN') # 初始化实例模型
 checkpoint = '../checkpoints/det_model/plate/latest.pth' # 指定使用的模型权重文件
 result = model.inference(image=img, show=True, checkpoint = checkpoint) # 在CPU上进行推理
 model.print_result() # 输出结果
@@ -209,7 +216,7 @@ img = 'car_plate.png' # 指定推理图片的路径，直接在代码所在的de
 - **实例化模型并指定模型权重文件**
 
 ```python
-model = det('FasterRCNN') # 实例化MMDetection模型
+model = det('FasterRCNN') # 初始化实例模型
 checkpoint = '../checkpoints/det_model/plate/latest.pth' # 指定使用的模型权重文件
 ```
 
@@ -225,7 +232,7 @@ model.inference(image=img, show=True, checkpoint = checkpoint) # 在CPU上进行
 
 **参数详解**
 
-在Detection_Edu中对于`inference`函数还有其他的传入参数，在这里进行说明：
+在MMEdu中对于`inference`函数还有其他的传入参数，在这里进行说明：
 
 `device`：推理所用的设备，默认为`'cpu'`，如果电脑支持GPU，也可以将参数修改为`'cuda:0'`，使用GPU进行推理。
 
@@ -295,7 +302,7 @@ model.train(epochs=3, validate=True, checkpoint=checkpoint) # 进行再训练
 
 #### 4.支持的SOTA模型
 
-目前MMDetection支持的SOTA模型有SSD_Lite、FaterRCNN、YOLO等，如需查看所有支持的SOTA模型，可导入模块后使用`det.sota()`代码进行查看，网络名称不区分大小写，YOLO网络所指版本为v3版本。这些模型的作用和适用场景简介如下。
+目前MMEdu的目标检测模块支持的SOTA模型有SSD_Lite、FaterRCNN、YOLO等，如需查看所有支持的SOTA模型，可导入模块后使用`det.sota()`代码进行查看，网络名称不区分大小写，YOLO网络所指版本为v3版本。这些模型的作用和适用场景简介如下。
 
 - **SSD_Lite**
 
