@@ -367,6 +367,8 @@ format_result = det_face.format_output(lang='zh')# 将推理结果进行格式�
 
 ![](../images/xeduhub/det_face_format.png)
 
+结果可视化：
+
 ```python
 det_face.show(img_with_box) # 展示推理图片
 ```
@@ -445,6 +447,13 @@ result,img_with_box = det_hand.inference(data='data/det_hand.jpg',img_type='pil'
 format_result = det_hand.format_output(lang='zh') # 将推理结果进行格式化输出
 ```
 
+`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
+
+`format_output()`中共有两个参数可以设置：
+
+- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
+
 ```
 # 输出结果
 {'检测框': [[354.9846431187221,
@@ -456,14 +465,9 @@ format_result = det_hand.format_output(lang='zh') # 将推理结果进行格式�
 
 ![](../images/xeduhub/det_hand_format2.png)
 
-`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
-
-`format_output()`中共有两个参数可以设置：
-
-- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
-- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
-
 `format_result`以字典形式存储了推理结果，共有两个键：`检测框`、`分数`。检测框以二维数组形式保存了每个检测框的坐标信息[x1,y1,x2,y2]，而分数则是对应下标的检测框的置信度，以一维数组形式保存。
+
+结果可视化：
 
 ```python
 det_hand.show(img_with_box) # 展示推理图片
@@ -614,7 +618,7 @@ format_result = body.format_output(lang='zh') # 参数lang设置了输出结果�
 
 ![](../images/xeduhub/body-format.png)
 
-结果可视化
+结果可视化：
 
 ```python
 body.show(img_with_keypoints)
@@ -1109,6 +1113,8 @@ ocr_format_result = ocr.format_output(lang="zh")
 
 `format_output`的结果以字典形式存储了推理结果，共有三个键：`检测框`、`分数`和`文本`。检测框以三维数组形式保存了每个检测框的四个顶点的[x,y]坐标，而分数则是对应下标的检测框分数，以一维数组形式保存。文本则是每个检测框中识别出的文本，以一维数组形式保存。
 
+结果可视化：
+
 ```python
 ocr.show(ocr_img) # 展示推理结果图片
 ```
@@ -1139,8 +1145,8 @@ cls = wf(task='cls_imagenet') # 模型声明
 img_path = 'demo/cat.png' # 指定进行推理的图片路径
 result,cls_img = cls.inference(data=img_path,img_type='cv2') # 进行推理
 cls_format_result = cls.format_output(lang='zh')  # 结果格式化输出
-cls.show(cls_img)# 展示推理结果图片
-cls.save(cls_img,'cls_result.jpg')# 保存推理结果图片
+cls.show(cls_img) # 展示原图
+cls.save(cls_img,'cls_result.jpg')# 保存图片
 ```
 
 ### 代码解释
@@ -1169,14 +1175,14 @@ result,cls_img = cls.inference(data='data/cat101.jpg') # 进行模型推理
 模型推理`inference()`可传入参数：
 
 - `data`: 指定待分类的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
-- `show`: 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出图片。
+- `show`: 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出原图。
 - `img_type`：返回原图，该参数指定了返回图片的格式，可选有:`['cv2','pil']`。
 
 推理结果`result`是一个二维数组，表示这个图片在ImageNet的一千个分类中，属于每个分类的概率。
 
 ![](../images/xeduhub/cls_result.png)
 
-`cls_img`的格式为cv2，呈现的就是一张原图。
+`cls_img`的格式为cv2，呈现的就是一张原图，并非带模型推理结果的图。
 
 #### 3. 结果输出
 
@@ -1200,7 +1206,16 @@ format_result = cls.format_output(lang='zh') #推理结果格式化输出
 
 ![](../images/xeduhub/cls_format.png)
 
+配合展示原图：
+
+```
+cls.show(cls_img) # 展示原图
+```
+
+![](../images/xeduhub/cls_show.png)
+
 ## 5. 内容生成
+
 内容生成模型是一种人工智能模型，它能够根据输入的提示或指令生成新的内容，如文本、图像、音频或视频。
 
 XEduHub提供了两个图像内容生成任务：图像风格迁移`gen_style`和图像着色`gen_color`。
@@ -1856,9 +1871,9 @@ result, result_img =  mmcls.inference(data='data/cat101.jpg',img_type='pil') # �
 - `img_type`：分类完成后会返回含有分类标签的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
 - `thr`(float): 设置推理阈值，取值范围为`[0,1]`，预测结果的置信度高于这个阈值时，这些结果才会被认为是有效的。
 
-`result`是一个字典，包含三个键：`标签`、`置信度`和`预测结果`。显然，这张图片为猫的置信度 0.79525626，自然这张图片被分类为猫。
+`result`是一个字典，包含三个键：`标签`、`置信度`和`预测结果`。
 
-`result_img`以pil格式保存了模型推理完成后的图片。
+`result_img`以pil格式保存了模型推理完成后的图片（原图+推理结果）。
 
 ##### 3. 结果输出
 
@@ -1944,7 +1959,7 @@ result, result_img =  mmdet.inference(data='data/plate0.png',img_type='pil') # �
 
 `result`的结果是一个数组，里面保存了结果字典。该字典有四个键：`标签`、`置信度`、`坐标`以及`预测结果`。其中坐标表示了检测框的两个顶点：左上(x1,y1)和右下(x2,y2)。
 
-`result_img`以pil格式保存了模型推理完成后的图片。
+`result_img`以pil格式保存了模型推理完成后的图片（原图+推理结果）。
 
 ##### 3. 结果输出
 
