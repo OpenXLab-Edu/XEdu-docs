@@ -116,6 +116,13 @@ wf.coco_class()
 format_result = det_coco.format_output(lang='zh') # 将推理结果进行格式化输出
 ```
 
+`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
+
+`format_output()`中共有两个参数可以设置：
+
+- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
+
 ```
 # 输出结果
 {'检测框': [[4.149693080357143,
@@ -167,13 +174,6 @@ format_result = det_coco.format_output(lang='zh') # 将推理结果进行格式�
         'bottle',
         'pottedplant']}
 ```
-
-`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
-
-`format_output()`中共有两个参数可以设置：
-
-- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
-- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
 
 `format_result`以字典形式存储了推理结果，共有三个键：`检测框`、`分数`和`类别`。检测框以二维数组形式保存了每个检测框的坐标信息[x1,y1,x2,y2]，而分数则是对应下标的检测框的置信度，以一维数组形式保存，类别则是检测框中对象所属的类别，以一维数组形式保存。
 
