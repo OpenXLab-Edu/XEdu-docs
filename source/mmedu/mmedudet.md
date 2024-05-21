@@ -22,7 +22,7 @@
 
 那么MMEdu的目标检测模块MMEduDet（简称det）的主要功能便是输出图片或视频中出现的多个对象名称，同时用方框框出对象所在方形区域。
 
-其支持的SOTA模型有FasterRCNN、YOLO、SSD_Lite等，具体介绍详见<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html#sota">后文</a>。如需查看所有支持的SOTA模型，可导入模块后使用`det.sota()`代码进行查看，网络名称不区分大小写，YOLO网络所指版本为v3版本。
+其支持的SOTA模型有FasterRCNN、YOLO、SSD_Lite等，具体介绍详见<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmedudet.html#sota">后文</a>。如需查看所有支持的SOTA模型，可导入模块后使用`det.sota()`代码进行查看，网络名称不区分大小写，YOLO网络所指版本为v3版本。
 
 
 文档涉及的部分代码见XEdu帮助文档配套项目集：[https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public](https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public)
@@ -77,7 +77,7 @@ model = det('FasterRCNN') # 初始化实例模型
 
 这里对于MMEdu目标检测模块提供的参数进行解释，`支持传入的参数是`backbone`。也可以写成“backbone='FasterRCNN'”，强化一下，这是一个网络的名称。
 
-`backbone`：指定使用的目标检测模型。可选的有FasterRCNN、YOLO、SSD_Lite等，具体介绍详见<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html#sota">后文</a>。
+`backbone`：指定使用的目标检测模型。可选的有FasterRCNN、YOLO、SSD_Lite等，具体介绍详见<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmedudet.html#sota">后文</a>。
 
 **指定类别数量**
 
@@ -291,7 +291,7 @@ checkpoint='../checkpoints/det_model/plate/latest.pth' # 指定使用的模型�
 model.train(epochs=3, validate=True, checkpoint=checkpoint) # 进行再训练
 ~~~
 
-这里我们有一个参数在之前的<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#id3">训练模型</a>过程中没有详细说明，那就是`train`函数中的`checkpoint`参数，这个放到这里就比较好理解，它的意思是指定需要进行再训练的模型路径，当然您也可以根据你需要训练的不同模型而调整参数。
+这里我们有一个参数在之前的<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmedudet.html#id6">训练模型</a>过程中没有详细说明，那就是`train`函数中的`checkpoint`参数，这个放到这里就比较好理解，它的意思是指定需要进行再训练的模型路径，当然您也可以根据你需要训练的不同模型而调整参数。
 
 我们还可以指定网上下载的某个预训练模型。通过借助在大型数据集上训练的预训练模型，来对新的任务进行训练，而无需从头开始训练。它可以将一个大型数据集中的知识和技能转移到另一个任务上，从而大大节省训练时间。 
 
