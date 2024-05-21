@@ -91,6 +91,8 @@ result,img_with_box = det_coco.inference(data='data/det_coco.jpg',img_type='pil'
 
 - `result`：以二维数组的形式保存了检测框左上角顶点的坐标(x1,y1)和右下角顶点的坐标(x2,y2)（之所以是二维数组，是因为该模型能够检测多个对象，因此当检测到多个对象时，就会有多个[x1,y1,x2,y2]的一维数组，所以需要以二维数组形式保存），我们可以利用这四个数据计算出其他两个顶点的坐标，以及检测框的宽度和高度。
 
+  
+
 ![](../images/xeduhub/det_res.png)
 
 - `img_with_box：`：是个三维数组，以cv2格式保存了包含了检测框的图片。

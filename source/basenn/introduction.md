@@ -785,27 +785,90 @@ state_dict = ckpt['state_dict'].state_dict()
 for i in state_dict:
     print('这一层的名字是:',i)
 ```
+输出结果：
+
+```
+layer_name: linear1.weight
+layer_name: linear1.bias
+layer_name: linear2.weight
+layer_name: linear2.bias
+layer_name: linear3.weight
+layer_name: linear3.bias
+```
+
+
+
 ![](../images/basenn/weight1.png)
 
 可以看到，权重主要包括两种参数，一种是weight，一种是bias。其中weight，指“重”，特征的重要程度，bias值“偏”，偏离原点的程度。回想一下我们初中学习的一次函数 `y=w*x+b` 就是这样的含义。上图中，每一层都分别有weight和bias构成。
 
 2）查看模型里面上述层的形状（每层的大小）
 
-通过这一功能，可以简单计算一个模型的参数量有多少。
-
 ```python
 for i in state_dict:
     print('层：', i ," 的形状是", state_dict[i].shape)
 ```
+输出结果：
+
+```
+layer_name: linear1.weight  shape: torch.Size([10, 4])
+layer_name: linear1.bias  shape: torch.Size([10])
+layer_name: linear2.weight  shape: torch.Size([5, 10])
+layer_name: linear2.bias  shape: torch.Size([5])
+layer_name: linear3.weight  shape: torch.Size([3, 5])
+layer_name: linear3.bias  shape: torch.Size([3])
+```
+
 ![](../images/basenn/weight2.png)
+
+通过这一功能，可以简单计算一个模型的参数量有多少。
 
 例如在这个例子中，我们可以计算，参数量一共是：`10*4+10+5*10+5+3*5+3` 个参数。但是通常bias可以忽略不计。至于为什么有`10*4` ，这是因为第一个全连接层用的是size=(4, 10)，这表示，4个神经元的输入层，与10个神经元的隐藏层相连接。这种情况下，4个神经元中的任意一个神经元，都与10个下一层神经元相连接，显然，这里的参数量为10+10+10+10=10*4。
 
 3）查看模型里各层参数的值
+
 ```python
 for i in state_dict:
     print(ckpt['state_dict'].state_dict()[i])
 ```
+输出结果：
+
+```
+layer: linear1.weight shape: torch.Size([10, 4])
+tensor([[-0.1671, -0.2946, -0.1523,  0.2340],
+        [-0.2319, -0.2094,  0.8307,  0.7168],
+        [-0.4024,  0.0528, -0.4063,  0.3279],
+        [ 0.5091, -0.0214,  0.9994,  0.5224],
+        [ 0.6709,  1.0019,  0.1012, -0.8173],
+        [ 0.7910,  0.6090, -0.6661, -0.8460],
+        [-0.3291,  0.1794,  0.3013, -0.5664],
+        [-0.0976, -0.1166, -0.1597, -0.1705],
+        [-0.2752,  0.3727, -0.4080, -0.4774],
+        [-0.3167, -0.1678,  1.0979,  0.7183]])
+layer: linear1.bias shape: torch.Size([10])
+tensor([ 0.0276,  0.0367, -0.1092,  0.5315,  0.7263,  0.3025, -0.1470,  0.0737,
+        -0.1824,  0.0029])
+layer: linear2.weight shape: torch.Size([5, 10])
+tensor([[-0.1355,  0.7558,  0.0546,  0.1230, -0.3620, -0.7619, -0.3141, -0.0608,
+         -0.0821,  0.6960],
+        [-0.2451, -0.8411, -0.1880,  0.2396,  0.4853,  1.0186, -0.0673, -0.2480,
+          0.2201, -0.7702],
+        [-0.0184, -0.1989, -0.2507, -0.0921,  0.3093,  0.7214, -0.0233,  0.2101,
+         -0.2183, -0.2256],
+        [ 0.1090, -0.1517,  0.1152, -0.2598, -0.0861,  0.1829, -0.3004, -0.0835,
+          0.0937, -0.1331],
+        [ 0.1686,  0.8030, -0.2627,  0.5540, -0.0460, -0.4488, -0.1358, -0.2360,
+          0.0522,  0.7765]])
+layer: linear2.bias shape: torch.Size([5])
+tensor([-0.8387,  0.7115,  0.5185, -0.1147,  0.0033])
+layer: linear3.weight shape: torch.Size([3, 5])
+tensor([[-0.7702,  0.6576,  0.5163, -0.0201, -1.1092],
+        [-1.1128,  0.2404,  0.2973,  0.3267,  0.1670],
+        [ 0.5992, -1.0186, -0.7638,  0.3445,  0.5820]])
+layer: linear3.bias shape: torch.Size([3])
+tensor([ 0.6430,  0.3829, -0.1744])
+```
+
 ![](../images/basenn/weight3.png)
 
 我们知道了参数的值之后，可以尝试计算，当一条新数据输入网络后，模型会经历怎样的计算，请你试一试搭建一个简单的神经网络，试一试这个计算过程，你能不能手动实现呢？

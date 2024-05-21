@@ -36,6 +36,28 @@ print(result) # 输出推理结果
 body.show(new_img) # 显示带标注图片
 ```
 
+输出结果：图片加列表，列表如下：
+
+```
+[[ 596.31597222  163.53819444]
+ [ 624.65798611  140.86458333]
+ [ 576.4765625   149.3671875 ]
+ [ 658.66840278  166.37239583]
+ [ 553.80295139  177.70920139]
+ [ 735.19184028  288.24305556]
+ [ 511.28993056  322.25347222]
+ [ 871.23350694  387.44010417]
+ [ 406.42447917  407.27951389]
+ [ 789.04166667  347.76128472]
+ [ 369.57986111  381.77170139]
+ [ 735.19184028  642.51822917]
+ [ 590.64756944  656.68923611]
+ [ 831.5546875   832.40972222]
+ [ 516.95833333  855.08333333]
+ [ 825.88628472 1013.79861111]
+ [ 488.61631944 1039.30642361]]
+```
+
 ![](../images/xeduhub/bodyshow.png)
 
 是不是很简单？一般使用步骤是：
@@ -54,6 +76,12 @@ from XEdu.hub import Workflow as wf
 wf.support_task()
 ```
 
+输出结果：
+
+```
+['pose_body17', 'pose_body17_l', 'pose_body26', 'pose_wholebody133', 'pose_face106', 'pose_hand21', 'det_body', 'det_body_l', 'det_coco', 'det_coco_l', 'det_hand', 'cls_imagenet', 'gen_style', 'nlp_qa', 'drive_perception', 'embedding_image', 'embedding_text', 'gen_color', 'det_face', 'ocr', 'mmedu', 'basenn', 'baseml']
+```
+
 ![](../images/xeduhub/task1.png)
 
 此外我们还可以通过如下语句查看各类任务的文档。注意doc前后是两个下划线。
@@ -62,6 +90,43 @@ wf.support_task()
 from XEdu.hub import Workflow as wf
 # 目前支持的任务文档
 print(wf.__doc__)
+```
+
+输出结果：
+
+```
+Workflow类用于加载预训练模型以解决各类任务。
+        目前支持的任务有：
+            - pose_body17：人体关键点检测，17个关键点
+            - pose_body17_l：人体关键点检测，17个关键点，模型更大
+            - pose_body26：人体关键点检测，26个关键点
+            - pose_wholebody133：全身关键点检测，包括人体、人脸和手部共133个关键点
+            - pose_face106：人脸关键点检测，106个关键点
+            - pose_hand21：手部关键点检测，21个关键点
+            - det_body：人体检测
+            - det_body_l：人体检测，模型更大
+            - det_coco：物体检测，80类，基于COCO数据集
+            - det_coco_l：物体检测，基于COCO数据集，模型更大
+            - det_hand：手部检测
+            - det_face：人脸检测
+            - cls_imagenet：图像分类，1000类，基于ImageNet数据集
+            - gen_style：风格迁移，5种风格
+            - nlp_qa：问答系统，基于SQuAD数据集
+            - drive_perception：全景驾驶感知系统，包括交通对象检测、可行驶道路区域分割和车道检测任务
+            - embedding_image：CLIP图像嵌入
+            - embedding_text：CLIP文本嵌入   
+            - ocr：光学字符识别，基于rapidocr
+            - mmedu：MMEdu模型推理
+            - basenn：BaseNN模型推理
+            - baseml：BaseML模型推理
+
+
+        Attributes:
+            task：任务类型，可选范围如以上列出。    
+            checkpoint：模型权重文件的路径。
+            download_path：模型文件即将下载到的路径。
+
+        更多用法及算法详解请参考：https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html    
 ```
 
 ![](../images/xeduhub/task2.png)
