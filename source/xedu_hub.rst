@@ -10,3 +10,5 @@
    xedu_hub/introduction.md
 
    xedu_hub/projects.md
+
+   xedu_hub/mindplus_xeduhub.md
