@@ -26,7 +26,7 @@ BaseDeploy==0.0.4
 
 下载方式
 
-飞书网盘：[XEdu v1.6.7d.exe](https://p6bm2if73b.feishu.cn/file/boxcn7ejYk2XUDsHI3Miq9546Uf?from=from_copylink)
+飞书网盘：[XEdu v1.6.7f.exe](https://p6bm2if73b.feishu.cn/file/boxcn7ejYk2XUDsHI3Miq9546Uf?from=from_copylink)
 
 下载最新版exe，同时建议准备win10电脑。
 
