@@ -38,7 +38,7 @@ MMEdu内置了一个`convert`函数，来实现了一键式模型转换，转换
 
 - 模型转换的典型代码：
 
-```
+```python
 from MMEdu import MMClassification as cls
 model = cls(backbone='MobileNet')
 checkpoint = 'checkpoints/cls_model/CatsDog/best_accuracy_top-1_epoch_2.pth'
@@ -56,7 +56,7 @@ model.convert(checkpoint=checkpoint, out_file=out_file)
 
 类似的，目标检测模型转换的示例代码如下：
 
-```
+```python
 from MMEdu import MMDetection as det
 model = det(backbone='SSD_Lite')
 checkpoint = 'checkpoints/COCO-80/ssdlite.pth'
@@ -113,7 +113,7 @@ model.convert(checkpoint="basenn_cd.pth",out_file="basenn_cd.onnx")
 
 ### MMEdu模型转换后的示例代码
 
-```
+```python
 from XEdu.hub import Workflow as wf
 import numpy as np
 
@@ -133,7 +133,7 @@ mm.show(img)
 
 ### BaseNN模型转换后的示例代码
 
-```
+```python
 from XEdu.hub import Workflow as wf
 import numpy as np
 
@@ -168,7 +168,7 @@ result = basenn.format_output(lang="zh")
 
 MMEdu训练并转换的模型基本可以连接摄像头进行使用，在示例代码中加入cv2调用摄像头的代码即可。
 
-```
+```python
 import cv2
 from XEdu.hub import Workflow as wf
 mmcls = wf(task='mmedu',checkpoint='cats_dogs.onnx')
@@ -181,7 +181,7 @@ cap.release()
 
 在上述代码基础上再加入循环即可实现实时识别的效果。
 
-```
+```python
 from XEdu.hub import Workflow as wf
 import cv2
 cap = cv2.VideoCapture(0)
@@ -212,7 +212,7 @@ cv2.destroyAllWindows()
 
 - 根据行空板的具体指南选择合适的编程平台和上传方法。这可能涉及使用特定的软件工具、命令行工具或通过网络接口。
 
-- 如使用Mind+编程，下载Mind+支持行空板的版本（V1.7.2 RC3.0及以上版本）。[[Mind+官网下载\]](https://mindplus.cc/download.html)  。
+- 如使用Mind+编程，下载Mind+支持行空板的版本（V1.7.2 RC3.0及以上版本）。[[Mind+官网下载\]](https://mindplus.cc/download.html)  。Mind+有XEduHub库的积木块，简单使用详见Mind+中的XEduHub积木块。
 
   模型该如何上传到行空板上？打开**文件系统**，将文件拖入**项目中的文件**即可，在点击**运行**的时候Mind+会将**项目中的文件**里面的所有文件一起上传到行空板的mindplus文件夹中运行。
 
