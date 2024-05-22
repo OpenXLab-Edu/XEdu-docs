@@ -2301,6 +2301,6 @@ Gitee链接：[https://gitee.com/liliang9693/ext-xedu-hub](https://gitee.com/lil
 
 ![](../images/xeduhub/mind3.png)
 
-针对MMEdu、BaseNN、BaseML等工具训练及转换的模型，将模型文件上传再指定即可。用这套积木块可以做各种小任务，也可以做复杂任务。使用积木完成对一张图片借助XEduHub的相关模型进行人体画面提取、关键点识别，再用BaseNN训练并转换的ONNX模型完成分类模型推理的示例如下。
+大家可以举一反三尝试编写各种AI任务的代码，针对MMEdu、BaseNN、BaseML等工具训练及转换的模型，将模型文件上传再指定即可。用这套积木块可以做各种小任务，也可以做复杂任务。使用积木完成对一张图片借助XEduHub的相关模型进行人体画面提取、关键点识别，再用BaseNN训练并转换的ONNX模型完成分类模型推理的示例如下。
 
 ![](../images/xeduhub/mind4.png)
