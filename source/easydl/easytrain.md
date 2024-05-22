@@ -106,19 +106,19 @@ EasyTrain界面打开之后在下拉框中选择训练任务为回归任务、�
 
 ### step 3：数据集选择
 
-EasyTrain界面打开之后，选择BaseML页面，在下拉框中指定训练的数据集，网页会读取XEdu/dataset/baseml之下数据集。一键安装包中已自带一些数据集，也可以自己放入新的数据集。
+EasyTrain界面打开之后，选择BaseML页面，在下拉框中指定训练的数据集，网页会读取XEdu/dataset/baseml（或XEdu/dataset/basenn）之下数据集。一键安装包中已自带一些数据集，也可以自己放入新的数据集。
 
-数据集的格式要求为：[csv文件](https://xedu.readthedocs.io/zh/master/baseml/introduction.html#csv)(BaseML任务)。纵轴为样本，横轴为特征，第一行为表头，最后一列为标签。
+数据集的格式要求为：[csv文件](https://xedu.readthedocs.io/zh/master/baseml/introduction.html#csv)(BaseML任务)。针对BaseML特别有这样的约定：第一行为表头，纵向每行为一条样本，横向每列为一个特征，最后一列作为标签列（如果是分类任务，则需要是自然数，如果是回归任务，需要是实数，如果是聚类任务，则不需要这一列）。
 
 ![](../images/easydl/train13.png)
 
 ### step 4：参数设置
 
-点击“设置基本参数↓”，可以设置数据乱序随机种子、高级参数设置、数据验证策略（一般回归任务选择"r2"，分类任务选择"acc"）。
+点击“设置基本参数↓”，可以设置各种参数，一般保持默认即可。可以设置数据乱序随机种子、高级参数设置、数据验证策略（回归任务默认选择"r2"，分类任务默认选择"acc"，如果要修改为其他策略可以填空来设置）。
 
 ![](../images/easydl/baseml3.png)
 
-在完成参数设置后，点击右侧的"生成代码"，可以生成训练代码，生成代码之后才可以训练。
+在完成参数设置后，点击右侧的"生成代码"，可以生成训练代码，注意需要生成代码之后才可以进入训练。
 生成的代码会显示在上方的代码框，点击右上角复制按钮还可以一键复制代码。
 
 ![](../images/easydl/baseml4.png)
@@ -226,7 +226,7 @@ hostname,aliases,ipaddrs = gethostbyaddr(name)InicodeDecodeError: 'utf-8' codec 
 
 2.生成代码正常，但是进入训练时没有反应。
 
-EasyTrain的生成代码部分基于Flask开发，进入训练则需要XEdu环境，涵盖BaseML、BaseNN、MMEdu等。点击“进入训练”后会在主目录下生成一个“*code.py”的文件。如果训练时页面没有反应，请用Python IDE工具（如Thonny）打开并运行，再根据错误提示进行排查。
+EasyTrain的生成代码部分基于Flask开发，进入训练则需要XEdu环境，涵盖BaseML、BaseNN、MMEdu等。点击“进入训练”后会在主目录下生成对应的“***code.py”的文件。如果训练时页面没有反应，请用Python IDE工具（如Thonny）打开并运行，再根据错误提示进行排查。
 
 
 注意事项
