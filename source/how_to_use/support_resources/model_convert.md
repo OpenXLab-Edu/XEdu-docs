@@ -212,7 +212,7 @@ cv2.destroyAllWindows()
 
 - 根据行空板的具体指南选择合适的编程平台和上传方法。这可能涉及使用特定的软件工具、命令行工具或通过网络接口。
 
-- 如使用Mind+编程，下载Mind+支持行空板的版本（V1.7.2 RC3.0及以上版本）。[[Mind+官网下载\]](https://mindplus.cc/download.html)  。Mind+有XEduHub库的积木块，简单使用详见Mind+中的XEduHub积木块。
+- 如使用Mind+编程，下载Mind+支持行空板的版本（V1.7.2 RC3.0及以上版本）。[[Mind+官网下载\]](https://mindplus.cc/download.html)  。Mind+有XEduHub库的积木块，简单使用详见[Mind+中的XEduHub积木块](https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#mind-xeduhub)。
 
   模型该如何上传到行空板上？打开**文件系统**，将文件拖入**项目中的文件**即可，在点击**运行**的时候Mind+会将**项目中的文件**里面的所有文件一起上传到行空板的mindplus文件夹中运行。
 
