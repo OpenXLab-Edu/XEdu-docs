@@ -18,7 +18,7 @@ SIoT V2 新增了可视化面板，全新升级，性能提升，可以支持更
 
 可以使用使用pip命令安装siot库。
 
-```
+```python
 pip install siot
 ```
 
@@ -32,7 +32,7 @@ pip install siot
 
 
 
-```plain
+```python
 import siot
 import time
 
@@ -59,7 +59,7 @@ while True:
 
 
 
-```plain
+```python
 import siot
 import time
 
@@ -87,7 +87,7 @@ siot.loop()
 
 
 
-```plain
+```python
 import siot
 import time
 

@@ -24,7 +24,7 @@ MMEdu图像分类模块要求的数据集格式为ImageNet格式，包含三个�
 
 示例项目使用的LeNet网络比较适合一些简单图像的分类，不适合彩色图，因此我们现在训练猫狗分类模型可以换个网络，例如ResNet18、MobileNet。另外如果你的数据集图片比较多，又是全新训练的，一般都需要100多轮才会有较好的表现，你要有心理准备哦。如需启动GPU训练，在参数中加入`device='cuda'`即可，若无，则去掉【浦育平台可启动GPU服务器，可上传数据集到浦育平台进行模型训练】。
 
-```
+```python
 from MMEdu import MMClassification as cls
 model = cls(backbone='MobileNet')
 model.num_classes = 2 # 猫和狗共2类
@@ -37,7 +37,7 @@ model.train(epochs=10 ,lr=0.001,batch_size=4, validate=True,device='cuda')
 
 全新开始训练一个模型，一般要花较长时间。因此我们强烈建议在预训练模型的基础上继续训练，哪怕你要分类的数据集和预训练的数据集并不一样。
 
-```
+```python
 from MMEdu import MMClassification as cls
 model = cls(backbone='MobileNet')
 model.num_classes = 2
@@ -52,7 +52,7 @@ model.train(epochs=5, checkpoint='checkpoints/Pre-trained_mobilenet_v2.pth' ,bat
 
 可用一些新的图片进行测试。
 
-```
+```python
 img = '/data/6P6SGH/CatsDogs/test_set/cat/cat100.jpg'
 model = cls(backbone='MobileNet')
 checkpoint = 'checkpoints/cls_model/catsdogs/best_accuracy_top-1_epoch_8.pth'
@@ -68,7 +68,7 @@ model.print_result(result)
 
 模型转换所需要的文件：待转换的模型权重文件。本项目以猫狗分类为例，我们使用在猫狗分类模型训练过程中生成的最佳权重文件（已传入项目文件），您也可以上传您的图像分类模型。实例化模型时选择自己准备的模型权重文件在训练时选择的网络。我使用的是MobileNet，因此我指定MobileNet。
 
-```
+```python
 from MMEdu import MMClassification as cls
 model = cls(backbone='MobileNet')
 checkpoint = 'checkpoints/best_accuracy_top-1_epoch_5.pth'
@@ -78,7 +78,7 @@ model.convert(checkpoint=checkpoint, backend="ONNX", out_file=out_file)
 
 模型应用的基础代码：
 
-```
+```python
 from XEdu.hub import Workflow as wf
 mmcls = wf(task='mmedu',checkpoint='cats_dogs.onnx')# 指定使用的onnx模型
 result, result_img =  mmcls.inference(data='/data/6P6SGH/CatsDogs/test_set/cat/cat0.jpg',img_type='cv2')# 进行模型推理
@@ -111,7 +111,7 @@ XEdu中MMEdu的MMDetection模块支持的数据集类型是COCO，如需训练�
 
 ##### 2）建立模型并模型训练
 
-```
+```python
 # 导入库、实例化模型
 from MMEdu import MMDetection as det 
 model = det(backbone='SSD_Lite')
@@ -125,7 +125,7 @@ model.train(epochs=10 ,lr=0.001,batch_size=4, validate=True,device='cuda')
 
 全新开始训练一个模型，一般要花较长时间。因此我们强烈建议在预训练模型的基础上继续训练，哪怕你要分类的数据集和预训练的数据集并不一样。
 
-```
+```python
 model.num_classes = 2 # 猫和狗共2类
 model.load_dataset(path='/data/H47U12/cat_dog_det') 
 # 预训练模型权重路线
@@ -143,7 +143,7 @@ model.train(epochs=10, lr=0.001, validate=True, batch_size = 4, device='cuda', c
 
 可用一些新的图片进行测试。
 
-```
+```python
 img = "/data/H47U12/cat_dog_det/images/valid/001.jpg"
 checkpoint = "checkpoints/det_model/catdogs_pretrain/best_bbox_mAP_epoch_7.pth"
 # 推理，“show=True”表示弹出识别结果窗口
@@ -162,7 +162,7 @@ r=model.print_result(result)
 
 实例化模型时选择自己准备的模型权重文件在训练时选择的网络。我使用的是SSD_Lite，因此我指定SSD_Lite。
 
-```
+```python
 from MMEdu import MMDetection as det
 model = det(backbone='SSD_Lite')
 checkpoint = 'checkpoints/best_bbox_mAP_epoch_7.pth'
@@ -172,7 +172,7 @@ model.convert(checkpoint=checkpoint, backend="ONNX", out_file=out_file)
 
 模型应用的基础代码：
 
-```
+```python
 from XEdu.hub import Workflow as wf
 mmdet = wf(task='mmedu',checkpoint='cats_dogs_det.onnx')# 指定使用的onnx模型
 result, result_img =  mmdet.inference(data='/data/H47U12/cat_dog_det/images/valid/001.jpg',img_type='cv2')# 进行模型推理

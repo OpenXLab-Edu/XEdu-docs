@@ -2271,3 +2271,32 @@ XEduHub提供了大量优秀的任务模型，我们不仅可以通过`wf()`代�
 
 最后提醒一下，自己到网络下载或自己训练的模型需要是ONNX格式。ONNX是由微软、亚马逊 、Facebook 和 IBM 等公司共同开发的开放神经网络交换格式，即`Open Neural Network Exchange`，兼容性比较好。
 
+### Mind+中的XEduHub积木块
+
+使用Mind+V1.7.2及以上版本，在python模式用户库中加载此扩展。
+
+Gitee链接：[https://gitee.com/liliang9693/ext-xedu-hub](https://gitee.com/liliang9693/ext-xedu-hub)
+
+#### 使用说明
+
+##### 第一步：加载积木库
+
+- 如果联网情况下，打开Mind+用户库粘贴本仓库的链接即可加载：
+
+![](../images/xeduhub/mind1.png)
+
+- 如果电脑未联网，则可以下载本仓库的文件，然后打开Mind+用户库选择导入用户库，选择`.mpext`文件即可
+
+##### 第二步：安装python库
+
+打开库管理，输入xedu-python运行，提示successfully即可。
+
+注：WARNING是提醒，可以忽略；请及时更新xedu-python用户库，以获得更稳定、更强大的模型部署使用体验。
+
+![](../images/xeduhub/mind2.png)
+
+##### 第三步：开始编程！
+
+至此，即可拖动积木块开始快乐编程啦，pose_body任务的运行示例如下：
+
+![](../images/xeduhub/mind3.png)

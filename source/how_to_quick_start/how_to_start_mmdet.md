@@ -15,13 +15,13 @@ MMEdu是人工智能视觉算法集成的深度学习开发工具，目前目标
 
 #### 第0步 导入基础库（建议将库更新为最新版本再导入）
 
-```
+```python
 from MMEdu import MMDetection as det
 ```
 
 #### 第1步 实例化模型（选择SSD_Lite）
 
-```
+```python
 model = det(backbone='SSD_Lite')
 ```
 
@@ -29,7 +29,7 @@ model = det(backbone='SSD_Lite')
 
 AI模型训练需要配置的基本信息有三类，分别是：图片分类的类别数量（`model.num_classes`），模型保存的路径（`model.save_fold`）和数据集的路径（`model.load_dataset`）。
 
-```
+```python
 model.num_classes = 2 # 猫和狗共2类
 model.load_dataset(path='/data/H47U12/cat_dog_det') 
 model.save_fold = 'checkpoints/det_model/catdogs' 
@@ -37,7 +37,7 @@ model.save_fold = 'checkpoints/det_model/catdogs'
 
 #### 第3步 开始训练模型
 
-```
+```python
 model.train(epochs=10 ,lr=0.001,batch_size=4, validate=True)
 ```
 
@@ -47,7 +47,7 @@ model.train(epochs=10 ,lr=0.001,batch_size=4, validate=True)
 
 全新开始训练一个模型，一般要花较长时间。因此我们强烈建议在预训练模型的基础上继续训练，哪怕你要分类的数据集和预训练的数据集并不一样。
 
-```
+```python
 model.num_classes = 2 # 猫和狗共2类
 model.load_dataset(path='/data/H47U12/cat_dog_det') 
 # 预训练模型权重路线
@@ -71,13 +71,13 @@ from MMEdu import MMClassification as cls
 
 #### 第1步 实例化模型
 
-```
+```python
 model = cls(backbone='SSD_Lite')
 ```
 
 #### 第2步 指定模型权重文件的所在路径
 
-```
+```python
 checkpoint = 'checkpoints/det_model/best_bbox_mAP_epoch_7.pth' # 指定权重文件路径
 ```
 
@@ -85,13 +85,13 @@ checkpoint = 'checkpoints/det_model/best_bbox_mAP_epoch_7.pth' # 指定权重文
 
 #### 第3步 指定图片
 
-```
+```python
 img_path = 'picture/2.png' # 指定图片路径
 ```
 
 #### 第4步 开始推理
 
-```
+```python
 result = model.inference(image=img, show=True, checkpoint = checkpoint,device='cuda') # 模型推理
 model.print_result(result) # 结果转换为中文输出
 ```
@@ -102,7 +102,7 @@ model.print_result(result) # 结果转换为中文输出
 
 同样的，可以在模型应用前先完成模型转换，目标检测模型转换的代码风格和图像分类类似。
 
-```
+```python
 from MMEdu import MMDetection as det
 model = det(backbone='SSD_Lite')
 checkpoint = 'checkpoints/best_bbox_mAP_epoch_7.pth'
@@ -112,7 +112,7 @@ model.convert(checkpoint=checkpoint, backend="ONNX", out_file=out_file)
 
 模型应用的基础代码：
 
-```
+```python
 from XEdu.hub import Workflow as wf
 mmdet = wf(task='mmedu',checkpoint='cats_dogs_det.onnx')# 指定使用的onnx模型
 result, result_img =  mmdet.inference(data='/data/H47U12/cat_dog_det/images/valid/001.jpg',img_type='cv2')# 进行模型推理
@@ -123,7 +123,7 @@ mmdet.save(result_img,'new.jpg')# 保存推理结果图片
 
 此时您可以挑选自己熟悉的硬件，去做自己训练并完成转换的模型部署啦，只需要下载转换的ONNX模型，在硬件上安装库即可。最简单的方式是借助摄像头，再使用OpenCV这个轻松完成图像和视频处理的工具库，实现猫狗实时检测。
 
-```
+```python
 from XEdu.hub import Workflow as wf
 import cv2
 cap = cv2.VideoCapture(0)

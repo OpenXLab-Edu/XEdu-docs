@@ -14,7 +14,7 @@ FastAPI 是一种现代、快速（高性能）的 Web 框架，用于基于标�
 
 可以使用使用pip命令安装FastAPI库。
 
-```
+```python
 pip install FastAPI
 ```
 

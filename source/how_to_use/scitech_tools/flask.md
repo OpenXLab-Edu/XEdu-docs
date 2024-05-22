@@ -12,7 +12,7 @@ Flask是一个轻量级的可定制框架，使用Python语言编写，较其他
 
 可以使用使用pip命令安装Flask库。
 
-```
+```python
 pip install flask
 ```
 

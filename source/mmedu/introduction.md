@@ -287,7 +287,7 @@ model.train(epochs=10, validate=True, checkpoint=checkpoint)
 
 进入Python终端，然后依次输入如下代码即可查看Python库所在的目录（site-packages）。
 
-```
+```python
 import MMEdu
 print(MMEdu.__path__)
 ```
@@ -306,7 +306,7 @@ pth_info(checkpoint) # 指定为pth权重文件路径
 
 如需返回日志信息，可在训练时使用如下代码：
 
-```
+```python
 log = model.train(xxx)
 print(log)
 ```

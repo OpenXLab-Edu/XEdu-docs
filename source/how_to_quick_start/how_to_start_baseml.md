@@ -37,35 +37,35 @@ BaseML库提供了众多机器学习训练方法，如线性回归、KNN、SVM�
 
 #### 第0步 引入包（建议将库更新为最新版本再导入）
 
-```
+```python
 # 导入库文件，选择回归模块
 from BaseML import Regression as reg
 ```
 
 #### 第1步 实例化模型
 
-```
+```python
 # 构建线性回归模型
 model = reg(algorithm = 'LinearRegression')
 ```
 
 #### 第2步 载入数据
 
-```
+```python
 # 指定数据集
 model.load_tab_data('data/投石角度与距离.csv')
 ```
 
 #### 第3步 模型训练
 
-```
+```python
 # 模型训练
 model.train()
 ```
 
 #### 第4步 模型评估
 
-```
+```python
 # 模型评估
 model.valid('data/投石角度与距离评估.csv', metrics='r2') 
 
@@ -75,7 +75,7 @@ model.metricplot()
 
 #### 第5步 模型保存
 
-```
+```python
 # 模型保存
 model.save('checkpoints/baseml_model/lr_catapult.pkl')
 ```
@@ -91,7 +91,7 @@ model.save('checkpoints/baseml_model/lr_catapult.pkl')
 
 #### ①线性回归
 
-```
+```python
 # 导入库文件，选择回归模块
 from BaseML import Regression as reg
 # 构建线性回归模型
@@ -107,7 +107,7 @@ model.metricplot() # 可视化验证效果
 
 #### ②多项式回归
 
-```
+```python
 # 导入库文件，选择回归模块
 from BaseML import Regression as reg
 # 构建线性回归模型
@@ -123,7 +123,7 @@ model.metricplot() # 可视化验证效果
 
 #### ③支持向量机
 
-```
+```python
 # 导入库文件，选择回归模块
 from BaseML import Regression as reg
 # 构建线性回归模型
@@ -139,7 +139,7 @@ model.metricplot() # 可视化验证效果
 
 #### ④自适应增强算法
 
-```
+```python
 # 导入库文件，选择回归模块
 from BaseML import Regression as reg
 # 构建线性回归模型
@@ -163,7 +163,7 @@ model.metricplot() # 可视化验证效果
 
 借助通用推理库XEduHub也可以完成BaseML模型的推理，示例代码如下。
 
-```
+```python
 from XEdu.hub import Workflow as wf
 baseml = wf(task='baseml',checkpoint='checkpoints/baseml_model/lr_catapult.pkl')# 指定使用的pkl模型
 data = [[34]] # 根据训练模型时使用的数据来定

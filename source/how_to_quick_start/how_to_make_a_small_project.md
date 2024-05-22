@@ -34,7 +34,7 @@ XEduHub提供了能够快速识别人手关键点的模型：pose_hand21，该�
 
 假设已经检测出了一组手部关键点，可以通过坐标点信息制定规则来区分不同的手势。例如我们写了一个计算伸展手指数量的函数，并设计判断规则通过伸展手指数量区分不同的手势。然而通过下方的代码不难看出这种方式比较麻烦，需对手指进行细致分析，同时结果可能不准确。
 
-```
+```python
 import numpy as np
 
 # 计算两点之间的欧氏距离
@@ -90,7 +90,7 @@ print(hand_gesture)
 
 还有一种简单的应用，可以实现实时人手关键点检测，只需连接摄像头，调用OpenCV库，对每一帧图像进行关键点检测，并将关键点检测的结果可视化就可以实现实时人手关键点检测。
 
-```
+```python
 from XEdu.hub import Workflow as wf # 导入库
 import cv2
 cap = cv2.VideoCapture(0)
@@ -119,7 +119,7 @@ cv2.destroyAllWindows()
 
 首先我们可以批量提取出所有手势图像的手势关键点数据，做一个CSV格式的关键点数据集，每行代表一张图片提出的手部关键点坐标和这张图的类别。用如下代码可以做到随拍随提取关键点，并生成关键点数据集（注意需提前安装库），可修改total值设置采集的数据条数。
 
-```
+```python
 import csv
 from XEdu.hub import Workflow as wf
 import cv2
@@ -198,7 +198,7 @@ print('saved to '+'hand_'+str(class_name)+'.csv')
 
 经过多次收集，可以形成多类数据，用下面这段代码进行数据合并。
 
-```
+```python
 import pandas as pd
 
 classes=pd.read_csv('classes.txt',header=None)
@@ -217,7 +217,7 @@ dataset.to_csv('hand_total.csv',index=False)
 
 在准备训练前，我们建议先完成数据集划分，即将数据集拆分为训练集和验证集，训练集用于训练模型，验证集用于评估模型的性能。此步骤可以手动完成，也可以用代码完成，可[借助XEdu的数据处理库BaseDT](https://xedu.readthedocs.io/zh/master/basedt/introduction.html#id11)，指定csv文件路径以及划分比例，将特征数据集划分为训练集和验证集，并将训练集和验证集的特征和标签均提取出来。
 
-```
+```python
 from BaseDT.dataset import split_tab_dataset
 # 指定待拆分的csv数据集
 path = "data/workflow_pose.csv"
@@ -227,7 +227,7 @@ tx,ty,val_x,val_y = split_tab_dataset(path,data_column=range(1,43),label_column=
 
 #### 第2步 用BaseNN搭建全连接神经网络训练模型
 
-```
+```python
 # 导入BaseNN库
 from BaseNN import nn
 # 声明模型
@@ -254,7 +254,7 @@ model.train(lr=learn_rate, epochs=max_epoch,metrics=metrics)
 
 使用第1步拆分出的验证集数据评估模型的性能。
 
-```
+```python
 import numpy as np
 # 计算验证集准确率
 def cal_accuracy(y, pred_y):
@@ -281,7 +281,7 @@ print('验证集准确率: {:.2f}%'.format(100.0 * acc))
 
 用某组数据进行推理预测。
 
-```
+```python
 model = nn('cls') # 声明模型
 checkpoint = 'checkpoints/BaseNN/basenn.pth' # 现有模型路径
 data = [[ 89.14984302, 114.5882458 ,  62.63654601, 104.86670357,
@@ -303,7 +303,7 @@ model.print_result(result) # 输出推理结果
 
 为了方便模型应用先可借助BaseNN完成模型转换，转换为ONNX格式后更方便模型使用。
 
-```
+```python
 from BaseNN import nn
 model = nn('cls')
 checkpoint = 'checkpoints/BaseNN3/basenn.pth' # 指定待转换的模型权重文件
@@ -317,7 +317,7 @@ model.convert(checkpoint=checkpoint, out_file='checkpoints/basenn.onnx')
 
 模型推理时，需要保持推理的数据与训练的数据格式一致，所以新的图片也需完成人手关键点检测，并且做维度处理。如下代码实现了上述功能
 
-```
+```python
 from XEdu.hub import Workflow as wf
 import numpy as np
 
@@ -341,7 +341,7 @@ res = bn.format_output(lang='zh')
 
 了解了单张图片推理的实现逻辑，我们可以应用一下这个模型，比如我们把onnx模型下载到本地，连接一个摄像头，再借助OpenCV库完成一个实时手势分类的应用，参考代码如下。
 
-```
+```python
 from XEdu.hub import Workflow as wf
 import cv2
 import numpy as np

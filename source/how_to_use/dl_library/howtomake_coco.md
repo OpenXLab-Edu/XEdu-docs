@@ -75,7 +75,7 @@ ds.make_dataset(r"/data/HZQV42", src_format="INNOLAB",train_ratio = 0.8, test_ra
 
 将LabelMe格式的标注文件转换成COCO标注格式，可以使用如下代码：
 
-```plain
+```python
 import json
 import numpy as np
 import glob
@@ -240,7 +240,7 @@ classes.txt
 
 使用BaseDT库将平台标注格式的数据集转换成COCO格式，可以使用如下代码。如需了解更多BaseDT库数据集处理的功能，详见<a href="https://xedu.readthedocs.io/zh/master/basedt/introduction.html#id7">BaseDT的数据集格式转换</a>。
 
-```plain
+```python
 from BaseDT.dataset import DataSet
 ds = DataSet(r"my_dataset") # 指定为新数据集路径
 ds.make_dataset(r"G:\\测试数据集\\fruit_voc", src_format="VOC",train_ratio = 0.8, test_ratio = 0.1, val_ratio = 0.1) # 指定待转格式的原始数据集路径，原始数据集格式，划分比例，默认比例为train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2

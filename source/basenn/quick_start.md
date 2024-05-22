@@ -72,7 +72,7 @@ model.train(lr=0.01, epochs=1000)
 
 也可以使用继续训练：
 
-```
+```python
 checkpoint = 'checkpoints/basenn.pth'
 model.train(lr=0.01, epochs=1000, checkpoint=checkpoint)
 ```
@@ -85,7 +85,7 @@ model.train(lr=0.01, epochs=1000, checkpoint=checkpoint)
 
 读取数据。
 
-```
+```python
 # 用测试数据查看模型效果
 model2 = nn('cls')
 test_path = 'data/iris_test.csv'
@@ -149,7 +149,7 @@ Boston Housing Dataset（波士顿房价数据集）是一个著名的数据集�
 
 ### 第0步 引入包
 
-```
+```python
 # 导入库
 from BaseNN import nn
 ```
@@ -163,7 +163,7 @@ model = nn('reg')
 
 ### 第2步 载入数据
 
-```
+```python
 model.load_tab_data('house_price_data_norm_train.csv',batch_size=1024) # 载入数据
 ```
 
@@ -173,7 +173,7 @@ model.load_tab_data('house_price_data_norm_train.csv',batch_size=1024) # 载入�
 
 逐层添加，此处我们搭建的是一个输入维度为4，输出维度为1，隐藏层数量为2的全连接神经网络。输入维度4与数据集的特征维度对应，在任务中，由于我们只预测一个目标值房价，则输出维度设定为 1。
 
-```
+```python
 model.add('Linear', size=(4, 64),activation='ReLU')  
 model.add('Linear', size=(64, 4), activation='ReLU') 
 model.add('Linear', size=(4, 1))
@@ -182,7 +182,7 @@ model.add(optimizer='Adam')
 
 ### 第4步 模型训练
 
-```
+```python
 # 设置模型保存的路径
 model.save_fold = 'checkpoints/ckpt'
 model.train(lr=0.008, epochs=5000,loss='MSELoss') # 训练
@@ -194,7 +194,7 @@ model.train(lr=0.008, epochs=5000,loss='MSELoss') # 训练
 
 读取数据。
 
-```
+```python
 import numpy as np
 # 读取验证集
 val_path = 'house_price_data_norm_val.csv'
@@ -204,7 +204,7 @@ val_y = np.loadtxt(val_path, dtype=float, delimiter=',',skiprows=1,usecols=4) # 
 
 对验证集完成模型推理。
 
-```
+```python
 # 导入库
 from BaseNN import nn
 # 声明模型
@@ -214,7 +214,7 @@ y_pred = model.inference(val_x,checkpoint = 'checkpoints/ckpt2/basenn.pth')  # �
 
 绘制曲线图。
 
-```
+```python
 # 绘制真实数据和预测比较曲线
 import matplotlib.pyplot as plt
 plt.plot(val_y, label='val')
@@ -231,7 +231,7 @@ plt.show()
 
 最后，可将模型应用于推理新数据。输入一组新的数据进行模型推理，需先完成数据处理，涉及的数据处理的代码会较长，此处是为了应用之前在训练集 (x) 上通过 fit_transform 方法学习到的scaler来转换 val_x。这确保了数据的一致性，因为对于模型来说，重要的是以相同的方式缩放训练数据和验证/测试数据。
 
-```
+```python
 # 导入库
 from BaseNN import nn
 # 声明模型
@@ -307,7 +307,7 @@ model.train(lr=0.005, epochs=1,batch_size=16, checkpoint=checkpoint)
 
 可以输入一个字输出下一个字。
 
-```
+```python
 input = '长'
 checkpoint = 'model.pth'
 result = model.inference(data=input,checkpoint=checkpoint) # output是多维向量，接下来转化为汉字

@@ -249,7 +249,7 @@ imshow_det_bboxes(img, bboxes = [[3,25,170,263,0.9]],labels = [0], class_names =
 
 `BaseDT`中的`plot`模块提供`plot_log`函数，支持对训练日志中的损失函数进行绘制。
 
-```
+```python
 log_path = 'path/to/my_log.json'
 
 from BaseDT.plot import plot_log

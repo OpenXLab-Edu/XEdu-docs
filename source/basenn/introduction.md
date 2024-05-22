@@ -597,7 +597,7 @@ model.print_result(res)
 
 常规方法：先读取文件的特征列。
 
-```
+```python
 import numpy as np
 model = nn('cls')
 test_path = 'data/iris_test.csv'
@@ -745,7 +745,7 @@ model.train(...,metrics="acc")
 
 一般可以自定义一个分类正确率计算函数来评估模型效果，主要可以通过计算验证集上的分类准确率完成。
 
-```
+```python
 # 定义一个计算分类正确率的函数
 def cal_accuracy(y, pred_y):
     res = pred_y.argmax(axis=1)
@@ -781,6 +781,7 @@ ckpt = torch.load('iris_ckpt/basenn.pth')
 state_dict = ckpt['state_dict'].state_dict()
 ```
 1）查看模型里面有哪些层，及各个层的名称
+
 ```python
 for i in state_dict:
     print('这一层的名字是:',i)

@@ -43,7 +43,7 @@ classes.txt
 
 使用BaseDT库完成数据集制作。如需了解更多BaseDT库数据集处理的功能，详见[BaseDT的数据集格式转换](https://xedu.readthedocs.io/zh/master/basedt/introduction.html#id7)部分。
 
-```
+```python
 from BaseDT.dataset import DataSet
 ds = DataSet(r"my_dataset_catdog2") # 指定为生成数据集的路径
 # 默认比例为train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2
@@ -64,7 +64,7 @@ ds.make_dataset(r"catdog2", src_format="IMAGENET",train_ratio = 0.8, test_ratio 
 
 接下来可能需要对图片进行尺寸、保存格式等的统一，简单情况下的参考代码如下（指定准备大文件夹路径）：
 
-```plain
+```python
 from PIL import Image
 from torchvision import transforms
 import os
@@ -95,7 +95,7 @@ for cnt in range(len(classes)):
 
 根据整理的数据集大小，按照一定比例拆分训练集、验证集和测试集，可手动也可以使用如下代码将原始数据集按照“6:2:2”的比例拆分。
 
-```plain
+```python
 import os
 import shutil
 # 列出指定目录下的所有文件名，确定分类信息
@@ -149,7 +149,7 @@ for cnt in range(len(classes)):
 
 可以手动完成，这里也为您提供一段用Python代码完成标签文件的程序如下所示，程序中设计了“val.txt”和“test.txt”这两个标签文件每行会包含类别名称、文件名和真实标签。
 
-```plain
+```python
 # 在windows测试通过
 import os
 # 列出指定目录下的所有文件名，确定类别名称
@@ -185,7 +185,7 @@ with open('./my_dataset/val.txt', 'w') as f:
 
 如果您使用的是Mac系统，可以使用下面的代码。
 
-```plain
+```python
 # 本文件可以放在数据集的根目录下运行
 import os
 # 如果不是在数据集根目录下，可以指定路径

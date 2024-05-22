@@ -3,7 +3,7 @@
 EasyTrain简介
 -------------
 
-EasyTrain是无代码的MMEdu模型、BaseNN模型训练辅助工具。借助EasyTrain，不需要编写一行代码，即可训练出AI模型。
+EasyTrain是无代码的MMEdu模型、BaseML模型、BaseNN模型训练辅助工具。借助EasyTrain，不需要编写一行代码，即可训练出AI模型。
 
 ![](../images/easydl/train0.jpg)
 
@@ -89,16 +89,62 @@ EasyTrain界面打开之后在下拉框中选择训练任务为分类或者检�
 
 如需尝试用代码完成MMEdu模型训练或了解MMEdu具体功能，请参照[MMEdu的教程](https://xedu.readthedocs.io/zh/master/mmedu.html)。
 
+用EasyTrain训练第一个BaseML模型！
+-----------------------------
+
+### step 1：任务选择
+
+EasyTrain界面打开之后在下拉框中选择训练任务为回归任务、分类任务或者聚类任务。
+
+![](../images/easydl/baseml0.png)
+
+### step 2：模型选择
+
+在选择了训练任务类型之后，点击“下一步”，进入模型选择页面，选择训练的模型。训练模型会根据任务对应更改。可点击“了解更多”按钮了解模型，对应[机器学习典型算法](https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id6)。
+
+![](../images/easydl/baseml2.png)
+
+### step 1：数据集选择
+
+EasyTrain界面打开之后，选择BaseML页面，在下拉框中指定训练的数据集，网页会读取XEdu/dataset/baseml之下数据集。一键安装包中已自带一些数据集，也可以自己放入新的数据集。
+
+数据集的格式要求为：[csv文件](https://xedu.readthedocs.io/zh/master/baseml/introduction.html#csv)(BaseML任务)。纵轴为样本，横轴为特征，第一行为表头，最后一列为标签。
+
+![](../images/easydl/train13.png)
+
+### step 3：参数设置
+
+点击“设置基本参数↓”，可以设置数据乱序随机种子、高级参数设置、数据验证策略（一般回归任务选择"r2"，分类任务选择"acc"）。
+
+![](../images/easydl/baseml3.png)
+
+在完成参数设置后，点击右侧的"生成代码"，可以生成训练代码，生成代码之后才可以训练。
+生成的代码会显示在上方的代码框，点击右上角复制按钮还可以一键复制代码。
+
+![](../images/easydl/baseml4.png)
+
+### step 4：开始训练
+
+代码生成之后点击"进入训练"按钮即可跳转至训练页面，点击“开始训练”按钮即可一键开始训练模型，一般训练很快就可以完成。
+
+![](../images/easydl/baseml5.png)
+
+训练的模型文件将保存在XEdu/my_checkpoints中。每次训练都会生成一个文件夹，可以通过文件夹名称上的日期时间找到对应的模型。
+
+![](../images/easydl/baseml6.png)
+
+如需尝试用代码完成BaseML模型训练或了解BaseML具体功能，请参照[BaseML](https://xedu.readthedocs.io/zh/master/baseml.html)的教程。
+
 用EasyTrain训练第一个BaseNN模型！
 -----------------------------
 
 ### step 1：数据集选择
 
-EasyTrain界面打开之后，选择BaseNN页面，在下拉框中指定训练的数据集，网页会读取XEdu/dataset/basenn之下数据集。一键安装包中自带数据集：iris/iris_test.csv，iris/iris_training.csv。
+EasyTrain界面打开之后，选择BaseNN页面，在下拉框中指定训练的数据集，网页会读取XEdu/dataset/basenn之下数据集。一键安装包中已自带一些数据集，也可以自己放入新的数据集。
 
-数据集的格式要求为：[csv文件](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id21)(BaseNN任务)。纵轴为样本，横轴为特征，第一行为表头，最后一列为标签。
+数据集的格式要求为：[csv文件](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id9)(BaseNN任务)。纵轴为样本，横轴为特征，第一行为表头，最后一列为标签。
 
-![](../images/easydl/train13.png)
+![](../images/easydl/train3.png)
 
 ### step 2：模型搭建
 

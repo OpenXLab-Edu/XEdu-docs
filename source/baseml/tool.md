@@ -129,7 +129,7 @@ class ImageLoader(object):
 
 使用此模块，可在BaseML载入数据前，对图片进行快速批量处理后再载入，且能够完成单张图片的HOG特征提取（还可以更换为其他特征），示例代码如下。
 
-```
+```python
 # 导入BaseML的图像处理模块
 from BaseML import IMGLoader
 

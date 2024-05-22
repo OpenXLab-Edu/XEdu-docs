@@ -59,7 +59,7 @@ model.train(lr=0.01, epochs=1000)
 
 也可以使用继续训练：
 
-```
+```python
 checkpoint = 'checkpoints/basenn.pth'
 model.train(lr=0.01, epochs=1000, checkpoint=checkpoint)
 ```
@@ -112,7 +112,7 @@ model.print_result(res) # 输出字典格式结果
 
 如果想要快速部署模型，可进行模型转换。BaseNN模型转换的代码如下：
 
-```
+```python
 from BaseNN import nn
 model = nn('cls')
 model.convert(checkpoint="checkpoints/iris_ckpt/basenn.pth",out_file="basenn_cd.onnx")
@@ -120,7 +120,7 @@ model.convert(checkpoint="checkpoints/iris_ckpt/basenn.pth",out_file="basenn_cd.
 
 借助生成的示例代码，简单修改（如下所示），即可在本地或者硬件上运行（提前[安装XEduHub库](https://xedu.readthedocs.io/zh/master/xedu_hub/quick_start.html#id3)），甚至可以借助一些开源工具库做一个网页应用。
 
-```
+```python
 from XEdu.hub import Workflow as wf
 
 # 模型声明
@@ -135,7 +135,7 @@ result = basenn.format_output(lang="zh")
 
 还可以借助一些开源工具库（如[PyWebIO](https://xedu.readthedocs.io/zh/master/how_to_use/scitech_tools/pywebio.html#webpywebio)）编写一个人工智能应用，如下代码可实现手动输入观察到的鸢尾花特征，输出花种判断。
 
-```
+```python
 from pywebio.input import *
 from pywebio.output import *
 from XEdu.hub import Workflow as wf

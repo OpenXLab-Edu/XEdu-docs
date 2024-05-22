@@ -24,35 +24,35 @@ BaseML库提供了众多机器学习训练方法，可以快速训练和应用�
 
 ### 0. 引入包
 
-```
+```python
 # 导入库，从BaseML导入分类模块
 from BaseML import Classification as cls
 ```
 
 ### 1. 实例化模型
 
-```
+```python
 # 实例化模型
 model = cls('KNN')
 ```
 
 ### 2. 载入数据
 
-```
+```python
 # 指定数据集
 model.load_tab_data('datasets/iris_training.csv')
 ```
 
 ### 3. 模型训练
 
-```
+```python
 # 模型训练
 model.train()
 ```
 
 ### 4. 模型评估
 
-```
+```python
 # 模型评估
 model.valid('datasets/iris_test.csv',metrics='acc')
 
@@ -62,7 +62,7 @@ model.metricplot()
 
 ### 5. 模型保存
 
-```
+```python
 # 模型保存
 model.save('checkpoints/baseml_model/knn_iris.pkl')
 ```
@@ -75,7 +75,7 @@ model.save('checkpoints/baseml_model/knn_iris.pkl')
 
 对一组数据直接推理。
 
-```
+```python
 model = cls('KNN')
 model.load('checkpoints/baseml_model/knn_iris.pkl')
 y=model.inference([[5.9, 3.0, 4.2, 1.5]])
@@ -85,7 +85,7 @@ y=model.inference([[5.9, 3.0, 4.2, 1.5]])
 
 可以在此基础上完成一个建议系统，输入鸢尾花的花萼长度、花萼宽度、花瓣长度、花瓣宽度，输出该鸢尾花所属的类别。
 
-```
+```python
 from BaseML import Classification as cls
 model = cls('KNN')
 model.load('checkpoints/baseml_model/knn_iris.pkl')

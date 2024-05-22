@@ -14,7 +14,7 @@ XEdu一键安装包中预置了MMEdu的图像分类模块的示例代码（路�
 
 #### 0. 导入模块
 
-```
+```python
 # 用别名让代码变得简洁
 from MMEdu import MMClassification as mmeducls
 
@@ -245,7 +245,7 @@ img = 'testrock01-02.png' # 指定推理图片的路径，直接在代码所在�
 
 针对部分用户希望加快推理速度的需求，设计了`fast_inference`函数，主要方法是使用`load_checkpoint`提前加载权重文件。
 
-```
+```python
 model.load_checkpoint(checkpoint=checkpoint)
 result = model.fast_inference(image=img)
 ```
@@ -357,7 +357,7 @@ LeNet是一种简单的深度卷积神经网络，他的特色就是参数量少
     print(MMEdu.__path__)
     ```
 2. 覆盖原来的库文件
-   ```bash
+   ```python
     !cp ./Classification_Edu.py /usr/local/python3.8/site-packages/MMEdu/Classification/Classification_Edu.py
    ```
 3. 重新导入库（重启内核）

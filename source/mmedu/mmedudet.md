@@ -35,7 +35,7 @@ XEdu一键安装包中预置了MMEdu的det模块的示例代码（路径：/demo
 
 #### 0. 导入模块
 
-```
+```python
 # 用别名让代码变得简洁
 from MMEdu import MMDetection as mmedudet
 
@@ -252,7 +252,7 @@ model.inference(image=img, show=True, checkpoint = checkpoint) # 在CPU上进行
 
 针对部分用户希望加快推理速度的需求，设计了`fast_inference`函数，主要方法是使用`load_checkpoint`提前加载权重文件。
 
-```
+```python
 model.load_checkpoint(checkpoint=checkpoint)
 result = model.fast_inference(image=img)
 ```
