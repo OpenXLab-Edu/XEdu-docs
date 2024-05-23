@@ -65,10 +65,14 @@ det_coco = wf(task='det_coco')
 
 #### 2. 模型推理
 
+推理方式1：
 ```python
-result,img_with_box = det_coco.inference(data='data/det_coco.jpg',img_type='pil') # 进行模型推理
+result = det_coco.inference(data='data/det_coco.jpg')
 ```
-
+推理方式2：
+```python
+result,img_with_box = det_coco.inference(data='data/det_coco.jpg',img_type='pil')
+```
 
 模型推理`inference()`可传入参数：
 
@@ -90,7 +94,6 @@ wf.coco_class()
 ```
 
 模型推理返回结果：
-
 
 - `result`：以二维数组的形式保存了检测框左上角顶点的坐标(x1,y1)和右下角顶点的坐标(x2,y2)（之所以是二维数组，是因为该模型能够检测多个对象，因此当检测到多个对象时，就会有多个[x1,y1,x2,y2]的一维数组，所以需要以二维数组形式保存），我们可以利用这四个数据计算出其他两个顶点的坐标，以及检测框的宽度和高度。
 
@@ -232,7 +235,11 @@ det_body = wf(task='det_body')
 任务模型文件获取与存放请查看[下文](https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id130)。
 
 #### 2. 模型推理
-
+推理方式1：
+```python
+result = det_body.inference(data='data/det_body.jpg') # 进行模型推理
+```
+推理方式2：
 ```python
 result,img_with_box = det_body.inference(data='data/det_body.jpg',img_type='pil') # 进行模型推理
 ```
@@ -324,6 +331,12 @@ det_face = wf(task='det_face')
 任务模型文件获取与存放请查看[下文](https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id130)。
 
 #### 2. 模型推理
+推理方式1：
+```python
+result = det_face.inference(data='data/det_face.jpg') # 进行模型推理
+```
+
+推理方式2：
 
 ```python
 result,img_with_box = det_face.inference(data='data/det_face.jpg',img_type='pil') # 进行模型推理
@@ -425,6 +438,11 @@ det_hand = wf(task='det_hand')
 
 #### 2. 模型推理
 
+推理方式1：
+```python
+result = det_hand.inference(data='data/det_hand.jpg') # 进行模型推理
+```
+推理方式2：
 ```python
 result,img_with_box = det_hand.inference(data='data/det_hand.jpg',img_type='pil') # 进行模型推理
 ```
@@ -542,6 +560,12 @@ body = wf(task='pose_body') # 数字可省略，当省略时，默认为pose_bod
 任务模型文件获取与存放请查看[下文](https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id130)。
 
 #### 2. 模型推理
+推理方式1：
+```python
+keypoints = body.inference(data='data/body.jpg') # 进行模型推理
+```
+
+推理方式2：
 
 ```python
 keypoints,img_with_keypoints = body.inference(data='data/body.jpg',img_type='pil') # 进行模型推理
@@ -676,7 +700,11 @@ face = wf(task='pose_face') # 数字可省略，默认为face106
 
 任务模型文件获取与存放请查看[下文](https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id130)。
 #### 2. 模型推理
-
+推理方式1：
+```python
+keypoints = face.inference(data='data/face.jpg') # 进行模型推理
+```
+推理方式2：
 ```python
 keypoints,img_with_keypoints = face.inference(data='data/face.jpg',img_type='pil') # 进行模型推理
 ```
@@ -772,6 +800,11 @@ hand = wf(task='pose_hand') # 数字可省略，当省略时，默认为pose_han
 
 #### 2. 模型推理
 
+推理方式1：
+```python
+keypoints = hand.inference(data='data/hand.jpg') # 进行模型推理
+```
+推理方式2：
 ```python
 keypoints,img_with_keypoints = hand.inference(data='data/hand.jpg',img_type='pil') # 进行模型推理
 ```
@@ -862,7 +895,8 @@ wholebody = wf(task='pose_wholebody') # 数字可省略，当省略时，默认�
 #### 2. 模型推理
 
 ```python
-keypoints,img_with_keypoints = wholebody.inference(data='data/wholebody.jpg',img_type='pil') # 进行模型推理
+# keypoints = wholebody.inference(data='data/wholebody.jpg') # 模型推理方式1
+keypoints,img_with_keypoints = wholebody.inference(data='data/wholebody.jpg',img_type='pil') # 模型推理方式2
 ```
 
 模型推理`inference()`可传入参数：
@@ -952,7 +986,8 @@ ocr = wf(task='ocr')
 #### 2. 模型推理
 
 ```python
-result,ocr_img = ocr.inference(data='data/ocr_img.png',img_type='cv2') # 进行模型推理
+result = ocr.inference(data='data/ocr_img.png') # 模型推理方式1
+result,ocr_img = ocr.inference(data='data/ocr_img.png',img_type='cv2') # 模型推理方式2
 ```
 
 模型推理`inference()`可传入参数：
@@ -1169,7 +1204,8 @@ cls = wf(task="cls_imagenet") # 模型声明
 #### 2. 模型推理
 
 ```python
-result,cls_img = cls.inference(data='data/cat101.jpg') # 进行模型推理
+result = cls.inference(data='data/cat101.jpg') # 模型推理方式1
+result,cls_img = cls.inference(data='data/cat101.jpg', img_type='pil') # 进行模型推理方式2
 ```
 
 模型推理`inference()`可传入参数：
