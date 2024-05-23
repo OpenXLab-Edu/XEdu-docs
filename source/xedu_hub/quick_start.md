@@ -143,9 +143,22 @@ XEduHub实例代码合集：[https://www.openinnolab.org.cn/pjlab/project?id=655
 
 ## 用XEduHub玩第一个AI项目！
 
+这里给出一段最简单的XEduHub示例代码，你运行完这段代码就一定会对XEduHub感到惊叹！
+
+```python
+from XEdu.hub import Workflow as wf
+print(wf.support_task())
+body = wf(task='pose_body17') # 实例化pose模型
+img = 'body.jpg' # 指定进行推理的图片路径
+result,new_img = body.inference(data=img,img_type='cv2',show=True) # 进行推理
+print(result)
+body.show(new_img)
+```
+下面对每行代码做一个拆分讲解
+
 第一步：导入XEduHub库
 
-```
+```python
 from XEdu.hub import Workflow as wf
 ```
 
@@ -153,14 +166,14 @@ from XEdu.hub import Workflow as wf
 
 你可以查看里面所有的AI模型。看看哪一个是你想要的，然后选择它！可使用如下代码查看目前支持的任务：
 
-```
+```python
 # 查看目前支持的任务
 wf.support_task()
 ```
 
 现在以提取人体关键点任务为例。此时我们可以选择它！
 
-```
+```python
 body = wf(task='pose_body17') # 实例化pose模型
 ```
 
@@ -168,9 +181,28 @@ body = wf(task='pose_body17') # 实例化pose模型
 
 有了模型，你就可以使用它来完成你的任务啦！继续上面的例子，可以用图片识别模型来完成推理：
 
-```
+```python
 img = 'body.jpg' # 指定进行推理的图片路径
 result,new_img = body.inference(data=img,img_type='cv2',show=True) # 进行推理
+print(result)
+#[[ 596.31597222  163.53819444]
+# [ 624.65798611  140.86458333]
+# [ 576.4765625   149.3671875 ]
+# [ 658.66840278  166.37239583]
+# [ 553.80295139  177.70920139]
+# [ 735.19184028  288.24305556]
+# [ 511.28993056  322.25347222]
+# [ 871.23350694  387.44010417]
+# [ 406.42447917  407.27951389]
+# [ 789.04166667  347.76128472]
+# [ 369.57986111  381.77170139]
+# [ 735.19184028  642.51822917]
+# [ 590.64756944  656.68923611]
+# [ 831.5546875   832.40972222]
+# [ 516.95833333  855.08333333]
+# [ 825.88628472 1013.79861111]
+# [ 488.61631944 1039.30642361]]
+body.show(new_img)
 ```
 
 ![](../images/xeduhub/body.png)
