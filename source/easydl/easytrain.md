@@ -211,9 +211,12 @@ EasyTrain界面打开之后，选择BaseNN页面，在下拉框中指定训练�
 常见错误排查
 -------------
 
-1.Flask运行错误
+### 1.打开网页显示错误（404）
 
-EasyTrain基于Flask开发。如果在运行时出现这样的错误：
+问题描述：运行"easytrain.bat"打开网页显示错误（404）
+
+
+解决：EasyTrain基于Flask开发。如果在运行时出现这样的错误：
 
 ``` {.powershell}
 
@@ -221,12 +224,16 @@ hostname,aliases,ipaddrs = gethostbyaddr(name)InicodeDecodeError: 'utf-8' codec 
 
 ```
 
-请检查电脑名称是否为中文，修改为英文即可。
+请检查电脑名称和用户名是否为中文，修改为英文后重新启动即可。
 
 
-2.生成代码正常，但是进入训练时没有反应。
+### 2.生成代码正常，但是进入训练时没有反应。
 
-EasyTrain的生成代码部分基于Flask开发，进入训练则需要XEdu环境，涵盖BaseML、BaseNN、MMEdu等。点击“进入训练”后会在主目录下生成对应的“***code.py”的文件。如果训练时页面没有反应，请用Python IDE工具（如Thonny）打开并运行，再根据错误提示进行排查。
+
+问题描述：根据网页提示，一步一步操作后生成代码，但是点击“进入训练”就一直在转圈。
+
+
+解决：EasyTrain的生成代码部分基于Flask开发，进入训练则需要XEdu环境，包括BaseML、BaseNN、MMEdu等。点击“进入训练”后会在主目录下生成对应的“***code.py”的文件。如果训练时页面没有反应，请用Python IDE工具（如Thonny）打开并运行，再根据错误提示进行排查。**注意：必须要确保用Thonny、Jupyter能够训练模型。**
 
 
 注意事项
