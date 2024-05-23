@@ -986,7 +986,7 @@ ocr = wf(task='ocr')
 #### 2. 模型推理
 
 ```python
-result = ocr.inference(data='data/ocr_img.png') # 模型推理方式1
+# result = ocr.inference(data='data/ocr_img.png') # 模型推理方式1
 result,ocr_img = ocr.inference(data='data/ocr_img.png',img_type='cv2') # 模型推理方式2
 ```
 
@@ -1204,7 +1204,7 @@ cls = wf(task="cls_imagenet") # 模型声明
 #### 2. 模型推理
 
 ```python
-result = cls.inference(data='data/cat101.jpg') # 模型推理方式1
+# result = cls.inference(data='data/cat101.jpg') # 模型推理方式1
 result,cls_img = cls.inference(data='data/cat101.jpg', img_type='pil') # 进行模型推理方式2
 ```
 
