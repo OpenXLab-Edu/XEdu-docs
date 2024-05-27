@@ -4,6 +4,8 @@
 
 当前，BaseDeploy主要支持onnxruntime的部署形式，只要将模型文件转换为onnx格式，即可轻松部署到绝大多数硬件上，如行空板、树莓派之类的边缘硬件或者开源硬件。
 
+**【强调】：2023年10月，XEdu心推出了XEduhub，已经提供了模型推理工具，BaseDeploy将重点关注模型部署于更多开源硬件之上，关注模型的转换。如果仅仅是推理模型，建议使用XEduhub。**
+
 
 ## 设计理念
 
@@ -16,7 +18,6 @@
 
 文档涉及的部分代码见XEdu帮助文档配套项目集：[https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public](https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public)
 
-**【强调】：2023年10月，XEdu心推出了XEduhub，已经提供了模型推理工具，BaseDeploy将重点关注模型部署于更多开源硬件之上，关注模型的转换。如果仅仅是推理模型，建议使用XEduhub。**
 
 ## 示例代码
 
