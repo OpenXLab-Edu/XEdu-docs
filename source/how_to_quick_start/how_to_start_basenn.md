@@ -6,7 +6,7 @@ BaseNN可以方便地逐层搭建神经网络，支持搭建CNN和RNN，或二�
 
 项目地址：[https://www.openinnolab.org.cn/pjlab/project?id=641bc2359c0eb14f22fdbbb1&sc=635638d69ed68060c638f979#public](https://www.openinnolab.org.cn/pjlab/project?id=641bc2359c0eb14f22fdbbb1&sc=635638d69ed68060c638f979#public)
 
-数据集：UCI Machine Learning Repository: Iris Data Set（https://archive.ics.uci.edu/ml/datasets/Iris）
+数据集：UCI Machine Learning Repository: Iris Data Set（[https://archive.ics.uci.edu/ml/datasets/Iris](https://archive.ics.uci.edu/ml/datasets/Iris)）
 
 项目来源：《人工智能初步》人教地图p69
 
