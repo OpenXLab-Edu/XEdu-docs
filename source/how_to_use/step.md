@@ -16,6 +16,9 @@
 - 方式一：[MMEdu](../mmedu.html)
 - 方式二：[BaseNN](../basenn.html)
 - 方式三：[BaseML](../baseml.html)
+
+注意：模型训练并不一定非要写代码，可以使用EasyTrain无代码方式训练。
+
 ## Step5: 模型验证
 验证模型的效果。
 - 方式一：[MMEdu](../mmedu/quick_start.html#id7)
@@ -23,5 +26,4 @@
 - 方式三：[BaseML](../baseml/quick_start.html#id9)
 ## Step6: 模型应用
 使用规范的方式应用模型，可以添加相关的多模态操作，使项目更丰富，得以真正解决现实问题。
-- 方式一：[XEduHub](../xedu_hub.html)
-- 方式二：[BaseDeploy](../basedt.html)
+- 通用模型推理库：[XEduHub](../xedu_hub.html)
