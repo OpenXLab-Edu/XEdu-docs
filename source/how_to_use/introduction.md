@@ -51,7 +51,7 @@ print(format_result) # 输出结果
 ```
 
 需要说明的是，著名的图形化工具Mind+也支持XEduHub，具体使用请参考教程。
-![](../xedu_hub/mindplus_xeduhub.html)
+[在Mind+中使用XEduHub](../xedu_hub/mindplus_xeduhub.html)
 
 
 ## 四、小结
