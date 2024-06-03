@@ -33,7 +33,7 @@ from MMEdu import MMClassification as cls
 训练代码如下：
 
 ```python
-model = cls(backbone='LeNet') # 实例化模型，不指定参数即使用默认参数。
+model = cls('LeNet') # 实例化模型，不指定参数即使用默认参数。
 model.num_classes = 3 # 指定数据集中的类别数量
 model.load_dataset(path='../dataset/cls/hand_gray') # 从指定数据集路径中加载数据
 model.save_fold = '../checkpoints/cls_model/hand_gray' # 设置模型的保存路径
@@ -45,10 +45,10 @@ model.train(epochs=10, validate=True) # 设定训练的epoch次数以及是否�
 - **实例化模型**
 
 ```python
-model = cls(backbone='LeNet') # 实例化模型，不指定参数即使用默认参数
+model = cls('LeNet') # 实例化模型，不指定参数即使用默认参数
 ```
 
-这里对于`MMClassification`模型提供的参数进行解释，`MMClassification`支持传入的参数是`backbone`。
+这里对于`MMClassification`模型提供的参数进行解释，`MMClassification`支持传入的参数是`backbone`。也可以写成“backbone='LeNet'”，强化一下，这是一个网络的名称。
 
 `backbone`：指定使用的`MMClassification`模型。可选的有LeNet、MobileNet、ResNet18、ResNet50等，具体介绍详见<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#sota">后文</a>。
 
@@ -64,7 +64,11 @@ model.num_classes = 3 # 指定数据集中的类别数量
 model.load_dataset(path='../dataset/cls/hand_gray') # 从指定数据集路径中加载数据
 ```
 
-这个函数只需要传入一个`path`参数即训练数据集的路径，函数的作用是修改模型中关于数据集路径的配置文件，从而确保我们在训练时不会找错文件。
+`load_dataset()`的作用是修改模型中关于数据集路径的配置文件，从而确保我们在训练时不会找错文件，该函数可传入的参数有两个：
+
+- `path`：训练数据集的路径。
+
+- `check`：布尔值，默认为`True`，控制是否检查数据集中每张图像是否损坏。由于检查需要花费一定时间，若已经在前面步骤中确认数据集没有问题，可以设置为`False`来省去检查的时间。
 
 - **指定模型参数存储位置**
 
@@ -98,11 +102,15 @@ model.train(epochs=10, validate=True) # 设定训练的epoch次数以及是否�
 
 `device`：训练时所使用的设备，默认为`'cpu'`，如果电脑支持GPU，也可以将参数修改为`'cuda'`，使用GPU进行推理。
 
-`optimizer`：进行迭代时的优化器，默认参数为`SGD`，`SGD`会在训练的过程中迭代计算mini-bath的梯度。可选参数：`['SGD','Adam','Adagrad']`
+`optimizer`：进行迭代时的优化器，默认参数为`SGD`，`SGD`会在训练的过程中迭代计算mini-bath的梯度。可选参数：`['SGD','Adam','Adagrad']`。
 
-`lr`：学习率，默认参数为`1e-2`即`0.01`，指定模型进行梯度下降时的步长。简单解释就是，学习率过小，训练过程会很缓慢，学习率过大时，模型精度会降低。可以根据需要设置不同的`lr`大小
+`lr`：学习率，默认参数为`1e-2`即`0.01`，指定模型进行梯度下降时的步长。简单解释就是，学习率过小，训练过程会很缓慢，学习率过大时，模型精度会降低。可以根据需要设置不同的`lr`大小。
 
 `checkpoint`：指定使用的模型权重文件，默认参数为`None`，如果没有指定模型权重文件，那么我们将会使用默认的模型权重文件进行推理。
+
+`topk`：元组，验证top-k准确率的策略。validate=True时有效。topk准确率的详细介绍见下图。当类别数量class<=5时，默认topk=(1,)，class>5时，默认topk=(5,)。这里我们可以自定义参数值，传入一个元组，如(1,2,3)，表示同时验证top-1、top-2、top-3的准确率，这样可以有效帮助我们评估模型的总体效果。
+
+![](../images/mmedu/topk.png)
 
 执行上述代码之后的运行结果如下图：
 
@@ -112,7 +120,7 @@ model.train(epochs=10, validate=True) # 设定训练的epoch次数以及是否�
 
 **准确率怎么看？**
 
-方式一：通过训练输出（如上图），运行训练代码时输出项里会出现学习率lr，所用时间time，以及损失loss，每一轮在验证上的accuracy_top-**等。
+方式一：通过训练输出（如上图），运行训练代码时输出项里会出现学习率lr，所用时间time，以及损失loss，每一轮在验证集上的accuracy_top-**等。
 
 方式二：通过日志文件，在训练过程中我们会发现模型保存路径下（代码中指定指定）出现一个`***.log.json`文件，这就是日志文件，它记录了我们模型在训练过程中的一些信息。
 
@@ -150,7 +158,7 @@ accuracy_top-5：对一张图片，如果预测概率前五名的答案中出现
 
 ```python
 img = 'testrock01-02.png' # 指定待推理的图片路径
-model = cls(backbone='LeNet') # 实例化MMClassification模型
+model = cls('LeNet') # 实例化MMClassification模型
 model.checkpoint='../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的模型权重文件
 result = model.inference(image=img, show=True, checkpoint=checkpoint) # 在CPU上进行推理
 model.print_result() # 输出结果，可以修改参数show的值来决定是否需要显示结果图片，默认显示结果图片
@@ -168,7 +176,7 @@ model.print_result() # 输出结果，可以修改参数show的值来决定是�
 
 ```python
 img = 'cls_testIMG/' # 指定进行推理的一组图片的路径
-model = cls(backbone='LeNet') # 实例化MMClassification模型
+model = cls('LeNet') # 实例化MMClassification模型
 model.checkpoint='../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的模型权重文件
 result = model.inference(image=img, show=True, checkpoint=checkpoint) # 在CPU上进行推理
 model.print_result(result) # 输出结果，可以修改参数show的值来决定是否需要显示结果图片，默认显示结果图片
@@ -188,7 +196,7 @@ img = 'testrock01-02.png' # 指定推理图片的路径，直接在代码所在�
 - **实例化模型**
 
 ```python
-model = cls(backbone='LeNet') # 实例化MMClassification模型
+model = cls('LeNet') # 实例化MMClassification模型
 ```
 
 这里对于`MMClassification`模型提供的参数进行解释，`MMClassification`支持传入的参数是`backbone`。
@@ -242,28 +250,27 @@ result = model.fast_inference(image=img)
 
 `load_checkpoint`函数的传入参数：
 
-`device`：推理所用的设备，默认为`'cpu'`，如果电脑支持GPU，也可以将参数修改为`'cuda'`，使用GPU进行推理。
+- `device`：推理所用的设备，默认为`'cpu'`，如果电脑支持GPU，也可以将参数修改为`'cuda'`，使用GPU进行推理。
 
-`checkpoint`：指定使用的模型权重文件，默认参数为`None`，如果没有指定模型权重文件，那么我们将会使用默认的模型权重文件进行推理。
+- `checkpoint`：指定使用的模型权重文件，默认参数为`None`，如果没有指定模型权重文件，那么我们将会使用默认的模型权重文件进行推理。
 
 `fast_inference`函数的传入参数：
 
-`image`：推理图片的路径。
+- `image`：推理图片的路径。
 
-`show`：布尔值，默认为`True`，表示推理后是否显示推理结果。
+- `show`：布尔值，默认为`True`，表示推理后是否显示推理结果。
 
-`save_fold`：保存的图片名，数据结构为字符串，默认参数为`'cls_result'`，用户也可以定义为自己想要的名字。
+- `save_fold`：保存的图片名，数据结构为字符串，默认参数为`'cls_result'`，用户也可以定义为自己想要的名字。
 
-
+- `verbose`：布尔值，默认为`True`，控制是否输出推理进度提示信息。如果循环执行时，不想要看到进度信息，而是用你自己的变量和条件判断来实现，可以设置verbose为`False`。
 
 #### 3. 继续训练
 
 在这一步中，我们将学习如何加载之前训练过的模型接着训练。如果觉得之前训练的模型epoch数不够的话或者因为一些客观原因而不得不提前结束训练，相信下面的代码会帮到您。
 
 ```python
-model = cls(backbone='LeNet') # 初始化实例模型
+model = cls('LeNet') # 初始化实例模型
 model.num_classes = 3 # 指定数据集中的类别数量
-# model = cls(backbone='LeNet', num_classes = 3)
 model.load_dataset(path='../dataset/cls/hand_gray') # 配置数据集路径
 model.save_fold = '../checkpoints/cls_model/hand_gray' # 设置模型的保存路径
 checkpoint = '../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的模型权重文件
@@ -332,11 +339,13 @@ LeNet是一种简单的深度卷积神经网络，他的特色就是参数量少
 
 
 ### MMCls的高级操作
-#### 验证top-k的修改
-由于源码限制，类别数量超过5类之后，默认的验证方式变为了top-5的准确率(accuracy_top-5)，无法看到top1的准确率。如下图所示：
+#### 源代码的修改（以修改验证策略为例）
+所有库文件均以py文件形式开源，用户可以自行编辑修改。这样极大提升了代码的可玩性。这里以修改源码中的验证策略为例，展示如果修改源代码，实现自定义功能或功能修改。
+
+由于源码限制，分类类别超过5类之后，默认的验证方式变为了top-5的准确率(accuracy_top-5)，无法看到top1的准确率。如下图所示：
 ![image](https://github.com/OpenXLab-Edu/XEdu-docs/assets/40832342/fa822e32-8936-4960-88a3-d81ebdb2d409)
 
-为此，我们可以修改源码，将其改为'topk': (1,)，这样就可以看到top1的准确率，也可以改为其他数字，同时也支持(1,2,5)这样的写法。然后将修改之后的源码覆盖原始源码后重新导入库文件。
+为此，我们可以在train函数中加入`topk`参数修改验证top-k准确率的策略（见上文），设置topk=(1,)或topk=(1,2,5)。也可以使用修改源码的方式，在源码中将其改为'topk': (1,)，这样就可以看到top1的准确率，也可以改为其他数字，同时也支持(1,2,5)这样的写法。然后将修改之后的源码覆盖原始源码后重新导入库文件。
 
 1. 查看库文件所在路径
     ```python
@@ -345,6 +354,6 @@ LeNet是一种简单的深度卷积神经网络，他的特色就是参数量少
     ```
 2. 覆盖原来的库文件
    ```bash
-    !cp ./Classification_Edu.py /usr/local/envs/ssenv/lib/python3.9/site-packages/MMEdu/Classification/Classification_Edu.py
+    !cp ./Classification_Edu.py /usr/local/python3.8/site-packages/MMEdu/Classification/Classification_Edu.py
    ```
 3. 重新导入库（重启内核）

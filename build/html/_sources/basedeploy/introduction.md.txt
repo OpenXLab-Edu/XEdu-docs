@@ -1,10 +1,12 @@
-# BaseDeploy：服务于XEdu的模型部署工具
+# BaseDeploy功能详解
 
-模型部署是AI应用的重要一环，因其涉及的框架量大、推理代码风格不一等问题，往往会对初学者的上手造成一定的难度。为此，`XEdu`团队推出了模型部署工具`BaseDeploy`，其代码风格向`MMEdu`对齐，通过对推理核心代码的封装，目标是用户能够更加专注于科创作品功能的设计，而将AI模块作为接口的黑盒，能够对其返回的结果进行二次创作。当前，BaseDeploy主要支持onnxruntime的部署形式，只要将模型文件转换为onnx格式，即可轻松部署到绝大多数硬件上。
+`BaseDeploy`是一个模型部署工具，其代码风格向`MMEdu`对齐，实现推理代码的标准化。
 
 onnxruntime介绍：[https://github.com/microsoft/onnxruntime](https://github.com/microsoft/onnxruntime)
 
 文档涉及的部分代码见XEdu帮助文档配套项目集：[https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public](https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public)
+
+**【强调】：2023年10月，XEdu心推出了XEduhub，已经提供了模型推理工具，BaseDeploy将重点关注模型部署于更多开源硬件之上，关注模型的转换。如果仅仅是推理模型，建议使用XEduhub。**
 
 ## 基本功能说明
 

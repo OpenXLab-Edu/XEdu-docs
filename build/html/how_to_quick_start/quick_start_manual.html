@@ -48,7 +48,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../how_to_quick_start.html">XEdu快速入门手册</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">使用说明</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#xeduhub">案例一：用XEduhub执行推理任务（检测任务）</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#xeduhub">案例一：用XEduHub执行推理任务（检测任务）</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">简介：</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id3">链接：</a></li>
 </ul>
@@ -86,7 +86,7 @@
 <li class="toctree-l2"><a class="reference internal" href="how_to_start_basenn.html">案例三：用BaseNN训练搭建全连接神经网络（鸢尾花）</a></li>
 <li class="toctree-l2"><a class="reference internal" href="how_to_start_mmcls.html">案例四：用MMEdu训练LeNet图像分类模型（手写体）</a></li>
 <li class="toctree-l2"><a class="reference internal" href="how_to_start_mmdet.html">案例五：用MMEdu训练SSD_Lite目标检测模型（猫狗）</a></li>
-<li class="toctree-l2"><a class="reference internal" href="how_to_make_a_small_project.html">案例六：综合项目石头剪刀布的实时识别（XEduhub+BaseNN）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_make_a_small_project.html">案例六：综合项目石头剪刀布的实时识别（XEduHub+BaseNN）</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEduHub</a></li>
@@ -133,7 +133,7 @@
 <li><p>本地环境的安装推荐选择XEdu一键安装包（CPU版本），它满足大部分机房需求。</p></li>
 </ul>
 <section id="xeduhub">
-<h2>案例一：用XEduhub执行推理任务（检测任务）<a class="headerlink" href="#xeduhub" title="Permalink to this heading"></a></h2>
+<h2>案例一：用XEduHub执行推理任务（检测任务）<a class="headerlink" href="#xeduhub" title="Permalink to this heading"></a></h2>
 <section id="id2">
 <h3>简介：<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
 <p>XEduHub针对一些常见任务，提供了现成的优质模型，可以完成目标检测、关键点检测等等，还可以实现自训练模型推理，让初学者能轻松进行AI应用实践。本项目完成了直接调用XEduHub一个内置模型<code class="docutils literal notranslate"><span class="pre">det_hand</span></code>实现检测手的功能，只用7行代码就可实现。</p>
@@ -164,7 +164,7 @@
 <h2>案例三：用BaseNN训练搭建全连接神经网络（鸢尾花）<a class="headerlink" href="#basenn" title="Permalink to this heading"></a></h2>
 <section id="id6">
 <h3>简介：<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
-<p>BaseNN可以方便地逐层搭建神经网络，深入探究神经网络的原理，训练深度学习模型。本项目核心功能是完成使用经典的鸢尾花数据集完成鸢尾花分类，最后完成了一个简单的鸢尾花分类小应用，输入花萼长度、宽度、花瓣长度、宽度，可以输出预测结果。</p>
+<p>BaseNN可以方便地逐层搭建神经网络，支持搭建CNN和RNN，或二者的结合，训练深度学习模型。本项目核心功能是完成使用经典的鸢尾花数据集完成鸢尾花分类，最后完成了一个简单的鸢尾花分类小应用，输入花萼长度、宽度、花瓣长度、宽度，可以输出预测结果。</p>
 </section>
 <section id="id7">
 <h3>链接：<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
@@ -207,7 +207,7 @@
 <h2>案例六：综合项目石头剪刀布的实时识别（XEduhub+BaseNN）<a class="headerlink" href="#xeduhub-basenn" title="Permalink to this heading"></a></h2>
 <section id="id12">
 <h3>简介：<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h3>
-<p>组合XEdu工具集的工具完成一个综合项目非常方便，本项目使用XEduHub提取手势图像的关键点信息，再将这些关键点信息作为特征输入到一个自己搭建的全连接神经网络模型中进行训练，此步骤由BaseNN实现，最后到本地完成模型应用。</p>
+<p>组合XEdu的工具完成一个综合项目非常方便，本项目使用XEduHub提取手势图像的关键点信息，再将这些关键点信息作为特征输入到一个自己搭建的全连接神经网络模型中进行训练，此步骤由BaseNN实现，最后到本地完成模型应用。</p>
 </section>
 <section id="id13">
 <h3>链接：<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h3>

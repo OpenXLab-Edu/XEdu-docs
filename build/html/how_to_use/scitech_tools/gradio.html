@@ -46,6 +46,7 @@
               <p class="caption" role="heading"><span class="caption-text">目录</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how_to_quick_start.html">XEdu快速入门手册</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../xedu_hub.html">深度学习工具库XEduHub</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../mmedu.html">计算机视觉库MMEdu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../basenn.html">神经网络库BaseNN</a></li>
@@ -119,7 +120,7 @@
 <section id="id2">
 <h2>2. 安装<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
 <p>Gradio可以采用pip命令安装，具体如下：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">gradio</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">gradio</span>
 </pre></div>
 </div>
 </section>
@@ -147,7 +148,7 @@
 <section id="gradiommedu">
 <h3>借助Gradio部署MMEdu模型<a class="headerlink" href="#gradiommedu" title="Permalink to this heading"></a></h3>
 <p>下面是一段Gradio调用MMEdu训练的图像分类模型的代码，运行这段代码，Gradio将启动一个交互式界面，您可以在其中上传图像并查看模型的预测结果。您需确保可以导入MMEdu库，且有MMEdu训练的模型，如何安装MMEdu和使用MMEdu训练模型，可参照<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu.html">前文</a>。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gradio</span> <span class="k">as</span> <span class="nn">gr</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gradio</span> <span class="k">as</span> <span class="nn">gr</span>
 <span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
 <span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span> <span class="o">=</span> <span class="s1">&#39;LeNet&#39;</span><span class="p">)</span>
 <span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;best_accuracy_top-5_epoch_4.pth&#39;</span>
@@ -162,7 +163,7 @@
 <p>运行效果如下：</p>
 <p><img alt="../../_images/gradiodemo2.png" src="../../_images/gradiodemo2.png" /></p>
 <p>您可以根据您的模型进行相应的修改和调整，以适应您的需求。例如对输出结果做一些修饰，参考代码如下：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gradio</span> <span class="k">as</span> <span class="nn">gr</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gradio</span> <span class="k">as</span> <span class="nn">gr</span>
 <span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
 <span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span> <span class="o">=</span> <span class="s1">&#39;LeNet&#39;</span><span class="p">)</span>
 <span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;checkpoints/cls_model/hand_gray/latest.pth&#39;</span>
@@ -185,7 +186,7 @@
 <h3>借助Gradio部署ONNX模型<a class="headerlink" href="#gradioonnx" title="Permalink to this heading"></a></h3>
 <p>使用Gradio部署ONNX模型也是非常简单的，示例代码如下：</p>
 <p>补充：ONNX（Open Neural Network Exchange）是一个开放的、跨平台的深度学习模型表示和转换框架。它的目标是解决不同深度学习框架之间的模型兼容性问题，此处使用的ONNX模型推理的代码是借助XEdu团队推出的模型部署工具<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basedeploy/introduction.html">BaseDeploy</a>，代码较为简洁。关于基于MMEdu训练的模型转换为ONNX的说明可见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/model_convert.html#ai">最后一步：AI模型转换与部署</a>。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gradio</span> <span class="k">as</span> <span class="nn">gr</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gradio</span> <span class="k">as</span> <span class="nn">gr</span>
 <span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
 <span class="n">model_path</span> <span class="o">=</span> <span class="s1">&#39;cls.onnx&#39;</span>
 <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>

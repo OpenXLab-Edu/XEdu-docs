@@ -24,7 +24,7 @@
 
   ![](../../images/basedeploy/install_1.png)
 
-例如可以在行空板安装我们的模型部署库BaseDeploy，Mind+中甚至可以添加BaseDeploy积木套件，更多说明详见[Mind+中的BaseDeploy积木块](https://xedu.readthedocs.io/zh/master/basedeploy/introduction.html#mind-basedeploy)。
+例如可以在行空板安装我们的深度学习工具库[XEduHub](https://xedu.readthedocs.io/zh/master/xedu_hub.html)和模型部署库[BaseDeploy](https://xedu.readthedocs.io/zh/master/basedeploy.html)，Mind+中甚至可以添加XEduHub积木套件和BaseDeploy积木套件，更多说明详见[在Mind+中使用XEduHub](https://xedu.readthedocs.io/zh/master/xedu_hub/mindplus_xeduhub.html)和[Mind+中的BaseDeploy积木块](https://xedu.readthedocs.io/zh/master/basedeploy/introduction.html#mind-basedeploy)。
 
 ![](../../images/basedeploy/install_lab.png)
 

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BaseDeploy：服务于XEdu的模型部署工具 &mdash; OpenXLabEdu  documentation</title>
+  <title>BaseDeploy功能详解 &mdash; OpenXLabEdu  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -20,7 +20,7 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="如何用XEdu借助AI解决真实问题" href="../how_to_use.html" />
+    <link rel="next" title="BaseDeploy安装" href="installation.html" />
     <link rel="prev" title="快速体验BaseDeploy" href="quick_start.html" /> 
 </head>
 
@@ -46,6 +46,7 @@
               <p class="caption" role="heading"><span class="caption-text">目录</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_quick_start.html">XEdu快速入门手册</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEduHub</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basenn.html">神经网络库BaseNN</a></li>
@@ -53,9 +54,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basedt.html">数据处理库BaseDT</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../basedeploy.html">模型部署库BaseDeploy</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="installation.html">BaseDeploy安装</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quick_start.html">快速体验BaseDeploy</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">BaseDeploy：服务于XEdu的模型部署工具</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">BaseDeploy功能详解</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">基本功能说明</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">推理功能</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id4">格式化推理结果</a></li>
@@ -66,6 +66,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id15">参考链接</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html">BaseDeploy安装</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../how_to_use.html">如何用XEdu借助AI解决真实问题</a></li>
@@ -86,7 +87,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../basedeploy.html">模型部署库BaseDeploy</a></li>
-      <li class="breadcrumb-item active">BaseDeploy：服务于XEdu的模型部署工具</li>
+      <li class="breadcrumb-item active">BaseDeploy功能详解</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/basedeploy/introduction.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -96,11 +97,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="basedeploy-xedu">
-<h1>BaseDeploy：服务于XEdu的模型部署工具<a class="headerlink" href="#basedeploy-xedu" title="Permalink to this heading"></a></h1>
-<p>模型部署是AI应用的重要一环，因其涉及的框架量大、推理代码风格不一等问题，往往会对初学者的上手造成一定的难度。为此，<code class="docutils literal notranslate"><span class="pre">XEdu</span></code>团队推出了模型部署工具<code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>，其代码风格向<code class="docutils literal notranslate"><span class="pre">MMEdu</span></code>对齐，通过对推理核心代码的封装，目标是用户能够更加专注于科创作品功能的设计，而将AI模块作为接口的黑盒，能够对其返回的结果进行二次创作。当前，BaseDeploy主要支持onnxruntime的部署形式，只要将模型文件转换为onnx格式，即可轻松部署到绝大多数硬件上。</p>
+  <section id="basedeploy">
+<h1>BaseDeploy功能详解<a class="headerlink" href="#basedeploy" title="Permalink to this heading"></a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>是一个模型部署工具，其代码风格向<code class="docutils literal notranslate"><span class="pre">MMEdu</span></code>对齐，实现推理代码的标准化。</p>
 <p>onnxruntime介绍：<a class="reference external" href="https://github.com/microsoft/onnxruntime">https://github.com/microsoft/onnxruntime</a></p>
 <p>文档涉及的部分代码见XEdu帮助文档配套项目集：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&amp;sc=645caab8a8efa334b3f0eb24#public">https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&amp;sc=645caab8a8efa334b3f0eb24#public</a></p>
+<p><strong>【强调】：2023年10月，XEdu心推出了XEduhub，已经提供了模型推理工具，BaseDeploy将重点关注模型部署于更多开源硬件之上，关注模型的转换。如果仅仅是推理模型，建议使用XEduhub。</strong></p>
 <section id="id1">
 <h2>基本功能说明<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">BaseDeploy</span></code>提供多种便于模型部署的函数，包括了推理与相关库启动部署。</p>
@@ -438,7 +440,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="quick_start.html" class="btn btn-neutral float-left" title="快速体验BaseDeploy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../how_to_use.html" class="btn btn-neutral float-right" title="如何用XEdu借助AI解决真实问题" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="installation.html" class="btn btn-neutral float-right" title="BaseDeploy安装" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

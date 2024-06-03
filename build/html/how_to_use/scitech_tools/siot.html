@@ -46,6 +46,7 @@
               <p class="caption" role="heading"><span class="caption-text">目录</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how_to_quick_start.html">XEdu快速入门手册</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../xedu_hub.html">深度学习工具库XEduHub</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../mmedu.html">计算机视觉库MMEdu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../basenn.html">神经网络库BaseNN</a></li>
@@ -121,7 +122,7 @@
 <section id="id2">
 <h2>2. 安装<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
 <p>可以使用使用pip命令安装siot库。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">siot</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">siot</span>
 </pre></div>
 </div>
 <p>注：XEdu一键安装包中已经内置了siot库。</p>
@@ -131,75 +132,75 @@
 <p>下面的代码以MQTT服务器软件SIoT为例。SIoT是一个一键部署的MQTT服务器，广泛应用于中小学的物联网教学中。</p>
 <section id="id4">
 <h3>3.1 发送消息<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
-<div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>import siot
-import time
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">siot</span>
+<span class="kn">import</span> <span class="nn">time</span>
 
-SERVER = &quot;127.0.0.1&quot;            #MQTT服务器IP
-CLIENT_ID = &quot;&quot;                  #在SIoT上，CLIENT_ID可以留空
-IOT_pubTopic  = &#39;xzr/001&#39;       #“topic”为“项目名称/设备名称”
-IOT_UserName =&#39;siot&#39;            #用户名
-IOT_PassWord =&#39;dfrobot&#39;         #密码
+<span class="n">SERVER</span> <span class="o">=</span> <span class="s2">&quot;127.0.0.1&quot;</span>            <span class="c1">#MQTT服务器IP</span>
+<span class="n">CLIENT_ID</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>                  <span class="c1">#在SIoT上，CLIENT_ID可以留空</span>
+<span class="n">IOT_pubTopic</span>  <span class="o">=</span> <span class="s1">&#39;xzr/001&#39;</span>       <span class="c1">#“topic”为“项目名称/设备名称”</span>
+<span class="n">IOT_UserName</span> <span class="o">=</span><span class="s1">&#39;siot&#39;</span>            <span class="c1">#用户名</span>
+<span class="n">IOT_PassWord</span> <span class="o">=</span><span class="s1">&#39;dfrobot&#39;</span>         <span class="c1">#密码</span>
 
-siot.init(CLIENT_ID, SERVER, user=IOT_UserName, password=IOT_PassWord)
-siot.connect()
-siot.loop()
+<span class="n">siot</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">CLIENT_ID</span><span class="p">,</span> <span class="n">SERVER</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">IOT_UserName</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">IOT_PassWord</span><span class="p">)</span>
+<span class="n">siot</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+<span class="n">siot</span><span class="o">.</span><span class="n">loop</span><span class="p">()</span>
 
-tick = 0
-while True:
-  siot.publish(IOT_pubTopic, &quot;value %d&quot;%tick)
-  time.sleep(1)           #隔1秒发送一次
-  tick = tick+1
+<span class="n">tick</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+  <span class="n">siot</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">IOT_pubTopic</span><span class="p">,</span> <span class="s2">&quot;value </span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">tick</span><span class="p">)</span>
+  <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>           <span class="c1">#隔1秒发送一次</span>
+  <span class="n">tick</span> <span class="o">=</span> <span class="n">tick</span><span class="o">+</span><span class="mi">1</span>
 </pre></div>
 </div>
 </section>
 <section id="id5">
 <h3>3.2 订阅消息<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
-<div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>import siot
-import time
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">siot</span>
+<span class="kn">import</span> <span class="nn">time</span>
 
-SERVER = &quot;127.0.0.1&quot;        #MQTT服务器IP
-CLIENT_ID = &quot;&quot;              #在SIoT上，CLIENT_ID可以留空
-IOT_pubTopic  = &#39;xzr/001&#39;   #“topic”为“项目名称/设备名称”
-IOT_UserName =&#39;siot&#39;        #用户名
-IOT_PassWord =&#39;dfrobot&#39;     #密码
+<span class="n">SERVER</span> <span class="o">=</span> <span class="s2">&quot;127.0.0.1&quot;</span>        <span class="c1">#MQTT服务器IP</span>
+<span class="n">CLIENT_ID</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>              <span class="c1">#在SIoT上，CLIENT_ID可以留空</span>
+<span class="n">IOT_pubTopic</span>  <span class="o">=</span> <span class="s1">&#39;xzr/001&#39;</span>   <span class="c1">#“topic”为“项目名称/设备名称”</span>
+<span class="n">IOT_UserName</span> <span class="o">=</span><span class="s1">&#39;siot&#39;</span>        <span class="c1">#用户名</span>
+<span class="n">IOT_PassWord</span> <span class="o">=</span><span class="s1">&#39;dfrobot&#39;</span>     <span class="c1">#密码</span>
 
-def sub_cb(client, userdata, msg):
-  print(&quot;\nTopic:&quot; + str(msg.topic) + &quot; Message:&quot; + str(msg.payload))
-  # msg.payload中是消息的内容，类型是bytes，需要用解码。
-  s=msg.payload.decode()
-  print(s)
+<span class="k">def</span> <span class="nf">sub_cb</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">userdata</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Topic:&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">topic</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; Message:&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="p">))</span>
+  <span class="c1"># msg.payload中是消息的内容，类型是bytes，需要用解码。</span>
+  <span class="n">s</span><span class="o">=</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 
-siot.init(CLIENT_ID, SERVER, user=IOT_UserName, password=IOT_PassWord)
-siot.connect()
-siot.subscribe(IOT_pubTopic, sub_cb)
-siot.loop()
+<span class="n">siot</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">CLIENT_ID</span><span class="p">,</span> <span class="n">SERVER</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">IOT_UserName</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">IOT_PassWord</span><span class="p">)</span>
+<span class="n">siot</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+<span class="n">siot</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="n">IOT_pubTopic</span><span class="p">,</span> <span class="n">sub_cb</span><span class="p">)</span>
+<span class="n">siot</span><span class="o">.</span><span class="n">loop</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
 <section id="id6">
 <h3>3.3 订阅多条消息<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
-<div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>import siot
-import time
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">siot</span>
+<span class="kn">import</span> <span class="nn">time</span>
 
-SERVER = &quot;127.0.0.1&quot;         # MQTT服务器IP
-CLIENT_ID = &quot;&quot;               # 在SIoT上，CLIENT_ID可以留空
-IOT_pubTopic1  = &#39;xzr/001&#39;   # “topic”为“项目名称/设备名称”
-IOT_pubTopic2  = &#39;xzr/002&#39;   # “topic”为“项目名称/设备名称”
-IOT_UserName =&#39;siot&#39;         # 用户名
-IOT_PassWord =&#39;dfrobot&#39;      # 密码
+<span class="n">SERVER</span> <span class="o">=</span> <span class="s2">&quot;127.0.0.1&quot;</span>         <span class="c1"># MQTT服务器IP</span>
+<span class="n">CLIENT_ID</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>               <span class="c1"># 在SIoT上，CLIENT_ID可以留空</span>
+<span class="n">IOT_pubTopic1</span>  <span class="o">=</span> <span class="s1">&#39;xzr/001&#39;</span>   <span class="c1"># “topic”为“项目名称/设备名称”</span>
+<span class="n">IOT_pubTopic2</span>  <span class="o">=</span> <span class="s1">&#39;xzr/002&#39;</span>   <span class="c1"># “topic”为“项目名称/设备名称”</span>
+<span class="n">IOT_UserName</span> <span class="o">=</span><span class="s1">&#39;siot&#39;</span>         <span class="c1"># 用户名</span>
+<span class="n">IOT_PassWord</span> <span class="o">=</span><span class="s1">&#39;dfrobot&#39;</span>      <span class="c1"># 密码</span>
 
-def sub_cb(client, userdata, msg):  # sub_cb函数仍然只有一个，需要在参数msg.topic中对消息加以区分
-  print(&quot;\nTopic:&quot; + str(msg.topic) + &quot; Message:&quot; + str(msg.payload))
-  # msg.payload中是消息的内容，类型是bytes，需要用解码。
-  s=msg.payload.decode()
-  print(s)
+<span class="k">def</span> <span class="nf">sub_cb</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">userdata</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>  <span class="c1"># sub_cb函数仍然只有一个，需要在参数msg.topic中对消息加以区分</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Topic:&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">topic</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; Message:&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="p">))</span>
+  <span class="c1"># msg.payload中是消息的内容，类型是bytes，需要用解码。</span>
+  <span class="n">s</span><span class="o">=</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 
-siot.init(CLIENT_ID, SERVER, user=IOT_UserName, password=IOT_PassWord)
-siot.connect()
-siot.set_callback(sub_cb)         
-siot.getsubscribe(IOT_pubTopic1)  # 订阅消息1
-siot.getsubscribe(IOT_pubTopic2)  # 订阅消息2
-siot.loop()
+<span class="n">siot</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">CLIENT_ID</span><span class="p">,</span> <span class="n">SERVER</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">IOT_UserName</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">IOT_PassWord</span><span class="p">)</span>
+<span class="n">siot</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+<span class="n">siot</span><span class="o">.</span><span class="n">set_callback</span><span class="p">(</span><span class="n">sub_cb</span><span class="p">)</span>         
+<span class="n">siot</span><span class="o">.</span><span class="n">getsubscribe</span><span class="p">(</span><span class="n">IOT_pubTopic1</span><span class="p">)</span>  <span class="c1"># 订阅消息1</span>
+<span class="n">siot</span><span class="o">.</span><span class="n">getsubscribe</span><span class="p">(</span><span class="n">IOT_pubTopic2</span><span class="p">)</span>  <span class="c1"># 订阅消息2</span>
+<span class="n">siot</span><span class="o">.</span><span class="n">loop</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>

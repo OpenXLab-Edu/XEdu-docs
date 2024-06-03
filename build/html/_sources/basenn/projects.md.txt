@@ -16,21 +16,21 @@
 
 导入库：
 
-```
+```python
 # 导入BaseNN库
 from BaseNN import nn
 ```
 
 读取数据：
 
-```
+```python
 # 模型载入数据
 model.load_img_data("/data/MELLBZ/mnist/training_set",color="grayscale",batch_size=10000)
 ```
 
 搭建网络开始训练：
 
-```
+```python
 # 声明模型
 model = nn('cls')
 # 自己搭建网络（我们搭建的是LeNet网络，可改变参数搭建自己的网络）
@@ -54,7 +54,7 @@ model.train(lr=learn_rate, epochs=max_epoch) # 直接训练
 
 读取某张图片进行推理：
 
-```
+```python
 # 单张图片的推理
 path = 'test_IMG/single_data.jpg'
 checkpoint = 'mn_ckpt/basenn.pth' # 现有模型路径
@@ -68,7 +68,7 @@ print('此手写体的数字是：',res[0])
 
 定义一个准确率计算函数，读取测试集所有图片进行推理并计算准确率。
 
-```
+```python
 # 计算准确率函数
 def cal_accuracy(y, pred_y):
     res = pred_y.argmax(axis=1)
@@ -112,7 +112,7 @@ for x, y in val_data:
 
 导入库：
 
-```
+```python
 # 导入BaseNN库、numpy库用于数据处理
 from BaseNN import nn
 import numpy as np
@@ -120,7 +120,7 @@ import numpy as np
 
 读取数据并载入：
 
-```
+```python
 # 读取训练集数据
 train_data = np.loadtxt('imdb/train_data.csv', delimiter=",")
 train_label = np.loadtxt('imdb/train_label.csv', delimiter=",")
@@ -130,7 +130,7 @@ model.load_dataset(train_data, train_label)
 
 搭建模型并开始训练：
 
-```
+```python
 # 声明模型
 model = nn() # 有Embedding层
 # 搭建模型
@@ -154,7 +154,7 @@ model.train(lr=learn_rate, epochs=max_epoch) # 直接训练
 
 读取测试集所有数据进行推理：
 
-```
+```python
 #读取测试集数据
 test_data = np.loadtxt('imdb/test_data.csv', delimiter=",")
 test_label = np.loadtxt('imdb/test_label.csv', delimiter=",")
@@ -163,7 +163,7 @@ y_pred = model.inference(data=train_data)
 
 用单个数据进行推理：
 
-```
+```python
 # 用测试集单个数据查看模型效果
 single_data = np.loadtxt('imdb/test_data.csv', delimiter=",", max_rows = 1)
 single_label = np.loadtxt('imdb/test_label.csv', delimiter=",", max_rows = 1)
@@ -198,7 +198,7 @@ print('评论对电影的评价是：', label[res[0]]) # 该评论文本数据�
 
 首先读取数据，0-2为输入，3-9是各种输出的数据。
 
-```
+```python
 import numpy as np
 train_path = './data/train-full.csv'
 x = np.loadtxt(train_path, dtype=float, delimiter=',',skiprows=1,usecols=[0,1,2]) # 读取前3列
@@ -207,7 +207,7 @@ y = np.loadtxt(train_path, dtype=float, delimiter=',',skiprows=1,usecols=[8]) # 
 
 将y映射到0-1之间。
 
-```
+```python
 from sklearn.preprocessing import MinMaxScaler
 y = y.reshape(-1, 1)
 scaler = MinMaxScaler()
@@ -217,7 +217,7 @@ y = scaler.transform(y)  # 0~1
 
 生成新的数据集。
 
-```
+```python
 norm_data = np.concatenate((x,y),axis=1)
 np.savetxt('./data/train_norm.csv',norm_data,delimiter=',')
 ```
@@ -226,7 +226,7 @@ np.savetxt('./data/train_norm.csv',norm_data,delimiter=',')
 
 搭建一个3层的神经网络并开始训练，输入维度是3（3列数据），最后输出维度是1（1列数据），激活函数使用ReLU。
 
-```
+```python
 from BaseNN import nn
 model = nn('reg') #声明模型 
 model.load_tab_data('./data/train_norm.csv',batch_size=1024) # 载入数据
@@ -245,7 +245,7 @@ model.train(lr=0.001, epochs=300,loss='MSELoss')
 
 读取测试数据进行模型推理，测试数据同样来自随机数。
 
-```
+```python
 # 测试数据
 test_path = './data/test-full.csv'
 test_x = np.loadtxt(test_path, dtype=float, delimiter=',',skiprows=1,usecols=[0,1,2]) # 读取前3列
@@ -270,7 +270,7 @@ y_pred = model.inference(test_x,checkpoint = 'checkpoints/ckpt/basenn.pth')  # �
 可以定义一个多项式函数（以五项式为例），生成数据。
 如下代码还向五次多项式函数生成的数据点添加高斯噪声，可以模拟现实世界中可能遇到的数据不准确性。这种方法特别适合于准备数据，用于训练机器学习模型，以确保它们在面对实际、可能带有噪声的数据时仍能有效工作。
 
-```
+```python
 import numpy as np
 
 # 定义五项式函数
@@ -291,7 +291,7 @@ y_noisy = y_noisy.reshape(-1, 1)
 
 将生成的数据保存在一个csv中，且给它加入表头，完成数据集制作。
 
-```
+```python
 data = np.concatenate((x,y_noisy),axis=1)
 # 定义标题行，列之间用逗号分隔
 header = 'feature,pred'
@@ -302,7 +302,7 @@ np.savetxt('data/data.csv',data,delimiter=',', header=header, comments='')
 
 为了加速收敛，我们参照已有经验将x和y映射到0-1之间。
 
-```
+```python
 from sklearn.preprocessing import MinMaxScaler
 scaler = MinMaxScaler() # 创建MinMaxScaler实例
 y_noisy = scaler.fit_transform(y_noisy) # 将y_noisy拟合并转换到0-1范围
@@ -312,7 +312,7 @@ x = scaler2.fit_transform(x) # 将x拟合并转换到0-1范围
 
 保存为新的csv。
 
-```
+```python
 norm_data = np.concatenate((x,y_noisy),axis=1)
 # 定义标题行，列之间用逗号分隔
 header = 'feature,pred'
@@ -321,7 +321,7 @@ np.savetxt('data/norm_data.csv',norm_data,delimiter=',', header=header, comments
 
 训练模型前，一般建议划分数据集为训练集、验证集，我们可以借助BaseDT库完成数据集按照一定比例的随机划分。
 
-```
+```python
 from BaseDT.dataset import split_tab_dataset
 path = "data/norm_data.csv"
 tx,ty,val_x,val_y = split_tab_dataset(path,data_column=0,label_column=1)
@@ -331,7 +331,7 @@ tx,ty,val_x,val_y = split_tab_dataset(path,data_column=0,label_column=1)
 
 搭建一个3层的神经网络并开始训练，输入维度是1（1列数据），最后输出维度是1（1列数据），激活函数使用ReLU。
 
-```
+```python
 # 导入库
 from BaseNN import nn
 # 声明模型，选择回归任务
@@ -350,7 +350,7 @@ model.train(lr=0.01, epochs=500,loss='MSELoss') # 训练
 
 读取验证集数据进行模型推理。
 
-```
+```python
 import numpy as np
 # 读取验证集
 val_path = 'data/norm_data_val.csv'
@@ -368,13 +368,13 @@ y_pred = model.inference(val_x,checkpoint = 'checkpoints/ckpt/basenn.pth')  # �
 
 先将x和y从标准化的状态恢复到它们原始的比例和值，使用和预处理时一样的方式，scaler和scaler2均调用数据预处理时的。
 
-```
+```python
 y_pred = scaler.inverse_transform(y_pred)
 val_y = scaler.inverse_transform(val_y.reshape(-1, 1))
 val_x = scaler2.inverse_transform(val_x.reshape(-1, 1))
 ```
 
-```
+```python
 import matplotlib.pyplot as plt
 import operator
 
@@ -404,14 +404,14 @@ BaseNN是XEdu系列工具的重要组成部分，延续了MMEdu极简的训练�
 
 ##### 1）导入库
 
-```
+```python
 # 导入库
 from BaseNN import nn
 ```
 
 ##### 2）搭建模型
 
-```
+```python
 #声明模型 
 model = nn('cls')
 
@@ -434,14 +434,14 @@ model.add('Linear', size=(512, 10), activation='Softmax') # (32,10)
 载入前需对数据做预处理，载入图片数据前如需对图像数据集进行预处理，例如做尺寸调整，可先使用调用已经内置的torchvision对图片数据集进行预处理再载入模型进行训练。此处我们需将图片做尺寸调整（调整为224,224）
 参考代码如下，注意涉及数万张图片，需等待几分钟。
 
-```
+```python
 # 载入数据，并对数据集做尺寸调整
 model.load_img_data('/data/MELLBZ/mnist/training_set',transform={"Resize":(224,224)},num_workers=1)
 ```
 
 ##### 4）设置超参数并训练模型
 
-```
+```python
 model.add(optimizer='SGD')
 model.save_fold = 'new_mn_ckpt'
 
@@ -455,7 +455,7 @@ model.train(lr=0.01, epochs=1) # 直接训练
 
 可指定新的图片进行模型测试，注意需先将图片进行尺寸调整（训练时也做了）。
 
-```
+```python
 import cv2
 
 # 指定一张图片

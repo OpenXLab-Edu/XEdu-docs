@@ -46,6 +46,7 @@
               <p class="caption" role="heading"><span class="caption-text">目录</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_quick_start.html">XEdu快速入门手册</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEduHub</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basenn.html">神经网络库BaseNN</a></li>
@@ -129,35 +130,35 @@
 <h2>训练<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
 <section id="id5">
 <h3>0. 引入包<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库，从BaseML导入分类模块</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库，从BaseML导入分类模块</span>
 <span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Classification</span> <span class="k">as</span> <span class="bp">cls</span>
 </pre></div>
 </div>
 </section>
 <section id="id6">
 <h3>1. 实例化模型<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型</span>
 <span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;KNN&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="id7">
 <h3>2. 载入数据<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 指定数据集</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 指定数据集</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_tab_data</span><span class="p">(</span><span class="s1">&#39;datasets/iris_training.csv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="id8">
 <h3>3. 模型训练<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型训练</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型训练</span>
 <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
 <section id="id9">
 <h3>4. 模型评估<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型评估</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型评估</span>
 <span class="n">model</span><span class="o">.</span><span class="n">valid</span><span class="p">(</span><span class="s1">&#39;datasets/iris_test.csv&#39;</span><span class="p">,</span><span class="n">metrics</span><span class="o">=</span><span class="s1">&#39;acc&#39;</span><span class="p">)</span>
 
 <span class="c1"># 评价指标可视化</span>
@@ -167,7 +168,7 @@
 </section>
 <section id="id10">
 <h3>5. 模型保存<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型保存</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型保存</span>
 <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;checkpoints/baseml_model/knn_iris.pkl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -179,14 +180,14 @@
 <section id="id12">
 <h3>使用现有模型直接推理<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h3>
 <p>对一组数据直接推理。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;KNN&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;KNN&#39;</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;checkpoints/baseml_model/knn_iris.pkl&#39;</span><span class="p">)</span>
 <span class="n">y</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">([[</span><span class="mf">5.9</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.2</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">]])</span>
 </pre></div>
 </div>
 <p>输出结果数据类型为<code class="docutils literal notranslate"><span class="pre">array</span></code>的一维数组。</p>
 <p>可以在此基础上完成一个建议系统，输入鸢尾花的花萼长度、花萼宽度、花瓣长度、花瓣宽度，输出该鸢尾花所属的类别。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Classification</span> <span class="k">as</span> <span class="bp">cls</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Classification</span> <span class="k">as</span> <span class="bp">cls</span>
 <span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;KNN&#39;</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;checkpoints/baseml_model/knn_iris.pkl&#39;</span><span class="p">)</span>
 

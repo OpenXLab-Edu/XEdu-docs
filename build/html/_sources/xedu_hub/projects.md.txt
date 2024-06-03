@@ -30,8 +30,8 @@ hand.show(display_img) # 结果可视化
 from XEdu.hub import Workflow as wf
 import cv2
 cap = cv2.VideoCapture(0)
-body = wf(task='body17')# 实例化pose模型
-det = wf(task='bodydetect')# 实例化detect模型
+body = wf(task='pose_body17')# 实例化pose模型
+det = wf(task='det_body')# 实例化detect模型
 while cap.isOpened():
     ret, frame = cap.read()
     if not ret:
@@ -67,8 +67,8 @@ import os
 
 video_path = "data/eason.mp4" # 指定视频路径
 output_dir = 'output/' # 指定保存位置
-body = wf(task='body17')# 实例化pose模型
-det = wf(task='bodydetect')# 实例化detect模型
+body = wf(task='pose_body17')# 实例化pose模型
+det = wf(task='det_body')# 实例化detect模型
 cap = cv2.VideoCapture(video_path)
 frame_count = 0 # 视频帧的数量
 
@@ -131,7 +131,7 @@ import time
 
 
 Board('uno').begin() # 指定Arduino开发板，自动识别COM口
-det = wf(task='facedetect') # 加载人脸检测模型
+det = wf(task='det_face') # 加载人脸检测模型
 ser = Servo(Pin(Pin.D4)) # 初始化舵机，指定舵机接口为D4
 cap = cv2.VideoCapture(0) # 打开摄像头
 
@@ -160,7 +160,7 @@ cv2.destroyAllWindows()
 ```
 ## 识行小车
 
-我们做了一辆能在驾驶过程中自动阅读交通指令并做出相应运动的小车。
+我们做了一辆能在驾驶过程中自动阅读交通指令并做出相应运动的智能小车，这辆智能小车具有第一人称视角视角系统，可以将数据发送到服务器进行统一计算处理，根据返回结果执行行进指令。
 
 ![](../images/xeduhub/car_ocr.gif)
 
@@ -218,15 +218,15 @@ if response.status_code == 200:
                 cv2.waitKey(1)
                 # 小车控制
                 if len(texts)>0:
-                    if texts[0][0]=="stop":
+                    if texts[0][0]=='stop':
                         control_car('S') # 停止
-                    elif texts[0][0]=="left":
+                    elif texts[0][0]=='left':
                         control_car('L') # 左转
-                    elif texts[0][0]=="right":
+                    elif texts[0][0]=='right':
                        control_car('R') # 右转
-                    elif texts[0][0]=="go":
+                    elif texts[0][0]=='go':
                         control_car('F') # 前进
-                    elif texts[0][0]=="back":
+                    elif texts[0][0]=='back':
                         control_car('B') # 后退
             frame_count += 1 
             if cv2.waitKey(1) & 0xFF == ord('q'):
@@ -319,19 +319,19 @@ if response.status_code == 200:
                 # 小车控制
                 if  90 > distanceCM > 70 and 270>mid>50:
                         control_car('S') # 停止
-                        print("stop")
+                        print('stop')
                 elif distanceCM>=90 and 270>mid>50:
                         control_car('F') # 前进
-                        print("go")
+                        print('go')
                 elif distanceCM<=70 and 270>mid>50:
                         control_car('B') # 后退
-                        print("back")
+                        print('back')
                 elif 270<mid:
                         control_car('R') # 右转
-                        print("right")
+                        print('right')
                 elif 50>mid:
                         control_car('L') # 左转
-                        print("left")
+                        print('left')
                 # 在窗口中显示图像
                 cv2.imshow('Video', img_with_keypoints)
 

@@ -42,10 +42,9 @@ Python作为一个容易上手，简单方便的开源编程语言，第三方�
 
 均可以采用pip命令安装，具体如下：
 
-```
+```python
 pip install PySimpleGUI
 pip install PySimpleGUIWeb
-
 ```
 
 
@@ -83,7 +82,7 @@ window.close()
 
 上面这段代码一个简单的PySimpleGUI应用程序，它创建了一个包含文本和按钮的窗口。当用户点击"确定"按钮或关闭窗口时，程序将结束。这段代码中最核心的部分在于窗体设计和窗体事件控制部分。其中“window.read()”返回的信息中，event为按钮的名称，values则为一个字典，键名是控件的名称。仔细观察PySimpleGUI代码，会发现和Arduino、掌控板之类开源硬件程序的运行逻辑非常类似——用一个无限循环来处理输入和输出窗体事件。该代码的运行效果如下，界面样式中规中矩，看起来并不丑。
 
-![](../images/scitech_tools/pysimplegui.png)
+![](../../images/scitech_tools/pysimplegui.png)
 
 
 ## 4. 借助PySimpleGUI部署简易AI应用
@@ -94,7 +93,7 @@ window.close()
 
 下面是一段使用PySimpleGUIWeb与OpenCV来显示实时的摄像头图像并对其进行实时推理。在推理过程中，使用的是ONNX模型，推理的代码是借助XEdu团队推出的模型部署工具[BaseDeploy](https://xedu.readthedocs.io/zh/master/basedeploy/introduction.html)，代码较为简洁。关于基于MMEdu训练的模型转换为ONNX的说明可见[最后一步：AI模型转换与部署](https://xedu.readthedocs.io/zh/master/mmedu/model_convert.html#ai)。
 
-```
+```python
 # 带窗体的摄像头程序，自动推理
 # 模型为1000分类预训练模型（MobielNet）
 import PySimpleGUIWeb as sg
@@ -147,7 +146,7 @@ window.close()
 一般来说，目标检测的代码会在推理画面上显示检测出来的目标，并且绘制一个矩形。因而，BaseDeploy的推理函数会返回识别后的画面。
 
 
-```
+```python
 # 带窗体的摄像头程序，自动推理
 # 模型为80类目标检测预训练模型（SSD_Lite）
 import PySimpleGUIWeb as sg

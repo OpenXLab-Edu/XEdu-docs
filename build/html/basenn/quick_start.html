@@ -54,7 +54,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id1">简介</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">安装</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">体验</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">第一个BaseNN项目：搭建搭建鸢尾花分类模型</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">第一个BaseNN项目：搭建全连接神经网络训练鸢尾花分类模型</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id5">第0步 引入包</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id6">第1步 声明模型</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id7">第2步 载入数据</a></li>
@@ -89,6 +89,7 @@
 <li class="toctree-l2"><a class="reference internal" href="installation.html">BaseNN安装或下载</a></li>
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">BaseNN功能详解</a></li>
 <li class="toctree-l2"><a class="reference internal" href="projects.html">BaseNN项目案例集</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix.html">附录</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../baseml.html">传统机器学习库BaseML</a></li>
@@ -143,7 +144,7 @@
 <p>可尝试通过运行<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--upgrade</span> <span class="pre">opencv-python</span></code>解决</p>
 </section>
 <section id="id4">
-<h2>第一个BaseNN项目：搭建搭建鸢尾花分类模型<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<h2>第一个BaseNN项目：搭建全连接神经网络训练鸢尾花分类模型<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
 <section id="id5">
 <h3>第0步 引入包<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入BaseNN库</span>
@@ -159,6 +160,7 @@
 </section>
 <section id="id7">
 <h3>第2步 载入数据<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
+<p>直接使用<code class="docutils literal notranslate"><span class="pre">load_tab_data</span></code>方法载入鸢尾花数据集，该数据集包含150个数据样本，分为3类（Versicolour鸢尾花、Setosa鸢尾花和Virginica鸢尾花），每类50个数据，每个数据包含4个属性（花萼长度、花萼宽度、花瓣长度和花瓣宽度）。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">train_path</span> <span class="o">=</span> <span class="s1">&#39;data/iris_training.csv&#39;</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_tab_data</span><span class="p">(</span><span class="n">train_path</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
 </pre></div>
@@ -166,7 +168,7 @@
 </section>
 <section id="id8">
 <h3>第3步 搭建模型<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
-<p>逐层添加，搭建起模型结构。注释标明了数据经过各层的维度变化。</p>
+<p>逐层添加，搭建起模型结构。注释标明了数据经过各层的维度变化。此处我们搭建的是一个输入维度为4，输出维度为3，隐藏层数量为2的全连接神经网络。输入维度4与鸢尾花数据集的特征维度对应，输出3与类别数量对应。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> <span class="c1"># [120, 10]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span> <span class="c1"># [120, 5]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">)</span> <span class="c1"># [120, 3]</span>
@@ -176,7 +178,7 @@
 </section>
 <section id="id9">
 <h3>第4步 模型训练<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
-<p>模型训练可以采用以下函数：</p>
+<p>设置好模型保存的路径，使用<code class="docutils literal notranslate"><span class="pre">train</span></code>开始训练，需要设置学习率lr和轮次epochs。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 设置模型保存的路径</span>
 <span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/iris_ckpt&#39;</span>
 <span class="c1"># 模型训练</span>
@@ -184,7 +186,7 @@
 </pre></div>
 </div>
 <p>也可以使用继续训练：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/basenn.pth&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/basenn.pth&#39;</span>
 <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -192,16 +194,20 @@
 </section>
 <section id="id10">
 <h3>第5步 模型测试<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h3>
-<p>用测试数据查看模型效果。</p>
+<p>可以直接用测试数据查看模型效果。</p>
+<p>读取数据。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 用测试数据查看模型效果</span>
 <span class="n">model2</span> <span class="o">=</span> <span class="n">nn</span><span class="p">(</span><span class="s1">&#39;cls&#39;</span><span class="p">)</span>
 <span class="n">test_path</span> <span class="o">=</span> <span class="s1">&#39;data/iris_test.csv&#39;</span>
 <span class="n">test_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">test_path</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span> 
-<span class="n">res</span> <span class="o">=</span> <span class="n">model2</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">test_x</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="s2">&quot;checkpoints/iris_ckpt/basenn.pth&quot;</span><span class="p">)</span>
-<span class="n">model2</span><span class="o">.</span><span class="n">print_result</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
-
 <span class="c1"># 获取最后一列的真实值</span>
 <span class="n">test_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">test_path</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> 
+</pre></div>
+</div>
+<p>模型推理并定义一个计算分类正确率的函数计算测试集上准确率。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">model2</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">test_x</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="s2">&quot;checkpoints/iris_ckpt/basenn.pth&quot;</span><span class="p">)</span>
+<span class="n">model2</span><span class="o">.</span><span class="n">print_result</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+
 <span class="c1"># 定义一个计算分类正确率的函数</span>
 <span class="k">def</span> <span class="nf">cal_accuracy</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">pred_y</span><span class="p">):</span>
     <span class="n">res</span> <span class="o">=</span> <span class="n">pred_y</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -241,7 +247,7 @@
 <p>（用Chrome浏览器打开效果最佳）</p>
 <section id="id13">
 <h3>第0步 引入包<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库</span>
 <span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
 </pre></div>
 </div>
@@ -255,14 +261,15 @@
 </section>
 <section id="id15">
 <h3>第2步 载入数据<a class="headerlink" href="#id15" title="Permalink to this heading"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">load_tab_data</span><span class="p">(</span><span class="s1">&#39;house_price_data_norm_train.csv&#39;</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">)</span> <span class="c1"># 载入数据</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">load_tab_data</span><span class="p">(</span><span class="s1">&#39;house_price_data_norm_train.csv&#39;</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">)</span> <span class="c1"># 载入数据</span>
 </pre></div>
 </div>
 <p>注：载入的数据集是做归一化之后并完成数据拆分的训练集。原项目中涉及数据归一化处理的步骤，使用sklearn.preprocessing的MinMaxScaler类，将每个特征缩放到给定的范围（在您的案例中是0到1），这是通过将最小值映射到0，最大值映射到1来实现的。对于中间的值，它们根据最大和最小值线性地缩放。</p>
 </section>
 <section id="id16">
 <h3>第3步 搭建一个3层的全连接神经网络<a class="headerlink" href="#id16" title="Permalink to this heading"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span>  
+<p>逐层添加，此处我们搭建的是一个输入维度为4，输出维度为1，隐藏层数量为2的全连接神经网络。输入维度4与数据集的特征维度对应，在任务中，由于我们只预测一个目标值房价，则输出维度设定为 1。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span>  
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> 
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;Adam&#39;</span><span class="p">)</span>
@@ -271,7 +278,7 @@
 </section>
 <section id="id17">
 <h3>第4步 模型训练<a class="headerlink" href="#id17" title="Permalink to this heading"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 设置模型保存的路径</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 设置模型保存的路径</span>
 <span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/ckpt&#39;</span>
 <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.008</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;MSELoss&#39;</span><span class="p">)</span> <span class="c1"># 训练</span>
 </pre></div>
@@ -281,7 +288,7 @@
 <h3>第5步 模型测试<a class="headerlink" href="#id18" title="Permalink to this heading"></a></h3>
 <p>此步骤可以借助验证集完成。</p>
 <p>读取数据。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="c1"># 读取验证集</span>
 <span class="n">val_path</span> <span class="o">=</span> <span class="s1">&#39;house_price_data_norm_val.csv&#39;</span>
 <span class="n">val_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">val_path</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span> <span class="c1"># 读取特征列</span>
@@ -289,7 +296,7 @@
 </pre></div>
 </div>
 <p>对验证集完成模型推理。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库</span>
 <span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
 <span class="c1"># 声明模型</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">(</span><span class="s1">&#39;reg&#39;</span><span class="p">)</span> 
@@ -297,7 +304,7 @@
 </pre></div>
 </div>
 <p>绘制曲线图。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 绘制真实数据和预测比较曲线</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 绘制真实数据和预测比较曲线</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">val_y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;val&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;pred&#39;</span><span class="p">)</span>
@@ -311,7 +318,7 @@
 <section id="id19">
 <h3>第6步 模型应用<a class="headerlink" href="#id19" title="Permalink to this heading"></a></h3>
 <p>最后，可将模型应用于推理新数据。输入一组新的数据进行模型推理，需先完成数据处理，涉及的数据处理的代码会较长，此处是为了应用之前在训练集 (x) 上通过 fit_transform 方法学习到的scaler来转换 val_x。这确保了数据的一致性，因为对于模型来说，重要的是以相同的方式缩放训练数据和验证/测试数据。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库</span>
 <span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
 <span class="c1"># 声明模型</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">(</span><span class="s1">&#39;reg&#39;</span><span class="p">)</span> 
@@ -379,7 +386,7 @@
 <section id="id25">
 <h3>第5步 模型测试<a class="headerlink" href="#id25" title="Permalink to this heading"></a></h3>
 <p>可以输入一个字输出下一个字。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">input</span> <span class="o">=</span> <span class="s1">&#39;长&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">input</span> <span class="o">=</span> <span class="s1">&#39;长&#39;</span>
 <span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;model.pth&#39;</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="nb">input</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">)</span> <span class="c1"># output是多维向量，接下来转化为汉字</span>
 <span class="n">output</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>

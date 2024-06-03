@@ -154,7 +154,7 @@
 <section id="id2">
 <h2>2. 安装<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
 <p>均可以采用pip命令安装，具体如下：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">PySimpleGUI</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">PySimpleGUI</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">PySimpleGUIWeb</span>
 </pre></div>
 </div>
@@ -190,7 +190,7 @@
 </pre></div>
 </div>
 <p>上面这段代码一个简单的PySimpleGUI应用程序，它创建了一个包含文本和按钮的窗口。当用户点击”确定”按钮或关闭窗口时，程序将结束。这段代码中最核心的部分在于窗体设计和窗体事件控制部分。其中“window.read()”返回的信息中，event为按钮的名称，values则为一个字典，键名是控件的名称。仔细观察PySimpleGUI代码，会发现和Arduino、掌控板之类开源硬件程序的运行逻辑非常类似——用一个无限循环来处理输入和输出窗体事件。该代码的运行效果如下，界面样式中规中矩，看起来并不丑。</p>
-<p><img alt="how_to_use/images/scitech_tools/pysimplegui.png" src="how_to_use/images/scitech_tools/pysimplegui.png" /></p>
+<p><img alt="../../_images/pysimplegui.png" src="../../_images/pysimplegui.png" /></p>
 </section>
 <section id="pysimpleguiai">
 <h2>4. 借助PySimpleGUI部署简易AI应用<a class="headerlink" href="#pysimpleguiai" title="Permalink to this heading"></a></h2>
@@ -198,7 +198,7 @@
 <section id="id4">
 <h3>示例1：带窗体的摄像头实时推理的程序（图像分类）<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
 <p>下面是一段使用PySimpleGUIWeb与OpenCV来显示实时的摄像头图像并对其进行实时推理。在推理过程中，使用的是ONNX模型，推理的代码是借助XEdu团队推出的模型部署工具<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basedeploy/introduction.html">BaseDeploy</a>，代码较为简洁。关于基于MMEdu训练的模型转换为ONNX的说明可见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/model_convert.html#ai">最后一步：AI模型转换与部署</a>。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 带窗体的摄像头程序，自动推理</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 带窗体的摄像头程序，自动推理</span>
 <span class="c1"># 模型为1000分类预训练模型（MobielNet）</span>
 <span class="kn">import</span> <span class="nn">PySimpleGUIWeb</span> <span class="k">as</span> <span class="nn">sg</span>
 <span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
@@ -249,7 +249,7 @@
 <section id="id5">
 <h3>示例2：带窗体的摄像头实时推理的程序（目标检测）<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
 <p>一般来说，目标检测的代码会在推理画面上显示检测出来的目标，并且绘制一个矩形。因而，BaseDeploy的推理函数会返回识别后的画面。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 带窗体的摄像头程序，自动推理</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 带窗体的摄像头程序，自动推理</span>
 <span class="c1"># 模型为80类目标检测预训练模型（SSD_Lite）</span>
 <span class="kn">import</span> <span class="nn">PySimpleGUIWeb</span> <span class="k">as</span> <span class="nn">sg</span>
 <span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>

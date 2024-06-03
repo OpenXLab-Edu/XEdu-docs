@@ -98,7 +98,7 @@ model.train()
 
 ##### 2）模型评估
 
-```
+```python
 # 模型评估,使用载入数据时默认拆分出的验证集进行评估
 model.valid()
 # 模型评价指标可视化
@@ -107,7 +107,7 @@ model.metricplot()
 
 ##### 3）模型保存
 
-```
+```python
 # 保存模型
 model.save('my_CART_model.pkl')
 ```
@@ -137,7 +137,7 @@ print(label[y[0]-1])
 
 首先需对MNIST数据集进行图像数字化处理，使用BaseML自带的IMGLoader库。
 
-```
+```python
 from BaseML import IMGLoader
 # 指定数据集路径
 train_path = '/data/QX8UBM/mnist_sample/training_set'
@@ -165,7 +165,7 @@ model.train()
 
 ##### 2）模型评估
 
-```
+```python
 # 读取验证数据进行评估
 model.valid(x=X_val, y=y_val,metrics='acc')
 # 评价指标可视化
@@ -174,7 +174,7 @@ model.metricplot(X_val,y_val)
 
 ##### 3）模型保存
 
-```
+```python
 # 保存模型
 model.save('checkpoints/mymodel.pkl')
 ```
@@ -241,7 +241,7 @@ model.train()
 
 ##### 2）模型评估
 
-```
+```python
 # 模型评估,使用载入数据时默认拆分出的验证集进行评估
 model.valid()
 # 模型评价指标可视化
@@ -260,7 +260,7 @@ model.metricplot()
 
 ##### 3）模型推理 
 
-```
+```python
 # 给定一组数据，查看模型推理结果
 test_data = [[0,1,0,1]]
 test_y = model.inference(test_data)
@@ -270,7 +270,7 @@ print(loc.inverse_transform(test_y))
 
 拓展-修改k值进行训练：
 
-```
+```python
 # 使用k = 3进行训练
 model1=cls('KNN')
 model1.para = {"n_neighbors":3}
@@ -311,21 +311,21 @@ model.train()
 
 ##### 2）模型评估
 
-```
+```python
 # 计算R值进行评估
 model.valid('蛋糕尺寸与价格.csv',metrics='r2')
 ```
 
 ##### 3）模型保存
 
-```
+```python
 # 模型保存
 model.save('mymodel.pkl')
 ```
 
 ##### 4）模型应用
 
-```
+```python
 # 指定数据
 df = pd.read_csv("蛋糕尺寸与价格.csv")
 # 输出模型对于数据的预测结果
@@ -368,7 +368,7 @@ df = pd.read_csv("2016地区GDP.csv")
 
 ##### 1）模型训练
 
-```
+```python
 # 实例化模型
 model = clt('Kmeans')
 model.set_para(N_CLUSTERS=5) 
@@ -382,13 +382,13 @@ model.save('mymodel.pkl')
 
 ##### 2）模型推理
 
-```
+```python
 # 进行推理
 result = model.inference()
 print(result)
 ```
 
-```
+```python
 # 输出最终的城市聚类文字结果
 for index, row in df.iterrows():
     print('{0}属于第{1}个城市集群'.format(row['地区'],result[index])) # 输出每一行
@@ -396,7 +396,7 @@ for index, row in df.iterrows():
 
 可视化聚类结果的代码：
 
-```
+```python
 # 可视化最终的城市集群结果
 import matplotlib.pyplot as plt
 

@@ -10,3 +10,5 @@
    basenn/introduction.md
 
    basenn/projects.md
+
+   basenn/appendix.md

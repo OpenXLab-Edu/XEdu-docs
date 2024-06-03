@@ -1,5 +1,17 @@
 # XEdu的安装和下载
 
+
+当前在[PyPi](https://pypi.org/user/aiedu/)开源的最新版本号如下：
+```
+XEdu-python==0.1.6
+MMEdu==0.1.26
+BaseML==0.1.3
+BaseNN==0.3.0
+BaseDT==0.1.3
+easy-xedu==0.2.2
+BaseDeploy==0.0.4
+```
+
 1.可选的安装方式
 --------------
 
@@ -14,7 +26,7 @@
 
 下载方式
 
-飞书网盘：[XEdu v1.6.7d.exe](https://p6bm2if73b.feishu.cn/file/boxcn7ejYk2XUDsHI3Miq9546Uf?from=from_copylink)
+飞书网盘：[XEdu v1.6.7f.exe](https://p6bm2if73b.feishu.cn/file/boxcn7ejYk2XUDsHI3Miq9546Uf?from=from_copylink)
 
 下载最新版exe，同时建议准备win10电脑。
 
@@ -203,7 +215,7 @@ pip install mmcv-full==1.4.5 -f https://download.openmmlab.com/mmcv/dist/cu101/t
 ### 缘起：学校教学之困境
 因为学校机房的主机可能性能不强，但是又无法采购合适的intel新电脑或者nvidia显卡主机，尽管可以用浦育平台算力缓解燃眉之急，只需要浏览器就可以实现编程。但是受限于学校出口带宽等种种原因，AI教学依然受限，为此我们给出了一个新思路。可以用配置服务器的形式，为学校AI教学采购一款带GPU算力的服务器。有了服务器硬件之后，如何安装python环境，让学生能够像使用浦育平台一样使用校内等本地服务器算力呢？就请出我们的重磅嘉宾：**水螅矩阵（OpenHydra）** 一款开源的GPU算力分配系统。
 
-![](https://avatars.githubusercontent.com/u/156864381?s=200&v=4)
+![](../images/about/oh1.png)
 
 [开源助力AI教育丨九州未来@2024 GDC主题工作坊圆满举办](https://zhuanlan.zhihu.com/p/688916114)
 
@@ -213,18 +225,17 @@ pip install mmcv-full==1.4.5 -f https://download.openmmlab.com/mmcv/dist/cu101/t
 
 这套系统可以让一台服务器提供满足班级授课的python运行环境，同时内置了XEdu等多种预装环境，以及多套分层AI教学课程。当系统启动后，教师和学生可以登陆网页进行管理和使用。
 
-<img width="700" alt="image" src="https://github.com/OpenXLab-Edu/XEdu-docs/assets/40832342/4f279b78-4b2d-4a7a-a81c-81f2e2c8837a">
+![](../images/about/oh2.png)
 
 学生登陆后，将可以启动EasyTrain、JupyterLab、VS Code等多种AI学习环境，使用浏览器即可完成Python程序运行（程序都运行在服务器系统上）。OpenHydra的强大之处在于让不同的学生可以同时使用一台服务器的资源进行计算，而这一切，仅仅基于浏览器就可以实现。
 
-<img width="700" alt="image" src="https://github.com/OpenXLab-Edu/XEdu-docs/assets/40832342/f1a06198-eecc-4c32-86fc-87ee6ede2a35">
+![](../images/about/oh3.png)
 
-<img width="700" alt="image" src="https://github.com/OpenXLab-Edu/XEdu-docs/assets/40832342/2ea495c4-25e0-452b-8961-23360d738d90">
-
+![](../images/about/oh4.png)
 
 教师可以为系统添加更多的数据集、课程、算力、用户等必要的资源，同时，也可以对资源的分配进行控制。可以配置系统为纯CPU模式，也可以指定每个学生可以拥有的内存空间大小、显存空间大小，以及学生的预装python环境。
 
-<img width="700" alt="image" src="https://github.com/OpenXLab-Edu/XEdu-docs/assets/40832342/03219a8c-236f-4742-b2b0-cacd4b879120">
+![](../images/about/oh5.png)
 
 官方B站账号：[OpenHydra](https://space.bilibili.com/3546379869751358)
 

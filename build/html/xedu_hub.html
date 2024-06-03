@@ -21,7 +21,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="快速体验XEduHub" href="xedu_hub/quick_start.html" />
-    <link rel="prev" title="案例六：综合项目石头剪刀布的实时识别（XEduhub+BaseNN）" href="how_to_quick_start/how_to_make_a_small_project.html" /> 
+    <link rel="prev" title="案例六：综合项目石头剪刀布的实时识别（XEduHub+BaseNN）" href="how_to_quick_start/how_to_make_a_small_project.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -52,6 +52,7 @@
 <li class="toctree-l2"><a class="reference internal" href="xedu_hub/installation.html">XEduHub安装</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xedu_hub/introduction.html">XEduHub功能详解</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xedu_hub/projects.html">XEduHub项目案例集</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xedu_hub/mindplus_xeduhub.html">在Mind+中使用XEduHub</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="mmedu.html">计算机视觉库MMEdu</a></li>
@@ -100,20 +101,19 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="xedu_hub/installation.html">XEduHub安装</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xedu_hub/introduction.html">XEduHub功能详解</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="xedu_hub/introduction.html#workflow">什么是Workflow？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xedu_hub/introduction.html#workflow">通用模型推理工具Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xedu_hub/introduction.html#id1">1. 目标检测</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xedu_hub/introduction.html#id29">2. 关键点识别</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xedu_hub/introduction.html#ocr">3. 光学字符识别（OCR）</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xedu_hub/introduction.html#id64">4. 图像分类</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xedu_hub/introduction.html#id70">5. 风格迁移</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xedu_hub/introduction.html#id77">6. 全景驾驶感知系统</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xedu_hub/introduction.html#id84">7. 图像嵌入和文本嵌入</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xedu_hub/introduction.html#id70">5. 内容生成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xedu_hub/introduction.html#id85">6. 全景驾驶感知系统</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xedu_hub/introduction.html#id92">7. 多模态图文特征提取</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xedu_hub/introduction.html#mmedu">8. MMEdu模型推理</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xedu_hub/introduction.html#basenn">9. BaseNN模型推理</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xedu_hub/introduction.html#baseml">10. BaseML模型推理</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xedu_hub/introduction.html#onnx">11. 其他onnx模型推理</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xedu_hub/introduction.html#id122">XEduHub任务模型资源下载与存放</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xedu_hub/introduction.html#id123">报错专栏</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xedu_hub/introduction.html#id132">XEduHub任务模型文件获取与存放</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="xedu_hub/projects.html">XEduHub项目案例集</a><ul>
@@ -124,6 +124,10 @@
 <li class="toctree-l2"><a class="reference internal" href="xedu_hub/projects.html#id5">识行小车</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="xedu_hub/mindplus_xeduhub.html">在Mind+中使用XEduHub</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="xedu_hub/mindplus_xeduhub.html#id1">使用说明</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </section>
@@ -132,7 +136,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="how_to_quick_start/how_to_make_a_small_project.html" class="btn btn-neutral float-left" title="案例六：综合项目石头剪刀布的实时识别（XEduhub+BaseNN）" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="how_to_quick_start/how_to_make_a_small_project.html" class="btn btn-neutral float-left" title="案例六：综合项目石头剪刀布的实时识别（XEduHub+BaseNN）" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="xedu_hub/quick_start.html" class="btn btn-neutral float-right" title="快速体验XEduHub" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

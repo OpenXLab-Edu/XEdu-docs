@@ -20,7 +20,7 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="计算机视觉库MMEdu" href="../mmedu.html" />
+    <link rel="next" title="在Mind+中使用XEduHub" href="mindplus_xeduhub.html" />
     <link rel="prev" title="XEduHub功能详解" href="introduction.html" /> 
 </head>
 
@@ -46,6 +46,7 @@
               <p class="caption" role="heading"><span class="caption-text">目录</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_quick_start.html">XEdu快速入门手册</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEduHub</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="quick_start.html">快速体验XEduHub</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation.html">XEduHub安装</a></li>
@@ -58,6 +59,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id5">识行小车</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="mindplus_xeduhub.html">在Mind+中使用XEduHub</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
@@ -120,8 +122,8 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="kn">import</span> <span class="nn">cv2</span>
 <span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">body</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;body17&#39;</span><span class="p">)</span><span class="c1"># 实例化pose模型</span>
-<span class="n">det</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;bodydetect&#39;</span><span class="p">)</span><span class="c1"># 实例化detect模型</span>
+<span class="n">body</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;pose_body17&#39;</span><span class="p">)</span><span class="c1"># 实例化pose模型</span>
+<span class="n">det</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;det_body&#39;</span><span class="p">)</span><span class="c1"># 实例化detect模型</span>
 <span class="k">while</span> <span class="n">cap</span><span class="o">.</span><span class="n">isOpened</span><span class="p">():</span>
     <span class="n">ret</span><span class="p">,</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">ret</span><span class="p">:</span>
@@ -153,8 +155,8 @@
 
 <span class="n">video_path</span> <span class="o">=</span> <span class="s2">&quot;data/eason.mp4&quot;</span> <span class="c1"># 指定视频路径</span>
 <span class="n">output_dir</span> <span class="o">=</span> <span class="s1">&#39;output/&#39;</span> <span class="c1"># 指定保存位置</span>
-<span class="n">body</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;body17&#39;</span><span class="p">)</span><span class="c1"># 实例化pose模型</span>
-<span class="n">det</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;bodydetect&#39;</span><span class="p">)</span><span class="c1"># 实例化detect模型</span>
+<span class="n">body</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;pose_body17&#39;</span><span class="p">)</span><span class="c1"># 实例化pose模型</span>
+<span class="n">det</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;det_body&#39;</span><span class="p">)</span><span class="c1"># 实例化detect模型</span>
 <span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="n">video_path</span><span class="p">)</span>
 <span class="n">frame_count</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># 视频帧的数量</span>
 
@@ -214,7 +216,7 @@
 
 
 <span class="n">Board</span><span class="p">(</span><span class="s1">&#39;uno&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">begin</span><span class="p">()</span> <span class="c1"># 指定Arduino开发板，自动识别COM口</span>
-<span class="n">det</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;facedetect&#39;</span><span class="p">)</span> <span class="c1"># 加载人脸检测模型</span>
+<span class="n">det</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;det_face&#39;</span><span class="p">)</span> <span class="c1"># 加载人脸检测模型</span>
 <span class="n">ser</span> <span class="o">=</span> <span class="n">Servo</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">Pin</span><span class="o">.</span><span class="n">D4</span><span class="p">))</span> <span class="c1"># 初始化舵机，指定舵机接口为D4</span>
 <span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># 打开摄像头</span>
 
@@ -245,7 +247,7 @@
 </section>
 <section id="id5">
 <h2>识行小车<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
-<p>我们做了一辆能在驾驶过程中自动阅读交通指令并做出相应运动的小车。</p>
+<p>我们做了一辆能在驾驶过程中自动阅读交通指令并做出相应运动的智能小车，这辆智能小车具有第一人称视角视角系统，可以将数据发送到服务器进行统一计算处理，根据返回结果执行行进指令。</p>
 <p><img alt="../_images/car_ocr.gif" src="../_images/car_ocr.gif" /></p>
 <p>功能描述：一辆能在驾驶过程中自动阅读交通指令并做出相应运动的小车。</p>
 <p>技术实现方式：使用无线摄像头实时获取小车行驶的第一视角，并让一台上位机无线接收图像，再对接收的图像使用XEduHub进行文字识别的离线OCR技术，最后根据识别的文本下发运动指令。</p>
@@ -297,15 +299,15 @@
                 <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
                 <span class="c1"># 小车控制</span>
                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">texts</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="n">texts</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;stop&quot;</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">texts</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;stop&#39;</span><span class="p">:</span>
                         <span class="n">control_car</span><span class="p">(</span><span class="s1">&#39;S&#39;</span><span class="p">)</span> <span class="c1"># 停止</span>
-                    <span class="k">elif</span> <span class="n">texts</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;left&quot;</span><span class="p">:</span>
+                    <span class="k">elif</span> <span class="n">texts</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;left&#39;</span><span class="p">:</span>
                         <span class="n">control_car</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">)</span> <span class="c1"># 左转</span>
-                    <span class="k">elif</span> <span class="n">texts</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;right&quot;</span><span class="p">:</span>
+                    <span class="k">elif</span> <span class="n">texts</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;right&#39;</span><span class="p">:</span>
                        <span class="n">control_car</span><span class="p">(</span><span class="s1">&#39;R&#39;</span><span class="p">)</span> <span class="c1"># 右转</span>
-                    <span class="k">elif</span> <span class="n">texts</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;go&quot;</span><span class="p">:</span>
+                    <span class="k">elif</span> <span class="n">texts</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;go&#39;</span><span class="p">:</span>
                         <span class="n">control_car</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">)</span> <span class="c1"># 前进</span>
-                    <span class="k">elif</span> <span class="n">texts</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;back&quot;</span><span class="p">:</span>
+                    <span class="k">elif</span> <span class="n">texts</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;back&#39;</span><span class="p">:</span>
                         <span class="n">control_car</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">)</span> <span class="c1"># 后退</span>
             <span class="n">frame_count</span> <span class="o">+=</span> <span class="mi">1</span> 
             <span class="k">if</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFF</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">):</span>
@@ -392,19 +394,19 @@
                 <span class="c1"># 小车控制</span>
                 <span class="k">if</span>  <span class="mi">90</span> <span class="o">&gt;</span> <span class="n">distanceCM</span> <span class="o">&gt;</span> <span class="mi">70</span> <span class="ow">and</span> <span class="mi">270</span><span class="o">&gt;</span><span class="n">mid</span><span class="o">&gt;</span><span class="mi">50</span><span class="p">:</span>
                         <span class="n">control_car</span><span class="p">(</span><span class="s1">&#39;S&#39;</span><span class="p">)</span> <span class="c1"># 停止</span>
-                        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;stop&quot;</span><span class="p">)</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;stop&#39;</span><span class="p">)</span>
                 <span class="k">elif</span> <span class="n">distanceCM</span><span class="o">&gt;=</span><span class="mi">90</span> <span class="ow">and</span> <span class="mi">270</span><span class="o">&gt;</span><span class="n">mid</span><span class="o">&gt;</span><span class="mi">50</span><span class="p">:</span>
                         <span class="n">control_car</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">)</span> <span class="c1"># 前进</span>
-                        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;go&quot;</span><span class="p">)</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;go&#39;</span><span class="p">)</span>
                 <span class="k">elif</span> <span class="n">distanceCM</span><span class="o">&lt;=</span><span class="mi">70</span> <span class="ow">and</span> <span class="mi">270</span><span class="o">&gt;</span><span class="n">mid</span><span class="o">&gt;</span><span class="mi">50</span><span class="p">:</span>
                         <span class="n">control_car</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">)</span> <span class="c1"># 后退</span>
-                        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;back&quot;</span><span class="p">)</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;back&#39;</span><span class="p">)</span>
                 <span class="k">elif</span> <span class="mi">270</span><span class="o">&lt;</span><span class="n">mid</span><span class="p">:</span>
                         <span class="n">control_car</span><span class="p">(</span><span class="s1">&#39;R&#39;</span><span class="p">)</span> <span class="c1"># 右转</span>
-                        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
                 <span class="k">elif</span> <span class="mi">50</span><span class="o">&gt;</span><span class="n">mid</span><span class="p">:</span>
                         <span class="n">control_car</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">)</span> <span class="c1"># 左转</span>
-                        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
                 <span class="c1"># 在窗口中显示图像</span>
                 <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">&#39;Video&#39;</span><span class="p">,</span> <span class="n">img_with_keypoints</span><span class="p">)</span>
 
@@ -424,7 +426,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="introduction.html" class="btn btn-neutral float-left" title="XEduHub功能详解" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../mmedu.html" class="btn btn-neutral float-right" title="计算机视觉库MMEdu" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="mindplus_xeduhub.html" class="btn btn-neutral float-right" title="在Mind+中使用XEduHub" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -12,7 +12,7 @@ Github地址：[https://github.com/wang0618/PyWebIO](https://github.com/wang0618
 
 PyWebIO可以采用pip命令安装，具体如下：
 
-```
+```python
 pip install PyWebIO
 ```
 
@@ -128,7 +128,7 @@ PyWebIO能够将AI模型快速“变身”为Web应用，上传一张照片就�
 
 例如可以设计一个函数classification实现上传图片文件-使用MMEdu训练的模型进行图片推理-输出推理结果，当然您需确保可以导入MMEdu库，且有MMEdu训练的模型，如何安装MMEdu和使用MMEdu训练模型，可参照[前文](https://xedu.readthedocs.io/zh/master/mmedu.html)。
 
-```
+```python
 def classification():
     while True:
         # 文件输入
@@ -146,7 +146,7 @@ def classification():
 
 再使用`start_server`方法将这个函数作为Web服务提供，设计端口号
 
-```
+```python
 if __name__ == '__main__':
     start_server(classification, port=2222, cdn=False)
 ```

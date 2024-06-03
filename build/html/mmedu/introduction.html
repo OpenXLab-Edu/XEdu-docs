@@ -20,7 +20,7 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="解锁图像分类模块：MMClassification" href="mmclassification.html" />
+    <link rel="next" title="解锁图像分类模块：MMEduCls" href="mmeducls.html" />
     <link rel="prev" title="MMEdu安装和下载" href="installation.html" /> 
 </head>
 
@@ -46,6 +46,7 @@
               <p class="caption" role="heading"><span class="caption-text">目录</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_quick_start.html">XEdu快速入门手册</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEduHub</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="quick_start.html">快速体验MMEdu，开始！</a></li>
@@ -76,8 +77,8 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="mmclassification.html">解锁图像分类模块：MMClassification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mmdetection.html">揭秘目标检测模块：MMDetection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmeducls.html">解锁图像分类模块：MMEduCls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmedudet.html">揭秘目标检测模块：MMEduDet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mmediting.html">图像处理模块：MMEditing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mmedumodel_convert.html">最后一步：模型转换</a></li>
 <li class="toctree-l2"><a class="reference internal" href="openmmlab.html">走向OpenMMLab</a></li>
@@ -159,41 +160,41 @@
     <tbody>
         <tr class="row-even">
             <td>MMClassification</td>
-            <td>MMCls</td>
+            <td>MMEduCls</td>
             <td>图片分类 </td>
         </tr>
     </tbody>
     <tbody>
         <tr class="row-even">
             <td>MMDetection</td>
-            <td>MMDet</td>
+            <td>MMEduDet</td>
             <td>图片中的物体检测</td>
         </tr>
     </tbody>
     <tbody>
         <tr class="row-even">
             <td>MMGeneration</td>
-            <td>MMGen</td>
+            <td>MMEduGen</td>
             <td>GAN，风格化</td>
         </tr>
     </tbody>
     <tbody>
         <tr class="row-even">
             <td>MMPose</td>
-            <td>MMPose</td>
+            <td>MMEduPose</td>
             <td>骨架</td>
         </tr>
     </tbody>
     <tbody>
         <tr class="row-even">
-            <td>MMEditing</td>
+            <td>MMEduEditing</td>
             <td></td>
             <td></td>
         </tr>
     </tbody>
     <tbody>
         <tr class="row-even">
-            <td>MMSegmentation</td>
+            <td>MMEduSegmentation</td>
             <td></td>
             <td>像素级识别</td>
         </tr>
@@ -212,16 +213,16 @@
     </thead>
     <tbody>
         <tr class="row-even">
-            <td>MMClassification</td>
+            <td>MMClassification(MMEduCls)</td>
             <td><a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/lenet5.html">LeNet</a>、<a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/ResNet.html">ResNet18</a>、<a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/ResNet.html">ResNet50</a>、<a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/mobilenet.html">MobileNet</a></td>
             <td>图片分类</td>
         </tr>
     </tbody>
     <tbody>
         <tr class="row-even">
-            <td>MMDetection</td>
-            <td><a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/FasterRCNN.html">FastRCNN</a>、<a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/SSD_Lite.html">SSD_Lite</a>、<a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/Yolov3.html">Yolov3</a></td>
-            <td>图片中的物体检测</td>
+            <td>MMDetection(MMEduDet)</td>
+            <td><a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/FasterRCNN.html">FastRCNN</a>、<a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/SSD_Lite.html">SSD_Lite</a>、<a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/Yolov3.html">YOLO</a></td>
+            <td>目标检测</td>
         </tr>
     </tbody>
 </table><p>注：关于MMClassification支持的SOTA模型的比较可参考“解锁图像分类模块：MMClassification”中关于“<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#sota">支持的SOTA模型</a>”的介绍，关于MMDetection支持的SOTA模型的比较可参考“揭秘目标检测模块：MMDetection”中关于“<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html#sota">支持的SOTA模型</a>”的介绍。关于这些SOTA模型更具体的介绍，请参考本文档的“深度学习知识库”部分的“<a class="reference external" href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/network_introduction.html">经典网络模型介绍</a>”。当然，通过“AI模型 + 关键词”的形式，你在很多搜索引擎中都能找到资料。</p>
@@ -231,7 +232,7 @@
 <p>MMEdu系列提供了包括分类、检测等任务的若干数据集，存储在XEdu一键安装包中的dataset文件夹下。MMEdu支持的数据集格式如下：</p>
 <section id="imagenet">
 <h3>1）ImageNet<a class="headerlink" href="#imagenet" title="Permalink to this heading"></a></h3>
-<p>ImageNet是斯坦福大学提出的一个用于视觉对象识别软件研究的大型可视化数据库，目前大部分模型的性能基准测试都在ImageNet上完成。MMEdu的MMClassification支持的数据集类型是ImageNet，如需训练自己创建的数据集，数据集需整理成ImageNet格式。</p>
+<p>ImageNet是斯坦福大学提出的一个用于视觉对象识别软件研究的大型可视化数据库，目前大部分模型的性能基准测试都在ImageNet上完成。MMEdu的图像分类模块支持的数据集类型是ImageNet，如需训练自己创建的数据集，数据集需整理成ImageNet格式。</p>
 <p>ImageNet格式数据集文件夹结构如下所示，包含三个文件夹和三个文本文件，图像数据文件夹内，不同类别图片按照文件夹分门别类排好，通过trainning_set、val_set、test_set区分训练集、验证集和测试集。文本文件classes.txt说明类别名称与序号的对应关系，val.txt说明验证集图片路径与类别序号的对应关系，test.txt说明测试集图片路径与类别序号的对应关系。</p>
 <div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>imagenet
 ├── training_set
@@ -275,7 +276,7 @@ filesname_b.jpg n
 <section id="coco">
 <h3>2）COCO<a class="headerlink" href="#coco" title="Permalink to this heading"></a></h3>
 <p>COCO数据集是微软于2014年提出的一个大型的、丰富的检测、分割和字幕数据集，包含33万张图像，针对目标检测和实例分割提供了80个类别的物体的标注，一共标注了150万个物体。MMEdu的MMDetection支持的数据集类型是COCO，如需训练自己创建的数据集，数据集需转换成COCO格式。</p>
-<p>MMEdu的MMDetection设计的COCO格式数据集文件夹结构如下所示，“annotations”文件夹存储标注文件，“images”文件夹存储用于训练、验证、测试的图片。</p>
+<p>MMEdu的目标检测模块设计的COCO格式数据集文件夹结构如下所示，“annotations”文件夹存储标注文件，“images”文件夹存储用于训练、验证、测试的图片。</p>
 <div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>coco
 ├── annotations
 │   ├── train.json
@@ -371,7 +372,7 @@ categories [{
 <h3>更多示例：<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
 <p>1.查看MMEdu库所在的目录</p>
 <p>进入Python终端，然后依次输入如下代码即可查看Python库所在的目录（site-packages）。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">MMEdu</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">MMEdu</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">MMEdu</span><span class="o">.</span><span class="n">__path__</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -383,12 +384,12 @@ categories [{
 </div>
 <p>3.返回日志信息</p>
 <p>如需返回日志信息，可在训练时使用如下代码：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">xxx</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">log</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">xxx</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>返回的是日志文件中各行信息组成的列表。</p>
-<p>4.打开github地址（<a href="https://github.com/OpenXLab-Edu/OpenMMLab-Edu">GitHub - OpenXLab-Edu/OpenMMLab-Edu</a>），可查看库文件原码和更多示例程序。</p>
+<p>4.库文件源代码可以从<a class="reference external" href="https://pypi.org/project/MMEdu/#files">PyPi</a>下载，选择tar.gz格式下载，可查看库文件原码和更多示例程序。</p>
 </section>
 </section>
 </section>
@@ -398,7 +399,7 @@ categories [{
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="installation.html" class="btn btn-neutral float-left" title="MMEdu安装和下载" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="mmclassification.html" class="btn btn-neutral float-right" title="解锁图像分类模块：MMClassification" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="mmeducls.html" class="btn btn-neutral float-right" title="解锁图像分类模块：MMEduCls" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

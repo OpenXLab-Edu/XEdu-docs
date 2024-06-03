@@ -20,7 +20,7 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="案例六：综合项目石头剪刀布的实时识别（XEduhub+BaseNN）" href="how_to_make_a_small_project.html" />
+    <link rel="next" title="案例六：综合项目石头剪刀布的实时识别（XEduHub+BaseNN）" href="how_to_make_a_small_project.html" />
     <link rel="prev" title="案例四：用MMEdu训练LeNet图像分类模型（手写体）" href="how_to_start_mmcls.html" /> 
 </head>
 
@@ -56,15 +56,15 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">案例五：用MMEdu训练SSD_Lite目标检测模型（猫狗）</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">项目说明：</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">项目步骤：</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id3">1.模型训练</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id7">2.基于预训练模型继续训练</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id8">3.模型测试（用新的图片完成推理）</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id14">4.模型转换和应用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ssd-lite">任务一：训练SSD_Lite猫狗目标检测模型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">任务二：基于预训练模型继续训练</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">任务三：模型测试（用新的图片完成推理）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14">任务四：模型转换和应用</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="how_to_make_a_small_project.html">案例六：综合项目石头剪刀布的实时识别（XEduhub+BaseNN）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_make_a_small_project.html">案例六：综合项目石头剪刀布的实时识别（XEduHub+BaseNN）</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEduHub</a></li>
@@ -106,29 +106,30 @@
 <h1>案例五：用MMEdu训练SSD_Lite目标检测模型（猫狗）<a class="headerlink" href="#mmedussd-lite" title="Permalink to this heading"></a></h1>
 <section id="id1">
 <h2>项目说明：<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
-<p>目标检测任务是图像分类任务的进阶任务，图像分类任务只有一个子任务：分类，而目标检测任务有两个任务：定位和分类，按照<strong>图像中目标的数量</strong>可分为单目标检测和多目标检测。如果一张图片里有两只猫，图像分类的模型可能可以识别出是猫。但是如果是这张图又有猫又有狗，那图像分类模型就肯定识别不出来了。本项目使用的是浦育平台公开的<a class="reference external" href="https://openinnolab.org.cn/pjlab/dataset/6407fdcd9c0eb14f2297218d">猫狗目标检测数据集</a>，训练一个训练SSD_Lite目标识别模型。另外XEdu中MMEdu的目标检测模块支持的数据集类型是COCO，数据集需转换成COCO格式。如何从零开始制作符合要求的数据集详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/howtomake_coco.html">后文</a>。</p>
+<p>MMEdu是人工智能视觉算法集成的深度学习开发工具，目前目标检测模块MMDetection支持的SOTA模型有SSD_Lite、FaterRCNN、Yolov3等，支持训练的数据集格式为COCO，更多关于MMDetection功能详见请前往<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html#mmdetection">揭秘MMEdu的目标检测模块</a>。本项目使用MMEdu的目标检测模块MMDetection，根据猫狗多目标COCO数据集，训练SSD_Lite模型实现猫狗目标检测。</p>
 <p>项目地址：<a class="reference external" href="https://openinnolab.org.cn/pjlab/project?id=64055f119c0eb14f22db647c&amp;sc=62f34141bf4f550f3e926e0e#public">https://openinnolab.org.cn/pjlab/project?id=64055f119c0eb14f22db647c&amp;sc=62f34141bf4f550f3e926e0e#public</a></p>
+<p>数据集：本项目使用的是浦育平台公开的<a class="reference external" href="https://openinnolab.org.cn/pjlab/dataset/6407fdcd9c0eb14f2297218d">猫狗目标检测数据集</a>。目标检测模块MMDetection支持的数据集是COCO格式。如何从零开始制作COCO数据集详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/howtomake_coco.html">从零开始制作一个COCO格式数据集</a>。</p>
 </section>
 <section id="id2">
 <h2>项目步骤：<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<section id="ssd-lite">
+<h3>任务一：训练SSD_Lite猫狗目标检测模型<a class="headerlink" href="#ssd-lite" title="Permalink to this heading"></a></h3>
 <section id="id3">
-<h3>1.模型训练<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
-<section id="id4">
-<h4>第0步 导入基础库（建议将库更新为最新版本再导入）<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMDetection</span> <span class="k">as</span> <span class="n">det</span>
+<h4>第0步 导入基础库（建议将库更新为最新版本再导入）<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMDetection</span> <span class="k">as</span> <span class="n">det</span>
 </pre></div>
 </div>
 </section>
-<section id="ssd-lite">
-<h4>第1步 实例化模型（选择SSD_Lite）<a class="headerlink" href="#ssd-lite" title="Permalink to this heading"></a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">det</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;SSD_Lite&#39;</span><span class="p">)</span>
+<section id="id4">
+<h4>第1步 实例化模型（选择SSD_Lite）<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">det</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;SSD_Lite&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="id5">
 <h4>第2步 配置基本信息<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h4>
-<p>AI模型训练的基本信息有三类，分别是：图片分类的类别数量（<code class="docutils literal notranslate"><span class="pre">model.num_classes</span></code>），模型保存的路径（<code class="docutils literal notranslate"><span class="pre">model.save_fold</span></code>）和数据集的路径（<code class="docutils literal notranslate"><span class="pre">model.load_dataset</span></code>）。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># 猫和狗共2类</span>
+<p>AI模型训练需要配置的基本信息有三类，分别是：图片分类的类别数量（<code class="docutils literal notranslate"><span class="pre">model.num_classes</span></code>），模型保存的路径（<code class="docutils literal notranslate"><span class="pre">model.save_fold</span></code>）和数据集的路径（<code class="docutils literal notranslate"><span class="pre">model.load_dataset</span></code>）。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># 猫和狗共2类</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;/data/H47U12/cat_dog_det&#39;</span><span class="p">)</span> 
 <span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/det_model/catdogs&#39;</span> 
 </pre></div>
@@ -136,16 +137,16 @@
 </section>
 <section id="id6">
 <h4>第3步 开始训练模型<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">epochs</span><span class="o">=</span><span class="mi">10</span> <span class="p">,</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">epochs</span><span class="o">=</span><span class="mi">10</span> <span class="p">,</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>训练过程中观察输出的每一轮bbox_mAP的变化，判断模型在验证集上的准确率。</p>
 </section>
 </section>
 <section id="id7">
-<h3>2.基于预训练模型继续训练<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
+<h3>任务二：基于预训练模型继续训练<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
 <p>全新开始训练一个模型，一般要花较长时间。因此我们强烈建议在预训练模型的基础上继续训练，哪怕你要分类的数据集和预训练的数据集并不一样。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># 猫和狗共2类</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># 猫和狗共2类</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;/data/H47U12/cat_dog_det&#39;</span><span class="p">)</span> 
 <span class="c1"># 预训练模型权重路线</span>
 <span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/pretrain_ssdlite_mobilenetv2.pth&#39;</span>
@@ -158,7 +159,7 @@
 <p>注：一般训练目标检测模型耗时较久，浦育平台可启动GPU服务器，建议去浦育平台完成模型训练，启动GPU服务器后便可以在训练参数中添加<code class="docutils literal notranslate"><span class="pre">device='cuda'</span></code>启动GPU训练。</p>
 </section>
 <section id="id8">
-<h3>3.模型测试（用新的图片完成推理）<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
+<h3>任务三：模型测试（用新的图片完成推理）<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
 <section id="id9">
 <h4>第0步 导入基础库（建议将库更新为最新版本再导入）<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
@@ -167,26 +168,26 @@
 </section>
 <section id="id10">
 <h4>第1步 实例化模型<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;SSD_Lite&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;SSD_Lite&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="id11">
 <h4>第2步 指定模型权重文件的所在路径<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/det_model/best_bbox_mAP_epoch_7.pth&#39;</span> <span class="c1"># 指定权重文件路径</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/det_model/best_bbox_mAP_epoch_7.pth&#39;</span> <span class="c1"># 指定权重文件路径</span>
 </pre></div>
 </div>
 <p>第1步和第2步的模型需对应，首先模型权重需存在，同时还需该模型训练时实例化模型时选择的网络与推理时一致。</p>
 </section>
 <section id="id12">
 <h4>第3步 指定图片<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">img_path</span> <span class="o">=</span> <span class="s1">&#39;picture/2.png&#39;</span> <span class="c1"># 指定图片路径</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">img_path</span> <span class="o">=</span> <span class="s1">&#39;picture/2.png&#39;</span> <span class="c1"># 指定图片路径</span>
 </pre></div>
 </div>
 </section>
 <section id="id13">
 <h4>第4步 开始推理<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">img</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">checkpoint</span> <span class="o">=</span> <span class="n">checkpoint</span><span class="p">,</span><span class="n">device</span><span class="o">=</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span> <span class="c1"># 模型推理</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">img</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">checkpoint</span> <span class="o">=</span> <span class="n">checkpoint</span><span class="p">,</span><span class="n">device</span><span class="o">=</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span> <span class="c1"># 模型推理</span>
 <span class="n">model</span><span class="o">.</span><span class="n">print_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="c1"># 结果转换为中文输出</span>
 </pre></div>
 </div>
@@ -194,9 +195,9 @@
 </section>
 </section>
 <section id="id14">
-<h3>4.模型转换和应用<a class="headerlink" href="#id14" title="Permalink to this heading"></a></h3>
+<h3>任务四：模型转换和应用<a class="headerlink" href="#id14" title="Permalink to this heading"></a></h3>
 <p>同样的，可以在模型应用前先完成模型转换，目标检测模型转换的代码风格和图像分类类似。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMDetection</span> <span class="k">as</span> <span class="n">det</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMDetection</span> <span class="k">as</span> <span class="n">det</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">det</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;SSD_Lite&#39;</span><span class="p">)</span>
 <span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/best_bbox_mAP_epoch_7.pth&#39;</span>
 <span class="n">out_file</span><span class="o">=</span><span class="s1">&#39;cats_dogs_det.onnx&#39;</span> <span class="c1"># 指定输出的文件即转换后的文件</span>
@@ -204,7 +205,7 @@
 </pre></div>
 </div>
 <p>模型应用的基础代码：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">mmdet</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;mmedu&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;cats_dogs_det.onnx&#39;</span><span class="p">)</span><span class="c1"># 指定使用的onnx模型</span>
 <span class="n">result</span><span class="p">,</span> <span class="n">result_img</span> <span class="o">=</span>  <span class="n">mmdet</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;/data/H47U12/cat_dog_det/images/valid/001.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">)</span><span class="c1"># 进行模型推理</span>
 <span class="n">format_result</span> <span class="o">=</span> <span class="n">mmdet</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s2">&quot;zh&quot;</span><span class="p">)</span><span class="c1"># 推理结果格式化输出</span>
@@ -213,7 +214,7 @@
 </pre></div>
 </div>
 <p>此时您可以挑选自己熟悉的硬件，去做自己训练并完成转换的模型部署啦，只需要下载转换的ONNX模型，在硬件上安装库即可。最简单的方式是借助摄像头，再使用OpenCV这个轻松完成图像和视频处理的工具库，实现猫狗实时检测。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="kn">import</span> <span class="nn">cv2</span>
 <span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">mmdet</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;mmedu&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;cats_dogs_det.onnx&#39;</span><span class="p">)</span>
@@ -230,7 +231,7 @@
 <span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>更多模型应用与部署的介绍详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/how_to_use/support_resources/model_convert.html#id9">后文</a>。</p>
+<p>更多模型应用与部署的介绍详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/how_to_use/support_resources/model_convert.html#id9">模型应用与部署</a>。</p>
 </section>
 </section>
 </section>
@@ -240,7 +241,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="how_to_start_mmcls.html" class="btn btn-neutral float-left" title="案例四：用MMEdu训练LeNet图像分类模型（手写体）" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="how_to_make_a_small_project.html" class="btn btn-neutral float-right" title="案例六：综合项目石头剪刀布的实时识别（XEduhub+BaseNN）" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="how_to_make_a_small_project.html" class="btn btn-neutral float-right" title="案例六：综合项目石头剪刀布的实时识别（XEduHub+BaseNN）" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

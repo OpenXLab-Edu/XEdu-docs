@@ -14,7 +14,7 @@ GitHub地址：[https://github.com/DFRobot/pinpong-docs](https://github.com/DFRo
 
 可以使用使用pip命令安装pinpong库。
 
-```
+```python
 pip install pinpong
 ```
 

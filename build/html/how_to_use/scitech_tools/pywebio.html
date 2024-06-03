@@ -46,6 +46,7 @@
               <p class="caption" role="heading"><span class="caption-text">目录</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how_to_quick_start.html">XEdu快速入门手册</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../xedu_hub.html">深度学习工具库XEduHub</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../mmedu.html">计算机视觉库MMEdu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../basenn.html">神经网络库BaseNN</a></li>
@@ -118,7 +119,7 @@
 <section id="id2">
 <h2>2. 安装<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
 <p>PyWebIO可以采用pip命令安装，具体如下：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">PyWebIO</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">PyWebIO</span>
 </pre></div>
 </div>
 <p>注：MMEdu中已经内置了PyWebIO库。</p>
@@ -211,7 +212,7 @@
 <p>在人工智能教学过程中，我们常常为模型的部署而烦恼。如果训练出来的模型不能有效应用于生活，或者解决一些真实问题，则很难打动学生，激发学习兴趣。</p>
 <p>PyWebIO能够将AI模型快速“变身”为Web应用，上传一张照片就能输出识别结果，极大地提高了学生的学习收获感。</p>
 <p>例如可以设计一个函数classification实现上传图片文件-使用MMEdu训练的模型进行图片推理-输出推理结果，当然您需确保可以导入MMEdu库，且有MMEdu训练的模型，如何安装MMEdu和使用MMEdu训练模型，可参照<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu.html">前文</a>。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">classification</span><span class="p">():</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">classification</span><span class="p">():</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="c1"># 文件输入</span>
         <span class="n">s</span> <span class="o">=</span> <span class="n">file_upload</span><span class="p">(</span><span class="s2">&quot;请上传图片:&quot;</span><span class="p">)</span>
@@ -227,7 +228,7 @@
 </pre></div>
 </div>
 <p>再使用<code class="docutils literal notranslate"><span class="pre">start_server</span></code>方法将这个函数作为Web服务提供，设计端口号</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">start_server</span><span class="p">(</span><span class="n">classification</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">2222</span><span class="p">,</span> <span class="n">cdn</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>

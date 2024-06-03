@@ -43,7 +43,7 @@
 
 下载方式
 
-飞书网盘：[XEdu v1.6.7d.exe](https://p6bm2if73b.feishu.cn/file/boxcn7ejYk2XUDsHI3Miq9546Uf?from=from_copylink)
+飞书网盘：[XEdu v1.6.7f.exe](https://p6bm2if73b.feishu.cn/file/boxcn7ejYk2XUDsHI3Miq9546Uf?from=from_copylink)
 
 硬件要求：准备win10及以上的电脑，将一键安装包安装到纯英文路径下。飞书网盘里的一件安装包会不定期更新，可时常到网盘中查看与下载最新版。
 

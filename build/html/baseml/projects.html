@@ -46,6 +46,7 @@
               <p class="caption" role="heading"><span class="caption-text">目录</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_quick_start.html">XEdu快速入门手册</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEduHub</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basenn.html">神经网络库BaseNN</a></li>
@@ -218,7 +219,7 @@
 </section>
 <section id="id8">
 <h4>2）模型评估<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型评估,使用载入数据时默认拆分出的验证集进行评估</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型评估,使用载入数据时默认拆分出的验证集进行评估</span>
 <span class="n">model</span><span class="o">.</span><span class="n">valid</span><span class="p">()</span>
 <span class="c1"># 模型评价指标可视化</span>
 <span class="n">model</span><span class="o">.</span><span class="n">metricplot</span><span class="p">()</span>
@@ -227,7 +228,7 @@
 </section>
 <section id="id9">
 <h4>3）模型保存<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 保存模型</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 保存模型</span>
 <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;my_CART_model.pkl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -256,7 +257,7 @@
 <section id="id13">
 <h3>实现步骤：<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h3>
 <p>首先需对MNIST数据集进行图像数字化处理，使用BaseML自带的IMGLoader库。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">IMGLoader</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">IMGLoader</span>
 <span class="c1"># 指定数据集路径</span>
 <span class="n">train_path</span> <span class="o">=</span> <span class="s1">&#39;/data/QX8UBM/mnist_sample/training_set&#39;</span>
 <span class="n">test_path</span> <span class="o">=</span> <span class="s1">&#39;/data/QX8UBM/mnist_sample/test_set&#39;</span>
@@ -283,7 +284,7 @@
 </section>
 <section id="id15">
 <h4>2）模型评估<a class="headerlink" href="#id15" title="Permalink to this heading"></a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 读取验证数据进行评估</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 读取验证数据进行评估</span>
 <span class="n">model</span><span class="o">.</span><span class="n">valid</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X_val</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_val</span><span class="p">,</span><span class="n">metrics</span><span class="o">=</span><span class="s1">&#39;acc&#39;</span><span class="p">)</span>
 <span class="c1"># 评价指标可视化</span>
 <span class="n">model</span><span class="o">.</span><span class="n">metricplot</span><span class="p">(</span><span class="n">X_val</span><span class="p">,</span><span class="n">y_val</span><span class="p">)</span>
@@ -292,7 +293,7 @@
 </section>
 <section id="id16">
 <h4>3）模型保存<a class="headerlink" href="#id16" title="Permalink to this heading"></a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 保存模型</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 保存模型</span>
 <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;checkpoints/mymodel.pkl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -356,7 +357,7 @@
 </section>
 <section id="id21">
 <h4>2）模型评估<a class="headerlink" href="#id21" title="Permalink to this heading"></a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型评估,使用载入数据时默认拆分出的验证集进行评估</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型评估,使用载入数据时默认拆分出的验证集进行评估</span>
 <span class="n">model</span><span class="o">.</span><span class="n">valid</span><span class="p">()</span>
 <span class="c1"># 模型评价指标可视化</span>
 <span class="n">model</span><span class="o">.</span><span class="n">metricplot</span><span class="p">()</span>
@@ -370,7 +371,7 @@
 </section>
 <section id="id22">
 <h4>3）模型推理<a class="headerlink" href="#id22" title="Permalink to this heading"></a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 给定一组数据，查看模型推理结果</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 给定一组数据，查看模型推理结果</span>
 <span class="n">test_data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]]</span>
 <span class="n">test_y</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">test_y</span><span class="p">)</span>
@@ -378,7 +379,7 @@
 </pre></div>
 </div>
 <p>拓展-修改k值进行训练：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 使用k = 3进行训练</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 使用k = 3进行训练</span>
 <span class="n">model1</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;KNN&#39;</span><span class="p">)</span>
 <span class="n">model1</span><span class="o">.</span><span class="n">para</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;n_neighbors&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">}</span>
 <span class="n">model1</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">,</span> <span class="n">x_column</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span><span class="n">y_column</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
@@ -416,21 +417,21 @@
 </section>
 <section id="id27">
 <h4>2）模型评估<a class="headerlink" href="#id27" title="Permalink to this heading"></a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 计算R值进行评估</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 计算R值进行评估</span>
 <span class="n">model</span><span class="o">.</span><span class="n">valid</span><span class="p">(</span><span class="s1">&#39;蛋糕尺寸与价格.csv&#39;</span><span class="p">,</span><span class="n">metrics</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="id28">
 <h4>3）模型保存<a class="headerlink" href="#id28" title="Permalink to this heading"></a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型保存</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型保存</span>
 <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;mymodel.pkl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="id29">
 <h4>4）模型应用<a class="headerlink" href="#id29" title="Permalink to this heading"></a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 指定数据</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 指定数据</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;蛋糕尺寸与价格.csv&quot;</span><span class="p">)</span>
 <span class="c1"># 输出模型对于数据的预测结果</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">values</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
@@ -468,7 +469,7 @@
 </div>
 <section id="id33">
 <h4>1）模型训练<a class="headerlink" href="#id33" title="Permalink to this heading"></a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">clt</span><span class="p">(</span><span class="s1">&#39;Kmeans&#39;</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">set_para</span><span class="p">(</span><span class="n">N_CLUSTERS</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> 
 <span class="c1"># 指定数据集，需要显式指定类型. show可以显示前5条数据，scale表示要进行归一化。数量级相差大的特征需要进行归一化。</span>
@@ -482,18 +483,18 @@
 </section>
 <section id="id34">
 <h4>2）模型推理<a class="headerlink" href="#id34" title="Permalink to this heading"></a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 进行推理</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 进行推理</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 输出最终的城市聚类文字结果</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 输出最终的城市聚类文字结果</span>
 <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">属于第</span><span class="si">{1}</span><span class="s1">个城市集群&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;地区&#39;</span><span class="p">],</span><span class="n">result</span><span class="p">[</span><span class="n">index</span><span class="p">]))</span> <span class="c1"># 输出每一行</span>
 </pre></div>
 </div>
 <p>可视化聚类结果的代码：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 可视化最终的城市集群结果</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 可视化最终的城市集群结果</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="c1"># 画出不同颜色的城市集群点</span>

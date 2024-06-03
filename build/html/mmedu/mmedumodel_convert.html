@@ -46,14 +46,15 @@
               <p class="caption" role="heading"><span class="caption-text">目录</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_quick_start.html">XEdu快速入门手册</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEduHub</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="quick_start.html">快速体验MMEdu，开始！</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation.html">MMEdu安装和下载</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation.html#id1">快速了解安装方式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">MMEdu基本功能</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mmclassification.html">解锁图像分类模块：MMClassification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mmdetection.html">揭秘目标检测模块：MMDetection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmeducls.html">解锁图像分类模块：MMEduCls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmedudet.html">揭秘目标检测模块：MMEduDet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mmediting.html">图像处理模块：MMEditing</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">最后一步：模型转换</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#mmedu">借助MMEdu完成模型转换</a></li>
@@ -119,7 +120,7 @@
 </li>
 <li><p>模型转换的典型代码：</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
 <span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;MobileNet&#39;</span><span class="p">)</span>
 <span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/cls_model/CatsDog/best_accuracy_top-1_epoch_2.pth&#39;</span>
 <span class="n">out_file</span><span class="o">=</span><span class="s2">&quot;catdog.onnx&quot;</span>
@@ -134,7 +135,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">ir_version</span></code>(int) - 可选参数，设置模型转化中间表示的版本。指定中间表示（Intermediate Representation, 简称 IR）规范的版本，一个整数（int）类型的参数。在计算机编程中，中间表示是一种数据结构或代码，它介于原始代码和机器码之间。它通常用于编译器或类似工具中，作为转换和优化代码的一个步骤。指定中间表示的版本，可方便根据不同的需求和优化目标选择最合适的 IR 规范。当前可选范围为1～12，默认为6。</p></li>
 </ul>
 <p>类似的，目标检测模型转换的示例代码如下：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMDetection</span> <span class="k">as</span> <span class="n">det</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMDetection</span> <span class="k">as</span> <span class="n">det</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">det</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;SSD_Lite&#39;</span><span class="p">)</span>
 <span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/COCO-80/ssdlite.pth&#39;</span>
 <span class="n">out_file</span><span class="o">=</span><span class="s2">&quot;COCO-80.onnx&quot;</span>
@@ -152,7 +153,7 @@
 <p><strong>2.模型训练</strong></p>
 <p>训练一个全新的模型，一般要花较长时间。因此我们强烈建议在预训练模型的基础上继续训练，哪怕你要分类的数据集和预训练的数据集并不一样。</p>
 <p>如下代码是使用基于MobileNet网络训练的猫狗识别预训练模型，模型训练是在预训练模型基础上继续训练。基于预训练模型继续训练可起到加速训练的作用，并且通常会使得模型达到更好的效果。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
 <span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;MobileNet&#39;</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;/data/TC4V0D/CatsDogsSample&#39;</span><span class="p">)</span> 
 <span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/cls_model/CatsDog1&#39;</span> 
@@ -161,7 +162,7 @@
 </div>
 <p><strong>3.推理测试</strong></p>
 <p>使用MMEdu图像分类模块模型推理的示例代码完成模型推理。返回的数据类型是一个字典列表（很多个字典组成的列表）类型的变量，内置的字典表示分类的结果，如“<code class="docutils literal notranslate"><span class="pre">{'标签':</span> <span class="pre">0,</span> <span class="pre">'置信度':</span> <span class="pre">0.9417100548744202,</span> <span class="pre">'预测结果':</span> <span class="pre">'cat'}</span></code>”，我们可以用字典访问其中的元素。巧用预测结果设置一些输出。如：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
 <span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;MobileNet&#39;</span><span class="p">)</span>
 <span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/cls_model/CatsDog1/best_accuracy_top-1_epoch_1.pth&#39;</span>
 <span class="n">img_path</span> <span class="o">=</span> <span class="s1">&#39;/data/TC4V0D/CatsDogsSample/test_set/cat/cat0.jpg&#39;</span>
@@ -175,7 +176,7 @@
 </pre></div>
 </div>
 <p><strong>4.模型转换</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
 <span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;MobileNet&#39;</span><span class="p">)</span>
 <span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/cls_model/CatsDog1/best_accuracy_top-1_epoch_1.pth&#39;</span>
 <span class="n">out_file</span><span class="o">=</span><span class="s1">&#39;out_file/cats_dogs.onnx&#39;</span>
@@ -193,7 +194,7 @@
 </li>
 </ul>
 <p>生成的示例代码：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="c1"># 模型声明</span>

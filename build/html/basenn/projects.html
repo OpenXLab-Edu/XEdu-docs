@@ -20,7 +20,7 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="传统机器学习库BaseML" href="../baseml.html" />
+    <link rel="next" title="附录" href="appendix.html" />
     <link rel="prev" title="BaseNN功能详解" href="introduction.html" /> 
 </head>
 
@@ -46,6 +46,7 @@
               <p class="caption" role="heading"><span class="caption-text">目录</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_quick_start.html">XEdu快速入门手册</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEduHub</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../basenn.html">神经网络库BaseNN</a><ul class="current">
@@ -80,6 +81,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="appendix.html">附录</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../baseml.html">传统机器学习库BaseML</a></li>
@@ -129,17 +131,17 @@
 <section id="id4">
 <h4>1）网络搭建和模型训练<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h4>
 <p>导入库：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入BaseNN库</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入BaseNN库</span>
 <span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
 </pre></div>
 </div>
 <p>读取数据：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型载入数据</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型载入数据</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_img_data</span><span class="p">(</span><span class="s2">&quot;/data/MELLBZ/mnist/training_set&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;grayscale&quot;</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>搭建网络开始训练：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 声明模型</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 声明模型</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">(</span><span class="s1">&#39;cls&#39;</span><span class="p">)</span>
 <span class="c1"># 自己搭建网络（我们搭建的是LeNet网络，可改变参数搭建自己的网络）</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Conv2D&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span><span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span> 
@@ -162,7 +164,7 @@
 <section id="id5">
 <h4>2）模型推理<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h4>
 <p>读取某张图片进行推理：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 单张图片的推理</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 单张图片的推理</span>
 <span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;test_IMG/single_data.jpg&#39;</span>
 <span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;mn_ckpt/basenn.pth&#39;</span> <span class="c1"># 现有模型路径</span>
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">)</span>
@@ -174,7 +176,7 @@
 </pre></div>
 </div>
 <p>定义一个准确率计算函数，读取测试集所有图片进行推理并计算准确率。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 计算准确率函数</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 计算准确率函数</span>
 <span class="k">def</span> <span class="nf">cal_accuracy</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">pred_y</span><span class="p">):</span>
     <span class="n">res</span> <span class="o">=</span> <span class="n">pred_y</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">tp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">==</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
@@ -213,13 +215,13 @@
 <section id="id9">
 <h4>1）网络搭建和模型训练<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h4>
 <p>导入库：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入BaseNN库、numpy库用于数据处理</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入BaseNN库、numpy库用于数据处理</span>
 <span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
 <p>读取数据并载入：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 读取训练集数据</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 读取训练集数据</span>
 <span class="n">train_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;imdb/train_data.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
 <span class="n">train_label</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;imdb/train_label.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
 <span class="c1"># 模型载入数据</span>
@@ -227,7 +229,7 @@
 </pre></div>
 </div>
 <p>搭建模型并开始训练：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 声明模型</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 声明模型</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">()</span> <span class="c1"># 有Embedding层</span>
 <span class="c1"># 搭建模型</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Embedding&#39;</span><span class="p">,</span> <span class="n">vocab_size</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">embedding_dim</span> <span class="o">=</span> <span class="mi">32</span><span class="p">)</span>  <span class="c1"># Embedding层，对实现文本任务十分重要，将one-hot编码转化为相关向量 输入大小（batch_size,512）输出大小（batch_size,32,510）</span>
@@ -250,14 +252,14 @@
 <section id="id10">
 <h4>2）模型推理<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h4>
 <p>读取测试集所有数据进行推理：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#读取测试集数据</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#读取测试集数据</span>
 <span class="n">test_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;imdb/test_data.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
 <span class="n">test_label</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;imdb/test_label.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">train_data</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>用单个数据进行推理：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 用测试集单个数据查看模型效果</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 用测试集单个数据查看模型效果</span>
 <span class="n">single_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;imdb/test_data.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">max_rows</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">single_label</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;imdb/test_label.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">max_rows</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">label</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;差评&#39;</span><span class="p">,</span><span class="s1">&#39;好评&#39;</span><span class="p">]</span>
@@ -288,14 +290,14 @@
 <section id="id15">
 <h4>2）数据预处理<a class="headerlink" href="#id15" title="Permalink to this heading"></a></h4>
 <p>首先读取数据，0-2为输入，3-9是各种输出的数据。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">train_path</span> <span class="o">=</span> <span class="s1">&#39;./data/train-full.csv&#39;</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">train_path</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># 读取前3列</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">train_path</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">])</span> <span class="c1"># 读取9列</span>
 </pre></div>
 </div>
 <p>将y映射到0-1之间。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
 <span class="n">scaler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
@@ -303,7 +305,7 @@
 </pre></div>
 </div>
 <p>生成新的数据集。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">norm_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">norm_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s1">&#39;./data/train_norm.csv&#39;</span><span class="p">,</span><span class="n">norm_data</span><span class="p">,</span><span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -311,7 +313,7 @@
 <section id="id16">
 <h4>3）网络搭建和模型训练<a class="headerlink" href="#id16" title="Permalink to this heading"></a></h4>
 <p>搭建一个3层的神经网络并开始训练，输入维度是3（3列数据），最后输出维度是1（1列数据），激活函数使用ReLU。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">(</span><span class="s1">&#39;reg&#39;</span><span class="p">)</span> <span class="c1">#声明模型 </span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_tab_data</span><span class="p">(</span><span class="s1">&#39;./data/train_norm.csv&#39;</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">)</span> <span class="c1"># 载入数据</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">60</span><span class="p">),</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;ReLU&#39;</span><span class="p">)</span>  
@@ -329,7 +331,7 @@
 <section id="id17">
 <h4>4）模型推理<a class="headerlink" href="#id17" title="Permalink to this heading"></a></h4>
 <p>读取测试数据进行模型推理，测试数据同样来自随机数。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 测试数据</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 测试数据</span>
 <span class="n">test_path</span> <span class="o">=</span> <span class="s1">&#39;./data/test-full.csv&#39;</span>
 <span class="n">test_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">test_path</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># 读取前3列</span>
 <span class="n">test_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">test_path</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">])</span> <span class="c1"># 读取第9列</span>
@@ -353,7 +355,7 @@
 <h4>1）数据准备<a class="headerlink" href="#id21" title="Permalink to this heading"></a></h4>
 <p>可以定义一个多项式函数（以五项式为例），生成数据。
 如下代码还向五次多项式函数生成的数据点添加高斯噪声，可以模拟现实世界中可能遇到的数据不准确性。这种方法特别适合于准备数据，用于训练机器学习模型，以确保它们在面对实际、可能带有噪声的数据时仍能有效工作。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="c1"># 定义五项式函数</span>
 <span class="k">def</span> <span class="nf">quintic_polynomial</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">e</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
@@ -372,7 +374,7 @@
 </pre></div>
 </div>
 <p>将生成的数据保存在一个csv中，且给它加入表头，完成数据集制作。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y_noisy</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y_noisy</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="c1"># 定义标题行，列之间用逗号分隔</span>
 <span class="n">header</span> <span class="o">=</span> <span class="s1">&#39;feature,pred&#39;</span>
 <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s1">&#39;data/data.csv&#39;</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="n">header</span><span class="p">,</span> <span class="n">comments</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
@@ -382,7 +384,7 @@
 <section id="id22">
 <h4>2）数据预处理<a class="headerlink" href="#id22" title="Permalink to this heading"></a></h4>
 <p>为了加速收敛，我们参照已有经验将x和y映射到0-1之间。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
 <span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span> <span class="c1"># 创建MinMaxScaler实例</span>
 <span class="n">y_noisy</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">y_noisy</span><span class="p">)</span> <span class="c1"># 将y_noisy拟合并转换到0-1范围</span>
 <span class="n">scaler2</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span> <span class="c1"># 创建MinMaxScaler实例</span>
@@ -390,14 +392,14 @@
 </pre></div>
 </div>
 <p>保存为新的csv。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">norm_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y_noisy</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">norm_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y_noisy</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="c1"># 定义标题行，列之间用逗号分隔</span>
 <span class="n">header</span> <span class="o">=</span> <span class="s1">&#39;feature,pred&#39;</span>
 <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s1">&#39;data/norm_data.csv&#39;</span><span class="p">,</span><span class="n">norm_data</span><span class="p">,</span><span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="n">header</span><span class="p">,</span> <span class="n">comments</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>训练模型前，一般建议划分数据集为训练集、验证集，我们可以借助BaseDT库完成数据集按照一定比例的随机划分。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.dataset</span> <span class="kn">import</span> <span class="n">split_tab_dataset</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.dataset</span> <span class="kn">import</span> <span class="n">split_tab_dataset</span>
 <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;data/norm_data.csv&quot;</span>
 <span class="n">tx</span><span class="p">,</span><span class="n">ty</span><span class="p">,</span><span class="n">val_x</span><span class="p">,</span><span class="n">val_y</span> <span class="o">=</span> <span class="n">split_tab_dataset</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">data_column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">label_column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
@@ -406,7 +408,7 @@
 <section id="id23">
 <h4>3）网络搭建和模型训练<a class="headerlink" href="#id23" title="Permalink to this heading"></a></h4>
 <p>搭建一个3层的神经网络并开始训练，输入维度是1（1列数据），最后输出维度是1（1列数据），激活函数使用ReLU。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库</span>
 <span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
 <span class="c1"># 声明模型，选择回归任务</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">(</span><span class="s1">&#39;reg&#39;</span><span class="p">)</span> 
@@ -424,7 +426,7 @@
 <section id="id24">
 <h4>4）模型推理<a class="headerlink" href="#id24" title="Permalink to this heading"></a></h4>
 <p>读取验证集数据进行模型推理。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="c1"># 读取验证集</span>
 <span class="n">val_path</span> <span class="o">=</span> <span class="s1">&#39;data/norm_data_val.csv&#39;</span>
 <span class="n">val_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">val_path</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># 读取特征列</span>
@@ -439,12 +441,12 @@
 </div>
 <p>借助matplotlib绘图将预测值 (y_pred) 和实际值 (val_y) 与 val_x 的值进行对比，效果是相当不错的。</p>
 <p>先将x和y从标准化的状态恢复到它们原始的比例和值，使用和预处理时一样的方式，scaler和scaler2均调用数据预处理时的。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span>
 <span class="n">val_y</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">val_y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 <span class="n">val_x</span> <span class="o">=</span> <span class="n">scaler2</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">val_x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">operator</span>
 
 <span class="c1"># 将val_x,val_y,y_pred 根据val_x的顺序排序</span>
@@ -473,14 +475,14 @@
 <h3>实现步骤：<a class="headerlink" href="#id26" title="Permalink to this heading"></a></h3>
 <section id="id27">
 <h4>1）导入库<a class="headerlink" href="#id27" title="Permalink to this heading"></a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库</span>
 <span class="kn">from</span> <span class="nn">BaseNN</span> <span class="kn">import</span> <span class="n">nn</span>
 </pre></div>
 </div>
 </section>
 <section id="id28">
 <h4>2）搭建模型<a class="headerlink" href="#id28" title="Permalink to this heading"></a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#声明模型 </span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#声明模型 </span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="p">(</span><span class="s1">&#39;cls&#39;</span><span class="p">)</span>
 
 <span class="c1"># 搭建ResNet18网络(参照论文完成)，要求输入数据的尺寸为（224,224）</span>
@@ -502,14 +504,14 @@
 <h4>3）载入数据<a class="headerlink" href="#id29" title="Permalink to this heading"></a></h4>
 <p>载入前需对数据做预处理，载入图片数据前如需对图像数据集进行预处理，例如做尺寸调整，可先使用调用已经内置的torchvision对图片数据集进行预处理再载入模型进行训练。此处我们需将图片做尺寸调整（调整为224,224）
 参考代码如下，注意涉及数万张图片，需等待几分钟。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 载入数据，并对数据集做尺寸调整</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 载入数据，并对数据集做尺寸调整</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_img_data</span><span class="p">(</span><span class="s1">&#39;/data/MELLBZ/mnist/training_set&#39;</span><span class="p">,</span><span class="n">transform</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Resize&quot;</span><span class="p">:(</span><span class="mi">224</span><span class="p">,</span><span class="mi">224</span><span class="p">)},</span><span class="n">num_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="id30">
 <h4>4）设置超参数并训练模型<a class="headerlink" href="#id30" title="Permalink to this heading"></a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;SGD&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;SGD&#39;</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">save_fold</span> <span class="o">=</span> <span class="s1">&#39;new_mn_ckpt&#39;</span>
 
 <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 直接训练</span>
@@ -521,7 +523,7 @@
 <section id="id31">
 <h4>5）模型测试<a class="headerlink" href="#id31" title="Permalink to this heading"></a></h4>
 <p>可指定新的图片进行模型测试，注意需先将图片进行尺寸调整（训练时也做了）。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
 
 <span class="c1"># 指定一张图片</span>
 <span class="n">path</span> <span class="o">=</span>  <span class="s1">&#39;test_IMG/single_data.jpg&#39;</span>
@@ -550,7 +552,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="introduction.html" class="btn btn-neutral float-left" title="BaseNN功能详解" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../baseml.html" class="btn btn-neutral float-right" title="传统机器学习库BaseML" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="appendix.html" class="btn btn-neutral float-right" title="附录" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

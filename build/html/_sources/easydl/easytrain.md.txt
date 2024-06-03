@@ -3,7 +3,7 @@
 EasyTrain简介
 -------------
 
-EasyTrain是无代码的MMEdu模型、BaseNN模型训练辅助工具。借助EasyTrain，不需要编写一行代码，即可训练出AI模型。
+EasyTrain是无代码的MMEdu模型、BaseML模型、BaseNN模型训练辅助工具。借助EasyTrain，不需要编写一行代码，即可训练出AI模型。
 
 ![](../images/easydl/train0.jpg)
 
@@ -89,16 +89,62 @@ EasyTrain界面打开之后在下拉框中选择训练任务为分类或者检�
 
 如需尝试用代码完成MMEdu模型训练或了解MMEdu具体功能，请参照[MMEdu的教程](https://xedu.readthedocs.io/zh/master/mmedu.html)。
 
+用EasyTrain训练第一个BaseML模型！
+-----------------------------
+
+### step 1：任务选择
+
+EasyTrain界面打开之后在下拉框中选择训练任务为回归任务、分类任务或者聚类任务。
+
+![](../images/easydl/baseml0.png)
+
+### step 2：模型选择
+
+在选择了训练任务类型之后，点击“下一步”，进入模型选择页面，选择训练的模型。训练模型会根据任务对应更改。可点击“了解更多”按钮了解模型，对应[机器学习典型算法](https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id6)。
+
+![](../images/easydl/baseml2.png)
+
+### step 3：数据集选择
+
+EasyTrain界面打开之后，选择BaseML页面，在下拉框中指定训练的数据集，网页会读取XEdu/dataset/baseml（或XEdu/dataset/basenn）之下数据集。一键安装包中已自带一些数据集，也可以自己放入新的数据集。
+
+数据集的格式要求为：[csv文件](https://xedu.readthedocs.io/zh/master/baseml/introduction.html#csv)(BaseML任务)。针对BaseML特别有这样的约定：第一行为表头，纵向每行为一条样本，横向每列为一个特征，最后一列作为标签列（如果是分类任务，则需要是自然数，如果是回归任务，需要是实数，如果是聚类任务，则不需要这一列）。
+
+![](../images/easydl/train13.png)
+
+### step 4：参数设置
+
+点击“设置基本参数↓”，可以设置各种参数，一般保持默认即可。可以设置数据乱序随机种子、高级参数设置、数据验证策略（回归任务默认选择"r2"，分类任务默认选择"acc"，如果要修改为其他策略可以填空来设置）。
+
+![](../images/easydl/baseml3.png)
+
+在完成参数设置后，点击右侧的"生成代码"，可以生成训练代码，注意需要生成代码之后才可以进入训练。
+生成的代码会显示在上方的代码框，点击右上角复制按钮还可以一键复制代码。
+
+![](../images/easydl/baseml4.png)
+
+### step 5：开始训练
+
+代码生成之后点击"进入训练"按钮即可跳转至训练页面，点击“开始训练”按钮即可一键开始训练模型，一般训练很快就可以完成。
+
+![](../images/easydl/baseml5.png)
+
+训练的模型文件将保存在XEdu/my_checkpoints中。每次训练都会生成一个文件夹，可以通过文件夹名称上的日期时间找到对应的模型。
+
+![](../images/easydl/baseml6.png)
+
+如需尝试用代码完成BaseML模型训练或了解BaseML具体功能，请参照[BaseML](https://xedu.readthedocs.io/zh/master/baseml.html)的教程。
+
 用EasyTrain训练第一个BaseNN模型！
 -----------------------------
 
 ### step 1：数据集选择
 
-EasyTrain界面打开之后，选择BaseNN页面，在下拉框中指定训练的数据集，网页会读取XEdu/dataset/basenn之下数据集。一键安装包中自带数据集：iris/iris_test.csv，iris/iris_training.csv。
+EasyTrain界面打开之后，选择BaseNN页面，在下拉框中指定训练的数据集，网页会读取XEdu/dataset/basenn之下数据集。一键安装包中已自带一些数据集，也可以自己放入新的数据集。
 
-数据集的格式要求为：[csv文件](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id21)(BaseNN任务)。纵轴为样本，横轴为特征，第一行为表头，最后一列为标签。
+数据集的格式要求为：[csv文件](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id9)(BaseNN任务)。纵轴为样本，横轴为特征，第一行为表头，最后一列为标签。
 
-![](../images/easydl/train13.png)
+![](../images/easydl/train3.png)
 
 ### step 2：模型搭建
 
@@ -161,8 +207,37 @@ EasyTrain界面打开之后，选择BaseNN页面，在下拉框中指定训练�
 
 如需尝试用代码完成BaseNN模型训练或了解BaseNN具体功能，请参照[BaseNN的教程](https://xedu.readthedocs.io/zh/master/basenn.html)。
 
+
+常见错误排查
+-------------
+
+### 1.打开网页显示错误（404）
+
+问题描述：运行"easytrain.bat"打开网页显示错误（404）
+
+
+解决：EasyTrain基于Flask开发。如果在运行时出现这样的错误：
+
+``` {.powershell}
+
+hostname,aliases,ipaddrs = gethostbyaddr(name)InicodeDecodeError: 'utf-8' codec can't decode byte 0xdl in position 7: invalid continuation bvte。
+
+```
+
+请检查电脑名称和用户名是否为中文，修改为英文后重新启动即可。
+
+
+### 2.生成代码正常，但是进入训练时没有反应。
+
+
+问题描述：根据网页提示，一步一步操作后生成代码，但是点击“进入训练”就一直在转圈。
+
+
+解决：EasyTrain的生成代码部分基于Flask开发，进入训练则需要XEdu环境，包括BaseML、BaseNN、MMEdu等。点击“进入训练”后会在主目录下生成对应的“***code.py”的文件。如果训练时页面没有反应，请用Python IDE工具（如Thonny）打开并运行，再根据错误提示进行排查。**注意：必须要确保用Thonny、Jupyter能够训练模型。**
+
+
 注意事项
---------
+----------
 
 -   请确认选择的数据集不为空，且数据集格式正确。
 -   一部分参数有范围，例如学习率只能为正值，轮数只能为正整数，请选择合理范围的参数。

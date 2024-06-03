@@ -46,6 +46,7 @@
               <p class="caption" role="heading"><span class="caption-text">目录</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_quick_start.html">XEdu快速入门手册</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEduHub</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basenn.html">神经网络库BaseNN</a></li>
@@ -307,7 +308,7 @@
 <h3>（3）日志分析<a class="headerlink" href="#id15" title="Permalink to this heading"></a></h3>
 <p>针对MMEdu训练训练日志，BaseDT的plot模块支持多种训练日志绘制方式，便于用户直观的对模型训练过程进行可视化分析。</p>
 <p><code class="docutils literal notranslate"><span class="pre">BaseDT</span></code>中的<code class="docutils literal notranslate"><span class="pre">plot</span></code>模块提供<code class="docutils literal notranslate"><span class="pre">plot_log</span></code>函数，支持对训练日志中的损失函数进行绘制。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log_path</span> <span class="o">=</span> <span class="s1">&#39;path/to/my_log.json&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">log_path</span> <span class="o">=</span> <span class="s1">&#39;path/to/my_log.json&#39;</span>
 
 <span class="kn">from</span> <span class="nn">BaseDT.plot</span> <span class="kn">import</span> <span class="n">plot_log</span>
 <span class="n">plot_log</span><span class="p">(</span><span class="n">log_path</span><span class="p">)</span>

@@ -46,6 +46,7 @@
               <p class="caption" role="heading"><span class="caption-text">目录</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how_to_quick_start.html">XEdu快速入门手册</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../xedu_hub.html">深度学习工具库XEduHub</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../mmedu.html">计算机视觉库MMEdu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../basenn.html">神经网络库BaseNN</a></li>
@@ -107,7 +108,7 @@
 <section id="id1">
 <h2>COCO格式数据集简介<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p>COCO数据集是一个大型的、丰富的物体检测，分割和字幕数据集。这个数据集以scene understanding（场景理解）为目标，主要从复杂的日常场景中截取，图像中的目标通过精确的segmentation（分割）进行位置的标定。图像包括91类目标，328,000影像和2,500,000个label。是目前为止有语义分割的最大数据集，提供的类别有80类，有超过33万张图片，其中20万张有标注，整个数据集中个体的数目超过150万个。</p>
-<p>XEdu中MMEdu的MMDetection模块支持的数据集类型是COCO，很多时候我们需要训练自己创建的数据集，那怎么样才能将数据集需转换成<a href="https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#coco">COCO格式</a>呢？</p>
+<p>XEdu中MMEdu的目标检测模块支持的数据集类型是COCO，很多时候我们需要训练自己创建的数据集，那怎么样才能将数据集需转换成<a href="https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#coco">COCO格式</a>呢？</p>
 <p>接下来就让我们一起学习几种自己制作<a href="https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#coco">COCO格式</a>数据集的方式吧。</p>
 </section>
 <section id="openinnolab">
@@ -171,128 +172,128 @@ ds.make_dataset(r&quot;/data/HZQV42&quot;, src_format=&quot;INNOLAB&quot;,train_
 <section id="id8">
 <h3>第三步：转换成COCO标注格式<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
 <p>将LabelMe格式的标注文件转换成COCO标注格式，可以使用如下代码：</p>
-<div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>import json
-import numpy as np
-import glob
-import PIL.Image
-from PIL import ImageDraw
-from shapely.geometry import Polygon
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">PIL.Image</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">ImageDraw</span>
+<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Polygon</span>
 
-class labelme2coco(object):
-    def __init__(self, labelme_json=[], save_json_path=&#39;./new.json&#39;):
-        &#39;&#39;&#39;
-        :param labelme_json: 所有labelme的json文件路径组成的列表
-        :param save_json_path: json保存位置
-        &#39;&#39;&#39;
-        self.labelme_json = labelme_json
-        self.save_json_path = save_json_path
-        self.annotations = []
-        self.images = []
-        self.categories = [{&#39;supercategory&#39;: None, &#39;id&#39;: 1, &#39;name&#39;: &#39;cat&#39;},{&#39;supercategory&#39;: None, &#39;id&#39;: 2, &#39;name&#39;: &#39;dog&#39;}] # 指定标注的类别
-        self.label = []
-        self.annID = 1
-        self.height = 0
-        self.width = 0
-        self.save_json()
+<span class="k">class</span> <span class="nc">labelme2coco</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">labelme_json</span><span class="o">=</span><span class="p">[],</span> <span class="n">save_json_path</span><span class="o">=</span><span class="s1">&#39;./new.json&#39;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        :param labelme_json: 所有labelme的json文件路径组成的列表</span>
+<span class="sd">        :param save_json_path: json保存位置</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">labelme_json</span> <span class="o">=</span> <span class="n">labelme_json</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save_json_path</span> <span class="o">=</span> <span class="n">save_json_path</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">annotations</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">images</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">categories</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;supercategory&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;cat&#39;</span><span class="p">},{</span><span class="s1">&#39;supercategory&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;dog&#39;</span><span class="p">}]</span> <span class="c1"># 指定标注的类别</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">annID</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save_json</span><span class="p">()</span>
 
-    # 定义读取图像标注信息的方法
-    def image(self, data, num):
-        image = {}
-        height = data[&#39;imageHeight&#39;]
-        width = data[&#39;imageWidth&#39;]
-        image[&#39;height&#39;] = height
-        image[&#39;width&#39;] = width
-        image[&#39;id&#39;] = num + 1
-        image[&#39;file_name&#39;] = data[&#39;imagePath&#39;].split(&#39;/&#39;)[-1]
-        self.height = height
-        self.width = width
-        return image
+    <span class="c1"># 定义读取图像标注信息的方法</span>
+    <span class="k">def</span> <span class="nf">image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">height</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;imageHeight&#39;</span><span class="p">]</span>
+        <span class="n">width</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;imageWidth&#39;</span><span class="p">]</span>
+        <span class="n">image</span><span class="p">[</span><span class="s1">&#39;height&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">height</span>
+        <span class="n">image</span><span class="p">[</span><span class="s1">&#39;width&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">width</span>
+        <span class="n">image</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">num</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">image</span><span class="p">[</span><span class="s1">&#39;file_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;imagePath&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
+        <span class="k">return</span> <span class="n">image</span>
 
-    # 定义数据转换方法
-    def data_transfer(self):
-        for num, json_file in enumerate(self.labelme_json):
-            with open(json_file, &#39;r&#39;) as fp:
-                data = json.load(fp)  # 加载json文件
-                self.images.append(self.image(data, num)) # 读取所有图像标注信息并加入images数组
-                for shapes in data[&#39;shapes&#39;]:
-                    label = shapes[&#39;label&#39;]
-                    points = shapes[&#39;points&#39;]
-                    shape_type = shapes[&#39;shape_type&#39;]
-                    if shape_type == &#39;rectangle&#39;:
-                        points = [points[0],[points[0][0],points[1][1]],points[1],[points[1][0],points[0][1]]]     
-                    self.annotations.append(self.annotation(points, label, num)) # 读取所有检测框标注信息并加入annotations数组
-                    self.annID += 1
-        print(self.annotations)
+    <span class="c1"># 定义数据转换方法</span>
+    <span class="k">def</span> <span class="nf">data_transfer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">num</span><span class="p">,</span> <span class="n">json_file</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">labelme_json</span><span class="p">):</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>  <span class="c1"># 加载json文件</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">images</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">num</span><span class="p">))</span> <span class="c1"># 读取所有图像标注信息并加入images数组</span>
+                <span class="k">for</span> <span class="n">shapes</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;shapes&#39;</span><span class="p">]:</span>
+                    <span class="n">label</span> <span class="o">=</span> <span class="n">shapes</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span>
+                    <span class="n">points</span> <span class="o">=</span> <span class="n">shapes</span><span class="p">[</span><span class="s1">&#39;points&#39;</span><span class="p">]</span>
+                    <span class="n">shape_type</span> <span class="o">=</span> <span class="n">shapes</span><span class="p">[</span><span class="s1">&#39;shape_type&#39;</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="n">shape_type</span> <span class="o">==</span> <span class="s1">&#39;rectangle&#39;</span><span class="p">:</span>
+                        <span class="n">points</span> <span class="o">=</span> <span class="p">[</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">],[</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="n">points</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]],</span><span class="n">points</span><span class="p">[</span><span class="mi">1</span><span class="p">],[</span><span class="n">points</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]]]</span>     
+                    <span class="bp">self</span><span class="o">.</span><span class="n">annotations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">annotation</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">num</span><span class="p">))</span> <span class="c1"># 读取所有检测框标注信息并加入annotations数组</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">annID</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">annotations</span><span class="p">)</span>
 
-    # 定义读取检测框标注信息的方法
-    def annotation(self, points, label, num):
-        annotation = {}
-        annotation[&#39;segmentation&#39;] = [list(np.asarray(points).flatten())]
-        poly = Polygon(points)
-        area_ = round(poly.area, 6)
-        annotation[&#39;area&#39;] = area_
-        annotation[&#39;iscrowd&#39;] = 0
-        annotation[&#39;image_id&#39;] = num + 1
-        annotation[&#39;bbox&#39;] = list(map(float, self.getbbox(points)))
-        annotation[&#39;category_id&#39;] = self.getcatid(label)
-        annotation[&#39;id&#39;] = self.annID
-        return annotation
+    <span class="c1"># 定义读取检测框标注信息的方法</span>
+    <span class="k">def</span> <span class="nf">annotation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
+        <span class="n">annotation</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">annotation</span><span class="p">[</span><span class="s1">&#39;segmentation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">points</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">())]</span>
+        <span class="n">poly</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+        <span class="n">area_</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">poly</span><span class="o">.</span><span class="n">area</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+        <span class="n">annotation</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">area_</span>
+        <span class="n">annotation</span><span class="p">[</span><span class="s1">&#39;iscrowd&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">annotation</span><span class="p">[</span><span class="s1">&#39;image_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">num</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">annotation</span><span class="p">[</span><span class="s1">&#39;bbox&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">getbbox</span><span class="p">(</span><span class="n">points</span><span class="p">)))</span>
+        <span class="n">annotation</span><span class="p">[</span><span class="s1">&#39;category_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getcatid</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+        <span class="n">annotation</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">annID</span>
+        <span class="k">return</span> <span class="n">annotation</span>
 
-    # 定义读取检测框的类别信息的方法
-    def getcatid(self, label):
-        for categorie in self.categories:
-            if label == categorie[&#39;name&#39;]:
-                return categorie[&#39;id&#39;]
-        return -1
+    <span class="c1"># 定义读取检测框的类别信息的方法</span>
+    <span class="k">def</span> <span class="nf">getcatid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">categorie</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">categories</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">label</span> <span class="o">==</span> <span class="n">categorie</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]:</span>
+                <span class="k">return</span> <span class="n">categorie</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
 
-    def getbbox(self, points):
-        polygons = points
-        mask = self.polygons_to_mask([self.height, self.width], polygons)
-        return self.mask2box(mask)
+    <span class="k">def</span> <span class="nf">getbbox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">):</span>
+        <span class="n">polygons</span> <span class="o">=</span> <span class="n">points</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">polygons_to_mask</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">],</span> <span class="n">polygons</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">mask2box</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
 
-    def mask2box(self, mask):
-        &#39;&#39;&#39;从mask反算出其边框
-        mask：[h,w]  0、1组成的图片
-        1对应对象，只需计算1对应的行列号（左上角行列号，右下角行列号，就可以算出其边框）
-        &#39;&#39;&#39;
-        # np.where(mask==1)
-        index = np.argwhere(mask == 1)
-        rows = index[:, 0]
-        clos = index[:, 1]
-        # 解析左上角行列号
-        left_top_r = np.min(rows)  # y
-        left_top_c = np.min(clos)  # x
+    <span class="k">def</span> <span class="nf">mask2box</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;从mask反算出其边框</span>
+<span class="sd">        mask：[h,w]  0、1组成的图片</span>
+<span class="sd">        1对应对象，只需计算1对应的行列号（左上角行列号，右下角行列号，就可以算出其边框）</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="c1"># np.where(mask==1)</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">mask</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="n">index</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="n">clos</span> <span class="o">=</span> <span class="n">index</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># 解析左上角行列号</span>
+        <span class="n">left_top_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>  <span class="c1"># y</span>
+        <span class="n">left_top_c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">clos</span><span class="p">)</span>  <span class="c1"># x</span>
 
-        # 解析右下角行列号
-        right_bottom_r = np.max(rows)
-        right_bottom_c = np.max(clos)
+        <span class="c1"># 解析右下角行列号</span>
+        <span class="n">right_bottom_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+        <span class="n">right_bottom_c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">clos</span><span class="p">)</span>
 
-        return [left_top_c, left_top_r, right_bottom_c - left_top_c,
-                right_bottom_r - left_top_r]  # [x1,y1,w,h] 对应COCO的bbox格式
+        <span class="k">return</span> <span class="p">[</span><span class="n">left_top_c</span><span class="p">,</span> <span class="n">left_top_r</span><span class="p">,</span> <span class="n">right_bottom_c</span> <span class="o">-</span> <span class="n">left_top_c</span><span class="p">,</span>
+                <span class="n">right_bottom_r</span> <span class="o">-</span> <span class="n">left_top_r</span><span class="p">]</span>  <span class="c1"># [x1,y1,w,h] 对应COCO的bbox格式</span>
 
-    def polygons_to_mask(self, img_shape, polygons):
-        mask = np.zeros(img_shape, dtype=np.uint8)
-        mask = PIL.Image.fromarray(mask)
-        xy = list(map(tuple, polygons))
-        PIL.ImageDraw.Draw(mask).polygon(xy=xy, outline=1, fill=1)
-        mask = np.array(mask, dtype=bool)
-        return mask
+    <span class="k">def</span> <span class="nf">polygons_to_mask</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img_shape</span><span class="p">,</span> <span class="n">polygons</span><span class="p">):</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">img_shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+        <span class="n">xy</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="n">polygons</span><span class="p">))</span>
+        <span class="n">PIL</span><span class="o">.</span><span class="n">ImageDraw</span><span class="o">.</span><span class="n">Draw</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span><span class="o">.</span><span class="n">polygon</span><span class="p">(</span><span class="n">xy</span><span class="o">=</span><span class="n">xy</span><span class="p">,</span> <span class="n">outline</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">mask</span>
 
-    def data2coco(self):
-        data_coco = {}
-        data_coco[&#39;images&#39;] = self.images
-        data_coco[&#39;categories&#39;] = self.categories
-        data_coco[&#39;annotations&#39;] = self.annotations
-        return data_coco
+    <span class="k">def</span> <span class="nf">data2coco</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">data_coco</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">data_coco</span><span class="p">[</span><span class="s1">&#39;images&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">images</span>
+        <span class="n">data_coco</span><span class="p">[</span><span class="s1">&#39;categories&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">categories</span>
+        <span class="n">data_coco</span><span class="p">[</span><span class="s1">&#39;annotations&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">annotations</span>
+        <span class="k">return</span> <span class="n">data_coco</span>
 
-    def save_json(self):
-        self.data_transfer()
-        self.data_coco = self.data2coco()
-        # 保存json文件
-        json.dump(self.data_coco, open(self.save_json_path, &#39;w&#39;), indent=4)  # 写入指定路径的json文件，indent=4 更加美观显示
+    <span class="k">def</span> <span class="nf">save_json</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_transfer</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_coco</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data2coco</span><span class="p">()</span>
+        <span class="c1"># 保存json文件</span>
+        <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_coco</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">save_json_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>  <span class="c1"># 写入指定路径的json文件，indent=4 更加美观显示</span>
 
-labelme_json = glob.glob(&#39;picture/*.json&#39;)  # 获取指定目录下的json格式的文件
-labelme2coco(labelme_json, &#39;picture/new.json&#39;) # 指定生成文件路径
+<span class="n">labelme_json</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;picture/*.json&#39;</span><span class="p">)</span>  <span class="c1"># 获取指定目录下的json格式的文件</span>
+<span class="n">labelme2coco</span><span class="p">(</span><span class="n">labelme_json</span><span class="p">,</span> <span class="s1">&#39;picture/new.json&#39;</span><span class="p">)</span> <span class="c1"># 指定生成文件路径</span>
 </pre></div>
 </div>
 </section>
@@ -332,9 +333,9 @@ classes.txt
 <section id="id12">
 <h3>第二步：转换为COCO格式<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h3>
 <p>使用BaseDT库将平台标注格式的数据集转换成COCO格式，可以使用如下代码。如需了解更多BaseDT库数据集处理的功能，详见<a href="https://xedu.readthedocs.io/zh/master/basedt/introduction.html#id7">BaseDT的数据集格式转换</a>。</p>
-<div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>from BaseDT.dataset import DataSet
-ds = DataSet(r&quot;my_dataset&quot;) # 指定为新数据集路径
-ds.make_dataset(r&quot;G:\\测试数据集\\fruit_voc&quot;, src_format=&quot;VOC&quot;,train_ratio = 0.8, test_ratio = 0.1, val_ratio = 0.1) # 指定待转格式的原始数据集路径，原始数据集格式，划分比例，默认比例为train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.dataset</span> <span class="kn">import</span> <span class="n">DataSet</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">DataSet</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;my_dataset&quot;</span><span class="p">)</span> <span class="c1"># 指定为新数据集路径</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">make_dataset</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;G:</span><span class="se">\\</span><span class="s2">测试数据集</span><span class="se">\\</span><span class="s2">fruit_voc&quot;</span><span class="p">,</span> <span class="n">src_format</span><span class="o">=</span><span class="s2">&quot;VOC&quot;</span><span class="p">,</span><span class="n">train_ratio</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">test_ratio</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">val_ratio</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span> <span class="c1"># 指定待转格式的原始数据集路径，原始数据集格式，划分比例，默认比例为train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2</span>
 </pre></div>
 </div>
 </section>

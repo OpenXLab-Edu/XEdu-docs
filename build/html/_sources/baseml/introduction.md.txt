@@ -49,6 +49,15 @@
 </tbody>
 <tbody>
   <tr>
+    <td>多项式回归算法（Polynomial）</td>
+    <td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PolynomialFeatures.html">回归</a></td>
+    <td>适用于预测房价、预测销售额、贷款额度等。</td>
+    <td class="wrapword">就像是在一条直线上增加更多的弯曲，使得这条线可以更好地贴合数据点。就像用橡皮筋在散点图上拉出一个曲面，这个曲面就能更好地帮助我们预测未来的值。</td>
+    <td class="wrapword">degree=2, interaction_only=False, include_bias=True, order='C'</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
     <td>最近邻分类（KNN, K-Nearest Neighbors）</td>
     <td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn-neighbors-kneighborsclassifier">分类</a></td>
     <td class="wrapword">识别数字、判断邮件是否为垃圾邮件、图像识别等。</td>
@@ -76,7 +85,7 @@
 </tbody>
 <tbody>
   <tr>
-    <td>随机森林算法（Random Forest）</td>
+    <td>随机森林算法（RandomForest）</td>
     <td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn-ensemble-randomforestclassifier">分类</a>/<a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html#sklearn-ensemble-randomforestregressor">回归</a></td>
     <td>信用评分、医疗分析、股票市场行为等。</td>
     <td class="wrapword">随机森林算法是一种基于集成学习的算法，通过构建多棵决策树并将它们的预测结果进行集成，从而降低风险。它能够处理多特征数据，并自动选择最相关特征，从而提升模型准确率。如果你问很多朋友一个问题，并根据他们的回答来做决定，那么你就用了随机森林的思想。它建立了很多个决策树，并综合它们的意见来做出最终的决策。</td>
@@ -114,11 +123,12 @@
 
 
 
+
 ## 代码详解
 
 核心代码：
 
-```
+```python
 from BaseML import Regression as reg # 从库文件中导入回归任务模块
 model = reg('LinearRegression') # 实例化线性回归模型
 model.set_para(fit_intercept=True) # 设定模型参数
@@ -138,7 +148,7 @@ model.save('mymodel. pkl') # 保存模型供应用
 
 第二句代码属于模型搭建，除了实例化模型，选择部分算法如需额外设置参数可添加参数设置的代码（涉及的参数见上文的机器学习典型算法一览表），一般有如下三种搭建形式，下面以搭建多层感知机算法为例进行说明，此算法一般需要设置隐藏层"hidden_layer_sizes"，hidden_layer_sizes":(100,200)表示2层神经元数量为100和200的隐藏层。如下是他的三种搭建形式。
 
-```
+```python
 # 第一种形式
 param = {"hidden_layer_sizes":(100,200), }
 model = reg("MLP",para=param)
@@ -154,7 +164,7 @@ model.set_para(hidden_layer_sizes=(100,200), activation='relu', solver='adam')
 
 #### 拓展功能：查看各任务拥有的算法以及类注释
 
-```
+```python
 from BaseML import Regression as reg
 reg.__doc__
 
@@ -171,7 +181,7 @@ BaseML库支持各种形式载入数据。
 
 #### （1）针对CSV数据
 
-方法1：使用`load_tab_data`方法直接载入一个CSV文件（对CSV文件有严格格式要求：数据文件每行一条记录，输入数据（特征）列在前，输出数据（目标或标签）列在后，即最后一列为输出数据，其余列为输入数据）。
+方法1：使用`load_tab_data`方法直接载入一个CSV文件（对CSV文件有严格格式要求：数据文件每行一条记录，输入数据（特征）列在前，输出数据（目标或标签）列在后，即最后一列为输出数据，其余列为输入数据，且要求数据类型为数值类型并无缺失值）。
 
 ```
 model.load_tab_data('data/Height_data_train.csv')
@@ -216,9 +226,9 @@ model.load_dataset('./lenses.csv', type ='csv', x_column = [1,2,3,4],y_column=[5
 
 #### （2）针对图片数据
 
-读取图像数据转换为Numpy数组后直接从变量载入数据。使用上文介绍过的载入数据更加灵活的`load_dataset`方法载入即可。
+如需载入图像数据，可读取图像数据转换为Numpy数组后，直接从变量载入数据。使用上文介绍过的载入数据更加灵活的`load_dataset`方法载入即可。
 
-```
+```python
 # 载入数据，并说明特征列和标签列
 model.load_dataset(X=train_x, y=train_y,type ='numpy')
 ```
@@ -235,7 +245,7 @@ model.load_dataset(X=train_x, y=train_y,type ='numpy')
 
 以读取ImageNet格式的MNIST数据集为例，进行说明。
 
-```
+```python
 from BaseML import IMGLoader
 # 指定数据集路径
 train_path = '/data/QX8UBM/mnist_sample/training_set'
@@ -246,7 +256,7 @@ img_set = IMGLoader.ImageLoader(train_path, test_path,size=28)
 X_train, y_train, X_test, y_test = img_set.get_data(method='flatten')
 ```
 
-```
+```python
 # 载入数据，从变量载入
 model.load_dataset(X=X_train, y=y_train,type ='numpy')
 ```
@@ -255,14 +265,14 @@ model.load_dataset(X=X_train, y=y_train,type ='numpy')
 
 ### 3. 模型训练
 
-```
+```python
 # 模型训练
 model.train()
 ```
 
 ### 4.模型评估
 
-```
+```python
 # 模型评估
 model.valid(metrics='acc')
 ```
@@ -277,20 +287,20 @@ model.valid(metrics='acc')
 
 如载入的是文本数据且直接使用`load_tab_data`载入，评估时可直接载入一个数据集格式要求及输入列数量等和训练数据保持高度一致即可的验证集进行模型评估即可。
 
-```
+```python
 model.valid('data_val.csv',metrics='acc') # 载入验证数据并验证
 ```
 
 除了传入验证集的路径，还可在`valid`方法中传入x验证集的特征和y验证集的标签进行模型评估，此方式更加灵活。
 
-```
+```python
 # 模型评估
 model.valid(x=val_x,y=val_y,metrics='acc') 
 ```
 
 ### 5. 评价指标可视化
 
-```
+```python
 model.metricplot() 
 ```
 
@@ -302,7 +312,7 @@ model.metricplot()
 
 ### 6. 模型推理
 
-```
+```python
 # 给定一组数据，推理查看效果
 y=model.inference([[1,1,1,1]])
 ```
@@ -320,7 +330,7 @@ model.load("my_CART_model.pkl")
 
 模型保存后可加载模型进行模型测试，参考代码如下：
 
-```
+```python
 # 加载模型
 model.load("my_CART_model.pkl")
 # 给定一组数据，推理查看效果
@@ -331,7 +341,7 @@ y=model.inference(data)
 
 模型应用是将训练好的模型部署到实际场景中，例如集成到网站或移动应用中。一般来说，一个训练模型的工具也会自带了推理功能，如在BaseML训练好模型并保存，下次使用时以同样的方式导入BaseML库并载入模型进行推理即可。还有种方式是借助一些通用的模型推理库，如XEdu工具的XEduHub库，支持推理各种工具训练的模型，此类库的安装一般比机器学习开发工具简单很多。也可以[借助XEduHub库完成推理](https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#baseml)和应用，核心代码如下。
 
-```
+```python
 from XEdu.hub import Workflow as wf
 baseml = wf(task='baseml',checkpoint='./model.pkl') # 指定使用的pkl模型
 data = [[1, 1, 1, 1]]# 指定测试数据，根据训练模型时使用的数据来定
@@ -377,7 +387,7 @@ print(result)
 
 贝叶斯定理：P(A|B)表示事件B发生的条件下事件A发生的概率，P(A|B)等于事件A发生的条件下事件B发生的概率乘以事件A发生的概率P(A)，再除以事件B发生的概率P(B)。
 
-```
+```python
 # 实例化模型，模型名称选择NaiveBayes
 model=cls('NaiveBayes')
 ```
@@ -386,7 +396,7 @@ model=cls('NaiveBayes')
 
 k均值（k-means）算法是一种基于数据间距离迭代求解的聚类算法，通过分析数据之间的距离，发现数据之间的内在联系和相关性，将看似没有关联的事物聚合在一起，并将数据划分为若干个集合，方便为数据打上标签，从而进行后续的分析和处理。k代表划分的集合个数，means代表子集内数据对象的均值。
 
-```
+```python
 # 实例化模型，模型名称选择'KMeans'
 model = clt('KMeans')
 ```
@@ -397,7 +407,7 @@ model = clt('KMeans')
 
 谱聚类（spectral clustering）算法主要思想是把所有的数据看做空间中的点，这些点之间可以用边连接起来。将聚类问题转为图分割问题：距离较远（或者相似度较低）的两个点之间的边权重值较低，而距离较近（或者相似度较高）的两个点之间的边权重值较高，将所有数据点组成的图分割成若干个子图，让不同的子图间边权重和尽可能的低，而子图内的边权重和尽可能的高，从而达到聚类的目的。
 
-```
+```python
 # 实例化模型，模型名称选择'SpectralClustering',
 model = clt('SpectralClustering')
 ```
@@ -408,7 +418,7 @@ model = clt('SpectralClustering')
 
 Agglomerative clutsering 是一种自底而上的层次聚类方法，它能够根据指定的相似度或距离定义计算出类之间的距离。首先将每个样本都视为一个簇，然后开始按一定规则，将相似度高的簇进行合并，直到所有的元素都归为同一类。
 
-```
+```python
 # 实例化模型，模型名称选择'Agglomerative clustering'
 model = clt('Agglomerative clustering')
 ```

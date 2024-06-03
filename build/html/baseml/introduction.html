@@ -46,6 +46,7 @@
               <p class="caption" role="heading"><span class="caption-text">目录</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_quick_start.html">XEdu快速入门手册</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEduHub</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basenn.html">神经网络库BaseNN</a></li>
@@ -164,6 +165,15 @@
 </tbody>
 <tbody>
   <tr>
+    <td>多项式回归算法（Polynomial）</td>
+    <td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PolynomialFeatures.html">回归</a></td>
+    <td>适用于预测房价、预测销售额、贷款额度等。</td>
+    <td class="wrapword">就像是在一条直线上增加更多的弯曲，使得这条线可以更好地贴合数据点。就像用橡皮筋在散点图上拉出一个曲面，这个曲面就能更好地帮助我们预测未来的值。</td>
+    <td class="wrapword">degree=2, interaction_only=False, include_bias=True, order='C'</td>
+  </tr>
+</tbody>
+<tbody>
+  <tr>
     <td>最近邻分类（KNN, K-Nearest Neighbors）</td>
     <td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn-neighbors-kneighborsclassifier">分类</a></td>
     <td class="wrapword">识别数字、判断邮件是否为垃圾邮件、图像识别等。</td>
@@ -191,7 +201,7 @@
 </tbody>
 <tbody>
   <tr>
-    <td>随机森林算法（Random Forest）</td>
+    <td>随机森林算法（RandomForest）</td>
     <td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn-ensemble-randomforestclassifier">分类</a>/<a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html#sklearn-ensemble-randomforestregressor">回归</a></td>
     <td>信用评分、医疗分析、股票市场行为等。</td>
     <td class="wrapword">随机森林算法是一种基于集成学习的算法，通过构建多棵决策树并将它们的预测结果进行集成，从而降低风险。它能够处理多特征数据，并自动选择最相关特征，从而提升模型准确率。如果你问很多朋友一个问题，并根据他们的回答来做决定，那么你就用了随机森林的思想。它建立了很多个决策树，并综合它们的意见来做出最终的决策。</td>
@@ -229,7 +239,7 @@
 <section id="id7">
 <h2>代码详解<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h2>
 <p>核心代码：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Regression</span> <span class="k">as</span> <span class="n">reg</span> <span class="c1"># 从库文件中导入回归任务模块</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Regression</span> <span class="k">as</span> <span class="n">reg</span> <span class="c1"># 从库文件中导入回归任务模块</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">reg</span><span class="p">(</span><span class="s1">&#39;LinearRegression&#39;</span><span class="p">)</span> <span class="c1"># 实例化线性回归模型</span>
 <span class="n">model</span><span class="o">.</span><span class="n">set_para</span><span class="p">(</span><span class="n">fit_intercept</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 设定模型参数</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_tab_data</span><span class="p">(</span> <span class="s1">&#39;./data_train.csv&#39;</span><span class="p">)</span> <span class="c1"># 载入训练数据</span>
@@ -245,7 +255,7 @@
 <p>在BaseML中使用不同算法：</p>
 <p><img alt="../_images/change.png" src="../_images/change.png" /></p>
 <p>第二句代码属于模型搭建，除了实例化模型，选择部分算法如需额外设置参数可添加参数设置的代码（涉及的参数见上文的机器学习典型算法一览表），一般有如下三种搭建形式，下面以搭建多层感知机算法为例进行说明，此算法一般需要设置隐藏层”hidden_layer_sizes”，hidden_layer_sizes”:(100,200)表示2层神经元数量为100和200的隐藏层。如下是他的三种搭建形式。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 第一种形式</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 第一种形式</span>
 <span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;hidden_layer_sizes&quot;</span><span class="p">:(</span><span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">),</span> <span class="p">}</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">reg</span><span class="p">(</span><span class="s2">&quot;MLP&quot;</span><span class="p">,</span><span class="n">para</span><span class="o">=</span><span class="n">param</span><span class="p">)</span>
 
@@ -260,7 +270,7 @@
 </div>
 <section id="id9">
 <h4>拓展功能：查看各任务拥有的算法以及类注释<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Regression</span> <span class="k">as</span> <span class="n">reg</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Regression</span> <span class="k">as</span> <span class="n">reg</span>
 <span class="n">reg</span><span class="o">.</span><span class="vm">__doc__</span>
 
 <span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">Classification</span> <span class="k">as</span> <span class="bp">cls</span>
@@ -277,7 +287,7 @@
 <p>BaseML库支持各种形式载入数据。</p>
 <section id="csv">
 <h4>（1）针对CSV数据<a class="headerlink" href="#csv" title="Permalink to this heading"></a></h4>
-<p>方法1：使用<code class="docutils literal notranslate"><span class="pre">load_tab_data</span></code>方法直接载入一个CSV文件（对CSV文件有严格格式要求：数据文件每行一条记录，输入数据（特征）列在前，输出数据（目标或标签）列在后，即最后一列为输出数据，其余列为输入数据）。</p>
+<p>方法1：使用<code class="docutils literal notranslate"><span class="pre">load_tab_data</span></code>方法直接载入一个CSV文件（对CSV文件有严格格式要求：数据文件每行一条记录，输入数据（特征）列在前，输出数据（目标或标签）列在后，即最后一列为输出数据，其余列为输入数据，且要求数据类型为数值类型并无缺失值）。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">load_tab_data</span><span class="p">(</span><span class="s1">&#39;data/Height_data_train.csv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -304,8 +314,8 @@
 </section>
 <section id="id11">
 <h4>（2）针对图片数据<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h4>
-<p>读取图像数据转换为Numpy数组后直接从变量载入数据。使用上文介绍过的载入数据更加灵活的<code class="docutils literal notranslate"><span class="pre">load_dataset</span></code>方法载入即可。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 载入数据，并说明特征列和标签列</span>
+<p>如需载入图像数据，可读取图像数据转换为Numpy数组后，直接从变量载入数据。使用上文介绍过的载入数据更加灵活的<code class="docutils literal notranslate"><span class="pre">load_dataset</span></code>方法载入即可。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 载入数据，并说明特征列和标签列</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">train_x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">train_y</span><span class="p">,</span><span class="nb">type</span> <span class="o">=</span><span class="s1">&#39;numpy&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -317,7 +327,7 @@
 <p>如需对图片进行处理后再载入，可借助BaseML内置的图像处理模型<code class="docutils literal notranslate"><span class="pre">ImageLoader</span></code>。</p>
 <p>简单使用示例：</p>
 <p>以读取ImageNet格式的MNIST数据集为例，进行说明。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">IMGLoader</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseML</span> <span class="kn">import</span> <span class="n">IMGLoader</span>
 <span class="c1"># 指定数据集路径</span>
 <span class="n">train_path</span> <span class="o">=</span> <span class="s1">&#39;/data/QX8UBM/mnist_sample/training_set&#39;</span>
 <span class="n">test_path</span> <span class="o">=</span> <span class="s1">&#39;/data/QX8UBM/mnist_sample/test_set&#39;</span>
@@ -327,7 +337,7 @@
 <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">img_set</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;flatten&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 载入数据，从变量载入</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 载入数据，从变量载入</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_train</span><span class="p">,</span><span class="nb">type</span> <span class="o">=</span><span class="s1">&#39;numpy&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -336,14 +346,14 @@
 </section>
 <section id="id12">
 <h3>3. 模型训练<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型训练</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型训练</span>
 <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
 <section id="id13">
 <h3>4.模型评估<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型评估</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型评估</span>
 <span class="n">model</span><span class="o">.</span><span class="n">valid</span><span class="p">(</span><span class="n">metrics</span><span class="o">=</span><span class="s1">&#39;acc&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -352,18 +362,18 @@
 <p><code class="docutils literal notranslate"><span class="pre">metrics</span></code>：评估指标选择，默认为’acc(accuracy)’，还支持precision,recall,f1,auc,r2,mse,mae、Silhouette Score、Calinski-Harabasz Score、Davies-Bouldin Score等。分类任务一般选择’acc(accuracy)’，回归任务可以选择’r2’(R平方值)或’mse’(MSE值)，聚类任务一般选择Silhouette Score（轮廓系数），评估指标的说明详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id20">后文</a>。</p>
 <p><code class="docutils literal notranslate"><span class="pre">path</span></code>/<code class="docutils literal notranslate"><span class="pre">x,y</span></code>: 验证集的路径/验证集的特征和验证集的标签，如载入数据时设置了自动划分训练集和验证集，此时可不传入此参数，其他情况下基本需要传入，否则将报错。<strong>注</strong>：聚类任务只需传入<code class="docutils literal notranslate"><span class="pre">metrics</span></code>，因为聚类和分类回归不一样，没有类别标签，即y只有预测值，没有真实值，因此聚类任务验证实际是对训练集的效果评价，因此不传入x和y也可直接验证。</p>
 <p>如载入的是文本数据且直接使用<code class="docutils literal notranslate"><span class="pre">load_tab_data</span></code>载入，评估时可直接载入一个数据集格式要求及输入列数量等和训练数据保持高度一致即可的验证集进行模型评估即可。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">valid</span><span class="p">(</span><span class="s1">&#39;data_val.csv&#39;</span><span class="p">,</span><span class="n">metrics</span><span class="o">=</span><span class="s1">&#39;acc&#39;</span><span class="p">)</span> <span class="c1"># 载入验证数据并验证</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">valid</span><span class="p">(</span><span class="s1">&#39;data_val.csv&#39;</span><span class="p">,</span><span class="n">metrics</span><span class="o">=</span><span class="s1">&#39;acc&#39;</span><span class="p">)</span> <span class="c1"># 载入验证数据并验证</span>
 </pre></div>
 </div>
 <p>除了传入验证集的路径，还可在<code class="docutils literal notranslate"><span class="pre">valid</span></code>方法中传入x验证集的特征和y验证集的标签进行模型评估，此方式更加灵活。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型评估</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型评估</span>
 <span class="n">model</span><span class="o">.</span><span class="n">valid</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">val_x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">val_y</span><span class="p">,</span><span class="n">metrics</span><span class="o">=</span><span class="s1">&#39;acc&#39;</span><span class="p">)</span> 
 </pre></div>
 </div>
 </section>
 <section id="id14">
 <h3>5. 评价指标可视化<a class="headerlink" href="#id14" title="Permalink to this heading"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">metricplot</span><span class="p">()</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">metricplot</span><span class="p">()</span> 
 </pre></div>
 </div>
 <p>使用前面运行的代码中读取的验证集的特征val_x和验证集的标签val_y进行绘制，如无或想自行传入，可自行设置。</p>
@@ -372,7 +382,7 @@
 </section>
 <section id="id15">
 <h3>6. 模型推理<a class="headerlink" href="#id15" title="Permalink to this heading"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 给定一组数据，推理查看效果</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 给定一组数据，推理查看效果</span>
 <span class="n">y</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
 </pre></div>
 </div>
@@ -387,7 +397,7 @@
 </div>
 <p>参数为模型保存的路径。</p>
 <p>模型保存后可加载模型进行模型测试，参考代码如下：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 加载模型</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 加载模型</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;my_CART_model.pkl&quot;</span><span class="p">)</span>
 <span class="c1"># 给定一组数据，推理查看效果</span>
 <span class="n">y</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -397,7 +407,7 @@
 <section id="id17">
 <h3>8. 模型应用<a class="headerlink" href="#id17" title="Permalink to this heading"></a></h3>
 <p>模型应用是将训练好的模型部署到实际场景中，例如集成到网站或移动应用中。一般来说，一个训练模型的工具也会自带了推理功能，如在BaseML训练好模型并保存，下次使用时以同样的方式导入BaseML库并载入模型进行推理即可。还有种方式是借助一些通用的模型推理库，如XEdu工具的XEduHub库，支持推理各种工具训练的模型，此类库的安装一般比机器学习开发工具简单很多。也可以<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#baseml">借助XEduHub库完成推理</a>和应用，核心代码如下。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">baseml</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;baseml&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;./model.pkl&#39;</span><span class="p">)</span> <span class="c1"># 指定使用的pkl模型</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span><span class="c1"># 指定测试数据，根据训练模型时使用的数据来定</span>
 <span class="n">result</span><span class="o">=</span> <span class="n">baseml</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
@@ -432,7 +442,7 @@
 <h4>贝叶斯分类<a class="headerlink" href="#id22" title="Permalink to this heading"></a></h4>
 <p>贝叶斯分类算法常用于解决不确定问题，如人们普遍认为夜里下雨，第二天早晨草地会湿，实际到了早上草地可能就干了，也许是因为风的因素，解决这类问题往往需要根据人类已有的经验来计算某种状态出现的概率，这种方式叫做贝叶斯推理。 贝叶斯分类算法是基于贝叶斯定理的一种算法，即“简单”地假设每对特征之间相互独立。</p>
 <p>贝叶斯定理：P(A|B)表示事件B发生的条件下事件A发生的概率，P(A|B)等于事件A发生的条件下事件B发生的概率乘以事件A发生的概率P(A)，再除以事件B发生的概率P(B)。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择NaiveBayes</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择NaiveBayes</span>
 <span class="n">model</span><span class="o">=</span><span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;NaiveBayes&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -440,7 +450,7 @@
 <section id="k">
 <h4>k均值<a class="headerlink" href="#k" title="Permalink to this heading"></a></h4>
 <p>k均值（k-means）算法是一种基于数据间距离迭代求解的聚类算法，通过分析数据之间的距离，发现数据之间的内在联系和相关性，将看似没有关联的事物聚合在一起，并将数据划分为若干个集合，方便为数据打上标签，从而进行后续的分析和处理。k代表划分的集合个数，means代表子集内数据对象的均值。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择&#39;KMeans&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择&#39;KMeans&#39;</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">clt</span><span class="p">(</span><span class="s1">&#39;KMeans&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -449,7 +459,7 @@
 <section id="id23">
 <h4>谱聚类<a class="headerlink" href="#id23" title="Permalink to this heading"></a></h4>
 <p>谱聚类（spectral clustering）算法主要思想是把所有的数据看做空间中的点，这些点之间可以用边连接起来。将聚类问题转为图分割问题：距离较远（或者相似度较低）的两个点之间的边权重值较低，而距离较近（或者相似度较高）的两个点之间的边权重值较高，将所有数据点组成的图分割成若干个子图，让不同的子图间边权重和尽可能的低，而子图内的边权重和尽可能的高，从而达到聚类的目的。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择&#39;SpectralClustering&#39;,</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择&#39;SpectralClustering&#39;,</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">clt</span><span class="p">(</span><span class="s1">&#39;SpectralClustering&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -458,7 +468,7 @@
 <section id="agglomerative-clustering">
 <h4>Agglomerative clustering<a class="headerlink" href="#agglomerative-clustering" title="Permalink to this heading"></a></h4>
 <p>Agglomerative clutsering 是一种自底而上的层次聚类方法，它能够根据指定的相似度或距离定义计算出类之间的距离。首先将每个样本都视为一个簇，然后开始按一定规则，将相似度高的簇进行合并，直到所有的元素都归为同一类。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择&#39;Agglomerative clustering&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 实例化模型，模型名称选择&#39;Agglomerative clustering&#39;</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">clt</span><span class="p">(</span><span class="s1">&#39;Agglomerative clustering&#39;</span><span class="p">)</span>
 </pre></div>
 </div>

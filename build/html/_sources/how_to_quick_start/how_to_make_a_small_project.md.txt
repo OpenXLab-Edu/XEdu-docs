@@ -1,39 +1,40 @@
-# 案例六：综合项目石头剪刀布的实时识别（XEduhub+BaseNN）
+# 案例六：综合项目石头剪刀布的实时识别（XEduHub+BaseNN）
 
 ## 项目说明：
 
-组合XEdu工具集的工具完成一个综合项目非常方便，本项目使用XEduHub提取手势图像的关键点信息，再将这些关键点信息作为特征输入到一个自己搭建的全连接神经网络模型中进行训练，此步骤由BaseNN实现，最后到本地完成模型应用。
+组合XEdu工具集的工具完成一个综合项目非常方便，本项目使用XEduHub提取手势图像的关键点信息，再将这些关键点信息作为特征输入到一个自己搭建的全连接神经网络模型中进行训练，此步骤由BaseNN实现，最后到本地完成模型应用，实现石头剪刀布手势实时识别的综合项目。
 
 项目地址：[https://openinnolab.org.cn/pjlab/project?id=66062a39a888634b8a1bf2ca&backpath=/pjedu/userprofile?slideKey=project#public](https://openinnolab.org.cn/pjlab/project?id=66062a39a888634b8a1bf2ca&backpath=/pjedu/userprofile?slideKey=project#public)
 
 ## 项目步骤：
 
-### 1.关键点检测和简单应用
+### 任务一：关键点检测和简单应用
 
-手部关键点检测的代码和前文提到的完全一致，此处我们再次细致分析检测到的手部关键点的结构。
+XEduHub提供了能够快速识别人手关键点的模型：pose_hand21，该模型能够识别人手上的21个关键点，如下图所示。手部关键点检测的代码可参考学习[人手关键点](https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id44)。
 
 ![](../images/xeduhub/new_hand.png)
 
-首先可以看到检测到的关键点供包含21组关键点数据，代表21个点的坐标，分别是
-掌心：0；
+首先分析检测到的手部关键点的结构：
 
-大拇指：1-4；
+- 掌心：0；
 
-食指：5-8；
+- 大拇指：1-4；
 
-中指：9-12；
+- 食指：5-8；
 
-无名指：12-16；
+- 中指：9-12；
 
-小拇指：17-20。
+- 无名指：12-16；
 
-有了这个认识，便能够轻松获取每个点的坐标信息。例如，大拇指指尖的关键点坐标是keypoints[4]。
+- 小拇指：17-20。
 
-#### 1）基于坐标信息写一个判断手势的逻辑
+经过人手关键点的模型推理，可以得到包含21对关键点坐标信息的组数，保存在keypoints变量中，通过访问数组元素，便能够轻松获取每个点的坐标信息。例如大拇指指尖4号关键点的x，y关键点坐标是keypoints[4]。
 
-假设已经检测出了一组手部关键点，那么应用的时候，可以对关键点做一下简单的处理，还可以做一些判断，例如我们写一个计算伸展手指数量的函数，可以判断一下手势。当然了，这种方式比较麻烦，需对手指进行细致分析，同时结果可能不准确。
+#### 1）基于规则实现手势分类
 
-```
+假设已经检测出了一组手部关键点，可以通过坐标点信息制定规则来区分不同的手势。例如我们写了一个计算伸展手指数量的函数，并设计判断规则通过伸展手指数量区分不同的手势。然而通过下方的代码不难看出这种方式比较麻烦，需对手指进行细致分析，同时结果可能不准确。
+
+```python
 import numpy as np
 
 # 计算两点之间的欧氏距离
@@ -85,11 +86,11 @@ else:
 print(hand_gesture)
 ```
 
-#### 2）实时手部关键点检测
+#### 2）实时人手关键点检测
 
-还有一种简单的应用，那便是连接摄像头，调用OpenCV库，在手部关键点检测的代码基础上可以实现实时手部关键点检测。
+还有一种简单的应用，可以实现实时人手关键点检测，只需连接摄像头，调用OpenCV库，对每一帧图像进行关键点检测，并将关键点检测的结果可视化就可以实现实时人手关键点检测。
 
-```
+```python
 from XEdu.hub import Workflow as wf # 导入库
 import cv2
 cap = cv2.VideoCapture(0)
@@ -110,15 +111,113 @@ cap.release()
 cv2.destroyAllWindows()
 ```
 
-### 2.搭建全连接神经网络训练石头剪刀布手势模型
+### 任务二：搭建全连接神经网络训练石头剪刀布手势模型
 
-在1的基础上，我们可以批量提取出所有手势图像的手势关键点数据，做一个CSV格式的关键点数据集，每行代表一张图片提出的手部关键点坐标和这张图的类别。当有了这样一个数据集，我们便可以使用XEdu的一系列训练模型的工具去学习这些数据的特征，从而去训练一个石头剪刀布手势识别模型。
+除了任务一基于规则实现手势分类以外，还可以通过机器学习的方式，训练一个手势分类模型区分不同的手势。
+
+#### 准备工作：准备数据
+
+首先我们可以批量提取出所有手势图像的手势关键点数据，做一个CSV格式的关键点数据集，每行代表一张图片提出的手部关键点坐标和这张图的类别。用如下代码可以做到随拍随提取关键点，并生成关键点数据集（注意需提前安装库），可修改total值设置采集的数据条数。
+
+```python
+import csv
+from XEdu.hub import Workflow as wf
+import cv2
+import os
+cap = cv2.VideoCapture(0)
+
+class_name=input('请输入本次想要采集的手势名称：')
+
+c_file='classes.txt'
+if not os.path.exists(c_file):
+    open(c_file,'w')
+with open(c_file,'r') as f:
+    lines=f.readlines()
+    print(lines)
+    class_index=len(lines)
+    print('类别{',class_name,'}对应的序号是{',class_index,'}。')
+with open(c_file,'a') as f:
+    s=str(class_name)+','+str(class_index)+'\n'
+    f.write(s)
+
+pose = wf(task='hand')
+feature_data=[]
+cnt=0
+from time import sleep
+print('3秒后开始采集数据，请做好准备....')
+sleep(3)
+total=100   # 一共采集多少条数据【可自行修改】
+from tqdm import tqdm
+pbar=tqdm(total=total)
+while cnt<total:
+    sleep(0.1)
+    ret, frame = cap.read()
+
+    if not ret:
+        continue
+    keypoints,img =pose.inference(data=frame,img_type='cv2')
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+    format_result = pose.format_output(lang='en', isprint=False)
+    avg=0
+    for i in format_result['scores']:
+        avg+=i
+    avg/=21
+    if avg<0.5:
+        cv2.imshow('video', frame)
+        print('手部置信度未超过0.5:', avg)
+        continue
+    else:
+        cnt+=1
+        pbar.update(1)
+        cv2.imshow('video', img)
+    my_data=format_result['keypoints']
+    feature=[]
+    for d in format_result['keypoints']:
+        feature.append(d[0])
+        feature.append(d[1])
+    feature_data.append(feature)
+
+cap.release()
+cv2.destroyAllWindows()
+header = [f"Feature {i+1}" for i in range(21*2)] + ["Label"]
+csv_data = []
+
+for i in range(len(feature_data)):
+    csv_data.append(feature_data[i].copy())
+    csv_data[-1].append(class_index)
+print(csv_data)
+with open('hand_'+str(class_name)+'.csv','w',encoding='UTF8',newline='') as f:
+    writer = csv.writer(f)
+    writer.writerow(header)
+    writer.writerows(csv_data)
+print('saved to '+'hand_'+str(class_name)+'.csv')
+```
+
+再次运行上面的代码，可以生成第二类手势的数据集。
+
+经过多次收集，可以形成多类数据，用下面这段代码进行数据合并。
+
+```python
+import pandas as pd
+
+classes=pd.read_csv('classes.txt',header=None)
+dataset=pd.DataFrame()
+for c in classes[0]:
+    df=pd.read_csv('hand_'+c+'.csv')
+    dataset=pd.concat([dataset,df],ignore_index=True)
+
+print(dataset)
+dataset.to_csv('hand_total.csv',index=False)
+```
+
+当制作完成了这样一个数据集（见项目文件），我们便可以使用XEdu的一系列训练模型的工具去学习这些数据的特征，从而去训练一个石头剪刀布手势识别模型。
 
 #### 第1步 划分数据集
 
 在准备训练前，我们建议先完成数据集划分，即将数据集拆分为训练集和验证集，训练集用于训练模型，验证集用于评估模型的性能。此步骤可以手动完成，也可以用代码完成，可[借助XEdu的数据处理库BaseDT](https://xedu.readthedocs.io/zh/master/basedt/introduction.html#id11)，指定csv文件路径以及划分比例，将特征数据集划分为训练集和验证集，并将训练集和验证集的特征和标签均提取出来。
 
-```
+```python
 from BaseDT.dataset import split_tab_dataset
 # 指定待拆分的csv数据集
 path = "data/workflow_pose.csv"
@@ -128,7 +227,7 @@ tx,ty,val_x,val_y = split_tab_dataset(path,data_column=range(1,43),label_column=
 
 #### 第2步 用BaseNN搭建全连接神经网络训练模型
 
-```
+```python
 # 导入BaseNN库
 from BaseNN import nn
 # 声明模型
@@ -155,7 +254,7 @@ model.train(lr=learn_rate, epochs=max_epoch,metrics=metrics)
 
 使用第1步拆分出的验证集数据评估模型的性能。
 
-```
+```python
 import numpy as np
 # 计算验证集准确率
 def cal_accuracy(y, pred_y):
@@ -182,7 +281,7 @@ print('验证集准确率: {:.2f}%'.format(100.0 * acc))
 
 用某组数据进行推理预测。
 
-```
+```python
 model = nn('cls') # 声明模型
 checkpoint = 'checkpoints/BaseNN/basenn.pth' # 现有模型路径
 data = [[ 89.14984302, 114.5882458 ,  62.63654601, 104.86670357,
@@ -204,20 +303,21 @@ model.print_result(result) # 输出推理结果
 
 为了方便模型应用先可借助BaseNN完成模型转换，转换为ONNX格式后更方便模型使用。
 
-```
+```python
 from BaseNN import nn
 model = nn('cls')
 checkpoint = 'checkpoints/BaseNN3/basenn.pth' # 指定待转换的模型权重文件
 model.convert(checkpoint=checkpoint, out_file='checkpoints/basenn.onnx') 
 ```
 
-### 3.模型应用：实时手势分类
+### 任务三：实时手势分类
 
-#### 第1步 单张图片完成手势分类
 
-首选我们如何使用训练好的模型完成单张图片推理。模型推理时，要记得对新的图片进行与训练时相同的处理，也就是我们训练时使用批量完成手部关键点检测的数据，那么当推理一张新图片时，也需对此图片完成手部关键点检测，并且做维度处理。如下代码实现了上述功能
+#### 任务一 单张图片完成手势分类
 
-```
+模型推理时，需要保持推理的数据与训练的数据格式一致，所以新的图片也需完成人手关键点检测，并且做维度处理。如下代码实现了上述功能
+
+```python
 from XEdu.hub import Workflow as wf
 import numpy as np
 
@@ -237,11 +337,11 @@ result = bn.inference(data=pose_features)
 res = bn.format_output(lang='zh')
 ```
 
-#### 第2步 模型应用：实时手势分类
+#### 任务二 模型应用：实时手势分类
 
-了解了单张图片推理的实现逻辑，我们可以应用一下这个模型模型，比如我们把onnx模型下载到本地，连接一个摄像头，再借助OpenCV库完成一个实时手势分类的应用，参考代码如下。
+了解了单张图片推理的实现逻辑，我们可以应用一下这个模型，比如我们把onnx模型下载到本地，连接一个摄像头，再借助OpenCV库完成一个实时手势分类的应用，参考代码如下。
 
-```
+```python
 from XEdu.hub import Workflow as wf
 import cv2
 import numpy as np

@@ -46,6 +46,7 @@
               <p class="caption" role="heading"><span class="caption-text">目录</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_quick_start.html">XEdu快速入门手册</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEduHub</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">快速体验XEduHub</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">XEduHub是什么？</a><ul>
@@ -63,6 +64,7 @@
 <li class="toctree-l2"><a class="reference internal" href="installation.html">XEduHub安装</a></li>
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">XEduHub功能详解</a></li>
 <li class="toctree-l2"><a class="reference internal" href="projects.html">XEduHub项目案例集</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mindplus_xeduhub.html">在Mind+中使用XEduHub</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
@@ -133,6 +135,26 @@
 <span class="n">body</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">new_img</span><span class="p">)</span> <span class="c1"># 显示带标注图片</span>
 </pre></div>
 </div>
+<p>输出结果：图片加列表，列表如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span> <span class="mf">596.31597222</span>  <span class="mf">163.53819444</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">624.65798611</span>  <span class="mf">140.86458333</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">576.4765625</span>   <span class="mf">149.3671875</span> <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">658.66840278</span>  <span class="mf">166.37239583</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">553.80295139</span>  <span class="mf">177.70920139</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">735.19184028</span>  <span class="mf">288.24305556</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">511.28993056</span>  <span class="mf">322.25347222</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">871.23350694</span>  <span class="mf">387.44010417</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">406.42447917</span>  <span class="mf">407.27951389</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">789.04166667</span>  <span class="mf">347.76128472</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">369.57986111</span>  <span class="mf">381.77170139</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">735.19184028</span>  <span class="mf">642.51822917</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">590.64756944</span>  <span class="mf">656.68923611</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">831.5546875</span>   <span class="mf">832.40972222</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">516.95833333</span>  <span class="mf">855.08333333</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">825.88628472</span> <span class="mf">1013.79861111</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">488.61631944</span> <span class="mf">1039.30642361</span><span class="p">]]</span>
+</pre></div>
+</div>
 <p><img alt="../_images/bodyshow.png" src="../_images/bodyshow.png" /></p>
 <p>是不是很简单？一般使用步骤是：</p>
 <p>步骤1：安装并导入XEduHub库</p>
@@ -144,11 +166,50 @@
 <span class="n">wf</span><span class="o">.</span><span class="n">support_task</span><span class="p">()</span>
 </pre></div>
 </div>
+<p>输出结果：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;pose_body17&#39;</span><span class="p">,</span> <span class="s1">&#39;pose_body17_l&#39;</span><span class="p">,</span> <span class="s1">&#39;pose_body26&#39;</span><span class="p">,</span> <span class="s1">&#39;pose_wholebody133&#39;</span><span class="p">,</span> <span class="s1">&#39;pose_face106&#39;</span><span class="p">,</span> <span class="s1">&#39;pose_hand21&#39;</span><span class="p">,</span> <span class="s1">&#39;det_body&#39;</span><span class="p">,</span> <span class="s1">&#39;det_body_l&#39;</span><span class="p">,</span> <span class="s1">&#39;det_coco&#39;</span><span class="p">,</span> <span class="s1">&#39;det_coco_l&#39;</span><span class="p">,</span> <span class="s1">&#39;det_hand&#39;</span><span class="p">,</span> <span class="s1">&#39;cls_imagenet&#39;</span><span class="p">,</span> <span class="s1">&#39;gen_style&#39;</span><span class="p">,</span> <span class="s1">&#39;nlp_qa&#39;</span><span class="p">,</span> <span class="s1">&#39;drive_perception&#39;</span><span class="p">,</span> <span class="s1">&#39;embedding_image&#39;</span><span class="p">,</span> <span class="s1">&#39;embedding_text&#39;</span><span class="p">,</span> <span class="s1">&#39;gen_color&#39;</span><span class="p">,</span> <span class="s1">&#39;det_face&#39;</span><span class="p">,</span> <span class="s1">&#39;ocr&#39;</span><span class="p">,</span> <span class="s1">&#39;mmedu&#39;</span><span class="p">,</span> <span class="s1">&#39;basenn&#39;</span><span class="p">,</span> <span class="s1">&#39;baseml&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
 <p><img alt="../_images/task1.png" src="../_images/task1.png" /></p>
 <p>此外我们还可以通过如下语句查看各类任务的文档。注意doc前后是两个下划线。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="c1"># 目前支持的任务文档</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">wf</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>输出结果：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Workflow类用于加载预训练模型以解决各类任务。
+        目前支持的任务有：
+            - pose_body17：人体关键点检测，17个关键点
+            - pose_body17_l：人体关键点检测，17个关键点，模型更大
+            - pose_body26：人体关键点检测，26个关键点
+            - pose_wholebody133：全身关键点检测，包括人体、人脸和手部共133个关键点
+            - pose_face106：人脸关键点检测，106个关键点
+            - pose_hand21：手部关键点检测，21个关键点
+            - det_body：人体检测
+            - det_body_l：人体检测，模型更大
+            - det_coco：物体检测，80类，基于COCO数据集
+            - det_coco_l：物体检测，基于COCO数据集，模型更大
+            - det_hand：手部检测
+            - det_face：人脸检测
+            - cls_imagenet：图像分类，1000类，基于ImageNet数据集
+            - gen_style：风格迁移，5种风格
+            - nlp_qa：问答系统，基于SQuAD数据集
+            - drive_perception：全景驾驶感知系统，包括交通对象检测、可行驶道路区域分割和车道检测任务
+            - embedding_image：CLIP图像嵌入
+            - embedding_text：CLIP文本嵌入   
+            - ocr：光学字符识别，基于rapidocr
+            - mmedu：MMEdu模型推理
+            - basenn：BaseNN模型推理
+            - baseml：BaseML模型推理
+
+
+        Attributes:
+            task：任务类型，可选范围如以上列出。    
+            checkpoint：模型权重文件的路径。
+            download_path：模型文件即将下载到的路径。
+
+        更多用法及算法详解请参考：https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html    
 </pre></div>
 </div>
 <p><img alt="../_images/task2.png" src="../_images/task2.png" /></p>
@@ -163,24 +224,54 @@
 </section>
 <section id="xeduhubai">
 <h2>用XEduHub玩第一个AI项目！<a class="headerlink" href="#xeduhubai" title="Permalink to this heading"></a></h2>
+<p>这里给出一段最简单的XEduHub示例代码，你运行完这段代码就一定会对XEduHub感到惊叹！</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">wf</span><span class="o">.</span><span class="n">support_task</span><span class="p">())</span>
+<span class="n">body</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;pose_body17&#39;</span><span class="p">)</span> <span class="c1"># 实例化pose模型</span>
+<span class="n">img</span> <span class="o">=</span> <span class="s1">&#39;body.jpg&#39;</span> <span class="c1"># 指定进行推理的图片路径</span>
+<span class="n">result</span><span class="p">,</span><span class="n">new_img</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">img</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 进行推理</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="n">body</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">new_img</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>下面对每行代码做一个拆分讲解</p>
 <p>第一步：导入XEduHub库</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 </pre></div>
 </div>
 <p>第二步：选择你的AI工具</p>
 <p>你可以查看里面所有的AI模型。看看哪一个是你想要的，然后选择它！可使用如下代码查看目前支持的任务：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 查看目前支持的任务</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 查看目前支持的任务</span>
 <span class="n">wf</span><span class="o">.</span><span class="n">support_task</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>现在以提取人体关键点任务为例。此时我们可以选择它！</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">body</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;pose_body17&#39;</span><span class="p">)</span> <span class="c1"># 实例化pose模型</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">body</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;pose_body17&#39;</span><span class="p">)</span> <span class="c1"># 实例化pose模型</span>
 </pre></div>
 </div>
 <p>第三步：使用AI工具</p>
 <p>有了模型，你就可以使用它来完成你的任务啦！继续上面的例子，可以用图片识别模型来完成推理：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">img</span> <span class="o">=</span> <span class="s1">&#39;body.jpg&#39;</span> <span class="c1"># 指定进行推理的图片路径</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">img</span> <span class="o">=</span> <span class="s1">&#39;body.jpg&#39;</span> <span class="c1"># 指定进行推理的图片路径</span>
 <span class="n">result</span><span class="p">,</span><span class="n">new_img</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">img</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 进行推理</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="c1">#[[ 596.31597222  163.53819444]</span>
+<span class="c1"># [ 624.65798611  140.86458333]</span>
+<span class="c1"># [ 576.4765625   149.3671875 ]</span>
+<span class="c1"># [ 658.66840278  166.37239583]</span>
+<span class="c1"># [ 553.80295139  177.70920139]</span>
+<span class="c1"># [ 735.19184028  288.24305556]</span>
+<span class="c1"># [ 511.28993056  322.25347222]</span>
+<span class="c1"># [ 871.23350694  387.44010417]</span>
+<span class="c1"># [ 406.42447917  407.27951389]</span>
+<span class="c1"># [ 789.04166667  347.76128472]</span>
+<span class="c1"># [ 369.57986111  381.77170139]</span>
+<span class="c1"># [ 735.19184028  642.51822917]</span>
+<span class="c1"># [ 590.64756944  656.68923611]</span>
+<span class="c1"># [ 831.5546875   832.40972222]</span>
+<span class="c1"># [ 516.95833333  855.08333333]</span>
+<span class="c1"># [ 825.88628472 1013.79861111]</span>
+<span class="c1"># [ 488.61631944 1039.30642361]]</span>
+<span class="n">body</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">new_img</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><img alt="../_images/body.png" src="../_images/body.png" /></p>

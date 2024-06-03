@@ -42,46 +42,47 @@ MMEdu基于OpenMMLab的基础上开发，因为面向中小学，优先选择支
     <tbody>
         <tr class="row-even">
             <td>MMClassification</td>
-            <td>MMCls</td>
+            <td>MMEduCls</td>
             <td>图片分类 </td>
         </tr>
     </tbody>
     <tbody>
         <tr class="row-even">
             <td>MMDetection</td>
-            <td>MMDet</td>
+            <td>MMEduDet</td>
             <td>图片中的物体检测</td>
         </tr>
     </tbody>
     <tbody>
         <tr class="row-even">
             <td>MMGeneration</td>
-            <td>MMGen</td>
+            <td>MMEduGen</td>
             <td>GAN，风格化</td>
         </tr>
     </tbody>
     <tbody>
         <tr class="row-even">
             <td>MMPose</td>
-            <td>MMPose</td>
+            <td>MMEduPose</td>
             <td>骨架</td>
         </tr>
     </tbody>
     <tbody>
         <tr class="row-even">
-            <td>MMEditing</td>
+            <td>MMEduEditing</td>
             <td></td>
             <td></td>
         </tr>
     </tbody>
     <tbody>
         <tr class="row-even">
-            <td>MMSegmentation</td>
+            <td>MMEduSegmentation</td>
             <td></td>
             <td>像素级识别</td>
         </tr>
     </tbody>
 </table>
+
 
 
 
@@ -100,19 +101,20 @@ MMEdu内置了常见的SOTA模型，我们还在不断更新中。如需查看�
     </thead>
     <tbody>
         <tr class="row-even">
-            <td>MMClassification</td>
+            <td>MMClassification(MMEduCls)</td>
             <td><a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/lenet5.html">LeNet</a>、<a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/ResNet.html">ResNet18</a>、<a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/ResNet.html">ResNet50</a>、<a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/mobilenet.html">MobileNet</a></td>
             <td>图片分类</td>
         </tr>
     </tbody>
     <tbody>
         <tr class="row-even">
-            <td>MMDetection</td>
-            <td><a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/FasterRCNN.html">FastRCNN</a>、<a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/SSD_Lite.html">SSD_Lite</a>、<a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/Yolov3.html">Yolov3</a></td>
-            <td>图片中的物体检测</td>
+            <td>MMDetection(MMEduDet)</td>
+            <td><a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/FasterRCNN.html">FastRCNN</a>、<a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/SSD_Lite.html">SSD_Lite</a>、<a href="https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/net/Yolov3.html">YOLO</a></td>
+            <td>目标检测</td>
         </tr>
     </tbody>
 </table>
+
 
 
 
@@ -125,7 +127,7 @@ MMEdu系列提供了包括分类、检测等任务的若干数据集，存储在
 
 ### 1）ImageNet
 
-ImageNet是斯坦福大学提出的一个用于视觉对象识别软件研究的大型可视化数据库，目前大部分模型的性能基准测试都在ImageNet上完成。MMEdu的MMClassification支持的数据集类型是ImageNet，如需训练自己创建的数据集，数据集需整理成ImageNet格式。
+ImageNet是斯坦福大学提出的一个用于视觉对象识别软件研究的大型可视化数据库，目前大部分模型的性能基准测试都在ImageNet上完成。MMEdu的图像分类模块支持的数据集类型是ImageNet，如需训练自己创建的数据集，数据集需整理成ImageNet格式。
 
 ImageNet格式数据集文件夹结构如下所示，包含三个文件夹和三个文本文件，图像数据文件夹内，不同类别图片按照文件夹分门别类排好，通过trainning_set、val_set、test_set区分训练集、验证集和测试集。文本文件classes.txt说明类别名称与序号的对应关系，val.txt说明验证集图片路径与类别序号的对应关系，test.txt说明测试集图片路径与类别序号的对应关系。
 
@@ -179,7 +181,7 @@ filesname_b.jpg n
 
 COCO数据集是微软于2014年提出的一个大型的、丰富的检测、分割和字幕数据集，包含33万张图像，针对目标检测和实例分割提供了80个类别的物体的标注，一共标注了150万个物体。MMEdu的MMDetection支持的数据集类型是COCO，如需训练自己创建的数据集，数据集需转换成COCO格式。
 
-MMEdu的MMDetection设计的COCO格式数据集文件夹结构如下所示，“annotations”文件夹存储标注文件，“images”文件夹存储用于训练、验证、测试的图片。
+MMEdu的目标检测模块设计的COCO格式数据集文件夹结构如下所示，“annotations”文件夹存储标注文件，“images”文件夹存储用于训练、验证、测试的图片。
 
 ```plain
 coco
@@ -285,7 +287,7 @@ model.train(epochs=10, validate=True, checkpoint=checkpoint)
 
 进入Python终端，然后依次输入如下代码即可查看Python库所在的目录（site-packages）。
 
-```
+```python
 import MMEdu
 print(MMEdu.__path__)
 ```
@@ -304,12 +306,12 @@ pth_info(checkpoint) # 指定为pth权重文件路径
 
 如需返回日志信息，可在训练时使用如下代码：
 
-```
+```python
 log = model.train(xxx)
 print(log)
 ```
 
 返回的是日志文件中各行信息组成的列表。
 
-4.打开github地址（<a href="https://github.com/OpenXLab-Edu/OpenMMLab-Edu">GitHub - OpenXLab-Edu/OpenMMLab-Edu</a>），可查看库文件原码和更多示例程序。
+4.库文件源代码可以从[PyPi](https://pypi.org/project/MMEdu/#files)下载，选择tar.gz格式下载，可查看库文件原码和更多示例程序。
 

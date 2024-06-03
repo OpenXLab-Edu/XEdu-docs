@@ -201,47 +201,40 @@
 <h3>3. 数据集格式转换<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h3>
 <p>（1）针对网上下载的数据集，BaseDT可支持常见数据集格式（目前支持IMAGENET、VOC和COCO）的转换。</p>
 <p>首先需将网上下载的原始数据集做初步整理，整理规范如下：</p>
-<p>原数据集(分类)
-|—images
-|—class1
-|—-xxx.jpg/png/….
-|—class2
-|—-xxx.jpg/png/….
-|—class3
-|—-xxx.jpg/png/….
-|—classN
-|—-xxx.jpg/png/….
-classes.txt</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>注意这里需要有images文件夹和classes.txt这两个部分，才可以进行格式转换。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">原数据集</span><span class="p">(</span><span class="n">分类</span><span class="p">)</span>
+<span class="o">|---</span><span class="n">images</span>
+    <span class="o">|---</span><span class="n">class1</span>
+          <span class="o">|----</span><span class="n">xxx</span><span class="o">.</span><span class="n">jpg</span><span class="o">/</span><span class="n">png</span><span class="o">/....</span>
+    <span class="o">|---</span><span class="n">class2</span>
+          <span class="o">|----</span><span class="n">xxx</span><span class="o">.</span><span class="n">jpg</span><span class="o">/</span><span class="n">png</span><span class="o">/....</span>
+    <span class="o">|---</span><span class="n">class3</span>
+          <span class="o">|----</span><span class="n">xxx</span><span class="o">.</span><span class="n">jpg</span><span class="o">/</span><span class="n">png</span><span class="o">/....</span>
+    <span class="o">|---</span><span class="n">classN</span>
+          <span class="o">|----</span><span class="n">xxx</span><span class="o">.</span><span class="n">jpg</span><span class="o">/</span><span class="n">png</span><span class="o">/....</span>
+<span class="n">classes</span><span class="o">.</span><span class="n">txt</span>
 
-如是图像分类数据集，首先需将所有图片按照类别存放，然后将所有图片文件夹放入images文件夹，同时新建一个classes.txt，写入类别信息。
-
-整理完毕即可使用BaseDT数据集格式转换的代码完成数据集转换。需指定新数据集路径、原始数据集路径、原始数据集格式、划分比例（如不设置，则默认比例为训练集:测试集:验证集=7:1:2）。
-
-```python
-from BaseDT.dataset import DataSet
-ds = DataSet(r&quot;mycls&quot;) # 指定为生成数据集的路径
-# 默认比例为train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2
-ds.make_dataset(r&quot;mydataset&quot;, src_format=&quot;IMAGENET&quot;,train_ratio = 0.8, test_ratio = 0.1, val_ratio = 0.1)# 指定原始数据集的路径，数据集格式选择IMAGENET
+<span class="n">原数据集</span><span class="p">(</span><span class="n">目标检测</span><span class="p">)</span>
+<span class="o">|---</span><span class="n">annotations</span>
+      <span class="o">|----</span><span class="n">xxx</span><span class="o">.</span><span class="n">json</span><span class="o">/</span><span class="n">xxx</span><span class="o">.</span><span class="n">xml</span>
+<span class="o">|---</span><span class="n">images</span>
+      <span class="o">|----</span><span class="n">xxx</span><span class="o">.</span><span class="n">jpg</span><span class="o">/</span><span class="n">png</span><span class="o">/....</span>
+<span class="n">classes</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span>原数据集(目标检测)
-|---annotations
-      |----xxx.json/xxx.xml
-|---images
-      |----xxx.jpg/png/....
-classes.txt
-
-
-
-如是目标检测数据集，需将所有图片存放至images文件夹，所有标注文件（VOC格式的为xml文件、COCO格式的为json格式）存放至annotations文件夹，同时在根目录下新建一个classes.txt，写入类别信息。如是图像分类数据集，首先需将所有图片按照类别存放，然后将所有图片文件夹放入images文件夹，同时新建一个classes.txt，写入类别信息。通过此过程，也有助于初步了解网上下载的数据集。
-
-整理完毕即可使用BaseDT数据集格式转换的代码完成数据集转换。需指定新数据集路径、原始数据集路径、原始数据集格式、划分比例（如不设置，则默认比例为训练集:测试集:验证集=7:1:2）。
-
-```python
-from BaseDT.dataset import DataSet
-ds = DataSet(r&quot;my_dataset&quot;) # 指定为新数据集路径
-ds.make_dataset(r&quot;G:\\测试数据集\\fruit_voc&quot;, src_format=&quot;VOC&quot;,train_ratio = 0.8, test_ratio = 0.1, val_ratio = 0.1) # 指定待转格式的原始数据集路径，原始数据集格式，划分比例，默认比例为train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2
+<p>注意这里需要有images文件夹和classes.txt这两个部分，才可以进行格式转换。</p>
+<p>如是图像分类数据集，首先需将所有图片按照类别存放，然后将所有图片文件夹放入images文件夹，同时新建一个classes.txt，写入类别信息。通过此过程，也有助于初步了解网上下载的数据集。</p>
+<p>整理完毕即可使用BaseDT数据集格式转换的代码完成数据集转换。需指定新数据集路径、原始数据集路径、原始数据集格式、划分比例（如不设置，则默认比例为训练集:测试集:验证集=7:1:2）。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.dataset</span> <span class="kn">import</span> <span class="n">DataSet</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">DataSet</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;mycls&quot;</span><span class="p">)</span> <span class="c1"># 指定为生成数据集的路径</span>
+<span class="c1"># 默认比例为train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">make_dataset</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;mydataset&quot;</span><span class="p">,</span> <span class="n">src_format</span><span class="o">=</span><span class="s2">&quot;IMAGENET&quot;</span><span class="p">,</span><span class="n">train_ratio</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">test_ratio</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">val_ratio</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span><span class="c1"># 指定原始数据集的路径，数据集格式选择IMAGENET</span>
+</pre></div>
+</div>
+<p>如是目标检测数据集，需将所有图片存放至images文件夹，所有标注文件（VOC格式的为xml文件、COCO格式的为json格式）存放至annotations文件夹，同时在根目录下新建一个classes.txt，写入类别信息（整理规范见前文）。通过此过程，也有助于初步了解网上下载的数据集。</p>
+<p>整理完毕即可使用BaseDT数据集格式转换的代码完成数据集转换。需指定新数据集路径、原始数据集路径、原始数据集格式、划分比例（如不设置，则默认比例为训练集:测试集:验证集=7:1:2）。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.dataset</span> <span class="kn">import</span> <span class="n">DataSet</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">DataSet</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;my_dataset&quot;</span><span class="p">)</span> <span class="c1"># 指定为新数据集路径</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">make_dataset</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;G:</span><span class="se">\\</span><span class="s2">测试数据集</span><span class="se">\\</span><span class="s2">fruit_voc&quot;</span><span class="p">,</span> <span class="n">src_format</span><span class="o">=</span><span class="s2">&quot;VOC&quot;</span><span class="p">,</span><span class="n">train_ratio</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">test_ratio</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">val_ratio</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span> <span class="c1"># 指定待转格式的原始数据集路径，原始数据集格式，划分比例，默认比例为train_ratio = 0.7, test_ratio = 0.1, val_ratio = 0.2</span>
 </pre></div>
 </div>
 <p><img alt="../_images/voc2coco.png" src="../_images/voc2coco.png" /></p>
@@ -294,7 +287,7 @@ ds.make_dataset(r&quot;G:\\测试数据集\\fruit_voc&quot;, src_format=&quot;VO
 <section id="id18">
 <h3>4. 日志分析<a class="headerlink" href="#id18" title="Permalink to this heading"></a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">BaseDT</span></code>中的<code class="docutils literal notranslate"><span class="pre">plot</span></code>模块提供<code class="docutils literal notranslate"><span class="pre">plot_log</span></code>函数，支持对训练日志中的损失函数进行绘制。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.plot</span> <span class="kn">import</span> <span class="n">plot_log</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BaseDT.plot</span> <span class="kn">import</span> <span class="n">plot_log</span>
 <span class="n">plot_log</span><span class="p">(</span><span class="n">log_path</span><span class="p">)</span>
 </pre></div>
 </div>

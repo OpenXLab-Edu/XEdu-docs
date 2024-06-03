@@ -108,7 +108,7 @@
 <h1>模型转换和应用<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
 <section id="id2">
 <h2>一、简介<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
-<p>用XEdu系列工具训练的模型，是否只能运行在安装了XEdu环境的电脑上？如何将训练好的AI模型方便地部署到不同的硬件设备上？这在实际应用中非常重要。XEdu提供了帮助模型转换和应用的工具。</p>
+<p>用XEdu系列工具训练的模型，是否只能运行在安装了XEdu环境的电脑上？如何将训练好的AI模型方便地部署到不同的硬件设备上？一般来说，一个训练模型的工具也会自带了推理功能，如在BaseML训练好模型并保存，下次使用时以同样的方式导入BaseML库并载入模型进行推理即可。另一种方式是借助一些通用的模型推理库，如XEdu工具的XEduHub库，支持推理各种工具训练的模型，此类库的安装一般比机器学习开发工具简单很多。要借助XEduHub等工具完成模型推理，一般需要使用模型转换，这在实际应用中非常重要。XEdu提供了帮助模型转换和应用的工具。</p>
 </section>
 <section id="id3">
 <h2>二、基本概念<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
@@ -137,7 +137,7 @@
 </li>
 <li><p>模型转换的典型代码：</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMClassification</span> <span class="k">as</span> <span class="bp">cls</span>
 <span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;MobileNet&#39;</span><span class="p">)</span>
 <span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/cls_model/CatsDog/best_accuracy_top-1_epoch_2.pth&#39;</span>
 <span class="n">out_file</span><span class="o">=</span><span class="s2">&quot;catdog.onnx&quot;</span>
@@ -152,7 +152,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">ir_version</span></code>(int) - 可选参数，设置模型转化中间表示的版本，默认为6。</p></li>
 </ul>
 <p>类似的，目标检测模型转换的示例代码如下：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMDetection</span> <span class="k">as</span> <span class="n">det</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MMEdu</span> <span class="kn">import</span> <span class="n">MMDetection</span> <span class="k">as</span> <span class="n">det</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">det</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s1">&#39;SSD_Lite&#39;</span><span class="p">)</span>
 <span class="n">checkpoint</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/COCO-80/ssdlite.pth&#39;</span>
 <span class="n">out_file</span><span class="o">=</span><span class="s2">&quot;COCO-80.onnx&quot;</span>
@@ -196,7 +196,7 @@
 <p>为了帮助初学者快速使用，使用XEdu工具转换后除了会生成ONNX模型，还会生成一段示例代码，借助示例代码可以完成模型的快速应用。</p>
 <section id="id7">
 <h3>MMEdu模型转换后的示例代码<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="c1"># 模型声明</span>
@@ -215,7 +215,7 @@
 </section>
 <section id="id8">
 <h3>BaseNN模型转换后的示例代码<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="c1"># 模型声明</span>
@@ -250,7 +250,7 @@
 <section id="id10">
 <h3>1.连接摄像头实现拍照识别<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h3>
 <p>MMEdu训练并转换的模型基本可以连接摄像头进行使用，在示例代码中加入cv2调用摄像头的代码即可。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
 <span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">mmcls</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;mmedu&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;cats_dogs.onnx&#39;</span><span class="p">)</span>
 <span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -261,7 +261,7 @@
 </pre></div>
 </div>
 <p>在上述代码基础上再加入循环即可实现实时识别的效果。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="kn">import</span> <span class="nn">cv2</span>
 <span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">mmcls</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;mmedu&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;cats_dogs.onnx&#39;</span><span class="p">)</span>
@@ -293,7 +293,7 @@
 <h4>第二步：选择上传模型方式<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h4>
 <ul>
 <li><p>根据行空板的具体指南选择合适的编程平台和上传方法。这可能涉及使用特定的软件工具、命令行工具或通过网络接口。</p></li>
-<li><p>如使用Mind+编程，下载Mind+支持行空板的版本（V1.7.2 RC3.0及以上版本）。[<a class="reference external" href="https://mindplus.cc/download.html">Mind+官网下载]</a>  。</p>
+<li><p>如使用Mind+编程，下载Mind+支持行空板的版本（V1.7.2 RC3.0及以上版本）。[<a class="reference external" href="https://mindplus.cc/download.html">Mind+官网下载]</a>  。Mind+有XEduHub库的积木块，简单使用详见<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/mindplus_xeduhub.html">在Mind+中使用XEduHub</a>。</p>
 <p>模型该如何上传到行空板上？打开<strong>文件系统</strong>，将文件拖入<strong>项目中的文件</strong>即可，在点击<strong>运行</strong>的时候Mind+会将<strong>项目中的文件</strong>里面的所有文件一起上传到行空板的mindplus文件夹中运行。</p>
 <p><img alt="../../_images/upload2.png" src="../../_images/upload2.png" /></p>
 </li>
