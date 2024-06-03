@@ -33,6 +33,10 @@ model.convert(checkpoint=checkpoint, out_file=out_file)
 - `opset_version`(int) - 可选参数，设置模型算子集的版本，默认为11。
 - `ir_version`(int) - 可选参数，设置模型转化中间表示的版本。指定中间表示（Intermediate Representation, 简称 IR）规范的版本，一个整数（int）类型的参数。在计算机编程中，中间表示是一种数据结构或代码，它介于原始代码和机器码之间。它通常用于编译器或类似工具中，作为转换和优化代码的一个步骤。指定中间表示的版本，可方便根据不同的需求和优化目标选择最合适的 IR 规范。当前可选范围为1～12，默认为6。
 
+在Netron（https://netron.app/）中查看模型版本，当`opset_version`设置为10和11的时候，`imports`处显示的信息是不同的。
+
+![](../images/model_convert/netron.png)
+
 
 类似的，目标检测模型转换的示例代码如下：
 
