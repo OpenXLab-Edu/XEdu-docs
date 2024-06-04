@@ -27,7 +27,314 @@ XEduHub支持两类任务，分为内置任务和通用任务两种。顾名思�
 
 实现目标检测通常包括特征提取、物体位置定位、物体类别分类等步骤。这一技术广泛应用于自动驾驶、安全监控、医学影像分析、图像搜索等各种领域，为实现自动化和智能化应用提供了关键支持。
 
-XEduHub目标支持目标检测任务有：coco目标检测`det_coco`、人体目标检测`det_body`、人脸目标检测`det_face`和人手目标检测`det_hand`。
+XEduHub目标支持目标检测任务有：人体目标检测`det_body`、人脸目标检测`det_face`、人手目标检测`det_hand`和coco目标检测`det_coco`。
+
+### 人体目标检测
+
+人体目标检测的任务是在图像或视频中检测和定位人体的位置，并为每个检测到的人体分配一个相应的类别标签。借助此任务，一般可以实现人体画面的识别与提取，为后续的图像处理和分析提供基础。
+
+XEduHub提供了进行人体目标检测的模型：`det_body`，`det_body_l`，这两个模型能够进行人体目标检测，后者为large增强版模型。
+
+![](../images/xeduhub/det_body.png)
+
+#### 代码样例
+
+```python
+from XEdu.hub import Workflow as wf # 导入库
+det_body = wf(task='det_body') # 实例化模型
+result,img_with_box = det_body.inference(data='data/det_body.jpg',img_type='pil') # 进行模型推理
+format_result = det_body.format_output(lang='zh') # 将推理结果进行格式化输出
+det_body.show(img_with_box)# 展示推理图片
+det_body.save(img_with_box,'img_with_box.jpg') # 保存推理图片
+```
+
+#### 代码解释
+
+#### 1. 模型声明
+
+```python
+from XEdu.hub import Workflow as wf
+det_body = wf(task='det_body')
+```
+
+`wf()`中共有三个参数可以设置：
+
+- `task`(str)：选择任务。人体目标检测模型为`det_body`, `det_body_l`。`det_body_l`相比`det_body`模型规模较大，性能较强，但是推理的速度较慢。
+- `checkpoint`(str)：指定模型文件所在的路径，如`det_body = wf(task='det_body',checkpoint='det_body.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`det_body.onnx`。否则将通过网络到浦源平台的专用地址下载。
+- `download_path`(str)：指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制`checkpoints`文件夹。如希望模型保存放在其他路径，则设置`download_path`参数，如`download_path='my_checkpoint'`。注意，`download_path`参数为文件夹名称。建议该参数留空，使用默认地址。
+
+任务模型文件获取与存放请查看[下文](https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id132)。
+
+#### 2. 模型推理
+推理方式1：
+```python
+result = det_body.inference(data='data/det_body.jpg') # 进行模型推理
+```
+推理方式2：
+```python
+result,img_with_box = det_body.inference(data='data/det_body.jpg',img_type='pil') # 进行模型推理
+```
+
+模型推理`inference()`可传入参数：
+
+- `data`(str|numpy.ndarray)：指定待目标检测的图片。
+- `show`(flag)：可取值`[True,False]` ,如果取值为`True`，在推理完成后会直接输出目标检测完成后的图片，默认为`False`。
+- `img_type`(str)：目标检测完成后会返回含有目标检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，即如果不传入值，则不会返回图。
+- `thr`(float)：设置检测框阈值，取值范围为`[0,1]`超过该阈值的检测框被视为有效检测框，进行显示，默认值为0.3。
+
+模型推理返回结果：
+
+- `result`(numpy.ndarray)：以二维数组的形式保存了检测框左上角顶点的坐标(x1,y1)和右下角顶点的坐标(x2,y2)（之所以是二维数组，是因为该模型能够检测多个人体，因此当检测到多个人体时，就会有多个[x1,y1,x2,y2]的一维数组，所以需要以二维数组形式保存），我们可以利用这四个数据计算出其他两个顶点的坐标，以及检测框的宽度和高度。
+
+- `img_with_box`(numpy.ndarray)：是个三维数组，以img_type所设置的格式保存了包含了检测框的图片。
+
+#### 3. 结果输出
+
+```python
+format_result = det_body.format_output(lang='zh')# 将推理结果进行格式化输出
+```
+
+`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
+
+`format_output()`中共有两个参数可以设置：
+
+- `lang`(str)：设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `isprint`(bool)：设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
+
+`format_result`以字典形式存储了推理结果，共有两个键：`检测框`、`分数`。检测框以二维数组形式保存了每个检测框的坐标信息[x1,y1,x2,y2]，而分数则是对应下标的检测框的置信度，以一维数组形式保存。
+
+```
+# 输出结果
+{'检测框': [[323.2777170453753,
+          72.95395088195801,
+          917.5945354189192,
+          1130.7357228142876]],
+ '分数': [0.8851305]}
+```
+
+```python
+det_body.show(img_with_box)# 展示推理图片
+```
+
+`show()`能够输出带有检测框的结果图像。
+
+![](../images/xeduhub/det_body_show.png)
+
+#### 4. 结果保存
+
+```python
+det_body.save(img_with_box,'img_with_box.jpg')# 保存推理图片
+```
+
+`save()`方法能够保存带有检测框的图像
+
+该方法接收两个参数，第一个参数是图像数据，另一个是图像的保存路径。
+
+### 人脸目标检测
+
+人脸目标检测指的是检测和定位一张图片中的人脸。XEduHub使用的是opencv的人脸检测模型，能够快速准确地检测出一张图片中所有的人脸。XEduHub提供了进行人脸目标检测的模型：`det_face`，能够快速准确地检测出图片中的所有人脸。
+
+#### 代码样例
+
+```python
+from XEdu.hub import Workflow as wf
+det_face = wf(task='det_face')
+result,img_with_box = det_face.inference(data='data/det_face.jpg',img_type='pil') # 进行模型推理
+format_result = det_face.format_output(lang='zh') # 将推理结果进行格式化输出
+det_face.show(img_with_box) # 展示推理图片
+det_face.save(img_with_box,'img_with_box.jpg') # 保存推理图片
+```
+
+#### 代码解释
+
+#### 1. 模型声明
+
+```python
+from XEdu.hub import Workflow as wf
+det_face = wf(task='det_face')
+```
+`wf()`中共有三个参数可以设置：
+
+- `task`(str)：选择任务。人脸目标检测模型为`det_face`。
+- `checkpoint`(str)：指定模型文件所在的路径，如`det_face = wf(task='det_face',checkpoint='det_face.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`det_face.onnx`。否则将通过网络到浦源平台的专用地址下载。
+- `download_path`(str)：指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制`checkpoints`文件夹。如希望模型保存放在其他路径，则设置`download_path`参数，如`download_path='my_checkpoint'`。注意，`download_path`参数为文件夹名称。建议该参数留空，使用默认地址。
+
+任务模型文件获取与存放请查看[下文](https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id132)。
+
+#### 2. 模型推理
+推理方式1：
+```python
+result = det_face.inference(data='data/det_face.jpg') # 进行模型推理
+```
+
+推理方式2：
+
+```python
+result,img_with_box = det_face.inference(data='data/det_face.jpg',img_type='pil') # 进行模型推理
+```
+
+模型推理`inference()`可传入参数：
+
+- `data`(str|numpy.ndarray)：指定待目标检测的图片。
+- `show`(flag)：可取值`[True,False]` ,如果取值为`True`，在推理完成后会直接输出目标检测完成后的图片，默认为`False`。
+- `img_type`(str)：目标检测完成后会返回含有目标检测框的图片，该参数指定了返回图片的格式，可选有：`['cv2','pil']`，默认值为`None`，即如果不传入值，则不会返回图。
+- `thr`(float)：设置检测框阈值，取值范围为`[0,1]`超过该阈值的检测框被视为有效检测框，进行显示，默认值为0.5。
+- `minSize`(tuple(int,int))：检测框的最小尺寸，小于该尺寸的目标会被过滤掉，默认为(50,50)。
+- `maxSize`(tuple(int,int))：检测框的最大尺寸,大于该尺寸的目标会被过滤掉，默认为输入图像的大小。
+- `scaleFactor`(float)：该参数用于缩放图像，以便在检测过程中使用不同大小的窗口来识别人脸。较小的值会导致检测速度加快，但可能会错过一些小的人脸；较大的值可以提高检测的准确性，但会减慢检测速度。通常，这个值会在1.1到1.5之间进行调整，默认为1.1。
+- `minNeighbors`(int)：该参数定义了构成检测目标的最小邻域矩形个数。如果这个值设置得太高，可能会导致检测器过于严格，错过一些实际的人脸；如果设置得太低，检测器可能会变得过于宽松，错误地检测到非人脸区域。通常，这个值会在2到10之间进行调整，默认为5。
+
+模型推理返回结果：
+
+- `result`(numpy.ndarray)：：以二维数组的形式保存了检测框左上角顶点的坐标(x1,y1)和右下角顶点的坐标(x2,y2)（之所以是二维数组，是因为该模型能够检测多个人脸，因此当检测到多个人脸时，就会有多个[x1,y1,x2,y2]的一维数组，所以需要以二维数组形式保存），我们可以利用这四个数据计算出其他两个顶点的坐标，以及检测框的宽度和高度。
+- `img_with_box`(numpy.ndarray)：是个三维数组，以img_type所设置的格式保存了包含了检测框的图片。
+
+#### 3. 结果输出
+
+```python
+format_result = det_face.format_output(lang='zh')# 将推理结果进行格式化输出
+```
+
+`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
+
+`format_output()`中共有两个参数可以设置：
+
+- `lang`(str)：设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `isprint`(bool)：设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
+
+`format_result`以字典形式存储了推理结果，只有一个键：`检测框`。检测框以二维数组形式保存了每个检测框的坐标信息[x1,y1,x2,y2]。需要注意的是由于使用的为opencv的人脸检测模型，因此在`format_output`时缺少了分数这一指标。
+
+```
+# 输出结果
+{'检测框': [[202, 237, 940, 975]]}
+```
+
+![](../images/xeduhub/det_face_format.png)
+
+结果可视化：
+
+```python
+det_face.show(img_with_box) # 展示推理图片
+```
+
+`show()`能够输出带有检测框的结果图像。
+
+![](../images/xeduhub/det_face_show.png)
+
+多人脸检测结果如下：（如果看到很多不该识别为人脸的地方出现了检测框，我们可以在推理是增加`minSize`参数来设置检测框的最小尺寸，将小于该尺寸的目标过滤掉，默认为(50,50)，同时也可以增加`maxSize`参数来设置检测框的最大尺寸，大于该尺寸的目标会被过滤掉，默认为输入图像的大小）
+
+![](../images/xeduhub/det_face_2.png)
+
+#### 4. 结果保存
+
+```python
+det_face.save(img_with_box,'img_with_box.jpg')# 保存推理图片
+```
+
+`save()`方法能够保存带有检测框的图像
+
+该方法接收两个参数，第一个参数是图像数据，另一个是图像的保存路径。
+
+### 手部目标检测
+
+手部目标检测指的是检测和定位一张图片中的人手。XEduHub提供了进行手部目标检测的模型：`det_hand`，能够快速准确地检测出图片中的所有人手。
+
+#### 代码样例
+
+```python
+from XEdu.hub import Workflow as wf
+det_hand = wf(task='det_hand')
+result,img_with_box = det_hand.inference(data='data/det_hand.jpg',img_type='pil') # 进行模型推理
+format_result = det_hand.format_output(lang='zh') # 将推理结果进行格式化输出
+det_hand.show(img_with_box) # 展示推理图片
+det_hand.save(img_with_box,'img_with_box.jpg') # 保存推理图片
+```
+
+#### 代码解释
+
+#### 1. 模型声明
+
+```python
+from XEdu.hub import Workflow as wf
+det_hand = wf(task='det_hand')
+```
+
+`wf()`中共有三个参数可以设置：
+
+- `task`(str)：选择任务。手部关键点提取模型为`det_hand`。
+- `checkpoint`(str)：指定模型文件所在的路径，如`det_hand = wf(task='det_hand',checkpoint='det_hand.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`det_hand.onnx`。否则将通过网络到浦源平台的专用地址下载。
+- `download_path`(str)：指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制`checkpoints`文件夹。如希望模型保存放在其他路径，则设置`download_path`参数，如`download_path='my_checkpoint'`。注意，`download_path`参数为文件夹名称。建议该参数留空，使用默认地址。
+
+任务模型文件获取与存放请查看[下文](https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id132)。
+
+#### 2. 模型推理
+
+推理方式1：
+```python
+result = det_hand.inference(data='data/det_hand.jpg') # 进行模型推理
+```
+推理方式2：
+```python
+result,img_with_box = det_hand.inference(data='data/det_hand.jpg',img_type='pil') # 进行模型推理
+```
+
+模型推理`inference()`可传入参数：
+
+- `data`(str|numpy.ndarray)：指定待检测的图片。
+- `show`(flag): 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出目标检测完成后的图片。
+- `img_type`(str)：目标检测完成后会返回含有检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
+- `thr`(float): 设置检测框阈值，取值范围为`[0,1]`超过该阈值的检测框被视为有效检测框，进行显示，默认值为0.3。
+
+模型推理返回结果：
+
+- `result`(numpy.ndarray)：以二维数组的形式保存了检测框左上角顶点的坐标(x1,y1)和右下角顶点的坐标(x2,y2)（之所以是二维数组，是因为该模型能够检测多个人手，因此当检测到多个人手时，就会有多个[x1,y1,x2,y2]的一维数组，所以需要以二维数组形式保存），我们可以利用这四个数据计算出其他两个顶点的坐标，以及检测框的宽度和高度。
+- `img_with_box`(numpy.ndarray)：是个三维数组，以img_type所设置的格式保存了包含了检测框的图片。
+
+#### 3. 结果输出
+
+```python
+format_result = det_hand.format_output(lang='zh') # 将推理结果进行格式化输出
+```
+
+`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
+
+`format_output()`中共有两个参数可以设置：
+
+- `lang`(str)：设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `isprint`(bool)：设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
+
+```
+# 输出结果
+{'检测框': [[354.9846431187221,
+          171.7757524762835,
+          993.5257284981864,
+          867.7952793666294]],
+ '分数': [0.8558253]}
+```
+
+![](../images/xeduhub/det_hand_format2.png)
+
+`format_result`以字典形式存储了推理结果，共有两个键：`检测框`、`分数`。检测框以二维数组形式保存了每个检测框的坐标信息[x1,y1,x2,y2]，而分数则是对应下标的检测框的置信度，以一维数组形式保存。
+
+结果可视化：
+
+```python
+det_hand.show(img_with_box) # 展示推理图片
+```
+
+`show()`能够输出带有检测框的结果图像。
+
+![](../images/xeduhub/det_hand_show.png)
+
+#### 4. 结果保存
+
+```python
+det_hand.save(img_with_box,'img_with_box.jpg') # 保存推理图片
+```
+
+`save()`方法能够保存带有检测框的图像
+
+该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
 
 ### coco目标检测
 
@@ -57,9 +364,9 @@ det_coco = wf(task='det_coco')
 
 `wf()`中共有三个参数可以设置：
 
-- `task`选择任务。coco目标检测的模型为`det_coco`, `det_coco_l`。`det_coco_l`相比`det_coco`模型规模较大，性能较强，但是推理的速度较慢。
-- `checkpoint`指定模型文件所在的路径，如`det_coco = wf(task='det_coco',checkpoint='det_coco.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`det_coco.onnx`。否则将通过网络到浦源平台的专用地址下载。
-- `download_path`指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制`checkpoints`文件夹。如希望模型保存放在其他路径，则设置`download_path`参数，如`download_path='my_checkpoint'`。注意，`download_path`参数为文件夹名称。建议该参数留空，使用默认地址。
+- `task`(str)：选择任务。coco目标检测的模型为`det_coco`, `det_coco_l`。`det_coco_l`相比`det_coco`模型规模较大，性能较强，但是推理的速度较慢。
+- `checkpoint`(str)：指定模型文件所在的路径，如`det_coco = wf(task='det_coco',checkpoint='det_coco.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`det_coco.onnx`。否则将通过网络到浦源平台的专用地址下载。
+- `download_path`(str)：指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制`checkpoints`文件夹。如希望模型保存放在其他路径，则设置`download_path`参数，如`download_path='my_checkpoint'`。注意，`download_path`参数为文件夹名称。建议该参数留空，使用默认地址。
 
 任务模型文件获取与存放请查看[下文](https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id132)。
 
@@ -77,11 +384,11 @@ result,img_with_box = det_coco.inference(data='data/det_coco.jpg',img_type='pil'
 
 模型推理`inference()`可传入参数：
 
-- `data`(string|numpy.ndarray): 指定待目标检测的图片。
-- `show`(flag): 可取值`[True,False]` ,如果取值为`True`，在推理完成后会直接输出目标检测完成后的图片，默认为`False`。
-- `img_type`(string): 目标检测完成后会返回含有目标检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，即如果不传入值，则不会返回图。
-- `thr`(float): 设置检测框阈值，取值范围为`[0,1]`超过该阈值的检测框被视为有效检测框，进行显示。
-- `target_class`(string)：该参数在使用`det_coco`的时候可以指定要检测的对象，如：`person`，`cake`等等。
+- `data`(str|numpy.ndarray)：指定待目标检测的图片。
+- `show`(flag)：可取值`[True,False]` ,如果取值为`True`，在推理完成后会直接输出目标检测完成后的图片，默认为`False`。
+- `img_type`(str)：目标检测完成后会返回含有目标检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，即如果不传入值，则不会返回图。
+- `thr`(float)：设置检测框阈值，取值范围为`[0,1]`超过该阈值的检测框被视为有效检测框，进行显示。
+- `target_class`(str|list)：该参数在使用`det_coco`的时候可以指定要检测的对象，如：`target_class`='person'，`target_class`=['person','cake']。
 
 若要查看coco目标检测中的所有类别可运行以下代码：
 
@@ -96,7 +403,7 @@ wf.coco_class()
 
 模型推理返回结果：
 
-- `result`：以二维数组的形式保存了检测框左上角顶点的坐标(x1,y1)和右下角顶点的坐标(x2,y2)（之所以是二维数组，是因为该模型能够检测多个对象，因此当检测到多个对象时，就会有多个[x1,y1,x2,y2]的一维数组，所以需要以二维数组形式保存），我们可以利用这四个数据计算出其他两个顶点的坐标，以及检测框的宽度和高度。
+- `result`(numpy.ndarray)：以二维数组的形式保存了检测框左上角顶点的坐标(x1,y1)和右下角顶点的坐标(x2,y2)（之所以是二维数组，是因为该模型能够检测多个对象，因此当检测到多个对象时，就会有多个[x1,y1,x2,y2]的一维数组，所以需要以二维数组形式保存），我们可以利用这四个数据计算出其他两个顶点的坐标，以及检测框的宽度和高度。
 
   ```
   # reslut
@@ -112,7 +419,7 @@ wf.coco_class()
 
 ![](../images/xeduhub/det_res.png)
 
-- `img_with_box：`：是个三维数组，以cv2格式保存了包含了检测框的图片。
+- `img_with_box`(numpy.ndarray)：是个三维数组，以img_type所设置的格式保存了包含了检测框的图片。
 
 #### 3. 结果输出
 
@@ -124,8 +431,8 @@ format_result = det_coco.format_output(lang='zh') # 将推理结果进行格式�
 
 `format_output()`中共有两个参数可以设置：
 
-- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
-- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
+- `lang`(str)：设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `isprint`(bool)：设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
 
 ```
 # 输出结果
@@ -199,313 +506,6 @@ det_coco.save(img_with_box,'img_with_box.jpg') # 保存推理图片
 
 该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
 
-### 人体目标检测
-
-人体目标检测的任务是在图像或视频中检测和定位人体的位置，并为每个检测到的人体分配一个相应的类别标签。借助此任务，一般可以实现人体画面的识别与提取，为后续的图像处理和分析提供基础。
-
-XEduHub提供了进行人体目标检测的模型：`det_body`，`det_body_l`，这两个模型能够进行人体目标检测，后者为增强版模型。
-
-![](../images/xeduhub/det_body.png)
-
-#### 代码样例
-
-```python
-from XEdu.hub import Workflow as wf
-det_body = wf(task='det_body')
-result,img_with_box = det_body.inference(data='data/det_body.jpg',img_type='pil') # 进行模型推理
-format_result = det_body.format_output(lang='zh') # 将推理结果进行格式化输出
-det_body.show(img_with_box)# 展示推理图片
-det_body.save(img_with_box,'img_with_box.jpg') # 保存推理图片
-```
-
-#### 代码解释
-
-#### 1. 模型声明
-
-```python
-from XEdu.hub import Workflow as wf
-det_body = wf(task='det_body')
-```
-
-`wf()`中共有三个参数可以设置：
-
-- `task`选择任务。人体目标检测模型为`det_body`, `det_body_l`。`det_body_l`相比`det_body`模型规模较大，性能较强，但是推理的速度较慢。
-- `checkpoint`指定模型文件所在的路径，如`det_body = wf(task='det_body',checkpoint='det_body.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`det_body.onnx`。否则将通过网络到浦源平台的专用地址下载。
-- `download_path`指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制`checkpoints`文件夹。如希望模型保存放在其他路径，则设置`download_path`参数，如`download_path='my_checkpoint'`。注意，`download_path`参数为文件夹名称。建议该参数留空，使用默认地址。
-
-任务模型文件获取与存放请查看[下文](https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id132)。
-
-#### 2. 模型推理
-推理方式1：
-```python
-result = det_body.inference(data='data/det_body.jpg') # 进行模型推理
-```
-推理方式2：
-```python
-result,img_with_box = det_body.inference(data='data/det_body.jpg',img_type='pil') # 进行模型推理
-```
-
-模型推理`inference()`可传入参数：
-
-- `data`(string|numpy.ndarray): 指定待目标检测的图片。
-- `show`(flag): 可取值`[True,False]` ,如果取值为`True`，在推理完成后会直接输出目标检测完成后的图片，默认为`False`。
-- `img_type`(string): 目标检测完成后会返回含有目标检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，即如果不传入值，则不会返回图。
-- `thr`(float): 设置检测框阈值，取值范围为`[0,1]`超过该阈值的检测框被视为有效检测框，进行显示。
-
-模型推理返回结果：
-
-- `result`：变量`boxes`以二维数组的形式保存了检测框左上角顶点的坐标(x1,y1)和右下角顶点的坐标(x2,y2)（之所以是二维数组，是因为该模型能够检测多个人体，因此当检测到多个人体时，就会有多个[x1,y1,x2,y2]的一维数组，所以需要以二维数组形式保存），我们可以利用这四个数据计算出其他两个顶点的坐标，以及检测框的宽度和高度。
-
-- `img_with_box：`：是个三维数组，以cv2格式保存了包含了检测框的图片。
-
-#### 3. 结果输出
-
-```python
-format_result = det_body.format_output(lang='zh')# 将推理结果进行格式化输出
-```
-
-`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
-
-`format_output()`中共有两个参数可以设置：
-
-- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
-- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
-
-`format_result`以字典形式存储了推理结果，共有两个键：`检测框`、`分数`。检测框以二维数组形式保存了每个检测框的坐标信息[x1,y1,x2,y2]，而分数则是对应下标的检测框的置信度，以一维数组形式保存。
-
-```
-# 输出结果
-{'检测框': [[323.2777170453753,
-          72.95395088195801,
-          917.5945354189192,
-          1130.7357228142876]],
- '分数': [0.8851305]}
-```
-
-```python
-det_body.show(img_with_box)# 展示推理图片
-```
-
-`show()`能够输出带有检测框的结果图像。
-
-![](../images/xeduhub/det_body_show.png)
-
-#### 4. 结果保存
-
-```python
-det_body.save(img_with_box,'img_with_box.jpg')# 保存推理图片
-```
-
-`save()`方法能够保存带有检测框的图像
-
-该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
-
-### 人脸目标检测
-
-人脸目标检测指的是检测和定位一张图片中的人脸。XEduHub使用的是opencv的人脸检测模型，能够快速准确地检测出一张图片中所有的人脸。XEduHub提供了进行人脸目标检测的模型：`det_face`，能够快速准确地检测出图片中的所有人脸。
-
-#### 代码样例
-
-```python
-from XEdu.hub import Workflow as wf
-det_face = wf(task='det_face')
-result,img_with_box = det_face.inference(data='data/det_face.jpg',img_type='pil') # 进行模型推理
-format_result = det_face.format_output(lang='zh') # 将推理结果进行格式化输出
-det_face.show(img_with_box) # 展示推理图片
-det_face.save(img_with_box,'img_with_box.jpg') # 保存推理图片
-```
-
-#### 代码解释
-
-#### 1. 模型声明
-
-```python
-from XEdu.hub import Workflow as wf
-det_face = wf(task='det_face')
-```
-`wf()`中共有三个参数可以设置：
-
-- `task`选择任务。人脸目标检测模型为`det_face`。
-- `checkpoint`指定模型文件所在的路径，如`det_face = wf(task='det_face',checkpoint='det_face.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`det_face.onnx`。否则将通过网络到浦源平台的专用地址下载。
-- `download_path`指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制`checkpoints`文件夹。如希望模型保存放在其他路径，则设置`download_path`参数，如`download_path='my_checkpoint'`。注意，`download_path`参数为文件夹名称。建议该参数留空，使用默认地址。
-
-任务模型文件获取与存放请查看[下文](https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id132)。
-
-#### 2. 模型推理
-推理方式1：
-```python
-result = det_face.inference(data='data/det_face.jpg') # 进行模型推理
-```
-
-推理方式2：
-
-```python
-result,img_with_box = det_face.inference(data='data/det_face.jpg',img_type='pil') # 进行模型推理
-```
-
-模型推理`inference()`可传入参数：
-
-- `data`(string|numpy.ndarray): 指定待目标检测的图片。
-- `show`(flag): 可取值`[True,False]` ,如果取值为`True`，在推理完成后会直接输出目标检测完成后的图片，默认为`False`。
-- `img_type`(string): 目标检测完成后会返回含有目标检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，即如果不传入值，则不会返回图。
-- `thr`(float): 设置检测框阈值，取值范围为`[0,1]`超过该阈值的检测框被视为有效检测框，进行显示。
-- `minSize`(tuple(int,int))：检测框的最小尺寸，小于该尺寸的目标会被过滤掉，默认为(50,50)。
-- `maxSize`(tuple(int,int))：检测框的最大尺寸,大于该尺寸的目标会被过滤掉，默认为输入图像的大小。
-- `scaleFactor`(float)：该参数用于缩放图像，以便在检测过程中使用不同大小的窗口来识别人脸。较小的值会导致检测速度加快，但可能会错过一些小的人脸；较大的值可以提高检测的准确性，但会减慢检测速度。通常，这个值会在1.1到1.5之间进行调整，默认为1.1。
-- `minNeighbors`(int)：该参数定义了构成检测目标的最小邻域矩形个数。如果这个值设置得太高，可能会导致检测器过于严格，错过一些实际的人脸；如果设置得太低，检测器可能会变得过于宽松，错误地检测到非人脸区域。通常，这个值会在2到10之间进行调整，默认为5。
-
-模型推理返回结果：
-
-- `result`：以二维数组的形式保存了检测框左上角顶点的坐标(x1,y1)和右下角顶点的坐标(x2,y2)（之所以是二维数组，是因为该模型能够检测多个人脸，因此当检测到多个人脸时，就会有多个[x1,y1,x2,y2]的一维数组，所以需要以二维数组形式保存），我们可以利用这四个数据计算出其他两个顶点的坐标，以及检测框的宽度和高度。
-- `img_with_box：`：是个三维数组，以cv2格式保存了包含了检测框的图片。
-
-#### 3. 结果输出
-
-```python
-format_result = det_face.format_output(lang='zh')# 将推理结果进行格式化输出
-```
-
-`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
-
-`format_output()`中共有两个参数可以设置：
-
-- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
-- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
-
-`format_result`以字典形式存储了推理结果，只有一个键：`检测框`。检测框以二维数组形式保存了每个检测框的坐标信息[x1,y1,x2,y2]。需要注意的是由于使用的为opencv的人脸检测模型，因此在`format_output`时缺少了分数这一指标。
-
-```
-# 输出结果
-{'检测框': [[202, 237, 940, 975]]}
-```
-
-![](../images/xeduhub/det_face_format.png)
-
-结果可视化：
-
-```python
-det_face.show(img_with_box) # 展示推理图片
-```
-
-`show()`能够输出带有检测框的结果图像。
-
-![](../images/xeduhub/det_face_show.png)
-
-多人脸检测结果如下：（如果看到很多不该识别为人脸的地方出现了检测框，我们可以在推理是增加`minSize`参数来设置检测框的最小尺寸，将小于该尺寸的目标过滤掉，默认为(50,50)，同时也可以增加`maxSize`参数来设置检测框的最大尺寸，大于该尺寸的目标会被过滤掉，默认为输入图像的大小）
-
-![](../images/xeduhub/det_face_2.png)
-
-#### 4. 结果保存
-
-```python
-det_face.save(img_with_box,'img_with_box.jpg')# 保存推理图片
-```
-
-`save()`方法能够保存带有检测框的图像
-
-该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
-
-### 手部目标检测
-
-手部目标检测指的是检测和定位一张图片中的人手。XEduHub提供了进行手部目标检测的模型：`det_hand`，能够快速准确地检测出图片中的所有人手。
-
-#### 代码样例
-
-```python
-from XEdu.hub import Workflow as wf
-det_hand = wf(task='det_hand')
-result,img_with_box = det_hand.inference(data='data/det_hand.jpg',img_type='pil') # 进行模型推理
-format_result = det_hand.format_output(lang='zh') # 将推理结果进行格式化输出
-det_hand.show(img_with_box) # 展示推理图片
-det_hand.save(img_with_box,'img_with_box.jpg') # 保存推理图片
-```
-
-#### 代码解释
-
-#### 1. 模型声明
-
-```python
-from XEdu.hub import Workflow as wf
-det_hand = wf(task='det_hand')
-```
-
-`wf()`中共有三个参数可以设置：
-
-- `task`选择任务。手部关键点提取模型为`det_hand`。
-- `checkpoint`指定模型文件所在的路径，如`det_hand = wf(task='det_hand',checkpoint='det_hand.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`det_hand.onnx`。否则将通过网络到浦源平台的专用地址下载。
-- `download_path`指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制`checkpoints`文件夹。如希望模型保存放在其他路径，则设置`download_path`参数，如`download_path='my_checkpoint'`。注意，`download_path`参数为文件夹名称。建议该参数留空，使用默认地址。
-
-任务模型文件获取与存放请查看[下文](https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id132)。
-
-#### 2. 模型推理
-
-推理方式1：
-```python
-result = det_hand.inference(data='data/det_hand.jpg') # 进行模型推理
-```
-推理方式2：
-```python
-result,img_with_box = det_hand.inference(data='data/det_hand.jpg',img_type='pil') # 进行模型推理
-```
-
-模型推理`inference()`可传入参数：
-
-- `data`：指定待检测的图片。
-- `show`: 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出目标检测完成后的图片。
-- `img_type`：目标检测完成后会返回含有检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
-- `thr`: 设置检测框阈值，取值范围为`[0,1]`超过该阈值的检测框被视为有效检测框，进行显示。
-
-模型推理返回结果：
-
-- `result`：以二维数组的形式保存了检测框左上角顶点的坐标(x1,y1)和右下角顶点的坐标(x2,y2)（之所以是二维数组，是因为该模型能够检测多个人手，因此当检测到多个人手时，就会有多个[x1,y1,x2,y2]的一维数组，所以需要以二维数组形式保存），我们可以利用这四个数据计算出其他两个顶点的坐标，以及检测框的宽度和高度。
-- `img_with_box：`：是个三维数组，以cv2格式保存了包含了检测框的图片。
-
-#### 3. 结果输出
-
-```python
-format_result = det_hand.format_output(lang='zh') # 将推理结果进行格式化输出
-```
-
-`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
-
-`format_output()`中共有两个参数可以设置：
-
-- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
-- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
-
-```
-# 输出结果
-{'检测框': [[354.9846431187221,
-          171.7757524762835,
-          993.5257284981864,
-          867.7952793666294]],
- '分数': [0.8558253]}
-```
-
-![](../images/xeduhub/det_hand_format2.png)
-
-`format_result`以字典形式存储了推理结果，共有两个键：`检测框`、`分数`。检测框以二维数组形式保存了每个检测框的坐标信息[x1,y1,x2,y2]，而分数则是对应下标的检测框的置信度，以一维数组形式保存。
-
-结果可视化：
-
-```python
-det_hand.show(img_with_box) # 展示推理图片
-```
-
-`show()`能够输出带有检测框的结果图像。
-
-![](../images/xeduhub/det_hand_show.png)
-
-#### 4. 结果保存
-
-```python
-det_hand.save(img_with_box,'img_with_box.jpg') # 保存推理图片
-```
-
-`save()`方法能够保存带有检测框的图像
-
-该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
-
 ## 2. 关键点识别
 
 关键点识别是深度学习中的一项关键任务，旨在检测图像或视频中的关键位置，通常代表物体或人体的重要部位。XEduHub支持的关键点识别任务有：人体关键点`pose_body`、人脸关键点`pose_face`、人手关键点`pose_hand`和所有人体关键点识别`pose_wholebody`。
@@ -554,9 +554,9 @@ body = wf(task='pose_body') # 数字可省略，当省略时，默认为pose_bod
 
 `wf()`中共有三个参数可以设置：
 
-- `task`选择任务。在人体关键点识别模型中，`task`可选取值为：`[pose_body17,pose_body17_l,pose_body26]`，默认为`pose_body17`。
-- `checkpoint`指定模型文件所在的路径，如`pose_body = wf(task='pose_body',checkpoint='pose_body.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`pose_body17.onnx`。否则将通过网络到浦源平台的专用地址下载。
-- `download_path`指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制`checkpoints`文件夹。如希望模型保存放在其他路径，则设置`download_path`参数，如`download_path='my_checkpoint'`。注意，`download_path`参数为文件夹名称。建议该参数留空，使用默认地址。
+- `task`(str)：选择任务。在人体关键点识别模型中，`task`可选取值为：`[pose_body17,pose_body17_l,pose_body26]`，默认为`pose_body17`。
+- `checkpoint`(str)：指定模型文件所在的路径，如`pose_body = wf(task='pose_body',checkpoint='pose_body.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`pose_body17.onnx`。否则将通过网络到浦源平台的专用地址下载。
+- `download_path`(str)：指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制`checkpoints`文件夹。如希望模型保存放在其他路径，则设置`download_path`参数，如`download_path='my_checkpoint'`。注意，`download_path`参数为文件夹名称。建议该参数留空，使用默认地址。
 
 任务模型文件获取与存放请查看[下文](https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id132)。
 
@@ -575,18 +575,18 @@ keypoints,img_with_keypoints = body.inference(data='data/body.jpg',img_type='pil
 
 模型推理`inference()`可传入参数：
 
-- `data`: 指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
+- `data`(str)：指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
 
-- `show`: 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出关键点识别完成后的图片。
+- `show`(flag)：可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出关键点识别完成后的图片。
 
-- `img_type`: 关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
-- `bbox`：该参数可配合目标检测结果使用。例如在多人手关键点检测任务中，我们先识别人手位置，再检测手部关键点，该参数指定了要识别哪个目标检测框中的关键点。
+- `img_type`(str)：关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
+- `bbox`(numpy.ndarray)：该参数可配合目标检测结果使用。例如在多人手关键点检测任务中，我们先识别人手位置，再检测手部关键点，该参数指定了要识别哪个目标检测框中的关键点。
 
 模型推理返回结果：
 
-- `keypoints`以二维数组的形式保存了所有关键点的坐标，每个关键点(x,y)被表示为`[x,y]`根据前面的图示，要获取到某个特定序号`i`的关键点，只需要访问`keypoints[i]`即可。
+- `keypoints`(numpy.ndarray)：以二维数组的形式保存了所有关键点的坐标，每个关键点(x,y)被表示为`[x,y]`根据前面的图示，要获取到某个特定序号`i`的关键点，只需要访问`keypoints[i]`即可。
 
-- `img_with_keypoints`是个三维数组，以对应img_type格式保存了关键点识别完成后图片的像素点信息。
+- `img_with_keypoints`(numpy.ndarray)：是个三维数组，以对应img_type格式保存了关键点识别完成后图片的像素点信息。
 
 #### 3. 结果输出
 
@@ -598,8 +598,8 @@ format_result = body.format_output(lang='zh') # 参数lang设置了输出结果�
 
 `format_output()`中共有两个参数可以设置：
 
-- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
-- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
+- `lang`(str)：设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `isprint`(bool)：设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
 
 `format_result`以字典形式存储了推理结果，共有两个键：`关键点坐标`和`分数`。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标，而分数则是对应下标的关键点的分数，以一维数组形式保存。
 
@@ -695,9 +695,9 @@ face = wf(task='pose_face') # 数字可省略，默认为face106
 
 `wf()`中共有三个参数可以设置：
 
-- `task`选择任务。人脸关键点识别模型为`pose_face106`（数字可省略，默认为pose_face）。
-- `checkpoint`指定模型文件所在的路径，如`pose_face = wf(task='pose_face',checkpoint='pose_face.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`pose_face106.onnx`。否则将通过网络到浦源平台的专用地址下载。
-- `download_path`指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制`checkpoints`文件夹。如希望模型保存放在其他路径，则设置`download_path`参数，如`download_path='my_checkpoint'`。注意，`download_path`参数为文件夹名称。建议该参数留空，使用默认地址。
+- `task`(str)：选择任务。人脸关键点识别模型为`pose_face106`（数字可省略，默认为pose_face）。
+- `checkpoint`(str)：指定模型文件所在的路径，如`pose_face = wf(task='pose_face',checkpoint='pose_face.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`pose_face106.onnx`。否则将通过网络到浦源平台的专用地址下载。
+- `download_path`(str)：指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制`checkpoints`文件夹。如希望模型保存放在其他路径，则设置`download_path`参数，如`download_path='my_checkpoint'`。注意，`download_path`参数为文件夹名称。建议该参数留空，使用默认地址。
 
 任务模型文件获取与存放请查看[下文](https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id132)。
 #### 2. 模型推理
@@ -712,13 +712,13 @@ keypoints,img_with_keypoints = face.inference(data='data/face.jpg',img_type='pil
 
 模型推理`inference()`可传入参数：
 
-- `data`: 指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
+- `data`(string|numpy.ndarray): 指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
 
 - `show`: 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出关键点识别完成后的图片。
 
 - `img_type`: 关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
 
-- `bbox`：该参数可配合目标检测使用。在多人手关键点检测中，该参数指定了要识别哪个检测框中的关键点。
+- `bbox`：该参数可配合目标检测使用。在多目标关键点检测中，该参数指定了要识别哪个检测框中的关键点。
 
 模型推理返回结果：
 
@@ -736,7 +736,7 @@ format_result = face.format_output(lang='zh') # 将推理结果进行格式化�
 
 `format_output()`中共有两个参数可以设置：
 
-- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `lang`(str) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
 - `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
 
 `format_result`以字典形式存储了推理结果，共有两个键：`关键点坐标`和`分数`。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标（face106模型共检测出106个关键点），而分数则是对应下标的关键点的分数，以一维数组形式保存。
@@ -823,7 +823,7 @@ keypoints,img_with_keypoints = hand.inference(data='data/hand.jpg',img_type='pil
 
 - `keypoints`以二维数组的形式保存了所有关键点的坐标，每个关键点(x,y)被表示为`[x,y]`根据前面的图示，要获取到某个特定序号`i`的关键点，只需要访问`keypoints[i]`即可。
 
-- `img_with_keypoints`是个三维数组，以pil格式保存了关键点识别完成后的图片。
+- `img_with_keypoints`是个三维数组，以img_type设置的保存了关键点识别完成后的图片。
 
 #### 3. 结果输出
 
@@ -835,7 +835,7 @@ format_result = hand.format_output(lang='zh')# 将推理结果进行格式化输
 
 `format_output()`中共有两个参数可以设置：
 
-- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `lang`(str) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
 - `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
 `format_result`以字典形式存储了推理结果，共有两个键：`关键点坐标`和`分数`。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标，而分数则是对应下标的关键点的分数，以一维数组形式保存。
 
@@ -913,7 +913,7 @@ keypoints,img_with_keypoints = wholebody.inference(data='data/wholebody.jpg',img
 
 - `keypoints`以二维数组的形式保存了所有关键点的坐标，每个关键点(x,y)被表示为`[x,y]`根据前面的图示，要获取到某个特定序号`i`的关键点，只需要访问`keypoints[i]`即可。
 
-- `img_with_keypoints`是个三维数组，以pil格式保存了关键点识别完成后的图片。
+- `img_with_keypoints`是个三维数组，以img_type设置的格式保存了关键点识别完成后的图片。
 
 #### 3. 结果输出
 
@@ -925,7 +925,7 @@ format_result = wholebody.format_output(lang='zh') # 将推理结果进行格式
 
 `format_output()`中共有两个参数可以设置：
 
-- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `lang`(str) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
 - `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
 
 `format_result`以字典形式存储了推理结果，共有两个键：`关键点坐标`和`分数`。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标，而分数则是对应下标的关键点的分数，以一维数组形式保存。
@@ -1063,7 +1063,7 @@ ocr_format_result = ocr.format_output(lang="zh")
 
 `format_output()`中共有两个参数可以设置：
 
-- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `lang`(str) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
 - `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
 
 ```
@@ -1231,7 +1231,7 @@ format_result = cls.format_output(lang='zh') #推理结果格式化输出
 
 `format_output()`中共有两个参数可以设置：
 
-- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `lang`(str) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
 - `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
 
 `format_result`是一个字典，以格式化的方式展示了这张图片最有可能的分类结果。预测值表示图片分类标签在所有一千个分类中的索引，分数是属于这个分类的概率，预测类别是分类标签的内容。
@@ -1361,7 +1361,7 @@ result, img = style.inference(data='data/cat101.jpg',img_type='cv2') # 进行模
 
 模型推理返回结果：
 
-- `result`和`img`都是三维数组，以cv2格式保存了风格迁移完成后的图片。
+- `result`和`img`都是三维数组，以img_type设置的格式保存了风格迁移完成后的图片。
 
 #### 3. 结果输出
 
@@ -1544,7 +1544,7 @@ result,img = drive.inference(data='demo/drive.png',img_type='cv2') # 模型推�
 - `车辆检测result[0]`：以二维数组保存了车辆目标检测框左上角顶点的坐标(x1,y1)和右下角顶点的坐标(x2,y2)（之所以是二维数组，是因为该模型能够检测多辆车，因此当检测到多辆车时，就会有多个[x1,y1,x2,y2]的一维数组，所以需要以二维数组形式保存），我们可以利用这四个数据计算出其他两个顶点的坐标，以及检测框的宽度和高度。
 - `车道线分割result[1]`：以由0，1组成二维数组（w*h），保存图像中每个像素的mask，mask为1表示该像素为车道线分割目标，mask为0表示该像素是背景。
 - `可行驶区域result[2]`：以由0，1组成二维数组（w*h），保存图像中每个像素的mask，mask为1表示该像素为可驾驶区域分割目标，mask为0表示该像素是背景。
-- `img_with_box：`：是个三维数组，以cv2格式保存了包含了检测框与分割目标的图片。
+- `img_with_box`(numpy.ndarray)：是个三维数组，以img_type所设置的格式保存了包含了检测框与分割目标的图片。
 
 #### 3. 结果输出
 
@@ -1556,7 +1556,7 @@ format_result = drive.format_output(lang='zh') # 将推理结果进行格式化�
 
 `format_output()`中共有两个参数可以设置：
 
-- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `lang`(str) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
 - `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
 
 `format_result`以字典形式存储了推理结果，有四个键：`检测框`、`分数`、`车道线掩码`、`可行驶区域掩码`。检测框以二维数组形式保存了每个检测框的坐标信息[x1,y1,x2,y2]。
@@ -1891,7 +1891,7 @@ mmcls = wf(task='mmedu',checkpoint='cats_dogs.onnx') # 指定使用的onnx模型
 `wf()`中共有两个参数可以设置：
 
 - `task`：只需要设置task为`mmedu` ，而不需要指定是哪种任务。
-- `checkpoint`：指定你的模型的路径，如`checkpoint='cats_dogs.onnx'`。
+- `checkpoint`：指定你的模型的路径，该参数不能为空，如`checkpoint='cats_dogs.onnx'`。
 
 这里我们以猫狗分类模型为例，项目指路：[猫狗分类](https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&sc=647b3880aac6f67c822a04f5#public)。
 
@@ -1910,7 +1910,7 @@ result, result_img =  mmcls.inference(data='data/cat101.jpg',img_type='pil') # �
 
 `result`是一个字典，包含三个键：`标签`、`置信度`和`预测结果`。
 
-`result_img`以pil格式保存了模型推理完成后的图片（原图+推理结果）。
+`result_img`以img_type设置的格式保存了模型推理完成后的图片（原图+推理结果）。
 
 ##### 3. 结果输出
 
@@ -1922,7 +1922,7 @@ format_result = mmcls.format_output(lang='zh') # 推理结果格式化输出
 
 `format_output()`中共有两个参数可以设置：
 
-- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `lang`(str) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
 - `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
 
 ```
@@ -1977,7 +1977,7 @@ mmdet = wf(task='mmedu',checkpoint='plate.onnx') # 指定使用的onnx模型
 `wf()`中共有两个参数可以设置：
 
 - `task`：只需要设置task为`mmedu` ，而不需要指定是哪种任务。
-- `checkpoint`：指定你的模型的路径，如`checkpoint='plate.onnx'`。
+- `checkpoint`：指定你的模型的路径，该参数不能为空，如`checkpoint='plate.onnx'`。
 
 这里以车牌识别为例进行说明。项目指路：[使用MMEdu实现车牌检测](https://www.openinnolab.org.cn/pjlab/project?id=641426fdcb63f030544017a2&backpath=/pjlab/projects/list#public)
 
@@ -1996,7 +1996,7 @@ result, result_img =  mmdet.inference(data='data/plate0.png',img_type='pil') # �
 
 `result`的结果是一个数组，里面保存了结果字典。该字典有四个键：`标签`、`置信度`、`坐标`以及`预测结果`。其中坐标表示了检测框的两个顶点：左上(x1,y1)和右下(x2,y2)。
 
-`result_img`以pil格式保存了模型推理完成后的图片（原图+推理结果）。
+`result_img`以img_type设置的格式保存了模型推理完成后的图片（原图+推理结果）。
 
 ##### 3. 结果输出
 
@@ -2008,7 +2008,7 @@ format_result = mmdet.format_output(lang='zh') # 推理结果格式化输出
 
 `format_output()`中共有两个参数可以设置：
 
-- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `lang`(str) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
 - `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
 
 ```
@@ -2067,7 +2067,7 @@ basenn = wf(task='basenn',checkpoint='basenn.onnx') # 指定使用的onnx模型
 `wf()`中共有两个参数可以设置：
 
 - `task`：只需要设置task为`basenn` ，而不需要指定是哪种任务。
-- `checkpoint`：指定你的模型的路径，如`checkpoint='basenn.onnx'`。
+- `checkpoint`：指定你的模型的路径，该参数不能为空，如`checkpoint='basenn.onnx'`。
 
 ##### 2. 模型推理
 
@@ -2102,7 +2102,7 @@ format_result = basenn.format_output()
 
 `format_output()`中共有两个参数可以设置：
 
-- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `lang`(str) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
 - `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
 
 ```
@@ -2141,7 +2141,7 @@ baseml = wf(task='baseml',checkpoint='baseml.pkl') # 指定使用的pkl模型
 `wf()`中共有两个参数可以设置：
 
 - `task`：只需要设置task为`baseml` ，而不需要指定是哪种任务。
-- `checkpoint`：指定你的模型的路径，如`checkpoint='baseml.pkl'`。
+- `checkpoint`：指定你的模型的路径，该参数不能为空，如`checkpoint='baseml.pkl'`。
 
 ##### 2. 模型推理
 
@@ -2173,7 +2173,7 @@ format_output = baseml.format_output(lang='zh')# 推理结果格式化输出
 
 `format_output()`中共有两个参数可以设置：
 
-- `lang`(string) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `lang`(str) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
 - `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
 
 ```
