@@ -58,7 +58,7 @@ EasyConvert是XEdu提供的无代码模型转换工具。利用EasyConvert，可
 
 ### 3. EasyInference
 
-EasyInference是XEdu提供的无代码模型训练工具。利用EasyInference，可以完成模型推理的全流程体验，适用于初学者人工智能入门。
+EasyInference是XEdu提供的无代码模型推理工具。利用EasyInference，可以完成模型推理的全流程体验，适用于初学者人工智能入门。
 
 ①实现了无代码推理可视化界面
 

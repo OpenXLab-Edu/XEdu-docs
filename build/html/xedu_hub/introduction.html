@@ -56,10 +56,10 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#id1">1. 目标检测</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">人体目标检测</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">人脸目标检测</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16">手部目标检测</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#coco">coco目标检测</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id8">人体目标检测</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id15">人脸目标检测</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id22">手部目标检测</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#id29">2. 关键点识别</a><ul>
@@ -182,13 +182,288 @@
 <h2>1. 目标检测<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p>目标检测是一种计算机视觉任务，其目标是在图像或视频中检测并定位物体的位置，并为每个物体分配类别标签。</p>
 <p>实现目标检测通常包括特征提取、物体位置定位、物体类别分类等步骤。这一技术广泛应用于自动驾驶、安全监控、医学影像分析、图像搜索等各种领域，为实现自动化和智能化应用提供了关键支持。</p>
-<p>XEduHub目标支持目标检测任务有：coco目标检测<code class="docutils literal notranslate"><span class="pre">det_coco</span></code>、人体目标检测<code class="docutils literal notranslate"><span class="pre">det_body</span></code>、人脸目标检测<code class="docutils literal notranslate"><span class="pre">det_face</span></code>和人手目标检测<code class="docutils literal notranslate"><span class="pre">det_hand</span></code>。</p>
+<p>XEduHub目标支持目标检测任务有：人体目标检测<code class="docutils literal notranslate"><span class="pre">det_body</span></code>、人脸目标检测<code class="docutils literal notranslate"><span class="pre">det_face</span></code>、人手目标检测<code class="docutils literal notranslate"><span class="pre">det_hand</span></code>和coco目标检测<code class="docutils literal notranslate"><span class="pre">det_coco</span></code>。</p>
+<section id="id2">
+<h3>人体目标检测<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<p>人体目标检测的任务是在图像或视频中检测和定位人体的位置，并为每个检测到的人体分配一个相应的类别标签。借助此任务，一般可以实现人体画面的识别与提取，为后续的图像处理和分析提供基础。</p>
+<p>XEduHub提供了进行人体目标检测的模型：<code class="docutils literal notranslate"><span class="pre">det_body</span></code>，<code class="docutils literal notranslate"><span class="pre">det_body_l</span></code>，这两个模型能够进行人体目标检测，后者为large增强版模型。</p>
+<p><img alt="../_images/det_body.png" src="../_images/det_body.png" /></p>
+<section id="id3">
+<h4>代码样例<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span> <span class="c1"># 导入库</span>
+<span class="n">det_body</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;det_body&#39;</span><span class="p">)</span> <span class="c1"># 实例化模型</span>
+<span class="n">result</span><span class="p">,</span><span class="n">img_with_box</span> <span class="o">=</span> <span class="n">det_body</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/det_body.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
+<span class="n">format_result</span> <span class="o">=</span> <span class="n">det_body</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span> <span class="c1"># 将推理结果进行格式化输出</span>
+<span class="n">det_body</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">)</span><span class="c1"># 展示推理图片</span>
+<span class="n">det_body</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">,</span><span class="s1">&#39;img_with_box.jpg&#39;</span><span class="p">)</span> <span class="c1"># 保存推理图片</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h4>代码解释<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h4>
+</section>
+<section id="id5">
+<h4>1. 模型声明<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
+<span class="n">det_body</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;det_body&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有三个参数可以设置：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>(str)：选择任务。人体目标检测模型为<code class="docutils literal notranslate"><span class="pre">det_body</span></code>, <code class="docutils literal notranslate"><span class="pre">det_body_l</span></code>。<code class="docutils literal notranslate"><span class="pre">det_body_l</span></code>相比<code class="docutils literal notranslate"><span class="pre">det_body</span></code>模型规模较大，性能较强，但是推理的速度较慢。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>(str)：指定模型文件所在的路径，如<code class="docutils literal notranslate"><span class="pre">det_body</span> <span class="pre">=</span> <span class="pre">wf(task='det_body',checkpoint='det_body.onnx')</span> </code>。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即<code class="docutils literal notranslate"><span class="pre">det_body.onnx</span></code>。否则将通过网络到浦源平台的专用地址下载。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>(str)：指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制<code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>文件夹。如希望模型保存放在其他路径，则设置<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。注意，<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数为文件夹名称。建议该参数留空，使用默认地址。</p></li>
+</ul>
+<p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id132">下文</a>。</p>
+</section>
+<section id="id6">
+<h4>2. 模型推理<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h4>
+<p>推理方式1：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">det_body</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/det_body.jpg&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
+</pre></div>
+</div>
+<p>推理方式2：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">,</span><span class="n">img_with_box</span> <span class="o">=</span> <span class="n">det_body</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/det_body.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
+</pre></div>
+</div>
+<p>模型推理<code class="docutils literal notranslate"><span class="pre">inference()</span></code>可传入参数：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>(str|numpy.ndarray)：指定待目标检测的图片。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">show</span></code>(flag)：可取值<code class="docutils literal notranslate"><span class="pre">[True,False]</span></code> ,如果取值为<code class="docutils literal notranslate"><span class="pre">True</span></code>，在推理完成后会直接输出目标检测完成后的图片，默认为<code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">img_type</span></code>(str)：目标检测完成后会返回含有目标检测框的图片，该参数指定了返回图片的格式，可选有:<code class="docutils literal notranslate"><span class="pre">['cv2','pil']</span></code>，默认值为<code class="docutils literal notranslate"><span class="pre">None</span></code>，即如果不传入值，则不会返回图。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">thr</span></code>(float)：设置检测框阈值，取值范围为<code class="docutils literal notranslate"><span class="pre">[0,1]</span></code>超过该阈值的检测框被视为有效检测框，进行显示，默认值为0.3。</p></li>
+</ul>
+<p>模型推理返回结果：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">result</span></code>(numpy.ndarray)：以二维数组的形式保存了检测框左上角顶点的坐标(x1,y1)和右下角顶点的坐标(x2,y2)（之所以是二维数组，是因为该模型能够检测多个人体，因此当检测到多个人体时，就会有多个[x1,y1,x2,y2]的一维数组，所以需要以二维数组形式保存），我们可以利用这四个数据计算出其他两个顶点的坐标，以及检测框的宽度和高度。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">img_with_box</span></code>(numpy.ndarray)：是个三维数组，以img_type所设置的格式保存了包含了检测框的图片。</p></li>
+</ul>
+</section>
+<section id="id7">
+<h4>3. 结果输出<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">format_result</span> <span class="o">=</span> <span class="n">det_body</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span><span class="c1"># 将推理结果进行格式化输出</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(str)：设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool)：设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">format_result</span></code>以字典形式存储了推理结果，共有两个键：<code class="docutils literal notranslate"><span class="pre">检测框</span></code>、<code class="docutils literal notranslate"><span class="pre">分数</span></code>。检测框以二维数组形式保存了每个检测框的坐标信息[x1,y1,x2,y2]，而分数则是对应下标的检测框的置信度，以一维数组形式保存。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 输出结果</span>
+<span class="p">{</span><span class="s1">&#39;检测框&#39;</span><span class="p">:</span> <span class="p">[[</span><span class="mf">323.2777170453753</span><span class="p">,</span>
+          <span class="mf">72.95395088195801</span><span class="p">,</span>
+          <span class="mf">917.5945354189192</span><span class="p">,</span>
+          <span class="mf">1130.7357228142876</span><span class="p">]],</span>
+ <span class="s1">&#39;分数&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.8851305</span><span class="p">]}</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">det_body</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">)</span><span class="c1"># 展示推理图片</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">show()</span></code>能够输出带有检测框的结果图像。</p>
+<p><img alt="../_images/det_body_show.png" src="../_images/det_body_show.png" /></p>
+</section>
+<section id="id8">
+<h4>4. 结果保存<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">det_body</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">,</span><span class="s1">&#39;img_with_box.jpg&#39;</span><span class="p">)</span><span class="c1"># 保存推理图片</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">save()</span></code>方法能够保存带有检测框的图像</p>
+<p>该方法接收两个参数，第一个参数是图像数据，另一个是图像的保存路径。</p>
+</section>
+</section>
+<section id="id9">
+<h3>人脸目标检测<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
+<p>人脸目标检测指的是检测和定位一张图片中的人脸。XEduHub使用的是opencv的人脸检测模型，能够快速准确地检测出一张图片中所有的人脸。XEduHub提供了进行人脸目标检测的模型：<code class="docutils literal notranslate"><span class="pre">det_face</span></code>，能够快速准确地检测出图片中的所有人脸。</p>
+<section id="id10">
+<h4>代码样例<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
+<span class="n">det_face</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;det_face&#39;</span><span class="p">)</span>
+<span class="n">result</span><span class="p">,</span><span class="n">img_with_box</span> <span class="o">=</span> <span class="n">det_face</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/det_face.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
+<span class="n">format_result</span> <span class="o">=</span> <span class="n">det_face</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span> <span class="c1"># 将推理结果进行格式化输出</span>
+<span class="n">det_face</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">)</span> <span class="c1"># 展示推理图片</span>
+<span class="n">det_face</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">,</span><span class="s1">&#39;img_with_box.jpg&#39;</span><span class="p">)</span> <span class="c1"># 保存推理图片</span>
+</pre></div>
+</div>
+</section>
+<section id="id11">
+<h4>代码解释<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h4>
+</section>
+<section id="id12">
+<h4>1. 模型声明<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
+<span class="n">det_face</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;det_face&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有三个参数可以设置：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>(str)：选择任务。人脸目标检测模型为<code class="docutils literal notranslate"><span class="pre">det_face</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>(str)：指定模型文件所在的路径，如<code class="docutils literal notranslate"><span class="pre">det_face</span> <span class="pre">=</span> <span class="pre">wf(task='det_face',checkpoint='det_face.onnx')</span> </code>。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即<code class="docutils literal notranslate"><span class="pre">det_face.onnx</span></code>。否则将通过网络到浦源平台的专用地址下载。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>(str)：指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制<code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>文件夹。如希望模型保存放在其他路径，则设置<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。注意，<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数为文件夹名称。建议该参数留空，使用默认地址。</p></li>
+</ul>
+<p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id132">下文</a>。</p>
+</section>
+<section id="id13">
+<h4>2. 模型推理<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h4>
+<p>推理方式1：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">det_face</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/det_face.jpg&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
+</pre></div>
+</div>
+<p>推理方式2：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">,</span><span class="n">img_with_box</span> <span class="o">=</span> <span class="n">det_face</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/det_face.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
+</pre></div>
+</div>
+<p>模型推理<code class="docutils literal notranslate"><span class="pre">inference()</span></code>可传入参数：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>(str|numpy.ndarray)：指定待目标检测的图片。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">show</span></code>(flag)：可取值<code class="docutils literal notranslate"><span class="pre">[True,False]</span></code> ,如果取值为<code class="docutils literal notranslate"><span class="pre">True</span></code>，在推理完成后会直接输出目标检测完成后的图片，默认为<code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">img_type</span></code>(str)：目标检测完成后会返回含有目标检测框的图片，该参数指定了返回图片的格式，可选有：<code class="docutils literal notranslate"><span class="pre">['cv2','pil']</span></code>，默认值为<code class="docutils literal notranslate"><span class="pre">None</span></code>，即如果不传入值，则不会返回图。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">thr</span></code>(float)：设置检测框阈值，取值范围为<code class="docutils literal notranslate"><span class="pre">[0,1]</span></code>超过该阈值的检测框被视为有效检测框，进行显示，默认值为0.5。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minSize</span></code>(tuple(int,int))：检测框的最小尺寸，小于该尺寸的目标会被过滤掉，默认为(50,50)。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">maxSize</span></code>(tuple(int,int))：检测框的最大尺寸,大于该尺寸的目标会被过滤掉，默认为输入图像的大小。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scaleFactor</span></code>(float)：该参数用于缩放图像，以便在检测过程中使用不同大小的窗口来识别人脸。较小的值会导致检测速度加快，但可能会错过一些小的人脸；较大的值可以提高检测的准确性，但会减慢检测速度。通常，这个值会在1.1到1.5之间进行调整，默认为1.1。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minNeighbors</span></code>(int)：该参数定义了构成检测目标的最小邻域矩形个数。如果这个值设置得太高，可能会导致检测器过于严格，错过一些实际的人脸；如果设置得太低，检测器可能会变得过于宽松，错误地检测到非人脸区域。通常，这个值会在2到10之间进行调整，默认为5。</p></li>
+</ul>
+<p>模型推理返回结果：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">result</span></code>(numpy.ndarray)：：以二维数组的形式保存了检测框左上角顶点的坐标(x1,y1)和右下角顶点的坐标(x2,y2)（之所以是二维数组，是因为该模型能够检测多个人脸，因此当检测到多个人脸时，就会有多个[x1,y1,x2,y2]的一维数组，所以需要以二维数组形式保存），我们可以利用这四个数据计算出其他两个顶点的坐标，以及检测框的宽度和高度。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">img_with_box</span></code>(numpy.ndarray)：是个三维数组，以img_type所设置的格式保存了包含了检测框的图片。</p></li>
+</ul>
+</section>
+<section id="id14">
+<h4>3. 结果输出<a class="headerlink" href="#id14" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">format_result</span> <span class="o">=</span> <span class="n">det_face</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span><span class="c1"># 将推理结果进行格式化输出</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(str)：设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool)：设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">format_result</span></code>以字典形式存储了推理结果，只有一个键：<code class="docutils literal notranslate"><span class="pre">检测框</span></code>。检测框以二维数组形式保存了每个检测框的坐标信息[x1,y1,x2,y2]。需要注意的是由于使用的为opencv的人脸检测模型，因此在<code class="docutils literal notranslate"><span class="pre">format_output</span></code>时缺少了分数这一指标。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 输出结果</span>
+<span class="p">{</span><span class="s1">&#39;检测框&#39;</span><span class="p">:</span> <span class="p">[[</span><span class="mi">202</span><span class="p">,</span> <span class="mi">237</span><span class="p">,</span> <span class="mi">940</span><span class="p">,</span> <span class="mi">975</span><span class="p">]]}</span>
+</pre></div>
+</div>
+<p><img alt="../_images/det_face_format.png" src="../_images/det_face_format.png" /></p>
+<p>结果可视化：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">det_face</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">)</span> <span class="c1"># 展示推理图片</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">show()</span></code>能够输出带有检测框的结果图像。</p>
+<p><img alt="../_images/det_face_show.png" src="../_images/det_face_show.png" /></p>
+<p>多人脸检测结果如下：（如果看到很多不该识别为人脸的地方出现了检测框，我们可以在推理是增加<code class="docutils literal notranslate"><span class="pre">minSize</span></code>参数来设置检测框的最小尺寸，将小于该尺寸的目标过滤掉，默认为(50,50)，同时也可以增加<code class="docutils literal notranslate"><span class="pre">maxSize</span></code>参数来设置检测框的最大尺寸，大于该尺寸的目标会被过滤掉，默认为输入图像的大小）</p>
+<p><img alt="../_images/det_face_2.png" src="../_images/det_face_2.png" /></p>
+</section>
+<section id="id15">
+<h4>4. 结果保存<a class="headerlink" href="#id15" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">det_face</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">,</span><span class="s1">&#39;img_with_box.jpg&#39;</span><span class="p">)</span><span class="c1"># 保存推理图片</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">save()</span></code>方法能够保存带有检测框的图像</p>
+<p>该方法接收两个参数，第一个参数是图像数据，另一个是图像的保存路径。</p>
+</section>
+</section>
+<section id="id16">
+<h3>手部目标检测<a class="headerlink" href="#id16" title="Permalink to this heading"></a></h3>
+<p>手部目标检测指的是检测和定位一张图片中的人手。XEduHub提供了进行手部目标检测的模型：<code class="docutils literal notranslate"><span class="pre">det_hand</span></code>，能够快速准确地检测出图片中的所有人手。</p>
+<section id="id17">
+<h4>代码样例<a class="headerlink" href="#id17" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
+<span class="n">det_hand</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;det_hand&#39;</span><span class="p">)</span>
+<span class="n">result</span><span class="p">,</span><span class="n">img_with_box</span> <span class="o">=</span> <span class="n">det_hand</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/det_hand.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
+<span class="n">format_result</span> <span class="o">=</span> <span class="n">det_hand</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span> <span class="c1"># 将推理结果进行格式化输出</span>
+<span class="n">det_hand</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">)</span> <span class="c1"># 展示推理图片</span>
+<span class="n">det_hand</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">,</span><span class="s1">&#39;img_with_box.jpg&#39;</span><span class="p">)</span> <span class="c1"># 保存推理图片</span>
+</pre></div>
+</div>
+</section>
+<section id="id18">
+<h4>代码解释<a class="headerlink" href="#id18" title="Permalink to this heading"></a></h4>
+</section>
+<section id="id19">
+<h4>1. 模型声明<a class="headerlink" href="#id19" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
+<span class="n">det_hand</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;det_hand&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有三个参数可以设置：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>(str)：选择任务。手部关键点提取模型为<code class="docutils literal notranslate"><span class="pre">det_hand</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>(str)：指定模型文件所在的路径，如<code class="docutils literal notranslate"><span class="pre">det_hand</span> <span class="pre">=</span> <span class="pre">wf(task='det_hand',checkpoint='det_hand.onnx')</span> </code>。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即<code class="docutils literal notranslate"><span class="pre">det_hand.onnx</span></code>。否则将通过网络到浦源平台的专用地址下载。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>(str)：指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制<code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>文件夹。如希望模型保存放在其他路径，则设置<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。注意，<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数为文件夹名称。建议该参数留空，使用默认地址。</p></li>
+</ul>
+<p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id132">下文</a>。</p>
+</section>
+<section id="id20">
+<h4>2. 模型推理<a class="headerlink" href="#id20" title="Permalink to this heading"></a></h4>
+<p>推理方式1：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">det_hand</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/det_hand.jpg&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
+</pre></div>
+</div>
+<p>推理方式2：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">,</span><span class="n">img_with_box</span> <span class="o">=</span> <span class="n">det_hand</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/det_hand.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
+</pre></div>
+</div>
+<p>模型推理<code class="docutils literal notranslate"><span class="pre">inference()</span></code>可传入参数：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>(str|numpy.ndarray)：指定待检测的图片。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">show</span></code>(flag): 可取值：<code class="docutils literal notranslate"><span class="pre">[True,False]</span></code> 默认为<code class="docutils literal notranslate"><span class="pre">False</span></code>。如果取值为<code class="docutils literal notranslate"><span class="pre">True</span></code>，在推理完成后会直接输出目标检测完成后的图片。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">img_type</span></code>(str)：目标检测完成后会返回含有检测框的图片，该参数指定了返回图片的格式，可选有:<code class="docutils literal notranslate"><span class="pre">['cv2','pil']</span></code>，默认值为<code class="docutils literal notranslate"><span class="pre">None</span></code>，如果不传入值，则不会返回图。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">thr</span></code>(float): 设置检测框阈值，取值范围为<code class="docutils literal notranslate"><span class="pre">[0,1]</span></code>超过该阈值的检测框被视为有效检测框，进行显示，默认值为0.3。</p></li>
+</ul>
+<p>模型推理返回结果：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">result</span></code>(numpy.ndarray)：以二维数组的形式保存了检测框左上角顶点的坐标(x1,y1)和右下角顶点的坐标(x2,y2)（之所以是二维数组，是因为该模型能够检测多个人手，因此当检测到多个人手时，就会有多个[x1,y1,x2,y2]的一维数组，所以需要以二维数组形式保存），我们可以利用这四个数据计算出其他两个顶点的坐标，以及检测框的宽度和高度。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">img_with_box</span></code>(numpy.ndarray)：是个三维数组，以img_type所设置的格式保存了包含了检测框的图片。</p></li>
+</ul>
+</section>
+<section id="id21">
+<h4>3. 结果输出<a class="headerlink" href="#id21" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">format_result</span> <span class="o">=</span> <span class="n">det_hand</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span> <span class="c1"># 将推理结果进行格式化输出</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(str)：设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool)：设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 输出结果</span>
+<span class="p">{</span><span class="s1">&#39;检测框&#39;</span><span class="p">:</span> <span class="p">[[</span><span class="mf">354.9846431187221</span><span class="p">,</span>
+          <span class="mf">171.7757524762835</span><span class="p">,</span>
+          <span class="mf">993.5257284981864</span><span class="p">,</span>
+          <span class="mf">867.7952793666294</span><span class="p">]],</span>
+ <span class="s1">&#39;分数&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.8558253</span><span class="p">]}</span>
+</pre></div>
+</div>
+<p><img alt="../_images/det_hand_format2.png" src="../_images/det_hand_format2.png" /></p>
+<p><code class="docutils literal notranslate"><span class="pre">format_result</span></code>以字典形式存储了推理结果，共有两个键：<code class="docutils literal notranslate"><span class="pre">检测框</span></code>、<code class="docutils literal notranslate"><span class="pre">分数</span></code>。检测框以二维数组形式保存了每个检测框的坐标信息[x1,y1,x2,y2]，而分数则是对应下标的检测框的置信度，以一维数组形式保存。</p>
+<p>结果可视化：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">det_hand</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">)</span> <span class="c1"># 展示推理图片</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">show()</span></code>能够输出带有检测框的结果图像。</p>
+<p><img alt="../_images/det_hand_show.png" src="../_images/det_hand_show.png" /></p>
+</section>
+<section id="id22">
+<h4>4. 结果保存<a class="headerlink" href="#id22" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">det_hand</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">,</span><span class="s1">&#39;img_with_box.jpg&#39;</span><span class="p">)</span> <span class="c1"># 保存推理图片</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">save()</span></code>方法能够保存带有检测框的图像</p>
+<p>该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。</p>
+</section>
+</section>
 <section id="coco">
 <h3>coco目标检测<a class="headerlink" href="#coco" title="Permalink to this heading"></a></h3>
 <p>COCO（Common Objects in Context）是一个用于目标检测和图像分割任务的广泛使用的数据集和评估基准。它是计算机视觉领域中最重要的数据集之一，在XEduHub中的该模型能够检测出80类coco数据集中的物体：<code class="docutils literal notranslate"><span class="pre">det_coco</span></code>，以及加强版<code class="docutils literal notranslate"><span class="pre">det_coco_l</span></code>。</p>
 <p><img alt="../_images/new_coco.png" src="../_images/new_coco.png" /></p>
-<section id="id2">
-<h4>代码样例<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h4>
+<section id="id23">
+<h4>代码样例<a class="headerlink" href="#id23" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">det_coco</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;det_coco&#39;</span><span class="p">)</span>
 <span class="n">result</span><span class="p">,</span><span class="n">img_with_box</span> <span class="o">=</span> <span class="n">det_coco</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/det_coco.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
@@ -198,25 +473,25 @@
 </pre></div>
 </div>
 </section>
-<section id="id3">
-<h4>代码解释<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h4>
+<section id="id24">
+<h4>代码解释<a class="headerlink" href="#id24" title="Permalink to this heading"></a></h4>
 </section>
-<section id="id4">
-<h4>1. 模型声明<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h4>
+<section id="id25">
+<h4>1. 模型声明<a class="headerlink" href="#id25" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">det_coco</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;det_coco&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有三个参数可以设置：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>选择任务。coco目标检测的模型为<code class="docutils literal notranslate"><span class="pre">det_coco</span></code>, <code class="docutils literal notranslate"><span class="pre">det_coco_l</span></code>。<code class="docutils literal notranslate"><span class="pre">det_coco_l</span></code>相比<code class="docutils literal notranslate"><span class="pre">det_coco</span></code>模型规模较大，性能较强，但是推理的速度较慢。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>指定模型文件所在的路径，如<code class="docutils literal notranslate"><span class="pre">det_coco</span> <span class="pre">=</span> <span class="pre">wf(task='det_coco',checkpoint='det_coco.onnx')</span> </code>。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即<code class="docutils literal notranslate"><span class="pre">det_coco.onnx</span></code>。否则将通过网络到浦源平台的专用地址下载。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制<code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>文件夹。如希望模型保存放在其他路径，则设置<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。注意，<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数为文件夹名称。建议该参数留空，使用默认地址。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>(str)：选择任务。coco目标检测的模型为<code class="docutils literal notranslate"><span class="pre">det_coco</span></code>, <code class="docutils literal notranslate"><span class="pre">det_coco_l</span></code>。<code class="docutils literal notranslate"><span class="pre">det_coco_l</span></code>相比<code class="docutils literal notranslate"><span class="pre">det_coco</span></code>模型规模较大，性能较强，但是推理的速度较慢。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>(str)：指定模型文件所在的路径，如<code class="docutils literal notranslate"><span class="pre">det_coco</span> <span class="pre">=</span> <span class="pre">wf(task='det_coco',checkpoint='det_coco.onnx')</span> </code>。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即<code class="docutils literal notranslate"><span class="pre">det_coco.onnx</span></code>。否则将通过网络到浦源平台的专用地址下载。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>(str)：指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制<code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>文件夹。如希望模型保存放在其他路径，则设置<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。注意，<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数为文件夹名称。建议该参数留空，使用默认地址。</p></li>
 </ul>
 <p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id132">下文</a>。</p>
 </section>
-<section id="id5">
-<h4>2. 模型推理<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h4>
+<section id="id26">
+<h4>2. 模型推理<a class="headerlink" href="#id26" title="Permalink to this heading"></a></h4>
 <p>推理方式1：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">det_coco</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/det_coco.jpg&#39;</span><span class="p">)</span>
 </pre></div>
@@ -227,11 +502,11 @@
 </div>
 <p>模型推理<code class="docutils literal notranslate"><span class="pre">inference()</span></code>可传入参数：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>(string|numpy.ndarray): 指定待目标检测的图片。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">show</span></code>(flag): 可取值<code class="docutils literal notranslate"><span class="pre">[True,False]</span></code> ,如果取值为<code class="docutils literal notranslate"><span class="pre">True</span></code>，在推理完成后会直接输出目标检测完成后的图片，默认为<code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">img_type</span></code>(string): 目标检测完成后会返回含有目标检测框的图片，该参数指定了返回图片的格式，可选有:<code class="docutils literal notranslate"><span class="pre">['cv2','pil']</span></code>，默认值为<code class="docutils literal notranslate"><span class="pre">None</span></code>，即如果不传入值，则不会返回图。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">thr</span></code>(float): 设置检测框阈值，取值范围为<code class="docutils literal notranslate"><span class="pre">[0,1]</span></code>超过该阈值的检测框被视为有效检测框，进行显示。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">target_class</span></code>(string)：该参数在使用<code class="docutils literal notranslate"><span class="pre">det_coco</span></code>的时候可以指定要检测的对象，如：<code class="docutils literal notranslate"><span class="pre">person</span></code>，<code class="docutils literal notranslate"><span class="pre">cake</span></code>等等。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>(str|numpy.ndarray)：指定待目标检测的图片。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">show</span></code>(flag)：可取值<code class="docutils literal notranslate"><span class="pre">[True,False]</span></code> ,如果取值为<code class="docutils literal notranslate"><span class="pre">True</span></code>，在推理完成后会直接输出目标检测完成后的图片，默认为<code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">img_type</span></code>(str)：目标检测完成后会返回含有目标检测框的图片，该参数指定了返回图片的格式，可选有:<code class="docutils literal notranslate"><span class="pre">['cv2','pil']</span></code>，默认值为<code class="docutils literal notranslate"><span class="pre">None</span></code>，即如果不传入值，则不会返回图。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">thr</span></code>(float)：设置检测框阈值，取值范围为<code class="docutils literal notranslate"><span class="pre">[0,1]</span></code>超过该阈值的检测框被视为有效检测框，进行显示。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">target_class</span></code>(str|list)：该参数在使用<code class="docutils literal notranslate"><span class="pre">det_coco</span></code>的时候可以指定要检测的对象，如：<code class="docutils literal notranslate"><span class="pre">target_class</span></code>=’person’，<code class="docutils literal notranslate"><span class="pre">target_class</span></code>=[’person’,’cake’]。</p></li>
 </ul>
 <p>若要查看coco目标检测中的所有类别可运行以下代码：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wf</span><span class="o">.</span><span class="n">coco_class</span><span class="p">()</span>
@@ -243,7 +518,7 @@
 </div>
 <p>模型推理返回结果：</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">result</span></code>：以二维数组的形式保存了检测框左上角顶点的坐标(x1,y1)和右下角顶点的坐标(x2,y2)（之所以是二维数组，是因为该模型能够检测多个对象，因此当检测到多个对象时，就会有多个[x1,y1,x2,y2]的一维数组，所以需要以二维数组形式保存），我们可以利用这四个数据计算出其他两个顶点的坐标，以及检测框的宽度和高度。</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">result</span></code>(numpy.ndarray)：以二维数组的形式保存了检测框左上角顶点的坐标(x1,y1)和右下角顶点的坐标(x2,y2)（之所以是二维数组，是因为该模型能够检测多个对象，因此当检测到多个对象时，就会有多个[x1,y1,x2,y2]的一维数组，所以需要以二维数组形式保存），我们可以利用这四个数据计算出其他两个顶点的坐标，以及检测框的宽度和高度。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># reslut</span>
 <span class="n">array</span><span class="p">([[</span>  <span class="mf">4.14969308</span><span class="p">,</span> <span class="mf">164.72434085</span><span class="p">,</span> <span class="mf">157.05228533</span><span class="p">,</span> <span class="mf">260.79559871</span><span class="p">],</span>
        <span class="p">[</span><span class="mf">548.76094273</span><span class="p">,</span> <span class="mf">322.64147513</span><span class="p">,</span> <span class="mf">585.47729492</span><span class="p">,</span> <span class="mf">400.10044466</span><span class="p">],</span>
@@ -259,19 +534,19 @@
 </ul>
 <p><img alt="../_images/det_res.png" src="../_images/det_res.png" /></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">img_with_box：</span></code>：是个三维数组，以cv2格式保存了包含了检测框的图片。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">img_with_box</span></code>(numpy.ndarray)：是个三维数组，以img_type所设置的格式保存了包含了检测框的图片。</p></li>
 </ul>
 </section>
-<section id="id6">
-<h4>3. 结果输出<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h4>
+<section id="id27">
+<h4>3. 结果输出<a class="headerlink" href="#id27" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">format_result</span> <span class="o">=</span> <span class="n">det_coco</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span> <span class="c1"># 将推理结果进行格式化输出</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
 <p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(string) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool) - 可选参数，设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(str)：设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool)：设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 输出结果</span>
 <span class="p">{</span><span class="s1">&#39;检测框&#39;</span><span class="p">:</span> <span class="p">[[</span><span class="mf">4.149693080357143</span><span class="p">,</span>
@@ -331,287 +606,12 @@
 <p><code class="docutils literal notranslate"><span class="pre">show()</span></code>能够输出带有检测框以及对应类别的结果图像。</p>
 <p><img alt="../_images/det_coco_show.png" src="../_images/det_coco_show.png" /></p>
 </section>
-<section id="id7">
-<h4>4. 结果保存<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h4>
+<section id="id28">
+<h4>4. 结果保存<a class="headerlink" href="#id28" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">det_coco</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">,</span><span class="s1">&#39;img_with_box.jpg&#39;</span><span class="p">)</span> <span class="c1"># 保存推理图片</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">save()</span></code>方法能够保存带有检测框以及对应类别的图像</p>
-<p>该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。</p>
-</section>
-</section>
-<section id="id8">
-<h3>人体目标检测<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
-<p>人体目标检测的任务是在图像或视频中检测和定位人体的位置，并为每个检测到的人体分配一个相应的类别标签。借助此任务，一般可以实现人体画面的识别与提取，为后续的图像处理和分析提供基础。</p>
-<p>XEduHub提供了进行人体目标检测的模型：<code class="docutils literal notranslate"><span class="pre">det_body</span></code>，<code class="docutils literal notranslate"><span class="pre">det_body_l</span></code>，这两个模型能够进行人体目标检测，后者为增强版模型。</p>
-<p><img alt="../_images/det_body.png" src="../_images/det_body.png" /></p>
-<section id="id9">
-<h4>代码样例<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
-<span class="n">det_body</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;det_body&#39;</span><span class="p">)</span>
-<span class="n">result</span><span class="p">,</span><span class="n">img_with_box</span> <span class="o">=</span> <span class="n">det_body</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/det_body.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
-<span class="n">format_result</span> <span class="o">=</span> <span class="n">det_body</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span> <span class="c1"># 将推理结果进行格式化输出</span>
-<span class="n">det_body</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">)</span><span class="c1"># 展示推理图片</span>
-<span class="n">det_body</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">,</span><span class="s1">&#39;img_with_box.jpg&#39;</span><span class="p">)</span> <span class="c1"># 保存推理图片</span>
-</pre></div>
-</div>
-</section>
-<section id="id10">
-<h4>代码解释<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h4>
-</section>
-<section id="id11">
-<h4>1. 模型声明<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
-<span class="n">det_body</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;det_body&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有三个参数可以设置：</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>选择任务。人体目标检测模型为<code class="docutils literal notranslate"><span class="pre">det_body</span></code>, <code class="docutils literal notranslate"><span class="pre">det_body_l</span></code>。<code class="docutils literal notranslate"><span class="pre">det_body_l</span></code>相比<code class="docutils literal notranslate"><span class="pre">det_body</span></code>模型规模较大，性能较强，但是推理的速度较慢。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>指定模型文件所在的路径，如<code class="docutils literal notranslate"><span class="pre">det_body</span> <span class="pre">=</span> <span class="pre">wf(task='det_body',checkpoint='det_body.onnx')</span> </code>。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即<code class="docutils literal notranslate"><span class="pre">det_body.onnx</span></code>。否则将通过网络到浦源平台的专用地址下载。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制<code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>文件夹。如希望模型保存放在其他路径，则设置<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。注意，<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数为文件夹名称。建议该参数留空，使用默认地址。</p></li>
-</ul>
-<p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id132">下文</a>。</p>
-</section>
-<section id="id12">
-<h4>2. 模型推理<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h4>
-<p>推理方式1：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">det_body</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/det_body.jpg&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
-</pre></div>
-</div>
-<p>推理方式2：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">,</span><span class="n">img_with_box</span> <span class="o">=</span> <span class="n">det_body</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/det_body.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
-</pre></div>
-</div>
-<p>模型推理<code class="docutils literal notranslate"><span class="pre">inference()</span></code>可传入参数：</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>(string|numpy.ndarray): 指定待目标检测的图片。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">show</span></code>(flag): 可取值<code class="docutils literal notranslate"><span class="pre">[True,False]</span></code> ,如果取值为<code class="docutils literal notranslate"><span class="pre">True</span></code>，在推理完成后会直接输出目标检测完成后的图片，默认为<code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">img_type</span></code>(string): 目标检测完成后会返回含有目标检测框的图片，该参数指定了返回图片的格式，可选有:<code class="docutils literal notranslate"><span class="pre">['cv2','pil']</span></code>，默认值为<code class="docutils literal notranslate"><span class="pre">None</span></code>，即如果不传入值，则不会返回图。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">thr</span></code>(float): 设置检测框阈值，取值范围为<code class="docutils literal notranslate"><span class="pre">[0,1]</span></code>超过该阈值的检测框被视为有效检测框，进行显示。</p></li>
-</ul>
-<p>模型推理返回结果：</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">result</span></code>：变量<code class="docutils literal notranslate"><span class="pre">boxes</span></code>以二维数组的形式保存了检测框左上角顶点的坐标(x1,y1)和右下角顶点的坐标(x2,y2)（之所以是二维数组，是因为该模型能够检测多个人体，因此当检测到多个人体时，就会有多个[x1,y1,x2,y2]的一维数组，所以需要以二维数组形式保存），我们可以利用这四个数据计算出其他两个顶点的坐标，以及检测框的宽度和高度。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">img_with_box：</span></code>：是个三维数组，以cv2格式保存了包含了检测框的图片。</p></li>
-</ul>
-</section>
-<section id="id13">
-<h4>3. 结果输出<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">format_result</span> <span class="o">=</span> <span class="n">det_body</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span><span class="c1"># 将推理结果进行格式化输出</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
-<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(string) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool) - 可选参数，设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
-</ul>
-<p><code class="docutils literal notranslate"><span class="pre">format_result</span></code>以字典形式存储了推理结果，共有两个键：<code class="docutils literal notranslate"><span class="pre">检测框</span></code>、<code class="docutils literal notranslate"><span class="pre">分数</span></code>。检测框以二维数组形式保存了每个检测框的坐标信息[x1,y1,x2,y2]，而分数则是对应下标的检测框的置信度，以一维数组形式保存。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 输出结果</span>
-<span class="p">{</span><span class="s1">&#39;检测框&#39;</span><span class="p">:</span> <span class="p">[[</span><span class="mf">323.2777170453753</span><span class="p">,</span>
-          <span class="mf">72.95395088195801</span><span class="p">,</span>
-          <span class="mf">917.5945354189192</span><span class="p">,</span>
-          <span class="mf">1130.7357228142876</span><span class="p">]],</span>
- <span class="s1">&#39;分数&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.8851305</span><span class="p">]}</span>
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">det_body</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">)</span><span class="c1"># 展示推理图片</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">show()</span></code>能够输出带有检测框的结果图像。</p>
-<p><img alt="../_images/det_body_show.png" src="../_images/det_body_show.png" /></p>
-</section>
-<section id="id14">
-<h4>4. 结果保存<a class="headerlink" href="#id14" title="Permalink to this heading"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">det_body</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">,</span><span class="s1">&#39;img_with_box.jpg&#39;</span><span class="p">)</span><span class="c1"># 保存推理图片</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">save()</span></code>方法能够保存带有检测框的图像</p>
-<p>该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。</p>
-</section>
-</section>
-<section id="id15">
-<h3>人脸目标检测<a class="headerlink" href="#id15" title="Permalink to this heading"></a></h3>
-<p>人脸目标检测指的是检测和定位一张图片中的人脸。XEduHub使用的是opencv的人脸检测模型，能够快速准确地检测出一张图片中所有的人脸。XEduHub提供了进行人脸目标检测的模型：<code class="docutils literal notranslate"><span class="pre">det_face</span></code>，能够快速准确地检测出图片中的所有人脸。</p>
-<section id="id16">
-<h4>代码样例<a class="headerlink" href="#id16" title="Permalink to this heading"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
-<span class="n">det_face</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;det_face&#39;</span><span class="p">)</span>
-<span class="n">result</span><span class="p">,</span><span class="n">img_with_box</span> <span class="o">=</span> <span class="n">det_face</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/det_face.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
-<span class="n">format_result</span> <span class="o">=</span> <span class="n">det_face</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span> <span class="c1"># 将推理结果进行格式化输出</span>
-<span class="n">det_face</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">)</span> <span class="c1"># 展示推理图片</span>
-<span class="n">det_face</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">,</span><span class="s1">&#39;img_with_box.jpg&#39;</span><span class="p">)</span> <span class="c1"># 保存推理图片</span>
-</pre></div>
-</div>
-</section>
-<section id="id17">
-<h4>代码解释<a class="headerlink" href="#id17" title="Permalink to this heading"></a></h4>
-</section>
-<section id="id18">
-<h4>1. 模型声明<a class="headerlink" href="#id18" title="Permalink to this heading"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
-<span class="n">det_face</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;det_face&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有三个参数可以设置：</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>选择任务。人脸目标检测模型为<code class="docutils literal notranslate"><span class="pre">det_face</span></code>。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>指定模型文件所在的路径，如<code class="docutils literal notranslate"><span class="pre">det_face</span> <span class="pre">=</span> <span class="pre">wf(task='det_face',checkpoint='det_face.onnx')</span> </code>。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即<code class="docutils literal notranslate"><span class="pre">det_face.onnx</span></code>。否则将通过网络到浦源平台的专用地址下载。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制<code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>文件夹。如希望模型保存放在其他路径，则设置<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。注意，<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数为文件夹名称。建议该参数留空，使用默认地址。</p></li>
-</ul>
-<p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id132">下文</a>。</p>
-</section>
-<section id="id19">
-<h4>2. 模型推理<a class="headerlink" href="#id19" title="Permalink to this heading"></a></h4>
-<p>推理方式1：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">det_face</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/det_face.jpg&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
-</pre></div>
-</div>
-<p>推理方式2：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">,</span><span class="n">img_with_box</span> <span class="o">=</span> <span class="n">det_face</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/det_face.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
-</pre></div>
-</div>
-<p>模型推理<code class="docutils literal notranslate"><span class="pre">inference()</span></code>可传入参数：</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>(string|numpy.ndarray): 指定待目标检测的图片。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">show</span></code>(flag): 可取值<code class="docutils literal notranslate"><span class="pre">[True,False]</span></code> ,如果取值为<code class="docutils literal notranslate"><span class="pre">True</span></code>，在推理完成后会直接输出目标检测完成后的图片，默认为<code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">img_type</span></code>(string): 目标检测完成后会返回含有目标检测框的图片，该参数指定了返回图片的格式，可选有:<code class="docutils literal notranslate"><span class="pre">['cv2','pil']</span></code>，默认值为<code class="docutils literal notranslate"><span class="pre">None</span></code>，即如果不传入值，则不会返回图。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">thr</span></code>(float): 设置检测框阈值，取值范围为<code class="docutils literal notranslate"><span class="pre">[0,1]</span></code>超过该阈值的检测框被视为有效检测框，进行显示。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">minSize</span></code>(tuple(int,int))：检测框的最小尺寸，小于该尺寸的目标会被过滤掉，默认为(50,50)。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">maxSize</span></code>(tuple(int,int))：检测框的最大尺寸,大于该尺寸的目标会被过滤掉，默认为输入图像的大小。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">scaleFactor</span></code>(float)：该参数用于缩放图像，以便在检测过程中使用不同大小的窗口来识别人脸。较小的值会导致检测速度加快，但可能会错过一些小的人脸；较大的值可以提高检测的准确性，但会减慢检测速度。通常，这个值会在1.1到1.5之间进行调整，默认为1.1。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">minNeighbors</span></code>(int)：该参数定义了构成检测目标的最小邻域矩形个数。如果这个值设置得太高，可能会导致检测器过于严格，错过一些实际的人脸；如果设置得太低，检测器可能会变得过于宽松，错误地检测到非人脸区域。通常，这个值会在2到10之间进行调整，默认为5。</p></li>
-</ul>
-<p>模型推理返回结果：</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">result</span></code>：以二维数组的形式保存了检测框左上角顶点的坐标(x1,y1)和右下角顶点的坐标(x2,y2)（之所以是二维数组，是因为该模型能够检测多个人脸，因此当检测到多个人脸时，就会有多个[x1,y1,x2,y2]的一维数组，所以需要以二维数组形式保存），我们可以利用这四个数据计算出其他两个顶点的坐标，以及检测框的宽度和高度。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">img_with_box：</span></code>：是个三维数组，以cv2格式保存了包含了检测框的图片。</p></li>
-</ul>
-</section>
-<section id="id20">
-<h4>3. 结果输出<a class="headerlink" href="#id20" title="Permalink to this heading"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">format_result</span> <span class="o">=</span> <span class="n">det_face</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span><span class="c1"># 将推理结果进行格式化输出</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
-<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(string) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool) - 可选参数，设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
-</ul>
-<p><code class="docutils literal notranslate"><span class="pre">format_result</span></code>以字典形式存储了推理结果，只有一个键：<code class="docutils literal notranslate"><span class="pre">检测框</span></code>。检测框以二维数组形式保存了每个检测框的坐标信息[x1,y1,x2,y2]。需要注意的是由于使用的为opencv的人脸检测模型，因此在<code class="docutils literal notranslate"><span class="pre">format_output</span></code>时缺少了分数这一指标。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 输出结果</span>
-<span class="p">{</span><span class="s1">&#39;检测框&#39;</span><span class="p">:</span> <span class="p">[[</span><span class="mi">202</span><span class="p">,</span> <span class="mi">237</span><span class="p">,</span> <span class="mi">940</span><span class="p">,</span> <span class="mi">975</span><span class="p">]]}</span>
-</pre></div>
-</div>
-<p><img alt="../_images/det_face_format.png" src="../_images/det_face_format.png" /></p>
-<p>结果可视化：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">det_face</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">)</span> <span class="c1"># 展示推理图片</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">show()</span></code>能够输出带有检测框的结果图像。</p>
-<p><img alt="../_images/det_face_show.png" src="../_images/det_face_show.png" /></p>
-<p>多人脸检测结果如下：（如果看到很多不该识别为人脸的地方出现了检测框，我们可以在推理是增加<code class="docutils literal notranslate"><span class="pre">minSize</span></code>参数来设置检测框的最小尺寸，将小于该尺寸的目标过滤掉，默认为(50,50)，同时也可以增加<code class="docutils literal notranslate"><span class="pre">maxSize</span></code>参数来设置检测框的最大尺寸，大于该尺寸的目标会被过滤掉，默认为输入图像的大小）</p>
-<p><img alt="../_images/det_face_2.png" src="../_images/det_face_2.png" /></p>
-</section>
-<section id="id21">
-<h4>4. 结果保存<a class="headerlink" href="#id21" title="Permalink to this heading"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">det_face</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">,</span><span class="s1">&#39;img_with_box.jpg&#39;</span><span class="p">)</span><span class="c1"># 保存推理图片</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">save()</span></code>方法能够保存带有检测框的图像</p>
-<p>该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。</p>
-</section>
-</section>
-<section id="id22">
-<h3>手部目标检测<a class="headerlink" href="#id22" title="Permalink to this heading"></a></h3>
-<p>手部目标检测指的是检测和定位一张图片中的人手。XEduHub提供了进行手部目标检测的模型：<code class="docutils literal notranslate"><span class="pre">det_hand</span></code>，能够快速准确地检测出图片中的所有人手。</p>
-<section id="id23">
-<h4>代码样例<a class="headerlink" href="#id23" title="Permalink to this heading"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
-<span class="n">det_hand</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;det_hand&#39;</span><span class="p">)</span>
-<span class="n">result</span><span class="p">,</span><span class="n">img_with_box</span> <span class="o">=</span> <span class="n">det_hand</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/det_hand.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
-<span class="n">format_result</span> <span class="o">=</span> <span class="n">det_hand</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span> <span class="c1"># 将推理结果进行格式化输出</span>
-<span class="n">det_hand</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">)</span> <span class="c1"># 展示推理图片</span>
-<span class="n">det_hand</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">,</span><span class="s1">&#39;img_with_box.jpg&#39;</span><span class="p">)</span> <span class="c1"># 保存推理图片</span>
-</pre></div>
-</div>
-</section>
-<section id="id24">
-<h4>代码解释<a class="headerlink" href="#id24" title="Permalink to this heading"></a></h4>
-</section>
-<section id="id25">
-<h4>1. 模型声明<a class="headerlink" href="#id25" title="Permalink to this heading"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
-<span class="n">det_hand</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;det_hand&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有三个参数可以设置：</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>选择任务。手部关键点提取模型为<code class="docutils literal notranslate"><span class="pre">det_hand</span></code>。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>指定模型文件所在的路径，如<code class="docutils literal notranslate"><span class="pre">det_hand</span> <span class="pre">=</span> <span class="pre">wf(task='det_hand',checkpoint='det_hand.onnx')</span> </code>。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即<code class="docutils literal notranslate"><span class="pre">det_hand.onnx</span></code>。否则将通过网络到浦源平台的专用地址下载。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制<code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>文件夹。如希望模型保存放在其他路径，则设置<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。注意，<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数为文件夹名称。建议该参数留空，使用默认地址。</p></li>
-</ul>
-<p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id132">下文</a>。</p>
-</section>
-<section id="id26">
-<h4>2. 模型推理<a class="headerlink" href="#id26" title="Permalink to this heading"></a></h4>
-<p>推理方式1：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">det_hand</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/det_hand.jpg&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
-</pre></div>
-</div>
-<p>推理方式2：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">,</span><span class="n">img_with_box</span> <span class="o">=</span> <span class="n">det_hand</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/det_hand.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
-</pre></div>
-</div>
-<p>模型推理<code class="docutils literal notranslate"><span class="pre">inference()</span></code>可传入参数：</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>：指定待检测的图片。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">show</span></code>: 可取值：<code class="docutils literal notranslate"><span class="pre">[True,False]</span></code> 默认为<code class="docutils literal notranslate"><span class="pre">False</span></code>。如果取值为<code class="docutils literal notranslate"><span class="pre">True</span></code>，在推理完成后会直接输出目标检测完成后的图片。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">img_type</span></code>：目标检测完成后会返回含有检测框的图片，该参数指定了返回图片的格式，可选有:<code class="docutils literal notranslate"><span class="pre">['cv2','pil']</span></code>，默认值为<code class="docutils literal notranslate"><span class="pre">None</span></code>，如果不传入值，则不会返回图。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">thr</span></code>: 设置检测框阈值，取值范围为<code class="docutils literal notranslate"><span class="pre">[0,1]</span></code>超过该阈值的检测框被视为有效检测框，进行显示。</p></li>
-</ul>
-<p>模型推理返回结果：</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">result</span></code>：以二维数组的形式保存了检测框左上角顶点的坐标(x1,y1)和右下角顶点的坐标(x2,y2)（之所以是二维数组，是因为该模型能够检测多个人手，因此当检测到多个人手时，就会有多个[x1,y1,x2,y2]的一维数组，所以需要以二维数组形式保存），我们可以利用这四个数据计算出其他两个顶点的坐标，以及检测框的宽度和高度。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">img_with_box：</span></code>：是个三维数组，以cv2格式保存了包含了检测框的图片。</p></li>
-</ul>
-</section>
-<section id="id27">
-<h4>3. 结果输出<a class="headerlink" href="#id27" title="Permalink to this heading"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">format_result</span> <span class="o">=</span> <span class="n">det_hand</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span> <span class="c1"># 将推理结果进行格式化输出</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
-<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(string) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool) - 可选参数，设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 输出结果</span>
-<span class="p">{</span><span class="s1">&#39;检测框&#39;</span><span class="p">:</span> <span class="p">[[</span><span class="mf">354.9846431187221</span><span class="p">,</span>
-          <span class="mf">171.7757524762835</span><span class="p">,</span>
-          <span class="mf">993.5257284981864</span><span class="p">,</span>
-          <span class="mf">867.7952793666294</span><span class="p">]],</span>
- <span class="s1">&#39;分数&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.8558253</span><span class="p">]}</span>
-</pre></div>
-</div>
-<p><img alt="../_images/det_hand_format2.png" src="../_images/det_hand_format2.png" /></p>
-<p><code class="docutils literal notranslate"><span class="pre">format_result</span></code>以字典形式存储了推理结果，共有两个键：<code class="docutils literal notranslate"><span class="pre">检测框</span></code>、<code class="docutils literal notranslate"><span class="pre">分数</span></code>。检测框以二维数组形式保存了每个检测框的坐标信息[x1,y1,x2,y2]，而分数则是对应下标的检测框的置信度，以一维数组形式保存。</p>
-<p>结果可视化：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">det_hand</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">)</span> <span class="c1"># 展示推理图片</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">show()</span></code>能够输出带有检测框的结果图像。</p>
-<p><img alt="../_images/det_hand_show.png" src="../_images/det_hand_show.png" /></p>
-</section>
-<section id="id28">
-<h4>4. 结果保存<a class="headerlink" href="#id28" title="Permalink to this heading"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">det_hand</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img_with_box</span><span class="p">,</span><span class="s1">&#39;img_with_box.jpg&#39;</span><span class="p">)</span> <span class="c1"># 保存推理图片</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">save()</span></code>方法能够保存带有检测框的图像</p>
 <p>该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。</p>
 </section>
 </section>
@@ -653,9 +653,9 @@
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有三个参数可以设置：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>选择任务。在人体关键点识别模型中，<code class="docutils literal notranslate"><span class="pre">task</span></code>可选取值为：<code class="docutils literal notranslate"><span class="pre">[pose_body17,pose_body17_l,pose_body26]</span></code>，默认为<code class="docutils literal notranslate"><span class="pre">pose_body17</span></code>。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>指定模型文件所在的路径，如<code class="docutils literal notranslate"><span class="pre">pose_body</span> <span class="pre">=</span> <span class="pre">wf(task='pose_body',checkpoint='pose_body.onnx')</span> </code>。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即<code class="docutils literal notranslate"><span class="pre">pose_body17.onnx</span></code>。否则将通过网络到浦源平台的专用地址下载。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制<code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>文件夹。如希望模型保存放在其他路径，则设置<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。注意，<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数为文件夹名称。建议该参数留空，使用默认地址。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>(str)：选择任务。在人体关键点识别模型中，<code class="docutils literal notranslate"><span class="pre">task</span></code>可选取值为：<code class="docutils literal notranslate"><span class="pre">[pose_body17,pose_body17_l,pose_body26]</span></code>，默认为<code class="docutils literal notranslate"><span class="pre">pose_body17</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>(str)：指定模型文件所在的路径，如<code class="docutils literal notranslate"><span class="pre">pose_body</span> <span class="pre">=</span> <span class="pre">wf(task='pose_body',checkpoint='pose_body.onnx')</span> </code>。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即<code class="docutils literal notranslate"><span class="pre">pose_body17.onnx</span></code>。否则将通过网络到浦源平台的专用地址下载。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>(str)：指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制<code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>文件夹。如希望模型保存放在其他路径，则设置<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。注意，<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数为文件夹名称。建议该参数留空，使用默认地址。</p></li>
 </ul>
 <p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id132">下文</a>。</p>
 </section>
@@ -671,15 +671,15 @@
 </div>
 <p>模型推理<code class="docutils literal notranslate"><span class="pre">inference()</span></code>可传入参数：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>: 指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">show</span></code>: 可取值：<code class="docutils literal notranslate"><span class="pre">[True,False]</span></code> 默认为<code class="docutils literal notranslate"><span class="pre">False</span></code>。如果取值为<code class="docutils literal notranslate"><span class="pre">True</span></code>，在推理完成后会直接输出关键点识别完成后的图片。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">img_type</span></code>: 关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:<code class="docutils literal notranslate"><span class="pre">['cv2','pil']</span></code>，默认值为<code class="docutils literal notranslate"><span class="pre">None</span></code>，如果不传入值，则不会返回图。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">bbox</span></code>：该参数可配合目标检测结果使用。例如在多人手关键点检测任务中，我们先识别人手位置，再检测手部关键点，该参数指定了要识别哪个目标检测框中的关键点。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>(str)：指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">show</span></code>(flag)：可取值：<code class="docutils literal notranslate"><span class="pre">[True,False]</span></code> 默认为<code class="docutils literal notranslate"><span class="pre">False</span></code>。如果取值为<code class="docutils literal notranslate"><span class="pre">True</span></code>，在推理完成后会直接输出关键点识别完成后的图片。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">img_type</span></code>(str)：关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:<code class="docutils literal notranslate"><span class="pre">['cv2','pil']</span></code>，默认值为<code class="docutils literal notranslate"><span class="pre">None</span></code>，如果不传入值，则不会返回图。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bbox</span></code>(numpy.ndarray)：该参数可配合目标检测结果使用。例如在多人手关键点检测任务中，我们先识别人手位置，再检测手部关键点，该参数指定了要识别哪个目标检测框中的关键点。</p></li>
 </ul>
 <p>模型推理返回结果：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">keypoints</span></code>以二维数组的形式保存了所有关键点的坐标，每个关键点(x,y)被表示为<code class="docutils literal notranslate"><span class="pre">[x,y]</span></code>根据前面的图示，要获取到某个特定序号<code class="docutils literal notranslate"><span class="pre">i</span></code>的关键点，只需要访问<code class="docutils literal notranslate"><span class="pre">keypoints[i]</span></code>即可。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">img_with_keypoints</span></code>是个三维数组，以对应img_type格式保存了关键点识别完成后图片的像素点信息。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">keypoints</span></code>(numpy.ndarray)：以二维数组的形式保存了所有关键点的坐标，每个关键点(x,y)被表示为<code class="docutils literal notranslate"><span class="pre">[x,y]</span></code>根据前面的图示，要获取到某个特定序号<code class="docutils literal notranslate"><span class="pre">i</span></code>的关键点，只需要访问<code class="docutils literal notranslate"><span class="pre">keypoints[i]</span></code>即可。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">img_with_keypoints</span></code>(numpy.ndarray)：是个三维数组，以对应img_type格式保存了关键点识别完成后图片的像素点信息。</p></li>
 </ul>
 </section>
 <section id="id35">
@@ -690,8 +690,8 @@
 <p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
 <p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(string) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool) - 可选参数，设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(str)：设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool)：设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">format_result</span></code>以字典形式存储了推理结果，共有两个键：<code class="docutils literal notranslate"><span class="pre">关键点坐标</span></code>和<code class="docutils literal notranslate"><span class="pre">分数</span></code>。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标，而分数则是对应下标的关键点的分数，以一维数组形式保存。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 输出结果</span>
@@ -776,9 +776,9 @@
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有三个参数可以设置：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>选择任务。人脸关键点识别模型为<code class="docutils literal notranslate"><span class="pre">pose_face106</span></code>（数字可省略，默认为pose_face）。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>指定模型文件所在的路径，如<code class="docutils literal notranslate"><span class="pre">pose_face</span> <span class="pre">=</span> <span class="pre">wf(task='pose_face',checkpoint='pose_face.onnx')</span> </code>。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即<code class="docutils literal notranslate"><span class="pre">pose_face106.onnx</span></code>。否则将通过网络到浦源平台的专用地址下载。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制<code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>文件夹。如希望模型保存放在其他路径，则设置<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。注意，<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数为文件夹名称。建议该参数留空，使用默认地址。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>(str)：选择任务。人脸关键点识别模型为<code class="docutils literal notranslate"><span class="pre">pose_face106</span></code>（数字可省略，默认为pose_face）。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>(str)：指定模型文件所在的路径，如<code class="docutils literal notranslate"><span class="pre">pose_face</span> <span class="pre">=</span> <span class="pre">wf(task='pose_face',checkpoint='pose_face.onnx')</span> </code>。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即<code class="docutils literal notranslate"><span class="pre">pose_face106.onnx</span></code>。否则将通过网络到浦源平台的专用地址下载。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>(str)：指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制<code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>文件夹。如希望模型保存放在其他路径，则设置<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。注意，<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数为文件夹名称。建议该参数留空，使用默认地址。</p></li>
 </ul>
 <p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id132">下文</a>。</p>
 </section>
@@ -794,10 +794,10 @@
 </div>
 <p>模型推理<code class="docutils literal notranslate"><span class="pre">inference()</span></code>可传入参数：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>: 指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>(string|numpy.ndarray): 指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">show</span></code>: 可取值：<code class="docutils literal notranslate"><span class="pre">[True,False]</span></code> 默认为<code class="docutils literal notranslate"><span class="pre">False</span></code>。如果取值为<code class="docutils literal notranslate"><span class="pre">True</span></code>，在推理完成后会直接输出关键点识别完成后的图片。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">img_type</span></code>: 关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:<code class="docutils literal notranslate"><span class="pre">['cv2','pil']</span></code>，默认值为<code class="docutils literal notranslate"><span class="pre">None</span></code>，如果不传入值，则不会返回图。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">bbox</span></code>：该参数可配合目标检测使用。在多人手关键点检测中，该参数指定了要识别哪个检测框中的关键点。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bbox</span></code>：该参数可配合目标检测使用。在多目标关键点检测中，该参数指定了要识别哪个检测框中的关键点。</p></li>
 </ul>
 <p>模型推理返回结果：</p>
 <ul class="simple">
@@ -813,7 +813,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
 <p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(string) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(str) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool) - 可选参数，设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">format_result</span></code>以字典形式存储了推理结果，共有两个键：<code class="docutils literal notranslate"><span class="pre">关键点坐标</span></code>和<code class="docutils literal notranslate"><span class="pre">分数</span></code>。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标（face106模型共检测出106个关键点），而分数则是对应下标的关键点的分数，以一维数组形式保存。</p>
@@ -887,7 +887,7 @@
 <p>模型推理返回结果：</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">keypoints</span></code>以二维数组的形式保存了所有关键点的坐标，每个关键点(x,y)被表示为<code class="docutils literal notranslate"><span class="pre">[x,y]</span></code>根据前面的图示，要获取到某个特定序号<code class="docutils literal notranslate"><span class="pre">i</span></code>的关键点，只需要访问<code class="docutils literal notranslate"><span class="pre">keypoints[i]</span></code>即可。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">img_with_keypoints</span></code>是个三维数组，以pil格式保存了关键点识别完成后的图片。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">img_with_keypoints</span></code>是个三维数组，以img_type设置的保存了关键点识别完成后的图片。</p></li>
 </ul>
 </section>
 <section id="id49">
@@ -898,7 +898,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
 <p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(string) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(str) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool) - 可选参数，设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。
 <code class="docutils literal notranslate"><span class="pre">format_result</span></code>以字典形式存储了推理结果，共有两个键：<code class="docutils literal notranslate"><span class="pre">关键点坐标</span></code>和<code class="docutils literal notranslate"><span class="pre">分数</span></code>。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标，而分数则是对应下标的关键点的分数，以一维数组形式保存。</p></li>
 </ul>
@@ -966,7 +966,7 @@
 <p>模型推理返回结果：</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">keypoints</span></code>以二维数组的形式保存了所有关键点的坐标，每个关键点(x,y)被表示为<code class="docutils literal notranslate"><span class="pre">[x,y]</span></code>根据前面的图示，要获取到某个特定序号<code class="docutils literal notranslate"><span class="pre">i</span></code>的关键点，只需要访问<code class="docutils literal notranslate"><span class="pre">keypoints[i]</span></code>即可。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">img_with_keypoints</span></code>是个三维数组，以pil格式保存了关键点识别完成后的图片。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">img_with_keypoints</span></code>是个三维数组，以img_type设置的格式保存了关键点识别完成后的图片。</p></li>
 </ul>
 </section>
 <section id="id56">
@@ -977,7 +977,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
 <p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(string) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(str) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool) - 可选参数，设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">format_result</span></code>以字典形式存储了推理结果，共有两个键：<code class="docutils literal notranslate"><span class="pre">关键点坐标</span></code>和<code class="docutils literal notranslate"><span class="pre">分数</span></code>。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标，而分数则是对应下标的关键点的分数，以一维数组形式保存。</p>
@@ -1101,7 +1101,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
 <p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(string) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(str) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool) - 可选参数，设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 输出结果</span>
@@ -1257,7 +1257,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
 <p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(string) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(str) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool) - 可选参数，设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">format_result</span></code>是一个字典，以格式化的方式展示了这张图片最有可能的分类结果。预测值表示图片分类标签在所有一千个分类中的索引，分数是属于这个分类的概率，预测类别是分类标签的内容。</p>
@@ -1369,7 +1369,7 @@
 </ul>
 <p>模型推理返回结果：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">result</span></code>和<code class="docutils literal notranslate"><span class="pre">img</span></code>都是三维数组，以cv2格式保存了风格迁移完成后的图片。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">result</span></code>和<code class="docutils literal notranslate"><span class="pre">img</span></code>都是三维数组，以img_type设置的格式保存了风格迁移完成后的图片。</p></li>
 </ul>
 </section>
 <section id="id75">
@@ -1535,7 +1535,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">车辆检测result[0]</span></code>：以二维数组保存了车辆目标检测框左上角顶点的坐标(x1,y1)和右下角顶点的坐标(x2,y2)（之所以是二维数组，是因为该模型能够检测多辆车，因此当检测到多辆车时，就会有多个[x1,y1,x2,y2]的一维数组，所以需要以二维数组形式保存），我们可以利用这四个数据计算出其他两个顶点的坐标，以及检测框的宽度和高度。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">车道线分割result[1]</span></code>：以由0，1组成二维数组（w*h），保存图像中每个像素的mask，mask为1表示该像素为车道线分割目标，mask为0表示该像素是背景。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">可行驶区域result[2]</span></code>：以由0，1组成二维数组（w*h），保存图像中每个像素的mask，mask为1表示该像素为可驾驶区域分割目标，mask为0表示该像素是背景。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">img_with_box：</span></code>：是个三维数组，以cv2格式保存了包含了检测框与分割目标的图片。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">img_with_box</span></code>(numpy.ndarray)：是个三维数组，以img_type所设置的格式保存了包含了检测框与分割目标的图片。</p></li>
 </ul>
 </section>
 <section id="id90">
@@ -1546,7 +1546,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
 <p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(string) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(str) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool) - 可选参数，设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">format_result</span></code>以字典形式存储了推理结果，有四个键：<code class="docutils literal notranslate"><span class="pre">检测框</span></code>、<code class="docutils literal notranslate"><span class="pre">分数</span></code>、<code class="docutils literal notranslate"><span class="pre">车道线掩码</span></code>、<code class="docutils literal notranslate"><span class="pre">可行驶区域掩码</span></code>。检测框以二维数组形式保存了每个检测框的坐标信息[x1,y1,x2,y2]。</p>
@@ -1862,7 +1862,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有两个参数可以设置：</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>：只需要设置task为<code class="docutils literal notranslate"><span class="pre">mmedu</span></code> ，而不需要指定是哪种任务。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>：指定你的模型的路径，如<code class="docutils literal notranslate"><span class="pre">checkpoint='cats_dogs.onnx'</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>：指定你的模型的路径，该参数不能为空，如<code class="docutils literal notranslate"><span class="pre">checkpoint='cats_dogs.onnx'</span></code>。</p></li>
 </ul>
 <p>这里我们以猫狗分类模型为例，项目指路：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&amp;sc=647b3880aac6f67c822a04f5#public">猫狗分类</a>。</p>
 </section>
@@ -1879,7 +1879,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">thr</span></code>(float): 设置推理阈值，取值范围为<code class="docutils literal notranslate"><span class="pre">[0,1]</span></code>，预测结果的置信度高于这个阈值时，这些结果才会被认为是有效的。</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">result</span></code>是一个字典，包含三个键：<code class="docutils literal notranslate"><span class="pre">标签</span></code>、<code class="docutils literal notranslate"><span class="pre">置信度</span></code>和<code class="docutils literal notranslate"><span class="pre">预测结果</span></code>。</p>
-<p><code class="docutils literal notranslate"><span class="pre">result_img</span></code>以pil格式保存了模型推理完成后的图片（原图+推理结果）。</p>
+<p><code class="docutils literal notranslate"><span class="pre">result_img</span></code>以img_type设置的格式保存了模型推理完成后的图片（原图+推理结果）。</p>
 </section>
 <section id="id109">
 <h5>3. 结果输出<a class="headerlink" href="#id109" title="Permalink to this heading"></a></h5>
@@ -1889,7 +1889,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
 <p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(string) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(str) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool) - 可选参数，设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 输出结果</span>
@@ -1938,7 +1938,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有两个参数可以设置：</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>：只需要设置task为<code class="docutils literal notranslate"><span class="pre">mmedu</span></code> ，而不需要指定是哪种任务。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>：指定你的模型的路径，如<code class="docutils literal notranslate"><span class="pre">checkpoint='plate.onnx'</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>：指定你的模型的路径，该参数不能为空，如<code class="docutils literal notranslate"><span class="pre">checkpoint='plate.onnx'</span></code>。</p></li>
 </ul>
 <p>这里以车牌识别为例进行说明。项目指路：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=641426fdcb63f030544017a2&amp;backpath=/pjlab/projects/list#public">使用MMEdu实现车牌检测</a></p>
 </section>
@@ -1955,7 +1955,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">thr</span></code>(float): 设置检测框阈值，取值范围为<code class="docutils literal notranslate"><span class="pre">[0,1]</span></code>，预测结果的置信度高于这个阈值时，这些结果才会被认为是有效的。</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">result</span></code>的结果是一个数组，里面保存了结果字典。该字典有四个键：<code class="docutils literal notranslate"><span class="pre">标签</span></code>、<code class="docutils literal notranslate"><span class="pre">置信度</span></code>、<code class="docutils literal notranslate"><span class="pre">坐标</span></code>以及<code class="docutils literal notranslate"><span class="pre">预测结果</span></code>。其中坐标表示了检测框的两个顶点：左上(x1,y1)和右下(x2,y2)。</p>
-<p><code class="docutils literal notranslate"><span class="pre">result_img</span></code>以pil格式保存了模型推理完成后的图片（原图+推理结果）。</p>
+<p><code class="docutils literal notranslate"><span class="pre">result_img</span></code>以img_type设置的格式保存了模型推理完成后的图片（原图+推理结果）。</p>
 </section>
 <section id="id116">
 <h5>3. 结果输出<a class="headerlink" href="#id116" title="Permalink to this heading"></a></h5>
@@ -1965,7 +1965,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
 <p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(string) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(str) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool) - 可选参数，设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 输出结果</span>
@@ -2018,7 +2018,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有两个参数可以设置：</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>：只需要设置task为<code class="docutils literal notranslate"><span class="pre">basenn</span></code> ，而不需要指定是哪种任务。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>：指定你的模型的路径，如<code class="docutils literal notranslate"><span class="pre">checkpoint='basenn.onnx'</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>：指定你的模型的路径，该参数不能为空，如<code class="docutils literal notranslate"><span class="pre">checkpoint='basenn.onnx'</span></code>。</p></li>
 </ul>
 </section>
 <section id="id121">
@@ -2048,7 +2048,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
 <p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(string) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(str) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool) - 可选参数，设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 输出结果</span>
@@ -2085,7 +2085,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有两个参数可以设置：</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>：只需要设置task为<code class="docutils literal notranslate"><span class="pre">baseml</span></code> ，而不需要指定是哪种任务。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>：指定你的模型的路径，如<code class="docutils literal notranslate"><span class="pre">checkpoint='baseml.pkl'</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>：指定你的模型的路径，该参数不能为空，如<code class="docutils literal notranslate"><span class="pre">checkpoint='baseml.pkl'</span></code>。</p></li>
 </ul>
 </section>
 <section id="id126">
@@ -2113,7 +2113,7 @@ array([1，0])
 <p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
 <p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(string) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(str) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool) - 可选参数，设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span># 输出结果
