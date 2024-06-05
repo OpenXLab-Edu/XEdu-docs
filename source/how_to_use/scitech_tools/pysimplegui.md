@@ -97,15 +97,14 @@ window.close()
 # 带窗体的摄像头程序，自动推理
 # 模型为1000分类预训练模型（MobielNet）
 import PySimpleGUIWeb as sg
-import BaseDeploy as bd
-import cv2  #pip install opencv-python
+from XEdu.hub import Workflow as wf
+import cv2
 
-model_path = 'cls_imagenet.onnx'
-model = bd(model_path)
+model = wf(task='cls_imagenet')
 
 def my_inf(frame):
     result1 = model.inference(frame)
-    result2 = model.print_result(result1)
+    result2 = model.format_output()
     return result2
 
 #背景色
@@ -129,7 +128,7 @@ while True:
     res = my_inf(frame) 
     if res:
         print('推理结果为：',res)
-        window['res'].update('推理结果：'+res['预测结果'])
+        window['res'].update('推理结果：'+res['预测类别'])
 
     #画面实时更新
     imgbytes = cv2.imencode('.png', imgSrc)[1].tobytes()
@@ -150,24 +149,23 @@ window.close()
 # 带窗体的摄像头程序，自动推理
 # 模型为80类目标检测预训练模型（SSD_Lite）
 import PySimpleGUIWeb as sg
-import BaseDeploy as bd
-import cv2  #pip install opencv-python
+from XEdu.hub import Workflow as wf
+import cv2
 
-model_path = 'det.onnx'
-model = bd(model_path)
+model = wf(task='mmedu',checkpoint='det.onnx')
 
 def my_inf(frame):
     global model
-    res1, img = model.inference(frame,get_img='cv2')
+    res1, img = model.inference(frame,img_type='cv2')
     # 转换推理结果
-    res2 = model.print_result(res1)
+    res2 = model.format_output()
     if len(res2) == 0:
         return None,None
     classes = []
     print(res2)
     # 提取预测结果
     for res in res2:
-        classes.append(res['预测结果'])
+        classes.append(res['预测值'])
     return str(classes),img
 
 #背景色
