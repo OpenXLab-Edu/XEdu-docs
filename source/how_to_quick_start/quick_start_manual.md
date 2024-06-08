@@ -1,8 +1,10 @@
-# 使用说明
+# 入门手册使用说明
 
-欢迎各位小伙伴们来到XEdu的AI天地，要想“畅游”XEdu，入门手册少不了，接下来将会一一介绍XEdu的奇妙AI工具们，带领大家快速了解XEdu各个模块的功能和特点，此外，我们还提供了链接“传送门”，方便小伙伴们轻松玩转AI。
+欢迎来到XEdu的AI天地！本手册将会一一介绍XEdu的奇妙AI工具们，带领大家快速了解XEdu各个模块的功能和特点，此外，我们还提供了链接“传送门”，方便小伙伴们轻松玩转AI。
 
-XEdu的使用有两种：网页或者本地
+虽然听起来AI模型训练非常高深，但您不用担心，只要把认真本手册的几个案例完成，就可以胜任当前的中小学AI教育了。当然，有些案例需要您多次实践，毕竟AI涉及到的专业名词太多了。
+
+您有多种途径快速使用XEdu，基于网络或者本地。
 
 - 网页推荐使用浦育平台，里面有XEdu容器，能够省去环境的配置，并且每周会有一定额度的免费远程算力，上手更加轻松。
 - 本地环境的安装推荐选择XEdu一键安装包（CPU版本），它满足大部分机房需求。
@@ -93,3 +95,5 @@ MMEdu是人工智能视觉算法集成的深度学习开发工具。本项目使
 
 项目链接：[用XEduHub和BaseNN完成石头剪刀布手势识别](https://openinnolab.org.cn/pjlab/project?id=66062a39a888634b8a1bf2ca&backpath=/pjedu/userprofile?slideKey=project#public)
 [https://openinnolab.org.cn/pjlab/project?id=66062a39a888634b8a1bf2ca&backpath=/pjedu/userprofile?slideKey=project#public](https://openinnolab.org.cn/pjlab/project?id=66062a39a888634b8a1bf2ca&backpath=/pjedu/userprofile?slideKey=project#public)
+
+祝您学习愉快！
