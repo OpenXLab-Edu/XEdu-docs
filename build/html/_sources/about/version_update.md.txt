@@ -2,15 +2,21 @@
 
 ## 1. 正式版
 
-发布时间：2022年9月
+### 基本信息
 
-### 开发计划
+1.发布时间：2022年9月
 
-1.实现以pip方式安装。
+2.基本构成：分为数据处理（BaseDT）、模型训练（MMEdu、BaseML、BaseNN）和模型应用（XEduHub、BaseDeploy）三个部分。
 
-2.分MMEdu、BaseML、BaseNN三个功能模块。
-
-3.工具持续迭代，增加了模型部署库BaseDeploy和数据处理库BaseDT。
+- 数据处理部分
+  - BaseDT
+- 模型训练
+  - MMEdu
+  - BaseML
+  - BaseNN
+- 模型部署库
+  - XEduHub
+  - BaseDeploy
 
 ### 正式版更新记录
 
@@ -19,6 +25,7 @@
 ##### V0.1.23 20231207
 
 1. 模型转换生成的示例代码文件由basedeploy修正为xedu-python。
+
 2. ssd_lite载入数据集完善，配置文件完善。
 
 ##### V0.1.20 20230704

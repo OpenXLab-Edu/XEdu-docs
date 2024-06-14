@@ -54,7 +54,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../easydl.html">EasyDL系列无代码工具</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../basedt.html">数据处理库BaseDT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../basedeploy.html">模型部署库BaseDeploy</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../how_to_use.html">如何用XEdu借助AI解决真实问题</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../how_to_use.html">如何用XEdu解决真实问题</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../introduction.html">用AI解决真实问题的技术地图</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../step.html">用AI解决问题的一般步骤</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../support_resources.html">学习支持和资源获取</a></li>
@@ -96,7 +96,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../../how_to_use.html">如何用XEdu借助AI解决真实问题</a></li>
+          <li class="breadcrumb-item"><a href="../../how_to_use.html">如何用XEdu解决真实问题</a></li>
           <li class="breadcrumb-item"><a href="../scitech_tools.html">相关科创工具</a></li>
       <li class="breadcrumb-item active">GUI库PySimpleGUI</li>
       <li class="wy-breadcrumbs-aside">
@@ -201,15 +201,14 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 带窗体的摄像头程序，自动推理</span>
 <span class="c1"># 模型为1000分类预训练模型（MobielNet）</span>
 <span class="kn">import</span> <span class="nn">PySimpleGUIWeb</span> <span class="k">as</span> <span class="nn">sg</span>
-<span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
-<span class="kn">import</span> <span class="nn">cv2</span>  <span class="c1">#pip install opencv-python</span>
+<span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
 
-<span class="n">model_path</span> <span class="o">=</span> <span class="s1">&#39;cls_imagenet.onnx&#39;</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">bd</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;cls_imagenet&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">my_inf</span><span class="p">(</span><span class="n">frame</span><span class="p">):</span>
     <span class="n">result1</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
-    <span class="n">result2</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">print_result</span><span class="p">(</span><span class="n">result1</span><span class="p">)</span>
+    <span class="n">result2</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">format_output</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">result2</span>
 
 <span class="c1">#背景色</span>
@@ -233,7 +232,7 @@
     <span class="n">res</span> <span class="o">=</span> <span class="n">my_inf</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span> 
     <span class="k">if</span> <span class="n">res</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;推理结果为：&#39;</span><span class="p">,</span><span class="n">res</span><span class="p">)</span>
-        <span class="n">window</span><span class="p">[</span><span class="s1">&#39;res&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s1">&#39;推理结果：&#39;</span><span class="o">+</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;预测结果&#39;</span><span class="p">])</span>
+        <span class="n">window</span><span class="p">[</span><span class="s1">&#39;res&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s1">&#39;推理结果：&#39;</span><span class="o">+</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;预测类别&#39;</span><span class="p">])</span>
 
     <span class="c1">#画面实时更新</span>
     <span class="n">imgbytes</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imencode</span><span class="p">(</span><span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="n">imgSrc</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tobytes</span><span class="p">()</span>
@@ -252,24 +251,23 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 带窗体的摄像头程序，自动推理</span>
 <span class="c1"># 模型为80类目标检测预训练模型（SSD_Lite）</span>
 <span class="kn">import</span> <span class="nn">PySimpleGUIWeb</span> <span class="k">as</span> <span class="nn">sg</span>
-<span class="kn">import</span> <span class="nn">BaseDeploy</span> <span class="k">as</span> <span class="nn">bd</span>
-<span class="kn">import</span> <span class="nn">cv2</span>  <span class="c1">#pip install opencv-python</span>
+<span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
 
-<span class="n">model_path</span> <span class="o">=</span> <span class="s1">&#39;det.onnx&#39;</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">bd</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;mmedu&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;det.onnx&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">my_inf</span><span class="p">(</span><span class="n">frame</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">model</span>
-    <span class="n">res1</span><span class="p">,</span> <span class="n">img</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span><span class="n">get_img</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">)</span>
+    <span class="n">res1</span><span class="p">,</span> <span class="n">img</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;cv2&#39;</span><span class="p">)</span>
     <span class="c1"># 转换推理结果</span>
-    <span class="n">res2</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">print_result</span><span class="p">(</span><span class="n">res1</span><span class="p">)</span>
+    <span class="n">res2</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">format_output</span><span class="p">()</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">res2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">None</span><span class="p">,</span><span class="kc">None</span>
     <span class="n">classes</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">res2</span><span class="p">)</span>
     <span class="c1"># 提取预测结果</span>
     <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">res2</span><span class="p">:</span>
-        <span class="n">classes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;预测结果&#39;</span><span class="p">])</span>
+        <span class="n">classes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;预测值&#39;</span><span class="p">])</span>
     <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">classes</span><span class="p">),</span><span class="n">img</span>
 
 <span class="c1">#背景色</span>

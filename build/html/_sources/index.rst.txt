@@ -26,7 +26,7 @@ OpenXLabEdu帮助文档
 
 
 Indices and tables
-==================
+===========================
 
 * :ref:`genindex`
 * :ref:`modindex`

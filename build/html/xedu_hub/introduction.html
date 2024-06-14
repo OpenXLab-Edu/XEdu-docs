@@ -135,7 +135,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basedt.html">数据处理库BaseDT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basedeploy.html">模型部署库BaseDeploy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../how_to_use.html">如何用XEdu借助AI解决真实问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_use.html">如何用XEdu解决真实问题</a></li>
 </ul>
 
         </div>
@@ -504,7 +504,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>(str|numpy.ndarray)：指定待目标检测的图片。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">show</span></code>(flag)：可取值<code class="docutils literal notranslate"><span class="pre">[True,False]</span></code> ,如果取值为<code class="docutils literal notranslate"><span class="pre">True</span></code>，在推理完成后会直接输出目标检测完成后的图片，默认为<code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">img_type</span></code>(str)：目标检测完成后会返回含有目标检测框的图片，该参数指定了返回图片的格式，可选有:<code class="docutils literal notranslate"><span class="pre">['cv2','pil']</span></code>，默认值为<code class="docutils literal notranslate"><span class="pre">None</span></code>，即如果不传入值，则不会返回图。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">thr</span></code>(float)：设置检测框阈值，取值范围为<code class="docutils literal notranslate"><span class="pre">[0,1]</span></code>超过该阈值的检测框被视为有效检测框，进行显示。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">thr</span></code>(float)：设置检测框阈值，取值范围为<code class="docutils literal notranslate"><span class="pre">[0,1]</span></code>超过该阈值的检测框被视为有效检测框，进行显示，默认值为0.3。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">target_class</span></code>(str|list)：该参数在使用<code class="docutils literal notranslate"><span class="pre">det_coco</span></code>的时候可以指定要检测的对象，如：<code class="docutils literal notranslate"><span class="pre">target_class</span></code>=’person’，<code class="docutils literal notranslate"><span class="pre">target_class</span></code>=[’person’,’cake’]。</p></li>
 </ul>
 <p>若要查看coco目标检测中的所有类别可运行以下代码：</p>
@@ -673,7 +673,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>(str)：指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">show</span></code>(flag)：可取值：<code class="docutils literal notranslate"><span class="pre">[True,False]</span></code> 默认为<code class="docutils literal notranslate"><span class="pre">False</span></code>。如果取值为<code class="docutils literal notranslate"><span class="pre">True</span></code>，在推理完成后会直接输出关键点识别完成后的图片。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">img_type</span></code>(str)：关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:<code class="docutils literal notranslate"><span class="pre">['cv2','pil']</span></code>，默认值为<code class="docutils literal notranslate"><span class="pre">None</span></code>，如果不传入值，则不会返回图。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">bbox</span></code>(numpy.ndarray)：该参数可配合目标检测结果使用。例如在多人手关键点检测任务中，我们先识别人手位置，再检测手部关键点，该参数指定了要识别哪个目标检测框中的关键点。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bbox</span></code>(numpy.ndarray)：该参数可配合目标检测结果使用。例如在多人体关键点检测任务中，我们先识别人体位置，再检测人体关键点，该参数指定了要识别哪个目标检测框中的关键点。</p></li>
 </ul>
 <p>模型推理返回结果：</p>
 <ul class="simple">
@@ -960,7 +960,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>: 指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">show</span></code>: 可取值：<code class="docutils literal notranslate"><span class="pre">[True,False]</span></code> 默认为<code class="docutils literal notranslate"><span class="pre">False</span></code>。如果取值为<code class="docutils literal notranslate"><span class="pre">True</span></code>，在推理完成后会直接输出关键点识别完成后的图片。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">img_type</span></code>: 关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:<code class="docutils literal notranslate"><span class="pre">['cv2','pil']</span></code>，默认值为<code class="docutils literal notranslate"><span class="pre">None</span></code>，如果不传入值，则不会返回图。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">bbox</span></code>：该参数可配合目标检测使用。在多人手关键点检测中，该参数指定了要识别哪个检测框中的关键点。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bbox</span></code>：该参数可配合目标检测使用。在多人体关键点检测中，该参数指定了要识别哪个检测框中的关键点。</p></li>
 </ul>
 <p>模型推理返回结果：</p>
 <ul class="simple">
@@ -1509,7 +1509,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>：指定待检测的图片。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">show</span></code>: 可取值：<code class="docutils literal notranslate"><span class="pre">[True,False]</span></code> 默认为<code class="docutils literal notranslate"><span class="pre">False</span></code>。如果取值为<code class="docutils literal notranslate"><span class="pre">True</span></code>，在推理完成后会直接输出目标检测完成后的图片。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">img_type</span></code>：目标检测完成后会返回含有检测框的图片，该参数指定了返回图片的格式，可选有:<code class="docutils literal notranslate"><span class="pre">['cv2','pil']</span></code>，默认值为<code class="docutils literal notranslate"><span class="pre">None</span></code>，如果不传入值，则不会返回图。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">thr</span></code>: 设置检测框阈值，取值范围为<code class="docutils literal notranslate"><span class="pre">[0,1]</span></code>超过该阈值的检测框被视为有效检测框，进行显示。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">thr</span></code>: 设置检测框阈值，取值范围为<code class="docutils literal notranslate"><span class="pre">[0,1]</span></code>超过该阈值的检测框被视为有效检测框，进行显示，默认值为0.3。</p></li>
 </ul>
 <p>模型推理返回结果：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">array</span><span class="p">([[</span><span class="mi">671</span><span class="p">,</span> <span class="mi">398</span><span class="p">,</span>  <span class="mi">98</span><span class="p">,</span>  <span class="mi">78</span><span class="p">],</span>
