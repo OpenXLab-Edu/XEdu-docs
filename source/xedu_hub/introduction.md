@@ -894,9 +894,15 @@ wholebody = wf(task='pose_wholebody') # 数字可省略，当省略时，默认�
 
 #### 2. 模型推理
 
+推理方式1：
 ```python
-# keypoints = wholebody.inference(data='data/wholebody.jpg') # 模型推理方式1
-keypoints,img_with_keypoints = wholebody.inference(data='data/wholebody.jpg',img_type='pil') # 模型推理方式2
+keypoints = wholebody.inference(data='data/wholebody.jpg') # 进行模型推理
+```
+
+推理方式2：
+
+```python
+keypoints,img_with_keypoints = wholebody.inference(data='data/wholebody.jpg',img_type='pil') # 进行模型推理
 ```
 
 模型推理`inference()`可传入参数：
@@ -1858,8 +1864,125 @@ get_similarity(image_embeddings, txt_embeddings,method='cosine') # 计算相似�
 
 现在我们可以看到cat.jpg与'a black cat'向量的相似度为0.007789988070726395，而与'a yellow cat'向量的相似度为0.9922100305557251。显而易见，这张可爱的黄色猫咪图像与'a yellow cat'文本描述更为贴近。
 
+## 8. 图像分割模型的使用
 
-## 8. MMEdu模型推理
+图像分割任务的目标是将图像分割成不同的区域或对象，给图像中的每个像素分配一个标签。这个过程涉及到对图像特征的识别，如边缘、纹理和颜色等，模型会将具有相似特征的像素归为同一类别，从而实现对目标的精确分割，从而为更高层次的任务提供支持，如场景理解、目标检测、图像编辑等。
+
+XEduHub 提供了一个专门的分割任务工具 `seg_sam`，这是基于 "Segment Anything Model"（SAM）的模型。它是一种高度灵活的分割模型，它能够根据用户的简单提示，如点或框，来识别和分割图像中的对象。
+
+在图像分割中，掩码（mask）是一个关键概念。它是一个二维数组，与输入图像的尺寸相同，其中每个元素对应图像中的一个像素。掩码通过二值标签（1 表示属于分割对象，0表示不属于）来标记像素，从而为图像中的每个像素提供了一个明确的指示，表明它是否属于被分割的对象。
+
+XEduHub 中的 `seg_sam` 工具利用这种掩码机制，允许用户轻松地执行各种分割任务。
+
+
+![](../images/xeduhub/seg_sam_show.png)
+
+#### 代码样例
+
+```python
+from XEdu.hub import Workflow as wf # 导入库
+seg = wf(task = 'seg_sam') # 实例化模型
+img_path = 'demo/seg.jpg' # 指定进行推理的图片路径
+masks, img = seg.inference(data=img_path, img_type='pil') # 进行模型推理
+format_result = seg.format_output(lang='zh') # 将推理结果进行格式化输出
+seg.show(masks[0]) # 可视化第一个分割掩码
+seg.save(masks[0],"demo/first_mask.png") # 保存可视化第一个分割掩码为'first_mask.png'
+seg.show(img) # 显示分割后的图像，带有分割掩码
+seg.save(img,"demo/mask_with_image.png")# 保存分割后的图像为'mask_with_image.png'
+```
+
+#### 代码解释
+
+#### 1. 模型声明
+
+```python
+from XEdu.hub import Workflow as wf # 导入库
+seg = wf(task = 'seg_sam') # 实例化模型
+```
+
+`wf()`中共有三个参数可以设置：
+
+- `task`(str)选择任务。分割任务模型为`seg_sam`。
+- `checkpoint`(list)指定模型文件所在的路径。由于seg_sam任务的实现需要用到两个模型：`seg_sam_decoder.onnx`和`seg_sam_encoder.onnx`，因此checkpoint需要传入一个列表，第一个值是encoder路径，第二个是decoder路径，例如checkpoint=['my_checkpoints/seg_sam_encoder.onnx','my_checkpoints/seg_sam_decoder.onnx']，两个模型可以不放在同一个文件夹下。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`seg_sam_decoder.onnx`和`seg_sam_encoder.onnx`。否则将通过网络到浦源平台的专用地址下载。
+- `download_path`指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制`checkpoints`文件夹。如希望模型保存放在其他路径，则设置`download_path`参数，如`download_path='my_checkpoint'`。注意，`download_path`参数为文件夹名称。建议该参数留空，使用默认地址。
+
+任务模型文件获取与存放请查看[下文](https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id132)。
+
+#### 2. 模型推理
+
+推理方式1：
+```python
+masks = seg.inference(data='data/seg.jpg') # 进行模型推理
+```
+
+推理方式2：
+
+```python
+masks, img = seg.inference(data='data/seg.jpg', img_type='pil') # 进行模型推理
+```
+
+模型推理`inference()`可传入参数：
+
+- `data`(str)：指定待分割的图片。
+
+- `show`(bool): 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出图像分割完成后带有掩码的图片。
+
+- `img_type`(str)：图像分割完成后会返回含有掩码的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
+
+- `mode`(str): prompt的模式，prompt被用来指导模型进行图像分割，在本任务中用于指明期望分割的目标位置或区域。mode可以设置为point或box，默认为point。
+
+- `prompt`(numpy.ndarray): 点或框的坐标，默认为图像中心点。输入的prompt可以是一个点也可以是多个点。例如：一维数组[100,100]（一个点），也可以是二维数组[[100,100]]（一个点），二维数组[[100,100],[200,200]]（两个点）。box格式为[x1,y1,x2,y2]，和hub中检测任务的检测框格式一致。
+
+模型推理返回结果：
+
+- `masks`(numpy.ndarray)：是一个三维数组，masks掩码格式推理结果，由多个掩码组成，掩码中目标区域为1(True)，非目标区域为0(False)。返回的数组形状为（n， w，h），n为掩码数量，w，h为原图像宽、高。例如当masks的形状为（4,640,480）表示四张不同置信度下的掩码。
+
+- `img`(numpy.ndarray)：是个四维数组，以img_type所设置的格式保存了四通道RGBA图像，比其他任务多个alpha通道，表示透明度。绿色星星表示用户提供的prompt，蓝色为目标区域，是所有masks的叠加效果。
+
+#### 3. 结果输出
+
+```python
+format_result = seg.format_output(lang='zh') # 将推理结果进行格式化输出
+```
+
+`format_output()`能够将模型推理结果以标准美观的方式进行输出。输出结果与`format_result`保存的内容一致。
+
+`format_output()`中共有两个参数可以设置：
+
+- `lang`(str) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
+- `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
+
+`format_result`以字典形式存储了推理结果，有两个键：`掩码`、`分数`。
+
+```python
+seg.show(img) # 展示带有masks和prompt的结果图
+```
+
+`show()`能够输出带有masks和prompt的四通道RGBA结果图像。
+
+![](../images/xeduhub/seg_sam_show1.png)
+
+```python
+seg.show(masks[0]) # 展示带有masks和prompt的结果图
+```
+
+`show()`能够单独可视化某一mask，将掩码可视化为只有黑白的二值矩阵
+
+![](../images/xeduhub/seg_sam_show2.png)
+
+#### 4. 结果保存
+
+```python
+seg.save(img,"demo/mask_with_image.jpg")
+seg.save(masks[0],"demo/first_mask.png")
+```
+
+带有masks和prompt的结果图和黑白的mask都可以被分别保存，
+可以通过函数save来保存可视化结果，函数的第一个参数为像素点颜色信息，第二个参数为保存路径。
+
+**注意:** 在保存带有masks和prompt的结果图时，由于推理结果为四通道RGBA图像，需要保存为png（支持四通道）格式图像，若保存为jpg，jpeg（只有三通道）格式，就会使保存的图像就会失去alpha通道，即透明度。
+
+## 9. MMEdu模型推理
 
 XEduHub现在可以支持使用MMEdu导出的onnx模型进行推理啦！如果你想了解如何使用MMEdu训练模型，可以看这里：[解锁图像分类模块：MMEduCls](https://xedu.readthedocs.io/zh/master/mmedu/mmeducls.html)、[揭秘目标检测模块：MMEduDet](https://xedu.readthedocs.io/zh/master/mmedu/mmedudet.html#mmedudet)。
 
@@ -2040,7 +2163,7 @@ mmdet.save(img,'new_plate.jpg') # 保存推理结果图片
 
 该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
 
-## 9. BaseNN模型推理
+## 10. BaseNN模型推理
 
 XEduHub现在可以支持使用BaseNN导出的onnx模型进行推理啦！如果你想了解如何将使用[BaseNN](https://xedu.readthedocs.io/zh/master/basenn.html)训练好的模型转换成ONNX格式，可以看这里：[BaseNN模型文件格式转换](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id24)。OK，准备好了ONNX模型，那么就开始使用XEduHub吧！
 
@@ -2113,7 +2236,7 @@ format_result = basenn.format_output()
 
 `format_output`的结果是一个结果字典，这个字典的第一个元素有两个键，`预测值`、`分数`，代表着该手写数字的分类标签以及属于该分类标签的概率。
 
-## 10. BaseML模型推理
+## 11. BaseML模型推理
 
 XEduHub现在可以支持使用BaseML导出的pkl模型文件进行推理啦！如果你想了解如何将使用[BaseML](https://xedu.readthedocs.io/zh/master/baseml.html)训练模型并保存成.pkl模型文件，可以看这里：[BaseML模型保存](https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id16)。OK，准备好了pkl模型，那么就开始使用XEduHub吧！
 
@@ -2184,7 +2307,7 @@ format_output = baseml.format_output(lang='zh')# 推理结果格式化输出
 
 如果此时你有冲动去使用BaseML完成模型训练到推理，再到转换与应用，快去下文学习[BaseML的相关使用](https://xedu.readthedocs.io/zh/master/baseml.html)吧！
 
-## 11. 其他onnx模型推理
+## 12. 其他onnx模型推理
 
 XEduHub现在可以支持使用用户自定义的ONNX模型文件进行推理啦！这意味着你可以不仅仅使用MMEdu或者BaseNN训练模型并转换而成的ONNX模型文件进行推理，还可以使用其他各个地方的ONNX模型文件，但是有个**重要的前提：你需要会使用这个模型，了解模型输入的训练数据以及模型的输出结果**。OK，如果你已经做好了充足的准备，那么就开始使用XEduHub吧！
 
