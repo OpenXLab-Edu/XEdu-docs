@@ -14,6 +14,7 @@ OpenXLabEdu帮助文档
    about
    how_to_quick_start
    xedu_hub
+   xedu_llm
    mmedu
    basenn
    baseml

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>快速体验XEduLLM &mdash; OpenXLabEdu  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="XEduLLM安装" href="installation.html" />
+    <link rel="prev" title="大语言模型库XEduLLM" href="../xedu_llm.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenXLabEdu
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_quick_start.html">XEdu快速入门手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEduHub</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../xedu_llm.html">大语言模型库XEduLLM</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">快速体验XEduLLM</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">XEduLLM是什么？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">XEduLLM的安装和使用</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">安装方法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api">发送第一个API请求</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">体验XEduLLM的更多功能</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html">XEduLLM安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">XEduLLM功能详解</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_get_API_key.html">API与密钥获取</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basenn.html">神经网络库BaseNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../baseml.html">传统机器学习库BaseML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basedt.html">数据处理库BaseDT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basedeploy.html">模型部署库BaseDeploy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_use.html">如何用XEdu解决真实问题</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenXLabEdu</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../xedu_llm.html">大语言模型库XEduLLM</a></li>
+      <li class="breadcrumb-item active">快速体验XEduLLM</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/xedu_llm/quick_start.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="xedullm">
+<h1>快速体验XEduLLM<a class="headerlink" href="#xedullm" title="Permalink to this heading"></a></h1>
+<section id="id1">
+<h2>XEduLLM是什么？<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>XEduLLM是一个大语言模型工具库，为开发者提供了一种简便的方式来与大语言模型进行交互和集成。该工具库围绕特定的大语言模型API构建，使得开发者可以在自己的应用程序中轻松地利用这些模型的强大功能。</p>
+<p>XEduLLM的Client模块利用几行代码就可以通过API调用各种优秀的大语言模型。通过编程方式发送请求到模型所在的服务器，远程服务器会处理请求，并返回响应，实现与大语言模型交流的功能。</p>
+</section>
+<section id="id2">
+<h2>XEduLLM的安装和使用<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<section id="id3">
+<h3>安装方法<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<p>当前需安装本地whl包，未来会上pip源（pip install -U xxx）</p>
+<p>库文件源代码可以从<a class="reference external" href="https://pypi.org/project/xedu-python/#files">PyPi</a>下载，选择tar.gz格式下载，可用常见解压软件查看源码。</p>
+</section>
+<section id="api">
+<h3>发送第一个API请求<a class="headerlink" href="#api" title="Permalink to this heading"></a></h3>
+<p>XEduLLM提供了通用接口访问工具Client，使用这个工具我们可以几行代码通过API调用各种优秀的大语言模型，发送请求，获取响应。API请求发送的目标可以是某个服务器地址也可以是服务商。</p>
+<p>下面以向openrouter服务商发送请求为例：</p>
+<p>首先，进入<a class="reference external" href="https://openrouter.ai">openrouter网页</a>（https://openrouter.ai），创建一个openrouter帐户或登录。点击右上角个人头像-Keys-Create Key，命名密钥并获取密钥。</p>
+<p>确保将密钥保存在安全的地方，不要随意与他人共享。</p>
+<p><img alt="../_images/openrouter_createKey.png" src="../_images/openrouter_createKey.png" /></p>
+<p>发送第一个API请求，参考代码如下：（直接复制代码运行会报错，需要更换自己的密钥）</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 步骤1：安装并导入库</span>
+<span class="kn">from</span> <span class="nn">XEdu.LLM</span> <span class="kn">import</span> <span class="n">Client</span>
+<span class="c1"># 步骤2：创建客户端实例，这里用到的密钥需要自己申请</span>
+<span class="n">chatbot</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">provider</span><span class="o">=</span><span class="s1">&#39;openrouter&#39;</span><span class="p">,</span>
+               <span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;sk-or-v1-6d7672a58c3c83……8241c0f30a3b1c3&#39;</span><span class="p">)</span>
+<span class="c1"># 步骤3：输入请求，执行推理并得到结果</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">chatbot</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="s1">&#39;我是一名初中生，请用通俗易懂的语言介绍什么是大语言模型&#39;</span><span class="p">)</span>
+<span class="c1"># 步骤4：结果输出</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>输出结果如下：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>大语言模型，简单来说，是一种使用人造智能技术（AI，Artificial Intelligence）和大量数据训练，培养出掌握语言规则和常识的计算机程序。其目的是帮助您在需要的地方生成文本信息，比如回答问题、写文章等。这个程序可以理解，分析和生成比较复杂的文字，像人一样地理解语境和上下文，并有些程序甚至可以自动调整语言风格来适应不同的场景。大语言模型是AI技术中重要的一部分，随着技术的发展不断进步，它被广泛应用在各种领域。希望这能帮助你更好地理解大语言模型！
+
+PS: 由于大语言模型是模拟人类语言能力，因此它的用途可以很广，但同时也需要注意它的输出可能会有一定的限制和错误，因为它们是通过计算机程序生成的。
+</pre></div>
+</div>
+<p>除了openrouter服务商，XEduLLM还提供了多种大语言模型服务提供商。当我们安装好XEduLLM并导入库后，你就可以使用<code class="docutils literal notranslate"><span class="pre">Client.support_provider()</span></code>语句查看目前提供的大语言模型服务提供商。看看哪一个是你想要的，然后选择它！查看XEduLLM中目前提供的大语言模型服务提供商代码如下：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.LLM</span> <span class="kn">import</span> <span class="n">Client</span> <span class="c1"># 导入库</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Client</span><span class="o">.</span><span class="n">support_provider</span><span class="p">())</span> <span class="c1"># 查看XEduLLM中目前提供的大语言模型服务提供商</span>
+</pre></div>
+</div>
+<p>输出结果：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;openrouter&#39;</span><span class="p">,</span> <span class="s1">&#39;moonshot&#39;</span><span class="p">,</span> <span class="s1">&#39;deepseek&#39;</span><span class="p">,</span> <span class="s1">&#39;glm&#39;</span><span class="p">,</span> <span class="s1">&#39;ernie&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><img alt="../_images/quick_start_1.jpg" src="../_images/quick_start_1.jpg" /></p>
+<p>获取大语言模型API密钥的流程通常包括在各平台网页上进行用户注册，注册完成后获取相应的算力资源，详细步骤请参考<a href="https://xedu.readthedocs.io/zh/master/xedu_llm/how_to_get_API_key.html">API与密钥获取</a>。</p>
+</section>
+</section>
+<section id="id4">
+<h2>体验XEduLLM的更多功能<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<p>体验XEduLLM的最快速方式是通过OpenInnoLab平台。</p>
+<p>OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台，满足青少年的AI学习和创作需求，支持在线编程。在“项目”中查看更多，查找“XEduLLM”即可找到所有XEduLLM相关的体验项目。</p>
+<p>XEduLLM实例代码合集：敬请期待……</p>
+<p>（用Chrome浏览器打开效果最佳）</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../xedu_llm.html" class="btn btn-neutral float-left" title="大语言模型库XEduLLM" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="installation.html" class="btn btn-neutral float-right" title="XEduLLM安装" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2024 OpenXLabEdu.All Rights Reserved.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

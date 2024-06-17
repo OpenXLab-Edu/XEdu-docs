@@ -47,7 +47,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../how_to_quick_start.html">XEdu快速入门手册</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="quick_start_manual.html">使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start_manual.html">入门手册使用说明</a></li>
 <li class="toctree-l2"><a class="reference internal" href="how_to_get_xedu.html">如何快速获得XEdu</a></li>
 <li class="toctree-l2"><a class="reference internal" href="how_to_start_hub.html">案例一：用XEduhub执行推理任务（检测任务）</a></li>
 <li class="toctree-l2"><a class="reference internal" href="how_to_start_baseml.html">案例二：用BaseML训练机器学习模型（抛物线）</a></li>
@@ -67,13 +67,14 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEduHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../xedu_llm.html">大语言模型库XEduLLM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basenn.html">神经网络库BaseNN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../baseml.html">传统机器学习库BaseML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basedt.html">数据处理库BaseDT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basedeploy.html">模型部署库BaseDeploy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../how_to_use.html">如何用XEdu借助AI解决真实问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_use.html">如何用XEdu解决真实问题</a></li>
 </ul>
 
         </div>
@@ -180,8 +181,8 @@
 </div>
 </section>
 <section id="id5">
-<h4>2）实时人手关键点检测<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h4>
-<p>还有一种简单的应用，可以实现实时人手关键点检测，只需连接摄像头，调用OpenCV库，对每一帧图像进行关键点检测，并将关键点检测的结果可视化就可以实现实时人手关键点检测。</p>
+<h4>2）小拓展-实时人手关键点检测<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h4>
+<p>还有一种简单的关键点检测应用，在多人手部关键点检测的基础上加入读取摄像头图片的代码，可以实现实时人手关键点检测。只需连接摄像头，再同时调用OpenCV库，对每一帧图像进行关键点检测，并将关键点检测的结果可视化就可以实现实时人手关键点检测。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span> <span class="c1"># 导入库</span>
 <span class="kn">import</span> <span class="nn">cv2</span>
 <span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -398,7 +399,7 @@
 <h3>任务三：实时手势分类<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h3>
 <section id="id13">
 <h4>任务一 单张图片完成手势分类<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h4>
-<p>模型推理时，需要保持推理的数据与训练的数据格式一致，所以新的图片也需完成人手关键点检测，并且做维度处理。如下代码实现了上述功能</p>
+<p>模型推理时，需要保持推理的数据与训练的数据格式一致，所以新的图片也需完成人手关键点检测，并且做维度处理。如下代码实现了上述功能。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
