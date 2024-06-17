@@ -2,17 +2,14 @@
 
 XEduLLM是一个大语言模型工具库，为开发者提供了一种简便的方式来与大语言模型进行交互和集成。该工具库围绕特定的大语言模型API构建，使得开发者可以在自己的应用程序中轻松地利用这些模型的强大功能。
 
-API密钥的获取请参考<a href="https://xedu.readthedocs.io/zh/master/xedu_llm/how_to_get_API_key.html">API与密钥获取</a>.
-
 ## 通用接口访问工具Client 
 
 Client是一个通过API（应用程序编程接口）与最先进的大语言模型交流而设计的通用接口访问工具。通过几行代码就可以通过API调用各种优秀的大语言模型，发送请求到远程服务器，服务器运行着大模型，利用服务器算力处理请求，并返回响应。
-大语言模型接口通常需要使用API密钥（API key）来进行访问。API密钥是一个唯一标识符，用于跟踪和控制API的使用情况，确保只有授权用户才能访问模型的服务。API密钥的获取请参考[API密钥获取链接]。
-我们在使用XEduLLM时都需要执行这段代码from XEdu.LLM import Client。Client的基本逻辑是通过密钥访问大语言模型接口，发送请求给远程服务器进行推理，获取返回的响应。
+大语言模型接口通常需要使用API密钥（API key）来进行访问。API密钥是一个唯一标识符，用于跟踪和控制API的使用情况，确保只有授权用户才能访问模型的服务。API密钥的获取请参考<a href="https://xedu.readthedocs.io/zh/master/xedu_llm/how_to_get_API_key.html">API与密钥获取</a>。
 
 ### 功能一：通过服务商发送请求
 
-XEduLLM支持多种大模型服务提供商，可以通过support_provider()来查看。
+XEduLLM支持多种大模型服务提供商，可以通过support_provider()来查看，代码如下：
 
 ```python
 from XEdu.LLM import Client
@@ -47,7 +44,8 @@ from XEdu.LLM import Client # 导入库
 chatbot = Client(provider='openrouter',
                api_key='sk-or-v1-6d7672a58c3c837f2……c0f30a3b1c3') # 实例化客户端
 ```
-客户端声明函数Client()中有六个参数可以设置：
+客户端声明函数Client()中有六个参数可以设置，本功能中使用的参数是`provider`和`api_key`，部分服务器还需要提供`secret_key`，根据具体要求设置即可。
+
 - `base_url`(str):API的服务器地址。
 - `provider`(str):指定服务提供商的名称。可以通过Client.support_provider()语句来查看支持哪些服务提供商。声明时，支持多种不同provider书写格式，英文/中文/公司/产品，如'deepseek'，'幻方-深度求索'，'幻方'，'深度求索'。
 - `api_key`(str):访问密钥（Access Key），用于验证用户身份并授权访问API服务。
@@ -75,7 +73,7 @@ inference参数：
 - `temperature` (float): 控制输出的随机性。它的值介于0和1之间。较高的值（如0.7）会使输出更加随机和创造性，而较低的值（如0.2）会使输出更加稳定和确定性。不同模型默认值不同。
 - `top_p (float)`: 指定模型考虑的概率质量。它的值介于0和1之间，表示考虑概率质量最高的标记的结果的百分比。例如，0.1意味着只考虑概率质量最高的10%的标记。不同模型默认值不同。
 - `stream` (bool): 是否返回一个生成器对象，默认为False。当stream为True时，client.inference函数将返回一个生成器对象。生成器对象是一个迭代器，它会在每次迭代时返回一部分输出结果，而不是一次性返回所有结果。这使得您可以按需获取输出，而不是等待整个结果集生成后再处理。
-- 
+
 #### 3. 推理结果输出
 
 推理结果输出方式一：直接输出
@@ -83,7 +81,7 @@ inference参数：
 res = chatbot.inference("你好,用中文介绍一下你自己",stream=False)
 print(res)
 ```
-当推理函数的参数stream为False时，返回的结果的是字符串
+当推理函数的参数`stream`为False时，返回的结果的是字符串
 
 
 推理结果输出方式二：流式输出
@@ -93,10 +91,10 @@ for i in res:
     print(i, flush=True, end='')
 ```
 
-当stream为True时，返回一个生成器对象。生成器对象是一个迭代器，它会在每次迭代时返回一部分输出结果，而不是一次性返回所有结果。
+当参数`stream`为True时，返回一个生成器对象。生成器对象是一个迭代器，它会在每次迭代时返回一部分输出结果，而不是一次性返回所有结果，所以不能直接使用print(res)输出，可以使用for循环来迭代生成器并打印生成器中的每个元素。
 
 #### 举一反三，尝试使用不同的服务商
-通过向openrouter服务商发送请求的代码学习，我们可以举一反三向其他服务商发送请求。
+完成了向openrouter服务商发送请求的代码学习，我们可以举一反三向其他服务商发送请求。
 
 ### 功能二：通过API的服务器地址发送请求
 
@@ -110,7 +108,7 @@ res = chatbot.inference('你好，用中文介绍一下你自己') # 输入请�
 print(res)
 ```
 
-客户端声明函数Client()中有六个参数可以设置，本功能中使用的参数是`base_url`和`api_key`，部分服务器还需要提供`secret_key`，根据具体模型要求设置即可。
+客户端声明函数Client()中有六个参数可以设置，本功能中使用的参数是`base_url`和`api_key`，部分服务器还需要提供`secret_key`，根据具体要求设置即可。
 
 - `base_url`(str):API的服务器地址。
 - `provider`(str):指定服务提供商的名称。可以通过Client.support_provider()语句来查看支持哪些服务提供商。声明时，支持多种不同provider书写格式，英文/中文/公司/产品，如'deepseek'，'幻方-深度求索'，'幻方'，'深度求索'。

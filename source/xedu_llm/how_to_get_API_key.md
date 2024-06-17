@@ -72,7 +72,7 @@ support_provider可以设置参数lang，表示语言，支持['en','zh']，默�
         <tr class="row-even">
             <td>ernie(文心一言)</td>
             <td><a href="https://console.bce.baidu.com/qianfan/ais/console/applicationConsole/application">https://console.bce.baidu.com/qianfan/ais/console/applicationConsole/application</a></td>
-            <td>左侧应用接入-创建应用-API KeySecret Key</td>
+            <td>左侧应用接入-创建应用-API Key与Secret Key</td>
             <td>0</td>
         </tr>
     </tbody>
