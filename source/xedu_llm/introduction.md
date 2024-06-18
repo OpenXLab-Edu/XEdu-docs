@@ -50,13 +50,13 @@ chatbot = Client(provider='openrouter',
 - `provider`(str):指定服务提供商的名称。可以通过Client.support_provider()语句来查看支持哪些服务提供商。声明时，支持多种不同provider书写格式，英文/中文/公司/产品，如'deepseek'，'幻方-深度求索'，'幻方'，'深度求索'。
 - `api_key`(str):访问密钥（Access Key），用于验证用户身份并授权访问API服务。
 - `secret_key`(str):秘密密钥（Secret Key），与API密钥一起使用，提供更高级别的安全性。在文心一言ernie中，需要同时提供API密钥和秘密密钥来进行身份验证，其他的不需要。
-- `model`(str):这个参数用于指定使用的具体模型。在一个API中，可能有多个不同的模型可供选择，您可以通过设置这个参数来选择需要的模型。可以通过`print(chatbot.support_model())`语句来查看该chatbot支持哪些模型。
+- `model`(str):这个参数用于指定使用的具体模型。在一个API中，可能有多个不同的模型可供选择，可以通过设置这个参数来选择需要的模型。此外可以通过`print(chatbot.support_model())`语句来查看该chatbot支持哪些模型。
 
 #### 2. 模型推理
 
 推理方式一：单句对话
 ```python
-res = chatbot.inference("你好,用中文介绍一下你自己")
+res = chatbot.inference("你好，用中文介绍一下你自己")
 ```
 推理方式二：多句对话
 ```python
@@ -108,20 +108,16 @@ res = chatbot.inference('你好，用中文介绍一下你自己') # 输入请�
 print(res)
 ```
 
-客户端声明函数Client()中有六个参数可以设置，本功能中使用的参数是`base_url`和`api_key`，部分服务器还需要提供`secret_key`，根据具体要求设置即可。
-
-- `base_url`(str):API的服务器地址。
-- `provider`(str):指定服务提供商的名称。可以通过Client.support_provider()语句来查看支持哪些服务提供商。声明时，支持多种不同provider书写格式，英文/中文/公司/产品，如'deepseek'，'幻方-深度求索'，'幻方'，'深度求索'。
-- `api_key`(str):访问密钥（Access Key），用于验证用户身份并授权访问API服务。
-- `secret_key`(str):秘密密钥（Secret Key），与API密钥一起使用，提供更高级别的安全性。在文心一言ernie中，需要同时提供API密钥和秘密密钥来进行身份验证，其他的不需要。
-- `model`(str):这个参数用于指定使用的具体模型。在一个API中，可能有多个不同的模型可供选择，您可以通过设置这个参数来选择需要的模型。可以通过`print(chatbot.support_model())`语句来查看该chatbot支持哪些模型。
+本功能示例代码中声明函数Client()新增使用的参数是`base_url`(str)，为API的服务器地址。
 
 后续模型推理和推理结果输出与功能一一致，不再重复。
 
 ### 功能三：指定使用模型
 
 一个服务器中可以有多个不同的大型语言模型，每个模型都有不同性能特点。我们可以指定服务器中包含的模型，来处理请求，并返回相应的结果。
+
 步骤一：查看该服务器支持哪些大语言模型
+
 可以通过`print(chatbot.support_model())`语句来查看该chatbot支持哪些模型，代码如下所示：
 
 ```python
@@ -136,13 +132,17 @@ print(chatbot.support_model()) # 查看该chatbot支持哪些模型
 ['openrouter/auto', 'nousresearch/nous-capybara-7b:free', 'mistralai/mistral-7b-instruct:free', 'huggingfaceh4/zephyr-7b-beta:free', 'openchat/openchat-7b:free', 'gryphe/mythomist-7b:free', 'undi95/toppy-m-7b:free', 'google/gemma-7b-it:free', 'meta-llama/llama-3-8b-instruct:free', 'microsoft/phi-3-mini-128k-instruct:free', 'microsoft/phi-3-medium-128k-instruct:free', 'koboldai/psyfighter-13b-2', 'intel/neural-chat-7b', 'mancer/weaver', 'pygmalionai/mythalion-13b', 'xwin-lm/xwin-lm-70b', 'alpindale/goliath-120b', 'neversleep/noromaid-20b', 'gryphe/mythomist-7b', 'sophosympatheia/midnight-rose-70b', 'sao10k/fimbulvetr-11b-v2', 'neversleep/llama-3-lumimaid-8b', 'neversleep/llama-3-lumimaid-70b', 'undi95/remm-slerp-l2-13b:extended', 'gryphe/mythomax-l2-13b:extended', 'meta-llama/llama-3-8b-instruct:extended', 'neversleep/llama-3-lumimaid-8b:extended', 'nousresearch/nous-capybara-7b', 'meta-llama/codellama-34b-instruct', 'codellama/codellama-70b-instruct', 'phind/phind-codellama-34b', 'open-orca/mistral-7b-openorca', 'teknium/openhermes-2-mistral-7b', 'undi95/remm-slerp-l2-13b', '01-ai/yi-34b-chat', '01-ai/yi-34b', '01-ai/yi-6b', 'togethercomputer/stripedhyena-nous-7b', 'togethercomputer/stripedhyena-hessian-7b', 'mistralai/mixtral-8x7b', 'nousresearch/nous-hermes-yi-34b', 'nousresearch/nous-hermes-2-mixtral-8x7b-sft', 'nousresearch/nous-hermes-2-mistral-7b-dpo', 'meta-llama/llama-3-8b', 'meta-llama/llama-3-70b', 'databricks/dbrx-instruct', 'allenai/olmo-7b-instruct', 'snowflake/snowflake-arctic-instruct', 'qwen/qwen-110b-chat', 'qwen/qwen-14b-chat', 'qwen/qwen-7b-chat', 'qwen/qwen-4b-chat', 'mistralai/mixtral-8x7b-instruct:nitro', 'openai/gpt-3.5-turbo', 'openai/gpt-3.5-turbo-0125', 'openai/gpt-3.5-turbo-1106', 'openai/gpt-3.5-turbo-0613', 'openai/gpt-3.5-turbo-0301', 'openai/gpt-3.5-turbo-16k', 'openai/gpt-4o', 'openai/gpt-4o-2024-05-13', 'openai/gpt-4-turbo', 'openai/gpt-4-turbo-preview', 'openai/gpt-4-1106-preview', 'openai/gpt-4', 'openai/gpt-4-0314', 'openai/gpt-4-32k', 'openai/gpt-4-32k-0314', 'openai/gpt-4-vision-preview', 'openai/gpt-3.5-turbo-instruct', 'google/palm-2-chat-bison', 'google/palm-2-codechat-bison', 'google/palm-2-chat-bison-32k', 'google/palm-2-codechat-bison-32k', 'google/gemini-pro', 'google/gemini-pro-vision', 'google/gemini-pro-1.5', 'google/gemini-flash-1.5', 'perplexity/llama-3-sonar-small-32k-chat', 'perplexity/llama-3-sonar-small-32k-online', 'perplexity/llama-3-sonar-large-32k-chat', 'perplexity/llama-3-sonar-large-32k-online', 'fireworks/firellava-13b', 'anthropic/claude-3-opus', 'anthropic/claude-3-sonnet', 'anthropic/claude-3-haiku', 'anthropic/claude-2', 'anthropic/claude-2.0', 'anthropic/claude-2.1', 'anthropic/claude-instant-1', 'anthropic/claude-3-opus:beta', 'anthropic/claude-3-sonnet:beta', 'anthropic/claude-3-haiku:beta', 'anthropic/claude-2:beta', 'anthropic/claude-2.0:beta', 'anthropic/claude-2.1:beta', 'anthropic/claude-instant-1:beta', 'meta-llama/llama-2-13b-chat', 'meta-llama/llama-2-70b-chat', 'nousresearch/nous-hermes-llama2-13b', 'nousresearch/nous-capybara-34b', 'jondurbin/airoboros-l2-70b', 'austism/chronos-hermes-13b', 'teknium/openhermes-2.5-mistral-7b', 'gryphe/mythomax-l2-13b', 'undi95/toppy-m-7b', 'lizpreciatior/lzlv-70b-fp16-hf', 'mistralai/mixtral-8x7b-instruct', 'neversleep/noromaid-mixtral-8x7b-instruct', 'nousresearch/nous-hermes-2-mixtral-8x7b-dpo', 'rwkv/rwkv-5-world-3b', 'recursal/rwkv-5-3b-ai-town', 'recursal/eagle-7b', 'google/gemma-7b-it', 'huggingfaceh4/zephyr-7b-beta', 'meta-llama/llama-3-8b-instruct', 'meta-llama/llama-3-70b-instruct', 'meta-llama/llama-guard-2-8b', 'microsoft/wizardlm-2-8x22b', 'microsoft/wizardlm-2-7b', 'microsoft/phi-3-mini-128k-instruct', 'microsoft/phi-3-medium-128k-instruct', 'mistralai/mixtral-8x22b', 'mistralai/mixtral-8x22b-instruct', 'mistralai/mistral-7b-instruct-v0.1', 'mistralai/mistral-7b-instruct-v0.2', 'mistralai/mistral-7b-instruct', 'mistralai/mistral-7b-instruct-v0.3', 'lynn/soliloquy-l3', 'jebcarter/psyfighter-13b', 'jondurbin/bagel-34b', 'cognitivecomputations/dolphin-mixtral-8x7b', 'cognitivecomputations/dolphin-mixtral-8x22b', 'liuhaotian/llava-yi-34b', 'nousresearch/hermes-2-pro-llama-3-8b', 'openchat/openchat-7b', 'openchat/openchat-8b', 'bigcode/starcoder2-15b-instruct', 'qwen/qwen-2-72b-instruct', 'qwen/qwen-72b-chat', 'qwen/qwen-32b-chat', 'deepseek/deepseek-chat', 'deepseek/deepseek-coder', 'anthropic/claude-1', 'anthropic/claude-1.2', 'anthropic/claude-instant-1.0', 'anthropic/claude-instant-1.1', 'meta-llama/llama-2-70b-chat:nitro', 'gryphe/mythomax-l2-13b:nitro', 'mistralai/mistral-7b-instruct:nitro', 'google/gemma-7b-it:nitro', 'undi95/toppy-m-7b:nitro', 'meta-llama/llama-3-8b-instruct:nitro', 'meta-llama/llama-3-70b-instruct:nitro', 'liuhaotian/llava-13b', 'nousresearch/nous-hermes-2-vision-7b', 'mistralai/mistral-tiny', 'mistralai/mistral-small', 'mistralai/mistral-medium', 'mistralai/mistral-large', 'cohere/command', 'cohere/command-r', 'cohere/command-r-plus']
 ```
 
-客户端声明函数Client()中有六个参数可以设置，本功能中新使用的参数是`model`。
-
-- `base_url`(str):API的服务器地址。
-- `provider`(str):指定服务提供商的名称。可以通过Client.support_provider()语句来查看支持哪些服务提供商。声明时，支持多种不同provider书写格式，英文/中文/公司/产品，如'deepseek'，'幻方-深度求索'，'幻方'，'深度求索'。
-- `api_key`(str):访问密钥（Access Key），用于验证用户身份并授权访问API服务。
-- `secret_key`(str):秘密密钥（Secret Key），与API密钥一起使用，提供更高级别的安全性。在文心一言ernie中，需要同时提供API密钥和秘密密钥来进行身份验证，其他的不需要。
-- `model`(str):这个参数用于指定使用的具体模型。在一个API中，可能有多个不同的模型可供选择，您可以通过设置这个参数来选择需要的模型。可以通过`print(chatbot.support_model())`语句来查看该chatbot支持哪些模型。
+步骤二：指定使用的大语言模型
+示例代码如下所示：
+```python
+from XEdu.LLM import Client # 导入库
+chatbot = Client(provider='openrouter',
+               api_key='sk-or-v1-6d7672a58c3c837……f30a3b1c3',
+               model='mistralai/mistral-7b-instruct:free') # 实例化客户端
+res = chatbot.inference('你好，用中文介绍一下你自己') # 输入请求，执行推理并得到结果
+print(res) # 结果输出
+```
+本功能示例代码中声明函数Client()新增使用`model`(str)，这个参数用于指定使用的具体模型。在一个API中，可能有多个不同的模型可供选择，可以通过设置这个参数来选择需要的模型。此外可以通过`print(chatbot.support_model())`语句来查看该chatbot支持哪些模型。
 
 后续模型推理和推理结果输出与功能一一致，不再重复。
 
