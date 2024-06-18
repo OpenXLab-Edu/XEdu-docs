@@ -1,5 +1,3 @@
-
-
 # XEduHub功能详解
 
 XEduHub作为一个深度学习工具库，集成了许多深度学习领域优质的SOTA模型，能够帮助用户在不进模型训练的前提下，用少量的代码，快速实现计算机视觉、自然语言处理等多个深度学习领域的任务。
@@ -1943,7 +1941,7 @@ masks, img = seg.inference(data='data/seg.jpg', img_type='pil') # 进行模型�
 
 - `masks`(numpy.ndarray)：一个三维数组，表示分割掩码的推理结果。由多个掩码组成，掩码中目标区域为1(True)，非目标区域为0(False)。返回的数组形状为（n， w，h），其中n表示掩码数量，w，h表示原图像宽、高。模型可以输出多个掩码，每个掩码对应不同的置信度分数。通常情况下，这些掩码可能表示同一个对象在不同的置信度下的分割结果，或者是不同对象的分割结果。例如当masks的形状为（4,640,480）表示在四个不同置信度下的掩码。掩码数量的确定通常取决于模型的设计和配置。
 
-- `img`(numpy.ndarray)：一个四维数组，以img_type所设置的格式保存了四通道RGBA图像，比其他任务多个alpha通道，表示透明度。绿色星星表示户提供的提示点或框prompt，蓝色为目标区域，是所有masks的叠加效果。
+- `img`(numpy.ndarray)：一个四维数组，以img_type所设置的格式保存了四通道RGBA图像，比其他任务多个alpha通道，表示透明度。绿色星星表示用户提供的提示点，绿色框表示用户提供的提示框，蓝色为分割出的目标区域，是所有masks的叠加效果。
 
   输出的masks示例如下：
 
@@ -1982,6 +1980,8 @@ masks, img = seg.inference(data='data/seg.jpg', img_type='pil') # 进行模型�
 ```
 
 #### 3. 结果输出
+
+**格式化结果输出**
 
 ```python
 format_result = seg.format_output(lang='zh') # 将推理结果进行格式化输出
@@ -2035,6 +2035,7 @@ format_result = seg.format_output(lang='zh') # 将推理结果进行格式化输
          0.8090970516204834,
          0.754239559173584]]}
 ```
+**可视化结果输出**
 
 ```python
 seg.show(img) # 展示带有分割掩码和提示点或框（prompt）的结果图
@@ -2055,14 +2056,14 @@ seg.show(masks[0]) # 展示第一个分割掩码
 #### 4. 结果保存
 
 ```python
-seg.save(img,"demo/mask_with_image.jpg")
-seg.save(masks[0],"demo/first_mask.png")
+seg.save(img,"demo/mask_with_image.png")# 保存分割后的图像为'mask_with_image.png'
+seg.save(masks[0],"demo/first_mask.png") # 保存可视化第一个分割掩码为'first_mask.png'
 ```
 
 带有分割掩码和提示点或框（prompt）的结果图和黑白的mask都可以被分别保存，例如第二句代码表示保存第一个分割掩码。
 可以通过函数save来保存可视化结果，函数的第一个参数为像素点颜色信息，第二个参数为保存路径。
 
-**注意:** 在保存带有分割掩码和提示点或框（prompt）的结果图时，由于推理结果为四通道RGBA图像，需要保存为png（支持四通道）格式图像，若保存为jpg，jpeg（只有三通道）格式，就会使保存的图像就会失去alpha通道，即透明度。
+**注意:** 图像保存格式可以是jpg，jpeg，png，tiff，bmp。在保存带有分割掩码和提示点或框（prompt）的结果图时，由于推理结果为四通道RGBA图像，需要保存为支持四通道格式图像，若保存为jpg，jpeg，JPEG（只有三通道）格式时，就会使保存的图像就会失去alpha通道，即透明度，将RGBA转化为RGB图像保存。
 
 ## 9. MMEdu模型推理
 
