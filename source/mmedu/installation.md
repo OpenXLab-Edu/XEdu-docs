@@ -23,7 +23,7 @@
 
  1）下载方式（即XEdu下载方式）
 
-飞书网盘：[XEdu v1.6.7d.exe](https://p6bm2if73b.feishu.cn/file/boxcn7ejYk2XUDsHI3Miq9546Uf?from=from_copylink)
+飞书网盘：[https://p6bm2if73b.feishu.cn/file/boxcn7ejYk2XUDsHI3Miq9546Uf?from=from_copylink](https://p6bm2if73b.feishu.cn/file/boxcn7ejYk2XUDsHI3Miq9546Uf?from=from_copylink)
 
 第二步：您可以根据个人喜好，选择自己习惯的IDE。
 
