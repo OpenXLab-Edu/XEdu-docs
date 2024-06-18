@@ -138,7 +138,8 @@ print(res) # 结果输出
 ```python
 from XEdu.LLM import Client # 导入库
 chatbot = Client(base_url='https://openrouter.ai/api/v1',
-               api_key='sk-or-v1-6d7672a58c3c837……c0f30a3b1c3') # 实例化客户端
+               api_key='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',
+               model="mistralai/mistral-7b-instruct:free") # 实例化客户端
 res = chatbot.inference('你好，用中文介绍一下你自己') # 输入请求，执行推理并得到结果
 print(res)
 ```
