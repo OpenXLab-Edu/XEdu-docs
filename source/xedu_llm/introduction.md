@@ -15,7 +15,7 @@ XEduLLM支持多种大模型服务提供商，可以通过support_provider()来�
 from XEdu.LLM import Client
 Client.support_provider() # 默认查看服务商英文名
 # 输出：['openrouter', 'moonshot', 'deepseek', 'glm', 'ernie']
-Client.support_provider('zh') # 查看服务商中文名
+Client.support_provider(lang = 'zh') # 查看服务商中文名
 # 输出：['openrouter', '月之暗面-Kimi', '幻方-深度求索', '智谱-智谱清言', '百度-文心一言']
 
 ```
@@ -96,23 +96,7 @@ for i in res:
 #### 举一反三，尝试使用不同的服务商
 完成了向openrouter服务商发送请求的代码学习，我们可以举一反三向其他服务商发送请求。
 
-### 功能二：通过API的服务器地址发送请求
-
-除了向服务商发送请求外，还可以向服务器地址发送请求，以向openrouter服务器地址发送请求为例，完整代码如下：
-
-```python
-from XEdu.LLM import Client # 导入库
-chatbot = Client(base_url='https://openrouter.ai/api/v1',
-               api_key='sk-or-v1-6d7672a58c3c837……c0f30a3b1c3') # 实例化客户端
-res = chatbot.inference('你好，用中文介绍一下你自己') # 输入请求，执行推理并得到结果
-print(res)
-```
-
-本功能示例代码中声明函数Client()新增使用的参数是`base_url`(str)，为API的服务器地址。
-
-后续模型推理和推理结果输出与功能一一致，不再重复。
-
-### 功能三：指定使用模型
+### 功能二：指定使用模型
 
 一个服务器中可以有多个不同的大型语言模型，每个模型都有不同性能特点。我们可以指定服务器中包含的模型，来处理请求，并返回相应的结果。
 
@@ -133,7 +117,8 @@ print(chatbot.support_model()) # 查看该chatbot支持哪些模型
 ```
 
 步骤二：指定使用的大语言模型
-示例代码如下所示：
+
+指定chatbot使用接口中查询到的某个模型，例如前面查询到的模型`mistralai/mistral-7b-instruct:free`，示例代码如下所示：
 ```python
 from XEdu.LLM import Client # 导入库
 chatbot = Client(provider='openrouter',
@@ -145,6 +130,67 @@ print(res) # 结果输出
 本功能示例代码中声明函数Client()新增使用`model`(str)，这个参数用于指定使用的具体模型。在一个API中，可能有多个不同的模型可供选择，可以通过设置这个参数来选择需要的模型。此外可以通过`print(chatbot.support_model())`语句来查看该chatbot支持哪些模型。
 
 后续模型推理和推理结果输出与功能一一致，不再重复。
+
+### 功能三：通过API的服务器地址发送请求
+
+除了向服务商发送请求外，还可以向服务器地址发送请求，以向openrouter服务器地址发送请求为例，完整代码如下：
+
+```python
+from XEdu.LLM import Client # 导入库
+chatbot = Client(base_url='https://openrouter.ai/api/v1',
+               api_key='sk-or-v1-6d7672a58c3c837……c0f30a3b1c3') # 实例化客户端
+res = chatbot.inference('你好，用中文介绍一下你自己') # 输入请求，执行推理并得到结果
+print(res)
+```
+
+本功能示例代码中声明函数Client()新增使用的参数是`base_url`(str)，为API的服务器地址。
+
+API的获取可以通过阅读模型的官方文档，找到模型提供的`base_url`，下面提供了部分供应商的base_url。
+
+通过API的服务器地址发送请求时需要指定模型，具体可指定的模型可以通过`print(chatbot.support_model())`语句查询（部分域下不支持查看模型列表，如智谱清言），推荐查看官方文档。
+
+<table class="docutils align-default">
+    <thead>
+        <tr class="row-odd">
+            <th class="head">名称</th>
+            <th class="head">base_url</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="row-even">
+            <td>openrouter</td>
+            <td>https://openrouter.ai/api/v1</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="row-even">
+            <td>moonshot（月之暗面）</td>
+            <td>https://api.moonshot.cn/v1</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="row-even">
+            <td>deepseek（深度求索）</td>
+            <td>https://api.deepseek.com</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="row-even">
+            <td>glm（智谱清言）</td>
+            <td>https://open.bigmodel.cn/api/paas/v4/</td>
+        </tr>
+    </tbody>
+        <tbody>
+        <tr class="row-even">
+            <td>ernie（文心一言）</td>
+            <td>https://aip.baidubce.com/oauth/2.0/token?client_id=【API Key】&client_secret=【Secret Key】&grant_type=client_credentials</td>
+        </tr>
+    </tbody>
+</table>
+
+后续模型推理和推理结果输出与功能一一致，不再重复。
+
+
 
 ### 功能四：网页对话
 

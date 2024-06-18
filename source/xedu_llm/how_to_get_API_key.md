@@ -2,11 +2,11 @@
 
 ## API与密钥是什么？
 
-语言模型API是一种应用程序编程接口，它允许开发者将大型语言模型集成到自己的应用程序中。
+API（应用程序编程接口）是一种允许开发者将特定功能或数据集成到自己应用程序中的工具。API可以提供多种服务，如大型语言模型、数据存取、用户管理、支付处理等各种功能。 
 
-大语言模型的密钥是一个唯一标识符，通常被称为API密钥（API key），它是用来访问和调用大语言模型API的凭证。API密钥用于验证请求者的身份，确保只有授权用户才能使用服务。这个密钥是由提供大语言模型服务的提供商发放给用户的，用户在注册并验证身份后，一般通过平台的用户界面获取。
+API密钥（API key）是一种唯一标识符，是用来访问和调用API服务的凭证。API密钥用于验证请求者的身份，确保只有授权用户才能使用服务。这个密钥由API服务提供商发放，用户在注册并验证身份后，一般通过平台的用户界面获取。 通过API，开发者可以发送HTTP请求到指定的URL，并附上必要的参数和API密钥，来获取所需的服务或数据。 
 
-通过大语言模型的API，发送HTTP请求到指定的URL，并附上必要的参数和API密钥，来获取模型的预测结果。
+大语言模型API允许开发者将大型语言模型集成到自己的应用程序中，通过发送HTTP请求到指定的URL，并附上必要的参数和API密钥，来获取模型的预测结果。
 
 
 **注意:** 保护API密钥是非常重要的，因为如果密钥被未授权的第三方获取，可能导致费用增加或者服务被滥用。因此，我们应该确保自己的API密钥安全存储。
@@ -72,8 +72,8 @@ support_provider可以设置参数lang，表示语言，支持['en','zh']，默�
         <tr class="row-even">
             <td>ernie(文心一言)</td>
             <td><a href="https://console.bce.baidu.com/qianfan/ais/console/applicationConsole/application">https://console.bce.baidu.com/qianfan/ais/console/applicationConsole/application</a></td>
-            <td>左侧应用接入-创建应用-API Key与Secret Key</td>
-            <td>0</td>
+            <td>左侧应用接入-创建应用（不能重名）-同时需要API Key与Secret Key</td>
+            <td>无限制</td>
         </tr>
     </tbody>
 </table>

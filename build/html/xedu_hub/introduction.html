@@ -1912,7 +1912,7 @@
 <p>模型推理返回结果：</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">masks</span></code>(numpy.ndarray)：一个三维数组，表示分割掩码的推理结果。由多个掩码组成，掩码中目标区域为1(True)，非目标区域为0(False)。返回的数组形状为（n， w，h），其中n表示掩码数量，w，h表示原图像宽、高。模型可以输出多个掩码，每个掩码对应不同的置信度分数。通常情况下，这些掩码可能表示同一个对象在不同的置信度下的分割结果，或者是不同对象的分割结果。例如当masks的形状为（4,640,480）表示在四个不同置信度下的掩码。掩码数量的确定通常取决于模型的设计和配置。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">img</span></code>(numpy.ndarray)：一个四维数组，以img_type所设置的格式保存了四通道RGBA图像，比其他任务多个alpha通道，表示透明度。绿色星星表示户提供的提示点或框prompt，蓝色为目标区域，是所有masks的叠加效果。</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">img</span></code>(numpy.ndarray)：一个四维数组，以img_type所设置的格式保存了四通道RGBA图像，比其他任务多个alpha通道，表示透明度。绿色星星表示用户提供的提示点，绿色框表示用户提供的提示框，蓝色为分割出的目标区域，是所有masks的叠加效果。</p>
 <p>输出的masks示例如下：</p>
 </li>
 </ul>
@@ -1952,6 +1952,7 @@
 </section>
 <section id="id110">
 <h3>3. 结果输出<a class="headerlink" href="#id110" title="Permalink to this heading"></a></h3>
+<p><strong>格式化结果输出</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">format_result</span> <span class="o">=</span> <span class="n">seg</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span> <span class="c1"># 将推理结果进行格式化输出</span>
 </pre></div>
 </div>
@@ -2000,6 +2001,7 @@
          <span class="mf">0.754239559173584</span><span class="p">]]}</span>
 </pre></div>
 </div>
+<p><strong>可视化结果输出</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">seg</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img</span><span class="p">)</span> <span class="c1"># 展示带有分割掩码和提示点或框（prompt）的结果图</span>
 </pre></div>
 </div>
@@ -2013,13 +2015,13 @@
 </section>
 <section id="id111">
 <h3>4. 结果保存<a class="headerlink" href="#id111" title="Permalink to this heading"></a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">seg</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="s2">&quot;demo/mask_with_image.jpg&quot;</span><span class="p">)</span>
-<span class="n">seg</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">masks</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="s2">&quot;demo/first_mask.png&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">seg</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="s2">&quot;demo/mask_with_image.png&quot;</span><span class="p">)</span><span class="c1"># 保存分割后的图像为&#39;mask_with_image.png&#39;</span>
+<span class="n">seg</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">masks</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="s2">&quot;demo/first_mask.png&quot;</span><span class="p">)</span> <span class="c1"># 保存可视化第一个分割掩码为&#39;first_mask.png&#39;</span>
 </pre></div>
 </div>
 <p>带有分割掩码和提示点或框（prompt）的结果图和黑白的mask都可以被分别保存，例如第二句代码表示保存第一个分割掩码。
 可以通过函数save来保存可视化结果，函数的第一个参数为像素点颜色信息，第二个参数为保存路径。</p>
-<p><strong>注意:</strong> 在保存带有分割掩码和提示点或框（prompt）的结果图时，由于推理结果为四通道RGBA图像，需要保存为png（支持四通道）格式图像，若保存为jpg，jpeg（只有三通道）格式，就会使保存的图像就会失去alpha通道，即透明度。</p>
+<p><strong>注意:</strong> 图像保存格式可以是jpg，jpeg，png，tiff，bmp。在保存带有分割掩码和提示点或框（prompt）的结果图时，由于推理结果为四通道RGBA图像，需要保存为支持四通道格式图像，若保存为jpg，jpeg，JPEG（只有三通道）格式时，就会使保存的图像就会失去alpha通道，即透明度，将RGBA转化为RGB图像保存。</p>
 </section>
 </section>
 <section id="mmedu">
