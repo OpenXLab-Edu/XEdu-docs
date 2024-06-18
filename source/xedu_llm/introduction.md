@@ -36,7 +36,7 @@ print(res) # 结果输出
 
 输出示例：
 
-![](../images/xedullm/output0.png)
+![](../images/xedullm/output0.jpg)
 
 #### 1. 客户端声明
 ```python
