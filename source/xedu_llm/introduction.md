@@ -9,7 +9,7 @@ Client是一个通过API（应用程序编程接口）与最先进的大语言�
 
 ### 功能一：通过服务商发送请求
 
-XEduLLM支持多种大模型服务提供商，可以通过support_provider()来查看，代码如下：
+XEduLLM支持多种大语言模型服务提供商，可以通过support_provider()来查看，代码如下：
 
 ```python
 from XEdu.LLM import Client
@@ -17,12 +17,11 @@ Client.support_provider() # 默认查看服务商英文名
 # 输出：['openrouter', 'moonshot', 'deepseek', 'glm', 'ernie']
 Client.support_provider(lang = 'zh') # 查看服务商中文名
 # 输出：['openrouter', '月之暗面-Kimi', '幻方-深度求索', '智谱-智谱清言', '百度-文心一言']
-
 ```
 
 support_provider可以设置参数lang，表示语言，支持['en','zh']，默认'en'。
 
-#### 以向openrouter服务商发送请求为例
+#### 向 openrouter 服务商发送请求示例
 
 完整代码如下：
 
@@ -38,19 +37,22 @@ print(res) # 结果输出
 
 ![](../images/xedullm/output0.jpg)
 
+接下来对示例代码进行详细说明。
+
 #### 1. 客户端声明
+
 ```python
 from XEdu.LLM import Client # 导入库
 chatbot = Client(provider='openrouter',
                api_key='sk-or-v1-6d7672a58c3c837f2……c0f30a3b1c3') # 实例化客户端
 ```
-客户端声明函数Client()中有六个参数可以设置，本功能中使用的参数是`provider`和`api_key`，部分服务器还需要提供`secret_key`，根据具体要求设置即可。
+客户端声明函数Client()中有六个参数可以设置，本功能中使用的参数是`provider`和`api_key`，部分服务商还需要提供`secret_key`，根据具体要求设置即可。
 
 - `base_url`(str):API的服务器地址。
 - `provider`(str):指定服务提供商的名称。可以通过Client.support_provider()语句来查看支持哪些服务提供商。声明时，支持多种不同provider书写格式，英文/中文/公司/产品，如'deepseek'，'幻方-深度求索'，'幻方'，'深度求索'。
 - `api_key`(str):访问密钥（Access Key），用于验证用户身份并授权访问API服务。
-- `secret_key`(str):秘密密钥（Secret Key），与API密钥一起使用，提供更高级别的安全性。在文心一言ernie中，需要同时提供API密钥和秘密密钥来进行身份验证，其他的不需要。
-- `model`(str):这个参数用于指定使用的具体模型。在一个API中，可能有多个不同的模型可供选择，可以通过设置这个参数来选择需要的模型。此外可以通过`print(chatbot.support_model())`语句来查看该chatbot支持哪些模型。
+- `secret_key`(str):秘密密钥（Secret Key），与API密钥一起使用，提供更高级别的安全性。在文心一言ernie中，需要同时提供API密钥和秘密密钥来进行身份验证，其他的服务商不需要。
+- `model`(str):这个参数用于指定使用的具体模型。在一个API中，可能有多个不同的模型可供选择，可以通过设置这个参数来选择需要的模型。此外可以通过`print(chatbot.support_model())`语句来查看该chatbot支持哪些模型。下文对此参数使用有详细说明。
 
 #### 2. 模型推理
 
@@ -98,9 +100,9 @@ for i in res:
 
 ### 功能二：指定使用模型
 
-一个服务器中可以有多个不同的大型语言模型，每个模型都有不同性能特点。我们可以指定服务器中包含的模型，来处理请求，并返回相应的结果。
+一个服务商中可以有多个不同的大语言模型，每个模型都有不同性能特点。我们可以指定服务商中包含的模型，来处理请求，并返回相应的结果。
 
-步骤一：查看该服务器支持哪些大语言模型
+步骤一：查看该服务商支持哪些大语言模型
 
 可以通过`print(chatbot.support_model())`语句来查看该chatbot支持哪些模型，代码如下所示：
 
@@ -131,7 +133,7 @@ print(res) # 结果输出
 
 后续模型推理和推理结果输出与功能一一致，不再重复。
 
-### 功能三：通过API的服务器地址发送请求
+### 功能三：通过大模型API的服务器地址发送请求
 
 除了向服务商发送请求外，还可以向服务器地址发送请求，以向openrouter服务器地址发送请求为例，完整代码如下：
 
@@ -146,9 +148,9 @@ print(res)
 
 本功能示例代码中声明函数Client()新增使用的参数是`base_url`(str)，为API的服务器地址。
 
-API的获取可以通过阅读模型的官方文档，找到模型提供的`base_url`，下面提供了部分供应商的base_url。
+通过阅读模型的官方文档，可以找到该模型所提供的服务器地址（`base_url`）。下面提供了部分供应商的base_url。
 
-通过API的服务器地址发送请求时需要指定模型，具体可指定的模型可以通过`print(chatbot.support_model())`语句查询（部分域下不支持查看模型列表，如智谱清言），推荐查看官方文档。
+通过API的服务器地址发送请求时需要指定模型，具体可指定的模型可以通过`print(chatbot.support_model())`语句查询（部分域下不支持查看模型列表，如智谱清言），推荐查看各大语言模型API文档。
 
 <table class="docutils align-default">
     <thead>
@@ -189,9 +191,7 @@ API的获取可以通过阅读模型的官方文档，找到模型提供的`base
     </tbody>
 </table>
 
-后续模型推理和推理结果输出与功能一一致，不再重复。
-
-
+我们可以举一反三向其他大模型API的服务器地址发送请求。
 
 ### 功能四：网页对话
 
