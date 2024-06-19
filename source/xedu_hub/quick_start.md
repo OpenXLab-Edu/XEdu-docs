@@ -126,7 +126,7 @@ Workflow类用于加载预训练模型以解决各类任务。
             checkpoint：模型权重文件的路径。
             download_path：模型文件即将下载到的路径。
 
-        更多用法及算法详解请参考：https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html    
+        更多用法及算法详解请参考：https://xedu.readthedocs.io/zh-cn/master/xedu_hub/introduction.html    
 ```
 
 ![](../images/xeduhub/task2.png)

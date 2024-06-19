@@ -65,4 +65,4 @@
 
 ![](../images/about/jupyter1.png)
 
-更多一键安装包的使用请前往[XEdu一键安装包说明](https://xedu.readthedocs.io/zh/master/about/installation.html#id2)。
+更多一键安装包的使用请前往[XEdu一键安装包说明](https://xedu.readthedocs.io/zh-cn/master/about/installation.html#id2)。

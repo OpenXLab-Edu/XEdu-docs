@@ -14,7 +14,7 @@
 
 首先需要根据要解决的问题收集数据并整理好数据集，如想要解决猫狗识别问题需准备猫狗数据集。
 
-MMEdu图像分类模块要求的数据集格式为ImageNet格式，包含三个文件夹和三个文本文件，文件夹内，不同类别图片按照文件夹分门别类排好，通过trainning_set、val_set、test_set区分训练集、验证集和测试集。文本文件classes.txt说明类别名称与序号的对应关系，val.txt说明验证集图片路径与类别序号的对应关系，test.txt说明测试集图片路径与类别序号的对应关系。如何从零开始制作符合要求的数据集详见[后文](https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/howtomake_imagenet.html)。
+MMEdu图像分类模块要求的数据集格式为ImageNet格式，包含三个文件夹和三个文本文件，文件夹内，不同类别图片按照文件夹分门别类排好，通过trainning_set、val_set、test_set区分训练集、验证集和测试集。文本文件classes.txt说明类别名称与序号的对应关系，val.txt说明验证集图片路径与类别序号的对应关系，test.txt说明测试集图片路径与类别序号的对应关系。如何从零开始制作符合要求的数据集详见[后文](https://xedu.readthedocs.io/zh-cn/master/how_to_use/dl_library/howtomake_imagenet.html)。
 
 为了能够在平台完成训练，还需完成引用数据集的操作，可在左侧工具栏选择模型与数据集，上传并创建自己的数据集，再引用，如本项目已经引用我在平台上传并公开的经典版猫狗二分类数据集。
 
@@ -89,7 +89,7 @@ mmcls.save(result_img,'new.jpg')# 保存推理结果图片
 
 ##### 6）部署到硬件
 
-此时您可以挑选自己熟悉的硬件，去做自己训练并完成转换的模型部署啦，只需要下载转换的ONNX模型，在硬件上安装库即可。更多模型应用与部署的介绍详见[后文](https://xedu.readthedocs.io/zh/master/how_to_use/support_resources/model_convert.html#id9)。
+此时您可以挑选自己熟悉的硬件，去做自己训练并完成转换的模型部署啦，只需要下载转换的ONNX模型，在硬件上安装库即可。更多模型应用与部署的介绍详见[后文](https://xedu.readthedocs.io/zh-cn/master/how_to_use/support_resources/model_convert.html#id9)。
 
 ## 解决目标检测问题——以猫狗检测为例
 
@@ -105,7 +105,7 @@ mmcls.save(result_img,'new.jpg')# 保存推理结果图片
 
 首先需要根据要解决的问题收集数据并整理好数据集，如想要解决猫狗目标检测问题需准备猫狗目标检测数据集。
 
-XEdu中MMEdu的MMDetection模块支持的数据集类型是COCO，如需训练自己创建的数据集，数据集需转换成COCO格式。如何从零开始制作符合要求的数据集详见[后文](https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/howtomake_coco.html)。
+XEdu中MMEdu的MMDetection模块支持的数据集类型是COCO，如需训练自己创建的数据集，数据集需转换成COCO格式。如何从零开始制作符合要求的数据集详见[后文](https://xedu.readthedocs.io/zh-cn/master/how_to_use/dl_library/howtomake_coco.html)。
 
 浦育平台的猫狗检测数据集：[https://openinnolab.org.cn/pjlab/dataset/6407fdcd9c0eb14f2297218d](https://openinnolab.org.cn/pjlab/dataset/6407fdcd9c0eb14f2297218d)
 
@@ -183,5 +183,5 @@ mmdet.save(result_img,'new.jpg')# 保存推理结果图片
 
 ##### 6）部署到硬件
 
-此时您可以挑选自己熟悉的硬件，去做自己训练并完成转换的模型部署啦，只需要下载转换的ONNX模型，在硬件上安装库即可。更多模型应用与部署的介绍详见[后文](https://xedu.readthedocs.io/zh/master/how_to_use/support_resources/model_convert.html#id9)。
+此时您可以挑选自己熟悉的硬件，去做自己训练并完成转换的模型部署啦，只需要下载转换的ONNX模型，在硬件上安装库即可。更多模型应用与部署的介绍详见[后文](https://xedu.readthedocs.io/zh-cn/master/how_to_use/support_resources/model_convert.html#id9)。
 

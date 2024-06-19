@@ -4,7 +4,7 @@
 
 
 
-BaseML库提供了众多机器学习训练方法，如线性回归、KNN、SVM等等，可以快速训练和应用模型，更多算法说明详见[机器学习典型算法一览表](https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id6)。本项目使用BaseML中的回归算法，以及其他算法训练投石车落地距离预测模型。投石车落地距离预测是一个典型的抛物线问题，根据投石角度与距离对照表，用机器学习方法预测抛物线函数。
+BaseML库提供了众多机器学习训练方法，如线性回归、KNN、SVM等等，可以快速训练和应用模型，更多算法说明详见[机器学习典型算法一览表](https://xedu.readthedocs.io/zh-cn/master/baseml/introduction.html#id6)。本项目使用BaseML中的回归算法，以及其他算法训练投石车落地距离预测模型。投石车落地距离预测是一个典型的抛物线问题，根据投石角度与距离对照表，用机器学习方法预测抛物线函数。
 
 项目地址：[用BaseML训练机器学习模型（抛物线）](https://www.openinnolab.org.cn/pjlab/project?id=66123df8e0ea4a2a08b20464&backpath=/pjlab/projects/list#public)
 [https://www.openinnolab.org.cn/pjlab/project?id=66123df8e0ea4a2a08b20464&backpath=/pjlab/projects/list#public](https://www.openinnolab.org.cn/pjlab/project?id=66123df8e0ea4a2a08b20464&backpath=/pjlab/projects/list#public)
@@ -84,7 +84,7 @@ model.save('checkpoints/baseml_model/lr_catapult.pkl')
 
 ### 任务二：使用多种算法实现并测算R2值
 
-除了上文介绍的线性回归模型，BaseML还可以训练其他回归和聚类算法，如下图所示。BaseML模型训练的代码详解详见[BaseML功能详解](https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id7)。
+除了上文介绍的线性回归模型，BaseML还可以训练其他回归和聚类算法，如下图所示。BaseML模型训练的代码详解详见[BaseML功能详解](https://xedu.readthedocs.io/zh-cn/master/baseml/introduction.html#id7)。
 
 
 ![](../images/baseml/change.png)
@@ -153,7 +153,7 @@ r2_Ada, result = model.valid('data/投石角度与距离评估.csv', metrics='r2
 model.metricplot() # 可视化验证效果
 ```
 
-更多算法说明详见[机器学习典型算法一览表](https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id6)。
+更多算法说明详见[机器学习典型算法一览表](https://xedu.readthedocs.io/zh-cn/master/baseml/introduction.html#id6)。
 
 #### 对比不同算法的R平方值
 

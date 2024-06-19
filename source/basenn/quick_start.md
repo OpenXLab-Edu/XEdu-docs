@@ -324,4 +324,4 @@ print("word:",w)
 
 更多内容详见用BaseNN实现自动写诗机项目，项目地址：[https://www.openinnolab.org.cn/pjlab/project?id=641c00bbba932064ea962783&sc=635638d69ed68060c638f979#public](https://www.openinnolab.org.cn/pjlab/project?id=641c00bbba932064ea962783&sc=635638d69ed68060c638f979#public)
 
-更多案例详见[下文](https://xedu.readthedocs.io/zh/master/basenn/projects.html#basenn)。
+更多案例详见[下文](https://xedu.readthedocs.io/zh-cn/master/basenn/projects.html)。

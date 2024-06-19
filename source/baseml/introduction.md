@@ -281,7 +281,7 @@ model.valid(metrics='acc')
 
 参数说明：
 
-`metrics`：评估指标选择，默认为'acc(accuracy)'，还支持precision,recall,f1,auc,r2,mse,mae、Silhouette Score、Calinski-Harabasz Score、Davies-Bouldin Score等。分类任务一般选择'acc(accuracy)'，回归任务可以选择'r2'(R平方值)或'mse'(MSE值)，聚类任务一般选择Silhouette Score（轮廓系数），评估指标的说明详见[后文](https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id20)。
+`metrics`：评估指标选择，默认为'acc(accuracy)'，还支持precision,recall,f1,auc,r2,mse,mae、Silhouette Score、Calinski-Harabasz Score、Davies-Bouldin Score等。分类任务一般选择'acc(accuracy)'，回归任务可以选择'r2'(R平方值)或'mse'(MSE值)，聚类任务一般选择Silhouette Score（轮廓系数），评估指标的说明详见[后文](https://xedu.readthedocs.io/zh-cn/master/baseml/introduction.html#id20)。
 
 `path`/`x,y`: 验证集的路径/验证集的特征和验证集的标签，如载入数据时设置了自动划分训练集和验证集，此时可不传入此参数，其他情况下基本需要传入，否则将报错。**注**：聚类任务只需传入`metrics`，因为聚类和分类回归不一样，没有类别标签，即y只有预测值，没有真实值，因此聚类任务验证实际是对训练集的效果评价，因此不传入x和y也可直接验证。
 
@@ -339,7 +339,7 @@ y=model.inference(data)
 
 ### 8. 模型应用
 
-模型应用是将训练好的模型部署到实际场景中，例如集成到网站或移动应用中。一般来说，一个训练模型的工具也会自带了推理功能，如在BaseML训练好模型并保存，下次使用时以同样的方式导入BaseML库并载入模型进行推理即可。还有种方式是借助一些通用的模型推理库，如XEdu工具的XEduHub库，支持推理各种工具训练的模型，此类库的安装一般比机器学习开发工具简单很多。也可以[借助XEduHub库完成推理](https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#baseml)和应用，核心代码如下。
+模型应用是将训练好的模型部署到实际场景中，例如集成到网站或移动应用中。一般来说，一个训练模型的工具也会自带了推理功能，如在BaseML训练好模型并保存，下次使用时以同样的方式导入BaseML库并载入模型进行推理即可。还有种方式是借助一些通用的模型推理库，如XEdu工具的XEduHub库，支持推理各种工具训练的模型，此类库的安装一般比机器学习开发工具简单很多。也可以[借助XEduHub库完成推理](https://xedu.readthedocs.io/zh-cn/master/xedu_hub/introduction.html#baseml)和应用，核心代码如下。
 
 ```python
 from XEdu.hub import Workflow as wf

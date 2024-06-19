@@ -64,7 +64,7 @@ print(Client.support_provider()) # 查看XEduLLM中目前提供的大语言模�
 
 ![](../images/xedullm/quick_start_1.jpg)
 
-获取大语言模型API密钥的流程通常包括在各平台网页上进行用户注册，注册完成后获取相应的算力资源，详细步骤请参考<a href="https://xedu.readthedocs.io/zh/master/xedu_llm/how_to_get_API_key.html">API与密钥获取</a>。
+获取大语言模型API密钥的流程通常包括在各平台网页上进行用户注册，注册完成后获取相应的算力资源，详细步骤请参考<a href="https://xedu.readthedocs.io/zh-cn/master/xedu_llm/how_to_get_API_key.html">API与密钥获取</a>。
 
 ## 体验XEduLLM的更多功能
 

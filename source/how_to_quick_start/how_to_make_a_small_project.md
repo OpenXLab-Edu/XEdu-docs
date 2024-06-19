@@ -10,7 +10,7 @@
 
 ### 任务一：关键点检测和简单应用
 
-XEduHub提供了能够快速识别人手关键点的模型：pose_hand21，该模型能够识别人手上的21个关键点，如下图所示。手部关键点检测的代码可参考学习[人手关键点](https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id44)。
+XEduHub提供了能够快速识别人手关键点的模型：pose_hand21，该模型能够识别人手上的21个关键点，如下图所示。手部关键点检测的代码可参考学习[人手关键点](https://xedu.readthedocs.io/zh-cn/master/xedu_hub/introduction.html#id44)。
 
 ![](../images/xeduhub/new_hand.png)
 
@@ -215,7 +215,7 @@ dataset.to_csv('hand_total.csv',index=False)
 
 #### 第1步 划分数据集
 
-在准备训练前，我们建议先完成数据集划分，即将数据集拆分为训练集和验证集，训练集用于训练模型，验证集用于评估模型的性能。此步骤可以手动完成，也可以用代码完成，可[借助XEdu的数据处理库BaseDT](https://xedu.readthedocs.io/zh/master/basedt/introduction.html#id11)，指定csv文件路径以及划分比例，将特征数据集划分为训练集和验证集，并将训练集和验证集的特征和标签均提取出来。
+在准备训练前，我们建议先完成数据集划分，即将数据集拆分为训练集和验证集，训练集用于训练模型，验证集用于评估模型的性能。此步骤可以手动完成，也可以用代码完成，可[借助XEdu的数据处理库BaseDT](https://xedu.readthedocs.io/zh-cn/master/basedt/introduction.html#id11)，指定csv文件路径以及划分比例，将特征数据集划分为训练集和验证集，并将训练集和验证集的特征和标签均提取出来。
 
 ```python
 from BaseDT.dataset import split_tab_dataset

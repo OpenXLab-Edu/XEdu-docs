@@ -5,7 +5,7 @@ XEduLLM是一个大语言模型工具库，为开发者提供了一种简便的�
 ## 通用接口访问工具Client 
 
 Client是一个通过API（应用程序编程接口）与最先进的大语言模型交流而设计的通用接口访问工具。通过几行代码就可以通过API调用各种优秀的大语言模型，发送请求到远程服务器，服务器运行着大模型，利用服务器算力处理请求，并返回响应。
-大语言模型接口通常需要使用API密钥（API key）来进行访问。API密钥是一个唯一标识符，用于跟踪和控制API的使用情况，确保只有授权用户才能访问模型的服务。API密钥的获取请参考<a href="https://xedu.readthedocs.io/zh/master/xedu_llm/how_to_get_API_key.html">API与密钥获取</a>。
+大语言模型接口通常需要使用API密钥（API key）来进行访问。API密钥是一个唯一标识符，用于跟踪和控制API的使用情况，确保只有授权用户才能访问模型的服务。API密钥的获取请参考<a href="https://xedu.readthedocs.io/zh-cn/master/xedu_llm/how_to_get_API_key.html">API与密钥获取</a>。
 
 ### 功能一：通过服务商发送请求
 

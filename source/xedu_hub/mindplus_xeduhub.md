@@ -33,3 +33,30 @@ Gitee链接：[https://gitee.com/liliang9693/ext-xedu-hub](https://gitee.com/lil
 用这套积木块基本可以完成XEduHub的所有任务，可以做各种小任务，也可以做复杂任务。使用积木完成对一张图片借助XEduHub的相关模型进行人体画面提取、关键点识别，再用BaseNN训练并转换的ONNX模型完成分类模型推理的示例如下。
 
 ![](../images/xeduhub/mind4.png)
+
+## 安装常见问题及排查方案
+
+1.系统原因
+
+建议win10及以上。
+
+2.依赖库问题
+
+常见出问题的是onnxruntime，建议手动pip安装，再进行库测试。
+
+最简测试代码：
+
+```python
+# 导入 onnxruntime 库
+import onnxruntime
+
+# 打印版本信息
+print(f"onnxruntime version: {onnxruntime.__version__}")
+```
+
+如果安装正确，您将看到类似以下的输出：
+
+```
+onnxruntime version: 1.9.0
+```
+
