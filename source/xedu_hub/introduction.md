@@ -30,9 +30,9 @@ body.show(new_img) # 显示带标注图片
 
 ## 模型声明和模型推理参数总览
 
-![](../images/xeduhub/tu1.jpg)
+![](../images/xeduhub/tu1.JPG)
 
-![](../images/xeduhub/tu2.jpg)
+![](../images/xeduhub/tu2.JPG)
 
 下文将结合具体任务和项目进行介绍。
 
