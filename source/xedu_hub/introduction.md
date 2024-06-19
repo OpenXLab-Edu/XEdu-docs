@@ -13,6 +13,29 @@ XEduHub支持两类任务，分为内置任务和通用任务两种。顾名思�
 
 下面开始介绍Workflow中丰富的深度学习工具。
 
+示例代码如下：
+
+```python
+# 步骤一：导入库
+from XEdu.hub import Workflow as wf
+# 步骤二：选择你的AI工具
+body = wf(task='pose_body17') # 声明pose模型
+# 步骤三：使用你的AI工具
+img = 'body.jpg'
+# 进行推理，同时返回结果和带标注的图片
+result,new_img = body.inference(data=img,img_type='cv2')
+print(result) # 输出推理结果
+body.show(new_img) # 显示带标注图片
+```
+
+## 模型声明和模型推理参数总览
+
+![](../images/xeduhub/tu1.jpg)
+
+![](../images/xeduhub/tu2.jpg)
+
+下文将结合具体任务和项目进行介绍。
+
 ### 强烈安利项目<a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public">XEduHub实例代码-入门完整版</a>
 
 <a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public</a>
