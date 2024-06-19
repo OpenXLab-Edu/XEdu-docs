@@ -1,5 +1,7 @@
 # XEduHub安装
 
+### 安装及更新方法
+
 你可以通过pip命令来安装XEduHub。
 
 `pip install xedu-python` 或 `pip install XEdu-python`
