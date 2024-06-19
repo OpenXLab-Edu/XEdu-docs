@@ -28,7 +28,7 @@ print(result) # 输出推理结果
 body.show(new_img) # 显示带标注图片
 ```
 
-## 模型声明和模型推理参数总览
+### 模型声明和模型推理参数总览
 
 ![](../images/xeduhub/tu1.JPG)
 
