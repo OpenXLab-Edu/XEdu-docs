@@ -48,6 +48,8 @@ chatbot = Client(provider='openrouter',
 ```
 客户端声明函数Client()中有六个参数可以设置，本功能中使用的参数是`provider`和`api_key`，部分服务商还需要提供`secret_key`，根据具体要求设置即可。
 
+##### 参数说明
+
 - `base_url`(str):API的服务器地址。
 - `provider`(str):指定服务提供商的名称。可以通过Client.support_provider()语句来查看支持哪些服务提供商。声明时，支持多种不同provider书写格式，英文/中文/公司/产品，如'deepseek'，'幻方-深度求索'，'幻方'，'深度求索'。
 - `api_key`(str):访问密钥（Access Key），用于验证用户身份并授权访问API服务。
@@ -70,7 +72,8 @@ talk = [
 res = chatbot.inference(talk)
 ```
 
-inference参数：
+##### 参数说明
+
 - `input` (str|list): 对话机器人处理的输入。它可以是单个字符串，也可以是一个列表，列表中的每个元素是一个包含role和content键的字典，分别表示角色的类型（如"user"或"assistant"）和对话内容。
 - `temperature` (float): 控制输出的随机性。它的值介于0和1之间。较高的值（如0.7）会使输出更加随机和创造性，而较低的值（如0.2）会使输出更加稳定和确定性。不同模型默认值不同。
 - `top_p (float)`: 指定模型考虑的概率质量。它的值介于0和1之间，表示考虑概率质量最高的标记的结果的百分比。例如，0.1意味着只考虑概率质量最高的10%的标记。不同模型默认值不同。
@@ -83,7 +86,16 @@ inference参数：
 res = chatbot.inference("你好,用中文介绍一下你自己",stream=False)
 print(res)
 ```
-当推理函数的参数`stream`为False时，返回的结果的是字符串
+当推理函数的参数`stream`为False时，返回的结果的是字符串，默认`stream`为False。允许输出各种格式文本，比如表格、代码等格式，参考代码如下。
+
+```python
+# 带格式的输出
+res1 = chatbot.inference('给出一段代码，实现猜数字小游戏')
+print(res1)
+# 输出表格
+res2 = chatbot.inference('给出一个表格，可以存储学生姓名、学号、选课课程、学分、成绩')
+print(res2)
+```
 
 
 推理结果输出方式二：流式输出
@@ -186,17 +198,109 @@ print(res)
         <tbody>
         <tr class="row-even">
             <td>ernie（文心一言）</td>
-            <td>https://aip.baidubce.com/oauth/2.0/token?client_id=【API Key】&client_secret=【Secret Key】&grant_type=client_credentials</td>
+            <td>不提供，不建议使用此方法</td>
         </tr>
     </tbody>
 </table>
 
+
 我们可以举一反三向其他大模型API的服务器地址发送请求。
 
-### 功能四：网页对话
+### 功能四：启动基于网页的聊天机器人服务
 
-敬请期待……
+使用`run` 方法可启动一个基于网页的聊天机器人服务，使用户可以通过网页界面与聊天机器人进行对话。
 
-### 功能五：接口二次分发
+```python
+chatbot.run(host='127.0.0.1')
+```
 
-敬请期待……
+这个方法将会在指定的主机地址（默认是 `127.0.0.1`）上启动一个 Web 服务器，并在浏览器中提供一个用户界面，方便用户进行实时对话。
+
+##### 参数说明
+
+- `host` (str): 指定 Web 服务器的主机地址。默认值为 `'127.0.0.1'`，表示本地回环地址，仅能本机访问。你也可以将其设置为 `'0.0.0.0'`，使其可在局域网中访问。
+- `port` (int): 指定 Web 服务器的端口号，默认值为 `7860`。
+
+##### 注意事项
+
+1. **升级 Gradio 库**：确保已升级 Gradio 库以支持该功能。
+
+2. **本地主机访问**：默认配置 `host='127.0.0.1'` 仅允许本机访问。如果希望其他设备也能访问，需要进行以下修改：
+
+   - **修改方式1**：在命令行中输入 `ipconfig`，查找本机的局域网 IP 地址，并将其填入 `host` 参数中。例如：
+
+     ```
+     python
+     复制代码
+     chatbot.run(host='192.168.1.100', port=7860)
+     ```
+
+     这样，同一网段内的设备即可通过该 IP 地址进行访问。
+
+   - **修改方式2**：将 `host` 设置为 `'0.0.0.0'`，表示开放所有外部 IP 访问。例如：
+
+     ```
+     python
+     复制代码
+     chatbot.run(host='0.0.0.0', port=7860)
+     ```
+
+     这样，同一局域网内的所有设备都可以通过本机的 IP 地址进行访问。需要注意的是，其他设备访问时需要提前知道本机的 IP 地址。
+
+#### 直接启动网页功能的完整代码
+
+```
+from XEdu.LLM import Client
+chatbot = Client(provider='moonshot',
+               api_key="sk-cjCzE5Oo***K53EVAZTnln") # 密钥省略
+# 启动基于网页的聊天机器人服务
+client.run(host='127.0.0.1', port=7860)
+```
+
+此方法默认只能本机访问，不适合需要在局域网或互联网中共享的场景。且并发处理能力有限，依赖于 Gradio 库的性能。
+
+### 功能五：聊天机器人服务的二次分发功能
+
+还有种更加灵活的用法，使用二次分发功能，通过将聊天机器人的服务部署在一个固定的地址（例如局域网 IP 地址），并在不同的终端或应用中通过该地址进行访问和调用。这种方式通常需要先获取服务的 IP 地址，然后在客户端中使用该地址进行推理或其他操作。
+
+使用示例如下：
+
+1.获取 IP 地址并启动服务
+
+```python
+from XEdu.LLM import Client
+
+# 创建一个聊天机器人客户端
+client = Client(provider='moonshot',
+               api_key="sk-cjCzE5Oo***K53EVAZTnln") # 密钥省略
+
+# 启动基于网页的聊天机器人服务，并指定局域网 IP 地址和端口
+client.run()
+
+```
+
+输出示例：
+
+```
+Running on local URL: http://10.1.48.23:7863
+```
+
+2.在其他设备或应用中访问该服务
+
+在局域网内的其他设备上，可以通过上述获取的 IP 地址和端口访问聊天机器人服务：
+
+```
+from XEdu.LLM import Client
+
+# 使用固定的 IP 地址和端口号，使用获取的ip
+client = Client(base_url='http://10.1.48.23:7860')
+
+# 进行推理或其他操作
+res = client.inference("今天天气怎么样？")
+# 返回：今天阳光明媚，xxx...
+# 启动可视化服务
+client.run()
+# Running on local URL: http://10.1.48.23:7864
+```
+
+二次分发功能将聊天机器人服务在一个固定的 IP 地址和端口上运行，并允许在同一局域网内的其他设备通过该地址和端口进行访问和调用。这样可以方便地在多个设备之间共享聊天机器人服务。
