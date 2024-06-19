@@ -202,8 +202,6 @@ print(res)
         </tr>
     </tbody>
 </table>
-
-
 我们可以举一反三向其他大模型API的服务器地址发送请求。
 
 ### 功能四：启动基于网页的聊天机器人服务
@@ -293,7 +291,7 @@ Running on local URL: http://10.1.48.23:7863
 from XEdu.LLM import Client
 
 # 使用固定的 IP 地址和端口号，使用获取的ip
-client = Client(base_url='http://10.1.48.23:7860')
+client = Client(base_url='http://10.1.48.23:7863')
 
 # 进行推理或其他操作
 res = client.inference("今天天气怎么样？")
