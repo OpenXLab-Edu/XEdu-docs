@@ -34,6 +34,8 @@ body.show(new_img) # 显示带标注图片
 
 ![](../images/xeduhub/tu2.JPG)
 
+若要查看大图可前往[https://aicarrier.feishu.cn/file/K0oTbWW9mosOGCxIClvcTfpSnDd](https://aicarrier.feishu.cn/file/K0oTbWW9mosOGCxIClvcTfpSnDd)
+
 下文将结合具体任务和项目进行介绍。
 
 ### 强烈安利项目<a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public">XEduHub实例代码-入门完整版</a>
