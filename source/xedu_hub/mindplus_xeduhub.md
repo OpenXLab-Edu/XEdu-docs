@@ -38,11 +38,11 @@ Gitee链接：[https://gitee.com/liliang9693/ext-xedu-hub](https://gitee.com/lil
 
 1.系统原因
 
-建议win10及以上。
+强烈建议win10及以上，不建议win7。
 
 2.依赖库问题
 
-常见出问题的是onnxruntime，建议手动pip安装，再进行库测试。
+常见出问题的是onnxruntime库，建议手动pip安装，再切换到代码进行库测试。
 
 最简测试代码：
 
