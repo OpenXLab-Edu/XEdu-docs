@@ -48,7 +48,7 @@ support_provider可以设置参数lang，表示语言，支持['en','zh']，默�
             <td>moonshot(月之暗面)</td>
             <td><a href="https://platform.moonshot.cn/console">https://platform.moonshot.cn/console</a></td>
             <td>左侧API Key管理-新建</td>
-            <td>15.00 元（记得领取）</td>
+            <td>15.00 元（认证后领取）</td>
         </tr>
     </tbody>
     <tbody>
@@ -56,7 +56,7 @@ support_provider可以设置参数lang，表示语言，支持['en','zh']，默�
             <td>deepseek(深度求索)</td>
             <td><a href="https://platform.deepseek.com/sign_up">https://platform.deepseek.com/sign_up</a></td>
             <td>左侧API keys-创建API key</td>
-            <td>500万tokens（要去首页认证领取）</td>
+            <td>500万tokens（注意要去首页认证领取）</td>
         </tr>
     </tbody>
     <tbody>
@@ -72,7 +72,7 @@ support_provider可以设置参数lang，表示语言，支持['en','zh']，默�
             <td>ernie(文心一言)</td>
             <td><a href="https://console.bce.baidu.com/qianfan/ais/console/applicationConsole/application">https://console.bce.baidu.com/qianfan/ais/console/applicationConsole/application</a></td>
             <td>左侧应用接入-创建应用（不能重名）-同时需要API Key与Secret Key</td>
-            <td>无限制（注意要实名认证开启服务）</td>
+            <td>无限制（注意要实名认证开启服务，可在个人中心确认）</td>
         </tr>
     </tbody>
 </table>
