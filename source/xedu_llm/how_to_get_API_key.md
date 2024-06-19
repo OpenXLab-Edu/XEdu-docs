@@ -10,7 +10,7 @@ API密钥（API key）是一种唯一标识符，是用来访问和调用API服�
 
 **注意:** 保护API密钥是非常重要的，因为如果密钥被未授权的第三方获取，可能导致费用增加或者服务被滥用。因此，我们应该确保自己的API密钥安全存储。
 
-## API注册与密钥获取
+## XEduLLM支持的大模型API注册与密钥获取
 
 XEduLLM支持多种大语言模型服务提供商，可以通过support_provider()来查看。
 
@@ -48,7 +48,7 @@ support_provider可以设置参数lang，表示语言，支持['en','zh']，默�
             <td>moonshot(月之暗面)</td>
             <td><a href="https://platform.moonshot.cn/console">https://platform.moonshot.cn/console</a></td>
             <td>左侧API Key管理-新建</td>
-            <td>15.00 元</td>
+            <td>15.00 元（记得领取）</td>
         </tr>
     </tbody>
     <tbody>
@@ -72,7 +72,8 @@ support_provider可以设置参数lang，表示语言，支持['en','zh']，默�
             <td>ernie(文心一言)</td>
             <td><a href="https://console.bce.baidu.com/qianfan/ais/console/applicationConsole/application">https://console.bce.baidu.com/qianfan/ais/console/applicationConsole/application</a></td>
             <td>左侧应用接入-创建应用（不能重名）-同时需要API Key与Secret Key</td>
-            <td>无限制</td>
+            <td>无限制（注意要实名认证开启服务）</td>
         </tr>
     </tbody>
 </table>
+
