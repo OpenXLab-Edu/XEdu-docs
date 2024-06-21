@@ -266,7 +266,6 @@ client = Client(provider='moonshot',
 
 # 启动基于网页的聊天机器人服务，并指定局域网 IP 地址和端口
 client.run()
-
 ```
 
 输出示例：

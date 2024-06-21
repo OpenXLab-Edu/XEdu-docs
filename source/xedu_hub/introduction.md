@@ -532,9 +532,9 @@ det_coco.save(img_with_box,'img_with_box.jpg') # 保存推理图片
 
 关键点识别是深度学习中的一项关键任务，旨在检测图像或视频中的关键位置，通常代表物体或人体的重要部位。XEduHub支持的关键点识别任务有：人体关键点`pose_body`、人脸关键点`pose_face`、人手关键点`pose_hand`和所有人体关键点识别`pose_wholebody`。
 
-**注意事项**：这里我们强烈建议提取关键点之前应**先进行目标检测**。
+**注意事项**：这里我们强烈建议提取关键点之前应**先进行目标检测**。既可实现效果更好的单目标的关键点识别，且可以实现多目标的关键点识别。
 
-例如进行人体关键点检测`pose_body`之前，先使用`det_body`在图片中检测中人体目标，提取人体画面，再对每个人体目标进行更加精准的关键点检测。可参考项目<a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public">XEduHub实例代码-入门完整版</a>中的 **“3-1 综合项目：目标检测+关键点检测”**。
+例如进行人体关键点检测`pose_body`之前，先使用`det_body`在图片中检测中人体目标，提取人体画面，再对每个人体目标进行更加精准的关键点检测，而且当画面有多个人时，也能将画面中每个人的关键点均检测出来。可参考项目<a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public">XEduHub实例代码-入门完整版</a>中的 **“3-1 综合项目：目标检测+关键点检测”**。
 
 当然关键点识别也可以单独用，但是效果并不保证。
 
