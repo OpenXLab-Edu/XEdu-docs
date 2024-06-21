@@ -28,7 +28,11 @@ Gitee链接：[https://gitee.com/liliang9693/ext-xedu-hub](https://gitee.com/lil
 
 ![](../images/xeduhub/mind3.png)
 
-大家可以举一反三尝试编写各种预制任务的代码，针对MMEdu、BaseNN、BaseML等工具训练及转换并导出的模型，额外将模型文件上传再指定即可。
+大家可以举一反三尝试编写各种预制任务的代码，我们知道XEduHub也支持XEdu系列工具训练的模型，如MMEdu、BaseNN和 BaseML。针对MMEdu、BaseNN、BaseML等工具训练及转换并导出的模型，额外将模型文件上传再指定即可。如使用XEduHub完成MMEdu工具训练并转换的模型的推理的积木块如下，此代码也支持浦育前端化工具训练的图像分类模型转换得到的ONNX模型的推理。
+
+![](../images/xeduhub/mmedu.png)
+
+
 
 用这套积木块基本可以完成XEduHub的所有任务，可以做各种小任务，也可以做复杂任务。使用积木完成对一张图片借助XEduHub的相关模型进行人体画面提取、关键点识别，再用BaseNN训练并转换的ONNX模型完成分类模型推理的示例如下。
 
