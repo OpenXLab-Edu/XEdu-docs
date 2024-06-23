@@ -2,13 +2,13 @@
 
 ## 项目说明：
 
-MMEdu是人工智能视觉算法集成的深度学习开发工具，目前图像分类模块MMClassifiation支持的SOTA模型有LeNet、MobileNet、ResNet18、ResNet50等，支持训练的数据集格式为ImageNet。更多关于MMClassifiation功能详见请前往[解锁MMEdu的图像分类模块](https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#mmclassification)。
+MMEdu是人工智能视觉算法集成的深度学习开发工具，目前图像分类模块MMClassifiation支持的SOTA模型有LeNet、MobileNet、ResNet18、ResNet50等，支持训练的数据集格式为ImageNet。更多关于MMClassifiation功能详见请前往[解锁MMEdu的图像分类模块](https://xedu.readthedocs.io/zh-cn/master/mmedu/mmclassification.html#mmclassification)。
 本项目使用MMEdu的图像分类模块MMClassification，根据经典的手写体ImageNet格式数据集，训练LeNet模型实现手写体识别。
 
 项目地址：[https://openinnolab.org.cn/pjlab/project?id=64a3c64ed6c5dc7310302853&sc=62f34141bf4f550f3e926e0e#public](https://openinnolab.org.cn/pjlab/project?id=64a3c64ed6c5dc7310302853&sc=62f34141bf4f550f3e926e0e#public)
 
 
-数据集来源：mnist数据集，来源于National Institute of Standards and Technology，改编自MNIST。另外MMEdu图像分类模块要求的数据集格式为ImageNet格式，包含三个文件夹和三个文本文件，文件夹内，不同类别图片按照文件夹分门别类排好，通过trainning_set、val_set、test_set区分训练集、验证集和测试集。文本文件classes.txt说明类别名称与序号的对应关系，val.txt说明验证集图片路径与类别序号的对应关系，test.txt说明测试集图片路径与类别序号的对应关系。如何从零开始制作符合要求的数据集详见[后文](https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/howtomake_imagenet.html)。
+数据集来源：mnist数据集，来源于National Institute of Standards and Technology，改编自MNIST。另外MMEdu图像分类模块要求的数据集格式为ImageNet格式，包含三个文件夹和三个文本文件，文件夹内，不同类别图片按照文件夹分门别类排好，通过trainning_set、val_set、test_set区分训练集、验证集和测试集。文本文件classes.txt说明类别名称与序号的对应关系，val.txt说明验证集图片路径与类别序号的对应关系，test.txt说明测试集图片路径与类别序号的对应关系。如何从零开始制作符合要求的数据集详见[后文](https://xedu.readthedocs.io/zh-cn/master/how_to_use/dl_library/howtomake_imagenet.html)。
 
 
 
@@ -87,7 +87,7 @@ result = model.inference(image=img_path, show=True, checkpoint = checkpoint) # �
 model.print_result(result) # 结果转换为中文输出
 ```
 
-上文简单介绍了如何用MMEdu训练一个图像分类模型，更多关于MMEdu模型训练和推理的方法详见请前往[解锁MMEdu的图像分类模块](https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#mmclassification)[https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#mmclassification](https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#mmclassification)。 
+上文简单介绍了如何用MMEdu训练一个图像分类模型，更多关于MMEdu模型训练和推理的方法详见请前往[解锁MMEdu的图像分类模块](https://xedu.readthedocs.io/zh-cn/master/mmedu/mmclassification.html#mmclassification)[https://xedu.readthedocs.io/zh-cn/master/mmedu/mmclassification.html#mmclassification](https://xedu.readthedocs.io/zh-cn/master/mmedu/mmclassification.html#mmclassification)。 
 
 ### 拓展：模型转换和应用
 
@@ -112,7 +112,7 @@ mmcls.show(result_img)# 展示推理结果图片
 mmcls.save(result_img,'new.jpg')# 保存推理结果图片
 ```
 
-编写一个人工智能应用并没有那么困难，比如可以借助[Gradio](https://xedu.readthedocs.io/zh/master/how_to_use/scitech_tools/gradio.html#webgradio)这个开源的用于快速原型设计和部署机器学习模型的交互式界面的工具库就能快速搭建一个简易的模型展示应用，如下代码可实现在一个网页上传一张图片，返回推理结果。
+编写一个人工智能应用并没有那么困难，比如可以借助[Gradio](https://xedu.readthedocs.io/zh-cn/master/how_to_use/scitech_tools/gradio.html#webgradio)这个开源的用于快速原型设计和部署机器学习模型的交互式界面的工具库就能快速搭建一个简易的模型展示应用，如下代码可实现在一个网页上传一张图片，返回推理结果。
 
 ```python
 import gradio as gr
@@ -131,5 +131,5 @@ demo = gr.Interface(fn=predict, inputs=image, outputs=["text","text"])
 demo.launch(share=True)
 ```
 
-更多模型转换和应用的内容请看[模型转换和应用](https://xedu.readthedocs.io/zh/master/how_to_use/support_resources/model_convert.html)[(https://xedu.readthedocs.io/zh/master/how_to_use/support_resources/model_convert.html)](https://xedu.readthedocs.io/zh/master/how_to_use/support_resources/model_convert.html)。
+更多模型转换和应用的内容请看[模型转换和应用](https://xedu.readthedocs.io/zh-cn/master/how_to_use/support_resources/model_convert.html)[(https://xedu.readthedocs.io/zh-cn/master/how_to_use/support_resources/model_convert.html)](https://xedu.readthedocs.io/zh-cn/master/how_to_use/support_resources/model_convert.html)。
 

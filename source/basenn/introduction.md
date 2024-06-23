@@ -6,7 +6,7 @@ BaseNN是神经网络库，能够使用类似Keras却比Keras门槛更低的的�
 
 a）简易和快速地搭建神经网络
 
-b）支持搭建[CNN和RNN](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#rnncnn)，或二者的结合
+b）支持搭建[CNN和RNN](https://xedu.readthedocs.io/zh-cn/master/basenn/introduction.html#rnncnn)，或二者的结合
 
 c）同时支持CPU和GPU
 
@@ -120,7 +120,7 @@ model.load_img_data('catdog',transform={"Resize":(128,128),"RandomResizedCrop":2
 
 `RandomHorizontalFlip`:依照某概率对图片进行水平翻转。
 
-支持的操作即为[torchvision中的transforms](https://pytorch-cn.readthedocs.io/zh/latest/torchvision/torchvision-transform/)包括的所有方式，如下表所列。
+支持的操作即为[torchvision中的transforms](https://pytorch-cn.readthedocs.io/zh-cn/latest/torchvision/torchvision-transform/)包括的所有方式，如下表所列。
 
 <table class="docutils align-default">
 <thead>
@@ -425,7 +425,7 @@ model.add(layer='linear',size=(10, 5), activation='relu') # [120, 5]
 model.add(layer='linear', size=(5, 3), activation='softmax') # [120, 3]
 ```
 
-以上使用`add()`方法添加层，参数`layer='linear'`表示添加的层是线性层，`size=(4,10)`表示该层输入维度为4，输出维度为10，`activation='relu'`表示使用relu激活函数。以上代码搭建的是一个输入维度为4，输出维度为3，隐藏层数量为2的全连接神经网络。如要搭建更加复杂的神经网络，可前往[附录1](https://xedu.readthedocs.io/zh/master/basenn/appendix.html#add)了解更详细的`add()`方法使用，还呈现了搭建[全连接神经网络结构](https://xedu.readthedocs.io/zh/master/basenn/appendix.html#id3)、[简单卷积神经网络LeNet结构](https://xedu.readthedocs.io/zh/master/basenn/appendix.html#id4)，也呈现了与MMEdu内置的SOTA模型对应的[MobileNet网络](https://xedu.readthedocs.io/zh/master/basenn/appendix.html#mobilenet)、[ResNet](https://xedu.readthedocs.io/zh/master/basenn/appendix.html#resnet)等，以及[循环神经网络](https://xedu.readthedocs.io/zh/master/basenn/appendix.html#id5)、[扩散模型](https://xedu.readthedocs.io/zh/master/basenn/appendix.html#id7)等搭建说明。
+以上使用`add()`方法添加层，参数`layer='linear'`表示添加的层是线性层，`size=(4,10)`表示该层输入维度为4，输出维度为10，`activation='relu'`表示使用relu激活函数。以上代码搭建的是一个输入维度为4，输出维度为3，隐藏层数量为2的全连接神经网络。如要搭建更加复杂的神经网络，可前往[附录1](https://xedu.readthedocs.io/zh-cn/master/basenn/appendix.html#add)了解更详细的`add()`方法使用，还呈现了搭建[全连接神经网络结构](https://xedu.readthedocs.io/zh-cn/master/basenn/appendix.html#id3)、[简单卷积神经网络LeNet结构](https://xedu.readthedocs.io/zh-cn/master/basenn/appendix.html#id4)，也呈现了与MMEdu内置的SOTA模型对应的[MobileNet网络](https://xedu.readthedocs.io/zh-cn/master/basenn/appendix.html#mobilenet)、[ResNet](https://xedu.readthedocs.io/zh-cn/master/basenn/appendix.html#resnet)等，以及[循环神经网络](https://xedu.readthedocs.io/zh-cn/master/basenn/appendix.html#id5)、[扩散模型](https://xedu.readthedocs.io/zh-cn/master/basenn/appendix.html#id7)等搭建说明。
 
 ### 4. 模型训练
 
@@ -469,7 +469,7 @@ model.train(lr=0.01, epochs=1000, checkpoint=checkpoint)
 
 ### 训练篇拓展------分数据类型看训练代码
 
-针对不同类型的数据类型，载入数据、搭建模型和模型训练的代码会略有不同。深度学习常见的数据类型介绍详见[附录4](https://xedu.readthedocs.io/zh/master/basenn/appendix.html#id14)。
+针对不同类型的数据类型，载入数据、搭建模型和模型训练的代码会略有不同。深度学习常见的数据类型介绍详见[附录4](https://xedu.readthedocs.io/zh-cn/master/basenn/appendix.html#id14)。
 
 #### 第一种：图片文件夹类型
 
@@ -530,7 +530,7 @@ model.train(lr=0.01,epochs=1)
 
 #### 第三种：文本类型
 
-在做文本生成等NLP（自然语言处理）领域项目时，一般[搭建RNN网络](https://xedu.readthedocs.io/zh/master/basenn/appendix.html#rnncnn)训练模型，训练数据是文本数据，参考代码如下：
+在做文本生成等NLP（自然语言处理）领域项目时，一般[搭建RNN网络](https://xedu.readthedocs.io/zh-cn/master/basenn/appendix.html#rnncnn)训练模型，训练数据是文本数据，参考代码如下：
 
 ```python
 model = nn('cls')
@@ -647,7 +647,7 @@ model.convert(checkpoint="basenn_cd.pth",out_file="basenn_cd.onnx")
 
 **注意！**：在转换为onnx文件后会将模型的元信息，如数据类型、输入尺寸等也写入模型文件，而之前版本的BaseNN训练得到的模型文件不含有这些信息，因此如果想要将之前的BaseNN训练得到的文件进行转换，需要基于原先的模型文件使用最新的BaseNN版本再进行一轮训练！
 
-模型转换后生成一个ONNX模型和示例代码，示例代码的使用详见[后文](https://xedu.readthedocs.io/zh/master/how_to_use/support_resources/model_convert.html#id8)。
+模型转换后生成一个ONNX模型和示例代码，示例代码的使用详见[后文](https://xedu.readthedocs.io/zh-cn/master/how_to_use/support_resources/model_convert.html#id8)。
 
 ## 高级功能
 
@@ -723,7 +723,7 @@ model.train(...)
 
 损失函数（或称目标函数、优化评分函数）是编译模型时所需的参数之一。在机器学习和深度学习中，模型的训练通常涉及到一个优化过程，即通过不断调整模型的参数，使得模型在训练数据上的预测结果与实际结果的差距最小化。这个差距通常使用一个称为"损失函数"的指标来衡量。损失函数通常是一个关于模型参数的函数，用于度量模型预测结果与实际结果之间的差异。在模型训练过程中，模型会根据损失函数的值来调整自己的参数，以减小损失函数的值。
 
-默认的损失函数是交叉熵损失函数，允许选择不同的损失函数，支持的损失函数见[附录](https://xedu.readthedocs.io/zh/master/basenn/appendix.html#id13)。自选损失函数方法如下：
+默认的损失函数是交叉熵损失函数，允许选择不同的损失函数，支持的损失函数见[附录](https://xedu.readthedocs.io/zh-cn/master/basenn/appendix.html#id13)。自选损失函数方法如下：
 
 ```python
 model.train(...,loss="MSELoss")

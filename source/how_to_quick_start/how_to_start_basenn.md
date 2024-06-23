@@ -2,7 +2,7 @@
 
 ## 项目说明：
 
-BaseNN可以方便地逐层搭建神经网络，支持搭建CNN和RNN，或二者的结合，训练深度学习模型。可前往[解锁BaseNN基本使用方法的教程](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id2)。本项目核心功能是完成使用经典的鸢尾花数据集完成鸢尾花分类，最后完成了一个简单的鸢尾花分类小应用，输入花萼长度、宽度、花瓣长度、宽度，可以输出预测结果。
+BaseNN可以方便地逐层搭建神经网络，支持搭建CNN和RNN，或二者的结合，训练深度学习模型。可前往[解锁BaseNN基本使用方法的教程](https://xedu.readthedocs.io/zh-cn/master/basenn/introduction.html#id2)。本项目核心功能是完成使用经典的鸢尾花数据集完成鸢尾花分类，最后完成了一个简单的鸢尾花分类小应用，输入花萼长度、宽度、花瓣长度、宽度，可以输出预测结果。
 
 项目地址：[https://www.openinnolab.org.cn/pjlab/project?id=641bc2359c0eb14f22fdbbb1&sc=635638d69ed68060c638f979#public](https://www.openinnolab.org.cn/pjlab/project?id=641bc2359c0eb14f22fdbbb1&sc=635638d69ed68060c638f979#public)
 
@@ -106,7 +106,7 @@ model.print_result(res) # 输出字典格式结果
 
 `checkpoint`为已有模型路径，即使用现有的模型进行推理。
 
-上文介绍了借助BaseNN从模型训练到模型测试的简单方法，此外BaseNN支持搭建CNN和RNN，或二者的结合。可前往[解锁BaseNN基本使用方法的教程](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id2)。
+上文介绍了借助BaseNN从模型训练到模型测试的简单方法，此外BaseNN支持搭建CNN和RNN，或二者的结合。可前往[解锁BaseNN基本使用方法的教程](https://xedu.readthedocs.io/zh-cn/master/basenn/introduction.html#id2)。
 
 ### 任务二：模型转换和后续应用
 
@@ -118,7 +118,7 @@ model = nn('cls')
 model.convert(checkpoint="checkpoints/iris_ckpt/basenn.pth",out_file="basenn_cd.onnx")
 ```
 
-借助生成的示例代码，简单修改（如下所示），即可在本地或者硬件上运行（提前[安装XEduHub库](https://xedu.readthedocs.io/zh/master/xedu_hub/quick_start.html#id3)），甚至可以借助一些开源工具库做一个网页应用。
+借助生成的示例代码，简单修改（如下所示），即可在本地或者硬件上运行（提前[安装XEduHub库](https://xedu.readthedocs.io/zh-cn/master/xedu_hub/quick_start.html#id3)），甚至可以借助一些开源工具库做一个网页应用。
 
 ```python
 from XEdu.hub import Workflow as wf
@@ -133,7 +133,7 @@ res = basenn.inference(data=table)
 result = basenn.format_output(lang="zh")
 ```
 
-还可以借助一些开源工具库（如[PyWebIO](https://xedu.readthedocs.io/zh/master/how_to_use/scitech_tools/pywebio.html#webpywebio)）编写一个人工智能应用，如下代码可实现手动输入观察到的鸢尾花特征，输出花种判断。
+还可以借助一些开源工具库（如[PyWebIO](https://xedu.readthedocs.io/zh-cn/master/how_to_use/scitech_tools/pywebio.html#webpywebio)）编写一个人工智能应用，如下代码可实现手动输入观察到的鸢尾花特征，输出花种判断。
 
 ```python
 from pywebio.input import *
@@ -160,7 +160,7 @@ if __name__ == '__main__':
 
 ![](../images/how_to_quick_start/pywebio.png)
 
-更多模型转换和应用的教程详见[模型转换和应用](https://xedu.readthedocs.io/zh/master/how_to_use/support_resources/model_convert.html#)[https://xedu.readthedocs.io/zh/master/how_to_use/support_resources/model_convert.html#](https://xedu.readthedocs.io/zh/master/how_to_use/support_resources/model_convert.html#)。
+更多模型转换和应用的教程详见[模型转换和应用](https://xedu.readthedocs.io/zh-cn/master/how_to_use/support_resources/model_convert.html#)[https://xedu.readthedocs.io/zh-cn/master/how_to_use/support_resources/model_convert.html#](https://xedu.readthedocs.io/zh-cn/master/how_to_use/support_resources/model_convert.html#)。
 
 ### 拓展阅读：无代码完成本项目的模型训练和转换
 
@@ -175,7 +175,7 @@ EasyTrain界面打开之后，选择BaseNN页面。
 
 在下拉框中指定训练的数据集，网页会读取XEdu/dataset/basenn之下数据集。一键安装包中自带数据集：iris/iris_test.csv，iris/iris_training.csv。
 
-数据集的格式要求为：[csv文件](https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id21)(BaseNN任务)。纵轴为样本，横轴为特征，第一行为表头，最后一列为标签。
+数据集的格式要求为：[csv文件](https://xedu.readthedocs.io/zh-cn/master/basenn/introduction.html#id21)(BaseNN任务)。纵轴为样本，横轴为特征，第一行为表头，最后一列为标签。
 
 ![](../images/easydl/train13.png)
 
@@ -203,7 +203,7 @@ EasyTrain界面打开之后，选择BaseNN页面。
 
 ![](../images/easydl/train16.png)
 
-更多参数学习请跳转[深度学习训练参数详解](https://xedu.readthedocs.io/zh/master/dl_library/parameter_explain.html)
+更多参数学习请跳转[深度学习训练参数详解](https://xedu.readthedocs.io/zh-cn/master/dl_library/parameter_explain.html)
 
 
 在完成参数设置后，点击右侧的"生成代码"，可以生成训练代码，生成代码之后才可以训练。
@@ -213,7 +213,7 @@ EasyTrain界面打开之后，选择BaseNN页面。
 
 #### 第4步 开始训练
 
-代码生成之后点击"进入训练"按钮即可跳转至训练页面，工具会先检查你的电脑有没有安装MMEdu的库，如果没有请先去”小黑窗“进行[pip安装BaseNN](https://xedu.readthedocs.io/zh/master/basenn/installation.html#)。
+代码生成之后点击"进入训练"按钮即可跳转至训练页面，工具会先检查你的电脑有没有安装MMEdu的库，如果没有请先去”小黑窗“进行[pip安装BaseNN](https://xedu.readthedocs.io/zh-cn/master/basenn/installation.html#)。
 
 ![](../images/easydl/train21.png)
 
@@ -235,8 +235,8 @@ EasyTrain界面打开之后，选择BaseNN页面。
 
 ![](../images/easydl/train11.png)
 
-完成模型训练之后，窗口会弹出模型转换，可以点击“是”可实现pth格式模型准换成onnx格式模型。若要自行转换可使用[EasyConvert](https://xedu.readthedocs.io/zh/master/easydl/easyconvert.html)。
+完成模型训练之后，窗口会弹出模型转换，可以点击“是”可实现pth格式模型准换成onnx格式模型。若要自行转换可使用[EasyConvert](https://xedu.readthedocs.io/zh-cn/master/easydl/easyconvert.html)。
 
 ![](../images/easydl/train19.png)
 
-如需尝试用代码完成BaseNN模型训练或了解BaseNN具体功能，请参照[BaseNN的教程](https://xedu.readthedocs.io/zh/master/basenn.html)。
+如需尝试用代码完成BaseNN模型训练或了解BaseNN具体功能，请参照[BaseNN的教程](https://xedu.readthedocs.io/zh-cn/master/basenn.html)。

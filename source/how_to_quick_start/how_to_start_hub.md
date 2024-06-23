@@ -2,7 +2,7 @@
 
 ## 项目说明：
 
-XEduHub针对一些常见任务，提供了现成的优质模型，可以完成目标检测、关键点检测等等，还可以实现自训练模型推理，用示例详见[XEduHub功能详解](https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#xeduhub)。本项目完成了直接调用XEduHub一个内置模型det_hand实现检测手的功能，只用7行代码就可实现。
+XEduHub针对一些常见任务，提供了现成的优质模型，可以完成目标检测、关键点检测等等，还可以实现自训练模型推理，用示例详见[XEduHub功能详解](https://xedu.readthedocs.io/zh-cn/master/xedu_hub/introduction.html#xeduhub)。本项目完成了直接调用XEduHub一个内置模型det_hand实现检测手的功能，只用7行代码就可实现。
 
 项目地址：[用XEduhub执行推理任务（检测任务）](https://www.openinnolab.org.cn/pjlab/project?id=6612327ea888634b8a6de8f6&backpath=/pjlab/projects/list#public)
 [https://www.openinnolab.org.cn/pjlab/project?id=6612327ea888634b8a6de8f6&backpath=/pjlab/projects/list#public](https://www.openinnolab.org.cn/pjlab/project?id=6612327ea888634b8a6de8f6&backpath=/pjlab/projects/list#public)
@@ -75,7 +75,7 @@ hand_det.show(img_with_box) # 可视化结果
 ```
 ![](../images/how_to_quick_start/hubhand.png)
 
-XEduHub内置了多个模型，像目标检测任务，除了人手目标检测，还支持人脸目标检测、人体目标检测……使用方法基本一致，更多使用示例详见[XEduHub功能详解](https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#xeduhub)。
+XEduHub内置了多个模型，像目标检测任务，除了人手目标检测，还支持人脸目标检测、人体目标检测……使用方法基本一致，更多使用示例详见[XEduHub功能详解](https://xedu.readthedocs.io/zh-cn/master/xedu_hub/introduction.html#xeduhub)。
 
 也可以通过学习“[XEduHub实例代码-入门完整版入门](https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjedu/userprofile?slideKey=project#public)”项目进行学习，https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjedu/userprofile?slideKey=project#public
 

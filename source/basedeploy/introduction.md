@@ -198,7 +198,7 @@ cv2.destroyAllWindows()
 
 #### 强大的ONNX模型尺寸解析能力
 
-`BaseDeploy`为适配图像任务，可自动解析未经`XEdu`标记的ONNX模型的输入张量尺寸，并进行图像预处理和输出后处理，输出结果将不会带有类别信息。[学习资源库](https://xedu.readthedocs.io/zh/master/support_resources/resources.html)提供了部分ONNX模型下载链接。
+`BaseDeploy`为适配图像任务，可自动解析未经`XEdu`标记的ONNX模型的输入张量尺寸，并进行图像预处理和输出后处理，输出结果将不会带有类别信息。[学习资源库](https://xedu.readthedocs.io/zh-cn/master/how_to_use/support_resources/resources.html#onnx)提供了部分ONNX模型下载链接。
 
 ```python
 import BaseDeploy as bd

@@ -4,9 +4,9 @@
 
 COCO数据集是一个大型的、丰富的物体检测，分割和字幕数据集。这个数据集以scene understanding（场景理解）为目标，主要从复杂的日常场景中截取，图像中的目标通过精确的segmentation（分割）进行位置的标定。图像包括91类目标，328,000影像和2,500,000个label。是目前为止有语义分割的最大数据集，提供的类别有80类，有超过33万张图片，其中20万张有标注，整个数据集中个体的数目超过150万个。
 
-XEdu中MMEdu的目标检测模块支持的数据集类型是COCO，很多时候我们需要训练自己创建的数据集，那怎么样才能将数据集需转换成<a href="https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#coco">COCO格式</a>呢？
+XEdu中MMEdu的目标检测模块支持的数据集类型是COCO，很多时候我们需要训练自己创建的数据集，那怎么样才能将数据集需转换成<a href="https://xedu.readthedocs.io/zh-cn/master/mmedu/introduction.html#coco">COCO格式</a>呢？
 
-接下来就让我们一起学习几种自己制作<a href="https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#coco">COCO格式</a>数据集的方式吧。
+接下来就让我们一起学习几种自己制作<a href="https://xedu.readthedocs.io/zh-cn/master/mmedu/introduction.html#coco">COCO格式</a>数据集的方式吧。
 
 
 ### 方式1：OpenInnoLab版（线上标注）
@@ -202,7 +202,7 @@ labelme2coco(labelme_json, 'picture/new.json') # 指定生成文件路径
 
 #### 第四步：按照目录结构整理文件
 
-创建两个文件夹“images”和“annotations”，分别用于存放图片以及标注信息。按照要求的目录结构，整理好文件夹的文件，最后将文件夹重新命名，制作完成后如想要检查数据集，可使用BaseDT的[数据集格式检查](https://xedu.readthedocs.io/zh/latest/basedt/introduction.html#id9)功能，结合数据集检查提示对数据集进行调整，最后完成整个数据集制作。在训练的时候，只要通过`model.load_dataset`指定数据集的路径就可以了。
+创建两个文件夹“images”和“annotations”，分别用于存放图片以及标注信息。按照要求的目录结构，整理好文件夹的文件，最后将文件夹重新命名，制作完成后如想要检查数据集，可使用BaseDT的[数据集格式检查](https://xedu.readthedocs.io/zh-cn/latest/basedt/introduction.html#id9)功能，结合数据集检查提示对数据集进行调整，最后完成整个数据集制作。在训练的时候，只要通过`model.load_dataset`指定数据集的路径就可以了。
 
 ```
 COCO格式数据集（目标检测）
@@ -238,7 +238,7 @@ classes.txt
 
 #### 第二步：转换为COCO格式
 
-使用BaseDT库将平台标注格式的数据集转换成COCO格式，可以使用如下代码。如需了解更多BaseDT库数据集处理的功能，详见<a href="https://xedu.readthedocs.io/zh/master/basedt/introduction.html#id7">BaseDT的数据集格式转换</a>。
+使用BaseDT库将平台标注格式的数据集转换成COCO格式，可以使用如下代码。如需了解更多BaseDT库数据集处理的功能，详见<a href="https://xedu.readthedocs.io/zh-cn/master/basedt/introduction.html#id7">BaseDT的数据集格式转换</a>。
 
 ```python
 from BaseDT.dataset import DataSet

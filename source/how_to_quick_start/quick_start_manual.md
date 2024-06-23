@@ -24,8 +24,8 @@ XEduHub针对一些常见任务，提供了现成的优质模型，可以完成�
 
 ### 链接：
 
-案例详解：[用XEduhub执行推理任务（检测任务）](https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_start_hub.html#)
-[https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_start_hub.html#](https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_start_hub.html#)
+案例详解：[用XEduhub执行推理任务（检测任务）](https://xedu.readthedocs.io/zh-cn/master/how_to_quick_start/how_to_start_hub.html#)
+[https://xedu.readthedocs.io/zh-cn/master/how_to_quick_start/how_to_start_hub.html#](https://xedu.readthedocs.io/zh-cn/master/how_to_quick_start/how_to_start_hub.html#)
 
 项目链接：[用XEduhub执行推理任务（检测任务）](https://www.openinnolab.org.cn/pjlab/project?id=6612327ea888634b8a6de8f6&backpath=/pjlab/projects/list#public)
 [https://www.openinnolab.org.cn/pjlab/project?id=6612327ea888634b8a6de8f6&backpath=/pjlab/projects/list#public](https://www.openinnolab.org.cn/pjlab/project?id=6612327ea888634b8a6de8f6&backpath=/pjlab/projects/list#public)
@@ -38,8 +38,8 @@ BaseML库提供了众多机器学习训练方法，如线性回归、KNN、SVM�
 
 ### 链接：
 
-案例详解：[用BaseML训练机器学习模型（抛物线）](https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_start_baseml.html#)
-[https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_start_baseml.html#](https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_start_baseml.html#)
+案例详解：[用BaseML训练机器学习模型（抛物线）](https://xedu.readthedocs.io/zh-cn/master/how_to_quick_start/how_to_start_baseml.html#)
+[https://xedu.readthedocs.io/zh-cn/master/how_to_quick_start/how_to_start_baseml.html#](https://xedu.readthedocs.io/zh-cn/master/how_to_quick_start/how_to_start_baseml.html#)
 
 项目链接：[用BaseML训练机器学习模型（抛物线）](https://www.openinnolab.org.cn/pjlab/project?id=66123df8e0ea4a2a08b20464&backpath=/pjlab/projects/list#public)
 [https://www.openinnolab.org.cn/pjlab/project?id=66123df8e0ea4a2a08b20464&backpath=/pjlab/projects/list#public](https://www.openinnolab.org.cn/pjlab/project?id=66123df8e0ea4a2a08b20464&backpath=/pjlab/projects/list#public)
@@ -52,8 +52,8 @@ BaseNN可以方便地逐层搭建神经网络，支持搭建CNN和RNN，或二�
 
 ### 链接：
 
-案例详解：[用BaseNN训练搭建全连接神经网络（鸢尾花）](https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_start_basenn.html#)
-[https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_start_basenn.html#](https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_start_basenn.html#)
+案例详解：[用BaseNN训练搭建全连接神经网络（鸢尾花）](https://xedu.readthedocs.io/zh-cn/master/how_to_quick_start/how_to_start_basenn.html#)
+[https://xedu.readthedocs.io/zh-cn/master/how_to_quick_start/how_to_start_basenn.html#](https://xedu.readthedocs.io/zh-cn/master/how_to_quick_start/how_to_start_basenn.html#)
 
 项目链接：
 [用BaseNN库搭建全连接神经网络训练IRIS鸢尾花分类模型](https://openinnolab.org.cn/pjlab/project?id=641bc2359c0eb14f22fdbbb1&backpath=/pjlab/projects/list#public)
@@ -67,8 +67,8 @@ MMEdu是人工智能视觉算法集成的深度学习开发工具。本项目使
 
 ### 链接：
 
-案例详解：[用MMEdu训练LeNet图像分类模型（手写体）](https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_start_mmcls.html#)
-[https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_start_mmcls.html#](https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_start_mmcls.html#)
+案例详解：[用MMEdu训练LeNet图像分类模型（手写体）](https://xedu.readthedocs.io/zh-cn/master/how_to_quick_start/how_to_start_mmcls.html#)
+[https://xedu.readthedocs.io/zh-cn/master/how_to_quick_start/how_to_start_mmcls.html#](https://xedu.readthedocs.io/zh-cn/master/how_to_quick_start/how_to_start_mmcls.html#)
 
 项目链接：[用MMEdu实现MNIST手写体数字识别（XEdu官方版）](https://openinnolab.org.cn/pjlab/project?id=64a3c64ed6c5dc7310302853&sc=62f34141bf4f550f3e926e0e#public)
 [https://openinnolab.org.cn/pjlab/project?id=64a3c64ed6c5dc7310302853&sc=62f34141bf4f550f3e926e0e#public](https://openinnolab.org.cn/pjlab/project?id=64a3c64ed6c5dc7310302853&sc=62f34141bf4f550f3e926e0e#public)
@@ -81,13 +81,13 @@ MMEdu是人工智能视觉算法集成的深度学习开发工具。本项目使
 
 ### 链接：
 
-案例详解：[用MMEdu训练SSD_Lite目标检测模型（猫狗）](https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_start_mmdet.html)
-[https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_start_mmdet.html](https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_start_mmdet.html)
+案例详解：[用MMEdu训练SSD_Lite目标检测模型（猫狗）](https://xedu.readthedocs.io/zh-cn/master/how_to_quick_start/how_to_start_mmdet.html)
+[https://xedu.readthedocs.io/zh-cn/master/how_to_quick_start/how_to_start_mmdet.html](https://xedu.readthedocs.io/zh-cn/master/how_to_quick_start/how_to_start_mmdet.html)
 
 项目链接：[用MMEdu解决目标检测问题（以猫狗检测为例）](https://openinnolab.org.cn/pjlab/project?id=64055f119c0eb14f22db647c&sc=62f34141bf4f550f3e926e0e#public)
 [https://openinnolab.org.cn/pjlab/project?id=64055f119c0eb14f22db647c&sc=62f34141bf4f550f3e926e0e#public](https://openinnolab.org.cn/pjlab/project?id=64055f119c0eb14f22db647c&sc=62f34141bf4f550f3e926e0e#public)
 
-## 案例六：综合项目石头剪刀布的实时识别（XEduhub+BaseNN）
+## 案例六：综合项目石头剪刀布的实时识别（XEduHub+BaseNN）
 
 ### 简介：
 
@@ -96,8 +96,8 @@ MMEdu是人工智能视觉算法集成的深度学习开发工具。本项目使
 
 ### 链接：
 
-案例详解：[综合项目石头剪刀布的实时识别（XEduhub+BaseNN）](https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_make_a_small_project.html#)
-[https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_make_a_small_project.html#](https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_make_a_small_project.html#)
+案例详解：[综合项目石头剪刀布的实时识别（XEduHub+BaseNN）](https://xedu.readthedocs.io/zh-cn/master/how_to_quick_start/how_to_make_a_small_project.html#)
+[https://xedu.readthedocs.io/zh-cn/master/how_to_quick_start/how_to_make_a_small_project.html#](https://xedu.readthedocs.io/zh-cn/master/how_to_quick_start/how_to_make_a_small_project.html#)
 
 项目链接：[用XEduHub和BaseNN完成石头剪刀布手势识别](https://openinnolab.org.cn/pjlab/project?id=66062a39a888634b8a1bf2ca&backpath=/pjedu/userprofile?slideKey=project#public)
 [https://openinnolab.org.cn/pjlab/project?id=66062a39a888634b8a1bf2ca&backpath=/pjedu/userprofile?slideKey=project#public](https://openinnolab.org.cn/pjlab/project?id=66062a39a888634b8a1bf2ca&backpath=/pjedu/userprofile?slideKey=project#public)

@@ -3,7 +3,7 @@
 
 当前在[PyPi](https://pypi.org/user/aiedu/)开源的最新版本号如下：
 ```
-XEdu-python==0.1.6
+XEdu-python==0.1.8
 MMEdu==0.1.26
 BaseML==0.1.3
 BaseNN==0.3.0
@@ -26,7 +26,7 @@ BaseDeploy==0.0.4
 
 下载方式
 
-飞书网盘：[XEdu v1.6.7f.exe](https://p6bm2if73b.feishu.cn/file/boxcn7ejYk2XUDsHI3Miq9546Uf?from=from_copylink)
+飞书网盘：[https://p6bm2if73b.feishu.cn/file/boxcn7ejYk2XUDsHI3Miq9546Uf?from=from_copylink](https://p6bm2if73b.feishu.cn/file/boxcn7ejYk2XUDsHI3Miq9546Uf?from=from_copylink)
 
 下载最新版exe，同时建议准备win10电脑。
 
@@ -367,7 +367,7 @@ $ conda activate your_env_name
 $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/index.html
 ```
 
-如使用MMEdu的MMDet模块出现问题，可见后文[关于pip安装MMEdu的详细说明](https://xedu.readthedocs.io/zh/master/mmedu/installation.html#pip)。
+如使用MMEdu的MMDet模块出现问题，可见后文[关于pip安装MMEdu的详细说明](https://xedu.readthedocs.io/zh-cn/master/mmedu/installation.html#pip)。
 
 ### 1.2 安装MMEdu(GPU版本)
 

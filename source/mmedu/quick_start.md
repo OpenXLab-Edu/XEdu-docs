@@ -16,7 +16,7 @@ GitHub：<a href="https://github.com/OpenXLab-Edu/OpenMMLab-Edu">https://github.
 
 ## 小目标：使用MMEdu训练一个手写体数字识别模型！
 
-MMEdu有多种<a href="https://xedu.readthedocs.io/zh/master/mmedu/installation.html#mmedu">安装方式</a>，可以通过pip方式安装，也可以使用一键安装包。体验MMEdu的最快速方式是通过OpenInnoLab平台在线体验MMEdu。
+MMEdu有多种<a href="https://xedu.readthedocs.io/zh-cn/master/mmedu/installation.html#mmedu">安装方式</a>，可以通过pip方式安装，也可以使用一键安装包。体验MMEdu的最快速方式是通过OpenInnoLab平台在线体验MMEdu。
 
 ### 1. 在OpenInnoLab创建MMEdu项目
 
@@ -68,7 +68,7 @@ OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台�
 
 ​		多样性：只有数量还不够，你还需要确保数据的多样性。这意味着你需要考虑各种光线、拍摄角度、背景等变化条件。
 
-​		格式要求：不同的AI开发工具或框架可能对数据集格式有特定的要求。MMEdu工具对数据集的格式也有自己的要求，如图像分类模块要求[ImageNet格式](https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#imagenet)，目标检测模块要求[COCO格式](https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#coco)，后文有如何[从零开始制作ImageNet格式数据集](https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/howtomake_imagenet.html#imagenet)和如何[从零开始制作COCO格式数据集](https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/howtomake_coco.html#coco)的详细说明。
+​		格式要求：不同的AI开发工具或框架可能对数据集格式有特定的要求。MMEdu工具对数据集的格式也有自己的要求，如图像分类模块要求[ImageNet格式](https://xedu.readthedocs.io/zh-cn/master/mmedu/introduction.html#imagenet)，目标检测模块要求[COCO格式](https://xedu.readthedocs.io/zh-cn/master/mmedu/introduction.html#coco)，后文有如何[从零开始制作ImageNet格式数据集](https://xedu.readthedocs.io/zh-cn/master/how_to_use/dl_library/howtomake_imagenet.html#imagenet)和如何[从零开始制作COCO格式数据集](https://xedu.readthedocs.io/zh-cn/master/how_to_use/dl_library/howtomake_coco.html#coco)的详细说明。
 
 ### 4. 训练模型
 
@@ -116,7 +116,7 @@ model.print_result(result) # 输出推理结果
 ```
 打开<a href="https://www.openinnolab.org.cn/pjlab/project?id=63801c0701df4535876b6a4e&sc=635638d69ed68060c638f979#public">《用MMEdu实现MNIST手写体数字识别（NOTEBOOK）》项目</a>中的"2.mnist手写体数字识别-推理.ipynb"文件跟随说明完成推理代码运行。示例代码中共7行代码，完成了导入库、指定图片、实例化模型、指定模型保存的路径、开始推理、输出推理结果。根据推理结果可以完成各种其他输出。
 
-如需了解代码规则和参数信息，以及图像分类模块的更多使用说明，请看<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#mmclassification)">"解锁图像分类模块：MMClassification"</a>。
+如需了解代码规则和参数信息，以及图像分类模块的更多使用说明，请看<a href="https://xedu.readthedocs.io/zh-cn/master/mmedu/mmclassification.html#mmclassification)">"解锁图像分类模块：MMClassification"</a>。
 
 
 
@@ -124,10 +124,10 @@ model.print_result(result) # 输出推理结果
 
 我们的小目标就达成了！一个手写体数字识别模型就训练好了，此时你肯定还不过瘾，还想使用MMEdu基于各种数据集来训练模型去解决各种分类问题也很方便！只需要对手写体识别训练的代码稍作改动即可。首先思考自己想要解决的分类问题，收集数据并整理好数据集，如想要解决猫狗识别问题需准备猫狗数据集。
 
-可以通过<a href="https://www.openinnolab.org.cn/pjlab/project?id=63801c0701df4535876b6a4e&sc=635638d69ed68060c638f979#public">《用MMEdu实现MNIST手写体数字识别（NOTEBOOK）》项目</a>中的"3.从mnist手写体数字识别到猫狗分类.ipynb"文件进行案例学习。更多案例可以参考详见项目集区域，这里的AI特色工具专区展示了一些有助于深度学习和机器学习入门和进阶的案例。 当然你也可以在AI项目工坊创建自己的项目，做自己的人工智能案例。MMEdu工具有<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmclassification.html#mmclassification">图像分类模块</a>、<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html">目标检测模块</a>等模块，请继续阅读文档，了解并掌握MMEdu的各个模块。
+可以通过<a href="https://www.openinnolab.org.cn/pjlab/project?id=63801c0701df4535876b6a4e&sc=635638d69ed68060c638f979#public">《用MMEdu实现MNIST手写体数字识别（NOTEBOOK）》项目</a>中的"3.从mnist手写体数字识别到猫狗分类.ipynb"文件进行案例学习。更多案例可以参考详见项目集区域，这里的AI特色工具专区展示了一些有助于深度学习和机器学习入门和进阶的案例。 当然你也可以在AI项目工坊创建自己的项目，做自己的人工智能案例。MMEdu工具有<a href="https://xedu.readthedocs.io/zh-cn/master/mmedu/mmclassification.html#mmclassification">图像分类模块</a>、<a href="https://xedu.readthedocs.io/zh-cn/master/mmedu/mmdetection.html">目标检测模块</a>等模块，请继续阅读文档，了解并掌握MMEdu的各个模块。
 
 ![](../images/mmedu/XEduItemSet.png)
 
 ## MMEdu的简要总结
 
-MMEdu是针对青少年学习AI技术而设计的，其前身就是大名鼎鼎的OpenMMLab。MMEdu的语法非常简单，几句话就能完成训练和推理。如果你下载了<a href="https://xedu.readthedocs.io/zh/master/about/installation.html#id3">XEdu一键安装包</a>，还可以使用<a href="https://xedu.readthedocs.io/zh/master/easydl.html#easydl">Easytrain等可视化辅助工具</a>。有了MMEdu，你会发现AI模型训练原来这么简单。
+MMEdu是针对青少年学习AI技术而设计的，其前身就是大名鼎鼎的OpenMMLab。MMEdu的语法非常简单，几句话就能完成训练和推理。如果你下载了<a href="https://xedu.readthedocs.io/zh-cn/master/about/installation.html#id3">XEdu一键安装包</a>，还可以使用<a href="https://xedu.readthedocs.io/zh-cn/master/easydl.html#easydl">Easytrain等可视化辅助工具</a>。有了MMEdu，你会发现AI模型训练原来这么简单。

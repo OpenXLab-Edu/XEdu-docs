@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>使用说明 &mdash; OpenXLabEdu  documentation</title>
+  <title>入门手册使用说明 &mdash; OpenXLabEdu  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -47,7 +47,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../about.html">关于XEdu</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../how_to_quick_start.html">XEdu快速入门手册</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">使用说明</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">入门手册使用说明</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#xeduhub">案例一：用XEduHub执行推理任务（检测任务）</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">简介：</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id3">链接：</a></li>
@@ -73,7 +73,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#id11">链接：</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#xeduhub-basenn">案例六：综合项目石头剪刀布的实时识别（XEduhub+BaseNN）</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#xeduhub-basenn">案例六：综合项目石头剪刀布的实时识别（XEduHub+BaseNN）</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id12">简介：</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id13">链接：</a></li>
 </ul>
@@ -90,13 +90,14 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEduHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../xedu_llm.html">大语言模型库XEduLLM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basenn.html">神经网络库BaseNN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../baseml.html">传统机器学习库BaseML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basedt.html">数据处理库BaseDT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basedeploy.html">模型部署库BaseDeploy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../how_to_use.html">如何用XEdu借助AI解决真实问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_use.html">如何用XEdu解决真实问题</a></li>
 </ul>
 
         </div>
@@ -114,7 +115,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../how_to_quick_start.html">XEdu快速入门手册</a></li>
-      <li class="breadcrumb-item active">使用说明</li>
+      <li class="breadcrumb-item active">入门手册使用说明</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/how_to_quick_start/quick_start_manual.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -125,9 +126,13 @@
            <div itemprop="articleBody">
              
   <section id="id1">
-<h1>使用说明<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
-<p>欢迎各位小伙伴们来到XEdu的AI天地，要想“畅游”XEdu，入门手册少不了，接下来将会一一介绍XEdu的奇妙AI工具们，带领大家快速了解XEdu各个模块的功能和特点，此外，我们还提供了链接“传送门”，方便小伙伴们轻松玩转AI。</p>
-<p>XEdu的使用有两种：网页或者本地</p>
+<h1>入门手册使用说明<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<p>欢迎来到XEdu的AI天地！</p>
+<p>如果您是一位从来没有接触过AI的“小白”老师，只要把认真本手册精选的案例一一完成，就可以胜任当前的中小学AI教育了。虽然听起来AI模型训练非常高深，但不用担心，XEdu就是一个以“快速入门AI”为目标的学习工具。</p>
+<p>如果您是一位具备了一定AI基础的教师，并且接触过Keras、Pytorch之类的深度学习开发工具，那么本手册的案例能够帮助您快速了解XEdu，了解XEdu的优势。您会发现，如果早点发现XEdu，AI学习之路会顺畅很多。</p>
+<p>如果您是一位高校的AI专业教师，也欢迎您通过本手册的案例了解XEdu。用XEdu能够让AI学习曲线变得平滑，让学生快速具备基础。虽然XEdu为中小学设计，但也可以用于高校教育，尤其是非计算机专业。</p>
+<p>在本手册中，我们还提供了链接“传送门”，方便小伙伴们轻松玩转AI。当然，有些案例需要您多次实践，毕竟AI涉及到的专业名词太多了。每一次实践，您都会得到提升。</p>
+<p>您有多种途径快速使用XEdu，基于网络或者本地。</p>
 <ul class="simple">
 <li><p>网页推荐使用浦育平台，里面有XEdu容器，能够省去环境的配置，并且每周会有一定额度的免费远程算力，上手更加轻松。</p></li>
 <li><p>本地环境的安装推荐选择XEdu一键安装包（CPU版本），它满足大部分机房需求。</p></li>
@@ -204,17 +209,18 @@
 </section>
 </section>
 <section id="xeduhub-basenn">
-<h2>案例六：综合项目石头剪刀布的实时识别（XEduhub+BaseNN）<a class="headerlink" href="#xeduhub-basenn" title="Permalink to this heading"></a></h2>
+<h2>案例六：综合项目石头剪刀布的实时识别（XEduHub+BaseNN）<a class="headerlink" href="#xeduhub-basenn" title="Permalink to this heading"></a></h2>
 <section id="id12">
 <h3>简介：<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h3>
 <p>组合XEdu的工具完成一个综合项目非常方便，本项目使用XEduHub提取手势图像的关键点信息，再将这些关键点信息作为特征输入到一个自己搭建的全连接神经网络模型中进行训练，此步骤由BaseNN实现，最后到本地完成模型应用。</p>
 </section>
 <section id="id13">
 <h3>链接：<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h3>
-<p>案例详解：<a class="reference external" href="https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_make_a_small_project.html#">综合项目石头剪刀布的实时识别（XEduhub+BaseNN）</a>
+<p>案例详解：<a class="reference external" href="https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_make_a_small_project.html#">综合项目石头剪刀布的实时识别（XEduHub+BaseNN）</a>
 <a class="reference external" href="https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_make_a_small_project.html#">https://xedu.readthedocs.io/zh/master/how_to_quick_start/how_to_make_a_small_project.html#</a></p>
 <p>项目链接：<a class="reference external" href="https://openinnolab.org.cn/pjlab/project?id=66062a39a888634b8a1bf2ca&amp;backpath=/pjedu/userprofile?slideKey=project#public">用XEduHub和BaseNN完成石头剪刀布手势识别</a>
 <a class="reference external" href="https://openinnolab.org.cn/pjlab/project?id=66062a39a888634b8a1bf2ca&amp;backpath=/pjedu/userprofile?slideKey=project#public">https://openinnolab.org.cn/pjlab/project?id=66062a39a888634b8a1bf2ca&amp;backpath=/pjedu/userprofile?slideKey=project#public</a></p>
+<p>祝您学习愉快！</p>
 </section>
 </section>
 </section>

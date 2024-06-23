@@ -2,11 +2,11 @@
 
 ## 项目说明：
 
-MMEdu是人工智能视觉算法集成的深度学习开发工具，目前目标检测模块MMDetection支持的SOTA模型有SSD_Lite、FaterRCNN、Yolov3等，支持训练的数据集格式为COCO，更多关于MMDetection功能详见请前往[揭秘MMEdu的目标检测模块](https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html#mmdetection)。本项目使用MMEdu的目标检测模块MMDetection，根据猫狗多目标COCO数据集，训练SSD_Lite模型实现猫狗目标检测。
+MMEdu是人工智能视觉算法集成的深度学习开发工具，目前目标检测模块MMDetection支持的SOTA模型有SSD_Lite、FaterRCNN、Yolov3等，支持训练的数据集格式为COCO，更多关于MMDetection功能详见请前往[揭秘MMEdu的目标检测模块](https://xedu.readthedocs.io/zh-cn/master/mmedu/mmdetection.html#mmdetection)。本项目使用MMEdu的目标检测模块MMDetection，根据猫狗多目标COCO数据集，训练SSD_Lite模型实现猫狗目标检测。
 
 项目地址：[https://openinnolab.org.cn/pjlab/project?id=64055f119c0eb14f22db647c&sc=62f34141bf4f550f3e926e0e#public](https://openinnolab.org.cn/pjlab/project?id=64055f119c0eb14f22db647c&sc=62f34141bf4f550f3e926e0e#public)
 
-数据集：本项目使用的是浦育平台公开的[猫狗目标检测数据集](https://openinnolab.org.cn/pjlab/dataset/6407fdcd9c0eb14f2297218d)。目标检测模块MMDetection支持的数据集是COCO格式。如何从零开始制作COCO数据集详见[从零开始制作一个COCO格式数据集](https://xedu.readthedocs.io/zh/master/how_to_use/dl_library/howtomake_coco.html)。
+数据集：本项目使用的是浦育平台公开的[猫狗目标检测数据集](https://openinnolab.org.cn/pjlab/dataset/6407fdcd9c0eb14f2297218d)。目标检测模块MMDetection支持的数据集是COCO格式。如何从零开始制作COCO数据集详见[从零开始制作一个COCO格式数据集](https://xedu.readthedocs.io/zh-cn/master/how_to_use/dl_library/howtomake_coco.html)。
 
 
 ## 项目步骤：
@@ -96,7 +96,7 @@ result = model.inference(image=img, show=True, checkpoint = checkpoint,device='c
 model.print_result(result) # 结果转换为中文输出
 ```
 
-上文简单介绍了如何用MMEdu训练一个目标检测模型，更多关于MMEdu模型训练和推理的方法详见请前往[揭秘MMEdu的目标检测模块](https://xedu.readthedocs.io/zh/master/mmedu/mmdetection.html#mmdetection)。
+上文简单介绍了如何用MMEdu训练一个目标检测模型，更多关于MMEdu模型训练和推理的方法详见请前往[揭秘MMEdu的目标检测模块](https://xedu.readthedocs.io/zh-cn/master/mmedu/mmdetection.html#mmdetection)。
 
 ### 任务四：模型转换和应用
 
@@ -141,4 +141,4 @@ cap.release()
 cv2.destroyAllWindows()
 ```
 
-更多模型应用与部署的介绍详见[模型应用与部署](https://xedu.readthedocs.io/zh/master/how_to_use/support_resources/model_convert.html#id9)。
+更多模型应用与部署的介绍详见[模型应用与部署](https://xedu.readthedocs.io/zh-cn/master/how_to_use/support_resources/model_convert.html#id9)。

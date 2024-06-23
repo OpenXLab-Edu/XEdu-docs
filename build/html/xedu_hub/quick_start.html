@@ -67,13 +67,14 @@
 <li class="toctree-l2"><a class="reference internal" href="mindplus_xeduhub.html">在Mind+中使用XEduHub</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../xedu_llm.html">大语言模型库XEduLLM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basenn.html">神经网络库BaseNN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../baseml.html">传统机器学习库BaseML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basedt.html">数据处理库BaseDT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basedeploy.html">模型部署库BaseDeploy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../how_to_use.html">如何用XEdu借助AI解决真实问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_use.html">如何用XEdu解决真实问题</a></li>
 </ul>
 
         </div>
@@ -135,7 +136,7 @@
 <span class="n">body</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">new_img</span><span class="p">)</span> <span class="c1"># 显示带标注图片</span>
 </pre></div>
 </div>
-<p>输出结果：图片加列表，列表如下：</p>
+<p>输出结果为图片加列表，列表如下：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span> <span class="mf">596.31597222</span>  <span class="mf">163.53819444</span><span class="p">]</span>
  <span class="p">[</span> <span class="mf">624.65798611</span>  <span class="mf">140.86458333</span><span class="p">]</span>
  <span class="p">[</span> <span class="mf">576.4765625</span>   <span class="mf">149.3671875</span> <span class="p">]</span>
@@ -160,7 +161,7 @@
 <p>步骤1：安装并导入XEduHub库</p>
 <p>步骤2：选择你的推理任务</p>
 <p>步骤3：输入数据进行推理并得到结果</p>
-<p>一旦你安装好XEduHub并导入到代码中后，你就可以查看里面所有的AI模型。看看哪一个是你想要的，然后选择它！查看hub中目前支持的任务代码如下：</p>
+<p>当我们安装好XEduHub并导入库后，就可以查看里面所有的AI模型。看看哪一个是你想要的，然后选择它！查看hub中目前支持的任务代码如下：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="c1"># 目前支持的任务</span>
 <span class="n">wf</span><span class="o">.</span><span class="n">support_task</span><span class="p">()</span>

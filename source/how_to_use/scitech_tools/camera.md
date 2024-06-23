@@ -209,7 +209,7 @@ b.导入库
 2.点击代码运行按钮
 3.点击摄像头上的“EN/RST”
 
-详解见：https://xedu.readthedocs.io/zh/master/how_to_use/scitech_tools/camera.html
+详解见：https://xedu.readthedocs.io/zh-cn/master/how_to_use/scitech_tools/camera.html
 '''
 import serial
 import serial.tools.list_ports
@@ -284,11 +284,11 @@ cap.release() # 释放VideoCapture对象
 cv2.destroyAllWindows() # 关闭所有OpenCV创建的窗口
 ```
 
-在此基础上，可继续编写更复杂的python代码，例如对接收的照片进行各种模型推理的操作，甚至还可以连接小车做一个无人行驶小车（例如有人对ESP32-CAM进行了封装组装成了一款JTANK履带车，我们在其基础上制作成了一辆[识行小车](https://xedu.readthedocs.io/zh/master/xedu_hub/projects.html#id5)）。
+在此基础上，可继续编写更复杂的python代码，例如对接收的照片进行各种模型推理的操作，甚至还可以连接小车做一个无人行驶小车（例如有人对ESP32-CAM进行了封装组装成了一款JTANK履带车，我们在其基础上制作成了一辆[识行小车](https://xedu.readthedocs.io/zh-cn/master/xedu_hub/projects.html#id5)）。
 
 本文参考：[https://www.electroniclinic.com/esp32-cam-with-python-opencv-yolo-v3-for-object-detection-and-identification/](https://www.electroniclinic.com/esp32-cam-with-python-opencv-yolo-v3-for-object-detection-and-identification/)
 
-借助ESP32-CAM还能连接[SIOT](https://xedu.readthedocs.io/zh/master/scitech_tools/siot.html)做各种智联网应用，下面这段代码的主要功能是读取摄像头图片，借助XEduHub完成手部检测，再向MQTT服务器发送消息，在此代码基础上，相信可以做出更多创意应用。
+借助ESP32-CAM还能连接[SIOT](https://xedu.readthedocs.io/zh-cn/master/scitech_tools/siot.html)做各种智联网应用，下面这段代码的主要功能是读取摄像头图片，借助XEduHub完成手部检测，再向MQTT服务器发送消息，在此代码基础上，相信可以做出更多创意应用。
 
 ```python
 import cv2

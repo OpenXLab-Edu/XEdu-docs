@@ -10,7 +10,7 @@
 
 ### 任务一：关键点检测和简单应用
 
-XEduHub提供了能够快速识别人手关键点的模型：pose_hand21，该模型能够识别人手上的21个关键点，如下图所示。手部关键点检测的代码可参考学习[人手关键点](https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id44)。
+XEduHub提供了能够快速识别人手关键点的模型：pose_hand21，该模型能够识别人手上的21个关键点，如下图所示。手部关键点检测的代码可参考学习[人手关键点](https://xedu.readthedocs.io/zh-cn/master/xedu_hub/introduction.html#id44)。
 
 ![](../images/xeduhub/new_hand.png)
 
@@ -86,9 +86,9 @@ else:
 print(hand_gesture)
 ```
 
-#### 2）实时人手关键点检测
+#### 2）小拓展-实时人手关键点检测
 
-还有一种简单的应用，可以实现实时人手关键点检测，只需连接摄像头，调用OpenCV库，对每一帧图像进行关键点检测，并将关键点检测的结果可视化就可以实现实时人手关键点检测。
+还有一种简单的关键点检测应用，在多人手部关键点检测的基础上加入读取摄像头图片的代码，可以实现实时人手关键点检测。只需连接摄像头，再同时调用OpenCV库，对每一帧图像进行关键点检测，并将关键点检测的结果可视化就可以实现实时人手关键点检测。
 
 ```python
 from XEdu.hub import Workflow as wf # 导入库
@@ -215,7 +215,7 @@ dataset.to_csv('hand_total.csv',index=False)
 
 #### 第1步 划分数据集
 
-在准备训练前，我们建议先完成数据集划分，即将数据集拆分为训练集和验证集，训练集用于训练模型，验证集用于评估模型的性能。此步骤可以手动完成，也可以用代码完成，可[借助XEdu的数据处理库BaseDT](https://xedu.readthedocs.io/zh/master/basedt/introduction.html#id11)，指定csv文件路径以及划分比例，将特征数据集划分为训练集和验证集，并将训练集和验证集的特征和标签均提取出来。
+在准备训练前，我们建议先完成数据集划分，即将数据集拆分为训练集和验证集，训练集用于训练模型，验证集用于评估模型的性能。此步骤可以手动完成，也可以用代码完成，可[借助XEdu的数据处理库BaseDT](https://xedu.readthedocs.io/zh-cn/master/basedt/introduction.html#id11)，指定csv文件路径以及划分比例，将特征数据集划分为训练集和验证集，并将训练集和验证集的特征和标签均提取出来。
 
 ```python
 from BaseDT.dataset import split_tab_dataset
@@ -315,7 +315,7 @@ model.convert(checkpoint=checkpoint, out_file='checkpoints/basenn.onnx')
 
 #### 任务一 单张图片完成手势分类
 
-模型推理时，需要保持推理的数据与训练的数据格式一致，所以新的图片也需完成人手关键点检测，并且做维度处理。如下代码实现了上述功能
+模型推理时，需要保持推理的数据与训练的数据格式一致，所以新的图片也需完成人手关键点检测，并且做维度处理。如下代码实现了上述功能。
 
 ```python
 from XEdu.hub import Workflow as wf

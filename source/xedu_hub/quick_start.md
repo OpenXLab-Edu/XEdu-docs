@@ -36,7 +36,7 @@ print(result) # 输出推理结果
 body.show(new_img) # 显示带标注图片
 ```
 
-输出结果：图片加列表，列表如下：
+输出结果为图片加列表，列表如下：
 
 ```
 [[ 596.31597222  163.53819444]
@@ -68,7 +68,7 @@ body.show(new_img) # 显示带标注图片
 
 步骤3：输入数据进行推理并得到结果
 
-一旦你安装好XEduHub并导入到代码中后，你就可以查看里面所有的AI模型。看看哪一个是你想要的，然后选择它！查看hub中目前支持的任务代码如下：
+当我们安装好XEduHub并导入库后，就可以查看里面所有的AI模型。看看哪一个是你想要的，然后选择它！查看hub中目前支持的任务代码如下：
 
 ```python
 from XEdu.hub import Workflow as wf
@@ -126,7 +126,7 @@ Workflow类用于加载预训练模型以解决各类任务。
             checkpoint：模型权重文件的路径。
             download_path：模型文件即将下载到的路径。
 
-        更多用法及算法详解请参考：https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html    
+        更多用法及算法详解请参考：https://xedu.readthedocs.io/zh-cn/master/xedu_hub/introduction.html    
 ```
 
 ![](../images/xeduhub/task2.png)

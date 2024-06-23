@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>XEdu的设计 &mdash; OpenXLabEdu  documentation</title>
+  <title>XEdu的定位与规划 &mdash; OpenXLabEdu  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -20,7 +20,7 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="了解开发和维护团队" href="team.html" />
+    <link rel="next" title="XEdu团队介绍" href="team.html" />
     <link rel="prev" title="XEdu的故事" href="story.html" /> 
 </head>
 
@@ -47,19 +47,25 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../about.html">关于XEdu</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="story.html">XEdu的故事</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">XEdu的设计</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">XEdu的定位是什么？</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">揭秘XEdu</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">XEdu的定位与规划</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">定位：XEdu是一个怎样的工具</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">XEdu的三大特点</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id3">1.应用先行，逐层深入</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id4">2.代码最简，部署方便</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id5">3.兼容并蓄，灵活扩展</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">了解XEdu的规划</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">XEdu的愿景</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">了解XEdu的规划</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id7">1.数据处理工具</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">2.模型训练工具</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">3.模型应用与部署工具</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">4.其他相关工具</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">5.其他规划中的库</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="team.html">了解开发和维护团队</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="team.html">XEdu团队介绍</a></li>
 <li class="toctree-l2"><a class="reference internal" href="version_update.html">版本更新记录</a></li>
 <li class="toctree-l2"><a class="reference internal" href="milestones.html">XEdu大事记</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation.html">XEdu的安装和下载</a></li>
@@ -67,6 +73,7 @@
 <li class="toctree-l2"><a class="reference internal" href="errorcode.html">XEdu的常见错误</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_quick_start.html">XEdu快速入门手册</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../xedu_hub.html">深度学习工具库XEduHub</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basenn.html">神经网络库BaseNN</a></li>
@@ -74,7 +81,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basedt.html">数据处理库BaseDT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basedeploy.html">模型部署库BaseDeploy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../how_to_use.html">如何用XEdu借助AI解决真实问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_use.html">如何用XEdu解决真实问题</a></li>
 </ul>
 
         </div>
@@ -92,7 +99,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../about.html">关于XEdu</a></li>
-      <li class="breadcrumb-item active">XEdu的设计</li>
+      <li class="breadcrumb-item active">XEdu的定位与规划</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/about/plan.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -103,52 +110,67 @@
            <div itemprop="articleBody">
              
   <section id="xedu">
-<h1>XEdu的设计<a class="headerlink" href="#xedu" title="Permalink to this heading"></a></h1>
+<h1>XEdu的定位与规划<a class="headerlink" href="#xedu" title="Permalink to this heading"></a></h1>
 <section id="id1">
-<h2>XEdu的定位是什么？<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<h2>定位：XEdu是一个怎样的工具<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p>XEdu的全名为OpenXLabEdu，是基于OpenXLab的教育版，也是为中小学AI教育设计的一套完整的学习工具。OpenXLab是上海人工智能实验室开源的AI工具集合。</p>
-<p>XEdu核心工具为深度学习工具库XEduHub、计算机视觉库MMEdu，加上神经网络库BaseNN和传统机器学习库BaseML，后期规划中会增加OpenDILabEdu和OpenDataLabEdu等，覆盖实验室开源的所有人工智能工具，支持中小学可能涉及到AI技术所有领域。</p>
+<p>XEdu核心工具为深度学习工具库XEduHub、计算机视觉库MMEdu，加上神经网络库BaseNN和传统机器学习库BaseML，后期规划还会增加OpenDILabEdu和OpenDataLabEdu等，覆盖实验室开源的所有人AI工具，支持中小学可能涉及到AI技术所有领域。</p>
+<p>XEdu关注AI模型，关注中小学生用AI解决真实问题。从数据采集到模型训练、模型部署，XEdu在每一个环节都提供了合适的工具。XEdu团队坚信只要有合适的工具，中小学生能够驾驭各种AI工具，去解决身边的问题。</p>
 <ul class="simple">
 <li><p><a class="reference external" href="../how_to_use/introduction.html">如何用XEdu借助AI解决真实问题</a></p></li>
 </ul>
+<p><strong>XEdu的愿景</strong></p>
+<p>“接地气，望云端”，开源科创团队期望XEdu是一款适合中小学生入门，同时又能编写出可以“真正运行”的AI代码的人工智能开发工具，让学生能够通过完成各种AI实验，亲历从收集数据到训练深度学习模型的过程，并能够通过训练AI模型、部署智能信息系统的方式，解决生活中的真实问题。</p>
 </section>
 <section id="id2">
-<h2>揭秘XEdu<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<h2>XEdu的三大特点<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
 <section id="id3">
 <h3>1.应用先行，逐层深入<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
-<p>XEdu的核心工具MMEdu内置SOTA模型，让学生把机器学习作为解决问题的有效工具，先应用，再逐步研究背后的原理。就如互联网，不是先讲ISO七层协议，而是先打开浏览器获取信息，打开EMail交流信息，再慢慢走向底层的协议。</p>
-<p>XEdu的基础工具BaseDT，则是一个整合了常见数据处理工具的基础库。借助这个库，用一行代码即可完成数据的预处理，让AI应用的代码更加简洁。</p>
+<p>XEdu的核心工具MMEdu内置SOTA模型，让学生把机器学习、深度学习作为解决问题的有效工具，先应用，再理解，以应用激发兴趣，吸引学生逐步研究背后的原理。就如学习互联网一样，不需要先讲ISO七层协议，更不需要先研究香农公式，而是先打开浏览器获取信息，打开EMail交流信息，再慢慢走向底层协议的理解。</p>
+<p>XEdu的基础工具BaseDT，则是一个整合了常见数据处理工具的基础库。借助这个库，用一行代码即可完成数据的预处理，让AI应用的代码更加简洁。XEduHub则内置常见的AI模型，用四行代码就能完成推理工作，并同时支持机器学习和深度学习模型。</p>
 </section>
 <section id="id4">
 <h3>2.代码最简，部署方便<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
-<p>将AI工具分解为“训练”和“部署”两种核心功能。无论是BaseML、BaseNN还是MMEdu，全部采用一致的语法完成训练、推理和转换、部署。</p>
+<p>XEdu将AI工具分解为“训练”和“部署”两种核心功能。无论是BaseML、BaseNN还是MMEdu，全部采用一致的语法完成训练、推理和转换、部署。核心代码公式化，学生可以举一反三，快速迁移。</p>
 </section>
 <section id="id5">
 <h3>3.兼容并蓄，灵活扩展<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
-<p>虽然语法上做到最简，但是兼容原生工具的各种功能，如BaseNN和BaseML分别保留了Pytorch和Sklearn的功能，MMEdu则保留了OpenMMLab的各种参数，尤其是模型训练的所有常见参数，让学生在不同阶段都可以使用OpenXLab的系列工具进行学习。在不久的将来，用BaseNN可以搭建MMEdu的模型，多个工具形成一个强大的AI工具包，能支撑中小学绝大多数的AI学习。</p>
+<p>虽然语法上做到最简，但XEdu兼容原生工具的各种功能，如BaseNN和BaseML分别保留了Pytorch和Sklearn的功能，MMEdu则保留了OpenMMLab的各种参数，尤其是模型训练的所有常见参数，让学生在不同阶段都可以使用OpenXLab的系列工具进行学习。在不久的将来，用BaseNN可以搭建MMEdu的模型，多个工具形成一个强大的AI工具包，支持中小学AI学习的绝大多数内容。</p>
 </section>
 </section>
 <section id="id6">
 <h2>了解XEdu的规划<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h2>
-<p>1.<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub.html">深度学习工具库：XEduHub</a></p>
-<p>XEduHub是一个集合了各种各样深度学习工具的模块，可以让用户高效地完成深度学习任务。</p>
-<p>2.<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu.html">计算机视觉开发库：MMEdu</a></p>
+<section id="id7">
+<h3>1.数据处理工具<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
+<p>1-1 <a class="reference external" href="https://xedu.readthedocs.io/zh/master/basedt.html">数据处理工具库：BaseDT</a></p>
+<p>不同的模型对数据有特定的要求，比如LeNet-5是28×28，MobileNet是224×224。BaseDT集成了各种数据处理工具，能快速实现各种模型的预处理，也能快速完成数据集的划分，还能实现对数据集的格式检查和转换。</p>
+</section>
+<section id="id8">
+<h3>2.模型训练工具<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
+<p>2-1 <a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu.html">计算机视觉开发库：MMEdu</a></p>
 <p>MMEdu全称为OpenMMLabEdu，是著名的计算机视觉开发工具OpenMMLab的教育版本。</p>
-<p>3.<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basenn.html">神经网络开发库：BaseNN</a></p>
-<p>BaseNN是神经网络库，能够使用类似Keras的语法搭建神经网络模型。</p>
-<p>4.<a class="reference external" href="https://xedu.readthedocs.io/zh/master/baseml.html">传统机器学习开发库：BaseML</a></p>
-<p>BaseML是传统机器学习库，类似Sklearn，使用了与MMEdu同样的语法。</p>
-<p>5.<a class="reference external" href="https://xedu.readthedocs.io/zh/master/easydl.html">EasyDL系列无代码工具</a></p>
+<p>2-2 <a class="reference external" href="https://xedu.readthedocs.io/zh/master/basenn.html">神经网络开发库：BaseNN</a></p>
+<p>BaseNN是神经网络库，能够使用类似Keras的语法搭建神经网络模型，不仅可以逐层搭建全连接神经网络，还支持MobielNet、ResNet、RNN、TransFormer等。</p>
+<p>2-3 <a class="reference external" href="https://xedu.readthedocs.io/zh/master/baseml.html">传统机器学习开发库：BaseML</a></p>
+<p>BaseML是传统机器学习库，类似Sklearn，使用了与MMEdu同样的语法，代码更加简洁。</p>
+</section>
+<section id="id9">
+<h3>3.模型应用与部署工具<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
+<p>3-1 <a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub.html">深度学习工具库：XEduHub</a></p>
+<p>XEduHub是一个集合了各种各样深度学习工具的模块，可以让用户高效地完成深度学习任务。</p>
+<p>3-2 <a class="reference external" href="https://xedu.readthedocs.io/zh/master/basedeploy.html">模型部署库：BaseDeploy</a></p>
+<p>BaseDeploy关注模型部署，关注AI模型在各种开源硬件上的部署。目前BaseDeploy仅仅实现了模型推理，更多的功能在开发中。</p>
+</section>
+<section id="id10">
+<h3>4.其他相关工具<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h3>
+<p>4-1 <a class="reference external" href="https://xedu.readthedocs.io/zh/master/easydl.html">EasyDL系列无代码工具</a></p>
 <p>一系列方便初学者的小工具，可以在无代码的情况下完成模型的训练、推理、转换和部署，甚至可以搭建一个WebAPI服务器，类似百度AI开放平台。</p>
-<p>6.<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basedt.html">数据处理工具库：BaseDT</a></p>
-<p>不同的模型对数据有特定的要求，比如LeNet-5是28×28，MobileNet是224×224。BaseDT集成了各种数据处理工具。</p>
-<p>7.其他规划中的库</p>
-<p>规划中的库还有OpenDILabEdu和OpenDataLabEdu，从名称可以看出源自上海人工智能实验室的各种工具。</p>
+</section>
+<section id="id11">
+<h3>5.其他规划中的库<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h3>
+<p>规划中的库还有LLM（大语言模型）、OpenDILabEdu（决策智能）和OpenDataLabEdu（数据中心），从名称可以看出源自上海人工智能实验室的各种工具。</p>
 <p><img alt="../_images/xedu_plan.png" src="../_images/xedu_plan.png" /></p>
 </section>
-<section id="id7">
-<h2>XEdu的愿景<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h2>
-<p>“接地气，望云端”，开源科创团队期望XEdu是一款适合中小学生入门，同时又能编写出可以“真正运行”的AI代码的人工智能开发工具，让学生能够通过完成各种AI实验，亲历从收集数据到训练深度学习模型的过程，并能够通过训练AI模型、部署智能信息系统的方式，解决生活中的真实问题。</p>
 </section>
 </section>
 
@@ -157,7 +179,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="story.html" class="btn btn-neutral float-left" title="XEdu的故事" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="team.html" class="btn btn-neutral float-right" title="了解开发和维护团队" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="team.html" class="btn btn-neutral float-right" title="XEdu团队介绍" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

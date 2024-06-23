@@ -102,40 +102,51 @@
 <li class="toctree-l4"><a class="reference internal" href="#id103">提完了特征能干啥？</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#mmedu">8. MMEdu模型推理</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id104">MMEdu训练的图像分类模型</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id111">MMEdu的目标检测模型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id104">8. 图像分割模型的使用</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id105">掩码</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id106">代码样例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id107">代码解释</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id108">1. 模型声明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id109">2. 模型推理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id110">3. 结果输出</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id111">4. 结果保存</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#basenn">9. BaseNN模型推理</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id118">代码样例</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id119">代码解释</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mmedu">9. MMEdu模型推理</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id112">MMEdu训练的图像分类模型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id119">MMEdu的目标检测模型</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#baseml">10. BaseML模型推理</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id123">代码样例</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id124">代码解释</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#basenn">10. BaseNN模型推理</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id126">代码样例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id127">代码解释</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#onnx">11. 其他onnx模型推理</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id128">代码样例</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id129">代码解释</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baseml">11. BaseML模型推理</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id131">代码样例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id132">代码解释</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id132">XEduHub任务模型文件获取与存放</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#onnx">12. 其他onnx模型推理</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id136">代码样例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id137">代码解释</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id140">XEduHub任务模型文件获取与存放</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="projects.html">XEduHub项目案例集</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mindplus_xeduhub.html">在Mind+中使用XEduHub</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../xedu_llm.html">大语言模型库XEduLLM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mmedu.html">计算机视觉库MMEdu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basenn.html">神经网络库BaseNN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../baseml.html">传统机器学习库BaseML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../easydl.html">EasyDL系列无代码工具</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basedt.html">数据处理库BaseDT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basedeploy.html">模型部署库BaseDeploy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../how_to_use.html">如何用XEdu借助AI解决真实问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_use.html">如何用XEdu解决真实问题</a></li>
 </ul>
 
         </div>
@@ -214,7 +225,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>(str)：指定模型文件所在的路径，如<code class="docutils literal notranslate"><span class="pre">det_body</span> <span class="pre">=</span> <span class="pre">wf(task='det_body',checkpoint='det_body.onnx')</span> </code>。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即<code class="docutils literal notranslate"><span class="pre">det_body.onnx</span></code>。否则将通过网络到浦源平台的专用地址下载。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>(str)：指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制<code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>文件夹。如希望模型保存放在其他路径，则设置<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。注意，<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数为文件夹名称。建议该参数留空，使用默认地址。</p></li>
 </ul>
-<p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id132">下文</a>。</p>
+<p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id139">下文</a>。</p>
 </section>
 <section id="id6">
 <h4>2. 模型推理<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h4>
@@ -303,7 +314,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>(str)：指定模型文件所在的路径，如<code class="docutils literal notranslate"><span class="pre">det_face</span> <span class="pre">=</span> <span class="pre">wf(task='det_face',checkpoint='det_face.onnx')</span> </code>。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即<code class="docutils literal notranslate"><span class="pre">det_face.onnx</span></code>。否则将通过网络到浦源平台的专用地址下载。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>(str)：指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制<code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>文件夹。如希望模型保存放在其他路径，则设置<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。注意，<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数为文件夹名称。建议该参数留空，使用默认地址。</p></li>
 </ul>
-<p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id132">下文</a>。</p>
+<p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id139">下文</a>。</p>
 </section>
 <section id="id13">
 <h4>2. 模型推理<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h4>
@@ -395,7 +406,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>(str)：指定模型文件所在的路径，如<code class="docutils literal notranslate"><span class="pre">det_hand</span> <span class="pre">=</span> <span class="pre">wf(task='det_hand',checkpoint='det_hand.onnx')</span> </code>。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即<code class="docutils literal notranslate"><span class="pre">det_hand.onnx</span></code>。否则将通过网络到浦源平台的专用地址下载。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>(str)：指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制<code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>文件夹。如希望模型保存放在其他路径，则设置<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。注意，<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数为文件夹名称。建议该参数留空，使用默认地址。</p></li>
 </ul>
-<p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id132">下文</a>。</p>
+<p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id139">下文</a>。</p>
 </section>
 <section id="id20">
 <h4>2. 模型推理<a class="headerlink" href="#id20" title="Permalink to this heading"></a></h4>
@@ -487,7 +498,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>(str)：指定模型文件所在的路径，如<code class="docutils literal notranslate"><span class="pre">det_coco</span> <span class="pre">=</span> <span class="pre">wf(task='det_coco',checkpoint='det_coco.onnx')</span> </code>。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即<code class="docutils literal notranslate"><span class="pre">det_coco.onnx</span></code>。否则将通过网络到浦源平台的专用地址下载。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>(str)：指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制<code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>文件夹。如希望模型保存放在其他路径，则设置<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。注意，<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数为文件夹名称。建议该参数留空，使用默认地址。</p></li>
 </ul>
-<p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id132">下文</a>。</p>
+<p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id139">下文</a>。</p>
 </section>
 <section id="id26">
 <h4>2. 模型推理<a class="headerlink" href="#id26" title="Permalink to this heading"></a></h4>
@@ -504,7 +515,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>(str|numpy.ndarray)：指定待目标检测的图片。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">show</span></code>(flag)：可取值<code class="docutils literal notranslate"><span class="pre">[True,False]</span></code> ,如果取值为<code class="docutils literal notranslate"><span class="pre">True</span></code>，在推理完成后会直接输出目标检测完成后的图片，默认为<code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">img_type</span></code>(str)：目标检测完成后会返回含有目标检测框的图片，该参数指定了返回图片的格式，可选有:<code class="docutils literal notranslate"><span class="pre">['cv2','pil']</span></code>，默认值为<code class="docutils literal notranslate"><span class="pre">None</span></code>，即如果不传入值，则不会返回图。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">thr</span></code>(float)：设置检测框阈值，取值范围为<code class="docutils literal notranslate"><span class="pre">[0,1]</span></code>超过该阈值的检测框被视为有效检测框，进行显示。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">thr</span></code>(float)：设置检测框阈值，取值范围为<code class="docutils literal notranslate"><span class="pre">[0,1]</span></code>超过该阈值的检测框被视为有效检测框，进行显示，默认值为0.3。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">target_class</span></code>(str|list)：该参数在使用<code class="docutils literal notranslate"><span class="pre">det_coco</span></code>的时候可以指定要检测的对象，如：<code class="docutils literal notranslate"><span class="pre">target_class</span></code>=’person’，<code class="docutils literal notranslate"><span class="pre">target_class</span></code>=[’person’,’cake’]。</p></li>
 </ul>
 <p>若要查看coco目标检测中的所有类别可运行以下代码：</p>
@@ -656,7 +667,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>(str)：指定模型文件所在的路径，如<code class="docutils literal notranslate"><span class="pre">pose_body</span> <span class="pre">=</span> <span class="pre">wf(task='pose_body',checkpoint='pose_body.onnx')</span> </code>。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即<code class="docutils literal notranslate"><span class="pre">pose_body17.onnx</span></code>。否则将通过网络到浦源平台的专用地址下载。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>(str)：指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制<code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>文件夹。如希望模型保存放在其他路径，则设置<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。注意，<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数为文件夹名称。建议该参数留空，使用默认地址。</p></li>
 </ul>
-<p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id132">下文</a>。</p>
+<p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id139">下文</a>。</p>
 </section>
 <section id="id34">
 <h4>2. 模型推理<a class="headerlink" href="#id34" title="Permalink to this heading"></a></h4>
@@ -673,7 +684,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>(str)：指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">show</span></code>(flag)：可取值：<code class="docutils literal notranslate"><span class="pre">[True,False]</span></code> 默认为<code class="docutils literal notranslate"><span class="pre">False</span></code>。如果取值为<code class="docutils literal notranslate"><span class="pre">True</span></code>，在推理完成后会直接输出关键点识别完成后的图片。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">img_type</span></code>(str)：关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:<code class="docutils literal notranslate"><span class="pre">['cv2','pil']</span></code>，默认值为<code class="docutils literal notranslate"><span class="pre">None</span></code>，如果不传入值，则不会返回图。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">bbox</span></code>(numpy.ndarray)：该参数可配合目标检测结果使用。例如在多人手关键点检测任务中，我们先识别人手位置，再检测手部关键点，该参数指定了要识别哪个目标检测框中的关键点。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bbox</span></code>(numpy.ndarray)：该参数可配合目标检测结果使用。例如在多人体关键点检测任务中，我们先识别人体位置，再检测人体关键点，该参数指定了要识别哪个目标检测框中的关键点。</p></li>
 </ul>
 <p>模型推理返回结果：</p>
 <ul class="simple">
@@ -779,7 +790,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>(str)：指定模型文件所在的路径，如<code class="docutils literal notranslate"><span class="pre">pose_face</span> <span class="pre">=</span> <span class="pre">wf(task='pose_face',checkpoint='pose_face.onnx')</span> </code>。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即<code class="docutils literal notranslate"><span class="pre">pose_face106.onnx</span></code>。否则将通过网络到浦源平台的专用地址下载。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>(str)：指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制<code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>文件夹。如希望模型保存放在其他路径，则设置<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。注意，<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数为文件夹名称。建议该参数留空，使用默认地址。</p></li>
 </ul>
-<p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id132">下文</a>。</p>
+<p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id139">下文</a>。</p>
 </section>
 <section id="id41">
 <h4>2. 模型推理<a class="headerlink" href="#id41" title="Permalink to this heading"></a></h4>
@@ -864,7 +875,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>指定模型文件所在的路径，如<code class="docutils literal notranslate"><span class="pre">pose_hand</span> <span class="pre">=</span> <span class="pre">wf(task='pose_hand',checkpoint='pose_hand.onnx')</span> </code>。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即<code class="docutils literal notranslate"><span class="pre">pose_hand.onnx</span></code>。否则将通过网络到浦源平台的专用地址下载。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制<code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>文件夹。如希望模型保存放在其他路径，则设置<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。注意，<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数为文件夹名称。建议该参数留空，使用默认地址。</p></li>
 </ul>
-<p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id132">下文</a>。</p>
+<p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id139">下文</a>。</p>
 </section>
 <section id="id48">
 <h4>2. 模型推理<a class="headerlink" href="#id48" title="Permalink to this heading"></a></h4>
@@ -947,12 +958,16 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>指定模型文件所在的路径，如<code class="docutils literal notranslate"><span class="pre">wholebody</span> <span class="pre">=</span> <span class="pre">wf(task='pose_wholebody',checkpoint='pose_wholebody.onnx')</span> </code>。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即<code class="docutils literal notranslate"><span class="pre">pose_wholebody.onnx</span></code>。否则将通过网络到浦源平台的专用地址下载。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制<code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>文件夹。如希望模型保存放在其他路径，则设置<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。注意，<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数为文件夹名称。建议该参数留空，使用默认地址。</p></li>
 </ul>
-<p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id132">下文</a>。</p>
+<p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id139">下文</a>。</p>
 </section>
 <section id="id55">
 <h4>2. 模型推理<a class="headerlink" href="#id55" title="Permalink to this heading"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># keypoints = wholebody.inference(data=&#39;data/wholebody.jpg&#39;) # 模型推理方式1</span>
-<span class="n">keypoints</span><span class="p">,</span><span class="n">img_with_keypoints</span> <span class="o">=</span> <span class="n">wholebody</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/wholebody.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 模型推理方式2</span>
+<p>推理方式1：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">keypoints</span> <span class="o">=</span> <span class="n">wholebody</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/wholebody.jpg&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
+</pre></div>
+</div>
+<p>推理方式2：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">keypoints</span><span class="p">,</span><span class="n">img_with_keypoints</span> <span class="o">=</span> <span class="n">wholebody</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/wholebody.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
 </pre></div>
 </div>
 <p>模型推理<code class="docutils literal notranslate"><span class="pre">inference()</span></code>可传入参数：</p>
@@ -960,7 +975,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>: 指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">show</span></code>: 可取值：<code class="docutils literal notranslate"><span class="pre">[True,False]</span></code> 默认为<code class="docutils literal notranslate"><span class="pre">False</span></code>。如果取值为<code class="docutils literal notranslate"><span class="pre">True</span></code>，在推理完成后会直接输出关键点识别完成后的图片。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">img_type</span></code>: 关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:<code class="docutils literal notranslate"><span class="pre">['cv2','pil']</span></code>，默认值为<code class="docutils literal notranslate"><span class="pre">None</span></code>，如果不传入值，则不会返回图。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">bbox</span></code>：该参数可配合目标检测使用。在多人手关键点检测中，该参数指定了要识别哪个检测框中的关键点。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bbox</span></code>：该参数可配合目标检测使用。在多人体关键点检测中，该参数指定了要识别哪个检测框中的关键点。</p></li>
 </ul>
 <p>模型推理返回结果：</p>
 <ul class="simple">
@@ -1230,7 +1245,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>指定模型文件所在的路径，如<code class="docutils literal notranslate"><span class="pre">cls</span> <span class="pre">=</span> <span class="pre">wf(task='cls_imagenet',checkpoint='cls_imagenet.onnx')</span> </code>。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即<code class="docutils literal notranslate"><span class="pre">cls_imagenet.onnx</span></code>。否则将通过网络到浦源平台的专用地址下载。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制<code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>文件夹。如希望模型保存放在其他路径，则设置<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。注意，<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数为文件夹名称。建议该参数留空，使用默认地址。</p></li>
 </ul>
-<p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id132">下文</a>。</p>
+<p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id139">下文</a>。</p>
 </section>
 <section id="id68">
 <h4>2. 模型推理<a class="headerlink" href="#id68" title="Permalink to this heading"></a></h4>
@@ -1432,7 +1447,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>指定模型文件所在的路径，如<code class="docutils literal notranslate"><span class="pre">color</span> <span class="pre">=</span> <span class="pre">wf(task='gen_color',checkpoint='gen_color.onnx')</span> </code>。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即<code class="docutils literal notranslate"><span class="pre">gen_color.onnx</span></code>。否则将通过网络到浦源平台的专用地址下载。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制<code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>文件夹。如希望模型保存放在其他路径，则设置<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。注意，<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数为文件夹名称。建议该参数留空，使用默认地址。</p></li>
 </ul>
-<p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id132">下文</a>。</p>
+<p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id139">下文</a>。</p>
 </section>
 <section id="id82">
 <h4>2. 模型推理<a class="headerlink" href="#id82" title="Permalink to this heading"></a></h4>
@@ -1496,7 +1511,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>指定模型文件所在的路径，如<code class="docutils literal notranslate"><span class="pre">drive</span> <span class="pre">=</span> <span class="pre">wf(task='drive_perception',checkpoint='drive_perception.onnx')</span> </code>。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即<code class="docutils literal notranslate"><span class="pre">drive_perception.onnx</span></code>。否则将通过网络到浦源平台的专用地址下载。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制<code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>文件夹。如希望模型保存放在其他路径，则设置<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。注意，<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数为文件夹名称。建议该参数留空，使用默认地址。</p></li>
 </ul>
-<p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id132">下文</a>。</p>
+<p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id139">下文</a>。</p>
 </section>
 <section id="id89">
 <h4>2. 模型推理<a class="headerlink" href="#id89" title="Permalink to this heading"></a></h4>
@@ -1509,7 +1524,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>：指定待检测的图片。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">show</span></code>: 可取值：<code class="docutils literal notranslate"><span class="pre">[True,False]</span></code> 默认为<code class="docutils literal notranslate"><span class="pre">False</span></code>。如果取值为<code class="docutils literal notranslate"><span class="pre">True</span></code>，在推理完成后会直接输出目标检测完成后的图片。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">img_type</span></code>：目标检测完成后会返回含有检测框的图片，该参数指定了返回图片的格式，可选有:<code class="docutils literal notranslate"><span class="pre">['cv2','pil']</span></code>，默认值为<code class="docutils literal notranslate"><span class="pre">None</span></code>，如果不传入值，则不会返回图。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">thr</span></code>: 设置检测框阈值，取值范围为<code class="docutils literal notranslate"><span class="pre">[0,1]</span></code>超过该阈值的检测框被视为有效检测框，进行显示。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">thr</span></code>: 设置检测框阈值，取值范围为<code class="docutils literal notranslate"><span class="pre">[0,1]</span></code>超过该阈值的检测框被视为有效检测框，进行显示，默认值为0.3。</p></li>
 </ul>
 <p>模型推理返回结果：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">array</span><span class="p">([[</span><span class="mi">671</span><span class="p">,</span> <span class="mi">398</span><span class="p">,</span>  <span class="mi">98</span><span class="p">,</span>  <span class="mi">78</span><span class="p">],</span>
@@ -1616,7 +1631,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>指定模型文件所在的路径，如<code class="docutils literal notranslate"><span class="pre">img_emb</span> <span class="pre">=</span> <span class="pre">wf(task='embedding_image',checkpoint='embedding_image.onnx')</span> </code>。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即<code class="docutils literal notranslate"><span class="pre">embedding_image.onnx</span></code>。否则将通过网络到浦源平台的专用地址下载。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制<code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>文件夹。如希望模型保存放在其他路径，则设置<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。注意，<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数为文件夹名称。建议该参数留空，使用默认地址。</p></li>
 </ul>
-<p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id132">下文</a>。</p>
+<p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id139">下文</a>。</p>
 </section>
 <section id="id97">
 <h4>2. 模型推理<a class="headerlink" href="#id97" title="Permalink to this heading"></a></h4>
@@ -1833,14 +1848,190 @@
 <p>现在我们可以看到cat.jpg与’a black cat’向量的相似度为0.007789988070726395，而与’a yellow cat’向量的相似度为0.9922100305557251。显而易见，这张可爱的黄色猫咪图像与’a yellow cat’文本描述更为贴近。</p>
 </section>
 </section>
+<section id="id104">
+<h2>8. 图像分割模型的使用<a class="headerlink" href="#id104" title="Permalink to this heading"></a></h2>
+<p>图像分割任务的目标是将图像分割成不同的区域或对象，给图像中的每个像素分配一个标签。这个过程涉及到对图像特征的识别，如边缘、纹理和颜色等，模型会将具有相似特征的像素归为同一类别，从而实现对目标的精确分割，从而为更高层次的任务提供支持，如场景理解、目标检测、图像编辑等。</p>
+<p>举个例子，如果你有一张包含天空、建筑物、树木和道路的照片，图像分割的任务就是将这张照片中的每一个像素都标记出来，告诉你哪些像素是属于天空的，哪些是建筑物的，哪些是树木的，哪些是道路的。</p>
+<p>XEduHub 提供了一个专门的分割任务工具 <code class="docutils literal notranslate"><span class="pre">seg_sam</span></code>，这是基于 “Segment Anything Model”（SAM）的模型。它是一种高度灵活的分割模型，可以根据用户的简单提示，如点或框，来识别和分割图像中的对象。</p>
+<section id="id105">
+<h3>掩码<a class="headerlink" href="#id105" title="Permalink to this heading"></a></h3>
+<p>在图像分割中，掩码（mask）是一个关键概念。掩码是一种特殊的图像，它和原始图像大小一样，但每个像素点的值代表了该像素属于哪个类别。例如，对于前面提到的照片，掩码中天空的像素可能用一个特定的颜色或数字表示，建筑物、树木和道路的像素则分别用不同的颜色或数字表示。通过这种方式，我们可以清晰地知道每个像素属于哪个类别。</p>
+<p>掩码是一个二维数组，与输入图像的尺寸相同，其中每个元素对应图像中的一个像素。掩码通过二值标签（1 表示属于分割对象，0表示不属于）来标记像素，从而为图像中的每个像素提供了一个明确的指示，表明它是否属于被分割的对象。</p>
+<p>XEduHub 中的 <code class="docutils literal notranslate"><span class="pre">seg_sam</span></code> 工具利用这种掩码机制，允许用户轻松地执行各种分割任务。</p>
+<p><img alt="../_images/seg_sam_show.png" src="../_images/seg_sam_show.png" /></p>
+</section>
+<section id="id106">
+<h3>代码样例<a class="headerlink" href="#id106" title="Permalink to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span> <span class="c1"># 导入库</span>
+<span class="n">seg</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span> <span class="o">=</span> <span class="s1">&#39;seg_sam&#39;</span><span class="p">)</span> <span class="c1"># 实例化模型</span>
+<span class="n">img_path</span> <span class="o">=</span> <span class="s1">&#39;demo/seg.jpg&#39;</span> <span class="c1"># 指定进行推理的图片路径</span>
+<span class="n">masks</span><span class="p">,</span> <span class="n">img</span> <span class="o">=</span> <span class="n">seg</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">img_path</span><span class="p">,</span> <span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
+<span class="n">format_result</span> <span class="o">=</span> <span class="n">seg</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span> <span class="c1"># 将推理结果进行格式化输出</span>
+<span class="n">seg</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">masks</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># 可视化第一个分割掩码</span>
+<span class="n">seg</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">masks</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="s2">&quot;demo/first_mask.png&quot;</span><span class="p">)</span> <span class="c1"># 保存可视化第一个分割掩码为&#39;first_mask.png&#39;</span>
+<span class="n">seg</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img</span><span class="p">)</span> <span class="c1"># 显示分割后的图像，带有分割掩码（将分割结果（掩码）叠加到原始图像上）</span>
+<span class="n">seg</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="s2">&quot;demo/mask_with_image.png&quot;</span><span class="p">)</span><span class="c1"># 保存分割后的图像为&#39;mask_with_image.png&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="id107">
+<h3>代码解释<a class="headerlink" href="#id107" title="Permalink to this heading"></a></h3>
+</section>
+<section id="id108">
+<h3>1. 模型声明<a class="headerlink" href="#id108" title="Permalink to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span> <span class="c1"># 导入库</span>
+<span class="n">seg</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span> <span class="o">=</span> <span class="s1">&#39;seg_sam&#39;</span><span class="p">)</span> <span class="c1"># 实例化模型</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">wf()</span></code>中共有三个参数可以设置：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>(str)选择任务。分割任务模型为<code class="docutils literal notranslate"><span class="pre">seg_sam</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>(list)指定模型文件所在的路径。由于seg_sam任务的实现需要用到两个模型：<code class="docutils literal notranslate"><span class="pre">seg_sam_decoder.onnx</span></code>和<code class="docutils literal notranslate"><span class="pre">seg_sam_encoder.onnx</span></code>，因此checkpoint需要传入一个列表，第一个值是encoder路径，第二个是decoder路径，例如checkpoint=[’my_checkpoints/seg_sam_encoder.onnx’,’my_checkpoints/seg_sam_decoder.onnx’]，两个模型可以不放在同一个文件夹下。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即<code class="docutils literal notranslate"><span class="pre">seg_sam_decoder.onnx</span></code>和<code class="docutils literal notranslate"><span class="pre">seg_sam_encoder.onnx</span></code>。否则将通过网络到浦源平台的专用地址下载。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">download_path</span></code>指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制<code class="docutils literal notranslate"><span class="pre">checkpoints</span></code>文件夹。如希望模型保存放在其他路径，则设置<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数，如<code class="docutils literal notranslate"><span class="pre">download_path='my_checkpoint'</span></code>。注意，<code class="docutils literal notranslate"><span class="pre">download_path</span></code>参数为文件夹名称。建议该参数留空，使用默认地址。</p></li>
+</ul>
+<p>任务模型文件获取与存放请查看<a class="reference external" href="https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id139">下文</a>。</p>
+</section>
+<section id="id109">
+<h3>2. 模型推理<a class="headerlink" href="#id109" title="Permalink to this heading"></a></h3>
+<p>推理方式1：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">masks</span> <span class="o">=</span> <span class="n">seg</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/seg.jpg&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
+</pre></div>
+</div>
+<p>推理方式2：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">masks</span><span class="p">,</span> <span class="n">img</span> <span class="o">=</span> <span class="n">seg</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/seg.jpg&#39;</span><span class="p">,</span> <span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
+</pre></div>
+</div>
+<p>模型推理<code class="docutils literal notranslate"><span class="pre">inference()</span></code>可传入参数：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>(str)：指定待分割的图片路径。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">show</span></code>(bool): 可取值：<code class="docutils literal notranslate"><span class="pre">[True,False]</span></code> 默认为<code class="docutils literal notranslate"><span class="pre">False</span></code>。如果取值为<code class="docutils literal notranslate"><span class="pre">True</span></code>，在推理完成后会直接输出图像分割完成后带有掩码的图片。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">img_type</span></code>(str)：图像分割完成后返回含有掩码的图片格式，可选有:<code class="docutils literal notranslate"><span class="pre">['cv2','pil']</span></code>，默认值为<code class="docutils literal notranslate"><span class="pre">None</span></code>，如果不传入值，则不会返回图。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mode</span></code>(str): 提示（prompt）的模式，提示（prompt）被用来指导模型进行图像分割，在本任务中用于指明期望分割的目标位置或区域。mode可以设置为point或box，默认为point。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prompt</span></code>(numpy.ndarray): 点或框的坐标，默认为图像中心点。用户可以提供提示（prompt），例如点、框或其他标记，来帮助模型更准确地识别和分割图像中的对象。输入的prompt可以是一个点也可以是多个点。例如：一维数组[100,100]（一个点），也可以是二维数组[[100,100]]（一个点），二维数组[[100,100],[200,200]]（表示两个点）。如指定mode为box，prompt参数需设置框的坐标，格式为[x1,y1,x2,y2]，和XEduHub中检测任务的检测框格式一致。</p></li>
+</ul>
+<p>模型推理返回结果：</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">masks</span></code>(numpy.ndarray)：一个三维数组，表示分割掩码的推理结果。由多个掩码组成，掩码中目标区域为1(True)，非目标区域为0(False)。返回的数组形状为（n， w，h），其中n表示掩码数量，w，h表示原图像宽、高。模型可以输出多个掩码，每个掩码对应不同的置信度分数。通常情况下，这些掩码可能表示同一个对象在不同的置信度下的分割结果，或者是不同对象的分割结果。例如当masks的形状为（4,640,480）表示在四个不同置信度下的掩码。掩码数量的确定通常取决于模型的设计和配置。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">img</span></code>(numpy.ndarray)：一个四维数组，以img_type所设置的格式保存了四通道RGBA图像，比其他任务多个alpha通道，表示透明度。绿色星星表示用户提供的提示点，绿色框表示用户提供的提示框，蓝色为分割出的目标区域，是所有masks的叠加效果。</p>
+<p>输出的masks示例如下：</p>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[[</span><span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="o">...</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span><span class="p">]</span>
+  <span class="p">[</span><span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="o">...</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span><span class="p">]</span>
+  <span class="p">[</span><span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="o">...</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span><span class="p">]</span>
+  <span class="o">...</span>
+  <span class="p">[</span><span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="o">...</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span><span class="p">]</span>
+  <span class="p">[</span><span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="o">...</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span><span class="p">]</span>
+  <span class="p">[</span><span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="o">...</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span><span class="p">]]</span>
+
+ <span class="p">[[</span><span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="o">...</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span><span class="p">]</span>
+  <span class="p">[</span><span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="o">...</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span><span class="p">]</span>
+  <span class="p">[</span><span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="o">...</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span><span class="p">]</span>
+  <span class="o">...</span>
+  <span class="p">[</span><span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="o">...</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span><span class="p">]</span>
+  <span class="p">[</span><span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="o">...</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span><span class="p">]</span>
+  <span class="p">[</span><span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="o">...</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span><span class="p">]]</span>
+
+ <span class="p">[[</span><span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="o">...</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span><span class="p">]</span>
+  <span class="p">[</span><span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="o">...</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span><span class="p">]</span>
+  <span class="p">[</span><span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="o">...</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span><span class="p">]</span>
+  <span class="o">...</span>
+  <span class="p">[</span><span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="o">...</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span><span class="p">]</span>
+  <span class="p">[</span><span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="o">...</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span><span class="p">]</span>
+  <span class="p">[</span><span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="o">...</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span><span class="p">]]</span>
+
+ <span class="p">[[</span><span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="o">...</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span><span class="p">]</span>
+  <span class="p">[</span><span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="o">...</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span><span class="p">]</span>
+  <span class="p">[</span><span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="o">...</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span><span class="p">]</span>
+  <span class="o">...</span>
+  <span class="p">[</span><span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="o">...</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span><span class="p">]</span>
+  <span class="p">[</span><span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="o">...</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span><span class="p">]</span>
+  <span class="p">[</span><span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="o">...</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span><span class="p">]]]</span>
+</pre></div>
+</div>
+</section>
+<section id="id110">
+<h3>3. 结果输出<a class="headerlink" href="#id110" title="Permalink to this heading"></a></h3>
+<p><strong>格式化结果输出</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">format_result</span> <span class="o">=</span> <span class="n">seg</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span> <span class="c1"># 将推理结果进行格式化输出</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>能够将模型推理结果以标准美观的方式进行输出。输出结果与<code class="docutils literal notranslate"><span class="pre">format_result</span></code>保存的内容一致。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format_output()</span></code>中共有两个参数可以设置：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>(str) - 可选参数，设置了输出结果的语言，可选取值为：[<code class="docutils literal notranslate"><span class="pre">'zh'</span></code>,<code class="docutils literal notranslate"><span class="pre">'en'</span></code>,<code class="docutils literal notranslate"><span class="pre">'ru'</span></code>,<code class="docutils literal notranslate"><span class="pre">'de'</span></code>,<code class="docutils literal notranslate"><span class="pre">'fr'</span></code>]，分别为中文、英文、俄语、德语、法语，默认为中文。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isprint</span></code>(bool) - 可选参数，设置了是否格式化输出，可选取值为：[<code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>]，默认为True。</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">format_result</span></code>以字典形式存储了推理结果，有两个键：<code class="docutils literal notranslate"><span class="pre">掩码</span></code>、<code class="docutils literal notranslate"><span class="pre">分数</span></code>。</p>
+<p>输出结果：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;掩码&#39;</span><span class="p">:</span> <span class="n">array</span><span class="p">([[[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+        <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+        <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+        <span class="o">...</span><span class="p">,</span>
+        <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+        <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+        <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">]],</span>
+
+       <span class="p">[[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+        <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+        <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+        <span class="o">...</span><span class="p">,</span>
+        <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+        <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+        <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">]],</span>
+
+       <span class="p">[[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+        <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+        <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+        <span class="o">...</span><span class="p">,</span>
+        <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+        <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+        <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">]],</span>
+
+       <span class="p">[[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+        <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+        <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+        <span class="o">...</span><span class="p">,</span>
+        <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+        <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+        <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">]]]),</span>
+ <span class="s1">&#39;分数&#39;</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.7048895359039307</span><span class="p">,</span>
+         <span class="mf">0.2732267379760742</span><span class="p">,</span>
+         <span class="mf">0.8090970516204834</span><span class="p">,</span>
+         <span class="mf">0.754239559173584</span><span class="p">]]}</span>
+</pre></div>
+</div>
+<p><strong>可视化结果输出</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">seg</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">img</span><span class="p">)</span> <span class="c1"># 展示带有分割掩码和提示点或框（prompt）的结果图</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">show()</span></code>能够输出带有分割掩码和提示点或框（prompt）的结果图，即将分割结果（掩码）叠加到原始图像上，这会是一个四通道RGBA图。</p>
+<p><img alt="../_images/seg_sam_show1.png" src="../_images/seg_sam_show1.png" /></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">seg</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">masks</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># 展示第一个分割掩码</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">show()</span></code>能够单独可视化某一mask，将掩码可视化为只有黑白的二值矩阵。</p>
+<p><img alt="../_images/seg_sam_show2.png" src="../_images/seg_sam_show2.png" /></p>
+</section>
+<section id="id111">
+<h3>4. 结果保存<a class="headerlink" href="#id111" title="Permalink to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">seg</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="s2">&quot;demo/mask_with_image.png&quot;</span><span class="p">)</span><span class="c1"># 保存分割后的图像为&#39;mask_with_image.png&#39;</span>
+<span class="n">seg</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">masks</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="s2">&quot;demo/first_mask.png&quot;</span><span class="p">)</span> <span class="c1"># 保存可视化第一个分割掩码为&#39;first_mask.png&#39;</span>
+</pre></div>
+</div>
+<p>带有分割掩码和提示点或框（prompt）的结果图和黑白的mask都可以被分别保存，例如第二句代码表示保存第一个分割掩码。
+可以通过函数save来保存可视化结果，函数的第一个参数为像素点颜色信息，第二个参数为保存路径。</p>
+<p><strong>注意:</strong> 图像保存格式可以是jpg，jpeg，png，tiff，bmp。在保存带有分割掩码和提示点或框（prompt）的结果图时，由于推理结果为四通道RGBA图像，需要保存为支持四通道格式图像，若保存为jpg，jpeg，JPEG（只有三通道）格式时，就会使保存的图像就会失去alpha通道，即透明度，将RGBA转化为RGB图像保存。</p>
+</section>
+</section>
 <section id="mmedu">
-<h2>8. MMEdu模型推理<a class="headerlink" href="#mmedu" title="Permalink to this heading"></a></h2>
+<h2>9. MMEdu模型推理<a class="headerlink" href="#mmedu" title="Permalink to this heading"></a></h2>
 <p>XEduHub现在可以支持使用MMEdu导出的onnx模型进行推理啦！如果你想了解如何使用MMEdu训练模型，可以看这里：<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/mmeducls.html">解锁图像分类模块：MMEduCls</a>、<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/mmedudet.html#mmedudet">揭秘目标检测模块：MMEduDet</a>。</p>
 <p>如果你想了解如何将使用<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu.html">MMEdu</a>训练好的模型转换成ONNX格式，可以前往<a class="reference external" href="https://xedu.readthedocs.io/zh/master/mmedu/mmedumodel_convert.html">最后一步：模型转换</a>。OK，准备好了ONNX模型，那么就开始使用XEduHub吧！</p>
-<section id="id104">
-<h3>MMEdu训练的图像分类模型<a class="headerlink" href="#id104" title="Permalink to this heading"></a></h3>
-<section id="id105">
-<h4>代码样例<a class="headerlink" href="#id105" title="Permalink to this heading"></a></h4>
+<section id="id112">
+<h3>MMEdu训练的图像分类模型<a class="headerlink" href="#id112" title="Permalink to this heading"></a></h3>
+<section id="id113">
+<h4>代码样例<a class="headerlink" href="#id113" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">mmcls</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;mmedu&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;cats_dogs.onnx&#39;</span><span class="p">)</span><span class="c1"># 指定使用的onnx模型</span>
 <span class="n">result</span><span class="p">,</span> <span class="n">result_img</span> <span class="o">=</span>  <span class="n">mmcls</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/cat.png&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span><span class="c1"># 进行模型推理</span>
@@ -1850,10 +2041,10 @@
 </pre></div>
 </div>
 </section>
-<section id="id106">
-<h4>代码解释<a class="headerlink" href="#id106" title="Permalink to this heading"></a></h4>
-<section id="id107">
-<h5>1. 模型声明<a class="headerlink" href="#id107" title="Permalink to this heading"></a></h5>
+<section id="id114">
+<h4>代码解释<a class="headerlink" href="#id114" title="Permalink to this heading"></a></h4>
+<section id="id115">
+<h5>1. 模型声明<a class="headerlink" href="#id115" title="Permalink to this heading"></a></h5>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">mmcls</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;mmedu&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;cats_dogs.onnx&#39;</span><span class="p">)</span> <span class="c1"># 指定使用的onnx模型</span>
 </pre></div>
@@ -1865,8 +2056,8 @@
 </ul>
 <p>这里我们以猫狗分类模型为例，项目指路：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&amp;sc=647b3880aac6f67c822a04f5#public">猫狗分类</a>。</p>
 </section>
-<section id="id108">
-<h5>2. 模型推理<a class="headerlink" href="#id108" title="Permalink to this heading"></a></h5>
+<section id="id116">
+<h5>2. 模型推理<a class="headerlink" href="#id116" title="Permalink to this heading"></a></h5>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">,</span> <span class="n">result_img</span> <span class="o">=</span>  <span class="n">mmcls</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/cat101.jpg&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
 </pre></div>
 </div>
@@ -1880,8 +2071,8 @@
 <p><code class="docutils literal notranslate"><span class="pre">result</span></code>是一个字典，包含三个键：<code class="docutils literal notranslate"><span class="pre">标签</span></code>、<code class="docutils literal notranslate"><span class="pre">置信度</span></code>和<code class="docutils literal notranslate"><span class="pre">预测结果</span></code>。</p>
 <p><code class="docutils literal notranslate"><span class="pre">result_img</span></code>以img_type设置的格式保存了模型推理完成后的图片（原图+推理结果）。</p>
 </section>
-<section id="id109">
-<h5>3. 结果输出<a class="headerlink" href="#id109" title="Permalink to this heading"></a></h5>
+<section id="id117">
+<h5>3. 结果输出<a class="headerlink" href="#id117" title="Permalink to this heading"></a></h5>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">format_result</span> <span class="o">=</span> <span class="n">mmcls</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span> <span class="c1"># 推理结果格式化输出</span>
 </pre></div>
 </div>
@@ -1903,8 +2094,8 @@
 <p><code class="docutils literal notranslate"><span class="pre">show()</span></code>能够推理后的结果图像。与原图相比，结果图片在左上角多了<code class="docutils literal notranslate"><span class="pre">pred_label</span></code>, <code class="docutils literal notranslate"><span class="pre">pred_socre</span></code>和<code class="docutils literal notranslate"><span class="pre">pred_class</span></code>三个数据，对应着标签、置信度和预测结果。</p>
 <p><img alt="../_images/mmcls_show.png" src="../_images/mmcls_show.png" /></p>
 </section>
-<section id="id110">
-<h5>4. 结果保存<a class="headerlink" href="#id110" title="Permalink to this heading"></a></h5>
+<section id="id118">
+<h5>4. 结果保存<a class="headerlink" href="#id118" title="Permalink to this heading"></a></h5>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mmcls</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="s1">&#39;new_cat.jpg&#39;</span><span class="p">)</span> <span class="c1"># 保存推理结果图片</span>
 </pre></div>
 </div>
@@ -1913,10 +2104,10 @@
 </section>
 </section>
 </section>
-<section id="id111">
-<h3>MMEdu的目标检测模型<a class="headerlink" href="#id111" title="Permalink to this heading"></a></h3>
-<section id="id112">
-<h4>代码样例<a class="headerlink" href="#id112" title="Permalink to this heading"></a></h4>
+<section id="id119">
+<h3>MMEdu的目标检测模型<a class="headerlink" href="#id119" title="Permalink to this heading"></a></h3>
+<section id="id120">
+<h4>代码样例<a class="headerlink" href="#id120" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">mmdet</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;mmedu&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;plate.onnx&#39;</span><span class="p">)</span> <span class="c1"># 指定使用的onnx模型</span>
 <span class="n">result</span><span class="p">,</span> <span class="n">result_img</span> <span class="o">=</span>  <span class="n">mmdet</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/plate0.png&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
@@ -1926,10 +2117,10 @@
 </pre></div>
 </div>
 </section>
-<section id="id113">
-<h4>代码解释<a class="headerlink" href="#id113" title="Permalink to this heading"></a></h4>
-<section id="id114">
-<h5>1. 模型声明<a class="headerlink" href="#id114" title="Permalink to this heading"></a></h5>
+<section id="id121">
+<h4>代码解释<a class="headerlink" href="#id121" title="Permalink to this heading"></a></h4>
+<section id="id122">
+<h5>1. 模型声明<a class="headerlink" href="#id122" title="Permalink to this heading"></a></h5>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">mmdet</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;mmedu&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;plate.onnx&#39;</span><span class="p">)</span> <span class="c1"># 指定使用的onnx模型</span>
 </pre></div>
@@ -1941,8 +2132,8 @@
 </ul>
 <p>这里以车牌识别为例进行说明。项目指路：<a class="reference external" href="https://www.openinnolab.org.cn/pjlab/project?id=641426fdcb63f030544017a2&amp;backpath=/pjlab/projects/list#public">使用MMEdu实现车牌检测</a></p>
 </section>
-<section id="id115">
-<h5>2. 模型推理<a class="headerlink" href="#id115" title="Permalink to this heading"></a></h5>
+<section id="id123">
+<h5>2. 模型推理<a class="headerlink" href="#id123" title="Permalink to this heading"></a></h5>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">,</span> <span class="n">result_img</span> <span class="o">=</span>  <span class="n">mmdet</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/plate0.png&#39;</span><span class="p">,</span><span class="n">img_type</span><span class="o">=</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
 </pre></div>
 </div>
@@ -1956,8 +2147,8 @@
 <p><code class="docutils literal notranslate"><span class="pre">result</span></code>的结果是一个数组，里面保存了结果字典。该字典有四个键：<code class="docutils literal notranslate"><span class="pre">标签</span></code>、<code class="docutils literal notranslate"><span class="pre">置信度</span></code>、<code class="docutils literal notranslate"><span class="pre">坐标</span></code>以及<code class="docutils literal notranslate"><span class="pre">预测结果</span></code>。其中坐标表示了检测框的两个顶点：左上(x1,y1)和右下(x2,y2)。</p>
 <p><code class="docutils literal notranslate"><span class="pre">result_img</span></code>以img_type设置的格式保存了模型推理完成后的图片（原图+推理结果）。</p>
 </section>
-<section id="id116">
-<h5>3. 结果输出<a class="headerlink" href="#id116" title="Permalink to this heading"></a></h5>
+<section id="id124">
+<h5>3. 结果输出<a class="headerlink" href="#id124" title="Permalink to this heading"></a></h5>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">format_result</span> <span class="o">=</span> <span class="n">mmdet</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span> <span class="c1"># 推理结果格式化输出</span>
 </pre></div>
 </div>
@@ -1982,8 +2173,8 @@
 <p><code class="docutils literal notranslate"><span class="pre">show()</span></code>能够推理后的结果图像。与原图相比，结果图片还包含车牌周围的检测框以及结果信息。</p>
 <p><img alt="../_images/mmdet_show.png" src="../_images/mmdet_show.png" /></p>
 </section>
-<section id="id117">
-<h5>4. 结果保存<a class="headerlink" href="#id117" title="Permalink to this heading"></a></h5>
+<section id="id125">
+<h5>4. 结果保存<a class="headerlink" href="#id125" title="Permalink to this heading"></a></h5>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mmdet</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="s1">&#39;new_plate.jpg&#39;</span><span class="p">)</span> <span class="c1"># 保存推理结果图片</span>
 </pre></div>
 </div>
@@ -1994,10 +2185,10 @@
 </section>
 </section>
 <section id="basenn">
-<h2>9. BaseNN模型推理<a class="headerlink" href="#basenn" title="Permalink to this heading"></a></h2>
+<h2>10. BaseNN模型推理<a class="headerlink" href="#basenn" title="Permalink to this heading"></a></h2>
 <p>XEduHub现在可以支持使用BaseNN导出的onnx模型进行推理啦！如果你想了解如何将使用<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basenn.html">BaseNN</a>训练好的模型转换成ONNX格式，可以看这里：<a class="reference external" href="https://xedu.readthedocs.io/zh/master/basenn/introduction.html#id24">BaseNN模型文件格式转换</a>。OK，准备好了ONNX模型，那么就开始使用XEduHub吧！</p>
-<section id="id118">
-<h3>代码样例<a class="headerlink" href="#id118" title="Permalink to this heading"></a></h3>
+<section id="id126">
+<h3>代码样例<a class="headerlink" href="#id126" title="Permalink to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 使用BaseNN训练的手写数字识别模型进行推理</span>
 <span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">basenn</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;basenn&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;basenn.onnx&#39;</span><span class="p">)</span> <span class="c1"># 指定使用的onnx模型</span>
@@ -2006,10 +2197,10 @@
 </pre></div>
 </div>
 </section>
-<section id="id119">
-<h3>代码解释<a class="headerlink" href="#id119" title="Permalink to this heading"></a></h3>
-<section id="id120">
-<h4>1. 模型声明<a class="headerlink" href="#id120" title="Permalink to this heading"></a></h4>
+<section id="id127">
+<h3>代码解释<a class="headerlink" href="#id127" title="Permalink to this heading"></a></h3>
+<section id="id128">
+<h4>1. 模型声明<a class="headerlink" href="#id128" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">basenn</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;basenn&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;basenn.onnx&#39;</span><span class="p">)</span> <span class="c1"># 指定使用的onnx模型</span>
 </pre></div>
@@ -2020,8 +2211,8 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>：指定你的模型的路径，该参数不能为空，如<code class="docutils literal notranslate"><span class="pre">checkpoint='basenn.onnx'</span></code>。</p></li>
 </ul>
 </section>
-<section id="id121">
-<h4>2. 模型推理<a class="headerlink" href="#id121" title="Permalink to this heading"></a></h4>
+<section id="id129">
+<h4>2. 模型推理<a class="headerlink" href="#id129" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;data/6.jpg&#39;</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
 </pre></div>
 </div>
@@ -2039,8 +2230,8 @@
 <p><img alt="../_images/basenn_res.png" src="../_images/basenn_res.png" /></p>
 <p>**注意！**基于BaseNN模型推理结果不包含图片！不需要指定<code class="docutils literal notranslate"><span class="pre">img_type</span></code>参数并返回图片，因为大部分使用BaseNN解决的任务只需要输出分类标签、文本或者数组数据等。</p>
 </section>
-<section id="id122">
-<h4>3. 结果输出<a class="headerlink" href="#id122" title="Permalink to this heading"></a></h4>
+<section id="id130">
+<h4>3. 结果输出<a class="headerlink" href="#id130" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">format_result</span> <span class="o">=</span> <span class="n">basenn</span><span class="o">.</span><span class="n">format_output</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -2060,10 +2251,10 @@
 </section>
 </section>
 <section id="baseml">
-<h2>10. BaseML模型推理<a class="headerlink" href="#baseml" title="Permalink to this heading"></a></h2>
+<h2>11. BaseML模型推理<a class="headerlink" href="#baseml" title="Permalink to this heading"></a></h2>
 <p>XEduHub现在可以支持使用BaseML导出的pkl模型文件进行推理啦！如果你想了解如何将使用<a class="reference external" href="https://xedu.readthedocs.io/zh/master/baseml.html">BaseML</a>训练模型并保存成.pkl模型文件，可以看这里：<a class="reference external" href="https://xedu.readthedocs.io/zh/master/baseml/introduction.html#id16">BaseML模型保存</a>。OK，准备好了pkl模型，那么就开始使用XEduHub吧！</p>
-<section id="id123">
-<h3>代码样例<a class="headerlink" href="#id123" title="Permalink to this heading"></a></h3>
+<section id="id131">
+<h3>代码样例<a class="headerlink" href="#id131" title="Permalink to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 使用BaseML训练的鸢尾花聚类模型推理</span>
 <span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">baseml</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;baseml&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;baseml.pkl&#39;</span><span class="p">)</span> <span class="c1"># 指定使用的pkl模型</span>
@@ -2073,10 +2264,10 @@
 </pre></div>
 </div>
 </section>
-<section id="id124">
-<h3>代码解释<a class="headerlink" href="#id124" title="Permalink to this heading"></a></h3>
-<section id="id125">
-<h4>1. 模型声明<a class="headerlink" href="#id125" title="Permalink to this heading"></a></h4>
+<section id="id132">
+<h3>代码解释<a class="headerlink" href="#id132" title="Permalink to this heading"></a></h3>
+<section id="id133">
+<h4>1. 模型声明<a class="headerlink" href="#id133" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">baseml</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;baseml&#39;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;baseml.pkl&#39;</span><span class="p">)</span> <span class="c1"># 指定使用的pkl模型</span>
 </pre></div>
@@ -2087,8 +2278,8 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>：指定你的模型的路径，该参数不能为空，如<code class="docutils literal notranslate"><span class="pre">checkpoint='baseml.pkl'</span></code>。</p></li>
 </ul>
 </section>
-<section id="id126">
-<h4>2. 模型推理<a class="headerlink" href="#id126" title="Permalink to this heading"></a></h4>
+<section id="id134">
+<h4>2. 模型推理<a class="headerlink" href="#id134" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">5.1</span><span class="p">,</span><span class="mf">1.5</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mf">4.7</span><span class="p">]]</span> <span class="c1"># 该项目中训练数据只有两维，因此推理时给出两维数据</span>
 <span class="n">result</span><span class="o">=</span> <span class="n">baseml</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span> <span class="c1"># 进行模型推理</span>
 </pre></div>
@@ -2104,8 +2295,8 @@ array([1，0])
 </pre></div>
 </div>
 </section>
-<section id="id127">
-<h4>3. 结果输出<a class="headerlink" href="#id127" title="Permalink to this heading"></a></h4>
+<section id="id135">
+<h4>3. 结果输出<a class="headerlink" href="#id135" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">format_output</span> <span class="o">=</span> <span class="n">baseml</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span><span class="c1"># 推理结果格式化输出</span>
 </pre></div>
 </div>
@@ -2125,10 +2316,10 @@ array([1，0])
 </section>
 </section>
 <section id="onnx">
-<h2>11. 其他onnx模型推理<a class="headerlink" href="#onnx" title="Permalink to this heading"></a></h2>
+<h2>12. 其他onnx模型推理<a class="headerlink" href="#onnx" title="Permalink to this heading"></a></h2>
 <p>XEduHub现在可以支持使用用户自定义的ONNX模型文件进行推理啦！这意味着你可以不仅仅使用MMEdu或者BaseNN训练模型并转换而成的ONNX模型文件进行推理，还可以使用其他各个地方的ONNX模型文件，但是有个<strong>重要的前提：你需要会使用这个模型，了解模型输入的训练数据以及模型的输出结果</strong>。OK，如果你已经做好了充足的准备，那么就开始使用XEduHub吧！</p>
-<section id="id128">
-<h3>代码样例<a class="headerlink" href="#id128" title="Permalink to this heading"></a></h3>
+<section id="id136">
+<h3>代码样例<a class="headerlink" href="#id136" title="Permalink to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="kn">import</span> <span class="nn">cv2</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -2157,10 +2348,10 @@ array([1，0])
 </pre></div>
 </div>
 </section>
-<section id="id129">
-<h3>代码解释<a class="headerlink" href="#id129" title="Permalink to this heading"></a></h3>
-<section id="id130">
-<h4>1. 模型声明<a class="headerlink" href="#id130" title="Permalink to this heading"></a></h4>
+<section id="id137">
+<h3>代码解释<a class="headerlink" href="#id137" title="Permalink to this heading"></a></h3>
+<section id="id138">
+<h4>1. 模型声明<a class="headerlink" href="#id138" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.hub</span> <span class="kn">import</span> <span class="n">Workflow</span> <span class="k">as</span> <span class="n">wf</span>
 <span class="n">custom</span> <span class="o">=</span> <span class="n">wf</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;custom&quot;</span><span class="p">,</span><span class="n">checkpoint</span><span class="o">=</span><span class="s2">&quot;custom.onnx&quot;</span><span class="p">)</span>
 </pre></div>
@@ -2171,8 +2362,8 @@ array([1，0])
 <li><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>：指定你的模型的路径，如<code class="docutils literal notranslate"><span class="pre">checkpoint='custom.onnx'</span></code>。</p></li>
 </ul>
 </section>
-<section id="id131">
-<h4>2. 模型推理<a class="headerlink" href="#id131" title="Permalink to this heading"></a></h4>
+<section id="id139">
+<h4>2. 模型推理<a class="headerlink" href="#id139" title="Permalink to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -2216,8 +2407,8 @@ array([1，0])
 </section>
 </section>
 </section>
-<section id="id132">
-<h2>XEduHub任务模型文件获取与存放<a class="headerlink" href="#id132" title="Permalink to this heading"></a></h2>
+<section id="id140">
+<h2>XEduHub任务模型文件获取与存放<a class="headerlink" href="#id140" title="Permalink to this heading"></a></h2>
 <p>XEduHub提供了大量优秀的任务模型，我们不仅可以通过<code class="docutils literal notranslate"><span class="pre">wf()</span></code>代码的运行实现模型的自动下载，还可以自主通过浦源平台（上海AI实验室的另一个平台）下载。</p>
 <p>只要进入<a href="https://openxlab.org.cn/models/detail/xedu/hub-model">模型仓库</a>，在Model File里就可以看到各种任务模型。网址：<a href="https://openxlab.org.cn/models/detail/xedu/hub-model">https://openxlab.org.cn/models/detail/xedu/hub-model</a></p>
 <p><img alt="../_images/downloadmodel.png" src="../_images/downloadmodel.png" /></p>

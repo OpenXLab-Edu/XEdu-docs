@@ -11,8 +11,7 @@
 
 绝大多数的边缘硬件支持ONNX，MMEdu和BaseNN训练的模型也提供了转换为ONNX的功能，那么就可以借助ONNX推理，实现模型在开源硬件上的使用。
 
-
-`BaseDeploy`通过传入[ONNX模型](https://xedu.readthedocs.io/zh/master/mmedu/model_convert.html#id4)的路径加载为一个模型，通过`model.inference`即可完成模型的推理，从而可实现借助BaseDeploy完成模型部署。
+`BaseDeploy`通过传入[ONNX模型](https://xedu.readthedocs.io/zh-cn/master/how_to_use/support_resources/model_convert.html#id2)的路径加载为一个模型，通过`model.inference`即可完成模型的推理，从而可实现借助BaseDeploy完成模型部署。
 
 库文件源代码可以从[PyPi](https://pypi.org/project/BaseDeploy/#files)下载，选择tar.gz格式下载，可用常见解压软件查看源码。
 
@@ -33,7 +32,7 @@ pred_onx = model.inference(dt)
 result = model.print_result(pred_onx)
 ```
 
-本段代码实现的功能是将`BaseDT`预处理好后的图片传入`BaseDeploy`推理函数进行推理，并将推理结果返回。关于BaseDT处理图片的说明详见[BaseDT部分](https://xedu.readthedocs.io/zh/master/basedt/quick_start.html#id12)。
+本段代码实现的功能是将`BaseDT`预处理好后的图片传入`BaseDeploy`推理函数进行推理，并将推理结果返回。关于BaseDT处理图片的说明详见[BaseDT部分](https://xedu.readthedocs.io/zh-cn/master/basedt/quick_start.html#id12)。
 
 示例代码二：
 
@@ -61,7 +60,7 @@ result = model.print_result(pred_onx)
 cap.release()
 ```
 
-本段代码实现的功能是将cv2调用摄像头拍摄的图片传入`BaseDeploy`推理函数进行推理，并将推理结果返回。此处代码与[借助MMEdu完成模型转换](https://xedu.readthedocs.io/zh/master/mmedu/model_convert.html#mmedu)后生成的示例代码非常相似。
+本段代码实现的功能是将cv2调用摄像头拍摄的图片传入`BaseDeploy`推理函数进行推理，并将推理结果返回。此处代码与[借助MMEdu完成模型转换](https://xedu.readthedocs.io/zh-cn/master/how_to_use/support_resources/model_convert.html#mmedu)后生成的示例代码非常相似。
 
 实现效果如下：
 

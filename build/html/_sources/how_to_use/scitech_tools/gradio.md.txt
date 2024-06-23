@@ -98,10 +98,11 @@ iface.launch(share=True)
 
 ```python
 import gradio as gr
-import BaseDeploy as bd
+from XEdu.hub import Workflow as wf
+
 model_path = 'cls.onnx'
 def predict(img):
-    model = bd(model_path)
+    model = wf(task='mmedu',checkpoint=model_path)
     result = model.inference(img)
     return result
 image = gr.inputs.Image(type="filepath")
