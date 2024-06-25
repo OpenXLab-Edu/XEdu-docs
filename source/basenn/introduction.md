@@ -438,7 +438,7 @@ model.save_fold = 'checkpoints/irs_ckpt'
 model.train(lr=0.01, epochs=500)
 ```
 
-参数`lr`为学习率，`epochs`为训练轮数。
+参数`lr`为学习率，`epochs`为训练轮数。可增设`metrics`参数指定评价指标，默认无，需要自行设置评价指标。支持的评价指标：acc（准确率），mae（平均绝对误差），mse（均方误差）。关于评价指标可前往[高级功能](https://xedu.readthedocs.io/zh-cn/master/basenn/introduction.html#id31)。
 
 从训练类型的角度，可以分为正常训练和继续训练。
 
