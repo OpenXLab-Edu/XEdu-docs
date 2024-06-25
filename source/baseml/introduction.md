@@ -126,7 +126,7 @@
 
 ## 代码详解
 
-核心代码：
+核心代码（训练）：
 
 ```python
 from BaseML import Regression as reg # 从库文件中导入回归任务模块
@@ -135,9 +135,20 @@ model.set_para(fit_intercept=True) # 设定模型参数
 model.load_tab_data( './data_train.csv') # 载入训练数据
 model.train() # 训练模型
 model.valid('./data_val.csv',metrics='r2') # 载入验证数据并验证
-model.save('mymodel. pkl') # 保存模型供应用
+model.save('mymodel.pkl') # 保存模型供应用
 ```
 其中`设定模型参数`非必要，各参数都有默认值，具体见[上表](#id6)。
+
+核心代码（推理）：
+
+```
+from BaseML import Regression as reg # 从库文件中导入回归任务模块
+model = reg('LinearRegression') # 实例化线性回归模型
+data = [[-1,52, 38]] # 指定一组新数据，根据训练模型时使用的数据来定
+result= model.inference(data=data)# 进行模型推理
+print(result)
+```
+
 ### 1. 导入包与搭建模型
 
 库文件的导入只需要一行代码，根据机器学习的任务导入相应的库。“Regression”模块内置了回归任务的常见算法，“Classification”模块内置了分类任务的常见算法，“Cluster”模块则内置了聚类任务的常见算法。
