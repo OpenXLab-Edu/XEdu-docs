@@ -1893,7 +1893,7 @@ get_similarity(image_embeddings, txt_embeddings,method='cosine') # 计算相似�
 
 参考项目：[基于影评数据训练情感分类模型](https://www.openinnolab.org.cn/pjlab/project?id=667a6757a4f8ca4aa8f80f87&backpath=/pjedu/userprofile?slideKey=project)
 
-## 8. 图像分割模型的使用
+## 8. 图像分割
 
 图像分割任务的目标是将图像分割成不同的区域或对象，给图像中的每个像素分配一个标签。这个过程涉及到对图像特征的识别，如边缘、纹理和颜色等，模型会将具有相似特征的像素归为同一类别，从而实现对目标的精确分割，从而为更高层次的任务提供支持，如场景理解、目标检测、图像编辑等。
 
@@ -2100,7 +2100,7 @@ seg.save(masks[0],"demo/first_mask.png") # 保存可视化第一个分割掩码�
 
 针对图像分割任务，能做一些小应用，如用代码实现给照片抠图并更换背景（参考项目：[https://www.openinnolab.org.cn/pjlab/project?id=667521dca4f8ca4aa89c53b7&backpath=/pjedu/userprofile?slideKey=project#public](https://www.openinnolab.org.cn/pjlab/project?id=667521dca4f8ca4aa89c53b7&backpath=/pjedu/userprofile?slideKey=project#public)。具体实现路径主要是使用图像分割模型，准确地分离出照片中的主体部分，再为分离出的主体部分选择并替换新的背景，实现照片背景的更换效果。
 
-## 9.深度估计模型的使用
+## 9.深度估计
 
 深度估计任务是计算机视觉中的一种技术，用来测量和理解图像中物体与摄像头之间的距离。简单来说，就是让计算机通过分析图片，像人类一样判断物体有多远。
 
@@ -2178,9 +2178,27 @@ result,img = mde.inference(data=img_path,img_type='cv2') # 进行推理
  [207 216 232 ... 249 238 231]]
 ```
 
+#### 3. 结果输出
+
+```python
+mde.show(img) # 展示结果图
+```
+
+`show()`能够输出结果图。
+
 ![](../images/xeduhub/mde_result.png)
 
-通过这个代码，你可以实现深度估计，并将其应用于各种场景，如自动驾驶、机器人导航、增强现实和3D重建等。以单目深度估计模型为例，通过深度估计后，可以利用这些信息进行障碍物检测。根据深度值的统计信息设定一个合适的阈值，将深度小于该阈值的区域视为障碍物，从而实现简单的障碍物检测。
+#### 4. 结果保存
+
+```python
+mde.save(img,'demo/mde_result.jpg')# 保存结果图
+```
+
+`save()`方法能够保存结果图。
+
+该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
+
+通过以上代码，你可以实现深度估计，并将其应用于各种场景，如自动驾驶、机器人导航、增强现实和3D重建等。以单目深度估计模型为例，通过深度估计后，可以利用这些信息进行障碍物检测。根据深度值的统计信息设定一个合适的阈值，将深度小于该阈值的区域视为障碍物，从而实现简单的障碍物检测。
 
 ## 10.MMEdu模型推理
 
