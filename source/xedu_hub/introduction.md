@@ -1631,7 +1631,7 @@ drive.save(img,'img_perception.jpg') # 保存推理图片
 
 ## 7. 多模态图文特征提取
 
-多模态图文特征提取技术是一种将计算机无法直接理解图像或文本转换成计算机擅长理解的数字数字向量。通过“特征提取”方式得到的数字向量，能完成零样本分类、文本翻译，图像聚类等任务。XEduHub提供了图像特征提取和文本特征提取任务：`'embedding_image'`，`'embedding_text'`。
+多模态图文特征提取技术是一种将计算机无法直接理解图像或文本转换成计算机擅长理解的数字数字向量，是实现数据向量化的重要手段。通过“特征提取”方式得到的数字向量，能完成零样本分类、文本翻译，图像聚类、情感分析、异常检测等任务。XEduHub提供了图像特征提取和文本特征提取任务：`'embedding_image'`，`'embedding_text'`。
 
 ### 图像特征提取
 
@@ -1865,7 +1865,7 @@ txt_embeddings = txt_emb.inference(data=['a black cat','a yellow cat']) # 模型
 
 ### 提完了特征能干啥？
 
-零样本分类！
+#### 1.零样本分类
 
 什么是零样本分类呢？举个例子，现在我们想要分类图片中的猫是黑色的还是黄色的，按照图像分类的方式，我们需要收集数据集，并且标注数据集，再进行模型训练，最后才能使用训练出来的模型对图像进行分类。而现在，我们使用的“图像特征提取”和“文本特征提取”只需通过特征向量就可以进行分类，避免了大量的标注工作。
 
@@ -1886,6 +1886,12 @@ get_similarity(image_embeddings, txt_embeddings,method='cosine') # 计算相似�
 假设输入的待比较embedding序列尺度分别为(N, D)和(M, D)，则输出的结果尺度为(N, M)。
 
 现在我们可以看到cat.jpg与'a black cat'向量的相似度为0.007789988070726395，而与'a yellow cat'向量的相似度为0.9922100305557251。显而易见，这张可爱的黄色猫咪图像与'a yellow cat'文本描述更为贴近。
+
+#### 2.情感分析
+
+可以做分析用户上传的文本，推断用户的情感状态并提供个性化的服务。实现方式是对文本数据进行标注情感状态，借助文本嵌入模型完成文本向量化，进而整理好一个数据集，再借助训练工具完成情感状态分类模型训练。
+
+参考项目：[基于影评数据训练情感分类模型](https://www.openinnolab.org.cn/pjlab/project?id=667a6757a4f8ca4aa8f80f87&backpath=/pjedu/userprofile?slideKey=project)
 
 ## 8. 图像分割模型的使用
 
@@ -2088,7 +2094,9 @@ seg.save(masks[0],"demo/first_mask.png") # 保存可视化第一个分割掩码�
 带有分割掩码和提示点或框（prompt）的结果图和黑白的mask都可以被分别保存，例如第二句代码表示保存第一个分割掩码。
 可以通过函数save来保存可视化结果，函数的第一个参数为像素点颜色信息，第二个参数为保存路径。
 
-**注意:** 图像保存格式可以是jpg，jpeg，png，tiff，bmp。在保存带有分割掩码和提示点或框（prompt）的结果图时，由于推理结果为四通道RGBA图像，需要保存为支持四通道格式图像，若保存为jpg，jpeg，JPEG（只有三通道）格式时，就会使保存的图像就会失去alpha通道，即透明度，将RGBA转化为RGB图像保存。
+**注意:** 图像保存格式可以是jpg，jpeg，png，tiff，bmp。在保存带有分割掩码和提示点或框（prompt）的结果图时，由于推理结果为四通道RGBA图像，需要保存为支持四通道格式图像，若保存为jpg，jpeg，JPEG（只有三通道）格式时，就会使保存的图像就会失去alpha通道，即透明度，将RGBA转化为RGB图像保存。强烈建议保存为png格式。
+
+针对图像分割任务，能做一些小应用，如用代码实现给照片抠图并更换背景（参考项目：[https://www.openinnolab.org.cn/pjlab/project?id=667521dca4f8ca4aa89c53b7&backpath=/pjedu/userprofile?slideKey=project#public](https://www.openinnolab.org.cn/pjlab/project?id=667521dca4f8ca4aa89c53b7&backpath=/pjedu/userprofile?slideKey=project#public)。具体实现路径主要是使用图像分割模型，准确地分离出照片中的主体部分，再为分离出的主体部分选择并替换新的背景，实现照片背景的更换效果。
 
 ## 9. MMEdu模型推理
 
