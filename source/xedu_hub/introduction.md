@@ -2100,7 +2100,7 @@ seg.save(masks[0],"demo/first_mask.png") # 保存可视化第一个分割掩码�
 
 针对图像分割任务，能做一些小应用，如用代码实现给照片抠图并更换背景（参考项目：[https://www.openinnolab.org.cn/pjlab/project?id=667521dca4f8ca4aa89c53b7&backpath=/pjedu/userprofile?slideKey=project#public](https://www.openinnolab.org.cn/pjlab/project?id=667521dca4f8ca4aa89c53b7&backpath=/pjedu/userprofile?slideKey=project#public)。具体实现路径主要是使用图像分割模型，准确地分离出照片中的主体部分，再为分离出的主体部分选择并替换新的背景，实现照片背景的更换效果。
 
-## 9.深度估计
+## 9. 深度估计
 
 深度估计任务是计算机视觉中的一种技术，用来测量和理解图像中物体与摄像头之间的距离。简单来说，就是让计算机通过分析图片，像人类一样判断物体有多远。
 
@@ -2158,7 +2158,7 @@ result,img = mde.inference(data=img_path,img_type='cv2') # 进行推理
 
 - `data`(str)：指定待分割的图片路径。
 - `show`(bool): 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出图像分割完成后带有掩码的图片。
-- `img_type`(str)：图像分割完成后返回含有掩码的图片格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
+- `img_type`(str)：返回结果图的类型，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
 
 模型推理返回结果：
 
@@ -2200,7 +2200,7 @@ mde.save(img,'demo/mde_result.jpg')# 保存结果图
 
 通过以上代码，你可以实现深度估计，并将其应用于各种场景，如自动驾驶、机器人导航、增强现实和3D重建等。以单目深度估计模型为例，通过深度估计后，可以利用这些信息进行障碍物检测。根据深度值的统计信息设定一个合适的阈值，将深度小于该阈值的区域视为障碍物，从而实现简单的障碍物检测。
 
-## 10.MMEdu模型推理
+## 10. MMEdu模型推理
 
 XEduHub现在可以支持使用MMEdu导出的onnx模型进行推理啦！如果你想了解如何使用MMEdu训练模型，可以看这里：[解锁图像分类模块：MMEduCls](https://xedu.readthedocs.io/zh-cn/master/mmedu/mmeducls.html)、[揭秘目标检测模块：MMEduDet](https://xedu.readthedocs.io/zh-cn/master/mmedu/mmedudet.html#mmedudet)。
 
