@@ -37,10 +37,18 @@ support_provider可以设置参数lang，表示语言，支持['en','zh']，默�
     </thead>
     <tbody>
         <tr class="row-even">
+            <td>qwen</td>
+            <td><a href="https://dashscope.console.aliyun.com/apiKey">https://dashscope.console.aliyun.com/apiKey</a></td>
+            <td>API-KEY管理-创建新的API-KEY Key</td>
+            <td>无</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="row-even">
             <td>openrouter</td>
             <td><a href="https://openrouter.ai">https://openrouter.ai</a></td>
             <td>右上角个人头像-Keys-Create Key</td>
-            <td>无限制</td>
+            <td>无</td>
         </tr>
     </tbody>
     <tbody>
@@ -72,7 +80,7 @@ support_provider可以设置参数lang，表示语言，支持['en','zh']，默�
             <td>ernie(文心一言)</td>
             <td><a href="https://console.bce.baidu.com/qianfan/ais/console/applicationConsole/application">https://console.bce.baidu.com/qianfan/ais/console/applicationConsole/application</a></td>
             <td>左侧应用接入-创建应用（不能重名）-同时需要API Key与Secret Key</td>
-            <td>无限制（注意要实名认证开启服务，可在个人中心确认）</td>
+            <td>无（注意要实名认证开启服务，可在个人中心确认）</td>
         </tr>
     </tbody>
 </table>
