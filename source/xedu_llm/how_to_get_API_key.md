@@ -37,7 +37,7 @@ support_provider可以设置参数lang，表示语言，支持['en','zh']，默�
     </thead>
     <tbody>
         <tr class="row-even">
-            <td>qwen</td>
+            <td>qwen（通义千问）</td>
             <td><a href="https://dashscope.console.aliyun.com/apiKey">https://dashscope.console.aliyun.com/apiKey</a></td>
             <td>API-KEY管理-创建新的API-KEY Key</td>
             <td>无</td>
