@@ -30,9 +30,9 @@ body.show(new_img) # 显示带标注图片
 
 ### 模型声明和模型推理参数总览
 
-![](../images/xeduhub/tu1.JPG)
+![](../images/xeduhub/tu1.PNG)
 
-![](../images/xeduhub/tu2.JPG)
+![](../images/xeduhub/tu2.PNG)
 
 若要查看大图可前往[https://aicarrier.feishu.cn/file/K0oTbWW9mosOGCxIClvcTfpSnDd](https://aicarrier.feishu.cn/file/K0oTbWW9mosOGCxIClvcTfpSnDd)
 
@@ -736,7 +736,7 @@ keypoints,img_with_keypoints = face.inference(data='data/face.jpg',img_type='pil
 
 - `data`(string|numpy.ndarray): 指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
 
-- `show`: 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出关键点识别完成后的图片。
+- `show`(bool): 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出关键点识别完成后的图片。
 
 - `img_type`: 关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
 
@@ -836,7 +836,7 @@ keypoints,img_with_keypoints = hand.inference(data='data/hand.jpg',img_type='pil
 
 - `data`: 指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
 
-- `show`: 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出关键点识别完成后的图片。
+- `show`(bool): 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出关键点识别完成后的图片。
 
 - `img_type`: 关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
 - `bbox`：该参数可配合目标检测使用。在多人手关键点检测中，该参数指定了要识别哪个检测框中的关键点。
@@ -932,7 +932,7 @@ keypoints,img_with_keypoints = wholebody.inference(data='data/wholebody.jpg',img
 
 - `data`: 指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
 
-- `show`: 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出关键点识别完成后的图片。
+- `show`(bool): 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出关键点识别完成后的图片。
 
 - `img_type`: 关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
 - `bbox`：该参数可配合目标检测使用。在多人体关键点检测中，该参数指定了要识别哪个检测框中的关键点。
@@ -1022,8 +1022,8 @@ result,ocr_img = ocr.inference(data='data/ocr_img.png',img_type='cv2') # 模型�
 模型推理`inference()`可传入参数：
 
 - `data`: 指定待进行OCR识别的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
-- `show`: 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出OCR识别完成后的图片。
-- `img_type`：OCR识别完成后会返回含有识别结果的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`。
+- `show`(bool): 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出OCR识别完成后的图片。
+- `img_type`(str)：OCR识别完成后会返回含有识别结果的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`。
 
 `result`以一维数组的形式保存了识别出的文本及其检测框的四个顶点(x,y)坐标。
 
@@ -1240,8 +1240,8 @@ result,cls_img = cls.inference(data='data/cat101.jpg', img_type='pil') # 进行�
 模型推理`inference()`可传入参数：
 
 - `data`: 指定待分类的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
-- `show`: 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出原图。
-- `img_type`：返回原图，该参数指定了返回图片的格式，可选有:`['cv2','pil']`。
+- `show`(bool): 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出原图。
+- `img_type`(str)：返回原图，该参数指定了返回图片的格式，可选有:`['cv2','pil']`。
 
 推理结果`result`是一个二维数组，表示这个图片在ImageNet的一千个分类中，属于每个分类的概率。
 
@@ -1384,7 +1384,7 @@ result, img = style.inference(data='data/cat101.jpg',img_type='cv2') # 进行模
 模型推理`inference()`可传入参数：
 
 - `data`: 待进行风格迁移的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
-- `show`: 可取值：`[true,false]` 默认为`false`。如果取值为`true`，在推理完成后会直接输出风格迁移完成后的图片。
+- `show`(bool): 可取值：`[true,false]` 默认为`false`。如果取值为`true`，在推理完成后会直接输出风格迁移完成后的图片。
 - `img_type`: 推理完成后会直接输出风格迁移完成后的图片。该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
 
 模型推理返回结果：
@@ -1473,7 +1473,7 @@ result, img = color.inference(data='demo/gray_img1.jpg',img_type='cv2') # 进行
 模型推理`inference()`可传入参数：
 
 - `data`: 待进行风格迁移的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
-- `show`: 可取值：`[true,false]` 默认为`false`。如果取值为`true`，在推理完成后会直接输出风格迁移完成后的图片。
+- `show`(bool): 可取值：`[true,false]` 默认为`false`。如果取值为`true`，在推理完成后会直接输出风格迁移完成后的图片。
 - `img_type`: 推理完成后会直接输出图像着色完成后的图片。该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
 
 模型推理返回结果：
@@ -1542,9 +1542,9 @@ result,img = drive.inference(data='demo/drive.png',img_type='cv2') # 模型推�
 
 模型推理`inference()`可传入参数：
 
-- `data`：指定待检测的图片。
-- `show`: 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出目标检测完成后的图片。
-- `img_type`：目标检测完成后会返回含有检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
+- `data`(str)：指定待检测的图片。
+- `show`(bool): 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出目标检测完成后的图片。
+- `img_type`(str)：目标检测完成后会返回含有检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
 - `thr`: 设置检测框阈值，取值范围为`[0,1]`超过该阈值的检测框被视为有效检测框，进行显示，默认值为0.3。
 
 模型推理返回结果：
@@ -1671,7 +1671,7 @@ image_embeddings = img_emb.inference(data='demo/cat.png') # 模型推理
 
 模型推理`inference()`可传入参数：
 
-- `data`：指定待特征提取的图片。可以直接传入图像路径`data='cat.jpg'` 或者多张图像路径列表`data= ['cat.jpg','dog.jpg'] `。
+- `data`(str)：指定待特征提取的图片。可以直接传入图像路径`data='cat.jpg'` 或者多张图像路径列表`data= ['cat.jpg','dog.jpg'] `。
 
 模型推理返回结果：
 
@@ -1848,7 +1848,7 @@ txt_embeddings = txt_emb.inference(data=['a black cat','a yellow cat']) # 模型
 
 模型推理`inference()`可传入参数：
 
-- `data`：指定待特征提取的文本。可以直接传入文本`data= 'cat' `或者多条文本列表`data= ['a black cat','a yellow cat']`。
+- `data`(str)：指定待特征提取的文本。可以直接传入文本`data= 'cat' `或者多条文本列表`data= ['a black cat','a yellow cat']`。
 
 模型推理返回结果：
 
@@ -1899,7 +1899,7 @@ get_similarity(image_embeddings, txt_embeddings,method='cosine') # 计算相似�
 
 举个例子，如果你有一张包含天空、建筑物、树木和道路的照片，图像分割的任务就是将这张照片中的每一个像素都标记出来，告诉你哪些像素是属于天空的，哪些是建筑物的，哪些是树木的，哪些是道路的。
 
-XEduHub 提供了一个专门的分割任务工具 `seg_sam`，这是基于 "Segment Anything Model"（SAM）的模型。它是一种高度灵活的分割模型，可以根据用户的简单提示，如点或框，来识别和分割图像中的对象。
+XEduHub 提供了一个专门的分割任务工具 `segment_anything`，这是基于 "Segment Anything Model"（SAM）的模型。它是一种高度灵活的分割模型，可以根据用户的简单提示，如点或框，来识别和分割图像中的对象。
 
 #### 掩码
 
@@ -1907,7 +1907,7 @@ XEduHub 提供了一个专门的分割任务工具 `seg_sam`，这是基于 "Seg
 
 掩码是一个二维数组，与输入图像的尺寸相同，其中每个元素对应图像中的一个像素。掩码通过二值标签（1 表示属于分割对象，0表示不属于）来标记像素，从而为图像中的每个像素提供了一个明确的指示，表明它是否属于被分割的对象。
 
-XEduHub 中的 `seg_sam` 工具利用这种掩码机制，允许用户轻松地执行各种分割任务。
+XEduHub 中的 `segment_anything` 工具利用这种掩码机制，允许用户轻松地执行各种分割任务。
 
 
 ![](../images/xeduhub/seg_sam_show.png)
@@ -1916,13 +1916,13 @@ XEduHub 中的 `seg_sam` 工具利用这种掩码机制，允许用户轻松地�
 
 ```python
 from XEdu.hub import Workflow as wf # 导入库
-seg = wf(task = 'seg_sam') # 实例化模型
+seg = wf(task = 'segment_anything') # 实例化模型
 img_path = 'demo/seg.jpg' # 指定进行推理的图片路径
 masks, img = seg.inference(data=img_path, img_type='pil') # 进行模型推理
 format_result = seg.format_output(lang='zh') # 将推理结果进行格式化输出
 seg.show(masks[0]) # 可视化第一个分割掩码
 seg.save(masks[0],"demo/first_mask.png") # 保存可视化第一个分割掩码为'first_mask.png'
-seg.show(img) # 显示分割后的图像，带有分割掩码（将分割结果（掩码）叠加到原始图像上）
+seg.show(img) # 显示分割后的图像，带有分割掩码和提升点或框prompt
 seg.save(img,"demo/mask_with_image.png")# 保存分割后的图像为'mask_with_image.png'
 ```
 
@@ -1932,13 +1932,13 @@ seg.save(img,"demo/mask_with_image.png")# 保存分割后的图像为'mask_with_
 
 ```python
 from XEdu.hub import Workflow as wf # 导入库
-seg = wf(task = 'seg_sam') # 实例化模型
+seg = wf(task = 'segment_anything') # 实例化模型
 ```
 
 `wf()`中共有三个参数可以设置：
 
-- `task`(str)选择任务。分割任务模型为`seg_sam`。
-- `checkpoint`(list)指定模型文件所在的路径。由于seg_sam任务的实现需要用到两个模型：`seg_sam_decoder.onnx`和`seg_sam_encoder.onnx`，因此checkpoint需要传入一个列表，第一个值是encoder路径，第二个是decoder路径，例如checkpoint=['my_checkpoints/seg_sam_encoder.onnx','my_checkpoints/seg_sam_decoder.onnx']，两个模型可以不放在同一个文件夹下。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`seg_sam_decoder.onnx`和`seg_sam_encoder.onnx`。否则将通过网络到浦源平台的专用地址下载。
+- `task`(str)选择任务。分割任务模型为`segment_anything`。
+- `checkpoint`(list)指定模型文件所在的路径。由于segment_anything任务的实现需要用到两个模型：`segment_anything_decoder.onnx`和`segment_anything_encoder.onnx`，因此checkpoint需要传入一个列表，第一个值是encoder路径，第二个是decoder路径，例如checkpoint=['my_checkpoints/segment_anything_encoder.onnx','my_checkpoints/segment_anything_decoder.onnx']，两个模型可以不放在同一个文件夹下。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`segment_anything_decoder.onnx`和`segment_anything_encoder.onnx`。否则将通过网络到浦源平台的专用地址下载。
 - `download_path`指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制`checkpoints`文件夹。如希望模型保存放在其他路径，则设置`download_path`参数，如`download_path='my_checkpoint'`。注意，`download_path`参数为文件夹名称。建议该参数留空，使用默认地址。
 
 任务模型文件获取与存放请查看[下文](https://xedu.readthedocs.io/zh-cn/master/xedu_hub/introduction.html#id139)。
@@ -2069,10 +2069,10 @@ format_result = seg.format_output(lang='zh') # 将推理结果进行格式化输
 **可视化结果输出**
 
 ```python
-seg.show(img) # 展示带有分割掩码和提示点或框（prompt）的结果图
+seg.show(img) # 显示分割后的图像，带有分割掩码和提升点或框prompt
 ```
 
-`show()`能够输出带有分割掩码和提示点或框（prompt）的结果图，即将分割结果（掩码）叠加到原始图像上，这会是一个四通道RGBA图。
+`show()`能够输出分割后的图像，一张带有分割掩码和提示点或框（prompt）的结果图，即将分割结果（掩码）叠加到原始图像上，这会是一个四通道RGBA图。
 
 ![](../images/xeduhub/seg_sam_show1.png)
 
@@ -2096,9 +2096,93 @@ seg.save(masks[0],"demo/first_mask.png") # 保存可视化第一个分割掩码�
 
 **注意:** 图像保存格式可以是jpg，jpeg，png，tiff，bmp。在保存带有分割掩码和提示点或框（prompt）的结果图时，由于推理结果为四通道RGBA图像，需要保存为支持四通道格式图像，若保存为jpg，jpeg，JPEG（只有三通道）格式时，就会使保存的图像就会失去alpha通道，即透明度，将RGBA转化为RGB图像保存。强烈建议保存为png格式。
 
+图像分割能实现对目标的精确分割，从而为更高层次的任务提供支持，如场景理解、目标检测、图像编辑等。
+
 针对图像分割任务，能做一些小应用，如用代码实现给照片抠图并更换背景（参考项目：[https://www.openinnolab.org.cn/pjlab/project?id=667521dca4f8ca4aa89c53b7&backpath=/pjedu/userprofile?slideKey=project#public](https://www.openinnolab.org.cn/pjlab/project?id=667521dca4f8ca4aa89c53b7&backpath=/pjedu/userprofile?slideKey=project#public)。具体实现路径主要是使用图像分割模型，准确地分离出照片中的主体部分，再为分离出的主体部分选择并替换新的背景，实现照片背景的更换效果。
 
-## 9. MMEdu模型推理
+## 9.深度估计模型的使用
+
+深度估计任务是计算机视觉中的一种技术，用来测量和理解图像中物体与摄像头之间的距离。简单来说，就是让计算机通过分析图片，像人类一样判断物体有多远。
+
+想象你在看一张照片，照片上有一辆车、一棵树和一栋房子。你能够凭借视觉直觉判断车离你比较近，树在中间，而房子最远。深度估计任务就是让计算机也能做出类似的判断，从而知道图像中每个物体的远近关系。
+
+这项技术在自动驾驶、增强现实（AR）和机器人导航等领域中非常重要。例如，在自动驾驶汽车中，深度估计帮助汽车感知前方道路上的障碍物，并做出安全的驾驶决策。
+
+XEduHub 提供了一个深度估计模型 `depth_anything`，这是一个单目深度估计模型，通过调用这个模型，就可以实现深度估计任务。这个模型可以通过分析单张图像来推测出图像中各个物体的深度信息，从而帮助计算机理解物体之间的远近关系。
+
+小知识：单目深度估计是通过单个摄像头（即单目相机）来估计图像中各个像素点的深度信息，即物体与摄像头之间的距离。与单目深度估计对标的还有双目深度估计（需要两个摄像头）或激光雷达（LIDAR）等其他深度估计技术。单目深度估计只需利用一张普通的二维图像，通过复杂的算法和深度学习模型来推测出场景的三维结构。
+
+#### 代码样例
+
+```python
+from XEdu.hub import Workflow as wf # 导入库
+mde = wf(task='depth_anything') # 实例化模型
+img_path = 'demo/cat.png' # 指定进行推理的图片路径
+result,img = mde.inference(data=img_path,img_type='cv2') # 进行推理
+mde.show(img)# 展示结果图
+mde.save(img,'demo/mde_result.jpg')# 保存结果图
+```
+
+#### 代码解释
+
+#### 1. 模型声明
+
+```
+from XEdu.hub import Workflow as wf # 导入库
+mde = wf(task='depth_anything') # 实例化模型
+```
+
+`wf()`中共有三个参数可以设置：
+
+- `task`(str)选择任务。分割任务模型为`depth_anything`。
+- `checkpoint`指定模型文件所在的路径，如`mde = wf(task='depth_anything',checkpoint='depth_anything.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoints”文件夹中寻找与任务名对应的模型文件，即`depth_anything.onnx`。否则将通过网络到浦源平台的专用地址下载。
+- `download_path`指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoints”文件夹中，“checkpoints”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制`checkpoints`文件夹。如希望模型保存放在其他路径，则设置`download_path`参数，如`download_path='my_checkpoint'`。注意，`download_path`参数为文件夹名称。建议该参数留空，使用默认地址。
+
+任务模型文件获取与存放请查看[下文](https://xedu.readthedocs.io/zh-cn/master/xedu_hub/introduction.html#id139)。
+
+#### 2. 模型推理
+
+推理方式1：
+
+```python
+result = mde.inference(data=img_path) # 进行推理
+```
+
+推理方式2：
+
+```python
+result,img = mde.inference(data=img_path,img_type='cv2') # 进行推理
+```
+
+模型推理`inference()`可传入参数：
+
+- `data`(str)：指定待分割的图片路径。
+- `show`(bool): 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出图像分割完成后带有掩码的图片。
+- `img_type`(str)：图像分割完成后返回含有掩码的图片格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
+
+模型推理返回结果：
+
+- `result`(numpy.ndarray):  深度估计结果的数组，每个值表示对应像素点的深度。代表的是相对深度，而非度量深度，即表示的是物体间的前后位置关系，而不是距离镜头5cm或10cm。
+
+- `img` (numpy.ndarray):  处理后的图像，用于可视化深度估计结果。该图像为单通道深度图，尺寸与原图一致。推理设置`img_type`参数后返回。
+
+  输出的result示例如下：
+
+```
+[[ 21  21  21 ...  42  36  32]
+ [ 21  21  21 ...  43  38  35]
+ [ 20  20  20 ...  43  42  42]
+ ...
+ [231 233 236 ... 250 248 247]
+ [215 222 233 ... 249 241 236]
+ [207 216 232 ... 249 238 231]]
+```
+
+![](../images/xeduhub/mde_result.png)
+
+通过这个代码，你可以实现深度估计，并将其应用于各种场景，如自动驾驶、机器人导航、增强现实和3D重建等。以单目深度估计模型为例，通过深度估计后，可以利用这些信息进行障碍物检测。根据深度值的统计信息设定一个合适的阈值，将深度小于该阈值的区域视为障碍物，从而实现简单的障碍物检测。
+
+## 10.MMEdu模型推理
 
 XEduHub现在可以支持使用MMEdu导出的onnx模型进行推理啦！如果你想了解如何使用MMEdu训练模型，可以看这里：[解锁图像分类模块：MMEduCls](https://xedu.readthedocs.io/zh-cn/master/mmedu/mmeducls.html)、[揭秘目标检测模块：MMEduDet](https://xedu.readthedocs.io/zh-cn/master/mmedu/mmedudet.html#mmedudet)。
 
@@ -2141,9 +2225,9 @@ result, result_img =  mmcls.inference(data='data/cat101.jpg',img_type='pil') # �
 
 模型推理`inference()`可传入参数：
 
-- `data`：指定待检测的图片。
-- `show`: 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出目标检测完成后的图片。
-- `img_type`：分类完成后会返回含有分类标签的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
+- `data`(str)：指定待检测的图片。
+- `show`(bool): 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出目标检测完成后的图片。
+- `img_type`(str)：分类完成后会返回含有分类标签的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
 - `thr`(float): 设置推理阈值，取值范围为`[0,1]`，预测结果的置信度高于这个阈值时，这些结果才会被认为是有效的。
 
 `result`是一个字典，包含三个键：`标签`、`置信度`和`预测结果`。
@@ -2227,9 +2311,9 @@ result, result_img =  mmdet.inference(data='data/plate0.png',img_type='pil') # �
 
 模型推理`inference()`可传入参数：
 
-- `data`：指定待检测的图片。
-- `show`: 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出目标检测完成后的图片。
-- `img_type`：目标检测完成后会返回含有检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
+- `data`(str)：指定待检测的图片。
+- `show`(bool): 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出目标检测完成后的图片。
+- `img_type`(str)：目标检测完成后会返回含有检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
 - `thr`(float): 设置检测框阈值，取值范围为`[0,1]`，预测结果的置信度高于这个阈值时，这些结果才会被认为是有效的。
 
 `result`的结果是一个数组，里面保存了结果字典。该字典有四个键：`标签`、`置信度`、`坐标`以及`预测结果`。其中坐标表示了检测框的两个顶点：左上(x1,y1)和右下(x2,y2)。
@@ -2279,7 +2363,7 @@ mmdet.save(img,'new_plate.jpg') # 保存推理结果图片
 
 该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
 
-## 10. BaseNN模型推理
+## 11. BaseNN模型推理
 
 XEduHub现在可以支持使用BaseNN导出的onnx模型进行推理啦！如果你想了解如何将使用[BaseNN](https://xedu.readthedocs.io/zh-cn/master/basenn.html)训练好的模型转换成ONNX格式，可以看这里：[BaseNN模型文件格式转换](https://xedu.readthedocs.io/zh-cn/master/basenn/introduction.html#id24)。OK，准备好了ONNX模型，那么就开始使用XEduHub吧！
 
@@ -2315,7 +2399,7 @@ result = base.inference(data='data/6.jpg') # 进行模型推理
 
 模型推理`inference()`可传入参数：
 
-- `data`：指定待检测的图片。
+- `data`(str)：指定待检测的图片。
 
 `result`的结果是一个二维数组，第一个元素表示这张图属于0-9的数字类别的概率，可以看到当为0时，概率接近，因此该手写数字是0。
 
@@ -2352,7 +2436,7 @@ format_result = basenn.format_output()
 
 `format_output`的结果是一个结果字典，这个字典的第一个元素有两个键，`预测值`、`分数`，代表着该手写数字的分类标签以及属于该分类标签的概率。
 
-## 11. BaseML模型推理
+## 12. BaseML模型推理
 
 XEduHub现在可以支持使用BaseML导出的pkl模型文件进行推理啦！如果你想了解如何将使用[BaseML](https://xedu.readthedocs.io/zh-cn/master/baseml.html)训练模型并保存成.pkl模型文件，可以看这里：[BaseML模型保存](https://xedu.readthedocs.io/zh-cn/master/baseml/introduction.html#id16)。OK，准备好了pkl模型，那么就开始使用XEduHub吧！
 
@@ -2390,7 +2474,7 @@ result= baseml.inference(data=data) # 进行模型推理
 
 `mmdet.inference`可传入参数：
 
-- `data`：指定待推理数据（数据类型和格式跟模型训练有关）。
+- `data`(str)：指定待推理数据（数据类型和格式跟模型训练有关）。
 
 **注意！**基于BaseML模型推理结果不包含图片，不需要指定`img_type`参数并返回图片，因为大部分使用BaseML解决的任务只需要输出分类标签、文本或者数组数据等。
 
@@ -2517,7 +2601,7 @@ print(result
 
 模型推理`inference()`可传入参数：
 
-- `data`：指定待检测的图片
+- `data`(str)：指定待检测的图片
 - `preprocess`: 指定前处理函数
 - `postprocess`：指定后处理函数
 
