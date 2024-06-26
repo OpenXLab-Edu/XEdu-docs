@@ -149,7 +149,7 @@ print(res) # 结果输出
 
 ### 功能三：通过大模型API的服务器地址发送请求
 
-除了向服务商发送请求外，还可以向服务器地址发送请求，以向openrouter服务器地址发送请求为例，完整代码如下：
+目前已经兼容了上述的服务商，但是如果你知道其他服务商的API地址（base_url）的话，你也可以通过向服务器地址发送请求的方式使用。以向openrouter服务器地址发送请求为例，完整代码如下：
 
 ```python
 from XEdu.LLM import Client # 导入库
@@ -162,9 +162,7 @@ print(res)
 
 本功能示例代码中声明函数Client()新增使用的参数是`base_url`(str)，为API的服务器地址。
 
-通过阅读模型的官方文档，可以找到该模型所提供的服务器地址（`base_url`）。下面提供了部分供应商的base_url。
-
-通过API的服务器地址发送请求时需要指定模型，具体可指定的模型可以通过`print(chatbot.support_model())`语句查询（部分域下不支持查看模型列表，如智谱清言），推荐查看各大语言模型API文档。
+通过阅读各家大模型服务提供商的官方文档，可以找到该模型所对应的服务器地址（`base_url`）。下面列举了部分服务商的base_url，仅供参考。
 
 <table class="docutils align-default">
     <thead>
@@ -199,8 +197,8 @@ print(res)
     </tbody>
         <tbody>
         <tr class="row-even">
-            <td>ernie（文心一言）</td>
-            <td>不提供，不建议使用此方法</td>
+            <td>qwen（通义千问）</td>
+            <td>https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation</td>
         </tr>
     </tbody>
 </table>
