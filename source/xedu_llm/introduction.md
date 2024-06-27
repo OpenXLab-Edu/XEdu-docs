@@ -240,6 +240,8 @@ To create a public link, set `share=True` in `launch()`.
 
 ![](../images/xedullm/llm1.png)
 
+网页中下方为文本输入框，输入完成后按回车，或者“Submit”都可以提交，对回答不满意，可以点击“重试”，想要删除这条记录，可以点击“撤回”，想要清空历史聊天记录重新开始会话，可以刷新页面，或者点击“清空”。
+
 ##### 参数说明
 
 - `host` (str): 指定 Web 服务器的主机地址。默认值为 `'0.0.0.0'`，表示开放所有外部IP访问，你也可以将其设置为其他 IP 。
@@ -305,10 +307,10 @@ Running on local URL: http://10.1.48.23:7863
 from XEdu.LLM import Client
 
 # 使用固定的 IP 地址和端口号，使用获取的ip
-chatbot = Client(xedu_url='http://10.1.48.23:7863')
+stu_chatbot = Client(xedu_url='http://10.1.48.23:7863')
 
 # 进行推理或其他操作
-res = chatbot.inference("今天天气怎么样？")
+res = stu_chatbot.inference("今天天气怎么样？")
 # 返回：今天阳光明媚，xxx...
 ```
 
