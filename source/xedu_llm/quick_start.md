@@ -67,15 +67,17 @@ print(res)
 ```python
 from XEdu.LLM import Client # 导入库
 print(Client.support_provider()) # 查看XEduLLM中目前提供的大语言模型服务提供商
+print(Client.support_provider(lang = 'zh') ) # 查看XEduLLM中目前提供的大语言模型服务提供商中文名
 ```
 
 输出结果：
 
 ```
-['openrouter', 'moonshot', 'deepseek', 'glm', 'ernie']
+['openrouter', 'moonshot', 'deepseek', 'glm', 'ernie', 'qwen']
+['openrouter', '月之暗面-Kimi', '幻方-深度求索', '智谱-智谱清言', '百度-文心一言', '阿里-通义千问']
 ```
 
-![](../images/xedullm/quick_start_1.jpg)
+![](../images/xedullm/start_1.png)
 
 获取大语言模型API密钥的流程通常包括在各平台网页上进行用户注册，注册完成后获取相应的算力资源，详细步骤请参考<a href="https://xedu.readthedocs.io/zh-cn/master/xedu_llm/how_to_get_API_key.html">API与密钥获取</a>。
 

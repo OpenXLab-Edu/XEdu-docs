@@ -275,7 +275,7 @@ Running on local URL: http://10.1.48.23:7863
 2.在其他设备或应用中访问该服务
 
 刚才的输出中，我们可以看到服务的 IP 地址和端口。在其他设备上就可以通过上述获取的 IP 地址和端口访问聊天机器人服务：
-```
+```python
 from XEdu.LLM import Client
 
 # 使用固定的 IP 地址和端口号，使用获取的ip
