@@ -326,7 +326,7 @@ res = stu_chatbot.inference("今天天气怎么样？")
 from XEdu.LLM import Client
 import pyttsx3
 chatbot = Client(provider='qwen', # 选择模型为阿里-通义千问
-               api_key='sk-946498b7c00b423badfb96046dd32ae4') # 引号内为用户密钥，用于确定身份，若失效，请自行注册：https://dashscope.console.aliyun.com/apiKey 
+               api_key='sk-946498b7c00b……46dd32ae4') # 引号内为用户密钥，用于确定身份，请自行注册：https://dashscope.console.aliyun.com/apiKey 
 res = chatbot.inference("你好,用中文介绍一下你自己",stream=True)
 for i in res:
     print(i, flush=True, end='')
