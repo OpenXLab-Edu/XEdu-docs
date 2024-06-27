@@ -1848,7 +1848,7 @@ txt_embeddings = txt_emb.inference(data=['a black cat','a yellow cat']) # 模型
 
 模型推理`inference()`可传入参数：
 
-- `data`(str)：指定待特征提取的文本。可以直接传入文本`data= 'cat' `或者多条文本列表`data= ['a black cat','a yellow cat']`。
+- `data`(str)：指定待特征提取的文本。可以直接传入文本`data= 'cat' `或者多条文本列表`data= ['a black cat','a yellow cat']`。值得注意的是，模型对单条文本的token长度有限制，要求不超过77。在自然语言处理（NLP）中，分词是一个关键步骤，它将连续的文本流切分为有意义的最小单位，这些单位被称为“token”。这些token可以是单词、子词、字符、短语或任何其他预定义的文本单元，具体取决于所使用的分词方法和模型的需求；且分词时一般会添加一些特殊标记，如在每个序列开始和结束处添加的[CLS]和[SEP]标记，这些都会导致token数量的增加。因此在实际使用的过程中，字符数与token数不一致是非常常见的情况。通常可以使用文本截断、文本简化或优化等方式来降低token长度。
 
 模型推理返回结果：
 
