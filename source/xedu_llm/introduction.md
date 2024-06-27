@@ -13,10 +13,10 @@ XEduLLM支持多种大语言模型服务提供商，可以通过support_provider
 
 ```python
 from XEdu.LLM import Client
-Client.support_provider() # 默认查看服务商英文名
-# 输出：['openrouter', 'moonshot', 'deepseek', 'glm', 'ernie']
-Client.support_provider(lang = 'zh') # 查看服务商中文名
-# 输出：['openrouter', '月之暗面-Kimi', '幻方-深度求索', '智谱-智谱清言', '百度-文心一言']
+print(chatbot.support_provider()) # 查看XEduLLM中目前提供的大语言模型服务提供商
+# 输出：['openrouter', 'moonshot', 'deepseek', 'glm', 'ernie', 'qwen']
+print(chatbot.support_provider(lang = 'zh') ) # 查看XEduLLM中目前提供的大语言模型服务提供商中文名
+# 输出：['openrouter', '月之暗面-Kimi', '幻方-深度求索', '智谱-智谱清言', '百度-文心一言', '阿里-通义千问']
 ```
 
 support_provider可以设置参数lang，表示语言，支持['en','zh']，默认'en'。
@@ -29,13 +29,14 @@ support_provider可以设置参数lang，表示语言，支持['en','zh']，默�
 from XEdu.LLM import Client # 导入库
 chatbot = Client(provider='openrouter',
                api_key='sk-or-v1-6d7672a58c3c837f2……c0f30a3b1c3') # 实例化客户端，api_key替换为你自己的密钥
-res = chatbot.inference('你好，用中文介绍一下你自己') # 输入请求，执行推理并得到结果
+res = chatbot.inference('用“一二三四”写一首藏头五言诗') # 输入请求，执行推理并得到结果
 print(res) # 结果输出
 ```
 
 输出示例：
-
-![](../images/xedullm/output0.jpg)
+```
+一年最美是元宵，二月春光映碧霄。三百六十天下事，四时风景尽妖娆。
+```
 
 接下来对示例代码进行详细说明。
 
@@ -112,6 +113,18 @@ for i in res:
 #### 举一反三，尝试使用不同的服务商
 完成了向openrouter服务商发送请求的代码学习，我们可以举一反三向其他服务商发送请求。
 
+```python
+chatbot1 = Client(provider='qwen', # 选择模型为阿里-通义千问
+               api_key='xxx')
+chatbot2 = Client(provider='glm', # 选择模型服务提供商为智谱-智谱清言
+               api_key='xxx')
+```
+输出：
+```
+|| Selected provider: qwen || Current model: qwen-long ||
+|| Selected provider: glm || Current model: glm-4 ||
+```
+
 ### 功能二：指定使用模型
 
 一个服务商中可以有多个不同的大语言模型，每个模型都有不同性能特点。我们可以指定服务商中包含的模型，来处理请求，并返回相应的结果。
@@ -122,26 +135,29 @@ for i in res:
 
 ```python
 from XEdu.LLM import Client # 导入库
-chatbot = Client(provider='openrouter',
-               api_key='sk-or-v1-6d7672a58c3c837f2……c0f30a3b1c3') # 实例化客户端
+chatbot = Client(provider='qwen',
+               api_key='xxx') # 实例化客户端
 print(chatbot.support_model()) # 查看该chatbot支持哪些模型
 ```
 
 输出示例：
-```python
-['openrouter/auto', 'nousresearch/nous-capybara-7b:free', 'mistralai/mistral-7b-instruct:free', 'huggingfaceh4/zephyr-7b-beta:free', 'openchat/openchat-7b:free', 'gryphe/mythomist-7b:free', 'undi95/toppy-m-7b:free', 'google/gemma-7b-it:free', 'meta-llama/llama-3-8b-instruct:free', 'microsoft/phi-3-mini-128k-instruct:free', 'microsoft/phi-3-medium-128k-instruct:free', 'koboldai/psyfighter-13b-2', 'intel/neural-chat-7b', 'mancer/weaver', 'pygmalionai/mythalion-13b', 'xwin-lm/xwin-lm-70b', 'alpindale/goliath-120b', 'neversleep/noromaid-20b', 'gryphe/mythomist-7b', 'sophosympatheia/midnight-rose-70b', 'sao10k/fimbulvetr-11b-v2', 'neversleep/llama-3-lumimaid-8b', 'neversleep/llama-3-lumimaid-70b', 'undi95/remm-slerp-l2-13b:extended', 'gryphe/mythomax-l2-13b:extended', 'meta-llama/llama-3-8b-instruct:extended', 'neversleep/llama-3-lumimaid-8b:extended', 'nousresearch/nous-capybara-7b', 'meta-llama/codellama-34b-instruct', 'codellama/codellama-70b-instruct', 'phind/phind-codellama-34b', 'open-orca/mistral-7b-openorca', 'teknium/openhermes-2-mistral-7b', 'undi95/remm-slerp-l2-13b', '01-ai/yi-34b-chat', '01-ai/yi-34b', '01-ai/yi-6b', 'togethercomputer/stripedhyena-nous-7b', 'togethercomputer/stripedhyena-hessian-7b', 'mistralai/mixtral-8x7b', 'nousresearch/nous-hermes-yi-34b', 'nousresearch/nous-hermes-2-mixtral-8x7b-sft', 'nousresearch/nous-hermes-2-mistral-7b-dpo', 'meta-llama/llama-3-8b', 'meta-llama/llama-3-70b', 'databricks/dbrx-instruct', 'allenai/olmo-7b-instruct', 'snowflake/snowflake-arctic-instruct', 'qwen/qwen-110b-chat', 'qwen/qwen-14b-chat', 'qwen/qwen-7b-chat', 'qwen/qwen-4b-chat', 'mistralai/mixtral-8x7b-instruct:nitro', 'openai/gpt-3.5-turbo', 'openai/gpt-3.5-turbo-0125', 'openai/gpt-3.5-turbo-1106', 'openai/gpt-3.5-turbo-0613', 'openai/gpt-3.5-turbo-0301', 'openai/gpt-3.5-turbo-16k', 'openai/gpt-4o', 'openai/gpt-4o-2024-05-13', 'openai/gpt-4-turbo', 'openai/gpt-4-turbo-preview', 'openai/gpt-4-1106-preview', 'openai/gpt-4', 'openai/gpt-4-0314', 'openai/gpt-4-32k', 'openai/gpt-4-32k-0314', 'openai/gpt-4-vision-preview', 'openai/gpt-3.5-turbo-instruct', 'google/palm-2-chat-bison', 'google/palm-2-codechat-bison', 'google/palm-2-chat-bison-32k', 'google/palm-2-codechat-bison-32k', 'google/gemini-pro', 'google/gemini-pro-vision', 'google/gemini-pro-1.5', 'google/gemini-flash-1.5', 'perplexity/llama-3-sonar-small-32k-chat', 'perplexity/llama-3-sonar-small-32k-online', 'perplexity/llama-3-sonar-large-32k-chat', 'perplexity/llama-3-sonar-large-32k-online', 'fireworks/firellava-13b', 'anthropic/claude-3-opus', 'anthropic/claude-3-sonnet', 'anthropic/claude-3-haiku', 'anthropic/claude-2', 'anthropic/claude-2.0', 'anthropic/claude-2.1', 'anthropic/claude-instant-1', 'anthropic/claude-3-opus:beta', 'anthropic/claude-3-sonnet:beta', 'anthropic/claude-3-haiku:beta', 'anthropic/claude-2:beta', 'anthropic/claude-2.0:beta', 'anthropic/claude-2.1:beta', 'anthropic/claude-instant-1:beta', 'meta-llama/llama-2-13b-chat', 'meta-llama/llama-2-70b-chat', 'nousresearch/nous-hermes-llama2-13b', 'nousresearch/nous-capybara-34b', 'jondurbin/airoboros-l2-70b', 'austism/chronos-hermes-13b', 'teknium/openhermes-2.5-mistral-7b', 'gryphe/mythomax-l2-13b', 'undi95/toppy-m-7b', 'lizpreciatior/lzlv-70b-fp16-hf', 'mistralai/mixtral-8x7b-instruct', 'neversleep/noromaid-mixtral-8x7b-instruct', 'nousresearch/nous-hermes-2-mixtral-8x7b-dpo', 'rwkv/rwkv-5-world-3b', 'recursal/rwkv-5-3b-ai-town', 'recursal/eagle-7b', 'google/gemma-7b-it', 'huggingfaceh4/zephyr-7b-beta', 'meta-llama/llama-3-8b-instruct', 'meta-llama/llama-3-70b-instruct', 'meta-llama/llama-guard-2-8b', 'microsoft/wizardlm-2-8x22b', 'microsoft/wizardlm-2-7b', 'microsoft/phi-3-mini-128k-instruct', 'microsoft/phi-3-medium-128k-instruct', 'mistralai/mixtral-8x22b', 'mistralai/mixtral-8x22b-instruct', 'mistralai/mistral-7b-instruct-v0.1', 'mistralai/mistral-7b-instruct-v0.2', 'mistralai/mistral-7b-instruct', 'mistralai/mistral-7b-instruct-v0.3', 'lynn/soliloquy-l3', 'jebcarter/psyfighter-13b', 'jondurbin/bagel-34b', 'cognitivecomputations/dolphin-mixtral-8x7b', 'cognitivecomputations/dolphin-mixtral-8x22b', 'liuhaotian/llava-yi-34b', 'nousresearch/hermes-2-pro-llama-3-8b', 'openchat/openchat-7b', 'openchat/openchat-8b', 'bigcode/starcoder2-15b-instruct', 'qwen/qwen-2-72b-instruct', 'qwen/qwen-72b-chat', 'qwen/qwen-32b-chat', 'deepseek/deepseek-chat', 'deepseek/deepseek-coder', 'anthropic/claude-1', 'anthropic/claude-1.2', 'anthropic/claude-instant-1.0', 'anthropic/claude-instant-1.1', 'meta-llama/llama-2-70b-chat:nitro', 'gryphe/mythomax-l2-13b:nitro', 'mistralai/mistral-7b-instruct:nitro', 'google/gemma-7b-it:nitro', 'undi95/toppy-m-7b:nitro', 'meta-llama/llama-3-8b-instruct:nitro', 'meta-llama/llama-3-70b-instruct:nitro', 'liuhaotian/llava-13b', 'nousresearch/nous-hermes-2-vision-7b', 'mistralai/mistral-tiny', 'mistralai/mistral-small', 'mistralai/mistral-medium', 'mistralai/mistral-large', 'cohere/command', 'cohere/command-r', 'cohere/command-r-plus']
 ```
+|| Selected provider: qwen || Current model: qwen-long ||
+['qwen-turbo', 'qwen-plus', 'qwen-max', 'qwen-max-0403', 'qwen-max-0107', 'qwen-max-1201', 'qwen-max-longcontext', 'qwen1.5-72b-chat', 'qwen1.5-32b-chat', 'qwen1.5-14b-chat', 'qqwen1.5-7b-chat', 'qwen1.5-1.8b-chat', 'qwen1.5-0.5b-chat', 'codeqwen1.5-7b-chat', 'qwen-72b-chat', 'qwen-14b-chat', 'qwen-7b-chat', 'qwen-1.8b-longcontext-chat', 'qwen-1.8b-chat', 'qwen1.5-110b-chat', 'qwen-max-0428', 'qwen-vl-plus', 'qwen-vl-max', 'qwen-long', 'qwen2-72b-instruct', 'qwen2-7b-instruct', 'qwen2-0.5b-instruct', 'qwen2-1.5b-instruct', 'qwen2-57b-a14b-instruct']
+```
+上面我们查询了阿里qwen支持的模型，其中不同模型有不同的计费模式，我们可以在[阿里云](https://dashscope.console.aliyun.com/billing)查看详细计费规则，目前限时免费的有qwen1.5-0.5b-chat和qwen-1.8b-chat。
 
 步骤二：指定使用的大语言模型
 
 指定chatbot使用接口中查询到的某个模型，例如前面查询到的模型`mistralai/mistral-7b-instruct:free`，示例代码如下所示：
 ```python
 from XEdu.LLM import Client # 导入库
-chatbot = Client(provider='openrouter',
+chatbot = Client(provider='qwen',
                api_key='sk-or-v1-6d7672a58c3c837……f30a3b1c3',
-               model='mistralai/mistral-7b-instruct:free') # 实例化客户端
+               model='qwen-1.8b-chat') # 实例化客户端
 res = chatbot.inference('你好，用中文介绍一下你自己') # 输入请求，执行推理并得到结果
-print(res) # 结果输出
+print(res) 
+# 结果输出：你好！我是一个大型语言模型，名叫通义千问。我是由阿里云开发的，具有强大的自然语言处理能力。我可以回答各种问题，提供信息和与用户进行对话。无论是学术知识、实用技巧还是娱乐咨询，我都能尽力帮助你。尽管我是一个人工智能，但我一直在不断学习和进步，努力更好地理解和回应用户的需求。如果你有任何问题，不要犹豫，尽管问我吧！
 ```
 本功能示例代码中声明函数Client()新增使用`model`(str)，这个参数用于指定使用的具体模型。在一个API中，可能有多个不同的模型可供选择，可以通过设置这个参数来选择需要的模型。此外可以通过`print(chatbot.support_model())`语句来查看该chatbot支持哪些模型。
 
@@ -154,7 +170,7 @@ print(res) # 结果输出
 ```python
 from XEdu.LLM import Client # 导入库
 chatbot = Client(base_url='https://openrouter.ai/api/v1',
-               api_key='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',
+               api_key='sk-or-v1-62a32...a1539',
                model="mistralai/mistral-7b-instruct:free") # 实例化客户端
 res = chatbot.inference('你好，用中文介绍一下你自己') # 输入请求，执行推理并得到结果
 print(res)
@@ -211,8 +227,18 @@ print(res)
 ```python
 chatbot.run()
 ```
+输出内容：
+```
+Running on local URL:  http://192.168.1.123:7860
+Running on local URL:  http://127.0.0.1:7860
+Running on local URL:  http://0.0.0.0:7860
 
-这个方法将会本机上启动一个 Web 服务，并提供一个用户界面，方便用户进行实时对话。Web服务地址为 http://127.0.0.1:7860，可以通过本机浏览器访问，如果想通过其他局域网设备访问，可以通过访问本机局域网IP地址+端口号（如http://192.168.1.123:7860）访问。需要注意的是，如果其他设备访问失败，可以检查是否是电脑防火墙对访问进行了拦截。
+To create a public link, set `share=True` in `launch()`.
+```
+
+这个方法将会本机上启动一个 Web 服务，并提供一个用户界面，方便用户进行实时对话。Web服务地址已输出，几个网址不一定都能打开，可以逐一尝试，例如 http://127.0.0.1:7860，可以通过本机浏览器访问，如果想通过其他局域网设备访问，可以通过访问本机局域网IP地址+端口号（如http://192.168.1.123:7860）访问。需要注意的是，如果其他设备访问失败，可以检查是否是电脑防火墙对访问进行了拦截。
+
+![](../images/xedullm/llm1.png)
 
 ##### 参数说明
 
@@ -237,12 +263,12 @@ chatbot.run()
 
 #### 直接启动网页功能的完整代码
 
-```
+```python
 from XEdu.LLM import Client
 chatbot = Client(provider='moonshot',
                api_key="sk-cjCzE5Oo***K53EVAZTnln") # 密钥省略
 # 启动基于网页的聊天机器人服务
-client.run(host='127.0.0.1', port=7860)
+chatbot.run(host='127.0.0.1', port=7860)
 ```
 
 此方法默认方式只能本机访问，不适合需要在局域网或互联网中共享的场景。且并发处理能力有限，依赖于 Gradio 库的性能。
@@ -259,11 +285,11 @@ client.run(host='127.0.0.1', port=7860)
 from XEdu.LLM import Client
 
 # 创建一个聊天机器人客户端
-client = Client(provider='moonshot',
+chatbot = Client(provider='moonshot',
                api_key="sk-cjCzE5Oo***K53EVAZTnln") # 密钥省略
 
 # 启动基于网页的聊天机器人服务，并指定局域网 IP 地址和端口
-client.run()
+chatbot.run()
 ```
 
 输出示例：
@@ -279,10 +305,10 @@ Running on local URL: http://10.1.48.23:7863
 from XEdu.LLM import Client
 
 # 使用固定的 IP 地址和端口号，使用获取的ip
-client = Client(xedu_url='http://10.1.48.23:7863')
+chatbot = Client(xedu_url='http://10.1.48.23:7863')
 
 # 进行推理或其他操作
-res = client.inference("今天天气怎么样？")
+res = chatbot.inference("今天天气怎么样？")
 # 返回：今天阳光明媚，xxx...
 ```
 
@@ -295,12 +321,16 @@ res = client.inference("今天天气怎么样？")
 
 下面是一个流式输出+语音合成的示例：
 ```python
-# 省略导入库和选择模型
+from XEdu.LLM import Client
+import pyttsx3
+chatbot = Client(provider='qwen', # 选择模型为阿里-通义千问
+               api_key='sk-946498b7c00b423badfb96046dd32ae4') # 引号内为用户密钥，用于确定身份，若失效，请自行注册：https://dashscope.console.aliyun.com/apiKey 
 res = chatbot.inference("你好,用中文介绍一下你自己",stream=True)
 for i in res:
     print(i, flush=True, end='')
     pyttsx3.speak(i)
 ```
+
 ### 案例二：气象专家
 大模型是一个很厉害的角色，我可以通过pinpong、siot等读取当前的传感器参数，让大模型帮我分析，这样，我就不用自己训练模型来分析啦！
 ```python
@@ -309,14 +339,52 @@ res = chatbot.inference("请你作为气象专家，帮我分析："+ value + "�
 print(res)
 pyttsx3.speak(res)
 ```
+### 案例三：历史上的今天
+根据日期回顾历史上这个日期发生的重要事迹。
+```python
+from XEdu.LLM import Client
+import datetime,pyttsx3
+print(datetime.date.today())
+question = '请问历史上的今天（'+ str(datetime.date.today())[5:] + '）发生过什么？'
+print('问题：', question)
+chatbot = Client(provider='qwen', # 选择模型为阿里-通义千问
+               api_key='sk-946...2ae4') # 引号内为用户密钥，用于确定身份，若失效，请自行注册：https://dashscope.console.aliyun.com/apiKey 
+res = chatbot.inference(question)
+print('回答：', res)
+pyttsx3.speak(res)
+```
+输出：
+```
+2024-06-27
+问题： 请问历史上的今天（06-27）发生过什么？
+|| Selected provider: qwen || Current model: qwen-long ||
+回答： 以下是历史上的今天（06-27）发生的一些重要事件：
+1. 1950年：...
+...
+5. 2015年：...
 
-### 案例三：Prompt定制
+这些事件只是其中的一部分，历史上的每一天都有许多不同的事件发生。
+```
+### 案例四：Prompt定制
 模型微调是一个很有趣的事情，我们可以定义自己的模型能力，然后让他帮我们完成设定好的特定任务。其中一种最简单的方式是Prompt定制，网上有很多好玩的Prompt示例，例如[这里](https://gitee.com/aixiali/wonderful-prompts)就有很多很棒的例子。我们可以利用多轮对话的方式，实现类似的效果。
 ```python
+from XEdu.LLM import Client
+chatbot = Client(provider='qwen', # 选择模型为阿里-通义千问
+               api_key='sk-94x...ae4') # 引号内为用户密钥，用于确定身份，若失效，请自行注册：https://dashscope.console.aliyun.com/apiKey 
 talk = [
     {'role':'system'   ,'content':'你将作为一位善于在两种事物中建立因果联系的智者去构建事物“此物”到“彼物”的因果链，以 “此物->事物A->事物B->事物C...等事物->彼物”这样的形式输出，中间事物数量不限。举个例子 “此物：祖父， 彼物：我”，输出为“祖父->爷爷->爸爸->我”，然后解释其因果联系。'},
     {'role':'user'     ,'content':'现在请告诉我 “此物：Transformer，彼物：GPT” 的因果联系。'},
 ]
 res = chatbot.inference(talk)
 print(res)
+```
+输出：
+```
+Transformer->自注意力机制->序列建模改进->预训练模型发展->GPT
+解释如下：
+1. Transformer：2017年，Google的研究人员提出了Transformer架构，这是一种基于自注意力机制的深度学习模型，用于解决序列数据的处理问题，如自然语言处理。
+2. 自注意力机制：Transformer的核心创新是自注意力（Self-Attention）机制，它允许模型在处理序列数据时同时考虑所有元素，而不是传统的递归或滑动窗口方法，这提高了模型并行化能力和理解上下文的能力。
+3. 序列建模改进：Transformer的自注意力机制显著改进了序列建模，使得模型能够更好地理解和生成复杂的语言结构，这对于自然语言生成和理解任务至关重要。
+4. 预训练模型发展：Transformer的成功推动了预训练模型的发展，即在大规模无标注文本上预先训练模型，然后在特定任务上进行微调。这种范式降低了对大量标注数据的依赖，提高了模型的泛化能力。
+5. GPT：OpenAI的GPT（Generative Pre-trained Transformer）系列是基于Transformer架构的预训练模型，它使用自注意力机制进行语言建模，展示了强大的语言生成和理解能力，如GPT-3更是成为了预训练模型领域的里程碑式作品。
 ```

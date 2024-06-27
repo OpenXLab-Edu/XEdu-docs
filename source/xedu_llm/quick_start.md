@@ -6,7 +6,7 @@ XEduLLM是一个大语言模型工具库，为开发者提供了简便统一的�
 
 XEduLLM的Client模块利用几行代码就可以通过API调用各种优秀的大语言模型。通过编程方式发送请求到模型所在的服务器，远程服务器会处理请求，并返回响应，实现与大语言模型交流的功能。
 
-![image](https://github.com/OpenXLab-Edu/XEdu-docs/assets/40832342/8ed7b142-7f50-4371-be75-bcc3c7e13d63)
+![](../images/xedullm/llm1.png)
 
 
 ## XEduLLM的安装和使用
@@ -45,7 +45,7 @@ chatbot.run()
 3.打开网页尽情享受
 
 运行代码后输出对应的ip地址，你将地址复制到浏览器打开，即可看到像服务商提供的原生体验网页一样的对话界面。经过进一步的学习，你可以在此基础上做模型微调等好玩的事情，让模型更合你的心意。然后，就可以将这个链接分享给你的好伙伴一同体验，属于你独一无二的界面，同时，这个网址也可以用代码调用，直接嵌入应用程序使用。
-![image](https://github.com/OpenXLab-Edu/XEdu-docs/assets/40832342/8ed7b142-7f50-4371-be75-bcc3c7e13d63)
+![](../images/xedullm/llm1.png)
 
 4.嵌入应用程序使用
 
@@ -60,13 +60,14 @@ print(res)
 
 - 气象分析专家：根据传感器识别的气象数据，给出专业分析；
 - 历史上的今天：根据日期回顾历史上这个日期发生的重要事迹；
+- 阅读理解专家：通过OCR文字识别，将文本输入大模型，给出相关分析。
 
 除了openrouter服务商，XEduLLM允许用户使用统一的语法向不同的大模型提问。当我们安装好XEduLLM并导入库后，你就可以使用`Client.support_provider()`语句查看目前提供的大语言模型服务提供商。看看哪一个是你想要的，然后选择它！查看XEduLLM中目前提供的大语言模型服务提供商代码如下：
 
 ```python
 from XEdu.LLM import Client # 导入库
-print(Client.support_provider()) # 查看XEduLLM中目前提供的大语言模型服务提供商
-print(Client.support_provider(lang = 'zh') ) # 查看XEduLLM中目前提供的大语言模型服务提供商中文名
+print(chatbot.support_provider()) # 查看XEduLLM中目前提供的大语言模型服务提供商
+print(chatbot.support_provider(lang = 'zh') ) # 查看XEduLLM中目前提供的大语言模型服务提供商中文名
 ```
 
 输出结果：
@@ -75,8 +76,6 @@ print(Client.support_provider(lang = 'zh') ) # 查看XEduLLM中目前提供的�
 ['openrouter', 'moonshot', 'deepseek', 'glm', 'ernie', 'qwen']
 ['openrouter', '月之暗面-Kimi', '幻方-深度求索', '智谱-智谱清言', '百度-文心一言', '阿里-通义千问']
 ```
-
-![](../images/xedullm/start_1.png)
 
 获取大语言模型API密钥的流程通常包括在各平台网页上进行用户注册，注册完成后获取相应的算力资源，详细步骤请参考<a href="https://xedu.readthedocs.io/zh-cn/master/xedu_llm/how_to_get_API_key.html">API与密钥获取</a>。
 
