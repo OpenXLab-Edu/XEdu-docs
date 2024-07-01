@@ -10,9 +10,13 @@ EasyTrain是无代码的MMEdu模型、BaseML模型、BaseNN模型训练辅助工
 用EasyTrain训练第一个MMEdu模型！
 -----------------------------
 
+**以训练一个“石头剪刀布”三分类的图像分类模型为例**
+
 ### step 1：任务选择
 
 EasyTrain界面打开之后在下拉框中选择训练任务为分类或者检测任务。
+
+该任务选择分类任务。
 
 ![](../images/easydl/train1.jpg)
 
@@ -20,21 +24,27 @@ EasyTrain界面打开之后在下拉框中选择训练任务为分类或者检�
 
 在选择了训练任务类型之后，点击“下一步”，进入模型选择页面，选择训练的模型。训练模型会根据任务对应更改。
 
+该任务选择分类任务类型中的LeNet模型。
+
 ![](../images/easydl/train2.png)
 
 ### step 3：数据集选择
 
-在训练中要指定训练的数据集，网页会读取XEdu/dataset相应的任务之下数据集。数据集的格式要求为：[ImageNet格式](https://xedu.readthedocs.io/zh-cn/master/mmedu/introduction.html#imagenet)（分类任务），[COCO格式](https://xedu.readthedocs.io/zh-cn/master/mmedu/introduction.html#coco)（检测任务）。
+在训练中要指定训练的数据集，网页会读取XEdu/datasets文件夹中相应的任务之下数据集。数据集的格式要求为：[ImageNet格式](https://xedu.readthedocs.io/zh-cn/master/mmedu/introduction.html#imagenet)（分类任务），[COCO格式](https://xedu.readthedocs.io/zh-cn/master/mmedu/introduction.html#coco)（检测任务）。
 
-一键安装包中自带分类任务数据集：cats_dogs、hand_gray;检测任务数据集：plate。
+一键安装包中自带分类任务数据集：hand_gray;检测任务数据集：plate。
 
-**目前数据集中为空需要自行下载添加，详细步骤在文件夹中**
-![](../images/easydl/train-dataset.png)
+该任务选择hand_gray数据集。
+
 ![](../images/easydl/train3.jpg)
+
+**其他数据集需要自行下载添加，详细步骤在文件夹中的txt文件中**
+![](../images/easydl/train-dataset.png)
+
 
 **怎么传入自己的数据集？**
 
-如果要使用自己的数据集需要将数据集放置在XEdu/dataset相应的任务之下（分类任务mmedu_cls/检测任务mmedu_det），再刷新一下网页即可再数据集菜单选项中看到对应的数据集。例如现在我想做分类任务，在分类任务mmedu_cls文件夹下放置我的数据集“my_newdataset”（如下图所示），刷新网页成功出现。
+如果要使用自己的数据集需要将数据集放置在XEdu/datasets相应的任务之下（分类任务mmedu_cls/检测任务mmedu_det），再刷新一下网页即可再数据集菜单选项中看到对应的数据集。例如现在我想做分类任务，在分类任务mmedu_cls文件夹下放置我的数据集“my_newdataset”（如下图所示），刷新网页成功出现。
 
 ![](../images/easydl/train4.png)
 ![](../images/easydl/train5.png)
@@ -55,7 +65,7 @@ EasyTrain界面打开之后在下拉框中选择训练任务为分类或者检�
 
 
 在完成参数设置后，点击右侧的"生成代码"，可以生成训练代码，生成代码之后才可以训练。
-生成的代码会显示在上方的代码框，点击右上角复制按钮还可以一键复制代码。
+生成的代码会显示在上方的代码框，点击右上角复制按钮还可以一键复制代码，到其他的IDE中运行代码。
 
 ![](../images/easydl/train8.png)
 
@@ -92,9 +102,13 @@ EasyTrain界面打开之后在下拉框中选择训练任务为分类或者检�
 用EasyTrain训练第一个BaseML模型！
 -----------------------------
 
+**以使用KNN算法对鸢尾花（Iris）数据集进行分类为例**
+
 ### step 1：任务选择
 
-EasyTrain界面打开之后在下拉框中选择训练任务为回归任务、分类任务或者聚类任务。
+EasyTrain界面打开之后，在最上方选择BaseML页面，，在下拉框中选择训练任务为回归任务、分类任务或者聚类任务。
+
+该任务选择分类任务。
 
 ![](../images/easydl/baseml0.png)
 
@@ -102,11 +116,13 @@ EasyTrain界面打开之后在下拉框中选择训练任务为回归任务、�
 
 在选择了训练任务类型之后，点击“下一步”，进入模型选择页面，选择训练的模型。训练模型会根据任务对应更改。可点击“了解更多”按钮了解模型，对应[机器学习典型算法](https://xedu.readthedocs.io/zh-cn/master/baseml/introduction.html#id6)。
 
+该任务选择K临近（KNN）算法。
+
 ![](../images/easydl/baseml2.png)
 
 ### step 3：数据集选择
 
-EasyTrain界面打开之后，选择BaseML页面，在下拉框中指定训练的数据集，网页会读取XEdu/dataset/baseml（或XEdu/dataset/basenn）之下数据集。一键安装包中已自带一些数据集，也可以自己放入新的数据集。
+在下拉框中指定训练的数据集，网页会读取XEdu/datasets/baseml（或XEdu/datasets/basenn）之下数据集。一键安装包中已自带一些数据集，也可以自己放入新的数据集。
 
 数据集的格式要求为：[csv文件](https://xedu.readthedocs.io/zh-cn/master/baseml/introduction.html#csv)(BaseML任务)。针对BaseML特别有这样的约定：第一行为表头，纵向每行为一条样本，横向每列为一个特征，最后一列作为标签列（如果是分类任务，则需要是自然数，如果是回归任务，需要是实数，如果是聚类任务，则不需要这一列）。
 
@@ -119,7 +135,7 @@ EasyTrain界面打开之后，选择BaseML页面，在下拉框中指定训练�
 ![](../images/easydl/baseml3.png)
 
 在完成参数设置后，点击右侧的"生成代码"，可以生成训练代码，注意需要生成代码之后才可以进入训练。
-生成的代码会显示在上方的代码框，点击右上角复制按钮还可以一键复制代码。
+生成的代码会显示在上方的代码框，点击右上角复制按钮还可以一键复制代码，到其他的IDE中运行代码。
 
 ![](../images/easydl/baseml4.png)
 
@@ -138,9 +154,11 @@ EasyTrain界面打开之后，选择BaseML页面，在下拉框中指定训练�
 用EasyTrain训练第一个BaseNN模型！
 -----------------------------
 
+**以搭建全连接神经网络训练运维话分类模型为例**
+
 ### step 1：数据集选择
 
-EasyTrain界面打开之后，选择BaseNN页面，在下拉框中指定训练的数据集，网页会读取XEdu/dataset/basenn之下数据集。一键安装包中已自带一些数据集，也可以自己放入新的数据集。
+EasyTrain界面打开之后，选择BaseNN页面，在下拉框中指定训练的数据集，网页会读取XEdu/datasets/basenn之下数据集。一键安装包中已自带一些数据集，也可以自己放入新的数据集。
 
 数据集的格式要求为：[csv文件](https://xedu.readthedocs.io/zh-cn/master/basenn/introduction.html#id9)(BaseNN任务)。纵轴为样本，横轴为特征，第一行为表头，最后一列为标签。
 
@@ -154,6 +172,8 @@ EasyTrain界面打开之后，选择BaseNN页面，在下拉框中指定训练�
 - 第一层的输入维度要和数据集的特征维度（特征的数量）相等。
 - 因为数据是从上一层流向下一层，因此下一层的输入维度要和上一层的输出维度保持相等。
 - 最后一层的输出维度要和类别数相同。
+
+该任务的数据集有四列特征数据，因此第一层输入维度为4，有三个类别的鸢尾花，最后一层输出维度为3，中间的隐藏层可自由搭建。
 
 ![](../images/easydl/train14.png)
 
@@ -173,13 +193,13 @@ EasyTrain界面打开之后，选择BaseNN页面，在下拉框中指定训练�
 
 
 在完成参数设置后，点击右侧的"生成代码"，可以生成训练代码，生成代码之后才可以训练。
-生成的代码会显示在上方的代码框，点击右上角复制按钮还可以一键复制代码。
+生成的代码会显示在上方的代码框，点击右上角复制按钮还可以一键复制代码，到其他的IDE中运行代码。
 
 ![](../images/easydl/train17.png)
 
 ### step 4：开始训练
 
-代码生成之后点击"进入训练"按钮即可跳转至训练页面，工具会先检查你的电脑有没有安装MMEdu的库，如果没有请先去”小黑窗“进行[pip安装BaseNN](https://xedu.readthedocs.io/zh-cn/master/basenn/installation.html#)。
+代码生成之后点击"进入训练"按钮即可跳转至训练页面，工具会先检查你的电脑有没有安装BaseNN的库，如果没有请先去”小黑窗“进行[pip安装BaseNN](https://xedu.readthedocs.io/zh-cn/master/basenn/installation.html#)。
 
 ![](../images/easydl/train21.png)
 
