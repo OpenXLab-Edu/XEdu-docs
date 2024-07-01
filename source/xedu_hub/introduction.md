@@ -2391,7 +2391,7 @@ XEduHub现在可以支持使用BaseNN导出的onnx模型进行推理啦！如果
 # 使用BaseNN训练的手写数字识别模型进行推理
 from XEdu.hub import Workflow as wf
 basenn = wf(task='basenn',checkpoint='basenn.onnx') # 指定使用的onnx模型
-result = base.inference(data='data/6.jpg') # 进行模型推理
+result = basenn.inference(data='data/6.jpg') # 进行模型推理
 format_result = basenn.format_output()
 ```
 
@@ -2412,7 +2412,7 @@ basenn = wf(task='basenn',checkpoint='basenn.onnx') # 指定使用的onnx模型
 ##### 2. 模型推理
 
 ```python
-result = base.inference(data='data/6.jpg') # 进行模型推理
+result = basenn.inference(data='data/6.jpg') # 进行模型推理
 ```
 
 模型推理`inference()`可传入参数：
