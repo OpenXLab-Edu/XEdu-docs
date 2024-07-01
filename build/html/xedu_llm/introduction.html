@@ -223,7 +223,8 @@
 <p>除了向服务商发送请求外，还可以向服务器地址发送请求，以向openrouter服务器地址发送请求为例，完整代码如下：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">XEdu.LLM</span> <span class="kn">import</span> <span class="n">Client</span> <span class="c1"># 导入库</span>
 <span class="n">chatbot</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="s1">&#39;https://openrouter.ai/api/v1&#39;</span><span class="p">,</span>
-               <span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;sk-or-v1-6d7672a58c3c837……c0f30a3b1c3&#39;</span><span class="p">)</span> <span class="c1"># 实例化客户端</span>
+               <span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;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&#39;</span><span class="p">,</span>
+               <span class="n">model</span><span class="o">=</span><span class="s2">&quot;mistralai/mistral-7b-instruct:free&quot;</span><span class="p">)</span> <span class="c1"># 实例化客户端</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">chatbot</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="s1">&#39;你好，用中文介绍一下你自己&#39;</span><span class="p">)</span> <span class="c1"># 输入请求，执行推理并得到结果</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
 </pre></div>
