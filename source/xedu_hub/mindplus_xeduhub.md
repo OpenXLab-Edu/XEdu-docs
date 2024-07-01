@@ -28,8 +28,39 @@ Gitee链接：[https://gitee.com/liliang9693/ext-xedu-hub](https://gitee.com/lil
 
 ![](../images/xeduhub/mind3.png)
 
-大家可以举一反三尝试编写各种预制任务的代码，针对MMEdu、BaseNN、BaseML等工具训练及转换并导出的模型，额外将模型文件上传再指定即可。
+大家可以举一反三尝试编写各种预制任务的代码，我们知道XEduHub也支持XEdu系列工具训练的模型，如MMEdu、BaseNN和 BaseML。针对MMEdu、BaseNN、BaseML等工具训练及转换并导出的模型，额外将模型文件上传再指定即可。如使用XEduHub完成MMEdu工具训练并转换的模型的推理的积木块如下，此代码也支持浦育前端化工具训练的图像分类模型转换得到的ONNX模型的推理。
+
+![](../images/xeduhub/mmedu.png)
+
+
 
 用这套积木块基本可以完成XEduHub的所有任务，可以做各种小任务，也可以做复杂任务。使用积木完成对一张图片借助XEduHub的相关模型进行人体画面提取、关键点识别，再用BaseNN训练并转换的ONNX模型完成分类模型推理的示例如下。
 
 ![](../images/xeduhub/mind4.png)
+
+## 安装常见问题及排查方案
+
+1.系统原因
+
+强烈建议win10及以上，不建议win7。
+
+2.依赖库问题
+
+常见出问题的是onnxruntime库，建议手动pip安装，再切换到代码进行库测试。
+
+最简测试代码：
+
+```python
+# 导入 onnxruntime 库
+import onnxruntime
+
+# 打印版本信息
+print(f"onnxruntime version: {onnxruntime.__version__}")
+```
+
+如果安装正确，您将看到类似以下的输出：
+
+```
+onnxruntime version: 1.9.0
+```
+

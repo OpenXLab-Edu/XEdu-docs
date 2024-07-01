@@ -2,7 +2,7 @@
 
 ### 初识MMEduCls
 
-MMEduCls（简称cls）的主要功能是对图像进行分类。其支持的SOTA模型有LeNet、MobileNet、ResNet18、ResNet50等，具体介绍详见<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmeducls.html#sota">后文</a>。如需查看所有支持的SOTA模型，可导入模块后使用`cls.sota()`代码进行查看。
+MMEduCls（简称cls）的主要功能是对图像进行分类。其支持的SOTA模型有LeNet、MobileNet、ResNet18、ResNet50等，具体介绍详见<a href="https://xedu.readthedocs.io/zh-cn/master/mmedu/mmeducls.html#sota">后文</a>。如需查看所有支持的SOTA模型，可导入模块后使用`cls.sota()`代码进行查看。
 
 文档涉及的部分代码见XEdu帮助文档配套项目集：[https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public](https://www.openinnolab.org.cn/pjlab/project?id=64f54348e71e656a521b0cb5&sc=645caab8a8efa334b3f0eb24#public)
 
@@ -32,7 +32,7 @@ from MMEdu import MMClassification as cls
 
 ![](../images/mmedu/cls_dataset.png)
 
-**hand_gray**数据集符合MMEdu图像分类模块支持的数据集要求，文件夹中包含三个图片文件夹，`test_set`,`training_set`,`val_set`分别存储测试集，训练集和验证集的图片；还有三个`txt`文件，其中`classes.txt`记录该数据集的类别，`test.txt`和`val.txt`分别记录测试集和验证集的图片名。若想要了解更多数据集格式的内容，可参考<a href="https://xedu.readthedocs.io/zh/master/mmedu/introduction.html#id3">数据集支持</a>部分。
+**hand_gray**数据集符合MMEdu图像分类模块支持的数据集要求，文件夹中包含三个图片文件夹，`test_set`,`training_set`,`val_set`分别存储测试集，训练集和验证集的图片；还有三个`txt`文件，其中`classes.txt`记录该数据集的类别，`test.txt`和`val.txt`分别记录测试集和验证集的图片名。若想要了解更多数据集格式的内容，可参考<a href="https://xedu.readthedocs.io/zh-cn/master/mmedu/introduction.html#id3">数据集支持</a>部分。
 
 训练代码如下：
 
@@ -54,7 +54,7 @@ model = mmeducls('LeNet') # 实例化模型，'LeNet'是sota模型的名称
 
 这里对于MMEdu图像分类模块提供的参数进行解释，支持传入的参数是`backbone`（骨干网络）。也可以写成“backbone='LeNet'”，强化一下，这是一个网络的名称。
 
-`backbone`：指定使用的图像分类模型。可选的有LeNet、MobileNet、ResNet18、ResNet50等，具体介绍详见<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmeducls.html#sota">后文</a>。
+`backbone`：指定使用的图像分类模型。可选的有LeNet、MobileNet、ResNet18、ResNet50等，具体介绍详见<a href="https://xedu.readthedocs.io/zh-cn/master/mmedu/mmeducls.html#sota">后文</a>。
 
 - **指定类别数量**
 
@@ -281,11 +281,11 @@ checkpoint = '../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的�
 model.train(epochs=50, validate=True, checkpoint=checkpoint) # 进行再训练
 ```
 
-这里我们有一个参数在之前的<a href="https://xedu.readthedocs.io/zh/master/mmedu/mmeducls.html#id3">训练模型</a>过程中没有详细说明，那就是`train`函数中的`checkpoint`参数，这个放到这里就比较好理解，它的意思是指定需要进行再训练的模型路径，当然您也可以根据你需要训练的不同模型而调整参数。
+这里我们有一个参数在之前的<a href="https://xedu.readthedocs.io/zh-cn/master/mmedu/mmeducls.html#id3">训练模型</a>过程中没有详细说明，那就是`train`函数中的`checkpoint`参数，这个放到这里就比较好理解，它的意思是指定需要进行再训练的模型路径，当然您也可以根据你需要训练的不同模型而调整参数。
 
 我们还可以指定网上下载的某个预训练模型。通过借助在大型数据集上训练的预训练模型，来对新的任务进行训练，而无需从头开始训练。它可以将一个大型数据集中的知识和技能转移到另一个任务上，从而大大节省训练时间。 
 
-全新开始训练一个模型一般要花较长时间，所以我们强烈建议在预训练模型的基础上继续训练，哪怕你要分类的数据集和预训练的数据集并不一样，基于预训练模型继续训练可起到加速训练的作用。在学习资源下载处也提供了一些[预训练模型和权重文件下载](https://xedu.readthedocs.io/zh/master/how_to_use/support_resources/resources.html#id3)。
+全新开始训练一个模型一般要花较长时间，所以我们强烈建议在预训练模型的基础上继续训练，哪怕你要分类的数据集和预训练的数据集并不一样，基于预训练模型继续训练可起到加速训练的作用。在学习资源下载处也提供了一些[预训练模型和权重文件下载](https://xedu.readthedocs.io/zh-cn/master/how_to_use/support_resources/resources.html#id3)。
 
 #### 4. 支持的SOTA模型
 

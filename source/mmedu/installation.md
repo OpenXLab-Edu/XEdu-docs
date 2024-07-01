@@ -5,7 +5,7 @@
 
 根据对算力的依赖程度，MMEdu分为两个版本，分别是：基础版和完整版。
 
-基础版既可以使用pip方式安装，也可以使用"[XEdu一键安装包](https://xedu.readthedocs.io/zh/latest/about/installation.html#id3)"。本版本集成了MMClassification（图像分类）和MMDetection（物体检测）两个模块，采用CPU训练（不需要GPU环境）。
+基础版既可以使用pip方式安装，也可以使用"[XEdu一键安装包](https://xedu.readthedocs.io/zh-cn/latest/about/installation.html#id3)"。本版本集成了MMClassification（图像分类）和MMDetection（物体检测）两个模块，采用CPU训练（不需要GPU环境）。
 
 完整版对算力要求较高，建议装在有英伟达显卡的电脑上，安装方式有pip安装和容器镜像安装两种。本版本集成了MMClassification（图像分类）、MMDetection（物体检测）、MMEditing（图像编辑）等模块，需要GPU环境支持。
 
@@ -13,7 +13,7 @@
 
 ### 1.1 一键安装包
 
-为方便中小学教学，MMEdu团队提供了[XEdu一键安装包](https://xedu.readthedocs.io/zh/latest/about/installation.html#id3)。只要下载并解压即可直接使用。
+为方便中小学教学，MMEdu团队提供了[XEdu一键安装包](https://xedu.readthedocs.io/zh-cn/latest/about/installation.html#id3)。只要下载并解压即可直接使用。
 
 **现MMEdu一键安装包已升级为XEdu一键安装包，下文提到的MMEdu文件，应理解为XEdu一键安装包。**
 
@@ -23,7 +23,7 @@
 
  1）下载方式（即XEdu下载方式）
 
-飞书网盘：[XEdu v1.6.7d.exe](https://p6bm2if73b.feishu.cn/file/boxcn7ejYk2XUDsHI3Miq9546Uf?from=from_copylink)
+飞书网盘：[https://p6bm2if73b.feishu.cn/file/boxcn7ejYk2XUDsHI3Miq9546Uf?from=from_copylink](https://p6bm2if73b.feishu.cn/file/boxcn7ejYk2XUDsHI3Miq9546Uf?from=from_copylink)
 
 第二步：您可以根据个人喜好，选择自己习惯的IDE。
 
@@ -77,7 +77,7 @@ python中最常用的库管理工具pip，可以使用cmd命令行来运行，�
 当前，我们提供的MMEdu的安装是基础版的pip安装包，可以使用如下命令安装：
 `pip install mmedu`或`pip install MMEdu`。
 
-最新安装说明可以参见：[这里](https://xedu.readthedocs.io/zh/master/about/installation.html#pipmmedu)
+最新安装说明可以参见：[这里](https://xedu.readthedocs.io/zh-cn/master/about/installation.html#pipmmedu)
 
 在这一步中，可能会有运行失败的情况，通常是由于依赖库安装失败导致的。
 
@@ -108,7 +108,7 @@ python中最常用的库管理工具pip，可以使用cmd命令行来运行，�
 如果想要
 **升级为GPU版本**，可以将torch、torchvision和mmcv-full做一次升级。步骤如下：
 
-最新安装说明可以参见：[这里](https://xedu.readthedocs.io/zh/master/about/installation.html#mmedu-gpu)
+最新安装说明可以参见：[这里](https://xedu.readthedocs.io/zh-cn/master/about/installation.html#mmedu-gpu)
 
 第一步：确认安装好与电脑GPU适配的CUDA驱动（这里以cuda10.1为例）
 
@@ -122,7 +122,7 @@ python中最常用的库管理工具pip，可以使用cmd命令行来运行，�
 
 ## 2. GPU完整版安装之pip安装
 
-最新安装说明可以参见：[这里](https://xedu.readthedocs.io/zh/master/about/installation.html#mmedu-gpu)
+最新安装说明可以参见：[这里](https://xedu.readthedocs.io/zh-cn/master/about/installation.html#mmedu-gpu)
 
 视频演示参见：[B站](https://www.bilibili.com/video/BV1ff421o788/?share_source=copy_web&vd_source=ca47cf8d0af314fd89055e7dc8d5dd86)
 
@@ -156,7 +156,7 @@ python中最常用的库管理工具pip，可以使用cmd命令行来运行，�
 
 2.2 安装MMEdu(CPU版本)
 ----------------------
-最新安装说明可以参见：[这里](https://xedu.readthedocs.io/zh/master/about/installation.html#pipmmedu)
+最新安装说明可以参见：[这里](https://xedu.readthedocs.io/zh-cn/master/about/installation.html#pipmmedu)
 
 ### 2.2.1 Linux安装MMEdu
 
@@ -179,7 +179,7 @@ $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/i
 注：请将命令中的"your\_env\_name"换成你喜欢的名称，如"mmedu"。
 
 ### 2.2.2 Windows安装MMEdu
-最新安装说明可以参见：[这里](https://xedu.readthedocs.io/zh/master/about/installation.html#pipmmedu)
+最新安装说明可以参见：[这里](https://xedu.readthedocs.io/zh-cn/master/about/installation.html#pipmmedu)
 
 同时按下win+r，输入cmd，回车，打开一个命令行窗口。
 
@@ -199,13 +199,13 @@ $ pip install MMEdu -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.8.0/i
 
 2.3 安装MMEdu(GPU版本)
 ----------------------
-最新安装说明可以参见：[这里](https://xedu.readthedocs.io/zh/master/about/installation.html#mmedu-gpu)
+最新安装说明可以参见：[这里](https://xedu.readthedocs.io/zh-cn/master/about/installation.html#mmedu-gpu)
 
 视频演示参见：[B站](https://www.bilibili.com/video/BV1ff421o788/?share_source=copy_web&vd_source=ca47cf8d0af314fd89055e7dc8d5dd86)
 
 ## 3. 完整版安装之docker容器
 
-请参考XEdu的docker容器：[https://xedu.readthedocs.io/zh/master/about/installation.html#docker](https://xedu.readthedocs.io/zh/master/about/installation.html#docker)
+请参考XEdu的docker容器：[https://xedu.readthedocs.io/zh-cn/master/about/installation.html#docker](https://xedu.readthedocs.io/zh-cn/master/about/installation.html#docker)
 
 ## 4. 查看MMEdu版本
 

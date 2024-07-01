@@ -34,37 +34,37 @@ XEdu将AI工具分解为“训练”和“部署”两种核心功能。无论�
 
 ### 1.数据处理工具
 
-1-1 [数据处理工具库：BaseDT](https://xedu.readthedocs.io/zh/master/basedt.html)
+1-1 [数据处理工具库：BaseDT](https://xedu.readthedocs.io/zh-cn/master/basedt.html)
 
 不同的模型对数据有特定的要求，比如LeNet-5是28×28，MobileNet是224×224。BaseDT集成了各种数据处理工具，能快速实现各种模型的预处理，也能快速完成数据集的划分，还能实现对数据集的格式检查和转换。
 
 ### 2.模型训练工具
 
-2-1 [计算机视觉开发库：MMEdu](https://xedu.readthedocs.io/zh/master/mmedu.html)
+2-1 [计算机视觉开发库：MMEdu](https://xedu.readthedocs.io/zh-cn/master/mmedu.html)
 
 MMEdu全称为OpenMMLabEdu，是著名的计算机视觉开发工具OpenMMLab的教育版本。 
 
-2-2 [神经网络开发库：BaseNN](https://xedu.readthedocs.io/zh/master/basenn.html)
+2-2 [神经网络开发库：BaseNN](https://xedu.readthedocs.io/zh-cn/master/basenn.html)
 
 BaseNN是神经网络库，能够使用类似Keras的语法搭建神经网络模型，不仅可以逐层搭建全连接神经网络，还支持MobielNet、ResNet、RNN、TransFormer等。
 
-2-3 [传统机器学习开发库：BaseML](https://xedu.readthedocs.io/zh/master/baseml.html)
+2-3 [传统机器学习开发库：BaseML](https://xedu.readthedocs.io/zh-cn/master/baseml.html)
 
 BaseML是传统机器学习库，类似Sklearn，使用了与MMEdu同样的语法，代码更加简洁。
 
 ### 3.模型应用与部署工具
 
-3-1 [深度学习工具库：XEduHub](https://xedu.readthedocs.io/zh/master/xedu_hub.html)
+3-1 [深度学习工具库：XEduHub](https://xedu.readthedocs.io/zh-cn/master/xedu_hub.html)
 
 XEduHub是一个集合了各种各样深度学习工具的模块，可以让用户高效地完成深度学习任务。
 
-3-2 [模型部署库：BaseDeploy](https://xedu.readthedocs.io/zh/master/basedeploy.html)
+3-2 [模型部署库：BaseDeploy](https://xedu.readthedocs.io/zh-cn/master/basedeploy.html)
 
 BaseDeploy关注模型部署，关注AI模型在各种开源硬件上的部署。目前BaseDeploy仅仅实现了模型推理，更多的功能在开发中。
 
 ### 4.其他相关工具
 
-4-1 [EasyDL系列无代码工具](https://xedu.readthedocs.io/zh/master/easydl.html)
+4-1 [EasyDL系列无代码工具](https://xedu.readthedocs.io/zh-cn/master/easydl.html)
 
 一系列方便初学者的小工具，可以在无代码的情况下完成模型的训练、推理、转换和部署，甚至可以搭建一个WebAPI服务器，类似百度AI开放平台。
 

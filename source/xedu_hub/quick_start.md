@@ -79,7 +79,7 @@ wf.support_task()
 输出结果：
 
 ```
-['pose_body17', 'pose_body17_l', 'pose_body26', 'pose_wholebody133', 'pose_face106', 'pose_hand21', 'det_body', 'det_body_l', 'det_coco', 'det_coco_l', 'det_hand', 'cls_imagenet', 'gen_style', 'nlp_qa', 'drive_perception', 'embedding_image', 'embedding_text', 'gen_color', 'det_face', 'ocr', 'mmedu', 'basenn', 'baseml']
+['pose_body17', 'pose_body17_l', 'pose_body26', 'pose_wholebody133', 'pose_face106', 'pose_hand21', 'det_body', 'det_body_l', 'det_coco', 'det_coco_l', 'det_hand', 'cls_imagenet', 'gen_style', 'nlp_qa', 'drive_perception', 'embedding_image', 'embedding_text', 'gen_color', 'segment_anything', 'depth_anything', 'det_face', 'ocr', 'mmedu', 'basenn', 'baseml', 'custom']
 ```
 
 ![](../images/xeduhub/task1.png)
@@ -95,7 +95,7 @@ print(wf.__doc__)
 输出结果：
 
 ```
-Workflow类用于加载预训练模型以解决各类任务。
+        Workflow类用于加载预训练模型以解决各类任务。
         目前支持的任务有：
             - pose_body17：人体关键点检测，17个关键点
             - pose_body17_l：人体关键点检测，17个关键点，模型更大
@@ -111,11 +111,14 @@ Workflow类用于加载预训练模型以解决各类任务。
             - det_face：人脸检测
             - cls_imagenet：图像分类，1000类，基于ImageNet数据集
             - gen_style：风格迁移，5种风格
+            - gen_color：图像着色
             - nlp_qa：问答系统，基于SQuAD数据集
             - drive_perception：全景驾驶感知系统，包括交通对象检测、可行驶道路区域分割和车道检测任务
             - embedding_image：CLIP图像嵌入
             - embedding_text：CLIP文本嵌入   
             - ocr：光学字符识别，基于rapidocr
+            - segment_anything：图像分割，基于Segment Anything Model (SAM)
+            - depth_anything：深度估计
             - mmedu：MMEdu模型推理
             - basenn：BaseNN模型推理
             - baseml：BaseML模型推理
@@ -126,7 +129,7 @@ Workflow类用于加载预训练模型以解决各类任务。
             checkpoint：模型权重文件的路径。
             download_path：模型文件即将下载到的路径。
 
-        更多用法及算法详解请参考：https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html    
+        更多用法及算法详解请参考：https://xedu.readthedocs.io/zh-cn/master/xedu_hub/introduction.html
 ```
 
 ![](../images/xeduhub/task2.png)

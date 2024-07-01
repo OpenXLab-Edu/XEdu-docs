@@ -241,7 +241,7 @@ def get_similarity(embeddings_1: np.ndarray, embeddings_2: np.ndarray,method:str
 
 5.更多用法
 
-同样的，结合XEduHub`wf(task='embedding_image')`或者`wf(task='embedding_text')`的任务中，对数据进行embedding操作之后，可以计算不同数据之间的相似度，就可以使用该函数。embedding会在[图像嵌入和文本嵌入](https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id92)中用到，具体案例可参见：[教程1-7](https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&sc=62f33550bf4f550f3e926cf2#public)
+同样的，结合XEduHub`wf(task='embedding_image')`或者`wf(task='embedding_text')`的任务中，对数据进行embedding操作之后，可以计算不同数据之间的相似度，就可以使用该函数。embedding会在[图像嵌入和文本嵌入](https://xedu.readthedocs.io/zh-cn/master/xedu_hub/introduction.html#id92)中用到，具体案例可参见：[教程1-7](https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&sc=62f33550bf4f550f3e926cf2#public)
 
 可计算图文、文文、图图的相似度。
 
