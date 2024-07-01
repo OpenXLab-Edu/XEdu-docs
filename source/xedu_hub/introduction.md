@@ -1928,7 +1928,7 @@ seg.save(img,"demo/mask_with_image.png")# 保存分割后的图像为'mask_with_
 
 #### 代码解释
 
-#### 1. 模型声明
+##### 1. 模型声明
 
 ```python
 from XEdu.hub import Workflow as wf # 导入库
@@ -1943,7 +1943,7 @@ seg = wf(task = 'segment_anything') # 实例化模型
 
 任务模型文件获取与存放请查看[下文](https://xedu.readthedocs.io/zh-cn/master/xedu_hub/introduction.html#id150)。
 
-#### 2. 模型推理
+##### 2. 模型推理
 
 推理方式1：
 ```python
@@ -2010,7 +2010,7 @@ masks, img = seg.inference(data='data/seg.jpg', img_type='pil') # 进行模型�
   [False False False ... False False False]]]
 ```
 
-#### 3. 结果输出
+##### 3. 结果输出
 
 **格式化结果输出**
 
@@ -2084,7 +2084,7 @@ seg.show(masks[0]) # 展示第一个分割掩码
 
 ![](../images/xeduhub/seg_sam_show2.png)
 
-#### 4. 结果保存
+##### 4. 结果保存
 
 ```python
 seg.save(img,"demo/mask_with_image.png")# 保存分割后的图像为'mask_with_image.png'
@@ -2125,7 +2125,7 @@ mde.save(img,'demo/mde_result.jpg')# 保存结果图
 
 #### 代码解释
 
-#### 1. 模型声明
+##### 1. 模型声明
 
 ```
 from XEdu.hub import Workflow as wf # 导入库
@@ -2140,7 +2140,7 @@ mde = wf(task='depth_anything') # 实例化模型
 
 任务模型文件获取与存放请查看[下文](https://xedu.readthedocs.io/zh-cn/master/xedu_hub/introduction.html#id150)。
 
-#### 2. 模型推理
+##### 2. 模型推理
 
 推理方式1：
 
@@ -2178,7 +2178,7 @@ result,img = mde.inference(data=img_path,img_type='cv2') # 进行推理
  [207 216 232 ... 249 238 231]]
 ```
 
-#### 3. 结果输出
+##### 3. 结果输出
 
 ```python
 mde.show(img) # 展示结果图
@@ -2188,7 +2188,7 @@ mde.show(img) # 展示结果图
 
 ![](../images/xeduhub/mde_result.png)
 
-#### 4. 结果保存
+##### 4. 结果保存
 
 ```python
 mde.save(img,'demo/mde_result.jpg')# 保存结果图
