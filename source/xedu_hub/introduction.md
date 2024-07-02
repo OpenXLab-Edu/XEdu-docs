@@ -1430,7 +1430,7 @@ style.show(new_img) # 可视化结果
 style.save(new_img, 'demo/style_my_style_ShangHai.jpg') # 保存可视化结果
 ```
 
-### 2. 图像着色模型的使用
+### 2） 图像着色模型的使用
 
 图像着色模型是将灰度图像转换为彩色图像的模型，它根据图像的内容、场景和上下文等信息来推断合理的颜色分布，实现从灰度到彩色的映射。
 
@@ -1648,9 +1648,9 @@ image_embeddings = img_emb.inference(data='demo/cat.png') # 模型推理
 print(image_embeddings) # 输出向量
 ```
 
-### 代码解释
+#### 代码解释
 
-#### 1. 模型声明
+##### 1. 模型声明
 ```python
 from XEdu.hub import Workflow as wf # 导入库
 img_emb = wf(task='embedding_image') # 实例化模型
@@ -1664,7 +1664,7 @@ img_emb = wf(task='embedding_image') # 实例化模型
 
 任务模型文件获取与存放请查看[下文](https://xedu.readthedocs.io/zh-cn/master/xedu_hub/introduction.html#id150)。
 
-#### 2. 模型推理
+##### 2. 模型推理
 
 ```python
 image_embeddings = img_emb.inference(data='demo/cat.png') # 模型推理
@@ -1676,7 +1676,10 @@ image_embeddings = img_emb.inference(data='demo/cat.png') # 模型推理
 
 模型推理返回结果：
 
+- `result`：以二维数组的形式保存了每张图片特征提取后的512维向量。
+
 ```
+# 输出结果示例
 [[-3.85740042e-01 -1.81814015e-01  2.94580430e-01 -3.75688493e-01
   -9.97719467e-02 -3.99263024e-01 -4.88978140e-02  4.52158630e-01
    3.44679683e-01  8.63113552e-02  3.00731242e-01 -4.26063895e-01
@@ -1809,8 +1812,6 @@ image_embeddings = img_emb.inference(data='demo/cat.png') # 模型推理
 
 ![](../images/xeduhub/emb_show1.png)
 
-- `result`：以二维数组的形式保存了每张图片特征提取后的512维向量。
-
 ### 2）文本特征提取
 当我们使用文本特征提取，本质上是将文本的上下文和场景“编码”或“嵌入”到向量形式的一系列数字中，让文本->向量。
 这些向量将词语映射到数值空间中，使得词语成为有意义的数值向量。
@@ -1826,7 +1827,7 @@ txt_embeddings = txt_emb.inference(data=['a black cat','a yellow cat']) # 模型
 print(txt_embeddings) # 输出向量
 ```
 
-### 代码解释
+#### 代码解释
 
 #### 1. 模型声明
 ```python
@@ -1853,7 +1854,10 @@ txt_embeddings = txt_emb.inference(data=['a black cat','a yellow cat']) # 模型
 
 模型推理返回结果：
 
+- `result`：以二维数组的形式保存了每条文本特征提取后的512维向量。
+
 ```
+# 输出结果示例
 [[ 0.41094494 -0.29223138 -0.06906292 ...  0.00064418 -0.23246601
    0.12385264]
  [ 0.24434651 -0.19498482 -0.30111405 ... -0.06937407 -0.2500025
@@ -1861,8 +1865,6 @@ txt_embeddings = txt_emb.inference(data=['a black cat','a yellow cat']) # 模型
 ```
 
 ![](../images/xeduhub/emb_show2.png)
-
-- `result`：以二维数组的形式保存了每条文本特征提取后的512维向量。
 
 ### 拓展-提完了特征能干啥？
 
