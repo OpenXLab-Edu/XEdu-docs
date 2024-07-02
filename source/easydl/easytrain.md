@@ -85,6 +85,8 @@ EasyTrain界面打开之后在下拉框中选择训练任务为分类或者检�
 
 ![](../images/easydl/train10.png)
 
+
+
 在训练过程中，loss曲线会实时显示在左侧的Loss Chart框中，accuracy曲线会实时显示在左侧的Accuracy  Chart框中。坐标轴的横坐标为训练轮数，纵坐标为对应数值。
 
 自己训练的模型文件将保存在XEdu/my_checkpoints中。每次训练都会生成一个文件夹，可以通过文件夹名称上的日期时间找到对应的模型。
@@ -190,7 +192,6 @@ EasyTrain界面打开之后，选择BaseNN页面，在下拉框中指定训练�
 ![](../images/easydl/train16.png)
 
 更多参数学习请跳转[深度学习训练参数详解](https://xedu.readthedocs.io/zh-cn/master/dl_library/parameter_explain.html)
-
 
 在完成参数设置后，点击右侧的"生成代码"，可以生成训练代码，生成代码之后才可以训练。
 生成的代码会显示在上方的代码框，点击右上角复制按钮还可以一键复制代码，到其他的IDE中运行代码。
