@@ -10,7 +10,7 @@
 
 - layer：层的类型，可选值包括conv2d, conv1d, maxpool, avgpool, linear, lstm,dropout，res_block，Res_Block，Res_Bottleneck等。
 
-- activation：激活函数类型，可选值包括ReLU，Softmax，tanh，sigmoid，leakyrelu。
+- activation：激活函数类型，可选值包括ReLU，Softmax，tanh，sigmoid，leakyrelu。一般分类任务输出层建议设置softmax，回归任务输出层建议不设置激活函数。
 
 - optimizer：为优化器类型，默认值为Adam，可选值包括SGD，Adam，Adagrad，ASGD。
 
