@@ -16,9 +16,11 @@ XEduHub的通用任务也称外部模型任务，指预置模型之外的第三�
 
 ### MMEdu模型
 
-XEduHub现在可以支持使用MMEdu导出的onnx模型进行推理啦！如果你想了解如何使用MMEdu训练模型，可以看这里：[解锁图像分类模块：MMEduCls](https://xedu.readthedocs.io/zh-cn/master/mmedu/mmeducls.html)、[揭秘目标检测模块：MMEduDet](https://xedu.readthedocs.io/zh-cn/master/mmedu/mmedudet.html#mmedudet)。
+MMEdu是XEdu的核心工具，集成了众多计算机视觉（CV）的SOTA模型。XEduHub直接支持MMEdu训练的模型。如果你想了解如何使用MMEdu训练模型，可以看这里：[解锁图像分类模块：MMEduCls](https://xedu.readthedocs.io/zh-cn/master/mmedu/mmeducls.html)、[揭秘目标检测模块：MMEduDet](https://xedu.readthedocs.io/zh-cn/master/mmedu/mmedudet.html#mmedudet)。
 
 如果你想了解如何将使用[MMEdu](https://xedu.readthedocs.io/zh-cn/master/mmedu.html)训练好的模型转换成ONNX格式，可以前往[最后一步：模型转换](https://xedu.readthedocs.io/zh-cn/master/mmedu/mmedumodel_convert.html)。OK，准备好了ONNX模型，那么就开始使用XEduHub吧！
+
+备注：使用浦育平台前端工具训练的模型，task名称也为“mmedu”。
 
 #### （1）MMEdu图像分类模型
 
@@ -195,11 +197,11 @@ mmdet.save(img,'new_plate.jpg') # 保存推理结果图片
 
 该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
 
-#### BaseNN模型推理
+### BaseNN模型推理
 
 XEduHub现在可以支持使用BaseNN导出的onnx模型进行推理啦！如果你想了解如何将使用[BaseNN](https://xedu.readthedocs.io/zh-cn/master/basenn.html)训练好的模型转换成ONNX格式，可以看这里：[BaseNN模型文件格式转换](https://xedu.readthedocs.io/zh-cn/master/basenn/introduction.html#id24)。OK，准备好了ONNX模型，那么就开始使用XEduHub吧！
 
-##### 代码样例
+#### 代码样例
 
 ```python
 # 使用BaseNN训练的手写数字识别模型进行推理
@@ -209,9 +211,9 @@ result = basenn.inference(data='data/6.jpg') # 进行模型推理
 format_result = basenn.format_output()
 ```
 
-##### 代码解释
+#### 代码解释
 
-###### 1. 模型声明
+##### 1. 模型声明
 
 ```python
 from XEdu.hub import Workflow as wf
@@ -223,7 +225,7 @@ basenn = wf(task='basenn',checkpoint='basenn.onnx') # 指定使用的onnx模型
 - `task`：只需要设置task为`basenn` ，而不需要指定是哪种任务。
 - `checkpoint`：指定你的模型的路径，该参数不能为空，如`checkpoint='basenn.onnx'`。
 
-###### 2. 模型推理
+##### 2. 模型推理
 
 ```python
 result = basenn.inference(data='data/6.jpg') # 进行模型推理
@@ -246,7 +248,7 @@ result = basenn.inference(data='data/6.jpg') # 进行模型推理
 
 **注意！**基于BaseNN模型推理结果不包含图片！不需要指定`img_type`参数并返回图片，因为大部分使用BaseNN解决的任务只需要输出分类标签、文本或者数组数据等。
 
-###### 3. 结果输出
+##### 3. 结果输出
 
 ```python
 format_result = basenn.format_output()
@@ -268,24 +270,26 @@ format_result = basenn.format_output()
 
 `format_output`的结果是一个结果字典，这个字典的第一个元素有两个键，`预测值`、`分数`，代表着该手写数字的分类标签以及属于该分类标签的概率。
 
-#### BaseML模型推理
+### BaseML模型推理
 
-XEduHub现在可以支持使用BaseML导出的pkl模型文件进行推理啦！如果你想了解如何将使用[BaseML](https://xedu.readthedocs.io/zh-cn/master/baseml.html)训练模型并保存成.pkl模型文件，可以看这里：[BaseML模型保存](https://xedu.readthedocs.io/zh-cn/master/baseml/introduction.html#id16)。OK，准备好了pkl模型，那么就开始使用XEduHub吧！
+BaseML是XEdu的机器学习工具。XEduHub直接支持BaseML训练的模型。如果你想了解如何将使用[BaseML](https://xedu.readthedocs.io/zh-cn/master/baseml.html)训练模型并保存成.pkl模型文件，可以看这里：[BaseML模型保存](https://xedu.readthedocs.io/zh-cn/master/baseml/introduction.html#id16)。
 
-##### 代码样例
+BaseML模型的task名称为“baseml”（小写），使用方式和其他几乎一致。和BaseML不一样的是，XEduHub支持的数据是二维数组或者二维列表，如' [[1.0]] ',' [[1.0],[1.1]] '。如果输入的数据格式不对，XEduHub将给出正确的范例。
+
+#### 代码样例
 
 ```python
 # 使用BaseML训练的鸢尾花聚类模型推理
 from XEdu.hub import Workflow as wf
 baseml = wf(task='baseml',checkpoint='baseml.pkl') # 指定使用的pkl模型
-data = [[5.1,1.5],[7,4.7]] # 该项目中训练数据只有两维，因此推理时给出两维数据
+data = [[5.1,1.5],[7,4.7]] # 该项目中训练数据只有两维
 result= baseml.inference(data=data) # 进行模型推理
 format_output = baseml.format_output(lang='zh') # 推理结果格式化输出
 ```
 
-##### 代码解释
+#### 代码解释
 
-###### 1. 模型声明
+##### 1. 模型声明
 
 ```python
 from XEdu.hub import Workflow as wf
@@ -297,7 +301,7 @@ baseml = wf(task='baseml',checkpoint='baseml.pkl') # 指定使用的pkl模型
 - `task`：只需要设置task为`baseml` ，而不需要指定是哪种任务。
 - `checkpoint`：指定你的模型的路径，该参数不能为空，如`checkpoint='baseml.pkl'`。
 
-###### 2. 模型推理
+##### 2. 模型推理
 
 ```python
 data = [[5.1,1.5],[7,4.7]] # 该项目中训练数据只有两维，因此推理时给出两维数据
@@ -317,7 +321,7 @@ result= baseml.inference(data=data) # 进行模型推理
 array([1，0])
 ```
 
-###### 3. 结果输出
+##### 3. 结果输出
 
 ```python
 format_output = baseml.format_output(lang='zh')# 推理结果格式化输出
