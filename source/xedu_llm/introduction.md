@@ -368,7 +368,7 @@ pyttsx3.speak(res)
 这些事件只是其中的一部分，历史上的每一天都有许多不同的事件发生。
 ```
 ### 案例四：Prompt定制
-模型微调是一个很有趣的事情，我们可以定义自己的模型能力，然后让他帮我们完成设定好的特定任务。其中一种最简单的方式是Prompt定制，网上有很多好玩的Prompt示例，例如[这里](https://gitee.com/aixiali/wonderful-prompts)就有很多很棒的例子。我们可以利用多轮对话的方式，实现类似的效果。
+模型微调是一个很有趣的事情，我们可以定义自己的模型能力，然后让他帮我们完成设定好的特定任务。其中一种最简单的方式是Prompt定制，网上有很多好玩的Prompt示例，例如[这里](https://github.com/langgptai/wonderful-prompts)就有很多很棒的例子。我们可以利用多轮对话的方式，实现类似的效果。
 ```python
 from XEdu.LLM import Client
 chatbot = Client(provider='qwen', # 选择模型为阿里-通义千问
