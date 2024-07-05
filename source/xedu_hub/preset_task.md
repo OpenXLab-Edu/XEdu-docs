@@ -1,8 +1,8 @@
-# XEduHub功能详解
+# XEduHub预置任务
 
-XEduHub的预置任务指预置的各种优质开源AI模型，包含了图像分类、目标检测、关键点检测、OCR等。
+XEduHub的预置任务也称内置模型，指预置的各种优质开源AI模型，包含了图像分类、目标检测、关键点检测、OCR等常见的任务。内置模型来自各种开源社区，旨在降低初学者的入门门槛。
 
-### 点击这里在浦育平台体验项目<a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public">XEduHub实例代码-入门完整版</a>
+**点击这里在浦育平台体验项目<a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public">XEduHub实例代码-入门完整版</a>**
 
 <a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public</a>
 
