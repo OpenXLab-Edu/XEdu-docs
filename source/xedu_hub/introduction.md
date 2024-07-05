@@ -33,10 +33,6 @@ body.show(new_img) # 显示带标注图片
 
 Workflow根据task的名称来区分任务的类别，图示如下。
 
-
-
-
-
 ![](/Users/xiezuoru/Documents/GitHub/XEdu-docs/source/images/xeduhub/introduction_1.png)
 
 ## XEduHub的task名称和参数总览
@@ -49,7 +45,7 @@ Workflow根据task的名称来区分任务的类别，图示如下。
 
 下文将结合具体任务和项目进行介绍。
 
-### 点击这里在浦育平台体验：<a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public">XEduHub实例代码-入门完整版</a>
+**点击这里在浦育平台体验：<a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public">XEduHub实例代码-入门完整版</a>**
 
 <a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public</a>
 
