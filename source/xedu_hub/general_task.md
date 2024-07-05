@@ -2,31 +2,27 @@
 
 XEduHub的通用任务也称外部模型任务，指预置模型之外的第三方模型实现的AI任务。通用任务分为两种情况，一是用XEdu系列工具训练的模型，如MMEdu（计算机视觉）、BaseNN（自定义神经网络）和BaseML（传统机器学习）；二是用其他工具训练的模型。考虑到兼容性，大部分模型以ONNX为主。XEduHub的通用任务分类和task名称如图所示。
 
-
-
 ![](/Users/xiezuoru/Documents/GitHub/XEdu-docs/source/images/xeduhub/general_task_1.png)
-
-
 
 不管使用哪类任务，XEduHub都使用Workflow工具进行推理，核心代码仅4行，语法非常简洁。
 
-### 强烈推荐项目<a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public">XEduHub实例代码-入门完整版</a>
+**强烈推荐项目<a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public">XEduHub实例代码-入门完整版</a>**
 
 <a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public</a>
 
 通过学习“XEduHub实例代码-入门完整版”，可以在项目实践中探索XEduHub的魅力，项目中通俗易懂的讲解和实例代码也能帮助初学者快速入门XEduHub。
 
-## XEdu系列工具模型
+## 1. XEdu系列工具模型
 
-### 1.MMEdu模型
+### MMEdu模型
 
 XEduHub现在可以支持使用MMEdu导出的onnx模型进行推理啦！如果你想了解如何使用MMEdu训练模型，可以看这里：[解锁图像分类模块：MMEduCls](https://xedu.readthedocs.io/zh-cn/master/mmedu/mmeducls.html)、[揭秘目标检测模块：MMEduDet](https://xedu.readthedocs.io/zh-cn/master/mmedu/mmedudet.html#mmedudet)。
 
 如果你想了解如何将使用[MMEdu](https://xedu.readthedocs.io/zh-cn/master/mmedu.html)训练好的模型转换成ONNX格式，可以前往[最后一步：模型转换](https://xedu.readthedocs.io/zh-cn/master/mmedu/mmedumodel_convert.html)。OK，准备好了ONNX模型，那么就开始使用XEduHub吧！
 
-### （1）MMEdu图像分类模型
+#### （1）MMEdu图像分类模型
 
-#### 代码样例
+##### 代码样例
 
 ```python
 from XEdu.hub import Workflow as wf
@@ -37,9 +33,9 @@ mmcls.show(result_img) # 展示推理结果图片
 mmcls.save(result_img,'new_cat.jpg')# 保存推理结果图片
 ```
 
-#### 代码解释
+##### 代码解释
 
-##### 1. 模型声明
+###### 1. 模型声明
 
 ```python
 from XEdu.hub import Workflow as wf
@@ -53,7 +49,7 @@ mmcls = wf(task='mmedu',checkpoint='cats_dogs.onnx') # 指定使用的onnx模型
 
 这里我们以猫狗分类模型为例，项目指路：[猫狗分类](https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&sc=647b3880aac6f67c822a04f5#public)。
 
-##### 2. 模型推理
+###### 2. 模型推理
 
 ```python
 result, result_img =  mmcls.inference(data='data/cat101.jpg',img_type='pil') # 进行模型推理
@@ -70,7 +66,7 @@ result, result_img =  mmcls.inference(data='data/cat101.jpg',img_type='pil') # �
 
 `result_img`以img_type设置的格式保存了模型推理完成后的图片（原图+推理结果）。
 
-##### 3. 结果输出
+###### 3. 结果输出
 
 ```python
 format_result = mmcls.format_output(lang='zh') # 推理结果格式化输出
@@ -100,7 +96,7 @@ mmcls.show(result_img) # 展示推理结果图片
 
 ![](../images/xeduhub/mmcls_show.png)
 
-##### 4. 结果保存
+###### 4. 结果保存
 
 ```python
 mmcls.save(img,'new_cat.jpg') # 保存推理结果图片
@@ -110,9 +106,9 @@ mmcls.save(img,'new_cat.jpg') # 保存推理结果图片
 
 该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
 
-### （2）MMEdu目标检测模型
+#### （2）MMEdu目标检测模型
 
-#### 代码样例
+##### 代码样例
 
 ```python
 from XEdu.hub import Workflow as wf
@@ -123,9 +119,9 @@ mmdet.show(result_img) # 展示推理结果图片
 mmdet.save(result_img,'new_plate.jpg') # 保存推理结果图片
 ```
 
-#### 代码解释
+##### 代码解释
 
-##### 1. 模型声明
+###### 1. 模型声明
 
 ```python
 from XEdu.hub import Workflow as wf
@@ -139,7 +135,7 @@ mmdet = wf(task='mmedu',checkpoint='plate.onnx') # 指定使用的onnx模型
 
 这里以车牌识别为例进行说明。项目指路：[使用MMEdu实现车牌检测](https://www.openinnolab.org.cn/pjlab/project?id=641426fdcb63f030544017a2&backpath=/pjlab/projects/list#public)
 
-##### 2. 模型推理
+###### 2. 模型推理
 
 ```python
 result, result_img =  mmdet.inference(data='data/plate0.png',img_type='pil') # 进行模型推理
@@ -156,7 +152,7 @@ result, result_img =  mmdet.inference(data='data/plate0.png',img_type='pil') # �
 
 `result_img`以img_type设置的格式保存了模型推理完成后的图片（原图+推理结果）。
 
-##### 3. 结果输出
+###### 3. 结果输出
 
 ```python
 format_result = mmdet.format_output(lang='zh') # 推理结果格式化输出
@@ -189,7 +185,7 @@ mmdet.show(result_img) # 展示推理结果图片
 
 ![](../images/xeduhub/mmdet_show.png)
 
-##### 4. 结果保存
+###### 4. 结果保存
 
 ```python
 mmdet.save(img,'new_plate.jpg') # 保存推理结果图片
@@ -199,11 +195,11 @@ mmdet.save(img,'new_plate.jpg') # 保存推理结果图片
 
 该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
 
-## 2.BaseNN模型推理
+#### BaseNN模型推理
 
 XEduHub现在可以支持使用BaseNN导出的onnx模型进行推理啦！如果你想了解如何将使用[BaseNN](https://xedu.readthedocs.io/zh-cn/master/basenn.html)训练好的模型转换成ONNX格式，可以看这里：[BaseNN模型文件格式转换](https://xedu.readthedocs.io/zh-cn/master/basenn/introduction.html#id24)。OK，准备好了ONNX模型，那么就开始使用XEduHub吧！
 
-#### 代码样例
+##### 代码样例
 
 ```python
 # 使用BaseNN训练的手写数字识别模型进行推理
@@ -213,9 +209,9 @@ result = basenn.inference(data='data/6.jpg') # 进行模型推理
 format_result = basenn.format_output()
 ```
 
-#### 代码解释
+##### 代码解释
 
-##### 1. 模型声明
+###### 1. 模型声明
 
 ```python
 from XEdu.hub import Workflow as wf
@@ -227,7 +223,7 @@ basenn = wf(task='basenn',checkpoint='basenn.onnx') # 指定使用的onnx模型
 - `task`：只需要设置task为`basenn` ，而不需要指定是哪种任务。
 - `checkpoint`：指定你的模型的路径，该参数不能为空，如`checkpoint='basenn.onnx'`。
 
-##### 2. 模型推理
+###### 2. 模型推理
 
 ```python
 result = basenn.inference(data='data/6.jpg') # 进行模型推理
@@ -250,7 +246,7 @@ result = basenn.inference(data='data/6.jpg') # 进行模型推理
 
 **注意！**基于BaseNN模型推理结果不包含图片！不需要指定`img_type`参数并返回图片，因为大部分使用BaseNN解决的任务只需要输出分类标签、文本或者数组数据等。
 
-##### 3. 结果输出
+###### 3. 结果输出
 
 ```python
 format_result = basenn.format_output()
@@ -272,11 +268,11 @@ format_result = basenn.format_output()
 
 `format_output`的结果是一个结果字典，这个字典的第一个元素有两个键，`预测值`、`分数`，代表着该手写数字的分类标签以及属于该分类标签的概率。
 
-## 3. BaseML模型推理
+#### BaseML模型推理
 
 XEduHub现在可以支持使用BaseML导出的pkl模型文件进行推理啦！如果你想了解如何将使用[BaseML](https://xedu.readthedocs.io/zh-cn/master/baseml.html)训练模型并保存成.pkl模型文件，可以看这里：[BaseML模型保存](https://xedu.readthedocs.io/zh-cn/master/baseml/introduction.html#id16)。OK，准备好了pkl模型，那么就开始使用XEduHub吧！
 
-#### 代码样例
+##### 代码样例
 
 ```python
 # 使用BaseML训练的鸢尾花聚类模型推理
@@ -287,9 +283,9 @@ result= baseml.inference(data=data) # 进行模型推理
 format_output = baseml.format_output(lang='zh') # 推理结果格式化输出
 ```
 
-#### 代码解释
+##### 代码解释
 
-##### 1. 模型声明
+###### 1. 模型声明
 
 ```python
 from XEdu.hub import Workflow as wf
@@ -301,7 +297,7 @@ baseml = wf(task='baseml',checkpoint='baseml.pkl') # 指定使用的pkl模型
 - `task`：只需要设置task为`baseml` ，而不需要指定是哪种任务。
 - `checkpoint`：指定你的模型的路径，该参数不能为空，如`checkpoint='baseml.pkl'`。
 
-##### 2. 模型推理
+###### 2. 模型推理
 
 ```python
 data = [[5.1,1.5],[7,4.7]] # 该项目中训练数据只有两维，因此推理时给出两维数据
@@ -321,7 +317,7 @@ result= baseml.inference(data=data) # 进行模型推理
 array([1，0])
 ```
 
-##### 3. 结果输出
+###### 3. 结果输出
 
 ```python
 format_output = baseml.format_output(lang='zh')# 推理结果格式化输出
@@ -343,11 +339,11 @@ format_output = baseml.format_output(lang='zh')# 推理结果格式化输出
 
 如果此时你有冲动去使用BaseML完成模型训练到推理，再到转换与应用，快去下文学习[BaseML的相关使用](https://xedu.readthedocs.io/zh-cn/master/baseml.html)吧！
 
-## 其他ONNX模型推理
+## 2.其他ONNX模型推理
 
 XEduHub现在可以支持使用用户自定义的ONNX模型文件进行推理啦！这意味着你可以不仅仅使用MMEdu或者BaseNN训练模型并转换而成的ONNX模型文件进行推理，还可以使用其他各个地方的ONNX模型文件，但是有个**重要的前提：你需要会使用这个模型，了解模型输入的训练数据以及模型的输出结果**。OK，如果你已经做好了充足的准备，那么就开始使用XEduHub吧！
 
-#### 代码样例
+### 代码样例
 
 ```python
 from XEdu.hub import Workflow as wf
@@ -377,9 +373,9 @@ result = custom.inference(data='det.jpg',preprocess=pre,postprocess=post)
 print(result)
 ```
 
-#### 代码解释
+### 代码解释
 
-##### 1. 模型声明
+#### 1. 模型声明
 
 ```python
 from XEdu.hub import Workflow as wf
@@ -391,7 +387,7 @@ custom = wf(task="custom",checkpoint="custom.onnx")
 - `task`：只需要设置task为`custom` ，而不需要指定是哪种任务。
 - `checkpoint`：指定你的模型的路径，如`checkpoint='custom.onnx'`。
 
-##### 2. 模型推理
+#### 2. 模型推理
 
 ```python
 import cv2
@@ -439,6 +435,4 @@ print(result
 
 - `data`(str)：指定待检测的图片
 - `preprocess`: 指定前处理函数
-- `postprocess`：指定后处理函数
-
-# 
+- `postprocess`：指定后处理函数 
