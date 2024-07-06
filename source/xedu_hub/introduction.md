@@ -49,11 +49,17 @@ Workflow根据task的名称来区分任务的类别，图示如下。
 
 <a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public</a>
 
-## XEduHub任务模型文件获取与存放
+## XEduHub预置任务模型文件的获取
 
-XEduHub提供了大量优秀的任务模型，我们不仅可以通过`wf()`代码的运行实现模型的自动下载，还可以从已下载好的电脑上拷贝文件，避免重复下载耗时。当然，也可以在声明的时候，使用`download_path`来指定下载模型所在的文件夹位置，模型不会重复下载。
+XEduHub提供了大量优秀的任务模型，我们不仅可以通过`wf()`代码的运行实现模型的自动下载，还可以自主通过浦源平台（上海AI实验室的另一个平台）下载。
 
-没有网络，如何让代码`wf()`运行时找到找到模型文件呢？
+只要进入<a href="https://openxlab.org.cn/models/detail/xedu/hub-model">模型仓库</a>，在Model File里就可以看到各种任务模型。网址：<a href="https://openxlab.org.cn/models/detail/xedu/hub-model">https://openxlab.org.cn/models/detail/xedu/hub-model</a>
+
+![](../images/xeduhub/downloadmodel.png)
+
+没有网络，如何让代码`wf()`运行时找到找到模型文件呢？从已下载好的电脑上拷贝ONNX文件，在推理的时候使用`download_path`来指定下载模型所在的文件夹位置。
+
+## XEduHub预置任务模型文件的检查机制
 
 在没有指定模型路径`checkpoints`参数的情况下，`wf()`运行时会先检查是否已下载了对应任务的模型，检查的顺序如下：
 
