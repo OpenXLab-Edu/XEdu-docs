@@ -2,7 +2,7 @@
 
 XEduHub的通用任务也称外部模型任务，指预置模型之外的第三方模型实现的AI任务。通用任务分为两种情况，一是用XEdu系列工具训练的模型，如MMEdu（计算机视觉）、BaseNN（自定义神经网络）和BaseML（传统机器学习）；二是用其他工具训练的模型。考虑到兼容性，大部分模型以ONNX为主。XEduHub的通用任务分类和task名称如图所示。
 
-![](/Users/xiezuoru/Documents/GitHub/XEdu-docs/source/images/xeduhub/general_task_1.png)
+![](../images/xeduhub/general_task_1.png)
 
 不管使用哪类任务，XEduHub都使用Workflow工具进行推理，核心代码仅4行，语法非常简洁。
 
@@ -197,7 +197,7 @@ mmdet.save(img,'new_plate.jpg') # 保存推理结果图片
 
 该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
 
-### BaseNN模型推理
+### BaseNN模型
 
 XEduHub现在可以支持使用BaseNN导出的onnx模型进行推理啦！如果你想了解如何将使用[BaseNN](https://xedu.readthedocs.io/zh-cn/master/basenn.html)训练好的模型转换成ONNX格式，可以看这里：[BaseNN模型文件格式转换](https://xedu.readthedocs.io/zh-cn/master/basenn/introduction.html#id24)。OK，准备好了ONNX模型，那么就开始使用XEduHub吧！
 
@@ -270,7 +270,7 @@ format_result = basenn.format_output()
 
 `format_output`的结果是一个结果字典，这个字典的第一个元素有两个键，`预测值`、`分数`，代表着该手写数字的分类标签以及属于该分类标签的概率。
 
-### BaseML模型推理
+### BaseML模型
 
 BaseML是XEdu的机器学习工具。XEduHub直接支持BaseML训练的模型。如果你想了解如何将使用[BaseML](https://xedu.readthedocs.io/zh-cn/master/baseml.html)训练模型并保存成.pkl模型文件，可以看这里：[BaseML模型保存](https://xedu.readthedocs.io/zh-cn/master/baseml/introduction.html#id16)。
 
@@ -282,7 +282,7 @@ BaseML模型的task名称为“baseml”（小写），使用方式和其他几�
 # 使用BaseML训练的鸢尾花聚类模型推理
 from XEdu.hub import Workflow as wf
 baseml = wf(task='baseml',checkpoint='baseml.pkl') # 指定使用的pkl模型
-data = [[5.1,1.5],[7,4.7]] # 该项目中训练数据只有两维
+data = [[5.1,1.5,7,4.7]] # 鸢尾花的训练数据有四列
 result= baseml.inference(data=data) # 进行模型推理
 format_output = baseml.format_output(lang='zh') # 推理结果格式化输出
 ```
