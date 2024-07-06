@@ -33,7 +33,7 @@ body.show(new_img) # 显示带标注图片
 
 Workflow根据task的名称来区分任务的类别，图示如下。
 
-![](/Users/xiezuoru/Documents/GitHub/XEdu-docs/source/images/xeduhub/introduction_1.png)
+![](../images/xeduhub/introduction_1.png)
 
 ## XEduHub的task名称和参数总览
 
