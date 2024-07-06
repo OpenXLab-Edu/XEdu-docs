@@ -12,7 +12,7 @@ XEduHub支持两类任务（task），分为预置任务和通用任务两种。
 from XEdu.hub import Workflow as wf
 ```
 
-XEduHub将模型推理的过程看成工作流（Workflow）。从获取数据到输入模型，再到推理结果输出，不过是数据从这个形式转化为另一种形式。当多个模型进行联动推理时，Workflow可以看做不同模型之间的数据流动，例如首先进行多人的目标检测，将检测到的数据传入关键点识别模型从而对每个人体进行关键点识别。
+XEduHub将模型推理的过程看成工作流（`Workflow`）。从获取数据到输入模型，再到推理结果输出，不过是数据从这个形式转化为另一种形式。当多个模型进行联动推理时，`Workflow`可以看做不同模型之间的数据流动，例如首先进行多人的目标检测，将检测到的数据传入关键点识别模型从而对每个人体进行关键点识别。
 
 Workflow的示例代码如下：
 
@@ -31,11 +31,11 @@ body.show(new_img) # 显示带标注图片
 
 ## 模型声明和模型推理
 
-Workflow根据task的名称来区分任务的类别，图示如下。
+`Workflow`根据task的名称来区分任务的类别，图示如下。
 
 ![](../images/xeduhub/introduction_1.png)
 
-## XEduHub的task名称和参数总览
+## task名称和参数总览
 
 ![](../images/xeduhub/tu1.PNG)
 
@@ -49,30 +49,30 @@ Workflow根据task的名称来区分任务的类别，图示如下。
 
 <a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public</a>
 
-## XEduHub预置任务模型文件的获取
+## 预置任务模型文件的获取
 
-XEduHub提供了大量优秀的任务模型，我们不仅可以通过`wf()`代码的运行实现模型的自动下载，还可以自主通过浦源平台（上海AI实验室的另一个平台）下载。
+XEduHub提供了大量优秀的任务模型，我们不仅可以通过推理模块`Workflow`实现模型的自动下载，还可以自主通过浦源平台（上海AI实验室的另一个平台）下载。
 
-只要进入<a href="https://openxlab.org.cn/models/detail/xedu/hub-model">模型仓库</a>，在Model File里就可以看到各种任务模型。网址：<a href="https://openxlab.org.cn/models/detail/xedu/hub-model">https://openxlab.org.cn/models/detail/xedu/hub-model</a>
+只要进入<a href="https://openxlab.org.cn/models/detail/xedu/hub-model">模型仓库</a>，在`Model File`里就可以看到各种任务模型。网址：<a href="https://openxlab.org.cn/models/detail/xedu/hub-model">https://openxlab.org.cn/models/detail/xedu/hub-model</a>
 
 ![](../images/xeduhub/downloadmodel.png)
 
-没有网络，如何让代码`wf()`运行时找到找到模型文件呢？从已下载好的电脑上拷贝ONNX文件，在推理的时候使用`download_path`来指定下载模型所在的文件夹位置。
+没有网络，如何让`Workflow`运行时找到找到模型文件呢？从已下载好的电脑上拷贝ONNX文件，在推理的时候使用`download_path`来指定下载模型所在的文件夹位置。
 
-## XEduHub预置任务模型文件的检查机制
+## `Workflow`的预置任务模型检查机制
 
-在没有指定模型路径`checkpoints`参数的情况下，`wf()`运行时会先检查是否已下载了对应任务的模型，检查的顺序如下：
+在没有指定模型路径`checkpoints`参数的情况下，推理模块`Workflow`运行时会先检查是否已下载了对应任务的模型，检查的顺序如下：
 
-1. 本地的同级目录的checkpoints文件夹中，与任务同名的模型文件。
+1. 本地的同级目录的`checkpoints`文件夹中，与任务同名的模型文件。
 2. 本地缓存中（新版本不再支持）。
 
 如果都没有，就会到网络上下载。
 
 因此，无论是网络下载还是自己训练的模型使用，有三种解决思路：
 
-- 在本地同级目录中新建checkpoints文件夹，将模型存放在该文件夹中。
+- 在本地同级目录中新建`checkpoints`文件夹，将模型存放在该文件夹中。
 
-- 使用参数`checkpoint，指定模型路径，如`model=wf(task='pose_body17',checkpoint='my_path/pose_body17.onnx')`
+- 使用参数`checkpoint`，指定模型路径，如`model=wf(task='pose_body17',checkpoint='my_path/pose_body17.onnx')`
 
 - 使用参数`download_path，指定模型文件夹路径，如`model=wf(task='pose_body17',download_path='my_path/')`
 
