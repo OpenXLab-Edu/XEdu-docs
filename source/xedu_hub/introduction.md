@@ -14,7 +14,9 @@ from XEdu.hub import Workflow as wf
 
 XEduHub将模型推理的过程看成工作流（`Workflow`）。从获取数据到输入模型，再到推理结果输出，不过是数据从这个形式转化为另一种形式。当多个模型进行联动推理时，`Workflow`可以看做不同模型之间的数据流动，例如首先进行多人的目标检测，将检测到的数据传入关键点识别模型从而对每个人体进行关键点识别。
 
-Workflow的示例代码如下：
+### 单一模型推理
+
+Workflow的示例代码如下。本代码声明了一个叫做`pose_body17`（表示人体姿势）的推理任务，传入一张数据，输出推理结果。
 
 ```python
 # 步骤一：导入库
@@ -29,7 +31,28 @@ print(result) # 输出推理结果
 body.show(new_img) # 显示带标注图片
 ```
 
-## 模型声明和模型推理
+### 多模型联合推理
+
+很多AI任务需要借助多个模型完成。比如人体关键点（手部、脸部等）往往要先定位具体位置，再进行检测，可以提高检测的精度。这个过程能体现出WorkFlow的数据流思想。
+
+```python
+from XEdu.hub import Workflow as wf # 导入库
+det  = wf(task='det_hand') # 实例化模型
+model = wf(task='pose_hand') # 实例化模型
+img_path = 'demo/hand.jpg' # 指定进行推理的图片路径
+bboxs,new_img = det.inference(data=img_path,img_type='cv2',show=True) # 进行推理
+for i in bboxs:
+    keypoints,new_img =model.inference(data=img_path,img_type='cv2',show=True,bbox=i) # 进行推理
+```
+
+以一个检测“比心”动作，然后执行拍照任务的作品为例。这个案例需要多个模型，数据先经过第一个模型检测人手，得到手部的位置后，再经过第二个模型执行手部关键点检测，最后输出控制信息。
+
+![](../images/xeduhub/workflow_1.png)
+
+需要强调的是，如果要判断出是否做“比心”动作，还需要借助另一个模型，这个模型可能需要自主训练。
+
+
+## 任务声明和模型推理
 
 `Workflow`根据task的名称来区分任务的类别，图示如下。
 
