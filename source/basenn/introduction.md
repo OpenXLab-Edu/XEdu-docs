@@ -14,7 +14,7 @@ c）同时支持CPU和GPU
 
 ## 示例代码
 
-``` python
+```python
 model = nn('cls')
 train_path = '../../dataset/iris/iris_training.csv'
 model.load_tab_data(train_path, batch_size=120)
@@ -29,13 +29,13 @@ model.train(lr=0.01, epochs=500)
 
 ### 0. 引入包
 
-``` python
+```python
 from BaseNN import nn
 ```
 
 ### 1. 声明模型
 
-``` python
+```python
 model = nn('cls') 
 ```
 
@@ -95,8 +95,6 @@ classes = {'0':0, '1':1} # 类别to索引
 classes = {0:0,1:1} 
 classes = {'0':'0', '1':'1'} 
 ```
-
-
 
 #### 关于图片数据集预处理：
 
@@ -285,7 +283,6 @@ model.load_img_data('catdog',transform={"Resize":(128,128),"RandomResizedCrop":2
 </tbody>
 </table>
 
-
 #### 针对特征表格类型的数据：
 
 指定表格路径，再使用`load_tab_data`函数即可完成载入数据，对表格的要求：csv格式，纵轴为样本，横轴为特征，第一行为表头，最后一列为标签，且要求数据类型为数值类型并无缺失值。例如此处我使用的是经过处理的经典的Iris鸢尾花数据集。
@@ -319,26 +316,27 @@ model.load_npz_data(train_path, batch_size=5000,classes=["walking","waving","str
 `num_workers`：指定线程数，决定了有多少个子线程被用于数据加载。子线程是并行运行的，可以同时处理多个数据批次。增加 `num_workers` 的数值时，可以加快数据批次的寻找速度，这通常会提高训练的速度，因为模型等待数据的时间减少了，但增大内存开销和CPU负荷。此参数用来控制数据加载过程中的线程数量。适当增加这个数值可以加速训练，但也要注意不要超出你的硬件限制。默认为0，一般而言设置num_workers最大为CPU核心数。
 
 - 小帖士（井号后面是运行结果）：
-```python
-import numpy as np
-data = np.load('dataset.npz')
-print(data)
-# <numpy.lib.npyio.NpzFile object at 0x7f319c448ac0>
-print(data['label'])  # 这是一个三分类标签数据，它是二维数据，每一条数据里面是三分类独热编码标签。
-# array([[1, 0, 0],
-#          ...,
-#        [0, 0, 1]])
-print(data['data']) # 这是一个高维数据，每一条数据对应一个标签，但是数据本身不是一维的，而是高纬的。
-# array([[[ 4.60664570e-01,  2.78294533e-01, -3.56185764e-01, ...,
-#          9.21180844e-01,  1.94783360e-01,  9.93974388e-01],
-#        [ 4.62414086e-01,  2.83538818e-01, -3.53962898e-01, ...,
-#          9.16427970e-01,  1.96989119e-01,  9.91852582e-01],
-#        [ 4.63086247e-01,  2.80452102e-01, -3.24477255e-01, ...,
-#          9.19000983e-01,  1.50782943e-01,  9.93449986e-01],
-#        ...,
-#        [ 4.34215039e-01,  4.27498937e-01,  3.03461671e-01, ...,
-#          8.96103501e-01, -4.72080037e-02,  9.73582983e-01]]])
-```
+  
+  ```python
+  import numpy as np
+  data = np.load('dataset.npz')
+  print(data)
+  # <numpy.lib.npyio.NpzFile object at 0x7f319c448ac0>
+  print(data['label'])  # 这是一个三分类标签数据，它是二维数据，每一条数据里面是三分类独热编码标签。
+  # array([[1, 0, 0],
+  #          ...,
+  #        [0, 0, 1]])
+  print(data['data']) # 这是一个高维数据，每一条数据对应一个标签，但是数据本身不是一维的，而是高纬的。
+  # array([[[ 4.60664570e-01,  2.78294533e-01, -3.56185764e-01, ...,
+  #          9.21180844e-01,  1.94783360e-01,  9.93974388e-01],
+  #        [ 4.62414086e-01,  2.83538818e-01, -3.53962898e-01, ...,
+  #          9.16427970e-01,  1.96989119e-01,  9.91852582e-01],
+  #        [ 4.63086247e-01,  2.80452102e-01, -3.24477255e-01, ...,
+  #          9.19000983e-01,  1.50782943e-01,  9.93449986e-01],
+  #        ...,
+  #        [ 4.34215039e-01,  4.27498937e-01,  3.03461671e-01, ...,
+  #          8.96103501e-01, -4.72080037e-02,  9.73582983e-01]]])
+  ```
 
 len(data['data'])和len(data['label'])是相等的。
 
@@ -346,8 +344,6 @@ len(data['data'])和len(data['label'])是相等的。
 来说：`data['label'].shape`是(19, 3)，`data['data'].shape`是(19, 30, 132)。
 
 `type(data['data'])`的运行结果是numpy.ndarray，`type(data['data'])`的运行结果是numpy.ndarray。
-
-
 
 #### 拓展------自行编写代码载入数据：
 
@@ -365,7 +361,7 @@ model.load_dataset(x, y)
 
 数据集共有5列，其中前四列为特征，第五列为鸢尾花的类别，即标签。
 
-``` python
+```python
 # 训练数据
 train_path = '../dataset/iris/iris_training.csv' 
 x = np.loadtxt(train_path, dtype=float, delimiter=',',skiprows=1,usecols=range(0,4)) # 读取前四列，特征
@@ -382,7 +378,7 @@ model.load_dataset(x, y)
 
 读取并载入手写体图像数据集（数据集包含了0-9共10类手写数字图片，都是28x28大小的灰度图）：
 
-``` python
+```python
 # 定义读取训练数据的函数
 def read_data(path):
     data = []
@@ -419,7 +415,7 @@ model.load_dataset(train_x, train_y)
 
 逐层添加，搭建起模型结构，支持CNN（卷积神经网络）和RNN（循环神经网络）。注释标明了数据经过各层的尺寸变化。在模型搭建中要特别注意数据经过各层的尺寸变化，以设置正确的`size`值。
 
-``` python
+```python
 model.add(layer='linear',size=(4, 10),activation='relu') # [120, 10]
 model.add(layer='linear',size=(10, 5), activation='relu') # [120, 5]
 model.add(layer='linear', size=(5, 3), activation='softmax') # [120, 3]
@@ -431,7 +427,7 @@ model.add(layer='linear', size=(5, 3), activation='softmax') # [120, 3]
 
 模型训练可以采用以下函数，训练前需设置模型保存路径，训练时需设置lr、epochs等超参数。
 
-``` python
+```python
 # 设置模型保存的路径
 model.save_fold = 'checkpoints/irs_ckpt'
 # 模型训练
@@ -446,7 +442,7 @@ model.train(lr=0.01, epochs=500)
 
 #### 正常训练
 
-``` python
+```python
 model = nn('cls') 
 model.add(layer='linear',size=(4, 10),activation='relu') # [120, 10]
 model.add(layer='linear',size=(10, 5), activation='relu') # [120, 5]
@@ -460,7 +456,7 @@ model.train(lr=0.01, epochs=1000)
 
 #### 继续训练
 
-``` python
+```python
 checkpoint = 'checkpoints/basenn.pth' # 指定已有模型的权重文件路径
 model.train(lr=0.01, epochs=1000, checkpoint=checkpoint)
 ```
@@ -475,7 +471,7 @@ model.train(lr=0.01, epochs=1000, checkpoint=checkpoint)
 
 可直接指定图片文件夹，同时针对图片数据可增加classes参数设置（推理时会输出预测的类别名称，如不设置此参数则只输出类别标签），参考代码如下：
 
-``` python
+```python
 model = nn('cls')
 model.load_img_data("./mnist/training_set",color="grayscale",batch_size=32,classes=classes)
 model.add('Conv2D', size=(1, 6),kernel_size=( 5, 5), activation='ReLU') 
@@ -503,7 +499,7 @@ model.train(lr=0.01,epochs=1)
 
 可直接指定csv格式的表格完成模型训练，参考代码如下：
 
-``` python
+```python
 model = nn('cls')
 train_path = '../../dataset/iris/iris_training.csv'
 model.load_tab_data(train_path, batch_size=120)
@@ -543,7 +539,7 @@ model.train(lr=0.001,epochs=1)
 
 可使用以下函数进行推理：
 
-``` python
+```python
 model = nn('cls') # 声明模型
 checkpoint = 'checkpoints/iris_ckpt/basenn.pth' # 现有模型路径
 result = model.inference(data=test_x, checkpoint=checkpoint) # 直接推理
@@ -564,7 +560,7 @@ model.print_result(result) # 输出字典格式结果
 
 #### 针对单个图片文件的推理：
 
-``` python
+```python
 model = nn('cls')
 test_x = "mnist/val_set/7/83.jpg"
 result = model.inference(data=test_x, checkpoint="mn_ckpt/basenn.pth") # 推理某张图片
@@ -573,7 +569,7 @@ model.print_result()
 
 #### 针对图片文件夹的推理：
 
-``` python
+```python
 model = nn('cls')
 test_x = "mnist/val_set/7"
 result = model.inference(data=test_x, checkpoint="mn_ckpt/basenn.pth") # 推理整个测试集
@@ -584,7 +580,7 @@ model.print_result()
 
 简便方法：
 
-``` python
+```python
 model = nn('cls')
 test_path = 'data/iris_test.csv'
 res = model.inference(test_path, checkpoint="iris_ckpt/basenn.pth",label=True)
@@ -608,7 +604,7 @@ model.print_result(res)
 
 #### 针对文本数据的推理：
 
-``` python
+```python
 model = nn('cls')
 data = '长'
 checkpoint = 'xxx.pth'
@@ -699,7 +695,7 @@ model.visual_feature(data)   # 特征的可视化
 
 ### 3.查看模型结构
 
-``` python
+```python
 model.print_model()
 ```
 
@@ -709,7 +705,7 @@ model.print_model()
 
 默认初始化是随机的，因此每次模型训练效果可能存在差异。可以使用`set_seed()`函数设定随机数种子，使得训练结果可被其他人复现。一旦指定，则每次训练结果一致。使用方法如下：
 
-``` python
+```python
 model = nn()
 model.set_seed(1235)
 model.add(...)
@@ -739,6 +735,7 @@ model.train(...,loss="MSELoss")
 ```python
 model.train(...,metrics="acc")
 ```
+
 当然，在train函数中设置的`metrics`的参数仅是模型在训练集上的评价结果。如需评估模型在验证集上的效果，还需配合模型推理完成。
 
 ### 由此拓展-自定义评价函数和训练策略
@@ -775,17 +772,20 @@ for i in range(5):
 BaseNN 0.3.0以上，支持查看pth文件中的权重信息。
 
 首先将pth文件读入一个变量`state_dict`:
+
 ```python
 import torch 
 ckpt = torch.load('iris_ckpt/basenn.pth')
 state_dict = ckpt['state_dict'].state_dict()
 ```
+
 1）查看模型里面有哪些层，及各个层的名称
 
 ```python
 for i in state_dict:
     print('这一层的名字是:',i)
 ```
+
 输出结果：
 
 ```
@@ -797,8 +797,6 @@ layer_name: linear3.weight
 layer_name: linear3.bias
 ```
 
-
-
 ![](../images/basenn/weight1.png)
 
 可以看到，权重主要包括两种参数，一种是weight，一种是bias。其中weight，指“重”，特征的重要程度，bias值“偏”，偏离原点的程度。回想一下我们初中学习的一次函数 `y=w*x+b` 就是这样的含义。上图中，每一层都分别有weight和bias构成。
@@ -809,6 +807,7 @@ layer_name: linear3.bias
 for i in state_dict:
     print('层：', i ," 的形状是", state_dict[i].shape)
 ```
+
 输出结果：
 
 ```
@@ -832,6 +831,7 @@ layer_name: linear3.bias  shape: torch.Size([3])
 for i in state_dict:
     print(ckpt['state_dict'].state_dict()[i])
 ```
+
 输出结果：
 
 ```
@@ -873,4 +873,3 @@ tensor([ 0.6430,  0.3829, -0.1744])
 ![](../images/basenn/weight3.png)
 
 我们知道了参数的值之后，可以尝试计算，当一条新数据输入网络后，模型会经历怎样的计算，请你试一试搭建一个简单的神经网络，试一试这个计算过程，你能不能手动实现呢？
-
