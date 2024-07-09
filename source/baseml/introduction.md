@@ -37,7 +37,7 @@
     <th>适合任务</th>
     <th>典型任务</th>
     <th>算法解释</th>
-    <th width='50%'>常用参数及其默认值</th>
+    <th style="word-wrap: break-word; overflow-wrap: break-word; white-space: normal;" width='50%'>常用参数及其默认值</th>
   </tr>
 </thead>
 <tbody>
