@@ -36,8 +36,8 @@
     <th>算法名称</th>
     <th>适合任务</th>
     <th>典型任务</th>
-    <th class="wrapword">算法解释</th>
-    <th class="wrapword" width='50%'>常用参数及其默认值</th>
+    <th>算法解释</th>
+    <th width='50%'>常用参数及其默认值</th>
   </tr>
 </thead>
 <tbody>
@@ -45,8 +45,8 @@
     <td>线性回归（LinearRegression）</td>
     <td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn-linear-model-linearregression">回归</a></td>
     <td>适用于预测房价、预测销售额、贷款额度等。</td>
-    <td class="wrapword">线性回归（Linear Regression）线性回归算法的核心思想是找到一条直线，使得这条直线能够最好地代表和预测数据。通常适用于连续值的预测，例如房价、贷款额度等。线性回归就像用直尺在散点图上画一条尽可能穿过所有点的直线，这条直线就能帮我们预测未来的值。</td>
-    <td class="wrapword">fit_intercept=True, positive=False</td> 
+    <td>线性回归（Linear Regression）线性回归算法的核心思想是找到一条直线，使得这条直线能够最好地代表和预测数据。通常适用于连续值的预测，例如房价、贷款额度等。线性回归就像用直尺在散点图上画一条尽可能穿过所有点的直线，这条直线就能帮我们预测未来的值。</td>
+    <td>fit_intercept=True, positive=False</td> 
   </tr>
 </tbody>
 <tbody>
@@ -54,16 +54,16 @@
     <td>多项式回归算法（Polynomial）</td>
     <td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PolynomialFeatures.html">回归</a></td>
     <td>适用于预测房价、预测销售额、贷款额度等。</td>
-    <td class="wrapword">就像是在一条直线上增加更多的弯曲，使得这条线可以更好地贴合数据点。就像用橡皮筋在散点图上拉出一个曲面，这个曲面就能更好地帮助我们预测未来的值。</td>
-    <td class="wrapword">degree=2, interaction_only=False, include_bias=True, order='C'</td>
+    <td>就像是在一条直线上增加更多的弯曲，使得这条线可以更好地贴合数据点。就像用橡皮筋在散点图上拉出一个曲面，这个曲面就能更好地帮助我们预测未来的值。</td>
+    <td>degree=2, interaction_only=False, include_bias=True, order='C'</td>
   </tr>
 </tbody>
 <tbody>
   <tr>
     <td>最近邻分类（KNN, K-Nearest Neighbors）</td>
     <td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn-neighbors-kneighborsclassifier">分类</a></td>
-    <td class="wrapword">识别数字、判断邮件是否为垃圾邮件、图像识别等。</td>
-    <td class="wrapword">最近邻分类算法核心思想是“近朱者赤”。如果要分析一个新数据点的类别，我们会寻找离它最近的K个邻居，哪类邻居多，就认为新数据点也属于该类。适用于数据集较小等情况，分类结果直观。假设你在一个聚会上不认识任何人，你可能会找和你最相似的人群加入。KNN算法也是这样工作的，它通过查找最相似（最近邻）的数据点来进行分类。</td>
+    <td>识别数字、判断邮件是否为垃圾邮件、图像识别等。</td>
+    <td>最近邻分类算法核心思想是“近朱者赤”。如果要分析一个新数据点的类别，我们会寻找离它最近的K个邻居，哪类邻居多，就认为新数据点也属于该类。适用于数据集较小等情况，分类结果直观。假设你在一个聚会上不认识任何人，你可能会找和你最相似的人群加入。KNN算法也是这样工作的，它通过查找最相似（最近邻）的数据点来进行分类。</td>
     <td>n_neighbors=5, p=2（距离计算方式）</td>
   </tr>
 </tbody>
@@ -72,8 +72,8 @@
     <td>支持向量机（SVM, Support Vector Machine）</td>
     <td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn-svm-svc">分类</a>/<a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html#sklearn-svm-svr">回归</a></td>
     <td>文本分类、图像识别、股票市场分析等。</td>
-    <td class="wrapword">支持向量机算法在一个高次元空间来思考问题，尤其适合处理多特征、非线性和少样本的学习问题。此外，它能够很好地适应干扰数据和异常值带来的模型误差。可用于分类和回归。此处使用支持向量机（SVM）完成分类任务。想象你有两种颜色的球分布在桌子上，SVM就是用一根棍子（在复杂情况下是一张弯曲的板）尽可能分开两种颜色的球。</td>
-    <td class="wrapword">kernel='rbf', gamma='scale', tol=0.001, C=1.0</td>
+    <td>支持向量机算法在一个高次元空间来思考问题，尤其适合处理多特征、非线性和少样本的学习问题。此外，它能够很好地适应干扰数据和异常值带来的模型误差。可用于分类和回归。此处使用支持向量机（SVM）完成分类任务。想象你有两种颜色的球分布在桌子上，SVM就是用一根棍子（在复杂情况下是一张弯曲的板）尽可能分开两种颜色的球。</td>
+    <td>kernel='rbf', gamma='scale', tol=0.001, C=1.0</td>
   </tr>
 </tbody>
 <tbody>
@@ -81,8 +81,8 @@
     <td>决策树算法（CART）</td>
     <td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn-tree-decisiontreeclassifier">分类</a>/<a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html#sklearn-tree-decisiontreeregressor">回归</a></td>
     <td>适用于客户分级、疾病诊断等。</td>
-    <td class="wrapword">决策树算法将数据看作树的若干片叶子。在每一个树杈位置，决策树都根据特征的不同而划分，将不同的叶子分在不同的枝干上，算法根据最优划分方法，将误差降到最低。该算法解释性强，在解决各种问题时都有良好表现。此处使用决策树分类（CART）完成分类任务。想象你在做一个选择（比如选择餐馆），你可能会根据一系列问题（离家近不近？价格怎么样？）来决定。决策树算法就是通过一系列问题来达到决策的过程。</td>
-    <td class="wrapword">criterion='squared_error', max_depth=None, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features=None</td>
+    <td>决策树算法将数据看作树的若干片叶子。在每一个树杈位置，决策树都根据特征的不同而划分，将不同的叶子分在不同的枝干上，算法根据最优划分方法，将误差降到最低。该算法解释性强，在解决各种问题时都有良好表现。此处使用决策树分类（CART）完成分类任务。想象你在做一个选择（比如选择餐馆），你可能会根据一系列问题（离家近不近？价格怎么样？）来决定。决策树算法就是通过一系列问题来达到决策的过程。</td>
+    <td>criterion='squared_error', max_depth=None, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features=None</td>
   </tr>
 </tbody>
 <tbody>
@@ -90,8 +90,8 @@
     <td>随机森林算法（RandomForest）</td>
     <td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn-ensemble-randomforestclassifier">分类</a>/<a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html#sklearn-ensemble-randomforestregressor">回归</a></td>
     <td>信用评分、医疗分析、股票市场行为等。</td>
-    <td class="wrapword">随机森林算法是一种基于集成学习的算法，通过构建多棵决策树并将它们的预测结果进行集成，从而降低风险。它能够处理多特征数据，并自动选择最相关特征，从而提升模型准确率。如果你问很多朋友一个问题，并根据他们的回答来做决定，那么你就用了随机森林的思想。它建立了很多个决策树，并综合它们的意见来做出最终的决策。</td>
-    <td class="wrapword">n_estimators=100, criterion='squared_error', max_depth=None, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features=1.0, bootstrap=True, oob_score=False, warm_start=False</td>
+    <td>随机森林算法是一种基于集成学习的算法，通过构建多棵决策树并将它们的预测结果进行集成，从而降低风险。它能够处理多特征数据，并自动选择最相关特征，从而提升模型准确率。如果你问很多朋友一个问题，并根据他们的回答来做决定，那么你就用了随机森林的思想。它建立了很多个决策树，并综合它们的意见来做出最终的决策。</td>
+    <td>n_estimators=100, criterion='squared_error', max_depth=None, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features=1.0, bootstrap=True, oob_score=False, warm_start=False</td>
   </tr>
 </tbody>
 <tbody>
@@ -99,8 +99,8 @@
     <td>自适应增强算法（AdaBoost）</td>
     <td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html#sklearn-ensemble-adaboostclassifier">分类</a>/<a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostRegressor.html#sklearn-ensemble-adaboostregressor">回归</a></td>
     <td>人脸识别、客户流失预测、分类任务等。</td>
-    <td class="wrapword">自适应增强算法（Adaptive Boosting，AdaBoost）是一种迭代算法，需要经历多个阶段，在每个阶段都增加一个新的智能体帮助判断，直到达到足够小的错误率。这种算法在各领域都表现出超凡的能力。想象一个团队里有很多成员，每个人在第一次做决策时可能不是很准确。但随着时间的推移，团队成员学习如何根据过去的错误来改进，使得整个团队的决策越来越好。</td>
-    <td class="wrapword">n_estimators=50, learning_rate=1.0, loss='linear'</td>
+    <td>自适应增强算法（Adaptive Boosting，AdaBoost）是一种迭代算法，需要经历多个阶段，在每个阶段都增加一个新的智能体帮助判断，直到达到足够小的错误率。这种算法在各领域都表现出超凡的能力。想象一个团队里有很多成员，每个人在第一次做决策时可能不是很准确。但随着时间的推移，团队成员学习如何根据过去的错误来改进，使得整个团队的决策越来越好。</td>
+    <td>n_estimators=50, learning_rate=1.0, loss='linear'</td>
   </tr>
 </tbody>
 <tbody>
@@ -108,8 +108,8 @@
     <td>多层感知机算法（MLP）</td>
     <td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPClassifier.html#sklearn-neural-network-mlpclassifier">分类</a>/<a href="https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html#sklearn-neural-network-mlpregressor">回归</a></td>
     <td>适用于语音识别、手写识别、自然语言处理等。</td>
-    <td class="wrapword">多层感知机算法是一种深度学习算法。它通过模拟大脑的神经元系统，将信号通过突触传递到与之相关的神经元中，如果传递正确，这样的传递就会被强化，从而逐渐构成模型。它可以自动学习到输入特征之间非常复杂的关系。但是，它的训练时间可能会较长，且依赖大量训练数据。想象你在通过多层不同的筛子来过滤沙子，每层筛子的网眼大小不同。沙子在通过每层筛子时都会被进一步细分。多层感知机就是通过多层处理（神经网络层）来从数据中学。</td>
-    <td class="wrapword">hidden_layer_sizes=(100,), activation='relu', *, solver='adam', alpha=0.0001, batch_size='auto', learning_rate='constant', learning_rate_init=0.001, power_t=0.5, max_iter=200, shuffle=True, tol=0.0001, verbose=False, warm_start=False, momentum=0.9, nesterovs_momentum=True, early_stopping=False, validation_fraction=0.1, beta_1=0.9, beta_2=0.999, epsilon=1e-08, n_iter_no_change=10, max_fun=15000</td>
+    <td>多层感知机算法是一种深度学习算法。它通过模拟大脑的神经元系统，将信号通过突触传递到与之相关的神经元中，如果传递正确，这样的传递就会被强化，从而逐渐构成模型。它可以自动学习到输入特征之间非常复杂的关系。但是，它的训练时间可能会较长，且依赖大量训练数据。想象你在通过多层不同的筛子来过滤沙子，每层筛子的网眼大小不同。沙子在通过每层筛子时都会被进一步细分。多层感知机就是通过多层处理（神经网络层）来从数据中学。</td>
+    <td>hidden_layer_sizes=(100,), activation='relu', *, solver='adam', alpha=0.0001, batch_size='auto', learning_rate='constant', learning_rate_init=0.001, power_t=0.5, max_iter=200, shuffle=True, tol=0.0001, verbose=False, warm_start=False, momentum=0.9, nesterovs_momentum=True, early_stopping=False, validation_fraction=0.1, beta_1=0.9, beta_2=0.999, epsilon=1e-08, n_iter_no_change=10, max_fun=15000</td>
   </tr>
 </tbody>
 <tbody>
