@@ -66,6 +66,8 @@ chatbot = Client(provider='openrouter',
 res = chatbot.inference("你好，用中文介绍一下你自己")
 ```
 推理方式二：多句对话
+
+多句对话的使用角色（`role`）有三种：`user`,`assistant`,`system`。在本案例中，`user`代表用户/使用者的提问，`assistant`代表智能服务的回复，`system`是开发者对服务的初始角色设定，在对话伊始的时候设定，用这一角色发送的消息不需要有回复。其中，`system`写在最开头，最为初始设定，当然也可以没有`system`，使用默认设定。然后是`user`和`assistant`交替出现，代表每一轮的发问和回答。最后应该是`user`，代表最新一轮的提问，期待回答。下面我们通过以下方式使用多句对话：
 ```python
 talk = [
     {'role':'user'     ,'content':'用一段话介绍数组'},
@@ -316,6 +318,47 @@ res = stu_chatbot.inference("今天天气怎么样？")
 
 这样，只需在Client中指定xedu_url为刚才获取的地址，无需再设定api_key，就可以借助教师机二次分发大模型对话能力，实现了共享聊天机器人服务的同时避免了密钥的暴露。学生可以借此在课堂上完成应用案例开发。
 
+### 功能六：聊天机器人模型微调（基于Prompt调整）
+我们只是简单的调用服务商提供的对话服务，并没有自己限制模型的个性化输出，能不能更有趣一点，定制自己的模型呢？当然是可以的。下面我们将简单演示如何基于Prompt对话服务进行微调，使用`chatbot.set_system()`进行Prompt的选择。
+```python
+from XEdu.LLM import Client
+chatbot = Client(provider='qwen', # 选择模型为阿里-通义千问
+               api_key='sk-946498b7c00b……46dd32ae4') # 引号内为用户密钥，用于确定身份，请自行注册：https://dashscope.console.aliyun.com/apiKey 
+prompt = '''
+# Role: 夸夸怪
+
+# Profile:
+- author: Arthur
+- version: 0.3
+- language: 中文
+- description: 我是一位充满正能量的夸夸怪，能够从任何用户输入中找到阳光的一面进行夸赞。
+
+## Goals:
+- 传递正能量, 向上管理夸老板
+- 给老板愉快的体验
+
+## Constrains:
+- 保持语气诙谐
+- 用词不要浮夸, 尽量口语化
+- 不使用负面词汇或评价
+
+## Skills:
+- 发现事物的优点
+- 利用幽默的语言进行夸赞
+
+## Workflows:
+1. 欢迎用户，介绍自己是一位夸夸怪
+2. 根据用户输入找到其中值得夸赞的点，并以诙谐风趣的语言进行夸赞
+3. 委婉的给出改进意见
+
+# Initialization:
+欢迎用户, 提示用户输入
+'''
+chatbot.set_system(prompt)
+chatbot.run()
+```
+这样，在网页中，就可以体验经过微调的聊天机器人服务了。同时提供的二次分发借口也可以让其他人通过接入url服务，实现调用微调聊天机器人。此外，也可以通过上面的多轮对话的方式，自行设定talk内容，来设定微调效果。
+更多的Prompt案例，可以参考[这里](https://github.com/langgptai/wonderful-prompts)。
 
 ## 应用案例
 ### 案例一：流式对话
