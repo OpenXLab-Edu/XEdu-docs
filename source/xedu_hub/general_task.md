@@ -415,7 +415,16 @@ def post(res,data): # 输入推理结果和前处理后的数据
     """
     res = np.argmax(res[0]) # 返回类别索引
     return res # 输出结果
+
+result = custom.inference(data=data,preprocess=pre,postprocess=post)
 ```
+
+模型推理`inference()`可传入参数：
+
+- `data`(str)：指定待检测的图片
+- `preprocess`: 指定前处理函数
+- `postprocess`：指定后处理函数 
+
 
 在这里，使用自定义的ONNX模型进行推理的时候，你需要自己的需求实现模型输入数据的前处理以及输出数据的后处理方法，确保在进行模型推理的正常运行。
 
@@ -429,14 +438,62 @@ def post(res,data): # 输入推理结果和前处理后的数据
 
 ```python
 result = custom.inference(data='det.jpg',preprocess=pre,postprocess=post)
-print(result
+print(result)
 # 812
 ```
 
 ![](../images/xeduhub/custom_result.png)
 
-模型推理`inference()`可传入参数：
+下面这里例子展示了一个自主训练的全连接神经网络分类模型的使用。前处理进行了归一化和数据64位转32位，后处理对模型输出做了进一步处理。
+```python
+from XEdu.hub import Workflow as wf
+import numpy as np
+import pandas as pd
 
-- `data`(str)：指定待检测的图片
-- `preprocess`: 指定前处理函数
-- `postprocess`：指定后处理函数 
+det_hand = wf(task='det_hand')
+pose_hand = wf(task='pose_hand')
+custom = wf(task='custom',checkpoint='hand_class.onnx')
+
+def preprocess(data):
+    data = data.reshape(1,-1)
+    data_series = pd.Series(data[0])
+    # 使用transform函数进行归一化
+    normalized_series = data_series.transform(lambda x: (x - x.min()) / (x.max() - x.min()))
+    numpy_array = normalized_series.to_numpy().astype(np.float32)
+    return [numpy_array]
+
+def postprocess(res, data):
+    print('根据输入数据：', data, '得到原始分析结果：',res)
+    max_index = np.argmax(res)
+    print('最有可能的类别是：', max_index)
+    return max_index
+
+# 开始数据流传递
+img = 'demo/hand.jpg'
+# img -> bboxs
+bboxs = det_hand.inference(data=img)
+if len(bboxs)>0:
+    # bboxs -> keypoints
+    keypoints = pose_hand.inference(data=img,bbox=bboxs[0])
+    # keypoints -> res
+    res = custom.inference(data = keypoints, preprocess=preprocess, postprocess=postprocess)
+    print('res:', res)
+```
+
+输出结果：
+```
+det_hand任务模型加载成功！
+pose_hand21任务模型加载成功！
+custom任务模型加载成功！
+根据输入数据： [array([0.42766592, 1.        , 0.55075026, 0.74340045, 0.65923136,
+       0.46802533, 0.44226915, 0.36163038, 0.29832307, 0.5222659 ,
+       0.3880286 , 0.3261654 , 0.30040923, 0.21559814, 0.35256362,
+       0.3699751 , 0.32335716, 0.46385297, 0.23365162, 0.36580274,
+       0.17315254, 0.2760972 , 0.26285806, 0.44716358, 0.28163365,
+       0.50766265, 0.11056729, 0.44716358, 0.07927465, 0.37206128,
+       0.20653135, 0.53061056, 0.23365162, 0.582765  , 0.02712028,
+       0.6224023 , 0.        , 0.46593916, 0.11056729, 0.5869373 ,
+       0.15437697, 0.630747  ], dtype=float32)] 得到原始分析结果： [array([[0.00149915, 0.01200893, 0.98649186]], dtype=float32)]
+最有可能的类别是： 2
+res: 2
+```

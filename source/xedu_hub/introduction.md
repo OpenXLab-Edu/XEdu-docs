@@ -49,8 +49,22 @@ for i in bboxs:
 
 ![](../images/xeduhub/workflow_1.png)
 
-需要强调的是，如果要判断出是否做“比心”动作，还需要借助另一个模型，这个模型可能需要自主训练。
-
+需要强调的是，如果要判断出是否做“比心”动作，还需要借助另一个模型，这个模型可能需要自主训练。加入训练了一个BaseNN全连接神经网络来实现这一任务，则数据流可以进一步向后流动，可以参考下面代码中箭头所示方向，即为数据流动方向：
+```python
+from XEdu.hub import Workflow as wf
+det_hand = wf(task='det_hand')
+pose_hand = wf(task='pose_hand')
+basenn = wf(task='basenn',checkpoint='hand_class.onnx')
+# 开始数据流传递
+img = 'demo/hand.jpg'
+# img -> bboxs
+bboxs,det_img = det_hand.inference(data=img,img_type='cv2',show=True)
+# bboxs -> keypoints
+keypoints,pose_img = pose_hand.inference(data=img,bbox=bboxs[0])
+# keypoints -> bixin_res
+bixin_res = basenn.inference(data = [keypoints])
+basenn.format_output()
+```
 
 ## 任务声明和模型推理
 
