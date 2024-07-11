@@ -682,7 +682,7 @@ model.visual_feature(img,in1img = True)   # 特征的可视化
 
 ![](../images/basenn/visualization.png)
 
-如输入数据为**一维数据**，指定数据和已经训练好的模型，可生成一个txt文件展示经过各层后的输出。
+如输入数据为**一维数组**，指定数据和已经训练好的模型，可生成一个txt文件展示经过各层后的输出。
 
 ```python
 import numpy as np
@@ -889,5 +889,4 @@ tensor([ 0.6430,  0.3829, -0.1744])
 我们知道了参数的值之后，可以尝试计算，当一条新数据输入网络后，模型会经历怎样的计算，请你试一试搭建一个简单的神经网络，试一试这个计算过程，你能不能手动实现呢？
 
 推荐浏览项目：<a href="https://www.openinnolab.org.cn/pjlab/project?id=6687857fa4f8ca4aa8e53f27">神经网络是怎么计算的</a>。
-
 
