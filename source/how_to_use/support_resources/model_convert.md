@@ -241,6 +241,42 @@ cv2.destroyAllWindows()
 
 ![](../../images/model_convert/DeploymentDemonstration.gif)
 
+行空板全屏显示参考代码：
+```python
+# 提前完成库文件安装
+# pip install xedu-python==0.2.0 onnx==1.13.0 onnxruntime==1.13.1
+from XEdu.hub import Workflow as wf
+import cv2
+
+my_model = wf(task='mmedu',checkpoint='resnet18-catdog.onnx')# 实例化pose模型
+
+#False:不旋转屏幕（竖屏显示，上下会有白边）
+#True：旋转屏幕（横屏显示）
+screen_rotation = True 
+
+cap = cv2.VideoCapture(0)   #设置摄像头编号，如果只插了一个USB摄像头，基本上都是0
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 320)  #设置摄像头图像宽度
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 240) #设置摄像头图像高度
+cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)     #设置OpenCV内部的图像缓存，可以极大提高图像的实时性。
+
+cv2.namedWindow('camera',cv2.WND_PROP_FULLSCREEN)    #窗口全屏
+cv2.setWindowProperty('camera', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)   #窗口全屏
+
+while cap.isOpened():
+    ret, frame = cap.read()
+    if not ret:
+        break
+    res,img = my_model.inference(data = frame, img_type='cv2')
+    my_model.format_output()
+    if screen_rotation: #是否要旋转屏幕
+        img = cv2.rotate(img, cv2.ROTATE_90_COUNTERCLOCKWISE) #旋转屏幕
+    cv2.imshow('camera', img)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break    
+cap.release()
+cv2.destroyAllWindows()
+```
+
 在浦育平台硬件工坊也可支持连接行空板，参考项目-行空板与XEdu：[https://openinnolab.org.cn/pjlab/project?id=65bc868615387949b281d622&backpath=/pjedu/userprofile?slideKey=project&type=OWNER#public](https://openinnolab.org.cn/pjlab/project?id=65bc868615387949b281d622&backpath=/pjedu/userprofile?slideKey=project&type=OWNER#public)
 
 ### 参考项目：

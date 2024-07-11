@@ -64,3 +64,8 @@ print(f"onnxruntime version: {onnxruntime.__version__}")
 onnxruntime version: 1.9.0
 ```
 
+3.行空板基础库问题
+如果出现“段错误”或者“Segmentation Error”，一般是onnx和onnxruntime的版本不匹配。可以通过下面的命令修改版本：
+```
+pip install xedu-python==0.2.0 onnx==1.13.0 onnxruntime==1.13.1
+```

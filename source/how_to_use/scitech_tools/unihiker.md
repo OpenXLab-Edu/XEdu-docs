@@ -30,6 +30,50 @@
 
 ## 3.部署模型到行空板
 
+我们可以通过XEduHub库的方式部署。在XEduHub中，我们介绍了一个[实时摄像头的人体关键点识别案例](https://xedu.readthedocs.io/zh-cn/master/xedu_hub/projects.html#id2)，这里，我们首先需要安装对应的库文件：
+```
+pip install xedu-python==0.2.0 onnx==1.13.0 onnxruntime==1.13.1
+```
+安装完成后，可以通过python代码进行部署。代码可以直接迁移前面的案例，模型部分不需要做任何改动，可视化的部分，为了适配行空板的屏幕尺寸，我们参考[相关资料](https://mc.dfrobot.com.cn/thread-312867-1-1.html)做了适配调整，代码如下：
+
+```python
+from XEdu.hub import Workflow as wf
+import cv2
+
+body = wf(task='pose_body17')# 实例化pose模型
+det = wf(task='det_body')# 实例化detect模型
+
+#False:不旋转屏幕（竖屏显示，上下会有白边）
+#True：旋转屏幕（横屏显示）
+screen_rotation = True 
+
+cap = cv2.VideoCapture(0)   #设置摄像头编号，如果只插了一个USB摄像头，基本上都是0
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 320)  #设置摄像头图像宽度
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 240) #设置摄像头图像高度
+cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)     #设置OpenCV内部的图像缓存，可以极大提高图像的实时性。
+
+cv2.namedWindow('camera',cv2.WND_PROP_FULLSCREEN)    #窗口全屏
+cv2.setWindowProperty('camera', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)   #窗口全屏
+
+while cap.isOpened():
+    ret, frame = cap.read()
+    if not ret:
+        break
+    bboxs = det.inference(data=frame,thr=0.3)
+    img = frame
+    for i in bboxs:
+        keypoints,img =body.inference(data=img,img_type='cv2',bbox=i)
+    for [x1,y1,x2,y2] in bboxs: # 画检测框
+        cv2.rectangle(img, (int(x1),int(y1)),(int(x2),int(y2)),(0,255,0),2)
+    if screen_rotation: #是否要旋转屏幕
+        img = cv2.rotate(img, cv2.ROTATE_90_COUNTERCLOCKWISE) #旋转屏幕
+    cv2.imshow('camera', img)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break    
+cap.release()
+cv2.destroyAllWindows()
+```
+
 参考资料1-AI猜拳机器人：[https://mc.dfrobot.com.cn/thread-315543-1-1.html](https://mc.dfrobot.com.cn/thread-315543-1-1.html)
 
 
