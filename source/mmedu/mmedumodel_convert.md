@@ -14,7 +14,7 @@ MMEdu内置了一个`convert`函数，来实现了一键式模型转换，转换
 
 - 需要配置两个信息：
 
-  待转换的模型权重文件（`checkpoint`）和输出的文件（`out_file`）。
+  待转换的模型权重文件路径（`checkpoint`）和输出的文件路径（`out_file`）。
 
 - 模型转换的典型代码：
 
@@ -43,7 +43,7 @@ model.convert(checkpoint=checkpoint, out_file=out_file)
 ```python
 from MMEdu import MMDetection as det
 model = det(backbone='SSD_Lite')
-checkpoint = 'checkpoints/COCO-80/ssdlite.pth'
+checkpoint = 'ssdlite.pth'
 out_file="COCO-80.onnx"
 model.convert(checkpoint=checkpoint, out_file=out_file)
 ```
@@ -70,7 +70,7 @@ from MMEdu import MMClassification as cls
 model = cls(backbone='MobileNet')
 model.load_dataset(path='/data/TC4V0D/CatsDogsSample') 
 model.save_fold = 'checkpoints/cls_model/CatsDog1' 
-model.train(epochs=5, checkpoint='checkpoints/pretrain_model/mobilenet_v2.pth' ,batch_size=4, lr=0.001, validate=True,device='cuda')
+model.train(epochs=5, checkpoint='checkpoints/pretrain_model/mobilenet_v2.pth' ,batch_size=4, lr=0.001, validate=True)
 ```
 
 **3.推理测试**
@@ -80,15 +80,15 @@ model.train(epochs=5, checkpoint='checkpoints/pretrain_model/mobilenet_v2.pth' ,
 ```python
 from MMEdu import MMClassification as cls
 model = cls(backbone='MobileNet')
-checkpoint = 'checkpoints/cls_model/CatsDog1/best_accuracy_top-1_epoch_1.pth'
-img_path = '/data/TC4V0D/CatsDogsSample/test_set/cat/cat0.jpg'
-result = model.inference(image=img_path, show=True, checkpoint = checkpoint,device='cuda')
+checkpoint = 'best_accuracy_top-1_epoch_1.pth'
+img_path = 'cat0.jpg'
+result = model.inference(image=img_path, show=True, checkpoint = checkpoint)
 x = model.print_result(result)
 print('标签（序号）为：',x[0]['标签'])
 if x[0]['标签'] == 0:
     print('这是小猫，喵喵喵！')
 else:
-    print('这是小猫，喵喵喵！')
+    print('这是小狗，汪汪汪！')
 ```
 
 **4.模型转换**
@@ -96,7 +96,7 @@ else:
 ```python
 from MMEdu import MMClassification as cls
 model = cls(backbone='MobileNet')
-checkpoint = 'checkpoints/cls_model/CatsDog1/best_accuracy_top-1_epoch_1.pth'
+checkpoint = 'best_accuracy_top-1_epoch_1.pth'
 out_file='out_file/cats_dogs.onnx'
 model.convert(checkpoint=checkpoint, out_file=out_file)
 ```
