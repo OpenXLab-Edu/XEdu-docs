@@ -351,7 +351,7 @@ y=model.inference(data)
 
 ### 8. 模型应用
 
-模型应用是将训练好的模型部署到实际场景中，例如集成到网站或移动应用中。一般来说，一个训练模型的工具也会自带了推理功能，如在BaseML训练好模型并保存，下次使用时以同样的方式导入BaseML库并载入模型进行推理即可。还有种方式是借助一些通用的模型推理库，如XEdu工具的XEduHub库，支持推理各种工具训练的模型，此类库的安装一般比机器学习开发工具简单很多。也可以[借助XEduHub库完成推理](https://xedu.readthedocs.io/zh-cn/master/xedu_hub/introduction.html#baseml)和应用，核心代码如下。
+模型应用是将训练好的模型部署到实际场景中，例如集成到网站或移动应用中。一般来说，一个训练模型的工具也会自带了推理功能，如在BaseML训练好模型并保存，下次使用时以同样的方式导入BaseML库并载入模型进行推理即可（参照前文的6.模型推理与7.模型载入）。还有种方式是借助一些通用的模型推理库，如XEdu工具的XEduHub库，支持推理各种工具训练的模型，此类库的安装一般比机器学习开发工具简单很多。也可以[借助XEduHub库完成推理](https://xedu.readthedocs.io/zh-cn/master/xedu_hub/introduction.html#baseml)和应用，核心代码如下。
 
 ```python
 from XEdu.hub import Workflow as wf

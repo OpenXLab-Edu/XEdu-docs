@@ -1748,32 +1748,25 @@ txt_embeddings = txt_emb.inference(data=['a black cat','a yellow cat']) # 模型
 ```python
 from XEdu.hub import Workflow as wf    # 导入库
 audio_emb = wf(task='embedding_audio') # 实例化音频特征提取器
-audios = ['audio/one1.wav',       # 列出音频文件
-          'audio/one2.wav',
-          'audio/two1.wav'
-         ]
+audios = ['audio/one1.wav'] # 指定一个音频文件
+# audios = ['audio/one1.wav',       # 列出音频文件
+#           'audio/one2.wav',
+#         'audio/two1.wav']
 emb_1_0 = audio_emb.inference(data=audios[0]) # 对其中一条音频提取特征
 print('emb_1_0:', emb_1_0)                    # 输出向量（特征提取结果），尺寸为（1，1024）
 print(emb_1_0.shape)
-emb_1 = audio_emb.inference(data=audios)      # 对所有三条音频提取特征
-print('emb_1:', emb_1)                        # 输出向量（特征提取结果），尺寸为（3，1024）
-print(emb_1.shape)
+# emb_1 = audio_emb.inference(data=audios)      # 对所有三条音频提取特征
+# print('emb_1:', emb_1)                        # 输出向量（特征提取结果），尺寸为（3，1024）
+# print(emb_1.shape)
 ```
 
-输出：
+输出结果：
 
 ```
 embedding_audio任务模型加载成功！
 emb_1_0: [[-0.2862173   1.2119608   0.11128665 ...  2.0339718   0.71888524
    0.88252187]]
 (1, 1024)
-emb_1: [[-0.2862173   1.2119608   0.11128665 ...  2.0339718   0.71888524
-   0.88252187]
- [-0.5051102   1.0985973  -0.3483447  ...  2.3230054   0.59379137
-   0.50295925]
- [ 0.17705032  0.27763328 -0.0493612  ...  0.73169625  0.7418523
-   0.81416875]]
-(3, 1024)
 ```
 
 #### 代码解释
@@ -1801,7 +1794,7 @@ audio_embeddings = audio_emb.inference(data=['audio/one1.wav', 'audio/one2.wav']
 
 模型推理`inference()`可传入参数：
 
-- `data`(list/str)：指定待特征提取的音频，wav格式。可以直接传入音频路径`data='audio/one1.wav'` 或者多条音频文件的路径列表`data=['audio/one1.wav', 'audio/one2.wav']`。
+- `data`(list/str)：指定待特征提取的音频，仅支持wav格式。可以直接传入音频路径`data='audio/one1.wav'` 或者多条音频文件的路径列表`data=['audio/one1.wav', 'audio/one2.wav']`。
 
 模型推理返回结果：
 
@@ -1848,7 +1841,7 @@ embedding_audio任务模型加载成功！
 ![](../images/xeduhub/embaudio.png)
 根据上面的输出，可以看到`emb_1`是第一个音频特征提取后的特征向量，通过与二、三两段音频对比，得到相似度矩阵，其中输出的第一个数值代表第一段音频与第二段条音频之间的相似度，第二个数值代表与第三段音频的相似度。显然与第二段音频比较相似，而与第三条音频之间的相似度很低。这是因为我们提供的三段音频都是朗读单词的声音，分别是`demo/audio/one1.wav`, `demo/audio/one2.wav`和`demo/audio/two1.wav`，分别代表读单词one和单词two的时候所录制的声音。自然读one的两段音频相似度更高。
 
-### 拓展-提完了特征能干啥？
+### 拓展-提完了这些特征能干啥？
 
 #### 1.零样本分类
 
