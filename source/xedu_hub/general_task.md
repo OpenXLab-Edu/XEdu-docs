@@ -281,7 +281,7 @@ BaseML模型的task名称为“baseml”（小写），使用方式和其他几�
 ```python
 # 使用BaseML训练的分类模型推理
 from XEdu.hub import Workflow as wf
-baseml = wf(task='baseml',checkpoint='my_CART_model.pkl') # 指定使用的pkl模型
+baseml = wf(task='baseml',checkpoint='baseml.pkl') # 指定使用的pkl模型
 data = [[8, 307, 130]] # 需与训练数据输入维度保持一致
 result= baseml.inference(data=data) # 进行模型推理
 format_output = baseml.format_output(lang='zh') # 推理结果格式化输出
