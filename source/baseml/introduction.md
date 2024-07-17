@@ -123,7 +123,7 @@
 </tbody>
 </table>
 
-## 代码详解
+## 示例代码
 
 核心代码（训练）：
 
@@ -141,7 +141,7 @@ model.save('./mymodel.pkl') # 保存模型供应用
 
 核心代码（推理）：
 
-```
+```python
 from BaseML import Regression as reg # 从库文件中导入回归任务模块
 model = reg('LinearRegression') # 实例化线性回归模型
 model.load('./mymodel.pkl')
@@ -149,6 +149,8 @@ data = [[-1,52, 38]] # 指定一组新数据，根据训练模型时使用的数
 result= model.inference(data=data)# 进行模型推理
 print(result)
 ```
+
+## BaseML代码详解
 
 ### 1. 导入包与搭建模型
 

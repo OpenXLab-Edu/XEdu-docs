@@ -17,31 +17,32 @@ c）同时支持CPU和GPU
 核心代码（训练）：
 
 ```python
-from BaseNN import nn
-model = nn('cls')
-train_path = '../../dataset/iris/iris_training.csv'
-model.load_tab_data(train_path, batch_size=120)
+from BaseNN import nn # 导入包
+model = nn('cls') # 声明分类模型
+train_path = '../../dataset/iris/iris_training.csv' # 指定训练集
+model.load_tab_data(train_path, batch_size=120) # 载入训练集
+# 搭建一个全连接神经网络，输入层数量4，隐藏层2，输出层数量3
 model.add(layer='linear',size=(4, 10),activation='ReLU') 
 model.add(layer='linear',size=(10, 5), activation='ReLU') 
 model.add(layer='linear', size=(5, 3), activation='Softmax') 
-model.save_fold = './iris_ckpt'
-model.train(lr=0.01, epochs=500)
+model.save_fold = './iris_ckpt' # 设置模型保存路径
+model.train(lr=0.01, epochs=500) # 模型训练
 ```
 
 核心代码（推理）：
 
-```
-from BaseNN import nn
-model = nn('cls')
-data = [[5.9, 3. , 4.2, 1.5]]
-checkpoint="iris_ckpt/basenn.pth"
-res = model.inference(data=data, checkpoint=checkpoint)
+```python
+from BaseNN import nn # 导入包
+model = nn('cls') # 声明分类模型
+checkpoint="iris_ckpt/basenn.pth" # 指定模型权重文件
+data = [[5.9, 3.1, 4.2, 1.5]] # 指定一组数据
+res = model.inference(data=data, checkpoint=checkpoint) # 模型推理
 model.print_result(res)
 ```
 
-## 解锁BaseNN基本使用方法
+## BaseNN基本使用方法及代码详解
 
-### 0. 引入包
+### 0. 导入包
 
 ```python
 from BaseNN import nn
@@ -551,12 +552,12 @@ model.train(lr=0.001,epochs=1)
 
 ### 5. 模型推理
 
-可使用以下函数进行推理：
+可使用以下代码进行推理：
 
 ```python
 model = nn('cls') # 声明模型
 checkpoint = 'checkpoints/iris_ckpt/basenn.pth' # 现有模型路径
-result = model.inference(data=test_x, checkpoint=checkpoint) # 直接推理
+result = model.inference(data=data, checkpoint=checkpoint) # 直接推理
 model.print_result(result) # 输出字典格式结果
 ```
 
