@@ -14,7 +14,10 @@ c）同时支持CPU和GPU
 
 ## 示例代码
 
+核心代码（训练）：
+
 ```python
+from BaseNN import nn
 model = nn('cls')
 train_path = '../../dataset/iris/iris_training.csv'
 model.load_tab_data(train_path, batch_size=120)
@@ -25,12 +28,23 @@ model.save_fold = './iris_ckpt'
 model.train(lr=0.01, epochs=500)
 ```
 
+核心代码（推理）：
+
+```
+from BaseNN import nn
+model = nn('cls')
+data = [[5.9, 3. , 4.2, 1.5]]
+checkpoint="iris_ckpt/basenn.pth"
+res = model.inference(data=data, checkpoint=checkpoint)
+model.print_result(res)
+```
+
 ## 解锁BaseNN基本使用方法
 
 ### 0. 引入包
 
 ```python
-from basenn import nn
+from BaseNN import nn
 ```
 
 ### 1. 声明模型
