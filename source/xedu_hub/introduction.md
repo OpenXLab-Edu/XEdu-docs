@@ -76,6 +76,8 @@ basenn.format_output()
 
 ![](../images/xeduhub/tu1.PNG)
 
+
+
 ![](../images/xeduhub/tu2.PNG)
 
 若要查看大图可前往[https://aicarrier.feishu.cn/file/K0oTbWW9mosOGCxIClvcTfpSnDd](https://aicarrier.feishu.cn/file/K0oTbWW9mosOGCxIClvcTfpSnDd)
