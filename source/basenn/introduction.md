@@ -697,7 +697,7 @@ model.visual_feature(img,in1img = True)   # 特征的可视化
 
 ![](../images/basenn/visualization.png)
 
-如输入数据为**一维数组**（同时支持numpy数组或直接List列表格式），指定数据和已经训练好的模型，可生成一个txt文件展示经过各层后的输出。
+如输入数据为**一维数组**或**一维列表**，指定数据和已经训练好的模型，可生成一个txt文件展示经过各层后的输出。
 
 ```python
 import numpy as np
