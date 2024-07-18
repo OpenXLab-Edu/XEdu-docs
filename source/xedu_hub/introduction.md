@@ -94,7 +94,7 @@ XEduHub提供了大量优秀的任务模型，我们不仅可以通过推理模�
 
 只要进入[XEduHub常见模型合集课程](https://www.openinnolab.org.cn/pjedu/courses/courseDetail?courseId=6684e63a545bd744a5d923f8)，展开文件目录进行下载即可。
 
-![](../images/xeduhub/downloadmodel.png)
+![](../images/xeduhub/downloadmodel1.png)
 
 如果没有网络，如何让`Workflow`运行时找到找到模型文件呢？从已下载好的电脑上拷贝ONNX文件，在使用该模型进行推理时使用`download_path`来指定下载模型所在的文件夹位置，具体如何指定见[各预置任务的代码详解](https://xedu.readthedocs.io/zh-cn/master/xedu_hub/preset_task.html)的模型声明部分。
 

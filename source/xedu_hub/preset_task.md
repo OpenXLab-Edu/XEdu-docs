@@ -50,7 +50,7 @@ det_body = wf(task='det_body')
 - `checkpoint`(str)：指定模型文件所在的路径，如`det_body = wf(task='det_body',checkpoint='det_body.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoint”文件夹中寻找与任务名对应的模型文件，即`det_body.onnx`。否则将通过网络到浦源平台的专用地址下载。
 - `download_path`(str)：指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoint”文件夹中，“checkpoint”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制`checkpoint`文件夹。如希望模型保存放在其他路径，则设置`download_path`参数，如`download_path='my_checkpoint'`。注意，`download_path`参数为文件夹名称。
 
-任务模型文件获取与存放请查看[前文](https://xedu.readthedocs.io/zh-cn/master/xedu_hub/introduction.html#id4)
+任务模型文件获取与存放请查看[前文](https://xedu.readthedocs.io/zh-cn/master/xedu_hub/introduction.html#id4)。
 
 ##### 2. 模型推理
 
