@@ -90,13 +90,13 @@ basenn.format_output()
 
 ## 预置任务模型文件的获取
 
-XEduHub提供了大量优秀的任务模型，我们不仅可以通过推理模块`Workflow`实现模型的自动下载，还可以自主通过浦源平台（上海AI实验室的另一个平台）下载。
+XEduHub提供了大量优秀的任务模型，我们不仅可以通过推理模块`Workflow`实现模型的自动下载，还可以自主通过浦育平台下载。
 
-只要进入<a href="https://openxlab.org.cn/models/detail/xedu/hub-model">模型仓库</a>，在`Model File`里就可以看到各种任务模型。网址：<a href="https://openxlab.org.cn/models/detail/xedu/hub-model">https://openxlab.org.cn/models/detail/xedu/hub-model</a>
+只要进入[XEduHub常见模型合集课程](https://www.openinnolab.org.cn/pjedu/courses/courseDetail?courseId=6684e63a545bd744a5d923f8)，展开文件目录进行下载即可。
 
 ![](../images/xeduhub/downloadmodel.png)
 
-没有网络，如何让`Workflow`运行时找到找到模型文件呢？从已下载好的电脑上拷贝ONNX文件，在推理的时候使用`download_path`来指定下载模型所在的文件夹位置。
+如果没有网络，如何让`Workflow`运行时找到找到模型文件呢？从已下载好的电脑上拷贝ONNX文件，在使用该模型进行推理时使用`download_path`来指定下载模型所在的文件夹位置，具体如何指定见[各预置任务的代码详解](https://xedu.readthedocs.io/zh-cn/master/xedu_hub/preset_task.html)的模型声明部分。
 
 ## `Workflow`的预置任务模型检查机制
 
@@ -105,7 +105,7 @@ XEduHub提供了大量优秀的任务模型，我们不仅可以通过推理模�
 1. 本地的同级目录的`checkpoint`文件夹中，与任务同名的模型文件。
 2. 本地缓存中（新版本不再支持）。
 
-如果都没有，就会到网络上下载。
+如果都没有，就会到网络上下载（如何下载见[上文](https://xedu.readthedocs.io/zh-cn/master/xedu_hub/introduction.html#id4)）。
 
 因此，无论是网络下载还是自己训练的模型使用，有三种解决思路：
 
