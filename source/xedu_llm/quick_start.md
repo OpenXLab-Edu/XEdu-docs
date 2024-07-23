@@ -78,13 +78,3 @@ print(chatbot.support_provider(lang = 'zh') ) # 查看XEduLLM中目前提供的�
 ```
 
 获取大语言模型API密钥的流程通常包括在各平台网页上进行用户注册，注册完成后获取相应的算力资源，详细步骤请参考<a href="https://xedu.readthedocs.io/zh-cn/master/xedu_llm/how_to_get_API_key.html">API与密钥获取</a>。
-
-## 体验XEduLLM的更多功能
-
-体验XEduLLM的最快速方式是通过OpenInnoLab平台。
-
-OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台，满足青少年的AI学习和创作需求，支持在线编程。在“项目”中查看更多，查找“XEduLLM”即可找到所有XEduLLM相关的体验项目。
-
-XEduLLM实例代码合集：敬请期待……
-
-（用Chrome浏览器打开效果最佳）

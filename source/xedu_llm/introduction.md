@@ -365,7 +365,60 @@ chatbot.run()
 更多的Prompt案例，可以参考[这里](https://github.com/langgptai/wonderful-prompts)。
 
 ## 应用案例
-### 案例一：我的Q宝（流式响应语音回复）
+借助XEduLLM的功能，我们可以开发很多有意思的应用，包括纯软件类应用，软硬件结合的应用……此部分为您提供几个小案例。
+
+### 案例一：编程助手
+
+我们可以用简单的代码实现向大模型API提问真的很酷，还能直接启动基于网页的聊天机器人服务，能不能在这基础上自己做一个个性化的小助手应用呢？答案是可以的，比如下图便是我用XEduLLM和Gradio做的一个很简单的编程助手，它使用XEduLLM的最简代码实现。
+
+![](../images/xedullm/code_help.png)
+
+实现代码：
+
+```
+import gradio as gr
+from XEdu.LLM import Client
+
+# 使用你的API密钥实例化客户端
+chatbot = Client(provider='XXXXX',
+               api_key="XXXXXX")
+
+def check_code_errors(code):
+    # 调用推理接口，检查代码中的错误
+    res = chatbot.inference(f'检查以下代码中的错误并给出建议：\n{code}')
+    return res
+
+def explain_code(code):
+    # 调用推理接口，解释代码
+    res = chatbot.inference(f'解释以下代码的功能：\n{code}')
+    return res
+
+# 使用 Gradio Blocks API 定义界面
+with gr.Blocks() as demo:
+    gr.Markdown("# 编程助手")
+    gr.Markdown("输入你的代码，检查其中的错误并获取建议，或获取代码的功能解释。")
+
+    with gr.Row():
+        code_input = gr.Textbox(lines=10, label="输入代码")
+
+    with gr.Row():
+        error_button = gr.Button("检查错误")
+        explain_button = gr.Button("解释代码")
+
+    error_output = gr.Textbox(label="错误检查结果")
+    explain_output = gr.Textbox(label="代码解释结果")
+
+    error_button.click(check_code_errors, inputs=code_input, outputs=error_output)
+    explain_button.click(explain_code, inputs=code_input, outputs=explain_output)
+
+# 启动 Gradio 界面
+demo.launch()
+```
+
+欢迎基于上述代码进行功能优化。
+
+### 案例二：我的Q宝（流式响应语音回复）
+
 之前看到B站上有很多“[Q宝](https://baike.baidu.com/item/q%E5%AE%9D/3648000?fr=ge_ala)”语音奇迹人的视频，我们能不能自己做一个呢？当然可以！
 默认对话需要等服务计算完整回答后反馈，会有很长的等待时间，让人感觉很不流畅。如果开启stream流式对话，就会好很多。（缩短响应等待时间，但结果会分多次返回）
 
@@ -381,7 +434,7 @@ for i in res:
     pyttsx3.speak(i)
 ```
 
-### 案例二：气象专家
+### 案例三：气象专家
 大模型是一个很厉害的角色，我可以通过pinpong、siot等读取当前的传感器参数，让大模型帮我分析，这样，我就不用自己训练模型来分析啦！
 ```python
 # 省略导入库和获取传感器信息的过程，传感器数据已经存储在变量value中。
@@ -389,7 +442,7 @@ res = chatbot.inference("请你作为气象专家，帮我分析："+ value + "�
 print(res)
 pyttsx3.speak(res)
 ```
-### 案例三：历史上的今天
+### 案例四：历史上的今天
 根据日期回顾历史上这个日期发生的重要事迹。
 ```python
 from XEdu.LLM import Client
@@ -415,7 +468,7 @@ pyttsx3.speak(res)
 
 这些事件只是其中的一部分，历史上的每一天都有许多不同的事件发生。
 ```
-### 案例四：逻辑推理问答机器人
+### 案例五：逻辑推理问答机器人
 模型微调是一个很有趣的事情，我们可以定义自己的模型能力，然后让他帮我们完成设定好的特定任务。其中一种最简单的方式是Prompt定制，网上有很多好玩的Prompt示例，例如[这里](https://github.com/langgptai/wonderful-prompts)就有很多很棒的例子。我们可以利用多轮对话的方式，实现类似的效果。
 ```python
 from XEdu.LLM import Client
@@ -438,3 +491,5 @@ Transformer->自注意力机制->序列建模改进->预训练模型发展->GPT
 4. 预训练模型发展：Transformer的成功推动了预训练模型的发展，即在大规模无标注文本上预先训练模型，然后在特定任务上进行微调。这种范式降低了对大量标注数据的依赖，提高了模型的泛化能力。
 5. GPT：OpenAI的GPT（Generative Pre-trained Transformer）系列是基于Transformer架构的预训练模型，它使用自注意力机制进行语言建模，展示了强大的语言生成和理解能力，如GPT-3更是成为了预训练模型领域的里程碑式作品。
 ```
+
+### 
