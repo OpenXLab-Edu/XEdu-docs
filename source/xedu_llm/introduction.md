@@ -275,7 +275,7 @@ chatbot = Client(provider='moonshot',
 chatbot.run(host='127.0.0.1', port=7860)
 ```
 
-此方法默认方式只能本机访问，不适合需要在局域网或互联网中共享的场景。且并发处理能力有限，依赖于 Gradio 库的性能。
+此方法默认方式只能本机访问，不适合需要在局域网或互联网中共享的场景。且并发处理能力有限，依赖于 [Gradio库](https://xedu.readthedocs.io/zh-cn/master/how_to_use/scitech_tools/gradio.html)的性能。
 
 ### 功能五：聊天机器人的二次分发
 
@@ -369,7 +369,7 @@ chatbot.run()
 
 ### 案例一：编程助手
 
-利用简单的代码，我们可以实现向大模型API提问的功能，这非常酷，还能直接启动基于网页的聊天机器人服务。能不能在此基础上自己做一个个性化的小助手应用呢？答案是可以的。比如下图展示的是我用XEduLLM和Gradio制作的一个简单的编程助手，它使用了XEduLLM的最简代码实现。
+利用简单的代码，我们可以实现向大模型API提问的功能，这非常酷，还能直接启动基于网页的聊天机器人服务。能不能在此基础上自己做一个个性化的小助手应用呢？答案是可以的。比如下图展示的是我用XEduLLM和[Gradio](https://xedu.readthedocs.io/zh-cn/master/how_to_use/scitech_tools/gradio.html)制作的一个简易编程助手，它使用了XEduLLM的最简代码实现。
 
 ![](../images/xedullm/code_help.png)
 
@@ -415,7 +415,7 @@ with gr.Blocks() as demo:
 demo.launch()
 ```
 
-欢迎基于上述代码进行功能优化。如果您觉得上面这段代码还有点复杂，其实还有种更加简单的方式，那就是只设置一个按钮，如下代码是结合了XEduLLM的最简代码和Gradio的最简代码，实现的一个简简单单的"编程错误检查系统"。
+欢迎基于上述代码进行功能优化。如果您觉得上面这段代码还有点复杂，其实还有种更加简单的方式，那就是只设置一个按钮，如下代码是结合了XEduLLM的最简代码和[Gradio](https://xedu.readthedocs.io/zh-cn/master/how_to_use/scitech_tools/gradio.html)的最简代码，实现的一个简简单单的"编程错误检查系统"。
 
 ```
 import gradio as gr
