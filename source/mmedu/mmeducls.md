@@ -37,7 +37,7 @@ from MMEdu import MMClassification as cls
 训练代码如下：
 
 ```python
-model = cls('LeNet') # 实例化模型，不指定参数即使用默认参数。
+model = mmeducls('LeNet') # 实例化模型，不指定参数即使用默认参数。
 model.num_classes = 3 # 指定数据集中的类别数量
 model.load_dataset(path='../dataset/cls/hand_gray') # 从指定数据集路径中加载数据
 model.save_fold = '../checkpoints/cls_model/hand_gray' # 设置模型的保存路径
@@ -162,7 +162,7 @@ accuracy_top-5：对一张图片，如果预测概率前五名的答案中出现
 
 ```python
 img = 'testrock01-02.png' # 指定待推理的图片路径
-model = cls('LeNet') # 实例化图像分类模型
+model = mmeducls('LeNet') # 实例化图像分类模型
 model.checkpoint='../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的模型权重文件
 result = model.inference(image=img, show=True, checkpoint=checkpoint) # 在CPU上进行推理
 model.print_result() # 输出结果，可以修改参数show的值来决定是否需要显示结果图片，默认显示结果图片
@@ -180,7 +180,7 @@ model.print_result() # 输出结果，可以修改参数show的值来决定是�
 
 ```python
 img = 'cls_testIMG/' # 指定进行推理的一组图片的路径
-model = cls('LeNet') # 实例化MMEdu图像分类模型
+model = mmeducls('LeNet') # 实例化MMEdu图像分类模型
 model.checkpoint='../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的模型权重文件
 result = model.inference(image=img, show=True, checkpoint=checkpoint) # 在CPU上进行推理
 model.print_result(result) # 输出结果，可以修改参数show的值来决定是否需要显示结果图片，默认显示结果图片
@@ -200,7 +200,7 @@ img = 'testrock01-02.png' # 指定推理图片的路径，直接在代码所在�
 - **实例化模型**
 
 ```python
-model = cls('LeNet') # 实例化MMEdu图像分类模型
+model = mmeducls('LeNet') # 实例化MMEdu图像分类模型
 ```
 
 这里对于`MMEdu`图像分类模型提供的参数进行解释，支持传入的参数是`backbone`。
@@ -273,7 +273,7 @@ result = model.fast_inference(image=img)
 在这一步中，我们将学习如何加载之前训练过的模型接着训练。如果觉得之前训练的模型epoch数不够的话或者因为一些客观原因而不得不提前结束训练，相信下面的代码会帮到您。
 
 ```python
-model = cls('LeNet') # 初始化实例模型
+model = mmeducls('LeNet') # 初始化实例模型
 model.num_classes = 3 # 指定数据集中的类别数量
 model.load_dataset(path='../dataset/cls/hand_gray') # 配置数据集路径
 model.save_fold = '../checkpoints/cls_model/hand_gray' # 设置模型的保存路径

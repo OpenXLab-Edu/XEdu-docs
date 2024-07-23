@@ -59,7 +59,7 @@ from MMEdu import MMDetection as det
 训练代码如下：
 
 ~~~python
-model = det('FasterRCNN') # 实例化模型，不指定参数即使用默认参数
+model = mmedudet('FasterRCNN') # 实例化模型，不指定参数即使用默认参数
 model.num_classes = 1 # 进行车牌识别，此时只有一个类别。
 model.load_dataset(path='../dataset/det/coco') # 从指定数据集路径中加载数据
 model.save_fold = '../checkpoints/det_model/plate' # 设置模型的保存路径
@@ -72,7 +72,7 @@ model.train(epochs=3, validate=True) # 设定训练的epoch次数以及是否进
 - **实例化模型**
 
 ```python
-model = det('FasterRCNN') # 初始化实例模型
+model = mmedudet('FasterRCNN') # 初始化实例模型
 ```
 
 这里对于MMEdu目标检测模块提供的参数进行解释，`支持传入的参数是`backbone`。也可以写成“backbone='FasterRCNN'”，强化一下，这是一个网络的名称。
@@ -173,7 +173,7 @@ model.train(epochs=10, validate=True) # 设定训练的epoch次数以及是否�
 
 ```python
 img = 'car_plate.png' # 指定进行推理的图片路径，我们使用demo文件夹中提供的图片
-model = det('FasterRCNN') # 初始化实例模型
+model = mmedudet('FasterRCNN') # 初始化实例模型
 checkpoint = '../checkpoints/det_model/plate/latest.pth' # 指定使用的模型权重文件
 result = model.inference(image=img, show=True, checkpoint = checkpoint) # 在CPU上进行推理
 model.print_result() # 输出结果
@@ -190,7 +190,7 @@ model.print_result() # 输出结果
 
 ~~~python
 img = 'det_testIMG/' # 指定进行推理的一组图片的路径
-model = det('FasterRCNN') # 初始化实例模型
+model = mmedudet('FasterRCNN') # 初始化实例模型
 checkpoint = '../checkpoints/det_model/plate/latest.pth' # 指定使用的模型权重文件
 result = model.inference(image=img, show=True, checkpoint = checkpoint) # 在CPU上进行推理
 model.print_result() # 输出结果
@@ -216,7 +216,7 @@ img = 'car_plate.png' # 指定推理图片的路径，直接在代码所在的de
 - **实例化模型并指定模型权重文件**
 
 ```python
-model = det('FasterRCNN') # 初始化实例模型
+model = mmedudet('FasterRCNN') # 初始化实例模型
 checkpoint = '../checkpoints/det_model/plate/latest.pth' # 指定使用的模型权重文件
 ```
 
@@ -283,7 +283,7 @@ result = model.fast_inference(image=img)
 在这一步中，我们将学习如何加载之前训练过的模型接着训练。如果觉得之前训练的模型epoch数不够的话或者因为一些客观原因而不得不提前结束训练，相信下面的代码会帮到您。
 
 ~~~python
-model = det('FasterRCNN') # 初始化实例模型
+model = mmedudet('FasterRCNN') # 初始化实例模型
 model.num_classes = 1  # 进行车牌识别，此时只有一个类别。
 model.load_dataset(path='../dataset/det/coco') # 配置数据集路径
 model.save_fold = '../checkpoints/det_model/plate' # 设置模型的保存路径
