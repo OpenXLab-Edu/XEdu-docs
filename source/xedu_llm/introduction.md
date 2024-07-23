@@ -415,7 +415,33 @@ with gr.Blocks() as demo:
 demo.launch()
 ```
 
-欢迎基于上述代码进行功能优化。
+欢迎基于上述代码进行功能优化。如果您觉得上面这段代码还有点复杂，其实还有种更加简单的方式，那就是只设置一个按钮，如下代码是结合了XEduLLM的最简代码和Gradio的最简代码，实现的一个简简单单的"编程错误检查系统"。
+
+```
+import gradio as gr
+from XEdu.LLM import Client
+
+# 使用你的API密钥实例化客户端
+chatbot = Client(provider='XXXXX',
+               api_key="XXXXXX")
+
+def check_code_errors(code):
+    # 调用推理接口，检查代码中的错误
+    res = chatbot.inference(f'检查以下代码中的错误并给出建议：\n{code}')
+    return res
+
+# 定义 Gradio 接口
+interface = gr.Interface(
+    fn=check_code_errors,          # 调用的函数
+    inputs="textbox",              # 输入类型
+    outputs="text",                # 输出类型
+    title="编程错误检查系统",        # 标题
+    description="输入你的代码，检查其中的错误并获取建议。"  # 描述
+)
+
+# 启动 Gradio 接口
+interface.launch()
+```
 
 ### 案例二：我的Q宝（流式响应语音回复）
 
