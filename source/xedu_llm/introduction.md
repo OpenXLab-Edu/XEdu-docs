@@ -375,7 +375,7 @@ chatbot.run()
 
 实现代码：
 
-```
+```python
 import gradio as gr
 from XEdu.LLM import Client
 
@@ -417,7 +417,7 @@ demo.launch()
 
 欢迎基于上述代码进行功能优化。如果您觉得上面这段代码还有点复杂，其实还有种更加简单的方式，那就是只设置一个按钮，如下代码是结合了XEduLLM的最简代码和[Gradio](https://xedu.readthedocs.io/zh-cn/master/how_to_use/scitech_tools/gradio.html)的最简代码，实现的一个简简单单的"编程错误检查系统"。
 
-```
+```python
 import gradio as gr
 from XEdu.LLM import Client
 
