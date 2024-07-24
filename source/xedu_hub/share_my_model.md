@@ -11,7 +11,7 @@
 from XEdu.hub import Workflow as wf
 img_path = 'ele.jpg'
 model = wf(repo='fhl123/mobileone_test')
-result = mm.inference(data=img_path)
+result = model.inference(data=img_path)
 print(result)
 ```
 ### 原理分析
@@ -26,7 +26,7 @@ print(result)
 def inference(img_path):
     from XEdu.hub import Workflow as wf
     model = wf(task='mmedu',checkpoint='cat_dog.onnx')
-    result = mm.inference(data=img_path)
+    result = model.inference(data=img_path)
     return result
 ```
 确保模型配合代码可以正常运行即可。
@@ -44,7 +44,7 @@ def inference(img_path):
 from XEdu.hub import Workflow as wf
 img_path = 'cat.jpg'
 model = wf(repo='XXXXXXXXXX')
-result = mm.inference(data=img_path)
+result = model.inference(data=img_path)
 print(result)
 ```
 看起来运行一切正常，那么就ok啦！如果有问题的话，我们就需要调整一下代码，确保可以运行后，再分享出来。
