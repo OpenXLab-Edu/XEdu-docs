@@ -19,8 +19,8 @@ MMEdu内置了一个`convert`函数，来实现了一键式模型转换，转换
 - 模型转换的典型代码：
 
 ```python
-from MMEdu import MMClassification as cls
-model = cls(backbone='MobileNet')
+from MMEdu import MMClassification as mmeducls
+model = mmeducls(backbone='MobileNet')
 checkpoint = 'checkpoints/cls_model/CatsDog/best_accuracy_top-1_epoch_2.pth'
 out_file="catdog.onnx"
 model.convert(checkpoint=checkpoint, out_file=out_file)
@@ -41,8 +41,8 @@ model.convert(checkpoint=checkpoint, out_file=out_file)
 类似的，目标检测模型转换的示例代码如下：
 
 ```python
-from MMEdu import MMDetection as det
-model = det(backbone='SSD_Lite')
+from MMEdu import MMDetection as mmedudet
+model = mmedudet(backbone='SSD_Lite')
 checkpoint = 'ssdlite.pth'
 out_file="COCO-80.onnx"
 model.convert(checkpoint=checkpoint, out_file=out_file)
@@ -66,8 +66,8 @@ model.convert(checkpoint=checkpoint, out_file=out_file)
 如下代码是使用基于MobileNet网络训练的猫狗识别预训练模型，模型训练是在预训练模型基础上继续训练。基于预训练模型继续训练可起到加速训练的作用，并且通常会使得模型达到更好的效果。
 
 ```python
-from MMEdu import MMClassification as cls
-model = cls(backbone='MobileNet')
+from MMEdu import MMClassification as mmeducls
+model = mmeducls(backbone='MobileNet')
 model.load_dataset(path='/data/TC4V0D/CatsDogsSample') 
 model.save_fold = 'checkpoints/cls_model/CatsDog1' 
 model.train(epochs=5, checkpoint='checkpoints/pretrain_model/mobilenet_v2.pth' ,batch_size=4, lr=0.001, validate=True)
@@ -78,8 +78,8 @@ model.train(epochs=5, checkpoint='checkpoints/pretrain_model/mobilenet_v2.pth' ,
 使用MMEdu图像分类模块模型推理的示例代码完成模型推理。返回的数据类型是一个字典列表（很多个字典组成的列表）类型的变量，内置的字典表示分类的结果，如“`{'标签': 0, '置信度': 0.9417100548744202, '预测结果': 'cat'}`”，我们可以用字典访问其中的元素。巧用预测结果设置一些输出。如：
 
 ```python
-from MMEdu import MMClassification as cls
-model = cls(backbone='MobileNet')
+from MMEdu import MMClassification as mmeducls
+model = mmeducls(backbone='MobileNet')
 checkpoint = 'best_accuracy_top-1_epoch_1.pth'
 img_path = 'cat0.jpg'
 result = model.inference(image=img_path, show=True, checkpoint = checkpoint)
@@ -94,8 +94,8 @@ else:
 **4.模型转换**
 
 ```python
-from MMEdu import MMClassification as cls
-model = cls(backbone='MobileNet')
+from MMEdu import MMClassification as mmeducls
+model = mmeducls(backbone='MobileNet')
 checkpoint = 'best_accuracy_top-1_epoch_1.pth'
 out_file='out_file/cats_dogs.onnx'
 model.convert(checkpoint=checkpoint, out_file=out_file)

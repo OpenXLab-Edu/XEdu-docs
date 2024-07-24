@@ -124,7 +124,7 @@ model.print_result(result) # 输出推理结果
 
 我们的小目标就达成了！一个手写体数字识别模型就训练好了，此时你肯定还不过瘾，还想使用MMEdu基于各种数据集来训练模型去解决各种分类问题也很方便！只需要对手写体识别训练的代码稍作改动即可。首先思考自己想要解决的分类问题，收集数据并整理好数据集，如想要解决猫狗识别问题需准备猫狗数据集。
 
-可以通过<a href="https://www.openinnolab.org.cn/pjlab/project?id=63801c0701df4535876b6a4e&sc=635638d69ed68060c638f979#public">《用MMEdu实现MNIST手写体数字识别（NOTEBOOK）》项目</a>中的"3.从mnist手写体数字识别到猫狗分类.ipynb"文件进行案例学习。更多案例可以参考详见项目集区域，这里的AI特色工具专区展示了一些有助于深度学习和机器学习入门和进阶的案例。 当然你也可以在AI项目工坊创建自己的项目，做自己的人工智能案例。MMEdu工具有<a href="https://xedu.readthedocs.io/zh-cn/master/mmedu/mmclassification.html#mmclassification">图像分类模块</a>、<a href="https://xedu.readthedocs.io/zh-cn/master/mmedu/mmdetection.html">目标检测模块</a>等模块，请继续阅读文档，了解并掌握MMEdu的各个模块。
+可以通过<a href="https://www.openinnolab.org.cn/pjlab/project?id=63801c0701df4535876b6a4e&sc=635638d69ed68060c638f979#public">《用MMEdu实现MNIST手写体数字识别（NOTEBOOK）》项目</a>中的"3.从mnist手写体数字识别到猫狗分类.ipynb"文件进行案例学习。更多案例可以参考详见项目集区域，这里的AI特色工具专区展示了一些有助于深度学习和机器学习入门和进阶的案例。 当然你也可以在AI项目工坊创建自己的项目，做自己的人工智能案例。MMEdu工具有[图像分类模块](https://xedu.readthedocs.io/zh-cn/master/mmedu/mmeducls.html)、[目标检测模块等模块](https://xedu.readthedocs.io/zh-cn/master/mmedu/mmedudet.html#mmedudet)，请继续阅读文档，了解并掌握MMEdu的各个模块。
 
 ![](../images/mmedu/XEduItemSet.png)
 
