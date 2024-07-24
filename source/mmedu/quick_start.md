@@ -75,8 +75,8 @@ OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台�
 一个典型的模型训练代码：
 
 ```python
-from MMEdu import MMClassification as cls # 导入库
-model = cls(backbone='LeNet') # 实例化模型
+from MMEdu import MMClassification as mmeducls # 导入库
+model = mmeducls(backbone='LeNet') # 实例化模型
 model.num_classes = 3 # 配置基本信息（类别数量）
 model.load_dataset(path='./dataset') # 指定数据集路径
 model.save_fold = './my_model' # 指定模型保存集路径
@@ -89,8 +89,8 @@ model.train(epochs=10, validate=True) # 训练模型
 如果觉得效果不够好，请继续训练（实际上就是“迁移学习”）：
 
 ```python
-from MMEdu import MMClassification as cls
-model = cls(backbone='LeNet')
+from MMEdu import MMClassification as mmeducls
+model = mmeducls(backbone='LeNet')
 model.num_classes = 3
 model.load_dataset(path='./dataset')
 model.save_fold = './my_model'
@@ -107,9 +107,9 @@ model.train(epochs=10, validate=True, checkpoint=checkpoint) # 训练模型
 模型训练好后，就可以测试效果了。代码中img的路径就是用于测试的新图片。
 
 ```python
-from MMEdu import MMClassification as cls # 导入库
+from MMEdu import MMClassification as mmeducls # 导入库
 img = './img.png' # 指定图片
-model = cls(backbone='LeNet') # 实例化模型
+model = mmeducls(backbone='LeNet') # 实例化模型
 checkpoint = './latest.pth' # 指定模型保存路径
 result = model.inference(image=img, show=True, checkpoint = checkpoint) # 开始推理
 model.print_result(result) # 输出推理结果
