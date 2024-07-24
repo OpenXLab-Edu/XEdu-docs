@@ -140,7 +140,7 @@ with open(c_file,'a') as f:
     s=str(class_name)+','+str(class_index)+'\n'
     f.write(s)
 
-pose = wf(task='hand')
+pose = wf(task='pose_hand21')
 feature_data=[]
 cnt=0
 from time import sleep
