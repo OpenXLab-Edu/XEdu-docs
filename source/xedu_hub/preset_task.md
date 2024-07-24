@@ -1865,11 +1865,17 @@ get_similarity(image_embeddings, txt_embeddings,method='cosine') # 计算相似�
 
 现在我们可以看到cat.jpg与'a black cat'向量的相似度为0.007789988070726395，而与'a yellow cat'向量的相似度为0.9922100305557251。显而易见，这张可爱的黄色猫咪图像与'a yellow cat'文本描述更为贴近。
 
-#### 2.情感分析
+#### 2.基于文本向量化的文本分类
 
 可以做分析用户上传的文本，推断用户的情感状态并提供个性化的服务。实现方式是对文本数据进行标注情感状态，借助文本嵌入模型完成文本向量化，进而整理好一个数据集，再借助训练工具完成情感状态分类模型训练。
 
 参考项目：[基于影评数据训练情感分类模型](https://www.openinnolab.org.cn/pjlab/project?id=667a6757a4f8ca4aa8f80f87&backpath=/pjedu/userprofile?slideKey=project)
+
+#### 3.基于音频向量化的音频分类
+
+可以通过音频向量化技术，将音频信号转换为机器学习模型可处理的向量，并利用这些向量进行音频分类。该方法不仅提高了音频分类的准确性，还增强了模型的泛化能力。
+
+参考项目：[基于音频向量化的温州方言分类](https://www.openinnolab.org.cn/pjlab/project?id=6694bb6b73d03e532a5ccc7e&backpath=/pjedu/userprofile?slideKey=project#public)
 
 ## 8. 图像分割
 
