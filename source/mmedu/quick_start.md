@@ -116,7 +116,7 @@ model.print_result(result) # 输出推理结果
 ```
 打开<a href="https://www.openinnolab.org.cn/pjlab/project?id=63801c0701df4535876b6a4e&sc=635638d69ed68060c638f979#public">《用MMEdu实现MNIST手写体数字识别（NOTEBOOK）》项目</a>中的"2.mnist手写体数字识别-推理.ipynb"文件跟随说明完成推理代码运行。示例代码中共7行代码，完成了导入库、指定图片、实例化模型、指定模型保存的路径、开始推理、输出推理结果。根据推理结果可以完成各种其他输出。
 
-如需了解代码规则和参数信息，以及图像分类模块的更多使用说明，请看<a href="https://xedu.readthedocs.io/zh-cn/master/mmedu/mmclassification.html#mmclassification)">"解锁图像分类模块：MMClassification"</a>。
+如需了解代码规则和参数信息，以及图像分类模块的更多使用说明，请看[后文](https://xedu.readthedocs.io/zh-cn/master/mmedu/mmeducls.html)。
 
 
 
