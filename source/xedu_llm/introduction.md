@@ -379,18 +379,22 @@ chatbot.run()
 import gradio as gr
 from XEdu.LLM import Client
 
-# 使用你的API密钥实例化客户端
-chatbot = Client(provider='XXXXX',
-               api_key="XXXXXX")
+# 使用你的 API 密钥实例化客户端
+provider = 'qwen' # 选择模型为阿里-通义千问
+# 填写用户密钥，用于确定身份，若失效，请自行注册：https://dashscope.console.aliyun.com/apiKey 
+api_key ='sk-946498*************32ae4'
+chatbot = Client(provider = provider, api_key = api_key) 
 
 def check_code_errors(code):
     # 调用推理接口，检查代码中的错误
-    res = chatbot.inference(f'检查以下代码中的错误并给出建议：\n{code}')
+    prompt = f'你是我的编程助手，请帮我检查以下代码，并给出修改建议。\n{code}'
+    res = chatbot.inference(prompt)
     return res
 
 def explain_code(code):
     # 调用推理接口，解释代码
-    res = chatbot.inference(f'解释以下代码的功能：\n{code}')
+    prompt = f'你是我的编程助手，请帮我解释以下代码的功能：\n{code}'
+    res = chatbot.inference(prompt)
     return res
 
 # 使用 Gradio Blocks API 定义界面
@@ -421,13 +425,16 @@ demo.launch()
 import gradio as gr
 from XEdu.LLM import Client
 
-# 使用你的API密钥实例化客户端
-chatbot = Client(provider='XXXXX',
-               api_key="XXXXXX")
+# 使用你的 API 密钥实例化客户端
+provider = 'qwen' # 选择模型为阿里-通义千问
+# 填写用户密钥，用于确定身份，若失效，请自行注册：https://dashscope.console.aliyun.com/apiKey 
+api_key ='sk-946498*************32ae4'
+chatbot = Client(provider = provider, api_key = api_key) 
 
 def check_code_errors(code):
     # 调用推理接口，检查代码中的错误
-    res = chatbot.inference(f'检查以下代码中的错误并给出建议：\n{code}')
+    prompt = f'你是我的编程助手，请帮我检查以下代码，并给出修改建议。\n{code}'
+    res = chatbot.inference(prompt)
     return res
 
 # 定义 Gradio 接口
