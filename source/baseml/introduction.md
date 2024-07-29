@@ -82,7 +82,7 @@
     <td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn-tree-decisiontreeclassifier">分类</a>/<a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html#sklearn-tree-decisiontreeregressor">回归</a></td>
     <td>适用于客户分级、疾病诊断等。</td>
     <td>决策树算法将数据看作树的若干片叶子。在每一个树杈位置，决策树都根据特征的不同而划分，将不同的叶子分在不同的枝干上，算法根据最优划分方法，将误差降到最低。该算法解释性强，在解决各种问题时都有良好表现。此处使用决策树分类（CART）完成分类任务。想象你在做一个选择（比如选择餐馆），你可能会根据一系列问题（离家近不近？价格怎么样？）来决定。决策树算法就是通过一系列问题来达到决策的过程。</td>
-    <td>criterion='squared_error', max_depth=None, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features=None</td>
+    <td>criterion='', max_depth=None, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features=None</td>
   </tr>
 </tbody>
 <tbody>
@@ -91,7 +91,7 @@
     <td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn-ensemble-randomforestclassifier">分类</a>/<a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html#sklearn-ensemble-randomforestregressor">回归</a></td>
     <td>信用评分、医疗分析、股票市场行为等。</td>
     <td>随机森林算法是一种基于集成学习的算法，通过构建多棵决策树并将它们的预测结果进行集成，从而降低风险。它能够处理多特征数据，并自动选择最相关特征，从而提升模型准确率。如果你问很多朋友一个问题，并根据他们的回答来做决定，那么你就用了随机森林的思想。它建立了很多个决策树，并综合它们的意见来做出最终的决策。</td>
-    <td>n_estimators=100, criterion='squared_error', max_depth=None, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features=1.0, bootstrap=True, oob_score=False, warm_start=False</td>
+    <td>n_estimators=100, criterion='', max_depth=None, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features=1.0, bootstrap=True, oob_score=False, warm_start=False</td>
   </tr>
 </tbody>
 <tbody>
@@ -100,7 +100,7 @@
     <td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html#sklearn-ensemble-adaboostclassifier">分类</a>/<a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostRegressor.html#sklearn-ensemble-adaboostregressor">回归</a></td>
     <td>人脸识别、客户流失预测、分类任务等。</td>
     <td>自适应增强算法（Adaptive Boosting，AdaBoost）是一种迭代算法，需要经历多个阶段，在每个阶段都增加一个新的智能体帮助判断，直到达到足够小的错误率。这种算法在各领域都表现出超凡的能力。想象一个团队里有很多成员，每个人在第一次做决策时可能不是很准确。但随着时间的推移，团队成员学习如何根据过去的错误来改进，使得整个团队的决策越来越好。</td>
-    <td>n_estimators=50, learning_rate=1.0, loss='linear'</td>
+    <td>n_estimators=50, learning_rate=1.0</td>
   </tr>
 </tbody>
 <tbody>
@@ -109,7 +109,7 @@
     <td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPClassifier.html#sklearn-neural-network-mlpclassifier">分类</a>/<a href="https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html#sklearn-neural-network-mlpregressor">回归</a></td>
     <td>适用于语音识别、手写识别、自然语言处理等。</td>
     <td>多层感知机算法是一种深度学习算法。它通过模拟大脑的神经元系统，将信号通过突触传递到与之相关的神经元中，如果传递正确，这样的传递就会被强化，从而逐渐构成模型。它可以自动学习到输入特征之间非常复杂的关系。但是，它的训练时间可能会较长，且依赖大量训练数据。想象你在通过多层不同的筛子来过滤沙子，每层筛子的网眼大小不同。沙子在通过每层筛子时都会被进一步细分。多层感知机就是通过多层处理（神经网络层）来从数据中学。</td>
-    <td>hidden_layer_sizes=(100,), activation='relu', *, solver='adam', alpha=0.0001, batch_size='auto', learning_rate='constant', learning_rate_init=0.001, power_t=0.5, max_iter=200, shuffle=True, tol=0.0001, verbose=False, warm_start=False, momentum=0.9, nesterovs_momentum=True, early_stopping=False, validation_fraction=0.1, beta_1=0.9, beta_2=0.999, epsilon=1e-08, n_iter_no_change=10, max_fun=15000</td>
+    <td>hidden_layer_sizes=(100,), activation='relu', solver='adam', batch_size='auto', learning_rate_init=0.001, max_iter=200, shuffle=True</td>
   </tr>
 </tbody>
 <tbody>
@@ -186,13 +186,16 @@ model.set_para(hidden_layer_sizes=(100,200), activation='relu', solver='adam')
 
 ```python
 from BaseML import Regression as reg
-reg.__doc__
+print(reg.__doc__)
+# BaseML中的回归模块,包含['LinearRegression'(线性回归), 'CART'(决策树回归), 'RandomForest'(随机森林回归),'Polynomial'(多项式回归), 'Lasso'(角回归), 'Ridge'(岭回归), 'SVM'(支持向量机回归), 'AdaBoost'(自适应增强回归), 'MLP'(多层感知机回归)]回归算法.
 
 from BaseML import Classification as cls
-cls.__doc__
+print(cls.__doc__)
+# BaseML中的分类模块,包含['KNN'(K近临分类), 'SVM'(支持向量机分类), 'NaiveBayes'(朴素贝叶斯分类), 'CART'(决策树分类), 'AdaBoost'(自适应增强分类), 'MLP'(多层感知机分类), 'RandomForest'(随机森林分类)]分类算法.
 
 from BaseML import Cluster as clt
-clt.__doc__
+print(clt.__doc__)
+# BaseML中的聚类模块,包含['Kmeans'(K均值聚类), 'Spectral clustering'(谱聚类), 'Agglomerative clustering'(层次聚类), 'Birch'(二叉可伸缩聚类树聚类)]聚类算法.
 ```
 
 ### 2. 数据载入
