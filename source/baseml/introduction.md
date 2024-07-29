@@ -208,9 +208,11 @@ BaseML库支持各种形式载入数据。
 
 该方法对CSV文件有严格格式要求：数据文件每行一条记录，输入数据（特征）列在前，输出数据（目标或标签）列在后，即最后一列为输出数据，其余列为输入数据。要求数据类型为数值类型且无缺失值。此方式默认载入数据集的全部特征和最后一列的标签列。
 
+- 注意：如果是聚类算法，通常没有明确的分类输出标签列，因此不能直接使用该函数。
+
 示例代码：
 
-```
+```python
 model.load_tab_data('data/Height_data_train.csv')
 ```
 
@@ -234,9 +236,9 @@ model.load_tab_data('data/Height_data_train.csv')
 
 示例
 
-```
+```python
 # 载入数据集，并说明特征列和标签列
-model.load_dataset('./lenses.csv', type ='csv', x_column = [1,2,3,4],y_column=[5])
+model.load_dataset('./lenses.csv', type ='csv', x_column = [1,2,3,4],y_column=[5],shuffle=Flase)
 ```
 
 参数说明：
@@ -302,7 +304,7 @@ model.train()
 ```
 
 ### 4.模型评估
-
+模型评估可以在训练集的基础上进行评估，也可以额外制定数据集进行评估。但由于算法有一定差异，并不是所有算法都支持评估。
 ```python
 # 模型评估
 model.valid(metrics='acc')
@@ -343,12 +345,15 @@ model.metricplot()
 
 上图是线性回归任务绘制的可视化图，验证集已有的输出y为横坐标，通过模型推理得到的结果ŷ为纵坐标，如果两者构成的坐标点落在灰色虚线上，说明模型完全契合验证数据。而实际构成的点没有落在灰色虚线上，而是围绕黑色虚线分布，两条虚线相差越大，说明模型效果越差。
 
+- 注：部分模型尚未支持。
+
 ### 6. 模型推理
 
 ```python
 # 给定一组数据，推理查看效果
 y=model.inference([[1,1,1,1]])
 ```
+- 注：由于部分算法特殊性，一些算法并不支持推理，这些算法（如`Spectral clustering` 谱聚类）只能针对训练集的数据进行一次性的拟合。
 
 ### 7. 模型的保存与加载
 
@@ -447,7 +452,7 @@ model = clt('KMeans')
 model = clt('SpectralClustering')
 ```
 
-参数`n_clusters`表示子图的数量，默认值为5。
+参数`N_CLUSTERS`表示子图的数量，默认值为5。
 
 #### Agglomerative clustering
 
