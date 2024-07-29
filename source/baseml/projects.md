@@ -413,3 +413,174 @@ for i in range(model.model.cluster_centers_.shape[0]):
             zorder=0)
 ```
 
+## 用Birch聚类算法和城市集群实验
+项目地址：[https://www.openinnolab.org.cn/pjlab/project?id=66a358223d983e6b4e98df8d&sc=65ba47eb41dfce00376f4115#public](https://www.openinnolab.org.cn/pjlab/project?id=66a358223d983e6b4e98df8d&sc=65ba47eb41dfce00376f4115#public)
+
+- 实验一：通过仿真数据理解Birch算法的优缺点
+- 实验二：模拟层次聚类过程并理解层次的概念
+- 实验三：应用Birch算法对城市经纬度进行聚类
+
+### 实验数据集
+
+- [sklearn仿真数据集系列](https://scikit-learn.org/stable/auto_examples/cluster/plot_cluster_comparison.html#sphx-glr-auto-examples-cluster-plot-cluster-comparison-py)
+- [中国主要城市经纬度数据集](https://aistudio.baidu.com/datasetdetail/49718)
+
+### 实验步骤
+#### 实验一：通过仿真数据理解Birch算法的优缺点
+Birch算法是聚类方法中的一种，能够在某些数据上表现更优异。希望通过这个实验，你可以总结出这类适用于这类方法的数据特点。
+
+##### 步骤1：了解数据
+这里我们准备了很多仿真数据集，仿真数据集意味着数据是由计算机生成的，而不是数据采集获得的。仿真数据可以根据需求任意设计。下面，我们就先通过可视化代码，查看仿真数据的分布情况。
+```python
+import pandas as pd
+aniso = pd.read_csv(filename)
+aniso.plot.scatter(x='x1',y='x2')
+```
+##### 步骤2：模型训练
+
+我们先用Birch算法在数据上进行训练和训练效果可视化。
+```python
+from BaseML import Cluster as clt
+import pandas as pd
+
+filenames = [
+    'aniso.csv',
+    'blobs.csv',
+    'no_structure.csv',
+    'noisy_circles.csv',
+    'noisy_moons.csv',
+    'varied.csv'
+]
+
+for i in range(6):
+    model = clt('Birch', N_CLUSTERS=2)
+    model.load_dataset(filenames[i],type='csv',x_column=[0,1],shuffle=False)
+    model.train()
+    label = model.inference()
+    data = pd.read_csv(filenames[i])
+    data['Label'] = label
+    data.plot.scatter(x='x1', y='x2', c='Label', cmap='viridis', legend=True)
+```
+为了对比效果，我们再使用KMeans算法，在数据上进行训练和训练效果可视化。
+```python
+from BaseML import Cluster as clt
+import pandas as pd
+
+filenames = [
+    'aniso.csv',
+    'blobs.csv',
+    'no_structure.csv',
+    'noisy_circles.csv',
+    'noisy_moons.csv',
+    'varied.csv'
+]
+
+for i in range(6):
+    model = clt('Kmeans', N_CLUSTERS=2)
+    model.load_dataset(filenames[i],type='csv',x_column=[0,1],shuffle=False)
+    model.train()
+    label = model.inference()
+    data = pd.read_csv(filenames[i])
+    data['Label'] = label
+    data.plot.scatter(x='x1', y='x2', c='Label', cmap='viridis', legend=True)
+```
+##### 步骤3：观察并得出结论
+
+根据上面数据特点，并对比其他聚类算法，请问你能发现什么样的结论？Birch算法有哪些优点和缺点呢？
+
+#### 实验二：模拟层次聚类过程并理解层次的概念
+我们知道层次聚类是按照层次逐渐划分的，我们尝试修改聚类的类别数量，来观察这一过程。
+
+##### 步骤1：调整簇数量
+刚才我们对所有数据使用的簇数量（N_CLUSTERS）都是2，我们可以修改为3试试。这里我们以'blobs.csv'数据集为例。
+```python
+from BaseML import Cluster as clt
+import pandas as pd
+filename = 'blobs.csv'
+
+model = clt('Birch', N_CLUSTERS=3)
+model.load_dataset(filename,type='csv',x_column=[0,1],shuffle=False)
+model.train()
+label = model.inference()
+data = pd.read_csv(filename)
+data['Label'] = label
+data.plot.scatter(x='x1', y='x2', c='Label', cmap='viridis', legend=True)
+```
+##### 步骤2：尝试更多可能的簇数量
+我们可以通过循环，遍历各种可能性。
+```python
+from BaseML import Cluster as clt
+import pandas as pd
+filename = 'blobs.csv'
+for i in range(1,7):
+    model = clt('Birch', N_CLUSTERS=i)
+    model.load_dataset(filename,type='csv',x_column=[0,1],shuffle=False)
+    model.train()
+    label = model.inference()
+    data = pd.read_csv(filename)
+    data['Label'] = label
+    data.plot.scatter(x='x1', y='x2', c='Label', cmap='viridis', legend=True)
+```
+##### 步骤3：观察和推导
+
+观察数据集的划分边界，在簇数量为6的时候，这些簇是否逐渐被合并，且划分边界保持不变。
+
+从簇数量为6到簇数量为5的过程，发生的合并，对划分边界是否产生了影响。请根据你的思考，提出一个假设，“层次聚类的划分是按照层次逐渐合并得到的”。
+
+##### 步骤4：寻找层次边界
+
+为了能够更明确划分的边界在坐标系的什么位置，我们可以将新的数据输入模型，并根据聚类模型推理结果来判断聚类情况。以簇数量为6的模型为例，我们使用下面的代码构造数据（寻求大模型的帮助，提示词为：“用numpy构造一个数组，x1的范围是（0，12），x2的范围是（-10，2）。数据均匀分布在整个正方形面积中，总共1000条数据。”）。
+```python
+import numpy as np
+
+# 生成1000个均匀分布的x1和x2数据点
+x1 = np.random.uniform(0, 12, 1000)
+x2 = np.random.uniform(-10, 2, 1000)
+
+# 构造数组
+data = np.column_stack((x1, x2))
+接下来，将数据送入模型，并可视化推理结果。
+
+label = model.inference(data)
+data = pd.DataFrame(data,columns=['x1','x2'])
+data['Label'] = label
+data.plot.scatter(x='x1', y='x2', c='Label', cmap='viridis', legend=True)
+```
+多尝试几种簇类别数量，尝试总结边界之间存在的关联。我们可以看出从簇是从小的簇合并而来的，并且合并之后的簇不会再次被拆散。可以通过下图理解“层次”的概念。
+
+从6簇合并为5簇时，将最右侧的这一层中的②和④合并，从5簇合并为4簇时，将③和⑤两簇合并，从4簇合并为3簇时，将①和a2两簇合并，以此类推，每次将最后一层的簇进行合并。具体的层次划分方法和合并方法则由算法决定，这里我们采用的是Birch算法实现的。
+
+#### 实验三：应用Birch算法对城市经纬度进行聚类
+前面使用的是仿真数据，接下来我们应用一个真实数据集来实现层次聚类。这里我们选择来自飞浆平台的公开数据集“中国主要城市经纬度数据集”（https://aistudio.baidu.com/datasetdetail/49718/0），这个数据集中存放了351个城市的数据，每行数据包含一个城市，其中前两列为城市所在省和市，最后两列为城市的经纬度。我们通过这个实验从地理位置的角度对城市进行集群聚类。
+
+##### 步骤1：认识数据集
+
+我们使用pandas库对数据进行可视化。
+```python
+import pandas as pd
+df = pd.read_csv('China_cities.csv')
+df.plot.scatter(x='东经',y='北纬')
+```
+##### 步骤2：使用Birch算法聚类
+
+选定一个簇数量，对数据进行聚类。这里以10类为例。
+```python
+from BaseML import Cluster as clt
+filename = 'China_cities.csv'
+model = clt('Birch', N_CLUSTERS=10)
+model.load_dataset(filename,type='csv',x_column=[2,3],shuffle=False)
+model.train()
+label = model.inference()
+print(label)
+```
+##### 步骤3：针对聚类结果可视化
+
+我们还是利用pandas绘制散点图的形式，对label进行可视化。
+```python
+data = pd.read_csv(filename)
+data['Label'] = label
+ax = data.plot.scatter(x='东经',y='北纬',c='Label',cmap='viridis', legend=True)
+ax.set_title("Major Cities in China")
+ax.set_xlabel('East Longitude')
+ax.set_ylabel('North Latitude')
+```
