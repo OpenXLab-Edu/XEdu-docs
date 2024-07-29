@@ -413,7 +413,7 @@ for i in range(model.model.cluster_centers_.shape[0]):
             zorder=0)
 ```
 
-## 用Birch聚类算法和城市集群实验
+## Birch聚类算法和城市集群实验
 项目地址：[https://www.openinnolab.org.cn/pjlab/project?id=66a358223d983e6b4e98df8d&sc=65ba47eb41dfce00376f4115#public](https://www.openinnolab.org.cn/pjlab/project?id=66a358223d983e6b4e98df8d&sc=65ba47eb41dfce00376f4115#public)
 
 - 实验一：通过仿真数据理解Birch算法的优缺点
