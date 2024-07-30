@@ -438,10 +438,9 @@ k均值（k-means）算法是一种基于数据间距离迭代求解的聚类算
 
 ```python
 # 实例化模型，模型名称选择'Kmeans'
-model = clt('Kmeans')
+model = clt('Kmeans', N_CLUSTERS=5)
 ```
-
-参数`n_clusters`表示k的值，默认值为5。
+参数`N_CLUSTERS`表示簇数量（K的值），默认值为5。
 
 #### 谱聚类
 
@@ -449,10 +448,9 @@ model = clt('Kmeans')
 
 ```python
 # 实例化模型，模型名称选择'SpectralClustering',
-model = clt('SpectralClustering')
+model = clt('SpectralClustering', N_CLUSTERS=5)
 ```
-
-参数`N_CLUSTERS`表示子图的数量，默认值为5。
+参数`N_CLUSTERS`表示簇数量（子图数量），默认值为5。
 
 #### Agglomerative clustering
 
@@ -460,7 +458,16 @@ Agglomerative clutsering 是一种自底而上的层次聚类方法，它能够�
 
 ```python
 # 实例化模型，模型名称选择'Agglomerative clustering'
-model = clt('Agglomerative clustering')
+model = clt('Agglomerative clustering', N_CLUSTERS=5)
 ```
+参数`N_CLUSTERS`表示簇数量，默认值为5。
 
-参数`n_clusters`表示聚类的数量，默认值为5。
+#### Birch聚类
+
+Birch（Balanced Iterative Reducing and Clustering using Hierarchies）是层次聚类的典型代表，天生就是为处理超大规模数据集而设计的，它利用一个树结构来快速聚类，这个树结构类似于平衡B+树，一般将它称之为聚类特征树(Clustering Feature Tree，简称CF Tree)。这颗树的每一个节点是由若干个聚类特征(Clustering Feature，简称CF)组成。
+
+```python
+# 实例化模型，模型名称选择'Birch'
+model = clt('Birch', N_CLUSTERS=5)
+```
+参数`N_CLUSTERS`表示簇数量，默认值为5。
