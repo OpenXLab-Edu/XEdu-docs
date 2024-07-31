@@ -170,7 +170,7 @@ model.set_para(fit_intercept=True) # 设定模型参数
 
 ```python
 # 第一种形式
-param = {"hidden_layer_sizes":(100,200), }
+param = {"hidden_layer_sizes":(100,200)}
 model = reg("MLP",para=param)
 
 # 第二种形式
