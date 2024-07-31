@@ -122,6 +122,7 @@
   </tr>
 </tbody>
 </table>
+更多算法详见[后文](https://xedu.readthedocs.io/zh-cn/master/baseml/introduction.html#id23)。
 
 ## 示例代码
 
@@ -293,8 +294,6 @@ X_train, y_train, X_test, y_test = img_set.get_data(method='flatten')
 # 载入数据，从变量载入
 model.load_dataset(X=X_train, y=y_train,type ='numpy')
 ```
-
-更多使用示例详见[后文](https://xedu.readthedocs.io/zh/master/baseml/tool.html#imageloader)。
 
 ### 3. 模型训练
 
