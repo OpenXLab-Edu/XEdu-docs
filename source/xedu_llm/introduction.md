@@ -450,6 +450,49 @@ interface = gr.Interface(
 interface.launch()
 ```
 
+由此思路出发，我们还可以设置多个输入，制作一个编程题自动批改系统。拼接一个通用的判断语言作为prompt提示词，比如说我现在要给解决（拼接输入1）问题写一段代码，我写的代码是（拼接输入2），请帮我判断我写的代码对不对之类。
+
+参考代码如下：
+
+```
+import gradio as gr
+from XEdu.LLM import Client
+
+# 使用你的 API 密钥实例化客户端
+provider = 'qwen' # 选择模型为阿里-通义千问
+# 填写用户密钥，用于确定身份，若失效，请自行注册：https://dashscope.console.aliyun.com/apiKey 
+api_key ='sk-946498*************32ae4'
+chatbot = Client(provider = provider, api_key = api_key) 
+
+def check_code_answer(question, code):
+    # 拼接 prompt，调用推理接口，判断代码是否正确
+    prompt = f'现在我要解决 "{question}" 问题写一段代码，我写的代码是：\n{code}\n请帮我判断我写的代码对不对，如果答案正确，给出正确提示，如果错误，就给出错误提示。'
+    res = chatbot.inference(prompt)
+    return res
+
+# 使用 Gradio Blocks API 定义界面
+with gr.Blocks() as demo:
+    gr.Markdown("# 编程题自动批改系统")
+    gr.Markdown("输入你的编程题和代码，检查代码是否正确并获取反馈。")
+
+    with gr.Row():
+        question_input = gr.Textbox(lines=2, label="输入题目")
+        code_input = gr.Textbox(lines=10, label="输入代码")
+
+    check_button = gr.Button("检查代码")
+
+    result_output = gr.Textbox(label="检查结果")
+
+    check_button.click(check_code_answer, inputs=[question_input, code_input], outputs=result_output)
+
+# 启动 Gradio 界面
+demo.launch()
+```
+
+实现效果如下：
+
+![](../images/xedullm/code_help2.png)
+
 ### 案例二：我的Q宝（流式响应语音回复）
 
 之前看到B站上有很多“[Q宝](https://baike.baidu.com/item/q%E5%AE%9D/3648000?fr=ge_ala)”语音奇迹人的视频，我们能不能自己做一个呢？当然可以！
