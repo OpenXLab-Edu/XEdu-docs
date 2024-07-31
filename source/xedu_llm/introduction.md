@@ -419,6 +419,8 @@ with gr.Blocks() as demo:
 demo.launch()
 ```
 
+如需让同一局域网下的设备访问，则可在最后一句`demo.launch()`中增加参数`server_name`。例如：`demo.launch(server_name="0.0.0.0")`。这样，其他设备就可以通过你的局域网 IP 地址访问该应用了，下同。
+
 欢迎基于上述代码进行功能优化。如果您觉得上面这段代码还有点复杂，其实还有种更加简单的方式，那就是只设置一个按钮，如下代码是结合了XEduLLM的最简代码和[Gradio](https://xedu.readthedocs.io/zh-cn/master/how_to_use/scitech_tools/gradio.html)的最简代码，实现的一个简简单单的"编程错误检查系统"。
 
 ```python
