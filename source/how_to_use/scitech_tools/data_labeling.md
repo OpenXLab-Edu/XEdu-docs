@@ -43,3 +43,417 @@ d.标注完成后点击左上角的返回按钮返回至项目列表导出标注
 **labelbee也有网页版本哦~**
 
 网页版数据标注：[https://www.openinnolab.org.cn/pjLab/projects/channel](https://www.openinnolab.org.cn/pjLab/projects/channel)
+
+
+### 自制工具（基于WorkFlow思想）
+#### 图像分类采集（基础）
+我们如果想要用手机采集数据，然后存到电脑里，好像比较麻烦，我们可以写一个网页服务，点击按钮，就可以保存图片到对应的类别文件夹。这样就很方便。贡献者也分享了他们编写的代码，供大家参考：
+```python
+'''
+# 网络摄像头代码，用于采集数据（图像），功能类似浦育平台的图像分类页面。
+# 拍摄的图像将存放在同一级目录的“my_dataset”文件夹，按照三个类别保存
+# 代码编写：谢作如 邱奕盛(2024.7.10)
+'''
+
+import remi.gui as gui
+from remi import start, App
+import time,threading
+import qrcode,base64,io,cv2
+import socket,os
+
+camera = cv2.VideoCapture(0)
+# 临时变量，用于保存画面
+tempcam = None
+# 图片名称编号
+f_num = 1
+image_path = 'my_dataset' #数据存储位置
+app_title = 'Web摄像头数据采集器-图像'  #网页标题
+
+# 本机IP地址
+def get_host_ip():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    try:
+        s.connect(("8.8.8.8", 80))
+        ip = s.getsockname()[0]
+    finally:
+        s.close()
+    return ip
+
+# 获取图像
+def get_img(data):
+    img = qrcode.make(data)
+    out = io.BytesIO()
+    img.save(out, 'PNG')
+    base64_data=base64.b64encode(out.getvalue())
+    s=base64_data.decode()
+    data='data:image/jpeg;base64,%s'%s
+    return data
+
+# 返回摄像头画面，自定义大小
+def get_frames(x,y):
+    global tempcam
+    success, frame = camera.read()  # read the camera frame
+    if success:
+        tempcam = frame
+        frame = cv2.flip(frame, 1, dst=None)
+        frame = cv2.resize(frame, (x, y), interpolation=cv2.INTER_LINEAR)
+        image = cv2.imencode('.jpg', frame)[1]
+        base64_data = str(base64.b64encode(image))[2:-1]
+        data='data:image/jpeg;base64,%s'%base64_data
+        return data
+    else:
+        return get_img("摄像头启动失败")
+
+# Web主程序
+class MyApp(App):
+    def __init__(self, *args):
+        super(MyApp, self).__init__(*args)
+
+    def main(self):
+        container = gui.VBox(width=900, height=470,style={'margin':'0px auto'})
+        bts = gui.HBox(width=600, height=50)
+        self.lbl_01 = gui.Label(app_title,style={'font-size': '25px'})
+        self.lbl_2 = gui.Label('请用浏览器访问：http://'+str(get_host_ip())+':8001')
+        self.img_1 = gui.Image(get_frames(640,480))
+        self.bt1 = gui.Button('[ 保存画面-类别1 ]')
+        self.bt2 = gui.Button('[ 保存画面-类别2 ]')
+        self.bt3 = gui.Button('[ 保存画面-类别3 ]')
+        self.lbl_9 = gui.Label(' ')
+
+        # 按钮按下时执行
+        self.bt1.onclick.do(self.on_button_pressed,1)
+        self.bt2.onclick.do(self.on_button_pressed,2)
+        self.bt3.onclick.do(self.on_button_pressed,3)
+
+        # 添加到网页上
+        container.append(self.lbl_01)
+        container.append(self.lbl_2)
+        container.append(self.img_1)
+        bts.append(self.bt1)
+        bts.append(self.bt2)
+        bts.append(self.bt3)
+        container.append(bts)
+        container.append(self.lbl_9)
+
+        # 开启新的进程刷新画面
+        t = threading.Thread(target=self.showimg)
+        t.start()
+
+        # returning the root widget
+        return container
+
+    def on_button_pressed(self, emitter, n):
+        path = image_path
+        if not os.path.exists(path):
+            os.mkdir(path)
+        path = os.path.join(path,'class'+str(n))
+        if not os.path.exists(path):
+            os.mkdir(path)
+        f_data = time.strftime("%Y-%m-%d-%H_%M_%S",time.localtime())
+        path = os.path.join(path,str(f_data)+'.jpg')
+        cv2.imwrite(path,tempcam)
+        self.lbl_9.set_text('图片保存成功！路径为：' + str(path))
+
+    # 刷新网页的摄像头画面
+    def showimg(self):
+        while True:
+            self.img_1.set_image(get_frames(640,360))
+            time.sleep(0.2)
+
+# 输出连接地址
+print('请用浏览器访问：http://'+str(get_host_ip())+':8001')
+
+# 启动服务（如果端口80冲突，可改为其他值）
+start(MyApp,title='摄像头实时视频',address='0.0.0.0',port=8001)
+```
+#### 手势分类采集
+我们其实可以在保存的时候，直接保存手部关键点，只要稍微修改按钮点击的响应函数就行了。在浦育平台上，我们已经看到了这样的AI体验，其实自己实现也很简单。贡献者也分享了他们编写的代码，供大家参考：
+
+```python
+'''
+# 网络摄像头代码，用于采集数据（csv），功能类似浦育平台的手势分类页面。
+# 备注：该程序只能识别一只手，每一次启动会清空数据。
+# 代码编写：谢作如 邱奕盛(2024.7.10)
+'''
+
+import remi.gui as gui
+from remi import start, App
+import time,threading
+import qrcode,base64,io,cv2
+import socket,os,csv
+from XEdu.hub import Workflow as wf # 导入库
+
+camera = cv2.VideoCapture(0)
+# 临时变量，用于保存画面
+tempcam = None
+# 图片名称编号
+f_num = 1
+pose_path = 'hand.csv' #数据存储文件名称
+app_title = 'Web摄像头数据采集器-手势'  #网页标题
+
+k  =  []
+
+# 本机IP地址
+def get_host_ip():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    try:
+        s.connect(("8.8.8.8", 80))
+        ip = s.getsockname()[0]
+    finally:
+        s.close()
+    return ip
+
+# 获取图像
+def get_img(data):
+    img = qrcode.make(data)
+    out = io.BytesIO()
+    img.save(out, 'PNG')
+    base64_data=base64.b64encode(out.getvalue())
+    s=base64_data.decode()
+    data='data:image/jpeg;base64,%s'%s
+    return data
+
+# 返回摄像头画面，自定义大小
+def get_frames(x,y):
+    global tempcam,k
+    success, frame = camera.read()  # read the camera frame
+    if success:
+        tempcam = frame
+        frame = cv2.flip(frame, 1, dst=None)
+        frame = cv2.resize(frame, (x, y), interpolation=cv2.INTER_LINEAR)
+        bboxs,img = det.inference(data= frame ,img_type='cv2') # 进行推理
+        # print(bboxs)
+        if len(bboxs)>0:
+            keypoints,img = model.inference(data=img,img_type='cv2',bbox=bboxs[0]) # 进行推理
+            format_result = model.format_output(lang='en', isprint=False)
+            k = format_result['keypoints']
+        image = cv2.imencode('.jpg', img)[1]
+        base64_data = str(base64.b64encode(image))[2:-1]
+        data='data:image/jpeg;base64,%s'%base64_data
+        return data
+    else:
+        return get_img("摄像头启动失败")
+
+# Web主程序
+class MyApp(App):
+    def __init__(self, *args):
+        super(MyApp, self).__init__(*args)
+
+    def main(self):
+        container = gui.VBox(width=900, height=470,style={'margin':'0px auto'})
+        bts = gui.HBox(width=600, height=50)
+        self.lbl_01 = gui.Label(app_title,style={'font-size': '25px'})
+        self.lbl_2 = gui.Label('请用浏览器访问：http://'+str(get_host_ip())+':8001')
+        self.img_1 = gui.Image(get_frames(640,480))
+        self.bt1 = gui.Button('[ 保存画面-类别0 ]')
+        self.bt2 = gui.Button('[ 保存画面-类别1 ]')
+        self.bt3 = gui.Button('[ 保存画面-类别2 ]')
+        self.lbl_9 = gui.Label(' ')
+
+        # 按钮按下时执行
+        self.bt1.onclick.do(self.on_button_pressed,0)
+        self.bt2.onclick.do(self.on_button_pressed,1)
+        self.bt3.onclick.do(self.on_button_pressed,2)
+
+        # 添加到网页上
+        container.append(self.lbl_01)
+        container.append(self.lbl_2)
+        container.append(self.img_1)
+        bts.append(self.bt1)
+        bts.append(self.bt2)
+        bts.append(self.bt3)
+        container.append(bts)
+        container.append(self.lbl_9)
+
+        # 开启新的进程刷新画面
+        t = threading.Thread(target=self.showimg)
+        t.start()
+
+        # returning the root widget
+        return container
+
+    def on_button_pressed(self, emitter, n):
+        # 保存手势数据
+        global k
+        if k:
+            temp = []
+            for d in k:
+                temp.append(d[0])
+                temp.append(d[1])
+            temp.append(n)
+            with open(pose_path,'r',encoding='UTF8',newline='') as f:
+                reader = csv.reader(f)
+                rows = list(reader)
+            # 向数据中增加新行
+            rows.append(temp)
+            with open(pose_path,'w',encoding='UTF8',newline='') as f:
+                writer = csv.writer(f)
+                writer.writerows(rows)
+            self.lbl_9.set_text('数据保存成功！')
+            k.clear()
+
+    # 刷新网页的摄像头画
+    def showimg(self):
+        while True:
+            self.img_1.set_image(get_frames(640,360))
+            time.sleep(0.2)
+
+# 输出连接地址
+print('请用浏览器访问：http://'+str(get_host_ip())+':8001')
+
+det  = wf(task='det_hand') # 实例化模型
+model = wf(task='pose_hand21') # 实例化模型
+# 生成数据集文件
+header = [f"Feature {i+1}" for i in range(21*2)] + ["Label"]
+with open(pose_path,'w',encoding='UTF8',newline='') as f:
+    writer = csv.writer(f)
+    writer.writerow(header)
+
+# 启动服务（如果端口80冲突，可改为其他值）
+start(MyApp,title='摄像头实时视频',address='0.0.0.0',port=8001)
+```
+#### 人体姿态分类采集
+类似的，替换一个模型就可以实现对人体姿态关键点分类数据集采集。
+```python
+'''
+# 网络摄像头代码，用于采集数据（csv），功能类似浦育平台的人体姿态分类页面。
+# 备注：该程序只能识别一个人，每一次启动会清空数据。
+# 代码编写：谢作如 邱奕盛(2024.7.10)
+'''
+
+import remi.gui as gui
+from remi import start, App
+import time,threading
+import qrcode,base64,io,cv2
+import socket,os,csv
+from XEdu.hub import Workflow as wf # 导入库
+
+camera = cv2.VideoCapture(0)
+# 临时变量，用于保存画面
+tempcam = None
+# 图片名称编号
+f_num = 1
+pose_path = 'pose.csv' #数据存储文件名称
+app_title = 'Web摄像头数据采集器-姿势'  #网页标题
+
+k  =  []
+
+# 本机IP地址
+def get_host_ip():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    try:
+        s.connect(("8.8.8.8", 80))
+        ip = s.getsockname()[0]
+    finally:
+        s.close()
+    return ip
+
+# 获取图像
+def get_img(data):
+    img = qrcode.make(data)
+    out = io.BytesIO()
+    img.save(out, 'PNG')
+    base64_data=base64.b64encode(out.getvalue())
+    s=base64_data.decode()
+    data='data:image/jpeg;base64,%s'%s
+    return data
+
+# 返回摄像头画面，自定义大小
+def get_frames(x,y):
+    global tempcam,k
+    success, frame = camera.read()  # read the camera frame
+    if success:
+        tempcam = frame
+        frame = cv2.flip(frame, 1, dst=None)
+        frame = cv2.resize(frame, (x, y), interpolation=cv2.INTER_LINEAR)
+        bboxs,img = det.inference(data= frame ,img_type='cv2') # 进行推理
+        # print(bboxs)
+        if len(bboxs)>0:
+            keypoints,img = model.inference(data=img,img_type='cv2',bbox=bboxs[0]) # 进行推理
+            format_result = model.format_output(lang='en', isprint=False)
+            k = format_result['keypoints']
+        image = cv2.imencode('.jpg', img)[1]
+        base64_data = str(base64.b64encode(image))[2:-1]
+        data='data:image/jpeg;base64,%s'%base64_data
+        return data
+    else:
+        return get_img("摄像头启动失败")
+
+# Web主程序
+class MyApp(App):
+    def __init__(self, *args):
+        super(MyApp, self).__init__(*args)
+
+    def main(self):
+        container = gui.VBox(width=900, height=470,style={'margin':'0px auto'})
+        bts = gui.HBox(width=600, height=50)
+        self.lbl_01 = gui.Label(app_title,style={'font-size': '25px'})
+        self.lbl_2 = gui.Label('请用浏览器访问：http://'+str(get_host_ip())+':8001')
+        self.img_1 = gui.Image(get_frames(640,480))
+        self.bt1 = gui.Button('[ 保存画面-类别0 ]')
+        self.bt2 = gui.Button('[ 保存画面-类别1 ]')
+        self.bt3 = gui.Button('[ 保存画面-类别2 ]')
+        self.lbl_9 = gui.Label(' ')
+
+        # 按钮按下时执行
+        self.bt1.onclick.do(self.on_button_pressed,0)
+        self.bt2.onclick.do(self.on_button_pressed,1)
+        self.bt3.onclick.do(self.on_button_pressed,2)
+
+        # 添加到网页上
+        container.append(self.lbl_01)
+        container.append(self.lbl_2)
+        container.append(self.img_1)
+        bts.append(self.bt1)
+        bts.append(self.bt2)
+        bts.append(self.bt3)
+        container.append(bts)
+        container.append(self.lbl_9)
+
+        # 开启新的进程刷新画面
+        t = threading.Thread(target=self.showimg)
+        t.start()
+
+        # returning the root widget
+        return container
+
+    def on_button_pressed(self, emitter, n):
+        # 保存手势数据
+        global k
+        if k:
+            temp = []
+            for d in k:
+                temp.append(d[0])
+                temp.append(d[1])
+            temp.append(n)
+            with open(pose_path,'r',encoding='UTF8',newline='') as f:
+                reader = csv.reader(f)
+                rows = list(reader)
+            # 向数据中增加新行
+            rows.append(temp)
+            with open(pose_path,'w',encoding='UTF8',newline='') as f:
+                writer = csv.writer(f)
+                writer.writerows(rows)
+            self.lbl_9.set_text('数据保存成功！')
+            k.clear()
+
+    # 刷新网页的摄像头画
+    def showimg(self):
+        while True:
+            self.img_1.set_image(get_frames(640,360))
+            time.sleep(0.2)
+
+# 输出连接地址
+print('请用浏览器访问：http://'+str(get_host_ip())+':8001')
+
+det  = wf(task='det_body') # 实例化模型
+model = wf(task='pose_body17') # 实例化模型（使用body17）
+# 生成数据集文件的第一行
+header = [f"Feature {i+1}" for i in range(17*2)] + ["Label"]
+with open(pose_path,'w',encoding='UTF8',newline='') as f:
+    writer = csv.writer(f)
+    writer.writerow(header)
+
+# 启动服务（如果端口80冲突，可改为其他值）
+start(MyApp,title='摄像头实时视频',address='0.0.0.0',port=8001)
+```
