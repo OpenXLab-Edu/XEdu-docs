@@ -456,7 +456,7 @@ interface.launch()
 
 参考代码如下：
 
-```
+```python
 import gradio as gr
 from XEdu.LLM import Client
 
@@ -494,6 +494,88 @@ demo.launch()
 实现效果如下：
 
 ![](../images/xedullm/code_help2.png)
+
+再稍加改动，我们可以编写一个编程闯关的功能，老师启动服务之后，就可以把网页分享给学生，学生自主在题库中进行闯关学习。
+```python
+import gradio as gr
+from XEdu.LLM import Client
+
+provider = 'openrouter'
+api_key ='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'
+chatbot = Client(provider=provider, api_key=api_key)
+
+with open('tests.txt','r',encoding='UTF-8') as f:
+    tests = f.readlines()
+print(tests)
+question_num = 0
+question_max = len(tests)
+
+def check_code_tips(stu_id,question, code):
+    # 调用推理接口，检查代码中的错误
+    prompt = f'你是我的编程助手，我要用python编程解决【 "{question}" 】，请给我一点提示。但禁止直接给我代码，只允许给我代码的一部分提示。'
+    res = chatbot.inference(prompt)
+    if stu_id == '':
+        stu_id = 'logs'
+    with open(str(stu_id)+'.txt','a') as f:
+        f.write('[TIP]')
+        f.write(question+'\n')
+        f.write(str(res)+'\n')
+    return res
+
+def check_code_answer(stu_id,question, code):
+    # 拼接 prompt，调用推理接口，判断代码是否正确
+    code = "```python\n"+code+"\n```"
+    #print(code)
+    prompt = f'你是我的编程助手，我要用python编程解决【 "{question}" 】，我写的代码是：\n{code}\n请帮我判断我写的代码对不对，请按照下列要求检查代码：1.必须是python3语言；2.程序没有语法错误；3.程序没有格式错误；4.代码功能和题目要求一致。如果符合上述要求，请输出【回答正确，闯关成功】，如果不符合，则先输出【回答错误，请再次尝试】，再输出错误和提示，但禁止给我完整的代码。'
+    res = chatbot.inference(prompt)
+    global question_num,question_max
+    if res[:4]=='回答正确':
+        res = '回答正确，闯关成功！可以点击“下一关”！'
+        if question_num+1>= question_max:
+            res = '回答正确，闯关成功。恭喜通过全部关卡！'
+    if stu_id == '':
+        stu_id = 'logs'
+    with open(str(stu_id)+'.txt','a') as f:
+        f.write('[ANS]')
+        f.write(question+'\n')
+        f.write(code+'\n')
+        f.write(str(res)+'\n')
+    return res
+
+def next_question(question,res):
+    global question_num
+    if res[:10]=='回答正确，闯关成功！':
+        question_num += 1
+        return tests[question_num],''
+    elif res[:10]=='回答正确，闯关成功。':
+        return '闯关成功！恭喜通过全部关卡！',''
+    else:
+        return '未通过关卡，请继续作答：'+question,''
+
+# 构建网页界面
+with gr.Blocks() as demo:
+    gr.Markdown("# XEduLLM项目：编程闯关自动批改")
+    gr.Markdown("根据每道编程作业题，提交你的代码，利用大模型自动批改并获取反馈。")
+    stu_id = gr.Textbox(label='学号')
+    with gr.Row():
+        question_input = gr.Textbox(lines=7, label="输入题目",value=tests[0])
+        code_input = gr.Code(lines=10, label="输入代码")
+    with gr.Row():
+        error_button = gr.Button("获取帮助")
+        explain_button = gr.Button("提交作答")
+        next_button = gr.Button("下一关")
+
+    error_output = gr.Textbox(label="帮助信息")
+    explain_output = gr.Textbox(label="代码批阅结果")
+
+    # 定义按钮的响应
+    error_button.click(check_code_tips, inputs=[stu_id,question_input, code_input], outputs=error_output)
+    explain_button.click(check_code_answer, inputs=[stu_id,question_input, code_input], outputs=explain_output)
+    next_button.click(next_question,inputs=[question_input,explain_output],outputs=[question_input,explain_output])
+
+# 启动 Gradio 界面
+demo.launch(server_name='0.0.0.0')
+```
 
 ### 案例二：我的Q宝（流式响应语音回复）
 
