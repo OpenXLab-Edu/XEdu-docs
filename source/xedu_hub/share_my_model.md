@@ -10,7 +10,7 @@
 ```python
 from XEdu.hub import Workflow as wf
 model = wf(repo='yikshing/emotion_ferplus')
-res = model.inference('./Lenna_400x400.jpg')
+res = model.inference('./Lenna_400x400.jpg') # 图片下载地址：https://modelscope.cn/models/yikshing/emotion_ferplus/file/view/master?fileName=Lenna_400x400.jpg&status=1
 print(res)
 ```
 ### 原理分析
