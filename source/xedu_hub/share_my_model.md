@@ -3,7 +3,7 @@
 
 你可以在[魔搭社区](https://modelscope.cn/home)等平台上按照格式上传模型，然后只需要向好友分享这个名称即可在XEduHub工具中载入模型和相应的处理流程。
 
-但是这样只有知道这个名称的好友能用到这个模型，为了让更多人知道你贡献的好玩的模型，我们诚邀您在上传模型之后，在这里填写[问卷](https://aicarrier.feishu.cn/share/base/form/shrcnZqkQ3n3EVkE9vEMhkMYAsf)登记您的模型，这样，就可以让您的模型加入[生态共建模型仓库](https://aicarrier.feishu.cn/wiki/VdWkwyNvtiUyAlkrOkEcZgBznOb?from=from_copylink)，让更多人看到并用上您的模型！
+但是这样只有知道这个名称的好友能用到这个模型，为了让更多人知道你贡献的好玩的模型，我们诚邀您在上传模型之后，在这里填写[问卷](https://p6bm2if73b.feishu.cn/share/base/form/shrcnzOFptyxP4wkwvlidiwHyxb)登记您的模型，这样，就可以让您的模型加入[生态共建模型仓库](https://p6bm2if73b.feishu.cn/share/base/query/shrcnHJ0F4VJFpGcTvySTiwgcCg)，让更多人看到并用上您的模型！
 
 ## 体验好友的模型
 我们的生态伙伴上传了一个模型到[魔搭社区](https://modelscope.cn/models/fhl123/mobileone_test)，那么我们就可以使用这个模型啦！模型仓库名称为`fhl123/mobileone_test`，这个名称作为`repo`的值传入，创建一个模型，然后输入的数据为图片路径，最后我们就可以看到结果输出啦！
@@ -130,5 +130,4 @@ print(res)
 运行代码之后，模型会自动下载到这段代码同级目录。
 
 ### 填写生态共建问卷登记模型
-为了让更多人知道你贡献的好玩的模型，我们诚邀您在上传模型之后，在这里填写[问卷](https://aicarrier.feishu.cn/share/base/form/shrcnZqkQ3n3EVkE9vEMhkMYAsf)登记您的模型，这样，就可以让您的模型加入[生态共建模型仓库](https://aicarrier.feishu.cn/wiki/VdWkwyNvtiUyAlkrOkEcZgBznOb?from=from_copylink)，让更多人看到并用上您的模型！
-
+为了让更多人知道你贡献的好玩的模型，我们诚邀您在上传模型之后，在这里填写[问卷](https://p6bm2if73b.feishu.cn/share/base/form/shrcnzOFptyxP4wkwvlidiwHyxb)登记您的模型，这样，就可以让您的模型加入[生态共建模型仓库](https://p6bm2if73b.feishu.cn/share/base/query/shrcnHJ0F4VJFpGcTvySTiwgcCg)，让更多人看到并用上您的模型！
