@@ -500,9 +500,11 @@ demo.launch()
 import gradio as gr
 from XEdu.LLM import Client
 
-provider = 'openrouter'
-api_key ='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'
-chatbot = Client(provider=provider, api_key=api_key)
+# 使用你的 API 密钥实例化客户端
+provider = 'qwen' # 选择模型为阿里-通义千问
+# 填写用户密钥，用于确定身份，若失效，请自行注册：https://dashscope.console.aliyun.com/apiKey 
+api_key ='sk-946498*************32ae4'
+chatbot = Client(provider = provider, api_key = api_key) 
 
 with open('tests.txt','r',encoding='UTF-8') as f:
     tests = f.readlines()
