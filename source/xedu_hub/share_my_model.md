@@ -117,7 +117,7 @@ disgust恶心 0.0023137312
 
 ### 第三步：测试模型
 接下来，我们测试一个模型是否可以顺利运行。下面代码中的`XXXXXXXXXX`替换为你的仓库名称。
-![](../images/xeduhub/repo.png)
+![](../images/xeduhub/repo1.png)
 仓库名称可以点击箭头指向的复制按钮来获取。
 ```python
 from XEdu.hub import Workflow as wf
