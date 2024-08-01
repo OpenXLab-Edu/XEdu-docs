@@ -16,3 +16,5 @@
    xedu_hub/projects.md
 
    xedu_hub/mindplus_xeduhub.md
+
+   xedu_hub/share_my_model.md
