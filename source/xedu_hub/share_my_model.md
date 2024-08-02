@@ -19,10 +19,19 @@ print(res)
 ## 分享我的模型
 现在我们已经感受到了开源共享模型的乐趣，那么如何分享我自己的模型呢？就跟随继续往下看吧！
 
-### 第一步：本地模型仓库
+### 分享规范
 
-#### 获取模型
+```plain
+仓库目录要求
+├── model.onnx
+├── data_process.py
+```
+
+### 如何分享模型
+
 网络上有很多好玩的onnx模型，但是要想把这个模型跑通，还是需要额外写很多代码，这样的模型让很多人打起了退堂鼓。如果我已经调通了这样的一个模型，把这样的处理流程分享出来，何乐而不为呢？
+
+#### 第一步：准备模型和配套代码
 
 这里以onnx官方提供的情绪分类模型为例，我们下载这个模型，并为它编写前后处理代码，让模型能够在本地跑通。
 - 模型下载地址：[emotion-ferplus-8.onnx](https://github.com/onnx/models/blob/main/validated/vision/body_analysis/emotion_ferplus/model/emotion-ferplus-8.onnx)
@@ -107,7 +116,7 @@ disgust恶心 0.0023137312
 ```
 这里，我们要说明一下，`data_process.py` 的要求，我们可选的函数有`preprocess` `postprocess` `inference` 三个，如果存在`inference` 则不调用XEduHub的默认onnx推理，而是替换为用户对inference的定义。`preprocess` 会在执行`inference` 之前执行，`postprocess` 会在执行`inference` 之后执行。
 
-### 第二步：上传模型仓库
+#### 第二步：上传模型仓库
 
 这里以[魔搭社区](https://modelscope.cn/home)为例，首先需要通过网页注册/登录，然后点击[创建模型](https://modelscope.cn/models/create)，填写相关信息，其中`是否公开`选择“`公开模型`”。点击创建后再上传其他文件。
 
@@ -115,10 +124,11 @@ disgust恶心 0.0023137312
 
 点击“添加文件”，继续添加文件，上传刚才的`data_process.py` 文件。
 
-### 第三步：测试模型
+#### 第三步：测试模型
 接下来，我们测试一个模型是否可以顺利运行。下面代码中的`XXXXXXXXXX`替换为你的仓库名称。
 ![](../images/xeduhub/repo1.png)
 仓库名称可以点击箭头指向的复制按钮来获取。
+
 ```python
 from XEdu.hub import Workflow as wf
 model = wf(repo='XXXXXXXXXX')
