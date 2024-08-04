@@ -60,7 +60,7 @@ XEduHub是一个集合了各种各样深度学习工具的模块，云端丰富�
 
 3-2 [大模型应用库：XEduLLM](https://xedu.readthedocs.io/zh-cn/master/xedu_llm.html)
 
-XEduLLM是一个方便初学者应用各种大模型的模块，不仅方便教师用统一的语法访问不同的大模型服务商，还能将API Key“共享”给一个班级的学生，用简短的代码实现工作流并开发智能体应用。未来将增加一键启动本地模型的功能。
+XEduLLM是一个方便初学者应用各种大模型的模块，用统一的语法即可访问不同的大模型服务商，用简短的代码实现工作流并开发智能体应用。XEduLLM为中小学教学做了优化，教师能够将个人的API Key“共享”给一个班级的学生使用，未来将增加一键启动本地模型的功能。
 
 
 3-3 [模型部署库：BaseDeploy](https://xedu.readthedocs.io/zh-cn/master/basedeploy.html)
