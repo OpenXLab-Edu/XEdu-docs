@@ -122,6 +122,8 @@
   </tr>
 </tbody>
 </table>
+
+
 更多算法详见[后文](https://xedu.readthedocs.io/zh-cn/master/baseml/introduction.html#id23)。
 
 ## 示例代码
