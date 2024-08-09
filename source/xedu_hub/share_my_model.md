@@ -230,7 +230,7 @@ print(res)
 ![](../images/xeduhub/share2.gif)
 
 点击“模型文件”，点击“添加文件”，然后上传模型文件，文件名为`model.onnx`（上传位置选择“根目录”，且需要填写“文件信息”）。
-![](../images/xeduhub/share2.gif)
+![](../images/xeduhub/share3.gif)
 点击“添加文件”，继续添加文件，上传刚才的`data_process.py` 文件。
 
 ##### 第三步：测试模型
