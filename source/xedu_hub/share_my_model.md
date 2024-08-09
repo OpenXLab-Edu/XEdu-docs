@@ -1,12 +1,26 @@
-# 生态共建：分享我的模型方案
-相信你已经领略到XEduHub的统一代码格式带来的便利了。但是如果我们有自己发现的好玩的模型，能不能也运行在XEduHub之上呢？答案是“必须可以”！
+# 生态共建：体验社区模型和分享模型
+相信你已经领略到XEduHub的统一代码格式带来的便利了。但是这里的模型数量毕竟还是有限的，AI的爆发性发展让模型变得越来越多，我们能不能加入AI生态中，快速体验社区里其他开源模型呢？如果我们有自己发现的好玩的模型，能不能也运行在XEduHub之上呢？答案是“必须可以”！
 
-你可以在[魔搭社区](https://modelscope.cn/home)等平台上按照格式上传模型，然后只需要向好友分享这个名称即可在XEduHub工具中载入模型和相应的处理流程。
+[魔搭社区](https://modelscope.cn/home)是一个国内开源AI社区，上面有数不胜数的模型和应用可供体验，但是对于我们小白来说，体验起来还是不太熟悉，能否用XEduHub的模型来运行平台上的模型呢？或者我能不能把我的模型上传之后与我的好友分享呢？当然可以，我们只要分享模型的仓库名称，好友就可以简单快速体验到社区里的模型啦！
 
-但是这样只有知道这个名称的好友能用到这个模型，为了让更多人知道你贡献的好玩的模型，我们诚邀您在上传模型之后，在这里填写[问卷](https://p6bm2if73b.feishu.cn/share/base/form/shrcnzOFptyxP4wkwvlidiwHyxb)登记您的模型，这样，就可以让您的模型加入[生态共建模型仓库](https://p6bm2if73b.feishu.cn/share/base/query/shrcnHJ0F4VJFpGcTvySTiwgcCg)，让更多人看到并用上您的模型！
+为了让更多人知道XEduHub支持的好玩的模型，我们建立了一个[生态共建模型仓库](https://p6bm2if73b.feishu.cn/share/base/query/shrcnHJ0F4VJFpGcTvySTiwgcCg)，在这儿您可以快速查阅生态伙伴自制的模型，直接在XEduHub中调用。如果您愿意成为生态贡献者，我们诚邀您在上传模型之后，在这里填写[问卷](https://p6bm2if73b.feishu.cn/share/base/form/shrcnzOFptyxP4wkwvlidiwHyxb)登记您的模型，这样，就可以让您的模型加入到[生态共建模型仓库](https://p6bm2if73b.feishu.cn/share/base/query/shrcnHJ0F4VJFpGcTvySTiwgcCg)中，让更多人看到并用上您的模型！
 
-## 体验好友的模型
-我们的生态伙伴上传了一个模型到[魔搭社区](https://modelscope.cn/models/fhl123/mobileone_test)，那么我们就可以使用这个模型啦！模型仓库名称为`fhl123/mobileone_test`，这个名称作为`repo`的值传入，创建一个模型，然后输入的数据为图片路径，最后我们就可以看到结果输出啦！
+## 体验社区贡献者的模型
+查阅[生态共建模型仓库](https://p6bm2if73b.feishu.cn/share/base/query/shrcnHJ0F4VJFpGcTvySTiwgcCg)，现在里面已经有许多可用的模型方案了，让我们先来试试语音识别的功能吧！
+
+模型名称为`语音识别-离线-轻量`，下方给出了模型地址和参考代码。
+![](../images/xeduhub/share1.png)
+```python
+from XEdu.hub import Workflow as wf
+model = wf(repo='yikshing/funasr-onnx-small')
+res = model.inference('1.mp3')
+print(res)
+```
+
+在本地运行这段参考代码，首次运行会从云端同步模型文件，默认的同步保存本地路径为`./repo/`，你也可以指定本地保存路径，例如`model = wf(repo='yikshing/funasr-onnx-small',download_path='D:/my_models/')`。接着，就会执行这段语音识别的程序。如果提示缺少音频文件，那你可以修改`model.inference('1.mp3')`中的文件名称为实际你电脑上某段需要识别为文字的音频的文件路径。
+- [1.mp3下载](https://modelscope.cn/models/yikshing/funasr-onnx-small/file/view/master?fileName=examples%252F1.mp3&status=0)
+
+是不是很神奇呢？我们再来尝试一个情绪识别的模型：模型仓库名称为`fhl123/mobileone_test`，这个名称作为`repo`的值传入，创建一个模型，然后输入的数据为图片路径，最后我们就可以看到结果输出啦！
 ```python
 from XEdu.hub import Workflow as wf
 model = wf(repo='yikshing/emotion_ferplus')
@@ -14,7 +28,7 @@ res = model.inference('./Lenna_400x400.jpg') # 图片下载地址：https://mode
 print(res)
 ```
 ### 原理分析
-为什么填写`repo`就可以了呢？这是因为仓库里存放了模型和模型数据前后处理函数。模型文件为onnx后缀，前后处理函数则定义在`data_process.py`文件中。
+为什么填写`repo`就可以了呢？这是因为仓库里存放了模型和模型数据前后处理函数。一般来说，模型文件为`model.onnx`，前后处理函数则定义在`data_process.py`文件中（定义了`preprocess` `postprocess` `inference` 函数）。
 
 ## 分享我的模型
 现在我们已经感受到了开源共享模型的乐趣，那么如何分享我自己的模型呢？就跟随继续往下看吧！
@@ -31,13 +45,17 @@ print(res)
 
 网络上有很多好玩的onnx模型，但是要想把这个模型跑通，还是需要额外写很多代码，这样的模型让很多人打起了退堂鼓。如果我已经调通了这样的一个模型，把这样的处理流程分享出来，何乐而不为呢？
 
-#### 第一步：准备模型和配套代码
+视频讲解：即将上线！
+
+#### 案例一：onnx模型+前后处理
+还记得我们的XEduHub支持的`task='custom'（其他ONNX模型推理）`的[用法](https://xedu.readthedocs.io/zh-cn/master/xedu_hub/general_task.html#onnx)吗？
+
+这里的做法几乎一致，因此我们可以先用`task='custom'（其他ONNX模型推理）`来调试。
+##### 第一步：准备模型和配套代码
 
 这里以onnx官方提供的情绪分类模型为例，我们下载这个模型，并为它编写前后处理代码，让模型能够在本地跑通。
 - 模型下载地址：[emotion-ferplus-8.onnx](https://github.com/onnx/models/blob/main/validated/vision/body_analysis/emotion_ferplus/model/emotion-ferplus-8.onnx)
 - 模型前后处理参考资料：[README.md](https://github.com/onnx/models/tree/main/validated/vision/body_analysis/emotion_ferplus)
-
-假设我们把模型存储在`D:\my_model` ，我们需要把文件名重命名为`model.onnx` ，然后，在同级目录下再创建一个`data_process.py` 的文件，XEduHub会调用这个文件中编写的函数来运行模型。
 
 参考模型资料，原始的前后处理如下：
 ```python
@@ -66,6 +84,43 @@ def postprocess(scores):
   classes = np.argsort(prob)[::-1]
   return classes
 ```
+接着，我们为这段代码给些XEduHub的完整格式如下：
+```python
+from XEdu.hub import Workflow as wf
+import numpy as np
+from PIL import Image
+def preprocess(image_path):
+  input_shape = (1, 1, 64, 64)
+  img = Image.open(image_path)
+  img = img.resize((64, 64), Image.ANTIALIAS)
+  img_data = np.array(img)
+  img_data = np.resize(img_data, input_shape)
+  return img_data
+
+def postprocess(scores):
+  prob = np.squeeze(scores)
+  classes = np.argsort(prob)[::-1]
+  return classes
+image_path = './Lenna_400x400.jpg'
+custom = wf(task='custom',checkpoint='emotion-ferplus-8.onnx')
+res = custom.inference(data=image_path, preprocess=preprocess, postprocess=postprocess)
+print('res:', res)
+```
+这里运行报错为`onnxruntime.capi.onnxruntime_pybind11_state.InvalidArgument: [ONNXRuntimeError] : 2 : INVALID_ARGUMENT : Unexpected input data type. Actual: (tensor(uint8)) , expected: (tensor(float))` ，为此我们需要在前处理中添加一行`img_data = img_data.astype(np.float32)` 。最终的前处理代码如下：
+```python
+def preprocess(image_path):
+  input_shape = (1, 1, 64, 64)
+  img = Image.open(image_path)
+  img = img.resize((64, 64), Image.ANTIALIAS)
+  img_data = np.array(img)
+  img_data = np.resize(img_data, input_shape)
+  img_data = img_data.astype(np.float32)
+  return img_data
+```
+这样我们就把这个ONNX模型跑通了，但是要想分享这个模型和代码，还是比较复杂，需要同时把模型文件和代码文件发送给其他人，而且传播范围有限。因此，我们可以借助社区来实现网络传播和生态建设。
+##### 第二步：改造为repo形式
+假设我们把模型存储在`D:\my_model` ，我们需要把文件名重命名为`model.onnx` ，然后，在同级目录下再创建一个`data_process.py` 的文件，XEduHub会调用这个文件中编写的函数来运行模型。
+
 我们将这段代码保存到`data_process.py` ，然后编写下面的测试代码，测试模型是否能够调通。
 ```python
 from XEdu.hub import Workflow as wf
@@ -73,7 +128,7 @@ model = wf(repo='D:/my_model') # 注意这里的路径要使用绝对路径
 res = model.inference('./Lenna_400x400.jpg')
 print(res)
 ```
-这里运行报错为`onnxruntime.capi.onnxruntime_pybind11_state.InvalidArgument: [ONNXRuntimeError] : 2 : INVALID_ARGUMENT : Unexpected input data type. Actual: (tensor(uint8)) , expected: (tensor(float))` ，为此我们需要在前处理中添加一行`img_data = img_data.astype(np.float32)` 。经过这样的修改之后，我还是不太满意，因为输出的结果不太好理解，我这里想要为此添加一下中文类别名称的返回。最终的处理代码如下：
+经过这样的修改之后，我还是不太满意，因为输出的结果不太好理解，我这里想要为此添加一下中文类别名称的返回。
 ```python
 import numpy as np
 from PIL import Image
@@ -116,7 +171,7 @@ disgust恶心 0.0023137312
 ```
 这里，我们要说明一下，`data_process.py` 的要求，我们可选的函数有`preprocess` `postprocess` `inference` 三个，如果存在`inference` 则不调用XEduHub的默认onnx推理，而是替换为用户对inference的定义。`preprocess` 会在执行`inference` 之前执行，`postprocess` 会在执行`inference` 之后执行。
 
-#### 第二步：上传模型仓库
+##### 第三步：上传模型仓库
 
 这里以[魔搭社区](https://modelscope.cn/home)为例，首先需要通过网页注册/登录，然后点击[创建模型](https://modelscope.cn/models/create)，填写相关信息，其中`是否公开`选择“`公开模型`”。点击创建后再上传其他文件。
 
@@ -124,7 +179,7 @@ disgust恶心 0.0023137312
 
 点击“添加文件”，继续添加文件，上传刚才的`data_process.py` 文件。
 
-#### 第三步：测试模型
+##### 第四步：测试模型
 接下来，我们测试一个模型是否可以顺利运行。下面代码中的`XXXXXXXXXX`替换为你的仓库名称。
 ![](../images/xeduhub/repo1.png)
 仓库名称可以点击箭头指向的复制按钮来获取。
@@ -138,6 +193,8 @@ print(res)
 看起来运行一切正常，那么就ok啦！如果有问题的话，我们就需要调整一下代码，确保可以运行后，再分享出来。
 
 运行代码之后，模型会自动下载到这段代码同级目录。
+
+#### 案例二：onnx模型+推理函数
 
 ### 填写生态共建问卷登记模型
 为了让更多人知道你贡献的好玩的模型，我们诚邀您在上传模型之后，在这里填写[问卷](https://p6bm2if73b.feishu.cn/share/base/form/shrcnzOFptyxP4wkwvlidiwHyxb)登记您的模型，这样，就可以让您的模型加入[生态共建模型仓库](https://p6bm2if73b.feishu.cn/share/base/query/shrcnHJ0F4VJFpGcTvySTiwgcCg)，让更多人看到并用上您的模型！
