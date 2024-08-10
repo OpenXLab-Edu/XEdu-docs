@@ -16,11 +16,11 @@ from XEdu.utils import softmax, cosine_similarity, get_similarity, visualize sim
 
 下面对函数展开使用介绍。
 
-### softmax
+### 归一化指数函数：softmax
 
 1.函数说明
 
-softmax函数是一个常用的非线性函数，它用于将一个numpy数组映射到0到1之间的数值，同时所有数值之和为1。神经网络最终输出的结果是一串数字，如果想要把数字映射为各类概率，那么使用softmax函数再好不过了。
+softmax函数是一个常用的非线性函数，它用于将一个numpy数组映射到0到1之间的数值，同时让所有数值之和为1。神经网络最终输出的结果是一串数字，如果想要把数字映射为各类概率，那么使用softmax函数再好不过了。
 
 2.使用示例
 
@@ -33,7 +33,7 @@ print(output)
 # [[0.2689414213699951, 0.7310585786300049], [0.5, 0.5]]
 ```
 
-在这个例子中，需要处理两组数据，[1,2]和[3,3]，对于第一组数据，按照softmax算法（一种指数算法）进行映射，得到输出是[0.2689414213699951, 0.7310585786300049]，而第二组数据两个数值相等，得到就是平均分配的[0.5, 0.5]。每一组数据经过处理之后的加和都是一。
+在这个例子中，需要处理两组数据，[1,2]和[3,3]，对于第一组数据，按照softmax算法（一种指数算法）进行映射，得到输出是[0.2689414213699951, 0.7310585786300049]，而第二组数据两个数值相等，得到就是平均分配的[0.5, 0.5]。每一组数据经过处理之后的和是1。
 
 3.参数说明
 
@@ -54,10 +54,13 @@ def softmax(x):
     return x1.tolist()
 ```
 
-### cosine_similarity
+### 余弦相似性计算：cosine_similarity
 
 1.函数说明
-该函数可以比较两个embedding序列的相似度，这里的相似度是以余弦相似度为计算指标的，在高中我们就学习过余弦定理，这里的余弦相似度公式也是类似的，具体计算可以参考[这里](https://zhuanlan.zhihu.com/p/43396514)。
+
+该函数可以比较两个向量特征（如embedding序列）的相似度，这里的相似度是以余弦相似度为计算指标的，在高中我们就学习过余弦定理，这里的余弦相似度公式也是类似的，具体计算可以参考[这里](https://zhuanlan.zhihu.com/p/43396514)。
+
+输出的数据范围（计算结果）为-1到1。-1意味着两个向量指向的方向正好截然相反，1表示它们的指向是完全相同的，0通常表示它们之间是独立的。
 
 2.使用示例
 
@@ -156,7 +159,7 @@ print(softmax(output))
 
 1.函数说明
 
-上面的函数cosine_similarity能够计算两个embedding向量的余弦相似度，而get_similarity则提供了更丰富的选择，该函数可以选择相似度的比较算法，可选'cosine', 'euclidean', 'manhattan', 'chebyshev', 'pearson'，默认是'cosine'（method='cosine'）。
+cosine_similarity函数能够计算两个embedding向量的余弦相似度，而get_similarity则提供了更丰富的选择，该函数可以选择相似度的比较算法，可选'cosine', 'euclidean', 'manhattan', 'chebyshev', 'pearson'，默认是'cosine'（method='cosine'），输出概率映射结果。
 
 2.使用示例
 
@@ -249,7 +252,7 @@ def get_similarity(embeddings_1: np.ndarray, embeddings_2: np.ndarray,method:str
 
 get_similarity 函数实际上是对 cosine_similarity 函数的扩展和泛化。它不仅支持余弦相似度，还支持其他距离测量方法，并提供了可选的 softmax 应用，使其功能更为丰富和灵活。在 get_similarity 中使用 'cosine' 方法时，它会调用 cosine_similarity 函数来计算余弦相似度，同时还有是否进行归一化的处理。因此 cosine_similarity 可以视为 get_similarity 的一个特定实现。
 
-### visualize_similarity
+### 相似度计算结果可视化：visualize_similarity
 
 1.函数说明
 
