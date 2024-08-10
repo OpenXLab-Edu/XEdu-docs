@@ -362,7 +362,7 @@ chatbot.set_system(prompt)
 chatbot.run()
 ```
 这样，在网页中，就可以体验经过微调的聊天机器人服务了。同时提供的二次分发借口也可以让其他人通过接入url服务，实现调用微调聊天机器人。此外，也可以通过上面的多轮对话的方式，自行设定talk内容，来设定微调效果。
-更多的Prompt案例，可以参考[这里](https://github.com/langgptai/wonderful-prompts)。
+更多的Prompt案例，可以参考[这里](https://github.com/langgptai/wonderful-prompts)和[这里](https://langgptai.feishu.cn/wiki/JCZHwwrsOizzaOktD4fcuGbFnzg)。
 
 ## 应用案例
 借助XEduLLM的功能，我们可以开发很多有趣的应用，包括纯软件类应用以及软硬件结合的应用。本部分为您提供几个小案例。
@@ -631,7 +631,7 @@ pyttsx3.speak(res)
 这些事件只是其中的一部分，历史上的每一天都有许多不同的事件发生。
 ```
 ### 案例五：逻辑推理问答机器人
-模型微调是一个很有趣的事情，我们可以定义自己的模型能力，然后让他帮我们完成设定好的特定任务。其中一种最简单的方式是Prompt定制，网上有很多好玩的Prompt示例，例如[这里](https://github.com/langgptai/wonderful-prompts)就有很多很棒的例子。我们可以利用多轮对话的方式，实现类似的效果。
+模型微调是一个很有趣的事情，我们可以定义自己的模型能力，然后让他帮我们完成设定好的特定任务。其中一种最简单的方式是Prompt定制，网上有很多好玩的Prompt示例，例如[这里](https://github.com/langgptai/wonderful-prompts)和[这里](https://langgptai.feishu.cn/wiki/JCZHwwrsOizzaOktD4fcuGbFnzg)就有很多很棒的例子。我们可以利用多轮对话的方式，实现类似的效果。
 ```python
 from XEdu.LLM import Client
 chatbot = Client(provider='qwen', # 选择模型为阿里-通义千问
