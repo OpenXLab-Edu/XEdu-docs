@@ -114,14 +114,12 @@ def inference(data, **kwarg):
 
 而你所要做的就只有一件事：把模型权重文件和处理函数代码上传到开源AI社区！下面就以两个案例展示如何分享模型。
 
-### 视频讲解
+#### 视频讲解
 视频讲解：即将上线！
 
-### 案例展示
+### 第一步：准备模型和配套代码
 
-#### 第一步：准备模型和配套代码
-
-##### 案例一：分享XEdu系列训练的模型
+#### 案例一：分享XEdu系列训练的模型
 
 [参考链接:车牌目标检测](https://modelscope.cn/models/yikshing/det_plate_ssd)
 
@@ -153,7 +151,7 @@ def inference(data,img_type1=None):
 ```
 这段代码与原来的版本有两点不同，一是有一个get_model_path()的函数。由于仓库与主函数分离，模型文件的路径会产生变化，这里已经帮大家定义好了这个函数，可以直接帮助确定模型所在的本地实际路径。二是`img_type1`参数，该参数避开了与原来`Workflow(img_type)`参数的冲突，这里要自定义一个传参的参数名。这样，分享模型的第一步就完成了。
 
-##### 案例二：分享ONNX模型+完整推理函数
+#### 案例二：分享ONNX模型+完整推理函数
 
 [参考项目：人脸特征提取（128维）](https://modelscope.cn/models/yikshing/face_recognition_sface)
 
@@ -212,7 +210,7 @@ res = model.inference('./Lenna_400x400.jpg',box=None)
 print(res)
 ```
 
-##### 案例三：仅分享一个第三方ONNX模型
+#### 案例三：仅分享一个第三方ONNX模型
 我们的仓库中要求有model.onnx和data_process.py两个文件。如果这个模型不需要额外的数据处理，我们可以将其留空，也就是准备一个第三方ONNX模型和一个空白的data_process.py文件。
 
 下面以以onnx官方提供的情绪分类模型为例，我们下载这个模型，让模型能够在本地跑通。
@@ -255,7 +253,7 @@ print(post)
 ```
 再次运行这段函数，即可完整调用模型。
 
-##### 案例四：分享ONNX模型+前后数据处理策略
+#### 案例四：分享ONNX模型+前后数据处理策略
 
 [参考项目：情绪分类](https://modelscope.cn/models/yikshing/emotion_ferplus)
 
@@ -310,10 +308,10 @@ def preprocess(image_path):
     img_data = img_data.astype(np.float32)
     return img_data
 ```
-##### 步骤一结语
+#### 步骤一结语
 这样我们就把上述ONNX模型跑通了，但是要想分享这个模型和代码，还是比较复杂，需要同时把模型文件和代码文件发送给其他人，而且传播范围有限。因此，我们可以借助社区来实现网络传播和生态建设。
 
-#### 第二步：上传模型仓库
+### 第二步：上传模型仓库
 
 这里以[魔搭社区](https://modelscope.cn/home)为例，首先需要通过网页注册/登录，然后点击[创建模型](https://modelscope.cn/models/create)，填写相关信息，其中`是否公开`选择“`公开模型`”。点击创建后再上传其他文件。
 ![](../images/xeduhub/share2.gif)
@@ -322,7 +320,7 @@ def preprocess(image_path):
 ![](../images/xeduhub/share3.gif)
 点击“添加文件”，继续添加文件，上传刚才的`data_process.py` 文件。
 
-#### 第三步：测试模型
+### 第三步：测试模型
 接下来，我们测试一个模型是否可以顺利运行。下面代码中的`XXXXXXXXXX`替换为你的仓库名称。
 ![](../images/xeduhub/repo1.png)
 仓库名称可以点击箭头指向的复制按钮来获取。
@@ -337,7 +335,7 @@ print(res)
 
 运行代码之后，模型会自动下载到这段代码同级目录的repo文件夹中。
 
-#### 第四步：填写生态共建问卷登记模型
+### 第四步：填写生态共建问卷登记模型
 为了让更多人知道你贡献的好玩的模型，我们诚邀您在上传模型之后，在这里填写[问卷](https://p6bm2if73b.feishu.cn/share/base/form/shrcnzOFptyxP4wkwvlidiwHyxb)登记您的模型，这样，就可以让您的模型加入[生态共建模型仓库](https://p6bm2if73b.feishu.cn/share/base/query/shrcnHJ0F4VJFpGcTvySTiwgcCg)，让更多人看到并用上您的模型！
 
 ## 高级用法
