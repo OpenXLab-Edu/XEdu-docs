@@ -342,7 +342,7 @@ result = model.noisy("0.jpg", timestep=500,show=True)
 from BaseNN import nn
 # 声明模型
 model = nn()
-# 载入数据
+# 载入数据集
 model.load_img_data('mnist_small_2', batch_size=64,color='grayscale',shuffle=True)
 # # 定义模型结构：扩散模型
 model.add('diffusion_model',img_size=28,timestep=500)
@@ -352,6 +352,18 @@ model.add(optimizer='Adam')
 model.save_fold = 'diffusion_ckpt500'
 model.train(epochs=2,metrics=[],lr=5e-4)
 ```
+
+注：对数据集格式的要求，图片按照类别存放在对应类别的子文件夹中，支持单类或多类，但是即使是单类也应该是有一个单独的类别子文件夹。
+
+```
+指定的路径
+
+|-类别
+
+|-|-图片
+```
+
+
 
 #####  3.扩散模型的反向过程【可以理解为推理】
 
