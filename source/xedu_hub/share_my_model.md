@@ -154,6 +154,9 @@ def inference(data,img_type1=None):
 这段代码与原来的版本有两点不同，一是有一个get_model_path()的函数。由于仓库与主函数分离，模型文件的路径会产生变化，这里已经帮大家定义好了这个函数，可以直接帮助确定模型所在的本地实际路径。二是`img_type1`参数，该参数避开了与原来`Workflow(img_type)`参数的冲突，这里要自定义一个传参的参数名。这样，分享模型的第一步就完成了。
 
 ##### 案例二：分享ONNX模型+完整推理函数
+
+[参考项目：人脸特征提取（128维）](https://modelscope.cn/models/yikshing/face_recognition_sface)
+
 我们再展示一个用inference函数方式调用模型的方法。
 
 这里以opencv官方提供的人脸特征提取模型为例，我们下载这个模型，并为它编写推理代码，先让模型能够在本地跑通。
