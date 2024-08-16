@@ -315,16 +315,15 @@ model.add('diffusion_model',img_size=28,timestep=500)
 搭建模型并查看正向扩散过程：
 
 ```python
-# 导入依赖库
 from BaseNN import nn
 # 声明模型
 model = nn()
-# 定义模型结构：扩散模型
+# 搭建模型
 model.add('diffusion_model',img_size=28,timestep=500)
-# 设置颜色
-model.color = 'grayscale' # 也可以是'RGB'
-# 正向加噪过程
-result = model.noisy('./0.jpg', timestep=500)
+# 声明图片为灰度图片
+model.color = 'grayscale'
+# 可视化正向扩散过程
+result = model.noisy("0.jpg", timestep=500,show=True)
 ```
 
 输出结果：
@@ -344,15 +343,11 @@ from BaseNN import nn
 # 声明模型
 model = nn()
 # 载入数据
-model.load_img_data('/data/MELLBZ/mnist/training_set', batch_size=64,color='grayscale',shuffle=True)
+model.load_img_data('mnist_small_2', batch_size=64,color='grayscale',shuffle=True)
 # # 定义模型结构：扩散模型
 model.add('diffusion_model',img_size=28,timestep=500)
 # 指定优化器（可省略）
 model.add(optimizer='Adam')
-# 正向加噪过程：原始图像->高斯噪声
-# model.color = 'grayscale'
-# result = model.noisy("../../dataset/cls/mnist/training_set/4/2.png", timestep=500,show=True)
-
 # 训练模型
 model.save_fold = 'diffusion_ckpt500'
 model.train(epochs=2,metrics=[],lr=5e-4)
@@ -365,7 +360,8 @@ model.train(epochs=2,metrics=[],lr=5e-4)
 ```python
 # 反向去噪过程：高斯噪声->生成图像
 generated_imgs = model.inference(num=64, return_all_timesteps=True)
-model.show(generated_imgs, size=(4,4))#,visual_timesteps=True)
+# 可视化图片去噪生成过程
+model.show(generated_imgs, size=(4,4)),visual_timesteps=True)
 ```
 
 还可以使用载入模型的方式：
@@ -376,7 +372,8 @@ from BaseNN import nn
 model = nn()
 # 反向去噪过程：高斯噪声->生成图像
 generated_imgs = model.inference(checkpoint='basenn.pth',num=16, return_all_timesteps=True)
-model.show(generated_imgs, size=(4,4))
+# 可视化图片去噪生成过程
+model.show(generated_imgs,visual_timesteps=True)
 ```
 
 ### 拓展——搭建更复杂的网络结构
