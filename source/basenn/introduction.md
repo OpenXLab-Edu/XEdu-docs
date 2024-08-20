@@ -677,7 +677,7 @@ img = cv2.imread('small/0/5818.png')
 feature = model.extract_feature(img, pretrain='resnet18')
 ```
 
-第一次下载预训练模型有点慢需要耐心等待，再次运行则无需下载。
+第一次下载预训练模型有点慢需要耐心等待，再次运行则无需下载。除了`resnet18`，还支持指定任何可以在 `torchvision.models` 中找到的模型名称，例如`resnet34`、`resnet50`、`mobilenet_v2`、`vgg16`……
 
 ### 2.网络中特征可视化
 
