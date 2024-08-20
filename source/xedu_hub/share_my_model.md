@@ -112,7 +112,7 @@ def inference(data, **kwarg):
 
 对于教学场景而言，不同模型的实现方式各不相同，要想把模型跑通，总是需要额外写很多代码，这样的模型让不少学生甚至是老师打起了退堂鼓。如果我已经调通了这样的一个模型，把这样的处理流程分享出来，帮助其他学生更快地用上这个功能，何乐而不为呢？
 
-而你所要做的就只有一件事：把模型权重文件和处理函数代码上传到开源AI社区！下面就以两个案例展示如何分享模型。
+而你所要做的就只有一件事：把模型权重文件和处理函数代码上传到开源AI社区，并且满足仓库规范！下面就以几个典型案例展示如何分享模型。
 
 #### 视频讲解
 视频讲解：即将上线！
@@ -133,7 +133,7 @@ mmedudet.show(result_img) # 展示推理结果图片
 ```
 但是这个代码需要配合模型才能运行，代码可以很方便地以文本形式传播（如微信推文、技术博客），但模型文件很难一同附带，这时repo就能大显神通了。
 
-我们只需要两步：①重命名plate.onnx；②编写下面这段代码，保存至data_process.py。
+我们只需要两步：①重命名plate.onnx为model.onnx；②编写data_process.py，代码如下。
 ```python
 from XEdu.hub import Workflow as wf
 def get_model_path():
@@ -153,16 +153,14 @@ def inference(data,img_type1=None):
 
 #### 案例二：分享ONNX模型+完整推理函数
 
-[参考项目：人脸特征提取（128维）](https://modelscope.cn/models/yikshing/face_recognition_sface)
-
-我们再展示一个用inference函数方式调用模型的方法。
+[参考链接：人脸特征提取（128维）](https://modelscope.cn/models/yikshing/face_recognition_sface)
 
 这里以opencv官方提供的人脸特征提取模型为例，我们下载这个模型，并为它编写推理代码，先让模型能够在本地跑通。
 - 模型下载地址：[face_recognition_sface_2021dec.onnx](https://github.com/opencv/opencv_zoo/blob/main/models/face_recognition_sface/face_recognition_sface_2021dec.onnx)
 - 模型前后处理参考资料：[sface.py](https://github.com/opencv/opencv_zoo/blob/main/models/face_recognition_sface/sface.py)
 
 
-参考模型资料，推理函数编写如下：
+参考模型资料，应该使用自定义inference函数方式调用模型的方法编写data_process.py的代码。推理函数编写如下：
 ```python
 import cv2,os
 import numpy as np
@@ -225,7 +223,7 @@ data = './Lenna_400x400.jpg'
 res = model.inference(data)
 print(res)
 ```
-运行这段代码，会发现数据格式有一些问题，我们可以修改这段主函数，修改如下：
+然而运行这段代码，会发现数据格式有一些问题，我们可以修改这段主函数，修改如下：
 ```python
 from XEdu.hub import Workflow as wf
 import numpy as np
@@ -321,9 +319,7 @@ def preprocess(image_path):
 点击“添加文件”，继续添加文件，上传刚才的`data_process.py` 文件。
 
 ### 第三步：测试模型
-接下来，我们测试一个模型是否可以顺利运行。下面代码中的`XXXXXXXXXX`替换为你的仓库名称。
-![](../images/xeduhub/repo1.png)
-仓库名称可以点击箭头指向的复制按钮来获取。
+接下来，我们测试一个模型是否可以顺利运行。根据步骤一，大部分模型的调用代码就只需要如下四句，除个别比较特殊。将下面代码中的`XXXXXXXXXX`替换为你的仓库名称即可。
 
 ```python
 from XEdu.hub import Workflow as wf
@@ -331,7 +327,10 @@ model = wf(repo='XXXXXXXXXX')
 res = model.inference('./Lenna_400x400.jpg')
 print(res)
 ```
-看起来运行一切正常，那么就ok啦！如果有问题的话，我们就需要调整一下代码，确保可以运行后，再分享出来。
+仓库名称可以点击箭头指向的复制按钮来获取。
+![](../images/xeduhub/repo1.png)
+
+如果运行一切正常，那么就ok啦！如果有问题的话，我们就需要调整一下代码，确保可以运行后，再分享出来。
 
 运行代码之后，模型会自动下载到这段代码同级目录的repo文件夹中。
 
