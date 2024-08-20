@@ -25,7 +25,7 @@ Client.support_provider('zh') # 查看服务商中文名
 
 support_provider可以设置参数lang，表示语言，支持['en','zh']，默认'en'。
 
-每个服务商需要分别注册和获取相应的密钥，密钥获取的注册网址和key的获取方式如下表所示（右拉课查看如何获取key）：
+每个服务商需要分别注册和获取相应的密钥，密钥获取的注册网址和key的获取方式如下表所示（右拉可查看如何获取key）：
 <table class="docutils align-default">
     <thead>
         <tr class="row-odd">
