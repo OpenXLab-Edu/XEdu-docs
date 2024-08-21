@@ -30,4 +30,8 @@ XEdu-python已经内置在XEdu的一键安装包中，解压后即可使用。
 
 下载地址：[https://p6bm2if73b.feishu.cn/file/PTB8binCMozK1Rx8iPQcnVrynWd](https://p6bm2if73b.feishu.cn/file/PTB8binCMozK1Rx8iPQcnVrynWd)
 
-Mac 版/源码：[https://p6bm2if73b.feishu.cn/file/CMOqbJzKeo7lgRxmqufcugoEnCe](https://p6bm2if73b.feishu.cn/file/CMOqbJzKeo7lgRxmqufcugoEnCe)
+Mac版/源码：[https://p6bm2if73b.feishu.cn/file/CMOqbJzKeo7lgRxmqufcugoEnCe](https://p6bm2if73b.feishu.cn/file/CMOqbJzKeo7lgRxmqufcugoEnCe)
+
+- 源码依赖环境：`xedu-python gradio requests`
+
+<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=112994499431048&bvid=BV12tWsePEmA&cid=500001656107517&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>

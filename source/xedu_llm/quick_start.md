@@ -1,5 +1,7 @@
 # 快速体验XEduLLM
 
+[XEduLLM：让大模型进入中小学信息科技课[J].中国信息技术教育,2024,(15):89-91.](https://kns.cnki.net/kcms2/article/abstract?v=01ddXewXOSCM3qpKKQJvwcnlfWy6LSqIQOZE2fNNp3bjEH-Wzx9VbDO-aS3bmUS7jhfAu2f3LXTpJjw9G8gA_JmgRBOMCPs7NwQCKGzaC1Phk-SLR0PWDZ4oMlynPN-vAU1J3PrSWtiIGYz_rQSXxfRfQRkt4xNp&uniplatform=NZKPT)
+
 ## XEduLLM是什么？
 
 XEduLLM是一个方便初学者应用各种大语言模型的模块，用统一的语法即可访问不同的大模型服务商，用简短的代码实现工作流并开发智能体应用。XEduLLM为中小学的教学场景做了优化，教师能够将个人的API Key“共享”给一个班级的学生使用，化解了学生因为不能带手机而无法使用大模型的尴尬。
@@ -11,6 +13,12 @@ XEduLLM的工作原理如图所示。XEduLLM使用统一语法访问不同的大
 XEduLLM的Client模块利用几行代码就可以创建一个新的Web服务，通过API调用各种优秀的大语言模型的能力。Web页面中将显示调用的是哪一个服务，提示词将发送到远程服务器处理，然后返回响应，实现与大语言模型交流的目的。
 
 ![](../images/xedullm/llm1.png)
+
+核心功能：大模型学生免登录
+
+在课堂教学中，学生可以通过局域网访问的方式来进行体验。假设前面的程序运行在教师机上，并且学生机与教师机在同一个局域网内，学生就可以通过服务地址进行在线体验。整个过程学生无需注册登录，不同网页之间的聊天记录相互独立，互不干扰。
+
+<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=112994499431048&bvid=BV12tWsePEmA&cid=500001656107517&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
 
 
 ## XEduLLM的安装和使用

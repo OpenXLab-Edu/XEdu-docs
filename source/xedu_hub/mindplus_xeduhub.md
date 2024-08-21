@@ -4,6 +4,8 @@ Mind+中也上线了XEduHub积木块，使用积木也可以玩XEduHub。使用M
 
 Gitee链接：[https://gitee.com/liliang9693/ext-xedu-hub](https://gitee.com/liliang9693/ext-xedu-hub)
 
+[Mind+结合XEduHub开发AI交互作品](https://mp.weixin.qq.com/s/Hyt3npIttAwmOBhN1bayxw)
+
 ## 使用说明
 
 ### 第一步：加载积木库
@@ -61,7 +63,7 @@ print(f"onnxruntime version: {onnxruntime.__version__}")
 如果安装正确，您将看到类似以下的输出：
 
 ```
-onnxruntime version: 1.9.0
+onnxruntime version: 1.13.1
 ```
 
 3.行空板基础库问题
