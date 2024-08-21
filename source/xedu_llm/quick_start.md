@@ -21,18 +21,19 @@ XEduLLM的Client模块利用几行代码就可以创建一个新的Web服务，�
 
 库文件源代码可以从[PyPi](https://pypi.org/project/xedu-python/#files)下载，选择tar.gz格式下载，可用常见解压软件查看源码。
 
+同时为了满足广大中小学教师的需求，上线了XEduLLM安装包版，下载方式见[安装说明](https://xedu.readthedocs.io/zh-cn/master/xedu_llm/installation.html#id3)。
+
 ### 创建本地大模型对话页面
 
-XEduLLM提供了通用接口访问工具Client，使用这个工具我们可以几行代码通过API调用各种优秀的大语言模型，发送问题并获得响应。
+XEduLLM提供了通用接口访问工具Client，使用这个工具我们可以几行代码通过API调用各种优秀的大语言模型，发送问题并获得响应，详细步骤如下。当然，如果直接使用XEduLLM安装包版，无需代码，即可实现，然而强烈建议先通过下文了解此过程及[XEduLLM的功能详解](https://xedu.readthedocs.io/zh-cn/master/xedu_llm/introduction.html)再使用XEduLLM安装包版。
 
-
-1.配置大模型服务器信息
+#### 1.配置大模型服务器信息
 
 一般来说，绝大多数的中小学都没有算力服务器，教师需要先申请大模型服务商的API。目前XEduLLM已经支持如下服务商：'openrouter', '月之暗面-Kimi', '幻方-深度求索', '智谱-智谱清言', '百度-文心一言', '阿里-通义千问'等。这些服务商都API价格都很便宜，有些还直接赠送了免费的额度。只要利用这些额度，就足够支撑好多节课的教学了。
 
 下面以openrouter服务商提供的免费大语言模型提问为例：
 
-1）创建个人账号
+**1）创建个人账号**
 
 首先，进入[openrouter网页](https://openrouter.ai)（https://openrouter.ai ），创建一个openrouter帐户或登录。点击右上角个人头像-Keys-Create Key，命名密钥并获取密钥。
 
@@ -40,7 +41,7 @@ XEduLLM提供了通用接口访问工具Client，使用这个工具我们可以�
 
 ![](../images/xedullm/openrouter_createKey.png)
 
-2）将账号填入代码
+**2）将账号填入代码**
 
 创建大模型对话页面，基础代码仅仅三行。参考如下：（直接复制代码运行会报错，需要更换自己的账号api_key）
 
@@ -51,7 +52,7 @@ chatbot = Client(provider='openrouter',
 chatbot.run()
 ```
 
-2.通过浏览器访问Web服务
+#### 2.通过浏览器访问Web服务
 
 运行代码后，将输出对应的ip地址。将地址复制到浏览器打开，即可看到像服务商提供的原生体验网页一样的对话界面。经过进一步的学习，你可以在此基础上做模型微调等好玩的事情，让模型更合你的心意。然后，就可以将这个链接分享给你的好伙伴一同体验，属于你独一无二的界面，同时，这个网址也可以用代码调用，直接嵌入应用程序使用。
 ![](../images/xedullm/llm1.png)
@@ -91,4 +92,4 @@ print(chatbot.support_provider(lang = 'zh') ) # 查看XEduLLM中目前提供的�
 获取大语言模型API密钥的流程通常包括在各平台网页上进行用户注册，注册完成后获取相应的算力资源，详细步骤请参考<a href="https://xedu.readthedocs.io/zh-cn/master/xedu_llm/how_to_get_API_key.html">API与密钥获取</a>。
 
 
-未来XEduLLM将增加一键启动本地模型的功能。
+XEduLLM已增加一键启动本地模型的功能，及[XEduLLM安装包版](https://xedu.readthedocs.io/zh-cn/master/xedu_llm/installation.html#id3)，可前往体验。
