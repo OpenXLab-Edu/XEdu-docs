@@ -24,3 +24,9 @@ XEdu-python已经内置在XEdu的一键安装包中，解压后即可使用。
 
 常见出问题的是onnxruntime库，建议手动pip安装，再进行库排查。
 
+### XEduLLM安装包版
+
+为了大大降低老师们的使用成本，XEdu团队上线了XEduLLM安装包版，无需编写过多代码，即可完成基本使用。
+
+下载地址：[https://p6bm2if73b.feishu.cn/file/PTB8binCMozK1Rx8iPQcnVrynWd](https://p6bm2if73b.feishu.cn/file/PTB8binCMozK1Rx8iPQcnVrynWd)
+Mac 版/源码：[https://p6bm2if73b.feishu.cn/file/CMOqbJzKeo7lgRxmqufcugoEnCe](https://p6bm2if73b.feishu.cn/file/CMOqbJzKeo7lgRxmqufcugoEnCe)
