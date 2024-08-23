@@ -184,7 +184,7 @@ client = OpenAI(api_key="YOUR_API_KEY", base_url="https://api.siliconflow.cn/v1"
 ```
 在我们的XEduLLM中，同样可以使用`base_url`来接入支持OpenAI格式的接口服务。这样接入我们需要三个参数：`base_url`、`api_key`和`model`。
 
-- `base_url`: 服务接入地址，这里我们查询到是`"https://api.siliconflow.cn/v1"`；
+- `base_url`: 服务接入地址，这里我们查询到是`https://api.siliconflow.cn/v1`；
 - `api_key`: 该平台你的密钥，Silicon Cloud可以在这个[链接](https://cloud.siliconflow.cn/account/ak)中查询或创建；
 - `model`: 模型名称，通常这类平台中有很多模型，我们需要指定调用的是哪个模型，Silicon Cloud的模型名称可以在[这里](https://siliconflow.cn/zh-cn/pricing)查询，例如`'internlm/internlm2_5-20b-chat'`，同时我们可以查看到当前其价格是`¥1.00/1M tokens`，大约1元1百万字符输入输出。
 
@@ -192,7 +192,7 @@ client = OpenAI(api_key="YOUR_API_KEY", base_url="https://api.siliconflow.cn/v1"
 ```python
 from XEdu.LLM import Client # 导入库
 chatbot = Client(api_key='sk-ya***fx', 
-                base_url="https://api.siliconflow.cn/v1",
+                base_url='https://api.siliconflow.cn/v1',
                 model='internlm/internlm2_5-20b-chat')
 question = '请写一首和教育有关的现代诗'
 print('问题：', question) 
