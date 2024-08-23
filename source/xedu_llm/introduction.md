@@ -58,7 +58,7 @@ chatbot = Client(provider='openrouter',
 
 ##### 参数说明
 
-- `base_url`(str):API的服务器地址。
+- `base_url`(str):API的服务器地址。（类OpenAI用法）
 - `provider`(str):指定服务提供商的名称。可以通过Client.support_provider()语句来查看支持哪些服务提供商。声明时，支持多种不同provider书写格式，英文/中文/公司/产品，如'deepseek'，'幻方-深度求索'，'幻方'，'深度求索'。
 - `api_key`(str):访问密钥（Access Key），用于验证用户身份并授权访问API服务。
 - `secret_key`(str):秘密密钥（Secret Key），与API密钥一起使用，提供更高级别的安全性。在文心一言ernie中，需要同时提供API密钥和秘密密钥来进行身份验证，其他的服务商不需要。
@@ -659,4 +659,31 @@ Transformer->自注意力机制->序列建模改进->预训练模型发展->GPT
 3. 序列建模改进：Transformer的自注意力机制显著改进了序列建模，使得模型能够更好地理解和生成复杂的语言结构，这对于自然语言生成和理解任务至关重要。
 4. 预训练模型发展：Transformer的成功推动了预训练模型的发展，即在大规模无标注文本上预先训练模型，然后在特定任务上进行微调。这种范式降低了对大量标注数据的依赖，提高了模型的泛化能力。
 5. GPT：OpenAI的GPT（Generative Pre-trained Transformer）系列是基于Transformer架构的预训练模型，它使用自注意力机制进行语言建模，展示了强大的语言生成和理解能力，如GPT-3更是成为了预训练模型领域的里程碑式作品。
+```
+## 高级用法
+### 接入更多平台（以Silicon Cloud为例）
+有的模型并没有在上述我们支持的平台中，我们依然可以通过OpenAI接口调用。查阅您准备接入的平台文档，这里以[**Silicon Cloud**](https://cloud.siliconflow.cn/playground/chat/17885302561) 为例，介绍如何接入。
+
+我们在文档页面可以发现[使用Silicon Cloud API](https://docs.siliconflow.cn/docs/4-api%E8%B0%83%E7%94%A8#%E9%80%9A%E8%BF%87openai%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8)的说明，我们就利用这里来实现调用。
+
+查看示例代码中有一句：
+```python
+client = OpenAI(api_key="YOUR_API_KEY", base_url="https://api.siliconflow.cn/v1")
+```
+在我们的XEduLLM中，同样可以使用`base_url`来接入支持OpenAI格式的接口服务。这样接入我们需要三个参数：`base_url`、`api_key`和`model`。
+
+- `base_url`: 服务接入地址，这里我们查询到是`"https://api.siliconflow.cn/v1"`；
+- `api_key`: 该平台你的密钥，Silicon Cloud可以在这个[链接](https://cloud.siliconflow.cn/account/ak)中查询或创建；
+- `model`: 模型名称，通常这类平台中有很多模型，我们需要指定调用的是哪个模型，Silicon Cloud的模型名称可以在[这里](https://siliconflow.cn/zh-cn/pricing)查询，例如`'internlm/internlm2_5-20b-chat'`，同时我们可以查看到当前其价格是`¥1.00/1M tokens`，大约1元1百万字符输入输出。
+
+
+最终，我们可给出这样一段参考代码(调用书生·浦语2.5-20B模型)：
+```python
+chatbot = Client(api_key='sk-ya***fx', 
+                base_url="https://api.siliconflow.cn/v1",
+                model='internlm/internlm2_5-20b-chat')
+question = '请写一首和教育有关的现代诗'
+print('问题：', question) 
+res = chatbot.inference(question)
+print('回答：', res)
 ```
