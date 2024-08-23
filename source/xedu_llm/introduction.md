@@ -661,7 +661,7 @@ Transformer->自注意力机制->序列建模改进->预训练模型发展->GPT
 5. GPT：OpenAI的GPT（Generative Pre-trained Transformer）系列是基于Transformer架构的预训练模型，它使用自注意力机制进行语言建模，展示了强大的语言生成和理解能力，如GPT-3更是成为了预训练模型领域的里程碑式作品。
 ```
 ## 高级用法
-### 接入更多平台（以Silicon Cloud为例）
+### 接入更多平台（以Silicon Cloud接入internlm2_5-20b-chat为例）
 有的模型并没有在上述我们支持的平台中，我们依然可以通过OpenAI接口调用。查阅您准备接入的平台文档，这里以[**Silicon Cloud**](https://cloud.siliconflow.cn/playground/chat/17885302561) 为例，介绍如何接入。
 
 我们在文档页面可以发现[使用Silicon Cloud API](https://docs.siliconflow.cn/docs/4-api%E8%B0%83%E7%94%A8#%E9%80%9A%E8%BF%87openai%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8)的说明，我们就利用这里来实现调用。
