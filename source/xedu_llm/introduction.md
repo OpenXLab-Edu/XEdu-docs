@@ -174,21 +174,12 @@ print(res)
 
 ### 功能三：接入更多服务商API（以Silicon Cloud为例）
 
-目前已经兼容了上述的服务商，但是有的模型并没有在上述我们支持的平台中，我们依然可以通过OpenAI接口调用。查阅您准备接入的平台文档，这里以[**Silicon Cloud**](https://cloud.siliconflow.cn/playground/chat/17885302561) 为例，介绍如何接入。
+目前已经兼容了上述的服务商，但是有的模型并没有在上述我们支持的平台中，我们依然可以通过API接口调用的方式来接入，Silicon Cloud和OpenRouter都是这类服务集成商，提供了数十种模型可供选择。查阅您准备接入的平台文档，这里以[**Silicon Cloud**](https://cloud.siliconflow.cn/playground/chat/17885302561) 为例，介绍如何接入。
 
-我们在文档页面可以发现[使用Silicon Cloud API](https://docs.siliconflow.cn/docs/4-api%E8%B0%83%E7%94%A8#%E9%80%9A%E8%BF%87openai%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8)的说明，我们就利用这里来实现调用。
+我们在其文档页面可以发现[使用Silicon Cloud API](https://docs.siliconflow.cn/docs/4-api%E8%B0%83%E7%94%A8#%E9%80%9A%E8%BF%87openai%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8)的说明，我们就利用这里来实现调用。
 
-查看示例代码中有一句：
-```python
-client = OpenAI(api_key="YOUR_API_KEY", base_url="https://api.siliconflow.cn/v1")
-```
-在我们的XEduLLM中，同样可以使用`base_url`来接入支持OpenAI格式的接口服务。这样接入我们需要三个参数：`base_url`、`api_key`和`model`。
+查看示例代码中有一句：`base_url="https://api.siliconflow.cn/v1"`，在我们的XEduLLM中，同样可以使用`base_url`来接入支持OpenAI格式的接口服务。这样接入我们需要三个参数：`base_url`、`api_key`和`model`。
 
-- `base_url`: 服务接入地址，这里我们查询到是`https://api.siliconflow.cn/v1`；
-- `api_key`: 该平台你的密钥，Silicon Cloud可以在这个[链接](https://cloud.siliconflow.cn/account/ak)中查询或创建；
-- `model`: 模型名称，通常这类平台中有很多模型，我们需要指定调用的是哪个模型，Silicon Cloud的模型名称可以在[这里](https://siliconflow.cn/zh-cn/pricing)查询，例如`'internlm/internlm2_5-20b-chat'`，同时我们可以查看到当前其价格是`¥1.00/1M tokens`，大约1元1百万字符输入输出。
-
-最终，我们可给出这样一段参考代码(调用书生·浦语2.5-20B模型)：
 ```python
 from XEdu.LLM import Client # 导入库
 chatbot = Client(api_key='sk-ya***fx', 
@@ -199,7 +190,11 @@ print('问题：', question)
 res = chatbot.inference(question)
 print('回答：', res)
 ```
-本功能示例代码中声明函数Client()新增使用的参数是`base_url`(str)，为API的服务器地址。
+最终，我们可给出这样一段参考代码来调用平台上某一模型。
+
+- `base_url`: 服务接入地址，这里我们查询到是`https://api.siliconflow.cn/v1`；
+- `api_key`: 该平台你的密钥，Silicon Cloud可以在这个[链接](https://cloud.siliconflow.cn/account/ak)中查询或创建；
+- `model`: 模型名称，通常这类平台中有很多模型，我们需要指定调用的是哪个模型，Silicon Cloud的模型名称可以在[这里](https://siliconflow.cn/zh-cn/pricing)查询，例如`'internlm/internlm2_5-20b-chat'`，同时我们可以查看到当前其价格是`¥1.00/1M tokens`，大约1元1百万字符输入输出。
 
 通过阅读各家大模型服务提供商的官方文档，可以找到该模型所对应的服务器地址（`base_url`）。下面列举了部分服务商的base_url，仅供参考。
 
@@ -247,7 +242,7 @@ print('回答：', res)
         </tr>
     </tbody>
 </table>
-我们可以举一反三向其他大模型API的服务器地址发送请求。
+我们可以举一反三向其他大模型API的服务器地址发送请求，目前，base_url执行的是`OpenAI标准`接口，故非标准化的服务器地址将无法支持。
 
 ### 功能四：启动基于网页的聊天机器人服务
 
