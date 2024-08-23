@@ -680,8 +680,3 @@ Transformer->自注意力机制->序列建模改进->预训练模型发展->GPT
 4. 预训练模型发展：Transformer的成功推动了预训练模型的发展，即在大规模无标注文本上预先训练模型，然后在特定任务上进行微调。这种范式降低了对大量标注数据的依赖，提高了模型的泛化能力。
 5. GPT：OpenAI的GPT（Generative Pre-trained Transformer）系列是基于Transformer架构的预训练模型，它使用自注意力机制进行语言建模，展示了强大的语言生成和理解能力，如GPT-3更是成为了预训练模型领域的里程碑式作品。
 ```
-## 高级用法
-### 接入更多平台（以Silicon Cloud接入internlm2_5-20b-chat为例）
-
-
-
