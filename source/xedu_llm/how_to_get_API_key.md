@@ -46,7 +46,7 @@ support_provider可以设置参数lang，表示语言，支持['en','zh']，默�
     <tbody>
         <tr class="row-even">
             <td>openrouter</td>
-            <td><a href="https://openrouter.ai">https://openrouter.ai</a></td>
+            <td><a href="https://openrouter.ai/settings/keys">https://openrouter.ai/settings/keys</a></td>
             <td>右上角个人头像-Keys-Create Key</td>
             <td>无</td>
         </tr>
@@ -54,7 +54,7 @@ support_provider可以设置参数lang，表示语言，支持['en','zh']，默�
     <tbody>
         <tr class="row-even">
             <td>moonshot(月之暗面)</td>
-            <td><a href="https://platform.moonshot.cn/console">https://platform.moonshot.cn/console</a></td>
+            <td><a href="https://platform.moonshot.cn/console/api-keys">https://platform.moonshot.cn/console/api-keys</a></td>
             <td>左侧API Key管理-新建</td>
             <td>15.00 元（认证后领取）</td>
         </tr>
@@ -62,7 +62,7 @@ support_provider可以设置参数lang，表示语言，支持['en','zh']，默�
     <tbody>
         <tr class="row-even">
             <td>deepseek(深度求索)</td>
-            <td><a href="https://platform.deepseek.com/sign_up">https://platform.deepseek.com/sign_up</a></td>
+            <td><a href="https://platform.deepseek.com/api_keys">https://platform.deepseek.com/api_keys</a></td>
             <td>左侧API keys-创建API key</td>
             <td>500万tokens（注意要去首页认证领取）</td>
         </tr>
@@ -70,7 +70,7 @@ support_provider可以设置参数lang，表示语言，支持['en','zh']，默�
     <tbody>
         <tr class="row-even">
             <td>glm(智谱清言)</td>
-            <td><a href="https://open.bigmodel.cn/login">https://open.bigmodel.cn/login</a></td>
+            <td><a href="https://open.bigmodel.cn/usercenter/apikeys">https://open.bigmodel.cn/usercenter/apikeys</a></td>
             <td>左侧API keys-创建API key</td>
             <td>2500万tokens（有效期1个月）</td>
         </tr>
@@ -86,4 +86,4 @@ support_provider可以设置参数lang，表示语言，支持['en','zh']，默�
 </table>
 
 
-**注意:** 目前阶段，很多大模型服务商都有促销政策，多家服务商提供了免费的token额度，用于基本教学已经足够。
+**注:** 当前多家服务商提供了免费的模型token额度，或提供价格低廉的token购买方案（大约1元能购买1百万字的文字对话权限），用于基本教学已经足够。具体费用请参见个平台说明，同一平台的不同模型资费也有差异，请注意正确配置。

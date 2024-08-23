@@ -18,6 +18,10 @@ XEduLLM的Client模块利用几行代码就可以创建一个新的Web服务，�
 
 在课堂教学中，学生可以通过局域网访问的方式来进行体验。假设前面的程序运行在教师机上，并且学生机与教师机在同一个局域网内，学生就可以通过服务地址进行在线体验。整个过程学生无需注册登录，不同网页之间的聊天记录相互独立，互不干扰。
 
+**视频版使用指引**
+
+（点击视频进入跳转观看）
+
 <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=112994499431048&bvid=BV12tWsePEmA&cid=500001656107517&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
 
 

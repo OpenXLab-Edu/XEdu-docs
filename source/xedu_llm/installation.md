@@ -32,6 +32,12 @@ XEdu-python已经内置在XEdu的一键安装包中，解压后即可使用。
 
 Mac版/源码：[https://p6bm2if73b.feishu.cn/file/CMOqbJzKeo7lgRxmqufcugoEnCe](https://p6bm2if73b.feishu.cn/file/CMOqbJzKeo7lgRxmqufcugoEnCe)
 
-- 源码依赖环境：`xedu-python gradio requests`
+- 注：如果运行源码，需要提前在本地python中安装依赖库：`xedu-python gradio requests`，并将对应python路径配置进环境变量，调试过程中的错误将输出到`log.txt`。
+
+- [源码开源仓库](https://github.com/EasonQYS/XEduLLM-tools)，欢迎提交PR增加新功能。
+
+**视频版使用指引**
+
+（点击视频进入跳转观看）
 
 <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=112994499431048&bvid=BV12tWsePEmA&cid=500001656107517&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
