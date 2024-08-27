@@ -28,9 +28,11 @@ XEdu-python已经内置在XEdu的一键安装包中，解压后即可使用。
 
 为了大大降低老师们的使用成本，XEdu团队上线了XEduLLM安装包版，无需编写过多代码，即可完成基本使用。
 
-下载地址：[https://p6bm2if73b.feishu.cn/file/PTB8binCMozK1Rx8iPQcnVrynWd](https://p6bm2if73b.feishu.cn/file/PTB8binCMozK1Rx8iPQcnVrynWd)
+Windows安装包：[https://p6bm2if73b.feishu.cn/file/PTB8binCMozK1Rx8iPQcnVrynWd](https://p6bm2if73b.feishu.cn/file/PTB8binCMozK1Rx8iPQcnVrynWd)
 
-Mac版/源码：[https://p6bm2if73b.feishu.cn/file/CMOqbJzKeo7lgRxmqufcugoEnCe](https://p6bm2if73b.feishu.cn/file/CMOqbJzKeo7lgRxmqufcugoEnCe)
+Mac/源码版本：[https://p6bm2if73b.feishu.cn/file/CMOqbJzKeo7lgRxmqufcugoEnCe](https://p6bm2if73b.feishu.cn/file/CMOqbJzKeo7lgRxmqufcugoEnCe)
+
+命令行启动版本（Mac/Linux）：`bash <(curl https://cdn.openinnolab.org.cn/res/api/v1/file/creator/b5121868-53ab-4ea8-b75f-8458b768b9e4&name=xedu)`
 
 - 注：如果运行源码，需要提前在本地python中安装依赖库：`xedu-python gradio requests`，并将对应python路径配置进环境变量，调试过程中的错误将输出到`log.txt`。
 
