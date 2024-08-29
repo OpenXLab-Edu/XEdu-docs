@@ -210,8 +210,15 @@ pip install mmcv-full==1.4.5 -f https://download.openmmlab.com/mmcv/dist/cu101/t
 
 ![](../images/about/install1.4.3.png)
 
+### XEdu信息科技教学版
+
+同时我们专为信息科技教学制作了信息科技版教学版一键安装包，方便老师们使用，安装方式与一键安装包一致。
+
+下载链接：[https://aicarrier.feishu.cn/file/AUtCbzlrKokTZmxWtXDcI3O0nyd](https://aicarrier.feishu.cn/file/AUtCbzlrKokTZmxWtXDcI3O0nyd)
+
 3.学校教学强推!!!OpenHydra服务器部署
 -----------------------------------------
+
 ### 缘起：学校教学之困境
 因为学校机房的主机可能性能不强，但是又无法采购合适的intel新电脑或者nvidia显卡主机，尽管可以用浦育平台算力缓解燃眉之急，只需要浏览器就可以实现编程。但是受限于学校出口带宽等种种原因，AI教学依然受限，为此我们给出了一个新思路。可以用配置服务器的形式，为学校AI教学采购一款带GPU算力的服务器。有了服务器硬件之后，如何安装python环境，让学生能够像使用浦育平台一样使用校内等本地服务器算力呢？就请出我们的重磅嘉宾：**水螅矩阵（OpenHydra）** 一款开源的GPU算力分配系统。
 
