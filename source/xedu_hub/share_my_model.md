@@ -366,3 +366,68 @@ except:
     os.system('pip install opencv-contrib-python==4.5.4.58')
     print('******升级完成，请重新运行程序******')
 ```
+### 4）数据在多个模型之间流通
+Workflow最初的设计思路即工作流的意识，我们希望每个模型做好自己分内的事，模型之间结合，即可完成完整的AI应用。
+
+例如在一个语音交互的智能作品中，我们可以将其划分为“语音识别+智能问答+语音合成”的模型组合，借助XEduLLM和两个repo的配合，即可实现语音交互的完整应用。
+
+参考代码：
+```python
+from XEdu.hub import Workflow as wf
+from XEdu.LLM import Client
+
+model1 = wf(repo='yikshing/funasr-onnx-small') # 语音识别模型
+model2 = Client(xedu_url='http://192.168.31.251:7860')# 智能问答
+model3 = wf(repo=r'yikshing/edge-tts-zh') # 语音合成
+
+res1 = model1.inference('a.mp3',record_seconds=5)
+print('语音识别为：',res1) # 第一个模型的结果，作为第二个模型的输入
+res2 = model2.inference(res1[0]['preds'][0])
+print('大模型答复：',res2) # 第二个模型的结果，作为第三个模型的输入
+res3 = model3.inference(res2,output='audio.mp3',gender='male')
+print('音频保存至：',res3) # 第三个模型的结果，作为最终展示效果
+```
+### 5）复杂功能的实现
+在data_process.py文件中，可以定义更加复杂的inference函数，例如你可以设计一个图形化的交互界面，用gradio来实现一个网页端的编程助手。
+
+参见：[https://modelscope.cn/models/yikshing/code_helper/files](https://modelscope.cn/models/yikshing/code_helper/files)
+
+```python
+import gradio as gr
+from XEdu.LLM import Client
+chatbot = None
+def check_code_errors(code):
+    # 调用推理接口，检查代码中的错误
+    prompt = f'你是我的编程助手，请帮我检查以下代码，并给出修改建议。\n{code}'
+    res = chatbot.inference(prompt)
+    return res
+def explain_code(code):
+    # 调用推理接口，解释代码
+    global chatbot
+    prompt = f'你是我的编程助手，请帮我解释以下代码的功能：\n{code}'
+    res = chatbot.inference(prompt)
+    return res
+def inference(url,port=9000):
+    global chatbot
+    chatbot = Client(xedu_url=url) 
+    with gr.Blocks() as demo:
+        gr.Markdown("# 编程助手")
+        gr.Markdown("输入你的代码，检查其中的错误并获取建议，或获取代码的功能解释。")
+        with gr.Row():
+            code_input = gr.Textbox(lines=10, label="输入代码")
+        with gr.Row():
+            error_button = gr.Button("检查错误")
+            explain_button = gr.Button("解释代码")
+        error_output = gr.Textbox(label="错误检查结果")
+        explain_output = gr.Textbox(label="代码解释结果")
+        error_button.click(check_code_errors, inputs=code_input, outputs=error_output)
+        explain_button.click(explain_code, inputs=code_input, outputs=explain_output)
+    demo.launch(server_port=int(port))
+```
+用户在使用时，只需要下面三行代码即可启动：
+```python
+from XEdu.hub import Workflow as wf
+model = wf(repo='yikshing/code_helper')
+model.inference('your_xedu_url',port=9000)
+```
+![](../images/xeduhub/repo2.png)
