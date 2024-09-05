@@ -2,17 +2,17 @@
 
 ## 定位：XEdu是一个怎样的工具
 
-XEdu的全名为OpenXLabEdu，是基于OpenXLab的教育版，也是为中小学AI教育设计的一套完整的学习工具。OpenXLab是上海人工智能实验室开源的AI工具集合。
+XEdu的全名为OpenXLabEdu，是基于OpenXLab的教育版，也是为AI教育设计的一套完整的学习工具。OpenXLab是上海人工智能实验室开源的AI工具集合。
 
-XEdu核心工具为深度学习工具库XEduHub、计算机视觉库MMEdu，加上神经网络库BaseNN和传统机器学习库BaseML，后期规划还会增加OpenDILabEdu和OpenDataLabEdu等，覆盖实验室开源的所有人AI工具，支持中小学可能涉及到AI技术所有领域。
+XEdu核心工具为深度学习工具库XEduHub、计算机视觉库MMEdu，加上神经网络库BaseNN和传统机器学习库BaseML，后期规划还会增加OpenDILabEdu和OpenDataLabEdu等，覆盖实验室开源的所有人AI工具，支持AI初学者可能涉及到AI技术所有领域。
 
-XEdu关注AI模型，关注中小学生用AI解决真实问题。从数据采集到模型训练、模型部署，XEdu在每一个环节都提供了合适的工具。XEdu团队坚信只要有合适的工具，中小学生能够驾驭各种AI工具，去解决身边的问题。
+XEdu关注AI模型，关注初学者用AI解决真实问题。从数据采集到模型训练、模型部署，XEdu在每一个环节都提供了合适的工具。XEdu团队坚信只要有合适的工具，AI初学者能够驾驭各种AI工具，去解决身边的问题。
 
 - [如何用XEdu借助AI解决真实问题](../how_to_use/introduction.html)
 
 **XEdu的愿景**
 
-“接地气，望云端”，开源科创团队期望XEdu是一款适合中小学生入门，同时又能编写出可以“真正运行”的AI代码的人工智能开发工具，让学生能够通过完成各种AI实验，亲历从收集数据到训练深度学习模型的过程，并能够通过训练AI模型、部署智能信息系统的方式，解决生活中的真实问题。
+“接地气，望云端”，开源科创团队期望XEdu是一款适合AI学习入门，同时又能编写出可以“真正运行”的AI代码的人工智能开发工具，让学生能够通过完成各种AI实验，亲历从收集数据到训练深度学习模型的过程，并能够通过训练AI模型、部署智能信息系统的方式，解决生活中的真实问题。
 
 ## XEdu的三大特点
 
@@ -28,7 +28,7 @@ XEdu的基础工具BaseDT，则是一个整合了常见数据处理工具的基�
 
 ### 3.兼容并蓄，灵活扩展
 
-虽然语法上做到最简，但XEdu兼容原生工具的各种功能，如BaseNN和BaseML分别保留了Pytorch和Sklearn的功能，MMEdu则保留了OpenMMLab的各种参数，尤其是模型训练的所有常见参数，让学生在不同阶段都可以使用OpenXLab的系列工具进行学习。在不久的将来，用BaseNN可以搭建MMEdu的模型，多个工具形成一个强大的AI工具包，支持中小学AI学习的绝大多数内容。
+虽然语法上做到最简，但XEdu兼容原生工具的各种功能，如BaseNN和BaseML分别保留了Pytorch和Sklearn的功能，MMEdu则保留了OpenMMLab的各种参数，尤其是模型训练的所有常见参数，让学生在不同阶段都可以使用OpenXLab的系列工具进行学习。在不久的将来，用BaseNN可以搭建MMEdu的模型，多个工具形成一个强大的AI工具包，支持AI学习的绝大多数内容。
 
 ## 了解XEdu的规划
 
@@ -60,7 +60,7 @@ XEduHub是一个集合了各种各样深度学习工具的模块，云端丰富�
 
 3-2 [大模型应用库：XEduLLM](https://xedu.readthedocs.io/zh-cn/master/xedu_llm.html)
 
-XEduLLM是一个方便初学者应用各种大模型的模块，用统一的语法即可访问不同的大模型服务商，用简短的代码实现工作流并开发智能体应用。XEduLLM为中小学教学做了优化，教师能够将个人的API Key“共享”给一个班级的学生使用，未来将增加一键启动本地模型的功能。
+XEduLLM是一个方便初学者应用各种大模型的模块，用统一的语法即可访问不同的大模型服务商，用简短的代码实现工作流并开发智能体应用。XEduLLM为一线课堂教学做了优化，教师能够将个人的API Key“共享”给一个班级的学生使用，未来将增加一键启动本地模型的功能。
 
 
 3-3 [模型部署库：BaseDeploy](https://xedu.readthedocs.io/zh-cn/master/basedeploy.html)
