@@ -2,11 +2,11 @@
 
 ## 定位：XEdu是一个怎样的工具
 
-XEdu的全名为OpenXLabEdu，是基于OpenXLab的教育版，也是为AI教育设计的一套完整的学习工具。OpenXLab是上海人工智能实验室开源的AI工具集合。
+XEdu的全名为OpenXLabEdu，是基于OpenXLab的教育版，也是为AI教育设计的一套完整的学习与开发工具。OpenXLab是上海人工智能实验室开源的AI工具集合。
 
-XEdu核心工具为深度学习工具库XEduHub、计算机视觉库MMEdu，加上神经网络库BaseNN和传统机器学习库BaseML，后期规划还会增加OpenDILabEdu和OpenDataLabEdu等，覆盖实验室开源的所有人AI工具，支持AI初学者可能涉及到AI技术所有领域。
+XEdu核心工具为深度学习工具库XEduHub、计算机视觉库MMEdu，加上神经网络库BaseNN和传统机器学习库BaseML，后期规划还会增加OpenDILabEdu和OpenDataLabEdu等，覆盖实验室开源的所有AI工具，涉及AI初学者可能的AI技术所有领域。
 
-XEdu关注AI模型，关注初学者用AI解决真实问题。从数据采集到模型训练、模型部署，XEdu在每一个环节都提供了合适的工具。XEdu团队坚信只要有合适的工具，AI初学者能够驾驭各种AI工具，去解决身边的问题。
+XEdu关注AI模型，关注初学者用AI解决真实问题，适合用于中小学AI教育、大学AI通识课、中高职AI入门课程等。从数据采集到模型训练、模型部署，XEdu在每一个环节都提供了合适的工具。XEdu团队坚信只要有合适的工具，AI初学者能够驾驭各种AI工具，去解决身边的问题。
 
 - [如何用XEdu借助AI解决真实问题](../how_to_use/introduction.html)
 
