@@ -55,7 +55,7 @@ model.add(layer='linear', size=(5, 3), activation='softmax') # [120, 3]
 
 首先以一个简单的卷积神经网络LeNet结构为例，注释标明了数据经过各层的尺寸变化。
 
-``` python
+```python
 # 输入: [100,1,20,20]
 model.add('conv2d', size=(1, 3),kernel_size=(3, 3), activation='relu') # [100, 3, 18, 18]
 model.add('maxpool', kernel_size=(2,2)) # [100, 3, 9, 9]
@@ -116,7 +116,7 @@ model.train(lr=1e-3, epochs=20,metrics=['acc']) # 模型训练
 
 参考项目：[用BaseNN搭建MobileNet网络实现猫狗分类模型训练](https://openinnolab.org.cn/pjlab/project?id=65fbdf2e8ce1f42bce09ad7a&sc=635638d69ed68060c638f979#public)
 
-无论输入图像的尺寸如何，通过`MobileNet Backbone`处理后，都会得到一个固定维度（1280）的输出，利用此能力，我们可利用`MobileNet Backbone`训练一个图像解码器，参考代码如下。
+无论输入图像的尺寸如何，通过`MobileNet Backbone`处理后，都会得到一个固定维度（1280）的输出，利用此能力，我们可利用`MobileNet Backbone`训练一个图像编码器（特征向量提取），参考代码如下。
 
 ```python
 from BaseNN import nn
@@ -127,9 +127,10 @@ model.load_img_data('CatsDogs (1)/CatsDogs/training_set', batch_size=1000,transf
 
 #搭建网络
 model.add('mobilenet_backbone') # MobileNet主干网络
+#建议转为1000维的向量
 model.add('Linear', size=(1280,1000), activation='relu') 
 model.add(optimizer='Adam')
-
+#模型保存路径
 model.save_fold = 'mobilenet_ckpt'
 model.train(lr=1e-3, epochs=30) # 模型训练
 ```
@@ -142,9 +143,9 @@ dog_embedding = model.inference(checkpoint='basenn.pth', data='CatsDogs/dog1.jpg
 print(dog_embedding)
 ```
 
-上述代码输出的应是形状为(1, 1280)的向量，这样利用已训练的图像解码器，可以实现将任意尺寸的图像转换为1280维的embedding向量（取决于`MobileNet Backbone`层后加的全连接层的输出维度）。这对于图像特征提取和进一步的分析或应用非常有用。比如可以借助XEdu.utils中的get_similarity函数比较两个embedding序列的相似度。
+上述代码输出的应是形状为(1, 1000)的向量，这样利用已训练的图像解码器，可以实现将任意尺寸的猫狗图像（训练数据集为“猫狗”）转换为1000维的embedding向量（取决于`MobileNet Backbone`层后加的全连接层的输出维度）。这对于图像特征提取和进一步的分析或应用非常有用。比如可以借助XEdu.utils中的get_similarity函数比较两个embedding序列的相似度。
 
-参考项目：[用BaseNN搭建MobileNet网络训练图像解码器](https://openinnolab.org.cn/pjlab/project?id=65fce27be4952d44adcad792&sc=635638d69ed68060c638f979#public)
+参考项目：[用BaseNN搭建MobileNet网络训练图像解码器]([OpenInnoLab](https://www.openinnolab.org.cn/pjlab/project?id=65fce27be4952d44adcad792))
 
 #### 搭建ResNet网络：
 
@@ -266,7 +267,7 @@ model.add(activation='Softmax')
 
 以下方式与极简方式的代码的功能完全一致，展示了搭建RNN神经网络并进行模型训练的的一般流程：
 
-``` python
+```python
 model.add('lstm', size=(132,128))
 model.add('dropout',p=0.2)
 model.add('lstm', size=(128,256))
@@ -367,9 +368,7 @@ model.train(epochs=2,metrics=[],lr=5e-4)
 |-|-图片
 ```
 
-
-
-#####  3.扩散模型的反向过程【可以理解为推理】
+##### 3.扩散模型的反向过程【可以理解为推理】
 
 经过训练后，神经网络可以预测每一步加入图像中的噪声，然后从图像中去除噪声，逐渐生成全新的图像。训练后的扩散模型学到了训练数据集的特征分布，并不是记住了数据集中的图像再进行复制生成，因此它会生成与数据集特征相似的全新图像。
 
@@ -396,7 +395,7 @@ model.show(generated_imgs,visual_timesteps=True)
 
 如果对pytorch比较熟悉，想要自行添加比较复杂的模块，也可以自定义（BaseNN兼容pytorch搭的网络结构），例如，搭建一个与上述动作识别网络一致的自定义模块：
 
-``` python
+```python
 import torch class LSTM_model(torch.nn.Module): 
    def __init__(self, actions):
       super(LSTM_model, self).__init__() self.actions = actions
@@ -431,7 +430,7 @@ import torch class LSTM_model(torch.nn.Module):
 
 创建好这样的自定义模块之后，就可以按照常规方法添加这个模型到basenn中了。
 
-``` python
+```python
 model.add(my_model)
 ```
 
@@ -573,7 +572,6 @@ model.add(my_model)
     </tbody>
 </table>
 
-
 ## 3. RNN和CNN
 
 RNN（Recurrent Neural Network，循环神经网络）和CNN（Convolutional NeuralNetwork，卷积神经网络）是深度学习中两个非常重要的神经网络模型。
@@ -582,11 +580,11 @@ RNN是一种用于处理序列数据的神经网络模型。它的特点是可�
 
 一些常见的序列数据：
 
--   文本数据：即人类的自然语言，一段话或一篇文章中的单词或字符序列，是符合某个逻辑或规则的字词拼凑排列起来的，这些规则包括词序、句法结构、语境等等。因此，文本数据具有序列特性，即前后元素之间存在某种联系或依赖关系。这种序列特性使得文本数据的处理和分析比较复杂。
--   时间序列数据：股票价格、气温、交通流量等随时间变化的数据，随着时间的推移，会产生具有顺序的一系列数字，这些数字也是具有序列特性。
--   语音数据：音频信号中的时域或频域特征序列，我们发出的声音，每一帧每一帧的衔接起来，才凑成了我们听到的话，这也具有序列特性。
--   生物信息学数据：DNA或RNA序列、蛋白质序列等。
--   符号序列：编码信息的二进制序列、信号编码序列等。
+- 文本数据：即人类的自然语言，一段话或一篇文章中的单词或字符序列，是符合某个逻辑或规则的字词拼凑排列起来的，这些规则包括词序、句法结构、语境等等。因此，文本数据具有序列特性，即前后元素之间存在某种联系或依赖关系。这种序列特性使得文本数据的处理和分析比较复杂。
+- 时间序列数据：股票价格、气温、交通流量等随时间变化的数据，随着时间的推移，会产生具有顺序的一系列数字，这些数字也是具有序列特性。
+- 语音数据：音频信号中的时域或频域特征序列，我们发出的声音，每一帧每一帧的衔接起来，才凑成了我们听到的话，这也具有序列特性。
+- 生物信息学数据：DNA或RNA序列、蛋白质序列等。
+- 符号序列：编码信息的二进制序列、信号编码序列等。
 
 在这些序列数据中，每个数据点（单词、股票价格、音频帧等）都与序列中的其他数据点密切相关，传统的RNN在处理长序列时会遇到一些问题，比如长期依赖问题和梯度消失问题。为了解决这些问题，研究者们提出了一些改进的RNN模型，如长短期记忆网络（LSTM）和门控循环单元（GRU）。
 
