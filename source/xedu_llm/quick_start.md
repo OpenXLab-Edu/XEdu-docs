@@ -90,8 +90,8 @@ print(res)
 
 ```python
 from XEdu.LLM import Client # 导入库
-print(chatbot.support_provider()) # 查看XEduLLM中目前提供的大语言模型服务提供商
-print(chatbot.support_provider(lang = 'zh') ) # 查看XEduLLM中目前提供的大语言模型服务提供商中文名
+print(Client.support_provider()) # 查看XEduLLM中目前提供的大语言模型服务提供商
+print(Client.support_provider(lang = 'zh') ) # 查看XEduLLM中目前提供的大语言模型服务提供商中文名
 ```
 
 输出结果：
