@@ -458,11 +458,12 @@ model.train(lr=0.01, epochs=500)
 #### 正常训练
 
 ```python
+from BaseNN import nn
 model = nn('cls') 
-model.add(layer='linear',size=(4, 10),activation='relu') # [120, 10]
-model.add(layer='linear',size=(10, 5), activation='relu') # [120, 5]
-model.add(layer='linear', size=(5, 3), activation='softmax') # [120, 3]
-model.load_dataset(x, y)
+model.add(layer='Linear',size=(4, 8),activation='ReLU') 
+model.add(layer='Linear', size=(8, 3), activation='Softmax') 
+train_path = 'data/iris_training.csv'
+model.load_tab_data(train_path, batch_size=120)
 model.save_fold = 'checkpoints' # 指定模型保存路径
 model.train(lr=0.01, epochs=1000)
 ```
@@ -478,6 +479,63 @@ model.train(lr=0.01, epochs=1000, checkpoint=checkpoint)
 
 `checkpoint`为现有模型路径，当使用`checkpoint`参数时，模型基于一个已有的模型继续训练，不使用`checkpoint`参数时，模型从零开始训练。
 
+#### 利用for循环+shutil.copyfile保存过程中的模型
+前面我们已经学习了正常训练和继续训练两种方式。接着，我们写一个每隔一轮保存一个训练结果的程序。
+```python
+from BaseNN import nn
+import shutil
+model = nn('cls') 
+model.add(layer='Linear',size=(4, 8),activation='ReLU') 
+model.add(layer='Linear', size=(8, 3), activation='Softmax') 
+train_path = 'data/iris_training.csv'
+model.load_tab_data(train_path, batch_size=120)
+model.save_fold = 'checkpoints' # 指定模型保存路径
+model.train(lr=0.01, epochs=1)
+shutil.copyfile('checkpoints/basenn.pth','checkpoints/epoch1.pth')
+model.train(lr=0.01, epochs=1, checkpoint='checkpoints/basenn.pth')
+shutil.copyfile('checkpoints/basenn.pth','checkpoints/epoch2.pth')
+model.train(lr=0.01, epochs=1, checkpoint='checkpoints/basenn.pth')
+shutil.copyfile('checkpoints/basenn.pth','checkpoints/epoch3.pth')
+model.train(lr=0.01, epochs=1, checkpoint='checkpoints/basenn.pth')
+shutil.copyfile('checkpoints/basenn.pth','checkpoints/epoch4.pth')
+model.train(lr=0.01, epochs=1, checkpoint='checkpoints/basenn.pth')
+shutil.copyfile('checkpoints/basenn.pth','checkpoints/epoch5.pth')
+```
+为了更美观，我们将其用for循环优化如下：
+```python
+from BaseNN import nn
+import shutil
+model = nn('cls') 
+model.add(layer='Linear',size=(4, 8),activation='ReLU') 
+model.add(layer='Linear', size=(8, 3), activation='Softmax') 
+train_path = 'data/iris_training.csv'
+model.load_tab_data(train_path, batch_size=120)
+model.save_fold = 'checkpoints' # 指定模型保存路径
+model.train(lr=0.01, epochs=1)
+shutil.copyfile('checkpoints/basenn.pth','checkpoints/epoch1.pth')
+for i in range(2,6,1):
+    model.train(lr=0.01, epochs=1, checkpoint='checkpoints/basenn.pth')
+    shutil.copyfile('checkpoints/basenn.pth','checkpoints/epoch'+str(i)+'.pth')
+```
+如果想要增大保存的间隔，也很简单，下面是参考代码：
+```python
+from BaseNN import nn
+import shutil
+
+间隔=10
+
+model = nn('cls') 
+model.add(layer='Linear',size=(4, 8),activation='ReLU') 
+model.add(layer='Linear', size=(8, 3), activation='Softmax') 
+train_path = 'data/iris_training.csv'
+model.load_tab_data(train_path, batch_size=120)
+model.save_fold = 'checkpoints' # 指定模型保存路径
+model.train(lr=0.01, epochs=间隔)
+shutil.copyfile('checkpoints/basenn.pth','checkpoints/epoch0.pth')
+for i in range(间隔,6*间隔,间隔):
+    model.train(lr=0.01, epochs=间隔, checkpoint='checkpoints/basenn.pth')
+    shutil.copyfile('checkpoints/basenn.pth','checkpoints/epoch'+str(i)+'.pth')
+```
 ### 训练篇拓展------分数据类型看训练代码
 
 针对不同类型的数据类型，载入数据、搭建模型和模型训练的代码会略有不同。深度学习常见的数据类型介绍详见[附录4](https://xedu.readthedocs.io/zh-cn/master/basenn/appendix.html#id14)。
