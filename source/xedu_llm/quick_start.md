@@ -74,7 +74,7 @@ chatbot.run()
 前面我们已经生成了一个自己的模型对话网页，如果想把这个服务提供给其他应用或者其他学生使用（其他设备单独使用），快来试试下面的代码吧：
 ```python
 from XEdu.LLM import Client
-chatbot = Client(xedu_url='127.0.0.1:7860') # 引号内的网址替换为你前面生成的网址
+chatbot = Client(xedu_url='http://127.0.0.1:7860') # 引号内的网址替换为你前面生成的网址
 res = chatbot.inference('请问上海有什么好吃的？')
 print(res)
 ```
