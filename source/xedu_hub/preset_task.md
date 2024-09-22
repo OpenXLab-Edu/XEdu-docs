@@ -31,8 +31,8 @@ from XEdu.hub import Workflow as wf # 导入库
 det_body = wf(task='det_body') # 实例化模型
 result,img_with_box = det_body.inference(data='data/det_body.jpg',img_type='pil') # 进行模型推理
 format_result = det_body.format_output(lang='zh') # 将推理结果进行格式化输出
-det_body.show(img_with_box)# 展示推理图片
-det_body.save(img_with_box,'img_with_box.jpg') # 保存推理图片
+det_body.show(img_with_box)# 展示推理图像
+det_body.save(img_with_box,'img_with_box.jpg') # 保存推理图像
 ```
 
 #### 代码解释
@@ -68,16 +68,16 @@ result,img_with_box = det_body.inference(data='data/det_body.jpg',img_type='pil'
 
 模型推理`inference()`可传入参数：
 
-- `data`(str|numpy.ndarray)：指定待目标检测的图片。
-- `show`(flag)：可取值`[True,False]` ,如果取值为`True`，在推理完成后会直接输出目标检测完成后的图片，默认为`False`。
-- `img_type`(str)：目标检测完成后会返回含有目标检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，即如果不传入值，则不会返回图。
+- `data`(str|numpy.ndarray)：指定待目标检测的图像，可以是以图像路径形式传入，也可直接传入cv2或pil格式的图像。
+- `show`(flag)：可取值`[True,False]` ,如果取值为`True`，在推理完成后会直接输出目标检测完成后的图像，默认为`False`。
+- `img_type`(str)：目标检测完成后会返回含有目标检测框的图像，该参数指定了返回图像的格式，可选有:`['cv2','pil']`，默认值为`None`，即如果不传入值，则不会返回图。
 - `thr`(float)：设置检测框阈值，取值范围为`[0,1]`超过该阈值的检测框被视为有效检测框，进行显示，默认值为0.3。
 
 模型推理返回结果：
 
 - `result`(numpy.ndarray)：以二维数组的形式保存了检测框左上角顶点的坐标(x1,y1)和右下角顶点的坐标(x2,y2)（之所以是二维数组，是因为该模型能够检测多个人体，因此当检测到多个人体时，就会有多个[x1,y1,x2,y2]的一维数组，所以需要以二维数组形式保存），我们可以利用这四个数据计算出其他两个顶点的坐标，以及检测框的宽度和高度。
 
-- `img_with_box`(numpy.ndarray)：是个三维数组，以img_type所设置的格式保存了包含了检测框的图片。
+- `img_with_box`(numpy.ndarray)：是个三维数组，以img_type所设置的格式保存了包含了检测框的图像。
 
 ##### 3. 结果输出
 
@@ -104,7 +104,7 @@ format_result = det_body.format_output(lang='zh')# 将推理结果进行格式�
 ```
 
 ```python
-det_body.show(img_with_box)# 展示推理图片
+det_body.show(img_with_box)# 展示推理图像
 ```
 
 `show()`能够输出带有检测框的结果图像。
@@ -114,7 +114,7 @@ det_body.show(img_with_box)# 展示推理图片
 ##### 4. 结果保存
 
 ```python
-det_body.save(img_with_box,'img_with_box.jpg')# 保存推理图片
+det_body.save(img_with_box,'img_with_box.jpg')# 保存推理图像
 ```
 
 `save()`方法能够保存带有检测框的图像
@@ -123,7 +123,7 @@ det_body.save(img_with_box,'img_with_box.jpg')# 保存推理图片
 
 ### 人脸目标检测
 
-人脸目标检测指的是检测和定位一张图片中的人脸。XEduHub使用的是opencv的人脸检测模型，能够快速准确地检测出一张图片中所有的人脸。XEduHub提供了进行人脸目标检测的模型：`det_face`，能够快速准确地检测出图片中的所有人脸。
+人脸目标检测指的是检测和定位一张图像中的人脸。XEduHub使用的是opencv的人脸检测模型，能够快速准确地检测出一张图像中所有的人脸。XEduHub提供了进行人脸目标检测的模型：`det_face`，能够快速准确地检测出图像中的所有人脸。
 
 #### 代码样例
 
@@ -132,8 +132,8 @@ from XEdu.hub import Workflow as wf
 det_face = wf(task='det_face')
 result,img_with_box = det_face.inference(data='data/det_face.jpg',img_type='pil') # 进行模型推理
 format_result = det_face.format_output(lang='zh') # 将推理结果进行格式化输出
-det_face.show(img_with_box) # 展示推理图片
-det_face.save(img_with_box,'img_with_box.jpg') # 保存推理图片
+det_face.show(img_with_box) # 展示推理图像
+det_face.save(img_with_box,'img_with_box.jpg') # 保存推理图像
 ```
 
 #### 代码解释
@@ -169,9 +169,9 @@ result,img_with_box = det_face.inference(data='data/det_face.jpg',img_type='pil'
 
 模型推理`inference()`可传入参数：
 
-- `data`(str|numpy.ndarray)：指定待目标检测的图片。
-- `show`(flag)：可取值`[True,False]` ,如果取值为`True`，在推理完成后会直接输出目标检测完成后的图片，默认为`False`。
-- `img_type`(str)：目标检测完成后会返回含有目标检测框的图片，该参数指定了返回图片的格式，可选有：`['cv2','pil']`，默认值为`None`，即如果不传入值，则不会返回图。
+- `data`(str|numpy.ndarray)：指定待目标检测的图像，可以是以图像路径形式传入，也可直接传入cv2或pil格式的图像。
+- `show`(flag)：可取值`[True,False]` ,如果取值为`True`，在推理完成后会直接输出目标检测完成后的图像，默认为`False`。
+- `img_type`(str)：目标检测完成后会返回含有目标检测框的图像，该参数指定了返回图像的格式，可选有：`['cv2','pil']`，默认值为`None`，即如果不传入值，则不会返回图。
 - `minSize`(tuple(int,int))：检测框的最小尺寸，小于该尺寸的目标会被过滤掉，默认为(50,50)。
 - `maxSize`(tuple(int,int))：检测框的最大尺寸,大于该尺寸的目标会被过滤掉，默认为输入图像的大小。
 - `scaleFactor`(float)：该参数用于缩放图像，以便在检测过程中使用不同大小的窗口来识别人脸。较小的值会导致检测速度加快，但可能会错过一些小的人脸；较大的值可以提高检测的准确性，但会减慢检测速度。通常，这个值会在1.1到1.5之间进行调整，默认为1.1。
@@ -180,7 +180,7 @@ result,img_with_box = det_face.inference(data='data/det_face.jpg',img_type='pil'
 模型推理返回结果：
 
 - `result`(numpy.ndarray)：：以二维数组的形式保存了检测框左上角顶点的坐标(x1,y1)和右下角顶点的坐标(x2,y2)（之所以是二维数组，是因为该模型能够检测多个人脸，因此当检测到多个人脸时，就会有多个[x1,y1,x2,y2]的一维数组，所以需要以二维数组形式保存），我们可以利用这四个数据计算出其他两个顶点的坐标，以及检测框的宽度和高度。
-- `img_with_box`(numpy.ndarray)：是个三维数组，以img_type所设置的格式保存了包含了检测框的图片。
+- `img_with_box`(numpy.ndarray)：是个三维数组，以img_type所设置的格式保存了包含了检测框的图像。
 
 ##### 3. 结果输出
 
@@ -207,7 +207,7 @@ format_result = det_face.format_output(lang='zh')# 将推理结果进行格式�
 结果可视化：
 
 ```python
-det_face.show(img_with_box) # 展示推理图片
+det_face.show(img_with_box) # 展示推理图像
 ```
 
 `show()`能够输出带有检测框的结果图像。
@@ -221,7 +221,7 @@ det_face.show(img_with_box) # 展示推理图片
 ##### 4. 结果保存
 
 ```python
-det_face.save(img_with_box,'img_with_box.jpg')# 保存推理图片
+det_face.save(img_with_box,'img_with_box.jpg')# 保存推理图像
 ```
 
 `save()`方法能够保存带有检测框的图像
@@ -230,7 +230,7 @@ det_face.save(img_with_box,'img_with_box.jpg')# 保存推理图片
 
 ### 手部目标检测
 
-手部目标检测指的是检测和定位一张图片中的人手。XEduHub提供了进行手部目标检测的模型：`det_hand`，能够快速准确地检测出图片中的所有人手。
+手部目标检测指的是检测和定位一张图像中的人手。XEduHub提供了进行手部目标检测的模型：`det_hand`，能够快速准确地检测出图像中的所有人手。
 
 #### 代码样例
 
@@ -239,8 +239,8 @@ from XEdu.hub import Workflow as wf
 det_hand = wf(task='det_hand')
 result,img_with_box = det_hand.inference(data='data/det_hand.jpg',img_type='pil') # 进行模型推理
 format_result = det_hand.format_output(lang='zh') # 将推理结果进行格式化输出
-det_hand.show(img_with_box) # 展示推理图片
-det_hand.save(img_with_box,'img_with_box.jpg') # 保存推理图片
+det_hand.show(img_with_box) # 展示推理图像
+det_hand.save(img_with_box,'img_with_box.jpg') # 保存推理图像
 ```
 
 #### 代码解释
@@ -276,15 +276,15 @@ result,img_with_box = det_hand.inference(data='data/det_hand.jpg',img_type='pil'
 
 模型推理`inference()`可传入参数：
 
-- `data`(str|numpy.ndarray)：指定待检测的图片。
-- `show`(flag): 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出目标检测完成后的图片。
-- `img_type`(str)：目标检测完成后会返回含有检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
+- `data`(str|numpy.ndarray)：指定待目标检测的图像，可以是以图像路径形式传入，也可直接传入cv2或pil格式的图像。
+- `show`(flag): 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出目标检测完成后的图像。
+- `img_type`(str)：目标检测完成后会返回含有检测框的图像，该参数指定了返回图像的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
 - `thr`(float): 设置检测框阈值，取值范围为`[0,1]`超过该阈值的检测框被视为有效检测框，进行显示，默认值为0.3。
 
 模型推理返回结果：
 
 - `result`(numpy.ndarray)：以二维数组的形式保存了检测框左上角顶点的坐标(x1,y1)和右下角顶点的坐标(x2,y2)（之所以是二维数组，是因为该模型能够检测多个人手，因此当检测到多个人手时，就会有多个[x1,y1,x2,y2]的一维数组，所以需要以二维数组形式保存），我们可以利用这四个数据计算出其他两个顶点的坐标，以及检测框的宽度和高度。
-- `img_with_box`(numpy.ndarray)：是个三维数组，以img_type所设置的格式保存了包含了检测框的图片。
+- `img_with_box`(numpy.ndarray)：是个三维数组，以img_type所设置的格式保存了包含了检测框的图像。
 
 ##### 3. 结果输出
 
@@ -315,7 +315,7 @@ format_result = det_hand.format_output(lang='zh') # 将推理结果进行格式�
 结果可视化：
 
 ```python
-det_hand.show(img_with_box) # 展示推理图片
+det_hand.show(img_with_box) # 展示推理图像
 ```
 
 `show()`能够输出带有检测框的结果图像。
@@ -325,7 +325,7 @@ det_hand.show(img_with_box) # 展示推理图片
 ##### 4. 结果保存
 
 ```python
-det_hand.save(img_with_box,'img_with_box.jpg') # 保存推理图片
+det_hand.save(img_with_box,'img_with_box.jpg') # 保存推理图像
 ```
 
 `save()`方法能够保存带有检测框的图像
@@ -345,8 +345,8 @@ from XEdu.hub import Workflow as wf
 det_coco = wf(task='det_coco')
 result,img_with_box = det_coco.inference(data='data/det_coco.jpg',img_type='pil') # 进行模型推理
 format_result = det_coco.format_output(lang='zh') # 将推理结果进行格式化输出
-det_coco.show(img_with_box) # 展示推理图片
-det_coco.save(img_with_box,'img_with_box.jpg')# 保存推理图片
+det_coco.show(img_with_box) # 展示推理图像
+det_coco.save(img_with_box,'img_with_box.jpg')# 保存推理图像
 ```
 
 #### 代码解释
@@ -382,9 +382,9 @@ result,img_with_box = det_coco.inference(data='data/det_coco.jpg',img_type='pil'
 
 模型推理`inference()`可传入参数：
 
-- `data`(str|numpy.ndarray)：指定待目标检测的图片。
-- `show`(flag)：可取值`[True,False]` ,如果取值为`True`，在推理完成后会直接输出目标检测完成后的图片，默认为`False`。
-- `img_type`(str)：目标检测完成后会返回含有目标检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，即如果不传入值，则不会返回图。
+- `data`(str|numpy.ndarray)：指定待目标检测的图像，可以是以图像路径形式传入，也可直接传入cv2或pil格式的图像。
+- `show`(flag)：可取值`[True,False]` ,如果取值为`True`，在推理完成后会直接输出目标检测完成后的图像，默认为`False`。
+- `img_type`(str)：目标检测完成后会返回含有目标检测框的图像，该参数指定了返回图像的格式，可选有:`['cv2','pil']`，默认值为`None`，即如果不传入值，则不会返回图。
 - `thr`(float)：设置检测框阈值，取值范围为`[0,1]`超过该阈值的检测框被视为有效检测框，进行显示，默认值为0.3。
 - `target_class`(str|list)：该参数在使用`det_coco`的时候可以指定要检测的对象，如：`target_class`='person'，`target_class`=['person','cake']。
 
@@ -417,7 +417,7 @@ wf.coco_class()
 
 ![](../images/xeduhub/det_res.png)
 
-- `img_with_box`(numpy.ndarray)：是个三维数组，以img_type所设置的格式保存了包含了检测框的图片。
+- `img_with_box`(numpy.ndarray)：是个三维数组，以img_type所设置的格式保存了包含了检测框的图像。
 
 ##### 3. 结果输出
 
@@ -487,7 +487,7 @@ format_result = det_coco.format_output(lang='zh') # 将推理结果进行格式�
 `format_result`以字典形式存储了推理结果，共有三个键：`检测框`、`分数`和`类别`。检测框以二维数组形式保存了每个检测框的坐标信息[x1,y1,x2,y2]，而分数则是对应下标的检测框的置信度，以一维数组形式保存，类别则是检测框中对象所属的类别，以一维数组形式保存。
 
 ```python
-det_coco.show(img_with_box) # 展示推理图片
+det_coco.show(img_with_box) # 展示推理图像
 ```
 
 `show()`能够输出带有检测框以及对应类别的结果图像。
@@ -497,7 +497,7 @@ det_coco.show(img_with_box) # 展示推理图片
 ##### 4. 结果保存
 
 ```python
-det_coco.save(img_with_box,'img_with_box.jpg') # 保存推理图片
+det_coco.save(img_with_box,'img_with_box.jpg') # 保存推理图像
 ```
 
 `save()`方法能够保存带有检测框以及对应类别的图像
@@ -510,7 +510,7 @@ det_coco.save(img_with_box,'img_with_box.jpg') # 保存推理图片
 
 **注意事项**：这里我们强烈建议提取关键点之前应**先进行目标检测**。既可实现效果更好的单目标的关键点识别，且可以实现多目标的关键点识别。
 
-例如进行人体关键点检测`pose_body`之前，先使用`det_body`在图片中检测中人体目标，提取人体画面，再对每个人体目标进行更加精准的关键点检测，而且当画面有多个人时，也能将画面中每个人的关键点均检测出来。可参考项目<a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public">XEduHub实例代码-入门完整版</a>中的 **“3-1 综合项目：目标检测+关键点检测”**。
+例如进行人体关键点检测`pose_body`之前，先使用`det_body`在图像中检测中人体目标，提取人体画面，再对每个人体目标进行更加精准的关键点检测，而且当画面有多个人时，也能将画面中每个人的关键点均检测出来。可参考项目<a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public">XEduHub实例代码-入门完整版</a>中的 **“3-1 综合项目：目标检测+关键点检测”**。
 
 当然关键点识别也可以单独用，但是效果并不保证。
 
@@ -537,8 +537,8 @@ from XEdu.hub import Workflow as wf
 body = wf(task='pose_body') # 数字可省略，当省略时，默认为pose_body17
 keypoints,img_with_keypoints = body.inference(data='data/body.jpg',img_type='pil') # 进行模型推理
 format_result = body.format_output(lang='zh') # 将推理结果进行格式化输出
-body.show(img_with_keypoints) # 展示推理图片
-body.save(img_with_keypoints,'img_with_keypoints.jpg')  # 保存推理图片
+body.show(img_with_keypoints) # 展示推理图像
+body.save(img_with_keypoints,'img_with_keypoints.jpg')  # 保存推理图像
 ```
 
 #### 代码解释
@@ -574,11 +574,11 @@ keypoints,img_with_keypoints = body.inference(data='data/body.jpg',img_type='pil
 
 模型推理`inference()`可传入参数：
 
-- `data`(str)：指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
+- `data`(str)：指定待识别关键点的图像，可以是以图像路径形式传入，也可直接传入cv2或pil格式的图像。
 
-- `show`(flag)：可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出关键点识别完成后的图片。
+- `show`(flag)：可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出关键点识别完成后的图像。
 
-- `img_type`(str)：关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
+- `img_type`(str)：关键点识别完成后会返回含有关键点的图像，该参数指定了返回图像的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
 
 - `bbox`(numpy.ndarray)：该参数可配合目标检测结果使用。例如在多人体关键点检测任务中，我们先识别人体位置，再检测人体关键点，该参数指定了要识别哪个目标检测框中的关键点。
 
@@ -586,7 +586,7 @@ keypoints,img_with_keypoints = body.inference(data='data/body.jpg',img_type='pil
 
 - `keypoints`(numpy.ndarray)：以二维数组的形式保存了所有关键点的坐标，每个关键点(x,y)被表示为`[x,y]`根据前面的图示，要获取到某个特定序号`i`的关键点，只需要访问`keypoints[i]`即可。
 
-- `img_with_keypoints`(numpy.ndarray)：是个三维数组，以对应img_type格式保存了关键点识别完成后图片的像素点信息。
+- `img_with_keypoints`(numpy.ndarray)：是个三维数组，以对应img_type格式保存了关键点识别完成后图像的像素点信息。
 
 ##### 3. 结果输出
 
@@ -680,8 +680,8 @@ from XEdu.hub import Workflow as wf
 face = wf(task='pose_face') # 数字可省略，当省略时，默认为pose_face106
 keypoints,img_with_keypoints = face.inference(data='data/face.jpg',img_type='pil') # 进行模型推理
 format_result = face.format_output(lang='zh') # 将推理结果进行格式化输出
-face.show(img_with_keypoints) # 展示推理图片
-face.save(img_with_keypoints,'img_with_keypoints.jpg') # 保存推理图片
+face.show(img_with_keypoints) # 展示推理图像
+face.save(img_with_keypoints,'img_with_keypoints.jpg') # 保存推理图像
 ```
 
 #### 代码解释
@@ -717,11 +717,11 @@ keypoints,img_with_keypoints = face.inference(data='data/face.jpg',img_type='pil
 
 模型推理`inference()`可传入参数：
 
-- `data`(string|numpy.ndarray): 指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
+- `data`(string|numpy.ndarray): 指定待识别关键点的图像，可以是以图像路径形式传入，也可直接传入cv2或pil格式的图像。
 
-- `show`(bool): 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出关键点识别完成后的图片。
+- `show`(bool): 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出关键点识别完成后的图像。
 
-- `img_type`: 关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
+- `img_type`: 关键点识别完成后会返回含有关键点的图像，该参数指定了返回图像的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
 
 - `bbox`：该参数可配合目标检测使用。在多目标关键点检测中，该参数指定了要识别哪个检测框中的关键点。
 
@@ -729,7 +729,7 @@ keypoints,img_with_keypoints = face.inference(data='data/face.jpg',img_type='pil
 
 - `keypoints`以二维数组的形式保存了所有关键点的坐标，每个关键点(x,y)被表示为`[x,y]`根据前面的图示，要获取到某个特定序号`i`的关键点，只需要访问`keypoints[i]`即可。
 
-- `img_with_keypoints`是个三维数组，以对应img_type格式保存了关键点识别完成后图片的像素点信息。
+- `img_with_keypoints`是个三维数组，以对应img_type格式保存了关键点识别完成后图像的像素点信息。
 
 ##### 3. 结果输出
 
@@ -749,7 +749,7 @@ format_result = face.format_output(lang='zh') # 将推理结果进行格式化�
 结果可视化
 
 ```python
-face.show(img_with_keypoints) # 展示推理图片
+face.show(img_with_keypoints) # 展示推理图像
 ```
 
 `show()`能够输出带有关键点的结果图像。
@@ -761,7 +761,7 @@ face.show(img_with_keypoints) # 展示推理图片
 ##### 4. 结果保存
 
 ```python
-face.save(img_with_keypoints,'img_with_keypoints.jpg') # 保存推理图片
+face.save(img_with_keypoints,'img_with_keypoints.jpg') # 保存推理图像
 ```
 
 `save()`方法能够保存带有关键点的图像
@@ -783,8 +783,8 @@ from XEdu.hub import Workflow as wf
 hand = wf(task='pose_hand') # 数字可省略，当省略时，默认为pose_hand21
 keypoints,img_with_keypoints = hand.inference(data='data/hand.jpg',img_type='pil') # 进行模型推理
 format_result = hand.format_output(lang='zh') # 将推理结果进行格式化输出
-hand.show(img_with_keypoints) # 展示推理图片
-hand.save(img_with_keypoints,'img_with_keypoints.jpg') # 保存推理图片
+hand.show(img_with_keypoints) # 展示推理图像
+hand.save(img_with_keypoints,'img_with_keypoints.jpg') # 保存推理图像
 ```
 
 #### 代码解释
@@ -820,11 +820,11 @@ keypoints,img_with_keypoints = hand.inference(data='data/hand.jpg',img_type='pil
 
 模型推理`inference()`可传入参数：
 
-- `data`: 指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
+- `data`: 指定待识别关键点的图像，可以是以图像路径形式传入，也可直接传入cv2或pil格式的图像。
 
-- `show`(bool): 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出关键点识别完成后的图片。
+- `show`(bool): 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出关键点识别完成后的图像。
 
-- `img_type`: 关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
+- `img_type`: 关键点识别完成后会返回含有关键点的图像，该参数指定了返回图像的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
 
 - `bbox`：该参数可配合目标检测使用。在多人手关键点检测中，该参数指定了要识别哪个检测框中的关键点。
 
@@ -832,7 +832,7 @@ keypoints,img_with_keypoints = hand.inference(data='data/hand.jpg',img_type='pil
 
 - `keypoints`以二维数组的形式保存了所有关键点的坐标，每个关键点(x,y)被表示为`[x,y]`根据前面的图示，要获取到某个特定序号`i`的关键点，只需要访问`keypoints[i]`即可。
 
-- `img_with_keypoints`是个三维数组，以img_type设置的保存了关键点识别完成后的图片。
+- `img_with_keypoints`是个三维数组，以img_type设置的保存了关键点识别完成后的图像。
 
 ##### 3. 结果输出
 
@@ -849,7 +849,7 @@ format_result = hand.format_output(lang='zh')# 将推理结果进行格式化输
   `format_result`以字典形式存储了推理结果，共有两个键：`关键点坐标`和`分数`。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标，而分数则是对应下标的关键点的分数，以一维数组形式保存。
 
 ```python
-hand.show(img_with_keypoints) # 展示推理图片
+hand.show(img_with_keypoints) # 展示推理图像
 ```
 
 `show()`能够输出带有关键点的结果图像。
@@ -861,7 +861,7 @@ hand.show(img_with_keypoints) # 展示推理图片
 ##### 4. 结果保存
 
 ```python
-hand.save(img_with_keypoints,'img_with_keypoints.jpg') # 保存推理图片
+hand.save(img_with_keypoints,'img_with_keypoints.jpg') # 保存推理图像
 ```
 
 `save()`方法能够保存带有关键点的图像
@@ -881,8 +881,8 @@ from XEdu.hub import Workflow as wf
 wholebody = wf(task='pose_wholebody') # 数字可省略，当省略时，默认为pose_wholebody133
 keypoints,img_with_keypoints = wholebody.inference(data='data/wholebody.jpg',img_type='pil') # 进行模型推理
 format_result = wholebody.format_output(lang='zh') # 将推理结果进行格式化输出
-wholebody.show(img_with_keypoints) # 展示推理图片
-wholebody.save(img_with_keypoints,'img_with_keypoints.jpg') # 保存推理图片
+wholebody.show(img_with_keypoints) # 展示推理图像
+wholebody.save(img_with_keypoints,'img_with_keypoints.jpg') # 保存推理图像
 ```
 
 #### 代码解释
@@ -918,11 +918,11 @@ keypoints,img_with_keypoints = wholebody.inference(data='data/wholebody.jpg',img
 
 模型推理`inference()`可传入参数：
 
-- `data`: 指定待识别关键点的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
+- `data`: 指定待识别关键点的图像，可以是以图像路径形式传入，也可直接传入cv2或pil格式的图像。
 
-- `show`(bool): 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出关键点识别完成后的图片。
+- `show`(bool): 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出关键点识别完成后的图像。
 
-- `img_type`: 关键点识别完成后会返回含有关键点的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
+- `img_type`: 关键点识别完成后会返回含有关键点的图像，该参数指定了返回图像的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
 
 - `bbox`：该参数可配合目标检测使用。在多人体关键点检测中，该参数指定了要识别哪个检测框中的关键点。
 
@@ -930,7 +930,7 @@ keypoints,img_with_keypoints = wholebody.inference(data='data/wholebody.jpg',img
 
 - `keypoints`以二维数组的形式保存了所有关键点的坐标，每个关键点(x,y)被表示为`[x,y]`根据前面的图示，要获取到某个特定序号`i`的关键点，只需要访问`keypoints[i]`即可。
 
-- `img_with_keypoints`是个三维数组，以img_type设置的格式保存了关键点识别完成后的图片。
+- `img_with_keypoints`是个三维数组，以img_type设置的格式保存了关键点识别完成后的图像。
 
 ##### 3. 结果输出
 
@@ -948,7 +948,7 @@ format_result = wholebody.format_output(lang='zh') # 将推理结果进行格式
 `format_result`以字典形式存储了推理结果，共有两个键：`关键点坐标`和`分数`。关键点坐标以二维数组形式保存了每个关键点的[x,y]坐标，而分数则是对应下标的关键点的分数，以一维数组形式保存。
 
 ```python
-wholebody.show(img_with_keypoints) # 展示推理图片
+wholebody.show(img_with_keypoints) # 展示推理图像
 ```
 
 `show()`能够输出带有关键点的结果图像。
@@ -960,7 +960,7 @@ wholebody.show(img_with_keypoints) # 展示推理图片
 ##### 4. 结果保存
 
 ```python
-wholebody.save(img_with_keypoints,'img_with_keypoints.jpg') # 保存推理图片
+wholebody.save(img_with_keypoints,'img_with_keypoints.jpg') # 保存推理图像
 ```
 
 `save()`方法能够保存带有关键点的图像
@@ -982,8 +982,8 @@ from XEdu.hub import Workflow as wf
 ocr = wf(task='ocr')
 result,ocr_img = ocr.inference(data='data/ocr_img.png',img_type='cv2') # 进行模型推理
 ocr_format_result = ocr.format_output(lang="zh") # 推理结果格式化输出
-ocr.show(ocr_img) # 展示推理结果图片
-ocr.save(ocr_img,'ocr_result.jpg') # 保存推理结果图片
+ocr.show(ocr_img) # 展示推理结果图像
+ocr.save(ocr_img,'ocr_result.jpg') # 保存推理结果图像
 ```
 
 ### 代码解释
@@ -1010,9 +1010,9 @@ result,ocr_img = ocr.inference(data='data/ocr_img.png',img_type='cv2') # 模型�
 
 模型推理`inference()`可传入参数：
 
-- `data`: 指定待进行OCR识别的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
-- `show`(bool): 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出OCR识别完成后的图片。
-- `img_type`(str)：OCR识别完成后会返回含有识别结果的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`。
+- `data`: 指定待进行OCR识别的图像，可以是以图像路径形式传入，也可直接传入cv2或pil格式的图像。
+- `show`(bool): 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出OCR识别完成后的图像。
+- `img_type`(str)：OCR识别完成后会返回含有识别结果的图像，该参数指定了返回图像的格式，可选有:`['cv2','pil']`。
 
 `result`以一维数组的形式保存了识别出的文本及其检测框的四个顶点(x,y)坐标。
 
@@ -1068,7 +1068,7 @@ result,ocr_img = ocr.inference(data='data/ocr_img.png',img_type='cv2') # 模型�
 
 如呈现的输出结果所示，数组中每个元素的形式为元组：（识别文本，检测框顶点坐标）。四个顶点坐标顺序分别为[左上，右上，左下，右下]。
 
-`ocr_img`的格式为cv2，保存了ocr识别后的结果图片。
+`ocr_img`的格式为cv2，保存了ocr识别后的结果图像。
 
 #### 3. 结果输出
 
@@ -1169,17 +1169,17 @@ ocr_format_result = ocr.format_output(lang="zh")
 结果可视化：
 
 ```python
-ocr.show(ocr_img) # 展示推理结果图片
+ocr.show(ocr_img) # 展示推理结果图像
 ```
 
-显示结果图片：由两部分组成，左侧为原图片，右侧为经过ocr识别出的文本，并且该文本的位置与原图片中文本的位置保持对应。
+显示结果图像：由两部分组成，左侧为原图像，右侧为经过ocr识别出的文本，并且该文本的位置与原图像中文本的位置保持对应。
 
 ![](../images/xeduhub/ocr_show.png)
 
 #### 4. 结果保存
 
 ```python
-ocr.save(ocr_img,'ocr_result.jpg') # 保存推理结果图片
+ocr.save(ocr_img,'ocr_result.jpg') # 保存推理结果图像
 ```
 
 `save()`方法能够保存ocr识别后的结果图像
@@ -1195,11 +1195,11 @@ ocr.save(ocr_img,'ocr_result.jpg') # 保存推理结果图片
 ```python
 from XEdu.hub import Workflow as wf
 cls = wf(task='cls_imagenet') # 模型声明
-img_path = 'demo/cat.png' # 指定进行推理的图片路径
+img_path = 'demo/cat.png' # 指定进行推理的图像路径
 result,cls_img = cls.inference(data=img_path,img_type='cv2') # 进行推理
 cls_format_result = cls.format_output(lang='zh')  # 结果格式化输出
 cls.show(cls_img) # 展示原图
-cls.save(cls_img,'cls_result.jpg')# 保存图片
+cls.save(cls_img,'cls_result.jpg')# 保存图像
 ```
 
 ### 代码解释
@@ -1228,11 +1228,11 @@ result,cls_img = cls.inference(data='data/cat101.jpg', img_type='pil') # 进行�
 
 模型推理`inference()`可传入参数：
 
-- `data`: 指定待分类的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
+- `data`: 指定待分类的图像，可以是以图像路径形式传入，也可直接传入cv2或pil格式的图像。
 - `show`(bool): 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出原图。
-- `img_type`(str)：返回原图，该参数指定了返回图片的格式，可选有:`['cv2','pil']`。
+- `img_type`(str)：返回原图，该参数指定了返回图像的格式，可选有:`['cv2','pil']`。
 
-推理结果`result`是一个二维数组，表示这个图片在ImageNet的一千个分类中，属于每个分类的概率。
+推理结果`result`是一个二维数组，表示这个图像在ImageNet的一千个分类中，属于每个分类的概率。
 
 ![](../images/xeduhub/cls_result.png)
 
@@ -1251,7 +1251,7 @@ format_result = cls.format_output(lang='zh') #推理结果格式化输出
 - `lang`(str) - 可选参数，设置了输出结果的语言，可选取值为：[`'zh'`,`'en'`,`'ru'`,`'de'`,`'fr'`]，分别为中文、英文、俄语、德语、法语，默认为中文。
 - `isprint`(bool) - 可选参数，设置了是否格式化输出，可选取值为：[`True`,`False`]，默认为True。
 
-`format_result`是一个字典，以格式化的方式展示了这张图片最有可能的分类结果。预测值表示图片分类标签在所有一千个分类中的索引，分数是属于这个分类的概率，预测类别是分类标签的内容。
+`format_result`是一个字典，以格式化的方式展示了这张图像最有可能的分类结果。预测值表示图像分类标签在所有一千个分类中的索引，分数是属于这个分类的概率，预测类别是分类标签的内容。
 
 ```
 # 输出结果
@@ -1294,8 +1294,8 @@ XEduHub中的风格迁移使用有两类：
 from XEdu.hub import Workflow as wf
 style = wf(task='gen_style',style='mosaic')
 result, img = style.inference(data='data/cat101.jpg',img_type='cv2') # 进行模型推理
-style.show(img) # 展示推理图片
-style.save(img,'style_cat.jpg') # 保存推理图片
+style.show(img) # 展示推理图像
+style.save(img,'style_cat.jpg') # 保存推理图像
 ```
 
 #### 代码解释
@@ -1310,7 +1310,7 @@ style = wf(task='gen_style',style='mosaic')
 `wf()`中共有四个参数可以设置：
 
 - `task`选择任务。风格迁移的模型为`gen_style `。
-- `style`选择风格迁移所使用的风格。可选的风格有`udnie`、`mosaic`、`rain-princess`、`candy`和`pointilism`，也可以用一张图片作为风格源。
+- `style`选择风格迁移所使用的风格。可选的风格有`udnie`、`mosaic`、`rain-princess`、`candy`和`pointilism`，也可以用一张图像作为风格源。
 - `checkpoint`指定模型文件所在的路径，如`style = wf(task='gen_style',style='mosaic',checkpoint='gen_style_mosaic.onnx') `。如果没有指定模型路径，Workflow会默认在本地同级的“checkpoint”文件夹中寻找与任务名对应的模型文件，即`gen_style_mosaic.onnx`（任务名加下划线加风格名）。否则将通过网络到浦源平台的专用地址下载。
 - `download_path`指定模型的下载路径。缺省情况下，模型文件会下载到“checkpoint”文件夹中，“checkpoint”文件夹不存在则自动建立。如果希望代码在没有网络的设备上也能运行，请同步复制`checkpoint`文件夹。如希望模型保存放在其他路径，则设置`download_path`参数，如`download_path='my_checkpoint'`。注意，`download_path`参数为文件夹名称。
 
@@ -1330,7 +1330,7 @@ style = wf(task='gen_style',style='mosaic')
 
 - pointilism： 点彩画是一种绘画技术，其中将小而独特的色点应用于图案以形成图像。
 
-`style`可选参数为：`['mosaic','candy','rain-princess','udnie','pointilism']`，也可以输入一张其他图片的路径来自定义风格，如`style='fangao.jpg'`。为了方便用户使用预设风格，还可以通过输入预设风格对应的标签值来进行设定，如`style=0`。
+`style`可选参数为：`['mosaic','candy','rain-princess','udnie','pointilism']`，也可以输入一张其他图像的路径来自定义风格，如`style='fangao.jpg'`。为了方便用户使用预设风格，还可以通过输入预设风格对应的标签值来进行设定，如`style=0`。
 
 <table class="docutils align-default">
     <thead>
@@ -1371,18 +1371,18 @@ result, img = style.inference(data='data/cat101.jpg',img_type='cv2') # 进行模
 
 模型推理`inference()`可传入参数：
 
-- `data`: 待进行风格迁移的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
-- `show`(bool): 可取值：`[true,false]` 默认为`false`。如果取值为`true`，在推理完成后会直接输出风格迁移完成后的图片。
-- `img_type`: 推理完成后会直接输出风格迁移完成后的图片。该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
+- `data`: 待进行风格迁移的图像，可以是以图像路径形式传入，也可直接传入cv2或pil格式的图像。
+- `show`(bool): 可取值：`[true,false]` 默认为`false`。如果取值为`true`，在推理完成后会直接输出风格迁移完成后的图像。
+- `img_type`: 推理完成后会直接输出风格迁移完成后的图像。该参数指定了返回图像的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
 
 模型推理返回结果：
 
-- `result`和`img`都是三维数组，以img_type设置的格式保存了风格迁移完成后的图片。
+- `result`和`img`都是三维数组，以img_type设置的格式保存了风格迁移完成后的图像。
 
 ##### 3. 结果输出
 
 ```python
-style.show(img) # 展示推理后的图片
+style.show(img) # 展示推理后的图像
 ```
 
 `show()`能够输出风格迁移后的结果图像。
@@ -1392,7 +1392,7 @@ style.show(img) # 展示推理后的图片
 ##### 4. 结果保存
 
 ```python
-style.save(img,'style_cat.jpg') # 保存推理图片
+style.save(img,'style_cat.jpg') # 保存推理图像
 ```
 
 `save()`方法能够保存风格迁移后的图像
@@ -1403,16 +1403,16 @@ style.save(img,'style_cat.jpg') # 保存推理图片
 
 当我们看到喜欢的风格的图像，并想要迁移到其他图像上时，我们就可以使用XEduHub中的自定义风格迁移模型。
 
-例如我喜欢“my_style”这张图片，我想要将其风格迁移到我的风景照上，生成新的图像
+例如我喜欢“my_style”这张图像，我想要将其风格迁移到我的风景照上，生成新的图像
 
-**将图片的路径来自定义风格，style='demo/my_style.jpg'**
+**将图像的路径来自定义风格，style='demo/my_style.jpg'**
 
 下面是实例自定义风格迁移模型的完整代码：
 
 ```python
 from XEdu.hub import Workflow as wf # 导入库
 style = wf(task='gen_style',style='demo/my_style.jpg') # 实例化模型
-img_path = 'demo/ShangHai.jpg'  # 指定进行推理的图片路径
+img_path = 'demo/ShangHai.jpg'  # 指定进行推理的图像路径
 result, new_img = style.inference(data=img_path,img_type='cv2') # 进行模型推理
 style.show(new_img) # 可视化结果
 style.save(new_img, 'demo/style_my_style_ShangHai.jpg') # 保存可视化结果
@@ -1422,7 +1422,7 @@ style.save(new_img, 'demo/style_my_style_ShangHai.jpg') # 保存可视化结果
 
 图像着色模型是将灰度图像转换为彩色图像的模型，它根据图像的内容、场景和上下文等信息来推断合理的颜色分布，实现从灰度到彩色的映射。
 
-当我们有一张黑白图片想要为它上色时，可以使用XEduHub提供的gen_color图像着色任务。通过调用基于卷积神经网络 (CNN)训练的模型进行推理，自动地为黑白图像添加颜色，实现了快速生成逼真的着色效果。
+当我们有一张黑白图像想要为它上色时，可以使用XEduHub提供的gen_color图像着色任务。通过调用基于卷积神经网络 (CNN)训练的模型进行推理，自动地为黑白图像添加颜色，实现了快速生成逼真的着色效果。
 
 #### 代码样例
 
@@ -1459,18 +1459,18 @@ result, img = color.inference(data='demo/gray_img1.jpg',img_type='cv2') # 进行
 
 模型推理`inference()`可传入参数：
 
-- `data`: 待进行风格迁移的图片，可以是以图片路径形式传入，也可直接传入cv2或pil格式的图片。
-- `show`(bool): 可取值：`[true,false]` 默认为`false`。如果取值为`true`，在推理完成后会直接输出风格迁移完成后的图片。
-- `img_type`: 推理完成后会直接输出图像着色完成后的图片。该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
+- `data`: 待进行风格迁移的图像，可以是以图像路径形式传入，也可直接传入cv2或pil格式的图像。
+- `show`(bool): 可取值：`[true,false]` 默认为`false`。如果取值为`true`，在推理完成后会直接输出风格迁移完成后的图像。
+- `img_type`: 推理完成后会直接输出图像着色完成后的图像。该参数指定了返回图像的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
 
 模型推理返回结果：
 
-- `result`和`img`都是三维数组，以cv2格式保存了风格迁移完成后的图片。
+- `result`和`img`都是三维数组，以cv2格式保存了风格迁移完成后的图像。
 
 ##### 3. 结果输出
 
 ```python
-color.show(img) # 展示推理后的图片
+color.show(img) # 展示推理后的图像
 ```
 
 `show()`能够输出着色后的结果图像。
@@ -1480,7 +1480,7 @@ color.show(img) # 展示推理后的图片
 ##### 4. 结果保存
 
 ```python
-color.save(img,'color_img.jpg') # 保存推理图片
+color.save(img,'color_img.jpg') # 保存推理图像
 ```
 
 `save()`方法能够保存着色后的图像
@@ -1498,8 +1498,8 @@ from XEdu.hub import Workflow as wf
 drive = wf(task='drive_perception') # 实例化模型
 result,img = drive.inference(data='demo/drive.png',img_type='cv2') # 模型推理
 drive.format_output(lang='zh') # 将推理结果进行格式化输出
-drive.show(img) # 展示推理图片
-drive.save(img,'img_perception.jpg') # 保存推理图片
+drive.show(img) # 展示推理图像
+drive.save(img,'img_perception.jpg') # 保存推理图像
 ```
 
 ### 代码解释
@@ -1529,9 +1529,9 @@ result,img = drive.inference(data='demo/drive.png',img_type='cv2') # 模型推�
 
 模型推理`inference()`可传入参数：
 
-- `data`(str)：指定待检测的图片。
-- `show`(bool): 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出目标检测完成后的图片。
-- `img_type`(str)：目标检测完成后会返回含有检测框的图片，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
+- `data`(str)：指定待检测的图像。
+- `show`(bool): 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出目标检测完成后的图像。
+- `img_type`(str)：目标检测完成后会返回含有检测框的图像，该参数指定了返回图像的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
 - `thr`: 设置检测框阈值，取值范围为`[0,1]`超过该阈值的检测框被视为有效检测框，进行显示，默认值为0.3。
 
 模型推理返回结果：
@@ -1540,7 +1540,7 @@ result,img = drive.inference(data='demo/drive.png',img_type='cv2') # 模型推�
 - `车辆检测result[0]`：以二维数组保存了车辆目标检测框左上角顶点的坐标(x1,y1)和右下角顶点的坐标(x2,y2)（之所以是二维数组，是因为该模型能够检测多辆车，因此当检测到多辆车时，就会有多个[x1,y1,x2,y2]的一维数组，所以需要以二维数组形式保存），我们可以利用这四个数据计算出其他两个顶点的坐标，以及检测框的宽度和高度。
 - `车道线分割result[1]`：以由0，1组成二维数组（w*h），保存图像中每个像素的mask，mask为1表示该像素为车道线分割目标，mask为0表示该像素是背景。
 - `可行驶区域result[2]`：以由0，1组成二维数组（w*h），保存图像中每个像素的mask，mask为1表示该像素为可驾驶区域分割目标，mask为0表示该像素是背景。
-- `img_with_box`(numpy.ndarray)：是个三维数组，以img_type所设置的格式保存了包含了检测框与分割目标的图片。
+- `img_with_box`(numpy.ndarray)：是个三维数组，以img_type所设置的格式保存了包含了检测框与分割目标的图像。
 
 ```
 # 输出结果
@@ -1600,20 +1600,20 @@ format_result = drive.format_output(lang='zh') # 将推理结果进行格式化�
 ![](../images/xeduhub/drive_format.png)
 
 ```python
-drive.show(img) # 展示推理图片
+drive.show(img) # 展示推理图像
 ```
 
-`show()`能够输出带有检测框与分割目标的图片。
+`show()`能够输出带有检测框与分割目标的图像。
 
 ![](../images/xeduhub/drive_show.png)
 
 #### 4. 结果保存
 
 ```python
-drive.save(img,'img_perception.jpg') # 保存推理图片
+drive.save(img,'img_perception.jpg') # 保存推理图像
 ```
 
-`save()`方法能够保存带有检测框与分割目标的图片。
+`save()`方法能够保存带有检测框与分割目标的图像。
 
 该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
 
@@ -1660,11 +1660,11 @@ image_embeddings = img_emb.inference(data='demo/cat.png') # 模型推理
 
 模型推理`inference()`可传入参数：
 
-- `data`(str/list)：指定待特征提取的图片。可以直接传入图像路径`data='cat.jpg'` 或者多张图像路径列表`data= ['cat.jpg','dog.jpg'] `。
+- `data`(str/list)：指定待特征提取的图像。可以直接传入图像路径`data='cat.jpg'` 或者多张图像路径列表`data= ['cat.jpg','dog.jpg'] `。
 
 模型推理返回结果：
 
-- `result`：以二维数组的形式保存了每张图片特征提取后的512维向量。
+- `result`：以二维数组的形式保存了每张图像特征提取后的512维向量。
 
 ```
 # 输出结果示例
@@ -1845,7 +1845,7 @@ embedding_audio任务模型加载成功！
 
 #### 1.零样本分类
 
-什么是零样本分类呢？举个例子，现在我们想要分类图片中的猫是黑色的还是黄色的，按照图像分类的方式，我们需要收集数据集，并且标注数据集，再进行模型训练，最后才能使用训练出来的模型对图像进行分类。而现在，我们使用的“图像特征提取”和“文本特征提取”只需通过特征向量就可以进行分类，避免了大量的标注工作。
+什么是零样本分类呢？举个例子，现在我们想要分类图像中的猫是黑色的还是黄色的，按照图像分类的方式，我们需要收集数据集，并且标注数据集，再进行模型训练，最后才能使用训练出来的模型对图像进行分类。而现在，我们使用的“图像特征提取”和“文本特征提取”只需通过特征向量就可以进行分类，避免了大量的标注工作。
 
 上文中我们已经通过图像特征提取和文本特征提取把`cat.jpg`,`'a black cat'`,`'a yellow cat'`分别变成了3堆数字（3个512维向量），但是很显然，我们看不懂这些数字，但是计算机可以！
 通过让计算机将数字进行运算，即将图像和文本的特征向量作比较，就能看出很多信息，这也叫计算向量之间相似度。
@@ -1900,7 +1900,7 @@ XEduHub 中的 `segment_anything` 工具利用这种掩码机制，允许用户�
 ```python
 from XEdu.hub import Workflow as wf # 导入库
 seg = wf(task = 'segment_anything') # 实例化模型
-img_path = 'demo/seg.jpg' # 指定进行推理的图片路径
+img_path = 'demo/seg.jpg' # 指定进行推理的图像路径
 masks, img = seg.inference(data=img_path, img_type='pil') # 进行模型推理
 format_result = seg.format_output(lang='zh') # 将推理结果进行格式化输出
 seg.show(masks[0]) # 可视化第一个分割掩码
@@ -1942,11 +1942,11 @@ masks, img = seg.inference(data='data/seg.jpg', img_type='pil') # 进行模型�
 
 模型推理`inference()`可传入参数：
 
-- `data`(str)：指定待分割的图片路径。
+- `data`(str)：指定待分割的图像路径。
 
-- `show`(bool): 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出图像分割完成后带有掩码的图片。
+- `show`(bool): 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出图像分割完成后带有掩码的图像。
 
-- `img_type`(str)：图像分割完成后返回含有掩码的图片格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
+- `img_type`(str)：图像分割完成后返回含有掩码的图像格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
 
 - `mode`(str): 提示（prompt）的模式，提示（prompt）被用来指导模型进行图像分割，在本任务中用于指明期望分割的目标位置或区域。mode可以设置为point或box，默认为point。
 
@@ -2087,7 +2087,7 @@ seg.save(masks[0],"demo/first_mask.png") # 保存可视化第一个分割掩码�
 
 ## 9. 深度估计
 
-深度估计任务是计算机视觉中的一种技术，用来测量和理解图像中物体与摄像头之间的距离。简单来说，就是让计算机通过分析图片，像人类一样判断物体有多远。
+深度估计任务是计算机视觉中的一种技术，用来测量和理解图像中物体与摄像头之间的距离。简单来说，就是让计算机通过分析图像，像人类一样判断物体有多远。
 
 想象你在看一张照片，照片上有一辆车、一棵树和一栋房子。你能够凭借视觉直觉判断车离你比较近，树在中间，而房子最远。深度估计任务就是让计算机也能做出类似的判断，从而知道图像中每个物体的远近关系。
 
@@ -2102,7 +2102,7 @@ XEduHub 提供了一个深度估计模型 `depth_anything`，这是一个单目�
 ```python
 from XEdu.hub import Workflow as wf # 导入库
 mde = wf(task='depth_anything') # 实例化模型
-img_path = 'demo/cat.png' # 指定进行推理的图片路径
+img_path = 'demo/cat.png' # 指定进行推理的图像路径
 result,img = mde.inference(data=img_path,img_type='cv2') # 进行推理
 mde.show(img)# 展示结果图
 mde.save(img,'demo/mde_result.jpg')# 保存结果图
@@ -2141,9 +2141,9 @@ result,img = mde.inference(data=img_path,img_type='cv2') # 进行推理
 
 模型推理`inference()`可传入参数：
 
-- `data`(str)：指定待分割的图片路径。
-- `show`(bool): 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出图像分割完成后带有掩码的图片。
-- `img_type`(str)：返回结果图的类型，该参数指定了返回图片的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
+- `data`(str)：指定待分割的图像路径。
+- `show`(bool): 可取值：`[True,False]` 默认为`False`。如果取值为`True`，在推理完成后会直接输出图像分割完成后带有掩码的图像。
+- `img_type`(str)：返回结果图的类型，该参数指定了返回图像的格式，可选有:`['cv2','pil']`，默认值为`None`，如果不传入值，则不会返回图。
 
 模型推理返回结果：
 
