@@ -82,6 +82,8 @@ basenn.format_output()
 
 若要查看大图可前往[https://aicarrier.feishu.cn/file/K0oTbWW9mosOGCxIClvcTfpSnDd](https://aicarrier.feishu.cn/file/K0oTbWW9mosOGCxIClvcTfpSnDd)
 
+** 注：具体参数建议查看对应的模型。**
+
 下文将结合具体任务和项目进行介绍。
 
 **点击这里在浦育平台体验：<a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public">XEduHub实例代码-入门完整版</a>**
