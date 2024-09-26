@@ -1,6 +1,12 @@
 # XEduHub项目案例集
 
-借助XEduHub可以实现应用多元AI模型去解决复杂的问题。
+借助XEduHub不仅可以实现AI模型的快速推理，还可以实现应用多个AI模型解决复杂的问题。
+
+** 快速体验XEduHub **
+
+<a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843">XEduHub实例代码-入门完整版</a>
+
+<a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public</a>
 
 ## 目标检测+关键点检测
 
