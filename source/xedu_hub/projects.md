@@ -2,7 +2,7 @@
 
 借助XEduHub不仅可以实现AI模型的快速推理，还可以实现应用多个AI模型解决复杂的问题。
 
-** 快速体验XEduHub **
+**快速体验XEduHub**
 
 <a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843">XEduHub实例代码-入门完整版</a>
 
@@ -164,6 +164,7 @@ while cap.isOpened():
 cap.release()
 cv2.destroyAllWindows()
 ```
+
 ## 识行小车
 
 我们做了一辆能在驾驶过程中自动阅读交通指令并做出相应运动的智能小车，这辆智能小车具有第一人称视角视角系统，可以将数据发送到服务器进行统一计算处理，根据返回结果执行行进指令。
@@ -319,9 +320,9 @@ if response.status_code == 200:
                 else:
                     distanceCM=80
                     mid=150
-                
+
                 print(distanceCM,mid)
-                
+
                 # 小车控制
                 if  90 > distanceCM > 70 and 270>mid>50:
                         control_car('S') # 停止
