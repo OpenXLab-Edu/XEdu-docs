@@ -4,11 +4,11 @@
 
 XEduHub是一个专为快速、便捷地利用最先进的深度学习模型完成任务而设计的工具库。其设计灵感源自PyTorchHub，旨在以工作流的方式，高效地完成深度学习任务。XEduHub的独特之处在于它内置了大量优质的深度学习SOTA模型，无需用户自行进行繁琐的模型训练。用户根据自己的需求，选择不同的特定任务（task），而不同任务对应了不同的内置模型，拿过来就用，轻松进行AI应用实践。
 
-** 参考文章 **
+**参考文章**
 
 [Mind+结合XEduHub开发AI交互作品](https://mp.weixin.qq.com/s/Hyt3npIttAwmOBhN1bayxw)
 
-** 快速体验 **
+**快速体验**
 
 <a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843">XEduHub实例代码-入门完整版</a>
 
