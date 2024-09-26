@@ -86,9 +86,9 @@ basenn.format_output()
 
 下文将结合具体任务和项目进行介绍。
 
-**点击这里在浦育平台体验：<a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public">XEduHub实例代码-入门完整版</a>**
+**点击这里在浦育平台体验：<a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843">XEduHub实例代码-入门完整版</a>**
 
-<a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public">https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&backpath=/pjlab/projects/list#public</a>
+<a href="https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843">https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843</a>
 
 ## 预置任务模型文件的获取
 
