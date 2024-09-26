@@ -50,6 +50,7 @@ for i in bboxs:
 ![](../images/xeduhub/workflow_1.png)
 
 需要强调的是，如果要判断出是否做“比心”动作，还需要借助另一个模型，这个模型可能需要自主训练。加入训练了一个BaseNN全连接神经网络来实现这一任务，则数据流可以进一步向后流动，可以参考下面代码中箭头所示方向，即为数据流动方向：
+
 ```python
 from XEdu.hub import Workflow as wf
 det_hand = wf(task='det_hand')
@@ -76,13 +77,11 @@ basenn.format_output()
 
 ![](../images/xeduhub/tu1.PNG)
 
-
-
 ![](../images/xeduhub/tu2.PNG)
 
 若要查看大图可前往[https://aicarrier.feishu.cn/file/K0oTbWW9mosOGCxIClvcTfpSnDd](https://aicarrier.feishu.cn/file/K0oTbWW9mosOGCxIClvcTfpSnDd)
 
-** 注：具体参数建议查看对应的模型。**
+**注：具体参数建议查看对应的模型**
 
 下文将结合具体任务和项目进行介绍。
 
