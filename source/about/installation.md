@@ -3,10 +3,10 @@
 
 当前在[PyPi](https://pypi.org/user/aiedu/)开源的最新版本号如下：
 ```
-XEdu-python==0.1.8
-MMEdu==0.1.26
-BaseML==0.1.3
-BaseNN==0.3.0
+XEdu-python==0.2.3
+MMEdu==0.1.28
+BaseML==0.1.5
+BaseNN==0.3.1
 BaseDT==0.1.3
 easy-xedu==0.2.2
 BaseDeploy==0.0.4
