@@ -2,7 +2,15 @@
 
 ## XEdu.utils中的函数
 
-在XEdu-python库中，我们封装了一系列数据处理函数，可以帮助你方便地完成AI推理和部署。这些函数被封装在XEdu.utils中，你可以这样引入它们：
+XEdu-python库封装了一系列数据处理函数，实现如向量相似度计算等常见功能，帮助初学者快速完成AI推理和部署。
+
+
+- 归一化指数函数：softmax
+- 余弦相似度计算：cosine_similarity
+- 向量相似度比较：get_similarity
+- 相似度计算结果可视化：visualize_similarity
+
+这些函数被封装在XEdu.utils中，引入方法为：
 
 ```python
 from XEdu.utils import *
@@ -11,7 +19,7 @@ from XEdu.utils import *
 或者具体写明引入的函数
 
 ```python
-from XEdu.utils import softmax, cosine_similarity, get_similarity, visualize similarity
+from XEdu.utils import softmax, cosine_similarity, get_similarity, visualize_similarity
 ```
 
 下面对函数展开使用介绍。
@@ -54,7 +62,7 @@ def softmax(x):
     return x1.tolist()
 ```
 
-### 余弦相似性计算：cosine_similarity
+### 余弦相似度计算：cosine_similarity
 
 1.函数说明
 
@@ -64,12 +72,33 @@ def softmax(x):
 
 2.使用示例
 
+示例1：
+
 ```python
 from XEdu.utils import *
 output = cosine_similarity(txt_embeddings1,txt_embeddings2)
 print(output)
 # [[0.86931829 0.94491118 0.94491118]
 #  [0.98270763 0.94491118 0.83152184]]
+```
+示例2：
+
+验证“国王”的词向量减去“男”的词向量，再加上“女”的词向量，是否与“女王”的词向量接近。
+
+```python
+# 计算文本向量之间的关系
+wordlist = ['国王','男','女','女王']
+# 获取单词的向量特征
+from XEdu.hub import Workflow as wf # 导入库
+text_emb = wf(task='embedding_text') # 实例化模型
+text_embeddings = text_emb.inference(data=wordlist) # 模型推理
+# 计算向量，获得新向量
+new_vector = text_embeddings[[0]] - text_embeddings[[1]] + text_embeddings[[2]]
+# 计算向量的相似度
+from XEdu.utils import cosine_similarity
+ssim0 = cosine_similarity(new_vector,text_embeddings[[3]]) 
+print(ssim0)
+# [[0.9437192]]
 ```
 
 3.参数说明
@@ -119,7 +148,7 @@ def cosine_similarity(embeddings_1: np.ndarray, embeddings_2: np.ndarray) -> np.
 
 5.更多用法
 
-结合XEduHub`wf(task='embedding_image')`或者`wf(task='embedding_text')`的任务中，对数据进行embedding操作之后，可以计算不同数据之间的相似度，就可以使用该函数。embedding会在[图像嵌入和文本嵌入](https://xedu.readthedocs.io/zh/master/xedu_hub/introduction.html#id92)中用到，具体案例可参见：[教程1-7](https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&sc=62f33550bf4f550f3e926cf2#public)
+结合XEduHub`wf(task='embedding_image')`或者`wf(task='embedding_text')`的任务中，对数据进行embedding操作之后，可以计算不同数据之间的相似度，就可以使用该函数。embedding会在[图像嵌入和文本嵌入](https://xedu.readthedocs.io/zh_cn/master/xedu_hub/introduction.html#id92)中用到，具体案例可参见：[教程1-7](https://www.openinnolab.org.cn/pjlab/project?id=65518e1ae79a38197e449843&sc=62f33550bf4f550f3e926cf2#public)
 
 对两组文本转换出的向量进行相似度比较，可以得到一个比较矩阵，代表每两个字符串之间的相似度，我们可以看到对角线上的词相似度是最高的。下面这个例子将让你有更好的理解：
 
@@ -137,9 +166,6 @@ output = cosine_similarity(txt_embeddings1,txt_embeddings2) # 计算向量1和�
 print(output)
 # [[0.94926983 0.86368805 0.7956152  0.8016052 ]
 #  [0.89295036 0.9511493  0.8203819  0.82089627]]
-print(softmax(output))
-# [[0.27485617995262146, 0.25231191515922546, 0.23570789396762848, 0.2371240258216858], 
-#  [0.25507545471191406, 0.2703610360622406, 0.23722068965435028, 0.2373427450656891]]
 ```
 
 图片之间也可以计算相似度，给定的列表中，需要指明各图片的文件所在路径。
@@ -148,14 +174,14 @@ print(softmax(output))
 from XEdu.hub import Workflow as wf # 导入库
 from XEdu.utils import *
 img_emb = wf(task='embedding_image') # 实例化模型
+imagelist = 
 image_embeddings1 = img_emb.inference(data='demo/cat.png') # 模型推理
 image_embeddings2 = img_emb.inference(data='demo/dog.png') # 模型推理
 output = cosine_similarity(image_embeddings1,image_embeddings2) # 计算向量1和向量2的余弦相似度
 print(output)
-print(softmax(output))
 ```
 
-### get_similarity
+### 向量相似度比较：get_similarity
 
 1.函数说明
 
