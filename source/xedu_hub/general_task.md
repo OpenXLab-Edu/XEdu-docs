@@ -24,6 +24,8 @@ MMEdu是XEdu的核心工具，集成了众多计算机视觉（CV）的SOTA模�
 
 #### （1）MMEdu图像分类模型
 
+这里我们以猫狗分类模型为例，项目指路：[猫狗分类](https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&sc=647b3880aac6f67c822a04f5#public)。
+
 ##### 代码样例
 
 ```python
@@ -49,7 +51,6 @@ mmcls = wf(task='mmedu',checkpoint='cats_dogs.onnx') # 指定使用的onnx模型
 - `task`：只需要设置task为`mmedu` ，而不需要指定是哪种任务。
 - `checkpoint`：指定你的模型的路径，该参数不能为空，如`checkpoint='cats_dogs.onnx'`。
 
-这里我们以猫狗分类模型为例，项目指路：[猫狗分类](https://www.openinnolab.org.cn/pjlab/project?id=63c756ad2cf359369451a617&sc=647b3880aac6f67c822a04f5#public)。
 
 ###### 2. 模型推理
 
@@ -108,7 +109,10 @@ mmcls.save(img,'new_cat.jpg') # 保存推理结果图片
 
 该方法接收两个参数，一个是图像数据，另一个是图像的保存路径。
 
+
 #### （2）MMEdu目标检测模型
+
+这里以车牌识别为例进行说明。项目指路：[使用MMEdu实现车牌检测](https://www.openinnolab.org.cn/pjlab/project?id=641426fdcb63f030544017a2&backpath=/pjlab/projects/list#public)
 
 ##### 代码样例
 
@@ -135,7 +139,6 @@ mmdet = wf(task='mmedu',checkpoint='plate.onnx') # 指定使用的onnx模型
 - `task`：只需要设置task为`mmedu` ，而不需要指定是哪种任务。
 - `checkpoint`：指定你的模型的路径，该参数不能为空，如`checkpoint='plate.onnx'`。
 
-这里以车牌识别为例进行说明。项目指路：[使用MMEdu实现车牌检测](https://www.openinnolab.org.cn/pjlab/project?id=641426fdcb63f030544017a2&backpath=/pjlab/projects/list#public)
 
 ###### 2. 模型推理
 
@@ -345,7 +348,13 @@ format_output = baseml.format_output(lang='zh')# 推理结果格式化输出
 
 ## 2.其他ONNX模型推理
 
-XEduHub现在可以支持使用用户自定义的ONNX模型文件进行推理啦！这意味着你可以不仅仅使用MMEdu或者BaseNN训练模型并转换而成的ONNX模型文件进行推理，还可以使用其他各个地方的ONNX模型文件，但是有个**重要的前提：你需要会使用这个模型，了解模型输入的训练数据以及模型的输出结果**。OK，如果你已经做好了充足的准备，那么就开始使用XEduHub吧！
+XEduHub现在可以支持使用用户自定义的ONNX模型文件进行推理啦！这意味着你可以不仅仅使用MMEdu或者BaseNN训练模型并转换而成的ONNX模型文件进行推理，还可以使用其他各个地方的ONNX模型文件，但是有个**重要的前提：你需要会使用这个模型，了解模型输入的训练数据以及模型的输出结果**。因为任何的模型的推理，都要做好数据前处理和后处理的工作。
+
+数据前处理：推理数据需要处理，保持与训练模型的数据一致。
+
+数据后处理：对推理后的数据进行“解释”。
+
+方法：设置“task”参数为“custom”。
 
 ### 代码样例
 
@@ -354,7 +363,7 @@ from XEdu.hub import Workflow as wf
 import cv2
 import numpy as np
 
-custom = wf(task="custom",checkpoint="custom.onnx")
+custom = wf(task="custom",checkpoint="model.onnx")
 
 def pre(path): # 输入数据（此处为文件路径）前处理的输入参数就是模型推理时的输入参数，这里是图片的路径
     """
@@ -377,19 +386,21 @@ result = custom.inference(data='det.jpg',preprocess=pre,postprocess=post)
 print(result)
 ```
 
+参考项目（人像抠图）：https://www.openinnolab.org.cn/pjlab/project?id=67150c3437713560853372c5
+
 ### 代码解释
 
 #### 1. 模型声明
 
 ```python
 from XEdu.hub import Workflow as wf
-custom = wf(task="custom",checkpoint="custom.onnx")
+custom = wf(task="custom",checkpoint="model.onnx")
 ```
 
 `wf()`中共有两个参数可以设置：
 
-- `task`：只需要设置task为`custom` ，而不需要指定是哪种任务。
-- `checkpoint`：指定你的模型的路径，如`checkpoint='custom.onnx'`。
+- `task`：只需要设置task为`custom`。
+- `checkpoint`：指定你的模型的路径，如`checkpoint='model.onnx'`。
 
 #### 2. 模型推理
 
@@ -397,7 +408,7 @@ custom = wf(task="custom",checkpoint="custom.onnx")
 import cv2
 import numpy as np
 
-custom = wf(task="custom",checkpoint="custom.onnx")
+custom = wf(task="custom",checkpoint="model.onnx")
 
 def pre(path): # 输入数据（此处为文件路径）前处理的输入参数就是模型推理时的输入参数，这里是图片的路径
     """
@@ -428,6 +439,8 @@ result = custom.inference(data=data,preprocess=pre,postprocess=post)
 
 在这里，使用自定义的ONNX模型进行推理的时候，你需要自己的需求实现模型输入数据的前处理以及输出数据的后处理方法，确保在进行模型推理的正常运行。
 
+### 自定义模型推理范例：目标检测
+
 举一个例子，如果你手中有一个onnx模型文件，这个模型是一个**目标检测模型**，在训练时的训练数据是将图片读入后进行数字化处理得到的**numpy数组**，那么你在使用XEduHub时，基于该模型进行推理之前，**需要设计对应的前处理方法**将图片进行数字化。
 
 同样地，如果你的模型的输出结果是一个一维数组，里面包含了所有类别标签对应的置信度，那么如果你想要输出检测出来的最有可能的类别标签，你就**需要设计后处理方法**，使得输出的推理结果满足你的需要。
@@ -445,6 +458,7 @@ print(result)
 ![](../images/xeduhub/custom_result.png)
 
 下面这里例子展示了一个自主训练的全连接神经网络分类模型的使用。前处理进行了归一化和数据64位转32位，后处理对模型输出做了进一步处理。
+
 ```python
 from XEdu.hub import Workflow as wf
 import numpy as np
@@ -496,4 +510,101 @@ custom任务模型加载成功！
        0.15437697, 0.630747  ], dtype=float32)] 得到原始分析结果： [array([[0.00149915, 0.01200893, 0.98649186]], dtype=float32)]
 最有可能的类别是： 2
 res: 2
+```
+
+### 自定义模型推理范例：人像抠图
+
+这里例子中，对模型来说推理数据是numpy数组，维度为(1, 3, 512, *)，推理结果是numpy数组，维度为 (1, 1, 512, *)。
+
+前处理函数（pre）要将图像的宽度限制为512，交换通道，数据做“归一化”处理。后处理函数（post）要将(1, 1, 512, *)数据和原始图片一起计算，“反归一化”，交换通道，成为标准的图像数据。
+
+
+```python
+
+from XEdu.hub import Workflow as wf
+import cv2
+import numpy as np
+
+custom = wf(task="custom",checkpoint="./model.onnx")
+
+# Get x_scale_factor & y_scale_factor to resize image
+def get_scale_factor(im_h, im_w, ref_size):
+
+    if max(im_h, im_w) < ref_size or min(im_h, im_w) > ref_size:
+        if im_w >= im_h:
+            im_rh = ref_size
+            im_rw = int(im_w / im_h * ref_size)
+        elif im_w < im_h:
+            im_rw = ref_size
+            im_rh = int(im_h / im_w * ref_size)
+    else:
+        im_rh = im_h
+        im_rw = im_w
+
+    im_rw = im_rw - im_rw % 32
+    im_rh = im_rh - im_rh % 32
+
+    x_scale_factor = im_rw / im_w
+    y_scale_factor = im_rh / im_h
+
+    return x_scale_factor, y_scale_factor
+
+def pre(path): # 输入数据（此处为文件路径）前处理的输入参数就是模型推理时的输入参数，这里是图片的路径
+    """
+    这个前处理方法实现了将待推理的图片读入，将图片的宽度限制为512。
+    """
+    ref_size = 512 
+    # read image
+    im = cv2.imread(path)
+    im = cv2.cvtColor(im, cv2.COLOR_BGR2RGB)
+
+    # unify image channels to 3
+    if len(im.shape) == 2:
+        im = im[:, :, None]
+    if im.shape[2] == 1:
+        im = np.repeat(im, 3, axis=2)
+    elif im.shape[2] == 4:
+        im = im[:, :, 0:3]
+
+    # normalize values to scale it between -1 to 1
+    im = (im - 127.5) / 127.5   
+    im_h, im_w, im_c = im.shape
+    x, y = get_scale_factor(im_h, im_w, ref_size) 
+    im = cv2.resize(im, None, fx = x, fy = y, interpolation = cv2.INTER_AREA)
+    im = np.transpose(im)
+    im = np.swapaxes(im, 1, 2)
+    im = np.expand_dims(im, axis = 0).astype('float32')
+    return im
+
+def post(res,data): # 输入推理结果(掩码)和前处理后的数据(原始图像)
+    """
+    这个后处理方法实现返回去除背景的人像，背景统一设置为（127.5,127.5,127.5）。
+    """
+    mask = np.squeeze(res[0], axis=0)
+    data = np.squeeze(data, axis=0)
+    # 由于掩码只有一个通道，我们需要将其复制到三个颜色通道
+    mask = np.repeat(mask, 3, axis=0)  # 现在形状为 (3, 512, 672)
+    # print(mask.shape)
+    
+    # 使用掩码对原始图像进行分割
+    segmented_image = data * mask
+    
+    # 将轴交换回原来的顺序
+    segmented_image = np.swapaxes(segmented_image, 1, 2)
+    segmented_image = np.transpose(segmented_image)
+    
+    # 将归一化的值重新缩放回 [0, 255] 范围
+    segmented_image = (segmented_image * 127.5) + 127.5
+    segmented_image = np.clip(segmented_image, 0, 255).astype(np.uint8)
+    
+    segmented_image = cv2.cvtColor(segmented_image, cv2.COLOR_RGB2BGR)
+    return segmented_image
+
+
+data = './001.jpg'
+result = custom.inference(data=data,preprocess=pre,postprocess=post)
+# 保存图像
+cv2.imwrite('./101.png', result)
+print('图像保存成功！')
+
 ```
