@@ -999,7 +999,10 @@ ocr = wf(task='ocr')
 
 - `task`选择任务类型，光学字符识别（OCR）的模型为`ocr`。
 
-**注意**：ocr任务并没有使用ONNX模型，也不会以onnx方式下载模型文件，而是自动下载和安装一个Python库，因此不同于之前任务的下载方式，无需指定下载路径。如果在断网情况第一次使用，可以先通过`pip install rapidocr_onnxruntime==1.3.7`预先下载库。
+**注意**：
+- ocr任务并没有使用ONNX模型，也不会以onnx方式下载模型文件，而是自动下载和安装一个Python库，因此不同于之前任务的下载方式，无需指定下载路径。
+- 如果在断网情况第一次使用，可以先通过`pip install rapidocr_onnxruntime==1.3.7`预先下载库。
+- “rapidocr_onnxruntime”需要指定版本为“1.3.7”，否则可能会出现各种错误。
 
 #### 2. 模型推理
 
