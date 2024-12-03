@@ -59,6 +59,7 @@ from MMEdu import MMDetection as det
 训练代码如下：
 
 ~~~python
+from MMEdu import MMDetection as mmedudet
 model = mmedudet('FasterRCNN') # 实例化模型，不指定参数即使用默认参数
 model.num_classes = 1 # 进行车牌识别，此时只有一个类别。
 model.load_dataset(path='../dataset/det/coco') # 从指定数据集路径中加载数据
@@ -283,6 +284,7 @@ result = model.fast_inference(image=img)
 在这一步中，我们将学习如何加载之前训练过的模型接着训练。如果觉得之前训练的模型epoch数不够的话或者因为一些客观原因而不得不提前结束训练，相信下面的代码会帮到您。
 
 ~~~python
+from MMEdu import MMDetection as mmedudet
 model = mmedudet('FasterRCNN') # 初始化实例模型
 model.num_classes = 1  # 进行车牌识别，此时只有一个类别。
 model.load_dataset(path='../dataset/det/coco') # 配置数据集路径
