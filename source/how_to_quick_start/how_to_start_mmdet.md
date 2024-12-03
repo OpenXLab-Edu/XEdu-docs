@@ -16,13 +16,13 @@ MMEdu是人工智能视觉算法集成的深度学习开发工具，目前目标
 #### 第0步 导入基础库（建议将库更新为最新版本再导入）
 
 ```python
-from MMEdu import MMDetection as det
+from MMEdu import MMDetection as mmdet
 ```
 
 #### 第1步 实例化模型（选择SSD_Lite）
 
 ```python
-model = det(backbone='SSD_Lite')
+model = mmdet(backbone='SSD_Lite')
 ```
 
 #### 第2步 配置基本信息
@@ -66,13 +66,13 @@ model.train(epochs=10, lr=0.001, validate=True, batch_size = 4, device='cuda', c
 #### 第0步 导入基础库（建议将库更新为最新版本再导入）
 
 ```
-from MMEdu import MMClassification as cls
+from MMEdu import MMDetection as mmdet
 ```
 
 #### 第1步 实例化模型
 
 ```python
-model = cls(backbone='SSD_Lite')
+model = mmdet(backbone='SSD_Lite')
 ```
 
 #### 第2步 指定模型权重文件的所在路径
@@ -92,7 +92,7 @@ img_path = 'picture/2.png' # 指定图片路径
 #### 第4步 开始推理
 
 ```python
-result = model.inference(image=img, show=True, checkpoint = checkpoint,device='cuda') # 模型推理
+result = model.inference(image=img_path, show=True, checkpoint = checkpoint, device='cuda') # 模型推理
 model.print_result(result) # 结果转换为中文输出
 ```
 
@@ -103,8 +103,8 @@ model.print_result(result) # 结果转换为中文输出
 同样的，可以在模型应用前先完成模型转换，目标检测模型转换的代码风格和图像分类类似。
 
 ```python
-from MMEdu import MMDetection as det
-model = det(backbone='SSD_Lite')
+from MMEdu import MMDetection as mmdet
+model = mmdet(backbone='SSD_Lite')
 checkpoint = 'checkpoints/best_bbox_mAP_epoch_7.pth'
 out_file='cats_dogs_det.onnx' # 指定输出的文件即转换后的文件
 model.convert(checkpoint=checkpoint, backend="ONNX", out_file=out_file)
