@@ -8,7 +8,7 @@ MMEdu==0.1.28
 BaseML==0.1.5
 BaseNN==0.3.1
 BaseDT==0.1.3
-easy-xedu==0.2.2
+easy-xedu==0.2.3
 BaseDeploy==0.0.4
 ```
 
