@@ -40,6 +40,8 @@ Mac/源码版本：[https://p6bm2if73b.feishu.cn/file/CMOqbJzKeo7lgRxmqufcugoEnC
 
 - 使用一键运行版有时难以查看具体的问题，建议在Python环境中运行代码，如“XEdu一键安装包”，通过查看调试窗口中的信息反馈，找到问题所在。
 
+- win7系统需要额外执行`python -m pip install pydantic==2.7.0` 才能运行，可以参考[视频教程](https://www.bilibili.com/video/BV1EEHretE3m)。
+
 - [源码开源仓库](https://github.com/EasonQYS/XEduLLM-tools)，欢迎提交PR增加新功能。
 
 **视频版使用指引**
