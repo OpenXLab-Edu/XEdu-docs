@@ -9,6 +9,8 @@
 
    basenn/introduction.md
 
+   basenn/adv_function.md
+
    basenn/projects.md
 
    basenn/appendix.md
