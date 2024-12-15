@@ -1,6 +1,6 @@
 # BaseNN高级功能
 
-BaseNN为初学者设计。
+BaseNN为初学者设计，内置了很多为教学设计的功能。
 
 ## 1.提取CNN特征
 
@@ -63,6 +63,8 @@ model.visual_feature(data)   # 特征的可视化
 ```
 
 ## 3.查看模型结构
+
+BaseNN能够详细打印模型的具体结构。
 
 ```python
 model.print_model()
