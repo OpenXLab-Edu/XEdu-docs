@@ -37,6 +37,7 @@ from MMEdu import MMClassification as cls
 训练代码如下：
 
 ```python
+from MMEdu import MMClassification as mmeducls
 model = mmeducls('LeNet') # 实例化模型，不指定参数即使用默认参数。
 model.num_classes = 3 # 指定数据集中的类别数量
 model.load_dataset(path='../dataset/cls/hand_gray') # 从指定数据集路径中加载数据
@@ -49,6 +50,7 @@ model.train(epochs=10, validate=True) # 设定训练的epoch次数以及是否�
 - **实例化模型**
 
 ```python
+from MMEdu import MMClassification as mmeducls
 model = mmeducls('LeNet') # 实例化模型，'LeNet'是sota模型的名称
 ```
 
@@ -161,9 +163,10 @@ accuracy_top-5：对一张图片，如果预测概率前五名的答案中出现
 示例代码如下:
 
 ```python
+from MMEdu import MMClassification as mmeducls
 img = 'testrock01-02.png' # 指定待推理的图片路径
 model = mmeducls('LeNet') # 实例化图像分类模型
-model.checkpoint='../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的模型权重文件
+checkpoint='../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的模型权重文件
 result = model.inference(image=img, show=True, checkpoint=checkpoint) # 在CPU上进行推理
 model.print_result() # 输出结果，可以修改参数show的值来决定是否需要显示结果图片，默认显示结果图片
 ```
@@ -179,9 +182,10 @@ model.print_result() # 输出结果，可以修改参数show的值来决定是�
 此外，我们还可以对一组图片进行**批量推理**，只需将收集的图片放在一个文件夹下，如在`demo`文件夹下新建一个`cls_testIMG`文件夹放图片。批量推理的示例代码如下。
 
 ```python
+from MMEdu import MMClassification as mmeducls
 img = 'cls_testIMG/' # 指定进行推理的一组图片的路径
 model = mmeducls('LeNet') # 实例化MMEdu图像分类模型
-model.checkpoint='../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的模型权重文件
+checkpoint='../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的模型权重文件
 result = model.inference(image=img, show=True, checkpoint=checkpoint) # 在CPU上进行推理
 model.print_result(result) # 输出结果，可以修改参数show的值来决定是否需要显示结果图片，默认显示结果图片
 ```
@@ -210,9 +214,9 @@ model = mmeducls('LeNet') # 实例化MMEdu图像分类模型
 - **指定模型权重文件**
 
 ```python
-model.checkpoint='../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的模型权重文件
+checkpoint='../checkpoints/cls_model/hand_gray/latest.pth' # 指定使用的模型权重文件
 ```
-此时指定的模型权重文件首先需存在，并且需和实例化模型对应，训练时实例化的网络是什么，推理时也需实例化同一个网络。如果没有指定模型权重文件，那么这两句代码可以不修改，即使用默认的模型。
+此时指定的模型权重文件首先需存在，并且需和实例化模型对应，训练时实例化的网络是什么，推理时也需实例化同一个网络。
 
 - **模型推理**
 
@@ -246,8 +250,10 @@ img = 'testrock01-02.png' # 指定推理图片的路径，直接在代码所在�
 针对部分用户希望加快推理速度的需求，设计了`fast_inference`函数，主要方法是使用`load_checkpoint`提前加载权重文件。
 
 ```python
+from MMEdu import MMClassification as mmeducls
+model = mmeducls('LeNet')
 model.load_checkpoint(checkpoint=checkpoint)
-result = model.fast_inference(image=img)
+result = model.fast_inference(image='img.jpg')
 ```
 
 **参数详解**
@@ -273,6 +279,7 @@ result = model.fast_inference(image=img)
 在这一步中，我们将学习如何加载之前训练过的模型接着训练。如果觉得之前训练的模型epoch数不够的话或者因为一些客观原因而不得不提前结束训练，相信下面的代码会帮到您。
 
 ```python
+from MMEdu import MMClassification as mmeducls
 model = mmeducls('LeNet') # 初始化实例模型
 model.num_classes = 3 # 指定数据集中的类别数量
 model.load_dataset(path='../dataset/cls/hand_gray') # 配置数据集路径
