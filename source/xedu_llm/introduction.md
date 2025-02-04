@@ -20,9 +20,9 @@ XEduLLM支持多种大语言模型服务提供商，可以通过support_provider
 
 ```python
 from XEdu.LLM import Client
-print(chatbot.support_provider()) # 查看XEduLLM中目前提供的大语言模型服务提供商
+print(Client.support_provider()) # 查看XEduLLM中目前提供的大语言模型服务提供商
 # 输出：['openrouter', 'moonshot', 'deepseek', 'glm', 'ernie', 'qwen']
-print(chatbot.support_provider(lang = 'zh') ) # 查看XEduLLM中目前提供的大语言模型服务提供商中文名
+print(Client.support_provider(lang = 'zh') ) # 查看XEduLLM中目前提供的大语言模型服务提供商中文名
 # 输出：['openrouter', '月之暗面-Kimi', '幻方-深度求索', '智谱-智谱清言', '百度-文心一言', '阿里-通义千问']
 ```
 
