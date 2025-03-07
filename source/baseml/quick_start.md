@@ -39,7 +39,7 @@ model = cls('KNN')
 ### 2. 载入数据
 
 ```python
-# 指定数据集
+# 指定数据集，“load_tab_data”方法适用最后一列是特征值的数据集。
 model.load_tab_data('datasets/iris_training.csv')
 ```
 
@@ -71,9 +71,9 @@ model.save('checkpoints/baseml_model/knn_iris.pkl')
 
 ## 推理与应用
 
-### 使用现有模型直接推理
+### 使用现有模型推理
 
-对一组数据直接推理。
+对一组数据直接推理。输入的数据要求是二维列表，如“[[5.9, 3.0, 4.2, 1.5]]”。
 
 ```python
 model = cls('KNN')
@@ -95,7 +95,7 @@ sepal_width = eval(input('花萼宽度为(cm): '))
 petal_length = eval(input('花瓣长度为(cm): '))
 petal_width = eval(input('花瓣宽度为(cm): '))
 
-# 构建测试数据
+# 构建测试数据，需要二维列表
 data = [[sepal_length,sepal_width,petal_length,petal_width]]
 # 用上面训练好的模型来做推理
 result = model.inference(data)
@@ -106,7 +106,7 @@ print("该鸢尾花属于第{0}类".format(result))
 
 ## 快速体验
 
-体验BaseML的最快速方式是通过OpenInnoLab平台。
+体验BaseML的最快速方式是通过OpenInnoLab平台，打开浏览器就能运行所有的代码。
 
 OpenInnoLab平台为上海人工智能实验室推出的青少年AI学习平台，满足青少年的AI学习和创作需求，支持在线编程。在“项目”中查看更多，查找“BaseML”即可找到所有BaseML相关的体验项目。
 
@@ -115,3 +115,4 @@ AI项目工坊：[https://www.openinnolab.org.cn/pjlab/projects/list?backpath=/p
 （用Chrome浏览器打开效果最佳）
 
 更多案例详见[下文](https://xedu.readthedocs.io/zh-cn/master/baseml/projects.html)。
+
