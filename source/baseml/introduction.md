@@ -203,9 +203,11 @@ print(clt.__doc__)
 
 ### 2. 数据载入
 
-BaseML库支持各种形式载入数据。
+BaseML库支持各种形式载入数据。可以使用内置函数载入数据，也可以使用外部工具读入数据后，赋值给BaseML的对象。
 
-#### （1）针对表格类型数据
+#### 使用内置函数载入数据
+
+##### （1）针对表格类型数据
 
 表格类型数据一般使用CSV格式。核心方法有`load_tab_data`和`load_dataset`两种。其中`load_tab_data`适合特定的单标签数据，`load_dataset`则适用绝大多数的数据。
 
@@ -274,7 +276,7 @@ model.load_dataset('./lenses.csv', type ='csv', x_column = [1,2,3,4],y_column=[5
 
 `show`：显示5条数据。默认为True。
 
-#### （2）针对图片类型数据
+##### （2）针对图片类型数据
 
 如需载入图像数据，可读取图像数据转换为Numpy数组后，直接从变量载入数据。使用上文介绍过的载入数据更加灵活的`load_dataset`方法载入即可。
 
@@ -286,6 +288,34 @@ model.load_dataset(X=train_x, y=train_y,type ='numpy')
 `X`表示数据特征，`y`表示标签。可再设置`x_column`和`y_column`参数，不设置则默认指定的X和y的所有列。
 
 其他参数同上文。
+
+#### 使用外部工具载入数据后赋值
+
+BaseML支持pandas和numpy的数据，赋值给`x_train`和`y_train`即可。
+
+示例代码：
+
+
+```python
+import pandas as pd
+from BaseML import Regression as reg
+
+# 从 CSV 文件中读取数据
+data = pd.read_csv('data/accelerated_motion_dataset_train.csv')
+
+# 分离特征和标签
+x = data.iloc[:, :3].values  # 前 3 列是特征
+y = data.iloc[:, 3:].values  # 后 2 列是标签
+
+# 构建多项式回归模型
+model = reg(algorithm='Polynomial')
+
+# 手动设置训练数据
+model.x_train = x
+model.y_train = y
+
+```
+
 
 #### 辅助工具：BaseML内置的图像处理模型`ImageLoader`
 
