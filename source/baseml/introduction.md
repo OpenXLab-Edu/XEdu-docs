@@ -134,7 +134,7 @@
 from BaseML import Regression as reg # 从库文件中导入回归任务模块
 model = reg('LinearRegression') # 实例化线性回归模型
 model.set_para(fit_intercept=True) # 设定模型参数
-model.load_tab_data( './data_train.csv') # 载入训练数据
+model.load_tab_data('./data_train.csv') # 载入训练数据
 model.train() # 训练模型
 model.valid('./data_val.csv',metrics='r2') # 载入验证数据并验证
 model.save('./mymodel.pkl') # 保存模型供应用
@@ -207,11 +207,18 @@ BaseML库支持各种形式载入数据。
 
 #### （1）针对表格类型数据
 
-**方法1：使用`load_tab_data`方法直接载入一个CSV文件**
+表格类型数据一般使用CSV格式。核心方法有`load_tab_data`和`load_dataset`两种。其中`load_tab_data`适合特定的单标签数据，`load_dataset`则适用绝大多数的数据。
 
-该方法对CSV文件有严格格式要求：数据文件每行一条记录，输入数据（特征）列在前，输出数据（目标或标签）列在后，即最后一列为输出数据，其余列为输入数据。要求数据类型为数值类型且无缺失值。此方式默认载入数据集的全部特征和最后一列的标签列。
+**方法1：使用`load_tab_data`方法直接载入一个特定CSV文件**
 
-- 注意：如果是聚类算法，通常没有明确的分类输出标签列，因此不能直接使用该函数。
+`load_tab_data`方法对CSV文件有严格的格式要求：
+- 数据文件每行一条记录（首行为表头，数据从第 2 行开始），输入数据（特征）列在前，输出数据（目标或标签）列在后，即最后一列是输出数据（标签），其余列都是输入数据（特征）。
+- 数据类型为数值类型且无缺失值。
+
+数据格式要求如下：
+
+![](../images/baseml/csv_data.png)
+
 
 示例代码：
 
@@ -223,9 +230,7 @@ model.load_tab_data('data/Height_data_train.csv')
 
 参数说明：
 
-`data_path`：CSV数据集路径，数据格式要求如下：
-
-![](../images/baseml/csv_data.png)
+`data_path`：CSV数据集路径。
 
 `train_val_ratio` ：训练集与验证集的比例，float类型，默认值为1.0，即不划分，全部作为训练集。
 
@@ -233,30 +238,39 @@ model.load_tab_data('data/Height_data_train.csv')
 
 `random_seed`：随机数种子，用于复现代码效果。
 
+注意：聚类算法通常没有明确的分类输出标签列，因此不能直接使用`load_tab_data`方法。
+
 **方法2：使用`load_dataset`方法载入，指定文件类型、特征列和标签列**
 
-这种方法载入数据更加灵活，适合需要辅助做特征选择的情况。对于聚类任务，只能选择此方法载入数据，因为它支持仅载入特征列。
+这种方法载入数据更加灵活，适合需要辅助做特征选择的情况。特征和标签列不需要连续。对于聚类任务，只能选择此方法载入数据，因为它支持仅载入特征列。
 
-示例代码：
+示例代码1：
 
 ```python
-# 载入数据集，并说明特征列和标签列
-model.load_dataset('./lenses.csv', type ='csv', x_column = [1,2,3,4],y_column=[5],shuffle=Flase)
+# 载入数据集，并指定特征列和标签列，1-4列为特征（x），5列为标签（y）
+model.load_dataset('./lenses.csv', type ='csv', x_column = [1,2,3,4],y_column=[5],shuffle=False)
+```
+
+示例代码2：
+
+```python
+# 载入数据集，并指定特征列和标签列，1-4列为特征（x），5和8列为标签（y）
+model.load_dataset('./lenses.csv', type ='csv', x_column = [1,2,3,4],y_column=[5,8],shuffle=False)
 ```
 
 参数说明：
 
-`type`表示X和y的输入格式，可选项为‘csv'、‘numpy'、'pandas'、'list'、'txt'。
+`type`：表示X和y的输入格式，可选项为‘csv'、‘numpy'、'pandas'、'list'、'txt'。
 
-`x_column`表示特征列。
+`x_column`：指定特征列，如[1,2,3,4]。
 
-`y_column`表示标签列。
+`y_column`：指定标签列，如[5]或者[5,6]、[5,8]等。
 
 `split`：是否划分训练集、验证集，默认为True。
 
-`shuffle`： 是否打乱数据，默认为True。
+`shuffle`：是否打乱数据，让数据随机化，默认为True。
 
-`scale`是否对数据进行归一化，默认为False。
+`scale`：是否对数据进行归一化，默认为False。
 
 `show`：显示5条数据。默认为True。
 
