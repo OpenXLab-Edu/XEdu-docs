@@ -6,6 +6,7 @@ XEdu快速入门手册
 
    how_to_quick_start/quick_start_manual.md
    how_to_quick_start/how_to_get_xedu.md
+   how_to_quick_start/how_to_start_dl.md
    how_to_quick_start/how_to_start_hub.md
    how_to_quick_start/how_to_start_baseml.md
    how_to_quick_start/how_to_start_basenn.md
