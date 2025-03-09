@@ -10,6 +10,6 @@
    about/version_update.md
    about/milestones.md
    about/installation.md
-   about/correlation.md
+   about/ecology.md
    about/functions.md
    about/errorcode.md
