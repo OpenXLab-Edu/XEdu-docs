@@ -2,10 +2,15 @@
 
 ## 预装XEdu的AI实训平台
 
+学习人工智能离不开实训平台（指可以在线训练模型的平台）。目前
 
 ### 1. 浦育平台（天然融合）
 
-浦育平台天然支持XEdu。
+浦育平台天然支持XEdu。在浦育平台选择“在线工具”，在“人工智能工坊”中能看到“XEdu”。
+
+地址：https://www.openinnolab.org.cn/
+
+![](../images/about/innolab.png)
 
 ### 2. OpenHydra（学校教学强推!!!）
 
