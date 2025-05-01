@@ -385,7 +385,7 @@ result,img_with_box = det_coco.inference(data='data/det_coco.jpg',img_type='pil'
 - `data`(str|numpy.ndarray)：指定待目标检测的图像，可以是以图像路径形式传入，也可直接传入cv2或pil格式的图像。
 - `show`(flag)：可取值`[True,False]` ,如果取值为`True`，在推理完成后会直接输出目标检测完成后的图像，默认为`False`。
 - `img_type`(str)：目标检测完成后会返回含有目标检测框的图像，该参数指定了返回图像的格式，可选有:`['cv2','pil']`，默认值为`None`，即如果不传入值，则不会返回图。
-- `thr`(float)：设置检测框阈值，取值范围为`[0,1]`超过该阈值的检测框被视为有效检测框，进行显示，默认值为0.3。
+- `thr`(float)：设置检测框阈值，取值范围为`[0,1]`，默认值为0.3，分数（置信度）小于该阈值的检测结果被视为无效，将自动过滤（不显示）。
 - `target_class`(str|list)：该参数在使用`det_coco`的时候可以指定要检测的对象，如：`target_class`='person'，`target_class`=['person','cake']。
 
 若要查看coco目标检测中的所有类别可运行以下代码：
