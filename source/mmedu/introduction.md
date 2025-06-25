@@ -129,7 +129,7 @@ MMEdu系列提供了包括分类、检测等任务的若干数据集，存储在
 
 ImageNet是斯坦福大学提出的一个用于视觉对象识别软件研究的大型可视化数据库，目前大部分模型的性能基准测试都在ImageNet上完成。MMEdu的图像分类模块支持的数据集类型是ImageNet，如需训练自己创建的数据集，数据集需整理成ImageNet格式。
 
-ImageNet格式数据集文件夹结构如下所示，包含三个文件夹和三个文本文件，图像数据文件夹内，不同类别图片按照文件夹分门别类排好，通过trainning_set、val_set、test_set区分训练集、验证集和测试集。文本文件classes.txt说明类别名称与序号的对应关系，val.txt说明验证集图片路径与类别序号的对应关系，test.txt说明测试集图片路径与类别序号的对应关系。
+ImageNet格式数据集文件夹结构如下所示，包含三个文件夹(trainning_set、val_set、test_set)和三个文本文件(classes.txt、val.txt、test.txt)，图像数据文件夹内，不同类别图片按照文件夹分门别类排好，通过trainning_set、val_set、test_set区分训练集、验证集和测试集。文本文件classes.txt说明类别名称与序号的对应关系，val.txt说明验证集图片路径与类别序号的对应关系，test.txt说明测试集图片路径与类别序号的对应关系。
 
 ```plain
 imagenet
@@ -172,8 +172,17 @@ filesname_1.jpg 0
 filesname_a.jpg n
 filesname_b.jpg n
 ```
-
 注：真实标签的值应该位于`[0,类别数目-1]`之间。
+
+以“MNIST手写体数字”数据集为例。
+
+```plain
+0/0.jpg 0
+0/1.jpg 0
+...
+1/0.jpg 1
+1/1.jpg 1
+```
 
 如果您觉得整理规范格式数据集有点困难，您只需收集完图片按照类别存放，然后完成训练集（trainning_set）、验证集（val_set）和测试集（test_set）等的拆分，整理在一个大的文件夹下作为你的数据集。此时指定数据集路径后同样可以训练模型，因为XEdu拥有检查数据集的功能，如您的数据集缺失txt文件，会自动帮您生成“classes.txt”，“val.txt”等（如存在对应的数据文件夹）开始训练。这些txt文件会生成在您指定的数据集路径下，即帮您补齐数据集。完整的从零开始制作一个ImageNet格式的数据集的步骤详见[深度学习知识库](https://xedu.readthedocs.io/zh-cn/master/how_to_use/dl_library/howtomake_imagenet.html)。
 
