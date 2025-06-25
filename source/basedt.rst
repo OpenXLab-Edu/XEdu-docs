@@ -7,6 +7,7 @@
    basedt/installation.md
    basedt/basic_function.md
    basedt/introduction.md
+   basedt/dataset_info.md
 
 
 
